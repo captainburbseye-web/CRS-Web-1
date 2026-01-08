@@ -9,10 +9,10 @@ export const renderer = jsxRenderer(({ children }) => {
         <title>Cowley Road Studios | Oxford's Grassroots Music Hub</title>
         <meta name="description" content="Professional-grade recording infrastructure. Grassroots pricing. No gatekeeping. Recording studio, workshop café, and community space at 118 Cowley Road, Oxford." />
         
-        {/* Fonts */}
+        {/* Fonts - Brewforce Typography System */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
         
         {/* Tailwind CSS */}
         <script src="https://cdn.tailwindcss.com"></script>
@@ -23,7 +23,7 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* Custom Styles */}
         <link href="/static/style.css" rel="stylesheet" />
         
-        {/* Tailwind Config */}
+        {/* Tailwind Config - Brewforce Brand */}
         <script dangerouslySetInnerHTML={{__html: `
           tailwind.config = {
             theme: {
@@ -36,8 +36,9 @@ export const renderer = jsxRenderer(({ children }) => {
                   charcoal: '#1E1E1E'
                 },
                 fontFamily: {
-                  display: ['Playfair Display', 'serif'],
-                  body: ['Inter', 'sans-serif']
+                  display: ['Bebas Neue', 'sans-serif'],
+                  body: ['Inter', 'sans-serif'],
+                  accent: ['Oswald', 'sans-serif']
                 }
               }
             }

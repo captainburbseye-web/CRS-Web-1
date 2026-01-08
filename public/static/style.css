@@ -27,6 +27,29 @@ section {
   scroll-margin-top: 80px;
 }
 
+/* Brewforce Typography System */
+/* Bebas Neue - Primary Headings (ALL CAPS, tight line height) */
+.font-display,
+h1, h2, h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* Inter - Body & System (comfortable reading) */
+.font-body,
+body, p, li, a, button {
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* Oswald - Accent (rare use, never body copy) */
+.font-accent {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
 /* Animation for fade-in on scroll */
 @keyframes fadeInUp {
   from {
