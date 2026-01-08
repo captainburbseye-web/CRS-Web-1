@@ -45,7 +45,7 @@ export const renderer = jsxRenderer(({ children }) => {
           }
         `}} />
       </head>
-      <body class="font-body text-charcoal bg-cream">
+      <body class="font-body text-cream bg-charcoal">
         {children}
       </body>
     </html>

@@ -4,22 +4,22 @@ html {
   scroll-padding-top: 80px; /* Account for fixed header */
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Dark Mode */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #F8F6EE;
+  background: #1E1E1E;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4A5B43;
+  background: #D4A437;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4A437;
+  background: #4A5B43;
 }
 
 /* Section Padding for Anchor Links */
