@@ -98,24 +98,75 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* Why We Exist Section - NEW */}
+      {/* Why We Exist Section - MANIFESTO */}
       <section id="why-we-exist" class="py-20 px-4 bg-gradient-to-b from-foliage-dark to-black">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-foliage-vibrant mb-8 text-center">
-            WHY COWLEY ROAD STUDIOS EXISTS
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-foliage-vibrant mb-12 text-center">
+            WHERE MOMENTUM LIVES
           </h2>
-          <div class="prose prose-lg max-w-none text-text-light space-y-6">
-            <p class="text-xl leading-relaxed">
-              When Soundworks closed, Oxford didn't just lose a studio — it lost decades of knowledge, relationships, and cultural memory.
+          
+          {/* Intro Text */}
+          <div class="max-w-4xl mx-auto mb-16 text-center">
+            <p class="text-xl md:text-2xl leading-relaxed text-text-light mb-4">
+              Cowley Road Studios isn't just a studio.<br />
+              It's a response.
             </p>
-            <p class="text-xl leading-relaxed">
-              Cowley Road Studios exists because that loss mattered.
+            <p class="text-lg md:text-xl leading-relaxed text-text-light/90 mb-6">
+              To what was lost.<br />
+              To what was missing.<br />
+              To what's still possible.
             </p>
-            <p class="text-xl leading-relaxed">
-              Built by the same people who kept Soundworks alive for over 20 years, this studio is our answer: a modern, professional space rooted in analogue craft, community values, and hard-earned experience.
+            <p class="text-lg leading-relaxed text-text-light">
+              In the absence left by Soundworks — Oxford's grassroots engine for 17 years — we rose from the dust, not as a replacement, but as a resonance. Same spirit. New tools. Bigger invitation.
             </p>
-            <p class="text-xl leading-relaxed">
-              This isn't a vanity project. It's infrastructure — rebuilt carefully, so artists, producers, and voices in Oxford still have a place to work properly.
+          </div>
+          
+          {/* 3 Column Grid */}
+          <div class="grid md:grid-cols-3 gap-8 mb-12">
+            {/* Column 1: THE CRAFT */}
+            <div class="bg-foliage-dark/80 rounded-lg p-8 border border-foliage-vibrant/30">
+              <h3 class="text-2xl font-display text-flame-burnt mb-4">THE CRAFT</h3>
+              <div class="text-text-light space-y-4">
+                <p class="text-lg leading-relaxed">
+                  Technically, it's a studio.<br />
+                  Actually, it's a modular engine of expression.
+                </p>
+                <p class="leading-relaxed">
+                  With boutique gear, world-class AV, and a multi-room setup that rivals bigger labels, we offer the polish of Abbey Road without the glass walls. No gatekeepers. No posturing. Just you and the signal.
+                </p>
+              </div>
+            </div>
+            
+            {/* Column 2: THE CULTURE */}
+            <div class="bg-foliage-dark/80 rounded-lg p-8 border border-foliage-vibrant/30">
+              <h3 class="text-2xl font-display text-flame-burnt mb-4">THE CULTURE</h3>
+              <div class="text-text-light space-y-4">
+                <p class="leading-relaxed">
+                  At the front, there's Workshop Café — the soft social spine of the space.<br />
+                  It's a café you don't have to buy your way into.<br />
+                  It's a venue you can actually afford to rent.<br />
+                  It's a place where someone will hand you a mic before they ask for your CV.
+                </p>
+              </div>
+            </div>
+            
+            {/* Column 3: THE ENERGY */}
+            <div class="bg-foliage-dark/80 rounded-lg p-8 border border-foliage-vibrant/30">
+              <h3 class="text-2xl font-display text-flame-burnt mb-4">THE ENERGY</h3>
+              <div class="text-text-light space-y-4">
+                <p class="leading-relaxed">
+                  It's in the Open Mic Nights that feel like family dinners.<br />
+                  It's in the vintage gear resurrected by artists and engineers side-by-side.<br />
+                  It's Oxford's permaculture for creativity — a place that understands a good mix is like a good street: layered, messy, and alive.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Closing Line */}
+          <div class="text-center">
+            <p class="text-xl md:text-2xl font-semibold text-foliage-vibrant">
+              Professional-grade, street-level. Accessible, but uncompromising. Polished, but rooted.
             </p>
           </div>
         </div>
@@ -125,8 +176,47 @@ app.get('/', (c) => {
       <section id="about" class="py-20 px-4 bg-foliage-dark/50">
         <div class="max-w-5xl mx-auto">
           <h2 class="text-4xl md:text-5xl font-display font-bold text-flame-burnt mb-8 text-center">
-            WHAT WE DO
+            A LIVING, BREATHING CREATIVE HUB
           </h2>
+          
+          {/* Brand Story */}
+          <div class="max-w-3xl mx-auto mb-12 text-center">
+            <p class="text-xl md:text-2xl leading-relaxed text-text-light mb-4">
+              Cowley Road Studios isn't a business plan.<br />
+              It's a lived idea — born from gaps, not graphs.
+            </p>
+            <p class="text-lg leading-relaxed text-text-light mb-6">
+              A space built because too many talented people had nowhere to go. No access. No vibe. No home for the kind of creative friction that makes something real.
+            </p>
+            <p class="text-lg leading-relaxed text-text-light mb-6">
+              Founded by Daniel Burbidge and Ollie Rushen — veterans of the Oxford creative scene — CRS carries the legacy of Soundworks Studio. It's part recording studio, part AV command center, part electronics sanctuary.
+            </p>
+            <p class="text-lg leading-relaxed text-text-light font-semibold">
+              It's where professional meets personal. Where Abbey Road polish pairs with grassroots heart.
+            </p>
+          </div>
+          
+          {/* Key Mission Points */}
+          <div class="max-w-2xl mx-auto mb-12">
+            <ul class="space-y-4 text-text-light">
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-flame-fierce mr-3 mt-1"></i>
+                <span class="text-lg">Make world-class tools feel local and human.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-flame-fierce mr-3 mt-1"></i>
+                <span class="text-lg">Be excellent, without being exclusive.</span>
+              </li>
+              <li class="flex items-start">
+                <i class="fas fa-arrow-right text-flame-fierce mr-3 mt-1"></i>
+                <span class="text-lg">Let the creative community shape the space.</span>
+              </li>
+            </ul>
+          </div>
+          
+          <h3 class="text-3xl font-display font-bold text-foliage-vibrant mb-8 text-center">
+            WHAT WE DO
+          </h3>
           <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div class="bg-foliage-dark/80 rounded-lg p-6 border border-foliage-vibrant/30">
               <i class="fas fa-record-vinyl text-4xl text-flame-fierce mb-4"></i>
