@@ -340,9 +340,9 @@ app.get('/', (c) => {
               <ul class="space-y-2 text-sm">
                 <li><a href="#about" class="text-cream/80 hover:text-mustard transition-colors">About</a></li>
                 <li><a href="#cafe" class="text-cream/80 hover:text-mustard transition-colors">Workshop Café</a></li>
-                <li><a href="#studio" class="text-cream/80 hover:text-mustard transition-colors">Studio</a></li>
+                <li><a href="#studio" class="text-cream/80 hover:text-mustard transition-colors">The Studio</a></li>
                 <li><a href="#promise" class="text-cream/80 hover:text-mustard transition-colors">Grassroots Promise</a></li>
-                <li><a href="#contact" class="text-cream/80 hover:text-mustard transition-colors">Book Now</a></li>
+                <li><a href="#contact" class="text-cream/80 hover:text-mustard transition-colors">Secure Launch Credit</a></li>
               </ul>
             </div>
             <div>
