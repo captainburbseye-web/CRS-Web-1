@@ -18,7 +18,7 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* Tailwind CSS - built and served statically */}
         <link href="/static/style.css" rel="stylesheet" />
       </head>
-      <body class="font-body text-charcoal bg-cream antialiased">
+      <body class="font-body text-text-light bg-black antialiased">
         {children}
       </body>
     </html>
