@@ -1,11 +1,11 @@
 # 📋 PROJECT: Cowley Road Studios (Production Build)
 
 ## 🟢 CURRENT STATUS
-**Phase:** 3. Brand Identity Update (Dark Mode Complete)
-**Last Action:** Successfully reversed color scheme to dark background
+**Phase:** 3. Brand Identity Update (Canonical Color System Documented)
+**Last Action:** Created BREWFORCE_COLOR_SYSTEM.md - physics-based color philosophy
 **Next Step:** Ready for authentication setup and production deployment
-**Timestamp:** 2026-01-08 11:45 UTC
-**Status:** ✅ Dark Mode Applied - Ready for deployment
+**Timestamp:** 2026-01-08 11:55 UTC
+**Status:** ✅ Foliage × Flame System Canonical - Ready for deployment
 
 ## 🎯 GOALS
 - [x] Build single-page site with Hono + Cloudflare Pages architecture
@@ -93,12 +93,38 @@
 ## 🧠 CONTEXT & MEMORY
 
 ### Brand Identity
-- **Color Scheme (DARK MODE):**
-  - **Background**: Charcoal `#1E1E1E` (Primary background, replaces Cream)
-  - **Text**: Cream `#F8F6EE` (Primary text, high contrast)
-  - **Primary Accent**: Mustard `#D4A437` (CTAs, highlights, hover states)
-  - **Secondary Accent**: Olive `#4A5B43` (Buttons, secondary CTAs)
-  - **Muted Text**: Espresso `#4B3621` (Rarely used, darkened further in dark mode)
+
+**CANONICAL COLOR SYSTEM:** See `BREWFORCE_COLOR_SYSTEM.md` for complete physics-based color philosophy.
+
+- **Color System: Foliage Physics × Flame Physics**
+  
+  **Core Philosophy:** Colors derived from how nature actually behaves, not aesthetics alone.
+  
+  **Foliage (Dominant 65-75%):**
+  - Primary: Olive `#4A5B43` - Environment, structure, continuity
+  - Deep: Dark Olive - Text, anchors, contrast
+  - Soft: Sage tones - Breathing space
+  - Brown: Espresso `#4B3621` - Minimal, structural only (like tree trunks)
+  
+  **Flame (Energy 15-25%):**
+  - Outer Flame: Mustard `#D4A437` - Warm, inviting, CTAs
+  - Inner Flame: Fire Orange `#FF6B35` - Directional, active (future use)
+  - Core: Electric Purple/Blue `#6B4FFF` - Tiny, intense, rare (1-3%, future use)
+  
+  **One-Line Laws:**
+  - Green is the world
+  - Fire is the signal
+  - Purple/blue is the core
+  - Brown is the root
+
+- **Current Implementation (Dark Mode):**
+  - **Background**: Charcoal `#1E1E1E` (night forest environment)
+  - **Text**: Cream `#F8F6EE` (high contrast)
+  - **Primary Accent**: Mustard `#D4A437` (outer flame - CTAs, highlights)
+  - **Secondary Accent**: Olive `#4A5B43` (foliage structure - buttons, borders)
+  - **Tertiary**: Espresso `#4B3621` (brown root - minimal, grounding)
+  
+  **Dark Mode Rationale:** Charcoal = night soil (ground from which everything grows). Green provides structure, fire provides energy. Physics maintained through inversion.
   
 - **Typography (Brewforce System):**
   - **Primary Headings**: Bebas Neue (sans-serif)
@@ -117,7 +143,7 @@
     - Never core identity, never body copy
   - Via Google Fonts CDN
 
-- **Tone:** Mid-century graphic clarity meets comic-adjacent optimism. Playful on the surface, serious underneath. Confidence without gimmickry. **Now with bold dark mode presence.**
+- **Tone:** Mid-century graphic clarity meets comic-adjacent optimism. Playful on the surface, serious underneath. Confidence without gimmickry. **Physics-based, not decoration.**
 
 - **Brand Positioning:** CRS Brewforce Café is a hybrid creative café and studio front-room. The identity blends optimism, craft, and capability.
 
@@ -175,6 +201,7 @@
 ├── package.json            # Dependencies & scripts
 ├── tsconfig.json           # TypeScript config
 ├── .gitignore              # Git ignore rules
+├── BREWFORCE_COLOR_SYSTEM.md # CANONICAL color physics (Foliage × Flame)
 ├── PLAN.md                 # This file - single source of truth
 └── README.md               # Project documentation
 ```
@@ -262,6 +289,14 @@ wrangler pages deploy dist --project-name cowleyroadstudios
     - Accent: Mustard highlights + Olive CTAs
     - Scrollbar: Updated to match dark theme
     - Rationale: Bold, confident, modern aesthetic. Better visual hierarchy.
+11. **2026-01-08 11:55**: **CANONICAL COLOR SYSTEM** - Foliage Physics × Flame Physics
+    - Created `BREWFORCE_COLOR_SYSTEM.md` as canonical reference
+    - **Foliage (65-75%)**: Green is the world. Olive structure, minimal brown roots
+    - **Flame (15-25%)**: Fire is the signal. Mustard warmth, orange energy, purple core
+    - **Physics-based**: Not decoration - natural law. Green dominates, fire activates
+    - **One-line laws**: Green = world, Fire = signal, Purple = core, Brown = root
+    - **Future expansion**: Electric purple/blue micro-accents, fire orange for urgency
+    - Rationale: **Proper system, not vibes.** Timeless, enforceable, scales across ecosystem.
 
 ### Known Issues / Blockers
 - ❌ **CRITICAL**: No GitHub authentication configured yet
@@ -316,6 +351,6 @@ wrangler pages deploy dist --project-name cowleyroadstudios
 
 ---
 
-*Last Updated: 2026-01-08 11:45 UTC*
+*Last Updated: 2026-01-08 11:55 UTC*
 *Agent: Senior Technical Architect*
-*Status: Dark mode + Brewforce typography complete - Ready for deployment*
+*Status: Brewforce Foliage × Flame physics canonical - Ready for deployment*
