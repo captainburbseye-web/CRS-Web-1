@@ -262,23 +262,26 @@ app.get('/', (c) => {
           </p>
           
           <div class="grid md:grid-cols-2 gap-8 mb-12">
-            {/* 3-Hour Voucher */}
+            {/* 2-Hour Voucher (was 3-Hour) */}
             <div class="bg-white rounded-lg p-8 border-2 border-mustard shadow-lg">
               <div class="text-center mb-6">
-                <h3 class="text-2xl font-display font-bold text-olive mb-2">3-Hour Voucher</h3>
+                <h3 class="text-2xl font-display font-bold text-olive mb-2">2-Hour Session</h3>
                 <div class="text-5xl font-bold text-mustard mb-2">£70</div>
                 <div class="text-sm text-espresso line-through">Regular: £105</div>
                 <div class="text-lg font-semibold text-olive mt-2">Save £35</div>
               </div>
               <ul class="space-y-2 text-charcoal mb-6">
-                <li><i class="fas fa-check text-olive mr-2"></i> 3 studio hours</li>
+                <li><i class="fas fa-check text-olive mr-2"></i> 2 studio hours</li>
                 <li><i class="fas fa-check text-olive mr-2"></i> 2026 rate locked</li>
                 <li><i class="fas fa-check text-olive mr-2"></i> Valid 12 months</li>
                 <li><i class="fas fa-check text-olive mr-2"></i> Transferable</li>
               </ul>
-              <button class="w-full bg-mustard text-charcoal py-3 rounded-md font-semibold hover:bg-olive hover:text-cream transition-all">
-                Buy 3-Hour Voucher
-              </button>
+              <a href="https://buy.stripe.com/eVq7sKdGp2MebDg000" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="block w-full bg-mustard text-charcoal py-3 rounded-md font-semibold hover:bg-olive hover:text-cream transition-all text-center">
+                Purchase Voucher
+              </a>
             </div>
 
             {/* 6-Hour Voucher */}
@@ -298,9 +301,10 @@ app.get('/', (c) => {
                 <li><i class="fas fa-check text-olive mr-2"></i> Valid 12 months</li>
                 <li><i class="fas fa-check text-olive mr-2"></i> Transferable</li>
               </ul>
-              <button class="w-full bg-olive text-cream py-3 rounded-md font-semibold hover:bg-mustard hover:text-charcoal transition-all">
-                Buy 6-Hour Voucher
-              </button>
+              <a href="#contact" 
+                 class="block w-full bg-olive text-cream py-3 rounded-md font-semibold hover:bg-mustard hover:text-charcoal transition-all text-center">
+                Contact for 6-Hour Deal
+              </a>
             </div>
           </div>
 
@@ -311,9 +315,10 @@ app.get('/', (c) => {
             </p>
             <a href="https://www.crowdfunder.co.uk/p/cowley-road-studios" 
                target="_blank" 
+               rel="noopener noreferrer"
                class="inline-block bg-charcoal text-cream px-8 py-3 rounded-md font-semibold hover:bg-olive transition-all">
               <i class="fas fa-hand-holding-heart mr-2"></i>
-              Back Us on Crowdfunder
+              Back the Crowdfunder
             </a>
           </div>
         </div>
