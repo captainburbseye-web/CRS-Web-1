@@ -3,10 +3,12 @@ import devServer from '@hono/vite-dev-server'
 import adapter from '@hono/vite-dev-server/cloudflare'
 import { defineConfig } from 'vite'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     build({
-      entry: 'src/index.tsx'
+      entry: 'src/index.tsx',
+      outputDir: './dist',
+      emptyOutDir: false
     }),
     devServer({
       adapter,
@@ -15,6 +17,18 @@ export default defineConfig({
   ],
   css: {
     postcss: './postcss.config.js'
+  },
+  build: {
+    cssCodeSplit: false,
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') {
+            return 'static/[name][extname]'
+          }
+          return 'assets/[name]-[hash][extname]'
+        }
+      }
+    }
   }
-})
-
+}))

@@ -1,8 +1,13 @@
 import { Hono } from 'hono'
+import { serveStatic } from 'hono/cloudflare-workers'
 import { renderer } from './renderer'
 import './style.css'
 
 const app = new Hono()
+
+// Serve static files (CSS, favicon, etc.)
+app.use('/static/*', serveStatic({ root: './' }))
+app.use('/favicon.svg', serveStatic({ path: './favicon.svg' }))
 
 app.use(renderer)
 

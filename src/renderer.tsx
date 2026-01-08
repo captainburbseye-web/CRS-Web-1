@@ -14,6 +14,9 @@ export const renderer = jsxRenderer(({ children }) => {
         
         {/* Font Awesome Icons */}
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
+        
+        {/* Tailwind CSS - built and served statically */}
+        <link href="/static/style.css" rel="stylesheet" />
       </head>
       <body class="font-body text-charcoal bg-cream antialiased">
         {children}
