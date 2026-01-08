@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Custom Scrollbar - Brewforce */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FDFBF7;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4A5D23;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E3B505;
+}
+
+/* Section Padding for Anchor Links */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Brewforce Typography System */
+/* Bebas Neue - Primary Headings ONLY (not body text) */
+.font-display,
+h1, h2, h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* Inter - Body & System (comfortable reading, NO uppercase) */
+.font-body,
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+p, li, a, span {
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+/* Oswald - Accent (rare use) */
+.font-accent {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+/* Animation for fade-in on scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Hover effects */
+a {
+  transition: all 0.2s ease;
+}
+
+/* Button hover effects */
+button, .button {
+  transition: all 0.3s ease;
+}
+
+button:active, .button:active {
+  transform: scale(0.98);
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid #E3B505;
+  outline-offset: 2px;
+}
