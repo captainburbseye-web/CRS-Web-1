@@ -54,9 +54,15 @@
 - [x] **Stripe Integration**: Add real payment links for vouchers
   - [x] 2-Hour Session: £70 button → https://buy.stripe.com/eVq7sKdGp2MebDg000 (opens in new tab)
   - [x] 6-Hour Voucher: £130 button → Contact form placeholder
+- [x] **Square Booking Integration**: Studio session booking system
+  - [x] "Book a Session" button → https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start
+  - [x] Opens in new tab with `target="_blank"` and `rel="noopener noreferrer"`
+  - [x] Maintains Olive/Mustard theme (bg-mustard → hover:bg-olive)
+  - [x] Location: Studio section, centered below specifications
 - [x] **External Links Verified**:
   - [x] Stripe link has `target="_blank"` and `rel="noopener noreferrer"`
   - [x] Crowdfunder link has `target="_blank"` and `rel="noopener noreferrer"`
+  - [x] Square booking link has `target="_blank"` and `rel="noopener noreferrer"`
   - [x] Button text updated: "Purchase Voucher" and "Back the Crowdfunder"
 - [ ] **Image Assets**: Upload and integrate (pending)
   - [ ] CRS Neon Logo (header)
