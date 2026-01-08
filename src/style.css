@@ -10,22 +10,22 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* Custom Scrollbar - Brewforce */
+/* Custom Scrollbar - Flame & Foliage */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #FDFBF7;
+  background: #1A2F1A;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4A5D23;
+  background: #4CAF50;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #E3B505;
+  background: #FF4500;
 }
 
 /* Section Padding for Anchor Links */
@@ -98,6 +98,6 @@ button:active, .button:active {
 /* Focus styles for accessibility */
 a:focus,
 button:focus {
-  outline: 2px solid #E3B505;
+  outline: 2px solid #FF4500;
   outline-offset: 2px;
 }

@@ -7,14 +7,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Brewforce Color System
+        // Flame & Foliage Color System
+        'foliage-dark': '#1A2F1A',      // Deep Forest Green - Main Background
+        'foliage-vibrant': '#4CAF50',   // Vibrant Leaf Green - Highlights
+        'flame-burnt': '#E6B800',       // Burnt Yellow/Gold - Secondary Accents
+        'flame-fierce': '#FF4500',      // Fierce Orange - Primary CTAs
+        'text-light': '#FDFBF7',        // Off-White/Cream - Main Text
+        // Legacy colors (keep for backwards compatibility during transition)
         cream: '#FDFBF7',
         olive: '#4A5D23',
         charcoal: '#1A1A1A',
         mustard: '#E3B505',
-        // Additional colors
-        sage: '#8B9B7E',
-        espresso: '#4B3621',
       },
       fontFamily: {
         display: ['Bebas Neue', 'sans-serif'],
