@@ -1,7 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Account for fixed header */
+  scroll-padding-top: 80px;
 }
 
 /* Custom Scrollbar - Foliage Physics */
@@ -10,16 +14,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #4A5B43;
+  background: #F8F6EE;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D4A437;
+  background: #4A5B43;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF6B35;
+  background: #D4A437;
 }
 
 /* Section Padding for Anchor Links */
@@ -28,7 +32,7 @@ section {
 }
 
 /* Brewforce Typography System */
-/* Bebas Neue - Primary Headings (ALL CAPS, tight line height) */
+/* Bebas Neue - Primary Headings ONLY (not body text) */
 .font-display,
 h1, h2, h3 {
   text-transform: uppercase;
@@ -36,14 +40,20 @@ h1, h2, h3 {
   line-height: 1.1;
 }
 
-/* Inter - Body & System (comfortable reading) */
+/* Inter - Body & System (comfortable reading, NO uppercase) */
 .font-body,
-body, p, li, a, button {
+body {
   line-height: 1.6;
   letter-spacing: 0.01em;
 }
 
-/* Oswald - Accent (rare use, never body copy) */
+p, li {
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+/* Oswald - Accent (rare use) */
 .font-accent {
   text-transform: uppercase;
   letter-spacing: 0.03em;
