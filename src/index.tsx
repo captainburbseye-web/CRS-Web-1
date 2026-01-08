@@ -79,6 +79,18 @@ app.get('/', (c) => {
             Professional-grade recording infrastructure. Grassroots pricing. No gatekeeping.
           </p>
           
+          {/* Hero CTAs */}
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+            <a href="#contact" class="bg-mustard text-charcoal px-8 py-4 rounded-md font-semibold text-lg hover:bg-olive hover:text-cream transition-all duration-200 shadow-lg">
+              <i class="fas fa-ticket-alt mr-2"></i>
+              Secure Launch Credit
+            </a>
+            <a href="#promise" class="bg-olive text-cream px-8 py-4 rounded-md font-semibold text-lg hover:bg-mustard hover:text-charcoal transition-all duration-200 shadow-lg">
+              <i class="fas fa-heart mr-2"></i>
+              Our Promise
+            </a>
+          </div>
+          
           {/* Metrics Strip */}
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
             <div class="bg-white/50 backdrop-blur-sm rounded-lg p-6 border border-olive/20">
@@ -135,12 +147,16 @@ app.get('/', (c) => {
               <p class="text-lg text-charcoal mb-4">
                 By night: An intimate 45-60 capacity venue for live sessions, open mics, and community events.
               </p>
-              <ul class="space-y-2 text-charcoal">
+              <ul class="space-y-2 text-charcoal mb-6">
                 <li><i class="fas fa-check text-olive mr-2"></i> Free WiFi & Hot Desks</li>
                 <li><i class="fas fa-check text-olive mr-2"></i> Quality Coffee & Snacks</li>
                 <li><i class="fas fa-check text-olive mr-2"></i> Evening Performances</li>
                 <li><i class="fas fa-check text-olive mr-2"></i> Community Workshops</li>
               </ul>
+              <a href="mailto:hello@cowleyroadstudios.com" class="inline-block bg-olive text-cream px-6 py-3 rounded-md font-semibold hover:bg-mustard hover:text-charcoal transition-all duration-200">
+                <i class="fas fa-calendar-alt mr-2"></i>
+                Explore Venue Hire
+              </a>
             </div>
             <div class="bg-olive/10 rounded-lg p-8 text-center">
               <i class="fas fa-store text-6xl text-olive mb-4"></i>
@@ -186,6 +202,14 @@ app.get('/', (c) => {
               </div>
             </div>
           </div>
+          
+          {/* Studio CTA */}
+          <div class="text-center mt-12">
+            <a href="#contact" class="inline-block bg-mustard text-charcoal px-8 py-4 rounded-md font-semibold text-lg hover:bg-olive hover:text-cream transition-all duration-200 shadow-lg">
+              <i class="fas fa-microphone-alt mr-2"></i>
+              Book a Session
+            </a>
+          </div>
         </div>
       </section>
 
@@ -215,6 +239,14 @@ app.get('/', (c) => {
                 <div class="text-sm">Gatekeeping</div>
               </div>
             </div>
+          </div>
+          
+          {/* Promise CTA */}
+          <div class="text-center mt-8">
+            <a href="#contact" class="inline-block bg-cream text-olive px-8 py-4 rounded-md font-semibold text-lg hover:bg-mustard hover:text-charcoal transition-all duration-200 shadow-lg">
+              <i class="fas fa-clipboard-list mr-2"></i>
+              Join Waitlist
+            </a>
           </div>
         </div>
       </section>
