@@ -385,4 +385,60 @@ app.get('/', (c) => {
   )
 })
 
+// Booking Success Page Route
+app.get('/booking-success', (c) => {
+  return c.render(
+    <>
+      <div class="min-h-screen flex items-center justify-center px-4 py-20">
+        <div class="max-w-2xl w-full text-center">
+          {/* Success Icon */}
+          <div class="mb-8">
+            <i class="fas fa-check-circle text-olive text-8xl"></i>
+          </div>
+          
+          {/* Headline */}
+          <h1 class="text-5xl md:text-7xl font-display font-bold text-olive mb-4 uppercase tracking-wide">
+            SESSION CONFIRMED
+          </h1>
+          
+          {/* Subhead */}
+          <p class="text-2xl md:text-3xl font-display text-mustard mb-8">
+            Your time is locked in.
+          </p>
+          
+          {/* Body Content */}
+          <div class="bg-olive/30 rounded-lg p-8 mb-8 text-left">
+            <p class="text-lg text-cream leading-relaxed mb-4">
+              Thanks for booking with Cowley Road Studios. You should receive a confirmation email from Square shortly with your booking details.
+            </p>
+            <p class="text-lg text-cream leading-relaxed mb-4">
+              Please arrive <strong class="text-mustard">15 minutes before</strong> your session start time.
+            </p>
+            <div class="mt-6 pt-6 border-t border-mustard/40">
+              <p class="text-cream/95 mb-2">
+                <i class="fas fa-map-marker-alt text-mustard mr-2"></i>
+                <strong>Location:</strong>
+              </p>
+              <p class="text-cream text-lg">
+                118 Cowley Road<br/>
+                Oxford<br/>
+                OX4 1JE
+              </p>
+            </div>
+          </div>
+          
+          {/* Back to Home Button */}
+          <a 
+            href="/" 
+            class="inline-block bg-mustard text-charcoal px-8 py-4 rounded-md font-semibold text-lg hover:bg-olive hover:text-cream transition-all duration-200 shadow-lg"
+          >
+            <i class="fas fa-home mr-2"></i>
+            Back to Home
+          </a>
+        </div>
+      </div>
+    </>
+  )
+})
+
 export default app
