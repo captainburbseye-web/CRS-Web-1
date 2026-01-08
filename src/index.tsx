@@ -9,7 +9,7 @@ app.get('/', (c) => {
   return c.render(
     <>
       {/* Navigation Header */}
-      <nav class="fixed top-0 left-0 right-0 bg-charcoal/95 backdrop-blur-sm border-b border-mustard/30 z-50">
+      <nav class="fixed top-0 left-0 right-0 bg-olive/95 backdrop-blur-sm border-b border-mustard/40 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between items-center h-16">
             {/* Logo */}
@@ -48,7 +48,7 @@ app.get('/', (c) => {
         </div>
         
         {/* Mobile Navigation */}
-        <div id="mobile-menu" class="hidden md:hidden border-t border-mustard/30">
+        <div id="mobile-menu" class="hidden md:hidden border-t border-mustard/40">
           <div class="px-4 pt-2 pb-4 space-y-2">
             <a href="#about" class="block py-2 text-cream hover:text-mustard transition-colors">
               About
@@ -75,7 +75,7 @@ app.get('/', (c) => {
           <h1 class="text-5xl md:text-7xl font-display font-bold text-olive mb-6">
             Where Sound, Vision & Community Find Their Home
           </h1>
-          <p class="text-xl md:text-2xl text-cream/80 mb-8 max-w-3xl mx-auto">
+          <p class="text-xl md:text-2xl text-cream/95 mb-8 max-w-3xl mx-auto">
             Professional-grade recording infrastructure. Grassroots pricing. No gatekeeping.
           </p>
           
@@ -93,29 +93,29 @@ app.get('/', (c) => {
           
           {/* Metrics Strip */}
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
-            <div class="bg-charcoal/50 backdrop-blur-sm rounded-lg p-6 border border-mustard/30">
+            <div class="bg-olive/30 backdrop-blur-sm rounded-lg p-6 border border-mustard/40">
               <div class="text-4xl font-display font-bold text-mustard mb-2">20+</div>
-              <div class="text-sm text-cream/80">Years Legacy</div>
+              <div class="text-sm text-cream/95">Years Legacy</div>
             </div>
-            <div class="bg-charcoal/50 backdrop-blur-sm rounded-lg p-6 border border-mustard/30">
+            <div class="bg-olive/30 backdrop-blur-sm rounded-lg p-6 border border-mustard/40">
               <div class="text-4xl font-display font-bold text-mustard mb-2">200+</div>
-              <div class="text-sm text-cream/80">Artists Served</div>
+              <div class="text-sm text-cream/95">Artists Served</div>
             </div>
-            <div class="bg-charcoal/50 backdrop-blur-sm rounded-lg p-6 border border-mustard/30">
+            <div class="bg-olive/30 backdrop-blur-sm rounded-lg p-6 border border-mustard/40">
               <div class="text-4xl font-display font-bold text-mustard mb-2">£100k+</div>
-              <div class="text-sm text-cream/80">Studio Investment</div>
+              <div class="text-sm text-cream/95">Studio Investment</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" class="py-20 px-4 bg-charcoal/50">
+      <section id="about" class="py-20 px-4 bg-olive/30">
         <div class="max-w-5xl mx-auto">
           <h2 class="text-4xl md:text-5xl font-display font-bold text-mustard mb-8 text-center">
             Abbey Road Polish × Cowley Road Heart
           </h2>
-          <div class="prose prose-lg max-w-none text-cream/90">
+          <div class="prose prose-lg max-w-none text-cream">
             <p class="text-xl leading-relaxed mb-6">
               At 118 Cowley Road, Oxford, a new chapter begins for grassroots music. Cowley Road Studios 
               rises from the legacy of Soundworks Studio (est. 2004), bringing together professional-grade 
@@ -138,7 +138,7 @@ app.get('/', (c) => {
           </h2>
           <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 class="text-2xl font-display font-semibold text-cream/80 mb-4">
+              <h3 class="text-2xl font-display font-semibold text-cream/95 mb-4">
                 Day Space. Night Venue.
               </h3>
               <p class="text-lg text-charcoal mb-4">
@@ -158,42 +158,42 @@ app.get('/', (c) => {
                 Explore Venue Hire
               </a>
             </div>
-            <div class="bg-olive/20 rounded-lg p-8 text-center">
+            <div class="bg-forest-dark/30 rounded-lg p-8 text-center">
               <i class="fas fa-store text-6xl text-olive mb-4"></i>
-              <p class="text-cream/80 italic">Opening Spring 2026</p>
+              <p class="text-cream/95 italic">Opening Spring 2026</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Studio Section */}
-      <section id="studio" class="py-20 px-4 bg-charcoal/50">
+      <section id="studio" class="py-20 px-4 bg-olive/30">
         <div class="max-w-5xl mx-auto">
           <h2 class="text-4xl md:text-5xl font-display font-bold text-mustard mb-8 text-center">
             <i class="fas fa-microphone text-mustard mr-3"></i>
             The Studio
           </h2>
           <div class="mb-12">
-            <h3 class="text-2xl font-display font-semibold text-cream/80 mb-6 text-center">
+            <h3 class="text-2xl font-display font-semibold text-cream/95 mb-6 text-center">
               Professional Infrastructure. Grassroots Access.
             </h3>
             <div class="grid md:grid-cols-2 gap-8">
-              <div class="bg-charcoal/50 rounded-lg p-6 border border-mustard/30">
+              <div class="bg-olive/30 rounded-lg p-6 border border-mustard/40">
                 <h4 class="text-xl font-semibold text-olive mb-4">
                   <i class="fas fa-headphones mr-2"></i> Audio Excellence
                 </h4>
-                <ul class="space-y-2 text-cream/90">
+                <ul class="space-y-2 text-cream">
                   <li>• Dante networked audio system</li>
                   <li>• Kii Three + BXT monitoring</li>
                   <li>• Sphere DLX modeling microphones</li>
                   <li>• 5 isolated recording rooms</li>
                 </ul>
               </div>
-              <div class="bg-charcoal/50 rounded-lg p-6 border border-mustard/30">
+              <div class="bg-olive/30 rounded-lg p-6 border border-mustard/40">
                 <h4 class="text-xl font-semibold text-olive mb-4">
                   <i class="fas fa-video mr-2"></i> Video Integration
                 </h4>
-                <ul class="space-y-2 text-cream/90">
+                <ul class="space-y-2 text-cream">
                   <li>• NDI video streaming</li>
                   <li>• Multi-camera setups</li>
                   <li>• Live session recording</li>
@@ -205,7 +205,7 @@ app.get('/', (c) => {
           
           {/* Studio CTA */}
           <div class="text-center mt-12">
-            <a href="#contact" class="inline-block bg-mustard text-charcoal px-8 py-4 rounded-md font-semibold text-lg hover:bg-olive hover:text-cream transition-all duration-200 shadow-lg">
+            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block bg-mustard text-charcoal px-8 py-4 rounded-md font-semibold text-lg hover:bg-olive hover:text-cream transition-all duration-200 shadow-lg">
               <i class="fas fa-microphone-alt mr-2"></i>
               Book a Session
             </a>
@@ -252,22 +252,22 @@ app.get('/', (c) => {
       </section>
 
       {/* Contact/Booking Section */}
-      <section id="contact" class="py-20 px-4 bg-charcoal/50">
+      <section id="contact" class="py-20 px-4 bg-olive/30">
         <div class="max-w-5xl mx-auto">
           <h2 class="text-4xl md:text-5xl font-display font-bold text-mustard mb-8 text-center">
             Secure Your Launch Credit
           </h2>
-          <p class="text-xl text-center text-cream/80 mb-12 max-w-3xl mx-auto">
+          <p class="text-xl text-center text-cream/95 mb-12 max-w-3xl mx-auto">
             Lock in 2026 rates now. Limited Christmas campaign vouchers available.
           </p>
           
           <div class="grid md:grid-cols-2 gap-8 mb-12">
             {/* 2-Hour Voucher (was 3-Hour) */}
-            <div class="bg-charcoal/90 rounded-lg p-8 border-2 border-mustard shadow-lg">
+            <div class="bg-forest-dark rounded-lg p-8 border-2 border-mustard shadow-lg">
               <div class="text-center mb-6">
                 <h3 class="text-2xl font-display font-bold text-olive mb-2">2-Hour Session</h3>
                 <div class="text-5xl font-bold text-mustard mb-2">£70</div>
-                <div class="text-sm text-cream/80 line-through">Regular: £105</div>
+                <div class="text-sm text-cream/95 line-through">Regular: £105</div>
                 <div class="text-lg font-semibold text-olive mt-2">Save £35</div>
               </div>
               <ul class="space-y-2 text-charcoal mb-6">
@@ -285,14 +285,14 @@ app.get('/', (c) => {
             </div>
 
             {/* 6-Hour Voucher */}
-            <div class="bg-charcoal/90 rounded-lg p-8 border-2 border-olive shadow-lg transform md:scale-105">
+            <div class="bg-forest-dark rounded-lg p-8 border-2 border-olive shadow-lg transform md:scale-105">
               <div class="bg-mustard text-charcoal text-xs font-bold py-1 px-3 rounded-full inline-block mb-4">
                 BEST VALUE
               </div>
               <div class="text-center mb-6">
                 <h3 class="text-2xl font-display font-bold text-olive mb-2">6-Hour Voucher</h3>
                 <div class="text-5xl font-bold text-olive mb-2">£130</div>
-                <div class="text-sm text-cream/80 line-through">Regular: £210</div>
+                <div class="text-sm text-cream/95 line-through">Regular: £210</div>
                 <div class="text-lg font-semibold text-mustard mt-2">Save £80</div>
               </div>
               <ul class="space-y-2 text-charcoal mb-6">
@@ -330,7 +330,7 @@ app.get('/', (c) => {
           <div class="grid md:grid-cols-3 gap-8 mb-8">
             <div>
               <h3 class="text-xl font-display font-bold mb-4">Cowley Road Studios</h3>
-              <p class="text-sm text-cream/80">
+              <p class="text-sm text-cream/95">
                 Professional-grade recording infrastructure.<br />
                 Grassroots pricing. No gatekeeping.
               </p>
@@ -338,23 +338,23 @@ app.get('/', (c) => {
             <div>
               <h4 class="font-semibold mb-4">Quick Links</h4>
               <ul class="space-y-2 text-sm">
-                <li><a href="#about" class="text-cream/80 hover:text-mustard transition-colors">About</a></li>
-                <li><a href="#cafe" class="text-cream/80 hover:text-mustard transition-colors">Workshop Café</a></li>
-                <li><a href="#studio" class="text-cream/80 hover:text-mustard transition-colors">The Studio</a></li>
-                <li><a href="#promise" class="text-cream/80 hover:text-mustard transition-colors">Grassroots Promise</a></li>
-                <li><a href="#contact" class="text-cream/80 hover:text-mustard transition-colors">Secure Launch Credit</a></li>
+                <li><a href="#about" class="text-cream/95 hover:text-mustard transition-colors">About</a></li>
+                <li><a href="#cafe" class="text-cream/95 hover:text-mustard transition-colors">Workshop Café</a></li>
+                <li><a href="#studio" class="text-cream/95 hover:text-mustard transition-colors">The Studio</a></li>
+                <li><a href="#promise" class="text-cream/95 hover:text-mustard transition-colors">Grassroots Promise</a></li>
+                <li><a href="#contact" class="text-cream/95 hover:text-mustard transition-colors">Secure Launch Credit</a></li>
               </ul>
             </div>
             <div>
               <h4 class="font-semibold mb-4">Location</h4>
-              <p class="text-sm text-cream/80">
+              <p class="text-sm text-cream/95">
                 118 Cowley Road<br />
                 Oxford<br />
                 OX4 1JE
               </p>
             </div>
           </div>
-          <div class="border-t border-cream/20 pt-8 text-center text-sm text-cream/60">
+          <div class="border-t border-cream/20 pt-8 text-center text-sm text-sage">
             <p>&copy; 2026 Cowley Road Studios. All rights reserved.</p>
           </div>
         </div>

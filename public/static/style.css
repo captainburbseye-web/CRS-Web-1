@@ -4,13 +4,13 @@ html {
   scroll-padding-top: 80px; /* Account for fixed header */
 }
 
-/* Custom Scrollbar - Dark Mode */
+/* Custom Scrollbar - Foliage Physics */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1E1E1E;
+  background: #4A5B43;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -19,7 +19,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #4A5B43;
+  background: #FF6B35;
 }
 
 /* Section Padding for Anchor Links */

@@ -23,17 +23,29 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* Custom Styles */}
         <link href="/static/style.css" rel="stylesheet" />
         
-        {/* Tailwind Config - Brewforce Brand */}
+        {/* Tailwind Config - Brewforce Foliage × Flame Physics */}
         <script dangerouslySetInnerHTML={{__html: `
           tailwind.config = {
             theme: {
               extend: {
                 colors: {
-                  cream: '#F8F6EE',
-                  olive: '#4A5B43',
-                  mustard: '#D4A437',
-                  espresso: '#4B3621',
-                  charcoal: '#1E1E1E'
+                  // Foliage Physics (Dominant)
+                  'forest-dark': '#2D3A28',
+                  'olive': '#4A5B43',
+                  'sage': '#8B9B7E',
+                  'lichen': '#B8C5A8',
+                  
+                  // Flame Physics (Energy)
+                  'mustard': '#D4A437',
+                  'fire-orange': '#FF6B35',
+                  'electric-purple': '#6B4FFF',
+                  
+                  // Brown (Minimal - Roots)
+                  'espresso': '#4B3621',
+                  
+                  // Neutrals
+                  'cream': '#F8F6EE',
+                  'charcoal': '#1E1E1E'
                 },
                 fontFamily: {
                   display: ['Bebas Neue', 'sans-serif'],
@@ -45,7 +57,7 @@ export const renderer = jsxRenderer(({ children }) => {
           }
         `}} />
       </head>
-      <body class="font-body text-cream bg-charcoal">
+      <body class="font-body text-charcoal bg-olive">
         {children}
       </body>
     </html>
