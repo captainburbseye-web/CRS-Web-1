@@ -47,18 +47,18 @@ app.get('/', (c) => {
       <div class="fixed top-0 left-0 right-0 bg-deep-charcoal h-8 border-b border-nettle-green z-50">
         <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-center">
           <div id="system-monitor-desktop" class="flex items-center gap-8 text-xs font-mono text-off-white/60">
-            {/* Status zones will be populated by JavaScript */}
+            {/* CAFÉ STATUS */}
             <div class="flex items-center gap-2">
-              <span id="pulse-cafe" class="w-2 h-2 bg-electric-orange rounded-full animate-pulse hidden"></span>
-              <span id="status-cafe" class="uppercase tracking-wider">CAFÉ: LOADING...</span>
+              <span class="uppercase tracking-wider">[ CAFÉ: OPEN ]</span>
             </div>
+            {/* STUDIO STATUS with pulsing orange indicator */}
             <div class="flex items-center gap-2">
-              <span id="pulse-studio" class="w-2 h-2 bg-electric-orange rounded-full animate-pulse hidden"></span>
-              <span id="status-studio" class="uppercase tracking-wider">STUDIO: LOADING...</span>
+              <span class="w-2 h-2 bg-electric-orange rounded-full animate-pulse"></span>
+              <span class="uppercase tracking-wider">[ STUDIO: IN SESSION ]</span>
             </div>
+            {/* ELECTRONICS STATUS */}
             <div class="flex items-center gap-2">
-              <span id="pulse-electronics" class="w-2 h-2 bg-electric-orange rounded-full animate-pulse hidden"></span>
-              <span id="status-electronics" class="uppercase tracking-wider">ELECTRONICS: LOADING...</span>
+              <span class="uppercase tracking-wider">[ ELECTRONICS: TAKING REPAIRS ]</span>
             </div>
           </div>
         </div>
@@ -123,137 +123,138 @@ app.get('/', (c) => {
       <div class="md:hidden fixed top-14 left-0 right-0 bg-deep-charcoal h-8 border-b border-nettle-green z-30">
         <div class="px-4 h-full flex items-center justify-center overflow-x-auto">
           <div id="system-monitor-mobile" class="flex items-center gap-4 text-xs font-mono text-off-white/60 whitespace-nowrap">
-            {/* Status zones will be populated by JavaScript */}
-            <div class="flex items-center gap-1">
-              <span id="pulse-cafe-mobile" class="w-1.5 h-1.5 bg-electric-orange rounded-full animate-pulse hidden"></span>
-              <span id="status-cafe-mobile" class="uppercase">CAFÉ: LOADING...</span>
-            </div>
+            <span class="uppercase">[ CAFÉ: OPEN ]</span>
             <span class="text-nettle-green">|</span>
             <div class="flex items-center gap-1">
-              <span id="pulse-studio-mobile" class="w-1.5 h-1.5 bg-electric-orange rounded-full animate-pulse hidden"></span>
-              <span id="status-studio-mobile" class="uppercase">STUDIO: LOADING...</span>
+              <span class="w-1.5 h-1.5 bg-electric-orange rounded-full animate-pulse"></span>
+              <span class="uppercase">[ STUDIO: IN SESSION ]</span>
             </div>
             <span class="text-nettle-green">|</span>
-            <div class="flex items-center gap-1">
-              <span id="pulse-electronics-mobile" class="w-1.5 h-1.5 bg-electric-orange rounded-full animate-pulse hidden"></span>
-              <span id="status-electronics-mobile" class="uppercase">ELECTRONICS: LOADING...</span>
-            </div>
+            <span class="uppercase">[ ELECTRONICS: REPAIRS ]</span>
           </div>
         </div>
       </div>
 
-      {/* HERO (CRS SPINE - DARK CONTROL ROOM) */}
-      <section id="hero" class="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-deep-charcoal">
+      {/* HERO (CRS SPINE - DARK CONTROL ROOM) - 12 COLUMN GRID */}
+      <section id="hero" class="pt-28 md:pt-24 pb-12 md:pb-16 px-4 bg-deep-charcoal">
         <div class="max-w-7xl mx-auto">
-          <div class="text-center">
-            <p class="text-xs font-mono text-mustard uppercase mb-6 tracking-wider">
-              Cowley Road Studios · Oxford
-            </p>
-            <h1 class="text-5xl md:text-9xl font-black uppercase text-off-white mb-6 md:mb-8 leading-none tracking-tight">
-              COWLEY ROAD STUDIOS
-            </h1>
-            <p class="text-xl md:text-3xl text-off-white/90 mb-4 md:mb-6 leading-relaxed font-medium">
-              Industry standard. Calm delivery.
-            </p>
-            <p class="text-base md:text-lg text-off-white/80 mb-8 md:mb-10 leading-relaxed max-w-3xl mx-auto">
-              Infrastructure for recording, live sound, and streaming — built to work under pressure.
-            </p>
-            
-            {/* Primary CTA (always visible) */}
-            <div class="mb-4">
-              <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
-                [ Book a Session ]
-              </a>
+          <div class="grid md:grid-cols-12 gap-8">
+            {/* LEFT COLUMN: Technical Data (7/12) */}
+            <div class="md:col-span-7">
+              <p class="text-xs font-mono text-mustard uppercase mb-4 tracking-wider">
+                Cowley Road Studios · Oxford
+              </p>
+              <h1 class="text-4xl md:text-6xl font-black uppercase text-off-white mb-4 leading-tight tracking-tight">
+                COWLEY ROAD STUDIOS
+              </h1>
+              <p class="text-lg md:text-xl text-off-white/90 mb-6 leading-relaxed font-medium border-l-2 border-mustard pl-4">
+                Industry standard. Calm delivery.
+              </p>
+              <p class="text-sm md:text-base text-off-white/80 mb-8 leading-relaxed max-w-2xl">
+                Infrastructure for recording, live sound, and streaming — built to work under pressure.
+              </p>
+              
+              {/* Primary CTA */}
+              <div class="mb-4">
+                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
+                  [ BOOK A SESSION ]
+                </a>
+              </div>
+              
+              {/* Secondary Actions */}
+              <div class="flex flex-wrap gap-4 text-sm">
+                <a href="#cafe" class="text-off-white/80 hover:text-mustard transition-colors font-mono">
+                  → Venue Hire
+                </a>
+                <a href="#services" class="text-off-white/80 hover:text-mustard transition-colors font-mono">
+                  → AV / Live Sound
+                </a>
+                <a href="#services" class="text-off-white/80 hover:text-mustard transition-colors font-mono">
+                  → Repairs
+                </a>
+              </div>
             </div>
-            {/* Secondary CTAs (desktop only to avoid orange noise on mobile) */}
-            <div class="hidden md:flex flex-wrap gap-4 text-sm justify-center">
-              <a href="#cafe" class="text-off-white hover:text-mustard transition-colors">
-                Venue Hire →
-              </a>
-              <a href="#services" class="text-off-white hover:text-mustard transition-colors">
-                AV / Live Sound →
-              </a>
-              <a href="#services" class="text-off-white hover:text-mustard transition-colors">
-                Repairs →
-              </a>
-            </div>
             
-            {/* Hero studio image (desktop only) */}
-            <div class="hidden md:block mt-12 max-w-4xl mx-auto">
+            {/* RIGHT COLUMN: Image (5/12) */}
+            <div class="md:col-span-5">
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/hero-main.jpg"
                 alt="Cowley Road Studios professional recording equipment and infrastructure"
-                class="w-full h-auto object-cover mx-auto"
+                class="w-full h-auto object-cover border-2 border-mustard/30"
               />
-              <p class="text-xs text-off-white/60 mt-2 font-mono text-center">
-                Professional recording infrastructure. Industry standard. Calm delivery.
+              <p class="text-xs text-off-white/60 mt-2 font-mono">
+                Professional recording infrastructure. Industry standard.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 1: THE INFRASTRUCTURE (CRS SPINE - DARK) */}
-      <section id="infrastructure" class="py-20 px-4 bg-deep-charcoal border-t-2 border-mustard/30">
-        <div class="max-w-7xl mx-auto text-center">
-          <h2 class="text-5xl md:text-7xl font-black text-off-white mb-6 uppercase tracking-tight">
-            The Infrastructure
-          </h2>
-          <p class="text-xl text-off-white/90 mb-16 max-w-3xl mx-auto leading-relaxed">
-            Built by people who've done this before. Designed for repeatable outcomes.
-          </p>
+      {/* SECTION 1: THE INFRASTRUCTURE (CRS SPINE - DARK) - HIGH DENSITY GRID */}
+      <section id="infrastructure" class="py-16 px-4 bg-deep-charcoal border-t-2 border-mustard">
+        <div class="max-w-7xl mx-auto">
+          {/* Section Header - Left Aligned */}
+          <div class="mb-12">
+            <h2 class="text-4xl md:text-6xl font-black text-off-white mb-4 uppercase tracking-tight">
+              The Infrastructure
+            </h2>
+            <p class="text-base md:text-lg text-off-white/80 leading-relaxed max-w-3xl border-l-2 border-mustard pl-4">
+              Built by people who've done this before. Designed for repeatable outcomes.
+            </p>
+          </div>
 
-          <div class="grid md:grid-cols-2 gap-12 mb-16">
+          {/* HIGH DENSITY SPEC GRID - 4 COLUMNS */}
+          <div class="grid md:grid-cols-4 gap-6 mb-12">
             {/* Signal path */}
-            <div class="text-center">
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-signal.jpg"
-                alt="Signal path - Professional audio routing and gain staging"
-                class="w-full h-64 object-cover border-2 border-mustard/30 mb-4 mx-auto"
-              />
-              <h3 class="text-3xl font-bold text-off-white mb-4">Signal path</h3>
-              <p class="text-lg text-off-white/80 leading-relaxed">
+            <div class="border-l-2 border-mustard pl-4">
+              <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Signal path</h3>
+              <p class="text-sm text-off-white/80 leading-relaxed mb-3">
                 Hybrid analogue / digital workflow. Clean gain staging. Fast recall.
               </p>
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-signal.jpg"
+                alt="Signal path"
+                class="w-full h-32 object-cover border-2 border-nettle-green/30"
+              />
             </div>
 
             {/* Rooms */}
-            <div class="text-center">
+            <div class="border-l-2 border-mustard pl-4">
+              <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Rooms</h3>
+              <p class="text-sm text-off-white/80 leading-relaxed mb-3">
+                Isolated environments for tracking, voice, production and edit work. Controlled monitoring.
+              </p>
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-rooms.jpg"
-                alt="Studio rooms - Isolated tracking and monitoring environments"
-                class="w-full h-64 object-cover border-2 border-mustard/30 mb-4 mx-auto"
+                alt="Studio rooms"
+                class="w-full h-32 object-cover border-2 border-nettle-green/30"
               />
-              <h3 class="text-3xl font-bold text-off-white mb-4">Rooms</h3>
-              <p class="text-lg text-off-white/80 leading-relaxed">
-                Isolated environments for tracking, voice, production and edit work. Controlled monitoring for decisions that translate.
-              </p>
             </div>
 
             {/* Networked logic */}
-            <div class="text-center">
+            <div class="border-l-2 border-mustard pl-4">
+              <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Networked logic</h3>
+              <p class="text-sm text-off-white/80 leading-relaxed mb-3">
+                Dante audio across the site. NDI-ready video backbone. Patch any source to any room.
+              </p>
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-network.jpg"
-                alt="Network infrastructure - Dante audio and NDI video backbone"
-                class="w-full h-64 object-cover border-2 border-mustard/30 mb-4 mx-auto"
+                alt="Network infrastructure"
+                class="w-full h-32 object-cover border-2 border-nettle-green/30"
               />
-              <h3 class="text-3xl font-bold text-off-white mb-4">Networked logic</h3>
-              <p class="text-lg text-off-white/80 leading-relaxed">
-                Dante audio across the site. NDI-ready video backbone for multi-cam streaming. Patch any source to any room without drama.
-              </p>
             </div>
 
             {/* Maintenance */}
-            <div class="text-center">
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-maintenance.jpg"
-                alt="Maintenance - In-house electronics bench and repair facility"
-                class="w-full h-64 object-cover border-2 border-mustard/30 mb-4 mx-auto"
-              />
-              <h3 class="text-3xl font-bold text-off-white mb-4">Maintenance</h3>
-              <p class="text-lg text-off-white/80 leading-relaxed">
+            <div class="border-l-2 border-mustard pl-4">
+              <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Maintenance</h3>
+              <p class="text-sm text-off-white/80 leading-relaxed mb-3">
                 In-house electronics bench keeps systems reliable and vintage gear performing beyond spec.
               </p>
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-maintenance.jpg"
+                alt="Maintenance"
+                class="w-full h-32 object-cover border-2 border-nettle-green/30"
+              />
             </div>
           </div>
 
@@ -293,14 +294,7 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* THE SHIFT: CRS SPINE → WORKSHOP CAFÉ INTERFACE */}
-      <div class="bg-deep-charcoal py-12 border-t-2 border-mustard">
-        <div class="text-center">
-          <p class="text-xs font-mono text-mustard uppercase tracking-widest">
-            WORKSHOP CAFÉ · PUBLIC INTERFACE
-          </p>
-        </div>
-      </div>
+      {/* THE SHIFT: CRS SPINE → WORKSHOP CAFÉ INTERFACE - SHARP 2PX RULE */}
       <div class="h-0.5 bg-mustard w-full"></div>
 
       {/* SECTION 2: WORKSHOP CAFÉ (Interface) */}
