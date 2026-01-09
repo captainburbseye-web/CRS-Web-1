@@ -14,467 +14,516 @@ app.use(renderer)
 app.get('/', (c) => {
   return c.render(
     <>
-      {/* Navigation Header */}
-      <nav class="fixed top-0 left-0 right-0 bg-foliage-dark/95 backdrop-blur-sm border-b border-flame-burnt/40 z-50">
+      {/* Sticky Live Status Bar */}
+      <div class="fixed top-0 left-0 right-0 bg-deep-charcoal border-b-2 border-mustard z-50">
+        <div class="max-w-7xl mx-auto px-4 py-2">
+          <div class="flex items-center justify-center md:justify-start gap-6 text-xs font-mono text-off-white">
+            <span class="flex items-center gap-2">
+              <span class="inline-block w-2 h-2 bg-moss-green rounded-full animate-pulse"></span>
+              Café: Open
+            </span>
+            <span class="hidden md:inline">|</span>
+            <span class="flex items-center gap-2">
+              <span class="inline-block w-2 h-2 bg-burnt-orange rounded-full animate-pulse"></span>
+              Studio: Session in Progress
+            </span>
+            <span class="hidden md:inline">|</span>
+            <span class="hidden md:flex items-center gap-2">
+              <span class="inline-block w-2 h-2 bg-electric-orange rounded-full"></span>
+              Electronics: Taking Repairs
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Brutalist Navigation */}
+      <nav class="fixed top-10 left-0 right-0 bg-nettle-green/98 backdrop-blur-sm border-b-4 border-deep-charcoal z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between items-center h-16">
+          <div class="flex justify-between items-center h-14">
             {/* Logo */}
             <div class="flex-shrink-0">
-              <a href="#hero" class="text-xl font-display font-bold text-text-light">
-                Cowley Road Studios
+              <a href="#hero" class="text-base font-serif font-bold text-off-white tracking-tight">
+                CRS × Workshop Café
               </a>
             </div>
             
             {/* Desktop Navigation */}
-            <div class="hidden md:flex items-center space-x-8">
-              <a href="#about" class="text-text-light hover:text-foliage-vibrant transition-colors duration-200">
-                About
-              </a>
-              <a href="#cafe" class="text-text-light hover:text-foliage-vibrant transition-colors duration-200">
-                Workshop Café
-              </a>
-              <a href="#studio" class="text-text-light hover:text-foliage-vibrant transition-colors duration-200">
+            <div class="hidden md:flex items-center space-x-6">
+              <a href="#studio" class="text-off-white hover:text-mustard transition-colors duration-200 text-sm font-mono">
                 Studio
               </a>
-              <a href="#promise" class="text-text-light hover:text-foliage-vibrant transition-colors duration-200">
-                Promise
+              <a href="#cafe" class="text-off-white hover:text-mustard transition-colors duration-200 text-sm font-mono">
+                Café
               </a>
-              <a href="#contact" class="bg-flame-fierce text-text-light px-6 py-2 rounded-md font-semibold hover:bg-flame-burnt transition-all duration-200">
-                Book a Session
+              <a href="#contact" class="bg-electric-orange text-off-white px-5 py-2 font-mono font-semibold hover:bg-burnt-orange transition-all duration-200 text-xs border-2 border-deep-charcoal">
+                BOOK
               </a>
             </div>
             
             {/* Mobile menu button */}
             <div class="md:hidden">
-              <button id="mobile-menu-button" class="text-text-light hover:text-foliage-vibrant">
-                <i class="fas fa-bars text-2xl"></i>
+              <button id="mobile-menu-button" class="text-off-white hover:text-mustard">
+                <i class="fas fa-bars text-lg"></i>
               </button>
             </div>
           </div>
         </div>
         
         {/* Mobile Navigation */}
-        <div id="mobile-menu" class="hidden md:hidden border-t border-flame-burnt/40">
+        <div id="mobile-menu" class="hidden md:hidden border-t-2 border-deep-charcoal bg-nettle-green">
           <div class="px-4 pt-2 pb-4 space-y-2">
-            <a href="#about" class="block py-2 text-text-light hover:text-foliage-vibrant transition-colors">
-              About
-            </a>
-            <a href="#cafe" class="block py-2 text-text-light hover:text-foliage-vibrant transition-colors">
-              Workshop Café
-            </a>
-            <a href="#studio" class="block py-2 text-text-light hover:text-foliage-vibrant transition-colors">
+            <a href="#studio" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm font-mono">
               Studio
             </a>
-            <a href="#promise" class="block py-2 text-text-light hover:text-foliage-vibrant transition-colors">
-              Promise
+            <a href="#cafe" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm font-mono">
+              Café
             </a>
-            <a href="#contact" class="block py-3 bg-flame-fierce text-text-light text-center rounded-md font-semibold hover:bg-flame-burnt transition-all">
-              Book a Session
+            <a href="#contact" class="block py-2 bg-electric-orange text-off-white text-center font-mono font-semibold hover:bg-burnt-orange transition-all text-xs border-2 border-deep-charcoal">
+              BOOK
             </a>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="hero" class="pt-24 pb-12 px-4 bg-foliage-dark">
-        <div class="max-w-7xl mx-auto text-center">
-          <h1 class="text-5xl md:text-7xl font-display font-bold text-foliage-vibrant mb-6">
-            A NEW HOME FOR SOUND ON COWLEY ROAD
-          </h1>
-          <p class="text-xl md:text-2xl text-text-light mb-8 max-w-3xl mx-auto">
-            A professional recording studio built from a 50-year legacy — rebuilt by hand, powered by community, and finished properly.
-          </p>
+      {/* Living Grid Hero - NO FACES */}
+      <section id="hero" class="pt-32 pb-0 bg-deep-charcoal">
+        <div class="max-w-7xl mx-auto px-4">
+          {/* Headline */}
+          <div class="mb-8">
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-off-white mb-4 leading-none">
+              Cowley Road Studios
+            </h1>
+            <p class="text-xl md:text-2xl text-mustard font-serif italic">
+              Built, not branded.
+            </p>
+          </div>
           
-          {/* Hero CTAs */}
-          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="bg-flame-fierce text-text-light px-8 py-4 rounded-md font-semibold text-lg hover:bg-flame-burnt transition-all duration-200 shadow-lg">
-              <i class="fas fa-microphone-alt mr-2"></i>
-              BOOK A SESSION
-            </a>
-            <a href="#why-we-exist" class="border-2 border-flame-burnt text-flame-burnt px-8 py-4 rounded-md font-semibold text-lg hover:bg-flame-burnt hover:text-foliage-dark transition-all duration-200">
-              Why This Studio Exists →
-            </a>
+          {/* Living Grid - Textured Blocks */}
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 mb-0">
+            {/* Block 1: Tube Amp */}
+            <div class="aspect-square bg-nettle-green border-4 border-mustard grain-overlay relative overflow-hidden group">
+              <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="text-center">
+                  <div class="text-xs font-mono text-mustard mb-2 uppercase">Infrastructure</div>
+                  <div class="text-off-white/80 text-xs font-mono">[VINTAGE TUBE AMP CLOSE-UP]</div>
+                </div>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-br from-burnt-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+            
+            {/* Block 2: Steam/Coffee */}
+            <div class="aspect-square bg-mustard/90 border-4 border-nettle-green grain-overlay relative overflow-hidden group">
+              <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="text-center">
+                  <div class="text-xs font-mono text-nettle-green mb-2 uppercase">Atmosphere</div>
+                  <div class="text-deep-charcoal text-xs font-mono">[STEAM RISING FROM UE COFFEE]</div>
+                </div>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-br from-moss-green/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+            
+            {/* Block 3: Exterior */}
+            <div class="aspect-square bg-moss-green border-4 border-deep-charcoal grain-overlay relative overflow-hidden group">
+              <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="text-center">
+                  <div class="text-xs font-mono text-off-white mb-2 uppercase">Location</div>
+                  <div class="text-off-white/80 text-xs font-mono">[NETTLE GREEN EXTERIOR / COWLEY RD]</div>
+                </div>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-br from-nettle-green/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+            
+            {/* Block 4: Patch Cables */}
+            <div class="aspect-square bg-burnt-orange border-4 border-off-white grain-overlay relative overflow-hidden group">
+              <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="text-center">
+                  <div class="text-xs font-mono text-off-white mb-2 uppercase">Signal</div>
+                  <div class="text-off-white text-xs font-mono">[PATCH CABLES / HANDS / METAL / WOOD]</div>
+                </div>
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-br from-electric-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Why We Exist Section - MANIFESTO */}
-      <section id="why-we-exist" class="py-20 px-4 bg-gradient-to-b from-foliage-dark to-black">
+      {/* Dual-Soul Split-Screen Navigation */}
+      <section class="py-0 bg-deep-charcoal">
+        <div class="max-w-7xl mx-auto">
+          <div class="grid md:grid-cols-2 min-h-[60vh]">
+            
+            {/* LEFT PATH: Workshop Café */}
+            <a href="#cafe" class="group relative bg-mustard hover:bg-mustard/90 transition-all duration-500 border-r-4 border-deep-charcoal">
+              <div class="absolute inset-0 grain-overlay"></div>
+              <div class="relative z-10 p-8 md:p-12 flex flex-col justify-center min-h-[60vh]">
+                <div class="mb-6">
+                  <div class="text-xs font-mono text-deep-charcoal/60 mb-2 uppercase tracking-wider">ONE PATH</div>
+                  <h2 class="text-4xl md:text-6xl font-serif font-bold text-deep-charcoal mb-4 leading-none">
+                    Workshop<br/>Café
+                  </h2>
+                </div>
+                <ul class="space-y-2 text-deep-charcoal/80 text-sm font-body mb-6">
+                  <li>• Community</li>
+                  <li>• Warmth</li>
+                  <li>• Caffeine</li>
+                  <li>• Daylight</li>
+                  <li>• Civic presence</li>
+                </ul>
+                <div class="inline-flex items-center text-sm font-mono text-deep-charcoal group-hover:text-nettle-green transition-colors">
+                  EXPLORE → 
+                </div>
+              </div>
+            </a>
+            
+            {/* RIGHT PATH: CRS Studio */}
+            <a href="#studio" class="group relative bg-nettle-green hover:bg-nettle-green/90 transition-all duration-500">
+              <div class="absolute inset-0 grain-overlay"></div>
+              <div class="relative z-10 p-8 md:p-12 flex flex-col justify-center min-h-[60vh]">
+                <div class="mb-6">
+                  <div class="text-xs font-mono text-mustard mb-2 uppercase tracking-wider">OTHER PATH</div>
+                  <h2 class="text-4xl md:text-6xl font-serif font-bold text-off-white mb-4 leading-none">
+                    Cowley Road<br/>Studios
+                  </h2>
+                </div>
+                <ul class="space-y-2 text-off-white/80 text-sm font-body mb-6">
+                  <li>• Precision</li>
+                  <li>• Recording</li>
+                  <li>• Late nights</li>
+                  <li>• Infrastructure</li>
+                  <li>• Engineering calm</li>
+                </ul>
+                <div class="inline-flex items-center text-sm font-mono text-mustard group-hover:text-off-white transition-colors">
+                  EXPLORE →
+                </div>
+              </div>
+            </a>
+            
+          </div>
+        </div>
+      </section>
+
+      {/* Studio Section - Technical Brutalism */}
+      <section id="studio" class="py-20 px-4 bg-deep-charcoal">
         <div class="max-w-6xl mx-auto">
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-foliage-vibrant mb-12 text-center">
-            WHERE MOMENTUM LIVES
-          </h2>
-          
-          {/* Intro Text */}
-          <div class="max-w-4xl mx-auto mb-16 text-center">
-            <p class="text-xl md:text-2xl leading-relaxed text-text-light mb-4">
-              Cowley Road Studios isn't just a studio.<br />
-              It's a response.
-            </p>
-            <p class="text-lg md:text-xl leading-relaxed text-text-light/90 mb-6">
-              To what was lost.<br />
-              To what was missing.<br />
-              To what's still possible.
-            </p>
-            <p class="text-lg leading-relaxed text-text-light">
-              We rose from what Soundworks built — Oxford's grassroots engine for 17 years. Not as a replacement, but as a resonance. Same spirit. New tools. Bigger invitation.
-            </p>
-          </div>
-          
-          {/* 3 Column Grid */}
-          <div class="grid md:grid-cols-3 gap-8 mb-12">
-            {/* Column 1: THE CRAFT */}
-            <div class="bg-foliage-dark/80 rounded-lg p-8 border border-foliage-vibrant/30">
-              <h3 class="text-2xl font-display text-flame-burnt mb-4">THE CRAFT</h3>
-              <div class="text-text-light space-y-4">
-                <p class="text-lg leading-relaxed">
-                  Technically, it's a studio.<br />
-                  Actually, it's a modular engine of expression.
-                </p>
-                <p class="leading-relaxed">
-                  With boutique gear, world-class AV, and a multi-room setup that rivals bigger labels, we offer world-class polish without the glass walls. No gatekeepers. No posturing. Just you and the signal.
-                </p>
-              </div>
-            </div>
-            
-            {/* Column 2: THE CULTURE */}
-            <div class="bg-foliage-dark/80 rounded-lg p-8 border border-foliage-vibrant/30">
-              <h3 class="text-2xl font-display text-flame-burnt mb-4">THE CULTURE</h3>
-              <div class="text-text-light space-y-4">
-                <p class="leading-relaxed">
-                  At the front, there's Workshop Café — the soft social spine of the space.<br />
-                  It's a café you don't have to buy your way into.<br />
-                  It's a venue you can actually afford to rent.<br />
-                  It's a place where someone will hand you a mic before they ask for your CV.
-                </p>
-              </div>
-            </div>
-            
-            {/* Column 3: THE ENERGY */}
-            <div class="bg-foliage-dark/80 rounded-lg p-8 border border-foliage-vibrant/30">
-              <h3 class="text-2xl font-display text-flame-burnt mb-4">THE ENERGY</h3>
-              <div class="text-text-light space-y-4">
-                <p class="leading-relaxed">
-                  It's in the Open Mic Nights that feel like family dinners.<br />
-                  It's in the vintage gear resurrected by artists and engineers side-by-side.<br />
-                  It's Oxford's permaculture for creativity — a place that understands a good mix is like a good street: layered, messy, and alive.
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          {/* Closing Line */}
-          <div class="text-center">
-            <p class="text-xl md:text-2xl font-semibold text-foliage-vibrant">
-              Professional-grade, street-level. Accessible, but uncompromising. Polished, but rooted.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" class="py-20 px-4 bg-foliage-dark/50">
-        <div class="max-w-5xl mx-auto">
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-flame-burnt mb-8 text-center">
-            A LIVING, BREATHING CREATIVE HUB
-          </h2>
-          
-          {/* Brand Story */}
-          <div class="max-w-3xl mx-auto mb-12 text-center">
-            <p class="text-xl md:text-2xl leading-relaxed text-text-light mb-4">
-              Cowley Road Studios isn't a business plan.<br />
-              It's a lived idea — born from gaps, not graphs.
-            </p>
-            <p class="text-lg leading-relaxed text-text-light mb-6">
-              A space built because too many talented people had nowhere to go. No access. No vibe. No home for the kind of creative friction that makes something real.
-            </p>
-            <p class="text-lg leading-relaxed text-text-light mb-6">
-              Grew out of the work of Daniel Burbidge and Ollie Rushen — veterans of the Oxford creative scene — CRS carries the legacy of Soundworks Studio. It's part recording studio, part AV command center, part electronics sanctuary.
-            </p>
-            <p class="text-lg leading-relaxed text-text-light font-semibold">
-              It's where professional meets personal. Where world-class polish pairs with grassroots heart.
-            </p>
-          </div>
-          
-          {/* Key Mission Points */}
-          <div class="max-w-2xl mx-auto mb-12">
-            <ul class="space-y-4 text-text-light">
-              <li class="flex items-start">
-                <i class="fas fa-arrow-right text-flame-fierce mr-3 mt-1"></i>
-                <span class="text-lg">Make world-class tools feel local and human.</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-arrow-right text-flame-fierce mr-3 mt-1"></i>
-                <span class="text-lg">Be excellent, without being exclusive.</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-arrow-right text-flame-fierce mr-3 mt-1"></i>
-                <span class="text-lg">Let the creative community shape the space.</span>
-              </li>
-            </ul>
-          </div>
-          
-          <h3 class="text-3xl font-display font-bold text-foliage-vibrant mb-8 text-center">
-            WHAT WE DO
-          </h3>
-          <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div class="bg-foliage-dark/80 rounded-lg p-6 border border-foliage-vibrant/30">
-              <i class="fas fa-record-vinyl text-4xl text-flame-fierce mb-4"></i>
-              <h3 class="text-xl font-display text-foliage-vibrant mb-3">Recording & Production</h3>
-              <p class="text-text-light">
-                Professional recording in a calm, well-built space — from demos to full projects.
-              </p>
-            </div>
-            <div class="bg-foliage-dark/80 rounded-lg p-6 border border-foliage-vibrant/30">
-              <i class="fas fa-podcast text-4xl text-flame-fierce mb-4"></i>
-              <h3 class="text-xl font-display text-foliage-vibrant mb-3">Podcasting & Voice</h3>
-              <p class="text-text-light">
-                Clean, controlled sound for podcasts, narration, and spoken-word work.
-              </p>
-            </div>
-            <div class="bg-foliage-dark/80 rounded-lg p-6 border border-foliage-vibrant/30">
-              <i class="fas fa-sliders-h text-4xl text-flame-fierce mb-4"></i>
-              <h3 class="text-xl font-display text-foliage-vibrant mb-3">Mixing & Support</h3>
-              <p class="text-text-light">
-                Hands-on help from engineers who care about getting it right.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Workshop Café Section */}
-      <section id="cafe" class="py-20 px-4 bg-black">
-        <div class="max-w-5xl mx-auto">
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-flame-burnt mb-8 text-center">
-            <i class="fas fa-mug-hot text-flame-fierce mr-3"></i>
-            Workshop Café
-          </h2>
-          <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 class="text-2xl font-display font-semibold text-foliage-vibrant mb-4">
-                Day Space. Night Venue.
-              </h3>
-              <p class="text-lg text-text-light mb-4">
-                By day: A coworking space for creators, with quality coffee and a desk when you need one.
-              </p>
-              <p class="text-lg text-text-light mb-4">
-                By night: An intimate 45-60 capacity venue for live sessions, open mics, and community events.
-              </p>
-              <ul class="space-y-2 text-text-light mb-6">
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> Free WiFi & Hot Desks</li>
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> Quality Coffee & Snacks</li>
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> Evening Performances</li>
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> Community Workshops</li>
-              </ul>
-              <a href="mailto:hello@cowleyroadstudios.com" class="inline-block bg-flame-burnt text-foliage-dark px-6 py-3 rounded-md font-semibold hover:bg-flame-fierce hover:text-text-light transition-all duration-200">
-                <i class="fas fa-calendar-alt mr-2"></i>
-                Explore Venue Hire
-              </a>
-            </div>
-            <div class="bg-foliage-dark/80 rounded-lg p-8 text-center border border-foliage-vibrant/30">
-              <i class="fas fa-store text-6xl text-foliage-vibrant mb-4"></i>
-              <p class="text-text-light italic">Opening Spring 2026</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Studio Section */}
-      <section id="studio" class="py-20 px-4 bg-foliage-dark/50">
-        <div class="max-w-5xl mx-auto">
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-flame-burnt mb-8 text-center">
-            <i class="fas fa-microphone text-flame-fierce mr-3"></i>
-            The Studio
-          </h2>
-          <div class="mb-12">
-            <h3 class="text-2xl font-display font-semibold text-foliage-vibrant mb-6 text-center">
-              Professional Infrastructure. Grassroots Access.
-            </h3>
-            <div class="grid md:grid-cols-2 gap-8">
-              <div class="bg-foliage-dark/80 rounded-lg p-6 border border-foliage-vibrant/30">
-                <h4 class="text-xl font-semibold text-foliage-vibrant mb-4">
-                  <i class="fas fa-headphones mr-2"></i> Audio Excellence
-                </h4>
-                <ul class="space-y-2 text-text-light">
-                  <li>• Dante networked audio system</li>
-                  <li>• Kii Three + BXT monitoring</li>
-                  <li>• Sphere DLX modeling microphones</li>
-                  <li>• 5 isolated recording rooms</li>
-                </ul>
-              </div>
-              <div class="bg-foliage-dark/80 rounded-lg p-6 border border-foliage-vibrant/30">
-                <h4 class="text-xl font-semibold text-foliage-vibrant mb-4">
-                  <i class="fas fa-video mr-2"></i> Video Integration
-                </h4>
-                <ul class="space-y-2 text-text-light">
-                  <li>• NDI video streaming</li>
-                  <li>• Multi-camera setups</li>
-                  <li>• Live session recording</li>
-                  <li>• Content creation ready</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          
-          {/* Studio CTA */}
-          <div class="text-center mt-12">
-            <p class="text-text-light/90 italic mb-4">
-              All bookings include an engineer. Friendly for first-timers. Flexible for professionals.
-            </p>
-            <p class="text-foliage-vibrant font-semibold text-2xl mb-6">
-              £35/ph <span class="text-text-light/70 text-lg line-through ml-2">£45/ph</span>
-            </p>
-            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block bg-flame-fierce text-text-light px-8 py-4 rounded-md font-semibold text-lg hover:bg-flame-burnt transition-all duration-200 shadow-lg">
-              <i class="fas fa-microphone-alt mr-2"></i>
-              Book a Session
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Grassroots Promise Section */}
-      <section id="promise" class="py-20 px-4 bg-black">
-        <div class="max-w-4xl mx-auto">
-          <div class="bg-foliage-dark border-2 border-foliage-vibrant rounded-lg p-8 md:p-12">
-            <h2 class="text-3xl md:text-4xl font-display font-bold mb-6 text-center text-foliage-vibrant">
-              <i class="fas fa-heart text-flame-fierce mr-3"></i>
-              Our Grassroots Promise
+          <div class="mb-12 border-l-8 border-mustard pl-6">
+            <h2 class="text-4xl md:text-6xl font-serif font-bold text-off-white mb-3 leading-none">
+              The Studio
             </h2>
-            <p class="text-lg md:text-xl leading-relaxed text-center mb-8 text-text-light">
-              We ring-fence at least <strong class="text-flame-burnt">15% of monthly bookable studio time</strong> for 
-              subsidised sessions for grassroots artists, young people (16-25), and community projects.
+            <p class="text-lg text-off-white/70 font-body max-w-2xl">
+              Analogue soul, digital spine. Professional infrastructure designed after years of experience.
             </p>
-            <div class="grid md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div class="text-3xl font-bold text-flame-fierce mb-2">15%</div>
-                <div class="text-sm text-text-light">Subsidised Hours</div>
-              </div>
-              <div>
-                <div class="text-3xl font-bold text-flame-fierce mb-2">£0-£15</div>
-                <div class="text-sm text-text-light">Grassroots Rate</div>
-              </div>
-              <div>
-                <div class="text-3xl font-bold text-flame-fierce mb-2">No</div>
-                <div class="text-sm text-text-light">Gatekeeping</div>
-              </div>
-            </div>
           </div>
           
-          {/* Promise CTA */}
-          <div class="text-center mt-8">
-            <a href="#contact" class="inline-block bg-flame-burnt text-foliage-dark px-8 py-4 rounded-md font-semibold text-lg hover:bg-flame-fierce hover:text-text-light transition-all duration-200 shadow-lg">
-              <i class="fas fa-clipboard-list mr-2"></i>
-              Join Waitlist
+          {/* Technical Grid - Equipment Tags Style */}
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+            
+            {/* Spec Card: Dante */}
+            <div class="bg-nettle-green border-4 border-mustard p-6 grain-overlay relative">
+              <div class="relative z-10">
+                <div class="text-xs font-mono text-mustard mb-3 uppercase tracking-widest">NETWORKING</div>
+                <h3 class="text-2xl font-serif font-bold text-off-white mb-2">Dante Audio</h3>
+                <p class="text-sm text-off-white/70 font-body leading-relaxed mb-4">
+                  Networked audio infrastructure for clean signal routing across all rooms.
+                </p>
+                <div class="bg-deep-charcoal/60 h-32 flex items-center justify-center text-off-white/30 text-xs font-mono border-2 border-mustard/30">
+                  [DANTE NETWORK DIAGRAM]
+                </div>
+              </div>
+            </div>
+            
+            {/* Spec Card: Monitoring */}
+            <div class="bg-nettle-green border-4 border-burnt-orange p-6 grain-overlay relative">
+              <div class="relative z-10">
+                <div class="text-xs font-mono text-burnt-orange mb-3 uppercase tracking-widest">MONITORING</div>
+                <h3 class="text-2xl font-serif font-bold text-off-white mb-2">Kii Three + BXT</h3>
+                <p class="text-sm text-off-white/70 font-body leading-relaxed mb-4">
+                  Reference-grade monitoring with bass extension for accurate mixing.
+                </p>
+                <div class="bg-deep-charcoal/60 h-32 flex items-center justify-center text-off-white/30 text-xs font-mono border-2 border-burnt-orange/30">
+                  [KII MONITORING PHOTO]
+                </div>
+              </div>
+            </div>
+            
+            {/* Spec Card: Microphones */}
+            <div class="bg-nettle-green border-4 border-moss-green p-6 grain-overlay relative">
+              <div class="relative z-10">
+                <div class="text-xs font-mono text-moss-green mb-3 uppercase tracking-widest">CAPTURE</div>
+                <h3 class="text-2xl font-serif font-bold text-off-white mb-2">Sphere DLX</h3>
+                <p class="text-sm text-off-white/70 font-body leading-relaxed mb-4">
+                  Modeling microphones for versatile tracking and post-production.
+                </p>
+                <div class="bg-deep-charcoal/60 h-32 flex items-center justify-center text-off-white/30 text-xs font-mono border-2 border-moss-green/30">
+                  [SPHERE MIC PHOTO]
+                </div>
+              </div>
+            </div>
+            
+            {/* Spec Card: Rooms */}
+            <div class="bg-nettle-green border-4 border-mustard p-6 grain-overlay relative">
+              <div class="relative z-10">
+                <div class="text-xs font-mono text-mustard mb-3 uppercase tracking-widest">INFRASTRUCTURE</div>
+                <h3 class="text-2xl font-serif font-bold text-off-white mb-2">5 Isolated Rooms</h3>
+                <p class="text-sm text-off-white/70 font-body leading-relaxed mb-4">
+                  Separate tracking spaces for clean separation and workflow efficiency.
+                </p>
+                <div class="bg-deep-charcoal/60 h-32 flex items-center justify-center text-off-white/30 text-xs font-mono border-2 border-mustard/30">
+                  [ISOLATED ROOM PHOTO]
+                </div>
+              </div>
+            </div>
+            
+            {/* Spec Card: Video */}
+            <div class="bg-nettle-green border-4 border-electric-orange p-6 grain-overlay relative">
+              <div class="relative z-10">
+                <div class="text-xs font-mono text-electric-orange mb-3 uppercase tracking-widest">VIDEO</div>
+                <h3 class="text-2xl font-serif font-bold text-off-white mb-2">NDI Streaming</h3>
+                <p class="text-sm text-off-white/70 font-body leading-relaxed mb-4">
+                  Multi-camera video integration for live sessions and content creation.
+                </p>
+                <div class="bg-deep-charcoal/60 h-32 flex items-center justify-center text-off-white/30 text-xs font-mono border-2 border-electric-orange/30">
+                  [NDI VIDEO SETUP]
+                </div>
+              </div>
+            </div>
+            
+            {/* Spec Card: Philosophy */}
+            <div class="bg-burnt-orange border-4 border-off-white p-6 grain-overlay relative">
+              <div class="relative z-10">
+                <div class="text-xs font-mono text-off-white mb-3 uppercase tracking-widest">PHILOSOPHY</div>
+                <h3 class="text-2xl font-serif font-bold text-off-white mb-2">Vintage + Modern</h3>
+                <p class="text-sm text-off-white/90 font-body leading-relaxed mb-4">
+                  Analogue warmth paired with digital precision. Best of both worlds.
+                </p>
+                <div class="bg-deep-charcoal/60 h-32 flex items-center justify-center text-off-white/40 text-xs font-mono border-2 border-off-white/40">
+                  [VINTAGE VALVE + NDI COMPARISON]
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
+          {/* Rates - Brutalist Style */}
+          <div class="border-4 border-mustard bg-nettle-green p-8 text-center grain-overlay relative">
+            <div class="relative z-10">
+              <div class="text-sm font-mono text-mustard mb-2 uppercase tracking-widest">Studio Rate</div>
+              <div class="text-6xl font-serif font-bold text-off-white mb-2">£35<span class="text-3xl">/ph</span></div>
+              <div class="text-sm text-off-white/60 font-mono mb-6">Engineer included · Flexible booking</div>
+              <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block bg-electric-orange text-off-white px-8 py-3 font-mono font-semibold hover:bg-burnt-orange transition-all duration-200 border-4 border-deep-charcoal text-sm uppercase tracking-wider">
+                BOOK A SESSION
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Workshop Café - Institutional Warmth */}
+      <section id="cafe" class="py-20 px-4 bg-mustard">
+        <div class="max-w-5xl mx-auto">
+          <div class="mb-12 border-l-8 border-deep-charcoal pl-6">
+            <h2 class="text-4xl md:text-6xl font-serif font-bold text-deep-charcoal mb-3 leading-none">
+              Workshop Café
+            </h2>
+            <p class="text-lg text-deep-charcoal/80 font-body max-w-2xl">
+              Coworking space and small venue. Coffee by day, events by night. Opens Spring 2026.
+            </p>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-10">
+            
+            {/* Day Space */}
+            <div class="bg-off-white border-4 border-nettle-green p-6 grain-overlay relative">
+              <div class="relative z-10">
+                <h3 class="text-2xl font-serif font-bold text-deep-charcoal mb-4">Day Space</h3>
+                <ul class="space-y-2 text-deep-charcoal/70 text-sm font-body">
+                  <li class="flex items-start">
+                    <span class="text-moss-green mr-2">●</span>
+                    Coworking desks
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-moss-green mr-2">●</span>
+                    Free WiFi
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-moss-green mr-2">●</span>
+                    Coffee & snacks
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-moss-green mr-2">●</span>
+                    Quiet working environment
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            {/* Night Venue */}
+            <div class="bg-nettle-green border-4 border-off-white p-6 grain-overlay relative">
+              <div class="relative z-10">
+                <h3 class="text-2xl font-serif font-bold text-off-white mb-4">Night Venue</h3>
+                <ul class="space-y-2 text-off-white/80 text-sm font-body">
+                  <li class="flex items-start">
+                    <span class="text-burnt-orange mr-2">●</span>
+                    45-60 capacity
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-burnt-orange mr-2">●</span>
+                    Live sessions & open mics
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-burnt-orange mr-2">●</span>
+                    Community events
+                  </li>
+                  <li class="flex items-start">
+                    <span class="text-burnt-orange mr-2">●</span>
+                    Affordable venue hire
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+          </div>
+          
+          {/* Placeholder Image */}
+          <div class="bg-nettle-green/30 border-4 border-deep-charcoal h-64 flex items-center justify-center text-deep-charcoal/40 text-sm font-mono mb-8 grain-overlay relative">
+            <div class="relative z-10">[WORKSHOP CAFÉ INTERIOR]</div>
+          </div>
+          
+          <div class="text-center">
+            <p class="text-sm font-mono text-deep-charcoal/60 mb-4 uppercase tracking-wider">Opening Spring 2026</p>
+            <a href="mailto:hello@cowleyroadstudios.com" class="inline-block bg-nettle-green text-off-white px-6 py-3 font-mono font-semibold hover:bg-deep-charcoal transition-all duration-200 text-sm border-4 border-deep-charcoal uppercase tracking-wider">
+              VENUE HIRE ENQUIRIES
             </a>
           </div>
         </div>
       </section>
 
-      {/* Contact/Booking Section */}
-      <section id="contact" class="py-20 px-4 bg-foliage-dark/50">
-        <div class="max-w-5xl mx-auto">
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-flame-burnt mb-8 text-center">
-            Secure Your Launch Credit
-          </h2>
-          <p class="text-xl text-center text-text-light mb-12 max-w-3xl mx-auto">
-            Lock in 2026 rates now. Limited Christmas campaign vouchers available.
-          </p>
-          
-          <div class="grid md:grid-cols-2 gap-8 mb-12">
-            {/* 2-Hour Voucher (was 3-Hour) */}
-            <div class="bg-foliage-dark/80 rounded-lg p-8 border-2 border-flame-burnt shadow-lg">
-              <div class="text-center mb-6">
-                <h3 class="text-2xl font-display font-bold text-foliage-vibrant mb-2">2-Hour Session</h3>
-                <div class="text-5xl font-bold text-flame-fierce mb-2">£70</div>
-                <div class="text-sm text-text-light/70 line-through">Regular: £105</div>
-                <div class="text-lg font-semibold text-flame-burnt mt-2">Save £35</div>
+      {/* Grassroots Promise - Vintage Gig Poster Style */}
+      <section id="promise" class="py-20 px-4 bg-deep-charcoal">
+        <div class="max-w-4xl mx-auto">
+          <div class="border-8 border-electric-orange bg-nettle-green p-8 md:p-12 grain-overlay relative transform hover:scale-[1.01] transition-transform duration-300">
+            <div class="relative z-10">
+              <div class="text-center mb-8">
+                <div class="text-xs font-mono text-electric-orange mb-3 uppercase tracking-widest">No Gatekeeping</div>
+                <h2 class="text-3xl md:text-5xl font-serif font-bold text-off-white mb-6 leading-none">
+                  Grassroots Promise
+                </h2>
+                <p class="text-base md:text-lg leading-relaxed text-off-white/90 font-body max-w-2xl mx-auto">
+                  We ring-fence at least <strong class="text-mustard font-bold">15% of monthly bookable studio time</strong> for subsidised sessions (£0-£15/ph) for grassroots artists, young people (16-25), and community projects.
+                </p>
               </div>
-              <ul class="space-y-2 text-text-light mb-6">
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> 2 studio hours</li>
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> 2026 rate locked</li>
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> Valid 12 months</li>
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> Transferable</li>
-              </ul>
-              <a href="https://buy.stripe.com/eVq7sKdGp2MebDg000" 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 class="block w-full bg-flame-fierce text-text-light py-3 rounded-md font-semibold hover:bg-flame-burnt transition-all text-center">
-                Purchase Voucher
-              </a>
+              
+              <div class="grid grid-cols-3 gap-6 text-center">
+                <div class="border-4 border-mustard bg-deep-charcoal/50 p-4">
+                  <div class="text-4xl font-serif font-bold text-mustard mb-1">15%</div>
+                  <div class="text-xs font-mono text-off-white/70 uppercase">Subsidised Hours</div>
+                </div>
+                <div class="border-4 border-electric-orange bg-deep-charcoal/50 p-4">
+                  <div class="text-4xl font-serif font-bold text-electric-orange mb-1">£0-£15</div>
+                  <div class="text-xs font-mono text-off-white/70 uppercase">Grassroots Rate</div>
+                </div>
+                <div class="border-4 border-moss-green bg-deep-charcoal/50 p-4">
+                  <div class="text-4xl font-serif font-bold text-moss-green mb-1">No</div>
+                  <div class="text-xs font-mono text-off-white/70 uppercase">Gatekeeping</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Booking/Contact Section */}
+      <section id="contact" class="py-20 px-4 bg-nettle-green">
+        <div class="max-w-5xl mx-auto">
+          <div class="mb-12 text-center">
+            <h2 class="text-4xl md:text-6xl font-serif font-bold text-off-white mb-4 leading-none">
+              Secure Launch Credit
+            </h2>
+            <p class="text-lg text-off-white/70 font-body max-w-2xl mx-auto">
+              Lock in 2026 rates now. Limited vouchers available.
+            </p>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-6 mb-12">
+            
+            {/* 2-Hour Voucher */}
+            <div class="bg-deep-charcoal border-4 border-mustard p-6 grain-overlay relative">
+              <div class="relative z-10">
+                <h3 class="text-2xl font-serif font-bold text-off-white mb-2">2-Hour Session</h3>
+                <div class="text-5xl font-serif font-bold text-electric-orange mb-2">£70</div>
+                <div class="text-sm text-off-white/50 line-through font-mono mb-4">Regular: £105</div>
+                <ul class="space-y-2 text-sm text-off-white/70 font-body mb-6">
+                  <li>• 2 studio hours</li>
+                  <li>• Valid 12 months</li>
+                  <li>• Engineer included</li>
+                </ul>
+                <a href="https://buy.stripe.com/eVq7sKdGp2MebDg000" target="_blank" rel="noopener noreferrer" class="block w-full bg-electric-orange text-off-white py-3 text-center font-mono font-semibold hover:bg-burnt-orange transition-all border-4 border-off-white text-sm uppercase tracking-wider">
+                  PURCHASE VOUCHER
+                </a>
+              </div>
             </div>
 
             {/* 6-Hour Voucher */}
-            <div class="bg-foliage-dark/80 rounded-lg p-8 border-2 border-foliage-vibrant shadow-lg transform md:scale-105">
-              <div class="bg-flame-fierce text-text-light text-xs font-bold py-1 px-3 rounded-full inline-block mb-4">
+            <div class="bg-deep-charcoal border-4 border-electric-orange p-6 grain-overlay relative">
+              <div class="absolute top-3 right-3 bg-electric-orange text-off-white text-xs font-mono font-bold py-1 px-3 border-2 border-off-white z-20 uppercase tracking-wider">
                 BEST VALUE
               </div>
-              <div class="text-center mb-6">
-                <h3 class="text-2xl font-display font-bold text-foliage-vibrant mb-2">6-Hour Voucher</h3>
-                <div class="text-5xl font-bold text-foliage-vibrant mb-2">£130</div>
-                <div class="text-sm text-text-light/70 line-through">Regular: £210</div>
-                <div class="text-lg font-semibold text-flame-burnt mt-2">Save £80</div>
+              <div class="relative z-10">
+                <h3 class="text-2xl font-serif font-bold text-off-white mb-2">6-Hour Voucher</h3>
+                <div class="text-5xl font-serif font-bold text-electric-orange mb-2">£130</div>
+                <div class="text-sm text-off-white/50 line-through font-mono mb-4">Regular: £210</div>
+                <ul class="space-y-2 text-sm text-off-white/70 font-body mb-6">
+                  <li>• 6 studio hours</li>
+                  <li>• Valid 12 months</li>
+                  <li>• Engineer included</li>
+                </ul>
+                <a href="mailto:hello@cowleyroadstudios.com" class="block w-full bg-mustard text-deep-charcoal py-3 text-center font-mono font-semibold hover:bg-electric-orange hover:text-off-white transition-all border-4 border-off-white text-sm uppercase tracking-wider">
+                  CONTACT FOR DEAL
+                </a>
               </div>
-              <ul class="space-y-2 text-text-light mb-6">
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> 6 studio hours</li>
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> 2026 rate locked</li>
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> Valid 12 months</li>
-                <li><i class="fas fa-check text-foliage-vibrant mr-2"></i> Transferable</li>
-              </ul>
-              <a href="#contact" 
-                 class="block w-full bg-foliage-vibrant text-foliage-dark py-3 rounded-md font-semibold hover:bg-flame-burnt hover:text-text-light transition-all text-center">
-                Contact for 6-Hour Deal
-              </a>
             </div>
+            
           </div>
 
-          {/* Crowdfunder Link */}
-          <div class="text-center">
-            <p class="text-lg text-text-light mb-4">
-              Or support the build directly:
-            </p>
-            <a href="https://www.crowdfunder.co.uk/p/cowley-road-studios" 
-               target="_blank" 
-               rel="noopener noreferrer"
-               class="inline-block bg-foliage-vibrant text-foliage-dark px-8 py-3 rounded-md font-semibold hover:bg-flame-fierce hover:text-text-light transition-all">
-              <i class="fas fa-hand-holding-heart mr-2"></i>
-              Back the Crowdfunder
+          {/* Crowdfunder */}
+          <div class="pt-8 border-t-4 border-mustard text-center">
+            <p class="text-sm font-mono text-off-white/60 mb-4 uppercase tracking-wider">Or support the build:</p>
+            <a href="https://www.crowdfunder.co.uk/p/cowley-road-studios" target="_blank" rel="noopener noreferrer" class="inline-block bg-mustard text-deep-charcoal px-8 py-3 font-mono font-semibold hover:bg-electric-orange hover:text-off-white transition-all border-4 border-deep-charcoal text-sm uppercase tracking-wider">
+              BACK THE CROWDFUNDER
             </a>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer class="bg-black border-t border-foliage-vibrant/30 text-text-light py-12 px-4">
+      {/* Footer - Brutalist */}
+      <footer class="bg-deep-charcoal border-t-8 border-mustard text-off-white py-12 px-4">
         <div class="max-w-7xl mx-auto">
           <div class="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 class="text-xl font-display font-bold mb-4 text-foliage-vibrant">Cowley Road Studios</h3>
-              <p class="text-sm text-text-light/90">
-                Built with care on Cowley Road.
+              <h3 class="text-xl font-serif font-bold mb-3 text-mustard">CRS × Workshop Café</h3>
+              <p class="text-sm text-off-white/70 font-body">
+                Built, not branded.
               </p>
             </div>
             <div>
-              <h4 class="font-semibold mb-4 text-flame-burnt">Quick Links</h4>
-              <ul class="space-y-2 text-sm">
-                <li><a href="#about" class="text-text-light/90 hover:text-foliage-vibrant transition-colors">About</a></li>
-                <li><a href="#cafe" class="text-text-light/90 hover:text-foliage-vibrant transition-colors">Workshop Café</a></li>
-                <li><a href="#studio" class="text-text-light/90 hover:text-foliage-vibrant transition-colors">The Studio</a></li>
-                <li><a href="#promise" class="text-text-light/90 hover:text-foliage-vibrant transition-colors">Grassroots Promise</a></li>
-                <li><a href="#contact" class="text-text-light/90 hover:text-foliage-vibrant transition-colors">Secure Launch Credit</a></li>
+              <h4 class="font-mono font-semibold mb-3 text-sm uppercase tracking-wider text-off-white/80">Navigate</h4>
+              <ul class="space-y-2 text-sm font-body">
+                <li><a href="#studio" class="text-off-white/70 hover:text-mustard transition-colors">Studio</a></li>
+                <li><a href="#cafe" class="text-off-white/70 hover:text-mustard transition-colors">Workshop Café</a></li>
+                <li><a href="#promise" class="text-off-white/70 hover:text-mustard transition-colors">Grassroots Promise</a></li>
+                <li><a href="#contact" class="text-off-white/70 hover:text-mustard transition-colors">Book</a></li>
               </ul>
             </div>
             <div>
-              <h4 class="font-semibold mb-4 text-flame-burnt">Location</h4>
-              <p class="text-sm text-text-light/90">
+              <h4 class="font-mono font-semibold mb-3 text-sm uppercase tracking-wider text-off-white/80">Location</h4>
+              <p class="text-sm text-off-white/70 font-mono leading-relaxed">
                 118 Cowley Road<br />
                 Oxford<br />
                 OX4 1JE
               </p>
             </div>
           </div>
-          <div class="border-t border-text-light/20 pt-8 text-center text-sm text-text-light/70">
-            <p>&copy; 2026 Cowley Road Studios. All rights reserved.</p>
+          <div class="border-t-2 border-off-white/10 pt-6 text-center text-xs text-off-white/50 font-mono">
+            <p>&copy; 2026 Cowley Road Studios. Built with care on Cowley Road.</p>
           </div>
         </div>
       </footer>
@@ -504,56 +553,52 @@ app.get('/', (c) => {
   )
 })
 
-// Booking Success Page Route
+// Booking Success Page (Brutalist Treatment)
 app.get('/booking-success', (c) => {
   return c.render(
     <>
-      <div class="min-h-screen flex items-center justify-center px-4 py-20">
-        <div class="max-w-2xl w-full text-center">
-          {/* Success Icon */}
-          <div class="mb-8">
-            <i class="fas fa-check-circle text-olive text-8xl"></i>
-          </div>
-          
-          {/* Headline */}
-          <h1 class="text-5xl md:text-7xl font-display font-bold text-olive mb-4 uppercase tracking-wide">
-            SESSION CONFIRMED
-          </h1>
-          
-          {/* Subhead */}
-          <p class="text-2xl md:text-3xl font-display text-mustard mb-8">
-            Your time is locked in.
-          </p>
-          
-          {/* Body Content */}
-          <div class="bg-sage/20 rounded-lg p-8 mb-8 text-left">
-            <p class="text-lg text-charcoal leading-relaxed mb-4">
-              Thanks for booking with Cowley Road Studios. You should receive a confirmation email from Square shortly with your booking details.
-            </p>
-            <p class="text-lg text-charcoal leading-relaxed mb-4">
-              Please arrive <strong class="text-mustard">15 minutes before</strong> your session start time.
-            </p>
-            <div class="mt-6 pt-6 border-t border-mustard/40">
-              <p class="text-charcoal/95 mb-2">
-                <i class="fas fa-map-marker-alt text-mustard mr-2"></i>
-                <strong>Location:</strong>
+      <div class="min-h-screen flex items-center justify-center px-4 py-20 bg-mustard">
+        <div class="max-w-2xl w-full">
+          <div class="bg-nettle-green border-8 border-electric-orange p-12 grain-overlay relative">
+            <div class="relative z-10 text-center">
+              <div class="mb-8">
+                <i class="fas fa-check-circle text-electric-orange text-8xl"></i>
+              </div>
+              
+              <h1 class="text-5xl md:text-6xl font-serif font-bold text-off-white mb-4 leading-none">
+                SESSION<br/>CONFIRMED
+              </h1>
+              
+              <p class="text-2xl text-mustard font-serif italic mb-8">
+                Your time is locked in.
               </p>
-              <p class="text-charcoal text-lg">
-                118 Cowley Road<br/>
-                Oxford<br/>
-                OX4 1JE
-              </p>
+              
+              <div class="bg-deep-charcoal/60 border-4 border-mustard p-8 mb-8 text-left">
+                <p class="text-base text-off-white/90 font-body leading-relaxed mb-4">
+                  Thanks for booking with Cowley Road Studios. You should receive a confirmation email from Square shortly.
+                </p>
+                <p class="text-base text-off-white/90 font-body leading-relaxed mb-4">
+                  Please arrive <strong class="text-electric-orange">15 minutes before</strong> your session start time.
+                </p>
+                <div class="mt-6 pt-6 border-t-2 border-mustard/30">
+                  <p class="text-off-white/70 mb-2 text-sm font-mono uppercase tracking-wider">
+                    <i class="fas fa-map-marker-alt text-electric-orange mr-2"></i>
+                    Location
+                  </p>
+                  <p class="text-off-white font-mono text-base">
+                    118 Cowley Road<br/>
+                    Oxford<br/>
+                    OX4 1JE
+                  </p>
+                </div>
+              </div>
+              
+              <a href="/" class="inline-block bg-electric-orange text-off-white px-8 py-3 font-mono font-semibold hover:bg-burnt-orange transition-all border-4 border-off-white text-sm uppercase tracking-wider">
+                <i class="fas fa-home mr-2"></i>
+                BACK TO HOME
+              </a>
             </div>
           </div>
-          
-          {/* Back to Home Button */}
-          <a 
-            href="/" 
-            class="inline-block bg-mustard text-charcoal px-8 py-4 rounded-md font-semibold text-lg hover:bg-olive hover:text-charcoal transition-all duration-200 shadow-lg"
-          >
-            <i class="fas fa-home mr-2"></i>
-            Back to Home
-          </a>
         </div>
       </div>
     </>

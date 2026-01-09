@@ -7,22 +7,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Flame & Foliage Color System
-        'foliage-dark': '#1A2F1A',      // Deep Forest Green - Main Background
-        'foliage-vibrant': '#4CAF50',   // Vibrant Leaf Green - Highlights
-        'flame-burnt': '#E6B800',       // Burnt Yellow/Gold - Secondary Accents
-        'flame-fierce': '#FF4500',      // Fierce Orange - Primary CTAs
-        'text-light': '#FDFBF7',        // Off-White/Cream - Main Text
-        // Legacy colors (keep for backwards compatibility during transition)
-        cream: '#FDFBF7',
-        olive: '#4A5D23',
-        charcoal: '#1A1A1A',
-        mustard: '#E3B505',
+        // BRUTALIST BOUTIQUE PALETTE
+        // PRIMARY (DOMINANT)
+        'nettle-green': '#2d3e2f',
+        'mustard': '#d4a017',
+        
+        // SECONDARY / TEXTURAL
+        'deep-charcoal': '#1a1a1a',
+        'off-white': '#faf9f6',
+        'burnt-orange': '#cc5500',
+        'moss-green': '#8b9467',
+        
+        // BREWFORCE (CTAs ONLY)
+        'electric-orange': '#FF4500',
       },
       fontFamily: {
-        display: ['Bebas Neue', 'sans-serif'],
+        serif: ['Crimson Text', 'serif'],
+        mono: ['IBM Plex Mono', 'monospace'],
         body: ['Inter', 'sans-serif'],
-        accent: ['Oswald', 'sans-serif'],
       },
     },
   },

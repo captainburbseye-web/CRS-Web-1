@@ -1,24 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @theme {
-  /* Flame & Foliage Color System */
-  --color-foliage-dark: #1A2F1A;
-  --color-foliage-vibrant: #4CAF50;
-  --color-flame-burnt: #E6B800;
-  --color-flame-fierce: #FF4500;
-  --color-text-light: #FDFBF7;
+  /* BRUTALIST BOUTIQUE COLOR PALETTE */
+  /* PRIMARY (DOMINANT) */
+  --color-nettle-green: #2d3e2f;
+  --color-mustard: #d4a017;
   
-  /* Legacy colors for backwards compatibility */
-  --color-cream: #FDFBF7;
-  --color-olive: #4A5D23;
-  --color-charcoal: #1A1A1A;
-  --color-mustard: #E3B505;
-  --color-black: #000000;
+  /* SECONDARY / TEXTURAL */
+  --color-deep-charcoal: #1a1a1a;
+  --color-off-white: #faf9f6;
+  --color-burnt-orange: #cc5500;
+  --color-moss-green: #8b9467;
   
-  /* Font families */
-  --font-display: 'Bebas Neue', sans-serif;
+  /* BREWFORCE (CTAs ONLY) */
+  --color-electric-orange: #FF4500;
+  
+  /* Typography */
+  --font-serif: 'Crimson Text', serif;
+  --font-mono: 'IBM Plex Mono', monospace;
   --font-body: 'Inter', sans-serif;
-  --font-accent: 'Oswald', sans-serif;
 }
 
 @tailwind base;
@@ -31,17 +31,17 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* Custom Scrollbar - Flame & Foliage */
+/* Custom Scrollbar - System Truth */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1A2F1A;
+  background: #2d3e2f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4CAF50;
+  background: #d4a017;
   border-radius: 5px;
 }
 
@@ -54,17 +54,24 @@ section {
   scroll-margin-top: 80px;
 }
 
-/* Brewforce Typography System */
-/* Bebas Neue - Primary Headings ONLY (not body text) */
-.font-display,
-h1, h2, h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+/* Brutalist Boutique Typography */
+/* Crimson Text - Headings (heritage, permanence, authority) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Crimson Text', serif;
+  font-weight: 700;
   line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-/* Inter - Body & System (comfortable reading, NO uppercase) */
+/* IBM Plex Mono - Technical Specs (engineering, precision) */
+.font-mono,
+code, pre {
+  font-family: 'IBM Plex Mono', monospace;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* Inter - Body & System */
 .font-body,
 body {
   font-family: 'Inter', sans-serif;
@@ -78,12 +85,26 @@ p, li, a, span {
   text-transform: none;
 }
 
-/* Oswald - Accent (rare use) */
-.font-accent {
-  font-family: 'Oswald', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  line-height: 1.2;
+/* Brutalist utility classes */
+.font-serif {
+  font-family: 'Crimson Text', serif;
+}
+
+.brutalist-border {
+  border: 3px solid currentColor;
+}
+
+.grain-overlay {
+  position: relative;
+}
+
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
+  pointer-events: none;
+  mix-blend-mode: overlay;
 }
 
 /* Animation for fade-in on scroll */

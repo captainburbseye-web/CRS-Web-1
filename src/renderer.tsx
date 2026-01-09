@@ -6,8 +6,8 @@ export const renderer = jsxRenderer(({ children }) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cowley Road Studios | Oxford's Grassroots Music Hub</title>
-        <meta name="description" content="Professional-grade recording infrastructure. Grassroots pricing. No gatekeeping. Recording studio, workshop café, and community space at 118 Cowley Road, Oxford." />
+        <title>Cowley Road Studios | Professional Recording Studio Oxford</title>
+        <meta name="description" content="Industry-standard recording infrastructure. Calm delivery. Professional recording studio at 118 Cowley Road, Oxford." />
         
         {/* Favicon */}
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -18,7 +18,7 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* Tailwind CSS - built and served statically */}
         <link href="/static/style.css" rel="stylesheet" />
       </head>
-      <body class="font-body text-text-light bg-black antialiased">
+      <body class="font-body text-off-white bg-nettle-green antialiased">
         {children}
       </body>
     </html>
