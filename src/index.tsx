@@ -14,7 +14,7 @@ app.use(renderer)
 app.get('/', (c) => {
   return c.render(
     <>
-      {/* Navigation - CRS Shell (no orange unless direct booking action) */}
+      {/* Navigation - CRS Shell */}
       <nav class="fixed top-0 left-0 right-0 bg-nettle-green/98 backdrop-blur-sm border-b border-off-white/10 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between items-center h-14">
@@ -25,19 +25,19 @@ app.get('/', (c) => {
               </a>
             </div>
             
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Reduced to 4 hard routes */}
             <div class="hidden md:flex items-center space-x-8">
-              <a href="#studios" class="text-off-white hover:text-mustard transition-colors text-sm">
+              <a href="#infrastructure" class="text-off-white hover:text-mustard transition-colors text-sm">
                 Studios
               </a>
               <a href="#cafe" class="text-off-white hover:text-mustard transition-colors text-sm">
-                Workshop Café
+                Venue
               </a>
               <a href="#services" class="text-off-white hover:text-mustard transition-colors text-sm">
-                Services
+                AV / Repairs
               </a>
               <a href="#contact" class="text-off-white hover:text-mustard transition-colors text-sm">
-                Contact
+                Book
               </a>
             </div>
             
@@ -53,24 +53,44 @@ app.get('/', (c) => {
         {/* Mobile Navigation */}
         <div id="mobile-menu" class="hidden md:hidden border-t border-off-white/10 bg-nettle-green">
           <div class="px-4 pt-2 pb-4 space-y-2">
-            <a href="#studios" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
+            <a href="#infrastructure" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
               Studios
             </a>
             <a href="#cafe" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
-              Workshop Café
+              Venue
             </a>
             <a href="#services" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
-              Services
+              AV / Repairs
             </a>
             <a href="#contact" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
-              Contact
+              Book
             </a>
           </div>
         </div>
       </nav>
 
-      {/* BLOCK 1: HERO (CRS LAYER, WITH BREWFORCE CTA) */}
-      <section id="hero" class="pt-24 pb-16 px-4 bg-nettle-green">
+      {/* LIVE STATUS BAR (sticky below nav) */}
+      <div class="fixed top-14 left-0 right-0 bg-deep-charcoal/95 backdrop-blur-sm border-b border-mustard/30 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-2">
+          <div class="flex flex-wrap gap-x-6 gap-y-1 text-xs font-mono text-off-white/80">
+            <a href="#cafe" class="hover:text-mustard transition-colors">
+              <span class="text-mustard">Café:</span> Open
+            </a>
+            <a href="#infrastructure" class="hover:text-mustard transition-colors">
+              <span class="text-mustard">Studio:</span> Sessions
+            </a>
+            <a href="#services" class="hover:text-mustard transition-colors">
+              <span class="text-mustard">Electronics:</span> Booking Repairs
+            </a>
+            <a href="#cafe" class="hover:text-mustard transition-colors">
+              <span class="text-mustard">Today:</span> Listening event
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* HERO (CRS + Brewforce CTA) */}
+      <section id="hero" class="pt-32 pb-20 px-4 bg-nettle-green">
         <div class="max-w-7xl mx-auto">
           <div class="grid md:grid-cols-12 gap-12 items-center">
             {/* Left column (7/12) */}
@@ -78,20 +98,31 @@ app.get('/', (c) => {
               <p class="text-xs font-mono text-mustard uppercase mb-6 tracking-wider">
                 Cowley Road Studios · Oxford
               </p>
-              <h1 class="text-7xl md:text-9xl font-black uppercase text-off-white mb-6 leading-none tracking-tight">
+              <h1 class="text-7xl md:text-9xl font-black uppercase text-off-white mb-8 leading-none tracking-tight">
                 COWLEY ROAD STUDIOS
               </h1>
-              <p class="text-2xl md:text-3xl text-off-white/90 mb-10 leading-relaxed font-medium">
-                Industry Standard. Calm Delivery.
+              <p class="text-2xl md:text-3xl text-off-white/90 mb-6 leading-relaxed font-medium">
+                Industry standard. Calm delivery.
+              </p>
+              <p class="text-lg text-off-white/80 mb-10 leading-relaxed max-w-2xl">
+                Infrastructure for recording, live sound, and streaming — built to work under pressure.
               </p>
               
-              {/* Brewforce CTA - generous neutral padding */}
-              <div class="flex flex-col sm:flex-row gap-4 items-start">
+              {/* Primary + Secondary CTAs */}
+              <div class="flex flex-col sm:flex-row gap-4 items-start mb-6">
                 <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
                   [ Book a Session ]
                 </a>
-                <a href="#studios" class="inline-block text-off-white hover:text-mustard transition-colors text-sm py-4">
-                  Explore the studios →
+              </div>
+              <div class="flex flex-wrap gap-4 text-sm">
+                <a href="#cafe" class="text-off-white hover:text-mustard transition-colors">
+                  Venue Hire →
+                </a>
+                <a href="#services" class="text-off-white hover:text-mustard transition-colors">
+                  AV / Live Sound →
+                </a>
+                <a href="#services" class="text-off-white hover:text-mustard transition-colors">
+                  Repairs →
                 </a>
               </div>
             </div>
@@ -109,190 +140,59 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* BLOCK 2: SYSTEM OVERVIEW STRIP (CRS) */}
-      <section class="py-16 px-4 bg-deep-charcoal">
-        <div class="max-w-7xl mx-auto">
-          <div class="grid md:grid-cols-3 gap-8">
-            {/* Column 1: CRS (Spine) */}
-            <div class="border-l-2 border-mustard pl-4">
-              <h3 class="text-2xl font-bold text-off-white mb-3">CRS · The Spine</h3>
-              <p class="text-base text-off-white/70 leading-relaxed">
-                The engineering core. Rooms, routing, and standards built for professional work.
-              </p>
-            </div>
-            
-            {/* Column 2: Workshop Café (Interface) */}
-            <div class="border-l-2 border-mustard pl-4">
-              <h3 class="text-2xl font-bold text-off-white mb-3">Workshop Café · The Interface</h3>
-              <p class="text-base text-off-white/70 leading-relaxed">
-                A public-facing room inside the system. Talks, listening events, and community use.
-              </p>
-            </div>
-            
-            {/* Column 3: Services (Trigger) */}
-            <div class="border-l-2 border-mustard pl-4">
-              <h3 class="text-2xl font-bold text-off-white mb-3">Services · The Trigger</h3>
-              <p class="text-base text-off-white/70 leading-relaxed">
-                Live sound, AV hire, and repair. Action when it has to work.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* BLOCK 3: STUDIOS & ROOMS GRID (CRS) */}
-      <section id="studios" class="py-20 px-4 bg-nettle-green">
+      {/* SECTION 1: THE INFRASTRUCTURE (CRS) */}
+      <section id="infrastructure" class="py-20 px-4 bg-deep-charcoal">
         <div class="max-w-7xl mx-auto">
           <h2 class="text-5xl md:text-7xl font-black text-off-white mb-6 uppercase tracking-tight">
-            Studios & Signal Path
+            The Infrastructure
           </h2>
-          <p class="text-lg text-off-white/80 mb-12 max-w-3xl">
-            Rooms engineered for predictable results. Dante-first, low-noise signal flow.
+          <p class="text-xl text-off-white/90 mb-16 max-w-3xl leading-relaxed">
+            Built by people who've done this before. Designed for repeatable outcomes.
           </p>
-          
-          {/* 3×2 Grid */}
-          <div class="grid md:grid-cols-3 gap-6">
-            {/* Card 1: Studio A */}
-            <div class="bg-deep-charcoal border border-off-white/10 p-6">
-              <h3 class="text-lg font-semibold text-off-white mb-1">Studio A</h3>
-              <p class="text-sm text-off-white/60 mb-4">Live room + control</p>
-              <ul class="space-y-1 text-sm text-off-white/70 font-mono mb-4">
-                <li>• Channels: 32 in / 32 out</li>
-                <li>• Monitoring: Kii Three + BXT</li>
-                <li>• Network: Dante backbone</li>
-              </ul>
-              <div class="bg-off-white/5 aspect-[4/3] flex items-center justify-center text-off-white/30 text-xs font-mono mb-3">
-                [STUDIO A PHOTO]
-              </div>
-              <a href="#contact" class="text-sm text-off-white hover:text-mustard transition-colors">
-                View details →
-              </a>
-            </div>
-            
-            {/* Card 2: Studio B */}
-            <div class="bg-deep-charcoal border border-off-white/10 p-6">
-              <h3 class="text-lg font-semibold text-off-white mb-1">Studio B</h3>
-              <p class="text-sm text-off-white/60 mb-4">Isolated tracking</p>
-              <ul class="space-y-1 text-sm text-off-white/70 font-mono mb-4">
-                <li>• Channels: 16 in / 16 out</li>
-                <li>• Monitoring: Calibrated reference</li>
-                <li>• Network: Dante networked</li>
-              </ul>
-              <div class="bg-off-white/5 aspect-[4/3] flex items-center justify-center text-off-white/30 text-xs font-mono mb-3">
-                [STUDIO B PHOTO]
-              </div>
-              <a href="#contact" class="text-sm text-off-white hover:text-mustard transition-colors">
-                View details →
-              </a>
-            </div>
-            
-            {/* Card 3: Workshop / Edit Room */}
-            <div class="bg-deep-charcoal border border-off-white/10 p-6">
-              <h3 class="text-lg font-semibold text-off-white mb-1">Workshop / Edit Room</h3>
-              <p class="text-sm text-off-white/60 mb-4">Production + mixing</p>
-              <ul class="space-y-1 text-sm text-off-white/70 font-mono mb-4">
-                <li>• Channels: 8 in / 8 out</li>
-                <li>• Monitoring: Near-field</li>
-                <li>• Network: Dante integrated</li>
-              </ul>
-              <div class="bg-off-white/5 aspect-[4/3] flex items-center justify-center text-off-white/30 text-xs font-mono mb-3">
-                [WORKSHOP PHOTO]
-              </div>
-              <a href="#contact" class="text-sm text-off-white hover:text-mustard transition-colors">
-                View details →
-              </a>
-            </div>
-            
-            {/* Card 4: Dante Network */}
-            <div class="bg-deep-charcoal border border-off-white/10 p-6">
-              <h3 class="text-lg font-semibold text-off-white mb-1">Dante Network</h3>
-              <p class="text-sm text-off-white/60 mb-4">Backbone routing</p>
-              <ul class="space-y-1 text-sm text-off-white/70 font-mono mb-4">
-                <li>• 48k-96k sample rates</li>
-                <li>• Redundancy: documented</li>
-                <li>• Low latency: &lt;3ms</li>
-              </ul>
-              <div class="bg-off-white/5 aspect-[4/3] flex items-center justify-center text-off-white/30 text-xs font-mono mb-3">
-                [DANTE NETWORK DIAGRAM]
-              </div>
-              <a href="#contact" class="text-sm text-off-white hover:text-mustard transition-colors">
-                View details →
-              </a>
-            </div>
-            
-            {/* Card 5: Monitoring */}
-            <div class="bg-deep-charcoal border border-off-white/10 p-6">
-              <h3 class="text-lg font-semibold text-off-white mb-1">Monitoring</h3>
-              <p class="text-sm text-off-white/60 mb-4">Calibrated reference</p>
-              <ul class="space-y-1 text-sm text-off-white/70 font-mono mb-4">
-                <li>• Kii Three + BXT (main)</li>
-                <li>• Near-field options</li>
-                <li>• Headphone systems</li>
-              </ul>
-              <div class="bg-off-white/5 aspect-[4/3] flex items-center justify-center text-off-white/30 text-xs font-mono mb-3">
-                [MONITORING PHOTO]
-              </div>
-              <a href="#contact" class="text-sm text-off-white hover:text-mustard transition-colors">
-                View details →
-              </a>
-            </div>
-            
-            {/* Card 6: Outboard / Patch */}
-            <div class="bg-deep-charcoal border border-off-white/10 p-6">
-              <h3 class="text-lg font-semibold text-off-white mb-1">Outboard / Patch</h3>
-              <p class="text-sm text-off-white/60 mb-4">Signal processing</p>
-              <ul class="space-y-1 text-sm text-off-white/70 font-mono mb-4">
-                <li>• Analog path available</li>
-                <li>• Patchbay access</li>
-                <li>• Documented routing</li>
-              </ul>
-              <div class="bg-off-white/5 aspect-[4/3] flex items-center justify-center text-off-white/30 text-xs font-mono mb-3">
-                [OUTBOARD PHOTO]
-              </div>
-              <a href="#contact" class="text-sm text-off-white hover:text-mustard transition-colors">
-                View details →
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* BLOCK 4: SIGNAL INTEGRITY BAND (CRS) */}
-      <section class="py-16 px-4 bg-deep-charcoal">
-        <div class="max-w-7xl mx-auto">
-          <div class="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left */}
-            <div>
-              <h2 class="text-4xl md:text-6xl font-black text-off-white mb-6">
-                Built around signal integrity
-              </h2>
+          <div class="grid md:grid-cols-2 gap-12 mb-16">
+            {/* Signal path */}
+            <div class="border-l-4 border-mustard pl-6">
+              <h3 class="text-3xl font-bold text-off-white mb-4">Signal path</h3>
               <p class="text-lg text-off-white/80 leading-relaxed">
-                From input stage to record, routing is designed to stay quiet, repeatable, and transparent. Modern Dante and NDI where it counts, proven analog where it matters.
+                Hybrid analogue / digital workflow. Clean gain staging. Fast recall.
               </p>
             </div>
-            
-            {/* Right */}
-            <div>
-              <ul class="space-y-3 text-sm text-off-white/70 font-mono">
-                <li class="flex justify-between border-b border-off-white/10 pb-2">
-                  <span>Dante:</span>
-                  <span>yes / 48k-96k</span>
-                </li>
-                <li class="flex justify-between border-b border-off-white/10 pb-2">
-                  <span>Redundancy:</span>
-                  <span>documented paths</span>
-                </li>
-                <li class="flex justify-between border-b border-off-white/10 pb-2">
-                  <span>Monitoring:</span>
-                  <span>calibrated reference</span>
-                </li>
-              </ul>
+
+            {/* Rooms */}
+            <div class="border-l-4 border-mustard pl-6">
+              <h3 class="text-3xl font-bold text-off-white mb-4">Rooms</h3>
+              <p class="text-lg text-off-white/80 leading-relaxed">
+                Isolated environments for tracking, voice, production and edit work. Controlled monitoring for decisions that translate.
+              </p>
             </div>
+
+            {/* Networked logic */}
+            <div class="border-l-4 border-mustard pl-6">
+              <h3 class="text-3xl font-bold text-off-white mb-4">Networked logic</h3>
+              <p class="text-lg text-off-white/80 leading-relaxed">
+                Dante audio across the site. NDI-ready video backbone for multi-cam streaming. Patch any source to any room without drama.
+              </p>
+            </div>
+
+            {/* Maintenance */}
+            <div class="border-l-4 border-mustard pl-6">
+              <h3 class="text-3xl font-bold text-off-white mb-4">Maintenance</h3>
+              <p class="text-lg text-off-white/80 leading-relaxed">
+                In-house electronics bench keeps systems reliable and vintage gear performing beyond spec.
+              </p>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <a href="#contact" class="inline-block border-2 border-mustard text-off-white px-8 py-3 font-semibold hover:bg-mustard hover:text-deep-charcoal transition-all text-sm uppercase tracking-wider">
+              [ View Full Spec Sheet ]
+            </a>
           </div>
         </div>
       </section>
 
-      {/* BLOCK 5: THE SHIFT (CRS → WORKSHOP CAFÉ) */}
+      {/* TRANSITION: THE SHIFT */}
       <div class="bg-deep-charcoal py-12">
         <div class="text-center">
           <p class="text-xs font-mono text-mustard uppercase tracking-widest">
@@ -302,23 +202,46 @@ app.get('/', (c) => {
       </div>
       <div class="h-1 bg-mustard w-full"></div>
 
-      {/* BLOCK 6: WORKSHOP CAFÉ INTRO (CAFÉ LAYER) */}
+      {/* SECTION 2: WORKSHOP CAFÉ (Interface) */}
       <section id="cafe" class="py-20 px-4 bg-off-white">
         <div class="max-w-7xl mx-auto">
-          <div class="grid md:grid-cols-2 gap-12 mb-16">
-            {/* Left */}
+          <h2 class="text-5xl md:text-7xl font-black text-deep-charcoal mb-6 uppercase tracking-tight">
+            Workshop Café
+          </h2>
+          <p class="text-xl text-deep-charcoal/90 mb-12 max-w-3xl leading-relaxed">
+            A public-facing space that makes the whole system accessible.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-12 mb-12">
+            {/* Left: Description */}
             <div>
-              <h2 class="text-5xl md:text-7xl font-black text-deep-charcoal mb-6 uppercase tracking-tight">
-                Workshop Café
-              </h2>
-              <p class="text-lg text-deep-charcoal/80 leading-relaxed">
-                The civic side of Cowley Road Studios. A flexible room for talks, listening sessions, small performances, and community use.
+              <p class="text-lg text-deep-charcoal/80 leading-relaxed mb-6">
+                Coffee, bar, and a flexible room for small events — talks, listening sessions, community meetups, showcases.
               </p>
+              
+              <ul class="space-y-3 text-base text-deep-charcoal/80">
+                <li class="flex items-start">
+                  <span class="text-mustard mr-3">•</span>
+                  <span>Clear booking</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-mustard mr-3">•</span>
+                  <span>Practical capacity</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-mustard mr-3">•</span>
+                  <span>Calm delivery</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-mustard mr-3">•</span>
+                  <span>Accessible entry point into the studio world</span>
+                </li>
+              </ul>
             </div>
-            
+
             {/* Right: Fact Card */}
-            <div class="bg-mustard/10 border-2 border-mustard p-6">
-              <ul class="space-y-2 text-sm text-deep-charcoal/80">
+            <div class="bg-mustard/10 border-2 border-mustard p-8">
+              <ul class="space-y-3 text-base text-deep-charcoal/80">
                 <li class="flex justify-between">
                   <span class="font-semibold">Capacity:</span>
                   <span>~45-60 seated</span>
@@ -332,127 +255,146 @@ app.get('/', (c) => {
                   <span>Cowley Road, Oxford</span>
                 </li>
               </ul>
-              <div class="mt-6">
-                <a href="#contact" class="inline-block border-2 border-deep-charcoal text-deep-charcoal px-6 py-2 font-semibold hover:bg-deep-charcoal hover:text-off-white transition-all text-sm">
-                  Venue details
-                </a>
-              </div>
             </div>
           </div>
 
-          {/* BLOCK 7: CAFÉ USE CASE CARDS */}
-          <div>
-            <h3 class="text-3xl md:text-4xl font-bold text-deep-charcoal mb-8">Use the room</h3>
-            
-            <div class="grid md:grid-cols-3 gap-8 mb-10">
-              {/* Card 1: Talks & workshops */}
-              <div class="border-2 border-mustard/30 p-6">
-                <h4 class="text-lg font-semibold text-deep-charcoal mb-3">Talks & workshops</h4>
-                <p class="text-sm text-deep-charcoal/70 leading-relaxed mb-4">
-                  Professional and community sessions. Space for structured learning and creative development.
-                </p>
-                <a href="#contact" class="text-sm text-deep-charcoal hover:text-mustard transition-colors">
-                  See examples →
-                </a>
-              </div>
-              
-              {/* Card 2: Listening events */}
-              <div class="border-2 border-mustard/30 p-6">
-                <h4 class="text-lg font-semibold text-deep-charcoal mb-3">Listening events</h4>
-                <p class="text-sm text-deep-charcoal/70 leading-relaxed mb-4">
-                  Focused listening, album plays, and sound-centered gatherings in a controlled acoustic environment.
-                </p>
-                <a href="#contact" class="text-sm text-deep-charcoal hover:text-mustard transition-colors">
-                  See examples →
-                </a>
-              </div>
-              
-              {/* Card 3: Launches & small performances */}
-              <div class="border-2 border-mustard/30 p-6">
-                <h4 class="text-lg font-semibold text-deep-charcoal mb-3">Launches & small performances</h4>
-                <p class="text-sm text-deep-charcoal/70 leading-relaxed mb-4">
-                  Intimate events for releases, showcases, and small-scale performances with professional sound support.
-                </p>
-                <a href="#contact" class="text-sm text-deep-charcoal hover:text-mustard transition-colors">
-                  See examples →
-                </a>
-              </div>
-            </div>
-            
-            {/* Brewforce CTA - only if booking action */}
-            <div class="text-center">
-              <a href="mailto:hello@cowleyroadstudios.com" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
-                [ Book the Workshop Café ]
-              </a>
-            </div>
+          <div class="text-center">
+            <a href="mailto:hello@cowleyroadstudios.com?subject=Workshop%20Café%20Venue%20Hire" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
+              [ Venue Hire Info ]
+            </a>
           </div>
         </div>
       </section>
 
-      {/* BLOCK 8: LIVE SERVICES (ACTION LAYER) */}
+      {/* SECTION 3: WHEN IT HAS TO WORK (Brewforce energy, no lore) */}
       <section id="services" class="py-20 px-4 bg-nettle-green">
         <div class="max-w-7xl mx-auto">
-          <h2 class="text-5xl md:text-7xl font-black text-off-white mb-12 uppercase tracking-tight">
-            Live Sound & Event Support
+          <h2 class="text-5xl md:text-7xl font-black text-off-white mb-6 uppercase tracking-tight">
+            When It Has To Work
+          </h2>
+          <p class="text-xl text-off-white/90 mb-16 max-w-3xl leading-relaxed">
+            Live sound, AV hire, venue support, and repairs — delivered like a mission.
+          </p>
+
+          <div class="grid md:grid-cols-2 gap-12 mb-12">
+            {/* Live sound + AV */}
+            <div class="border-l-4 border-mustard pl-6">
+              <h3 class="text-3xl md:text-4xl font-bold text-off-white mb-4">Live sound + AV hire</h3>
+              <ul class="space-y-3 text-lg text-off-white/80 mb-6">
+                <li class="flex items-start">
+                  <span class="text-mustard mr-3">•</span>
+                  <span><strong>Live sound:</strong> engineered, not improvised</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-mustard mr-3">•</span>
+                  <span><strong>AV hire:</strong> lights, sound, no drama</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-mustard mr-3">•</span>
+                  <span><strong>Venue support:</strong> small room, serious rig</span>
+                </li>
+              </ul>
+              <a href="mailto:hello@cowleyroadstudios.com?subject=Live%20Sound%20%2F%20AV%20Enquiry" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
+                [ Make Your Event Epic ]
+              </a>
+            </div>
+
+            {/* Repairs */}
+            <div class="border-l-4 border-mustard pl-6">
+              <h3 class="text-3xl md:text-4xl font-bold text-off-white mb-4">Repairs</h3>
+              <ul class="space-y-3 text-lg text-off-white/80 mb-6">
+                <li class="flex items-start">
+                  <span class="text-mustard mr-3">•</span>
+                  <span><strong>Repairs:</strong> honest assessment, proper fixes</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-mustard mr-3">•</span>
+                  <span>In-house electronics bench</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-mustard mr-3">•</span>
+                  <span>No upsell, no chaos</span>
+                </li>
+              </ul>
+              <a href="mailto:hello@cowleyroadstudios.com?subject=Repair%20Request" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
+                [ Bring a Repair ]
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* PROOF STRIP (fast trust) */}
+      <section class="py-16 px-4 bg-deep-charcoal">
+        <div class="max-w-7xl mx-auto">
+          <h2 class="text-4xl md:text-5xl font-black text-off-white mb-12 text-center uppercase tracking-tight">
+            What You Get Here
           </h2>
           
-          <div class="grid md:grid-cols-2 gap-12">
-            {/* Column 1: Live Sound & AV */}
-            <div class="border-l-4 border-mustard pl-6">
-              <h3 class="text-3xl md:text-4xl font-bold text-off-white mb-4">Live Sound & AV</h3>
-              <p class="text-lg text-off-white/80 mb-6 leading-relaxed">
-                Lights. Sound. No drama. Professional PA, monitoring, and on-site support when it has to work.
-              </p>
-              <a href="mailto:hello@cowleyroadstudios.com?subject=Live%20Sound%20Enquiry" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
-                [ Check Availability ]
-              </a>
-            </div>
-            
-            {/* Column 2: AV Repair */}
-            <div class="border-l-4 border-mustard pl-6">
-              <h3 class="text-3xl md:text-4xl font-bold text-off-white mb-4">AV Repair</h3>
-              <p class="text-lg text-off-white/80 mb-6 leading-relaxed">
-                If it's worth fixing, we'll fix it. Honest assessment, proper repair, no upsell.
-              </p>
-              <a href="mailto:hello@cowleyroadstudios.com?subject=Repair%20Request" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
-                [ Request a Repair Slot ]
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* BLOCK 9: OLD × NEW STRIP (CRS PHILOSOPHY) */}
-      <section class="py-20 px-4 bg-deep-charcoal">
-        <div class="max-w-7xl mx-auto">
-          <div class="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left: Photo */}
-            <div class="bg-off-white/5 aspect-[4/3] flex items-center justify-center text-off-white/30 text-xs font-mono">
-              [VINTAGE VALVES / ANALOG HARDWARE PHOTO]
-            </div>
-            
-            {/* Right: Philosophy */}
+          <div class="grid md:grid-cols-5 gap-8 text-center">
             <div>
-              <h2 class="text-4xl md:text-6xl font-black text-off-white mb-6">
-                Modern where it counts. Vintage where it matters.
-              </h2>
-              <p class="text-lg text-off-white/80 leading-relaxed">
-                Digital networking and routing provide reliability and recall. Analog path options preserve character and workflow familiarity. The system is designed to support both approaches without compromise.
+              <div class="text-mustard text-4xl mb-3">
+                <i class="fas fa-cogs"></i>
+              </div>
+              <p class="text-base text-off-white/80 font-semibold">
+                A controlled environment
+              </p>
+            </div>
+            
+            <div>
+              <div class="text-mustard text-4xl mb-3">
+                <i class="fas fa-wrench"></i>
+              </div>
+              <p class="text-base text-off-white/80 font-semibold">
+                A rig that's maintained properly
+              </p>
+            </div>
+            
+            <div>
+              <div class="text-mustard text-4xl mb-3">
+                <i class="fas fa-comments"></i>
+              </div>
+              <p class="text-base text-off-white/80 font-semibold">
+                Clear communication
+              </p>
+            </div>
+            
+            <div>
+              <div class="text-mustard text-4xl mb-3">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <p class="text-base text-off-white/80 font-semibold">
+                A usable end product
+              </p>
+            </div>
+            
+            <div>
+              <div class="text-mustard text-4xl mb-3">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <p class="text-base text-off-white/80 font-semibold">
+                No chaos
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* BLOCK 10: CONTACT & LOCATION (CRS + CAFÉ INTERFACE) */}
+      {/* CONTACT & LOCATION */}
       <section id="contact" class="py-20 px-4 bg-off-white">
         <div class="max-w-7xl mx-auto">
-          <div class="grid md:grid-cols-2 gap-12">
-            {/* Left: Contact & Booking */}
+          <div class="text-center mb-12">
+            <h2 class="text-5xl md:text-7xl font-black text-deep-charcoal mb-6 uppercase tracking-tight">
+              Tell us what you're making
+            </h2>
+            <p class="text-2xl text-deep-charcoal/80 max-w-3xl mx-auto leading-relaxed">
+              We'll tell you what's possible.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-12 mb-12">
+            {/* Left: Contact */}
             <div>
-              <h2 class="text-5xl md:text-7xl font-black text-deep-charcoal mb-8 uppercase tracking-tight">
-                Contact & booking
-              </h2>
               <div class="mb-8">
                 <p class="text-lg text-deep-charcoal/80 mb-4">
                   <strong>Email:</strong> hello@cowleyroadstudios.com<br />
@@ -463,13 +405,13 @@ app.get('/', (c) => {
                 </p>
               </div>
               
-              {/* Orange CTAs (stacked) */}
+              {/* CTAs */}
               <div class="space-y-4">
                 <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm text-center uppercase tracking-wider">
-                  [ Book a Session ]
+                  [ Book ]
                 </a>
-                <a href="mailto:hello@cowleyroadstudios.com?subject=Workshop%20Café%20Booking" class="block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm text-center uppercase tracking-wider">
-                  [ Book the Workshop Café ]
+                <a href="mailto:hello@cowleyroadstudios.com" class="block border-2 border-deep-charcoal text-deep-charcoal px-6 py-3 font-semibold hover:bg-deep-charcoal hover:text-off-white transition-all text-sm text-center uppercase tracking-wider">
+                  [ Enquire ]
                 </a>
               </div>
             </div>
@@ -492,7 +434,7 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* BLOCK 11: FOOTER (CRS SHELL) */}
+      {/* FOOTER */}
       <footer class="bg-deep-charcoal border-t border-off-white/10 text-off-white py-12 px-4">
         <div class="max-w-7xl mx-auto">
           <div class="grid md:grid-cols-3 gap-8 mb-8">
@@ -508,18 +450,21 @@ app.get('/', (c) => {
             <div>
               <h4 class="font-semibold mb-3 text-sm uppercase tracking-wider text-off-white/80">Navigate</h4>
               <ul class="space-y-2 text-sm">
-                <li><a href="#studios" class="text-off-white/70 hover:text-mustard transition-colors">Studios</a></li>
-                <li><a href="#cafe" class="text-off-white/70 hover:text-mustard transition-colors">Workshop Café</a></li>
-                <li><a href="#services" class="text-off-white/70 hover:text-mustard transition-colors">Services</a></li>
-                <li><a href="#contact" class="text-off-white/70 hover:text-mustard transition-colors">Contact</a></li>
+                <li><a href="#infrastructure" class="text-off-white/70 hover:text-mustard transition-colors">Studios</a></li>
+                <li><a href="#cafe" class="text-off-white/70 hover:text-mustard transition-colors">Venue</a></li>
+                <li><a href="#services" class="text-off-white/70 hover:text-mustard transition-colors">AV / Repairs</a></li>
+                <li><a href="#contact" class="text-off-white/70 hover:text-mustard transition-colors">Book</a></li>
               </ul>
             </div>
             
             {/* Right */}
             <div>
-              <p class="text-sm text-off-white/60 italic">
+              <p class="text-sm text-off-white/60 italic mb-4">
                 Built to stay calm under load.
               </p>
+              <a href="mailto:hello@cowleyroadstudios.com" class="text-sm text-mustard hover:text-off-white transition-colors">
+                hello@cowleyroadstudios.com
+              </a>
             </div>
           </div>
           <div class="border-t border-off-white/10 pt-6 text-center text-xs text-off-white/50">
