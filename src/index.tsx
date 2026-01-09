@@ -14,8 +14,31 @@ app.use(renderer)
 app.get('/', (c) => {
   return c.render(
     <>
-      {/* Navigation - CRS Shell */}
-      <nav class="fixed top-0 left-0 right-0 bg-nettle-green/98 backdrop-blur-sm border-b border-off-white/10 z-50">
+      {/* LIVE SYSTEM MONITOR - Infrastructure Layer Status Bar */}
+      <div class="fixed top-0 left-0 right-0 bg-deep-charcoal h-8 border-b border-nettle-green z-50">
+        <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-center">
+          <div class="flex items-center gap-8 text-xs font-mono text-off-white/60">
+            {/* CAFÉ STATUS */}
+            <div class="flex items-center gap-2">
+              <span class="uppercase tracking-wider">CAFÉ: OPEN</span>
+            </div>
+            
+            {/* STUDIO STATUS with pulsing orange indicator */}
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-electric-orange rounded-full animate-pulse"></span>
+              <span class="uppercase tracking-wider">STUDIO: IN SESSION</span>
+            </div>
+            
+            {/* ELECTRONICS STATUS */}
+            <div class="flex items-center gap-2">
+              <span class="uppercase tracking-wider">ELECTRONICS: TAKING REPAIRS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation - CRS Shell (moved down to accommodate status bar) */}
+      <nav class="fixed top-8 left-0 right-0 bg-nettle-green/98 backdrop-blur-sm border-b border-off-white/10 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between items-center h-14">
             {/* Logo */}
@@ -69,28 +92,24 @@ app.get('/', (c) => {
         </div>
       </nav>
 
-      {/* LIVE STATUS BAR (sticky below nav, hidden on mobile to save vertical space) */}
-      <div class="hidden md:block fixed top-14 left-0 right-0 bg-deep-charcoal/95 backdrop-blur-sm border-b border-mustard/30 z-40">
-        <div class="max-w-7xl mx-auto px-4 py-2">
-          <div class="flex flex-wrap gap-x-6 gap-y-1 text-xs font-mono text-off-white/80">
-            <a href="#cafe" class="hover:text-mustard transition-colors">
-              <span class="text-mustard">Café:</span> Open
-            </a>
-            <a href="#infrastructure" class="hover:text-mustard transition-colors">
-              <span class="text-mustard">Studio:</span> Sessions
-            </a>
-            <a href="#services" class="hover:text-mustard transition-colors">
-              <span class="text-mustard">Electronics:</span> Booking Repairs
-            </a>
-            <a href="#cafe" class="hover:text-mustard transition-colors">
-              <span class="text-mustard">Today:</span> Listening event
-            </a>
+      {/* LIVE STATUS BAR - Mobile responsive (below main nav) */}
+      <div class="md:hidden fixed top-14 left-0 right-0 bg-deep-charcoal h-8 border-b border-nettle-green z-30">
+        <div class="px-4 h-full flex items-center justify-center overflow-x-auto">
+          <div class="flex items-center gap-4 text-xs font-mono text-off-white/60 whitespace-nowrap">
+            <span class="uppercase">CAFÉ: OPEN</span>
+            <span class="text-nettle-green">|</span>
+            <div class="flex items-center gap-1">
+              <span class="w-1.5 h-1.5 bg-electric-orange rounded-full animate-pulse"></span>
+              <span class="uppercase">STUDIO: IN SESSION</span>
+            </div>
+            <span class="text-nettle-green">|</span>
+            <span class="uppercase">ELECTRONICS: REPAIRS</span>
           </div>
         </div>
       </div>
 
       {/* HERO (CRS SPINE - DARK CONTROL ROOM) */}
-      <section id="hero" class="pt-20 md:pt-32 pb-16 md:pb-20 px-4 bg-deep-charcoal">
+      <section id="hero" class="pt-28 md:pt-32 pb-16 md:pb-20 px-4 bg-deep-charcoal">
         <div class="max-w-7xl mx-auto">
           <div class="text-center">
             <p class="text-xs font-mono text-mustard uppercase mb-6 tracking-wider">
