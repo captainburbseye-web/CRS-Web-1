@@ -144,7 +144,7 @@ app.get('/', (c) => {
       </div>
 
       {/* HERO (CRS SPINE - DARK CONTROL ROOM) - 12 COLUMN GRID */}
-      <section id="hero" class="pt-28 md:pt-24 pb-12 md:pb-16 px-4 bg-deep-charcoal">
+      <section id="hero" class="pt-20 md:pt-16 pb-8 md:pb-10 px-4 bg-deep-charcoal">
         <div class="max-w-7xl mx-auto">
           <div class="grid md:grid-cols-12 gap-8">
             {/* LEFT COLUMN: Technical Data (7/12) */}
@@ -168,7 +168,7 @@ app.get('/', (c) => {
               <div class="mb-4">
                 <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block transition-opacity hover:opacity-90">
                   <img 
-                    src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/btn-primary-book-studio-yellow.png" 
+                    src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952891561.png" 
                     alt="Book Studio"
                     class="h-16 w-auto"
                   />
@@ -205,11 +205,11 @@ app.get('/', (c) => {
       </section>
 
       {/* SECTION 1: THE INFRASTRUCTURE (CRS SPINE - DARK) - HIGH DENSITY GRID */}
-      <section id="infrastructure" class="py-16 px-4 bg-deep-charcoal border-t-2 border-mustard">
+      <section id="infrastructure" class="py-10 px-4 bg-deep-charcoal border-t-2 border-mustard">
         <div class="max-w-7xl mx-auto">
           {/* Section Header - Left Aligned */}
           <div class="mb-12">
-            <h2 class="text-4xl md:text-6xl font-black text-off-white mb-4 uppercase tracking-tight">
+            <h2 class="text-3xl font-black text-off-white mb-4 uppercase tracking-tight">
               The Infrastructure
             </h2>
             <p class="text-base md:text-lg text-off-white/80 leading-relaxed max-w-3xl border-l-2 border-mustard pl-4">
@@ -346,16 +346,16 @@ app.get('/', (c) => {
       <div class="h-0.5 bg-mustard w-full"></div>
 
       {/* VENUE HIRE (Workshop Café Interface) */}
-      <section id="cafe" class="py-20 px-4 bg-off-white">
+      <section id="cafe" class="py-10 px-4 bg-off-white">
         <div class="max-w-5xl mx-auto">
           
           {/* PAGE TITLE */}
-          <h2 class="text-4xl md:text-5xl font-black text-deep-charcoal mb-16 uppercase tracking-tight">
+          <h2 class="text-3xl font-black text-deep-charcoal mb-8 uppercase tracking-tight">
             WORKSHOP CAFÉ
           </h2>
 
           {/* INTRO */}
-          <div class="mb-20 max-w-3xl">
+          <div class="mb-10 max-w-3xl">
             <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
               Workshop Café is the public-facing space attached to the studios.
             </p>
@@ -365,7 +365,7 @@ app.get('/', (c) => {
           </div>
 
           {/* KEY FACTS */}
-          <div class="mb-20 max-w-3xl">
+          <div class="mb-10 max-w-3xl">
             <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
               Key facts
             </h3>
@@ -398,14 +398,14 @@ app.get('/', (c) => {
             <div class="flex flex-wrap gap-4">
               <a href="#services" class="inline-block transition-opacity hover:opacity-90">
               <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/btn-secondary-services.png" 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952899066.png" 
                 alt="View AV & Event Support"
                 class="h-16 w-auto"
               />
             </a>
               <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="inline-block transition-opacity hover:opacity-90">
                 <img 
-                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/btn-primary-check-availability-green.png" 
+                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952895043.png" 
                   alt="Check Venue Availability"
                   class="h-16 w-auto"
                 />
@@ -418,11 +418,11 @@ app.get('/', (c) => {
 
       {/* SECTION 3: MOMENTUM WHEN IT MATTERS (CRS SPINE - DARK) */}
       {/* LIVE SOUND & EVENT SUPPORT (CRS SPINE - DARK) */}
-      <section id="services" class="py-20 px-4 bg-deep-charcoal border-t-2 border-mustard">
+      <section id="services" class="py-10 px-4 bg-deep-charcoal border-t-2 border-mustard">
         <div class="max-w-7xl mx-auto">
           {/* Primary Headline */}
           <div class="mb-12">
-            <h2 class="text-4xl md:text-6xl font-black text-off-white mb-4 uppercase tracking-tight">
+            <h2 class="text-3xl font-black text-off-white mb-4 uppercase tracking-tight">
               WHEN IT HAS TO WORK
             </h2>
             <p class="text-lg md:text-xl text-off-white/90 border-l-2 border-electric-orange pl-4 max-w-3xl">
@@ -573,14 +573,14 @@ app.get('/', (c) => {
           <div class="flex flex-wrap gap-4 justify-center">
             <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Availability%20Check" class="inline-block transition-opacity hover:opacity-90">
               <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/btn-primary-get-quote-red.png" 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952902443.png" 
                 alt="Check AV Availability"
                 class="h-16 w-auto"
               />
             </a>
             <a href="mailto:info@cowleyroadstudios.com?subject=Event%20Support%20Booking" class="inline-block transition-opacity hover:opacity-90">
               <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/btn-primary-get-quote-red.png" 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952902443.png" 
                 alt="Get Quote"
                 class="h-16 w-auto"
               />
@@ -591,9 +591,9 @@ app.get('/', (c) => {
       </section>
 
       {/* PROOF STRIP (fast trust) */}
-      <section class="py-16 px-4 bg-deep-charcoal">
+      <section class="py-10 px-4 bg-deep-charcoal">
         <div class="max-w-7xl mx-auto">
-          <h2 class="text-4xl md:text-5xl font-black text-off-white mb-12 text-center uppercase tracking-tight">
+          <h2 class="text-3xl font-black text-off-white mb-8 text-center uppercase tracking-tight">
             What You Get Here
           </h2>
           
