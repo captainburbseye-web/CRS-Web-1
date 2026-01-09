@@ -102,7 +102,7 @@ app.get('/', (c) => {
           <div class="grid md:grid-cols-12 gap-8">
             {/* LEFT COLUMN: Technical Data (7/12) */}
             <div class="md:col-span-7">
-              <p class="text-sm font-mono text-mustard uppercase mb-4 tracking-wider">
+              <p class="text-base font-mono text-mustard uppercase mb-4 tracking-wider">
                 Cowley Road Studios · Oxford
               </p>
               <img 
@@ -110,7 +110,7 @@ app.get('/', (c) => {
                 alt="COWLEY ROAD STUDIOS"
                 class="w-full max-w-xl mb-6"
               />
-              <p class="text-2xl md:text-3xl text-off-white/90 mb-6 leading-relaxed font-bold border-l-4 border-mustard pl-6">
+              <p class="text-3xl md:text-4xl text-off-white/90 mb-6 leading-relaxed font-bold border-l-4 border-mustard pl-6">
                 Industry standard facilities, built and run by people who love the work.
               </p>
               <p class="text-base md:text-lg text-off-white/80 mb-8 leading-relaxed max-w-2xl">
@@ -119,7 +119,7 @@ app.get('/', (c) => {
               
               {/* Primary CTA - CSS Heavy-Duty Switch */}
               <div class="mb-4">
-                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm" style="border-radius: 0;">
+                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
                   [ BOOK STUDIO ]
                 </a>
               </div>
@@ -179,14 +179,14 @@ app.get('/', (c) => {
                 />
               </div>
               <div class="p-4 border-t-2 border-nettle-green">
-                <p class="text-xs font-mono text-mustard uppercase tracking-widest mb-2">UNIT 01: SIGNAL</p>
-                <h3 class="text-xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">HYBRID PATH</h3>
+                <p class="text-sm font-mono text-mustard uppercase tracking-widest mb-2">UNIT 01: SIGNAL</p>
+                <h3 class="text-2xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">HYBRID PATH</h3>
                 <div class="space-y-2 text-sm text-off-white/80 font-mono mb-4">
                   <p>→ Audient Console</p>
                   <p>→ Neve-Style Pres</p>
                   <p>→ Sphere Modeling</p>
                 </div>
-                <p class="text-xs font-mono text-electric-orange uppercase tracking-wider">STATUS: CALIBRATED</p>
+                <p class="text-sm font-mono text-electric-orange uppercase tracking-wider">STATUS: CALIBRATED</p>
               </div>
             </div>
 
@@ -200,14 +200,14 @@ app.get('/', (c) => {
                 />
               </div>
               <div class="p-4 border-t-2 border-nettle-green">
-                <p class="text-xs font-mono text-mustard uppercase tracking-widest mb-2">UNIT 02: ROOMS</p>
-                <h3 class="text-xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">ISOLATION</h3>
+                <p class="text-sm font-mono text-mustard uppercase tracking-widest mb-2">UNIT 02: ROOMS</p>
+                <h3 class="text-2xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">ISOLATION</h3>
                 <div class="space-y-2 text-sm text-off-white/80 font-mono mb-4">
                   <p>→ 5 Decoupled Zones</p>
                   <p>→ Floating Floors</p>
                   <p>→ Neutral Tuning</p>
                 </div>
-                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider">STATUS: SECURE</p>
+                <p class="text-sm font-mono text-electric-orange uppercase tracking-wider">STATUS: SECURE</p>
               </div>
             </div>
 
@@ -221,14 +221,14 @@ app.get('/', (c) => {
                 />
               </div>
               <div class="p-4 border-t-2 border-nettle-green">
-                <p class="text-xs font-mono text-mustard uppercase tracking-widest mb-2">UNIT 03: NETWORK</p>
-                <h3 class="text-xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">DANTE/NDI</h3>
+                <p class="text-sm font-mono text-mustard uppercase tracking-widest mb-2">UNIT 03: NETWORK</p>
+                <h3 class="text-2xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">DANTE/NDI</h3>
                 <div class="space-y-2 text-sm text-off-white/80 font-mono mb-4">
                   <p>→ 32-Ch Dante</p>
                   <p>→ NDI Video Core</p>
                   <p>→ Multi-Room Sync</p>
                 </div>
-                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider">STATUS: ACTIVE</p>
+                <p class="text-sm font-mono text-electric-orange uppercase tracking-wider">STATUS: ACTIVE</p>
               </div>
             </div>
 
@@ -242,14 +242,14 @@ app.get('/', (c) => {
                 />
               </div>
               <div class="p-4 border-t-2 border-nettle-green">
-                <p class="text-xs font-mono text-mustard uppercase tracking-widest mb-2">UNIT 04: REPAIR</p>
-                <h3 class="text-xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">THE BENCH</h3>
+                <p class="text-sm font-mono text-mustard uppercase tracking-widest mb-2">UNIT 04: REPAIR</p>
+                <h3 class="text-2xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">THE BENCH</h3>
                 <div class="space-y-2 text-sm text-off-white/80 font-mono mb-4">
                   <p>→ Valve Testing</p>
                   <p>→ Analog Calibration</p>
                   <p>→ Parts Inventory</p>
                 </div>
-                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider">STATUS: READY</p>
+                <p class="text-sm font-mono text-electric-orange uppercase tracking-wider">STATUS: READY</p>
               </div>
             </div>
 
@@ -345,10 +345,10 @@ app.get('/', (c) => {
               Add support if and when it's needed.
             </p>
             <div class="flex flex-wrap gap-4 mt-auto">
-              <a href="#services" class="block w-full md:w-auto bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm" style="border-radius: 0;">
+              <a href="#services" class="block w-full md:w-auto bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
                 [ VIEW AV & EVENT SUPPORT ]
               </a>
-              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="block w-full md:w-auto bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm" style="border-radius: 0;">
+              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="block w-full md:w-auto bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
                 [ CHECK VENUE AVAILABILITY ]
               </a>
             </div>
@@ -401,12 +401,12 @@ app.get('/', (c) => {
                 </div>
                 
                 {/* Status Indicator */}
-                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider mb-2">
+                <p class="text-sm font-mono text-electric-orange uppercase tracking-wider mb-2">
                   STATUS: FIELD-READY
                 </p>
                 
                 {/* CTA - CSS Heavy-Duty Switch */}
-                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-xs mt-auto" style="border-radius: 0;">
+                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm mt-auto" style="border-radius: 0;">
                   [ CHECK AVAILABILITY ]
                 </a>
               </div>
@@ -439,12 +439,12 @@ app.get('/', (c) => {
                 </div>
                 
                 {/* Status Indicator */}
-                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider mb-2">
+                <p class="text-sm font-mono text-electric-orange uppercase tracking-wider mb-2">
                   STATUS: BENCH ACTIVE
                 </p>
                 
                 {/* CTA - CSS Heavy-Duty Switch */}
-                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-xs mt-auto" style="border-radius: 0;">
+                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm mt-auto" style="border-radius: 0;">
                   [ REQUEST REPAIR SLOT ]
                 </a>
               </div>
