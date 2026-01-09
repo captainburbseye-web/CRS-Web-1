@@ -416,175 +416,117 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* SECTION 3: MOMENTUM WHEN IT MATTERS (CRS SPINE - DARK) */}
-      {/* LIVE SOUND & EVENT SUPPORT (CRS SPINE - DARK) */}
+      {/* SERVICES MANIFEST: TECHNICAL SPEC CARDS - DYMO LABEL FORMAT */}
       <section id="services" class="py-10 px-4 bg-deep-charcoal border-t-2 border-mustard">
         <div class="max-w-7xl mx-auto">
-          {/* Primary Headline */}
-          <div class="mb-12">
+          
+          {/* Section Intro */}
+          <div class="mb-10">
             <h2 class="text-3xl font-black text-off-white mb-4 uppercase tracking-tight">
               WHEN IT HAS TO WORK
             </h2>
-            <p class="text-lg md:text-xl text-off-white/90 border-l-2 border-electric-orange pl-4 max-w-3xl">
-              We provide live sound support, AV setup, and equipment repair as part of the same practice that runs the studio.
+            <p class="text-base text-off-white/80 max-w-3xl border-l-2 border-electric-orange pl-4">
+              We provide live sound support, AV setup, and equipment repair as part of the same practice that runs the studio. Fewer handovers, fewer assumptions, calmer outcomes.
             </p>
           </div>
 
-          {/* Opening Copy */}
-          <div class="mb-16 max-w-3xl">
-            <p class="text-base md:text-lg text-off-white/80 leading-relaxed mb-4">
-              That means fewer handovers, fewer assumptions, and calmer outcomes.
-            </p>
-            <p class="text-base md:text-lg text-off-white/90 leading-relaxed font-medium">
-              If something breaks, we fix it.<br/>
-              If something isn't right for the job, we'll tell you.
-            </p>
-          </div>
-
-          {/* RACK-MOUNTED SERVICE GRID - FIXED RATIOS */}
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 items-stretch">
+          {/* DUAL COLUMN MANIFEST - NETTLE GREEN BOXES */}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             
-            {/* LIVE SOUND & PA */}
-            <div class="border-l-2 border-mustard pl-6 flex flex-col">
-              <div class="aspect-[4/3] w-full overflow-hidden border-2 border-mustard/30 mb-4">
+            {/* LEFT BOX: MISSION-CRITICAL AUDIO (LIVE SOUND & EVENT SUPPORT) */}
+            <div class="border-2 border-nettle-green bg-deep-charcoal/50 p-4 relative">
+              {/* Square ID Photo - Top Right */}
+              <div class="absolute top-4 right-4 w-20 h-20 border border-mustard/50 overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-live-sound.jpg"
-                  alt="Live sound and PA - Professional audio engineering for events"
+                  alt="Live Sound"
                   class="w-full h-full object-cover"
                 />
               </div>
-              <h3 class="text-2xl md:text-3xl font-bold text-off-white mb-3 uppercase tracking-tight">
-                LIVE SOUND & PA
-              </h3>
-              <p class="text-sm md:text-base text-off-white/90 font-medium mb-3">
-                Clear, powerful sound for rooms that matter.
-              </p>
-              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4 line-clamp-3">
-                From intimate talks to high-energy performances, we deploy reliable systems, tuned for the space and the audience.
-              </p>
-              <div class="space-y-2 text-sm text-off-white/80 font-mono mb-6">
-                <p>No feedback.</p>
-                <p>No last-minute scrambling.</p>
-                <p>No drama.</p>
+              
+              {/* Manifest Data */}
+              <div class="pr-24">
+                <h3 class="text-2xl font-bold text-off-white mb-3 uppercase tracking-tight" style="font-family: 'Playfair Display', serif;">
+                  MISSION-CRITICAL AUDIO
+                </h3>
+                
+                {/* Dense Data Points - JetBrains Mono */}
+                <div class="space-y-0.5 font-mono text-xs text-off-white/90 leading-tight mb-4">
+                  <p><span class="text-mustard">CAPACITY:</span> Systems for 50–200 cap</p>
+                  <p><span class="text-mustard">SCOPE:</span> Analog, Valve, & Digital</p>
+                  <p><span class="text-mustard">STANDARD:</span> NDI / Dante Integrated</p>
+                  <p><span class="text-mustard">DELIVERY:</span> On-Site Engineering</p>
+                  <p><span class="text-mustard">RIG:</span> Logic/Martin Audio</p>
+                </div>
+                
+                {/* Status Indicator */}
+                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider mb-4">
+                  STATUS: FIELD-READY
+                </p>
+                
+                {/* CTA */}
+                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="inline-block transition-opacity hover:opacity-90">
+                  <img 
+                    src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952902443.png" 
+                    alt="Check Availability"
+                    class="h-12 w-auto"
+                  />
+                </a>
               </div>
             </div>
 
-            {/* EVENT TECHNICIAN HIRE */}
-            <div class="border-l-2 border-mustard pl-6 flex flex-col">
-              <h3 class="text-2xl md:text-3xl font-bold text-off-white mb-3 uppercase tracking-tight">
-                EVENT TECHNICIAN HIRE
-              </h3>
-              <p class="text-sm md:text-base text-off-white/90 font-medium mb-3">
-                Calm operators under pressure.
-              </p>
-              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4 line-clamp-3">
-                Experienced technicians who arrive prepared, solve problems quietly, and keep things moving while everyone else focuses on the moment.
-              </p>
-              <div class="space-y-2 text-sm text-off-white/80 mb-6">
-                <p>If something goes wrong, it gets fixed.</p>
-                <p>If it can't be fixed, you'll know early.</p>
-              </div>
-            </div>
-
-            {/* VENUE REINFORCEMENT */}
-            <div class="border-l-2 border-mustard pl-6 flex flex-col">
-              <h3 class="text-2xl md:text-3xl font-bold text-off-white mb-3 uppercase tracking-tight">
-                VENUE REINFORCEMENT
-              </h3>
-              <p class="text-sm md:text-base text-off-white/90 font-medium mb-3">
-                Small room. Big intent.
-              </p>
-              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4 line-clamp-3">
-                We specialise in making compact venues sound and feel bigger than they are — without losing clarity or control.
-              </p>
-              <p class="text-sm text-off-white/60 font-mono mb-2">Perfect for:</p>
-              <ul class="space-y-1 text-sm text-off-white/70">
-                <li class="flex items-start">
-                  <span class="text-mustard mr-2">—</span>
-                  <span>Talks & panels</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-mustard mr-2">—</span>
-                  <span>Album launches</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-mustard mr-2">—</span>
-                  <span>Community events</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-mustard mr-2">—</span>
-                  <span>Listening sessions</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="text-mustard mr-2">—</span>
-                  <span>Private hires</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* REPAIRS */}
-            <div class="border-l-2 border-mustard pl-6 flex flex-col">
-              <div class="aspect-[4/3] w-full overflow-hidden border-2 border-mustard/30 mb-4">
+            {/* RIGHT BOX: THE TECHNICAL BENCH (ELECTRONICS & AV REPAIR) */}
+            <div class="border-2 border-nettle-green bg-deep-charcoal/50 p-4 relative">
+              {/* Square ID Photo - Top Right */}
+              <div class="absolute top-4 right-4 w-20 h-20 border border-mustard/50 overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-repairs.jpg"
-                  alt="Repair services - In-house electronics bench and diagnostics"
+                  alt="Repairs"
                   class="w-full h-full object-cover"
                 />
               </div>
-              <h3 class="text-2xl md:text-3xl font-bold text-off-white mb-3 uppercase tracking-tight">
-                REPAIRS
-              </h3>
-              <p class="text-sm md:text-base text-off-white/90 font-medium mb-3">
-                Honest assessment. Proper fixes.
-              </p>
-              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4 line-clamp-3">
-                In-house electronics bench for audio, studio, and vintage gear repair.
-              </p>
-              <div class="space-y-2 text-sm text-off-white/80 font-mono">
-                <p>No upsell.</p>
-                <p>No chaos.</p>
+              
+              {/* Manifest Data */}
+              <div class="pr-24">
+                <h3 class="text-2xl font-bold text-off-white mb-3 uppercase tracking-tight" style="font-family: 'Playfair Display', serif;">
+                  THE TECHNICAL BENCH
+                </h3>
+                
+                {/* Dense Data Points - JetBrains Mono */}
+                <div class="space-y-0.5 font-mono text-xs text-off-white/90 leading-tight mb-4">
+                  <p><span class="text-mustard">STANDARD:</span> Component-Level Repair</p>
+                  <p><span class="text-mustard">TURNAROUND:</span> 7–14 Day Typical</p>
+                  <p><span class="text-mustard">FOCUS:</span> Refurbishment & Calibration</p>
+                  <p><span class="text-mustard">STOCK:</span> Valve & Analog Parts Inventory</p>
+                  <p><span class="text-mustard">SCOPE:</span> Audio, Studio, Vintage Gear</p>
+                </div>
+                
+                {/* Status Indicator */}
+                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider mb-4">
+                  STATUS: BENCH ACTIVE
+                </p>
+                
+                {/* CTA */}
+                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="inline-block transition-opacity hover:opacity-90">
+                  <img 
+                    src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952902443.png" 
+                    alt="Request Repair Slot"
+                    class="h-12 w-auto"
+                  />
+                </a>
               </div>
             </div>
 
           </div>
 
-          {/* Confidence Markers (Heroic Language) */}
-          <div class="border-t-2 border-mustard/30 pt-12 mb-12">
-            <div class="grid md:grid-cols-5 gap-6 text-center">
-              <div>
-                <p class="text-sm font-mono text-mustard uppercase tracking-wider">Engineered,<br/>not improvised</p>
-              </div>
-              <div>
-                <p class="text-sm font-mono text-mustard uppercase tracking-wider">When it<br/>has to work</p>
-              </div>
-              <div>
-                <p class="text-sm font-mono text-mustard uppercase tracking-wider">Calm under<br/>pressure</p>
-              </div>
-              <div>
-                <p class="text-sm font-mono text-mustard uppercase tracking-wider">Built<br/>properly</p>
-              </div>
-              <div>
-                <p class="text-sm font-mono text-mustard uppercase tracking-wider">Your mission.<br/>Our rig.</p>
-              </div>
+          {/* Confidence Strip */}
+          <div class="border-t border-mustard/30 pt-8">
+            <div class="flex flex-wrap gap-6 justify-center text-center">
+              <p class="text-xs font-mono text-mustard uppercase tracking-wider">Engineered, not improvised</p>
+              <p class="text-xs font-mono text-mustard uppercase tracking-wider">Calm under pressure</p>
+              <p class="text-xs font-mono text-mustard uppercase tracking-wider">Built properly</p>
+              <p class="text-xs font-mono text-mustard uppercase tracking-wider">Your mission. Our rig.</p>
             </div>
-          </div>
-
-          {/* Primary CTAs */}
-          <div class="flex flex-wrap gap-4 justify-center">
-            <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Availability%20Check" class="inline-block transition-opacity hover:opacity-90">
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952902443.png" 
-                alt="Check AV Availability"
-                class="h-16 w-auto"
-              />
-            </a>
-            <a href="mailto:info@cowleyroadstudios.com?subject=Event%20Support%20Booking" class="inline-block transition-opacity hover:opacity-90">
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952902443.png" 
-                alt="Get Quote"
-                class="h-16 w-auto"
-              />
-            </a>
           </div>
 
         </div>
