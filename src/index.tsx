@@ -50,7 +50,7 @@ app.get('/', (c) => {
         <div class="flex items-center gap-4">
           {/* Discreet CRS Logo */}
           <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS%20TRANSPARENT.png" 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/resize%20smaller%20crs/logo-crs-v3.png" 
             alt="CRS"
             class="max-h-8 md:max-h-8 w-auto"
           />
