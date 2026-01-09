@@ -158,11 +158,10 @@ app.get('/', (c) => {
                 class="w-full max-w-xl mb-4"
               />
               <p class="text-lg md:text-xl text-off-white/90 mb-6 leading-relaxed font-medium border-l-2 border-mustard pl-4">
-                Serious about the work.<br/>
-                Easy to work with.
+                Industry standard facilities, built and run by people who love the work.
               </p>
               <p class="text-sm md:text-base text-off-white/80 mb-8 leading-relaxed max-w-2xl">
-                Infrastructure for recording, live sound, and streaming — built to work under pressure.
+                Cowley Road Studios is a professional recording and production space in Oxford. We build systems properly, maintain our equipment in-house, and support artists, engineers, and organisers who care about sound.
               </p>
               
               {/* Primary CTA - STUDIO YELLOW (Image Button) */}
@@ -214,7 +213,7 @@ app.get('/', (c) => {
               The Infrastructure
             </h2>
             <p class="text-base md:text-lg text-off-white/80 leading-relaxed max-w-3xl border-l-2 border-mustard pl-4">
-              Built by people who've done this before. Designed for repeatable outcomes.
+              This is a working studio, not a concept. Our rooms are designed for reliable sessions, clear monitoring, and calm delivery. We prioritise signal integrity, sensible layouts, and equipment we know how to maintain and repair ourselves.
             </p>
           </div>
 
@@ -352,110 +351,42 @@ app.get('/', (c) => {
           
           {/* PAGE TITLE */}
           <h2 class="text-4xl md:text-5xl font-black text-deep-charcoal mb-16 uppercase tracking-tight">
-            VENUE HIRE
+            WORKSHOP CAFÉ
           </h2>
 
           {/* INTRO */}
           <div class="mb-20 max-w-3xl">
-            <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
-              A flexible room with a serious backbone.
-            </h3>
             <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
-              Workshop Café is a compact, adaptable venue designed for gatherings where atmosphere matters — but reliability matters more.
+              Workshop Café is the public-facing space attached to the studios.
             </p>
             <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
-              It's suitable for talks, panels, listening sessions, launches, rehearsals, and private events that need to feel personal without feeling makeshift.
-            </p>
-            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed">
-              This is a room that works because it's part of a larger system.
+              It's a flexible room used for listening sessions, talks, small performances, and private hires. The sound system is installed and supported by the same engineers who run the studios.
             </p>
           </div>
 
-          {/* THE SPACE */}
+          {/* KEY FACTS */}
           <div class="mb-20 max-w-3xl">
             <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
-              Intimate by design. Capable by default.
-            </h3>
-            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
-              The café layout can be configured for seated talks, standing events, or hybrid setups. Power, connectivity, and basic technical infrastructure are already in place — nothing feels bolted on or temporary.
-            </p>
-            <div class="space-y-1 text-base text-deep-charcoal/80">
-              <p>It's comfortable.</p>
-              <p>It's legible.</p>
-              <p>It doesn't fight the event.</p>
-            </div>
-          </div>
-
-          {/* WHAT IT'S GOOD FOR */}
-          <div class="mb-20 max-w-3xl">
-            <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
-              Events that benefit from closeness and clarity.
+              Key facts
             </h3>
             <ul class="space-y-2 text-base md:text-lg text-deep-charcoal/80 mb-6">
               <li class="flex items-start">
                 <span class="text-mustard mr-3">—</span>
-                <span>Talks & panels</span>
+                <span>Intimate capacity</span>
               </li>
               <li class="flex items-start">
                 <span class="text-mustard mr-3">—</span>
-                <span>Album launches</span>
+                <span>Seated or standing formats</span>
               </li>
               <li class="flex items-start">
                 <span class="text-mustard mr-3">—</span>
-                <span>Listening events</span>
+                <span>High-quality monitoring and PA</span>
               </li>
               <li class="flex items-start">
                 <span class="text-mustard mr-3">—</span>
-                <span>Community gatherings</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-mustard mr-3">—</span>
-                <span>Private hires</span>
+                <span>Suitable for listening events, launches, and community use</span>
               </li>
             </ul>
-            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed">
-              If your event relies on people actually hearing, seeing, and paying attention — this room does the job.
-            </p>
-          </div>
-
-          {/* SIMPLE BY DEFAULT */}
-          <div class="mb-20 max-w-3xl">
-            <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
-              Simple by default.
-            </h3>
-            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
-              Venue hire can be exactly that: the room, the time, and the space.
-            </p>
-            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
-              For smaller or informal gatherings, the café works perfectly on its own.<br/>
-              For anything more involved, the next layer is already built in.
-            </p>
-            <div class="space-y-1 text-base text-deep-charcoal/80">
-              <p>You don't need to bring a system with you.</p>
-              <p>You're already inside one.</p>
-            </div>
-          </div>
-
-          {/* WHEN IT NEEDS TO WORK PROPERLY */}
-          <div class="mb-20 max-w-3xl border-l-4 border-mustard pl-6">
-            <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
-              When it needs to work properly.
-            </h3>
-            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
-              That's where AV & Event Support comes in.
-            </p>
-            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
-              Live sound, microphones, playback, lighting, and experienced technicians are available as an integrated option — not an afterthought.
-            </p>
-            <div class="space-y-1 text-base text-deep-charcoal/80 mb-4">
-              <p>Same building.</p>
-              <p>Same people.</p>
-              <p>Same standards.</p>
-            </div>
-            <div class="space-y-1 text-base text-deep-charcoal/80">
-              <p>No handover gaps.</p>
-              <p>No guesswork.</p>
-            </div>
           </div>
 
           {/* NEXT STEPS */}
@@ -492,24 +423,21 @@ app.get('/', (c) => {
           {/* Primary Headline */}
           <div class="mb-12">
             <h2 class="text-4xl md:text-6xl font-black text-off-white mb-4 uppercase tracking-tight">
-              LIVE SOUND & EVENT SUPPORT
+              WHEN IT HAS TO WORK
             </h2>
             <p class="text-lg md:text-xl text-off-white/90 border-l-2 border-electric-orange pl-4 max-w-3xl">
-              Engineered delivery for moments that can't fail.
+              We provide live sound support, AV setup, and equipment repair as part of the same practice that runs the studio.
             </p>
           </div>
 
           {/* Opening Copy */}
           <div class="mb-16 max-w-3xl">
             <p class="text-base md:text-lg text-off-white/80 leading-relaxed mb-4">
-              When events go live, there's no room for guesswork.
-            </p>
-            <p class="text-base md:text-lg text-off-white/80 leading-relaxed mb-4">
-              We provide professional PA, lighting, and technical support for talks, gigs, launches, screenings, and one-off moments where everything needs to work — calmly, cleanly, and on time.
+              That means fewer handovers, fewer assumptions, and calmer outcomes.
             </p>
             <p class="text-base md:text-lg text-off-white/90 leading-relaxed font-medium">
-              We're not here to experiment on your event.<br/>
-              We're here to deliver it properly.
+              If something breaks, we fix it.<br/>
+              If something isn't right for the job, we'll tell you.
             </p>
           </div>
 
