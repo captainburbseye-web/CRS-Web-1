@@ -9,6 +9,35 @@ const app = new Hono()
 app.use('/static/*', serveStatic({ root: './' }))
 app.use('/favicon.svg', serveStatic({ path: './favicon.svg' }))
 
+// System Monitor Status Endpoint
+app.get('/status.json', (c) => {
+  return c.json({
+    "system_monitor": {
+      "last_updated": "2026-01-09T08:00:00Z",
+      "zones": [
+        {
+          "id": "cafe",
+          "display_name": "CAFÉ",
+          "status": "OPEN",
+          "pulse_alert": false
+        },
+        {
+          "id": "studio",
+          "display_name": "STUDIO",
+          "status": "IN SESSION",
+          "pulse_alert": true
+        },
+        {
+          "id": "electronics",
+          "display_name": "ELECTRONICS",
+          "status": "TAKING REPAIRS",
+          "pulse_alert": false
+        }
+      ]
+    }
+  })
+})
+
 app.use(renderer)
 
 app.get('/', (c) => {
@@ -17,21 +46,19 @@ app.get('/', (c) => {
       {/* LIVE SYSTEM MONITOR - Infrastructure Layer Status Bar */}
       <div class="fixed top-0 left-0 right-0 bg-deep-charcoal h-8 border-b border-nettle-green z-50">
         <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-center">
-          <div class="flex items-center gap-8 text-xs font-mono text-off-white/60">
-            {/* CAFÉ STATUS */}
+          <div id="system-monitor-desktop" class="flex items-center gap-8 text-xs font-mono text-off-white/60">
+            {/* Status zones will be populated by JavaScript */}
             <div class="flex items-center gap-2">
-              <span class="uppercase tracking-wider">CAFÉ: OPEN</span>
+              <span id="pulse-cafe" class="w-2 h-2 bg-electric-orange rounded-full animate-pulse hidden"></span>
+              <span id="status-cafe" class="uppercase tracking-wider">CAFÉ: LOADING...</span>
             </div>
-            
-            {/* STUDIO STATUS with pulsing orange indicator */}
             <div class="flex items-center gap-2">
-              <span class="w-2 h-2 bg-electric-orange rounded-full animate-pulse"></span>
-              <span class="uppercase tracking-wider">STUDIO: IN SESSION</span>
+              <span id="pulse-studio" class="w-2 h-2 bg-electric-orange rounded-full animate-pulse hidden"></span>
+              <span id="status-studio" class="uppercase tracking-wider">STUDIO: LOADING...</span>
             </div>
-            
-            {/* ELECTRONICS STATUS */}
             <div class="flex items-center gap-2">
-              <span class="uppercase tracking-wider">ELECTRONICS: TAKING REPAIRS</span>
+              <span id="pulse-electronics" class="w-2 h-2 bg-electric-orange rounded-full animate-pulse hidden"></span>
+              <span id="status-electronics" class="uppercase tracking-wider">ELECTRONICS: LOADING...</span>
             </div>
           </div>
         </div>
@@ -95,15 +122,22 @@ app.get('/', (c) => {
       {/* LIVE STATUS BAR - Mobile responsive (below main nav) */}
       <div class="md:hidden fixed top-14 left-0 right-0 bg-deep-charcoal h-8 border-b border-nettle-green z-30">
         <div class="px-4 h-full flex items-center justify-center overflow-x-auto">
-          <div class="flex items-center gap-4 text-xs font-mono text-off-white/60 whitespace-nowrap">
-            <span class="uppercase">CAFÉ: OPEN</span>
-            <span class="text-nettle-green">|</span>
+          <div id="system-monitor-mobile" class="flex items-center gap-4 text-xs font-mono text-off-white/60 whitespace-nowrap">
+            {/* Status zones will be populated by JavaScript */}
             <div class="flex items-center gap-1">
-              <span class="w-1.5 h-1.5 bg-electric-orange rounded-full animate-pulse"></span>
-              <span class="uppercase">STUDIO: IN SESSION</span>
+              <span id="pulse-cafe-mobile" class="w-1.5 h-1.5 bg-electric-orange rounded-full animate-pulse hidden"></span>
+              <span id="status-cafe-mobile" class="uppercase">CAFÉ: LOADING...</span>
             </div>
             <span class="text-nettle-green">|</span>
-            <span class="uppercase">ELECTRONICS: REPAIRS</span>
+            <div class="flex items-center gap-1">
+              <span id="pulse-studio-mobile" class="w-1.5 h-1.5 bg-electric-orange rounded-full animate-pulse hidden"></span>
+              <span id="status-studio-mobile" class="uppercase">STUDIO: LOADING...</span>
+            </div>
+            <span class="text-nettle-green">|</span>
+            <div class="flex items-center gap-1">
+              <span id="pulse-electronics-mobile" class="w-1.5 h-1.5 bg-electric-orange rounded-full animate-pulse hidden"></span>
+              <span id="status-electronics-mobile" class="uppercase">ELECTRONICS: LOADING...</span>
+            </div>
           </div>
         </div>
       </div>
@@ -560,6 +594,64 @@ app.get('/', (c) => {
           </div>
         </div>
       </footer>
+
+      {/* System Monitor Fetch Script */}
+      <script dangerouslySetInnerHTML={{__html: `
+        // REMOTE SWITCHBOARD - Fetch live system status
+        async function updateSystemMonitor() {
+          try {
+            const response = await fetch('/status.json');
+            const data = await response.json();
+            
+            if (data && data.system_monitor && data.system_monitor.zones) {
+              const zones = data.system_monitor.zones;
+              
+              zones.forEach(zone => {
+                // Update desktop status
+                const statusEl = document.getElementById('status-' + zone.id);
+                const pulseEl = document.getElementById('pulse-' + zone.id);
+                
+                if (statusEl) {
+                  statusEl.textContent = zone.display_name + ': ' + zone.status;
+                }
+                
+                if (pulseEl) {
+                  if (zone.pulse_alert) {
+                    pulseEl.classList.remove('hidden');
+                  } else {
+                    pulseEl.classList.add('hidden');
+                  }
+                }
+                
+                // Update mobile status
+                const statusMobileEl = document.getElementById('status-' + zone.id + '-mobile');
+                const pulseMobileEl = document.getElementById('pulse-' + zone.id + '-mobile');
+                
+                if (statusMobileEl) {
+                  statusMobileEl.textContent = zone.display_name + ': ' + zone.status;
+                }
+                
+                if (pulseMobileEl) {
+                  if (zone.pulse_alert) {
+                    pulseMobileEl.classList.remove('hidden');
+                  } else {
+                    pulseMobileEl.classList.add('hidden');
+                  }
+                }
+              });
+            }
+          } catch (error) {
+            console.error('System Monitor: Failed to fetch status', error);
+            // Fallback to default states if fetch fails
+          }
+        }
+        
+        // Load status on page load
+        document.addEventListener('DOMContentLoaded', updateSystemMonitor);
+        
+        // Refresh every 60 seconds (optional)
+        setInterval(updateSystemMonitor, 60000);
+      `}} />
 
       {/* Mobile Menu Script */}
       <script dangerouslySetInnerHTML={{__html: `
