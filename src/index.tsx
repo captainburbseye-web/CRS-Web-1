@@ -44,7 +44,7 @@ app.get('/', (c) => {
   return c.render(
     <>
       {/* LIVE SYSTEM MONITOR - Hardcoded Status Bar */}
-      <div class="sticky top-0 z-50 w-full bg-[#1A1A1A] border-b-2 border-[#2D3E2F] py-2 px-4 flex justify-between items-center font-mono text-[10px] tracking-widest text-[#F5F5F5]/60">
+      <div class="sticky top-0 z-50 w-full h-10 bg-[#1A1A1A] border-b border-[#2D3E2F] flex justify-between items-center px-4 font-mono text-[10px] tracking-widest text-[#F5F5F5]/60">
         
         <div class="hidden md:block">LOC: 118_COWLEY_RD_OX4</div>
 
@@ -158,7 +158,8 @@ app.get('/', (c) => {
                 class="w-full max-w-xl mb-4"
               />
               <p class="text-lg md:text-xl text-off-white/90 mb-6 leading-relaxed font-medium border-l-2 border-mustard pl-4">
-                Industry standard. Calm delivery.
+                Serious about the work.<br/>
+                Easy to work with.
               </p>
               <p class="text-sm md:text-base text-off-white/80 mb-8 leading-relaxed max-w-2xl">
                 Infrastructure for recording, live sound, and streaming — built to work under pressure.
@@ -217,58 +218,66 @@ app.get('/', (c) => {
             </p>
           </div>
 
-          {/* HIGH DENSITY SPEC GRID - 4 COLUMNS */}
-          <div class="grid md:grid-cols-4 gap-6 mb-12">
+          {/* RACK-MOUNTED GRID - FIXED RATIOS */}
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 items-stretch">
             {/* Signal path */}
-            <div class="border-l-2 border-mustard pl-4">
+            <div class="border-l-2 border-mustard pl-4 flex flex-col">
               <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Signal path</h3>
-              <p class="text-sm text-off-white/80 leading-relaxed mb-3">
+              <p class="text-sm text-off-white/80 leading-relaxed mb-3 line-clamp-3">
                 Hybrid analogue / digital workflow. Clean gain staging. Fast recall.
               </p>
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-signal.jpg"
-                alt="Signal path"
-                class="w-full h-32 object-cover border-2 border-nettle-green/30"
-              />
+              <div class="aspect-square w-full overflow-hidden border-2 border-nettle-green/30 mt-auto">
+                <img 
+                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-signal.jpg"
+                  alt="Signal path"
+                  class="w-full h-full object-cover"
+                />
+              </div>
             </div>
 
             {/* Rooms */}
-            <div class="border-l-2 border-mustard pl-4">
+            <div class="border-l-2 border-mustard pl-4 flex flex-col">
               <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Rooms</h3>
-              <p class="text-sm text-off-white/80 leading-relaxed mb-3">
+              <p class="text-sm text-off-white/80 leading-relaxed mb-3 line-clamp-3">
                 Isolated environments for tracking, voice, production and edit work. Controlled monitoring.
               </p>
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-rooms.jpg"
-                alt="Studio rooms"
-                class="w-full h-32 object-cover border-2 border-nettle-green/30"
-              />
+              <div class="aspect-square w-full overflow-hidden border-2 border-nettle-green/30 mt-auto">
+                <img 
+                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-rooms.jpg"
+                  alt="Studio rooms"
+                  class="w-full h-full object-cover"
+                />
+              </div>
             </div>
 
             {/* Networked logic */}
-            <div class="border-l-2 border-mustard pl-4">
+            <div class="border-l-2 border-mustard pl-4 flex flex-col">
               <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Networked logic</h3>
-              <p class="text-sm text-off-white/80 leading-relaxed mb-3">
+              <p class="text-sm text-off-white/80 leading-relaxed mb-3 line-clamp-3">
                 Dante audio across the site. NDI-ready video backbone. Patch any source to any room.
               </p>
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-network.jpg"
-                alt="Network infrastructure"
-                class="w-full h-32 object-cover border-2 border-nettle-green/30"
-              />
+              <div class="aspect-square w-full overflow-hidden border-2 border-nettle-green/30 mt-auto">
+                <img 
+                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-network.jpg"
+                  alt="Network infrastructure"
+                  class="w-full h-full object-cover"
+                />
+              </div>
             </div>
 
             {/* Maintenance */}
-            <div class="border-l-2 border-mustard pl-4">
+            <div class="border-l-2 border-mustard pl-4 flex flex-col">
               <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Maintenance</h3>
-              <p class="text-sm text-off-white/80 leading-relaxed mb-3">
+              <p class="text-sm text-off-white/80 leading-relaxed mb-3 line-clamp-3">
                 In-house electronics bench keeps systems reliable and vintage gear performing beyond spec.
               </p>
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-maintenance.jpg"
-                alt="Maintenance"
-                class="w-full h-32 object-cover border-2 border-nettle-green/30"
-              />
+              <div class="aspect-square w-full overflow-hidden border-2 border-nettle-green/30 mt-auto">
+                <img 
+                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-maintenance.jpg"
+                  alt="Maintenance"
+                  class="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
 
@@ -478,23 +487,25 @@ app.get('/', (c) => {
             </p>
           </div>
 
-          {/* Service Blocks Grid */}
-          <div class="grid md:grid-cols-2 gap-12 mb-16">
+          {/* RACK-MOUNTED SERVICE GRID - FIXED RATIOS */}
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 items-stretch">
             
             {/* LIVE SOUND & PA */}
-            <div class="border-l-2 border-mustard pl-6">
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-live-sound.jpg"
-                alt="Live sound and PA - Professional audio engineering for events"
-                class="w-full h-48 object-cover border-2 border-mustard/30 mb-4"
-              />
+            <div class="border-l-2 border-mustard pl-6 flex flex-col">
+              <div class="aspect-[4/3] w-full overflow-hidden border-2 border-mustard/30 mb-4">
+                <img 
+                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-live-sound.jpg"
+                  alt="Live sound and PA - Professional audio engineering for events"
+                  class="w-full h-full object-cover"
+                />
+              </div>
               <h3 class="text-2xl md:text-3xl font-bold text-off-white mb-3 uppercase tracking-tight">
                 LIVE SOUND & PA
               </h3>
               <p class="text-sm md:text-base text-off-white/90 font-medium mb-3">
                 Clear, powerful sound for rooms that matter.
               </p>
-              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4">
+              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4 line-clamp-3">
                 From intimate talks to high-energy performances, we deploy reliable systems, tuned for the space and the audience.
               </p>
               <div class="space-y-2 text-sm text-off-white/80 font-mono mb-6">
@@ -505,14 +516,14 @@ app.get('/', (c) => {
             </div>
 
             {/* EVENT TECHNICIAN HIRE */}
-            <div class="border-l-2 border-mustard pl-6">
+            <div class="border-l-2 border-mustard pl-6 flex flex-col">
               <h3 class="text-2xl md:text-3xl font-bold text-off-white mb-3 uppercase tracking-tight">
                 EVENT TECHNICIAN HIRE
               </h3>
               <p class="text-sm md:text-base text-off-white/90 font-medium mb-3">
                 Calm operators under pressure.
               </p>
-              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4">
+              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4 line-clamp-3">
                 Experienced technicians who arrive prepared, solve problems quietly, and keep things moving while everyone else focuses on the moment.
               </p>
               <div class="space-y-2 text-sm text-off-white/80 mb-6">
@@ -522,14 +533,14 @@ app.get('/', (c) => {
             </div>
 
             {/* VENUE REINFORCEMENT */}
-            <div class="border-l-2 border-mustard pl-6">
+            <div class="border-l-2 border-mustard pl-6 flex flex-col">
               <h3 class="text-2xl md:text-3xl font-bold text-off-white mb-3 uppercase tracking-tight">
                 VENUE REINFORCEMENT
               </h3>
               <p class="text-sm md:text-base text-off-white/90 font-medium mb-3">
                 Small room. Big intent.
               </p>
-              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4">
+              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4 line-clamp-3">
                 We specialise in making compact venues sound and feel bigger than they are — without losing clarity or control.
               </p>
               <p class="text-sm text-off-white/60 font-mono mb-2">Perfect for:</p>
@@ -558,19 +569,21 @@ app.get('/', (c) => {
             </div>
 
             {/* REPAIRS */}
-            <div class="border-l-2 border-mustard pl-6">
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-repairs.jpg"
-                alt="Repair services - In-house electronics bench and diagnostics"
-                class="w-full h-48 object-cover border-2 border-mustard/30 mb-4"
-              />
+            <div class="border-l-2 border-mustard pl-6 flex flex-col">
+              <div class="aspect-[4/3] w-full overflow-hidden border-2 border-mustard/30 mb-4">
+                <img 
+                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-repairs.jpg"
+                  alt="Repair services - In-house electronics bench and diagnostics"
+                  class="w-full h-full object-cover"
+                />
+              </div>
               <h3 class="text-2xl md:text-3xl font-bold text-off-white mb-3 uppercase tracking-tight">
                 REPAIRS
               </h3>
               <p class="text-sm md:text-base text-off-white/90 font-medium mb-3">
                 Honest assessment. Proper fixes.
               </p>
-              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4">
+              <p class="text-sm md:text-base text-off-white/70 leading-relaxed mb-4 line-clamp-3">
                 In-house electronics bench for audio, studio, and vintage gear repair.
               </p>
               <div class="space-y-2 text-sm text-off-white/80 font-mono">
