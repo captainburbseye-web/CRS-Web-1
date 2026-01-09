@@ -33,8 +33,8 @@ app.get('/', (c) => {
               <a href="#cafe" class="text-off-white hover:text-mustard transition-colors text-sm">
                 Workshop Café
               </a>
-              <a href="#brewforce" class="text-off-white hover:text-mustard transition-colors text-sm">
-                Brewforce
+              <a href="#services" class="text-off-white hover:text-mustard transition-colors text-sm">
+                Services
               </a>
               <a href="#contact" class="text-off-white hover:text-mustard transition-colors text-sm">
                 Contact
@@ -59,8 +59,8 @@ app.get('/', (c) => {
             <a href="#cafe" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
               Workshop Café
             </a>
-            <a href="#brewforce" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
-              Brewforce
+            <a href="#services" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
+              Services
             </a>
             <a href="#contact" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
               Contact
@@ -129,9 +129,9 @@ app.get('/', (c) => {
               </p>
             </div>
             
-            {/* Column 3: Brewforce (Trigger) */}
+            {/* Column 3: Services (Trigger) */}
             <div class="border-l-2 border-mustard pl-4">
-              <h3 class="text-lg font-semibold text-off-white mb-3">Brewforce · The Trigger</h3>
+              <h3 class="text-lg font-semibold text-off-white mb-3">Services · The Trigger</h3>
               <p class="text-sm text-off-white/70 leading-relaxed">
                 Live sound, AV hire, and repair. Action when it has to work.
               </p>
@@ -389,11 +389,11 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* BLOCK 8: BREWFORCE SERVICES (BREWFORCE LAYER) */}
-      <section id="brewforce" class="py-20 px-4 bg-nettle-green">
+      {/* BLOCK 8: LIVE SERVICES (ACTION LAYER) */}
+      <section id="services" class="py-20 px-4 bg-nettle-green">
         <div class="max-w-7xl mx-auto">
           <h2 class="text-3xl md:text-5xl font-bold text-off-white mb-12">
-            Brewforce · Live & Repair
+            Live Sound & Event Support
           </h2>
           
           <div class="grid md:grid-cols-2 gap-12">
@@ -403,7 +403,7 @@ app.get('/', (c) => {
               <p class="text-base text-off-white/80 mb-6 leading-relaxed">
                 Lights. Sound. No drama. Professional PA, monitoring, and on-site support when it has to work.
               </p>
-              <a href="mailto:hello@cowleyroadstudios.com?subject=Brewforce%20Live%20Sound%20Enquiry" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
+              <a href="mailto:hello@cowleyroadstudios.com?subject=Live%20Sound%20Enquiry" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
                 [ Check Availability ]
               </a>
             </div>
@@ -414,7 +414,7 @@ app.get('/', (c) => {
               <p class="text-base text-off-white/80 mb-6 leading-relaxed">
                 If it's worth fixing, we'll fix it. Honest assessment, proper repair, no upsell.
               </p>
-              <a href="mailto:hello@cowleyroadstudios.com?subject=Brewforce%20Repair%20Request" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
+              <a href="mailto:hello@cowleyroadstudios.com?subject=Repair%20Request" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
                 [ Request a Repair Slot ]
               </a>
             </div>
@@ -510,7 +510,7 @@ app.get('/', (c) => {
               <ul class="space-y-2 text-sm">
                 <li><a href="#studios" class="text-off-white/70 hover:text-mustard transition-colors">Studios</a></li>
                 <li><a href="#cafe" class="text-off-white/70 hover:text-mustard transition-colors">Workshop Café</a></li>
-                <li><a href="#brewforce" class="text-off-white/70 hover:text-mustard transition-colors">Brewforce</a></li>
+                <li><a href="#services" class="text-off-white/70 hover:text-mustard transition-colors">Services</a></li>
                 <li><a href="#contact" class="text-off-white/70 hover:text-mustard transition-colors">Contact</a></li>
               </ul>
             </div>
