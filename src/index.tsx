@@ -153,9 +153,9 @@ app.get('/', (c) => {
                 Cowley Road Studios · Oxford
               </p>
               <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/title-crs-road-sign-transparent.png" 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Bold_architectural_header_title_graphic_Text_read-1767949149039.png" 
                 alt="COWLEY ROAD STUDIOS"
-                class="w-full max-w-2xl mb-4"
+                class="w-full max-w-xl mb-4"
               />
               <p class="text-lg md:text-xl text-off-white/90 mb-6 leading-relaxed font-medium border-l-2 border-mustard pl-4">
                 Industry standard. Calm delivery.
