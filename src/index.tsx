@@ -283,8 +283,8 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* THE SHIFT: CRS SPINE → WORKSHOP CAFÉ INTERFACE - SHARP 2PX RULE */}
-      <div class="h-0.5 bg-mustard w-full"></div>
+      {/* THE SHIFT: CRS SPINE → WORKSHOP CAFÉ INTERFACE - MUSTARD KEYLINE */}
+      <div class="border-t-2 border-mustard w-full"></div>
 
       {/* VENUE HIRE (Workshop Café Interface) */}
       <section id="cafe" class="py-10 px-4 bg-off-white">
@@ -379,7 +379,7 @@ app.get('/', (c) => {
               
               {/* Manifest Data */}
               <div class="pr-24">
-                <h3 class="text-2xl font-bold text-off-white mb-2 uppercase tracking-tight" style="font-family: 'Playfair Display', serif;">
+                <h3 class="text-2xl font-bold text-off-white mb-2 uppercase tracking-tight font-mono">
                   MISSION-CRITICAL AUDIO
                 </h3>
                 
@@ -417,7 +417,7 @@ app.get('/', (c) => {
               
               {/* Manifest Data */}
               <div class="pr-24">
-                <h3 class="text-2xl font-bold text-off-white mb-2 uppercase tracking-tight" style="font-family: 'Playfair Display', serif;">
+                <h3 class="text-2xl font-bold text-off-white mb-2 uppercase tracking-tight font-mono">
                   THE TECHNICAL BENCH
                 </h3>
                 
