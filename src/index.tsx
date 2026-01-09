@@ -102,18 +102,18 @@ app.get('/', (c) => {
           <div class="grid md:grid-cols-12 gap-8">
             {/* LEFT COLUMN: Technical Data (7/12) */}
             <div class="md:col-span-7">
-              <p class="text-xs font-mono text-mustard uppercase mb-3 tracking-wider">
+              <p class="text-sm font-mono text-mustard uppercase mb-4 tracking-wider">
                 Cowley Road Studios · Oxford
               </p>
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/title-crs-final-banner.png" 
                 alt="COWLEY ROAD STUDIOS"
-                class="w-full max-w-xl mb-4"
+                class="w-full max-w-xl mb-6"
               />
-              <p class="text-lg md:text-xl text-off-white/90 mb-6 leading-relaxed font-medium border-l-2 border-mustard pl-4">
+              <p class="text-2xl md:text-3xl text-off-white/90 mb-6 leading-relaxed font-bold border-l-4 border-mustard pl-6">
                 Industry standard facilities, built and run by people who love the work.
               </p>
-              <p class="text-sm md:text-base text-off-white/80 mb-8 leading-relaxed max-w-2xl">
+              <p class="text-base md:text-lg text-off-white/80 mb-8 leading-relaxed max-w-2xl">
                 Cowley Road Studios is a professional recording and production space in Oxford. We build systems properly, maintain our equipment in-house, and support artists, engineers, and organisers who care about sound.
               </p>
               
@@ -179,14 +179,14 @@ app.get('/', (c) => {
                 />
               </div>
               <div class="p-4 border-t-2 border-nettle-green">
-                <p class="text-[10px] font-mono text-mustard uppercase tracking-widest mb-1">UNIT 01: SIGNAL</p>
-                <h3 class="text-lg font-bold text-off-white mb-3 uppercase tracking-tight font-mono">HYBRID PATH</h3>
-                <div class="space-y-1 text-xs text-off-white/80 font-mono mb-3">
+                <p class="text-xs font-mono text-mustard uppercase tracking-widest mb-2">UNIT 01: SIGNAL</p>
+                <h3 class="text-xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">HYBRID PATH</h3>
+                <div class="space-y-2 text-sm text-off-white/80 font-mono mb-4">
                   <p>→ Audient Console</p>
                   <p>→ Neve-Style Pres</p>
                   <p>→ Sphere Modeling</p>
                 </div>
-                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider">STATUS: CALIBRATED</p>
+                <p class="text-xs font-mono text-electric-orange uppercase tracking-wider">STATUS: CALIBRATED</p>
               </div>
             </div>
 
@@ -200,9 +200,9 @@ app.get('/', (c) => {
                 />
               </div>
               <div class="p-4 border-t-2 border-nettle-green">
-                <p class="text-[10px] font-mono text-mustard uppercase tracking-widest mb-1">UNIT 02: ROOMS</p>
-                <h3 class="text-lg font-bold text-off-white mb-3 uppercase tracking-tight font-mono">ISOLATION</h3>
-                <div class="space-y-1 text-xs text-off-white/80 font-mono mb-3">
+                <p class="text-xs font-mono text-mustard uppercase tracking-widest mb-2">UNIT 02: ROOMS</p>
+                <h3 class="text-xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">ISOLATION</h3>
+                <div class="space-y-2 text-sm text-off-white/80 font-mono mb-4">
                   <p>→ 5 Decoupled Zones</p>
                   <p>→ Floating Floors</p>
                   <p>→ Neutral Tuning</p>
@@ -221,9 +221,9 @@ app.get('/', (c) => {
                 />
               </div>
               <div class="p-4 border-t-2 border-nettle-green">
-                <p class="text-[10px] font-mono text-mustard uppercase tracking-widest mb-1">UNIT 03: NETWORK</p>
-                <h3 class="text-lg font-bold text-off-white mb-3 uppercase tracking-tight font-mono">DANTE/NDI</h3>
-                <div class="space-y-1 text-xs text-off-white/80 font-mono mb-3">
+                <p class="text-xs font-mono text-mustard uppercase tracking-widest mb-2">UNIT 03: NETWORK</p>
+                <h3 class="text-xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">DANTE/NDI</h3>
+                <div class="space-y-2 text-sm text-off-white/80 font-mono mb-4">
                   <p>→ 32-Ch Dante</p>
                   <p>→ NDI Video Core</p>
                   <p>→ Multi-Room Sync</p>
@@ -242,9 +242,9 @@ app.get('/', (c) => {
                 />
               </div>
               <div class="p-4 border-t-2 border-nettle-green">
-                <p class="text-[10px] font-mono text-mustard uppercase tracking-widest mb-1">UNIT 04: REPAIR</p>
-                <h3 class="text-lg font-bold text-off-white mb-3 uppercase tracking-tight font-mono">THE BENCH</h3>
-                <div class="space-y-1 text-xs text-off-white/80 font-mono mb-3">
+                <p class="text-xs font-mono text-mustard uppercase tracking-widest mb-2">UNIT 04: REPAIR</p>
+                <h3 class="text-xl font-bold text-off-white mb-4 uppercase tracking-tight font-mono">THE BENCH</h3>
+                <div class="space-y-2 text-sm text-off-white/80 font-mono mb-4">
                   <p>→ Valve Testing</p>
                   <p>→ Analog Calibration</p>
                   <p>→ Parts Inventory</p>
@@ -392,7 +392,7 @@ app.get('/', (c) => {
                 </h3>
                 
                 {/* Dense Data Points - JetBrains Mono */}
-                <div class="space-y-0 font-mono text-xs text-off-white/90 tracking-tighter mb-2" style="line-height: 1.2;">
+                <div class="space-y-1 font-mono text-sm text-off-white/90 tracking-tight mb-3" style="line-height: 1.5;">
                   <p><span class="text-mustard">CAPACITY:</span> Systems for 50–200 cap</p>
                   <p><span class="text-mustard">SCOPE:</span> Analog, Valve, & Digital</p>
                   <p><span class="text-mustard">STANDARD:</span> NDI / Dante Integrated</p>
@@ -430,7 +430,7 @@ app.get('/', (c) => {
                 </h3>
                 
                 {/* Dense Data Points - JetBrains Mono */}
-                <div class="space-y-0 font-mono text-xs text-off-white/90 tracking-tighter mb-2" style="line-height: 1.2;">
+                <div class="space-y-1 font-mono text-sm text-off-white/90 tracking-tight mb-3" style="line-height: 1.5;">
                   <p><span class="text-mustard">STANDARD:</span> Component-Level Repair</p>
                   <p><span class="text-mustard">TURNAROUND:</span> 7–14 Day Typical</p>
                   <p><span class="text-mustard">FOCUS:</span> Refurbishment & Calibration</p>
