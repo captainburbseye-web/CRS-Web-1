@@ -576,41 +576,54 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer class="bg-deep-charcoal border-t border-off-white/10 text-off-white py-12 px-4">
+      {/* FOOTER: TERMINAL SPEC SHEET - 4 COLUMN GRID */}
+      <footer class="bg-deep-charcoal border-t-2 border-mustard text-off-white py-6 px-4">
         <div class="max-w-7xl mx-auto">
-          <div class="grid md:grid-cols-3 gap-8 mb-8">
-            {/* Left */}
-            <div>
-              <h3 class="text-2xl font-bold mb-3">Cowley Road Studios</h3>
-              <p class="text-sm text-off-white/70">
-                Engineering-led studio and venue in Oxford.
-              </p>
-            </div>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 font-mono text-[10px] leading-tight tracking-wider uppercase">
             
-            {/* Middle: Links */}
-            <div>
-              <h4 class="font-semibold mb-3 text-sm uppercase tracking-wider text-off-white/80">Navigate</h4>
-              <ul class="space-y-2 text-sm">
-                <li><a href="#infrastructure" class="text-off-white/70 hover:text-mustard transition-colors">Studios</a></li>
-                <li><a href="#cafe" class="text-off-white/70 hover:text-mustard transition-colors">Venue</a></li>
-                <li><a href="#services" class="text-off-white/70 hover:text-mustard transition-colors">AV / Repairs</a></li>
-                <li><a href="#contact" class="text-off-white/70 hover:text-mustard transition-colors">Book</a></li>
-              </ul>
+            {/* 01 / TERMINAL */}
+            <div class="border-l-2 border-mustard pl-3">
+              <p class="text-mustard font-bold mb-2">01 / TERMINAL</p>
+              <p class="text-off-white/80">LOC: 118 Cowley Rd</p>
+              <p class="text-off-white/80">OXF: OX4 1JE</p>
+              <p class="text-off-white/80">LAT: 51.7483° N</p>
+              <p class="text-off-white/80">LON: 1.2331° W</p>
             </div>
-            
-            {/* Right */}
-            <div>
-              <p class="text-sm text-off-white/60 italic mb-4">
-                Built to stay calm under load.
-              </p>
-              <a href="mailto:info@cowleyroadstudios.com" class="text-sm text-mustard hover:text-off-white transition-colors">
-                info@cowleyroadstudios.com
-              </a>
+
+            {/* 02 / STATUS */}
+            <div class="border-l-2 border-mustard pl-3">
+              <p class="text-mustard font-bold mb-2">02 / STATUS</p>
+              <p class="text-off-white/80">VER: 2026.1.0_LOCKED</p>
+              <p class="text-off-white/80">BUILD: CALIBRATED</p>
+              <p class="text-off-white/80">SIGNAL: ACTIVE</p>
+              <p class="text-off-white/80">Uptime: 99.9%</p>
             </div>
+
+            {/* 03 / NAVIGATION */}
+            <div class="border-l-2 border-mustard pl-3">
+              <p class="text-mustard font-bold mb-2">03 / NAVIGATION</p>
+              <p class="text-off-white/80"><a href="#infrastructure" class="hover:text-mustard transition-colors">_INFRA: [Studio Specs]</a></p>
+              <p class="text-off-white/80"><a href="#cafe" class="hover:text-mustard transition-colors">_CAFÉ: [Venue Hire]</a></p>
+              <p class="text-off-white/80"><a href="#services" class="hover:text-mustard transition-colors">_LOGS: [Repairs]</a></p>
+              <p class="text-off-white/80"><a href="#contact" class="hover:text-mustard transition-colors">_BOOK: [Schedule]</a></p>
+            </div>
+
+            {/* 04 / LEGAL */}
+            <div class="border-l-2 border-mustard pl-3">
+              <p class="text-mustard font-bold mb-2">04 / LEGAL</p>
+              <p class="text-off-white/80">© 2026 CRS & WC</p>
+              <p class="text-off-white/80">BUILT FOR OXFORD</p>
+              <p class="text-off-white/80">GRASSROOTS_CORE</p>
+              <p class="text-off-white/80">NO_CHAOS_POLICY</p>
+            </div>
+
           </div>
-          <div class="border-t border-off-white/10 pt-6 text-center text-xs text-off-white/50">
-            <p>&copy; 2026 Cowley Road Studios. All rights reserved.</p>
+
+          {/* Sub-footer: Contact */}
+          <div class="border-t border-mustard/30 mt-6 pt-4 text-center">
+            <p class="text-[10px] font-mono text-off-white/60 uppercase tracking-wider">
+              CONTACT: <a href="mailto:info@cowleyroadstudios.com" class="text-mustard hover:text-off-white transition-colors">info@cowleyroadstudios.com</a>
+            </p>
           </div>
         </div>
       </footer>
