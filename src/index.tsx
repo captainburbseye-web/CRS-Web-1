@@ -48,9 +48,9 @@ app.get('/', (c) => {
         
         {/* LEFT: CRS Logo + Location */}
         <div class="flex items-center gap-4">
-          {/* CRS VU-Meter Logo */}
+          {/* CRS Panel Logo */}
           <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/logo-crs-signal-meters.png" 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/title-crs-panel-transparent.png" 
             alt="CRS"
             class="max-h-8 w-auto"
           />
