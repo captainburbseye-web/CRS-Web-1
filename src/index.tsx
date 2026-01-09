@@ -297,64 +297,134 @@ app.get('/', (c) => {
       {/* THE SHIFT: CRS SPINE → WORKSHOP CAFÉ INTERFACE - SHARP 2PX RULE */}
       <div class="h-0.5 bg-mustard w-full"></div>
 
-      {/* SECTION 2: WORKSHOP CAFÉ (Interface) */}
+      {/* VENUE HIRE (Workshop Café Interface) */}
       <section id="cafe" class="py-20 px-4 bg-off-white">
-        <div class="max-w-7xl mx-auto text-center">
-          <h2 class="text-5xl md:text-7xl font-black text-deep-charcoal mb-6 uppercase tracking-tight">
-            Workshop Café
+        <div class="max-w-5xl mx-auto">
+          
+          {/* PAGE TITLE */}
+          <h2 class="text-4xl md:text-5xl font-black text-deep-charcoal mb-16 uppercase tracking-tight">
+            VENUE HIRE
           </h2>
-          <p class="text-xl text-deep-charcoal/90 mb-12 max-w-3xl mx-auto leading-relaxed">
-            A public-facing space that makes the whole system accessible.
-          </p>
 
-          <div class="max-w-4xl mx-auto mb-12">
-            <p class="text-lg text-deep-charcoal/80 leading-relaxed mb-6">
-              Coffee, bar, and a flexible room for small events — talks, listening sessions, community meetups, showcases.
+          {/* INTRO */}
+          <div class="mb-20 max-w-3xl">
+            <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
+              A flexible room with a serious backbone.
+            </h3>
+            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
+              Workshop Café is a compact, adaptable venue designed for gatherings where atmosphere matters — but reliability matters more.
             </p>
-            
-            <ul class="space-y-3 text-base text-deep-charcoal/80 mb-8 inline-block text-left">
-              <li class="flex items-start">
-                <span class="text-mustard mr-3">•</span>
-                <span>Clear booking</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-mustard mr-3">•</span>
-                <span>Practical capacity</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-mustard mr-3">•</span>
-                <span>Calm delivery</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-mustard mr-3">•</span>
-                <span>Accessible entry point into the studio world</span>
-              </li>
-            </ul>
+            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
+              It's suitable for talks, panels, listening sessions, launches, rehearsals, and private events that need to feel personal without feeling makeshift.
+            </p>
+            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed">
+              This is a room that works because it's part of a larger system.
+            </p>
+          </div>
 
-            {/* Fact Card */}
-            <div class="bg-mustard/10 border-2 border-mustard p-8 max-w-lg mx-auto mb-8" style="border-radius: 0;">
-              <ul class="space-y-3 text-base text-deep-charcoal/80">
-                <li class="flex justify-between">
-                  <span class="font-semibold">Capacity:</span>
-                  <span>~45-60 seated</span>
-                </li>
-                <li class="flex justify-between">
-                  <span class="font-semibold">Use:</span>
-                  <span>talks, launches, listening events</span>
-                </li>
-                <li class="flex justify-between">
-                  <span class="font-semibold">Location:</span>
-                  <span>Cowley Road, Oxford</span>
-                </li>
-              </ul>
+          {/* THE SPACE */}
+          <div class="mb-20 max-w-3xl">
+            <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
+              Intimate by design. Capable by default.
+            </h3>
+            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
+              The café layout can be configured for seated talks, standing events, or hybrid setups. Power, connectivity, and basic technical infrastructure are already in place — nothing feels bolted on or temporary.
+            </p>
+            <div class="space-y-1 text-base text-deep-charcoal/80">
+              <p>It's comfortable.</p>
+              <p>It's legible.</p>
+              <p>It doesn't fight the event.</p>
             </div>
           </div>
 
-          <div class="text-center">
-            <a href="mailto:hello@cowleyroadstudios.com?subject=Workshop%20Café%20Venue%20Hire" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider" style="border-radius: 0;">
-              [ Venue Hire Info ]
-            </a>
+          {/* WHAT IT'S GOOD FOR */}
+          <div class="mb-20 max-w-3xl">
+            <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
+              Events that benefit from closeness and clarity.
+            </h3>
+            <ul class="space-y-2 text-base md:text-lg text-deep-charcoal/80 mb-6">
+              <li class="flex items-start">
+                <span class="text-mustard mr-3">—</span>
+                <span>Talks & panels</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-mustard mr-3">—</span>
+                <span>Album launches</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-mustard mr-3">—</span>
+                <span>Listening events</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-mustard mr-3">—</span>
+                <span>Community gatherings</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-mustard mr-3">—</span>
+                <span>Private hires</span>
+              </li>
+            </ul>
+            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed">
+              If your event relies on people actually hearing, seeing, and paying attention — this room does the job.
+            </p>
           </div>
+
+          {/* SIMPLE BY DEFAULT */}
+          <div class="mb-20 max-w-3xl">
+            <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
+              Simple by default.
+            </h3>
+            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
+              Venue hire can be exactly that: the room, the time, and the space.
+            </p>
+            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
+              For smaller or informal gatherings, the café works perfectly on its own.<br/>
+              For anything more involved, the next layer is already built in.
+            </p>
+            <div class="space-y-1 text-base text-deep-charcoal/80">
+              <p>You don't need to bring a system with you.</p>
+              <p>You're already inside one.</p>
+            </div>
+          </div>
+
+          {/* WHEN IT NEEDS TO WORK PROPERLY */}
+          <div class="mb-20 max-w-3xl border-l-4 border-mustard pl-6">
+            <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
+              When it needs to work properly.
+            </h3>
+            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
+              That's where AV & Event Support comes in.
+            </p>
+            <p class="text-base md:text-lg text-deep-charcoal/80 leading-relaxed mb-4">
+              Live sound, microphones, playback, lighting, and experienced technicians are available as an integrated option — not an afterthought.
+            </p>
+            <div class="space-y-1 text-base text-deep-charcoal/80 mb-4">
+              <p>Same building.</p>
+              <p>Same people.</p>
+              <p>Same standards.</p>
+            </div>
+            <div class="space-y-1 text-base text-deep-charcoal/80">
+              <p>No handover gaps.</p>
+              <p>No guesswork.</p>
+            </div>
+          </div>
+
+          {/* NEXT STEPS */}
+          <div class="border-t-2 border-mustard/30 pt-12">
+            <p class="text-lg text-deep-charcoal/80 mb-8 max-w-2xl">
+              Start with the space.<br/>
+              Add support if and when it's needed.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#services" class="inline-block bg-deep-charcoal text-off-white px-8 py-4 font-bold hover:bg-deep-charcoal/90 transition-all text-sm uppercase tracking-wider border-2 border-deep-charcoal">
+                VIEW AV & EVENT SUPPORT
+              </a>
+              <a href="mailto:hello@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
+                CHECK VENUE AVAILABILITY
+              </a>
+            </div>
+          </div>
+
         </div>
       </section>
 
