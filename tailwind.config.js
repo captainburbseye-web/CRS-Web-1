@@ -7,24 +7,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        // BRUTALIST BOUTIQUE PALETTE
-        // PRIMARY (DOMINANT)
+        // SYSTEM TRUTH PALETTE
+        // CRS LAYER (Spine)
         'nettle-green': '#2d3e2f',
+        'deep-charcoal': '#1a1a1a',
+        
+        // WORKSHOP CAFÉ LAYER (Interface)
+        'off-white': '#faf9f6',
         'mustard': '#d4a017',
         
-        // SECONDARY / TEXTURAL
-        'deep-charcoal': '#1a1a1a',
-        'off-white': '#faf9f6',
-        'burnt-orange': '#cc5500',
-        'moss-green': '#8b9467',
-        
-        // BREWFORCE (CTAs ONLY)
+        // BREWFORCE LAYER (Trigger - CTAs ONLY)
         'electric-orange': '#FF4500',
+        
+        // Supporting
+        'moss-green': '#8b9467',
       },
       fontFamily: {
-        serif: ['Crimson Text', 'serif'],
-        mono: ['IBM Plex Mono', 'monospace'],
         body: ['Inter', 'sans-serif'],
+        mono: ['ui-monospace', 'SF Mono', 'Courier New', 'monospace'],
       },
     },
   },

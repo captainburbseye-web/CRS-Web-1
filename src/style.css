@@ -1,23 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @theme {
-  /* BRUTALIST BOUTIQUE COLOR PALETTE */
-  /* PRIMARY (DOMINANT) */
+  /* SYSTEM TRUTH COLOR PALETTE */
+  /* CRS LAYER (Spine) */
   --color-nettle-green: #2d3e2f;
+  --color-deep-charcoal: #1a1a1a;
+  
+  /* WORKSHOP CAFÉ LAYER (Interface) */
+  --color-off-white: #faf9f6;
   --color-mustard: #d4a017;
   
-  /* SECONDARY / TEXTURAL */
-  --color-deep-charcoal: #1a1a1a;
-  --color-off-white: #faf9f6;
-  --color-burnt-orange: #cc5500;
-  --color-moss-green: #8b9467;
-  
-  /* BREWFORCE (CTAs ONLY) */
+  /* BREWFORCE LAYER (Trigger - CTAs ONLY) */
   --color-electric-orange: #FF4500;
   
+  /* Supporting */
+  --color-moss-green: #8b9467;
+  
   /* Typography */
-  --font-serif: 'Crimson Text', serif;
-  --font-mono: 'IBM Plex Mono', monospace;
   --font-body: 'Inter', sans-serif;
 }
 
@@ -54,57 +53,30 @@ section {
   scroll-margin-top: 80px;
 }
 
-/* Brutalist Boutique Typography */
-/* Crimson Text - Headings (heritage, permanence, authority) */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Crimson Text', serif;
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-
-/* IBM Plex Mono - Technical Specs (engineering, precision) */
-.font-mono,
-code, pre {
-  font-family: 'IBM Plex Mono', monospace;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-}
-
-/* Inter - Body & System */
-.font-body,
+/* System Truth Typography */
+/* Inter - All UI (primary) */
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   letter-spacing: 0.01em;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
 p, li, a, span {
   line-height: 1.6;
   letter-spacing: 0.01em;
-  text-transform: none;
 }
 
-/* Brutalist utility classes */
-.font-serif {
-  font-family: 'Crimson Text', serif;
-}
-
-.brutalist-border {
-  border: 3px solid currentColor;
-}
-
-.grain-overlay {
-  position: relative;
-}
-
-.grain-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
-  pointer-events: none;
-  mix-blend-mode: overlay;
+/* Mono - Labels and specs only */
+.font-mono {
+  font-family: ui-monospace, 'SF Mono', 'Courier New', monospace;
+  letter-spacing: 0.02em;
 }
 
 /* Animation for fade-in on scroll */
