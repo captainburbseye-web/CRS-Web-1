@@ -194,14 +194,7 @@ app.get('/', (c) => {
 
             {/* UNIT 03: NETWORK */}
             <div class="border border-[#d4a017] bg-[#2d3e2f] flex flex-col h-full justify-between" style="border-radius: 0;">
-              <div class="h-40 w-full overflow-hidden">
-                <img 
-                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-network.jpg"
-                  alt="Network infrastructure"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="p-4 border-t border-[#d4a017]">
+              <div class="p-4">
                 <p class="text-sm font-mono text-[#d4a017] uppercase tracking-widest mb-2">UNIT 03: NETWORK</p>
                 <h3 class="text-2xl font-bold text-[#f5f5f5] mb-4 uppercase tracking-tight font-mono">DANTE/NDI</h3>
                 <div class="space-y-3 text-sm text-[#f5f5f5]/80 font-mono mb-4">
