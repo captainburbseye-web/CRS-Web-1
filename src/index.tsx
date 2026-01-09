@@ -132,7 +132,7 @@ app.get('/', (c) => {
                   Actually, it's a modular engine of expression.
                 </p>
                 <p class="leading-relaxed">
-                  With boutique gear, world-class AV, and a multi-room setup that rivals bigger labels, we offer the polish of Abbey Road without the glass walls. No gatekeepers. No posturing. Just you and the signal.
+                  With boutique gear, world-class AV, and a multi-room setup that rivals bigger labels, we offer world-class polish without the glass walls. No gatekeepers. No posturing. Just you and the signal.
                 </p>
               </div>
             </div>
@@ -192,7 +192,7 @@ app.get('/', (c) => {
               Founded by Daniel Burbidge and Ollie Rushen — veterans of the Oxford creative scene — CRS carries the legacy of Soundworks Studio. It's part recording studio, part AV command center, part electronics sanctuary.
             </p>
             <p class="text-lg leading-relaxed text-text-light font-semibold">
-              It's where professional meets personal. Where Abbey Road polish pairs with grassroots heart.
+              It's where professional meets personal. Where world-class polish pairs with grassroots heart.
             </p>
           </div>
           
