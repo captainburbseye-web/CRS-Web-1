@@ -69,8 +69,8 @@ app.get('/', (c) => {
         </div>
       </nav>
 
-      {/* LIVE STATUS BAR (sticky below nav) */}
-      <div class="fixed top-14 left-0 right-0 bg-deep-charcoal/95 backdrop-blur-sm border-b border-mustard/30 z-40">
+      {/* LIVE STATUS BAR (sticky below nav, hidden on mobile to save vertical space) */}
+      <div class="hidden md:block fixed top-14 left-0 right-0 bg-deep-charcoal/95 backdrop-blur-sm border-b border-mustard/30 z-40">
         <div class="max-w-7xl mx-auto px-4 py-2">
           <div class="flex flex-wrap gap-x-6 gap-y-1 text-xs font-mono text-off-white/80">
             <a href="#cafe" class="hover:text-mustard transition-colors">
@@ -90,7 +90,7 @@ app.get('/', (c) => {
       </div>
 
       {/* HERO (CRS + Brewforce CTA) */}
-      <section id="hero" class="pt-32 pb-20 px-4 bg-nettle-green">
+      <section id="hero" class="pt-20 md:pt-32 pb-16 md:pb-20 px-4 bg-nettle-green">
         <div class="max-w-7xl mx-auto">
           <div class="grid md:grid-cols-12 gap-12 items-center">
             {/* Left column (7/12) */}
@@ -98,23 +98,24 @@ app.get('/', (c) => {
               <p class="text-xs font-mono text-mustard uppercase mb-6 tracking-wider">
                 Cowley Road Studios · Oxford
               </p>
-              <h1 class="text-7xl md:text-9xl font-black uppercase text-off-white mb-8 leading-none tracking-tight">
+              <h1 class="text-5xl md:text-9xl font-black uppercase text-off-white mb-6 md:mb-8 leading-none tracking-tight">
                 COWLEY ROAD STUDIOS
               </h1>
-              <p class="text-2xl md:text-3xl text-off-white/90 mb-6 leading-relaxed font-medium">
+              <p class="text-xl md:text-3xl text-off-white/90 mb-4 md:mb-6 leading-relaxed font-medium">
                 Industry standard. Calm delivery.
               </p>
-              <p class="text-lg text-off-white/80 mb-10 leading-relaxed max-w-2xl">
+              <p class="text-base md:text-lg text-off-white/80 mb-8 md:mb-10 leading-relaxed max-w-2xl">
                 Infrastructure for recording, live sound, and streaming — built to work under pressure.
               </p>
               
-              {/* Primary + Secondary CTAs */}
-              <div class="flex flex-col sm:flex-row gap-4 items-start mb-6">
+              {/* Primary CTA (always visible) */}
+              <div class="mb-4">
                 <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
                   [ Book a Session ]
                 </a>
               </div>
-              <div class="flex flex-wrap gap-4 text-sm">
+              {/* Secondary CTAs (desktop only to avoid orange noise on mobile) */}
+              <div class="hidden md:flex flex-wrap gap-4 text-sm">
                 <a href="#cafe" class="text-off-white hover:text-mustard transition-colors">
                   Venue Hire →
                 </a>
@@ -127,8 +128,8 @@ app.get('/', (c) => {
               </div>
             </div>
             
-            {/* Right column (5/12) */}
-            <div class="md:col-span-5">
+            {/* Right column (5/12) - Hidden on mobile to keep hero above fold */}
+            <div class="hidden md:block md:col-span-5">
               <div class="aspect-square bg-deep-charcoal/30 flex items-center justify-center text-off-white/40 text-xs font-mono">
                 [STUDIO PHOTO / SIGNAL DIAGRAM]
               </div>
@@ -184,6 +185,10 @@ app.get('/', (c) => {
             </div>
           </div>
 
+          <p class="text-base text-off-white/70 text-center mb-8 italic">
+            Built on decades of real-world studio, live, and repair experience.
+          </p>
+          
           <div class="text-center">
             <a href="#contact" class="inline-block border-2 border-mustard text-off-white px-8 py-3 font-semibold hover:bg-mustard hover:text-deep-charcoal transition-all text-sm uppercase tracking-wider">
               [ View Full Spec Sheet ]
@@ -280,7 +285,7 @@ app.get('/', (c) => {
             {/* Live sound + AV */}
             <div class="border-l-4 border-mustard pl-6">
               <h3 class="text-3xl md:text-4xl font-bold text-off-white mb-4">Live sound + AV hire</h3>
-              <ul class="space-y-3 text-lg text-off-white/80 mb-6">
+              <ul class="space-y-3 text-base md:text-lg text-off-white/80 mb-6">
                 <li class="flex items-start">
                   <span class="text-mustard mr-3">•</span>
                   <span><strong>Live sound:</strong> engineered, not improvised</span>
@@ -299,10 +304,10 @@ app.get('/', (c) => {
               </a>
             </div>
 
-            {/* Repairs */}
+            {/* Repairs - Hide second orange CTA on mobile */}
             <div class="border-l-4 border-mustard pl-6">
               <h3 class="text-3xl md:text-4xl font-bold text-off-white mb-4">Repairs</h3>
-              <ul class="space-y-3 text-lg text-off-white/80 mb-6">
+              <ul class="space-y-3 text-base md:text-lg text-off-white/80 mb-6">
                 <li class="flex items-start">
                   <span class="text-mustard mr-3">•</span>
                   <span><strong>Repairs:</strong> honest assessment, proper fixes</span>
@@ -316,7 +321,8 @@ app.get('/', (c) => {
                   <span>No upsell, no chaos</span>
                 </li>
               </ul>
-              <a href="mailto:hello@cowleyroadstudios.com?subject=Repair%20Request" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
+              {/* Hide second CTA on mobile to avoid orange noise */}
+              <a href="mailto:hello@cowleyroadstudios.com?subject=Repair%20Request" class="hidden md:inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
                 [ Bring a Repair ]
               </a>
             </div>
