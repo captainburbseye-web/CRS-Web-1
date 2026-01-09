@@ -43,29 +43,37 @@ app.use(renderer)
 app.get('/', (c) => {
   return c.render(
     <>
-      {/* LIVE SYSTEM MONITOR - Infrastructure Layer Status Bar */}
-      <div class="fixed top-0 left-0 right-0 bg-deep-charcoal h-8 border-b border-nettle-green z-50">
-        <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-center">
-          <div id="system-monitor-desktop" class="flex items-center gap-8 text-xs font-mono text-off-white/60">
-            {/* CAFÉ STATUS */}
-            <div class="flex items-center gap-2">
-              <span class="uppercase tracking-wider">[ CAFÉ: OPEN ]</span>
-            </div>
-            {/* STUDIO STATUS with pulsing orange indicator */}
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 bg-electric-orange rounded-full animate-pulse"></span>
-              <span class="uppercase tracking-wider">[ STUDIO: IN SESSION ]</span>
-            </div>
-            {/* ELECTRONICS STATUS */}
-            <div class="flex items-center gap-2">
-              <span class="uppercase tracking-wider">[ ELECTRONICS: TAKING REPAIRS ]</span>
-            </div>
+      {/* LIVE SYSTEM MONITOR - Hardcoded Status Bar */}
+      <div class="sticky top-0 z-50 w-full bg-[#1A1A1A] border-b-2 border-[#2D3E2F] py-2 px-4 flex justify-between items-center font-mono text-[10px] tracking-widest text-[#F5F5F5]/60">
+        
+        <div class="hidden md:block">LOC: 118_COWLEY_RD_OX4</div>
+
+        <div class="flex gap-6 md:gap-12 mx-auto uppercase">
+          <div class="flex items-center gap-2">
+            <span class="text-white">CAFÉ:</span> 
+            <span class="text-white font-bold">OPEN</span>
+          </div>
+          
+          <div class="flex items-center gap-2">
+            <span class="text-white">STUDIO:</span> 
+            <span class="text-white font-bold">IN SESSION</span>
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF4500] opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-[#FF4500]"></span>
+            </span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <span class="text-white">ELECTRONICS:</span> 
+            <span class="text-white font-bold">TAKING REPAIRS</span>
           </div>
         </div>
+
+        <div class="hidden md:block">SYS_ACTIVE: 2026_v2.1</div>
       </div>
 
-      {/* Navigation - CRS Shell (moved down to accommodate status bar) */}
-      <nav class="fixed top-8 left-0 right-0 bg-nettle-green/98 backdrop-blur-sm border-b border-off-white/10 z-40">
+      {/* Navigation - CRS Shell */}
+      <nav class="sticky top-0 bg-nettle-green/98 backdrop-blur-sm border-b border-off-white/10 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between items-center h-14">
             {/* Logo */}
@@ -144,9 +152,11 @@ app.get('/', (c) => {
               <p class="text-xs font-mono text-mustard uppercase mb-4 tracking-wider">
                 Cowley Road Studios · Oxford
               </p>
-              <h1 class="text-4xl md:text-6xl font-black uppercase text-off-white mb-4 leading-tight tracking-tight">
-                COWLEY ROAD STUDIOS
-              </h1>
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Bold_architectural_header_title_graphic_Text_read-1767949149039.png" 
+                alt="COWLEY ROAD STUDIOS"
+                class="w-full max-w-2xl mb-4"
+              />
               <p class="text-lg md:text-xl text-off-white/90 mb-6 leading-relaxed font-medium border-l-2 border-mustard pl-4">
                 Industry standard. Calm delivery.
               </p>
