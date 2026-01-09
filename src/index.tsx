@@ -137,13 +137,13 @@ app.get('/', (c) => {
       {/* SECTION 1: THE INFRASTRUCTURE (CRS SPINE - DARK) - HIGH DENSITY GRID */}
       <section id="infrastructure" class="py-16 px-8 md:px-12 lg:px-16 bg-[#0a0a0a] border-t-2 border-[#d4a017]">
         <div class="max-w-7xl mx-auto">
-          {/* Section Header - Left Aligned */}
+          {/* Section Header - CRS BASE LAYER */}
           <div class="mb-12">
-            <h2 class="text-3xl font-black text-[#f5f5f5] mb-4 uppercase tracking-tight">
-              The Infrastructure
+            <h2 class="text-4xl md:text-5xl font-black text-[#d4a017] mb-6 uppercase tracking-tight">
+              THE INFRASTRUCTURE
             </h2>
-            <p class="text-base md:text-lg text-[#f5f5f5]/80 leading-relaxed max-w-3xl border-l-2 border-[#d4a017] pl-4">
-              This is a working studio, not a concept. Our rooms are designed for reliable sessions, clear monitoring, and calm delivery. We prioritise signal integrity, sensible layouts, and equipment we know how to maintain and repair ourselves.
+            <p class="text-lg md:text-xl text-[#f5f5f5]/90 leading-relaxed max-w-3xl border-l-4 border-[#d4a017] pl-6">
+              A working studio, not a concept. Rooms designed for reliable sessions. Clear monitoring. Calm delivery. We prioritise signal integrity and equipment we maintain ourselves.
             </p>
           </div>
 
@@ -346,13 +346,13 @@ app.get('/', (c) => {
       <section id="services" class="py-16 px-8 md:px-12 lg:px-16 bg-deep-charcoal border-t-2 border-[#d4a017]">
         <div class="max-w-7xl mx-auto">
           
-          {/* Section Intro */}
-          <div class="mb-10">
-            <h2 class="text-3xl font-black text-[#f5f5f5] mb-4 uppercase tracking-tight">
+          {/* Section Intro - BREWFORCE ENERGY LAYER */}
+          <div class="mb-12">
+            <h2 class="text-5xl md:text-6xl font-black text-[#ff4d00] mb-6 uppercase tracking-tight">
               WHEN IT HAS TO WORK
             </h2>
-            <p class="text-base text-[#f5f5f5]/80 max-w-3xl border-l-2 border-electric-orange pl-4">
-              We provide live sound support, AV setup, and equipment repair as part of the same practice that runs the studio. Fewer handovers, fewer assumptions, calmer outcomes.
+            <p class="text-lg md:text-xl text-[#f5f5f5]/90 max-w-3xl border-l-4 border-[#ff4d00] pl-6 leading-relaxed">
+              Live sound support, AV setup, and equipment repair. Same practice that runs the studio. Fewer handovers. Fewer assumptions. Calmer outcomes.
             </p>
           </div>
 
@@ -372,12 +372,16 @@ app.get('/', (c) => {
               
               {/* Manifest Data */}
               <div class="pr-24">
-                <h3 class="text-2xl font-bold text-[#f5f5f5] mb-2 uppercase tracking-tight font-mono">
-                  MISSION-CRITICAL AUDIO
+                <h3 class="text-3xl md:text-4xl font-bold text-[#ff4d00] mb-3 uppercase tracking-tight font-mono">
+                  SMALL ROOM. SERIOUS RIG.
                 </h3>
                 
+                <p class="text-lg font-mono text-[#d4a017] mb-4 uppercase tracking-wide">
+                  MISSION-CRITICAL AUDIO
+                </p>
+                
                 {/* Dense Data Points - JetBrains Mono */}
-                <div class="space-y-1 font-mono text-sm text-[#f5f5f5]/90 tracking-tight mb-3" style="line-height: 1.5;">
+                <div class="space-y-2 font-mono text-sm text-[#f5f5f5]/90 tracking-tight mb-6" style="line-height: 1.5;">
                   <p><span class="text-[#d4a017]">CAPACITY:</span> Systems for 50–200 cap</p>
                   <p><span class="text-[#d4a017]">SCOPE:</span> Analog, Valve, & Digital</p>
                   <p><span class="text-[#d4a017]">STANDARD:</span> NDI / Dante Integrated</p>
@@ -410,12 +414,16 @@ app.get('/', (c) => {
               
               {/* Manifest Data */}
               <div class="pr-24">
-                <h3 class="text-2xl font-bold text-[#f5f5f5] mb-2 uppercase tracking-tight font-mono">
-                  THE TECHNICAL BENCH
+                <h3 class="text-3xl md:text-4xl font-bold text-[#ff4d00] mb-3 uppercase tracking-tight font-mono">
+                  ENGINEERED, NOT IMPROVISED.
                 </h3>
                 
+                <p class="text-lg font-mono text-[#d4a017] mb-4 uppercase tracking-wide">
+                  THE TECHNICAL BENCH
+                </p>
+                
                 {/* Dense Data Points - JetBrains Mono */}
-                <div class="space-y-1 font-mono text-sm text-[#f5f5f5]/90 tracking-tight mb-3" style="line-height: 1.5;">
+                <div class="space-y-2 font-mono text-sm text-[#f5f5f5]/90 tracking-tight mb-6" style="line-height: 1.5;">
                   <p><span class="text-[#d4a017]">STANDARD:</span> Component-Level Repair</p>
                   <p><span class="text-[#d4a017]">TURNAROUND:</span> 7–14 Day Typical</p>
                   <p><span class="text-[#d4a017]">FOCUS:</span> Refurbishment & Calibration</p>
