@@ -189,7 +189,7 @@ app.get('/', (c) => {
               A space built because too many talented people had nowhere to go. No access. No vibe. No home for the kind of creative friction that makes something real.
             </p>
             <p class="text-lg leading-relaxed text-text-light mb-6">
-              Founded by Daniel Burbidge and Ollie Rushen — veterans of the Oxford creative scene — CRS carries the legacy of Soundworks Studio. It's part recording studio, part AV command center, part electronics sanctuary.
+              Grew out of the work of Daniel Burbidge and Ollie Rushen — veterans of the Oxford creative scene — CRS carries the legacy of Soundworks Studio. It's part recording studio, part AV command center, part electronics sanctuary.
             </p>
             <p class="text-lg leading-relaxed text-text-light font-semibold">
               It's where professional meets personal. Where world-class polish pairs with grassroots heart.
