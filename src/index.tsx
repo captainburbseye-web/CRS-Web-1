@@ -419,7 +419,7 @@ app.get('/', (c) => {
               <a href="#services" class="inline-block bg-deep-charcoal text-off-white px-8 py-4 font-bold hover:bg-deep-charcoal/90 transition-all text-sm uppercase tracking-wider border-2 border-deep-charcoal">
                 VIEW AV & EVENT SUPPORT
               </a>
-              <a href="mailto:hello@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
+              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
                 CHECK VENUE AVAILABILITY
               </a>
             </div>
@@ -582,10 +582,10 @@ app.get('/', (c) => {
 
           {/* Primary CTAs */}
           <div class="flex flex-wrap gap-4 justify-center">
-            <a href="mailto:hello@cowleyroadstudios.com?subject=AV%20Availability%20Check" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
+            <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Availability%20Check" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
               [ CHECK AV AVAILABILITY ]
             </a>
-            <a href="mailto:hello@cowleyroadstudios.com?subject=Event%20Support%20Booking" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
+            <a href="mailto:info@cowleyroadstudios.com?subject=Event%20Support%20Booking" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
               [ BOOK EVENT SUPPORT ]
             </a>
           </div>
@@ -666,7 +666,7 @@ app.get('/', (c) => {
             <div>
               <div class="mb-8">
                 <p class="text-lg text-deep-charcoal/80 mb-4">
-                  <strong>Email:</strong> hello@cowleyroadstudios.com<br />
+                  <strong>Email:</strong> info@cowleyroadstudios.com<br />
                   <strong>Phone:</strong> Available on request
                 </p>
                 <p class="text-base text-deep-charcoal/60">
@@ -679,7 +679,7 @@ app.get('/', (c) => {
                 <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm text-center uppercase tracking-wider" style="border-radius: 0;">
                   [ Book ]
                 </a>
-                <a href="mailto:hello@cowleyroadstudios.com" class="block border-2 border-deep-charcoal text-deep-charcoal px-6 py-3 font-semibold hover:bg-deep-charcoal hover:text-off-white transition-all text-sm text-center uppercase tracking-wider" style="border-radius: 0;">
+                <a href="mailto:info@cowleyroadstudios.com" class="block border-2 border-deep-charcoal text-deep-charcoal px-6 py-3 font-semibold hover:bg-deep-charcoal hover:text-off-white transition-all text-sm text-center uppercase tracking-wider" style="border-radius: 0;">
                   [ Enquire ]
                 </a>
               </div>
@@ -740,8 +740,8 @@ app.get('/', (c) => {
               <p class="text-sm text-off-white/60 italic mb-4">
                 Built to stay calm under load.
               </p>
-              <a href="mailto:hello@cowleyroadstudios.com" class="text-sm text-mustard hover:text-off-white transition-colors">
-                hello@cowleyroadstudios.com
+              <a href="mailto:info@cowleyroadstudios.com" class="text-sm text-mustard hover:text-off-white transition-colors">
+                info@cowleyroadstudios.com
               </a>
             </div>
           </div>
