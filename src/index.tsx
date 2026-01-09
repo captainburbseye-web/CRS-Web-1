@@ -218,67 +218,93 @@ app.get('/', (c) => {
             </p>
           </div>
 
-          {/* RACK-MOUNTED GRID - FIXED RATIOS */}
+          {/* RACK-MOUNTED SPEC CARDS - TECHNICAL DATA */}
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 items-stretch">
-            {/* Signal path */}
-            <div class="border-l-2 border-mustard pl-4 flex flex-col">
-              <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Signal path</h3>
-              <p class="text-sm text-off-white/80 leading-relaxed mb-3 line-clamp-3">
-                Hybrid analogue / digital workflow. Clean gain staging. Fast recall.
-              </p>
-              <div class="aspect-square w-full overflow-hidden border-2 border-nettle-green/30 mt-auto">
+            
+            {/* UNIT 01: SIGNAL */}
+            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col">
+              <div class="aspect-square w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-signal.jpg"
                   alt="Signal path"
                   class="w-full h-full object-cover"
                 />
               </div>
+              <div class="p-4 border-t-2 border-nettle-green">
+                <p class="text-[10px] font-mono text-mustard uppercase tracking-widest mb-1">UNIT 01: SIGNAL</p>
+                <h3 class="text-lg font-bold text-off-white mb-3 uppercase tracking-tight font-mono">HYBRID PATH</h3>
+                <div class="space-y-1 text-xs text-off-white/80 font-mono mb-3">
+                  <p>→ Audient Console</p>
+                  <p>→ Neve-Style Pres</p>
+                  <p>→ Sphere Modeling</p>
+                </div>
+                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider">STATUS: CALIBRATED</p>
+              </div>
             </div>
 
-            {/* Rooms */}
-            <div class="border-l-2 border-mustard pl-4 flex flex-col">
-              <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Rooms</h3>
-              <p class="text-sm text-off-white/80 leading-relaxed mb-3 line-clamp-3">
-                Isolated environments for tracking, voice, production and edit work. Controlled monitoring.
-              </p>
-              <div class="aspect-square w-full overflow-hidden border-2 border-nettle-green/30 mt-auto">
+            {/* UNIT 02: ROOMS */}
+            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col">
+              <div class="aspect-square w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-rooms.jpg"
                   alt="Studio rooms"
                   class="w-full h-full object-cover"
                 />
               </div>
+              <div class="p-4 border-t-2 border-nettle-green">
+                <p class="text-[10px] font-mono text-mustard uppercase tracking-widest mb-1">UNIT 02: ROOMS</p>
+                <h3 class="text-lg font-bold text-off-white mb-3 uppercase tracking-tight font-mono">ISOLATION</h3>
+                <div class="space-y-1 text-xs text-off-white/80 font-mono mb-3">
+                  <p>→ 5 Decoupled Zones</p>
+                  <p>→ Floating Floors</p>
+                  <p>→ Neutral Tuning</p>
+                </div>
+                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider">STATUS: SECURE</p>
+              </div>
             </div>
 
-            {/* Networked logic */}
-            <div class="border-l-2 border-mustard pl-4 flex flex-col">
-              <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Networked logic</h3>
-              <p class="text-sm text-off-white/80 leading-relaxed mb-3 line-clamp-3">
-                Dante audio across the site. NDI-ready video backbone. Patch any source to any room.
-              </p>
-              <div class="aspect-square w-full overflow-hidden border-2 border-nettle-green/30 mt-auto">
+            {/* UNIT 03: NETWORK */}
+            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col">
+              <div class="aspect-square w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-network.jpg"
                   alt="Network infrastructure"
                   class="w-full h-full object-cover"
                 />
               </div>
+              <div class="p-4 border-t-2 border-nettle-green">
+                <p class="text-[10px] font-mono text-mustard uppercase tracking-widest mb-1">UNIT 03: NETWORK</p>
+                <h3 class="text-lg font-bold text-off-white mb-3 uppercase tracking-tight font-mono">DANTE/NDI</h3>
+                <div class="space-y-1 text-xs text-off-white/80 font-mono mb-3">
+                  <p>→ 32-Ch Dante</p>
+                  <p>→ NDI Video Core</p>
+                  <p>→ Multi-Room Sync</p>
+                </div>
+                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider">STATUS: ACTIVE</p>
+              </div>
             </div>
 
-            {/* Maintenance */}
-            <div class="border-l-2 border-mustard pl-4 flex flex-col">
-              <h3 class="text-lg font-bold text-off-white mb-2 uppercase tracking-wide font-mono">Maintenance</h3>
-              <p class="text-sm text-off-white/80 leading-relaxed mb-3 line-clamp-3">
-                In-house electronics bench keeps systems reliable and vintage gear performing beyond spec.
-              </p>
-              <div class="aspect-square w-full overflow-hidden border-2 border-nettle-green/30 mt-auto">
+            {/* UNIT 04: REPAIR */}
+            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col">
+              <div class="aspect-square w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-maintenance.jpg"
-                  alt="Maintenance"
+                  alt="Repair bench"
                   class="w-full h-full object-cover"
                 />
               </div>
+              <div class="p-4 border-t-2 border-nettle-green">
+                <p class="text-[10px] font-mono text-mustard uppercase tracking-widest mb-1">UNIT 04: REPAIR</p>
+                <h3 class="text-lg font-bold text-off-white mb-3 uppercase tracking-tight font-mono">THE BENCH</h3>
+                <div class="space-y-1 text-xs text-off-white/80 font-mono mb-3">
+                  <p>→ Valve Testing</p>
+                  <p>→ Analog Calibration</p>
+                  <p>→ Parts Inventory</p>
+                </div>
+                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider">STATUS: READY</p>
+              </div>
             </div>
+
           </div>
 
           {/* Equipment showcase (desktop only) */}
