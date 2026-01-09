@@ -43,103 +43,48 @@ app.use(renderer)
 app.get('/', (c) => {
   return c.render(
     <>
-      {/* LIVE SYSTEM MONITOR - Hardcoded Status Bar */}
-      <div class="sticky top-0 z-50 w-full h-10 bg-[#1A1A1A] border-b border-[#2D3E2F] flex justify-between items-center px-4 font-mono text-[10px] tracking-widest text-[#F5F5F5]/60">
+      {/* UNIFIED HEADER: SYSTEM MONITOR + NAVIGATION */}
+      <div class="sticky top-0 z-50 w-full h-10 bg-[#1A1A1A] border-b-2 border-[#2D3E2F] flex justify-between items-center px-4 font-mono text-[10px] tracking-widest text-[#F5F5F5]/60">
         
-        <div class="hidden md:block">LOC: 118_COWLEY_RD_OX4</div>
+        {/* LEFT: Location */}
+        <div class="hidden md:block text-[#F5F5F5]/60 uppercase">LOC: 118_COWLEY_RD_OX4</div>
 
-        <div class="flex gap-6 md:gap-12 mx-auto uppercase">
-          <div class="flex items-center gap-2">
+        {/* CENTER: System Monitor */}
+        <div class="flex gap-3 md:gap-6 mx-auto uppercase text-[#F5F5F5]">
+          <div class="flex items-center gap-1">
             <span class="text-white">CAFÉ:</span> 
             <span class="text-white font-bold">OPEN</span>
           </div>
           
-          <div class="flex items-center gap-2">
+          <span class="text-[#2D3E2F]">|</span>
+          
+          <div class="flex items-center gap-1">
             <span class="text-white">STUDIO:</span> 
             <span class="text-white font-bold">IN SESSION</span>
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FF4500] opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-[#FF4500]"></span>
+            <span class="relative flex h-2 w-2 ml-1">
+              <span class="animate-ping absolute inline-flex h-full w-full bg-[#FF4500] opacity-75" style="border-radius: 0;"></span>
+              <span class="relative inline-flex h-2 w-2 bg-[#FF4500]" style="border-radius: 0;"></span>
             </span>
           </div>
 
-          <div class="flex items-center gap-2">
-            <span class="text-white">ELECTRONICS:</span> 
-            <span class="text-white font-bold">TAKING REPAIRS</span>
+          <span class="text-[#2D3E2F]">|</span>
+
+          <div class="flex items-center gap-1">
+            <span class="text-white">REPAIRS:</span> 
+            <span class="text-white font-bold">ACTIVE</span>
           </div>
         </div>
 
-        <div class="hidden md:block">SYS_ACTIVE: 2026_v2.1</div>
-      </div>
-
-      {/* Navigation - CRS Shell */}
-      <nav class="sticky top-0 bg-nettle-green/98 backdrop-blur-sm border-b border-off-white/10 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex justify-between items-center h-14">
-            {/* Logo */}
-            <div class="flex-shrink-0">
-              <a href="#hero" class="text-sm font-semibold text-off-white tracking-tight">
-                Cowley Road Studios
-              </a>
-            </div>
-            
-            {/* Desktop Navigation - Reduced to 4 hard routes */}
-            <div class="hidden md:flex items-center space-x-8">
-              <a href="#infrastructure" class="text-off-white hover:text-mustard transition-colors text-sm">
-                Cowley Road Studios
-              </a>
-              <a href="#cafe" class="text-off-white hover:text-mustard transition-colors text-sm">
-                Workshop Café
-              </a>
-              <a href="#services" class="text-off-white hover:text-mustard transition-colors text-sm">
-                Live Sound & Event Support
-              </a>
-              <a href="#contact" class="text-off-white hover:text-mustard transition-colors text-sm">
-                Book
-              </a>
-            </div>
-            
-            {/* Mobile menu button */}
-            <div class="md:hidden">
-              <button id="mobile-menu-button" class="text-off-white hover:text-mustard">
-                <i class="fas fa-bars text-lg"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        {/* Mobile Navigation */}
-        <div id="mobile-menu" class="hidden md:hidden border-t border-off-white/10 bg-nettle-green">
-          <div class="px-4 pt-2 pb-4 space-y-2">
-            <a href="#infrastructure" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
-              Cowley Road Studios
-            </a>
-            <a href="#cafe" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
-              Workshop Café
-            </a>
-            <a href="#services" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
-              Live Sound & Event Support
-            </a>
-            <a href="#contact" class="block py-2 text-off-white hover:text-mustard transition-colors text-sm">
-              Book
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      {/* LIVE STATUS BAR - Mobile responsive (below main nav) */}
-      <div class="md:hidden fixed top-14 left-0 right-0 bg-deep-charcoal h-8 border-b border-nettle-green z-30">
-        <div class="px-4 h-full flex items-center justify-center overflow-x-auto">
-          <div id="system-monitor-mobile" class="flex items-center gap-4 text-xs font-mono text-off-white/60 whitespace-nowrap">
-            <span class="uppercase">[ CAFÉ: OPEN ]</span>
-            <span class="text-nettle-green">|</span>
-            <div class="flex items-center gap-1">
-              <span class="w-1.5 h-1.5 bg-electric-orange rounded-full animate-pulse"></span>
-              <span class="uppercase">[ STUDIO: IN SESSION ]</span>
-            </div>
-            <span class="text-nettle-green">|</span>
-            <span class="uppercase">[ ELECTRONICS: REPAIRS ]</span>
-          </div>
+        {/* RIGHT: Text Navigation */}
+        <div class="hidden md:flex items-center gap-4 text-[10px] uppercase text-[#F5F5F5]/80">
+          <span class="text-[#D4A017]">_NAV:</span>
+          <a href="#infrastructure" class="hover:text-[#D4A017] transition-colors">INFRA</a>
+          <span class="text-[#2D3E2F]">/</span>
+          <a href="#cafe" class="hover:text-[#D4A017] transition-colors">CAFÉ</a>
+          <span class="text-[#2D3E2F]">/</span>
+          <a href="#services" class="hover:text-[#D4A017] transition-colors">LOGISTICS</a>
+          <span class="text-[#2D3E2F]">/</span>
+          <a href="#contact" class="hover:text-[#D4A017] transition-colors">BOOK</a>
         </div>
       </div>
 
@@ -164,14 +109,10 @@ app.get('/', (c) => {
                 Cowley Road Studios is a professional recording and production space in Oxford. We build systems properly, maintain our equipment in-house, and support artists, engineers, and organisers who care about sound.
               </p>
               
-              {/* Primary CTA - STUDIO YELLOW (Image Button) */}
+              {/* Primary CTA - CSS Heavy-Duty Switch */}
               <div class="mb-4">
-                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block transition-opacity hover:opacity-90">
-                  <img 
-                    src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952891561.png" 
-                    alt="Book Studio"
-                    class="h-16 w-auto"
-                  />
+                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm" style="border-radius: 0;">
+                  [ BOOK STUDIO ]
                 </a>
               </div>
               
@@ -221,7 +162,7 @@ app.get('/', (c) => {
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 items-stretch">
             
             {/* UNIT 01: SIGNAL */}
-            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col">
+            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col h-full justify-between" style="border-radius: 0;">
               <div class="aspect-square w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-signal.jpg"
@@ -242,7 +183,7 @@ app.get('/', (c) => {
             </div>
 
             {/* UNIT 02: ROOMS */}
-            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col">
+            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col h-full justify-between" style="border-radius: 0;">
               <div class="aspect-square w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-rooms.jpg"
@@ -263,7 +204,7 @@ app.get('/', (c) => {
             </div>
 
             {/* UNIT 03: NETWORK */}
-            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col">
+            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col h-full justify-between" style="border-radius: 0;">
               <div class="aspect-square w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-network.jpg"
@@ -284,7 +225,7 @@ app.get('/', (c) => {
             </div>
 
             {/* UNIT 04: REPAIR */}
-            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col">
+            <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col h-full justify-between" style="border-radius: 0;">
               <div class="aspect-square w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-maintenance.jpg"
@@ -395,20 +336,12 @@ app.get('/', (c) => {
               Start with the space.<br/>
               Add support if and when it's needed.
             </p>
-            <div class="flex flex-wrap gap-4">
-              <a href="#services" class="inline-block transition-opacity hover:opacity-90">
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952899066.png" 
-                alt="View AV & Event Support"
-                class="h-16 w-auto"
-              />
-            </a>
-              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="inline-block transition-opacity hover:opacity-90">
-                <img 
-                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952895043.png" 
-                  alt="Check Venue Availability"
-                  class="h-16 w-auto"
-                />
+            <div class="flex flex-wrap gap-4 mt-auto">
+              <a href="#services" class="block w-full md:w-auto bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm" style="border-radius: 0;">
+                [ VIEW AV & EVENT SUPPORT ]
+              </a>
+              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="block w-full md:w-auto bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm" style="border-radius: 0;">
+                [ CHECK VENUE AVAILABILITY ]
               </a>
             </div>
           </div>
@@ -434,9 +367,9 @@ app.get('/', (c) => {
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             
             {/* LEFT BOX: MISSION-CRITICAL AUDIO (LIVE SOUND & EVENT SUPPORT) */}
-            <div class="border-2 border-nettle-green bg-deep-charcoal/50 p-4 relative">
+            <div class="border-2 border-nettle-green bg-deep-charcoal/50 p-4 relative flex flex-col h-full justify-between" style="border-radius: 0;">
               {/* Square ID Photo - Top Right */}
-              <div class="absolute top-4 right-4 w-20 h-20 border border-mustard/50 overflow-hidden">
+              <div class="absolute top-4 right-4 w-20 h-20 border border-[#D4A017] overflow-hidden" style="border-radius: 0;">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-live-sound.jpg"
                   alt="Live Sound"
@@ -446,12 +379,12 @@ app.get('/', (c) => {
               
               {/* Manifest Data */}
               <div class="pr-24">
-                <h3 class="text-2xl font-bold text-off-white mb-3 uppercase tracking-tight" style="font-family: 'Playfair Display', serif;">
+                <h3 class="text-2xl font-bold text-off-white mb-2 uppercase tracking-tight" style="font-family: 'Playfair Display', serif;">
                   MISSION-CRITICAL AUDIO
                 </h3>
                 
                 {/* Dense Data Points - JetBrains Mono */}
-                <div class="space-y-0.5 font-mono text-xs text-off-white/90 leading-tight mb-4">
+                <div class="space-y-0 font-mono text-xs text-off-white/90 tracking-tighter mb-2" style="line-height: 1.2;">
                   <p><span class="text-mustard">CAPACITY:</span> Systems for 50–200 cap</p>
                   <p><span class="text-mustard">SCOPE:</span> Analog, Valve, & Digital</p>
                   <p><span class="text-mustard">STANDARD:</span> NDI / Dante Integrated</p>
@@ -460,25 +393,21 @@ app.get('/', (c) => {
                 </div>
                 
                 {/* Status Indicator */}
-                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider mb-4">
+                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider mb-2">
                   STATUS: FIELD-READY
                 </p>
                 
-                {/* CTA */}
-                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="inline-block transition-opacity hover:opacity-90">
-                  <img 
-                    src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952902443.png" 
-                    alt="Check Availability"
-                    class="h-12 w-auto"
-                  />
+                {/* CTA - CSS Heavy-Duty Switch */}
+                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-xs mt-auto" style="border-radius: 0;">
+                  [ CHECK AVAILABILITY ]
                 </a>
               </div>
             </div>
 
             {/* RIGHT BOX: THE TECHNICAL BENCH (ELECTRONICS & AV REPAIR) */}
-            <div class="border-2 border-nettle-green bg-deep-charcoal/50 p-4 relative">
+            <div class="border-2 border-nettle-green bg-deep-charcoal/50 p-4 relative flex flex-col h-full justify-between" style="border-radius: 0;">
               {/* Square ID Photo - Top Right */}
-              <div class="absolute top-4 right-4 w-20 h-20 border border-mustard/50 overflow-hidden">
+              <div class="absolute top-4 right-4 w-20 h-20 border border-[#D4A017] overflow-hidden" style="border-radius: 0;">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-repairs.jpg"
                   alt="Repairs"
@@ -488,12 +417,12 @@ app.get('/', (c) => {
               
               {/* Manifest Data */}
               <div class="pr-24">
-                <h3 class="text-2xl font-bold text-off-white mb-3 uppercase tracking-tight" style="font-family: 'Playfair Display', serif;">
+                <h3 class="text-2xl font-bold text-off-white mb-2 uppercase tracking-tight" style="font-family: 'Playfair Display', serif;">
                   THE TECHNICAL BENCH
                 </h3>
                 
                 {/* Dense Data Points - JetBrains Mono */}
-                <div class="space-y-0.5 font-mono text-xs text-off-white/90 leading-tight mb-4">
+                <div class="space-y-0 font-mono text-xs text-off-white/90 tracking-tighter mb-2" style="line-height: 1.2;">
                   <p><span class="text-mustard">STANDARD:</span> Component-Level Repair</p>
                   <p><span class="text-mustard">TURNAROUND:</span> 7–14 Day Typical</p>
                   <p><span class="text-mustard">FOCUS:</span> Refurbishment & Calibration</p>
@@ -502,17 +431,13 @@ app.get('/', (c) => {
                 </div>
                 
                 {/* Status Indicator */}
-                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider mb-4">
+                <p class="text-[10px] font-mono text-electric-orange uppercase tracking-wider mb-2">
                   STATUS: BENCH ACTIVE
                 </p>
                 
-                {/* CTA */}
-                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="inline-block transition-opacity hover:opacity-90">
-                  <img 
-                    src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Remove_background-1767952902443.png" 
-                    alt="Request Repair Slot"
-                    class="h-12 w-auto"
-                  />
+                {/* CTA - CSS Heavy-Duty Switch */}
+                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-xs mt-auto" style="border-radius: 0;">
+                  [ REQUEST REPAIR SLOT ]
                 </a>
               </div>
             </div>
@@ -592,7 +517,7 @@ app.get('/', (c) => {
       <section id="contact" class="py-20 px-4 bg-off-white">
         <div class="max-w-7xl mx-auto">
           <div class="text-center mb-12">
-            <h2 class="text-5xl md:text-7xl font-black text-deep-charcoal mb-6 uppercase tracking-tight">
+            <h2 class="text-4xl md:text-5xl font-black text-deep-charcoal mb-6 uppercase tracking-tight">
               Tell us what you're making
             </h2>
             <p class="text-2xl text-deep-charcoal/80 max-w-3xl mx-auto leading-relaxed">
@@ -615,11 +540,11 @@ app.get('/', (c) => {
               
               {/* CTAs */}
               <div class="space-y-4">
-                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm text-center uppercase tracking-wider" style="border-radius: 0;">
-                  [ Book ]
+                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block bg-[#FF4500] text-off-white px-6 py-3 font-mono font-bold hover:invert transition-all text-sm text-center uppercase tracking-wider border-2 border-[#1A1A1A]" style="border-radius: 0;">
+                  [ BOOK ]
                 </a>
-                <a href="mailto:info@cowleyroadstudios.com" class="block border-2 border-deep-charcoal text-deep-charcoal px-6 py-3 font-semibold hover:bg-deep-charcoal hover:text-off-white transition-all text-sm text-center uppercase tracking-wider" style="border-radius: 0;">
-                  [ Enquire ]
+                <a href="mailto:info@cowleyroadstudios.com" class="block border-2 border-deep-charcoal text-deep-charcoal px-6 py-3 font-mono font-bold hover:bg-deep-charcoal hover:text-off-white transition-all text-sm text-center uppercase tracking-wider" style="border-radius: 0;">
+                  [ ENQUIRE ]
                 </a>
               </div>
             </div>
