@@ -70,8 +70,8 @@ app.get('/', (c) => {
             <span class="text-white">STUDIO:</span> 
             <span class="text-white font-bold">IN SESSION</span>
             <span class="relative flex h-2 w-2 ml-1">
-              <span class="animate-ping absolute inline-flex h-full w-full bg-[#FF4500] opacity-75" style="border-radius: 0;"></span>
-              <span class="relative inline-flex h-2 w-2 bg-[#FF4500]" style="border-radius: 0;"></span>
+              <span class="animate-ping absolute inline-flex h-full w-full bg-[#ff4d00] opacity-75" style="border-radius: 0;"></span>
+              <span class="relative inline-flex h-2 w-2 bg-[#ff4d00]" style="border-radius: 0;"></span>
             </span>
           </div>
 
@@ -108,7 +108,7 @@ app.get('/', (c) => {
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/title-crs-final-banner.png" 
                 alt="COWLEY ROAD STUDIOS"
-                class="w-full max-w-xl mb-6"
+                class="w-full max-w-md max-h-24 object-contain mb-6"
               />
               <p class="text-3xl md:text-4xl text-off-white/90 mb-6 leading-relaxed font-bold border-l-4 border-mustard pl-6">
                 Industry standard facilities, built and run by people who love the work.
@@ -119,7 +119,7 @@ app.get('/', (c) => {
               
               {/* Primary CTA - CSS Heavy-Duty Switch */}
               <div class="mb-4">
-                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
+                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block w-full bg-[#ff4d00] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
                   [ BOOK STUDIO ]
                 </a>
               </div>
@@ -143,7 +143,7 @@ app.get('/', (c) => {
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/hero-main.jpg"
                 alt="Cowley Road Studios professional recording equipment and infrastructure"
-                class="w-full h-auto object-cover border-2 border-mustard/30"
+                class="w-full max-h-[400px] object-cover border-2 border-mustard/30"
               />
               <p class="text-xs text-off-white/60 mt-2 font-mono">
                 Professional recording infrastructure. Industry standard.
@@ -171,7 +171,7 @@ app.get('/', (c) => {
             
             {/* UNIT 01: SIGNAL */}
             <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col h-full justify-between" style="border-radius: 0;">
-              <div class="aspect-square w-full overflow-hidden">
+              <div class="h-48 w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-signal.jpg"
                   alt="Signal path"
@@ -192,7 +192,7 @@ app.get('/', (c) => {
 
             {/* UNIT 02: ROOMS */}
             <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col h-full justify-between" style="border-radius: 0;">
-              <div class="aspect-square w-full overflow-hidden">
+              <div class="h-48 w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-rooms.jpg"
                   alt="Studio rooms"
@@ -213,7 +213,7 @@ app.get('/', (c) => {
 
             {/* UNIT 03: NETWORK */}
             <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col h-full justify-between" style="border-radius: 0;">
-              <div class="aspect-square w-full overflow-hidden">
+              <div class="h-48 w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-network.jpg"
                   alt="Network infrastructure"
@@ -234,7 +234,7 @@ app.get('/', (c) => {
 
             {/* UNIT 04: REPAIR */}
             <div class="border-2 border-nettle-green bg-deep-charcoal flex flex-col h-full justify-between" style="border-radius: 0;">
-              <div class="aspect-square w-full overflow-hidden">
+              <div class="h-48 w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-maintenance.jpg"
                   alt="Repair bench"
@@ -261,7 +261,7 @@ app.get('/', (c) => {
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/equipment-revox.jpg"
                 alt="Professional studio equipment - Revox tape machine"
-                class="w-full h-auto object-cover border-2 border-mustard/30"
+                class="w-full max-h-[400px] object-cover border-2 border-mustard/30"
               />
               <p class="text-xs text-off-white/60 mt-2 font-mono text-center">
                 Analog precision maintained beyond spec
@@ -271,7 +271,7 @@ app.get('/', (c) => {
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/equipment-tascam.jpg"
                 alt="Professional studio equipment - Tascam recorder"
-                class="w-full h-auto object-cover border-2 border-mustard/30"
+                class="w-full max-h-[400px] object-cover border-2 border-mustard/30"
               />
               <p class="text-xs text-off-white/60 mt-2 font-mono text-center">
                 Reliable recording infrastructure
@@ -345,10 +345,10 @@ app.get('/', (c) => {
               Add support if and when it's needed.
             </p>
             <div class="flex flex-wrap gap-4 mt-auto">
-              <a href="#services" class="block w-full md:w-auto bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
+              <a href="#services" class="block w-full md:w-auto bg-[#ff4d00] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
                 [ VIEW AV & EVENT SUPPORT ]
               </a>
-              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="block w-full md:w-auto bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
+              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="block w-full md:w-auto bg-[#ff4d00] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
                 [ CHECK VENUE AVAILABILITY ]
               </a>
             </div>
@@ -406,7 +406,7 @@ app.get('/', (c) => {
                 </p>
                 
                 {/* CTA - CSS Heavy-Duty Switch */}
-                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm mt-auto" style="border-radius: 0;">
+                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="block w-full bg-[#ff4d00] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm mt-auto" style="border-radius: 0;">
                   [ CHECK AVAILABILITY ]
                 </a>
               </div>
@@ -444,7 +444,7 @@ app.get('/', (c) => {
                 </p>
                 
                 {/* CTA - CSS Heavy-Duty Switch */}
-                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="block w-full bg-[#FF4500] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm mt-auto" style="border-radius: 0;">
+                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="block w-full bg-[#ff4d00] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm mt-auto" style="border-radius: 0;">
                   [ REQUEST REPAIR SLOT ]
                 </a>
               </div>
@@ -548,7 +548,7 @@ app.get('/', (c) => {
               
               {/* CTAs */}
               <div class="space-y-4">
-                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block bg-[#FF4500] text-off-white px-6 py-3 font-mono font-bold hover:invert transition-all text-sm text-center uppercase tracking-wider border-2 border-[#1A1A1A]" style="border-radius: 0;">
+                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block bg-[#ff4d00] text-off-white px-6 py-3 font-mono font-bold hover:invert transition-all text-sm text-center uppercase tracking-wider border-2 border-[#1A1A1A]" style="border-radius: 0;">
                   [ BOOK ]
                 </a>
                 <a href="mailto:info@cowleyroadstudios.com" class="block border-2 border-deep-charcoal text-deep-charcoal px-6 py-3 font-mono font-bold hover:bg-deep-charcoal hover:text-off-white transition-all text-sm text-center uppercase tracking-wider" style="border-radius: 0;">
