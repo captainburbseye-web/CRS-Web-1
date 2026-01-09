@@ -94,6 +94,14 @@ app.get('/', (c) => {
           <div class="grid md:grid-cols-12 gap-8">
             {/* LEFT COLUMN: Technical Data (7/12) */}
             <div class="md:col-span-7">
+              {/* Small CRS Logo Badge */}
+              <div class="mb-3">
+                <img 
+                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS%20TRANSPARENT.png" 
+                  alt="CRS Logo"
+                  class="h-12 w-auto"
+                />
+              </div>
               <p class="text-xs font-mono text-mustard uppercase mb-4 tracking-wider">
                 Cowley Road Studios · Oxford
               </p>

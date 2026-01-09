@@ -10,7 +10,7 @@ export const renderer = jsxRenderer(({ children }) => {
         <meta name="description" content="Industry-standard recording infrastructure. Calm delivery. Professional recording studio at 118 Cowley Road, Oxford." />
         
         {/* Favicon */}
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs%20ico.png" />
         
         {/* Google Fonts - Typography System (Locked) */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
