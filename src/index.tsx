@@ -78,10 +78,10 @@ app.get('/', (c) => {
               <p class="text-xs font-mono text-mustard uppercase mb-6 tracking-wider">
                 Cowley Road Studios · Oxford
               </p>
-              <h1 class="text-5xl md:text-7xl font-bold uppercase text-off-white mb-6 leading-none">
+              <h1 class="text-7xl md:text-9xl font-black uppercase text-off-white mb-6 leading-none tracking-tight">
                 COWLEY ROAD STUDIOS
               </h1>
-              <p class="text-xl md:text-2xl text-off-white/90 mb-10 leading-relaxed">
+              <p class="text-2xl md:text-3xl text-off-white/90 mb-10 leading-relaxed font-medium">
                 Industry Standard. Calm Delivery.
               </p>
               
@@ -115,24 +115,24 @@ app.get('/', (c) => {
           <div class="grid md:grid-cols-3 gap-8">
             {/* Column 1: CRS (Spine) */}
             <div class="border-l-2 border-mustard pl-4">
-              <h3 class="text-lg font-semibold text-off-white mb-3">CRS · The Spine</h3>
-              <p class="text-sm text-off-white/70 leading-relaxed">
+              <h3 class="text-2xl font-bold text-off-white mb-3">CRS · The Spine</h3>
+              <p class="text-base text-off-white/70 leading-relaxed">
                 The engineering core. Rooms, routing, and standards built for professional work.
               </p>
             </div>
             
             {/* Column 2: Workshop Café (Interface) */}
             <div class="border-l-2 border-mustard pl-4">
-              <h3 class="text-lg font-semibold text-off-white mb-3">Workshop Café · The Interface</h3>
-              <p class="text-sm text-off-white/70 leading-relaxed">
+              <h3 class="text-2xl font-bold text-off-white mb-3">Workshop Café · The Interface</h3>
+              <p class="text-base text-off-white/70 leading-relaxed">
                 A public-facing room inside the system. Talks, listening events, and community use.
               </p>
             </div>
             
             {/* Column 3: Services (Trigger) */}
             <div class="border-l-2 border-mustard pl-4">
-              <h3 class="text-lg font-semibold text-off-white mb-3">Services · The Trigger</h3>
-              <p class="text-sm text-off-white/70 leading-relaxed">
+              <h3 class="text-2xl font-bold text-off-white mb-3">Services · The Trigger</h3>
+              <p class="text-base text-off-white/70 leading-relaxed">
                 Live sound, AV hire, and repair. Action when it has to work.
               </p>
             </div>
@@ -143,10 +143,10 @@ app.get('/', (c) => {
       {/* BLOCK 3: STUDIOS & ROOMS GRID (CRS) */}
       <section id="studios" class="py-20 px-4 bg-nettle-green">
         <div class="max-w-7xl mx-auto">
-          <h2 class="text-3xl md:text-5xl font-bold text-off-white mb-4">
+          <h2 class="text-5xl md:text-7xl font-black text-off-white mb-6 uppercase tracking-tight">
             Studios & Signal Path
           </h2>
-          <p class="text-base text-off-white/80 mb-12 max-w-3xl">
+          <p class="text-lg text-off-white/80 mb-12 max-w-3xl">
             Rooms engineered for predictable results. Dante-first, low-noise signal flow.
           </p>
           
@@ -263,10 +263,10 @@ app.get('/', (c) => {
           <div class="grid md:grid-cols-2 gap-12 items-center">
             {/* Left */}
             <div>
-              <h2 class="text-2xl md:text-4xl font-bold text-off-white mb-4">
+              <h2 class="text-4xl md:text-6xl font-black text-off-white mb-6">
                 Built around signal integrity
               </h2>
-              <p class="text-base text-off-white/80 leading-relaxed">
+              <p class="text-lg text-off-white/80 leading-relaxed">
                 From input stage to record, routing is designed to stay quiet, repeatable, and transparent. Modern Dante and NDI where it counts, proven analog where it matters.
               </p>
             </div>
@@ -308,10 +308,10 @@ app.get('/', (c) => {
           <div class="grid md:grid-cols-2 gap-12 mb-16">
             {/* Left */}
             <div>
-              <h2 class="text-3xl md:text-5xl font-bold text-deep-charcoal mb-4">
+              <h2 class="text-5xl md:text-7xl font-black text-deep-charcoal mb-6 uppercase tracking-tight">
                 Workshop Café
               </h2>
-              <p class="text-base text-deep-charcoal/80 leading-relaxed">
+              <p class="text-lg text-deep-charcoal/80 leading-relaxed">
                 The civic side of Cowley Road Studios. A flexible room for talks, listening sessions, small performances, and community use.
               </p>
             </div>
@@ -342,7 +342,7 @@ app.get('/', (c) => {
 
           {/* BLOCK 7: CAFÉ USE CASE CARDS */}
           <div>
-            <h3 class="text-2xl font-bold text-deep-charcoal mb-8">Use the room</h3>
+            <h3 class="text-3xl md:text-4xl font-bold text-deep-charcoal mb-8">Use the room</h3>
             
             <div class="grid md:grid-cols-3 gap-8 mb-10">
               {/* Card 1: Talks & workshops */}
@@ -392,15 +392,15 @@ app.get('/', (c) => {
       {/* BLOCK 8: LIVE SERVICES (ACTION LAYER) */}
       <section id="services" class="py-20 px-4 bg-nettle-green">
         <div class="max-w-7xl mx-auto">
-          <h2 class="text-3xl md:text-5xl font-bold text-off-white mb-12">
+          <h2 class="text-5xl md:text-7xl font-black text-off-white mb-12 uppercase tracking-tight">
             Live Sound & Event Support
           </h2>
           
           <div class="grid md:grid-cols-2 gap-12">
             {/* Column 1: Live Sound & AV */}
             <div class="border-l-4 border-mustard pl-6">
-              <h3 class="text-2xl font-semibold text-off-white mb-4">Live Sound & AV</h3>
-              <p class="text-base text-off-white/80 mb-6 leading-relaxed">
+              <h3 class="text-3xl md:text-4xl font-bold text-off-white mb-4">Live Sound & AV</h3>
+              <p class="text-lg text-off-white/80 mb-6 leading-relaxed">
                 Lights. Sound. No drama. Professional PA, monitoring, and on-site support when it has to work.
               </p>
               <a href="mailto:hello@cowleyroadstudios.com?subject=Live%20Sound%20Enquiry" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
@@ -410,8 +410,8 @@ app.get('/', (c) => {
             
             {/* Column 2: AV Repair */}
             <div class="border-l-4 border-mustard pl-6">
-              <h3 class="text-2xl font-semibold text-off-white mb-4">AV Repair</h3>
-              <p class="text-base text-off-white/80 mb-6 leading-relaxed">
+              <h3 class="text-3xl md:text-4xl font-bold text-off-white mb-4">AV Repair</h3>
+              <p class="text-lg text-off-white/80 mb-6 leading-relaxed">
                 If it's worth fixing, we'll fix it. Honest assessment, proper repair, no upsell.
               </p>
               <a href="mailto:hello@cowleyroadstudios.com?subject=Repair%20Request" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
@@ -433,10 +433,10 @@ app.get('/', (c) => {
             
             {/* Right: Philosophy */}
             <div>
-              <h2 class="text-2xl md:text-4xl font-bold text-off-white mb-4">
+              <h2 class="text-4xl md:text-6xl font-black text-off-white mb-6">
                 Modern where it counts. Vintage where it matters.
               </h2>
-              <p class="text-base text-off-white/80 leading-relaxed">
+              <p class="text-lg text-off-white/80 leading-relaxed">
                 Digital networking and routing provide reliability and recall. Analog path options preserve character and workflow familiarity. The system is designed to support both approaches without compromise.
               </p>
             </div>
@@ -450,15 +450,15 @@ app.get('/', (c) => {
           <div class="grid md:grid-cols-2 gap-12">
             {/* Left: Contact & Booking */}
             <div>
-              <h2 class="text-3xl md:text-5xl font-bold text-deep-charcoal mb-6">
+              <h2 class="text-5xl md:text-7xl font-black text-deep-charcoal mb-8 uppercase tracking-tight">
                 Contact & booking
               </h2>
               <div class="mb-8">
-                <p class="text-base text-deep-charcoal/80 mb-4">
+                <p class="text-lg text-deep-charcoal/80 mb-4">
                   <strong>Email:</strong> hello@cowleyroadstudios.com<br />
                   <strong>Phone:</strong> Available on request
                 </p>
-                <p class="text-sm text-deep-charcoal/60">
+                <p class="text-base text-deep-charcoal/60">
                   Responses typically within 24 hours. Booking confirmations sent same day.
                 </p>
               </div>
@@ -498,7 +498,7 @@ app.get('/', (c) => {
           <div class="grid md:grid-cols-3 gap-8 mb-8">
             {/* Left */}
             <div>
-              <h3 class="text-lg font-semibold mb-3">Cowley Road Studios</h3>
+              <h3 class="text-2xl font-bold mb-3">Cowley Road Studios</h3>
               <p class="text-sm text-off-white/70">
                 Engineering-led studio and venue in Oxford.
               </p>
