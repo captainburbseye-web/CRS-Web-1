@@ -97,32 +97,65 @@ button:focus {
   outline-offset: 2px;
 }
 
-/* CRS HEAVY-DUTY SWITCH PROTOCOL */
+/* CRS HIGH-VOLTAGE SWITCH - VU-METER LOGIC */
 .crs-button {
-  background-color: #FF4500 !important; /* Fire Orange */
-  color: #1A1A1A !important;           /* Deep Charcoal */
+  background-color: #DC0000 !important; /* Bright Red Peak */
+  color: #FFFFFF !important;
   font-family: 'JetBrains Mono', monospace !important;
-  font-weight: 800 !important;
+  font-weight: 900 !important;
   text-transform: uppercase !important;
   letter-spacing: -0.05em !important;
-  border: 2px solid #1A1A1A !important;
-  border-radius: 0 !important;         /* Zero Softness */
+  border: 2px solid #8C0000 !important; /* Dark Red Shadow */
+  border-radius: 0 !important;
   padding: 12px 24px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: all 0.1s ease-in-out !important;
+  transition: all 0.05s ease-in-out !important; /* Instant response */
   cursor: pointer !important;
-  width: 100% !important;              /* Grid Fill */
+  width: 100% !important;
 }
 
 .crs-button:hover {
-  background-color: #1A1A1A !important;
-  color: #FF4500 !important;           /* Invert Signal */
-  box-shadow: 4px 4px 0px #D4A017 !important; /* Mustard Offset */
+  background-color: #FFA000 !important; /* Bright Gold Threshold */
+  color: #1A1A1A !important;
+  border-color: #B45A00 !important;
 }
 
 .crs-button:active {
-  transform: translate(2px, 2px) !important;
-  box-shadow: 0px 0px 0px !important;
+  background-color: #00B400 !important; /* Bright Green Signal */
+  color: #FFFFFF !important;
+  border-color: #006400 !important;
+  transform: scale(0.98);
+}
+
+/* CRS VU-BUTTON: AV/REPAIR SERVICES HIGH-VOLTAGE SWITCH */
+.crs-vu-button {
+  background-color: #DC0000 !important; /* Bright Red */
+  color: #FFFFFF !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border: 3px solid #8C0000 !important; /* Dark Red border */
+  border-radius: 0 !important;
+  padding: 14px 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.05s ease !important; /* Instant feedback */
+  cursor: pointer !important;
+  width: 100% !important;
+}
+
+.crs-vu-button:hover {
+  background-color: #FFA000 !important; /* Bright Gold */
+  color: #000000 !important;
+  border-color: #B45A00 !important; /* Dark Gold */
+}
+
+.crs-vu-button:active {
+  background-color: #00B400 !important; /* Bright Green */
+  color: #000000 !important;
+  transform: scale(0.98) !important;
 }

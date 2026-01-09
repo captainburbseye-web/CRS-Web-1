@@ -48,11 +48,11 @@ app.get('/', (c) => {
         
         {/* LEFT: CRS Logo (Discreet) + Location */}
         <div class="flex items-center gap-4">
-          {/* Discreet CRS Logo */}
+          {/* CRS VU-Meter Logo */}
           <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/resize%20smaller%20crs/logo-crs-v3.png" 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/logo-crs-signal-meters.png" 
             alt="CRS"
-            class="max-h-7 w-auto"
+            class="max-h-6 w-auto"
           />
           <div class="hidden md:block text-[#F5F5F5]/60 uppercase">LOC: 118_COWLEY_RD_OX4</div>
         </div>
@@ -70,8 +70,8 @@ app.get('/', (c) => {
             <span class="text-white">STUDIO:</span> 
             <span class="text-white font-bold">IN SESSION</span>
             <span class="relative flex h-2 w-2 ml-1">
-              <span class="animate-ping absolute inline-flex h-full w-full bg-[#ff4d00] opacity-75" style="border-radius: 0;"></span>
-              <span class="relative inline-flex h-2 w-2 bg-[#ff4d00]" style="border-radius: 0;"></span>
+              <span class="animate-ping absolute inline-flex h-full w-full bg-[#DC0000] opacity-75" style="border-radius: 0;"></span>
+              <span class="relative inline-flex h-2 w-2 bg-[#DC0000]" style="border-radius: 0;"></span>
             </span>
           </div>
 
@@ -97,7 +97,7 @@ app.get('/', (c) => {
       </div>
 
       {/* HERO (CRS SPINE - DARK CONTROL ROOM) - REDUCED HEIGHT */}
-      <section id="hero" class="max-h-[65vh] flex flex-col justify-center px-4 bg-deep-charcoal overflow-hidden">
+      <section id="hero" class="max-h-[60vh] flex flex-col justify-center px-4 bg-deep-charcoal overflow-hidden">
         <div class="max-w-7xl mx-auto w-full py-8">
           <div class="grid md:grid-cols-12 gap-8">
             {/* LEFT COLUMN: Technical Data (7/12) */}
@@ -257,22 +257,26 @@ app.get('/', (c) => {
 
           {/* Equipment showcase (desktop only) */}
           <div class="hidden md:grid md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
-            <div>
+            <div class="h-48 w-full overflow-hidden border-2 border-mustard/30">
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/equipment-revox.jpg"
                 alt="Professional studio equipment - Revox tape machine"
-                class="w-full max-h-[400px] object-cover border-2 border-mustard/30"
+                class="w-full h-full object-cover"
               />
+            </div>
+            <div class="mt-2">
               <p class="text-xs text-off-white/60 mt-2 font-mono text-center">
                 Analog precision maintained beyond spec
               </p>
             </div>
-            <div>
+            <div class="h-48 w-full overflow-hidden border-2 border-mustard/30">
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/equipment-tascam.jpg"
                 alt="Professional studio equipment - Tascam recorder"
-                class="w-full max-h-[400px] object-cover border-2 border-mustard/30"
+                class="w-full h-full object-cover"
               />
+            </div>
+            <div class="mt-2">
               <p class="text-xs text-off-white/60 mt-2 font-mono text-center">
                 Reliable recording infrastructure
               </p>
@@ -377,7 +381,7 @@ app.get('/', (c) => {
             {/* LEFT BOX: MISSION-CRITICAL AUDIO (LIVE SOUND & EVENT SUPPORT) */}
             <div class="border-2 border-nettle-green bg-deep-charcoal/50 p-4 relative flex flex-col h-full justify-between" style="border-radius: 0;">
               {/* Square ID Photo - Top Right */}
-              <div class="absolute top-4 right-4 w-20 h-20 border border-[#D4A017] overflow-hidden" style="border-radius: 0;">
+              <div class="absolute top-4 right-4 h-48 w-full max-w-[12rem] border border-[#D4A017] overflow-hidden" style="border-radius: 0;">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-live-sound.jpg"
                   alt="Live Sound"
@@ -405,8 +409,8 @@ app.get('/', (c) => {
                   STATUS: FIELD-READY
                 </p>
                 
-                {/* CTA - CSS Heavy-Duty Switch */}
-                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="crs-button mt-auto">
+                {/* CTA - VU-Meter High-Voltage Switch */}
+                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="crs-vu-button mt-auto">
                   [ CHECK AVAILABILITY ]
                 </a>
               </div>
@@ -415,7 +419,7 @@ app.get('/', (c) => {
             {/* RIGHT BOX: THE TECHNICAL BENCH (ELECTRONICS & AV REPAIR) */}
             <div class="border-2 border-nettle-green bg-deep-charcoal/50 p-4 relative flex flex-col h-full justify-between" style="border-radius: 0;">
               {/* Square ID Photo - Top Right */}
-              <div class="absolute top-4 right-4 w-20 h-20 border border-[#D4A017] overflow-hidden" style="border-radius: 0;">
+              <div class="absolute top-4 right-4 h-48 w-full max-w-[12rem] border border-[#D4A017] overflow-hidden" style="border-radius: 0;">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-repairs.jpg"
                   alt="Repairs"
@@ -443,8 +447,8 @@ app.get('/', (c) => {
                   STATUS: BENCH ACTIVE
                 </p>
                 
-                {/* CTA - CSS Heavy-Duty Switch */}
-                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="crs-button mt-auto">
+                {/* CTA - VU-Meter High-Voltage Switch */}
+                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="crs-vu-button mt-auto">
                   [ REQUEST REPAIR SLOT ]
                 </a>
               </div>
