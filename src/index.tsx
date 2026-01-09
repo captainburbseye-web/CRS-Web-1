@@ -52,7 +52,7 @@ app.get('/', (c) => {
           <img 
             src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/banner-cowley-road-studios-trimmed.png" 
             alt="CRS"
-            class="max-h-8 w-auto"
+            class="max-h-6 w-auto"
           />
           <div class="hidden md:block text-[#f5f5f5]/60 uppercase font-mono">LOC: 118_COWLEY_RD_OX4</div>
         </div>
@@ -75,7 +75,7 @@ app.get('/', (c) => {
             {/* LEFT COLUMN: Technical Data (7/12) */}
             <div class="md:col-span-7">
               {/* STATUS LINE - SYSTEM TRUTH */}
-              <div class="text-lg md:text-xl font-mono text-[#d4a017] uppercase mb-6 tracking-[0.3em] flex items-center gap-3">
+              <div class="text-lg md:text-xl font-mono text-[#d4a017] uppercase mb-6 tracking-[0.3em] flex items-center gap-3 status-line-animate">
                 <span>CAFÉ: OPEN</span>
                 <span class="text-[#d4a017]/30">|</span>
                 <span>STUDIO: IN SESSION</span>
@@ -92,7 +92,7 @@ app.get('/', (c) => {
                 class="w-full max-w-md max-h-24 object-contain mb-6"
               />
               <p class="text-3xl md:text-4xl text-[#f5f5f5]/90 mb-6 leading-relaxed font-bold border-l-4 border-[#d4a017] pl-6">
-                Industry standard facilities, built and run by people who love the work.
+                Built properly. Run by people who care.
               </p>
               <p class="text-base md:text-lg text-[#f5f5f5]/80 mb-8 leading-relaxed max-w-2xl">
                 Cowley Road Studios is a professional recording and production space in Oxford. We build systems properly, maintain our equipment in-house, and support artists, engineers, and organisers who care about sound.
@@ -135,7 +135,7 @@ app.get('/', (c) => {
       </section>
 
       {/* SECTION 1: THE INFRASTRUCTURE (CRS SPINE - DARK) - HIGH DENSITY GRID */}
-      <section id="infrastructure" class="py-10 px-8 md:px-12 lg:px-16 bg-[#0a0a0a] border-t-2 border-[#d4a017]">
+      <section id="infrastructure" class="py-16 px-8 md:px-12 lg:px-16 bg-[#0a0a0a] border-t-2 border-[#d4a017]">
         <div class="max-w-7xl mx-auto">
           {/* Section Header - Left Aligned */}
           <div class="mb-12">
@@ -152,7 +152,7 @@ app.get('/', (c) => {
             
             {/* UNIT 01: SIGNAL */}
             <div class="border border-[#d4a017] bg-[#2d3e2f] flex flex-col h-full justify-between" style="border-radius: 0;">
-              <div class="h-48 w-full overflow-hidden">
+              <div class="h-40 w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-signal.jpg"
                   alt="Signal path"
@@ -162,7 +162,7 @@ app.get('/', (c) => {
               <div class="p-4 border-t border-[#d4a017]">
                 <p class="text-sm font-mono text-[#d4a017] uppercase tracking-widest mb-2">UNIT 01: SIGNAL</p>
                 <h3 class="text-2xl font-bold text-[#f5f5f5] mb-4 uppercase tracking-tight font-mono">HYBRID PATH</h3>
-                <div class="space-y-2 text-sm text-[#f5f5f5]/80 font-mono mb-4">
+                <div class="space-y-3 text-sm text-[#f5f5f5]/80 font-mono mb-4">
                   <p>→ Audient Console</p>
                   <p>→ Neve-Style Pres</p>
                   <p>→ Sphere Modeling</p>
@@ -173,7 +173,7 @@ app.get('/', (c) => {
 
             {/* UNIT 02: ROOMS */}
             <div class="border border-[#d4a017] bg-[#2d3e2f] flex flex-col h-full justify-between" style="border-radius: 0;">
-              <div class="h-48 w-full overflow-hidden">
+              <div class="h-40 w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-rooms.jpg"
                   alt="Studio rooms"
@@ -183,7 +183,7 @@ app.get('/', (c) => {
               <div class="p-4 border-t border-[#d4a017]">
                 <p class="text-sm font-mono text-[#d4a017] uppercase tracking-widest mb-2">UNIT 02: ROOMS</p>
                 <h3 class="text-2xl font-bold text-[#f5f5f5] mb-4 uppercase tracking-tight font-mono">ISOLATION</h3>
-                <div class="space-y-2 text-sm text-[#f5f5f5]/80 font-mono mb-4">
+                <div class="space-y-3 text-sm text-[#f5f5f5]/80 font-mono mb-4">
                   <p>→ 5 Decoupled Zones</p>
                   <p>→ Floating Floors</p>
                   <p>→ Neutral Tuning</p>
@@ -194,7 +194,7 @@ app.get('/', (c) => {
 
             {/* UNIT 03: NETWORK */}
             <div class="border border-[#d4a017] bg-[#2d3e2f] flex flex-col h-full justify-between" style="border-radius: 0;">
-              <div class="h-48 w-full overflow-hidden">
+              <div class="h-40 w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-network.jpg"
                   alt="Network infrastructure"
@@ -204,7 +204,7 @@ app.get('/', (c) => {
               <div class="p-4 border-t border-[#d4a017]">
                 <p class="text-sm font-mono text-[#d4a017] uppercase tracking-widest mb-2">UNIT 03: NETWORK</p>
                 <h3 class="text-2xl font-bold text-[#f5f5f5] mb-4 uppercase tracking-tight font-mono">DANTE/NDI</h3>
-                <div class="space-y-2 text-sm text-[#f5f5f5]/80 font-mono mb-4">
+                <div class="space-y-3 text-sm text-[#f5f5f5]/80 font-mono mb-4">
                   <p>→ 32-Ch Dante</p>
                   <p>→ NDI Video Core</p>
                   <p>→ Multi-Room Sync</p>
@@ -215,7 +215,7 @@ app.get('/', (c) => {
 
             {/* UNIT 04: REPAIR */}
             <div class="border border-[#d4a017] bg-[#2d3e2f] flex flex-col h-full justify-between" style="border-radius: 0;">
-              <div class="h-48 w-full overflow-hidden">
+              <div class="h-40 w-full overflow-hidden">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-maintenance.jpg"
                   alt="Repair bench"
@@ -225,7 +225,7 @@ app.get('/', (c) => {
               <div class="p-4 border-t border-[#d4a017]">
                 <p class="text-sm font-mono text-[#d4a017] uppercase tracking-widest mb-2">UNIT 04: REPAIR</p>
                 <h3 class="text-2xl font-bold text-[#f5f5f5] mb-4 uppercase tracking-tight font-mono">THE BENCH</h3>
-                <div class="space-y-2 text-sm text-[#f5f5f5]/80 font-mono mb-4">
+                <div class="space-y-3 text-sm text-[#f5f5f5]/80 font-mono mb-4">
                   <p>→ Valve Testing</p>
                   <p>→ Analog Calibration</p>
                   <p>→ Parts Inventory</p>
@@ -238,7 +238,7 @@ app.get('/', (c) => {
 
           {/* Equipment showcase (desktop only) */}
           <div class="hidden md:grid md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
-            <div class="h-48 w-full overflow-hidden border-2 border-[#d4a017]/30">
+            <div class="h-40 w-full overflow-hidden border-2 border-[#d4a017]/30">
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/equipment-revox.jpg"
                 alt="Professional studio equipment - Revox tape machine"
@@ -250,7 +250,7 @@ app.get('/', (c) => {
                 Analog precision maintained beyond spec
               </p>
             </div>
-            <div class="h-48 w-full overflow-hidden border-2 border-[#d4a017]/30">
+            <div class="h-40 w-full overflow-hidden border-2 border-[#d4a017]/30">
               <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/equipment-tascam.jpg"
                 alt="Professional studio equipment - Tascam recorder"
@@ -280,7 +280,7 @@ app.get('/', (c) => {
       <div class="border-t-2 border-[#d4a017] w-full"></div>
 
       {/* VENUE HIRE (Workshop Café Interface) */}
-      <section id="cafe" class="py-10 px-8 md:px-12 lg:px-16 bg-off-white">
+      <section id="cafe" class="py-16 px-8 md:px-12 lg:px-16 bg-off-white">
         <div class="max-w-5xl mx-auto">
           
           {/* PAGE TITLE */}
@@ -303,7 +303,7 @@ app.get('/', (c) => {
             <h3 class="text-2xl md:text-3xl font-bold text-deep-charcoal mb-6">
               Key facts
             </h3>
-            <ul class="space-y-2 text-base md:text-lg text-deep-charcoal/80 mb-6">
+            <ul class="space-y-3 text-base md:text-lg text-deep-charcoal/80 mb-6">
               <li class="flex items-start">
                 <span class="text-[#d4a017] mr-3">—</span>
                 <span>Intimate capacity</span>
@@ -343,7 +343,7 @@ app.get('/', (c) => {
       </section>
 
       {/* SERVICES MANIFEST: TECHNICAL SPEC CARDS - DYMO LABEL FORMAT */}
-      <section id="services" class="py-10 px-8 md:px-12 lg:px-16 bg-deep-charcoal border-t-2 border-[#d4a017]">
+      <section id="services" class="py-16 px-8 md:px-12 lg:px-16 bg-deep-charcoal border-t-2 border-[#d4a017]">
         <div class="max-w-7xl mx-auto">
           
           {/* Section Intro */}
@@ -362,7 +362,7 @@ app.get('/', (c) => {
             {/* LEFT BOX: MISSION-CRITICAL AUDIO (LIVE SOUND & EVENT SUPPORT) */}
             <div class="border border-[#d4a017] bg-[#2d3e2f] p-4 relative flex flex-col h-full justify-between" style="border-radius: 0;">
               {/* Square ID Photo - Top Right */}
-              <div class="absolute top-4 right-4 h-48 w-full max-w-[12rem] border border-[#D4A017] overflow-hidden" style="border-radius: 0;">
+              <div class="absolute top-4 right-4 h-40 w-full max-w-[12rem] border border-[#D4A017] overflow-hidden" style="border-radius: 0;">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-live-sound.jpg"
                   alt="Live Sound"
@@ -400,7 +400,7 @@ app.get('/', (c) => {
             {/* RIGHT BOX: THE TECHNICAL BENCH (ELECTRONICS & AV REPAIR) */}
             <div class="border border-[#d4a017] bg-[#2d3e2f] p-4 relative flex flex-col h-full justify-between" style="border-radius: 0;">
               {/* Square ID Photo - Top Right */}
-              <div class="absolute top-4 right-4 h-48 w-full max-w-[12rem] border border-[#D4A017] overflow-hidden" style="border-radius: 0;">
+              <div class="absolute top-4 right-4 h-40 w-full max-w-[12rem] border border-[#D4A017] overflow-hidden" style="border-radius: 0;">
                 <img 
                   src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-repairs.jpg"
                   alt="Repairs"
@@ -451,7 +451,7 @@ app.get('/', (c) => {
       </section>
 
       {/* PROOF STRIP (fast trust) */}
-      <section class="py-10 px-4 bg-deep-charcoal">
+      <section class="py-16 px-4 bg-deep-charcoal">
         <div class="max-w-7xl mx-auto">
           <h2 class="text-3xl font-black text-[#f5f5f5] mb-8 text-center uppercase tracking-tight">
             What You Get Here
@@ -570,7 +570,7 @@ app.get('/', (c) => {
       </section>
 
       {/* FOOTER: TERMINAL SPEC SHEET - 4 COLUMN GRID */}
-      <footer class="bg-deep-charcoal border-t-2 border-[#d4a017] text-[#f5f5f5] py-6 px-4">
+      <footer class="bg-[#0a0a0a] border-t border-[#d4a017] text-[#f5f5f5] py-8 px-8 md:px-12 lg:px-16">
         <div class="max-w-7xl mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-4 gap-6 font-mono text-[10px] leading-tight tracking-wider uppercase">
             
@@ -586,10 +586,10 @@ app.get('/', (c) => {
             {/* 02 / STATUS */}
             <div class="border-l-2 border-[#d4a017] pl-3">
               <p class="text-[#d4a017] font-bold mb-2">02 / STATUS</p>
+              <p class="text-[#f5f5f5]/80">STATUS: OPERATIONAL</p>
               <p class="text-[#f5f5f5]/80">VER: 2026.1.0_LOCKED</p>
-              <p class="text-[#f5f5f5]/80">BUILD: CALIBRATED</p>
+              <p class="text-[#f5f5f5]/80">UPTIME: 99.9%</p>
               <p class="text-[#f5f5f5]/80">SIGNAL: ACTIVE</p>
-              <p class="text-[#f5f5f5]/80">Uptime: 99.9%</p>
             </div>
 
             {/* 03 / NAVIGATION */}

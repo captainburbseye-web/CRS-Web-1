@@ -104,7 +104,7 @@ button:focus {
   font-family: 'JetBrains Mono', monospace !important;
   font-weight: 800 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.1em !important; /* Increased for mechanical feel */
   border: none !important;
   border-radius: 0 !important; /* NO ROUNDED CORNERS */
   padding: 14px 32px !important;
@@ -119,11 +119,37 @@ button:focus {
 .crs-button:hover {
   background-color: #ff6a2e !important; /* Slight brightness shift */
   color: #f5f5f5 !important;
+  border: 1px solid #d4a017 !important; /* Mustard border on hover */
 }
 
 .crs-button:active {
   background-color: #ff4d00 !important;
-  transform: none !important; /* NO MOVEMENT */
+  transform: scale(0.98) !important; /* Tactile feedback */
+}
+
+/* MICRO-INTERACTIONS: MECHANICAL MOTION */
+@keyframes statusFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.status-line-animate {
+  animation: statusFadeIn 0.6s ease-out 0.3s both;
+}
+
+/* Card hover: subtle shift */
+.card-hover-shift {
+  transition: transform 0.1s ease;
+}
+
+.card-hover-shift:hover {
+  transform: translateX(2px);
 }
 
 /* CRS VU-BUTTON: AV/REPAIR SERVICES HIGH-VOLTAGE SWITCH */
