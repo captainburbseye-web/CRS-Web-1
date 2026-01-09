@@ -44,10 +44,18 @@ app.get('/', (c) => {
   return c.render(
     <>
       {/* UNIFIED HEADER: SYSTEM MONITOR + NAVIGATION */}
-      <div class="sticky top-0 z-50 w-full h-10 bg-[#1A1A1A] border-b-2 border-[#2D3E2F] flex justify-between items-center px-4 font-mono text-[10px] tracking-widest text-[#F5F5F5]/60">
+      <div class="sticky top-0 z-50 w-full h-12 bg-[#1A1A1A] border-b-2 border-[#2D3E2F] flex justify-between items-center px-4 font-mono text-[10px] tracking-widest text-[#F5F5F5]/60 relative">
         
-        {/* LEFT: Location */}
-        <div class="hidden md:block text-[#F5F5F5]/60 uppercase">LOC: 118_COWLEY_RD_OX4</div>
+        {/* LEFT: CRS Logo (Discreet) + Location */}
+        <div class="flex items-center gap-4">
+          {/* Discreet CRS Logo */}
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS%20TRANSPARENT.png" 
+            alt="CRS"
+            class="max-h-8 md:max-h-8 w-auto"
+          />
+          <div class="hidden md:block text-[#F5F5F5]/60 uppercase">LOC: 118_COWLEY_RD_OX4</div>
+        </div>
 
         {/* CENTER: System Monitor */}
         <div class="flex gap-3 md:gap-6 mx-auto uppercase text-[#F5F5F5]">
@@ -88,21 +96,13 @@ app.get('/', (c) => {
         </div>
       </div>
 
-      {/* HERO (CRS SPINE - DARK CONTROL ROOM) - 12 COLUMN GRID */}
-      <section id="hero" class="pt-20 md:pt-16 pb-8 md:pb-10 px-4 bg-deep-charcoal">
-        <div class="max-w-7xl mx-auto">
+      {/* HERO (CRS SPINE - DARK CONTROL ROOM) - REDUCED HEIGHT */}
+      <section id="hero" class="max-h-[60vh] flex flex-col justify-center px-4 bg-deep-charcoal overflow-hidden">
+        <div class="max-w-7xl mx-auto w-full py-8">
           <div class="grid md:grid-cols-12 gap-8">
             {/* LEFT COLUMN: Technical Data (7/12) */}
             <div class="md:col-span-7">
-              {/* Small CRS Logo Badge */}
-              <div class="mb-3">
-                <img 
-                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS%20TRANSPARENT.png" 
-                  alt="CRS Logo"
-                  class="h-12 w-auto"
-                />
-              </div>
-              <p class="text-xs font-mono text-mustard uppercase mb-4 tracking-wider">
+              <p class="text-xs font-mono text-mustard uppercase mb-3 tracking-wider">
                 Cowley Road Studios · Oxford
               </p>
               <img 
