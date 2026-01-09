@@ -69,7 +69,7 @@ app.get('/', (c) => {
       </div>
 
       {/* HERO (CRS SPINE - DARK CONTROL ROOM) - REDUCED HEIGHT */}
-      <section id="hero" class="max-h-[60vh] flex flex-col justify-center px-4 bg-[#0a0a0a] overflow-hidden">
+      <section id="hero" class="max-h-[60vh] flex flex-col justify-center px-8 md:px-12 lg:px-16 bg-[#0a0a0a] overflow-hidden">
         <div class="max-w-7xl mx-auto w-full py-8">
           <div class="grid md:grid-cols-12 gap-8">
             {/* LEFT COLUMN: Technical Data (7/12) */}
@@ -135,7 +135,7 @@ app.get('/', (c) => {
       </section>
 
       {/* SECTION 1: THE INFRASTRUCTURE (CRS SPINE - DARK) - HIGH DENSITY GRID */}
-      <section id="infrastructure" class="py-10 px-4 bg-[#0a0a0a] border-t-2 border-[#d4a017]">
+      <section id="infrastructure" class="py-10 px-8 md:px-12 lg:px-16 bg-[#0a0a0a] border-t-2 border-[#d4a017]">
         <div class="max-w-7xl mx-auto">
           {/* Section Header - Left Aligned */}
           <div class="mb-12">
@@ -280,7 +280,7 @@ app.get('/', (c) => {
       <div class="border-t-2 border-[#d4a017] w-full"></div>
 
       {/* VENUE HIRE (Workshop Café Interface) */}
-      <section id="cafe" class="py-10 px-4 bg-off-white">
+      <section id="cafe" class="py-10 px-8 md:px-12 lg:px-16 bg-off-white">
         <div class="max-w-5xl mx-auto">
           
           {/* PAGE TITLE */}
@@ -343,7 +343,7 @@ app.get('/', (c) => {
       </section>
 
       {/* SERVICES MANIFEST: TECHNICAL SPEC CARDS - DYMO LABEL FORMAT */}
-      <section id="services" class="py-10 px-4 bg-deep-charcoal border-t-2 border-[#d4a017]">
+      <section id="services" class="py-10 px-8 md:px-12 lg:px-16 bg-deep-charcoal border-t-2 border-[#d4a017]">
         <div class="max-w-7xl mx-auto">
           
           {/* Section Intro */}
@@ -507,7 +507,7 @@ app.get('/', (c) => {
       </section>
 
       {/* CONTACT & LOCATION */}
-      <section id="contact" class="py-20 px-4 bg-off-white">
+      <section id="contact" class="py-20 px-8 md:px-12 lg:px-16 bg-off-white">
         <div class="max-w-7xl mx-auto">
           <div class="text-center mb-12">
             <h2 class="text-4xl md:text-5xl font-black text-deep-charcoal mb-6 uppercase tracking-tight">
