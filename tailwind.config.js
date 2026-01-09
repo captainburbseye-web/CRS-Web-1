@@ -21,6 +21,11 @@ export default {
         
         // Supporting
         'moss-green': '#8b9467',
+        
+        // COLOUR-CODED BUTTON SYSTEM
+        'studio-yellow': '#d4a017',  // Burnt yellow for Studio
+        'cafe-green': '#2d3e2f',     // Nettle green for Café
+        'av-red': '#dc2626',         // Red for AV/Services
       },
       fontFamily: {
         heading: ['Bebas Neue', 'sans-serif'],

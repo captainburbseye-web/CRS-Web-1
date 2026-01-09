@@ -14,6 +14,11 @@
   /* Supporting */
   --color-moss-green: #8b9467;
   
+  /* COLOUR-CODED BUTTON SYSTEM */
+  --color-studio-yellow: #d4a017; /* Burnt yellow/mustard for Studio */
+  --color-cafe-green: #2d3e2f;   /* Nettle green for Café */
+  --color-av-red: #dc2626;       /* Red for AV/Services */
+  
   /* TYPOGRAPHY SYSTEM (LOCKED) */
   --font-heading: 'Bebas Neue', sans-serif;
   --font-body: 'Inter', sans-serif;

@@ -154,10 +154,10 @@ app.get('/', (c) => {
                 Infrastructure for recording, live sound, and streaming — built to work under pressure.
               </p>
               
-              {/* Primary CTA */}
+              {/* Primary CTA - STUDIO YELLOW */}
               <div class="mb-4">
-                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
-                  [ BOOK A SESSION ]
+                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block bg-studio-yellow text-deep-charcoal px-10 py-5 font-bold hover:bg-studio-yellow/90 transition-all text-base uppercase tracking-widest border-2 border-studio-yellow font-heading">
+                  BOOK STUDIO
                 </a>
               </div>
               
@@ -416,10 +416,10 @@ app.get('/', (c) => {
               Add support if and when it's needed.
             </p>
             <div class="flex flex-wrap gap-4">
-              <a href="#services" class="inline-block bg-deep-charcoal text-off-white px-8 py-4 font-bold hover:bg-deep-charcoal/90 transition-all text-sm uppercase tracking-wider border-2 border-deep-charcoal">
+              <a href="#services" class="inline-block bg-av-red text-off-white px-10 py-5 font-bold hover:bg-av-red/90 transition-all text-base uppercase tracking-widest border-2 border-av-red font-heading">
                 VIEW AV & EVENT SUPPORT
               </a>
-              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
+              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="inline-block bg-cafe-green text-off-white px-10 py-5 font-bold hover:bg-cafe-green/90 transition-all text-base uppercase tracking-widest border-2 border-cafe-green font-heading">
                 CHECK VENUE AVAILABILITY
               </a>
             </div>
@@ -582,11 +582,11 @@ app.get('/', (c) => {
 
           {/* Primary CTAs */}
           <div class="flex flex-wrap gap-4 justify-center">
-            <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Availability%20Check" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
-              [ CHECK AV AVAILABILITY ]
+            <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Availability%20Check" class="inline-block bg-av-red text-off-white px-10 py-5 font-bold hover:bg-av-red/90 transition-all text-base uppercase tracking-widest border-2 border-av-red font-heading">
+              CHECK AV AVAILABILITY
             </a>
-            <a href="mailto:info@cowleyroadstudios.com?subject=Event%20Support%20Booking" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-bold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider border-2 border-electric-orange">
-              [ BOOK EVENT SUPPORT ]
+            <a href="mailto:info@cowleyroadstudios.com?subject=Event%20Support%20Booking" class="inline-block bg-av-red text-off-white px-10 py-5 font-bold hover:bg-av-red/90 transition-all text-base uppercase tracking-widest border-2 border-av-red font-heading">
+              GET QUOTE
             </a>
           </div>
 
