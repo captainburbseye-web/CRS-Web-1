@@ -106,7 +106,7 @@ app.get('/', (c) => {
                 Cowley Road Studios · Oxford
               </p>
               <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/title-crs-final-banner.png" 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/resize%20smaller%20crs/CRS%20Web%20Banner%20smaller.png" 
                 alt="COWLEY ROAD STUDIOS"
                 class="w-full max-w-xl mb-6"
               />
