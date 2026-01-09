@@ -52,7 +52,7 @@ app.get('/', (c) => {
           <img 
             src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/resize%20smaller%20crs/logo-crs-v3.png" 
             alt="CRS"
-            class="max-h-8 md:max-h-8 w-auto"
+            class="max-h-7 w-auto"
           />
           <div class="hidden md:block text-[#F5F5F5]/60 uppercase">LOC: 118_COWLEY_RD_OX4</div>
         </div>
@@ -97,7 +97,7 @@ app.get('/', (c) => {
       </div>
 
       {/* HERO (CRS SPINE - DARK CONTROL ROOM) - REDUCED HEIGHT */}
-      <section id="hero" class="max-h-[60vh] flex flex-col justify-center px-4 bg-deep-charcoal overflow-hidden">
+      <section id="hero" class="max-h-[65vh] flex flex-col justify-center px-4 bg-deep-charcoal overflow-hidden">
         <div class="max-w-7xl mx-auto w-full py-8">
           <div class="grid md:grid-cols-12 gap-8">
             {/* LEFT COLUMN: Technical Data (7/12) */}
@@ -284,7 +284,7 @@ app.get('/', (c) => {
           </p>
           
           <div class="text-center">
-            <a href="#contact" class="inline-block border-2 border-mustard text-off-white px-8 py-3 font-semibold hover:bg-mustard hover:text-deep-charcoal transition-all text-sm uppercase tracking-wider">
+            <a href="#contact" class="crs-button inline-block w-auto">
               [ View Full Spec Sheet ]
             </a>
           </div>
@@ -551,7 +551,7 @@ app.get('/', (c) => {
                 <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button">
                   [ BOOK ]
                 </a>
-                <a href="mailto:info@cowleyroadstudios.com" class="block border-2 border-deep-charcoal text-deep-charcoal px-6 py-3 font-mono font-bold hover:bg-deep-charcoal hover:text-off-white transition-all text-sm text-center uppercase tracking-wider" style="border-radius: 0;">
+                <a href="mailto:info@cowleyroadstudios.com" class="crs-button">
                   [ ENQUIRE ]
                 </a>
               </div>
