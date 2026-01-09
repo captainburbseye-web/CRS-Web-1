@@ -154,10 +154,14 @@ app.get('/', (c) => {
                 Infrastructure for recording, live sound, and streaming — built to work under pressure.
               </p>
               
-              {/* Primary CTA - STUDIO YELLOW */}
+              {/* Primary CTA - STUDIO YELLOW (Image Button) */}
               <div class="mb-4">
-                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block bg-studio-yellow text-deep-charcoal px-10 py-5 font-bold hover:bg-studio-yellow/90 transition-all text-base uppercase tracking-widest border-2 border-studio-yellow font-heading">
-                  BOOK STUDIO
+                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="inline-block transition-opacity hover:opacity-90">
+                  <img 
+                    src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/btn-primary-book-studio-yellow.png" 
+                    alt="Book Studio"
+                    class="h-16 w-auto"
+                  />
                 </a>
               </div>
               
@@ -416,11 +420,19 @@ app.get('/', (c) => {
               Add support if and when it's needed.
             </p>
             <div class="flex flex-wrap gap-4">
-              <a href="#services" class="inline-block bg-av-red text-off-white px-10 py-5 font-bold hover:bg-av-red/90 transition-all text-base uppercase tracking-widest border-2 border-av-red font-heading">
-                VIEW AV & EVENT SUPPORT
-              </a>
-              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="inline-block bg-cafe-green text-off-white px-10 py-5 font-bold hover:bg-cafe-green/90 transition-all text-base uppercase tracking-widest border-2 border-cafe-green font-heading">
-                CHECK VENUE AVAILABILITY
+              <a href="#services" class="inline-block transition-opacity hover:opacity-90">
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/btn-secondary-services.png" 
+                alt="View AV & Event Support"
+                class="h-16 w-auto"
+              />
+            </a>
+              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="inline-block transition-opacity hover:opacity-90">
+                <img 
+                  src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/btn-primary-check-availability-green.png" 
+                  alt="Check Venue Availability"
+                  class="h-16 w-auto"
+                />
               </a>
             </div>
           </div>
@@ -582,11 +594,19 @@ app.get('/', (c) => {
 
           {/* Primary CTAs */}
           <div class="flex flex-wrap gap-4 justify-center">
-            <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Availability%20Check" class="inline-block bg-av-red text-off-white px-10 py-5 font-bold hover:bg-av-red/90 transition-all text-base uppercase tracking-widest border-2 border-av-red font-heading">
-              CHECK AV AVAILABILITY
+            <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Availability%20Check" class="inline-block transition-opacity hover:opacity-90">
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/btn-primary-get-quote-red.png" 
+                alt="Check AV Availability"
+                class="h-16 w-auto"
+              />
             </a>
-            <a href="mailto:info@cowleyroadstudios.com?subject=Event%20Support%20Booking" class="inline-block bg-av-red text-off-white px-10 py-5 font-bold hover:bg-av-red/90 transition-all text-base uppercase tracking-widest border-2 border-av-red font-heading">
-              GET QUOTE
+            <a href="mailto:info@cowleyroadstudios.com?subject=Event%20Support%20Booking" class="inline-block transition-opacity hover:opacity-90">
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/btn-primary-get-quote-red.png" 
+                alt="Get Quote"
+                class="h-16 w-auto"
+              />
             </a>
           </div>
 
