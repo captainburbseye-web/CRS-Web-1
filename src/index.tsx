@@ -128,7 +128,7 @@ app.get('/', (c) => {
             {/* Hero studio image (desktop only) */}
             <div class="hidden md:block mt-12 max-w-4xl mx-auto">
               <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/hero-studio-main.jpg"
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/hero-main.jpg"
                 alt="Cowley Road Studios professional recording equipment and infrastructure"
                 class="w-full h-auto object-cover mx-auto"
               />
@@ -152,7 +152,12 @@ app.get('/', (c) => {
 
           <div class="grid md:grid-cols-2 gap-12 mb-16">
             {/* Signal path */}
-            <div class="border-l-4 border-mustard pl-6">
+            <div class="text-center">
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-signal.jpg"
+                alt="Signal path - Professional audio routing and gain staging"
+                class="w-full h-64 object-cover border-2 border-mustard/30 mb-4 mx-auto"
+              />
               <h3 class="text-3xl font-bold text-off-white mb-4">Signal path</h3>
               <p class="text-lg text-off-white/80 leading-relaxed">
                 Hybrid analogue / digital workflow. Clean gain staging. Fast recall.
@@ -160,7 +165,12 @@ app.get('/', (c) => {
             </div>
 
             {/* Rooms */}
-            <div class="border-l-4 border-mustard pl-6">
+            <div class="text-center">
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-rooms.jpg"
+                alt="Studio rooms - Isolated tracking and monitoring environments"
+                class="w-full h-64 object-cover border-2 border-mustard/30 mb-4 mx-auto"
+              />
               <h3 class="text-3xl font-bold text-off-white mb-4">Rooms</h3>
               <p class="text-lg text-off-white/80 leading-relaxed">
                 Isolated environments for tracking, voice, production and edit work. Controlled monitoring for decisions that translate.
@@ -168,7 +178,12 @@ app.get('/', (c) => {
             </div>
 
             {/* Networked logic */}
-            <div class="border-l-4 border-mustard pl-6">
+            <div class="text-center">
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-network.jpg"
+                alt="Network infrastructure - Dante audio and NDI video backbone"
+                class="w-full h-64 object-cover border-2 border-mustard/30 mb-4 mx-auto"
+              />
               <h3 class="text-3xl font-bold text-off-white mb-4">Networked logic</h3>
               <p class="text-lg text-off-white/80 leading-relaxed">
                 Dante audio across the site. NDI-ready video backbone for multi-cam streaming. Patch any source to any room without drama.
@@ -176,7 +191,12 @@ app.get('/', (c) => {
             </div>
 
             {/* Maintenance */}
-            <div class="border-l-4 border-mustard pl-6">
+            <div class="text-center">
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-maintenance.jpg"
+                alt="Maintenance - In-house electronics bench and repair facility"
+                class="w-full h-64 object-cover border-2 border-mustard/30 mb-4 mx-auto"
+              />
               <h3 class="text-3xl font-bold text-off-white mb-4">Maintenance</h3>
               <p class="text-lg text-off-white/80 leading-relaxed">
                 In-house electronics bench keeps systems reliable and vintage gear performing beyond spec.
@@ -304,6 +324,11 @@ app.get('/', (c) => {
           <div class="max-w-4xl mx-auto mb-12">
             {/* Live sound + AV */}
             <div class="mb-12">
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-live-sound.jpg"
+                alt="Live sound and AV services - Professional event audio engineering"
+                class="w-full h-64 object-cover border-2 border-mustard/30 mb-6 mx-auto"
+              />
               <h3 class="text-3xl md:text-4xl font-bold text-off-white mb-4">Live sound + AV hire</h3>
               <ul class="space-y-3 text-base md:text-lg text-off-white/80 mb-6 inline-block text-left">
                 <li class="flex items-start">
@@ -328,6 +353,11 @@ app.get('/', (c) => {
 
             {/* Repairs */}
             <div>
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-repairs.jpg"
+                alt="Repair services - In-house electronics bench and diagnostics"
+                class="w-full h-64 object-cover border-2 border-mustard/30 mb-6 mx-auto"
+              />
               <h3 class="text-3xl md:text-4xl font-bold text-off-white mb-4">Repairs</h3>
               <ul class="space-y-3 text-base md:text-lg text-off-white/80 mb-6 inline-block text-left">
                 <li class="flex items-start">
