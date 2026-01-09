@@ -48,9 +48,9 @@ app.get('/', (c) => {
         
         {/* LEFT: CRS Logo + Location */}
         <div class="flex items-center gap-4">
-          {/* CRS Panel Logo */}
+          {/* CRS Street Sign Banner Logo */}
           <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/title-crs-panel-transparent.png" 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Web_banner_logo_combining_UK_street_sign_and_numbe-1767970314639.png" 
             alt="CRS"
             class="max-h-8 w-auto"
           />
