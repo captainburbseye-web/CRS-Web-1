@@ -12,6 +12,11 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* Favicon */}
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         
+        {/* Google Fonts - Brutalist Typography */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        
         {/* Font Awesome Icons */}
         <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
         

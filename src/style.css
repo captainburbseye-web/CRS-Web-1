@@ -1,12 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 @theme {
   /* SYSTEM TRUTH COLOR PALETTE */
-  /* CRS LAYER (Spine) */
+  /* CRS LAYER (Spine) - DARK */
   --color-nettle-green: #2d3e2f;
   --color-deep-charcoal: #1a1a1a;
   
-  /* WORKSHOP CAFÉ LAYER (Interface) */
+  /* WORKSHOP CAFÉ LAYER (Interface) - LIGHT */
   --color-off-white: #faf9f6;
   --color-mustard: #d4a017;
   
@@ -16,8 +14,10 @@
   /* Supporting */
   --color-moss-green: #8b9467;
   
-  /* Typography */
+  /* BRUTALIST TYPOGRAPHY */
+  --font-display: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 }
 
 @tailwind base;
@@ -41,7 +41,7 @@ html {
 
 ::-webkit-scrollbar-thumb {
   background: #d4a017;
-  border-radius: 5px;
+  border-radius: 0; /* BRUTALIST: No rounded corners */
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -53,30 +53,43 @@ section {
   scroll-margin-top: 80px;
 }
 
-/* System Truth Typography */
-/* Inter - All UI (primary) */
-body {
+/* BRUTALIST TYPOGRAPHY SYSTEM */
+/* Playfair Display Bold - Headings (Heritage, Authority, Weight) */
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Inter - Body and UI */
+body, p, li, a, span {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   letter-spacing: 0.01em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h3, h4, h5, h6 {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  line-height: 1.3;
 }
 
-p, li, a, span {
-  line-height: 1.6;
-  letter-spacing: 0.01em;
-}
-
-/* Mono - Labels and specs only */
+/* JetBrains Mono - Technical specs, rates, labels */
 .font-mono {
-  font-family: ui-monospace, 'SF Mono', 'Courier New', monospace;
-  letter-spacing: 0.02em;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0;
+}
+
+/* BRUTALIST BORDERS - 2px solid, zero border-radius */
+.brutalist-card {
+  border: 2px solid currentColor;
+  border-radius: 0;
+}
+
+/* Remove all rounded corners globally */
+* {
+  border-radius: 0 !important;
 }
 
 /* Animation for fade-in on scroll */
@@ -95,18 +108,14 @@ p, li, a, span {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Hover effects */
+/* Hover effects - minimal */
 a {
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 }
 
-/* Button hover effects */
+/* Button hover effects - no scale, just darken */
 button, .button {
-  transition: all 0.3s ease;
-}
-
-button:active, .button:active {
-  transform: scale(0.98);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 /* Focus styles for accessibility */

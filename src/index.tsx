@@ -89,8 +89,8 @@ app.get('/', (c) => {
         </div>
       </div>
 
-      {/* HERO (CRS + Brewforce CTA) */}
-      <section id="hero" class="pt-20 md:pt-32 pb-16 md:pb-20 px-4 bg-nettle-green">
+      {/* HERO (CRS SPINE - DARK CONTROL ROOM) */}
+      <section id="hero" class="pt-20 md:pt-32 pb-16 md:pb-20 px-4 bg-deep-charcoal">
         <div class="max-w-7xl mx-auto">
           <div class="grid md:grid-cols-12 gap-12 items-center">
             {/* Left column (7/12) */}
@@ -143,8 +143,8 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* SECTION 1: THE INFRASTRUCTURE (CRS) */}
-      <section id="infrastructure" class="py-20 px-4 bg-deep-charcoal">
+      {/* SECTION 1: THE INFRASTRUCTURE (CRS SPINE - DARK) */}
+      <section id="infrastructure" class="py-20 px-4 bg-deep-charcoal border-t-2 border-mustard/30">
         <div class="max-w-7xl mx-auto">
           <h2 class="text-5xl md:text-7xl font-black text-off-white mb-6 uppercase tracking-tight">
             The Infrastructure
@@ -199,15 +199,15 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* TRANSITION: THE SHIFT */}
-      <div class="bg-deep-charcoal py-12">
+      {/* THE SHIFT: CRS SPINE → WORKSHOP CAFÉ INTERFACE */}
+      <div class="bg-deep-charcoal py-12 border-t-2 border-mustard">
         <div class="text-center">
           <p class="text-xs font-mono text-mustard uppercase tracking-widest">
             WORKSHOP CAFÉ · PUBLIC INTERFACE
           </p>
         </div>
       </div>
-      <div class="h-1 bg-mustard w-full"></div>
+      <div class="h-0.5 bg-mustard w-full"></div>
 
       {/* SECTION 2: WORKSHOP CAFÉ (Interface) */}
       <section id="cafe" class="py-20 px-4 bg-off-white">
@@ -247,7 +247,7 @@ app.get('/', (c) => {
             </div>
 
             {/* Right: Fact Card */}
-            <div class="bg-mustard/10 border-2 border-mustard p-8">
+            <div class="bg-mustard/10 border-2 border-mustard p-8" style="border-radius: 0;">
               <ul class="space-y-3 text-base text-deep-charcoal/80">
                 <li class="flex justify-between">
                   <span class="font-semibold">Capacity:</span>
@@ -266,18 +266,18 @@ app.get('/', (c) => {
           </div>
 
           <div class="text-center">
-            <a href="mailto:hello@cowleyroadstudios.com?subject=Workshop%20Café%20Venue%20Hire" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
+            <a href="mailto:hello@cowleyroadstudios.com?subject=Workshop%20Café%20Venue%20Hire" class="inline-block bg-electric-orange text-off-white px-8 py-4 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider" style="border-radius: 0;">
               [ Venue Hire Info ]
             </a>
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: WHEN IT HAS TO WORK (Brewforce energy, no lore) */}
-      <section id="services" class="py-20 px-4 bg-nettle-green">
+      {/* SECTION 3: MOMENTUM WHEN IT MATTERS (CRS SPINE - DARK) */}
+      <section id="services" class="py-20 px-4 bg-deep-charcoal border-t-2 border-mustard/30">
         <div class="max-w-7xl mx-auto">
           <h2 class="text-5xl md:text-7xl font-black text-off-white mb-6 uppercase tracking-tight">
-            When It Has To Work
+            Momentum when it matters
           </h2>
           <p class="text-xl text-off-white/90 mb-16 max-w-3xl leading-relaxed">
             Live sound, AV hire, venue support, and repairs — delivered like a mission.
@@ -301,7 +301,7 @@ app.get('/', (c) => {
                   <span><strong>Venue support:</strong> small room, serious rig</span>
                 </li>
               </ul>
-              <a href="mailto:hello@cowleyroadstudios.com?subject=Live%20Sound%20%2F%20AV%20Enquiry" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
+              <a href="mailto:hello@cowleyroadstudios.com?subject=Live%20Sound%20%2F%20AV%20Enquiry" class="inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider" style="border-radius: 0;">
                 [ Make Your Event Epic ]
               </a>
             </div>
@@ -324,7 +324,7 @@ app.get('/', (c) => {
                 </li>
               </ul>
               {/* Hide second CTA on mobile to avoid orange noise */}
-              <a href="mailto:hello@cowleyroadstudios.com?subject=Repair%20Request" class="hidden md:inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider">
+              <a href="mailto:hello@cowleyroadstudios.com?subject=Repair%20Request" class="hidden md:inline-block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm uppercase tracking-wider" style="border-radius: 0;">
                 [ Bring a Repair ]
               </a>
             </div>
@@ -415,10 +415,10 @@ app.get('/', (c) => {
               
               {/* CTAs */}
               <div class="space-y-4">
-                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm text-center uppercase tracking-wider">
+                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block bg-electric-orange text-off-white px-6 py-3 font-semibold hover:bg-electric-orange/90 transition-all text-sm text-center uppercase tracking-wider" style="border-radius: 0;">
                   [ Book ]
                 </a>
-                <a href="mailto:hello@cowleyroadstudios.com" class="block border-2 border-deep-charcoal text-deep-charcoal px-6 py-3 font-semibold hover:bg-deep-charcoal hover:text-off-white transition-all text-sm text-center uppercase tracking-wider">
+                <a href="mailto:hello@cowleyroadstudios.com" class="block border-2 border-deep-charcoal text-deep-charcoal px-6 py-3 font-semibold hover:bg-deep-charcoal hover:text-off-white transition-all text-sm text-center uppercase tracking-wider" style="border-radius: 0;">
                   [ Enquire ]
                 </a>
               </div>
@@ -426,7 +426,7 @@ app.get('/', (c) => {
             
             {/* Right: Map / Address */}
             <div>
-              <div class="bg-nettle-green/10 border-2 border-mustard h-64 overflow-hidden mb-4">
+              <div class="bg-nettle-green/10 border-2 border-mustard h-64 overflow-hidden mb-4" style="border-radius: 0;">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2469.8339!2d-1.2358!3d51.7489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c6a42d5b5555%3A0x1234567890abcdef!2s118%20Cowley%20Rd%2C%20Oxford%20OX4%201JE!5e0!3m2!1sen!2suk!4v1234567890"
                   width="100%" 
