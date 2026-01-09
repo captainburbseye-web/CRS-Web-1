@@ -23,8 +23,10 @@ export default {
         'moss-green': '#8b9467',
       },
       fontFamily: {
+        heading: ['Bebas Neue', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
-        mono: ['ui-monospace', 'SF Mono', 'Courier New', 'monospace'],
+        accent: ['Oswald', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
     },
   },
