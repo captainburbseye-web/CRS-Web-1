@@ -96,3 +96,33 @@ button:focus {
   outline: 2px solid #D4A437;
   outline-offset: 2px;
 }
+
+/* CRS HEAVY-DUTY SWITCH PROTOCOL */
+.crs-button {
+  background-color: #FF4500 !important; /* Fire Orange */
+  color: #1A1A1A !important;           /* Deep Charcoal */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.05em !important;
+  border: 2px solid #1A1A1A !important;
+  border-radius: 0 !important;         /* Zero Softness */
+  padding: 12px 24px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.1s ease-in-out !important;
+  cursor: pointer !important;
+  width: 100% !important;              /* Grid Fill */
+}
+
+.crs-button:hover {
+  background-color: #1A1A1A !important;
+  color: #FF4500 !important;           /* Invert Signal */
+  box-shadow: 4px 4px 0px #D4A017 !important; /* Mustard Offset */
+}
+
+.crs-button:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 0px 0px 0px !important;
+}

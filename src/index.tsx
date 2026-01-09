@@ -119,7 +119,7 @@ app.get('/', (c) => {
               
               {/* Primary CTA - CSS Heavy-Duty Switch */}
               <div class="mb-4">
-                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block w-full bg-[#ff4d00] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
+                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button">
                   [ BOOK STUDIO ]
                 </a>
               </div>
@@ -345,10 +345,10 @@ app.get('/', (c) => {
               Add support if and when it's needed.
             </p>
             <div class="flex flex-wrap gap-4 mt-auto">
-              <a href="#services" class="block w-full md:w-auto bg-[#ff4d00] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
+              <a href="#services" class="crs-button md:w-auto">
                 [ VIEW AV & EVENT SUPPORT ]
               </a>
-              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="block w-full md:w-auto bg-[#ff4d00] text-[#1A1A1A] font-mono font-bold uppercase px-6 py-3 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-base" style="border-radius: 0;">
+              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Check" class="crs-button md:w-auto">
                 [ CHECK VENUE AVAILABILITY ]
               </a>
             </div>
@@ -406,7 +406,7 @@ app.get('/', (c) => {
                 </p>
                 
                 {/* CTA - CSS Heavy-Duty Switch */}
-                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="block w-full bg-[#ff4d00] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm mt-auto" style="border-radius: 0;">
+                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="crs-button mt-auto">
                   [ CHECK AVAILABILITY ]
                 </a>
               </div>
@@ -444,7 +444,7 @@ app.get('/', (c) => {
                 </p>
                 
                 {/* CTA - CSS Heavy-Duty Switch */}
-                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="block w-full bg-[#ff4d00] text-[#1A1A1A] font-mono font-bold uppercase px-4 py-2 border-2 border-[#1A1A1A] hover:invert transition-all text-center text-sm mt-auto" style="border-radius: 0;">
+                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="crs-button mt-auto">
                   [ REQUEST REPAIR SLOT ]
                 </a>
               </div>
@@ -548,7 +548,7 @@ app.get('/', (c) => {
               
               {/* CTAs */}
               <div class="space-y-4">
-                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="block bg-[#ff4d00] text-off-white px-6 py-3 font-mono font-bold hover:invert transition-all text-sm text-center uppercase tracking-wider border-2 border-[#1A1A1A]" style="border-radius: 0;">
+                <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button">
                   [ BOOK ]
                 </a>
                 <a href="mailto:info@cowleyroadstudios.com" class="block border-2 border-deep-charcoal text-deep-charcoal px-6 py-3 font-mono font-bold hover:bg-deep-charcoal hover:text-off-white transition-all text-sm text-center uppercase tracking-wider" style="border-radius: 0;">
