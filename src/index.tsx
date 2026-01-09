@@ -117,7 +117,7 @@ app.get('/', (c) => {
               To what's still possible.
             </p>
             <p class="text-lg leading-relaxed text-text-light">
-              In the absence left by Soundworks — Oxford's grassroots engine for 17 years — we rose from the dust, not as a replacement, but as a resonance. Same spirit. New tools. Bigger invitation.
+              We rose from what Soundworks built — Oxford's grassroots engine for 17 years. Not as a replacement, but as a resonance. Same spirit. New tools. Bigger invitation.
             </p>
           </div>
           
