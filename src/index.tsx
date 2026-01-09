@@ -52,7 +52,7 @@ app.get('/', (c) => {
           <img 
             src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/title-crs-panel-transparent.png" 
             alt="CRS"
-            class="max-h-[6px] w-auto"
+            class="max-h-8 w-auto"
           />
           <div class="hidden md:block text-[#f5f5f5]/60 uppercase font-mono">LOC: 118_COWLEY_RD_OX4</div>
         </div>
