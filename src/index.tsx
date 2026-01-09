@@ -125,15 +125,15 @@ app.get('/', (c) => {
               </a>
             </div>
             
-            {/* Floor plan image (desktop only) */}
+            {/* Hero studio image (desktop only) */}
             <div class="hidden md:block mt-12 max-w-4xl mx-auto">
               <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Screenshot%202025-08-02%20at%2001-01-24%20C%20_Users_crush_Documents_Drawings_oli_Cowley%20road%20studios%20int%20plan%20Model%20(1)%20-%20Proposed%201to50%20with%20dims.pdf.png"
-                alt="Cowley Road Studios floor plan showing isolated rooms, Dante network routing, and signal path infrastructure"
-                class="w-full h-auto object-contain bg-deep-charcoal/30 p-4 mx-auto"
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/hero-studio-main.jpg"
+                alt="Cowley Road Studios professional recording equipment and infrastructure"
+                class="w-full h-auto object-cover mx-auto"
               />
               <p class="text-xs text-off-white/60 mt-2 font-mono text-center">
-                Proposed studio layout: isolated rooms, networked signal path, controlled monitoring environments.
+                Professional recording infrastructure. Industry standard. Calm delivery.
               </p>
             </div>
           </div>
@@ -180,6 +180,30 @@ app.get('/', (c) => {
               <h3 class="text-3xl font-bold text-off-white mb-4">Maintenance</h3>
               <p class="text-lg text-off-white/80 leading-relaxed">
                 In-house electronics bench keeps systems reliable and vintage gear performing beyond spec.
+              </p>
+            </div>
+          </div>
+
+          {/* Equipment showcase (desktop only) */}
+          <div class="hidden md:grid md:grid-cols-2 gap-8 mb-16 max-w-5xl mx-auto">
+            <div>
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/equipment-revox.jpg"
+                alt="Professional studio equipment - Revox tape machine"
+                class="w-full h-auto object-cover border-2 border-mustard/30"
+              />
+              <p class="text-xs text-off-white/60 mt-2 font-mono text-center">
+                Analog precision maintained beyond spec
+              </p>
+            </div>
+            <div>
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/equipment-tascam.jpg"
+                alt="Professional studio equipment - Tascam recorder"
+                class="w-full h-auto object-cover border-2 border-mustard/30"
+              />
+              <p class="text-xs text-off-white/60 mt-2 font-mono text-center">
+                Reliable recording infrastructure
               </p>
             </div>
           </div>
