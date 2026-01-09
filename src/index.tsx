@@ -130,11 +130,13 @@ app.get('/', (c) => {
             
             {/* Right column (5/12) - Hidden on mobile to keep hero above fold */}
             <div class="hidden md:block md:col-span-5">
-              <div class="aspect-square bg-deep-charcoal/30 flex items-center justify-center text-off-white/40 text-xs font-mono">
-                [STUDIO PHOTO / SIGNAL DIAGRAM]
-              </div>
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/Screenshot%202025-08-02%20at%2001-01-24%20C%20_Users_crush_Documents_Drawings_oli_Cowley%20road%20studios%20int%20plan%20Model%20(1)%20-%20Proposed%201to50%20with%20dims.pdf.png"
+                alt="Cowley Road Studios floor plan showing isolated rooms, Dante network routing, and signal path infrastructure"
+                class="w-full h-auto object-contain bg-deep-charcoal/30 p-4"
+              />
               <p class="text-xs text-off-white/60 mt-2 font-mono">
-                Signal-true from source to record.
+                Proposed studio layout: isolated rooms, networked signal path, controlled monitoring environments.
               </p>
             </div>
           </div>
@@ -424,8 +426,17 @@ app.get('/', (c) => {
             
             {/* Right: Map / Address */}
             <div>
-              <div class="bg-nettle-green/10 border-2 border-mustard h-64 flex items-center justify-center text-deep-charcoal/40 text-sm font-mono mb-4">
-                [MAP THUMBNAIL]
+              <div class="bg-nettle-green/10 border-2 border-mustard h-64 overflow-hidden mb-4">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2469.8339!2d-1.2358!3d51.7489!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c6a42d5b5555%3A0x1234567890abcdef!2s118%20Cowley%20Rd%2C%20Oxford%20OX4%201JE!5e0!3m2!1sen!2suk!4v1234567890"
+                  width="100%" 
+                  height="100%" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Cowley Road Studios location map"
+                ></iframe>
               </div>
               <div class="text-base text-deep-charcoal/80">
                 <p class="font-semibold mb-2">Location</p>
