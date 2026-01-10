@@ -88,9 +88,13 @@ const Header = () => (
     <div style="display: flex; align-items: center;">
       <a href="/">
         <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/banner-cowley-road-studios-trimmed.png" 
-          alt="CRS"
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS%20Web%20Banner%20smaller%20(1).png" 
+          alt="Cowley Road Studios"
           class="crs-header-logo"
+          width="284"
+          height="54"
+          loading="eager"
+          fetchpriority="high"
         />
       </a>
       <span class="crs-header-loc hidden-mobile">LOC: 118_COWLEY_RD_OX4</span>
@@ -208,11 +212,17 @@ app.get('/', (c) => {
 
             <p class="hero-location">Cowley Road Studios · Oxford</p>
 
-            <img 
-              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/title-crs-final-banner.png" 
-              alt="COWLEY ROAD STUDIOS"
-              class="hero-banner"
-            />
+            <figure style="margin: 0 0 1.5rem 0;">
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-panel-hero.webp.jpg" 
+                alt="CRS Industrial Engineering Panel - Cowley Road Studios"
+                class="hero-banner"
+                width="672"
+                height="1584"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </figure>
 
             <p class="hero-tagline">ENGINEERED STUDIO & AV ENVIRONMENTS</p>
 
