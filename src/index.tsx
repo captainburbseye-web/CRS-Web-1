@@ -142,8 +142,8 @@ app.use(renderer)
 // SHARED COMPONENTS
 const Header = () => (
   <header class="crs-header mono">
-    <div style="display: flex; align-items: center;">
-      <a href="/">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="/" style="display: flex; flex-direction: column; align-items: flex-start;">
         <img 
           src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-panel-hero.webp.jpg" 
           alt="CRS Industrial Engineering Panel"
@@ -153,6 +153,7 @@ const Header = () => (
           loading="eager"
           fetchpriority="high"
         />
+        <span class="crs-header-locations hidden-mobile mono">Cowley Road · Cricket Road</span>
       </a>
       <span class="crs-header-loc hidden-mobile">LOC: 118_COWLEY_RD_OX4</span>
     </div>
@@ -245,6 +246,9 @@ const Footer = () => (
     </div>
 
     <div class="footer-bottom">
+      <p>
+        CRS — Cowley Road & Cricket Road
+      </p>
       <p>
         CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a>
       </p>
@@ -696,7 +700,7 @@ app.get('/book/studio', (c) => {
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
-          <h2 class="section-title heading">Book Studio Time</h2>
+          <h2 class="section-title heading">CRS Studio Booking</h2>
           
           <form class="booking-form" method="post" action="/api/book/studio">
             <div class="form-group">
@@ -751,7 +755,7 @@ app.get('/book/rehearsal', (c) => {
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
-          <h2 class="section-title heading">Book Rehearsal</h2>
+          <h2 class="section-title heading">CRS Rehearsal Booking</h2>
           
           <p class="section-intro" style="margin-bottom: 2rem;">
             Choose CRS location:
@@ -790,7 +794,7 @@ app.get('/book/rehearsal/cowley-road', (c) => {
             <a href="/book/rehearsal" style="color: var(--mustard); text-decoration: none;">← Back to location selection</a>
           </p>
           
-          <h2 class="section-title heading">Book Rehearsal — Cowley Road</h2>
+          <h2 class="section-title heading">CRS Rehearsal · Cowley Road</h2>
           
           <form class="booking-form" method="post" action="/api/book/rehearsal/cowley-road">
             <div class="form-group">
@@ -843,7 +847,7 @@ app.get('/book/rehearsal/cricket-road', (c) => {
             <a href="/book/rehearsal" style="color: var(--mustard); text-decoration: none;">← Back to location selection</a>
           </p>
           
-          <h2 class="section-title heading">Book Rehearsal — Cricket Road</h2>
+          <h2 class="section-title heading">CRS Rehearsal · Cricket Road</h2>
           <p class="section-intro" style="margin-bottom: 2rem; font-style: italic;">
             Partner Studio · Independent availability
           </p>
@@ -895,7 +899,7 @@ app.get('/book/lessons', (c) => {
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
-          <h2 class="section-title heading">Book Music Lessons</h2>
+          <h2 class="section-title heading">CRS Music Lessons</h2>
           
           <form class="booking-form" method="post" action="/api/book/lessons">
             <div class="form-group">
@@ -949,7 +953,7 @@ app.get('/book/mixdown', (c) => {
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
-          <h2 class="section-title heading">Book a Mixdown Slot</h2>
+          <h2 class="section-title heading">CRS Mixdown Service</h2>
           
           <form class="booking-form" method="post" action="/api/book/mixdown">
             <div class="form-group">
@@ -995,7 +999,7 @@ app.get('/book/tape', (c) => {
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
-          <h2 class="section-title heading">Book Tape Services</h2>
+          <h2 class="section-title heading">CRS Tape Services</h2>
           
           <form class="booking-form" method="post" action="/api/book/tape">
             <div class="form-group">
@@ -1049,7 +1053,7 @@ app.get('/book/hire', (c) => {
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
-          <h2 class="section-title heading">Book Equipment Hire</h2>
+          <h2 class="section-title heading">CRS Equipment Hire</h2>
           
           <form class="booking-form" method="post" action="/api/book/hire">
             <div class="form-group">

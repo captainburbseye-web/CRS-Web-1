@@ -82,6 +82,14 @@ body {
   }
 }
 
+.crs-header-locations {
+  font-size: 0.625rem;
+  color: rgba(245, 245, 245, 0.5);
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+  line-height: 1;
+}
+
 .crs-header-loc {
   font-size: 10px;
   text-transform: uppercase;

@@ -6,8 +6,8 @@ export const renderer = jsxRenderer(({ children }) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cowley Road Studios | Professional Recording Studio Oxford</title>
-        <meta name="description" content="Industry-standard recording infrastructure. Calm delivery. Professional recording studio at 118 Cowley Road, Oxford." />
+        <title>CRS | Cowley Road & Cricket Road Studios · Oxford</title>
+        <meta name="description" content="CRS operates multi-location studio and AV infrastructure across Oxford. Industry-standard recording, rehearsal, and technical support." />
         
         {/* Favicon */}
         <link rel="icon" type="image/x-icon" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/favicon.ico" />
