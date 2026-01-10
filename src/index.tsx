@@ -181,18 +181,16 @@ const Header = () => (
         <span class="visually-hidden">Paused</span>
       </div>
     </div>
-    <div class="book-dropdown">
-      <button class="primary-book-button mono" aria-expanded="false" aria-haspopup="true">
-        BOOK
+    <div class="service-selector">
+      <button class="service-selector-button heading" aria-expanded="false" aria-haspopup="true">
+        [ SELECT_SERVICE ]
       </button>
-      <div class="book-dropdown-menu" role="menu">
-        <a href="/book/studio" class="book-dropdown-item mono" role="menuitem">Studio Time</a>
-        <a href="/book/rehearsal" class="book-dropdown-item mono" role="menuitem">Rehearsal</a>
-        <a href="/book/lessons" class="book-dropdown-item mono" role="menuitem">Music Lessons</a>
-        <a href="/book/mixdown" class="book-dropdown-item mono" role="menuitem">Mixdown Slot</a>
-        <a href="/book/tape" class="book-dropdown-item mono" role="menuitem">Tape Services</a>
-        <a href="/book/hire" class="book-dropdown-item mono" role="menuitem">Equipment Hire</a>
-        <a href="/repairs/status" class="book-dropdown-item mono" role="menuitem">Repairs</a>
+      <div class="service-selector-menu" role="menu">
+        <a href="/book/studio" class="service-selector-item heading" role="menuitem">[ BOOK_STUDIO_TIME ]</a>
+        <a href="/av-services" class="service-selector-item heading" role="menuitem">[ BOOK_LIVE_SOUND ]</a>
+        <a href="/repairs/status" class="service-selector-item heading" role="menuitem">[ BOOK_AV_REPAIRS ]</a>
+        <a href="/venue" class="service-selector-item heading" role="menuitem">[ BOOK_VENUE_HIRE ]</a>
+        <a href="/book/lessons" class="service-selector-item heading" role="menuitem">[ BOOK_MUSIC_LESSONS ]</a>
       </div>
     </div>
   </header>
@@ -262,15 +260,6 @@ app.get('/', (c) => {
   return c.render(
     <>
       <Header />
-
-      {/* BOOKING ROUTER - Signal Path Selection */}
-      <section class="booking-router">
-        <div class="booking-router-container">
-          <a href="/book/studio" class="booking-router-link heading">[ BOOK_STUDIO_TIME ]</a>
-          <a href="/av-services" class="booking-router-link heading">[ BOOK_AV_HIRE ]</a>
-          <a href="/repairs/status" class="booking-router-link heading">[ BOOK_BENCH_REPAIR ]</a>
-        </div>
-      </section>
 
       {/* HERO */}
       <section class="crs-hero mono">

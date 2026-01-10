@@ -114,46 +114,40 @@ body {
   animation: pulse 4s infinite; /* Slowed for calm, space-station breathing */
 }
 
-/* PRIMARY BOOK BUTTON (Header/Mobile - Operational Control) */
-.book-dropdown {
+/* SERVICE SELECTOR (Header - Consolidated booking entry) */
+.service-selector {
   position: relative;
 }
 
-.primary-book-button {
-  background: var(--fire-orange); /* Brand orange - operational */
+.service-selector-button {
+  background: transparent;
   color: var(--signal-white);
   padding: 0.5rem 1.25rem;
   font-size: 0.875rem;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  border: none;
-  border-left: 2px solid var(--mustard); /* Subtle mustard accent */
-  transition: background 0.2s ease;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(245, 245, 245, 0.3);
+  transition: all 0.2s ease;
   cursor: pointer;
 }
 
-.primary-book-button:hover {
-  background: #ff6a2e; /* Slightly brighter orange */
+.service-selector-button:hover {
+  border-color: var(--mustard);
+  color: var(--mustard);
 }
 
-.primary-book-button:focus-visible {
+.service-selector-button:focus-visible {
   outline: 2px solid var(--mustard);
   outline-offset: 2px;
-  border-left: 2px solid var(--mustard); /* Accent more visible */
-}
-
-.primary-book-button:active {
-  background: #d94400; /* Slightly darker orange */
 }
 
 /* Dropdown Menu */
-.book-dropdown-menu {
+.service-selector-menu {
   position: absolute;
   top: calc(100% + 4px);
   right: 0;
-  background: #0F1A14; /* Dark green background */
+  background: var(--mustard); /* Mustard background */
   border: 1px solid var(--mustard);
-  min-width: 200px;
+  min-width: 260px;
   z-index: 100;
   display: none !important;
   opacity: 0;
@@ -161,37 +155,33 @@ body {
   transition: opacity 0.2s ease;
 }
 
-.book-dropdown:hover .book-dropdown-menu,
-.book-dropdown:focus-within .book-dropdown-menu {
+.service-selector:hover .service-selector-menu,
+.service-selector:focus-within .service-selector-menu {
   display: block !important;
   opacity: 1;
   pointer-events: auto;
 }
 
-.book-dropdown-item {
+.service-selector-item {
   display: block;
-  padding: 0.75rem 1rem;
-  color: var(--signal-white);
+  padding: 0.875rem 1.25rem;
+  color: #000; /* Black text on mustard */
   text-decoration: none;
   font-size: 0.875rem;
   letter-spacing: 0.05em;
-  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   transition: background 0.2s ease;
 }
 
-.book-dropdown-item:last-child {
+.service-selector-item:last-child {
   border-bottom: none;
 }
 
-.book-dropdown-item:hover {
-  background: rgba(212, 160, 23, 0.15); /* Mustard tint on hover */
-  color: var(--mustard);
-}
-
-.book-dropdown-item:focus {
+.service-selector-item:hover,
+.service-selector-item:focus {
+  background: #ff0000; /* Fire red on hover */
+  color: #fff;
   outline: none;
-  background: rgba(212, 160, 23, 0.15);
-  color: var(--mustard);
 }
 
 /* Mobile Book Button */
