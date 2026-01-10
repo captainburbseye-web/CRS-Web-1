@@ -613,6 +613,17 @@ body {
   outline-offset: 2px;
 }
 
+/* REPAIRS STATUS BANNER (Availability gating) */
+.repairs-status-banner {
+  background: rgba(212, 160, 23, 0.15);
+  border-left: 4px solid var(--mustard);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  color: var(--mustard);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+}
+
 /* BOOKING FORMS (Structured intake forms) */
 .booking-form-container {
   max-width: 600px;

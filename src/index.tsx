@@ -257,7 +257,7 @@ app.get('/', (c) => {
             <a href="/book/mixdown" class="booking-item mono">Book a Mixdown Slot</a>
             <a href="/book/tape" class="booking-item mono">Book Tape Services</a>
             <a href="/book/hire" class="booking-item mono">Book Equipment Hire</a>
-            <a href="/book/repairs" class="booking-item mono">Book Repairs</a>
+            <a href="/repairs/status" class="booking-item mono">Book Repairs</a>
           </div>
         </div>
       </section>
@@ -991,6 +991,60 @@ app.get('/book/hire', (c) => {
   )
 })
 
+// REPAIRS STATUS PAGE (Gated - OFF by default)
+app.get('/repairs/status', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="booking-form-container">
+          <h2 class="section-title heading">Repairs & Technical Bench</h2>
+          
+          {/* STATUS LINE - PROMINENT */}
+          <div class="repairs-status-banner">
+            <span class="mono">⚠️ Repairs are temporarily unavailable</span>
+          </div>
+          
+          {/* BODY COPY */}
+          <div class="content-text" style="margin: 2rem 0;">
+            <p>
+              We're currently not taking on new repair work while we focus on other projects.
+            </p>
+            <p style="margin-top: 1rem;">
+              Repairs will reopen in due course. If you'd like to be notified when bookings resume, leave your details below.
+            </p>
+          </div>
+          
+          {/* WAITLIST FORM */}
+          <h3 class="content-heading mono" style="margin-top: 3rem;">Notify me when repairs reopen</h3>
+          
+          <form class="booking-form" method="post" action="/api/repairs/waitlist">
+            <div class="form-group">
+              <label for="name" class="form-label mono">Name *</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label mono">Email *</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="equipment_type" class="form-label mono">Equipment type (optional)</label>
+              <input type="text" id="equipment_type" name="equipment_type" class="form-input" />
+            </div>
+            
+            <button type="submit" class="crs-button mono">[ NOTIFY ME ]</button>
+          </form>
+          
+          <p class="form-helper-text">Thanks — we'll let you know when repairs reopen.</p>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
+
 // 7. Book Repairs
 app.get('/book/repairs', (c) => {
   return c.render(
@@ -1142,6 +1196,16 @@ app.get('/av-services/repairs', (c) => {
           <p class="section-intro">
             Analogue, digital, and practical fixes — done properly.
           </p>
+          
+          {/* STATUS NOTE */}
+          <div class="repairs-status-banner" style="margin-top: 1.5rem;">
+            <span class="mono">
+              ⚠️ Repairs currently paused · 
+              <a href="/repairs/status" style="color: var(--mustard); text-decoration: underline; margin-left: 0.5rem;">
+                View status
+              </a>
+            </span>
+          </div>
         </div>
 
         {/* OVERVIEW */}
