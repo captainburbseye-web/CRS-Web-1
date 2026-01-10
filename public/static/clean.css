@@ -802,6 +802,47 @@ body {
   letter-spacing: 0.05em;
 }
 
+/* LOCATION SELECTOR (Rehearsal multi-location choice) */
+.location-selector-card {
+  display: block;
+  background: #0F1A14;
+  border: 2px solid rgba(245, 245, 245, 0.2);
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.location-selector-card:hover,
+.location-selector-card:focus {
+  border-color: var(--mustard);
+  background: #162a1d;
+  transform: translateX(4px);
+}
+
+.location-selector-header {
+  font-size: 1.125rem;
+  color: var(--signal-white);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.location-selector-desc {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 245, 0.6);
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  .location-selector-card {
+    padding: 1.25rem;
+  }
+  
+  .location-selector-header {
+    font-size: 1rem;
+  }
+}
+
 /* BOOKING FORMS (Structured intake forms) */
 .booking-form-container {
   max-width: 600px;

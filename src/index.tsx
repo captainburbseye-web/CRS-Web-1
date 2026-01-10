@@ -744,7 +744,7 @@ app.get('/book/studio', (c) => {
   )
 })
 
-// 2. Book Rehearsal
+// 2. Book Rehearsal - Location Selector
 app.get('/book/rehearsal', (c) => {
   return c.render(
     <>
@@ -753,7 +753,102 @@ app.get('/book/rehearsal', (c) => {
         <div class="booking-form-container">
           <h2 class="section-title heading">Book Rehearsal</h2>
           
-          <form class="booking-form" method="post" action="/api/book/rehearsal">
+          <p class="section-intro" style="margin-bottom: 2rem;">
+            Choose CRS location:
+          </p>
+          
+          <div style="display: grid; gap: 1.5rem; max-width: 600px; margin: 0 auto;">
+            <a href="/book/rehearsal/cowley-road" class="location-selector-card">
+              <div class="location-selector-header mono">CRS — Cowley Road</div>
+              <div class="location-selector-desc">Main studio location · 118 Cowley Road</div>
+            </a>
+            
+            <a href="/book/rehearsal/cricket-road" class="location-selector-card">
+              <div class="location-selector-header mono">CRS — Cricket Road</div>
+              <div class="location-selector-desc">(Partner Studio) · Independent calendar</div>
+            </a>
+          </div>
+          
+          <p class="section-intro" style="margin-top: 2rem; font-size: 0.875rem; font-style: italic;">
+            Each location has its own room and availability.
+          </p>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
+
+// 2a. Book Rehearsal - Cowley Road
+app.get('/book/rehearsal/cowley-road', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="booking-form-container">
+          <p style="margin-bottom: 1rem;">
+            <a href="/book/rehearsal" style="color: var(--mustard); text-decoration: none;">← Back to location selection</a>
+          </p>
+          
+          <h2 class="section-title heading">Book Rehearsal — Cowley Road</h2>
+          
+          <form class="booking-form" method="post" action="/api/book/rehearsal/cowley-road">
+            <div class="form-group">
+              <label for="name" class="form-label mono">Name *</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label mono">Email *</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="band_name" class="form-label mono">Band / project name</label>
+              <input type="text" id="band_name" name="band_name" class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="dates" class="form-label mono">Preferred dates & times *</label>
+              <textarea id="dates" name="dates" required class="form-textarea" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="duration" class="form-label mono">Rehearsal length *</label>
+              <input type="text" id="duration" name="duration" required class="form-input" placeholder="e.g., 2 hours" />
+            </div>
+            
+            <div class="form-group">
+              <label for="needs" class="form-label mono">Any specific needs? (optional)</label>
+              <textarea id="needs" name="needs" class="form-textarea" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="crs-button mono">[ SUBMIT BOOKING REQUEST ]</button>
+          </form>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
+
+// 2b. Book Rehearsal - Cricket Road
+app.get('/book/rehearsal/cricket-road', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="booking-form-container">
+          <p style="margin-bottom: 1rem;">
+            <a href="/book/rehearsal" style="color: var(--mustard); text-decoration: none;">← Back to location selection</a>
+          </p>
+          
+          <h2 class="section-title heading">Book Rehearsal — Cricket Road</h2>
+          <p class="section-intro" style="margin-bottom: 2rem; font-style: italic;">
+            Partner Studio · Independent availability
+          </p>
+          
+          <form class="booking-form" method="post" action="/api/book/rehearsal/cricket-road">
             <div class="form-group">
               <label for="name" class="form-label mono">Name *</label>
               <input type="text" id="name" name="name" required class="form-input" />
