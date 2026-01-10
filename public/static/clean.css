@@ -147,12 +147,17 @@ body {
   border: 1px solid var(--mustard);
   min-width: 200px;
   z-index: 100;
-  display: none;
+  display: none !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
 }
 
 .book-dropdown:hover .book-dropdown-menu,
 .book-dropdown:focus-within .book-dropdown-menu {
-  display: block;
+  display: block !important;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .book-dropdown-item {
