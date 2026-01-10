@@ -499,6 +499,11 @@ app.get('/studio', (c) => {
             <p style="margin-top: 1.5rem;">
               Everything is designed to work consistently — not just sound good on day one.
             </p>
+            <p style="margin-top: 1rem;">
+              <a href="/studio/infrastructure" style="color: var(--mustard); text-decoration: underline;">
+                → View Room-by-Room Infrastructure
+              </a>
+            </p>
           </div>
         </div>
 
@@ -529,6 +534,127 @@ app.get('/studio', (c) => {
         <div class="hero-cta">
           <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono">
             [ BOOK A SESSION ]
+          </a>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  )
+})
+
+// STUDIO INFRASTRUCTURE
+app.get('/studio/infrastructure', (c) => {
+  return c.render(
+    <>
+      <Header />
+
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h2 class="section-title heading">ROOM-BY-ROOM INFRASTRUCTURE</h2>
+          <p class="section-intro">
+            Technical ledger of spaces, signal paths, and monitoring systems.
+          </p>
+        </div>
+
+        {/* SYSTEM STATUS */}
+        <div class="system-status-banner">
+          <span class="mono" style="color: var(--mustard); font-size: 0.75rem; letter-spacing: 0.1em;">
+            STATUS: SYSTEM_CHECK_ACTIVE
+          </span>
+        </div>
+
+        {/* THE LIVE ROOM */}
+        <div class="infrastructure-room">
+          <h3 class="content-heading heading">1. THE LIVE ROOM</h3>
+          <div class="room-specs mono">
+            <span class="spec-label">DIMENSIONS:</span> 3960 × 2816 mm
+          </div>
+          <div class="content-text">
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;"><strong>Acoustic Role:</strong> Primary ensemble tracking and drum room.</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Monitoring:</strong> Genelec nearfield reference monitors.</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Connectivity:</strong> AV-linked via Dante (Audio) and NDI (Video).</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Inventory:</strong> Drum kit (Existing), Piano (Existing).</li>
+            </ul>
+          </div>
+          <div class="room-status">
+            <span class="status-badge status-active mono">[ STATUS: ACTIVE ]</span>
+          </div>
+        </div>
+
+        {/* THE BIG BOOTH */}
+        <div class="infrastructure-room">
+          <h3 class="content-heading heading">2. THE BIG BOOTH</h3>
+          <div class="room-specs mono">
+            <span class="spec-label">DIMENSIONS:</span> 5300 × 1480 mm
+          </div>
+          <div class="content-text">
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;"><strong>Acoustic Role:</strong> Versatile "double booth" for larger groups or brass sections.</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Connectivity:</strong> Parallel conduit with 1m service loops for Dante/SDI expansion.</li>
+            </ul>
+          </div>
+          <div class="room-status">
+            <span class="status-badge status-calibrating mono">[ STATUS: CALIBRATING ]</span>
+          </div>
+        </div>
+
+        {/* SMALL VOCAL BOOTHS */}
+        <div class="infrastructure-room">
+          <h3 class="content-heading heading">3. SMALL VOCAL BOOTHS (×2)</h3>
+          <div class="room-specs mono">
+            <span class="spec-label">DIMENSIONS:</span> 1480 × 1440 mm (each)
+          </div>
+          <div class="content-text">
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;"><strong>Acoustic Role:</strong> Isolated precision tracking for vocals and solo instruments.</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Monitoring:</strong> Genelec 8010A pairs and SSL 12 USB interfaces (Per Pod).</li>
+            </ul>
+          </div>
+          <div class="room-status">
+            <span class="status-badge status-calibrating mono">[ STATUS: CALIBRATING ]</span>
+          </div>
+        </div>
+
+        {/* WORKSHOP CAFÉ STAGE */}
+        <div class="infrastructure-room">
+          <h3 class="content-heading heading">4. WORKSHOP CAFÉ STAGE</h3>
+          <div class="content-text">
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;"><strong>Role:</strong> Public-facing "Tiny Desk" stage and filmed showcase area.</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Video Infrastructure:</strong> 3× Camera positions with Belden 12G-SDI coax and Cat6A F/UTP shielded runs.</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Audio Rig:</strong> Bose 802 tops + Martin Audio IC300 subwoofers.</li>
+            </ul>
+          </div>
+          <div class="room-status">
+            <span class="status-badge status-active mono">[ STATUS: ACTIVE ]</span>
+          </div>
+        </div>
+
+        {/* CENTRAL CONTROL ROOM */}
+        <div class="infrastructure-room">
+          <h3 class="content-heading heading">5. CENTRAL CONTROL ROOM</h3>
+          <div class="room-specs mono">
+            <span class="spec-label">DIMENSIONS:</span> 2344 × 2260 mm
+          </div>
+          <div class="content-text">
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;"><strong>Signal Command:</strong> ATEM Television Studio 4K8 switcher and fanless PoE switch.</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Primary Signal Path:</strong> SSL XL mixing desk (Planned) and Tascam 8-track (Owned).</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Main Monitoring:</strong> Kii Three + BXT full-range system (Planned).</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Patching:</strong> 12-port BNC patch panel, 24-port Cat6A, and LC duplex fiber patch panel.</li>
+            </ul>
+          </div>
+          <div class="room-status">
+            <span class="status-badge status-calibrating mono">[ STATUS: CALIBRATING ]</span>
+          </div>
+        </div>
+
+        {/* BACK LINK */}
+        <div class="hero-cta" style="margin-top: 3rem;">
+          <a href="/studio" class="crs-button mono">
+            [ ← BACK TO STUDIO ]
           </a>
         </div>
       </section>
