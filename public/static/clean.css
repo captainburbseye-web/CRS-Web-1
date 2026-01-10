@@ -703,6 +703,72 @@ body {
   border-bottom-color: rgba(30, 30, 30, 0.2);
 }
 
+/* STATUS INDICATORS - MACHINE LANGUAGE */
+.indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  position: relative;
+}
+
+/* State colours - functional only (palette-correct industrial tones) */
+.indicator-live {
+  background: #2FAE61; /* CRS/nettle green - not neon */
+  box-shadow: 0 0 8px rgba(47, 174, 97, 0.55);
+}
+
+.indicator-standby {
+  background: var(--mustard); /* Yellow - STANDBY */
+  box-shadow: 0 0 8px rgba(212, 160, 23, 0.6);
+}
+
+.indicator-offline {
+  background: #C0392B; /* Deep signal red - not error red */
+  box-shadow: 0 0 8px rgba(192, 57, 43, 0.5);
+}
+
+/* Subtle play triangle inside green lens (OPTION A - transport control logic) */
+.indicator-live::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid rgba(0, 0, 0, 0.2);
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+
+/* Status strip container */
+.status-strip {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+}
+
+/* Accessibility: visually hidden text for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 /* UTILITIES */
 .hidden-mobile {
   display: none;

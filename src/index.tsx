@@ -102,10 +102,22 @@ const Header = () => (
       <a href="/about">ABOUT</a>
       <a href="/contact">CONTACT</a>
     </nav>
-    <div class="crs-header-status">
-      <span style="color: var(--mustard);">STATUS:</span>
-      <span style="color: var(--signal-white); font-weight: 700;">ONLINE</span>
-      <div class="status-pulse"></div>
+    <div class="status-strip">
+      <div class="status-item">
+        <span class="indicator indicator-live" aria-hidden="true"></span>
+        <span>CAFÉ</span>
+        <span class="visually-hidden">Open</span>
+      </div>
+      <div class="status-item">
+        <span class="indicator indicator-live" aria-hidden="true"></span>
+        <span>STUDIO</span>
+        <span class="visually-hidden">In Session</span>
+      </div>
+      <div class="status-item">
+        <span class="indicator indicator-live" aria-hidden="true"></span>
+        <span>REPAIRS</span>
+        <span class="visually-hidden">Active</span>
+      </div>
     </div>
   </header>
 )
@@ -176,12 +188,22 @@ app.get('/', (c) => {
         <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
           <div style="max-width: 800px;">
             {/* STATUS LINE */}
-            <div class="status-line">
-              <span>CAFÉ: OPEN</span>
-              <span class="separator">|</span>
-              <span>STUDIO: IN SESSION</span>
-              <span class="separator">|</span>
-              <span>REPAIRS: ACTIVE</span>
+            <div class="status-strip" style="margin-bottom: 2rem;">
+              <div class="status-item">
+                <span class="indicator indicator-live" aria-hidden="true"></span>
+                <span>CAFÉ</span>
+                <span class="visually-hidden">Open</span>
+              </div>
+              <div class="status-item">
+                <span class="indicator indicator-live" aria-hidden="true"></span>
+                <span>STUDIO</span>
+                <span class="visually-hidden">In Session</span>
+              </div>
+              <div class="status-item">
+                <span class="indicator indicator-live" aria-hidden="true"></span>
+                <span>REPAIRS</span>
+                <span class="visually-hidden">Active</span>
+              </div>
             </div>
 
             <p class="hero-location">Cowley Road Studios · Oxford</p>
@@ -217,10 +239,36 @@ app.get('/', (c) => {
       <section class="crs-section section-dark">
         <div class="section-header">
           <h2 class="section-title mono" style="font-size: 1.25rem;">LIVE STATUS / AVAILABILITY</h2>
-          <p class="section-intro">
+          <p class="section-intro" style="border-left: none; padding-left: 0; margin-bottom: 2rem;">
             Studio sessions · AV bookings · Repairs<br/>
             Availability updated regularly — get in touch to confirm.
           </p>
+        </div>
+        
+        <div style="display: grid; gap: 1.5rem; max-width: 800px;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <span class="indicator indicator-live" aria-hidden="true"></span>
+            <div>
+              <div class="mono" style="font-size: 0.875rem; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">CAFÉ</div>
+              <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8);">Open daily 8am–6pm</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <span class="indicator indicator-live" aria-hidden="true"></span>
+            <div>
+              <div class="mono" style="font-size: 0.875rem; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">STUDIO</div>
+              <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8);">In session (next availability: Thu 16 Jan)</div>
+            </div>
+          </div>
+          
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <span class="indicator indicator-live" aria-hidden="true"></span>
+            <div>
+              <div class="mono" style="font-size: 0.875rem; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">REPAIRS</div>
+              <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8);">Taking bookings</div>
+            </div>
+          </div>
         </div>
       </section>
 
