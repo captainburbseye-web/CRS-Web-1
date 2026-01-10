@@ -37,6 +37,49 @@ app.get('/status.json', (c) => {
   })
 })
 
+// Events Feed Endpoint (Google Calendar proxy)
+app.get('/events.json', async (c) => {
+  try {
+    // TODO: Replace with your actual Google Calendar ID
+    const CALENDAR_ID = 'YOUR_CALENDAR_ID@group.calendar.google.com'
+    const API_KEY = 'YOUR_GOOGLE_API_KEY' // Store in env vars for production
+    
+    const now = new Date().toISOString()
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${now}&maxResults=10&singleEvents=true&orderBy=startTime`
+    
+    const response = await fetch(url)
+    const data = await response.json()
+    
+    if (!data.items) {
+      return c.json({ events: [] })
+    }
+    
+    // Transform to simplified format
+    const events = data.items.map((item: any) => ({
+      id: item.id,
+      title: item.summary || 'Untitled Event',
+      start: item.start.dateTime || item.start.date,
+      end: item.end?.dateTime || item.end?.date,
+      description: item.description || '',
+      location: item.location || '',
+      // Extract booking link from description if present
+      bookingLink: extractBookingLink(item.description || '')
+    }))
+    
+    return c.json({ events })
+  } catch (error) {
+    // Return empty on error (don't break the site)
+    return c.json({ events: [] })
+  }
+})
+
+// Helper to extract booking links from event descriptions
+function extractBookingLink(description: string): string | null {
+  const urlRegex = /(https?:\/\/[^\s]+)/g
+  const matches = description.match(urlRegex)
+  return matches ? matches[0] : null
+}
+
 app.use(renderer)
 
 // SHARED COMPONENTS
@@ -207,6 +250,52 @@ app.get('/', (c) => {
             A flexible café and event space — talks, workshops, small live events, and community use.
           </p>
         </div>
+        
+        {/* WHAT'S ON PREVIEW */}
+        <div class="content-block">
+          <h3 class="content-heading mono" style="font-size: 1rem;">WHAT'S ON</h3>
+          <div id="events-preview" style="margin-top: 1rem;">
+            <p style="font-size: 0.875rem; font-style: italic;">Loading events...</p>
+          </div>
+        </div>
+        
+        <script dangerouslySetInnerHTML={{__html: `
+          // Load events preview (first 3 only)
+          fetch('/events.json')
+            .then(res => res.json())
+            .then(data => {
+              const container = document.getElementById('events-preview');
+              if (!container) return;
+              
+              if (!data.events || data.events.length === 0) {
+                container.innerHTML = '<p style="font-size: 0.875rem;">No upcoming events — <a href="/venue" style="color: var(--mustard); text-decoration: none;">book the space</a></p>';
+                return;
+              }
+              
+              const eventsToShow = data.events.slice(0, 3);
+              
+              container.innerHTML = eventsToShow.map(event => {
+                const date = new Date(event.start);
+                const dateStr = date.toLocaleDateString('en-GB', { 
+                  day: 'numeric', 
+                  month: 'short'
+                });
+                
+                return \`
+                  <div style="margin-bottom: 1rem; font-size: 0.875rem;">
+                    <span style="color: var(--mustard); font-weight: 700;">\${dateStr}</span> · \${event.title}
+                  </div>
+                \`;
+              }).join('') + '<p style="margin-top: 1rem; font-size: 0.875rem;"><a href="/venue" style="color: var(--mustard); text-decoration: none; font-weight: 700;">→ View all events</a></p>';
+            })
+            .catch(err => {
+              const container = document.getElementById('events-preview');
+              if (container) {
+                container.innerHTML = '<p style="font-size: 0.875rem;"><a href="/venue" style="color: var(--mustard); text-decoration: none;">View upcoming events</a></p>';
+              }
+            });
+        `}} />
+        
         <div class="hero-cta">
           <a href="/venue" class="crs-button mono">[ WHAT'S ON ]</a>
         </div>
@@ -514,14 +603,63 @@ app.get('/venue', (c) => {
             <p style="font-style: italic; color: var(--mustard);">
               Upcoming events, workshops, and sessions.
             </p>
-            <p style="margin-top: 1rem;">
-              (Auto-updating feed will display next 5–7 items here)
-            </p>
-            <p style="margin-top: 1.5rem; font-weight: 700;">
-              No public events listed — venue available to book.
-            </p>
+            
+            {/* Events feed will load here via JavaScript */}
+            <div id="events-feed" style="margin-top: 1.5rem;">
+              <p style="font-weight: 700;">
+                No public events listed — the space is available to book.
+              </p>
+            </div>
           </div>
         </div>
+        
+        <script dangerouslySetInnerHTML={{__html: `
+          // Load events from API
+          fetch('/events.json')
+            .then(res => res.json())
+            .then(data => {
+              const container = document.getElementById('events-feed');
+              if (!container) return;
+              
+              if (!data.events || data.events.length === 0) {
+                // Keep default empty state
+                return;
+              }
+              
+              // Display up to 7 events
+              const eventsToShow = data.events.slice(0, 7);
+              
+              container.innerHTML = eventsToShow.map(event => {
+                const date = new Date(event.start);
+                const dateStr = date.toLocaleDateString('en-GB', { 
+                  weekday: 'short', 
+                  day: 'numeric', 
+                  month: 'short',
+                  year: 'numeric'
+                });
+                const timeStr = event.start.includes('T') ? date.toLocaleTimeString('en-GB', {
+                  hour: '2-digit',
+                  minute: '2-digit'
+                }) : '';
+                
+                const bookingButton = event.bookingLink ? 
+                  \`<a href="\${event.bookingLink}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 0.5rem; color: var(--mustard); text-decoration: none; font-weight: 700;">→ Book Tickets / More Info</a>\` : '';
+                
+                return \`
+                  <div style="border-left: 2px solid var(--mustard); padding-left: 1rem; margin-bottom: 1.5rem;">
+                    <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem;">\${event.title}</h4>
+                    <p style="font-size: 0.875rem; color: var(--mustard); margin-bottom: 0.5rem;">\${dateStr}\${timeStr ? ' · ' + timeStr : ''}</p>
+                    <p style="font-size: 0.875rem; line-height: 1.5;">\${event.description.substring(0, 150)}\${event.description.length > 150 ? '...' : ''}</p>
+                    \${bookingButton}
+                  </div>
+                \`;
+              }).join('');
+            })
+            .catch(err => {
+              console.error('Failed to load events:', err);
+              // Keep default empty state on error
+            });
+        `}} />
 
         {/* VENUE HIRE */}
         <div class="content-block">
@@ -539,11 +677,34 @@ app.get('/venue', (c) => {
           </div>
         </div>
 
-        {/* CTA */}
-        <div class="hero-cta">
-          <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Request" class="crs-button mono">
-            [ BOOK THE SPACE ]
-          </a>
+        {/* BOOKING CTAs */}
+        <div class="content-block">
+          <h3 class="content-heading mono">BOOK THE SPACE</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1.5rem;">
+              Choose the booking option that fits your needs:
+            </p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+            {/* Venue Hire */}
+            <div style="border: 1px solid var(--mustard); padding: 1.5rem;">
+              <h4 class="mono" style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--mustard);">VENUE HIRE</h4>
+              <p style="font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.5;">Book the space for workshops, talks, community events, launches, or screenings.</p>
+              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Hire%20Request" class="crs-button mono" style="width: auto; display: inline-block;">
+                [ BOOK THE SPACE ]
+              </a>
+            </div>
+            
+            {/* Private Enquiries */}
+            <div style="border: 1px solid var(--mustard); padding: 1.5rem;">
+              <h4 class="mono" style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--mustard);">PRIVATE ENQUIRIES</h4>
+              <p style="font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.5;">For custom bookings or specific requirements.</p>
+              <a href="mailto:info@cowleyroadstudios.com?subject=Private%20Enquiry" class="crs-button mono" style="width: auto; display: inline-block;">
+                [ REQUEST AVAILABILITY ]
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
