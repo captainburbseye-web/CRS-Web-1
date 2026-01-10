@@ -259,21 +259,12 @@ app.get('/', (c) => {
     <>
       <Header />
 
-      {/* BOOKING GATEWAY - Primary function of the site */}
-      <section class="booking-gateway">
-        <div class="booking-gateway-container">
-          <h2 class="booking-gateway-title mono">Book with Cowley Road Studios</h2>
-          <p class="booking-gateway-subtitle">Select what you want to book — we'll guide you from there.</p>
-          
-          <div class="booking-list">
-            <a href="/book/studio" class="booking-item mono">Book Studio Time</a>
-            <a href="/book/rehearsal" class="booking-item mono">Book Rehearsal</a>
-            <a href="/book/lessons" class="booking-item mono">Book Music Lessons</a>
-            <a href="/book/mixdown" class="booking-item mono">Book a Mixdown Slot</a>
-            <a href="/book/tape" class="booking-item mono">Book Tape Services</a>
-            <a href="/book/hire" class="booking-item mono">Book Equipment Hire</a>
-            <a href="/repairs/status" class="booking-item mono">Book Repairs</a>
-          </div>
+      {/* BOOKING ROUTER - Signal Path Selection */}
+      <section class="booking-router">
+        <div class="booking-router-container">
+          <a href="/book/studio" class="booking-router-link heading">[ BOOK_STUDIO_TIME ]</a>
+          <a href="/av-services" class="booking-router-link heading">[ BOOK_AV_HIRE ]</a>
+          <a href="/repairs/status" class="booking-router-link heading">[ BOOK_BENCH_REPAIR ]</a>
         </div>
       </section>
 
