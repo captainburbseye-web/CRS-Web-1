@@ -153,7 +153,7 @@ const Header = () => (
           loading="eager"
           fetchpriority="high"
         />
-        <span class="crs-header-locations hidden-mobile mono">Cowley Road · Cricket Road</span>
+        <span class="crs-header-locations hidden-mobile mono">Cowley Road · Florence Park</span>
       </a>
       <span class="crs-header-loc hidden-mobile">LOC: 118_COWLEY_RD_OX4</span>
     </div>
@@ -247,7 +247,7 @@ const Footer = () => (
 
     <div class="footer-bottom">
       <p>
-        CRS — Cowley Road & Cricket Road
+        CRS — Cowley Road & Florence Park
       </p>
       <p>
         CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a>
@@ -768,8 +768,8 @@ app.get('/book/rehearsal', (c) => {
             </a>
             
             <a href="/book/rehearsal/cricket-road" class="location-selector-card">
-              <div class="location-selector-header mono">CRS — Cricket Road</div>
-              <div class="location-selector-desc">(Partner Studio) · Independent calendar</div>
+              <div class="location-selector-header mono">CRS — Florence Park</div>
+              <div class="location-selector-desc">(Partner Studio) · Cricket Road, Oxford</div>
             </a>
           </div>
           
@@ -836,7 +836,7 @@ app.get('/book/rehearsal/cowley-road', (c) => {
   )
 })
 
-// 2b. Book Rehearsal - Cricket Road
+// 2b. Book Rehearsal - Florence Park
 app.get('/book/rehearsal/cricket-road', (c) => {
   return c.render(
     <>
@@ -847,9 +847,9 @@ app.get('/book/rehearsal/cricket-road', (c) => {
             <a href="/book/rehearsal" style="color: var(--mustard); text-decoration: none;">← Back to location selection</a>
           </p>
           
-          <h2 class="section-title heading">CRS Rehearsal · Cricket Road</h2>
+          <h2 class="section-title heading">CRS Rehearsal · Florence Park</h2>
           <p class="section-intro" style="margin-bottom: 2rem; font-style: italic;">
-            Partner Studio · Independent availability
+            Partner Studio · Cricket Road, Oxford
           </p>
           
           <form class="booking-form" method="post" action="/api/book/rehearsal/cricket-road">
