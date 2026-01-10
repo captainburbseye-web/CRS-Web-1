@@ -28,11 +28,11 @@ body {
 }
 
 .heading {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-weight: 700;
+  font-family: 'Archivo Black', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 900;
   text-transform: uppercase;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em; /* The Glint - compressed and powerful */
 }
 
 /* COLORS */
@@ -183,13 +183,16 @@ body {
 }
 
 .hero-tagline {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
   font-size: 1.875rem;
-  font-weight: 700;
   color: rgba(245, 245, 245, 0.9);
   margin-bottom: 1.5rem;
   border-left: 4px solid var(--mustard);
   padding-left: 1.5rem;
   max-width: 600px;
+  letter-spacing: -0.05em; /* The Glint - UK road sign energy */
+  text-transform: uppercase;
 }
 
 @media (min-width: 768px) {
@@ -239,11 +242,13 @@ body {
 }
 
 .section-title {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
   font-size: 2.5rem;
   color: var(--mustard);
   text-transform: uppercase;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em; /* The Glint - compressed and powerful */
 }
 
 @media (min-width: 768px) {
@@ -253,8 +258,11 @@ body {
 }
 
 .section-title-brewforce {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
   font-size: 3rem;
   color: var(--fire-orange);
+  letter-spacing: -0.05em; /* The Glint - Brewforce intensity */
 }
 
 @media (min-width: 768px) {
@@ -363,17 +371,28 @@ body {
 }
 
 .card-status {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 0.875rem;
   color: var(--fire-orange);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   margin-top: auto;
+  font-weight: 800;
+}
+
+.card-status::before {
+  content: '[ ';
+}
+
+.card-status::after {
+  content: ' ]';
 }
 
 /* SERVICE CARDS (BREWFORCE) */
 .service-card {
   background: var(--nettle-green);
-  border: 1px solid var(--mustard);
+  border: 3px solid var(--mustard);
+  box-shadow: inset 0 0 0 1px #ff0000; /* Inner Fire red line - high-voltage equipment */
   padding: 2rem;
   position: relative;
   display: flex;
@@ -415,12 +434,13 @@ body {
 }
 
 .service-headline {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
   font-size: 1.875rem;
-  font-weight: 700;
   color: var(--fire-orange);
   text-transform: uppercase;
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.05em; /* The Glint - Brewforce Maverick energy */
 }
 
 @media (min-width: 768px) {
