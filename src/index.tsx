@@ -244,6 +244,24 @@ app.get('/', (c) => {
     <>
       <Header />
 
+      {/* BOOKING GATEWAY - Primary function of the site */}
+      <section class="booking-gateway">
+        <div class="booking-gateway-container">
+          <h2 class="booking-gateway-title mono">Book with Cowley Road Studios</h2>
+          <p class="booking-gateway-subtitle">Select what you want to book — we'll guide you from there.</p>
+          
+          <div class="booking-list">
+            <a href="/book/studio" class="booking-item mono">Book Studio Time</a>
+            <a href="/book/rehearsal" class="booking-item mono">Book Rehearsal</a>
+            <a href="/book/lessons" class="booking-item mono">Book Music Lessons</a>
+            <a href="/book/mixdown" class="booking-item mono">Book a Mixdown Slot</a>
+            <a href="/book/tape" class="booking-item mono">Book Tape Services</a>
+            <a href="/book/hire" class="booking-item mono">Book Equipment Hire</a>
+            <a href="/book/repairs" class="booking-item mono">Book Repairs</a>
+          </div>
+        </div>
+      </section>
+
       {/* HERO */}
       <section class="crs-hero mono">
         <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
@@ -664,6 +682,369 @@ app.get('/studio/infrastructure', (c) => {
   )
 })
 
+// BOOKING ROUTES (Structured intake forms)
+
+// 1. Book Studio Time
+app.get('/book/studio', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="booking-form-container">
+          <h2 class="section-title heading">Book Studio Time</h2>
+          
+          <form class="booking-form" method="post" action="/api/book/studio">
+            <div class="form-group">
+              <label for="name" class="form-label mono">Name *</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label mono">Email *</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="project_type" class="form-label mono">Project Type</label>
+              <select id="project_type" name="project_type" class="form-input">
+                <option value="music">Music</option>
+                <option value="podcast">Podcast</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="dates" class="form-label mono">Preferred dates & times *</label>
+              <textarea id="dates" name="dates" required class="form-textarea" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="session_length" class="form-label mono">Estimated session length *</label>
+              <input type="text" id="session_length" name="session_length" required class="form-input" placeholder="e.g., 3 hours" />
+            </div>
+            
+            <div class="form-group">
+              <label for="notes" class="form-label mono">Anything we should know? (optional)</label>
+              <textarea id="notes" name="notes" class="form-textarea" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="crs-button mono">[ SUBMIT BOOKING REQUEST ]</button>
+          </form>
+          
+          <p class="form-helper-text">Thanks — we'll confirm availability and next steps shortly.</p>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
+
+// 2. Book Rehearsal
+app.get('/book/rehearsal', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="booking-form-container">
+          <h2 class="section-title heading">Book Rehearsal</h2>
+          
+          <form class="booking-form" method="post" action="/api/book/rehearsal">
+            <div class="form-group">
+              <label for="name" class="form-label mono">Name *</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label mono">Email *</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="band_name" class="form-label mono">Band / project name</label>
+              <input type="text" id="band_name" name="band_name" class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="dates" class="form-label mono">Preferred dates & times *</label>
+              <textarea id="dates" name="dates" required class="form-textarea" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="duration" class="form-label mono">Rehearsal length *</label>
+              <input type="text" id="duration" name="duration" required class="form-input" placeholder="e.g., 2 hours" />
+            </div>
+            
+            <div class="form-group">
+              <label for="needs" class="form-label mono">Any specific needs? (optional)</label>
+              <textarea id="needs" name="needs" class="form-textarea" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="crs-button mono">[ SUBMIT BOOKING REQUEST ]</button>
+          </form>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
+
+// 3. Book Music Lessons
+app.get('/book/lessons', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="booking-form-container">
+          <h2 class="section-title heading">Book Music Lessons</h2>
+          
+          <form class="booking-form" method="post" action="/api/book/lessons">
+            <div class="form-group">
+              <label for="name" class="form-label mono">Name *</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label mono">Email *</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="instrument" class="form-label mono">Instrument *</label>
+              <input type="text" id="instrument" name="instrument" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="experience" class="form-label mono">Experience level *</label>
+              <select id="experience" name="experience" required class="form-input">
+                <option value="">Select level</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="availability" class="form-label mono">General availability *</label>
+              <textarea id="availability" name="availability" required class="form-textarea" rows="3" placeholder="e.g., Weekday evenings, Saturday mornings"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="goals" class="form-label mono">Goals or notes (optional)</label>
+              <textarea id="goals" name="goals" class="form-textarea" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="crs-button mono">[ SUBMIT ENQUIRY ]</button>
+          </form>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
+
+// 4. Book Mixdown Slot
+app.get('/book/mixdown', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="booking-form-container">
+          <h2 class="section-title heading">Book a Mixdown Slot</h2>
+          
+          <form class="booking-form" method="post" action="/api/book/mixdown">
+            <div class="form-group">
+              <label for="name" class="form-label mono">Name *</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label mono">Email *</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="track_count" class="form-label mono">Number of tracks *</label>
+              <input type="number" id="track_count" name="track_count" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="reference" class="form-label mono">Reference notes *</label>
+              <textarea id="reference" name="reference" required class="form-textarea" rows="4" placeholder="What are you looking for in the mix?"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="file_link" class="form-label mono">Upload files or link</label>
+              <input type="url" id="file_link" name="file_link" class="form-input" placeholder="e.g., Google Drive, Dropbox link" />
+            </div>
+            
+            <p class="form-helper-text">We'll review and confirm timing before starting work.</p>
+            
+            <button type="submit" class="crs-button mono">[ SUBMIT REQUEST ]</button>
+          </form>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
+
+// 5. Book Tape Services
+app.get('/book/tape', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="booking-form-container">
+          <h2 class="section-title heading">Book Tape Services</h2>
+          
+          <form class="booking-form" method="post" action="/api/book/tape">
+            <div class="form-group">
+              <label for="name" class="form-label mono">Name *</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label mono">Email *</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="tape_format" class="form-label mono">Tape format *</label>
+              <input type="text" id="tape_format" name="tape_format" required class="form-input" placeholder="e.g., 1/4 inch reel-to-reel, cassette" />
+            </div>
+            
+            <div class="form-group">
+              <label for="reel_count" class="form-label mono">Number of reels *</label>
+              <input type="number" id="reel_count" name="reel_count" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="service" class="form-label mono">Service required *</label>
+              <select id="service" name="service" required class="form-input">
+                <option value="">Select service</option>
+                <option value="transfer">Transfer</option>
+                <option value="clean">Clean</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="notes" class="form-label mono">Notes</label>
+              <textarea id="notes" name="notes" class="form-textarea" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="crs-button mono">[ SUBMIT REQUEST ]</button>
+          </form>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
+
+// 6. Book Equipment Hire
+app.get('/book/hire', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="booking-form-container">
+          <h2 class="section-title heading">Book Equipment Hire</h2>
+          
+          <form class="booking-form" method="post" action="/api/book/hire">
+            <div class="form-group">
+              <label for="name" class="form-label mono">Name *</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label mono">Email *</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="equipment" class="form-label mono">Equipment needed *</label>
+              <textarea id="equipment" name="equipment" required class="form-textarea" rows="3"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="dates" class="form-label mono">Dates required *</label>
+              <input type="text" id="dates" name="dates" required class="form-input" placeholder="e.g., 15-17 March" />
+            </div>
+            
+            <div class="form-group">
+              <label for="event" class="form-label mono">Event / use *</label>
+              <input type="text" id="event" name="event" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="location" class="form-label mono">Location *</label>
+              <input type="text" id="location" name="location" required class="form-input" />
+            </div>
+            
+            <button type="submit" class="crs-button mono">[ SUBMIT ENQUIRY ]</button>
+          </form>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
+
+// 7. Book Repairs
+app.get('/book/repairs', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="booking-form-container">
+          <h2 class="section-title heading">Book Repairs</h2>
+          
+          <form class="booking-form" method="post" action="/api/book/repairs">
+            <div class="form-group">
+              <label for="name" class="form-label mono">Name *</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label mono">Email *</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="equipment_type" class="form-label mono">Equipment type *</label>
+              <input type="text" id="equipment_type" name="equipment_type" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="issue" class="form-label mono">Describe the issue *</label>
+              <textarea id="issue" name="issue" required class="form-textarea" rows="5"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="photo_link" class="form-label mono">Upload photos (optional)</label>
+              <input type="url" id="photo_link" name="photo_link" class="form-input" placeholder="Link to photos" />
+            </div>
+            
+            <div class="form-group">
+              <label for="urgent" class="form-label mono">Is this time-critical? (optional)</label>
+              <select id="urgent" name="urgent" class="form-input">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+            </div>
+            
+            <p class="form-helper-text">Diagnosis first. Quote follows.</p>
+            
+            <button type="submit" class="crs-button mono">[ SUBMIT REPAIR REQUEST ]</button>
+          </form>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
+
 // AV SERVICES
 app.get('/av-services', (c) => {
   return c.render(
@@ -1007,27 +1388,42 @@ app.get('/contact', (c) => {
         <div class="section-header">
           <h2 class="section-title heading">CONTACT</h2>
           <p class="section-intro">
-            For bookings, quotes, or enquiries
+            For general enquiries only. Use the booking gateway for bookings.
           </p>
         </div>
 
+        {/* CONTACT FORM */}
+        <div class="booking-form-container">
+          <h3 class="content-heading mono">SEND A MESSAGE</h3>
+          
+          <form class="booking-form" method="post" action="/api/contact">
+            <div class="form-group">
+              <label for="name" class="form-label mono">Name *</label>
+              <input type="text" id="name" name="name" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label mono">Email *</label>
+              <input type="email" id="email" name="email" required class="form-input" />
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label mono">Message *</label>
+              <textarea id="message" name="message" required class="form-textarea" rows="6"></textarea>
+            </div>
+            
+            <button type="submit" class="crs-button mono">[ SEND MESSAGE ]</button>
+          </form>
+          
+          <p class="form-helper-text">Thanks — your message has been sent. We'll get back to you shortly.</p>
+        </div>
+
         {/* CONTACT METHODS */}
-        <div class="content-block">
-          <h3 class="content-heading mono">GET IN TOUCH</h3>
+        <div class="content-block" style="margin-top: 3rem;">
+          <h3 class="content-heading mono">DIRECT CONTACT</h3>
           <div class="content-text mono">
             <p><strong>EMAIL:</strong> <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a></p>
             <p style="margin-top: 1rem;"><strong>ADDRESS:</strong> Cowley Road Studios, 118 Cowley Road, Oxford, OX4 1JE</p>
-          </div>
-        </div>
-
-        {/* BOOKING LINKS */}
-        <div class="content-block">
-          <h3 class="content-heading mono">QUICK LINKS</h3>
-          <div class="hero-links mono">
-            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer">→ Book Studio</a>
-            <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability">→ Book Venue</a>
-            <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Services%20Enquiry">→ AV Services</a>
-            <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Request">→ Repairs</a>
           </div>
         </div>
       </section>

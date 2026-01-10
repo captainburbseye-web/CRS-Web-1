@@ -545,6 +545,127 @@ body {
   transform: scale(0.98);
 }
 
+/* BOOKING GATEWAY (Primary function - routing interface) */
+.booking-gateway {
+  background: #0a0a0a;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+  padding: 2rem 1rem;
+}
+
+.booking-gateway-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.booking-gateway-title {
+  font-size: 1.25rem;
+  color: var(--signal-white);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.booking-gateway-subtitle {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 245, 0.6);
+  margin: 0 0 1.5rem 0;
+}
+
+.booking-list {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .booking-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .booking-gateway {
+    padding: 3rem 2rem;
+  }
+}
+
+.booking-item {
+  display: block;
+  background: #1a1a1a;
+  border: 1px solid rgba(245, 245, 245, 0.2);
+  color: var(--signal-white);
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.booking-item:hover {
+  background: #252525;
+  border-color: var(--mustard);
+  color: var(--mustard);
+}
+
+.booking-item:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+/* BOOKING FORMS (Structured intake forms) */
+.booking-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.booking-form {
+  margin-top: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--signal-white);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid rgba(245, 245, 245, 0.2);
+  color: var(--signal-white);
+  padding: 0.75rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  border-radius: 2px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--mustard);
+  background: #252525;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-helper-text {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 245, 0.6);
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
 /* INFRASTRUCTURE PAGE (Room-by-Room Technical Ledger) */
 .system-status-banner {
   background: rgba(227, 180, 72, 0.1);
