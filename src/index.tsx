@@ -340,7 +340,7 @@ app.get('/', (c) => {
       </section>
 
       {/* STUDIO SNAPSHOT */}
-      <section class="crs-section section-light">
+      <section class="crs-section section-dark">
         <div class="section-header">
           <h2 class="section-title heading">STUDIO SESSIONS</h2>
           <p class="section-intro">

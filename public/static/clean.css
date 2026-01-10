@@ -35,13 +35,23 @@ body {
   letter-spacing: -0.05em; /* The Glint - compressed and powerful */
 }
 
-/* COLORS */
+/* COLORS - SIGNAL AUTHORITY (LOCKED) */
 :root {
-  --void-black: #0a0a0a;
-  --nettle-green: #2d3e2f;
-  --mustard: #d4a017;
-  --fire-orange: #ff4d00;
-  --signal-white: #f5f5f5;
+  /* SIGNAL COLORS - Functional only, communicate system state */
+  --void-black: #0a0a0a;        /* Infrastructure void - CRS base */
+  --signal-white: #f5f5f5;      /* Clarity, legibility, truth */
+  
+  /* STATUS COLORS - Live/standby/offline only */
+  --live-green: #00B400;        /* LIVE - signal passing (VU meter green) */
+  --standby-gold: #d4a017;      /* STANDBY - threshold, reference points */
+  --offline-red: #C0392B;       /* OFFLINE - stop, protect, fault */
+  
+  /* ACTION COLOR - Brewforce/CTA only */
+  --fire-orange: #ff4d00;       /* ACTION - energy threshold, not decoration */
+  
+  /* ATMOSPHERIC COLORS - Café/story sections ONLY, never CRS infrastructure */
+  --nettle-green: #2d3e2f;      /* HOLDING SPACE - Workshop Café only */
+  --mustard: #d4a017;           /* Same as standby-gold - dual use allowed */
 }
 
 /* HEADER */
@@ -119,8 +129,14 @@ body {
 }
 
 .section-light {
-  background: #f8f6ee;
+  background: #f8f6ee; /* Cream - Café/story sections only */
   color: #1e1e1e;
+}
+
+.section-light-crs {
+  background: #0a0a0a; /* CRS infrastructure stays dark - signal discipline */
+  color: #f5f5f5;
+  border-top: 2px solid var(--mustard);
 }
 
 /* HERO */
@@ -315,7 +331,7 @@ body {
 }
 
 .crs-card {
-  background: var(--nettle-green);
+  background: #1a1a1a; /* Dark grey infrastructure - signal discipline */
   border: 1px solid var(--mustard);
   display: flex;
   flex-direction: column;
@@ -390,7 +406,7 @@ body {
 
 /* SERVICE CARDS (BREWFORCE) */
 .service-card {
-  background: var(--nettle-green);
+  background: #1a1a1a; /* Dark grey infrastructure - not atmospheric green */
   border: 3px solid var(--mustard);
   box-shadow: inset 0 0 0 1px #ff0000; /* Inner Fire red line - high-voltage equipment */
   padding: 2rem;
