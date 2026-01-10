@@ -107,17 +107,21 @@ body {
 }
 
 /* PRIMARY BOOK BUTTON (Header/Mobile - Operational Control) */
+.book-dropdown {
+  position: relative;
+}
+
 .primary-book-button {
   background: var(--fire-orange); /* Brand orange - operational */
   color: var(--signal-white);
   padding: 0.5rem 1.25rem;
-  text-decoration: none;
   font-size: 0.875rem;
   letter-spacing: 0.1em;
   font-weight: 700;
+  border: none;
   border-left: 2px solid var(--mustard); /* Subtle mustard accent */
   transition: background 0.2s ease;
-  display: inline-block;
+  cursor: pointer;
 }
 
 .primary-book-button:hover {
@@ -132,6 +136,49 @@ body {
 
 .primary-book-button:active {
   background: #d94400; /* Slightly darker orange */
+}
+
+/* Dropdown Menu */
+.book-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: #0F1A14; /* Dark green background */
+  border: 1px solid var(--mustard);
+  min-width: 200px;
+  z-index: 100;
+  display: none;
+}
+
+.book-dropdown:hover .book-dropdown-menu,
+.book-dropdown:focus-within .book-dropdown-menu {
+  display: block;
+}
+
+.book-dropdown-item {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: var(--signal-white);
+  text-decoration: none;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+  transition: background 0.2s ease;
+}
+
+.book-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.book-dropdown-item:hover {
+  background: rgba(212, 160, 23, 0.15); /* Mustard tint on hover */
+  color: var(--mustard);
+}
+
+.book-dropdown-item:focus {
+  outline: none;
+  background: rgba(212, 160, 23, 0.15);
+  color: var(--mustard);
 }
 
 /* Mobile Book Button */

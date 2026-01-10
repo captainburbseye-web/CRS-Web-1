@@ -180,7 +180,20 @@ const Header = () => (
         <span class="visually-hidden">Paused</span>
       </div>
     </div>
-    <a href="/" class="primary-book-button mono">BOOK</a>
+    <div class="book-dropdown">
+      <button class="primary-book-button mono" aria-expanded="false" aria-haspopup="true">
+        BOOK
+      </button>
+      <div class="book-dropdown-menu" role="menu">
+        <a href="/book/studio" class="book-dropdown-item mono" role="menuitem">Studio Time</a>
+        <a href="/book/rehearsal" class="book-dropdown-item mono" role="menuitem">Rehearsal</a>
+        <a href="/book/lessons" class="book-dropdown-item mono" role="menuitem">Music Lessons</a>
+        <a href="/book/mixdown" class="book-dropdown-item mono" role="menuitem">Mixdown Slot</a>
+        <a href="/book/tape" class="book-dropdown-item mono" role="menuitem">Tape Services</a>
+        <a href="/book/hire" class="book-dropdown-item mono" role="menuitem">Equipment Hire</a>
+        <a href="/repairs/status" class="book-dropdown-item mono" role="menuitem">Repairs</a>
+      </div>
+    </div>
   </header>
 )
 
