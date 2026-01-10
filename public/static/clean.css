@@ -60,7 +60,7 @@ body {
   top: 0;
   z-index: 50;
   width: 100%;
-  height: 48px;
+  height: 56px; /* Increased from 48px to accommodate larger logo */
   background: var(--void-black);
   border-bottom: 1px solid var(--mustard);
   display: flex;
@@ -70,9 +70,16 @@ body {
 }
 
 .crs-header-logo {
-  max-height: 32px; /* Industrial panel at lean nav height */
+  max-height: 40px; /* Increased for brand presence (was 32px) */
   width: auto;
   object-fit: contain; /* Preserve panel proportions */
+}
+
+/* Mobile: slightly smaller but still prominent */
+@media (max-width: 767px) {
+  .crs-header-logo {
+    max-height: 36px; /* ~13% increase from original 32px */
+  }
 }
 
 .crs-header-loc {
