@@ -607,6 +607,57 @@ body {
   color: var(--mustard);
 }
 
+/* MOBILE NAVIGATION */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--void-black);
+  border-top: 1px solid var(--mustard);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.75rem 0.5rem;
+  gap: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
+.mobile-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(245, 245, 245, 0.8);
+  text-decoration: none;
+  padding: 0.5rem 0.25rem;
+  transition: color 0.2s;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a:focus {
+  color: var(--mustard);
+}
+
+/* Add bottom padding to body on mobile to prevent content hiding behind mobile nav */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 60px;
+  }
+}
+
 /* CONTENT BLOCKS */
 .content-block {
   margin-bottom: 3rem;
@@ -665,4 +716,46 @@ body {
 
 .mt-auto {
   margin-top: auto;
+}
+
+/* FOCUS STATES (ACCESSIBILITY) */
+/* Apply visible focus to all interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+/* Button focus (already has fire-orange bg, use mustard outline) */
+.crs-button:focus-visible,
+.crs-vu-button:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+/* Link focus in light sections */
+.section-light a:focus-visible {
+  outline-color: #1e1e1e;
+}
+
+/* Fallback for browsers without :focus-visible support */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+/* Remove default focus for :focus-visible supported browsers */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
+  outline: none;
 }

@@ -111,7 +111,17 @@ const Header = () => (
 )
 
 const Footer = () => (
-  <footer class="crs-footer mono">
+  <>
+    {/* MOBILE NAVIGATION (FIXED BOTTOM) */}
+    <nav class="mobile-nav mono">
+      <a href="/studio">STUDIO</a>
+      <a href="/av-services">AV</a>
+      <a href="/venue">CAFÉ</a>
+      <a href="/about">ABOUT</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+
+    <footer class="crs-footer mono">
     <div class="footer-grid">
       <div class="footer-col">
         <p class="footer-col-title">01 / TERMINAL</p>
@@ -152,6 +162,7 @@ const Footer = () => (
       </p>
     </div>
   </footer>
+  </>
 )
 
 // HOME
