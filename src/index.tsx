@@ -180,6 +180,7 @@ const Header = () => (
         <span class="visually-hidden">Active</span>
       </div>
     </div>
+    <a href="/" class="primary-book-button mono">BOOK</a>
   </header>
 )
 
@@ -192,6 +193,7 @@ const Footer = () => (
       <a href="/venue">CAFÉ</a>
       <a href="/about">ABOUT</a>
       <a href="/contact">CONTACT</a>
+      <a href="/" class="primary-book-button-mobile mono">BOOK</a>
     </nav>
 
     <footer class="crs-footer mono">

@@ -99,6 +99,63 @@ body {
   animation: pulse 4s infinite; /* Slowed for calm, space-station breathing */
 }
 
+/* PRIMARY BOOK BUTTON (Header/Mobile - Operational Control) */
+.primary-book-button {
+  background: var(--fire-orange); /* Brand orange - operational */
+  color: var(--signal-white);
+  padding: 0.5rem 1.25rem;
+  text-decoration: none;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  border-left: 2px solid var(--mustard); /* Subtle mustard accent */
+  transition: background 0.2s ease;
+  display: inline-block;
+}
+
+.primary-book-button:hover {
+  background: #ff6a2e; /* Slightly brighter orange */
+}
+
+.primary-book-button:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+  border-left: 2px solid var(--mustard); /* Accent more visible */
+}
+
+.primary-book-button:active {
+  background: #d94400; /* Slightly darker orange */
+}
+
+/* Mobile Book Button */
+.primary-book-button-mobile {
+  background: var(--fire-orange);
+  color: var(--signal-white);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  border-top: 2px solid var(--mustard); /* Top accent for mobile */
+  transition: background 0.2s ease;
+  display: block;
+  text-align: center;
+}
+
+.primary-book-button-mobile:hover {
+  background: #ff6a2e;
+}
+
+.primary-book-button-mobile:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: -2px;
+  border-top: 2px solid var(--mustard);
+}
+
+.primary-book-button-mobile:active {
+  background: #d94400;
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
