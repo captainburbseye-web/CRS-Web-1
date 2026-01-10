@@ -175,9 +175,9 @@ const Header = () => (
         <span class="visually-hidden">In Session</span>
       </div>
       <div class="status-item">
-        <span class="indicator indicator-live" aria-hidden="true"></span>
+        <span class="indicator indicator-standby" aria-hidden="true"></span>
         <span>REPAIRS</span>
-        <span class="visually-hidden">Active</span>
+        <span class="visually-hidden">Paused</span>
       </div>
     </div>
     <a href="/" class="primary-book-button mono">BOOK</a>
@@ -281,9 +281,9 @@ app.get('/', (c) => {
                 <span class="visually-hidden">In Session</span>
               </div>
               <div class="status-item">
-                <span class="indicator indicator-live" aria-hidden="true"></span>
+                <span class="indicator indicator-standby" aria-hidden="true"></span>
                 <span>REPAIRS</span>
-                <span class="visually-hidden">Active</span>
+                <span class="visually-hidden">Paused</span>
               </div>
             </div>
 
@@ -349,10 +349,10 @@ app.get('/', (c) => {
           </div>
           
           <div style="display: flex; align-items: center; gap: 1rem;">
-            <span class="indicator indicator-live" aria-hidden="true"></span>
+            <span class="indicator indicator-standby" aria-hidden="true"></span>
             <div>
               <div class="mono" style="font-size: 0.875rem; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">REPAIRS</div>
-              <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8);">Taking bookings</div>
+              <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8);">Currently paused (join waitlist)</div>
             </div>
           </div>
         </div>
