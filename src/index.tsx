@@ -138,10 +138,10 @@ app.get('/', (c) => {
               class="hero-banner"
             />
 
-            <p class="hero-tagline">[YOUR HERO COPY HERE]</p>
+            <p class="hero-tagline">ENGINEERED STUDIO & AV ENVIRONMENTS</p>
 
             <p class="hero-description">
-              [YOUR DESCRIPTION HERE]
+              Reliable recording, live sound, and technical support — designed, calibrated, and run by practicing engineers.
             </p>
 
             <div class="hero-cta">
@@ -159,12 +159,23 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* STUDIO SNAPSHOT */}
+      {/* LIVE STATUS / AVAILABILITY */}
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">STUDIO</h2>
+          <h2 class="section-title mono" style="font-size: 1.25rem;">LIVE STATUS / AVAILABILITY</h2>
           <p class="section-intro">
-            [YOUR STUDIO SNAPSHOT COPY HERE]
+            Studio sessions · AV bookings · Repairs<br/>
+            Availability updated regularly — get in touch to confirm.
+          </p>
+        </div>
+      </section>
+
+      {/* STUDIO SNAPSHOT */}
+      <section class="crs-section section-light">
+        <div class="section-header">
+          <h2 class="section-title heading">STUDIO SESSIONS</h2>
+          <p class="section-intro">
+            Hybrid studio environments with calibrated monitoring and practical ergonomics. Built for recording, production, mixing, and focused creative work.
           </p>
         </div>
         <div class="hero-cta">
@@ -173,11 +184,14 @@ app.get('/', (c) => {
       </section>
 
       {/* AV SERVICES SNAPSHOT */}
-      <section class="crs-section section-light">
+      <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">AV SERVICES</h2>
+          <h2 class="section-title heading">AV SERVICES & LIVE SOUND</h2>
           <p class="section-intro">
-            [YOUR AV SERVICES SNAPSHOT COPY HERE]
+            Engineer-led live sound and technical support for events that need to work properly.
+          </p>
+          <p class="section-intro" style="margin-top: 1rem; font-style: italic;">
+            When it matters, we step in.
           </p>
         </div>
         <div class="hero-cta">
@@ -186,25 +200,45 @@ app.get('/', (c) => {
       </section>
 
       {/* CAFÉ SNAPSHOT */}
-      <section class="crs-section section-dark">
+      <section class="crs-section section-light">
         <div class="section-header">
           <h2 class="section-title heading">WORKSHOP CAFÉ</h2>
           <p class="section-intro">
-            [YOUR CAFÉ SNAPSHOT COPY HERE]
+            A flexible café and event space — talks, workshops, small live events, and community use.
           </p>
         </div>
         <div class="hero-cta">
-          <a href="/venue" class="crs-button mono">[ VIEW CAFÉ ]</a>
+          <a href="/venue" class="crs-button mono">[ WHAT'S ON ]</a>
         </div>
       </section>
 
       {/* TRUST / CREDIBILITY */}
-      <section class="crs-section section-light">
+      <section class="crs-section section-dark">
         <div class="section-header">
           <h2 class="section-title heading">BUILT FOR OXFORD</h2>
+          <div class="content-text" style="max-width: 800px;">
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;">→ Engineering-first workflows</li>
+              <li style="margin-bottom: 0.75rem;">→ In-house technical team</li>
+              <li style="margin-bottom: 0.75rem;">→ Built for live conditions</li>
+              <li style="margin-bottom: 0.75rem;">→ No subcontracted guesswork</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT CTA */}
+      <section class="crs-section section-light">
+        <div class="section-header">
           <p class="section-intro">
-            [YOUR TRUST/CREDIBILITY COPY HERE]
+            Have a project, session, or event coming up?
           </p>
+          <p class="section-intro" style="margin-top: 1rem; font-weight: 700;">
+            Get in touch to talk it through.
+          </p>
+        </div>
+        <div class="hero-cta">
+          <a href="/contact" class="crs-button mono">[ CONTACT ]</a>
         </div>
       </section>
 
@@ -221,25 +255,58 @@ app.get('/studio', (c) => {
 
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">STUDIO</h2>
+          <h2 class="section-title heading">STUDIO SESSIONS</h2>
           <p class="section-intro">
-            [YOUR STUDIO INTRO COPY HERE]
+            Purpose-built studio spaces designed for reliable, repeatable results.
           </p>
         </div>
 
-        {/* SERVICES SECTION */}
+        {/* OVERVIEW */}
         <div class="content-block">
-          <h3 class="content-heading mono">WHAT WE DO</h3>
+          <h3 class="content-heading mono">OVERVIEW</h3>
           <div class="content-text">
-            [YOUR STUDIO SERVICES LIST HERE]
+            <p>
+              Cowley Road Studios provides hybrid recording and production environments for musicians, producers, podcasters, and creators who value clarity, focus, and dependable systems.
+            </p>
           </div>
         </div>
 
-        {/* INFRASTRUCTURE SECTION */}
+        {/* TECHNICAL ENVIRONMENT */}
         <div class="content-block">
-          <h3 class="content-heading mono">THE INFRASTRUCTURE</h3>
+          <h3 class="content-heading mono">TECHNICAL ENVIRONMENT</h3>
           <div class="content-text">
-            [YOUR INFRASTRUCTURE DETAILS HERE]
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;">→ Calibrated monitoring</li>
+              <li style="margin-bottom: 0.75rem;">→ Hybrid analogue / digital workflows</li>
+              <li style="margin-bottom: 0.75rem;">→ Practical acoustics and ergonomics</li>
+              <li style="margin-bottom: 0.75rem;">→ Engineer-maintained systems</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">
+              Everything is designed to work consistently — not just sound good on day one.
+            </p>
+          </div>
+        </div>
+
+        {/* USE CASES */}
+        <div class="content-block">
+          <h3 class="content-heading mono">USE CASES</h3>
+          <div class="content-text">
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;">→ Recording sessions</li>
+              <li style="margin-bottom: 0.75rem;">→ Mixing & production</li>
+              <li style="margin-bottom: 0.75rem;">→ Podcasting & spoken word</li>
+              <li style="margin-bottom: 0.75rem;">→ Writing and pre-production</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* BOOKING */}
+        <div class="content-block">
+          <h3 class="content-heading mono">BOOKING</h3>
+          <div class="content-text">
+            <p>
+              Sessions are available by booking and enquiry.
+            </p>
           </div>
         </div>
 
@@ -266,7 +333,10 @@ app.get('/av-services', (c) => {
         <div class="section-header">
           <h2 class="section-title heading">AV SERVICES & LIVE SOUND</h2>
           <p class="section-intro">
-            [YOUR AV SERVICES INTRO COPY HERE]
+            Engineer-led live sound, installs, and technical support — built for live conditions.
+          </p>
+          <p class="section-intro" style="margin-top: 1rem; font-style: italic;">
+            When it matters, we step in.
           </p>
         </div>
 
@@ -274,7 +344,15 @@ app.get('/av-services', (c) => {
         <div class="content-block">
           <h3 class="content-heading mono">WHAT WE DO</h3>
           <div class="content-text">
-            [YOUR AV SERVICES LIST HERE]
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;">→ Live sound for talks, gigs, launches, and community events</li>
+              <li style="margin-bottom: 0.75rem;">→ Temporary and permanent AV installs</li>
+              <li style="margin-bottom: 0.75rem;">→ Hybrid and streamed events</li>
+              <li style="margin-bottom: 0.75rem;">→ On-site engineers and technical support</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">
+              Every job is handled in-house by people who do this for real.
+            </p>
           </div>
         </div>
 
@@ -282,7 +360,15 @@ app.get('/av-services', (c) => {
         <div class="content-block">
           <h3 class="content-heading mono">HOW IT WORKS</h3>
           <div class="content-text">
-            [YOUR PROCESS STEPS HERE]
+            <ol style="padding-left: 1.5rem;">
+              <li style="margin-bottom: 0.75rem;">You tell us what's happening</li>
+              <li style="margin-bottom: 0.75rem;">We assess the space and requirements</li>
+              <li style="margin-bottom: 0.75rem;">We handle the technical side</li>
+              <li style="margin-bottom: 0.75rem;">The event runs smoothly</li>
+            </ol>
+            <p style="margin-top: 1.5rem; font-style: italic;">
+              You focus on the room. We handle the signal.
+            </p>
           </div>
         </div>
 
@@ -290,7 +376,12 @@ app.get('/av-services', (c) => {
         <div class="content-block">
           <h3 class="content-heading mono">CAPABILITY</h3>
           <div class="content-text">
-            [YOUR CAPABILITY SPECS HERE]
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;">→ Built for live pressure</li>
+              <li style="margin-bottom: 0.75rem;">→ Engineered signal paths</li>
+              <li style="margin-bottom: 0.75rem;">→ Calm under failure conditions</li>
+              <li style="margin-bottom: 0.75rem;">→ Human-led, not automated</li>
+            </ul>
           </div>
         </div>
 
@@ -299,7 +390,7 @@ app.get('/av-services', (c) => {
           <p class="section-intro">
             Behind every clean live setup is a deep technical bench.
           </p>
-          <div class="hero-cta">
+          <div class="hero-cta" style="margin-top: 1.5rem;">
             <a href="/av-services/repairs" class="crs-button mono">[ REPAIRS & TECHNICAL BENCH ]</a>
           </div>
         </div>
@@ -307,7 +398,7 @@ app.get('/av-services', (c) => {
         {/* CTA */}
         <div class="hero-cta">
           <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Services%20Enquiry" class="crs-button mono">
-            [ REQUEST QUOTE ]
+            [ GET AV QUOTE ]
           </a>
         </div>
       </section>
@@ -327,18 +418,36 @@ app.get('/av-services/repairs', (c) => {
         <div class="section-header">
           <h2 class="section-title heading">REPAIRS & TECHNICAL BENCH</h2>
           <p class="section-intro">
-            [YOUR REPAIRS INTRO COPY HERE]
-          </p>
-          <p class="section-intro" style="margin-top: 1rem; font-style: italic;">
-            Led by ODRO, our in-house engineer responsible for system repairs and technical problem-solving.
+            Analogue, digital, and practical fixes — done properly.
           </p>
         </div>
 
-        {/* WHAT GETS REPAIRED */}
+        {/* OVERVIEW */}
         <div class="content-block">
-          <h3 class="content-heading mono">WHAT GETS REPAIRED</h3>
+          <h3 class="content-heading mono">OVERVIEW</h3>
           <div class="content-text">
-            [YOUR REPAIR SCOPE LIST HERE]
+            <p>
+              Repairs and system fixes are handled in-house by our technical bench.
+            </p>
+            <p style="margin-top: 1rem; font-style: italic;">
+              Led by <strong>ODRO</strong>, our in-house engineer responsible for repairs and deep technical problem-solving.
+            </p>
+          </div>
+        </div>
+
+        {/* WHAT WE REPAIR */}
+        <div class="content-block">
+          <h3 class="content-heading mono">WHAT WE REPAIR</h3>
+          <div class="content-text">
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;">→ Mixers and interfaces</li>
+              <li style="margin-bottom: 0.75rem;">→ Amplifiers and speakers</li>
+              <li style="margin-bottom: 0.75rem;">→ Cabling and connectors</li>
+              <li style="margin-bottom: 0.75rem;">→ Power and signal faults</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">
+              If it's part of a signal chain, we'll assess it honestly.
+            </p>
           </div>
         </div>
 
@@ -346,7 +455,15 @@ app.get('/av-services/repairs', (c) => {
         <div class="content-block">
           <h3 class="content-heading mono">THE PROCESS</h3>
           <div class="content-text">
-            [YOUR REPAIR PROCESS STEPS HERE]
+            <ol style="padding-left: 1.5rem;">
+              <li style="margin-bottom: 0.75rem;">Diagnose</li>
+              <li style="margin-bottom: 0.75rem;">Repair</li>
+              <li style="margin-bottom: 0.75rem;">Test</li>
+              <li style="margin-bottom: 0.75rem;">Return</li>
+            </ol>
+            <p style="margin-top: 1.5rem;">
+              No cosmetic fixes. No guesswork.
+            </p>
           </div>
         </div>
 
@@ -373,7 +490,7 @@ app.get('/venue', (c) => {
         <div class="section-header">
           <h2 class="section-title heading">WORKSHOP CAFÉ</h2>
           <p class="section-intro">
-            [YOUR CAFÉ INTRO COPY HERE]
+            Flexible café & event space — the public-facing space at Cowley Road Studios.
           </p>
         </div>
 
@@ -381,7 +498,12 @@ app.get('/venue', (c) => {
         <div class="content-block">
           <h3 class="content-heading mono">WHAT THE SPACE IS</h3>
           <div class="content-text">
-            [YOUR SPACE DESCRIPTION HERE]
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;">→ Café by day</li>
+              <li style="margin-bottom: 0.75rem;">→ Flexible venue by night</li>
+              <li style="margin-bottom: 0.75rem;">→ Talks, workshops, screenings, small live events</li>
+              <li style="margin-bottom: 0.75rem;">→ Technically supported by Cowley Road Studios</li>
+            </ul>
           </div>
         </div>
 
@@ -390,9 +512,12 @@ app.get('/venue', (c) => {
           <h3 class="content-heading mono">WHAT'S ON</h3>
           <div class="content-text">
             <p style="font-style: italic; color: var(--mustard);">
-              [EVENTS FEED PLACEHOLDER - TO BE INTEGRATED]
+              Upcoming events, workshops, and sessions.
             </p>
-            <p>
+            <p style="margin-top: 1rem;">
+              (Auto-updating feed will display next 5–7 items here)
+            </p>
+            <p style="margin-top: 1.5rem; font-weight: 700;">
               No public events listed — venue available to book.
             </p>
           </div>
@@ -402,14 +527,22 @@ app.get('/venue', (c) => {
         <div class="content-block">
           <h3 class="content-heading mono">VENUE HIRE</h3>
           <div class="content-text">
-            [YOUR VENUE HIRE DETAILS HERE]
+            <p>Workshop Café is available for:</p>
+            <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+              <li style="margin-bottom: 0.75rem;">→ Workshops & talks</li>
+              <li style="margin-bottom: 0.75rem;">→ Community events</li>
+              <li style="margin-bottom: 0.75rem;">→ Launches & screenings</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">
+              Technical support is available where required.
+            </p>
           </div>
         </div>
 
         {/* CTA */}
         <div class="hero-cta">
           <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Request" class="crs-button mono">
-            [ BOOK THE VENUE ]
+            [ BOOK THE SPACE ]
           </a>
         </div>
       </section>
@@ -427,33 +560,21 @@ app.get('/about', (c) => {
 
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">ABOUT</h2>
-          <p class="section-intro">
-            [YOUR ABOUT COPY HERE]
-          </p>
+          <h2 class="section-title heading">ABOUT COWLEY ROAD STUDIOS</h2>
         </div>
 
-        {/* STORY */}
+        {/* OVERVIEW */}
         <div class="content-block">
-          <h3 class="content-heading mono">WHO WE ARE</h3>
           <div class="content-text">
-            [YOUR STORY HERE]
-          </div>
-        </div>
-
-        {/* VALUES */}
-        <div class="content-block">
-          <h3 class="content-heading mono">WHAT WE BELIEVE</h3>
-          <div class="content-text">
-            [YOUR VALUES HERE]
-          </div>
-        </div>
-
-        {/* TEAM (OPTIONAL) */}
-        <div class="content-block">
-          <h3 class="content-heading mono">THE TEAM</h3>
-          <div class="content-text">
-            [YOUR TEAM BIOS HERE]
+            <p>
+              Cowley Road Studios exists to provide reliable, engineer-led creative infrastructure on Cowley Road.
+            </p>
+            <p style="margin-top: 1.5rem;">
+              Built because something was missing — dependable spaces that prioritise systems, people, and practical outcomes over hype.
+            </p>
+            <p style="margin-top: 1.5rem;">
+              The studio, AV services, and Workshop Café work together as a connected system: infrastructure at the core, public life at the front.
+            </p>
           </div>
         </div>
       </section>
@@ -473,7 +594,7 @@ app.get('/contact', (c) => {
         <div class="section-header">
           <h2 class="section-title heading">CONTACT</h2>
           <p class="section-intro">
-            [YOUR CONTACT INTRO HERE]
+            For bookings, quotes, or enquiries
           </p>
         </div>
 
@@ -482,8 +603,7 @@ app.get('/contact', (c) => {
           <h3 class="content-heading mono">GET IN TOUCH</h3>
           <div class="content-text mono">
             <p><strong>EMAIL:</strong> <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a></p>
-            <p><strong>PHONE:</strong> [YOUR PHONE]</p>
-            <p><strong>ADDRESS:</strong> 118 Cowley Road, Oxford, OX4 1JE</p>
+            <p style="margin-top: 1rem;"><strong>ADDRESS:</strong> Cowley Road Studios, 118 Cowley Road, Oxford, OX4 1JE</p>
           </div>
         </div>
 
