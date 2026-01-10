@@ -257,11 +257,9 @@ body {
 
 /* HERO */
 .crs-hero {
-  min-height: 60vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 3rem 2rem;
+  padding: clamp(2rem, 4vw, 4rem) 2rem; /* Content-driven padding */
   background: var(--void-black);
 }
 
