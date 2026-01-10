@@ -8,31 +8,87 @@ const app = new Hono()
 app.use('/static/*', serveStatic({ root: './' }))
 app.use('/favicon.svg', serveStatic({ path: './favicon.svg' }))
 
-// System Monitor Status Endpoint
+// System Monitor Status Endpoint (Declarative - No Time Logic)
 app.get('/status.json', (c) => {
+  // MANUAL STATE DECLARATION
+  // Update these values manually or via admin UI (future)
+  // No opening hours logic - just current declared state
+  
+  const zones = {
+    cafe: {
+      state: 'live',        // 'live' | 'standby' | 'offline'
+      status: 'OPEN',       // Human-readable status
+      source: 'manual'      // 'manual' | 'calendar' | 'booking' (future)
+    },
+    studio: {
+      state: 'standby',
+      status: 'BOOKABLE',
+      source: 'manual'
+    },
+    repairs: {
+      state: 'live',
+      status: 'TAKING REPAIRS',
+      source: 'manual'
+    }
+  };
+  
+  // MODE DETECTION: Activity-based, not time-based
+  // day = any zone is not offline
+  // night = all zones offline
+  const mode = Object.values(zones).some(z => z.state !== 'offline') ? 'day' : 'night';
+  
   return c.json({
-    "system_monitor": {
-      "last_updated": "2026-01-09T08:00:00Z",
-      "zones": [
-        {
-          "id": "cafe",
-          "display_name": "CAFÉ",
-          "status": "OPEN",
-          "pulse_alert": false
+    system_monitor: {
+      mode: mode,
+      last_updated: new Date().toISOString(),
+      zones: zones
+    }
+  })
+})
+
+// Digital Pulse Feed (Physical LED / Public Art Integration)
+app.get('/pulse.json', (c) => {
+  // Simplified feed for external hardware/installations
+  // Polls this endpoint to sync physical signage with digital state
+  
+  const zones = {
+    cafe: { state: 'live', status: 'OPEN' },
+    studio: { state: 'standby', status: 'BOOKABLE' },
+    repairs: { state: 'live', status: 'TAKING REPAIRS' }
+  };
+  
+  const mode = Object.values(zones).some(z => z.state !== 'offline') ? 'day' : 'night';
+  
+  // Color mapping for LED hardware
+  const stateColors = {
+    live: '#2FAE61',      // Industrial green
+    standby: '#d4a017',   // Mustard
+    offline: '#C0392B'    // Signal red
+  };
+  
+  return c.json({
+    pulse: {
+      mode: mode,
+      timestamp: new Date().toISOString(),
+      zones: {
+        cafe: {
+          state: zones.cafe.state,
+          color: stateColors[zones.cafe.state],
+          status: zones.cafe.status
         },
-        {
-          "id": "studio",
-          "display_name": "STUDIO",
-          "status": "IN SESSION",
-          "pulse_alert": true
+        studio: {
+          state: zones.studio.state,
+          color: stateColors[zones.studio.state],
+          status: zones.studio.status
         },
-        {
-          "id": "electronics",
-          "display_name": "ELECTRONICS",
-          "status": "TAKING REPAIRS",
-          "pulse_alert": false
+        repairs: {
+          state: zones.repairs.state,
+          color: stateColors[zones.repairs.state],
+          status: zones.repairs.status
         }
-      ]
+      },
+      // Glow intensity based on mode
+      glow_intensity: mode === 'day' ? 1.0 : 0.3
     }
   })
 })
