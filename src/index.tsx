@@ -143,7 +143,7 @@ app.use(renderer)
 const Header = () => (
   <header class="crs-header mono">
     <div style="display: flex; align-items: center; gap: 1rem;">
-      <a href="/" style="display: flex; flex-direction: column; align-items: flex-start;">
+      <a href="/">
         <img 
           src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-panel-hero.webp.jpg" 
           alt="CRS Industrial Engineering Panel"
@@ -153,9 +153,11 @@ const Header = () => (
           loading="eager"
           fetchpriority="high"
         />
-        <span class="crs-header-locations hidden-mobile mono">Cowley Road · Florence Park</span>
       </a>
-      <span class="crs-header-loc hidden-mobile">LOC: 118_COWLEY_RD_OX4</span>
+      <div style="display: flex; flex-direction: column; gap: 0.25rem;">
+        <span class="crs-header-locations hidden-mobile mono">Cowley Road · Florence Park</span>
+        <span class="crs-header-loc hidden-mobile">LOC: 118_COWLEY_RD_OX4</span>
+      </div>
     </div>
     <nav class="crs-header-nav mono">
       <a href="/studio">STUDIO</a>
