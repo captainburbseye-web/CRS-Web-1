@@ -39,25 +39,83 @@ app.get('/status.json', (c) => {
 
 app.use(renderer)
 
+// SHARED COMPONENTS
+const Header = () => (
+  <header class="crs-header mono">
+    <div style="display: flex; align-items: center;">
+      <a href="/">
+        <img 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/banner-cowley-road-studios-trimmed.png" 
+          alt="CRS"
+          class="crs-header-logo"
+        />
+      </a>
+      <span class="crs-header-loc hidden-mobile">LOC: 118_COWLEY_RD_OX4</span>
+    </div>
+    <nav class="crs-header-nav mono">
+      <a href="/studio">STUDIO</a>
+      <a href="/av-services">AV SERVICES</a>
+      <a href="/venue">CAFÉ</a>
+      <a href="/about">ABOUT</a>
+      <a href="/contact">CONTACT</a>
+    </nav>
+    <div class="crs-header-status">
+      <span style="color: var(--mustard);">STATUS:</span>
+      <span style="color: var(--signal-white); font-weight: 700;">ONLINE</span>
+      <div class="status-pulse"></div>
+    </div>
+  </header>
+)
+
+const Footer = () => (
+  <footer class="crs-footer mono">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <p class="footer-col-title">01 / TERMINAL</p>
+        <p>LOC: 118 Cowley Rd</p>
+        <p>OXF: OX4 1JE</p>
+        <p>LAT: 51.7483° N</p>
+        <p>LON: 1.2331° W</p>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">02 / STATUS</p>
+        <p>STATUS: OPERATIONAL</p>
+        <p>VER: 2026.1.0_LOCKED</p>
+        <p>UPTIME: 99.9%</p>
+        <p>SIGNAL: ACTIVE</p>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">03 / NAVIGATION</p>
+        <p><a href="/studio">_STUDIO: [Recording]</a></p>
+        <p><a href="/venue">_CAFÉ: [Venue Hire]</a></p>
+        <p><a href="/av-services">_AV: [Live Sound]</a></p>
+        <p><a href="/av-services/repairs">_BENCH: [Repairs]</a></p>
+      </div>
+
+      <div class="footer-col">
+        <p class="footer-col-title">04 / LEGAL</p>
+        <p>© 2026 CRS & WC</p>
+        <p>BUILT FOR OXFORD</p>
+        <p>GRASSROOTS_CORE</p>
+        <p>NO_CHAOS_POLICY</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>
+        CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a>
+      </p>
+    </div>
+  </footer>
+)
+
+// HOME
 app.get('/', (c) => {
   return c.render(
     <>
-      {/* HEADER */}
-      <header class="crs-header mono">
-        <div style="display: flex; align-items: center;">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/banner-cowley-road-studios-trimmed.png" 
-            alt="CRS"
-            class="crs-header-logo"
-          />
-          <span class="crs-header-loc hidden-mobile">LOC: 118_COWLEY_RD_OX4</span>
-        </div>
-        <div class="crs-header-status">
-          <span style="color: var(--mustard);">STATUS:</span>
-          <span style="color: var(--signal-white); font-weight: 700;">ONLINE</span>
-          <div class="status-pulse"></div>
-        </div>
-      </header>
+      <Header />
 
       {/* HERO */}
       <section class="crs-hero mono">
@@ -80,10 +138,10 @@ app.get('/', (c) => {
               class="hero-banner"
             />
 
-            <p class="hero-tagline">Built properly. Run by people who care.</p>
+            <p class="hero-tagline">[YOUR HERO COPY HERE]</p>
 
             <p class="hero-description">
-              Cowley Road Studios is a professional recording and production space in Oxford. We build systems properly, maintain our equipment in-house, and support artists, engineers, and organisers who care about sound.
+              [YOUR DESCRIPTION HERE]
             </p>
 
             <div class="hero-cta">
@@ -93,201 +151,355 @@ app.get('/', (c) => {
             </div>
 
             <div class="hero-links mono">
-              <a href="#cafe">→ Venue Hire</a>
-              <a href="#services">→ AV / Live Sound</a>
-              <a href="#services">→ Repairs</a>
+              <a href="/studio">→ Studio</a>
+              <a href="/av-services">→ AV Services</a>
+              <a href="/venue">→ Venue Hire</a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* INFRASTRUCTURE */}
-      <section id="infrastructure" class="crs-section section-dark">
+      {/* STUDIO SNAPSHOT */}
+      <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">THE INFRASTRUCTURE</h2>
+          <h2 class="section-title heading">STUDIO</h2>
           <p class="section-intro">
-            A working studio, not a concept. Rooms designed for reliable sessions. Clear monitoring. Calm delivery. We prioritise signal integrity and equipment we maintain ourselves.
+            [YOUR STUDIO SNAPSHOT COPY HERE]
           </p>
         </div>
-
-        <div class="card-grid card-grid-4">
-          {/* UNIT 01: SIGNAL */}
-          <div class="crs-card">
-            <div class="card-image">
-              <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-signal.jpg" alt="Signal path" />
-            </div>
-            <div class="card-content mono">
-              <p class="card-label">UNIT 01: SIGNAL</p>
-              <h3 class="card-title">HYBRID PATH</h3>
-              <ul class="card-list">
-                <li>→ Audient Console</li>
-                <li>→ Neve-Style Pres</li>
-                <li>→ Sphere Modeling</li>
-              </ul>
-              <p class="card-status">STATUS: CALIBRATED</p>
-            </div>
-          </div>
-
-          {/* UNIT 02: ROOMS */}
-          <div class="crs-card">
-            <div class="card-image">
-              <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-rooms.jpg" alt="Recording rooms" />
-            </div>
-            <div class="card-content mono">
-              <p class="card-label">UNIT 02: ROOMS</p>
-              <h3 class="card-title">ISOLATION</h3>
-              <ul class="card-list">
-                <li>→ 5 Decoupled Zones</li>
-                <li>→ Floating Floors</li>
-                <li>→ Neutral Tuning</li>
-              </ul>
-              <p class="card-status">STATUS: SECURE</p>
-            </div>
-          </div>
-
-          {/* UNIT 03: NETWORK */}
-          <div class="crs-card">
-            <div class="card-content mono">
-              <p class="card-label">UNIT 03: NETWORK</p>
-              <h3 class="card-title">DANTE/NDI</h3>
-              <ul class="card-list">
-                <li>→ 32-Ch Dante</li>
-                <li>→ NDI Video Core</li>
-                <li>→ Multi-Room Sync</li>
-              </ul>
-              <p class="card-status">STATUS: ACTIVE</p>
-            </div>
-          </div>
-
-          {/* UNIT 04: REPAIR */}
-          <div class="crs-card">
-            <div class="card-image">
-              <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/infrastructure-maintenance.jpg" alt="Maintenance bench" />
-            </div>
-            <div class="card-content mono">
-              <p class="card-label">UNIT 04: REPAIR</p>
-              <h3 class="card-title">BENCH</h3>
-              <ul class="card-list">
-                <li>→ In-House Electronics</li>
-                <li>→ Component Level</li>
-                <li>→ Analog Focus</li>
-              </ul>
-              <p class="card-status">STATUS: ACTIVE</p>
-            </div>
-          </div>
+        <div class="hero-cta">
+          <a href="/studio" class="crs-button mono">[ VIEW STUDIO ]</a>
         </div>
       </section>
 
-      {/* SERVICES (BREWFORCE) */}
-      <section id="services" class="crs-section section-dark">
+      {/* AV SERVICES SNAPSHOT */}
+      <section class="crs-section section-light">
         <div class="section-header">
-          <h2 class="section-title section-title-brewforce heading">WHEN IT HAS TO WORK</h2>
-          <p class="section-intro section-intro-brewforce">
-            Live sound support, AV setup, and equipment repair. Same practice that runs the studio. Fewer handovers. Fewer assumptions. Calmer outcomes.
+          <h2 class="section-title heading">AV SERVICES</h2>
+          <p class="section-intro">
+            [YOUR AV SERVICES SNAPSHOT COPY HERE]
+          </p>
+        </div>
+        <div class="hero-cta">
+          <a href="/av-services" class="crs-button mono">[ VIEW AV SERVICES ]</a>
+        </div>
+      </section>
+
+      {/* CAFÉ SNAPSHOT */}
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h2 class="section-title heading">WORKSHOP CAFÉ</h2>
+          <p class="section-intro">
+            [YOUR CAFÉ SNAPSHOT COPY HERE]
+          </p>
+        </div>
+        <div class="hero-cta">
+          <a href="/venue" class="crs-button mono">[ VIEW CAFÉ ]</a>
+        </div>
+      </section>
+
+      {/* TRUST / CREDIBILITY */}
+      <section class="crs-section section-light">
+        <div class="section-header">
+          <h2 class="section-title heading">BUILT FOR OXFORD</h2>
+          <p class="section-intro">
+            [YOUR TRUST/CREDIBILITY COPY HERE]
+          </p>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  )
+})
+
+// STUDIO
+app.get('/studio', (c) => {
+  return c.render(
+    <>
+      <Header />
+
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h2 class="section-title heading">STUDIO</h2>
+          <p class="section-intro">
+            [YOUR STUDIO INTRO COPY HERE]
           </p>
         </div>
 
-        <div class="card-grid card-grid-2">
-          {/* LIVE SOUND */}
-          <div class="service-card">
-            <div class="service-card-image">
-              <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-live-sound.jpg" alt="Live Sound" />
-            </div>
-
-            <div class="service-card-content mono">
-              <h3 class="service-headline">SMALL ROOM. SERIOUS RIG.</h3>
-              <p class="service-subhead">MISSION-CRITICAL AUDIO</p>
-
-              <div class="service-data">
-                <p><span>CAPACITY:</span> Systems for 50–200 cap</p>
-                <p><span>SCOPE:</span> Analog, Valve, & Digital</p>
-                <p><span>STANDARD:</span> NDI / Dante Integrated</p>
-                <p><span>DELIVERY:</span> On-Site Engineering</p>
-                <p><span>RIG:</span> Logic/Martin Audio</p>
-              </div>
-
-              <p class="card-status">STATUS: FIELD-READY</p>
-
-              <div class="mt-auto" style="margin-top: 1.5rem;">
-                <a href="mailto:info@cowleyroadstudios.com?subject=Live%20Sound%20Availability" class="crs-vu-button">
-                  [ CHECK AVAILABILITY ]
-                </a>
-              </div>
-            </div>
+        {/* SERVICES SECTION */}
+        <div class="content-block">
+          <h3 class="content-heading mono">WHAT WE DO</h3>
+          <div class="content-text">
+            [YOUR STUDIO SERVICES LIST HERE]
           </div>
+        </div>
 
-          {/* REPAIRS */}
-          <div class="service-card">
-            <div class="service-card-image">
-              <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS-Website-Images/services-repairs.jpg" alt="Repairs" />
-            </div>
+        {/* INFRASTRUCTURE SECTION */}
+        <div class="content-block">
+          <h3 class="content-heading mono">THE INFRASTRUCTURE</h3>
+          <div class="content-text">
+            [YOUR INFRASTRUCTURE DETAILS HERE]
+          </div>
+        </div>
 
-            <div class="service-card-content mono">
-              <h3 class="service-headline">ENGINEERED, NOT IMPROVISED.</h3>
-              <p class="service-subhead">THE TECHNICAL BENCH</p>
+        {/* CTA */}
+        <div class="hero-cta">
+          <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono">
+            [ BOOK A SESSION ]
+          </a>
+        </div>
+      </section>
 
-              <div class="service-data">
-                <p><span>STANDARD:</span> Component-Level Repair</p>
-                <p><span>TURNAROUND:</span> 7–14 Day Typical</p>
-                <p><span>FOCUS:</span> Refurbishment & Calibration</p>
-                <p><span>STOCK:</span> Valve & Analog Parts Inventory</p>
-                <p><span>SCOPE:</span> Audio, Studio, Vintage Gear</p>
-              </div>
+      <Footer />
+    </>
+  )
+})
 
-              <p class="card-status">STATUS: BENCH ACTIVE</p>
+// AV SERVICES
+app.get('/av-services', (c) => {
+  return c.render(
+    <>
+      <Header />
 
-              <div class="mt-auto" style="margin-top: 1.5rem;">
-                <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Slot%20Request" class="crs-vu-button">
-                  [ REQUEST REPAIR SLOT ]
-                </a>
-              </div>
-            </div>
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h2 class="section-title heading">AV SERVICES & LIVE SOUND</h2>
+          <p class="section-intro">
+            [YOUR AV SERVICES INTRO COPY HERE]
+          </p>
+        </div>
+
+        {/* WHAT WE DO */}
+        <div class="content-block">
+          <h3 class="content-heading mono">WHAT WE DO</h3>
+          <div class="content-text">
+            [YOUR AV SERVICES LIST HERE]
+          </div>
+        </div>
+
+        {/* HOW IT WORKS */}
+        <div class="content-block">
+          <h3 class="content-heading mono">HOW IT WORKS</h3>
+          <div class="content-text">
+            [YOUR PROCESS STEPS HERE]
+          </div>
+        </div>
+
+        {/* CAPABILITY */}
+        <div class="content-block">
+          <h3 class="content-heading mono">CAPABILITY</h3>
+          <div class="content-text">
+            [YOUR CAPABILITY SPECS HERE]
+          </div>
+        </div>
+
+        {/* BRIDGE TO REPAIRS */}
+        <div class="content-block">
+          <p class="section-intro">
+            Behind every clean live setup is a deep technical bench.
+          </p>
+          <div class="hero-cta">
+            <a href="/av-services/repairs" class="crs-button mono">[ REPAIRS & TECHNICAL BENCH ]</a>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div class="hero-cta">
+          <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Services%20Enquiry" class="crs-button mono">
+            [ REQUEST QUOTE ]
+          </a>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  )
+})
+
+// REPAIRS
+app.get('/av-services/repairs', (c) => {
+  return c.render(
+    <>
+      <Header />
+
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h2 class="section-title heading">REPAIRS & TECHNICAL BENCH</h2>
+          <p class="section-intro">
+            [YOUR REPAIRS INTRO COPY HERE]
+          </p>
+          <p class="section-intro" style="margin-top: 1rem; font-style: italic;">
+            Led by ODRO, our in-house engineer responsible for system repairs and technical problem-solving.
+          </p>
+        </div>
+
+        {/* WHAT GETS REPAIRED */}
+        <div class="content-block">
+          <h3 class="content-heading mono">WHAT GETS REPAIRED</h3>
+          <div class="content-text">
+            [YOUR REPAIR SCOPE LIST HERE]
+          </div>
+        </div>
+
+        {/* THE PROCESS */}
+        <div class="content-block">
+          <h3 class="content-heading mono">THE PROCESS</h3>
+          <div class="content-text">
+            [YOUR REPAIR PROCESS STEPS HERE]
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div class="hero-cta">
+          <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Estimate%20Request" class="crs-button mono">
+            [ REQUEST REPAIR ESTIMATE ]
+          </a>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  )
+})
+
+// WORKSHOP CAFÉ (VENUE)
+app.get('/venue', (c) => {
+  return c.render(
+    <>
+      <Header />
+
+      <section class="crs-section section-light">
+        <div class="section-header">
+          <h2 class="section-title heading">WORKSHOP CAFÉ</h2>
+          <p class="section-intro">
+            [YOUR CAFÉ INTRO COPY HERE]
+          </p>
+        </div>
+
+        {/* WHAT THE SPACE IS */}
+        <div class="content-block">
+          <h3 class="content-heading mono">WHAT THE SPACE IS</h3>
+          <div class="content-text">
+            [YOUR SPACE DESCRIPTION HERE]
+          </div>
+        </div>
+
+        {/* WHAT'S ON */}
+        <div class="content-block">
+          <h3 class="content-heading mono">WHAT'S ON</h3>
+          <div class="content-text">
+            <p style="font-style: italic; color: var(--mustard);">
+              [EVENTS FEED PLACEHOLDER - TO BE INTEGRATED]
+            </p>
+            <p>
+              No public events listed — venue available to book.
+            </p>
+          </div>
+        </div>
+
+        {/* VENUE HIRE */}
+        <div class="content-block">
+          <h3 class="content-heading mono">VENUE HIRE</h3>
+          <div class="content-text">
+            [YOUR VENUE HIRE DETAILS HERE]
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div class="hero-cta">
+          <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability%20Request" class="crs-button mono">
+            [ BOOK THE VENUE ]
+          </a>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  )
+})
+
+// ABOUT
+app.get('/about', (c) => {
+  return c.render(
+    <>
+      <Header />
+
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h2 class="section-title heading">ABOUT</h2>
+          <p class="section-intro">
+            [YOUR ABOUT COPY HERE]
+          </p>
+        </div>
+
+        {/* STORY */}
+        <div class="content-block">
+          <h3 class="content-heading mono">WHO WE ARE</h3>
+          <div class="content-text">
+            [YOUR STORY HERE]
+          </div>
+        </div>
+
+        {/* VALUES */}
+        <div class="content-block">
+          <h3 class="content-heading mono">WHAT WE BELIEVE</h3>
+          <div class="content-text">
+            [YOUR VALUES HERE]
+          </div>
+        </div>
+
+        {/* TEAM (OPTIONAL) */}
+        <div class="content-block">
+          <h3 class="content-heading mono">THE TEAM</h3>
+          <div class="content-text">
+            [YOUR TEAM BIOS HERE]
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer class="crs-footer mono">
-        <div class="footer-grid">
-          <div class="footer-col">
-            <p class="footer-col-title">01 / TERMINAL</p>
-            <p>LOC: 118 Cowley Rd</p>
-            <p>OXF: OX4 1JE</p>
-            <p>LAT: 51.7483° N</p>
-            <p>LON: 1.2331° W</p>
-          </div>
+      <Footer />
+    </>
+  )
+})
 
-          <div class="footer-col">
-            <p class="footer-col-title">02 / STATUS</p>
-            <p>STATUS: OPERATIONAL</p>
-            <p>VER: 2026.1.0_LOCKED</p>
-            <p>UPTIME: 99.9%</p>
-            <p>SIGNAL: ACTIVE</p>
-          </div>
+// CONTACT
+app.get('/contact', (c) => {
+  return c.render(
+    <>
+      <Header />
 
-          <div class="footer-col">
-            <p class="footer-col-title">03 / NAVIGATION</p>
-            <p><a href="#infrastructure">_INFRA: [Studio Specs]</a></p>
-            <p><a href="#cafe">_CAFÉ: [Venue Hire]</a></p>
-            <p><a href="#services">_LOGS: [Repairs]</a></p>
-            <p><a href="#contact">_BOOK: [Schedule]</a></p>
-          </div>
-
-          <div class="footer-col">
-            <p class="footer-col-title">04 / LEGAL</p>
-            <p>© 2026 CRS & WC</p>
-            <p>BUILT FOR OXFORD</p>
-            <p>GRASSROOTS_CORE</p>
-            <p>NO_CHAOS_POLICY</p>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <p>
-            CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a>
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h2 class="section-title heading">CONTACT</h2>
+          <p class="section-intro">
+            [YOUR CONTACT INTRO HERE]
           </p>
         </div>
-      </footer>
+
+        {/* CONTACT METHODS */}
+        <div class="content-block">
+          <h3 class="content-heading mono">GET IN TOUCH</h3>
+          <div class="content-text mono">
+            <p><strong>EMAIL:</strong> <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a></p>
+            <p><strong>PHONE:</strong> [YOUR PHONE]</p>
+            <p><strong>ADDRESS:</strong> 118 Cowley Road, Oxford, OX4 1JE</p>
+          </div>
+        </div>
+
+        {/* BOOKING LINKS */}
+        <div class="content-block">
+          <h3 class="content-heading mono">QUICK LINKS</h3>
+          <div class="hero-links mono">
+            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer">→ Book Studio</a>
+            <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Availability">→ Book Venue</a>
+            <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Services%20Enquiry">→ AV Services</a>
+            <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Request">→ Repairs</a>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
     </>
   )
 })
