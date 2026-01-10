@@ -6,6 +6,7 @@ const app = new Hono()
 
 // Serve static files
 app.use('/static/*', serveStatic({ root: './' }))
+app.use('/policies/*', serveStatic({ root: './public' }))
 app.use('/favicon.svg', serveStatic({ path: './favicon.svg' }))
 
 // System Monitor Status Endpoint (Declarative - No Time Logic)
@@ -59,9 +60,9 @@ app.get('/pulse.json', (c) => {
   
   const mode = Object.values(zones).some(z => z.state !== 'offline') ? 'day' : 'night';
   
-  // Color mapping for LED hardware
+  // Color mapping for LED hardware (space station aesthetic)
   const stateColors = {
-    live: '#2FAE61',      // Industrial green
+    live: '#00B400',      // Bright industrial green - Neve/Tascam VU meter
     standby: '#d4a017',   // Mustard
     offline: '#C0392B'    // Signal red
   };

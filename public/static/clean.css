@@ -740,10 +740,10 @@ body {
   position: relative;
 }
 
-/* State colours - functional only (palette-correct industrial tones) */
+/* State colours - functional only (space station hardware aesthetic) */
 .indicator-live {
-  background: #2FAE61; /* CRS/nettle green - not neon */
-  box-shadow: 0 0 8px rgba(47, 174, 97, 0.55);
+  background: #00B400; /* Bright industrial green - Neve/Tascam VU meter */
+  box-shadow: 0 0 8px rgba(0, 180, 0, 0.6);
 }
 
 .indicator-standby {
