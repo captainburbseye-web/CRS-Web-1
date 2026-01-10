@@ -185,7 +185,7 @@ const Header = () => (
     </div>
     <div class="service-selector">
       <button class="service-selector-button heading" aria-expanded="false" aria-haspopup="true">
-        [ SELECT_SERVICE ]
+        [ BOOK NOW ]
       </button>
       <div class="service-selector-menu" role="menu">
         <a href="/book/studio" class="service-selector-item heading" role="menuitem">[ BOOK_STUDIO_TIME ]</a>
@@ -309,12 +309,6 @@ app.get('/', (c) => {
               <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono">
                 [ BOOK STUDIO ]
               </a>
-            </div>
-
-            <div class="hero-links mono">
-              <a href="/studio">→ Studio</a>
-              <a href="/av-services">→ AV Services</a>
-              <a href="/venue">→ Venue Hire</a>
             </div>
           </div>
         </div>

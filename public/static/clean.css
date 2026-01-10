@@ -124,17 +124,18 @@ body {
 .service-selector-button {
   background: transparent;
   color: var(--signal-white);
-  padding: 0.5rem 1.25rem;
-  font-size: 0.875rem;
+  padding: 0.625rem 1.5rem; /* Slightly larger */
+  font-size: 1rem; /* Increased from 0.875rem */
+  font-weight: 900; /* Bolder */
   letter-spacing: 0.05em;
-  border: 1px solid rgba(245, 245, 245, 0.3);
+  border: 2px solid var(--mustard); /* Stronger border */
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
 .service-selector-button:hover {
-  border-color: var(--mustard);
-  color: var(--mustard);
+  background: var(--mustard);
+  color: #000;
 }
 
 .service-selector-button:focus-visible {
@@ -273,7 +274,9 @@ body {
   padding-left: 2rem;
   padding-right: 2rem;
   
-  background: var(--void-black);
+  /* Restore dark green background */
+  background: #0F1A14;
+  border-bottom: 2px solid var(--mustard);
 }
 
 .status-line {
@@ -625,22 +628,23 @@ body {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: 0.875rem 2rem;
+  padding: 0.75rem 1.75rem; /* Balanced button proportions */
   text-decoration: none;
   text-align: center;
-  transition: all 0.05s ease;
-  border: none;
+  transition: background 0.2s ease; /* Color only, no transform */
+  border: 2px solid transparent;
+  border-radius: 2px; /* Subtle industrial radius */
   cursor: pointer;
-  width: 100%;
+  width: auto; /* Auto-width based on content */
 }
 
 .crs-button:hover {
   background: #ff6a2e;
-  border: 1px solid var(--mustard);
+  border-color: var(--mustard);
 }
 
 .crs-button:active {
-  transform: scale(0.98);
+  background: #d94400;
 }
 
 .crs-vu-button {
@@ -1048,8 +1052,8 @@ body {
 .crs-header-nav {
   display: none;
   align-items: center;
-  gap: 0.75rem; /* Reduced from 1.5rem */
-  flex: 0 1 auto; /* Don't expand */
+  gap: 0.75rem;
+  flex: 0 1 auto;
   justify-content: center;
 }
 
@@ -1060,7 +1064,8 @@ body {
 }
 
 .crs-header-nav a {
-  font-size: 9px; /* Reduced from 11px */
+  font-size: 0.65rem; /* Match status strip size */
+  font-weight: 600; /* Match status weight */
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: rgba(245, 245, 245, 0.8);
