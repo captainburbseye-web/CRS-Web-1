@@ -60,13 +60,15 @@ body {
   top: 0;
   z-index: 50;
   width: 100%;
-  height: 56px; /* Increased from 48px to accommodate larger logo */
+  min-height: 56px; /* Changed from fixed height to min-height */
   background: var(--void-black);
   border-bottom: 1px solid var(--mustard);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0.5rem 1.5rem; /* Reduced horizontal padding */
+  gap: 1rem; /* Add gap between flex items */
+  flex-wrap: nowrap; /* Prevent wrapping */
 }
 
 .crs-header-logo {
@@ -1035,8 +1037,8 @@ body {
 .crs-header-nav {
   display: none;
   align-items: center;
-  gap: 1.5rem;
-  flex: 1;
+  gap: 0.75rem; /* Reduced from 1.5rem */
+  flex: 0 1 auto; /* Don't expand */
   justify-content: center;
 }
 
@@ -1047,12 +1049,13 @@ body {
 }
 
 .crs-header-nav a {
-  font-size: 11px;
+  font-size: 9px; /* Reduced from 11px */
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   color: rgba(245, 245, 245, 0.8);
   text-decoration: none;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .crs-header-nav a:hover {
@@ -1198,17 +1201,19 @@ body {
 /* Status strip container */
 .status-strip {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.75rem; /* Reduced from 1.5rem */
   align-items: center;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.65rem; /* Reduced from 0.75rem */
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .status-item {
   display: flex;
   align-items: center;
+  gap: 0.25rem;
 }
 
 /* Mobile: ensure indicators breathe on smaller screens */
