@@ -42,7 +42,7 @@ body {
   --signal-white: #f5f5f5;      /* Clarity, legibility, truth */
   
   /* STATUS COLORS - Live/standby/offline only */
-  --live-green: #00B400;        /* LIVE - signal passing (VU meter green) */
+  --live-green: #008F00;        /* LIVE - signal passing (muted VU meter green) */
   --standby-gold: #d4a017;      /* STANDBY - threshold, reference points */
   --offline-red: #C0392B;       /* OFFLINE - stop, protect, fault */
   
@@ -95,8 +95,8 @@ body {
 .status-pulse {
   width: 8px;
   height: 8px;
-  background: #00B400;
-  animation: pulse 2s infinite;
+  background: #008F00; /* Muted green - space station hardware */
+  animation: pulse 4s infinite; /* Slowed for calm, space-station breathing */
 }
 
 @keyframes pulse {
@@ -540,7 +540,7 @@ body {
 }
 
 .crs-vu-button:active {
-  background: #00B400;
+  background: #008F00; /* Muted green - space station hardware */
   color: #000000;
   transform: scale(0.98);
 }
@@ -758,8 +758,8 @@ body {
 
 /* State colours - functional only (space station hardware aesthetic) */
 .indicator-live {
-  background: #00B400; /* Bright industrial green - Neve/Tascam VU meter */
-  box-shadow: 0 0 8px rgba(0, 180, 0, 0.6);
+  background: #008F00; /* Muted green - readable, not glaring */
+  box-shadow: 0 0 8px rgba(0, 143, 0, 0.6);
 }
 
 .indicator-standby {
@@ -800,6 +800,20 @@ body {
 .status-item {
   display: flex;
   align-items: center;
+}
+
+/* Mobile: ensure indicators breathe on smaller screens */
+@media (max-width: 767px) {
+  .status-strip {
+    gap: 1rem;
+    font-size: 0.7rem;
+  }
+  
+  .indicator {
+    width: 10px;
+    height: 10px;
+    margin-right: 0.4rem;
+  }
 }
 
 /* Accessibility: visually hidden text for screen readers */

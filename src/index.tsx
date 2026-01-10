@@ -62,7 +62,7 @@ app.get('/pulse.json', (c) => {
   
   // Color mapping for LED hardware (space station aesthetic)
   const stateColors = {
-    live: '#00B400',      // Bright industrial green - Neve/Tascam VU meter
+    live: '#008F00',      // Muted green - readable, not glaring
     standby: '#d4a017',   // Mustard
     offline: '#C0392B'    // Signal red
   };
