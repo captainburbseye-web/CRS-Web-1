@@ -145,11 +145,11 @@ const Header = () => (
     <div style="display: flex; align-items: center;">
       <a href="/">
         <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS%20Web%20Banner%20smaller%20(1).png" 
-          alt="Cowley Road Studios"
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-panel-hero.webp.jpg" 
+          alt="CRS Industrial Engineering Panel"
           class="crs-header-logo"
-          width="284"
-          height="54"
+          width="672"
+          height="1584"
           loading="eager"
           fetchpriority="high"
         />
@@ -289,13 +289,12 @@ app.get('/', (c) => {
 
             <figure style="margin: 0 0 1.5rem 0;">
               <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-panel-hero.webp.jpg" 
-                alt="CRS Industrial Engineering Panel - Cowley Road Studios"
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS%20Web%20Banner%20smaller%20(1).png" 
+                alt="Cowley Road Studios Street Sign"
                 class="hero-banner"
-                width="672"
-                height="1584"
-                loading="eager"
-                fetchpriority="high"
+                width="284"
+                height="54"
+                loading="lazy"
               />
             </figure>
 

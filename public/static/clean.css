@@ -70,9 +70,9 @@ body {
 }
 
 .crs-header-logo {
-  max-height: 24px;
+  max-height: 32px; /* Industrial panel at lean nav height */
   width: auto;
-  object-fit: contain; /* Prevent squashing - street sign geometry */
+  object-fit: contain; /* Preserve panel proportions */
 }
 
 .crs-header-loc {
