@@ -255,11 +255,24 @@ body {
   border-top: 2px solid var(--mustard);
 }
 
-/* HERO */
+/* HERO - Industrial header panel (NOT full-screen landing) */
 .crs-hero {
-  display: flex;
-  flex-direction: column;
-  padding: clamp(2rem, 4vw, 4rem) 2rem; /* Content-driven padding */
+  /* Force content-driven height */
+  height: auto !important;
+  min-height: unset !important;
+  max-height: none !important;
+  
+  /* Remove vertical centering */
+  display: block;
+  align-items: flex-start;
+  justify-content: flex-start;
+  
+  /* Content-driven padding only */
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  padding-left: 2rem;
+  padding-right: 2rem;
+  
   background: var(--void-black);
 }
 
