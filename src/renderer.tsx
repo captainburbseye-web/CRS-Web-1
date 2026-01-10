@@ -12,18 +12,15 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* Favicon */}
         <link rel="icon" type="image/x-icon" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/favicon.ico" />
         
-        {/* Google Fonts - Typography System (Locked) */}
+        {/* Google Fonts - Clean Typography */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Oswald:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;800&display=swap" rel="stylesheet" />
         
-        {/* Font Awesome Icons */}
-        <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet" />
-        
-        {/* Tailwind CSS - built and served statically */}
-        <link href="/static/style.css" rel="stylesheet" />
+        {/* Clean CSS */}
+        <link href="/static/clean.css" rel="stylesheet" />
       </head>
-      <body class="font-body text-off-white bg-nettle-green antialiased">
+      <body>
         {children}
       </body>
     </html>
