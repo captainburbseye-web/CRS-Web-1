@@ -1148,6 +1148,24 @@ app.get('/av-services', (c) => {
           </div>
         </div>
 
+        {/* TECHNICAL OPERATIONS */}
+        <div class="content-block">
+          <h3 class="content-heading mono">TECHNICAL OPERATIONS</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              CRS provides ongoing technical management and AV support for external venues.
+            </p>
+            <p style="margin-bottom: 0.5rem; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">
+              Current supported sites:
+            </p>
+            <ul style="list-style: none; padding: 0; font-size: 0.875rem; color: rgba(245, 245, 245, 0.6);">
+              <li style="margin-bottom: 0.25rem;">– Bossaphonik</li>
+              <li style="margin-bottom: 0.25rem;">– The King's Centre</li>
+              <li style="margin-bottom: 0.25rem;">– Cowley Workers' Club</li>
+            </ul>
+          </div>
+        </div>
+
         {/* BRIDGE TO REPAIRS */}
         <div class="content-block">
           <p class="section-intro">
