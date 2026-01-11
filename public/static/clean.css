@@ -1734,3 +1734,34 @@ select:focus:not(:focus-visible) {
     padding: 2rem 1.25rem;
   }
 }
+
+/* ========================================
+   VERTICAL RHYTHM PASS — BREATHING ROOM
+   ======================================== */
+
+/* 1) Section Vertical Padding — Add +0.75rem breathing room */
+.crs-section {
+  padding-top: 3.25rem;  /* was 2.5rem, now 3.25rem (+0.75rem) */
+  padding-bottom: 3.25rem;
+}
+
+@media (min-width: 768px) {
+  .crs-section {
+    padding-top: 4.75rem;  /* was 4rem, now 4.75rem (+0.75rem) */
+    padding-bottom: 4.75rem;
+  }
+}
+
+/* 2) Paragraph Stack Spacing — Mobile only */
+@media (max-width: 768px) {
+  .section-intro {
+    margin-bottom: 1.25rem;  /* Add breathing room below intro paragraphs */
+  }
+}
+
+/* 3) CTA Separation — Increase margin-top for clearer visual separation */
+.crs-button,
+a[href*="/book"],
+a[href*="/contact"] {
+  margin-top: 1.5rem;  /* Increase from default to create clearer separation */
+}
