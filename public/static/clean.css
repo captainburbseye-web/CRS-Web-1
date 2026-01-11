@@ -35,23 +35,24 @@ body {
   letter-spacing: -0.05em; /* The Glint - compressed and powerful */
 }
 
-/* COLORS - SIGNAL AUTHORITY (LOCKED) */
+/* COLORS - SIGNAL AUTHORITY (LOCKED TO LOGO PALETTE) */
 :root {
-  /* SIGNAL COLORS - Functional only, communicate system state */
-  --void-black: #0a0a0a;        /* Infrastructure void - CRS base */
+  /* SIGNAL COLORS - Extracted from master power panel logo */
+  --void-black: #0E0E0E;        /* Deep black - matches logo text */
   --signal-white: #f5f5f5;      /* Clarity, legibility, truth */
+  --steel-grey: #D9D9D6;        /* Brushed aluminum - logo background */
   
-  /* STATUS COLORS - Live/standby/offline only */
-  --live-green: #008F00;        /* LIVE - signal passing (muted VU meter green) */
-  --standby-gold: #d4a017;      /* STANDBY - threshold, reference points */
-  --offline-red: #C0392B;       /* OFFLINE - stop, protect, fault */
+  /* STATUS COLORS - Matched to logo indicator system */
+  --live-green: #00FF00;        /* LIVE - bright signal green (logo indicator) */
+  --standby-gold: #FFD700;      /* STANDBY - bright signal yellow (logo plate) */
+  --offline-red: #FF0000;       /* OFFLINE - pure signal red (logo underline) */
   
   /* ACTION COLOR - Brewforce/CTA only */
   --fire-orange: #ff4d00;       /* ACTION - energy threshold, not decoration */
   
   /* ATMOSPHERIC COLORS - Café/story sections ONLY, never CRS infrastructure */
   --nettle-green: #2d3e2f;      /* HOLDING SPACE - Workshop Café only */
-  --mustard: #d4a017;           /* Same as standby-gold - dual use allowed */
+  --mustard: #FFD700;           /* Unified with standby-gold - logo-matched yellow */
 }
 
 /* ============================================
