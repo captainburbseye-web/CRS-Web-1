@@ -9,6 +9,70 @@ app.use('/static/*', serveStatic({ root: './' }))
 app.use('/policies/*', serveStatic({ root: './public' }))
 app.use('/favicon.svg', serveStatic({ path: './favicon.svg' }))
 
+// API ENDPOINTS
+app.post('/api/contact', async (c) => {
+  try {
+    const body = await c.req.json()
+    console.log('[API] Contact form submission:', body)
+    
+    // TODO: Implement email notification or database storage
+    // For now, log and return success
+    
+    return c.json({ 
+      success: true, 
+      message: 'Contact form received. We will respond within 24 hours.' 
+    }, 200)
+  } catch (error) {
+    console.error('[API] Contact form error:', error)
+    return c.json({ 
+      success: false, 
+      message: 'Form submission failed. Please email info@cowleyroadstudios.com directly.' 
+    }, 500)
+  }
+})
+
+app.post('/api/book/studio', async (c) => {
+  try {
+    const body = await c.req.json()
+    console.log('[API] Studio booking submission:', body)
+    
+    // TODO: Implement booking system integration
+    // For now, log and return success
+    
+    return c.json({ 
+      success: true, 
+      message: 'Studio booking request received. We will confirm availability within 24 hours.' 
+    }, 200)
+  } catch (error) {
+    console.error('[API] Studio booking error:', error)
+    return c.json({ 
+      success: false, 
+      message: 'Booking submission failed. Please email info@cowleyroadstudios.com directly.' 
+    }, 500)
+  }
+})
+
+app.post('/api/book/venue', async (c) => {
+  try {
+    const body = await c.req.json()
+    console.log('[API] Venue booking submission:', body)
+    
+    // TODO: Implement booking system integration
+    // For now, log and return success
+    
+    return c.json({ 
+      success: true, 
+      message: 'Venue booking request received. We will confirm availability within 24 hours.' 
+    }, 200)
+  } catch (error) {
+    console.error('[API] Venue booking error:', error)
+    return c.json({ 
+      success: false, 
+      message: 'Booking submission failed. Please email info@cowleyroadstudios.com directly.' 
+    }, 500)
+  }
+})
+
 // System Monitor Status Endpoint (Declarative - No Time Logic)
 app.get('/status.json', (c) => {
   // MANUAL STATE DECLARATION
@@ -235,6 +299,77 @@ const Footer = () => (
   </footer>
   </>
 )
+
+// REDIRECTS & MISSING PAGES
+app.get('/av', (c) => c.redirect('/av-services'))
+app.get('/book', (c) => c.redirect('/contact'))
+
+// LOCATIONS PAGE
+app.get('/locations', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h2 class="section-title heading">CRS LOCATIONS</h2>
+          <p class="section-intro">
+            CRS operates studio and venue facilities across Oxford at two primary locations.
+          </p>
+        </div>
+
+        {/* COWLEY ROAD */}
+        <div class="content-block">
+          <h3 class="content-heading heading">CRS — COWLEY ROAD</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              <strong>Address:</strong><br />
+              118 Cowley Road<br />
+              Oxford OX4 1JE
+            </p>
+            <p style="margin-bottom: 1rem;">
+              <strong>Facilities:</strong>
+            </p>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.5rem;">→ Recording studios and rehearsal rooms</li>
+              <li style="margin-bottom: 0.5rem;">→ Workshop Café (events space)</li>
+              <li style="margin-bottom: 0.5rem;">→ Technical development facilities</li>
+            </ul>
+            <p style="margin-top: 1.5rem; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">
+              Main operational site with full studio infrastructure and publicly accessible event space.
+            </p>
+          </div>
+        </div>
+
+        {/* CRICKET ROAD */}
+        <div class="content-block">
+          <h3 class="content-heading heading">CRS — CRICKET ROAD</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              <strong>Address:</strong><br />
+              Cricket Road<br />
+              Oxford
+            </p>
+            <p style="margin-bottom: 1rem;">
+              <strong>Facilities:</strong>
+            </p>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.5rem;">→ Rehearsal rooms</li>
+              <li style="margin-bottom: 0.5rem;">→ Community practice spaces</li>
+            </ul>
+            <p style="margin-top: 1.5rem; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">
+              Partner studio location with dedicated rehearsal facilities.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-cta">
+          <a href="/contact" class="crs-button mono">[ CONTACT FOR ACCESS ]</a>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
 
 // HOME
 app.get('/', (c) => {
