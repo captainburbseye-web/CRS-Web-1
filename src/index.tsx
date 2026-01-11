@@ -314,40 +314,32 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* LIVE STATUS / AVAILABILITY */}
-      <section class="crs-section section-dark">
-        <div class="section-header">
-          <h2 class="section-title mono" style="font-size: 1.25rem;">LIVE STATUS / AVAILABILITY</h2>
-          <p class="section-intro" style="border-left: none; padding-left: 0; margin-bottom: 2rem;">
-            Studio sessions · AV bookings · Repairs<br/>
-            Availability updated regularly — get in touch to confirm.
-          </p>
-        </div>
-        
-        <div style="display: grid; gap: 1.5rem; max-width: 800px;">
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            <span class="indicator indicator-live" aria-hidden="true"></span>
-            <div>
-              <div class="mono" style="font-size: 0.875rem; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">CAFÉ</div>
-              <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8);">Open daily 8am–6pm</div>
+      {/* LIVE STATUS PANEL - Operational readout */}
+      <section class="status-panel">
+        <div class="status-panel-container">
+          <h3 class="status-panel-label mono">LIVE STATUS / AVAILABILITY</h3>
+          
+          <div class="status-panel-grid">
+            <div class="status-panel-item">
+              <span class="indicator indicator-live" aria-hidden="true"></span>
+              <span class="status-panel-name mono">CAFÉ</span>
+              <span class="status-panel-state">Open daily 8am–6pm</span>
+            </div>
+            
+            <div class="status-panel-item">
+              <span class="indicator indicator-live" aria-hidden="true"></span>
+              <span class="status-panel-name mono">STUDIO</span>
+              <span class="status-panel-state">In session (next: Thu 16 Jan)</span>
+            </div>
+            
+            <div class="status-panel-item">
+              <span class="indicator indicator-standby" aria-hidden="true"></span>
+              <span class="status-panel-name mono">REPAIRS</span>
+              <span class="status-panel-state">Currently paused</span>
             </div>
           </div>
           
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            <span class="indicator indicator-live" aria-hidden="true"></span>
-            <div>
-              <div class="mono" style="font-size: 0.875rem; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">STUDIO</div>
-              <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8);">In session (next availability: Thu 16 Jan)</div>
-            </div>
-          </div>
-          
-          <div style="display: flex; align-items: center; gap: 1rem;">
-            <span class="indicator indicator-standby" aria-hidden="true"></span>
-            <div>
-              <div class="mono" style="font-size: 0.875rem; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">REPAIRS</div>
-              <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8);">Currently paused (join waitlist)</div>
-            </div>
-          </div>
+          <p class="status-panel-note">Availability updated regularly — get in touch to confirm.</p>
         </div>
       </section>
 

@@ -1214,6 +1214,71 @@ body {
   border-bottom: 3px solid transparent;
 }
 
+/* STATUS PANEL - Operational readout (compact) */
+.status-panel {
+  background: var(--void-black);
+  border-top: 1px solid rgba(227, 180, 72, 0.2);
+  border-bottom: 1px solid rgba(227, 180, 72, 0.2);
+  padding: 1.5rem 2rem; /* Compact vertical padding */
+}
+
+.status-panel-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.status-panel-label {
+  font-size: 0.75rem;
+  color: rgba(245, 245, 245, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.status-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.status-panel-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-panel-name {
+  font-size: 0.75rem;
+  color: var(--mustard);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 70px;
+}
+
+.status-panel-state {
+  font-size: 0.75rem;
+  color: rgba(245, 245, 245, 0.7);
+}
+
+.status-panel-note {
+  font-size: 0.7rem;
+  color: rgba(245, 245, 245, 0.4);
+  font-style: italic;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .status-panel {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .status-panel-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
 /* Status strip container */
 .status-strip {
   display: flex;
