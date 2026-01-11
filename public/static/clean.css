@@ -401,6 +401,54 @@ body {
   border-top: 2px solid var(--mustard);
 }
 
+/* CAFÉ HEARTBEAT - Nettle Green social infrastructure block */
+.cafe-heartbeat {
+  background: #3E5B4B; /* Nettle Green - human side */
+  color: #f5f5f5;
+  border-top: 2px solid var(--mustard);
+}
+
+.cafe-title {
+  color: var(--mustard);
+}
+
+.cafe-intro {
+  color: rgba(245, 245, 245, 0.9);
+}
+
+/* Service snapshot cards */
+.cafe-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cafe-service-card {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid var(--mustard);
+  padding: 1.5rem;
+}
+
+.cafe-service-title {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--mustard);
+  margin: 0 0 0.5rem 0;
+}
+
+.cafe-service-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(245, 245, 245, 0.8);
+  margin: 0;
+}
+
 /* HERO - Industrial header panel (NOT full-screen landing) */
 .crs-hero {
   /* Force content-driven height */

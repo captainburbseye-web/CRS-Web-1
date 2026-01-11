@@ -506,19 +506,35 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* CAFÉ SNAPSHOT */}
-      <section class="crs-section section-dark" style="border-top: 2px solid var(--mustard);">
+      {/* CAFÉ SNAPSHOT - CREATIVE HEARTBEAT */}
+      <section class="crs-section cafe-heartbeat">
         <div class="section-header">
-          <h2 class="section-title heading">WORKSHOP CAFÉ</h2>
-          <p class="section-intro">
-            A flexible café and event space — talks, workshops, small live events, and community use.
+          <h2 class="section-title cafe-title">WORKSHOP CAFÉ</h2>
+          <p class="section-intro cafe-intro">
+            Social infrastructure — coffee, workspace, events, and community activity.
           </p>
         </div>
         
+        {/* SERVICE SNAPSHOT ROW */}
+        <div class="cafe-services">
+          <div class="cafe-service-card">
+            <h3 class="cafe-service-title">COFFEE & MATCHA</h3>
+            <p class="cafe-service-text">Specialty coffee and matcha service</p>
+          </div>
+          <div class="cafe-service-card">
+            <h3 class="cafe-service-title">EVENT SPACE</h3>
+            <p class="cafe-service-text">Talks, workshops, live performance</p>
+          </div>
+          <div class="cafe-service-card">
+            <h3 class="cafe-service-title">WORKSPACE</h3>
+            <p class="cafe-service-text">Hot-desk and community co-working</p>
+          </div>
+        </div>
+        
         {/* WHAT'S ON PREVIEW */}
-        <div class="content-block">
+        <div class="content-block" style="margin-top: 2rem;">
           <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-            <h3 class="content-heading mono" style="font-size: 1rem; margin: 0;">WHAT'S ON</h3>
+            <h3 class="content-heading mono" style="font-size: 1rem; margin: 0; color: var(--mustard);">WHAT'S ON</h3>
             <img 
               src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/Shop%20Sign%20Logo.png" 
               alt="Workshop Café"
@@ -527,7 +543,7 @@ app.get('/', (c) => {
             />
           </div>
           <div id="events-preview" style="margin-top: 1rem;">
-            <p style="font-size: 0.875rem; font-style: italic;">Loading events...</p>
+            <p style="font-size: 0.875rem; font-style: italic; color: rgba(245, 245, 245, 0.7);">Loading events...</p>
           </div>
         </div>
         
@@ -540,7 +556,7 @@ app.get('/', (c) => {
               if (!container) return;
               
               if (!data.events || data.events.length === 0) {
-                container.innerHTML = '<p style="font-size: 0.875rem;">No upcoming events — <a href="/venue" style="color: var(--mustard); text-decoration: none;">book the space</a></p>';
+                container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">No upcoming events — <a href="/cafe" style="color: var(--mustard); text-decoration: none; font-weight: 700;">explore the space</a></p>';
                 return;
               }
               
@@ -554,22 +570,23 @@ app.get('/', (c) => {
                 });
                 
                 return \`
-                  <div style="margin-bottom: 1rem; font-size: 0.875rem;">
-                    <span style="color: var(--mustard); font-weight: 700;">\${dateStr}</span> · \${event.title}
+                  <div style="margin-bottom: 0.75rem; padding: 0.75rem; background: rgba(0,0,0,0.3); border-left: 2px solid var(--mustard);">
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem;">\${dateStr}</div>
+                    <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">\${event.title}</div>
                   </div>
                 \`;
-              }).join('') + '<p style="margin-top: 1rem; font-size: 0.875rem;"><a href="/venue" style="color: var(--mustard); text-decoration: none; font-weight: 700;">→ View all events</a></p>';
+              }).join('') + '<p style="margin-top: 1rem; font-size: 0.875rem;"><a href="/cafe" style="color: var(--mustard); text-decoration: none; font-weight: 700;">→ View full schedule</a></p>';
             })
             .catch(err => {
               const container = document.getElementById('events-preview');
               if (container) {
-                container.innerHTML = '<p style="font-size: 0.875rem;"><a href="/venue" style="color: var(--mustard); text-decoration: none;">View upcoming events</a></p>';
+                container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);"><a href="/cafe" style="color: var(--mustard); text-decoration: none;">View upcoming events</a></p>';
               }
             });
         `}} />
         
-        <div class="hero-cta">
-          <a href="/venue" class="crs-button mono">[ WHAT'S ON ]</a>
+        <div class="hero-cta" style="margin-top: 2rem;">
+          <a href="/cafe" class="crs-button mono">[ EXPLORE CAFÉ ]</a>
         </div>
       </section>
 
@@ -1493,6 +1510,139 @@ app.get('/av-services/repairs', (c) => {
 })
 
 // WORKSHOP CAFÉ (VENUE)
+app.get('/cafe', (c) => {
+  return c.render(
+    <>
+      <Header />
+
+      {/* CAFÉ HERO - Full-width Nettle Green */}
+      <section class="crs-section cafe-heartbeat" style="min-height: 50vh; display: flex; flex-direction: column; justify-content: center;">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <h1 class="section-title" style="font-family: 'Courier New', 'Courier', monospace; font-size: clamp(2rem, 4vw, 3rem); color: var(--mustard); margin-bottom: 1rem; font-weight: 400; letter-spacing: 0.02em;">
+            WORKSHOP CAFÉ
+          </h1>
+          <p class="section-intro" style="font-size: 1.125rem; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+            Coffee, workspace, events, and repairs — the human side of the technical chassis.
+          </p>
+        </div>
+      </section>
+
+      {/* PURPOSE ROW */}
+      <section class="crs-section cafe-heartbeat" style="border-top: 2px solid var(--mustard); padding-top: 2rem; padding-bottom: 2rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto; text-align: center;">
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; margin-bottom: 0.5rem;">COFFEE</div>
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8); line-height: 1.5;">Specialty coffee & matcha service</p>
+          </div>
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; margin-bottom: 0.5rem;">WORKSPACE</div>
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8); line-height: 1.5;">Hot-desk & community co-working</p>
+          </div>
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; margin-bottom: 0.5rem;">EVENTS</div>
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8); line-height: 1.5;">Talks, workshops, live performance</p>
+          </div>
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; margin-bottom: 0.5rem;">REPAIRS</div>
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8); line-height: 1.5;">Workshop & technical support</p>
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT'S ON */}
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h2 class="section-title heading">WHAT'S ON</h2>
+          <p class="section-intro">
+            Upcoming events, workshops, and sessions at Workshop Café.
+          </p>
+        </div>
+
+        <div id="events-feed" style="margin-top: 2rem;">
+          <p style="font-size: 0.875rem; font-style: italic; color: rgba(245, 245, 245, 0.7);">Loading events...</p>
+        </div>
+        
+        <script dangerouslySetInnerHTML={{__html: `
+          // Load events from API
+          fetch('/events.json')
+            .then(res => res.json())
+            .then(data => {
+              const container = document.getElementById('events-feed');
+              if (!container) return;
+              
+              if (!data.events || data.events.length === 0) {
+                container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">No upcoming events — the space is available to book.</p>';
+                return;
+              }
+              
+              const eventsToShow = data.events.slice(0, 10);
+              
+              container.innerHTML = eventsToShow.map(event => {
+                const date = new Date(event.start);
+                const dateStr = date.toLocaleDateString('en-GB', { 
+                  weekday: 'short', 
+                  day: 'numeric', 
+                  month: 'short',
+                  year: 'numeric'
+                });
+                const timeStr = event.start.includes('T') ? date.toLocaleTimeString('en-GB', {
+                  hour: '2-digit',
+                  minute: '2-digit'
+                }) : '';
+                
+                const bookingButton = event.bookingLink ? 
+                  \`<a href="\${event.bookingLink}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--mustard); color: #000; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">→ BOOK</a>\` : '';
+                
+                return \`
+                  <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem; margin-bottom: 1.5rem;">
+                    <h4 style="font-family: 'Archivo Black', sans-serif; font-size: 1rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; margin-bottom: 0.5rem;">\${event.title}</h4>
+                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.75rem;">\${dateStr}\${timeStr ? ' · ' + timeStr : ''}</p>
+                    <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9);">\${event.description}</p>
+                    \${bookingButton}
+                  </div>
+                \`;
+              }).join('');
+            })
+            .catch(err => {
+              const container = document.getElementById('events-feed');
+              if (container) {
+                container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">Unable to load events. Please check back later.</p>';
+              }
+            });
+        `}} />
+      </section>
+
+      {/* VENUE HIRE */}
+      <section class="crs-section cafe-heartbeat">
+        <div class="section-header">
+          <h2 class="section-title cafe-title">BOOK THE SPACE</h2>
+          <p class="section-intro cafe-intro">
+            Workshop Café is available for talks, workshops, launches, and community events.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h3 class="content-heading mono" style="color: var(--mustard);">WHAT THE SPACE OFFERS</h3>
+          <div class="content-text" style="color: rgba(245, 245, 245, 0.9);">
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;">→ Café by day, flexible venue by night</li>
+              <li style="margin-bottom: 0.75rem;">→ PA system & basic AV support</li>
+              <li style="margin-bottom: 0.75rem;">→ Capacity: ~40 seated / ~60 standing</li>
+              <li style="margin-bottom: 0.75rem;">→ Technically supported by Cowley Road Studios</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hero-cta" style="margin-top: 2rem;">
+          <a href="/contact?service=venue" class="crs-button mono">[ CONTACT ]</a>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  )
+})
+
 app.get('/venue', (c) => {
   return c.render(
     <>
