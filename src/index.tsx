@@ -335,8 +335,8 @@ app.get('/book', (c) => {
             </p>
           </div>
           <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="/contact?service=recording" class="crs-button mono">
-              [ CONTACT ]
+            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono">
+              [ BOOK A SESSION ]
             </a>
           </div>
         </div>
