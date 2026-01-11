@@ -264,8 +264,9 @@ app.get('/', (c) => {
       {/* HERO */}
       <section class="crs-hero mono">
         {/* HERO CONTENT - 600px rack-mount constraint */}
-        <div style="max-width: 600px; margin: 0 auto; padding: 0 2rem;">
-          <div style="max-width: 100%;">
+        <div style="max-width: 600px; margin: 0 auto;">
+          {/* Main content with padding */}
+          <div style="padding: 0 2rem;">
             {/* STATUS LINE - PRE-BUILD STATE */}
             <div class="status-strip" style="margin-bottom: 2rem;">
               <div class="status-item">
@@ -310,34 +311,32 @@ app.get('/', (c) => {
               </a>
             </div>
           </div>
-        </div>
 
-        {/* LIVE STATUS RAIL - Anchored to bottom of Hero chassis */}
-        <div class="status-panel-bottom-rail">
-          <div class="status-panel-container">
+          {/* LIVE STATUS RAIL - Anchored to absolute bottom, spans full 600px */}
+          <div class="status-panel-bottom-rail">
             <h3 class="status-panel-label mono">LIVE STATUS / AVAILABILITY</h3>
             
             <div class="status-panel-grid">
               <div class="status-panel-item">
                 <span class="indicator indicator-prebuild" aria-hidden="true"></span>
-                <span class="status-panel-name mono">THE LIVE ROOM</span>
-                <span class="status-panel-state">🔴 3,960 × 2,816 mm · Frames up · Acoustic insulation in progress</span>
+                <span class="status-panel-name mono">LIVE ROOM</span>
+                <span class="status-panel-state">🔴 PRE-BUILD · 3,960 × 2,816 mm · Frames up</span>
               </div>
               
               <div class="status-panel-item">
                 <span class="indicator indicator-prebuild" aria-hidden="true"></span>
-                <span class="status-panel-name mono">THE BIG BOOTH</span>
-                <span class="status-panel-state">🔴 5,300 × 1,480 mm · Ensemble/podcasts · Awaiting screen/mic install</span>
+                <span class="status-panel-name mono">BIG BOOTH</span>
+                <span class="status-panel-state">🔴 PRE-BUILD · 5,300 × 1,480 mm · Screen/mic pending</span>
               </div>
               
               <div class="status-panel-item">
                 <span class="indicator indicator-standby" aria-hidden="true"></span>
                 <span class="status-panel-name mono">AV REPAIRS</span>
-                <span class="status-panel-state">🟡 System check mode · Active service path</span>
+                <span class="status-panel-state">🟡 SYSTEM CHECK · Active service path</span>
               </div>
             </div>
             
-            <p class="status-panel-note">Infrastructure build in progress — AV Repairs active now · Opening Early 2026</p>
+            <p class="status-panel-note">Build in progress — AV Repairs active · Opening Early 2026</p>
           </div>
         </div>
       </section>

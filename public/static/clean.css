@@ -1229,10 +1229,11 @@ body {
 
 /* STATUS PANEL BOTTOM RAIL - Anchored to hero absolute bottom */
 .status-panel-bottom-rail {
-  background: var(--void-black);
+  background: var(--void-black); /* Chassis color */
   border-top: 2px solid var(--mustard);
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 1.5rem;
   margin-top: 3rem; /* Space from hero CTA */
+  width: 100%; /* Spans full 600px container */
 }
 
 .status-panel-container {
