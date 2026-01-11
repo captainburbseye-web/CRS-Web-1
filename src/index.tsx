@@ -208,6 +208,16 @@ const Header = () => (
   <header class="crs-header">
     {/* Left: Identity + Services */}
     <div class="header-left">
+      <a href="/" class="header-logo-link">
+        <img 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-pedal-badge-profile.jpg" 
+          alt="CRS"
+          class="header-logo-badge"
+          width="40"
+          height="40"
+          loading="eager"
+        />
+      </a>
       <a href="/" class="header-brand">CRS</a>
       <nav class="header-services">
         <a href="/studio">Studio</a>
@@ -288,7 +298,7 @@ const Footer = () => (
     {/* Footer Signature - End Cap */}
     <div class="footer-signature">
       <img 
-        src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-brand-stamp-transparent.png" 
+        src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-brand-stamp-transparent.jpg" 
         alt="CRS Brand Stamp"
         class="brand-stamp"
         width="150"
@@ -490,6 +500,14 @@ app.get('/', (c) => {
       {/* HERO */}
       <section class="crs-hero">
         <div style="max-width: 600px; margin: 0 auto; padding: 4rem 2rem;">
+          <figure style="margin: 0 0 2rem 0; text-align: center;">
+            <img 
+              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-hero-chassis-banner.jpg" 
+              alt="CRS Chassis Banner"
+              style="max-width: 100%; height: auto; display: block; margin: 0 auto;"
+              loading="eager"
+            />
+          </figure>
           <p class="operational-statement">CRS operates studio and venue facilities in Oxford.</p>
         </div>
       </section>

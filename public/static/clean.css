@@ -77,6 +77,18 @@ body {
   gap: 1.5rem;
 }
 
+.header-logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo-badge {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
 .header-brand {
   font-family: 'Archivo Black', sans-serif;
   font-size: 1.25rem;
