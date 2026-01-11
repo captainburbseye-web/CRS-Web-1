@@ -20,13 +20,13 @@ app.post('/api/contact', async (c) => {
     
     return c.json({ 
       success: true, 
-      message: 'Contact form received. We will respond within 24 hours.' 
+      message: '[ SIGNAL RECEIVED ] Inquiry logged to CRS Administrative Queue. A technical representative will respond within 24 operational hours.' 
     }, 200)
   } catch (error) {
     console.error('[API] Contact form error:', error)
     return c.json({ 
       success: false, 
-      message: 'Form submission failed. Please email info@cowleyroadstudios.com directly.' 
+      message: '[ SIGNAL FAILURE ] Internal server error. Submission not logged. Please direct urgent inquiries to info@cowleyroadstudios.com.' 
     }, 500)
   }
 })
@@ -41,13 +41,13 @@ app.post('/api/book/studio', async (c) => {
     
     return c.json({ 
       success: true, 
-      message: 'Studio booking request received. We will confirm availability within 24 hours.' 
+      message: '[ REQUEST QUEUED ] Booking request for PRE-BUILD session recorded. System is currently in structural phase [STATUS: RED]. A confirmation of your queue position has been dispatched.' 
     }, 200)
   } catch (error) {
     console.error('[API] Studio booking error:', error)
     return c.json({ 
       success: false, 
-      message: 'Booking submission failed. Please email info@cowleyroadstudios.com directly.' 
+      message: '[ ALLOCATION FAILED ] Gateway timeout. Data not persisted. Please verify network connection and re-submit.' 
     }, 500)
   }
 })
@@ -62,13 +62,13 @@ app.post('/api/book/venue', async (c) => {
     
     return c.json({ 
       success: true, 
-      message: 'Venue booking request received. We will confirm availability within 24 hours.' 
+      message: '[ VENUE LOGGED ] Workshop Café hire request received. Administrative review in progress. Status: Pending.' 
     }, 200)
   } catch (error) {
     console.error('[API] Venue booking error:', error)
     return c.json({ 
       success: false, 
-      message: 'Booking submission failed. Please email info@cowleyroadstudios.com directly.' 
+      message: '[ SUBMISSION VOID ] API endpoint unresponsive. Please retry or contact the facility manager directly.' 
     }, 500)
   }
 })
