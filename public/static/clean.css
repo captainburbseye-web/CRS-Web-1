@@ -1200,6 +1200,11 @@ body {
   box-shadow: 0 0 8px rgba(192, 57, 43, 0.5);
 }
 
+.indicator-prebuild {
+  background: #FF0000; /* Fire red - PRE-BUILD STATE */
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
 /* Subtle play triangle inside green lens (OPTION A - transport control logic) */
 .indicator-live::after {
   content: '';

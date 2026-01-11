@@ -188,11 +188,9 @@ const Header = () => (
         [ BOOK NOW ]
       </button>
       <div class="service-selector-menu" role="menu">
-        <a href="/book/studio" class="service-selector-item heading" role="menuitem">[ BOOK_STUDIO_TIME ]</a>
-        <a href="/av-services" class="service-selector-item heading" role="menuitem">[ BOOK_LIVE_SOUND ]</a>
-        <a href="/repairs/status" class="service-selector-item heading" role="menuitem">[ BOOK_AV_REPAIRS ]</a>
-        <a href="/venue" class="service-selector-item heading" role="menuitem">[ BOOK_VENUE_HIRE ]</a>
-        <a href="/book/lessons" class="service-selector-item heading" role="menuitem">[ BOOK_MUSIC_LESSONS ]</a>
+        <a href="/book/studio" class="service-selector-item heading" role="menuitem">[ BOOK STUDIO TIME ] 🔴 Opening Early 2026</a>
+        <a href="/book/lessons" class="service-selector-item heading" role="menuitem">[ BOOK PODCAST OR LESSON ] 🔴 Opening Early 2026</a>
+        <a href="/repairs/status" class="service-selector-item heading" role="menuitem">[ BOOK AV REPAIRS ] 🟡 Active</a>
       </div>
     </div>
   </header>
@@ -266,23 +264,23 @@ app.get('/', (c) => {
       {/* HERO */}
       <section class="crs-hero mono">
         <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
-          <div style="max-width: 800px;">
-            {/* STATUS LINE */}
+          <div style="max-width: 600px; margin: 0 auto;">
+            {/* STATUS LINE - PRE-BUILD STATE */}
             <div class="status-strip" style="margin-bottom: 2rem;">
               <div class="status-item">
-                <span class="indicator indicator-live" aria-hidden="true"></span>
-                <span>CAFÉ</span>
-                <span class="visually-hidden">Open</span>
+                <span class="indicator indicator-prebuild" aria-hidden="true"></span>
+                <span>LIVE ROOM</span>
+                <span class="visually-hidden">Pre-Build</span>
               </div>
               <div class="status-item">
-                <span class="indicator indicator-live" aria-hidden="true"></span>
-                <span>STUDIO</span>
-                <span class="visually-hidden">In Session</span>
+                <span class="indicator indicator-prebuild" aria-hidden="true"></span>
+                <span>BIG BOOTH</span>
+                <span class="visually-hidden">Pre-Build</span>
               </div>
               <div class="status-item">
                 <span class="indicator indicator-standby" aria-hidden="true"></span>
-                <span>REPAIRS</span>
-                <span class="visually-hidden">Paused</span>
+                <span>AV REPAIRS</span>
+                <span class="visually-hidden">System Check</span>
               </div>
             </div>
 
@@ -321,25 +319,25 @@ app.get('/', (c) => {
           
           <div class="status-panel-grid">
             <div class="status-panel-item">
-              <span class="indicator indicator-live" aria-hidden="true"></span>
-              <span class="status-panel-name mono">CAFÉ</span>
-              <span class="status-panel-state">Open daily 8am–6pm</span>
+              <span class="indicator indicator-prebuild" aria-hidden="true"></span>
+              <span class="status-panel-name mono">THE LIVE ROOM</span>
+              <span class="status-panel-state">🔴 3,960 × 2,816 mm · Frames up · Acoustic insulation in progress</span>
             </div>
             
             <div class="status-panel-item">
-              <span class="indicator indicator-live" aria-hidden="true"></span>
-              <span class="status-panel-name mono">STUDIO</span>
-              <span class="status-panel-state">In session (next: Thu 16 Jan)</span>
+              <span class="indicator indicator-prebuild" aria-hidden="true"></span>
+              <span class="status-panel-name mono">THE BIG BOOTH</span>
+              <span class="status-panel-state">🔴 5,300 × 1,480 mm · Ensemble/podcasts · Awaiting screen/mic install</span>
             </div>
             
             <div class="status-panel-item">
               <span class="indicator indicator-standby" aria-hidden="true"></span>
-              <span class="status-panel-name mono">REPAIRS</span>
-              <span class="status-panel-state">Currently paused</span>
+              <span class="status-panel-name mono">AV REPAIRS</span>
+              <span class="status-panel-state">🟡 System check mode · Active service path</span>
             </div>
           </div>
           
-          <p class="status-panel-note">Availability updated regularly — get in touch to confirm.</p>
+          <p class="status-panel-note">Infrastructure build in progress — AV Repairs active now · Opening Early 2026</p>
         </div>
       </section>
 
