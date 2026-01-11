@@ -368,7 +368,7 @@ body {
 
 /* SECTIONS */
 .crs-section {
-  padding: 4rem 2rem;
+  padding: 2.5rem 1.5rem;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -422,6 +422,18 @@ body {
   /* Restore dark green background */
   background: #0F1A14;
   border-bottom: 2px solid var(--mustard);
+}
+
+.hero-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .hero-container {
+    padding: 4rem 2rem;
+  }
 }
 
 .status-line {
@@ -535,16 +547,16 @@ body {
 .section-title {
   font-family: 'Archivo Black', 'Inter', sans-serif;
   font-weight: 900;
-  font-size: 2.5rem;
+  font-size: 1.25rem;
   color: var(--mustard);
   text-transform: uppercase;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.05em; /* The Glint - compressed and powerful */
+  letter-spacing: 0.04em;
 }
 
 @media (min-width: 768px) {
   .section-title {
-    font-size: 3rem;
+    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
   }
 }
 
@@ -565,15 +577,16 @@ body {
 .section-intro {
   font-size: 1.125rem;
   color: rgba(245, 245, 245, 0.9);
-  max-width: 800px;
+  max-width: 60ch;
   border-left: 4px solid var(--mustard);
   padding-left: 1.5rem;
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 @media (min-width: 768px) {
   .section-intro {
     font-size: 1.25rem;
+    line-height: 1.6;
   }
 }
 
@@ -771,16 +784,25 @@ body {
   color: var(--signal-white);
   font-family: 'JetBrains Mono', monospace;
   font-weight: 800;
+  font-size: 0.9375rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: 0.75rem 1.75rem; /* Balanced button proportions */
+  padding: 0.875rem 1.75rem;
+  min-height: 44px;
   text-decoration: none;
   text-align: center;
-  transition: background 0.2s ease; /* Color only, no transform */
+  transition: background 0.2s ease;
   border: 2px solid transparent;
-  border-radius: 2px; /* Subtle industrial radius */
+  border-radius: 2px;
   cursor: pointer;
-  width: auto; /* Auto-width based on content */
+  width: auto;
+}
+
+@media (min-width: 768px) {
+  .crs-button {
+    font-size: 0.875rem;
+    padding: 0.625rem 1.75rem;
+  }
 }
 
 .crs-button:hover {
@@ -1304,9 +1326,15 @@ body {
 
 .content-text {
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.65;
   color: rgba(245, 245, 245, 0.9);
-  max-width: 800px;
+  max-width: 60ch;
+}
+
+@media (min-width: 768px) {
+  .content-text {
+    line-height: 1.6;
+  }
 }
 
 .content-text p {

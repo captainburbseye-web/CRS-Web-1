@@ -467,7 +467,7 @@ app.get('/', (c) => {
 
       {/* HERO */}
       <section class="crs-hero">
-        <div style="max-width: 600px; margin: 0 auto; padding: 4rem 2rem;">
+        <div class="hero-container">
           <figure style="margin: 0 0 1rem 0; text-align: center;">
             <img 
               src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-hero-chassis-banner.jpg" 
