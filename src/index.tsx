@@ -141,58 +141,27 @@ app.use(renderer)
 
 // SHARED COMPONENTS
 const Header = () => (
-  <header class="crs-header mono">
-    <div style="display: flex; align-items: center; gap: 1rem;">
-      <a href="/">
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-master-power-panel.webp" 
-          alt="CRS Master Power Panel"
-          class="crs-header-logo"
-          width="672"
-          height="1584"
-          loading="eager"
-          fetchpriority="high"
-        />
-      </a>
-      <div style="display: flex; flex-direction: column; gap: 0.25rem;">
-        <span class="crs-header-locations hidden-mobile mono">Cowley Road · Florence Park</span>
-        <span class="crs-header-loc hidden-mobile">LOC: 118_COWLEY_RD_OX4</span>
-      </div>
+  <header class="crs-header">
+    {/* Left: Identity + Services */}
+    <div class="header-left">
+      <a href="/" class="header-brand">CRS</a>
+      <nav class="header-services">
+        <a href="/studio">Studio</a>
+        <span class="separator">·</span>
+        <a href="/venue">Venue</a>
+        <span class="separator">·</span>
+        <a href="/av-services">AV</a>
+      </nav>
     </div>
-    <nav class="crs-header-nav mono">
-      <a href="/studio">STUDIO</a>
-      <a href="/av-services">AV SERVICES</a>
-      <a href="/venue">CAFÉ</a>
-      <a href="/about">ABOUT</a>
-      <a href="/contact">CONTACT</a>
+
+    {/* Right: Actions */}
+    <nav class="header-actions">
+      <a href="/locations">Locations</a>
+      <span class="separator">|</span>
+      <a href="/book">Book</a>
+      <span class="separator">|</span>
+      <a href="/contact">Contact</a>
     </nav>
-    <div class="status-strip">
-      <div class="status-item">
-        <span class="indicator indicator-prebuild" aria-hidden="true"></span>
-        <span>LIVE ROOM</span>
-        <span class="visually-hidden">Pre-Build</span>
-      </div>
-      <div class="status-item">
-        <span class="indicator indicator-prebuild" aria-hidden="true"></span>
-        <span>BIG BOOTH</span>
-        <span class="visually-hidden">Pre-Build</span>
-      </div>
-      <div class="status-item">
-        <span class="indicator indicator-standby" aria-hidden="true"></span>
-        <span>AV REPAIRS</span>
-        <span class="visually-hidden">System Check</span>
-      </div>
-    </div>
-    <div class="service-selector">
-      <button class="service-selector-button heading" aria-expanded="false" aria-haspopup="true">
-        [ SELECT SERVICE ]
-      </button>
-      <div class="service-selector-menu" role="menu">
-        <a href="/book/studio" class="service-selector-item heading" role="menuitem">[ BOOK STUDIO TIME ] 🔴 Opening Early 2026</a>
-        <a href="/book/lessons" class="service-selector-item heading" role="menuitem">[ BOOK PODCAST OR LESSON ] 🔴 Opening Early 2026</a>
-        <a href="/repairs/status" class="service-selector-item heading" role="menuitem">[ BOOK AV REPAIRS ] 🟡 Active</a>
-      </div>
-    </div>
   </header>
 )
 
@@ -244,10 +213,10 @@ const Footer = () => (
     </div>
 
     <div class="footer-bottom">
-      <p>
-        CRS — Cowley Road & Florence Park
-      </p>
-      <p>
+      <p class="footer-locations-header">CRS Locations</p>
+      <p class="footer-location-item">– Cowley Road</p>
+      <p class="footer-location-item">– Cricket Road</p>
+      <p class="footer-contact">
         CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a>
       </p>
     </div>
@@ -274,81 +243,9 @@ app.get('/', (c) => {
       <Header />
 
       {/* HERO */}
-      <section class="crs-hero mono">
-        {/* HERO CONTENT - 600px rack-mount constraint */}
-        <div style="max-width: 600px; margin: 0 auto;">
-          {/* Main content with padding */}
-          <div style="padding: 0 2rem;">
-            {/* STATUS LINE - PRE-BUILD STATE */}
-            <div class="status-strip" style="margin-bottom: 2rem;">
-              <div class="status-item">
-                <span class="indicator indicator-prebuild" aria-hidden="true"></span>
-                <span>LIVE ROOM</span>
-                <span class="visually-hidden">Pre-Build</span>
-              </div>
-              <div class="status-item">
-                <span class="indicator indicator-prebuild" aria-hidden="true"></span>
-                <span>BIG BOOTH</span>
-                <span class="visually-hidden">Pre-Build</span>
-              </div>
-              <div class="status-item">
-                <span class="indicator indicator-standby" aria-hidden="true"></span>
-                <span>AV REPAIRS</span>
-                <span class="visually-hidden">System Check</span>
-              </div>
-            </div>
-
-            <p class="hero-location">Cowley Road Studios · Oxford</p>
-
-            <figure style="margin: 0 0 1.5rem 0;">
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-hero-chassis-banner.jpg" 
-                alt="CRS Hero Chassis Faceplate"
-                class="hero-banner"
-                style="max-width: 600px; width: 100%; height: auto;"
-                loading="lazy"
-              />
-            </figure>
-
-            <p class="hero-tagline">ENGINEERED STUDIO & AV ENVIRONMENTS</p>
-
-            <p class="hero-description">
-              Reliable recording, live sound, and technical support — designed, calibrated, and run by practicing engineers.
-            </p>
-
-            <div class="hero-cta">
-              <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono">
-                [ BOOK STUDIO ]
-              </a>
-            </div>
-          </div>
-
-          {/* LIVE STATUS RAIL - Anchored to absolute bottom, spans full 600px */}
-          <div class="status-panel-bottom-rail">
-            <h3 class="status-panel-label mono">LIVE STATUS / AVAILABILITY</h3>
-            
-            <div class="status-panel-grid">
-              <div class="status-panel-item">
-                <span class="indicator indicator-prebuild" aria-hidden="true"></span>
-                <span class="status-panel-name mono">LIVE ROOM</span>
-                <span class="status-panel-state">🔴 PRE-BUILD · 3,960 × 2,816 mm · Frames up</span>
-              </div>
-              
-              <div class="status-panel-item">
-                <span class="indicator indicator-prebuild" aria-hidden="true"></span>
-                <span class="status-panel-name mono">BIG BOOTH</span>
-                <span class="status-panel-state">🔴 PRE-BUILD · 5,300 × 1,480 mm · Screen/mic pending</span>
-              </div>
-              
-              <div class="status-panel-item">
-                <span class="indicator indicator-standby" aria-hidden="true"></span>
-                <span class="status-panel-name mono">AV REPAIRS</span>
-                <span class="status-panel-state">🟡 SYSTEM CHECK · Active service path</span>
-              </div>
-            </div>
-            
-            <p class="status-panel-note">Build in progress — AV Repairs active · Opening Early 2026</p>
-          </div>
+      <section class="crs-hero">
+        <div style="max-width: 600px; margin: 0 auto; padding: 4rem 2rem;">
+          <p class="operational-statement">CRS operates studio and venue facilities in Oxford.</p>
         </div>
       </section>
 
