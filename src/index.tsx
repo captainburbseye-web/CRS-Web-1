@@ -1510,6 +1510,141 @@ app.get('/av-services/repairs', (c) => {
 })
 
 // WORKSHOP CAFÉ (VENUE)
+app.get('/workshop-cafe', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Workshop Café · Oxford | Public Café & Community Venue</title>
+        <meta name="description" content="Workshop Café — public café, workspace, and community venue at 118 Cowley Road, Oxford. Part of Cowley Road Studios. Events, talks, workshops, and open workspace." />
+        <link rel="icon" type="image/png" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-favicon-stamp.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;800&display=swap" rel="stylesheet" />
+        <link href="/static/clean.css" rel="stylesheet" />
+      </head>
+      <body>
+        <Header />
+
+        {/* CAFÉ PRESENCE - Above the fold */}
+        <section class="crs-section cafe-heartbeat" style="padding-top: 3rem; padding-bottom: 3rem;">
+          <div style="max-width: 800px; margin: 0 auto;">
+            <h1 style="font-family: 'Courier New', 'Courier', monospace; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--mustard); margin-bottom: 0.5rem; font-weight: 400; letter-spacing: 0.01em;">
+              Workshop Café
+            </h1>
+            <p style="font-size: 1.125rem; color: rgba(245, 245, 245, 0.9); margin: 0;">
+              Public café and community venue within CRS.
+            </p>
+          </div>
+        </section>
+
+        {/* CAFÉ PRESENCE BLOCK - Image-led, minimal copy */}
+        <section class="crs-section cafe-heartbeat" style="border-top: 2px solid var(--mustard); padding-top: 2rem; padding-bottom: 2rem;">
+          <div style="max-width: 1000px; margin: 0 auto;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
+              <img 
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/Shop%20Sign%20Logo.png" 
+                alt="Workshop Café"
+                style="width: 120px; height: auto; opacity: 0.9;"
+                loading="eager"
+              />
+            </div>
+            <div style="text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--mustard); font-weight: 700; letter-spacing: 0.05em;">
+              CAFÉ · EVENTS · WORKSPACE
+            </div>
+          </div>
+        </section>
+
+        {/* WHAT'S ON - Live feed */}
+        <section class="crs-section section-dark">
+          <div class="section-header">
+            <h2 class="section-title heading">WHAT'S ON AT WORKSHOP CAFÉ</h2>
+          </div>
+
+          <div id="workshop-cafe-events" style="margin-top: 2rem;">
+            <p style="font-size: 0.875rem; font-style: italic; color: rgba(245, 245, 245, 0.7);">Loading events...</p>
+          </div>
+          
+          <script dangerouslySetInnerHTML={{__html: `
+            fetch('/events.json')
+              .then(res => res.json())
+              .then(data => {
+                const container = document.getElementById('workshop-cafe-events');
+                if (!container) return;
+                
+                if (!data.events || data.events.length === 0) {
+                  container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">No upcoming events currently scheduled.</p>';
+                  return;
+                }
+                
+                const eventsToShow = data.events.slice(0, 5);
+                
+                container.innerHTML = eventsToShow.map(event => {
+                  const date = new Date(event.start);
+                  const dateStr = date.toLocaleDateString('en-GB', { 
+                    weekday: 'short', 
+                    day: 'numeric', 
+                    month: 'short'
+                  });
+                  const timeStr = event.start.includes('T') ? date.toLocaleTimeString('en-GB', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                  }) : '';
+                  
+                  return \`
+                    <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.25rem; margin-bottom: 1.25rem;">
+                      <h4 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.03em;">\${event.title}</h4>
+                      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.6); margin-bottom: 0.5rem;">\${dateStr}\${timeStr ? ' · ' + timeStr : ''}</p>
+                      <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">\${event.description.substring(0, 120)}\${event.description.length > 120 ? '...' : ''}</p>
+                    </div>
+                  \`;
+                }).join('');
+              })
+              .catch(err => {
+                const container = document.getElementById('workshop-cafe-events');
+                if (container) {
+                  container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">Unable to load events.</p>';
+                }
+              });
+          `}} />
+        </section>
+
+        {/* SPACE USE - Functional, not promotional */}
+        <section class="crs-section cafe-heartbeat">
+          <div class="section-header">
+            <h2 class="section-title cafe-title">SPACE USE</h2>
+          </div>
+
+          <div style="max-width: 600px; margin: 0 auto;">
+            <ul style="list-style: none; padding: 0; font-size: 0.9375rem; line-height: 2; color: rgba(245, 245, 245, 0.9);">
+              <li>→ Open workspace</li>
+              <li>→ Community events</li>
+              <li>→ Talks, screenings, open mics</li>
+              <li>→ Private hire (small-scale)</li>
+            </ul>
+          </div>
+        </section>
+
+        {/* CRS ROUTING PANEL - Authority handoff */}
+        <section class="crs-section section-dark">
+          <div style="max-width: 700px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
+            <p style="font-size: 1rem; line-height: 1.7; color: rgba(245, 245, 245, 0.9); margin-bottom: 1.5rem;">
+              Workshop Café operates as the public-facing space of CRS.
+            </p>
+            <p style="font-size: 0.9375rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 2rem;">
+              For venue hire, technical support, or bookings:
+            </p>
+            <a href="/book" class="crs-button mono">[ VIEW CRS SERVICES ]</a>
+          </div>
+        </section>
+
+        <Footer />
+      </body>
+    </html>
+  )
+})
+
 app.get('/cafe', (c) => {
   return c.render(
     <>
