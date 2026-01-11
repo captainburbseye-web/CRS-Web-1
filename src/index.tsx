@@ -1591,6 +1591,70 @@ app.get('/workshop-cafe', (c) => {
           `}} />
         </section>
 
+        {/* RESOURCE ALLOCATION RATES */}
+        <section class="crs-section cafe-heartbeat">
+          <div class="section-header">
+            <h2 class="section-title cafe-title">RESOURCE ALLOCATION RATES</h2>
+            <p class="section-intro cafe-intro">
+              118 Cowley Road — Multi-use infrastructure
+            </p>
+          </div>
+
+          <div style="max-width: 900px; margin: 0 auto;">
+            {/* Rate Card Grid */}
+            <div style="display: grid; gap: 1.5rem; margin-bottom: 2rem;">
+              
+              {/* Full Venue Hire */}
+              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
+                  <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">FULL VENUE HIRE</h3>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£50 per hour</span>
+                </div>
+                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
+                  Capacity: 40–60 people · Includes PA system & projection
+                </p>
+              </div>
+
+              {/* Meeting Table */}
+              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
+                  <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">MEETING TABLE</h3>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£25 per half-day</span>
+                </div>
+                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
+                  Workspace with high-speed connectivity
+                </p>
+              </div>
+
+              {/* Community Event */}
+              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
+                  <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">COMMUNITY EVENT</h3>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£30 (subsidized)</span>
+                </div>
+                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
+                  For grassroots/non-profit cultural activity
+                </p>
+              </div>
+            </div>
+
+            {/* Access Policy */}
+            <div style="background: rgba(216, 162, 0, 0.1); border: 1px solid var(--mustard); padding: 1.5rem; text-align: center;">
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+                [ ACCESS POLICY ]
+              </p>
+              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9); margin: 0;">
+                Priority allocation granted to local grassroots initiatives. All commercial hire directly funds the CRS Creative Infrastructure.
+              </p>
+            </div>
+
+            {/* Booking CTA */}
+            <div style="margin-top: 2rem; text-align: center;">
+              <a href="/book?service=venue" class="crs-button mono">[ BOOK SPACE ]</a>
+            </div>
+          </div>
+        </section>
+
         {/* SPACE USE - Functional, not promotional */}
         <section class="crs-section cafe-heartbeat">
           <div class="section-header">
