@@ -474,7 +474,7 @@ app.get('/', (c) => {
             class="hero-power-panel"
             loading="eager"
           />
-          <p class="operational-statement">CRS operates studio and venue facilities in Oxford.</p>
+          <p class="operational-statement">Cowley Road Studios is a purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford.</p>
         </div>
       </section>
 
@@ -483,7 +483,7 @@ app.get('/', (c) => {
         <div class="section-header">
           <h2 class="section-title heading">STUDIO SESSIONS</h2>
           <p class="section-intro">
-            Hybrid studio environments with calibrated monitoring and practical ergonomics. Built for recording, production, mixing, and focused creative work.
+            Acoustically treated rooms, calibrated monitoring, and networked audio infrastructure for recording, production, and focused creative work.
           </p>
         </div>
         <div class="hero-cta">
@@ -509,7 +509,7 @@ app.get('/', (c) => {
         <div class="section-header">
           <h2 class="section-title cafe-title">WORKSHOP CAFÉ</h2>
           <p class="section-intro cafe-intro">
-            Social infrastructure — coffee, workspace, events, and community activity.
+            The public-facing space of CRS — a café, workspace, and small venue supporting community events and creative activity.
           </p>
         </div>
         
