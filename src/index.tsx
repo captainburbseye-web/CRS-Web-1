@@ -1527,33 +1527,14 @@ app.get('/workshop-cafe', (c) => {
       <body>
         <Header />
 
-        {/* CAFÉ PRESENCE - Above the fold */}
-        <section class="crs-section cafe-heartbeat" style="padding-top: 3rem; padding-bottom: 3rem;">
-          <div style="max-width: 800px; margin: 0 auto;">
-            <h1 style="font-family: 'Courier New', 'Courier', monospace; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--mustard); margin-bottom: 0.5rem; font-weight: 400; letter-spacing: 0.01em;">
-              Workshop Café
-            </h1>
-            <p style="font-size: 1.125rem; color: rgba(245, 245, 245, 0.9); margin: 0;">
-              Public café and community venue within CRS.
-            </p>
-          </div>
-        </section>
-
-        {/* CAFÉ PRESENCE BLOCK - Image-led, minimal copy */}
-        <section class="crs-section cafe-heartbeat" style="border-top: 2px solid var(--mustard); padding-top: 2rem; padding-bottom: 2rem;">
-          <div style="max-width: 1000px; margin: 0 auto;">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem;">
-              <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/Shop%20Sign%20Logo.png" 
-                alt="Workshop Café"
-                style="width: 120px; height: auto; opacity: 0.9;"
-                loading="eager"
-              />
-            </div>
-            <div style="text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: var(--mustard); font-weight: 700; letter-spacing: 0.05em;">
-              CAFÉ · EVENTS · WORKSPACE
-            </div>
-          </div>
+        {/* CAFÉ SIGNAGE HERO - Above the fold */}
+        <section class="crs-section cafe-heartbeat" style="padding: 0; max-width: 1400px; margin: 0 auto;">
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/Workshop_Cafe_CTA_Primary.png" 
+            alt="Workshop Café — 118 Cowley Road"
+            style="width: 100%; height: auto; display: block;"
+            loading="eager"
+          />
         </section>
 
         {/* WHAT'S ON - Live feed */}
