@@ -168,19 +168,19 @@ const Header = () => (
     </nav>
     <div class="status-strip">
       <div class="status-item">
-        <span class="indicator indicator-live" aria-hidden="true"></span>
-        <span>CAFÉ</span>
-        <span class="visually-hidden">Open</span>
+        <span class="indicator indicator-prebuild" aria-hidden="true"></span>
+        <span>LIVE ROOM</span>
+        <span class="visually-hidden">Pre-Build</span>
       </div>
       <div class="status-item">
-        <span class="indicator indicator-live" aria-hidden="true"></span>
-        <span>STUDIO</span>
-        <span class="visually-hidden">In Session</span>
+        <span class="indicator indicator-prebuild" aria-hidden="true"></span>
+        <span>BIG BOOTH</span>
+        <span class="visually-hidden">Pre-Build</span>
       </div>
       <div class="status-item">
         <span class="indicator indicator-standby" aria-hidden="true"></span>
-        <span>REPAIRS</span>
-        <span class="visually-hidden">Paused</span>
+        <span>AV REPAIRS</span>
+        <span class="visually-hidden">System Check</span>
       </div>
     </div>
     <div class="service-selector">
@@ -310,34 +310,34 @@ app.get('/', (c) => {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* LIVE STATUS PANEL - Operational readout */}
-      <section class="status-panel">
-        <div class="status-panel-container">
-          <h3 class="status-panel-label mono">LIVE STATUS / AVAILABILITY</h3>
-          
-          <div class="status-panel-grid">
-            <div class="status-panel-item">
-              <span class="indicator indicator-prebuild" aria-hidden="true"></span>
-              <span class="status-panel-name mono">THE LIVE ROOM</span>
-              <span class="status-panel-state">🔴 3,960 × 2,816 mm · Frames up · Acoustic insulation in progress</span>
+        {/* LIVE STATUS RAIL - Anchored to bottom of Hero chassis */}
+        <div class="status-panel-bottom-rail">
+          <div class="status-panel-container">
+            <h3 class="status-panel-label mono">LIVE STATUS / AVAILABILITY</h3>
+            
+            <div class="status-panel-grid">
+              <div class="status-panel-item">
+                <span class="indicator indicator-prebuild" aria-hidden="true"></span>
+                <span class="status-panel-name mono">THE LIVE ROOM</span>
+                <span class="status-panel-state">🔴 3,960 × 2,816 mm · Frames up · Acoustic insulation in progress</span>
+              </div>
+              
+              <div class="status-panel-item">
+                <span class="indicator indicator-prebuild" aria-hidden="true"></span>
+                <span class="status-panel-name mono">THE BIG BOOTH</span>
+                <span class="status-panel-state">🔴 5,300 × 1,480 mm · Ensemble/podcasts · Awaiting screen/mic install</span>
+              </div>
+              
+              <div class="status-panel-item">
+                <span class="indicator indicator-standby" aria-hidden="true"></span>
+                <span class="status-panel-name mono">AV REPAIRS</span>
+                <span class="status-panel-state">🟡 System check mode · Active service path</span>
+              </div>
             </div>
             
-            <div class="status-panel-item">
-              <span class="indicator indicator-prebuild" aria-hidden="true"></span>
-              <span class="status-panel-name mono">THE BIG BOOTH</span>
-              <span class="status-panel-state">🔴 5,300 × 1,480 mm · Ensemble/podcasts · Awaiting screen/mic install</span>
-            </div>
-            
-            <div class="status-panel-item">
-              <span class="indicator indicator-standby" aria-hidden="true"></span>
-              <span class="status-panel-name mono">AV REPAIRS</span>
-              <span class="status-panel-state">🟡 System check mode · Active service path</span>
-            </div>
+            <p class="status-panel-note">Infrastructure build in progress — AV Repairs active now · Opening Early 2026</p>
           </div>
-          
-          <p class="status-panel-note">Infrastructure build in progress — AV Repairs active now · Opening Early 2026</p>
         </div>
       </section>
 

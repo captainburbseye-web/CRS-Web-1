@@ -1227,6 +1227,14 @@ body {
   padding: 1.5rem 2rem; /* Compact vertical padding */
 }
 
+/* STATUS PANEL BOTTOM RAIL - Anchored to hero absolute bottom */
+.status-panel-bottom-rail {
+  background: var(--void-black);
+  border-top: 2px solid var(--mustard);
+  padding: 1.5rem 2rem;
+  margin-top: 3rem; /* Space from hero CTA */
+}
+
 .status-panel-container {
   max-width: 1400px;
   margin: 0 auto;
