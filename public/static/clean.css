@@ -1048,6 +1048,19 @@ body {
   color: var(--signal-white);
 }
 
+/* Footer Signature - End Cap */
+.footer-signature {
+  text-align: center;
+  padding: 2rem 0 3rem 0;
+  opacity: 0.7;
+}
+
+.brand-stamp {
+  max-width: 150px;
+  height: auto;
+  filter: brightness(0.9);
+}
+
 /* NAVIGATION */
 .crs-header-nav {
   display: none;

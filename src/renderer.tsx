@@ -9,8 +9,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <title>CRS | Cowley Road & Florence Park Studios · Oxford</title>
         <meta name="description" content="CRS operates multi-location studio and AV infrastructure across Oxford. Industry-standard recording, rehearsal, and technical support. Locations on Cowley Road and Cricket Road near Florence Park." />
         
-        {/* Favicon */}
-        <link rel="icon" type="image/x-icon" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/favicon.ico" />
+        {/* Favicon - CRS Hardware Stamp */}
+        <link rel="icon" type="image/png" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-favicon-stamp.png" />
         
         {/* Google Fonts - Industrial-Maverick Typography */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -145,8 +145,8 @@ const Header = () => (
     <div style="display: flex; align-items: center; gap: 1rem;">
       <a href="/">
         <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-panel-hero.webp.jpg" 
-          alt="CRS Industrial Engineering Panel"
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-master-power-panel.webp" 
+          alt="CRS Master Power Panel"
           class="crs-header-logo"
           width="672"
           height="1584"
@@ -251,6 +251,18 @@ const Footer = () => (
         CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a>
       </p>
     </div>
+
+    {/* Footer Signature - End Cap */}
+    <div class="footer-signature">
+      <img 
+        src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-brand-stamp-transparent.png" 
+        alt="CRS Brand Stamp"
+        class="brand-stamp"
+        width="150"
+        height="150"
+        loading="lazy"
+      />
+    </div>
   </footer>
   </>
 )
@@ -290,11 +302,10 @@ app.get('/', (c) => {
 
             <figure style="margin: 0 0 1.5rem 0;">
               <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS%20Web%20Banner%20smaller%20(1).png" 
-                alt="Cowley Road Studios Street Sign"
+                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-hero-chassis-banner.jpg" 
+                alt="CRS Hero Chassis Faceplate"
                 class="hero-banner"
-                width="284"
-                height="54"
+                style="max-width: 600px; width: 100%; height: auto;"
                 loading="lazy"
               />
             </figure>
