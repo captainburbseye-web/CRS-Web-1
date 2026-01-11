@@ -41,7 +41,7 @@ app.post('/api/book/studio', async (c) => {
     
     return c.json({ 
       success: true, 
-      message: '[ REQUEST QUEUED ] Booking request for PRE-BUILD session recorded. System is currently in structural phase [STATUS: RED]. A confirmation of your queue position has been dispatched.' 
+      message: 'Booking request received. We will contact you to confirm availability.' 
     }, 200)
   } catch (error) {
     console.error('[API] Studio booking error:', error)
@@ -328,92 +328,60 @@ app.get('/book', (c) => {
 
         {/* Recording & Production */}
         <div class="content-block">
-          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-            <h3 class="content-heading heading" style="margin: 0;">RECORDING & PRODUCTION</h3>
-            <span class="mono" style="color: #C0392B; font-size: 0.75rem; letter-spacing: 0.1em;">
-              🔴 PRE-BUILD
-            </span>
-          </div>
+          <h3 class="content-heading heading">RECORDING & PRODUCTION</h3>
           <div class="content-text">
-            <p style="margin-bottom: 1rem;">
+            <p>
               Studio recording, mixing, and production sessions.
-            </p>
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.6);">
-              Infrastructure in structural phase. Contact us to join the waitlist.
             </p>
           </div>
           <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="/contact?service=recording" class="crs-button mono" style="opacity: 0.6; pointer-events: none;">
-              [ WAITLIST ONLY ]
+            <a href="/contact?service=recording" class="crs-button mono">
+              [ CONTACT ]
             </a>
           </div>
         </div>
 
         {/* AV & Technical Services */}
         <div class="content-block">
-          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-            <h3 class="content-heading heading" style="margin: 0;">AV & TECHNICAL SERVICES</h3>
-            <span class="mono" style="color: var(--mustard); font-size: 0.75rem; letter-spacing: 0.1em;">
-              🟡 ACTIVE
-            </span>
-          </div>
+          <h3 class="content-heading heading">AV & TECHNICAL SERVICES</h3>
           <div class="content-text">
-            <p style="margin-bottom: 1rem;">
+            <p>
               Live sound, installations, repairs, and technical support.
-            </p>
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.6);">
-              Bench diagnostics and event support operational. Booking available.
             </p>
           </div>
           <div class="hero-cta" style="margin-top: 1.5rem;">
             <a href="/contact?service=av" class="crs-button mono">
-              [ REQUEST AV SERVICE ]
+              [ CONTACT ]
             </a>
           </div>
         </div>
 
         {/* Venue Hire */}
         <div class="content-block">
-          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-            <h3 class="content-heading heading" style="margin: 0;">VENUE HIRE</h3>
-            <span class="mono" style="color: #008F00; font-size: 0.75rem; letter-spacing: 0.1em;">
-              🟢 ACTIVE
-            </span>
-          </div>
+          <h3 class="content-heading heading">VENUE HIRE</h3>
           <div class="content-text">
-            <p style="margin-bottom: 1rem;">
+            <p>
               Workshop space for talks, workshops, launches, and community events.
-            </p>
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.6);">
-              Space available for hire. AV support can be added.
             </p>
           </div>
           <div class="hero-cta" style="margin-top: 1.5rem;">
             <a href="/contact?service=venue" class="crs-button mono">
-              [ BOOK VENUE ]
+              [ CONTACT ]
             </a>
           </div>
         </div>
 
         {/* Café Service */}
         <div class="content-block">
-          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
-            <h3 class="content-heading heading" style="margin: 0;">CAFÉ SERVICE</h3>
-            <span class="mono" style="color: #C0392B; font-size: 0.75rem; letter-spacing: 0.1em;">
-              🔴 OFFLINE
-            </span>
-          </div>
+          <h3 class="content-heading heading">CAFÉ SERVICE</h3>
           <div class="content-text">
-            <p style="margin-bottom: 1rem;">
+            <p>
               Coffee and refreshments service.
-            </p>
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.6);">
-              Coffee service not currently active. Venue hire remains available.
             </p>
           </div>
           <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="#" class="crs-button mono" style="opacity: 0.6; pointer-events: none;">
-              [ OFFLINE ]
+            <a href="/contact" class="crs-button mono">
+              [ CONTACT ]
             </a>
           </div>
         </div>
@@ -751,9 +719,6 @@ app.get('/studio/infrastructure', (c) => {
               <li style="margin-bottom: 0.75rem;"><strong>Inventory:</strong> Drum kit (Existing), Piano (Existing).</li>
             </ul>
           </div>
-          <div class="room-status">
-            <span class="status-badge status-active mono">[ STATUS: ACTIVE ]</span>
-          </div>
         </div>
 
         {/* THE BIG BOOTH */}
@@ -767,9 +732,6 @@ app.get('/studio/infrastructure', (c) => {
               <li style="margin-bottom: 0.75rem;"><strong>Acoustic Role:</strong> Versatile "double booth" for larger groups or brass sections.</li>
               <li style="margin-bottom: 0.75rem;"><strong>Connectivity:</strong> Parallel conduit with 1m service loops for Dante/SDI expansion.</li>
             </ul>
-          </div>
-          <div class="room-status">
-            <span class="status-badge status-calibrating mono">[ STATUS: CALIBRATING ]</span>
           </div>
         </div>
 
@@ -785,9 +747,6 @@ app.get('/studio/infrastructure', (c) => {
               <li style="margin-bottom: 0.75rem;"><strong>Monitoring:</strong> Genelec 8010A pairs and SSL 12 USB interfaces (Per Pod).</li>
             </ul>
           </div>
-          <div class="room-status">
-            <span class="status-badge status-calibrating mono">[ STATUS: CALIBRATING ]</span>
-          </div>
         </div>
 
         {/* WORKSHOP CAFÉ STAGE */}
@@ -799,9 +758,6 @@ app.get('/studio/infrastructure', (c) => {
               <li style="margin-bottom: 0.75rem;"><strong>Video Infrastructure:</strong> 3× Camera positions with Belden 12G-SDI coax and Cat6A F/UTP shielded runs.</li>
               <li style="margin-bottom: 0.75rem;"><strong>Audio Rig:</strong> Bose 802 tops + Martin Audio IC300 subwoofers.</li>
             </ul>
-          </div>
-          <div class="room-status">
-            <span class="status-badge status-active mono">[ STATUS: ACTIVE ]</span>
           </div>
         </div>
 
@@ -818,9 +774,6 @@ app.get('/studio/infrastructure', (c) => {
               <li style="margin-bottom: 0.75rem;"><strong>Main Monitoring:</strong> Kii Three + BXT full-range system (Planned).</li>
               <li style="margin-bottom: 0.75rem;"><strong>Patching:</strong> 12-port BNC patch panel, 24-port Cat6A, and LC duplex fiber patch panel.</li>
             </ul>
-          </div>
-          <div class="room-status">
-            <span class="status-badge status-calibrating mono">[ STATUS: CALIBRATING ]</span>
           </div>
         </div>
 
