@@ -484,6 +484,29 @@ body {
   }
 }
 
+/* Hero Power Panel - Industrial plate treatment */
+.hero-power-panel {
+  display: block;
+  width: 100%;
+  max-width: 340px; /* Mobile: 300-340px */
+  height: auto;
+  margin: 0 auto 28px auto; /* Mobile: 24-28px bottom spacing */
+}
+
+@media (min-width: 768px) {
+  .hero-power-panel {
+    max-width: 420px; /* Tablet: ~420px */
+    margin-bottom: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-power-panel {
+    max-width: 560px; /* Desktop: 520-600px, using 560px */
+    margin-bottom: 40px; /* Desktop: 32-40px */
+  }
+}
+
 .status-line {
   display: flex;
   align-items: center;
