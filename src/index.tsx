@@ -392,6 +392,11 @@ app.get('/book', (c) => {
   )
 })
 
+// VENUE BOOKING REDIRECT
+app.get('/book/venue', (c) => {
+  return c.redirect('/contact?service=venue')
+})
+
 // LOCATIONS PAGE
 app.get('/locations', (c) => {
   return c.render(
