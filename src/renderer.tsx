@@ -6,7 +6,7 @@ export const renderer = jsxRenderer(({ children }) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CRS | Cowley Road & Cricket Road Studios · Oxford</title>
+        <title>CRS Oxford</title>
         <meta name="description" content="CRS operates multi-location studio and AV infrastructure across Oxford. Industry-standard recording, rehearsal, and technical support. Locations on Cowley Road and Cricket Road." />
         
         {/* Favicon - CRS Hardware Stamp */}
