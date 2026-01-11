@@ -305,6 +305,9 @@ const Footer = () => (
         height="150"
         loading="lazy"
       />
+      <p class="footer-credit mono">
+        POWERED BY <span style="color: var(--standby-gold); font-weight: 800;">0DR0</span> ENGINEERING
+      </p>
     </div>
   </footer>
   </>

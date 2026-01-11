@@ -1312,6 +1312,15 @@ body {
   filter: brightness(0.9);
 }
 
+.footer-credit {
+  margin-top: 1rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: rgba(245, 245, 245, 0.4);
+  text-transform: uppercase;
+}
+
 /* NAVIGATION */
 .crs-header-nav {
   display: none;
