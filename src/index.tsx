@@ -302,7 +302,117 @@ const Footer = () => (
 
 // REDIRECTS & MISSING PAGES
 app.get('/av', (c) => c.redirect('/av-services'))
-app.get('/book', (c) => c.redirect('/contact'))
+
+// BOOKING GATEWAY
+app.get('/book', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h2 class="section-title heading">SERVICE BOOKING</h2>
+          <p class="section-intro">
+            Select a service to check availability and submit a booking request.
+          </p>
+        </div>
+
+        {/* Recording & Production */}
+        <div class="content-block">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+            <h3 class="content-heading heading" style="margin: 0;">RECORDING & PRODUCTION</h3>
+            <span class="mono" style="color: #C0392B; font-size: 0.75rem; letter-spacing: 0.1em;">
+              🔴 PRE-BUILD
+            </span>
+          </div>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              Studio recording, mixing, and production sessions.
+            </p>
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.6);">
+              Infrastructure in structural phase. Contact us to join the waitlist.
+            </p>
+          </div>
+          <div class="hero-cta" style="margin-top: 1.5rem;">
+            <a href="/contact?service=recording" class="crs-button mono" style="opacity: 0.6; pointer-events: none;">
+              [ WAITLIST ONLY ]
+            </a>
+          </div>
+        </div>
+
+        {/* AV & Technical Services */}
+        <div class="content-block">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+            <h3 class="content-heading heading" style="margin: 0;">AV & TECHNICAL SERVICES</h3>
+            <span class="mono" style="color: var(--mustard); font-size: 0.75rem; letter-spacing: 0.1em;">
+              🟡 ACTIVE
+            </span>
+          </div>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              Live sound, installations, repairs, and technical support.
+            </p>
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.6);">
+              Bench diagnostics and event support operational. Booking available.
+            </p>
+          </div>
+          <div class="hero-cta" style="margin-top: 1.5rem;">
+            <a href="/contact?service=av" class="crs-button mono">
+              [ REQUEST AV SERVICE ]
+            </a>
+          </div>
+        </div>
+
+        {/* Venue Hire */}
+        <div class="content-block">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+            <h3 class="content-heading heading" style="margin: 0;">VENUE HIRE</h3>
+            <span class="mono" style="color: #008F00; font-size: 0.75rem; letter-spacing: 0.1em;">
+              🟢 ACTIVE
+            </span>
+          </div>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              Workshop space for talks, workshops, launches, and community events.
+            </p>
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.6);">
+              Space available for hire. AV support can be added.
+            </p>
+          </div>
+          <div class="hero-cta" style="margin-top: 1.5rem;">
+            <a href="/contact?service=venue" class="crs-button mono">
+              [ BOOK VENUE ]
+            </a>
+          </div>
+        </div>
+
+        {/* Café Service */}
+        <div class="content-block">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+            <h3 class="content-heading heading" style="margin: 0;">CAFÉ SERVICE</h3>
+            <span class="mono" style="color: #C0392B; font-size: 0.75rem; letter-spacing: 0.1em;">
+              🔴 OFFLINE
+            </span>
+          </div>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              Coffee and refreshments service.
+            </p>
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.6);">
+              Coffee service not currently active. Venue hire remains available.
+            </p>
+          </div>
+          <div class="hero-cta" style="margin-top: 1.5rem;">
+            <a href="#" class="crs-button mono" style="opacity: 0.6; pointer-events: none;">
+              [ OFFLINE ]
+            </a>
+          </div>
+        </div>
+
+      </section>
+      <Footer />
+    </>
+  )
+})
 
 // LOCATIONS PAGE
 app.get('/locations', (c) => {
