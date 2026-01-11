@@ -267,10 +267,7 @@ app.get('/', (c) => {
         <div class="section-header">
           <h2 class="section-title heading">AV SERVICES & LIVE SOUND</h2>
           <p class="section-intro">
-            Engineer-led live sound and technical support for events that need to work properly.
-          </p>
-          <p class="section-intro" style="margin-top: 1rem; font-style: italic;">
-            When it matters, we step in.
+            Engineer-led live sound and technical support for community venues, cultural events, and public gatherings.
           </p>
         </div>
         <div class="hero-cta">
@@ -337,17 +334,20 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* TRUST / CREDIBILITY */}
+      {/* PUBLIC VALUE */}
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">BUILT FOR OXFORD</h2>
+          <h2 class="section-title heading">PUBLIC ACCESS</h2>
           <div class="content-text" style="max-width: 800px;">
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;">→ Engineering-first workflows</li>
-              <li style="margin-bottom: 0.75rem;">→ In-house technical team</li>
-              <li style="margin-bottom: 0.75rem;">→ Built for live conditions</li>
-              <li style="margin-bottom: 0.75rem;">→ No subcontracted guesswork</li>
-            </ul>
+            <p style="margin-bottom: 1rem;">
+              CRS provides publicly accessible recording, rehearsal, and technical development infrastructure for grassroots music and cultural activity across Oxford.
+            </p>
+            <p style="margin-bottom: 1rem;">
+              Facilities are operational at 118 Cowley Road and available for community use, skills development, and independent creative work.
+            </p>
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">
+              Workshop Café offers a separate publicly accessible events space for talks, workshops, and community gatherings.
+            </p>
           </div>
         </div>
       </section>
@@ -1096,10 +1096,7 @@ app.get('/av-services', (c) => {
         <div class="section-header">
           <h2 class="section-title heading">AV SERVICES & LIVE SOUND</h2>
           <p class="section-intro">
-            Engineer-led live sound, installs, and technical support — built for live conditions.
-          </p>
-          <p class="section-intro" style="margin-top: 1rem; font-style: italic;">
-            When it matters, we step in.
+            Engineer-led live sound, installations, and technical support for community venues, cultural events, and public gatherings.
           </p>
         </div>
 
