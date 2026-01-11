@@ -185,7 +185,7 @@ const Header = () => (
     </div>
     <div class="service-selector">
       <button class="service-selector-button heading" aria-expanded="false" aria-haspopup="true">
-        [ BOOK NOW ]
+        [ SELECT SERVICE ]
       </button>
       <div class="service-selector-menu" role="menu">
         <a href="/book/studio" class="service-selector-item heading" role="menuitem">[ BOOK STUDIO TIME ] 🔴 Opening Early 2026</a>
@@ -231,7 +231,7 @@ const Footer = () => (
         <p><a href="/studio">_STUDIO: [Recording]</a></p>
         <p><a href="/venue">_CAFÉ: [Venue Hire]</a></p>
         <p><a href="/av-services">_AV: [Live Sound]</a></p>
-        <p><a href="/av-services/repairs">_BENCH: [Repairs]</a></p>
+        <p><a href="/repairs/status">_AV_REPAIRS: [Diagnostics]</a></p>
       </div>
 
       <div class="footer-col">
@@ -263,8 +263,9 @@ app.get('/', (c) => {
 
       {/* HERO */}
       <section class="crs-hero mono">
-        <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
-          <div style="max-width: 600px; margin: 0 auto;">
+        {/* HERO CONTENT - 600px rack-mount constraint */}
+        <div style="max-width: 600px; margin: 0 auto; padding: 0 2rem;">
+          <div style="max-width: 100%;">
             {/* STATUS LINE - PRE-BUILD STATE */}
             <div class="status-strip" style="margin-bottom: 2rem;">
               <div class="status-item">
