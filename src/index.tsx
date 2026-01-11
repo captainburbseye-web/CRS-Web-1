@@ -517,7 +517,15 @@ app.get('/', (c) => {
         
         {/* WHAT'S ON PREVIEW */}
         <div class="content-block">
-          <h3 class="content-heading mono" style="font-size: 1rem;">WHAT'S ON</h3>
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+            <h3 class="content-heading mono" style="font-size: 1rem; margin: 0;">WHAT'S ON</h3>
+            <img 
+              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/enhanced_WSC%20LOGO%202.png" 
+              alt="Workshop Café"
+              style="width: 80px; height: auto; opacity: 0.8;"
+              loading="lazy"
+            />
+          </div>
           <div id="events-preview" style="margin-top: 1rem;">
             <p style="font-size: 0.875rem; font-style: italic;">Loading events...</p>
           </div>
