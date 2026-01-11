@@ -507,7 +507,7 @@ app.get('/', (c) => {
       </section>
 
       {/* CAFÉ SNAPSHOT */}
-      <section class="crs-section section-light">
+      <section class="crs-section section-dark" style="border-top: 2px solid var(--mustard);">
         <div class="section-header">
           <h2 class="section-title heading">WORKSHOP CAFÉ</h2>
           <p class="section-intro">

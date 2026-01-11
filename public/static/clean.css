@@ -148,12 +148,13 @@ body {
 /* OPERATIONAL STATEMENT - Single Sentence Authority */
 .operational-statement {
   font-family: 'Archivo Black', sans-serif;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 900;
   line-height: 1.4;
   color: rgba(245, 245, 245, 0.9);
   letter-spacing: 0.02em;
   margin: 0;
+  text-align: center;
 }
 
 /* FOOTER LOCATIONS - Quiet Scale Signal */
