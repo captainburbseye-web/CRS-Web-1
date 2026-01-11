@@ -468,7 +468,7 @@ app.get('/', (c) => {
       {/* HERO */}
       <section class="crs-hero">
         <div style="max-width: 600px; margin: 0 auto; padding: 4rem 2rem;">
-          <figure style="margin: 0 0 2rem 0; text-align: center;">
+          <figure style="margin: 0 0 1rem 0; text-align: center;">
             <img 
               src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-hero-chassis-banner.jpg" 
               alt="CRS Chassis Banner"
@@ -875,7 +875,7 @@ app.get('/book/rehearsal', (c) => {
             </a>
             
             <a href="/book/rehearsal/cricket-road" class="location-selector-card">
-              <div class="location-selector-header mono">CRS — Florence Park</div>
+              <div class="location-selector-header mono">CRS — Cricket Road</div>
               <div class="location-selector-desc">(Partner Studio) · Cricket Road, Oxford</div>
             </a>
           </div>
@@ -943,7 +943,7 @@ app.get('/book/rehearsal/cowley-road', (c) => {
   )
 })
 
-// 2b. Book Rehearsal - Florence Park
+// 2b. Book Rehearsal - Cricket Road
 app.get('/book/rehearsal/cricket-road', (c) => {
   return c.render(
     <>
@@ -954,7 +954,7 @@ app.get('/book/rehearsal/cricket-road', (c) => {
             <a href="/book/rehearsal" style="color: var(--mustard); text-decoration: none;">← Back to location selection</a>
           </p>
           
-          <h2 class="section-title heading">CRS Rehearsal · Florence Park</h2>
+          <h2 class="section-title heading">CRS Rehearsal · Cricket Road</h2>
           <p class="section-intro" style="margin-bottom: 2rem; font-style: italic;">
             Partner Studio · Cricket Road, Oxford
           </p>
