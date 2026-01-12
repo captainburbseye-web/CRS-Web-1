@@ -521,22 +521,6 @@ app.get('/', (c) => {
           </p>
         </div>
         
-        {/* SERVICE SNAPSHOT ROW */}
-        <div class="cafe-services">
-          <div class="cafe-service-card">
-            <h3 class="cafe-service-title">COFFEE & MATCHA</h3>
-            <p class="cafe-service-text">Specialty coffee and matcha service</p>
-          </div>
-          <div class="cafe-service-card">
-            <h3 class="cafe-service-title">EVENT SPACE</h3>
-            <p class="cafe-service-text">Talks, workshops, live performance</p>
-          </div>
-          <div class="cafe-service-card">
-            <h3 class="cafe-service-title">WORKSPACE</h3>
-            <p class="cafe-service-text">Hot-desk and community co-working</p>
-          </div>
-        </div>
-        
         {/* WHAT'S ON PREVIEW */}
         <div class="content-block" style="margin-top: 2rem;">
           <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
@@ -1710,28 +1694,6 @@ app.get('/cafe', (c) => {
           <p class="section-intro" style="font-size: 1.125rem; line-height: 1.6; max-width: 600px; margin: 0 auto;">
             Coffee, workspace, events, and repairs — the human side of the technical chassis.
           </p>
-        </div>
-      </section>
-
-      {/* PURPOSE ROW */}
-      <section class="crs-section cafe-heartbeat" style="border-top: 2px solid var(--mustard); padding-top: 2rem; padding-bottom: 2rem;">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto; text-align: center;">
-          <div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; margin-bottom: 0.5rem;">COFFEE</div>
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8); line-height: 1.5;">Specialty coffee & matcha service</p>
-          </div>
-          <div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; margin-bottom: 0.5rem;">WORKSPACE</div>
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8); line-height: 1.5;">Hot-desk & community co-working</p>
-          </div>
-          <div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; margin-bottom: 0.5rem;">EVENTS</div>
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8); line-height: 1.5;">Talks, workshops, live performance</p>
-          </div>
-          <div>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; margin-bottom: 0.5rem;">REPAIRS</div>
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.8); line-height: 1.5;">Workshop & technical support</p>
-          </div>
         </div>
       </section>
 
