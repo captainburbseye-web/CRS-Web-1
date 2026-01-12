@@ -489,7 +489,7 @@ app.get('/', (c) => {
       <section class="crs-hero">
         <div class="hero-container">
           <img 
-            src="/static/images/crs-logo-primary.png" 
+            src="https://www.genspark.ai/api/files/s/7zDVU1iK" 
             alt="Cowley Road Studios — Rack Mounted Control Panel"
             class="hero-power-panel"
             loading="eager"
