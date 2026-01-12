@@ -237,7 +237,7 @@ const Header = () => (
       <div class="crs-header-nav-row">
         {/* CRS RACK BADGE (Static Manufacturer Plate) */}
         <img 
-          src="/static/images/crs-badge-dark.webp" 
+          src="/static/images/crs-square-stamp.svg" 
           alt="Cowley Road Studios"
           class="crs-rack-badge"
         />
