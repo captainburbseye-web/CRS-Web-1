@@ -230,6 +230,12 @@ body {
   z-index: 1000;
 }
 
+/* Show dropdown on hover (CSS fallback) */
+.book-now-panel:hover .book-now-dropdown {
+  display: block;
+}
+
+/* Show dropdown when active (JS control) */
 .book-now-panel.active .book-now-dropdown {
   display: block;
 }
