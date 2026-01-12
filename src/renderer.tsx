@@ -30,6 +30,7 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-positioning-fixes.css" rel="stylesheet" />
         <link href="/static/crs-proportion-fixes.css" rel="stylesheet" />
         <link href="/static/crs-nav-button-refinement.css" rel="stylesheet" />
+        <link href="/static/crs-nav-correction.css" rel="stylesheet" />
       </head>
       <body>
         {children}

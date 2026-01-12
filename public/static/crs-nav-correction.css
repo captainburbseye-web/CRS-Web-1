@@ -1,0 +1,178 @@
+/**
+ * CRS NAV CORRECTION PASS
+ * Purpose: Restore hardware rack discipline (Reason DAW reference)
+ * Target: Header rack container + nav buttons
+ * 
+ * Corrections:
+ * - Single rack containment (one parent border)
+ * - Idle buttons: neutral, no glow
+ * - Hover: soft glow only
+ * - Active: solid backlight, no animation
+ * - Remove stomp icon
+ * - Clean alignment
+ */
+
+/* === SINGLE RACK CONTAINMENT === */
+
+.crs-header {
+  /* Single rack frame (parent draws border) */
+  background: #1a1a1a;
+  border: 2px solid #3a3a3a;
+  border-radius: 4px;
+  padding: 12px 20px;
+  
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  
+  /* Match section width below */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Remove individual borders from children */
+.header-left,
+.header-center-action,
+.header-services {
+  border: none !important;
+}
+
+/* === NAV BUTTON CORRECTION === */
+
+.nav-button {
+  /* Size (keep compressed) */
+  font-size: 0.72rem !important;
+  letter-spacing: 0.12em !important;
+  padding: 6px 14px !important;
+  height: 32px !important;
+  
+  /* Idle state: neutral, no glow, no color */
+  color: #c0c0c0 !important;              /* neutral off-white */
+  background: transparent !important;
+  border: 1px solid #4a4a4a !important;   /* neutral border */
+  border-radius: 3px !important;
+  
+  /* NO box-shadow on idle */
+  box-shadow: none !important;
+  
+  /* Typography */
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  text-shadow: none !important;           /* remove depth effect */
+  
+  /* Smooth transitions */
+  transition: 
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease !important;
+}
+
+/* === HOVER STATE: SOFT GLOW === */
+
+.nav-button:hover {
+  color: #ffffff !important;
+  border-color: #6a6a6a !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2) !important;  /* soft white glow */
+  background: rgba(255, 255, 255, 0.05) !important;          /* subtle backlight */
+}
+
+/* === ACTIVE STATE: SOLID BACKLIGHT === */
+
+/* Active = current page (using .active class or [aria-current]) */
+
+.nav-button.active,
+.nav-button[aria-current="page"] {
+  /* No animation, no pulsing */
+  animation: none !important;
+}
+
+/* Studio active */
+.nav-button.nav-studio.active,
+.nav-button.nav-studio[aria-current="page"] {
+  background-color: #2d8a1f !important;  /* solid green backlight */
+  color: #ffffff !important;
+  border-color: #2d8a1f !important;
+  box-shadow: none !important;           /* no glow when active */
+}
+
+/* Workshop Café active */
+.nav-button.nav-cafe.active,
+.nav-button.nav-cafe[aria-current="page"] {
+  background-color: #b8860b !important;  /* solid amber backlight */
+  color: #0b0b0b !important;
+  border-color: #b8860b !important;
+  box-shadow: none !important;
+}
+
+/* AV active */
+.nav-button.nav-av.active,
+.nav-button.nav-av[aria-current="page"] {
+  background-color: #8b1a1a !important;  /* solid red backlight */
+  color: #ffffff !important;
+  border-color: #8b1a1a !important;
+  box-shadow: none !important;
+}
+
+/* Active buttons should NOT change on hover */
+.nav-button.active:hover,
+.nav-button[aria-current="page"]:hover {
+  /* Keep active state on hover */
+  box-shadow: none !important;
+}
+
+/* === REMOVE STOMP ICON === */
+
+.header-logo-badge {
+  display: none !important;
+}
+
+.header-logo-link {
+  display: none !important;
+}
+
+/* === VISUAL ALIGNMENT === */
+
+.header-services {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.separator {
+  color: #4a4a4a;
+  font-size: 0.875rem;
+  opacity: 0.5;
+}
+
+/* === RESPONSIVE === */
+
+@media (max-width: 768px) {
+  .crs-header {
+    padding: 10px 16px;
+    gap: 1rem;
+  }
+  
+  .nav-button {
+    font-size: 0.70rem !important;
+    padding: 5px 12px !important;
+    height: 30px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-button {
+    font-size: 0.68rem !important;
+    padding: 5px 10px !important;
+    height: 28px !important;
+  }
+}
+
+/* === ENSURE BOOK NOW STAYS SEPARATE === */
+
+.book-now-trigger,
+.book-now-panel {
+  /* Book Now keeps its own pulse styles */
+  /* Not affected by nav correction */
+}
