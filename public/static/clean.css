@@ -2213,21 +2213,23 @@ body::after {
 .section-dark,
 .cafe-heartbeat {
   position: relative;
-  margin: 16px 48px 16px 48px; /* Space for rack rails */
-  padding: 2rem 3rem;
-  background: linear-gradient(135deg, #1e1e1e 0%, #1a1a1a 100%);
-  border: 1px solid #2a2a2a;
-  border-radius: 2px;
+  margin: 24px 56px; /* Increased gap and rail spacing */
+  padding: 2.5rem 3.5rem;
+  background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%); /* Much darker */
+  border: 2px solid #1a1a1a;
+  border-radius: 3px;
   
-  /* Rack panel depth */
+  /* Dramatic rack panel depth */
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
-    0 4px 8px rgba(0, 0, 0, 0.3),
-    0 1px 2px rgba(0, 0, 0, 0.5);
+    inset 0 2px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.9),
+    inset 2px 0 0 rgba(255, 255, 255, 0.02),
+    inset -2px 0 0 rgba(0, 0, 0, 0.5),
+    0 8px 16px rgba(0, 0, 0, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* RACK EARS - Mounting brackets on panel sides */
+/* RACK EARS - Chunkier mounting brackets */
 .crs-section::before,
 .crs-section::after,
 .section-dark::before,
@@ -2238,35 +2240,36 @@ body::after {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 24px;
-  height: 85%;
-  background: linear-gradient(to right, #3a3a3a 0%, #2a2a2a 50%, #1a1a1a 100%);
-  border: 1px solid #444;
-  border-radius: 2px;
+  width: 32px; /* Increased from 24px */
+  height: 90%;
+  background: linear-gradient(to right, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  border: 2px solid #333;
+  border-radius: 3px;
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    2px 0 4px rgba(0, 0, 0, 0.3);
+    inset 0 2px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 1px rgba(0, 0, 0, 0.8),
+    3px 0 6px rgba(0, 0, 0, 0.5);
 }
 
 .crs-section::before,
 .section-dark::before,
 .cafe-heartbeat::before {
-  left: -24px;
+  left: -32px; /* Adjusted for wider ears */
 }
 
 .crs-section::after,
 .section-dark::after,
 .cafe-heartbeat::after {
-  right: -24px;
+  right: -32px;
 }
 
-/* MOUNTING SCREWS - Top and bottom of rack ears */
+/* MOUNTING SCREWS - Larger, more visible */
 .crs-section::before,
 .section-dark::before,
 .cafe-heartbeat::before {
   background-image: 
-    radial-gradient(circle at 12px 12px, #555 0, #555 4px, transparent 4px),
-    radial-gradient(circle at 12px calc(100% - 12px), #555 0, #555 4px, transparent 4px);
+    radial-gradient(circle at 16px 16px, #444 0, #444 5px, #222 5px, #222 6px, transparent 6px),
+    radial-gradient(circle at 16px calc(100% - 16px), #444 0, #444 5px, #222 5px, #222 6px, transparent 6px);
   background-repeat: no-repeat;
 }
 
@@ -2274,50 +2277,51 @@ body::after {
 .section-dark::after,
 .cafe-heartbeat::after {
   background-image: 
-    radial-gradient(circle at 12px 12px, #555 0, #555 4px, transparent 4px),
-    radial-gradient(circle at 12px calc(100% - 12px), #555 0, #555 4px, transparent 4px);
+    radial-gradient(circle at 16px 16px, #444 0, #444 5px, #222 5px, #222 6px, transparent 6px),
+    radial-gradient(circle at 16px calc(100% - 16px), #444 0, #444 5px, #222 5px, #222 6px, transparent 6px);
   background-repeat: no-repeat;
 }
 
-/* HERO RACK MODULE - Logo panel at top */
+/* HERO RACK MODULE - Darker logo panel */
 .crs-hero {
   position: relative;
-  margin: 16px 48px 16px 48px;
-  padding: 1rem 3rem;
-  background: linear-gradient(135deg, #1e1e1e 0%, #1a1a1a 100%);
-  border: 1px solid #2a2a2a;
-  border-radius: 2px;
+  margin: 24px 56px;
+  padding: 1.5rem 3.5rem;
+  background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+  border: 2px solid #1a1a1a;
+  border-radius: 3px;
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.5),
-    0 4px 8px rgba(0, 0, 0, 0.3);
+    inset 0 2px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.9),
+    0 8px 16px rgba(0, 0, 0, 0.6);
 }
 
-/* Hero rack ears */
+/* Hero rack ears - Chunkier to match */
 .crs-hero::before,
 .crs-hero::after {
   content: '';
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 24px;
+  width: 32px; /* Increased */
   height: 90%;
-  background: linear-gradient(to right, #3a3a3a 0%, #2a2a2a 50%, #1a1a1a 100%);
-  border: 1px solid #444;
-  border-radius: 2px;
+  background: linear-gradient(to right, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  border: 2px solid #333;
+  border-radius: 3px;
   box-shadow: 
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    2px 0 4px rgba(0, 0, 0, 0.3);
+    inset 0 2px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 1px rgba(0, 0, 0, 0.8),
+    3px 0 6px rgba(0, 0, 0, 0.5);
   
-  /* Screw holes */
+  /* Larger screw holes */
   background-image: 
-    radial-gradient(circle at 12px 20px, #555 0, #555 4px, transparent 4px),
-    radial-gradient(circle at 12px calc(100% - 20px), #555 0, #555 4px, transparent 4px);
+    radial-gradient(circle at 16px 20px, #444 0, #444 5px, #222 5px, #222 6px, transparent 6px),
+    radial-gradient(circle at 16px calc(100% - 20px), #444 0, #444 5px, #222 5px, #222 6px, transparent 6px);
   background-repeat: no-repeat;
 }
 
-.crs-hero::before { left: -24px; }
-.crs-hero::after { right: -24px; }
+.crs-hero::before { left: -32px; } /* Adjusted */
+.crs-hero::after { right: -32px; }
 
 /* MOBILE RESPONSIVE - Hide rack rails on small screens */
 @media (max-width: 768px) {
