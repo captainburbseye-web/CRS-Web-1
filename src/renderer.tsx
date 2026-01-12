@@ -9,8 +9,13 @@ export const renderer = jsxRenderer(({ children }) => {
         <title>CRS Oxford</title>
         <meta name="description" content="CRS operates multi-location studio and AV infrastructure across Oxford. Industry-standard recording, rehearsal, and technical support. Locations on Cowley Road and Cricket Road." />
         
-        {/* Favicon - CRS Hardware Stamp */}
-        <link rel="icon" type="image/png" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-favicon-stamp.png" />
+        {/* Favicon - TASCAM Rack System */}
+        <link rel="icon" type="image/png" sizes="512x512" href="/assets/icons/favicon.png" />
+        <link rel="apple-touch-icon" href="/assets/icons/crs-tile-1024.png" />
+        
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#0A1A0F" />
         
         {/* Google Fonts - Industrial-Maverick Typography */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

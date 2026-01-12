@@ -1,0 +1,22 @@
+{
+  "name": "Cowley Road Studios",
+  "short_name": "CRS",
+  "description": "Purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0A1A0F",
+  "background_color": "#0A0A0A",
+  "icons": [
+    {
+      "src": "/assets/icons/crs-tile-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
