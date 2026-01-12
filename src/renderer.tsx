@@ -22,6 +22,8 @@ export const renderer = jsxRenderer(({ children }) => {
       </head>
       <body>
         {children}
+        {/* Client-side interactions */}
+        <script src="/static/app.js"></script>
       </body>
     </html>
   )
