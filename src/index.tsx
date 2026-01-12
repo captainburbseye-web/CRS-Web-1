@@ -709,6 +709,16 @@ app.get('/studio', (c) => {
           </div>
         </div>
 
+        {/* CONTROL PANEL MOTIF (System Separator) */}
+        <div style="display: flex; justify-content: center; margin: 3rem 0; opacity: 0.75;">
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-control-panel-studios.png"
+            alt="CRS Control Panel"
+            style="max-width: 240px; height: auto; display: block;"
+            loading="lazy"
+          />
+        </div>
+
         {/* LOCATION ROUTING */}
         <div class="content-block">
           <h3 class="content-heading mono">LOCATION ROUTING</h3>
@@ -790,6 +800,16 @@ app.get('/studio/infrastructure', (c) => {
           <span class="mono" style="color: var(--mustard); font-size: 0.75rem; letter-spacing: 0.1em;">
             STATUS: SYSTEM_CHECK_ACTIVE
           </span>
+        </div>
+
+        {/* CONTROL PANEL MOTIF (System Authority) */}
+        <div style="display: flex; justify-content: center; margin: 2rem 0 3rem; opacity: 0.85;">
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-control-panel-studios.png"
+            alt="CRS Control Panel"
+            style="max-width: 280px; height: auto; display: block;"
+            loading="lazy"
+          />
         </div>
 
         {/* THE LIVE ROOM */}
