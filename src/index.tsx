@@ -9,6 +9,32 @@ app.use('/static/*', serveStatic({ root: './' }))
 app.use('/policies/*', serveStatic({ root: './public' }))
 app.use('/favicon.svg', serveStatic({ path: './favicon.svg' }))
 
+// Serve manifest.json directly (avoids __STATIC_CONTENT_MANIFEST issue in dev)
+app.get('/manifest.json', (c) => {
+  return c.json({
+    "name": "Cowley Road Studios",
+    "short_name": "CRS",
+    "description": "Purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#0A1A0F",
+    "background_color": "#0A0A0A",
+    "icons": [
+      {
+        "src": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/Square_app_tile_1024x1024px_Full_CRS_control_pane-1768187252484.png",
+        "sizes": "1024x1024",
+        "type": "image/png",
+        "purpose": "any maskable"
+      },
+      {
+        "src": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/Square_app_tile_1024x1024px_Full_CRS_control_pane-1768187252484.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  })
+})
+
 // API ENDPOINTS
 app.post('/api/contact', async (c) => {
   try {
