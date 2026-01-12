@@ -245,11 +245,11 @@ const Header = () => (
         />
       </a>
       <nav class="header-services">
-        <a href="/studio">Studio</a>
+        <a href="/studio" class="nav-button nav-studio">Studio</a>
         <span class="separator">·</span>
-        <a href="/workshop-cafe">Workshop Café</a>
+        <a href="/workshop-cafe" class="nav-button nav-cafe">Workshop Café</a>
         <span class="separator">·</span>
-        <a href="/av-services">AV</a>
+        <a href="/av-services" class="nav-button nav-av">AV</a>
       </nav>
     </div>
 
