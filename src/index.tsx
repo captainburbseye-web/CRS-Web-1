@@ -233,12 +233,7 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="crs-header">
-      {/* V12 MASTER CONSOLE BRAND ANCHOR (CENTERED) */}
-      <a href="/" class="header-brand-master">
-        <img src="/static/images/crs-master-console-v12.webp" alt="Cowley Road Studios" class="crs-master-console" />
-      </a>
-
-      {/* NAVIGATION ROW (BELOW BRAND) */}
+      {/* NAVIGATION ROW: Console Labels (Left) + BOOK NOW (Right) */}
       <div class="crs-header-nav-row">
         {/* ZONE A (LEFT): Console Labels */}
         <div class="crs-header-left">

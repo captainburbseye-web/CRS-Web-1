@@ -14,10 +14,9 @@
 /* === HEADER STRUCTURAL RESET === */
 .crs-header {
   display: flex !important;
-  flex-direction: column !important;
+  justify-content: center !important;
   align-items: center !important;
-  gap: 1rem !important;
-  padding: 1.5rem 1.5rem 1rem !important;
+  padding: 1rem 1.5rem !important;
   background: #0E0E0E !important; /* Deep Black Terminal */
   border: 2px solid #3a3a3a !important;
   border-radius: 4px !important;
@@ -27,41 +26,7 @@
   grid-template-rows: unset !important;
 }
 
-/* === V12 MASTER CONSOLE BRAND ANCHOR (CENTERED) === */
-.header-brand-master {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-  width: 100%;
-}
-
-.header-brand-master:hover {
-  opacity: 0.90;
-}
-
-.crs-master-console {
-  display: block;
-  width: 350px; /* Standard screens */
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  
-  /* Terminal styling — bolted directly onto header */
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* 55" Display Terminal scaling */
-@media (min-width: 1920px) {
-  .crs-master-console {
-    width: 500px;
-  }
-}
-
-/* === NAVIGATION ROW (BELOW BRAND) === */
+/* === NAVIGATION ROW === */
 .crs-header-nav-row {
   display: flex;
   justify-content: space-between;
@@ -207,12 +172,7 @@
 /* === MOBILE BEHAVIOR === */
 @media (max-width: 1023px) {
   .crs-header {
-    padding: 1.25rem 1.25rem 0.875rem !important;
-    gap: 0.875rem !important;
-  }
-  
-  .crs-master-console {
-    width: 300px; /* Tablet scaling */
+    padding: 0.875rem 1.25rem !important;
   }
   
   .crs-header-nav-row {
@@ -229,12 +189,7 @@
 
 @media (max-width: 767px) {
   .crs-header {
-    padding: 1rem 1rem 0.75rem !important;
-    gap: 0.75rem !important;
-  }
-  
-  .crs-master-console {
-    width: 280px; /* Mobile scaling */
+    padding: 0.75rem 1rem !important;
   }
   
   .crs-header-nav-row {
@@ -250,17 +205,6 @@
   /* Show hamburger */
   .mobile-menu-toggle {
     display: block !important;
-  }
-  
-  /* BOOK NOW stays visible on mobile */
-  .crs-header-right {
-    display: flex !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .crs-master-console {
-    width: 240px; /* Extra small mobile */
   }
 }
 
