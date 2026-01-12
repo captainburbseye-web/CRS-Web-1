@@ -2353,3 +2353,54 @@ body::after {
   }
 }
 
+/* ========================================
+   NEON FLASH BOOK NOW
+   Flashing neon sign effect for booking CTA
+   ======================================== */
+
+/* Neon flash animation */
+@keyframes neon-flash {
+  0%, 100% {
+    text-shadow: 
+      0 0 4px #39FF14,
+      0 0 8px #39FF14,
+      0 0 12px #39FF14,
+      0 0 16px #39FF14;
+    opacity: 1;
+  }
+  50% {
+    text-shadow: 
+      0 0 2px #39FF14,
+      0 0 4px #39FF14;
+    opacity: 0.8;
+  }
+}
+
+/* BOOK NOW button in right nav - neon style */
+.header-actions .book-now-trigger {
+  color: #39FF14 !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  animation: neon-flash 2s ease-in-out infinite;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.813rem;
+}
+
+/* BOOK NOW panel positioning in right nav */
+.header-actions .book-now-panel {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.75rem;
+}
+
+/* Dropdown positioning from right side */
+.header-actions .book-now-dropdown {
+  right: 0;
+  left: auto;
+}

@@ -224,17 +224,6 @@ const Header = () => (
         <a href="/workshop-cafe">Workshop Café</a>
         <span class="separator">·</span>
         <a href="/av-services">AV</a>
-        <span class="separator">·</span>
-        <div class="book-now-panel" id="book-now-panel">
-          <button class="book-now-trigger" id="book-now-trigger">BOOK NOW</button>
-          <div class="book-now-dropdown" id="book-now-dropdown">
-            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
-            <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
-            <a href="/contact?service=repairs">BOOK REPAIR</a>
-            <a href="/contact?service=av">BOOK AV SERVICES</a>
-            <a href="/contact?service=venue">BOOK VENUE</a>
-          </div>
-        </div>
       </nav>
     </div>
 
@@ -243,11 +232,21 @@ const Header = () => (
       <p class="header-operational-statement">Cowley Road Studios is a purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford.</p>
     </div>
 
-    {/* Right: Actions */}
+    {/* Right: Actions + Flashing BOOK NOW */}
     <nav class="header-actions">
       <a href="/locations">Locations</a>
       <span class="separator">|</span>
       <a href="/contact">Contact</a>
+      <div class="book-now-panel neon-flash" id="book-now-panel">
+        <button class="book-now-trigger" id="book-now-trigger">BOOK NOW</button>
+        <div class="book-now-dropdown" id="book-now-dropdown">
+          <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
+          <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
+          <a href="/contact?service=repairs">BOOK REPAIR</a>
+          <a href="/contact?service=av">BOOK AV SERVICES</a>
+          <a href="/contact?service=venue">BOOK VENUE</a>
+        </div>
+      </div>
     </nav>
   </header>
 )
@@ -490,8 +489,8 @@ app.get('/', (c) => {
       <section class="crs-hero">
         <div class="hero-container">
           <img 
-            src="https://www.genspark.ai/api/files/s/VUBXn3b4" 
-            alt="Cowley Road Studios - Rack Mounted Signage Panel"
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v1%20.png" 
+            alt="Cowley Road Studios — control panel logo"
             class="hero-power-panel"
             loading="eager"
           />
@@ -501,7 +500,6 @@ app.get('/', (c) => {
       {/* STUDIO SNAPSHOT */}
       <section class="crs-section section-dark">
         <div class="section-header">
-          <div class="section-knob section-knob-green"></div>
           <h2 class="section-title heading">STUDIO SESSIONS</h2>
           <p class="section-intro">
             Acoustically treated rooms, calibrated monitoring, and networked audio infrastructure for recording, production, and focused creative work.
@@ -515,7 +513,6 @@ app.get('/', (c) => {
       {/* AV SERVICES SNAPSHOT */}
       <section class="crs-section section-dark">
         <div class="section-header">
-          <div class="section-knob section-knob-red"></div>
           <h2 class="section-title heading">AV SERVICES & LIVE SOUND</h2>
           <p class="section-intro">
             Engineer-led live sound and technical support for community venues, cultural events, and public gatherings.
@@ -529,7 +526,6 @@ app.get('/', (c) => {
       {/* CAFÉ SNAPSHOT - CREATIVE HEARTBEAT */}
       <section class="crs-section cafe-heartbeat">
         <div class="section-header">
-          <div class="section-knob section-knob-yellow"></div>
           <h2 class="section-title cafe-title">WORKSHOP CAFÉ</h2>
           <p class="section-intro cafe-intro">
             The public-facing space of CRS — a café, workspace, and small venue supporting community events and creative activity.
