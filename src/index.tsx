@@ -233,6 +233,12 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="crs-header">
+      {/* LOGO (Top-left) */}
+      <a href="/" class="header-logo">
+        <img src="/static/images/crs-header-lockup.png" alt="Cowley Road Studios" class="header-logo-desktop" />
+        <img src="/static/images/crs-badge-square.png" alt="CRS" class="header-logo-mobile" />
+      </a>
+
       {/* ROW 1: NAVIGATION SELECTORS */}
       <div class="crs-nav-primary">
         <nav class="header-services">

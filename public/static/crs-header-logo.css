@@ -1,0 +1,151 @@
+/**
+ * CRS HEADER LOGO IMPLEMENTATION
+ * 
+ * Purpose: Add brand logo to header with responsive behavior
+ * Desktop: Full lockup (badge + wordmark)
+ * Mobile: Square badge only
+ */
+
+/* === HEADER STRUCTURE UPDATE === */
+.crs-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #1a1a1a;
+  border: 2px solid #3a3a3a;
+  border-radius: 4px;
+}
+
+/* Logo spans both rows on desktop */
+.header-logo {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.header-logo:hover {
+  opacity: 0.85;
+}
+
+/* Nav primary moves to column 2, row 1 */
+.crs-nav-primary {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+
+/* Nav action (BOOK NOW) moves to column 2, row 2 */
+.crs-nav-action {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* === LOGO IMAGE SIZING === */
+
+/* Desktop: Show full lockup */
+.header-logo-desktop {
+  display: block;
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Mobile: Hide by default */
+.header-logo-mobile {
+  display: none;
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* === TABLET ADJUSTMENTS (768px - 1023px) === */
+@media (max-width: 1023px) {
+  .header-logo-desktop {
+    height: 50px;
+  }
+  
+  .crs-header {
+    padding: 0.875rem 1.25rem;
+  }
+}
+
+/* === MOBILE LAYOUT (<768px) === */
+@media (max-width: 767px) {
+  .crs-header {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+  
+  /* Logo: Show badge only */
+  .header-logo {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .header-logo-desktop {
+    display: none;
+  }
+  
+  .header-logo-mobile {
+    display: block;
+    height: 48px;
+  }
+  
+  /* Nav primary: hamburger + BOOK NOW on same row */
+  .crs-nav-primary {
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: flex-end;
+  }
+  
+  /* Hide nav links on mobile (hamburger handles them) */
+  .crs-nav-primary .header-services {
+    display: none;
+  }
+  
+  /* Move BOOK NOW to nav-primary on mobile */
+  .crs-nav-action {
+    display: none;
+  }
+  
+  /* Show BOOK NOW in mobile overlay instead */
+  .mobile-nav-overlay .book-now-panel {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+}
+
+/* === EXTRA SMALL MOBILE (<480px) === */
+@media (max-width: 480px) {
+  .header-logo-mobile {
+    height: 42px;
+  }
+  
+  .crs-header {
+    padding: 0.625rem 0.75rem;
+  }
+}
+
+/* === DESKTOP LARGE (>1440px) === */
+@media (min-width: 1440px) {
+  .header-logo-desktop {
+    height: 70px;
+  }
+  
+  .crs-header {
+    padding: 1.25rem 2rem;
+  }
+}
