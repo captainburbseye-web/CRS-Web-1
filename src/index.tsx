@@ -236,10 +236,11 @@ const Header = () => (
     <div class="header-left">
       <a href="/" class="header-logo-link">
         <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/pW0wFYWf.png" 
-          alt="Cowley Road Studios"
-          class="header-logo-strip"
-          height="60"
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-pedal-badge-profile.jpg" 
+          alt="CRS"
+          class="header-logo-badge"
+          width="40"
+          height="40"
           loading="eager"
         />
       </a>
@@ -250,18 +251,11 @@ const Header = () => (
         <span class="separator">·</span>
         <a href="/av-services">AV</a>
       </nav>
+      <a href="/locations" class="header-link">Locations</a>
     </div>
 
-    {/* Center: Operational Statement */}
-    <div class="header-center">
-      <p class="header-operational-statement">Cowley Road Studios is a purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford.</p>
-    </div>
-
-    {/* Right: Actions + Flashing BOOK NOW */}
-    <nav class="header-actions">
-      <a href="/locations">Locations</a>
-      <span class="separator">|</span>
-      <a href="/contact">Contact</a>
+    {/* Center: BOOK NOW (absolute positioned) */}
+    <div class="header-center-action">
       <div class="book-now-panel neon-flash" id="book-now-panel">
         <button class="book-now-trigger" id="book-now-trigger">
           <img 
@@ -282,7 +276,12 @@ const Header = () => (
           <a href="/contact?service=venue">BOOK VENUE</a>
         </div>
       </div>
-    </nav>
+    </div>
+
+    {/* Right: Contact */}
+    <div class="header-right">
+      <a href="/contact" class="header-link">Contact</a>
+    </div>
   </header>
 )
 
@@ -524,8 +523,8 @@ app.get('/', (c) => {
       <section class="crs-hero">
         <div class="hero-container">
           <img 
-            src="https://www.genspark.ai/api/files/s/7zDVU1iK" 
-            alt="Cowley Road Studios — Rack Mounted Control Panel"
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v1%20.png" 
+            alt="Cowley Road Studios — control panel logo"
             class="hero-power-panel"
             loading="eager"
           />
