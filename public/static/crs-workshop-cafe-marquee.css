@@ -1,0 +1,209 @@
+/* ============================================
+   CRS WORKSHOP CAFÉ MARQUEE EFFECTS
+   Integrating external marquee logo into industrial design system
+   =========================================== */
+
+/* === WORKSHOP CAFÉ MARQUEE CONTAINER === */
+.workshop-cafe-marquee {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* === MARQUEE LOGO STYLING === */
+.marquee-logo {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  display: block;
+  
+  /* Industrial Integration Effects */
+  filter: 
+    drop-shadow(0 0 20px rgba(201, 162, 39, 0.3))
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4))
+    brightness(1.05)
+    contrast(1.1);
+  
+  /* Subtle animation for terminal presence */
+  animation: marqueeGlow 3s ease-in-out infinite;
+  
+  /* Smooth transitions */
+  transition: all 0.3s ease;
+}
+
+/* === MARQUEE GLOW ANIMATION === */
+@keyframes marqueeGlow {
+  0% {
+    filter: 
+      drop-shadow(0 0 20px rgba(201, 162, 39, 0.3))
+      drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4))
+      brightness(1.05)
+      contrast(1.1);
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 30px rgba(201, 162, 39, 0.5))
+      drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5))
+      brightness(1.08)
+      contrast(1.15);
+  }
+  100% {
+    filter: 
+      drop-shadow(0 0 20px rgba(201, 162, 39, 0.3))
+      drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4))
+      brightness(1.05)
+      contrast(1.1);
+  }
+}
+
+/* === HOVER STATE === */
+.marquee-logo:hover {
+  filter: 
+    drop-shadow(0 0 35px rgba(201, 162, 39, 0.6))
+    drop-shadow(0 6px 16px rgba(0, 0, 0, 0.6))
+    brightness(1.1)
+    contrast(1.2);
+  transform: translateY(-2px);
+}
+
+/* === CAFÉ HEARTBEAT SECTION INTEGRATION === */
+.cafe-heartbeat {
+  background: linear-gradient(180deg, 
+    var(--crs-green) 0%, 
+    #0D1912 100%
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* Optional: Add subtle scanline effect */
+.cafe-heartbeat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* Ensure content appears above scanline */
+.cafe-heartbeat > div {
+  position: relative;
+  z-index: 2;
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+@media (max-width: 768px) {
+  .marquee-logo {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .workshop-cafe-marquee {
+    padding: 0.5rem;
+  }
+}
+
+/* === TABLET === */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .marquee-logo {
+    max-width: 500px;
+  }
+}
+
+/* === 55" TERMINAL OPTIMIZATION === */
+@media (min-width: 1920px) {
+  .marquee-logo {
+    max-width: 700px;
+  }
+  
+  @keyframes marqueeGlow {
+    0% {
+      filter: 
+        drop-shadow(0 0 30px rgba(201, 162, 39, 0.4))
+        drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5))
+        brightness(1.08)
+        contrast(1.15);
+    }
+    50% {
+      filter: 
+        drop-shadow(0 0 45px rgba(201, 162, 39, 0.6))
+        drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6))
+        brightness(1.12)
+        contrast(1.2);
+    }
+    100% {
+      filter: 
+        drop-shadow(0 0 30px rgba(201, 162, 39, 0.4))
+        drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5))
+        brightness(1.08)
+        contrast(1.15);
+    }
+  }
+}
+
+/* === ALTERNATIVE EFFECTS (UNCOMMENT TO USE) === */
+
+/* Option 1: Stronger Neon Glow */
+/*
+.marquee-logo {
+  filter: 
+    drop-shadow(0 0 40px rgba(201, 162, 39, 0.8))
+    drop-shadow(0 0 20px rgba(201, 162, 39, 0.6))
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4))
+    brightness(1.15)
+    contrast(1.2)
+    saturate(1.2);
+}
+*/
+
+/* Option 2: VHS/Retro Effect */
+/*
+.marquee-logo {
+  filter: 
+    drop-shadow(2px 0 0 rgba(255, 0, 0, 0.3))
+    drop-shadow(-2px 0 0 rgba(0, 255, 255, 0.3))
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+*/
+
+/* Option 3: Industrial Edge Lighting */
+/*
+.workshop-cafe-marquee::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid rgba(201, 162, 39, 0.3);
+  border-radius: 8px;
+  pointer-events: none;
+  box-shadow: 
+    inset 0 0 20px rgba(201, 162, 39, 0.2),
+    0 0 30px rgba(201, 162, 39, 0.3);
+}
+*/
+
+/* === ACCESSIBILITY === */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-logo {
+    animation: none;
+    filter: 
+      drop-shadow(0 0 20px rgba(201, 162, 39, 0.3))
+      drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4))
+      brightness(1.05)
+      contrast(1.1);
+  }
+}

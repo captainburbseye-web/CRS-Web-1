@@ -29,6 +29,7 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-footer-fixes.css" rel="stylesheet" />
         <link href="/static/crs-final-launch-fixes.css" rel="stylesheet" />
         <link href="/static/crs-industrial-pulse.css" rel="stylesheet" />
+        <link href="/static/crs-workshop-cafe-marquee.css" rel="stylesheet" />
         <link href="/static/status-lights.css" rel="stylesheet" />
       </head>
       <body>

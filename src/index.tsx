@@ -1994,10 +1994,16 @@ app.get('/cafe', (c) => {
       {/* CAFÉ HERO - Full-width Nettle Green */}
       <section class="crs-section cafe-heartbeat" style="min-height: 50vh; display: flex; flex-direction: column; justify-content: center;">
         <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-          <h1 class="section-title" style="font-family: 'Courier New', 'Courier', monospace; font-size: clamp(2rem, 4vw, 3rem); color: var(--mustard); margin-bottom: 1rem; font-weight: 400; letter-spacing: 0.02em;">
-            WORKSHOP CAFÉ
-          </h1>
-          <p class="section-intro" style="font-size: 1.125rem; line-height: 1.6; max-width: 600px; margin: 0 auto;">
+          {/* Workshop Café Marquee Logo */}
+          <div class="workshop-cafe-marquee">
+            <img 
+              src="https://www.genspark.ai/api/files/s/5k9lHc5d" 
+              alt="The Workshop Cafe"
+              class="marquee-logo"
+              loading="eager"
+            />
+          </div>
+          <p class="section-intro" style="font-size: 1.125rem; line-height: 1.6; max-width: 600px; margin: 0 auto; margin-top: 2rem;">
             Coffee, workspace, events, and repairs — the human side of the technical chassis.
           </p>
         </div>
