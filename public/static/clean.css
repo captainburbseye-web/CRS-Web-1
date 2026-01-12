@@ -646,18 +646,18 @@ body {
 
 /* HERO - Industrial header panel (NOT full-screen landing) */
 .crs-hero {
-  /* Rack-mounted fascia: minimal vertical space */
+  /* Rack-mounted fascia: let image determine height */
   height: auto !important;
   min-height: unset !important;
-  max-height: 280px; /* Tight frame for logo */
-  overflow: hidden;
+  max-height: none; /* FIXED: Remove height constraint to show full logo */
+  overflow: visible; /* FIXED: Don't crop the image */
   
   /* Remove all centering */
   display: block;
   
   /* Minimal padding - rack unit feel */
   padding-top: 1rem;
-  padding-bottom: 0rem;
+  padding-bottom: 1rem; /* FIXED: Add bottom padding */
   padding-left: 2rem;
   padding-right: 2rem;
   
