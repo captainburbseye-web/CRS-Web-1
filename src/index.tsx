@@ -232,7 +232,15 @@ const Header = () => (
     <nav class="header-actions">
       <a href="/locations">Locations</a>
       <span class="separator">|</span>
-      <a href="/book">Book</a>
+      <div class="book-dropdown">
+        <a href="/book" class="book-trigger">Book</a>
+        <div class="book-dropdown-menu">
+          <a href="/book/studio">Book Recording</a>
+          <a href="/book/rehearsal">Book Rehearsal</a>
+          <a href="/book/repairs">Book Repair</a>
+          <a href="/workshop-cafe">Book Venue</a>
+        </div>
+      </div>
       <span class="separator">|</span>
       <a href="/contact">Contact</a>
     </nav>

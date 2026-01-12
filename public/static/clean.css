@@ -151,6 +151,57 @@ body {
   align-items: center;
 }
 
+/* BOOK DROPDOWN - Utilitarian ease of access */
+.book-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.book-trigger {
+  cursor: pointer;
+}
+
+.book-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  background: var(--crs-black);
+  border: 2px solid var(--crs-gold);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  min-width: 180px;
+  z-index: 100;
+}
+
+.book-dropdown:hover .book-dropdown-menu {
+  display: block;
+}
+
+.book-dropdown-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: rgba(245, 245, 245, 0.85);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+  transition: all 0.15s;
+}
+
+.book-dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.book-dropdown-menu a:hover {
+  background: rgba(255, 215, 0, 0.1);
+  color: var(--crs-gold);
+  padding-left: 1.25rem;
+}
+
 /* OPERATIONAL STATEMENT - Single Sentence Authority */
 .operational-statement {
   font-family: 'Archivo Black', sans-serif;
