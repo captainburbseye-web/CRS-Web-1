@@ -76,7 +76,36 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
   z-index: 50;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* HEADER CENTER - OPERATIONAL STATEMENT */
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header-operational-statement {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: rgba(245, 245, 245, 0.65);
+  text-align: center;
+  margin: 0;
+  padding: 0 1rem;
 }
 
 .header-left {
@@ -270,6 +299,17 @@ body {
     justify-content: space-between;
   }
 
+  .header-center {
+    width: 100%;
+    order: 2;
+  }
+
+  .header-operational-statement {
+    font-size: 0.688rem;
+    text-align: left;
+    padding: 0;
+  }
+
   .header-services {
     font-size: 0.75rem;
   }
@@ -278,11 +318,27 @@ body {
     width: 100%;
     justify-content: flex-start;
     font-size: 0.75rem;
+    order: 3;
   }
 
   .operational-statement {
     font-size: 1rem;
     line-height: 1.5;
+  }
+
+  .section-knob {
+    width: 36px;
+    height: 36px;
+  }
+
+  .section-knob::before {
+    height: 9px;
+    top: 4px;
+  }
+
+  .section-knob::after {
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -705,6 +761,65 @@ body {
 /* SECTION HEADERS */
 .section-header {
   margin-bottom: 3rem;
+  position: relative;
+}
+
+/* ANALOG SERVICE KNOBS */
+.section-knob {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto 1.5rem;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 2px 2px rgba(255, 255, 255, 0.1);
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%),
+    radial-gradient(circle, var(--knob-color) 0%, var(--knob-color-dark) 100%);
+}
+
+.section-knob::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.section-knob::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.15), transparent 60%);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* Knob colors matching CRS signals */
+.section-knob-green {
+  --knob-color: #C8FF41;
+  --knob-color-dark: #9AC830;
+}
+
+.section-knob-yellow {
+  --knob-color: #E89B3C;
+  --knob-color-dark: #C47E28;
+}
+
+.section-knob-red {
+  --knob-color: #FF4444;
+  --knob-color-dark: #CC3333;
 }
 
 .section-title {

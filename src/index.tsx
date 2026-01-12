@@ -227,17 +227,23 @@ const Header = () => (
       </nav>
     </div>
 
+    {/* Center: Operational Statement */}
+    <div class="header-center">
+      <p class="header-operational-statement">Cowley Road Studios is a purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford.</p>
+    </div>
+
     {/* Right: Actions */}
     <nav class="header-actions">
       <a href="/locations">Locations</a>
       <span class="separator">|</span>
-      <div class="book-dropdown">
-        <a href="/book" class="book-trigger">Book</a>
-        <div class="book-dropdown-menu">
-          <a href="/book/studio">Book Recording</a>
-          <a href="/book/rehearsal">Book Rehearsal</a>
-          <a href="/book/repairs">Book Repair</a>
-          <a href="/workshop-cafe">Book Venue</a>
+      <div class="book-now-panel" id="book-now-panel">
+        <button class="book-now-trigger" id="book-now-trigger">BOOK NOW</button>
+        <div class="book-now-dropdown" id="book-now-dropdown">
+          <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
+          <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
+          <a href="/contact?service=repairs">BOOK REPAIR</a>
+          <a href="/contact?service=av">BOOK AV SERVICES</a>
+          <a href="/contact?service=venue">BOOK VENUE</a>
         </div>
       </div>
       <span class="separator">|</span>
@@ -489,13 +495,13 @@ app.get('/', (c) => {
             class="hero-power-panel"
             loading="eager"
           />
-          <p class="operational-statement">Cowley Road Studios is a purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford.</p>
         </div>
       </section>
 
       {/* STUDIO SNAPSHOT */}
       <section class="crs-section section-dark">
         <div class="section-header">
+          <div class="section-knob section-knob-green"></div>
           <h2 class="section-title heading">STUDIO SESSIONS</h2>
           <p class="section-intro">
             Acoustically treated rooms, calibrated monitoring, and networked audio infrastructure for recording, production, and focused creative work.
@@ -509,6 +515,7 @@ app.get('/', (c) => {
       {/* AV SERVICES SNAPSHOT */}
       <section class="crs-section section-dark">
         <div class="section-header">
+          <div class="section-knob section-knob-red"></div>
           <h2 class="section-title heading">AV SERVICES & LIVE SOUND</h2>
           <p class="section-intro">
             Engineer-led live sound and technical support for community venues, cultural events, and public gatherings.
@@ -522,6 +529,7 @@ app.get('/', (c) => {
       {/* CAFÉ SNAPSHOT - CREATIVE HEARTBEAT */}
       <section class="crs-section cafe-heartbeat">
         <div class="section-header">
+          <div class="section-knob section-knob-yellow"></div>
           <h2 class="section-title cafe-title">WORKSHOP CAFÉ</h2>
           <p class="section-intro cafe-intro">
             The public-facing space of CRS — a café, workspace, and small venue supporting community events and creative activity.
