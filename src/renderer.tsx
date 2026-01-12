@@ -9,11 +9,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <title>CRS Oxford</title>
         <meta name="description" content="CRS operates multi-location studio and AV infrastructure across Oxford. Industry-standard recording, rehearsal, and technical support. Locations on Cowley Road and Cricket Road." />
         
-        {/* Favicon - TASCAM Rack System */}
-        <link rel="icon" type="image/png" sizes="512x512" href="https://www.genspark.ai/api/files/s/1o0xVKO1" />
-        <link rel="icon" type="image/png" sizes="192x192" href="https://www.genspark.ai/api/files/s/1o0xVKO1" />
-        <link rel="icon" type="image/png" sizes="32x32" href="https://www.genspark.ai/api/files/s/1o0xVKO1" />
-        <link rel="icon" type="image/png" sizes="16x16" href="https://www.genspark.ai/api/files/s/1o0xVKO1" />
+        {/* Favicon - CRS Knobs Status Icon */}
+        <link rel="icon" type="image/webp" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-status-icon.webp" />
         <link rel="apple-touch-icon" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/Square_app_tile_1024x1024px_Full_CRS_control_pane-1768187252484.png" />
         
         {/* PWA Manifest */}
