@@ -231,44 +231,90 @@ app.use(renderer)
 
 // SHARED COMPONENTS
 const Header = () => (
-  <header class="crs-header">
-    {/* Left: Identity + Services */}
-    <div class="header-left">
-      <a href="/" class="header-logo-link">
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-pedal-badge-profile.jpg" 
-          alt="CRS"
-          class="header-logo-badge"
-          width="40"
-          height="40"
-          loading="eager"
-        />
-      </a>
-      <nav class="header-services">
-        <a href="/studio" class="nav-button nav-studio">Studio</a>
-        <span class="separator">·</span>
-        <a href="/workshop-cafe" class="nav-button nav-cafe">Workshop Café</a>
-        <span class="separator">·</span>
-        <a href="/av-services" class="nav-button nav-av">AV</a>
-      </nav>
-    </div>
+  <>
+    <header class="crs-header">
+      {/* Left: Identity + Services */}
+      <div class="header-left">
+        <a href="/" class="header-logo-link">
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-pedal-badge-profile.jpg" 
+            alt="CRS"
+            class="header-logo-badge"
+            width="40"
+            height="40"
+            loading="eager"
+          />
+        </a>
+        <nav class="header-services">
+          <a href="/studio" class="nav-button nav-studio">Studio</a>
+          <span class="separator">·</span>
+          <a href="/workshop-cafe" class="nav-button nav-cafe">Workshop Café</a>
+          <span class="separator">·</span>
+          <a href="/av-services" class="nav-button nav-av">AV</a>
+          <span class="separator">·</span>
+          <a href="/contact" class="nav-button">Contact</a>
+        </nav>
+      </div>
 
-    {/* Center: BOOK NOW (absolute positioned) */}
-    <div class="header-center-action">
-      <div class="book-now-panel neon-flash" id="book-now-panel">
-        <button class="book-now-trigger" id="book-now-trigger">
-          BOOK NOW
-        </button>
-        <div class="book-now-dropdown" id="book-now-dropdown">
-          <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
-          <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
-          <a href="/contact?service=repairs">BOOK REPAIR</a>
-          <a href="/contact?service=av">BOOK AV SERVICES</a>
-          <a href="/contact?service=venue">BOOK VENUE</a>
+      {/* Center: BOOK NOW (absolute positioned) */}
+      <div class="header-center-action">
+        <div class="book-now-panel neon-flash" id="book-now-panel">
+          <button class="book-now-trigger" id="book-now-trigger">
+            BOOK NOW
+          </button>
+          <div class="book-now-dropdown" id="book-now-dropdown">
+            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
+            <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
+            <a href="/contact?service=repairs">BOOK REPAIR</a>
+            <a href="/contact?service=av">BOOK AV SERVICES</a>
+            <a href="/contact?service=venue">BOOK VENUE</a>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu Toggle */}
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+        <span class="sr-only">Menu</span>
+        ☰
+      </button>
+    </header>
+
+    {/* Mobile Navigation Overlay */}
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+      <div class="mobile-nav-container">
+        <div class="mobile-nav-header">
+          <div class="mobile-nav-logo">CRS OXFORD</div>
+          <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close navigation menu">
+            ✕
+          </button>
+        </div>
+
+        {/* Mobile Nav Links */}
+        <nav class="mobile-nav-links">
+          <a href="/studio" class="nav-button nav-studio">Studio</a>
+          <a href="/workshop-cafe" class="nav-button nav-cafe">Workshop Café</a>
+          <a href="/av-services" class="nav-button nav-av">AV</a>
+        </nav>
+
+        {/* Mobile Book Section */}
+        <div class="mobile-book-section">
+          <div class="mobile-book-title">/// BOOK NOW</div>
+          <div class="mobile-book-links">
+            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
+            <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
+            <a href="/contact?service=repairs">BOOK REPAIR</a>
+            <a href="/contact?service=av">BOOK AV SERVICES</a>
+            <a href="/contact?service=venue">BOOK VENUE</a>
+          </div>
+        </div>
+
+        {/* Mobile Contact Section */}
+        <div class="mobile-contact-section">
+          <a href="/contact" class="mobile-contact-link">Contact</a>
         </div>
       </div>
     </div>
-  </header>
+  </>
 )
 
 const Footer = () => (
