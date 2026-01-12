@@ -251,7 +251,6 @@ const Header = () => (
         <span class="separator">·</span>
         <a href="/av-services">AV</a>
       </nav>
-      <a href="/locations" class="header-link">Locations</a>
     </div>
 
     {/* Center: BOOK NOW (absolute positioned) */}
@@ -270,9 +269,13 @@ const Header = () => (
       </div>
     </div>
 
-    {/* Right: Contact */}
+    {/* Right: Navigation */}
     <div class="header-right">
-      <a href="/contact" class="header-link">Contact</a>
+      <nav class="header-services">
+        <a href="/locations">Locations</a>
+        <span class="separator">·</span>
+        <a href="/contact">Contact</a>
+      </nav>
     </div>
   </header>
 )
