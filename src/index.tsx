@@ -567,7 +567,21 @@ app.get('/locations', (c) => {
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">INFRASTRUCTURE STATUS</h2>
+          {/* Live Event Tech Badge */}
+          <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;">
+            <img 
+              src="https://www.genspark.ai/api/files/s/eoMyYnaU" 
+              alt="CRS Live Event Tech"
+              style="width: 72px; height: auto; filter: drop-shadow(0 2px 8px rgba(232, 155, 60, 0.3));"
+              loading="eager"
+            />
+            <div>
+              <h2 class="section-title heading" style="margin-bottom: 0.5rem;">INFRASTRUCTURE STATUS</h2>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-gold); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;">
+                [ LIVE EVENT TECH • REAL-TIME MONITORING ]
+              </p>
+            </div>
+          </div>
           <p class="section-intro">
             Technical ledger of spaces, signal paths, and monitoring systems. Real-time operational status for CRS facilities.
           </p>
@@ -1531,7 +1545,21 @@ app.get('/av-services', (c) => {
 
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">AV SERVICES & LIVE SOUND</h2>
+          {/* Live Event Tech Badge */}
+          <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem;">
+            <img 
+              src="https://www.genspark.ai/api/files/s/eoMyYnaU" 
+              alt="CRS Live Event Tech"
+              style="width: 80px; height: auto; filter: drop-shadow(0 2px 8px rgba(232, 155, 60, 0.3));"
+              loading="eager"
+            />
+            <div>
+              <h2 class="section-title heading" style="margin-bottom: 0.5rem;">AV SERVICES & LIVE SOUND</h2>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-gold); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700;">
+                [ LIVE EVENT TECH DEPLOYED ]
+              </p>
+            </div>
+          </div>
           <p class="section-intro">
             Engineer-led live sound, installations, and technical support for community venues, cultural events, and public gatherings.
           </p>
