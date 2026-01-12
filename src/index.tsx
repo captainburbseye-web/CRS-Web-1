@@ -339,11 +339,10 @@ const Footer = () => (
     {/* Footer Signature - End Cap */}
     <div class="footer-signature">
       <img 
-        src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-brand-stamp-transparent.jpg" 
-        alt="CRS Brand Stamp"
+        src="https://www.genspark.ai/api/files/s/hItia3i9" 
+        alt="CRS Cowley Road Studios"
         class="brand-stamp"
-        width="150"
-        height="150"
+        style="max-width: 300px; height: auto;"
         loading="lazy"
       />
       <p class="footer-credit mono">
