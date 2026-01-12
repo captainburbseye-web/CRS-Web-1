@@ -709,34 +709,60 @@ app.get('/studio', (c) => {
           </div>
         </div>
 
-        {/* USE CASES */}
+        {/* LOCATION ROUTING */}
         <div class="content-block">
-          <h3 class="content-heading mono">USE CASES</h3>
+          <h3 class="content-heading mono">LOCATION ROUTING</h3>
           <div class="content-text">
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;">→ Recording sessions</li>
-              <li style="margin-bottom: 0.75rem;">→ Mixing & production</li>
-              <li style="margin-bottom: 0.75rem;">→ Podcasting & spoken word</li>
-              <li style="margin-bottom: 0.75rem;">→ Writing and pre-production</li>
-            </ul>
+            <div style="background: rgba(232, 155, 60, 0.1); border: 2px solid rgba(232, 155, 60, 0.3); padding: 1.5rem; margin-bottom: 1.5rem;">
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--crs-gold); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                🟠 118 COWLEY ROAD — HQ & TECHNICAL BRAIN
+              </p>
+              <ul style="list-style: none; padding: 0; font-size: 0.9375rem;">
+                <li style="margin-bottom: 0.5rem;">→ Recording sessions</li>
+                <li style="margin-bottom: 0.5rem;">→ Mixing & production</li>
+                <li style="margin-bottom: 0.5rem;">→ Podcasting & spoken word</li>
+                <li style="margin-bottom: 0.5rem;">→ Booth dry hire</li>
+              </ul>
+            </div>
+            
+            <div style="background: rgba(127, 255, 0, 0.05); border: 2px solid rgba(127, 255, 0, 0.2); padding: 1.5rem;">
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--crs-green); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                🟢 CRICKET ROAD — REHEARSAL NODE
+              </p>
+              <ul style="list-style: none; padding: 0; font-size: 0.9375rem;">
+                <li style="margin-bottom: 0.5rem;">→ Band rehearsals</li>
+                <li style="margin-bottom: 0.5rem;">→ High-decibel sessions</li>
+                <li style="margin-bottom: 0.5rem;">→ Equipment storage</li>
+              </ul>
+              <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8; font-style: italic;">
+                Rehearsal bookings automatically routed to Cricket Road. Access protocol sent via confirmation.
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* BOOKING */}
+        {/* STUDIO SERVICES */}
         <div class="content-block">
-          <h3 class="content-heading mono">BOOKING</h3>
+          <h3 class="content-heading mono">STUDIO SERVICES</h3>
           <div class="content-text">
-            <p>
-              Sessions are available by booking and enquiry.
+            <p style="margin-bottom: 2rem;">
+              Select a service to submit a booking inquiry:
             </p>
+            <div style="display: grid; gap: 1rem; max-width: 600px;">
+              <a href="/contact?service=recording" class="crs-button mono" style="display: block; text-align: center; text-decoration: none;">
+                [ RECORDING SESSIONS ]
+              </a>
+              <a href="/contact?service=booth-hire" class="crs-button mono" style="display: block; text-align: center; text-decoration: none;">
+                [ BOOTH DRY HIRE ]
+              </a>
+              <a href="/contact?service=rehearsal" class="crs-button mono" style="display: block; text-align: center; text-decoration: none;">
+                [ REHEARSAL BOOKING ]
+              </a>
+              <a href="/contact?service=other-audio" class="crs-button mono" style="display: block; text-align: center; text-decoration: none;">
+                [ OTHER AUDIO SERVICES ]
+              </a>
+            </div>
           </div>
-        </div>
-
-        {/* CTA */}
-        <div class="hero-cta">
-          <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono">
-            [ BOOK A SESSION ]
-          </a>
         </div>
       </section>
 
