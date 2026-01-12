@@ -222,7 +222,7 @@ const Header = () => (
       <nav class="header-services">
         <a href="/studio">Studio</a>
         <span class="separator">·</span>
-        <a href="/venue">Venue</a>
+        <a href="/workshop-cafe">Workshop Café</a>
         <span class="separator">·</span>
         <a href="/av-services">AV</a>
       </nav>
