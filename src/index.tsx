@@ -439,6 +439,130 @@ app.get('/book/venue', (c) => {
   return c.redirect('/contact?service=venue')
 })
 
+// AUDIT DASHBOARD
+app.get('/audit', (c) => {
+  return c.html(`
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRS Audit Dashboard</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: oklch(0.1 0.02 150);
+      --card: oklch(0.15 0.03 150);
+      --border: oklch(0.25 0.03 150);
+      --text: oklch(1 0 0);
+      --text-dim: oklch(0.7 0.01 150);
+      --orange: oklch(0.65 0.18 75);
+      --green: oklch(0.85 0.25 145);
+      --yellow: oklch(0.75 0.18 85);
+      --red: oklch(0.55 0.22 29);
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; padding: 2rem; }
+    .header { margin-bottom: 3rem; border-bottom: 2px solid var(--orange); padding-bottom: 1.5rem; }
+    h1 { font-family: monospace; font-size: 2rem; color: var(--orange); text-transform: uppercase; }
+    .controls { display: flex; gap: 1rem; margin-bottom: 2rem; align-items: center; }
+    button, select { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 0.5rem 1rem; font-family: monospace; cursor: pointer; }
+    button:hover { border-color: var(--orange); }
+    button.active { background: var(--orange); color: var(--bg); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--card); border: 1px solid var(--border); padding: 1.5rem; }
+    .card-header { display: flex; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+    .card-title { font-family: monospace; font-weight: 700; text-transform: uppercase; }
+    .status { font-family: monospace; font-size: 0.75rem; padding: 0.25rem 0.5rem; font-weight: 700; text-transform: uppercase; }
+    .status.healthy { color: var(--green); border: 1px solid var(--green); }
+    .status.warning { color: var(--yellow); border: 1px solid var(--yellow); }
+    .status.error { color: var(--red); border: 1px solid var(--red); }
+    .metric { display: flex; justify-content: space-between; font-size: 0.875rem; margin: 0.5rem 0; }
+    .metric-label { color: var(--text-dim); }
+    .metric-value { font-family: monospace; font-weight: 600; }
+    .timestamp { text-align: center; margin-top: 3rem; color: var(--text-dim); font-size: 0.75rem; font-family: monospace; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>CRS Audit Dashboard</h1>
+    <div style="color: var(--text-dim); font-size: 0.875rem; font-family: monospace;">Website Monitoring • cowleyroadstudios.com</div>
+  </div>
+  <div class="controls">
+    <button onclick="runAudit()">▶ Run Audit</button>
+    <button onclick="toggleAutoRefresh()" id="autoBtn">Auto-refresh: OFF</button>
+    <select id="interval">
+      <option value="30">30s</option>
+      <option value="60" selected>1m</option>
+      <option value="300">5m</option>
+    </select>
+  </div>
+  <div id="dashboard" class="grid"><div style="text-align: center; padding: 3rem; color: var(--text-dim);">Click "Run Audit" to start</div></div>
+  <div class="timestamp" id="timestamp"></div>
+  <script>
+    const BASE = 'https://cowleyroadstudios.com';
+    const endpoints = [
+      { name: 'Homepage', url: '/' },
+      { name: 'Studio', url: '/studio' },
+      { name: 'Workshop Café', url: '/workshop-cafe' },
+      { name: 'AV Services', url: '/av-services' },
+      { name: 'Infrastructure', url: '/locations' },
+      { name: 'Contact', url: '/contact' }
+    ];
+    let interval = null;
+
+    async function test(ep) {
+      const start = performance.now();
+      try {
+        const res = await fetch(BASE + ep.url, { method: 'HEAD', cache: 'no-cache' });
+        const time = Math.round(performance.now() - start);
+        return { ...ep, status: res.status, time, ok: res.ok };
+      } catch (e) {
+        return { ...ep, status: 0, time: Math.round(performance.now() - start), ok: false };
+      }
+    }
+
+    async function runAudit() {
+      document.getElementById('dashboard').innerHTML = '<div style="text-align: center; padding: 3rem; color: var(--text-dim);">Running...</div>';
+      const results = await Promise.all(endpoints.map(test));
+      document.getElementById('dashboard').innerHTML = results.map(r => {
+        const statusClass = !r.ok ? 'error' : r.time < 500 ? 'healthy' : 'warning';
+        const statusText = !r.ok ? 'ERROR' : r.time < 500 ? 'HEALTHY' : 'SLOW';
+        return \`
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">\${r.name}</div>
+              <div class="status \${statusClass}">\${statusText}</div>
+            </div>
+            <div class="metric"><span class="metric-label">URL</span><span class="metric-value">\${r.url}</span></div>
+            <div class="metric"><span class="metric-label">Status</span><span class="metric-value">\${r.status}</span></div>
+            <div class="metric"><span class="metric-label">Time</span><span class="metric-value">\${r.time}ms</span></div>
+          </div>
+        \`;
+      }).join('');
+      document.getElementById('timestamp').textContent = 'Last: ' + new Date().toLocaleString();
+    }
+
+    function toggleAutoRefresh() {
+      if (interval) {
+        clearInterval(interval);
+        interval = null;
+        document.getElementById('autoBtn').textContent = 'Auto-refresh: OFF';
+        document.getElementById('autoBtn').classList.remove('active');
+      } else {
+        const ms = parseInt(document.getElementById('interval').value) * 1000;
+        interval = setInterval(runAudit, ms);
+        document.getElementById('autoBtn').textContent = 'Auto-refresh: ON';
+        document.getElementById('autoBtn').classList.add('active');
+        runAudit();
+      }
+    }
+    runAudit();
+  </script>
+</body>
+</html>
+  `)
+})
+
 // LOCATIONS PAGE
 app.get('/locations', (c) => {
   return c.render(
