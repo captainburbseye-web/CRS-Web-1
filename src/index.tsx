@@ -235,7 +235,7 @@ const Header = () => (
     <header class="crs-header">
       {/* LOGO (Top-left) */}
       <a href="/" class="header-logo">
-        <img src="/static/images/crs-header-lockup.png" alt="Cowley Road Studios" class="header-logo-desktop" />
+        <img src="/static/images/crs-wordmark-hero.webp" alt="Cowley Road Studios" class="header-logo-desktop" />
         <img src="/static/images/crs-badge-square.png" alt="CRS" class="header-logo-mobile" />
       </a>
 
