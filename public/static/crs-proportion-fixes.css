@@ -1,0 +1,311 @@
+/* ============================================================================
+   CRS PROPORTION FIXES + FALLOUT BUTTON STYLING
+   All layout improvements + neon button effects
+   Date: January 12, 2026
+   ============================================================================ */
+
+
+/* ============================================================================
+   PHASE 1: HIGH IMPACT FIXES
+   ============================================================================ */
+
+/* FIX 1: Increase hero section top padding */
+.crs-hero {
+  padding-top: 4rem !important;
+  padding-bottom: 3rem !important;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .crs-hero {
+    padding-top: 3rem !important;
+    padding-bottom: 2rem !important;
+    min-height: 50vh;
+  }
+}
+
+/* FIX 2: Increase section heading font-size */
+h2,
+.section-title,
+.heading {
+  font-size: clamp(1.75rem, 4vw, 2.25rem) !important;
+  margin-bottom: 1.5rem !important;
+}
+
+h3 {
+  font-size: clamp(1.35rem, 3vw, 1.75rem) !important;
+  margin-bottom: 1rem !important;
+}
+
+/* FIX 3: Increase content card internal padding */
+.crs-section,
+.section-dark,
+.cafe-heartbeat,
+.content-card,
+.section-card {
+  padding: 3rem 2.5rem !important;
+}
+
+@media (max-width: 1024px) {
+  .crs-section,
+  .section-dark,
+  .cafe-heartbeat,
+  .content-card,
+  .section-card {
+    padding: 2.5rem 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .crs-section,
+  .section-dark,
+  .cafe-heartbeat,
+  .content-card,
+  .section-card {
+    padding: 2rem 1.5rem !important;
+  }
+}
+
+/* FIX 4: Increase body text line-height */
+p,
+body,
+.section-intro,
+.section-description {
+  line-height: 1.7 !important;
+}
+
+/* FIX 5: Standardize section vertical spacing */
+section,
+.crs-section,
+.content-section {
+  margin-bottom: 5rem !important;
+}
+
+@media (max-width: 768px) {
+  section,
+  .crs-section,
+  .content-section {
+    margin-bottom: 3rem !important;
+  }
+}
+
+
+/* ============================================================================
+   PHASE 2: VISUAL RHYTHM
+   ============================================================================ */
+
+/* FIX 6: Increase spacing between section heading and content */
+.section-header {
+  margin-bottom: 2rem !important;
+}
+
+.section-title {
+  margin-bottom: 1.5rem !important;
+}
+
+.section-intro {
+  margin-bottom: 2rem !important;
+}
+
+/* FIX 7: Add max-width to content for readability */
+.section-intro,
+.section-description,
+.content-text p {
+  max-width: 65ch;
+}
+
+
+/* ============================================================================
+   PHASE 3: POLISH
+   ============================================================================ */
+
+/* FIX 8: Add more spacing to footer terminal columns */
+.footer-columns,
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem !important;
+  column-gap: 3rem !important;
+}
+
+@media (max-width: 1024px) {
+  .footer-columns,
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-columns,
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem !important;
+  }
+}
+
+
+/* ============================================================================
+   FALLOUT PRE-WAR NEON BUTTONS (ALL CTA BUTTONS)
+   ============================================================================ */
+
+/* Base button styling - Fallout pre-war aesthetic */
+.crs-button,
+.hero-cta a,
+.cta-button,
+button[class*="button"],
+a[class*="button"] {
+  /* Fallout warm orange/amber neon */
+  background: rgba(0, 0, 0, 0.7) !important;
+  border: 2px solid rgba(255, 140, 0, 0.5) !important;
+  border-radius: 4px !important;
+  color: #FF8C00 !important;
+  
+  /* Typography - Art Deco monospace */
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+  font-size: 0.875rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  text-decoration: none !important;
+  
+  /* Spacing - larger touch targets */
+  padding: 1rem 2rem !important;
+  min-height: 48px !important;
+  
+  /* Visual effects */
+  backdrop-filter: blur(4px) !important;
+  box-shadow: 
+    inset 0 0 20px rgba(255, 140, 0, 0.1),
+    0 0 20px rgba(255, 140, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.4) !important;
+  
+  /* Neon glow text shadow */
+  text-shadow: 
+    0 0 4px rgba(255, 140, 0, 0.5),
+    0 0 8px rgba(255, 140, 0, 0.5),
+    0 0 12px rgba(255, 140, 0, 0.8),
+    0 0 20px rgba(255, 100, 0, 0.6),
+    2px 2px 0px rgba(0, 0, 0, 0.5) !important;
+  
+  /* Animation */
+  animation: fallout-button-flicker 4s ease-in-out infinite !important;
+  transition: all 0.15s ease !important;
+  
+  /* Display */
+  display: inline-block !important;
+  cursor: pointer !important;
+}
+
+/* Hover state - brighter glow */
+.crs-button:hover,
+.hero-cta a:hover,
+.cta-button:hover,
+button[class*="button"]:hover,
+a[class*="button"]:hover {
+  background: rgba(255, 140, 0, 0.15) !important;
+  border-color: rgba(255, 140, 0, 0.7) !important;
+  color: #FFA500 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 
+    inset 0 0 30px rgba(255, 140, 0, 0.2),
+    0 0 35px rgba(255, 140, 0, 0.6),
+    0 6px 16px rgba(0, 0, 0, 0.5) !important;
+  text-shadow: 
+    0 0 6px rgba(255, 140, 0, 0.7),
+    0 0 12px rgba(255, 140, 0, 0.7),
+    0 0 18px rgba(255, 140, 0, 0.9),
+    0 0 25px rgba(255, 100, 0, 0.8),
+    2px 2px 0px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Active/pressed state */
+.crs-button:active,
+.hero-cta a:active,
+.cta-button:active,
+button[class*="button"]:active,
+a[class*="button"]:active {
+  transform: translateY(0) !important;
+  box-shadow: 
+    inset 0 0 25px rgba(255, 140, 0, 0.3),
+    0 0 20px rgba(255, 140, 0, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Fallout electrical flicker animation */
+@keyframes fallout-button-flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 
+      0 0 4px rgba(255, 140, 0, 0.5),
+      0 0 8px rgba(255, 140, 0, 0.5),
+      0 0 12px rgba(255, 140, 0, 0.8),
+      0 0 20px rgba(255, 100, 0, 0.6),
+      0 0 30px rgba(255, 100, 0, 0.4),
+      2px 2px 0px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    filter: brightness(1.1);
+  }
+  
+  20%, 24%, 55% {  
+    text-shadow: 
+      0 0 2px rgba(255, 140, 0, 0.3),
+      0 0 4px rgba(255, 140, 0, 0.3),
+      0 0 8px rgba(255, 140, 0, 0.5),
+      2px 2px 0px rgba(0, 0, 0, 0.3);
+    opacity: 0.85;
+    filter: brightness(0.95);
+  }
+}
+
+/* Mobile button adjustments */
+@media (max-width: 768px) {
+  .crs-button,
+  .hero-cta a,
+  .cta-button,
+  button[class*="button"],
+  a[class*="button"] {
+    padding: 0.875rem 1.5rem !important;
+    font-size: 0.8rem !important;
+    min-height: 44px !important;
+  }
+}
+
+
+/* ============================================================================
+   BUTTON CONTAINER CENTERING
+   ============================================================================ */
+
+.hero-cta,
+.cta-container,
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+
+/* ============================================================================
+   ENSURE BUTTONS DON'T CONFLICT WITH EXISTING STYLES
+   ============================================================================ */
+
+/* Override any conflicting mono class */
+.mono.crs-button,
+a.crs-button.mono {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Ensure button text doesn't wrap */
+.crs-button,
+.hero-cta a {
+  white-space: nowrap;
+}
+
+
+/* ============================================================================
+   END OF PROPORTION FIXES + FALLOUT BUTTONS
+   ============================================================================ */
