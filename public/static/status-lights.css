@@ -1,0 +1,180 @@
+/* CRS Infrastructure Status Lights */
+/* Matches the NASA/Neve console aesthetic */
+
+:root {
+  --status-green: #7FFF00;      /* Bright lime green - operational */
+  --status-yellow: #FFD700;     /* Yellow - partial/testing */
+  --status-red: #FF4444;        /* Red - offline */
+  --status-gray: #4A4A4A;       /* Gray - disabled */
+}
+
+/* Status indicator light component */
+.status-light {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+  position: relative;
+  box-shadow: 0 0 8px currentColor;
+  transition: all 0.3s ease;
+}
+
+/* Status light states */
+.status-light.operational {
+  background-color: var(--status-green);
+  color: var(--status-green);
+}
+
+.status-light.partial {
+  background-color: var(--status-yellow);
+  color: var(--status-yellow);
+}
+
+.status-light.offline {
+  background-color: var(--status-red);
+  color: var(--status-red);
+  box-shadow: 0 0 4px var(--status-red);
+}
+
+.status-light.disabled {
+  background-color: var(--status-gray);
+  color: var(--status-gray);
+  box-shadow: none;
+}
+
+/* Pulsing animation for partial status */
+.status-light.partial {
+  animation: pulse-yellow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-yellow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px var(--status-yellow);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 4px var(--status-yellow);
+  }
+}
+
+/* Room header with status */
+.room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.room-title {
+  display: flex;
+  align-items: center;
+  font-family: 'Arial Black', 'Arial', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: #FFD700; /* Yellow like CRS */
+}
+
+.room-status-label {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border: 1px solid currentColor;
+  display: inline-block;
+}
+
+.room-status-label.operational {
+  color: var(--status-green);
+  border-color: var(--status-green);
+}
+
+.room-status-label.partial {
+  color: var(--status-yellow);
+  border-color: var(--status-yellow);
+}
+
+.room-status-label.offline {
+  color: var(--status-red);
+  border-color: var(--status-red);
+}
+
+/* Component status list */
+.component-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.component-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.875rem;
+  color: #FFFFFF;
+}
+
+.component-item .status-light {
+  margin-right: 12px;
+}
+
+/* System status banner */
+.system-status-banner {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-left: 4px solid var(--status-yellow);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.system-status-banner.operational {
+  border-left-color: var(--status-green);
+}
+
+.system-status-banner.offline {
+  border-left-color: var(--status-red);
+}
+
+/* Larger status light for room cards */
+.status-light-large {
+  width: 16px;
+  height: 16px;
+  margin-right: 12px;
+}
+
+/* Status light with label */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-indicator-label {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .room-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .room-status-label {
+    font-size: 0.65rem;
+    padding: 3px 8px;
+  }
+}

@@ -446,61 +446,102 @@ app.get('/locations', (c) => {
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">CRS LOCATIONS</h2>
+          <h2 class="section-title heading">INFRASTRUCTURE STATUS</h2>
           <p class="section-intro">
-            CRS operates studio and venue facilities across Oxford at two primary locations.
+            Technical ledger of spaces, signal paths, and monitoring systems. Real-time operational status for CRS facilities.
           </p>
         </div>
 
-        {/* COWLEY ROAD */}
-        <div class="content-block">
-          <h3 class="content-heading heading">CRS — COWLEY ROAD</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              <strong>Address:</strong><br />
-              118 Cowley Road<br />
-              Oxford OX4 1JE
-            </p>
-            <p style="margin-bottom: 1rem;">
-              <strong>Facilities:</strong>
-            </p>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.5rem;">→ Recording studios and rehearsal rooms</li>
-              <li style="margin-bottom: 0.5rem;">→ Workshop Café (events space)</li>
-              <li style="margin-bottom: 0.5rem;">→ Technical development facilities</li>
-            </ul>
-            <p style="margin-top: 1.5rem; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">
-              Main operational site with full studio infrastructure and publicly accessible event space.
-            </p>
+        {/* System Status Banner */}
+        <div id="system-status-banner" style="background: rgba(0, 0, 0, 0.4); border: 2px solid rgba(212, 160, 23, 0.3); padding: 1.5rem; margin-bottom: 3rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <span style="color: var(--crs-gold); font-weight: 700;">SYSTEM STATUS:</span>
+            <span id="overall-status">Loading...</span>
           </div>
         </div>
 
-        {/* CRICKET ROAD */}
-        <div class="content-block">
-          <h3 class="content-heading heading">CRS — CRICKET ROAD</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              <strong>Address:</strong><br />
-              Cricket Road<br />
-              Oxford
-            </p>
-            <p style="margin-bottom: 1rem;">
-              <strong>Facilities:</strong>
-            </p>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.5rem;">→ Rehearsal rooms</li>
-              <li style="margin-bottom: 0.5rem;">→ Community practice spaces</li>
-            </ul>
-            <p style="margin-top: 1.5rem; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">
-              Partner studio location with dedicated rehearsal facilities.
-            </p>
+        {/* Room Status Cards */}
+        <div id="infrastructure-rooms" style="display: grid; gap: 2rem;">
+          {/* Rooms will be loaded dynamically via JavaScript */}
+          <div style="text-align: center; padding: 3rem; color: rgba(245, 245, 245, 0.6);">
+            Loading infrastructure status...
           </div>
         </div>
 
-        <div class="hero-cta">
+        <div class="hero-cta" style="margin-top: 3rem;">
           <a href="/contact" class="crs-button mono">[ CONTACT FOR ACCESS ]</a>
         </div>
       </section>
+
+      {/* Status Lights JavaScript */}
+      <script src="/static/js/status-lights.js"></script>
+      <script dangerouslySetInnerHTML={{__html: `
+        // Initialize infrastructure status system
+        const statusSystem = new InfrastructureStatus('/infrastructure-status.json');
+        
+        statusSystem.load().then(data => {
+          if (!data) {
+            document.getElementById('infrastructure-rooms').innerHTML = 
+              '<p style="text-align: center; color: rgba(245, 245, 245, 0.6);">Failed to load infrastructure status</p>';
+            return;
+          }
+
+          // Update overall status banner
+          const operationalCount = data.rooms.filter(r => r.status === 'operational').length;
+          const partialCount = data.rooms.filter(r => r.status === 'partial').length;
+          const offlineCount = data.rooms.filter(r => r.status === 'offline').length;
+          
+          let overallStatus = 'NOMINAL';
+          let statusColor = '#7FFF00';
+          if (offlineCount > data.rooms.length / 2) {
+            overallStatus = 'DEGRADED';
+            statusColor = '#FF4444';
+          } else if (partialCount > 0) {
+            overallStatus = 'PARTIAL';
+            statusColor = '#FFD700';
+          }
+
+          document.getElementById('overall-status').innerHTML = 
+            \`<span style="color: \${statusColor}; font-weight: 700;">\${overallStatus}</span> - \${operationalCount} Operational, \${partialCount} Partial, \${offlineCount} Offline\`;
+
+          // Render room cards
+          const container = document.getElementById('infrastructure-rooms');
+          container.innerHTML = data.rooms.map(room => \`
+            <div class="room-card" style="background: rgba(0, 0, 0, 0.4); border: 2px solid rgba(212, 160, 23, 0.3); padding: 2rem; border-radius: 4px;">
+              <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.5rem;">
+                <div>
+                  <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.25rem; color: var(--crs-gold); margin-bottom: 0.5rem; text-transform: uppercase;">
+                    \${room.name}
+                  </h3>
+                  <div style="display: flex; align-items: center; gap: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
+                    \${statusSystem.createStatusLight(room.status, false).outerHTML}
+                    <span style="color: \${room.status === 'operational' ? '#7FFF00' : room.status === 'partial' ? '#FFD700' : '#FF4444'}; font-weight: 700; text-transform: uppercase;">
+                      \${room.statusLabel || room.status}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              \${room.components && room.components.length > 0 ? \`
+                <div style="margin-top: 1.5rem;">
+                  <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                    Components
+                  </h4>
+                  <ul style="list-style: none; padding: 0; display: grid; gap: 0.75rem;">
+                    \${room.components.map(comp => \`
+                      <li style="display: flex; align-items: center; gap: 0.75rem; font-family: 'Inter', sans-serif; font-size: 0.875rem;">
+                        \${statusSystem.createStatusLight(comp.status, false).outerHTML}
+                        <span style="color: rgba(245, 245, 245, 0.85);">\${comp.name}</span>
+                      </li>
+                    \`).join('')}
+                  </ul>
+                </div>
+              \` : ''}
+            </div>
+          \`).join('');
+        });
+      `}} />
+
       <Footer />
     </>
   )

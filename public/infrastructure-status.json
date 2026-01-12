@@ -1,0 +1,117 @@
+{
+  "lastUpdated": "2026-01-11T19:00:00Z",
+  "rooms": [
+    {
+      "id": "live-room",
+      "name": "THE LIVE ROOM",
+      "status": "offline",
+      "statusLabel": "UNDER CONSTRUCTION",
+      "components": [
+        {
+          "name": "Acoustic Treatment",
+          "status": "offline"
+        },
+        {
+          "name": "Genelec Monitors",
+          "status": "offline"
+        },
+        {
+          "name": "Dante Network",
+          "status": "offline"
+        },
+        {
+          "name": "NDI Video",
+          "status": "offline"
+        }
+      ]
+    },
+    {
+      "id": "big-booth",
+      "name": "THE BIG BOOTH",
+      "status": "offline",
+      "statusLabel": "INFRASTRUCTURE ONLY",
+      "components": [
+        {
+          "name": "Conduit Installation",
+          "status": "operational"
+        },
+        {
+          "name": "Service Loops",
+          "status": "operational"
+        },
+        {
+          "name": "Equipment",
+          "status": "offline"
+        }
+      ]
+    },
+    {
+      "id": "vocal-booths",
+      "name": "SMALL VOCAL BOOTHS",
+      "status": "offline",
+      "statusLabel": "PLANNED",
+      "components": [
+        {
+          "name": "Genelec 8010A",
+          "status": "offline"
+        },
+        {
+          "name": "SSL 12 Interfaces",
+          "status": "offline"
+        }
+      ]
+    },
+    {
+      "id": "cafe-stage",
+      "name": "WORKSHOP CAFÉ STAGE",
+      "status": "partial",
+      "statusLabel": "PARTIAL OPERATION",
+      "components": [
+        {
+          "name": "Video Infrastructure",
+          "status": "operational"
+        },
+        {
+          "name": "Audio Rig",
+          "status": "partial"
+        },
+        {
+          "name": "Lighting",
+          "status": "offline"
+        }
+      ]
+    },
+    {
+      "id": "control-room",
+      "name": "CENTRAL CONTROL ROOM",
+      "status": "partial",
+      "statusLabel": "CORE SYSTEMS ONLINE",
+      "components": [
+        {
+          "name": "ATEM Switcher",
+          "status": "operational"
+        },
+        {
+          "name": "PoE Network",
+          "status": "operational"
+        },
+        {
+          "name": "SSL Mixing Desk",
+          "status": "offline"
+        },
+        {
+          "name": "Tascam 8-track",
+          "status": "operational"
+        },
+        {
+          "name": "Kii Three Monitors",
+          "status": "offline"
+        },
+        {
+          "name": "Patch Panels",
+          "status": "operational"
+        }
+      ]
+    }
+  ]
+}
