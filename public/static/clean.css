@@ -221,7 +221,7 @@ body {
   display: none;
   position: absolute;
   top: calc(100% + 0.5rem);
-  right: 0;
+  left: 0; /* Align to left edge */
   background: #0A0A0A;
   border: 1px solid #FFD700;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);

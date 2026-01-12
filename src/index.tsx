@@ -224,6 +224,17 @@ const Header = () => (
         <a href="/workshop-cafe">Workshop Café</a>
         <span class="separator">·</span>
         <a href="/av-services">AV</a>
+        <span class="separator">·</span>
+        <div class="book-now-panel" id="book-now-panel">
+          <button class="book-now-trigger" id="book-now-trigger">BOOK NOW</button>
+          <div class="book-now-dropdown" id="book-now-dropdown">
+            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
+            <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
+            <a href="/contact?service=repairs">BOOK REPAIR</a>
+            <a href="/contact?service=av">BOOK AV SERVICES</a>
+            <a href="/contact?service=venue">BOOK VENUE</a>
+          </div>
+        </div>
       </nav>
     </div>
 
@@ -235,17 +246,6 @@ const Header = () => (
     {/* Right: Actions */}
     <nav class="header-actions">
       <a href="/locations">Locations</a>
-      <span class="separator">|</span>
-      <div class="book-now-panel" id="book-now-panel">
-        <button class="book-now-trigger" id="book-now-trigger">BOOK NOW</button>
-        <div class="book-now-dropdown" id="book-now-dropdown">
-          <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
-          <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
-          <a href="/contact?service=repairs">BOOK REPAIR</a>
-          <a href="/contact?service=av">BOOK AV SERVICES</a>
-          <a href="/contact?service=venue">BOOK VENUE</a>
-        </div>
-      </div>
       <span class="separator">|</span>
       <a href="/contact">Contact</a>
     </nav>
