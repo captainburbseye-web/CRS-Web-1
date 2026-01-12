@@ -29,6 +29,7 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/clean.css" rel="stylesheet" />
         <link href="/static/crs-positioning-fixes.css" rel="stylesheet" />
         <link href="/static/crs-proportion-fixes.css" rel="stylesheet" />
+        <link href="/static/crs-footer-fixes.css" rel="stylesheet" />
       </head>
       <body>
         {children}

@@ -1,0 +1,242 @@
+/* ============================================================================
+   CRS FOOTER PROPORTION FIXES
+   Reduce logo size, increase credit text, improve spacing and hierarchy
+   Date: January 12, 2026
+   ============================================================================ */
+
+
+/* ============================================================================
+   SUGGESTION 1: Reduce CRS brand stamp size
+   From ~150-200px to 100-120px (40-50% reduction)
+   ============================================================================ */
+
+.brand-stamp,
+.footer-signature img {
+  max-width: 100px !important;
+  width: 100px !important;
+  height: auto !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Desktop: slightly larger if needed */
+@media (min-width: 1024px) {
+  .brand-stamp,
+  .footer-signature img {
+    max-width: 120px !important;
+    width: 120px !important;
+  }
+}
+
+/* Mobile: smaller */
+@media (max-width: 768px) {
+  .brand-stamp,
+  .footer-signature img {
+    max-width: 80px !important;
+    width: 80px !important;
+  }
+}
+
+
+/* ============================================================================
+   SUGGESTION 2: Increase "POWERED BY 0DR0 ENGINEERING" text size
+   From ~10-11px to 13-14px
+   ============================================================================ */
+
+.footer-credit {
+  font-size: 0.875rem !important; /* 14px */
+  letter-spacing: 0.08em !important;
+  opacity: 0.75 !important;
+  margin-top: 1rem !important;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Mobile: slightly smaller but still readable */
+@media (max-width: 768px) {
+  .footer-credit {
+    font-size: 0.8125rem !important; /* 13px */
+  }
+}
+
+
+/* ============================================================================
+   SUGGESTION 3: Adjust vertical spacing around logo
+   Increase top margin from terminal columns, reduce gap to credit text
+   ============================================================================ */
+
+.footer-signature {
+  margin-top: 4rem !important;
+  margin-bottom: 2rem !important;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(212, 160, 23, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Reduce gap between logo and "POWERED BY" text */
+.footer-signature img {
+  margin-bottom: 1rem !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-signature {
+    margin-top: 3rem !important;
+    margin-bottom: 1.5rem !important;
+    padding-top: 1.5rem;
+  }
+}
+
+
+/* ============================================================================
+   SUGGESTION 4: Remove/fix logo background
+   Ensure clean appearance without checkered transparency
+   ============================================================================ */
+
+.footer-signature {
+  background-color: transparent;
+}
+
+.brand-stamp,
+.footer-signature img {
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: 4px;
+  /* Optional: subtle border if background persists */
+  /* border: 1px solid rgba(255, 255, 255, 0.05); */
+}
+
+
+/* ============================================================================
+   SUGGESTION 5: Adjust footer text hierarchy
+   Differentiate terminal columns, locations, and credits with size/opacity
+   ============================================================================ */
+
+/* Terminal columns - primary content */
+.footer-col {
+  font-size: 0.8125rem !important; /* 13px */
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+/* Terminal column headers - slightly smaller, more subtle */
+.footer-col-title {
+  font-size: 0.75rem !important; /* 12px */
+  opacity: 0.7 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.12em !important;
+  margin-bottom: 0.75rem !important;
+  font-weight: 600;
+}
+
+/* Terminal column links */
+.footer-col a {
+  opacity: 0.8;
+  transition: opacity 0.15s ease;
+}
+
+.footer-col a:hover {
+  opacity: 1;
+}
+
+/* Locations section */
+.footer-bottom {
+  font-size: 0.8125rem !important; /* 13px */
+  opacity: 0.8;
+  margin-top: 3rem !important;
+  margin-bottom: 2rem !important;
+  text-align: center;
+}
+
+.footer-locations-header {
+  font-size: 0.75rem !important; /* 12px */
+  opacity: 0.7 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.75rem !important;
+  font-weight: 600;
+}
+
+.footer-location-item {
+  opacity: 0.75;
+  margin: 0.25rem 0;
+}
+
+/* Contact email - slightly larger, more prominent */
+.footer-contact {
+  font-size: 0.875rem !important; /* 14px */
+  opacity: 0.85 !important;
+  margin-top: 1rem !important;
+}
+
+.footer-contact a {
+  color: var(--crs-gold, #E89B3C);
+  opacity: 0.9;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.footer-contact a:hover {
+  opacity: 1;
+  border-bottom-color: var(--crs-gold, #E89B3C);
+}
+
+
+/* ============================================================================
+   BONUS: Terminal columns spacing improvement
+   From previous proportion fixes
+   ============================================================================ */
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem !important;
+  column-gap: 3rem !important;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem !important;
+  }
+}
+
+
+/* ============================================================================
+   ENSURE FOOTER DOESN'T CONFLICT WITH EXISTING STYLES
+   ============================================================================ */
+
+/* Override any conflicting widths */
+.footer-signature img[width="150"] {
+  width: 100px !important;
+  height: auto !important;
+}
+
+@media (min-width: 1024px) {
+  .footer-signature img[width="150"] {
+    width: 120px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-signature img[width="150"] {
+    width: 80px !important;
+  }
+}
+
+
+/* ============================================================================
+   END OF FOOTER PROPORTION FIXES
+   ============================================================================ */
