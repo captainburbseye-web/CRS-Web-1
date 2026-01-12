@@ -10,8 +10,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <meta name="description" content="CRS operates multi-location studio and AV infrastructure across Oxford. Industry-standard recording, rehearsal, and technical support. Locations on Cowley Road and Cricket Road." />
         
         {/* Favicon - TASCAM Rack System */}
-        <link rel="icon" type="image/png" sizes="512x512" href="/assets/icons/favicon.png" />
-        <link rel="apple-touch-icon" href="/assets/icons/crs-tile-1024.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="/static/icons/favicon.png" />
+        <link rel="apple-touch-icon" href="/static/icons/crs-tile-1024.png" />
         
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />

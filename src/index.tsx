@@ -489,7 +489,7 @@ app.get('/', (c) => {
       <section class="crs-hero">
         <div class="hero-container">
           <img 
-            src="/assets/images/crs-logo-primary.png" 
+            src="/static/images/crs-logo-primary.png" 
             alt="Cowley Road Studios — Rack Mounted Control Panel"
             class="hero-power-panel"
             loading="eager"

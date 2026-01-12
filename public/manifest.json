@@ -8,13 +8,13 @@
   "background_color": "#0A0A0A",
   "icons": [
     {
-      "src": "/assets/icons/crs-tile-1024.png",
+      "src": "/static/icons/crs-tile-1024.png",
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/assets/icons/favicon.png",
+      "src": "/static/icons/favicon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
