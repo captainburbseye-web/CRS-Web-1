@@ -324,8 +324,16 @@ const Footer = () => (
 
     <div class="footer-bottom">
       <p class="footer-locations-header">CRS Locations</p>
-      <p class="footer-location-item">– Cowley Road</p>
-      <p class="footer-location-item">– Cricket Road</p>
+      <p class="footer-location-item">
+        <strong style="color: var(--crs-gold);">118 Cowley Road</strong> — HQ & Technical Brain
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.7;">Recording • Repairs • Workshop Café • Admin</span>
+      </p>
+      <p class="footer-location-item">
+        <strong style="color: var(--crs-gold);">Cricket Road</strong> — Rehearsal Node
+        <br />
+        <span style="font-size: 0.75rem; opacity: 0.7;">Band Rehearsals • High-Decibel Sessions</span>
+      </p>
       <p class="footer-contact">
         CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a>
       </p>
@@ -883,16 +891,36 @@ app.get('/studio', (c) => {
           </div>
         </div>
 
-        {/* USE CASES */}
+        {/* LOCATION ROUTING */}
         <div class="content-block">
-          <h3 class="content-heading mono">USE CASES</h3>
+          <h3 class="content-heading mono">LOCATION ROUTING</h3>
           <div class="content-text">
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;">→ Recording sessions</li>
-              <li style="margin-bottom: 0.75rem;">→ Mixing & production</li>
-              <li style="margin-bottom: 0.75rem;">→ Podcasting & spoken word</li>
-              <li style="margin-bottom: 0.75rem;">→ Writing and pre-production</li>
-            </ul>
+            <div style="background: rgba(232, 155, 60, 0.1); border: 2px solid rgba(232, 155, 60, 0.3); padding: 1.5rem; margin-bottom: 1.5rem;">
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--crs-gold); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                [ LOCATION: 118 COWLEY ROAD — HQ ]
+              </p>
+              <ul style="list-style: none; padding: 0; font-size: 0.9375rem;">
+                <li style="margin-bottom: 0.5rem;">→ Recording sessions</li>
+                <li style="margin-bottom: 0.5rem;">→ Mixing & production</li>
+                <li style="margin-bottom: 0.5rem;">→ Podcasting & spoken word</li>
+                <li style="margin-bottom: 0.5rem;">→ Technical repairs & diagnostics</li>
+              </ul>
+            </div>
+            
+            <div style="background: rgba(127, 255, 0, 0.05); border: 2px solid rgba(127, 255, 0, 0.2); padding: 1.5rem;">
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--crs-green); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                [ LOCATION: CRICKET ROAD — REHEARSAL NODE ]
+              </p>
+              <ul style="list-style: none; padding: 0; font-size: 0.9375rem;">
+                <li style="margin-bottom: 0.5rem;">→ Band rehearsals</li>
+                <li style="margin-bottom: 0.5rem;">→ High-decibel sessions</li>
+                <li style="margin-bottom: 0.5rem;">→ Equipment storage</li>
+                <li style="margin-bottom: 0.5rem;">→ Loud tracking</li>
+              </ul>
+              <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8; font-style: italic;">
+                Rehearsal bookings are automatically routed to Cricket Road. Access protocol sent via Square confirmation.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -901,7 +929,7 @@ app.get('/studio', (c) => {
           <h3 class="content-heading mono">BOOKING</h3>
           <div class="content-text">
             <p>
-              Sessions are available by booking and enquiry.
+              Sessions are available by booking and enquiry. Location assignment is automatic based on service type.
             </p>
           </div>
         </div>
@@ -1091,24 +1119,41 @@ app.get('/book/rehearsal', (c) => {
         <div class="booking-form-container">
           <h2 class="section-title heading">CRS Rehearsal Booking</h2>
           
-          <p class="section-intro" style="margin-bottom: 2rem;">
-            Choose CRS location:
+          <p class="section-intro" style="margin-bottom: 1rem;">
+            CRS operates a dual-location system for optimal service allocation.
           </p>
           
-          <div style="display: grid; gap: 1.5rem; max-width: 600px; margin: 0 auto;">
-            <a href="/book/rehearsal/cowley-road" class="location-selector-card">
-              <div class="location-selector-header mono">CRS — Cowley Road</div>
-              <div class="location-selector-desc">Main studio location · 118 Cowley Road</div>
-            </a>
+          <div style="display: grid; gap: 1.5rem; max-width: 700px; margin: 0 auto 2rem;">
+            <div style="background: rgba(232, 155, 60, 0.1); border: 2px solid rgba(232, 155, 60, 0.3); padding: 1.5rem;">
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-gold); font-weight: 700; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                [ 118 COWLEY ROAD — HQ & TECHNICAL BRAIN ]
+              </p>
+              <p style="font-size: 0.875rem; opacity: 0.8; margin-bottom: 0.5rem;">
+                Recording • Repairs • Workshop Café • Admin
+              </p>
+              <a href="/book/rehearsal/cowley-road" class="crs-button mono" style="display: inline-block; margin-top: 1rem;">
+                [ BOOK AT HQ ]
+              </a>
+            </div>
             
-            <a href="/book/rehearsal/cricket-road" class="location-selector-card">
-              <div class="location-selector-header mono">CRS — Cricket Road</div>
-              <div class="location-selector-desc">(Partner Studio) · Cricket Road, Oxford</div>
-            </a>
+            <div style="background: rgba(127, 255, 0, 0.05); border: 2px solid rgba(127, 255, 0, 0.2); padding: 1.5rem;">
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                [ CRICKET ROAD — REHEARSAL NODE ] ← RECOMMENDED FOR BANDS
+              </p>
+              <p style="font-size: 0.875rem; opacity: 0.8; margin-bottom: 0.5rem;">
+                Band Rehearsals • High-Decibel Sessions • Equipment Storage
+              </p>
+              <p style="font-size: 0.8125rem; opacity: 0.7; margin-bottom: 0.5rem; font-style: italic;">
+                Access protocol & parking info sent via confirmation email.
+              </p>
+              <a href="/book/rehearsal/cricket-road" class="crs-button mono" style="display: inline-block; margin-top: 1rem;">
+                [ BOOK AT REHEARSAL NODE ]
+              </a>
+            </div>
           </div>
           
           <p class="section-intro" style="margin-top: 2rem; font-size: 0.875rem; font-style: italic;">
-            Each location has its own room and availability.
+            <strong>Location routing is automatic:</strong> HQ handles recording/repairs, Cricket Road handles rehearsals.
           </p>
         </div>
       </section>
@@ -1182,9 +1227,36 @@ app.get('/book/rehearsal/cricket-road', (c) => {
           </p>
           
           <h2 class="section-title heading">CRS Rehearsal · Cricket Road</h2>
-          <p class="section-intro" style="margin-bottom: 2rem; font-style: italic;">
-            Partner Studio · Cricket Road, Oxford
+          <p class="section-intro" style="margin-bottom: 1rem;">
+            <strong style="color: var(--crs-green);">[ REHEARSAL NODE ]</strong> — Cricket Road, Oxford
           </p>
+          
+          {/* ACCESS PROTOCOL INFO */}
+          <div style="background: rgba(127, 255, 0, 0.05); border: 2px solid rgba(127, 255, 0, 0.2); padding: 1.5rem; margin-bottom: 2rem;">
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
+              [ CRICKET ROAD ACCESS PROTOCOL ]
+            </p>
+            <ul style="list-style: none; padding: 0; font-size: 0.875rem;">
+              <li style="margin-bottom: 0.75rem;">
+                <strong>Location:</strong> Cricket Road, Oxford (exact address & access code sent via confirmation email)
+              </li>
+              <li style="margin-bottom: 0.75rem;">
+                <strong>Entry:</strong> Secure keypad entry — unique code provided with booking confirmation
+              </li>
+              <li style="margin-bottom: 0.75rem;">
+                <strong>Load-In:</strong> Designated parking directly outside for equipment transfer
+              </li>
+              <li style="margin-bottom: 0.75rem;">
+                <strong>Protocol:</strong> No-Chaos Policy — reset and secure node upon exit
+              </li>
+              <li style="margin-bottom: 0.75rem;">
+                <strong>Support:</strong> Technical queries routed to 118 Cowley Road HQ
+              </li>
+            </ul>
+            <p style="font-size: 0.8125rem; opacity: 0.8; margin-top: 1rem; font-style: italic;">
+              Full access protocol, parking details, and entry code will be sent to your email upon booking confirmation.
+            </p>
+          </div>
           
           <form class="booking-form" method="post" action="/api/book/rehearsal/cricket-road">
             <div class="form-group">
