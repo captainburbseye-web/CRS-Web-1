@@ -17,8 +17,8 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #0F1A14; /* Canonical dark green - material base */
-  color: #f5f5f5;
+  background: var(--crs-black); /* NASA terminal deep green/black */
+  color: var(--crs-text);
   line-height: 1.6;
 }
 
@@ -35,24 +35,31 @@ body {
   letter-spacing: -0.05em; /* The Glint - compressed and powerful */
 }
 
-/* COLORS - SIGNAL AUTHORITY (LOCKED TO LOGO PALETTE) */
+/* COLORS - NASA TERMINAL AESTHETIC (LOCKED) */
 :root {
-  /* SIGNAL COLORS - Extracted from master power panel logo */
-  --void-black: #0E0E0E;        /* Deep black - matches logo text */
-  --signal-white: #f5f5f5;      /* Clarity, legibility, truth */
-  --steel-grey: #D9D9D6;        /* Brushed aluminum - logo background */
+  /* CORE PALETTE - CRT Monitor / Mission Control */
+  --crs-black: #0D1912;           /* Deep dark green/black (CRT monitor) */
+  --crs-graphite: #1A251E;        /* Card/panel background */
+  --crs-border: #2D3A32;          /* Green-tinted borders */
+  --crs-text: #FFFFFF;            /* Pure white foreground */
   
-  /* STATUS COLORS - Matched to logo indicator system */
-  --live-green: #00FF00;        /* LIVE - bright signal green (logo indicator) */
-  --standby-gold: #FFD700;      /* STANDBY - bright signal yellow (logo plate) */
-  --offline-red: #FF0000;       /* OFFLINE - pure signal red (logo underline) */
+  /* ACCENT COLORS - CRT Glow & Status */
+  --crs-gold: #E89B3C;            /* Warm orange/amber (CRT glow) */
+  --crs-mustard: #E89B3C;         /* Unified with gold */
+  --crs-green: #C8FF41;           /* Bright lime green (operational) */
+  --crs-yellow: #F4D03F;          /* Yellow caution */
+  --crs-muted: #6B7870;           /* Secondary text */
   
-  /* ACTION COLOR - Brewforce/CTA only */
-  --fire-orange: #ff4d00;       /* ACTION - energy threshold, not decoration */
-  
-  /* ATMOSPHERIC COLORS - Café/story sections ONLY, never CRS infrastructure */
-  --nettle-green: #2d3e2f;      /* HOLDING SPACE - Workshop Café only */
-  --mustard: #FFD700;           /* Unified with standby-gold - logo-matched yellow */
+  /* LEGACY TOKEN NORMALIZATION */
+  --void-black: var(--crs-black);
+  --signal-white: var(--crs-text);
+  --steel-grey: var(--crs-border);
+  --live-green: var(--crs-green);
+  --standby-gold: var(--crs-gold);
+  --offline-red: #FF4444;
+  --fire-orange: var(--crs-gold);
+  --nettle-green: var(--crs-graphite);
+  --mustard: var(--crs-gold);
 }
 
 /* ============================================
@@ -460,24 +467,24 @@ body {
 }
 
 .section-light-crs {
-  background: #0F1A14; /* Canonical dark green - material base */
-  color: #f5f5f5;
-  border-top: 2px solid var(--mustard);
+  background: var(--crs-graphite); /* NASA terminal panel */
+  color: var(--crs-text);
+  border-top: 2px solid var(--crs-gold);
 }
 
-/* CAFÉ HEARTBEAT - Warm panel with gold patina */
+/* CAFÉ HEARTBEAT - Warm panel with amber CRT glow */
 .cafe-heartbeat {
   background: linear-gradient(
     to bottom,
-    #1A1A1A,
-    rgba(255, 215, 0, 0.04)
-  ); /* Graphite base with subtle gold warmth */
-  color: #f5f5f5;
-  border-top: 2px solid var(--mustard);
+    var(--crs-graphite),
+    rgba(232, 155, 60, 0.04)
+  ); /* Panel base with amber warmth */
+  color: var(--crs-text);
+  border-top: 2px solid var(--crs-gold);
   position: relative;
 }
 
-/* Subtle texture overlay for café warmth */
+/* Subtle CRT glow overlay for café warmth */
 .cafe-heartbeat::before {
   content: '';
   position: absolute;
@@ -487,7 +494,7 @@ body {
   bottom: 0;
   background: radial-gradient(
     circle at 50% 20%, 
-    rgba(255, 215, 0, 0.03) 0%, 
+    rgba(232, 155, 60, 0.03) 0%, 
     transparent 60%
   );
   pointer-events: none;
