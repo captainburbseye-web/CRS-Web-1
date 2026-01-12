@@ -795,13 +795,6 @@ app.get('/studio/infrastructure', (c) => {
           </p>
         </div>
 
-        {/* SYSTEM STATUS */}
-        <div class="system-status-banner" style="margin-bottom: 3rem;">
-          <span class="mono" style="color: var(--mustard); font-size: 0.75rem; letter-spacing: 0.1em;">
-            STATUS: OPERATIONAL
-          </span>
-        </div>
-
         {/* CONTROL PANEL MOTIF */}
         <div style="display: flex; justify-content: center; margin: 0 0 3rem; opacity: 0.85;">
           <img 
@@ -812,7 +805,22 @@ app.get('/studio/infrastructure', (c) => {
           />
         </div>
 
-        {/* FUNCTIONAL CAPABILITY MATRIX (Horizontal Flow) */}
+        {/* INFRASTRUCTURE OVERVIEW PANEL (Singular Structural Anchor) */}
+        <div style="background: #0A0A0A; border: 2px solid var(--mustard); padding: 2rem; margin-bottom: 3rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+          <h3 class="mono" style="font-size: 0.75rem; letter-spacing: 0.2em; color: var(--mustard); margin-bottom: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(232, 155, 60, 0.3); padding-bottom: 0.75rem;">
+            /// INFRASTRUCTURE OVERVIEW
+          </h3>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; line-height: 2; letter-spacing: 0.02em;">
+            <p style="margin-bottom: 0.75rem;"><span style="color: var(--mustard); font-weight: 700;">STUDIO SYSTEMS:</span> <span style="opacity: 0.85;">CONTROL / LIVE ROOMS / NETWORKED AUDIO</span></p>
+            <p style="margin-bottom: 0.75rem;"><span style="color: var(--mustard); font-weight: 700;">PUBLIC INTERFACE:</span> <span style="opacity: 0.85;">CAFÉ / VENUE / FRONT-OF-HOUSE</span></p>
+            <p style="margin-bottom: 0.75rem;"><span style="color: var(--mustard); font-weight: 700;">TECHNICAL OPS:</span> <span style="opacity: 0.85;">AV DEPLOYMENT / REPAIR / DIAGNOSTICS</span></p>
+          </div>
+          <p class="mono" style="font-size: 0.6875rem; color: var(--mustard); opacity: 0.6; margin-top: 1.5rem; letter-spacing: 0.1em;">
+            COORDINATED FROM: 118 COWLEY ROAD
+          </p>
+        </div>
+
+        {/* FUNCTIONAL CAPABILITY MATRIX */}
         <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 2rem; margin-bottom: 2rem;">
           <h3 class="mono" style="font-size: 0.75rem; letter-spacing: 0.15em; color: var(--mustard); margin-bottom: 1.5rem; font-weight: 800;">
             01 / SIGNAL COMMAND & ROUTING
@@ -872,7 +880,7 @@ app.get('/studio/infrastructure', (c) => {
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; font-size: 0.875rem; line-height: 1.6;">
             <div>
               <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">REPAIR BENCH (ODRO)</p>
-              <p style="opacity: 0.85;">Mixers · Interfaces · Amplifiers · Speakers · Power/signal diagnostics · Currently paused</p>
+              <p style="opacity: 0.85;">Mixers · Interfaces · Amplifiers · Speakers · Power/signal diagnostics</p>
             </div>
             <div>
               <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">LIVE EVENT TECH</p>
