@@ -1787,3 +1787,136 @@ a[href*="/book"],
 a[href*="/contact"] {
   margin-top: 1.5rem;  /* Increase from default to create clearer separation */
 }
+
+/* ========================================
+   NASA × NEVE CONTROL PANEL AESTHETIC
+   CSS-only visual texture pass
+   ======================================== */
+
+/* Section containers feel like rack-mounted control panels */
+.crs-section {
+  position: relative;
+  border: 1px solid rgba(255, 215, 0, 0.15); /* Subtle panel border */
+  box-shadow: inset 0 1px 0 rgba(255, 215, 0, 0.05); /* Engraved edge */
+}
+
+/* Section headers feel like engraved equipment labels */
+.section-title {
+  position: relative;
+  padding-left: 0.5rem;
+  border-left: 3px solid var(--standby-gold);
+  letter-spacing: 0.1em; /* Wide spacing = engraved plate */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8); /* Depth */
+}
+
+.section-title::before {
+  content: '// ';
+  color: rgba(255, 215, 0, 0.3);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
+/* Section intro text feels like system metadata */
+.section-intro {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  opacity: 0.85;
+  border-left: 4px solid rgba(255, 215, 0, 0.3);
+  padding-left: 1.5rem;
+  background: rgba(0, 0, 0, 0.2); /* Subtle panel backing */
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Buttons feel like physical hardware toggles */
+.crs-button {
+  border: 2px solid var(--standby-gold);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 215, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  transition: all 0.1s ease; /* Fast response = hardware feel */
+}
+
+.crs-button:hover {
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 215, 0, 0.3),
+    0 3px 6px rgba(0, 0, 0, 0.7);
+  transform: translateY(-1px); /* Physical button press */
+}
+
+.crs-button:active {
+  transform: translateY(1px); /* Depressed button */
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Hero power panel feels bolted to infrastructure */
+.hero-power-panel {
+  filter: 
+    contrast(1.05)
+    brightness(0.95)
+    drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
+}
+
+/* Footer feels like system terminal output */
+.crs-footer {
+  border-top: 2px solid rgba(255, 215, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 215, 0, 0.05);
+}
+
+.footer-col-title {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.15em;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  padding-bottom: 0.25rem;
+}
+
+.footer-col-title::before {
+  content: '[ ';
+  color: rgba(255, 215, 0, 0.4);
+}
+
+.footer-col-title::after {
+  content: ' ]';
+  color: rgba(255, 215, 0, 0.4);
+}
+
+/* Operational statement feels like mission control readout */
+.operational-statement {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.05em;
+  position: relative;
+}
+
+.operational-statement::before {
+  content: '▶';
+  color: var(--live-green);
+  margin-right: 0.5rem;
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+
+/* Header feels like control panel strip */
+.crs-header {
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(255, 215, 0, 0.1);
+}
+
+/* Content blocks feel like modular rack units */
+.content-block {
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 215, 0, 0.05);
+}
+
+.content-heading {
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
