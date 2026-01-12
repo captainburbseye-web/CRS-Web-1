@@ -272,8 +272,6 @@ const Header = () => (
     {/* Right: Navigation */}
     <div class="header-right">
       <nav class="header-services">
-        <a href="/locations">Locations</a>
-        <span class="separator">·</span>
         <a href="/contact">Contact</a>
       </nav>
     </div>
@@ -523,129 +521,6 @@ app.get('/', (c) => {
             class="hero-power-panel"
             loading="eager"
           />
-        </div>
-      </section>
-
-      {/* TIME-BASED SERVICES CATALOG */}
-      <section class="crs-section section-dark" style="margin-top: 0; padding-top: 4rem;">
-        <div class="section-header">
-          <h2 class="section-title heading">TIME-BASED SERVICES</h2>
-          <p class="section-intro">
-            High-utility, time-allocated services for Oxford creative infrastructure. All bookings support ongoing CRS facility development.
-          </p>
-        </div>
-
-        <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem;">
-          
-          {/* STUDIO SERVICES */}
-          <div class="service-card" style="background: rgba(0, 0, 0, 0.4); border: 2px solid rgba(57, 255, 20, 0.3); border-radius: 4px; padding: 2rem;">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-              <div style="width: 12px; height: 12px; border-radius: 50%; background: #39FF14; box-shadow: 0 0 12px rgba(57, 255, 20, 0.8);"></div>
-              <h3 class="mono" style="font-size: 1rem; color: #39FF14; margin: 0;">STUDIO</h3>
-            </div>
-            
-            <div class="service-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-              <h4 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.9);">Full Day Recording [Pre-Build]</h4>
-              <p style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.6); margin-bottom: 0.75rem; line-height: 1.5;">8 hours dedicated facility access at 118 Cowley Road. Pre-build booking secures 2025 legacy pricing.</p>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="mono" style="font-size: 1.25rem; color: var(--crs-gold); font-weight: 700;">£250</span>
-                <span class="mono" style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.5);">8 Hours</span>
-              </div>
-            </div>
-
-            <div class="service-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-              <h4 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.9);">Priority Mixing Session</h4>
-              <p style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.6); margin-bottom: 0.75rem; line-height: 1.5;">4-hour focused mixing allocation with calibrated monitoring.</p>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="mono" style="font-size: 1.25rem; color: var(--crs-gold); font-weight: 700;">£160</span>
-                <span class="mono" style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.5);">4 Hours</span>
-              </div>
-            </div>
-
-            <div class="service-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-              <h4 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.9);">Rehearsal Allocation</h4>
-              <p style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.6); margin-bottom: 0.75rem; line-height: 1.5;">2-hour rehearsal room access.</p>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="mono" style="font-size: 1.25rem; color: var(--crs-gold); font-weight: 700;">£40</span>
-                <span class="mono" style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.5);">2 Hours</span>
-              </div>
-            </div>
-
-            <div class="service-item">
-              <h4 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.9);">Technical Music Lesson</h4>
-              <p style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.6); margin-bottom: 0.75rem; line-height: 1.5;">1-hour focused instruction session.</p>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="mono" style="font-size: 1.25rem; color: var(--crs-gold); font-weight: 700;">£45</span>
-                <span class="mono" style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.5);">1 Hour</span>
-              </div>
-            </div>
-
-            <div class="hero-cta" style="margin-top: 2rem;">
-              <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" class="crs-button mono">[ BOOK STUDIO ]</a>
-            </div>
-          </div>
-
-          {/* VENUE SERVICES */}
-          <div class="service-card" style="background: rgba(0, 0, 0, 0.4); border: 2px solid rgba(232, 155, 60, 0.3); border-radius: 4px; padding: 2rem;">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-              <div style="width: 12px; height: 12px; border-radius: 50%; background: #E89B3C; box-shadow: 0 0 12px rgba(232, 155, 60, 0.8);"></div>
-              <h3 class="mono" style="font-size: 1rem; color: #E89B3C; margin: 0;">VENUE</h3>
-            </div>
-            
-            <div class="service-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-              <h4 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.9);">Full Venue Event Hire</h4>
-              <p style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.6); margin-bottom: 0.75rem; line-height: 1.5;">Access to Billet Building multi-use infrastructure, including PA and projection. All hire fees subsidize ongoing CRS creative build.</p>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="mono" style="font-size: 1.25rem; color: var(--crs-gold); font-weight: 700;">£45</span>
-                <span class="mono" style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.5);">1 Hour</span>
-              </div>
-            </div>
-
-            <div class="service-item">
-              <h4 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.9);">Half-Day Workspace Desk</h4>
-              <p style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.6); margin-bottom: 0.75rem; line-height: 1.5;">4-hour coworking desk allocation.</p>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="mono" style="font-size: 1.25rem; color: var(--crs-gold); font-weight: 700;">£25</span>
-                <span class="mono" style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.5);">4 Hours</span>
-              </div>
-            </div>
-
-            <div class="hero-cta" style="margin-top: 2rem;">
-              <a href="/contact?service=venue" class="crs-button mono">[ BOOK VENUE ]</a>
-            </div>
-          </div>
-
-          {/* TECH SERVICES */}
-          <div class="service-card" style="background: rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 0, 0, 0.3); border-radius: 4px; padding: 2rem;">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-              <div style="width: 12px; height: 12px; border-radius: 50%; background: #FF0000; box-shadow: 0 0 12px rgba(255, 0, 0, 0.8);"></div>
-              <h3 class="mono" style="font-size: 1rem; color: #FF0000; margin: 0;">TECH</h3>
-            </div>
-            
-            <div class="service-item">
-              <h4 style="font-size: 0.875rem; margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.9);">AV Diagnostic Bench Time</h4>
-              <p style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.6); margin-bottom: 0.75rem; line-height: 1.5;">Initial component-level assessment and safety check performed by lead engineers. Repairs exceeding 1 hour are quoted separately.</p>
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span class="mono" style="font-size: 1.25rem; color: var(--crs-gold); font-weight: 700;">£60</span>
-                <span class="mono" style="font-size: 0.75rem; color: rgba(245, 245, 245, 0.5);">1 Hour</span>
-              </div>
-            </div>
-
-            <div class="hero-cta" style="margin-top: 2rem;">
-              <a href="/contact?service=repairs" class="crs-button mono">[ BOOK DIAGNOSTIC ]</a>
-            </div>
-          </div>
-        </div>
-
-        {/* POLICY NOTICE */}
-        <div style="margin-top: 3rem; padding: 2rem; background: rgba(255, 140, 0, 0.05); border: 1px solid rgba(255, 140, 0, 0.3); border-radius: 4px;">
-          <h3 class="mono" style="font-size: 0.875rem; color: #FF8C00; margin-bottom: 1rem;">BOOKING POLICY</h3>
-          <ul style="list-style: none; padding: 0; font-size: 0.8125rem; color: rgba(245, 245, 245, 0.8); line-height: 1.7;">
-            <li style="margin-bottom: 0.5rem;">→ 50% non-refundable deposit required to secure all bookings</li>
-            <li style="margin-bottom: 0.5rem;">→ Cancellations within 48 hours forfeit deposit</li>
-            <li style="margin-bottom: 0.5rem;">→ All services subject to facility availability</li>
-            <li style="margin-bottom: 0.5rem;">→ Pre-build pricing locks 2025 rates for 2026 queue position</li>
-          </ul>
         </div>
       </section>
 
