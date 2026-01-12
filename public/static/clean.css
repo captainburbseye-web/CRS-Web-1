@@ -187,55 +187,84 @@ body {
   align-items: center;
 }
 
-/* BOOK DROPDOWN - Utilitarian ease of access */
-.book-dropdown {
+/* BOOK NOW PANEL - Neon Signal Service Access */
+.book-now-panel {
   position: relative;
   display: inline-flex;
   align-items: center;
 }
 
-.book-trigger {
+.book-now-trigger {
+  background: none;
+  border: none;
+  color: rgba(245, 245, 245, 0.75);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.813rem;
   cursor: pointer;
+  padding: 0;
+  text-transform: none;
+  letter-spacing: normal;
+  transition: color 0.2s;
 }
 
-.book-dropdown-menu {
+.book-now-trigger:hover {
+  color: rgba(245, 245, 245, 0.95);
+}
+
+.book-now-dropdown {
   display: none;
   position: absolute;
-  top: 100%;
+  top: calc(100% + 0.5rem);
   right: 0;
-  margin-top: 0.5rem;
-  background: var(--crs-black);
-  border: 2px solid var(--crs-gold);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
-  min-width: 180px;
-  z-index: 100;
+  background: #0A0A0A;
+  border: 1px solid #FFD700;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);
+  padding: 0.5rem 0;
+  min-width: 220px;
+  z-index: 1000;
 }
 
-.book-dropdown:hover .book-dropdown-menu {
+.book-now-panel.active .book-now-dropdown {
   display: block;
 }
 
-.book-dropdown-menu a {
+.book-now-dropdown a {
   display: block;
-  padding: 0.75rem 1rem;
-  color: rgba(245, 245, 245, 0.85);
+  padding: 0.75rem 1.25rem;
+  color: #39FF14;
   text-decoration: none;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-  transition: all 0.15s;
+  letter-spacing: 0.08em;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
 }
 
-.book-dropdown-menu a:last-child {
+.book-now-dropdown a:last-child {
   border-bottom: none;
 }
 
-.book-dropdown-menu a:hover {
-  background: rgba(255, 215, 0, 0.1);
-  color: var(--crs-gold);
-  padding-left: 1.25rem;
+.book-now-dropdown a:hover,
+.book-now-dropdown a:focus {
+  background: rgba(57, 255, 20, 0.05);
+  color: #39FF14;
+  text-shadow: 0 0 8px rgba(57, 255, 20, 0.6);
+  padding-left: 1.5rem;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .book-now-dropdown {
+    right: -1rem;
+    min-width: calc(100vw - 2rem);
+  }
+  
+  .book-now-dropdown a {
+    padding: 1rem 1.25rem;
+    font-size: 0.813rem;
+  }
 }
 
 /* OPERATIONAL STATEMENT - Single Sentence Authority */
