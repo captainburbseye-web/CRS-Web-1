@@ -236,11 +236,10 @@ const Header = () => (
     <div class="header-left">
       <a href="/" class="header-logo-link">
         <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-pedal-badge-profile.jpg" 
-          alt="CRS"
-          class="header-logo-badge"
-          width="40"
-          height="40"
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/pW0wFYWf.png" 
+          alt="Cowley Road Studios"
+          class="header-logo-strip"
+          height="60"
           loading="eager"
         />
       </a>
@@ -264,7 +263,17 @@ const Header = () => (
       <span class="separator">|</span>
       <a href="/contact">Contact</a>
       <div class="book-now-panel neon-flash" id="book-now-panel">
-        <button class="book-now-trigger" id="book-now-trigger">BOOK NOW</button>
+        <button class="book-now-trigger" id="book-now-trigger">
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/ddGuz6zL.png" 
+            alt=""
+            class="book-now-icon"
+            width="24"
+            height="24"
+            loading="eager"
+          />
+          BOOK NOW
+        </button>
         <div class="book-now-dropdown" id="book-now-dropdown">
           <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
           <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
@@ -526,7 +535,17 @@ app.get('/', (c) => {
       {/* STUDIO SNAPSHOT */}
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">STUDIO SESSIONS</h2>
+          <h2 class="section-title heading">
+            <img 
+              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/ddGuz6zL.png" 
+              alt=""
+              class="status-icon"
+              width="32"
+              height="32"
+              loading="lazy"
+            />
+            STUDIO SESSIONS
+          </h2>
           <p class="section-intro">
             Acoustically treated rooms, calibrated monitoring, and networked audio infrastructure for recording, production, and focused creative work.
           </p>
@@ -539,7 +558,17 @@ app.get('/', (c) => {
       {/* AV SERVICES SNAPSHOT */}
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">AV SERVICES & LIVE SOUND</h2>
+          <h2 class="section-title heading">
+            <img 
+              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/ddGuz6zL.png" 
+              alt=""
+              class="status-icon"
+              width="32"
+              height="32"
+              loading="lazy"
+            />
+            AV SERVICES & LIVE SOUND
+          </h2>
           <p class="section-intro">
             Engineer-led live sound and technical support for community venues, cultural events, and public gatherings.
           </p>
@@ -552,7 +581,17 @@ app.get('/', (c) => {
       {/* CAFÉ SNAPSHOT - CREATIVE HEARTBEAT */}
       <section class="crs-section cafe-heartbeat">
         <div class="section-header">
-          <h2 class="section-title cafe-title">WORKSHOP CAFÉ</h2>
+          <h2 class="section-title cafe-title">
+            <img 
+              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/ddGuz6zL.png" 
+              alt=""
+              class="status-icon"
+              width="32"
+              height="32"
+              loading="lazy"
+            />
+            WORKSHOP CAFÉ
+          </h2>
           <p class="section-intro cafe-intro">
             The public-facing space of CRS — a café, workspace, and small venue supporting community events and creative activity.
           </p>
