@@ -233,45 +233,46 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="crs-header">
-      {/* LOGO (Top-left) */}
-      <a href="/" class="header-logo">
-        <img src="/static/images/crs-wordmark-hero.webp" alt="Cowley Road Studios" class="header-logo-desktop" />
-        <img src="/static/images/crs-badge-square.png" alt="CRS" class="header-logo-mobile" />
-      </a>
+      {/* ZONE A (LEFT): Logo + Console Labels */}
+      <div class="crs-header-left">
+        {/* ZONE B: CRS Master Logo */}
+        <a href="/" class="header-logo">
+          <img src="/static/images/crs-wordmark-hero.webp" alt="Cowley Road Studios" class="header-logo-desktop" />
+          <img src="/static/images/crs-badge-square.png" alt="CRS" class="header-logo-mobile" />
+        </a>
 
-      {/* ROW 1: NAVIGATION SELECTORS */}
-      <div class="crs-nav-primary">
-        <nav class="header-services">
-          <a href="/studio" class="nav-button nav-studio">Studio</a>
-          <span class="separator">·</span>
-          <a href="/workshop-cafe" class="nav-button nav-cafe">Workshop Café</a>
-          <span class="separator">·</span>
-          <a href="/av-services" class="nav-button nav-av">AV</a>
-          <span class="separator">·</span>
-          <a href="/contact" class="nav-button">Contact</a>
-        </nav>
+        {/* ZONE A: Console Labels (Navigation) */}
+        <div class="crs-nav-primary">
+          <nav class="header-services">
+            <a href="/studio" class="nav-item">Studio</a>
+            <span class="separator">·</span>
+            <a href="/workshop-cafe" class="nav-item">Workshop Café</a>
+            <span class="separator">·</span>
+            <a href="/av-services" class="nav-item">AV</a>
+            <span class="separator">·</span>
+            <a href="/contact" class="nav-item">Contact</a>
+          </nav>
+        </div>
 
-        {/* Mobile Menu Toggle (Row 1, far right on mobile) */}
+        {/* Mobile Menu Toggle */}
         <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
           <span class="sr-only">Menu</span>
           ☰
         </button>
       </div>
 
-      {/* ROW 2: TRANSPORT ACTION (BOOK NOW) */}
-      <div class="crs-nav-action">
-        <div class="header-center-action">
-          <div class="book-now-panel neon-flash" id="book-now-panel">
-            <button class="book-now-trigger" id="book-now-trigger">
-              BOOK NOW
-            </button>
-            <div class="book-now-dropdown" id="book-now-dropdown">
-              <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
-              <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
-              <a href="/contact?service=repairs">BOOK REPAIR</a>
-              <a href="/contact?service=av">BOOK AV SERVICES</a>
-              <a href="/contact?service=venue">BOOK VENUE</a>
-            </div>
+      {/* ZONE C (RIGHT): Transport Control — BOOK NOW ONLY */}
+      <div class="crs-header-right">
+        <div class="book-now-panel neon-flash" id="book-now-panel">
+          <button class="book-now-trigger" id="book-now-trigger">
+            BOOK NOW
+          </button>
+          <div class="book-now-dropdown" id="book-now-dropdown">
+            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
+            <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
+            <a href="/contact?service=repairs">BOOK REPAIR</a>
+            <a href="/contact?service=av">BOOK AV SERVICES</a>
+            <a href="/contact?service=venue">BOOK VENUE</a>
           </div>
         </div>
       </div>
