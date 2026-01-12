@@ -1,0 +1,153 @@
+/**
+ * CRS HEADER VERTICAL SEPARATION (OPTION A)
+ * Purpose: Separate navigation selectors from transport control
+ * 
+ * Structure:
+ * Row 1: Navigation selectors (Studio / Workshop Café / AV / Contact)
+ * Row 2: Transport action (BOOK NOW)
+ * 
+ * Rules:
+ * - Navigation: neutral, no glow, hover = soft white glow only
+ * - BOOK NOW: may pulse/glow (only transport control)
+ * - One rack frame (existing header container)
+ * - No signal bleed between rows
+ */
+
+/* === HEADER TWO-ROW GRID === */
+
+.crs-header {
+  display: grid !important;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
+  row-gap: 0.75rem !important;
+  
+  /* Single rack frame (keep existing) */
+  background: #1a1a1a;
+  border: 2px solid #3a3a3a;
+  border-radius: 4px;
+  padding: 16px 20px !important;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* === ROW 1: NAVIGATION SELECTORS === */
+
+.crs-nav-primary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  grid-row: 1;
+}
+
+/* Remove left/right containers, use single row */
+.header-left {
+  display: contents !important;
+}
+
+.header-services {
+  display: flex !important;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Hide logo on desktop (keep navigation only) */
+.header-logo-link {
+  display: none;
+}
+
+/* === ROW 2: TRANSPORT ACTION === */
+
+.crs-nav-action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  grid-row: 2;
+}
+
+/* Move BOOK NOW to Row 2 */
+.header-center-action {
+  position: static !important;
+  grid-row: 2;
+  justify-self: end;
+}
+
+/* === NAVIGATION BUTTON DISCIPLINE === */
+
+/* Ensure nav buttons stay neutral (no glow at rest) */
+.nav-button {
+  /* Already defined in crs-nav-correction.css */
+  /* Idle: neutral grey, no glow */
+  /* Hover: soft white glow */
+  /* Active: solid backlight, no animation */
+}
+
+/* === BOOK NOW STAYS SEPARATE === */
+
+/* BOOK NOW keeps its pulse/glow */
+/* Defined in separate CSS (crs-industrial-pulse.css) */
+.book-now-trigger,
+.book-now-panel {
+  /* Transport control — may pulse/glow */
+  /* Not affected by nav button rules */
+}
+
+/* === MOBILE HAMBURGER POSITION === */
+
+.mobile-menu-toggle {
+  grid-row: 1;
+  justify-self: end;
+  margin-left: auto;
+}
+
+/* === RESPONSIVE ADJUSTMENTS === */
+
+/* Tablet: Keep two-row structure */
+@media (max-width: 1023px) {
+  .crs-header {
+    grid-template-rows: auto auto;
+    row-gap: 0.75rem;
+    padding: 12px 16px !important;
+  }
+  
+  .crs-nav-primary {
+    justify-content: space-between;
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .header-services {
+    display: none !important;
+  }
+}
+
+/* Mobile: Hamburger only on Row 1 */
+@media (max-width: 767px) {
+  .crs-header {
+    grid-template-rows: auto;
+    padding: 12px 16px !important;
+  }
+  
+  .header-center-action {
+    display: none;
+  }
+  
+  .mobile-menu-toggle {
+    grid-row: 1;
+  }
+}
+
+/* === VISUAL SEPARATION === */
+
+/* Optional: subtle divider between rows */
+.crs-nav-primary::after {
+  content: '';
+  position: absolute;
+  bottom: -0.375rem;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(74, 74, 74, 0.3);
+  display: none; /* Enable if visual separation needed */
+}

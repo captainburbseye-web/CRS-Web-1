@@ -33,6 +33,7 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-nav-correction.css" rel="stylesheet" />
         <link href="/static/crs-mobile-nav.css" rel="stylesheet" />
         <link href="/static/crs-audit-fixes.css" rel="stylesheet" />
+        <link href="/static/crs-header-vertical-separation.css" rel="stylesheet" />
       </head>
       <body>
         {children}

@@ -233,18 +233,8 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="crs-header">
-      {/* Left: Identity + Services */}
-      <div class="header-left">
-        <a href="/" class="header-logo-link">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-pedal-badge-profile.jpg" 
-            alt="CRS"
-            class="header-logo-badge"
-            width="40"
-            height="40"
-            loading="eager"
-          />
-        </a>
+      {/* ROW 1: NAVIGATION SELECTORS */}
+      <div class="crs-nav-primary">
         <nav class="header-services">
           <a href="/studio" class="nav-button nav-studio">Studio</a>
           <span class="separator">·</span>
@@ -254,29 +244,31 @@ const Header = () => (
           <span class="separator">·</span>
           <a href="/contact" class="nav-button">Contact</a>
         </nav>
+
+        {/* Mobile Menu Toggle (Row 1, far right on mobile) */}
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+          <span class="sr-only">Menu</span>
+          ☰
+        </button>
       </div>
 
-      {/* Center: BOOK NOW (absolute positioned) */}
-      <div class="header-center-action">
-        <div class="book-now-panel neon-flash" id="book-now-panel">
-          <button class="book-now-trigger" id="book-now-trigger">
-            BOOK NOW
-          </button>
-          <div class="book-now-dropdown" id="book-now-dropdown">
-            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
-            <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
-            <a href="/contact?service=repairs">BOOK REPAIR</a>
-            <a href="/contact?service=av">BOOK AV SERVICES</a>
-            <a href="/contact?service=venue">BOOK VENUE</a>
+      {/* ROW 2: TRANSPORT ACTION (BOOK NOW) */}
+      <div class="crs-nav-action">
+        <div class="header-center-action">
+          <div class="book-now-panel neon-flash" id="book-now-panel">
+            <button class="book-now-trigger" id="book-now-trigger">
+              BOOK NOW
+            </button>
+            <div class="book-now-dropdown" id="book-now-dropdown">
+              <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
+              <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
+              <a href="/contact?service=repairs">BOOK REPAIR</a>
+              <a href="/contact?service=av">BOOK AV SERVICES</a>
+              <a href="/contact?service=venue">BOOK VENUE</a>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu Toggle */}
-      <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
-        <span class="sr-only">Menu</span>
-        ☰
-      </button>
     </header>
 
     {/* Mobile Navigation Overlay */}
