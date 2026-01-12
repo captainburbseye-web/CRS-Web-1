@@ -14,6 +14,7 @@
 /* === HEADER STRUCTURAL RESET === */
 .crs-header {
   display: flex !important;
+  position: relative !important; /* Required for absolute positioning of stamp */
   justify-content: center !important;
   align-items: center !important;
   padding: 1rem 1.5rem !important;
@@ -27,13 +28,18 @@
 }
 
 /* === CRS RACK BADGE (Static Manufacturer Plate) === */
+/* ABSOLUTE LEFT ANCHOR — Bolted to chassis edge */
 .crs-rack-badge {
-  height: 42px;              /* Fixed hardware scale */
-  width: auto;
-  margin-right: 1rem;
-  flex-shrink: 0;
-  opacity: 0.95;
-
+  /* ABSOLUTE POSITIONING — Far Left Edge */
+  position: absolute !important;
+  left: 15px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  
+  /* FIXED SCALE LOCK — 72px Hardware Component */
+  height: 72px !important;
+  width: auto !important;
+  
   /* HARD LOCKS — Passive Hardware Only */
   pointer-events: none !important;      /* Not clickable */
   cursor: default !important;
@@ -44,6 +50,9 @@
   
   /* Governance: This is a rack plate, not a logo */
   user-select: none;
+  flex-shrink: 0;
+  opacity: 0.95;
+  z-index: 1; /* Above background, below interactive elements */
 }
 
 /* === NAVIGATION ROW === */
@@ -53,6 +62,7 @@
   align-items: center;
   width: 100%;
   gap: 2rem;
+  margin-left: 100px; /* OFFSET: Prevents overlap with 72px stamp */
 }
 
 /* === ZONE A: LEFT CONTAINER (Console Labels only) === */
@@ -196,11 +206,13 @@
   }
   
   .crs-rack-badge {
-    height: 38px; /* Slightly smaller on tablet */
+    height: 64px !important; /* Slightly smaller on tablet */
+    left: 12px !important;
   }
   
   .crs-header-nav-row {
     gap: 1.5rem;
+    margin-left: 85px; /* Adjust for smaller badge */
   }
   
   .nav-item,
@@ -218,12 +230,13 @@
   
   /* Hide rack badge on mobile (too small) */
   .crs-rack-badge {
-    display: none;
+    display: none !important;
   }
   
   .crs-header-nav-row {
     justify-content: space-between;
     gap: 1rem;
+    margin-left: 0 !important; /* Reset offset when badge is hidden */
   }
   
   /* Hide desktop nav */
