@@ -2075,20 +2075,74 @@ app.get('/cafe', (c) => {
           </p>
         </div>
 
+        {/* CAPACITY */}
         <div class="content-block">
-          <h3 class="content-heading mono" style="color: var(--mustard);">WHAT THE SPACE OFFERS</h3>
+          <h3 class="content-heading mono" style="color: var(--mustard);">CAPACITY & LAYOUT</h3>
           <div class="content-text" style="color: rgba(245, 245, 245, 0.9);">
             <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;">→ Café by day, flexible venue by night</li>
-              <li style="margin-bottom: 0.75rem;">→ PA system & basic AV support</li>
-              <li style="margin-bottom: 0.75rem;">→ Capacity: ~40 seated / ~60 standing</li>
-              <li style="margin-bottom: 0.75rem;">→ Technically supported by Cowley Road Studios</li>
+              <li style="margin-bottom: 0.75rem;"><strong>60 standing</strong> — Talks, launches, open mic, networking</li>
+              <li style="margin-bottom: 0.75rem;"><strong>40 seated</strong> — Comedy, screenings, panels, workshops</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Flexible layout</strong> — Standing + seated hybrid possible</li>
             </ul>
           </div>
         </div>
 
+        {/* TECHNICAL SPECIFICATION */}
+        <div class="content-block">
+          <h3 class="content-heading mono" style="color: var(--mustard);">EQUIPMENT PROVIDED</h3>
+          <div class="content-text" style="color: rgba(245, 245, 245, 0.9);">
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;"><strong>PA System:</strong> Bose 802 tops + Martin Audio IC300 subs</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Stage Area:</strong> 3×3m performance area</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Lighting:</strong> Basic lighting (3 positions)</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Projection:</strong> Available on request</li>
+              <li style="margin-bottom: 0.75rem;"><strong>Engineer Support:</strong> CRS technical staff available</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* BOOKING PROCESS */}
+        <div class="content-block">
+          <h3 class="content-heading mono" style="color: var(--mustard);">HOW TO BOOK</h3>
+          <div class="content-text" style="color: rgba(245, 245, 245, 0.9); line-height: 1.8;">
+            <p style="margin-bottom: 1rem;">
+              <strong style="color: var(--mustard);">1. Get in Touch</strong><br/>
+              Email us with your event concept, preferred dates, and technical requirements.
+            </p>
+            <p style="margin-bottom: 1rem;">
+              <strong style="color: var(--mustard);">2. Site Visit</strong><br/>
+              Schedule a viewing to see the space, check capacity, and discuss setup.
+            </p>
+            <p style="margin-bottom: 1rem;">
+              <strong style="color: var(--mustard);">3. Availability Check</strong><br/>
+              We confirm dates and provide hire terms (flat fee or revenue share).
+            </p>
+            <p style="margin-bottom: 1rem;">
+              <strong style="color: var(--mustard);">4. Technical Planning</strong><br/>
+              CRS engineer reviews your technical needs and plans setup.
+            </p>
+            <p style="margin-bottom: 1rem;">
+              <strong style="color: var(--mustard);">5. Event Day</strong><br/>
+              We handle the tech, you focus on the event.
+            </p>
+          </div>
+        </div>
+
+        {/* PHOTO PLACEHOLDER */}
+        <div class="content-block">
+          <h3 class="content-heading mono" style="color: var(--mustard);">SPACE OVERVIEW</h3>
+          <div class="content-text" style="color: rgba(245, 245, 245, 0.9);">
+            <p style="margin-bottom: 1rem;">
+              <strong>60-capacity venue with full PA, engineer support, and flexible layout.</strong>
+            </p>
+            <p style="font-size: 0.875rem; font-style: italic; color: rgba(245, 245, 245, 0.7);">
+              → Want to see the space? <a href="/contact?service=venue&action=site-visit" style="color: var(--mustard); text-decoration: underline;">Schedule a viewing</a>
+            </p>
+          </div>
+        </div>
+
         <div class="hero-cta" style="margin-top: 2rem;">
-          <a href="/contact?service=venue" class="crs-button mono">[ CONTACT ]</a>
+          <a href="/contact?service=venue" class="crs-button mono">[ CONTACT FOR BOOKING ]</a>
         </div>
       </section>
 
