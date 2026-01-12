@@ -781,29 +781,29 @@ app.get('/studio', (c) => {
   )
 })
 
-// STUDIO INFRASTRUCTURE
+// INFRASTRUCTURE SNAPSHOT (SINGULAR STRUCTURAL CENTRE OF GRAVITY)
 app.get('/studio/infrastructure', (c) => {
   return c.render(
     <>
       <Header />
 
-      <section class="crs-section section-dark">
-        <div class="section-header">
-          <h2 class="section-title heading">ROOM-BY-ROOM INFRASTRUCTURE</h2>
-          <p class="section-intro">
-            Technical ledger of spaces, signal paths, and monitoring systems.
+      <section class="crs-section section-dark" style="padding-top: 2rem; padding-bottom: 4rem;">
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <h2 class="section-title heading" style="font-size: 1.75rem; margin-bottom: 0.5rem;">INFRASTRUCTURE / CAPABILITIES SNAPSHOT</h2>
+          <p class="section-intro mono" style="font-size: 0.8125rem; opacity: 0.7; letter-spacing: 0.05em;">
+            Coordinated system architecture — 118 Cowley Road HQ
           </p>
         </div>
 
         {/* SYSTEM STATUS */}
-        <div class="system-status-banner">
+        <div class="system-status-banner" style="margin-bottom: 3rem;">
           <span class="mono" style="color: var(--mustard); font-size: 0.75rem; letter-spacing: 0.1em;">
-            STATUS: SYSTEM_CHECK_ACTIVE
+            STATUS: OPERATIONAL
           </span>
         </div>
 
-        {/* CONTROL PANEL MOTIF (System Authority) */}
-        <div style="display: flex; justify-content: center; margin: 2rem 0 3rem; opacity: 0.85;">
+        {/* CONTROL PANEL MOTIF */}
+        <div style="display: flex; justify-content: center; margin: 0 0 3rem; opacity: 0.85;">
           <img 
             src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-control-panel-studios.png"
             alt="CRS Control Panel"
@@ -812,75 +812,72 @@ app.get('/studio/infrastructure', (c) => {
           />
         </div>
 
-        {/* THE LIVE ROOM */}
-        <div class="infrastructure-room">
-          <h3 class="content-heading heading">1. THE LIVE ROOM</h3>
-          <div class="room-specs mono">
-            <span class="spec-label">DIMENSIONS:</span> 3960 × 2816 mm
-          </div>
-          <div class="content-text">
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;"><strong>Acoustic Role:</strong> Primary ensemble tracking and drum room.</li>
-              <li style="margin-bottom: 0.75rem;"><strong>Monitoring:</strong> Genelec nearfield reference monitors.</li>
-              <li style="margin-bottom: 0.75rem;"><strong>Connectivity:</strong> AV-linked via Dante (Audio) and NDI (Video).</li>
-              <li style="margin-bottom: 0.75rem;"><strong>Inventory:</strong> Drum kit (Existing), Piano (Existing).</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* THE BIG BOOTH */}
-        <div class="infrastructure-room">
-          <h3 class="content-heading heading">2. THE BIG BOOTH</h3>
-          <div class="room-specs mono">
-            <span class="spec-label">DIMENSIONS:</span> 5300 × 1480 mm
-          </div>
-          <div class="content-text">
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;"><strong>Acoustic Role:</strong> Versatile "double booth" for larger groups or brass sections.</li>
-              <li style="margin-bottom: 0.75rem;"><strong>Connectivity:</strong> Parallel conduit with 1m service loops for Dante/SDI expansion.</li>
-            </ul>
+        {/* FUNCTIONAL CAPABILITY MATRIX (Horizontal Flow) */}
+        <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 2rem; margin-bottom: 2rem;">
+          <h3 class="mono" style="font-size: 0.75rem; letter-spacing: 0.15em; color: var(--mustard); margin-bottom: 1.5rem; font-weight: 800;">
+            01 / SIGNAL COMMAND & ROUTING
+          </h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; font-size: 0.875rem; line-height: 1.6;">
+            <div>
+              <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">CENTRAL CONTROL</p>
+              <p style="opacity: 0.85;">ATEM Television Studio 4K8 switcher · SSL XL mixing desk (Planned) · Tascam 8-track (Owned) · Kii Three + BXT monitoring (Planned)</p>
+            </div>
+            <div>
+              <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">PATCHING & CONNECTIVITY</p>
+              <p style="opacity: 0.85;">12-port BNC patch · 24-port Cat6A · LC duplex fiber · Dante audio network · NDI video network</p>
+            </div>
           </div>
         </div>
 
-        {/* SMALL VOCAL BOOTHS */}
-        <div class="infrastructure-room">
-          <h3 class="content-heading heading">3. SMALL VOCAL BOOTHS (×2)</h3>
-          <div class="room-specs mono">
-            <span class="spec-label">DIMENSIONS:</span> 1480 × 1440 mm (each)
-          </div>
-          <div class="content-text">
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;"><strong>Acoustic Role:</strong> Isolated precision tracking for vocals and solo instruments.</li>
-              <li style="margin-bottom: 0.75rem;"><strong>Monitoring:</strong> Genelec 8010A pairs and SSL 12 USB interfaces (Per Pod).</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* WORKSHOP CAFÉ STAGE */}
-        <div class="infrastructure-room">
-          <h3 class="content-heading heading">4. WORKSHOP CAFÉ STAGE</h3>
-          <div class="content-text">
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;"><strong>Role:</strong> Public-facing "Tiny Desk" stage and filmed showcase area.</li>
-              <li style="margin-bottom: 0.75rem;"><strong>Video Infrastructure:</strong> 3× Camera positions with Belden 12G-SDI coax and Cat6A F/UTP shielded runs.</li>
-              <li style="margin-bottom: 0.75rem;"><strong>Audio Rig:</strong> Bose 802 tops + Martin Audio IC300 subwoofers.</li>
-            </ul>
+        <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green); padding: 2rem; margin-bottom: 2rem;">
+          <h3 class="mono" style="font-size: 0.75rem; letter-spacing: 0.15em; color: var(--crs-green); margin-bottom: 1.5rem; font-weight: 800;">
+            02 / ACOUSTIC TRACKING ENVIRONMENTS
+          </h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; font-size: 0.875rem; line-height: 1.6;">
+            <div>
+              <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">LIVE ROOM (3960 × 2816 mm)</p>
+              <p style="opacity: 0.85;">Ensemble tracking · Drum room · Genelec nearfield monitoring · Dante/NDI connectivity · Piano + drum kit inventory</p>
+            </div>
+            <div>
+              <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">BIG BOOTH (5300 × 1480 mm)</p>
+              <p style="opacity: 0.85;">Double booth · Larger groups · Brass sections · Dante/SDI expansion</p>
+            </div>
+            <div>
+              <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">VOCAL PODS (×2 @ 1480 × 1440 mm)</p>
+              <p style="opacity: 0.85;">Isolated precision tracking · Genelec 8010A pairs · SSL 12 USB per pod</p>
+            </div>
           </div>
         </div>
 
-        {/* CENTRAL CONTROL ROOM */}
-        <div class="infrastructure-room">
-          <h3 class="content-heading heading">5. CENTRAL CONTROL ROOM</h3>
-          <div class="room-specs mono">
-            <span class="spec-label">DIMENSIONS:</span> 2344 × 2260 mm
+        <div style="background: rgba(0,0,0,0.3); border-left: 3px solid rgba(212, 160, 23, 0.8); padding: 2rem; margin-bottom: 2rem;">
+          <h3 class="mono" style="font-size: 0.75rem; letter-spacing: 0.15em; color: rgba(212, 160, 23, 0.9); margin-bottom: 1.5rem; font-weight: 800;">
+            03 / PUBLIC-FACING CAPTURE & BROADCAST
+          </h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; font-size: 0.875rem; line-height: 1.6;">
+            <div>
+              <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">WORKSHOP CAFÉ STAGE</p>
+              <p style="opacity: 0.85;">Tiny Desk format · 3× camera positions · Belden 12G-SDI + Cat6A F/UTP · Bose 802 tops + Martin Audio IC300 subs</p>
+            </div>
+            <div>
+              <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">SHARED VIDEO INFRASTRUCTURE</p>
+              <p style="opacity: 0.85;">Multi-room routing · NDI protocol · Scalable to venue events + studio sessions</p>
+            </div>
           </div>
-          <div class="content-text">
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;"><strong>Signal Command:</strong> ATEM Television Studio 4K8 switcher and fanless PoE switch.</li>
-              <li style="margin-bottom: 0.75rem;"><strong>Primary Signal Path:</strong> SSL XL mixing desk (Planned) and Tascam 8-track (Owned).</li>
-              <li style="margin-bottom: 0.75rem;"><strong>Main Monitoring:</strong> Kii Three + BXT full-range system (Planned).</li>
-              <li style="margin-bottom: 0.75rem;"><strong>Patching:</strong> 12-port BNC patch panel, 24-port Cat6A, and LC duplex fiber patch panel.</li>
-            </ul>
+        </div>
+
+        <div style="background: rgba(0,0,0,0.3); border-left: 3px solid rgba(196, 30, 58, 0.8); padding: 2rem;">
+          <h3 class="mono" style="font-size: 0.75rem; letter-spacing: 0.15em; color: rgba(196, 30, 58, 0.9); margin-bottom: 1.5rem; font-weight: 800;">
+            04 / TECHNICAL SUPPORT & FIELD DEPLOYMENT
+          </h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; font-size: 0.875rem; line-height: 1.6;">
+            <div>
+              <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">REPAIR BENCH (ODRO)</p>
+              <p style="opacity: 0.85;">Mixers · Interfaces · Amplifiers · Speakers · Power/signal diagnostics · Currently paused</p>
+            </div>
+            <div>
+              <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">LIVE EVENT TECH</p>
+              <p style="opacity: 0.85;">Field deployment · PA systems · Monitoring · Engineer support · Event coordination</p>
+            </div>
           </div>
         </div>
 
