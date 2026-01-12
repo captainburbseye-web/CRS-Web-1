@@ -76,6 +76,7 @@ body {
   border-bottom: 1px solid rgba(212, 160, 23, 0.2);
   padding: 0.875rem 2rem;
   display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping */
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
@@ -165,10 +166,12 @@ body {
 .header-actions {
   display: flex;
   align-items: center; /* CRITICAL: Keep header actions aligned */
+  flex-wrap: nowrap; /* Prevent wrapping */
   gap: 0.75rem;
   font-family: 'Inter', sans-serif;
   font-size: 0.813rem;
   font-weight: 400;
+  white-space: nowrap; /* No line breaks */
 }
 
 .header-actions a {
