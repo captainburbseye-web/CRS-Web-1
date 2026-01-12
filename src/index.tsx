@@ -232,7 +232,7 @@ app.use(renderer)
 // SHARED COMPONENTS
 const Header = () => (
   <header class="crs-header">
-    {/* Left: Identity + ALL Navigation Links */}
+    {/* Left: Identity + Colored Navigation Buttons */}
     <div class="header-left">
       <a href="/" class="header-logo-link">
         <img 
@@ -245,17 +245,13 @@ const Header = () => (
         />
       </a>
       <nav class="header-services">
-        <a href="/studio">Studio</a>
-        <span class="separator">·</span>
-        <a href="/workshop-cafe">Workshop Café</a>
-        <span class="separator">·</span>
-        <a href="/av-services">AV</a>
-        <span class="separator">·</span>
-        <a href="/contact">Contact</a>
+        <a href="/studio" class="nav-button nav-studio">Studio</a>
+        <a href="/workshop-cafe" class="nav-button nav-cafe">Workshop Café</a>
+        <a href="/av-services" class="nav-button nav-av">AV</a>
       </nav>
     </div>
 
-    {/* Right: BOOK NOW Button */}
+    {/* Right: BOOK NOW Button (Far Right) */}
     <div class="header-right">
       <div class="header-center-action">
         <div class="book-now-panel neon-flash" id="book-now-panel">

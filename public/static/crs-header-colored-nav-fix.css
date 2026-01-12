@@ -1,0 +1,348 @@
+/*
+ * CRS HEADER FIX: COLORED NAV BUTTONS + CONTACT TO FOOTER
+ * 
+ * CHANGES:
+ * 1. Studio, Workshop Café, AV → Same size/font as BOOK NOW (no glow)
+ * 2. Studio → Green
+ * 3. Workshop Café → Warm yellow/mustard orange
+ * 4. AV → Red
+ * 5. BOOK NOW → Move further right (not centered)
+ * 6. Contact → Remove from header, move to footer
+ */
+
+/* ============================================
+   HEADER LAYOUT: LEFT NAV + RIGHT BOOK NOW
+   ============================================ */
+
+header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 15px 40px !important;
+  background-color: var(--crs-black, #0A1A0F) !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important;
+  box-sizing: border-box !important;
+  border-bottom: 2px solid var(--crs-border, #2A2A2A) !important;
+}
+
+/* ============================================
+   LEFT SIDE: LOGO + COLORED NAV BUTTONS
+   ============================================ */
+
+.header-left,
+header nav,
+header .nav-group {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important; /* Tighter spacing between buttons */
+  flex: 0 0 auto !important;
+}
+
+/* Logo */
+header .logo,
+header img[alt*="logo"],
+header a[href="/"] img {
+  width: 40px !important;
+  height: 40px !important;
+  margin-right: 16px !important;
+}
+
+/* ============================================
+   NAV BUTTONS: SAME STYLE AS BOOK NOW (NO GLOW)
+   ============================================ */
+
+/* Base Button Style (Applied to Studio, Workshop Café, AV) */
+header nav a,
+header .header-left a:not(.logo):not([href*="contact"]),
+header .nav-group a:not([href*="contact"]) {
+  /* Same sizing as BOOK NOW */
+  padding: 12px 24px !important;
+  
+  /* Same typography as BOOK NOW */
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: 16px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  
+  /* Button appearance (NO GLOW) */
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 2px solid currentColor !important; /* Border matches text color */
+  text-decoration: none !important;
+  display: inline-block !important;
+  backdrop-filter: blur(4px) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  
+  /* NO GLOW, NO ANIMATION */
+  box-shadow: none !important;
+  animation: none !important;
+  text-shadow: none !important;
+}
+
+/* ============================================
+   STUDIO BUTTON → GREEN
+   ============================================ */
+
+header a[href*="studio"],
+header a[href="#studio"],
+header nav a:nth-of-type(1) {
+  color: #39FF14 !important; /* Neon green */
+  border-color: #39FF14 !important;
+}
+
+header a[href*="studio"]:hover,
+header a[href="#studio"]:hover,
+header nav a:nth-of-type(1):hover {
+  background: rgba(57, 255, 20, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ============================================
+   WORKSHOP CAFÉ BUTTON → WARM YELLOW/MUSTARD ORANGE
+   ============================================ */
+
+header a[href*="workshop"],
+header a[href*="cafe"],
+header a[href*="café"],
+header a[href="#workshop"],
+header nav a:nth-of-type(2) {
+  color: #D4A017 !important; /* Mustard/warm yellow */
+  border-color: #D4A017 !important;
+}
+
+header a[href*="workshop"]:hover,
+header a[href*="cafe"]:hover,
+header a[href*="café"]:hover,
+header a[href="#workshop"]:hover,
+header nav a:nth-of-type(2):hover {
+  background: rgba(212, 160, 23, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ============================================
+   AV BUTTON → RED
+   ============================================ */
+
+header a[href*="av"],
+header a[href="#av"],
+header nav a:nth-of-type(3) {
+  color: #C41E3A !important; /* Red */
+  border-color: #C41E3A !important;
+}
+
+header a[href*="av"]:hover,
+header a[href="#av"]:hover,
+header nav a:nth-of-type(3):hover {
+  background: rgba(196, 30, 58, 0.1) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ============================================
+   BOOK NOW → MOVE FURTHER RIGHT (NOT CENTERED)
+   ============================================ */
+
+.book-now-panel,
+.book-now-button,
+header .cta-button,
+header button[class*="book"],
+header a[class*="book"] {
+  /* Push to far right */
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  
+  /* Fallout Neon Styling (KEEP GLOW) */
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 2px solid var(--crs-gold, #FF8C00) !important;
+  color: var(--crs-gold, #FF8C00) !important;
+  padding: 12px 24px !important;
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: 16px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+  backdrop-filter: blur(4px) !important;
+  transition: all 0.3s ease !important;
+  
+  /* KEEP Neon Glow */
+  box-shadow: 
+    0 0 10px rgba(255, 140, 0, 0.5),
+    0 0 20px rgba(255, 140, 0, 0.3),
+    inset 0 0 10px rgba(255, 140, 0, 0.1) !important;
+  
+  /* KEEP Animation */
+  animation: fallout-neon-flicker 4s infinite !important;
+}
+
+/* Flicker Animation (KEEP) */
+@keyframes fallout-neon-flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+    filter: brightness(100%);
+    text-shadow: 
+      0 0 4px rgba(255, 140, 0, 0.8),
+      0 0 8px rgba(255, 140, 0, 0.6),
+      0 0 12px rgba(255, 140, 0, 0.4);
+  }
+  20%, 24%, 55% {
+    opacity: 0.9;
+    filter: brightness(90%);
+    text-shadow: 
+      0 0 2px rgba(255, 140, 0, 0.6),
+      0 0 4px rgba(255, 140, 0, 0.4);
+  }
+}
+
+/* Hover State (KEEP) */
+.book-now-panel:hover,
+.book-now-button:hover,
+header .cta-button:hover,
+header button[class*="book"]:hover,
+header a[class*="book"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 
+    0 0 15px rgba(255, 140, 0, 0.7),
+    0 0 30px rgba(255, 140, 0, 0.5),
+    inset 0 0 15px rgba(255, 140, 0, 0.2) !important;
+  border-color: #FFA500 !important;
+  color: #FFA500 !important;
+}
+
+/* ============================================
+   CONTACT → REMOVE FROM HEADER
+   ============================================ */
+
+header a[href*="contact"],
+header a[href="#contact"],
+header .contact-link {
+  display: none !important; /* Hide from header */
+}
+
+/* ============================================
+   CONTACT → ADD TO FOOTER
+   ============================================ */
+
+footer .contact-section,
+footer [id*="contact"],
+footer .footer-contact {
+  /* Make sure Contact section is visible in footer */
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Optional: Add Contact link to footer if it doesn't exist */
+footer::after {
+  content: '';
+  display: block;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE (<768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+  header {
+    padding: 10px 20px !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .header-left,
+  header nav,
+  header .nav-group {
+    gap: 12px !important;
+  }
+  
+  /* Smaller buttons on mobile */
+  header nav a,
+  header .header-left a:not(.logo),
+  .book-now-panel,
+  .book-now-button {
+    padding: 10px 16px !important;
+    font-size: 14px !important;
+    letter-spacing: 1px !important;
+  }
+  
+  /* Hide Workshop Café on very small screens */
+  header a[href*="workshop"],
+  header a[href*="cafe"],
+  header a[href*="café"] {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Stack vertically on very small screens */
+  header {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 10px !important;
+  }
+  
+  .header-left,
+  header nav {
+    justify-content: center !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .book-now-panel,
+  .book-now-button {
+    margin: 0 auto !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* ============================================
+   DROPDOWN (IF BOOK NOW HAS ONE)
+   ============================================ */
+
+.book-now-dropdown,
+.book-now-panel .dropdown,
+header .cta-button + .dropdown {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  right: 0 !important;
+  left: auto !important;
+  background: rgba(10, 26, 15, 0.95) !important;
+  border: 2px solid var(--crs-gold, #FF8C00) !important;
+  border-radius: 0 !important;
+  padding: 12px 0 !important;
+  min-width: 200px !important;
+  box-shadow: 
+    0 0 10px rgba(255, 140, 0, 0.5),
+    0 4px 20px rgba(0, 0, 0, 0.8) !important;
+  z-index: 10000 !important;
+}
+
+.book-now-dropdown a,
+.book-now-panel .dropdown a,
+header .cta-button + .dropdown a {
+  display: block !important;
+  padding: 10px 20px !important;
+  color: var(--crs-gold, #FF8C00) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  border-left: 3px solid transparent !important;
+}
+
+.book-now-dropdown a:hover,
+.book-now-panel .dropdown a:hover,
+header .cta-button + .dropdown a:hover {
+  background: rgba(255, 140, 0, 0.1) !important;
+  border-left-color: var(--crs-gold, #FF8C00) !important;
+  text-shadow: 0 0 8px rgba(255, 140, 0, 0.6) !important;
+}
+
+/* ============================================
+   END OF FIX
+   ============================================ */

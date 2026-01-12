@@ -31,6 +31,7 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-industrial-pulse.css" rel="stylesheet" />
         <link href="/static/crs-workshop-cafe-marquee.css" rel="stylesheet" />
         <link href="/static/status-lights.css" rel="stylesheet" />
+        <link href="/static/crs-header-colored-nav-fix.css" rel="stylesheet" />
       </head>
       <body>
         {children}
