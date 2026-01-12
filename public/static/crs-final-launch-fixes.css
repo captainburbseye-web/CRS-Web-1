@@ -8,20 +8,27 @@
 
 /* === FIX 1: REMOVE DARK GREY FROM HERO === */
 
-/* Remove dark background from hero section */
+/* Remove ALL padding and background from hero section */
 .crs-hero {
   background-color: transparent !important;
   background: none !important;
-  padding: 2rem 2rem !important; /* Reduce padding, keep spacing */
-  border-bottom: none !important; /* Remove border creating frame effect */
+  padding: 0 !important; /* Zero padding - image fills the space */
+  margin: 0 !important;
+  border-bottom: none !important;
   box-shadow: none !important;
+  min-height: unset !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
-/* Ensure hero container sits directly on page background */
+/* Hero container - zero padding, let image be full-width */
 .hero-container {
   background-color: transparent !important;
   background: none !important;
   padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important; /* Allow full width */
+  width: 100% !important;
 }
 
 /* Remove any box styling from logo wrapper */
@@ -33,23 +40,35 @@
   background: none !important;
   box-shadow: none !important;
   padding: 0 !important;
+  margin: 0 !important;
 }
 
-/* Hero power panel - no background, just the logo */
+/* Hero power panel - full-width, no padding, no background */
 .hero-power-panel {
   display: block;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  margin: 0 auto;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
   background: none !important;
+  filter: none !important; /* Remove shadow so image sits clean */
+  object-fit: cover !important; /* Fill the space completely */
 }
 
-/* Mobile: reduce padding further */
+/* Mobile: still zero padding */
 @media (max-width: 768px) {
   .crs-hero {
-    padding: 1.5rem 1rem !important;
+    padding: 0 !important;
+  }
+  
+  .hero-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .hero-power-panel {
+    width: 100% !important;
   }
 }
 
