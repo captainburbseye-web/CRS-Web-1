@@ -14,9 +14,8 @@
 /* === HEADER STRUCTURAL RESET === */
 .crs-header {
   display: flex !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
   align-items: center !important;
-  gap: 2rem !important;
   padding: 1rem 1.5rem !important;
   background: #1a1a1a !important;
   border: 2px solid #3a3a3a !important;
@@ -27,20 +26,30 @@
   grid-template-rows: unset !important;
 }
 
-/* === ZONE A: LEFT CONTAINER (Logo + Console Labels) === */
+/* === SINGLE ROW CONTAINER === */
+.crs-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+/* === ZONE A: LEFT CONTAINER (Badge + Console Labels) === */
 .crs-header-left {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   flex: 0 1 auto;
 }
 
-/* === ZONE B: LOGO === */
+/* === CONTROL PANEL BADGE === */
 .header-logo {
   display: flex;
   align-items: center;
   text-decoration: none;
   transition: opacity 0.2s ease;
+  flex-shrink: 0;
 }
 
 .header-logo:hover {
@@ -49,7 +58,7 @@
 
 .header-logo-desktop {
   display: block;
-  height: 50px;
+  height: 60px; /* Control panel badge size */
   width: auto;
   object-fit: contain;
 }
@@ -187,12 +196,19 @@
 /* === MOBILE BEHAVIOR === */
 @media (max-width: 1023px) {
   .crs-header {
-    gap: 1.5rem !important;
     padding: 0.875rem 1.25rem !important;
   }
   
+  .crs-header-row {
+    gap: 1.5rem;
+  }
+  
+  .crs-header-left {
+    gap: 1.25rem;
+  }
+  
   .header-logo-desktop {
-    height: 44px;
+    height: 54px; /* Slightly smaller on tablet */
   }
   
   .nav-item,
@@ -205,33 +221,30 @@
 
 @media (max-width: 767px) {
   .crs-header {
-    justify-content: space-between !important;
-    gap: 1rem !important;
     padding: 0.75rem 1rem !important;
   }
   
-  /* Show only logo + hamburger on mobile */
+  .crs-header-row {
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
   .crs-header-left {
     gap: 1rem;
   }
   
+  /* Show badge on mobile */
   .header-logo-desktop {
     display: none;
   }
   
   .header-logo-mobile {
     display: block;
-    height: 42px;
+    height: 48px;
   }
   
   /* Hide desktop nav */
   .header-services {
-    display: none !important;
-  }
-  
-  /* Hide BOOK NOW on mobile (goes in overlay) */
-  .crs-header-right,
-  .crs-nav-action {
     display: none !important;
   }
   
