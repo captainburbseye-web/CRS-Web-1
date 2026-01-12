@@ -218,7 +218,6 @@ const Header = () => (
           loading="eager"
         />
       </a>
-      <a href="/" class="header-brand">CRS</a>
       <nav class="header-services">
         <a href="/studio">Studio</a>
         <span class="separator">·</span>
