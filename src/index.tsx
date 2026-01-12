@@ -233,8 +233,15 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="crs-header">
-      {/* NAVIGATION ROW: Console Labels (Left) + BOOK NOW (Right) */}
+      {/* NAVIGATION ROW: Badge + Console Labels (Left) + BOOK NOW (Right) */}
       <div class="crs-header-nav-row">
+        {/* CRS RACK BADGE (Static Manufacturer Plate) */}
+        <img 
+          src="/static/images/crs-badge-dark.webp" 
+          alt="Cowley Road Studios"
+          class="crs-rack-badge"
+        />
+
         {/* ZONE A (LEFT): Console Labels */}
         <div class="crs-header-left">
           <nav class="header-services">

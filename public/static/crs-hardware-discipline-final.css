@@ -26,6 +26,26 @@
   grid-template-rows: unset !important;
 }
 
+/* === CRS RACK BADGE (Static Manufacturer Plate) === */
+.crs-rack-badge {
+  height: 42px;              /* Fixed hardware scale */
+  width: auto;
+  margin-right: 1rem;
+  flex-shrink: 0;
+  opacity: 0.95;
+
+  /* HARD LOCKS — Passive Hardware Only */
+  pointer-events: none !important;      /* Not clickable */
+  cursor: default !important;
+  filter: none !important;              /* No glow */
+  box-shadow: none !important;
+  animation: none !important;
+  transition: none !important;
+  
+  /* Governance: This is a rack plate, not a logo */
+  user-select: none;
+}
+
 /* === NAVIGATION ROW === */
 .crs-header-nav-row {
   display: flex;
@@ -175,6 +195,10 @@
     padding: 0.875rem 1.25rem !important;
   }
   
+  .crs-rack-badge {
+    height: 38px; /* Slightly smaller on tablet */
+  }
+  
   .crs-header-nav-row {
     gap: 1.5rem;
   }
@@ -190,6 +214,11 @@
 @media (max-width: 767px) {
   .crs-header {
     padding: 0.75rem 1rem !important;
+  }
+  
+  /* Hide rack badge on mobile (too small) */
+  .crs-rack-badge {
+    display: none;
   }
   
   .crs-header-nav-row {
