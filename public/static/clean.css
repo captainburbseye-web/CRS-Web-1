@@ -2471,44 +2471,9 @@ body::after {
 }
 
 /* BOOK NOW icon (green play button) */
-.book-now-icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  vertical-align: middle;
-  filter: drop-shadow(0 0 4px rgba(57, 255, 20, 0.6));
-}
-
-/* Status icons in section headers */
-.status-icon {
-  width: 28px;
-  height: 28px;
-  margin-right: 12px;
-  vertical-align: middle;
-  filter: drop-shadow(0 0 6px rgba(57, 255, 20, 0.5));
-  display: inline-block;
-}
-
-.section-title {
-  display: inline-flex;
-  align-items: center;
-}
-
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .header-logo-strip {
     height: 40px;
-  }
-  
-  .status-icon {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-  }
-  
-  .book-now-icon {
-    width: 18px;
-    height: 18px;
-    margin-right: 6px;
   }
 }

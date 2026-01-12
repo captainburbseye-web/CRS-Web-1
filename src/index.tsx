@@ -258,14 +258,6 @@ const Header = () => (
     <div class="header-center-action">
       <div class="book-now-panel neon-flash" id="book-now-panel">
         <button class="book-now-trigger" id="book-now-trigger">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/ddGuz6zL.png" 
-            alt=""
-            class="book-now-icon"
-            width="24"
-            height="24"
-            loading="eager"
-          />
           BOOK NOW
         </button>
         <div class="book-now-dropdown" id="book-now-dropdown">
@@ -535,14 +527,6 @@ app.get('/', (c) => {
       <section class="crs-section section-dark">
         <div class="section-header">
           <h2 class="section-title heading">
-            <img 
-              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/ddGuz6zL.png" 
-              alt=""
-              class="status-icon"
-              width="32"
-              height="32"
-              loading="lazy"
-            />
             STUDIO SESSIONS
           </h2>
           <p class="section-intro">
@@ -558,14 +542,6 @@ app.get('/', (c) => {
       <section class="crs-section section-dark">
         <div class="section-header">
           <h2 class="section-title heading">
-            <img 
-              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/ddGuz6zL.png" 
-              alt=""
-              class="status-icon"
-              width="32"
-              height="32"
-              loading="lazy"
-            />
             AV SERVICES & LIVE SOUND
           </h2>
           <p class="section-intro">
@@ -581,14 +557,6 @@ app.get('/', (c) => {
       <section class="crs-section cafe-heartbeat">
         <div class="section-header">
           <h2 class="section-title cafe-title">
-            <img 
-              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/ddGuz6zL.png" 
-              alt=""
-              class="status-icon"
-              width="32"
-              height="32"
-              loading="lazy"
-            />
             WORKSHOP CAFÉ
           </h2>
           <p class="section-intro cafe-intro">
