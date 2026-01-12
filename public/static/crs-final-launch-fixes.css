@@ -6,7 +6,7 @@
    FIX 2: Reorganize header navigation layout
    ============================================ */
 
-/* === FIX 1: REMOVE DARK GREY FROM HERO === */
+/* === FIX 1: REMOVE DARK GREY FROM HERO + COMPACT SIZE === */
 
 /* Remove ALL padding and background from hero section */
 .crs-hero {
@@ -17,17 +17,21 @@
   border-bottom: none !important;
   box-shadow: none !important;
   min-height: unset !important;
+  max-height: 50vh !important; /* Limit height to 50% of viewport */
   height: auto !important;
-  overflow: visible !important;
+  overflow: hidden !important; /* Crop if needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Hero container - zero padding, let image be full-width */
+/* Hero container - constrain size for compact presentation */
 .hero-container {
   background-color: transparent !important;
   background: none !important;
   padding: 0 !important;
-  margin: 0 !important;
-  max-width: 100% !important; /* Allow full width */
+  margin: 0 auto !important;
+  max-width: 1200px !important; /* Constrain max width */
   width: 100% !important;
 }
 
@@ -43,32 +47,47 @@
   margin: 0 !important;
 }
 
-/* Hero power panel - full-width, no padding, no background */
+/* Hero power panel - compact but impactful */
 .hero-power-panel {
   display: block;
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: 1200px !important; /* Match container */
   height: auto !important;
-  margin: 0 !important;
+  max-height: 50vh !important; /* Limit to half viewport height */
+  margin: 0 auto !important;
   padding: 0 !important;
   background: none !important;
-  filter: none !important; /* Remove shadow so image sits clean */
-  object-fit: cover !important; /* Fill the space completely */
+  filter: none !important;
+  object-fit: contain !important; /* Maintain aspect ratio, don't crop */
 }
 
-/* Mobile: still zero padding */
+/* Tablet: slightly smaller */
+@media (max-width: 1024px) {
+  .crs-hero {
+    max-height: 40vh !important;
+  }
+  
+  .hero-power-panel {
+    max-height: 40vh !important;
+    max-width: 900px !important;
+  }
+}
+
+/* Mobile: more compact */
 @media (max-width: 768px) {
   .crs-hero {
     padding: 0 !important;
+    max-height: 35vh !important;
   }
   
   .hero-container {
     padding: 0 !important;
-    margin: 0 !important;
+    margin: 0 auto !important;
   }
   
   .hero-power-panel {
     width: 100% !important;
+    max-height: 35vh !important;
   }
 }
 
