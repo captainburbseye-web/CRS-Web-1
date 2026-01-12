@@ -1,0 +1,194 @@
+/* ============================================
+   CRS FINAL LAUNCH FIXES
+   Date: January 12, 2026
+   
+   FIX 1: Remove dark grey around hero banner
+   FIX 2: Reorganize header navigation layout
+   ============================================ */
+
+/* === FIX 1: REMOVE DARK GREY FROM HERO === */
+
+/* Remove dark background from hero section */
+.crs-hero {
+  background-color: transparent !important;
+  background: none !important;
+  padding: 2rem 2rem !important; /* Reduce padding, keep spacing */
+  border-bottom: none !important; /* Remove border creating frame effect */
+  box-shadow: none !important;
+}
+
+/* Ensure hero container sits directly on page background */
+.hero-container {
+  background-color: transparent !important;
+  background: none !important;
+  padding: 0 !important;
+}
+
+/* Remove any box styling from logo wrapper */
+.hero-logo-container,
+.logo-wrapper,
+.hero-content,
+.hero-inner {
+  background-color: transparent !important;
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Hero power panel - no background, just the logo */
+.hero-power-panel {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+  background: none !important;
+}
+
+/* Mobile: reduce padding further */
+@media (max-width: 768px) {
+  .crs-hero {
+    padding: 1.5rem 1rem !important;
+  }
+}
+
+/* === FIX 2: REORGANIZE HEADER NAVIGATION === */
+
+/* Header layout: logo + all links on left, BOOK NOW on right */
+.crs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 2rem;
+  gap: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Left side: logo + ALL navigation links together */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* Navigation links container */
+.header-services {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  line-height: 1; /* Remove extra line-height for perfect alignment */
+}
+
+/* Individual nav links */
+.header-services a {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.813rem;
+  font-weight: 400;
+  color: rgba(245, 245, 245, 0.75);
+  text-decoration: none;
+  transition: color 0.15s;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1; /* Perfect vertical alignment */
+  vertical-align: middle;
+}
+
+.header-services a:hover {
+  color: rgba(245, 245, 245, 0.95);
+}
+
+.header-services .separator {
+  color: rgba(245, 245, 245, 0.25);
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+/* Right side: BOOK NOW button and Contact link */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* BOOK NOW button positioning - no longer centered */
+.header-center-action {
+  position: static; /* Remove absolute positioning */
+  transform: none; /* Remove transform */
+  z-index: auto;
+}
+
+/* BOOK NOW panel container */
+.book-now-panel {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* BOOK NOW trigger button */
+.book-now-trigger,
+#book-now-trigger {
+  align-self: center; /* Ensure button aligns with nav links */
+  line-height: 1;
+  /* Keep existing Fallout neon styling */
+}
+
+/* Dropdown positioning */
+.book-now-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+}
+
+/* === RESPONSIVE: MOBILE === */
+@media (max-width: 768px) {
+  .crs-header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .header-left {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .header-services {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  
+  .header-right {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .book-now-panel {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* === TABLET: OPTIMIZE SPACING === */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .crs-header {
+    gap: 1.5rem;
+  }
+  
+  .header-left {
+    gap: 1.25rem;
+  }
+  
+  .header-services {
+    gap: 0.5rem;
+  }
+}
