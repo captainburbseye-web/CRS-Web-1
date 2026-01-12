@@ -14,10 +14,11 @@
 /* === HEADER STRUCTURAL RESET === */
 .crs-header {
   display: flex !important;
-  justify-content: center !important;
+  flex-direction: column !important;
   align-items: center !important;
-  padding: 1rem 1.5rem !important;
-  background: #1a1a1a !important;
+  gap: 1rem !important;
+  padding: 1.5rem 1.5rem 1rem !important;
+  background: #0E0E0E !important; /* Deep Black Terminal */
   border: 2px solid #3a3a3a !important;
   border-radius: 4px !important;
   
@@ -26,8 +27,42 @@
   grid-template-rows: unset !important;
 }
 
-/* === SINGLE ROW CONTAINER === */
-.crs-header-row {
+/* === V12 MASTER CONSOLE BRAND ANCHOR (CENTERED) === */
+.header-brand-master {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  width: 100%;
+}
+
+.header-brand-master:hover {
+  opacity: 0.90;
+}
+
+.crs-master-console {
+  display: block;
+  width: 350px; /* Standard screens */
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  
+  /* Terminal styling — bolted directly onto header */
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 55" Display Terminal scaling */
+@media (min-width: 1920px) {
+  .crs-master-console {
+    width: 500px;
+  }
+}
+
+/* === NAVIGATION ROW (BELOW BRAND) === */
+.crs-header-nav-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,36 +70,12 @@
   gap: 2rem;
 }
 
-/* === ZONE A: LEFT CONTAINER (Badge + Console Labels) === */
+/* === ZONE A: LEFT CONTAINER (Console Labels only) === */
 .crs-header-left {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 0;
   flex: 0 1 auto;
-}
-
-/* === CONTROL PANEL BADGE === */
-.header-logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-  flex-shrink: 0;
-}
-
-.header-logo:hover {
-  opacity: 0.85;
-}
-
-.header-logo-desktop {
-  display: block;
-  height: 60px; /* Control panel badge size */
-  width: auto;
-  object-fit: contain;
-}
-
-.header-logo-mobile {
-  display: none;
 }
 
 /* === ZONE A: CONSOLE LABELS (NAVIGATION) === */
@@ -196,19 +207,16 @@
 /* === MOBILE BEHAVIOR === */
 @media (max-width: 1023px) {
   .crs-header {
-    padding: 0.875rem 1.25rem !important;
+    padding: 1.25rem 1.25rem 0.875rem !important;
+    gap: 0.875rem !important;
   }
   
-  .crs-header-row {
+  .crs-master-console {
+    width: 300px; /* Tablet scaling */
+  }
+  
+  .crs-header-nav-row {
     gap: 1.5rem;
-  }
-  
-  .crs-header-left {
-    gap: 1.25rem;
-  }
-  
-  .header-logo-desktop {
-    height: 54px; /* Slightly smaller on tablet */
   }
   
   .nav-item,
@@ -221,26 +229,17 @@
 
 @media (max-width: 767px) {
   .crs-header {
-    padding: 0.75rem 1rem !important;
+    padding: 1rem 1rem 0.75rem !important;
+    gap: 0.75rem !important;
   }
   
-  .crs-header-row {
+  .crs-master-console {
+    width: 280px; /* Mobile scaling */
+  }
+  
+  .crs-header-nav-row {
     justify-content: space-between;
     gap: 1rem;
-  }
-  
-  .crs-header-left {
-    gap: 1rem;
-  }
-  
-  /* Show badge on mobile */
-  .header-logo-desktop {
-    display: none;
-  }
-  
-  .header-logo-mobile {
-    display: block;
-    height: 48px;
   }
   
   /* Hide desktop nav */
@@ -251,6 +250,17 @@
   /* Show hamburger */
   .mobile-menu-toggle {
     display: block !important;
+  }
+  
+  /* BOOK NOW stays visible on mobile */
+  .crs-header-right {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .crs-master-console {
+    width: 240px; /* Extra small mobile */
   }
 }
 

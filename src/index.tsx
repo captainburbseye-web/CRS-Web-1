@@ -233,28 +233,24 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="crs-header">
-      {/* SINGLE ROW: Control Panel Badge (Left) + Console Labels + BOOK NOW (Right) */}
-      <div class="crs-header-row">
-        {/* ZONE A (LEFT): Control Panel Badge + Console Labels */}
-        <div class="crs-header-left">
-          {/* CRS Control Panel Badge */}
-          <a href="/" class="header-logo">
-            <img src="/static/images/crs-control-panel-badge.jpg" alt="CRS" class="header-logo-desktop" />
-            <img src="/static/images/crs-badge-dark.webp" alt="CRS" class="header-logo-mobile" />
-          </a>
+      {/* V12 MASTER CONSOLE BRAND ANCHOR (CENTERED) */}
+      <a href="/" class="header-brand-master">
+        <img src="/static/images/crs-master-console-v12.webp" alt="Cowley Road Studios" class="crs-master-console" />
+      </a>
 
-          {/* Console Labels (Navigation) */}
-          <div class="crs-nav-primary">
-            <nav class="header-services">
-              <a href="/studio" class="nav-item">Studio</a>
-              <span class="separator">·</span>
-              <a href="/workshop-cafe" class="nav-item">Workshop Café</a>
-              <span class="separator">·</span>
-              <a href="/av-services" class="nav-item">AV</a>
-              <span class="separator">·</span>
-              <a href="/contact" class="nav-item">Contact</a>
-            </nav>
-          </div>
+      {/* NAVIGATION ROW (BELOW BRAND) */}
+      <div class="crs-header-nav-row">
+        {/* ZONE A (LEFT): Console Labels */}
+        <div class="crs-header-left">
+          <nav class="header-services">
+            <a href="/studio" class="nav-item">Studio</a>
+            <span class="separator">·</span>
+            <a href="/workshop-cafe" class="nav-item">Workshop Café</a>
+            <span class="separator">·</span>
+            <a href="/av-services" class="nav-item">AV</a>
+            <span class="separator">·</span>
+            <a href="/contact" class="nav-item">Contact</a>
+          </nav>
 
           {/* Mobile Menu Toggle */}
           <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
