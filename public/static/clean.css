@@ -20,6 +20,8 @@ body {
   background: var(--crs-black); /* NASA terminal deep green/black */
   color: var(--crs-text);
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 /* TYPOGRAPHY */
@@ -78,6 +80,7 @@ body {
   align-items: center;
   gap: 2rem;
   z-index: 50;
+  margin-bottom: 0; /* Tight mount to hero */
 }
 
 .header-left {
@@ -628,59 +631,64 @@ body {
 
 /* HERO - Industrial header panel (NOT full-screen landing) */
 .crs-hero {
-  /* Force content-driven height */
+  /* Rack-mounted fascia: minimal vertical space */
   height: auto !important;
   min-height: unset !important;
-  max-height: none !important;
+  max-height: 280px; /* Tight frame for logo */
+  overflow: hidden;
   
-  /* Remove vertical centering */
+  /* Remove all centering */
   display: block;
-  align-items: flex-start;
-  justify-content: flex-start;
   
-  /* Content-driven padding only */
-  padding-top: clamp(3rem, 6vw, 5rem);
-  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  /* Minimal padding - rack unit feel */
+  padding-top: 1rem;
+  padding-bottom: 0rem;
   padding-left: 2rem;
   padding-right: 2rem;
   
-  /* Restore dark green background */
-  background: #0F1A14;
-  border-bottom: 2px solid var(--mustard);
+  /* Dark background */
+  background: #0D1912;
+  
+  /* Fascia plate frame */
+  border-bottom: 2px solid #E89B3C;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .hero-container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem;
+  padding: 0; /* Remove all internal padding */
 }
 
 @media (min-width: 768px) {
   .hero-container {
-    padding: 4rem 2rem;
+    padding: 0; /* No padding on any breakpoint */
   }
 }
 
-/* Hero Power Panel - Industrial plate treatment */
+/* Hero Power Panel - Bolted fascia plate */
 .hero-power-panel {
   display: block;
   width: 100%;
-  max-width: 340px; /* Mobile: 300-340px */
+  max-width: 340px;
   height: auto;
-  margin: 0 auto 28px auto; /* Mobile: 24-28px bottom spacing */
+  margin: 0 auto; /* No bottom margin - tight mount */
+  
+  /* Fascia depth */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
 }
 
 @media (min-width: 768px) {
   .hero-power-panel {
-    max-width: 420px; /* Tablet: ~420px */
-    margin-bottom: 32px;
+    max-width: 420px;
+    margin-bottom: 0; /* Tight on all sizes */
   }
 }
 
 @media (min-width: 1024px) {
   .hero-power-panel {
-    max-width: 560px; /* Desktop: 520-600px, using 560px */
-    margin-bottom: 40px; /* Desktop: 32-40px */
+    max-width: 560px;
+    margin-bottom: 0;
   }
 }
 
