@@ -268,15 +268,6 @@ const Header = () => (
         </div>
       </div>
     </div>
-
-    {/* Right: Navigation */}
-    <div class="header-right">
-      <nav class="header-services">
-        <a href="/locations">Locations</a>
-        <span class="separator">·</span>
-        <a href="/contact">Contact</a>
-      </nav>
-    </div>
   </header>
 )
 
