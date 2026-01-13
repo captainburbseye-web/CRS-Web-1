@@ -250,8 +250,6 @@ const Header = () => (
             <a href="/workshop-cafe" class="nav-item">Workshop Café</a>
             <span class="separator">·</span>
             <a href="/av-services" class="nav-item">AV</a>
-            <span class="separator">·</span>
-            <a href="/contact" class="nav-item">Contact</a>
           </nav>
 
           {/* Mobile Menu Toggle */}
