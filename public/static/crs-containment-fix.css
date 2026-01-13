@@ -3,8 +3,10 @@
  * 
  * Fixes:
  * 1. Hard-separate Header and Hero (z-index stack + margin)
- * 2. Mount the badge in a fixed frame (max-height, aspect ratio lock)
+ * 2. Mount the HERO badge in a fixed frame (max-height, aspect ratio lock)
  * 3. Kill accidental overlay bars (pseudo-element artifacts)
+ * 
+ * NOTE: Header stamp (crs-rack-badge) is already correctly sized at 72px via hardware-discipline-final.css
  */
 
 /* === FIX 1: HARD-SEPARATE HEADER AND HERO === */
@@ -13,16 +15,17 @@
 .crs-header {
   position: relative !important;
   z-index: 100 !important;
-  background: #0a0a0a !important;
+  background: #0E0E0E !important; /* Match existing deep black */
 }
 
 /* Hero: Below header, with physical separation */
 .crs-hero {
   position: relative !important;
   z-index: 1 !important;
-  margin-top: 2.5rem !important; /* Physical separation rail */
+  margin-top: 0 !important; /* Remove margin - header already separated */
   
-  /* Kill any pseudo-element overlay artifacts */
+  /* Keep existing background */
+  background: #0D1912 !important;
 }
 
 .crs-hero::before,
@@ -30,14 +33,15 @@
   display: none !important; /* Kill accidental overlay bars */
 }
 
-/* === FIX 2: MOUNT THE BADGE IN A FIXED FRAME === */
+/* === FIX 2: MOUNT THE HERO BADGE IN A FIXED FRAME === */
+/* NOTE: This applies to HERO badge only, not header stamp */
 
 /* Hero container: Fixed rack unit */
 .hero-container {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  max-width: 520px !important; /* Badge mount frame */
+  max-width: 680px !important; /* Hero badge mount frame */
   margin: 0 auto !important;
   padding: 2rem 1rem !important;
 }
@@ -45,7 +49,7 @@
 /* Hero badge: Contained component, not raw image */
 .hero-power-panel {
   width: 100% !important;
-  max-height: 280px !important; /* Sweet spot: authority without dominance */
+  max-height: 380px !important; /* Sweet spot for hero: authority without dominance */
   height: auto !important;
   object-fit: contain !important;
   
@@ -56,20 +60,10 @@
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)) !important;
 }
 
-/* Responsive scaling */
-@media (min-width: 768px) {
+/* Responsive scaling for HERO only */
+@media (max-width: 1440px) {
   .hero-container {
     max-width: 600px !important;
-  }
-  
-  .hero-power-panel {
-    max-height: 320px !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .hero-container {
-    max-width: 680px !important;
   }
   
   .hero-power-panel {
@@ -77,13 +71,30 @@
   }
 }
 
-@media (min-width: 1440px) {
+@media (max-width: 1024px) {
   .hero-container {
-    max-width: 720px !important;
+    max-width: 520px !important;
   }
   
   .hero-power-panel {
-    max-height: 380px !important;
+    max-height: 300px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    max-width: 100% !important;
+    padding: 1.5rem 1rem !important;
+  }
+  
+  .hero-power-panel {
+    max-height: 280px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-power-panel {
+    max-height: 240px !important;
   }
 }
 
