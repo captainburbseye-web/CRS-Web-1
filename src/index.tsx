@@ -233,13 +233,6 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="crs-header">
-      {/* CRS RACK BADGE (Absolute Left Anchor) */}
-      <img 
-        src="/static/images/crs-favicon.ico" 
-        alt="Cowley Road Studios"
-        class="crs-rack-badge"
-      />
-
       {/* NAVIGATION ROW: Console Labels (Left) + BOOK NOW (Right) */}
       <div class="crs-header-nav-row">
         {/* ZONE A (LEFT): Console Labels */}
