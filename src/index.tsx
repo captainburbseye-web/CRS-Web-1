@@ -1625,21 +1625,9 @@ app.get('/av-services/repairs', (c) => {
 
 // WORKSHOP CAFÉ (VENUE)
 app.get('/workshop-cafe', (c) => {
-  return c.html(
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Workshop Café · Oxford | Public Café & Community Venue</title>
-        <meta name="description" content="Workshop Café — public café, workspace, and community venue at 118 Cowley Road, Oxford. Part of Cowley Road Studios. Events, talks, workshops, and open workspace." />
-        <link rel="icon" type="image/png" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-favicon-stamp.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;800&display=swap" rel="stylesheet" />
-        <link href="/static/clean.css" rel="stylesheet" />
-      </head>
-      <body>
-        <Header />
+  return c.render(
+    <>
+      <Header />
 
         {/* CAFÉ SIGNAGE HERO - Above the fold */}
         <section class="crs-section cafe-heartbeat" style="padding: 0; max-width: 1400px; margin: 0 auto;">
@@ -1879,8 +1867,7 @@ app.get('/workshop-cafe', (c) => {
         </section>
 
         <Footer />
-      </body>
-    </html>
+    </>
   )
 })
 
