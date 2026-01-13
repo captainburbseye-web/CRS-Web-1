@@ -1651,10 +1651,11 @@ app.get('/workshop-cafe', (c) => {
           />
         </section>
 
-        {/* WHAT'S ON - Live feed */}
+        {/* EVENT LOG - Live feed */}
         <section class="crs-section section-dark">
           <div class="section-header">
-            <h2 class="section-title heading">WHAT'S ON AT WORKSHOP CAFÉ</h2>
+            <h2 class="section-title heading">[ EVENT_LOG ]</h2>
+            <p class="section-intro" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem;">118 COWLEY ROAD — PUBLIC SCHEDULE</p>
           </div>
 
           <div id="workshop-cafe-events" style="margin-top: 2rem;">
@@ -1669,7 +1670,7 @@ app.get('/workshop-cafe', (c) => {
                 if (!container) return;
                 
                 if (!data.events || data.events.length === 0) {
-                  container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">No upcoming events currently scheduled.</p>';
+                  container.innerHTML = '<div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(127, 255, 0, 0.2); padding: 1.5rem; text-align: center;"><p style="font-family: \'JetBrains Mono\', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">[ STATUS: NO_ACTIVE_ENTRIES ]</p><p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">No events scheduled this week — <a href="/contact?service=venue" style="color: var(--mustard); text-decoration: none; font-weight: 700;">inquire for space allocation</a></p></div>';
                   return;
                 }
                 
@@ -1769,19 +1770,98 @@ app.get('/workshop-cafe', (c) => {
           </div>
         </section>
 
-        {/* SPACE USE - Functional, not promotional */}
+        {/* INFRASTRUCTURE ALLOCATION - Modular Use Cases */}
         <section class="crs-section cafe-heartbeat">
           <div class="section-header">
-            <h2 class="section-title cafe-title">SPACE USE</h2>
+            <h2 class="section-title cafe-title">[ INFRASTRUCTURE_ALLOCATION ]</h2>
+            <p class="section-intro cafe-intro" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Modular Space Protocol</p>
           </div>
 
-          <div style="max-width: 600px; margin: 0 auto;">
-            <ul style="list-style: none; padding: 0; font-size: 0.9375rem; line-height: 2; color: rgba(245, 245, 245, 0.9);">
-              <li>→ Open workspace</li>
-              <li>→ Community events</li>
-              <li>→ Talks, screenings, open mics</li>
-              <li>→ Private hire (small-scale)</li>
-            </ul>
+          <div style="max-width: 700px; margin: 0 auto;">
+            <div style="display: grid; gap: 1rem; margin-bottom: 2rem;">
+              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green); padding: 1.25rem;">
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MODULE_01 // OPEN WORKSPACE</p>
+                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">Drop-in desk space with high-speed connectivity. No booking required.</p>
+              </div>
+              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.25rem;">
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MODULE_02 // COMMUNITY EVENTS</p>
+                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">Talks, screenings, workshops, open mics. Subsidized rates for grassroots/non-profit.</p>
+              </div>
+              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green); padding: 1.25rem;">
+                <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MODULE_03 // PRIVATE HIRE</p>
+                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">Small-scale meetings, rehearsals, or private sessions. PA system & projection available.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* REFRESHMENT PROTOCOL - Coffee/Tea Menu */}
+        <section class="crs-section section-dark">
+          <div class="section-header">
+            <h2 class="section-title heading">[ REFRESHMENT_PROTOCOL ]</h2>
+            <p class="section-intro" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem;">UE Coffee System — Oxford Roasted</p>
+          </div>
+
+          <div style="max-width: 800px; margin: 0 auto;">
+            {/* Coffee Specs */}
+            <div style="margin-bottom: 3rem;">
+              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 1.5rem;">COFFEE ALLOCATION</h3>
+              <div style="display: grid; gap: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">ESPRESSO // SINGLE</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">ESPRESSO // DOUBLE</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">FLAT_WHITE</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.50</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">CAPPUCCINO</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.50</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">LATTE</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.50</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">AMERICANO</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.00</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Tea Specs */}
+            <div style="margin-bottom: 3rem;">
+              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 1.5rem;">TEA ALLOCATION</h3>
+              <div style="display: grid; gap: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">ENGLISH_BREAKFAST</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">EARL_GREY</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">GREEN_TEA</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">PEPPERMINT</span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Protocol Note */}
+            <div style="background: rgba(127, 255, 0, 0.05); border: 1px solid rgba(127, 255, 0, 0.2); padding: 1.5rem; text-align: center;">
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">[ MILK_OPTIONS ]</p>
+              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9); margin: 0;">Oat · Soy · Dairy — No additional charge</p>
+            </div>
           </div>
         </section>
 
