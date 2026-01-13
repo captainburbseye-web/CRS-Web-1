@@ -314,7 +314,7 @@ const Footer = () => (
     <nav class="mobile-nav mono">
       <a href="/studio">STUDIO</a>
       <a href="/av-services">AV</a>
-      <a href="/venue">CAFÉ</a>
+      <a href="/workshop-cafe">CAFÉ</a>
       <a href="/about">ABOUT</a>
       <a href="/contact">CONTACT</a>
       <a href="/" class="primary-book-button-mobile mono">BOOK</a>
@@ -341,7 +341,7 @@ const Footer = () => (
       <div class="footer-col">
         <p class="footer-col-title">03 / NAVIGATION</p>
         <p><a href="/studio">_STUDIO: [Recording]</a></p>
-        <p><a href="/venue">_CAFÉ: [Venue Hire]</a></p>
+        <p><a href="/workshop-cafe">_CAFÉ: [Venue Hire]</a></p>
         <p><a href="/av-services">_AV: [Live Sound]</a></p>
         <p><a href="/repairs/status">_AV_REPAIRS: [Diagnostics]</a></p>
       </div>
@@ -619,7 +619,7 @@ app.get('/', (c) => {
               if (!container) return;
               
               if (!data.events || data.events.length === 0) {
-                container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">No upcoming events — <a href="/cafe" style="color: var(--mustard); text-decoration: none; font-weight: 700;">explore the space</a></p>';
+                container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">No upcoming events — <a href="/workshop-cafe" style="color: var(--mustard); text-decoration: none; font-weight: 700;">explore the space</a></p>';
                 return;
               }
               
@@ -638,18 +638,18 @@ app.get('/', (c) => {
                     <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">\${event.title}</div>
                   </div>
                 \`;
-              }).join('') + '<p style="margin-top: 1rem; font-size: 0.875rem;"><a href="/cafe" style="color: var(--mustard); text-decoration: none; font-weight: 700;">→ View full schedule</a></p>';
+              }).join('') + '<p style="margin-top: 1rem; font-size: 0.875rem;"><a href="/workshop-cafe" style="color: var(--mustard); text-decoration: none; font-weight: 700;">→ View full schedule</a></p>';
             })
             .catch(err => {
               const container = document.getElementById('events-preview');
               if (container) {
-                container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);"><a href="/cafe" style="color: var(--mustard); text-decoration: none;">View upcoming events</a></p>';
+                container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);"><a href="/workshop-cafe" style="color: var(--mustard); text-decoration: none;">View upcoming events</a></p>';
               }
             });
         `}} />
         
         <div class="hero-cta" style="margin-top: 2rem;">
-          <a href="/cafe" class="crs-button mono">[ EXPLORE CAFÉ ]</a>
+          <a href="/workshop-cafe" class="crs-button mono">[ EXPLORE CAFÉ ]</a>
         </div>
       </section>
 
