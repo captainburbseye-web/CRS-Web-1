@@ -235,7 +235,7 @@ const Header = () => (
     <header class="crs-header">
       {/* CRS RACK BADGE (Absolute Left Anchor) */}
       <img 
-        src="/static/images/crs-square-stamp.svg" 
+        src="/static/images/crs-favicon.ico" 
         alt="Cowley Road Studios"
         class="crs-rack-badge"
       />
