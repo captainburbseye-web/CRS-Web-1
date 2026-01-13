@@ -1,0 +1,102 @@
+/**
+ * CRS CONTAINMENT & MOUNTING FIX
+ * 
+ * Fixes:
+ * 1. Hard-separate Header and Hero (z-index stack + margin)
+ * 2. Mount the badge in a fixed frame (max-height, aspect ratio lock)
+ * 3. Kill accidental overlay bars (pseudo-element artifacts)
+ */
+
+/* === FIX 1: HARD-SEPARATE HEADER AND HERO === */
+
+/* Header: Separate rack with z-index dominance */
+.crs-header {
+  position: relative !important;
+  z-index: 100 !important;
+  background: #0a0a0a !important;
+}
+
+/* Hero: Below header, with physical separation */
+.crs-hero {
+  position: relative !important;
+  z-index: 1 !important;
+  margin-top: 2.5rem !important; /* Physical separation rail */
+  
+  /* Kill any pseudo-element overlay artifacts */
+}
+
+.crs-hero::before,
+.crs-hero::after {
+  display: none !important; /* Kill accidental overlay bars */
+}
+
+/* === FIX 2: MOUNT THE BADGE IN A FIXED FRAME === */
+
+/* Hero container: Fixed rack unit */
+.hero-container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  max-width: 520px !important; /* Badge mount frame */
+  margin: 0 auto !important;
+  padding: 2rem 1rem !important;
+}
+
+/* Hero badge: Contained component, not raw image */
+.hero-power-panel {
+  width: 100% !important;
+  max-height: 280px !important; /* Sweet spot: authority without dominance */
+  height: auto !important;
+  object-fit: contain !important;
+  
+  /* Prevent runaway scale */
+  max-width: 100% !important;
+  
+  /* Drop shadow for depth */
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)) !important;
+}
+
+/* Responsive scaling */
+@media (min-width: 768px) {
+  .hero-container {
+    max-width: 600px !important;
+  }
+  
+  .hero-power-panel {
+    max-height: 320px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-container {
+    max-width: 680px !important;
+  }
+  
+  .hero-power-panel {
+    max-height: 350px !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-container {
+    max-width: 720px !important;
+  }
+  
+  .hero-power-panel {
+    max-height: 380px !important;
+  }
+}
+
+/* === FIX 3: CLEAN STACKING === */
+
+/* Ensure all sections have proper stacking context */
+.crs-section {
+  position: relative;
+  z-index: 2;
+}
+
+/* Main content area */
+main {
+  position: relative;
+  z-index: 2;
+}

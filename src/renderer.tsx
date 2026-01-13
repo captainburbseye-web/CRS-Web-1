@@ -37,6 +37,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-header-logo.css" rel="stylesheet" />
         {/* FINAL PASS: Hardware Discipline (MUST load LAST) */}
         <link href="/static/crs-hardware-discipline-final.css" rel="stylesheet" />
+        {/* CONTAINMENT FIX: Layering + Mounting (MUST load ABSOLUTE LAST) */}
+        <link href="/static/crs-containment-fix.css" rel="stylesheet" />
       </head>
       <body>
         {children}
