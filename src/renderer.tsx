@@ -35,10 +35,12 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-audit-fixes.css" rel="stylesheet" />
         <link href="/static/crs-header-vertical-separation.css" rel="stylesheet" />
         <link href="/static/crs-header-logo.css" rel="stylesheet" />
-        {/* FINAL PASS: Hardware Discipline (MUST load LAST) */}
+        {/* Hardware Discipline */}
         <link href="/static/crs-hardware-discipline-final.css" rel="stylesheet" />
-        {/* CONTAINMENT FIX: Layering + Mounting (MUST load ABSOLUTE LAST) */}
+        {/* CONTAINMENT FIX: Layering + Mounting */}
         <link href="/static/crs-containment-fix.css" rel="stylesheet" />
+        {/* CHASSIS LOCK: Final header specification (MUST load ABSOLUTE LAST) */}
+        <link href="/static/crs-header-chassis-lock.css" rel="stylesheet" />
       </head>
       <body>
         {children}
