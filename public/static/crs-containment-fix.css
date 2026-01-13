@@ -3,7 +3,7 @@
  * 
  * Fixes:
  * 1. Hard-separate Header and Hero (z-index stack + margin)
- * 2. Mount the HERO badge in a fixed frame (max-height, aspect ratio lock)
+ * 2. Full-bleed HERO console - edge-to-edge, rack-mounted concept
  * 3. Kill accidental overlay bars (pseudo-element artifacts)
  * 
  * NOTE: Header stamp (crs-rack-badge) is already correctly sized at 72px via hardware-discipline-final.css
@@ -18,14 +18,19 @@
   background: #0E0E0E !important; /* Match existing deep black */
 }
 
-/* Hero: Below header, with physical separation */
+/* Hero: Below header, full-bleed rack mount */
 .crs-hero {
   position: relative !important;
   z-index: 1 !important;
-  margin-top: 0 !important; /* Remove margin - header already separated */
+  margin-top: 0 !important;
+  padding: 0 !important; /* Remove all padding for edge-to-edge */
   
   /* Keep existing background */
   background: #0D1912 !important;
+  
+  /* Remove border - full bleed */
+  border: none !important;
+  border-bottom: none !important;
 }
 
 .crs-hero::before,
@@ -33,68 +38,58 @@
   display: none !important; /* Kill accidental overlay bars */
 }
 
-/* === FIX 2: MOUNT THE HERO BADGE IN A FIXED FRAME === */
-/* NOTE: This applies to HERO badge only, not header stamp */
+/* === FIX 2: FULL-BLEED HERO CONSOLE (RACK-MOUNTED CONCEPT) === */
 
-/* Hero container: Fixed rack unit */
+/* Hero container: Full-width, edge-to-edge */
 .hero-container {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  max-width: 680px !important; /* Hero badge mount frame */
+  max-width: var(--crs-chassis-width, 1200px) !important; /* Match content sections */
+  width: 100% !important;
   margin: 0 auto !important;
-  padding: 2rem 1rem !important;
+  padding: 0 !important; /* No padding - edge-to-edge */
+  display: block !important;
 }
 
-/* Hero badge: Contained component, not raw image */
+/* Hero console: Big, full-width, rack-mounted */
 .hero-power-panel {
+  display: block !important;
   width: 100% !important;
-  max-height: 380px !important; /* Sweet spot for hero: authority without dominance */
+  max-width: 100% !important; /* Full container width */
   height: auto !important;
   object-fit: contain !important;
   
-  /* Prevent runaway scale */
-  max-width: 100% !important;
+  /* Remove any constraints - let it be BIG */
+  max-height: none !important;
+  min-height: auto !important;
   
   /* Drop shadow for depth */
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)) !important;
+  
+  /* Edge-to-edge alignment */
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* Responsive scaling for HERO only */
+/* Responsive: Maintain edge-to-edge across all sizes */
 @media (max-width: 1440px) {
   .hero-container {
-    max-width: 600px !important;
-  }
-  
-  .hero-power-panel {
-    max-height: 350px !important;
+    max-width: 1200px !important;
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .hero-container {
-    max-width: 520px !important;
-  }
-  
-  .hero-power-panel {
-    max-height: 300px !important;
+    max-width: 100% !important;
   }
 }
 
 @media (max-width: 768px) {
   .hero-container {
     max-width: 100% !important;
-    padding: 1.5rem 1rem !important;
   }
   
   .hero-power-panel {
-    max-height: 280px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-power-panel {
-    max-height: 240px !important;
+    /* Still full-width on mobile */
+    width: 100% !important;
   }
 }
 
