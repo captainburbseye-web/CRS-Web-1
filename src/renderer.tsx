@@ -20,6 +20,23 @@ export const renderer = jsxRenderer(({ children }) => {
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#0A1A0F" />
         
+        {/* CRITICAL: Hide mobile overlay on desktop IMMEDIATELY (before any other CSS loads) */}
+        <style dangerouslySetInnerHTML={{__html: `
+          @media (min-width: 768px) {
+            #mobile-nav-overlay,
+            .mobile-nav-overlay,
+            div.mobile-nav-overlay {
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
+              position: absolute !important;
+              left: -999999px !important;
+              top: -999999px !important;
+            }
+          }
+        `}} />
+        
         {/* Google Fonts - Industrial-Maverick Typography */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
