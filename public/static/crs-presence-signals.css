@@ -1,0 +1,90 @@
+/**
+ * CRS PRESENCE SIGNALS
+ * Hardware-style status indicators (no animation, no urgency)
+ */
+
+/* ============================================
+   BOOK STATUS INDICATOR (LED Logic)
+   ============================================ */
+
+.book-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(127, 255, 0, 0.05);
+  border: 1px solid rgba(127, 255, 0, 0.3);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  margin-left: 1rem;
+}
+
+.book-status-indicator:hover {
+  background: rgba(127, 255, 0, 0.1);
+}
+
+.status-led {
+  width: 6px;
+  height: 6px;
+  background: var(--crs-green, #7fff00);
+  border-radius: 50%;
+  /* No pulse, no glow - steady state only */
+}
+
+.status-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--crs-green, #7fff00);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Hide on mobile (nav already has BOOK) */
+@media (max-width: 1023px) {
+  .book-status-indicator {
+    display: none;
+  }
+}
+
+/* ============================================
+   INFRASTRUCTURE IMAGERY (Functional Presence)
+   ============================================ */
+
+.infrastructure-image {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: 3rem auto 0;
+  display: block;
+  opacity: 0.85;
+}
+
+.infrastructure-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   CONTEXTUAL HARDWARE IMAGERY
+   ============================================ */
+
+.hardware-image {
+  max-width: 800px;
+  margin: 2rem 0;
+  opacity: 0.9;
+}
+
+.hardware-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid rgba(245, 245, 245, 0.1);
+}
+
+/* Ensure images never appear above H1 */
+section > .hardware-image:first-child {
+  display: none;
+}

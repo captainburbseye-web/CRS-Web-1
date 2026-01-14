@@ -58,6 +58,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-containment-fix.css" rel="stylesheet" />
         {/* CHASSIS LOCK: Final header specification */}
         <link href="/static/crs-header-chassis-lock.css" rel="stylesheet" />
+        {/* PRESENCE SIGNALS: Hardware status indicators + imagery */}
+        <link href="/static/crs-presence-signals.css" rel="stylesheet" />
         {/* FINAL OVERRIDES: Nuclear fixes (MUST load ABSOLUTE LAST) */}
         <link href="/static/crs-final-overrides.css" rel="stylesheet" />
       </head>

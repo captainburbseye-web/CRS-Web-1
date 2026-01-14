@@ -252,7 +252,7 @@ const Header = () => (
           </button>
         </div>
 
-        {/* RIGHT: Locations | Book | Contact */}
+        {/* RIGHT: Locations | Book | Contact + BOOK Status Indicator */}
         <div class="crs-header-right">
           <nav class="header-nav">
             <a href="/locations" class="nav-link">Locations</a>
@@ -261,6 +261,12 @@ const Header = () => (
             <span class="separator">|</span>
             <a href="/contact" class="nav-link">Contact</a>
           </nav>
+          
+          {/* BOOK Status Indicator (LED Logic) */}
+          <a href="/book" class="book-status-indicator" aria-label="Book CRS services">
+            <span class="status-led"></span>
+            <span class="status-label">BOOK</span>
+          </a>
         </div>
       </div>
     </header>
@@ -568,6 +574,17 @@ app.get('/', (c) => {
         </div>
       </section>
 
+      {/* INFRASTRUCTURE PRESENCE (Physical Reality Proof) */}
+      <section class="crs-section section-dark" style="padding: 2rem 1.5rem;">
+        <div class="infrastructure-image">
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-control-panel-studios.png"
+            alt="CRS infrastructure"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
       {/* CONTACT CTA */}
       <section class="crs-section section-light">
         <div class="section-header">
@@ -624,6 +641,15 @@ app.get('/studio', (c) => {
                 → View Room-by-Room Infrastructure
               </a>
             </p>
+          </div>
+          
+          {/* Hardware Presence: Console */}
+          <div class="hardware-image" style="margin-top: 2rem;">
+            <img 
+              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-master-console-v12.webp"
+              alt="CRS master console"
+              loading="lazy"
+            />
           </div>
         </div>
 
@@ -1383,6 +1409,15 @@ app.get('/av-services', (c) => {
               <li style="margin-bottom: 0.75rem;">→ Human-led, not automated</li>
             </ul>
           </div>
+          
+          {/* Hardware Presence: Live Sound Equipment */}
+          <div class="hardware-image" style="margin-top: 2rem;">
+            <img 
+              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-control-panel-studios.png"
+              alt="CRS AV control panel"
+              loading="lazy"
+            />
+          </div>
         </div>
 
         {/* TECHNICAL OPERATIONS */}
@@ -1473,6 +1508,15 @@ app.get('/av-services/repairs', (c) => {
             <p style="margin-top: 1.5rem;">
               If it's part of a signal chain, we'll assess it honestly.
             </p>
+          </div>
+          
+          {/* Hardware Presence: Repair Bench */}
+          <div class="hardware-image" style="margin-top: 2rem;">
+            <img 
+              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-control-panel-studios.png"
+              alt="CRS repair bench"
+              loading="lazy"
+            />
           </div>
         </div>
 
