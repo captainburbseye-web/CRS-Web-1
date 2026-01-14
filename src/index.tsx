@@ -332,9 +332,6 @@ app.get('/book', (c) => {
       <section class="crs-section section-dark">
         <div class="section-header">
           <h2 class="section-title heading">SERVICE BOOKING</h2>
-          <p class="section-intro">
-            Select a service to check availability and submit a booking request.
-          </p>
         </div>
 
         {/* Recording & Production */}
@@ -342,7 +339,7 @@ app.get('/book', (c) => {
           <h3 class="content-heading heading">RECORDING & PRODUCTION</h3>
           <div class="content-text">
             <p>
-              Studio recording, mixing, and production sessions.
+              Recording studio · Mixing rooms · Production rooms
             </p>
           </div>
           <div class="hero-cta" style="margin-top: 1.5rem;">
@@ -357,7 +354,7 @@ app.get('/book', (c) => {
           <h3 class="content-heading heading">AV & TECHNICAL SERVICES</h3>
           <div class="content-text">
             <p>
-              Live sound, installations, repairs, and technical support.
+              Live sound · AV installations · Technical support · Equipment repair
             </p>
           </div>
           <div class="hero-cta" style="margin-top: 1.5rem;">
@@ -372,7 +369,7 @@ app.get('/book', (c) => {
           <h3 class="content-heading heading">VENUE HIRE</h3>
           <div class="content-text">
             <p>
-              Workshop space for talks, workshops, launches, and community events.
+              Workshop Café venue space
             </p>
           </div>
           <div class="hero-cta" style="margin-top: 1.5rem;">
@@ -387,7 +384,7 @@ app.get('/book', (c) => {
           <h3 class="content-heading heading">CAFÉ SERVICE</h3>
           <div class="content-text">
             <p>
-              Coffee and refreshments service.
+              Coffee · Refreshments
             </p>
           </div>
           <div class="hero-cta" style="margin-top: 1.5rem;">
@@ -575,10 +572,7 @@ app.get('/', (c) => {
       <section class="crs-section section-light">
         <div class="section-header">
           <p class="section-intro">
-            Have a project, session, or event coming up?
-          </p>
-          <p class="section-intro" style="margin-top: 1rem; font-weight: 700;">
-            Get in touch to talk it through.
+            Enquiries are handled via the contact form.
           </p>
         </div>
         <div class="hero-cta">
@@ -1889,10 +1883,7 @@ app.get('/venue', (c) => {
 
       <section class="crs-section section-light">
         <div class="section-header">
-          <h2 class="section-title heading">WORKSHOP CAFÉ</h2>
-          <p class="section-intro">
-            Flexible café & event space — the public-facing space at Cowley Road Studios.
-          </p>
+          <h1 class="section-title heading">CRS — WORKSHOP CAFÉ</h1>
         </div>
 
         {/* WHAT THE SPACE IS */}
@@ -1901,9 +1892,9 @@ app.get('/venue', (c) => {
           <div class="content-text">
             <ul style="list-style: none; padding: 0;">
               <li style="margin-bottom: 0.75rem;">→ Café by day</li>
-              <li style="margin-bottom: 0.75rem;">→ Flexible venue by night</li>
+              <li style="margin-bottom: 0.75rem;">→ Venue by night</li>
               <li style="margin-bottom: 0.75rem;">→ Talks, workshops, screenings, small live events</li>
-              <li style="margin-bottom: 0.75rem;">→ Technically supported by Cowley Road Studios</li>
+              <li style="margin-bottom: 0.75rem;">→ Technically supported by CRS</li>
             </ul>
           </div>
         </div>
@@ -2067,7 +2058,7 @@ app.get('/contact', (c) => {
         <div class="section-header">
           <h2 class="section-title heading">CONTACT</h2>
           <p class="section-intro">
-            For general enquiries only. Use the booking gateway for bookings.
+            For general enquiries only.
           </p>
         </div>
 
@@ -2094,7 +2085,7 @@ app.get('/contact', (c) => {
             <button type="submit" class="crs-button mono">[ SEND MESSAGE ]</button>
           </form>
           
-          <p class="form-helper-text">Thanks — your message has been sent. We'll get back to you shortly.</p>
+          <p class="form-helper-text">Message received. Enquiries are processed during operating hours.</p>
         </div>
 
         {/* CONTACT METHODS */}
@@ -2102,7 +2093,7 @@ app.get('/contact', (c) => {
           <h3 class="content-heading mono">DIRECT CONTACT</h3>
           <div class="content-text mono">
             <p><strong>EMAIL:</strong> <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a></p>
-            <p style="margin-top: 1rem;"><strong>ADDRESS:</strong> Cowley Road Studios, 118 Cowley Road, Oxford, OX4 1JE</p>
+            <p style="margin-top: 1rem;"><strong>ADDRESS:</strong> 118 Cowley Road, Oxford, OX4 1JE</p>
           </div>
         </div>
       </section>
