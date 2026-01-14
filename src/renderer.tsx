@@ -62,11 +62,15 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-presence-signals.css" rel="stylesheet" />
         {/* FINAL OVERRIDES: Nuclear fixes (MUST load ABSOLUTE LAST) */}
         <link href="/static/crs-final-overrides.css" rel="stylesheet" />
+        {/* RACK UI: DAW-style interface (LOADS LAST TO OVERRIDE ALL) */}
+        <link href="/static/crs-rack-ui.css" rel="stylesheet" />
       </head>
       <body>
         {children}
         {/* Client-side interactions */}
         <script src="/static/app.js"></script>
+        {/* Rack dropdown behavior */}
+        <script src="/static/rack-dropdown.js"></script>
       </body>
     </html>
   )

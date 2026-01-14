@@ -232,73 +232,75 @@ app.use(renderer)
 // SHARED COMPONENTS
 const Header = () => (
   <>
-    <header class="crs-header">
-      <div class="crs-header-nav-row">
-        {/* LEFT: Square Logo + CRS Brand + Service Categories */}
-        <div class="crs-header-left">
-          <a href="/" class="crs-square-logo" aria-label="CRS Home">
-            <img 
-              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-favicon-stamp.png" 
-              alt="CRS"
-              width="32"
-              height="32"
-            />
-          </a>
-          <a href="/" class="crs-brand">CRS</a>
-          <nav class="header-services">
-            <span class="service-label">Studios</span>
-            <span class="separator">·</span>
-            <span class="service-label">Venues</span>
-            <span class="separator">·</span>
-            <span class="service-label">Technical Services</span>
-          </nav>
-
-          {/* Mobile Menu Toggle */}
-          <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
-            <span class="sr-only">Menu</span>
-            ☰
-          </button>
+    <header class="rack-header">
+      {/* LEFT ZONE: CRS Logo + Traffic Lights + Nav Links */}
+      <div class="rack-header-left">
+        <div class="rack-logo-block">
+          <div class="logo-text">CRS</div>
+          <div class="traffic-lights">
+            <span class="traffic-light red"></span>
+            <span class="traffic-light yellow"></span>
+            <span class="traffic-light green"></span>
+          </div>
         </div>
-
-        {/* RIGHT: Locations | Book | Contact + BOOK Status Indicator */}
-        <div class="crs-header-right">
-          <nav class="header-nav">
-            <a href="/locations" class="nav-link">Locations</a>
-            <span class="separator">|</span>
-            <a href="/book" class="nav-link">Book</a>
-            <span class="separator">|</span>
-            <a href="/contact" class="nav-link">Contact</a>
-          </nav>
+        
+        <nav class="rack-nav-links">
+          <a href="/studio">Studio</a>
+          <span class="separator">|</span>
+          <a href="/workshop-cafe">Workshop Café</a>
+          <span class="separator">|</span>
+          <a href="/av-services">AV</a>
+          <span class="separator">|</span>
           
-          {/* BOOK Status Indicator (LED Logic) */}
-          <a href="/book" class="book-status-indicator" aria-label="Book CRS services">
-            <span class="status-led"></span>
-            <span class="status-label">BOOK</span>
-          </a>
+          {/* BOOK NOW DROPDOWN */}
+          <div style="position: relative;">
+            <button 
+              class="book-dropdown-trigger"
+              data-dropdown-trigger
+              aria-expanded="false"
+              aria-controls="book-dropdown-menu"
+            >
+              BOOK NOW
+            </button>
+            <div 
+              id="book-dropdown-menu"
+              class="book-dropdown-menu"
+              data-dropdown-menu
+              role="menu"
+              aria-hidden="true"
+            >
+              <a href="/book" role="menuitem">Recording Sessions</a>
+              <a href="/book" role="menuitem">Rehearsal Space</a>
+              <a href="/av-services" role="menuitem">AV Services</a>
+              <a href="/venue" role="menuitem">Workshop Café Venue</a>
+              <a href="/av-services/repairs" role="menuitem">Equipment Repair</a>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      {/* CENTER ZONE: TASCAM + Metal Plates + Traffic Lights */}
+      <div class="rack-header-center">
+        <div class="tascam-label">TASCAM</div>
+        <div class="metal-plate">COWLEY ROAD</div>
+        <div class="orange-button-plate">STUDIOS</div>
+        <div class="traffic-lights">
+          <span class="traffic-light red"></span>
+          <span class="traffic-light yellow"></span>
+          <span class="traffic-light green"></span>
         </div>
+        <div class="transport-button" aria-label="Transport control"></div>
+      </div>
+
+      {/* RIGHT ZONE: Locations | Contact */}
+      <div class="rack-header-right">
+        <nav class="rack-nav-links">
+          <a href="/locations">Locations</a>
+          <span class="separator">|</span>
+          <a href="/contact">Contact</a>
+        </nav>
       </div>
     </header>
-
-    {/* Mobile Navigation Overlay */}
-    <div class="mobile-nav-overlay" id="mobile-nav-overlay">
-      <div class="mobile-nav-container">
-        <div class="mobile-nav-header">
-          <div class="mobile-nav-logo">CRS</div>
-          <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close navigation menu">
-            ✕
-          </button>
-        </div>
-
-        {/* Mobile Nav Links */}
-        <nav class="mobile-nav-links">
-          <a href="/locations" class="nav-button">Locations</a>
-          <a href="/book" class="nav-button">Book</a>
-          <a href="/contact" class="nav-button">Contact</a>
-        </nav>
-
-        {/* Mobile Book Section - Removed (simplification) */}
-      </div>
-    </div>
   </>
 )
 
@@ -581,62 +583,78 @@ app.get('/', (c) => {
     <>
       <Header />
 
-      {/* 4-LAYER CLARITY STACK */}
-      <section class="crs-section section-dark" style="padding: 4rem 1.5rem;">
-        <div style="max-width: 900px; margin: 0 auto;">
-          
+      {/* SUBTITLE BAR */}
+      <div class="subtitle-bar">
+        Cowley Road Studios is a purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford.
+      </div>
+
+      {/* RACK UNIT 1: 4-LAYER CLARITY STACK */}
+      <section class="rack-unit">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led green"></span>
+          </div>
+          <h2 class="rack-unit-title">/// SYSTEM OVERVIEW</h2>
+        </div>
+        
+        <div class="rack-unit-content" style="max-width: 900px; margin: 0 auto;">
           {/* LAYER 1: SYSTEM IDENTITY */}
           <h1 style="font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; font-weight: 900; color: rgba(245, 245, 245, 0.95); margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.05em;">
             CRS
           </h1>
 
-          {/* LAYER 2: CORE OFFERING (Functional Label) */}
+          {/* LAYER 2: CORE OFFERING */}
           <p style="font-size: 1.125rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9); margin-bottom: 3rem;">
             Recording, mixing and rehearsal space for bands, producers and podcasters.
           </p>
 
-          {/* LAYER 3: CAPABILITIES (Concrete Tasks) */}
+          {/* LAYER 3: CAPABILITIES */}
           <div style="margin-bottom: 3rem;">
             <p style="font-size: 0.875rem; font-weight: 700; color: rgba(245, 245, 245, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
               What you can do here:
             </p>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-              <li style="padding: 0.5rem 0; color: rgba(245, 245, 245, 0.85); font-size: 0.9375rem;">– Record an EP or single</li>
-              <li style="padding: 0.5rem 0; color: rgba(245, 245, 245, 0.85); font-size: 0.9375rem;">– Track drums and live instruments</li>
-              <li style="padding: 0.5rem 0; color: rgba(245, 245, 245, 0.85); font-size: 0.9375rem;">– Mix and master releases</li>
-              <li style="padding: 0.5rem 0; color: rgba(245, 245, 245, 0.85); font-size: 0.9375rem;">– Rehearse before shows or tours</li>
-              <li style="padding: 0.5rem 0; color: rgba(245, 245, 245, 0.85); font-size: 0.9375rem;">– Record and produce podcasts</li>
+            <ul>
+              <li>– Record an EP or single</li>
+              <li>– Track drums and live instruments</li>
+              <li>– Mix and master releases</li>
+              <li>– Rehearse before shows or tours</li>
+              <li>– Record and produce podcasts</li>
             </ul>
           </div>
 
-          {/* LAYER 4: SCOPE STATEMENT (System Closure) */}
+          {/* LAYER 4: SCOPE */}
           <p style="font-size: 0.9375rem; color: rgba(245, 245, 245, 0.7);">
             CRS operates studio and venue facilities across Oxford.
           </p>
-
         </div>
       </section>
 
-      {/* INFRASTRUCTURE PRESENCE (Physical Reality Proof) */}
-      <section class="crs-section section-dark" style="padding: 2rem 1.5rem;">
+      {/* INFRASTRUCTURE IMAGE */}
+      <section class="rack-unit" style="padding: 1rem;">
         <div class="infrastructure-image">
           <img 
             src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-control-panel-studios.png"
             alt="CRS infrastructure"
             loading="lazy"
+            style="width: 100%; max-width: 1000px; margin: 0 auto; display: block; opacity: 0.85;"
           />
         </div>
       </section>
 
-      {/* CONTACT CTA */}
-      <section class="crs-section section-light">
-        <div class="section-header">
-          <p class="section-intro">
+      {/* RACK UNIT 2: CONTACT */}
+      <section class="rack-unit">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led orange"></span>
+          </div>
+          <h2 class="rack-unit-title">/// PUBLIC ACCESS</h2>
+        </div>
+        
+        <div class="rack-unit-content" style="text-align: center;">
+          <p style="margin-bottom: 2rem;">
             Enquiries are handled via the contact form.
           </p>
-        </div>
-        <div class="hero-cta">
-          <a href="/contact" class="crs-button mono">[ CONTACT ]</a>
+          <a href="/contact" class="cta-button">CONTACT</a>
         </div>
       </section>
 

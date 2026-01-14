@@ -1,0 +1,493 @@
+/* ====================================================================
+   CRS RACK INTERFACE — CSS-ONLY DAW/REASON-STYLE UI
+   NO SVG | NO IMAGES | PURE CSS GRADIENTS + PSEUDO-ELEMENTS
+   ==================================================================== */
+
+:root {
+  --rack-bg: #0a0a0a;
+  --rack-border: #1a1a1a;
+  --rack-shadow: rgba(0, 0, 0, 0.8);
+  --metal-light: #e8e8e8;
+  --metal-mid: #c0c0c0;
+  --metal-dark: #a8a8a8;
+  --metal-border: #888;
+  --led-red: #ff4444;
+  --led-yellow: #ffaa00;
+  --led-green: #44ff44;
+  --led-orange: #ff7700;
+  --cta-orange-light: #ff9933;
+  --cta-orange-dark: #ff7700;
+  --text-light: rgba(245, 245, 245, 0.95);
+  --text-dim: rgba(245, 245, 245, 0.7);
+}
+
+/* ==== GLOBAL RACK CHASSIS ==== */
+body {
+  background: var(--rack-bg);
+  color: var(--text-light);
+  margin: 0;
+  padding: 0;
+}
+
+/* ==== RACK SCREW (REUSABLE) ==== */
+.rack-screw {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #666, #222);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+  position: absolute;
+}
+
+/* ==== METAL PLATE EFFECT ==== */
+.metal-plate {
+  background: linear-gradient(180deg, var(--metal-light) 0%, var(--metal-mid) 50%, var(--metal-dark) 100%);
+  border: 2px solid var(--metal-border);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  color: #222;
+  font-weight: 700;
+  padding: 8px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+/* ==== TRAFFIC LIGHTS ==== */
+.traffic-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px currentColor, inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  margin: 0 2px;
+}
+.traffic-light.red { background: var(--led-red); color: var(--led-red); }
+.traffic-light.yellow { background: var(--led-yellow); color: var(--led-yellow); }
+.traffic-light.green { background: var(--led-green); color: var(--led-green); }
+
+/* ==== ORANGE BRACKET CTA ==== */
+.cta-button {
+  background: linear-gradient(180deg, var(--cta-orange-light) 0%, var(--cta-orange-dark) 100%);
+  color: #000;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: 2px solid var(--cta-orange-dark);
+  border-radius: 4px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.1s ease;
+}
+.cta-button::before { content: "[ "; }
+.cta-button::after { content: " ]"; }
+.cta-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* ==== RACK HEADER (TOP UNIT) ==== */
+.rack-header {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+  border-bottom: 3px solid #333;
+  box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.5);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Header Zones */
+.rack-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.rack-header-center {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rack-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* CRS Logo Block with Traffic Lights */
+.rack-logo-block {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 8px 12px;
+  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 2px solid #333;
+  border-radius: 4px;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.rack-logo-block .logo-text {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.25rem;
+  color: var(--text-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.rack-logo-block .traffic-lights {
+  display: flex;
+  gap: 3px;
+}
+
+/* TASCAM Label */
+.tascam-label {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.5rem;
+  color: var(--led-red);
+  text-shadow: 0 0 8px var(--led-red), 0 0 4px rgba(255, 68, 68, 0.5);
+  letter-spacing: 0.15em;
+  font-weight: 900;
+}
+
+/* Orange Button Plate */
+.orange-button-plate {
+  background: linear-gradient(180deg, var(--cta-orange-light) 0%, var(--cta-orange-dark) 100%);
+  border: 2px solid var(--cta-orange-dark);
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Transport Button (Optional) */
+.transport-button {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+  border: 2px solid #333;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.transport-button::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 8px solid var(--text-dim);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+/* Rack Header Nav Links */
+.rack-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+}
+
+.rack-nav-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.rack-nav-links a:hover {
+  color: var(--text-light);
+}
+
+.rack-nav-links .separator {
+  color: rgba(245, 245, 245, 0.3);
+}
+
+/* BOOK NOW DROPDOWN */
+.book-dropdown-trigger {
+  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+  border: 2px solid #333;
+  padding: 8px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transition: background 0.2s ease;
+}
+
+.book-dropdown-trigger:hover {
+  background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
+}
+
+.book-dropdown-trigger::after {
+  content: " ▾";
+}
+
+.book-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+  border: 2px solid #333;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  min-width: 200px;
+  z-index: 2000;
+  display: none;
+}
+
+.book-dropdown-menu[aria-hidden="false"] {
+  display: block;
+}
+
+.book-dropdown-menu a {
+  display: block;
+  padding: 12px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.book-dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.book-dropdown-menu a:hover,
+.book-dropdown-menu a:focus {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-light);
+  outline: none;
+}
+
+/* ==== SUBTITLE BAR ==== */
+.subtitle-bar {
+  background: linear-gradient(180deg, #151515 0%, #0a0a0a 100%);
+  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+  padding: 1rem 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  text-align: center;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ==== RACK UNIT (SECTION CONTAINER) ==== */
+.rack-unit {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+  border: 3px solid #2a2a2a;
+  border-radius: 8px;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.6),
+    inset 0 -2px 4px rgba(255, 255, 255, 0.05),
+    0 4px 8px rgba(0, 0, 0, 0.5);
+  margin: 2rem auto;
+  padding: 2rem;
+  position: relative;
+  max-width: 1200px;
+}
+
+/* Rack Ears (Side Rails) */
+.rack-unit::before,
+.rack-unit::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      #2a2a2a 0px,
+      #2a2a2a 10px,
+      transparent 10px,
+      transparent 20px
+    ),
+    radial-gradient(circle at center, #1a1a1a 30%, transparent 30%),
+    linear-gradient(180deg, #252525 0%, #1a1a1a 100%);
+  background-size: 100% 100%, 100% 40px, 100% 100%;
+  background-position: 0 0, center, 0 0;
+  border: 2px solid #333;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.rack-unit::before {
+  left: -40px;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+}
+
+.rack-unit::after {
+  right: -40px;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Corner Screws */
+.rack-unit-header {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.rack-unit-header::before,
+.rack-unit-header::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #666, #222);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: -12px;
+}
+
+.rack-unit-header::before {
+  left: -12px;
+}
+
+.rack-unit-header::after {
+  right: -12px;
+}
+
+/* Section LED (Above Title) */
+.rack-unit-led {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.rack-unit-led .led {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 0 6px currentColor, inset 0 -2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.rack-unit-led .led.green { background: var(--led-green); color: var(--led-green); }
+.rack-unit-led .led.red { background: var(--led-red); color: var(--led-red); }
+.rack-unit-led .led.orange { background: var(--led-orange); color: var(--led-orange); }
+
+/* Section Title */
+.rack-unit-title {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.5rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin: 0;
+}
+
+/* Section Content */
+.rack-unit-content {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9375rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+}
+
+.rack-unit-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.rack-unit-content li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+}
+
+.rack-unit-content li:last-child {
+  border-bottom: none;
+}
+
+/* ==== MOBILE RESPONSIVE ==== */
+@media (max-width: 768px) {
+  .rack-header {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .rack-header-left,
+  .rack-header-center,
+  .rack-header-right {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .rack-unit {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .rack-unit::before,
+  .rack-unit::after {
+    width: 20px;
+  }
+
+  .rack-unit::before {
+    left: -20px;
+  }
+
+  .rack-unit::after {
+    right: -20px;
+  }
+
+  .subtitle-bar {
+    font-size: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .tascam-label {
+    font-size: 1.25rem;
+  }
+
+  .rack-unit-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .rack-unit::before,
+  .rack-unit::after {
+    display: none;
+  }
+
+  .rack-header-center {
+    display: none;
+  }
+}
