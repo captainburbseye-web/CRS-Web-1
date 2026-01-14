@@ -290,15 +290,6 @@ const Header = () => (
         </div>
         <div class="transport-button" aria-label="Transport control"></div>
       </div>
-
-      {/* RIGHT ZONE: Locations | Contact */}
-      <div class="rack-header-right">
-        <nav class="rack-nav-links">
-          <a href="/locations">Locations</a>
-          <span class="separator">|</span>
-          <a href="/contact">Contact</a>
-        </nav>
-      </div>
     </header>
   </>
 )
