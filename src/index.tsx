@@ -536,133 +536,39 @@ app.get('/', (c) => {
     <>
       <Header />
 
-      {/* HERO */}
-      <section class="crs-hero">
-        <div class="hero-container">
-          <img 
-            src="/static/images/crs-master-console-v12.webp" 
-            alt="Cowley Road Studios — Master Console Terminal"
-            class="hero-power-panel"
-            loading="eager"
-          />
-        </div>
-      </section>
+      {/* 4-LAYER CLARITY STACK */}
+      <section class="crs-section section-dark" style="padding: 4rem 1.5rem;">
+        <div style="max-width: 900px; margin: 0 auto;">
+          
+          {/* LAYER 1: SYSTEM IDENTITY */}
+          <h1 style="font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; font-weight: 900; color: rgba(245, 245, 245, 0.95); margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.05em;">
+            CRS
+          </h1>
 
-      {/* STUDIO SNAPSHOT */}
-      <section class="crs-section section-dark">
-        <div class="section-header">
-          <h2 class="section-title heading">
-            STUDIO SESSIONS
-          </h2>
-          <p class="section-intro">
-            Acoustically treated rooms, calibrated monitoring, and networked audio infrastructure for recording, production, and focused creative work.
+          {/* LAYER 2: CORE OFFERING (Functional Label) */}
+          <p style="font-size: 1.125rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9); margin-bottom: 3rem;">
+            Recording, mixing and rehearsal space for bands, producers and podcasters.
           </p>
-        </div>
-        <div class="hero-cta">
-          <a href="/studio" class="crs-button mono">[ VIEW STUDIO ]</a>
-        </div>
-      </section>
 
-      {/* AV SERVICES SNAPSHOT */}
-      <section class="crs-section section-dark">
-        <div class="section-header">
-          <h2 class="section-title heading">
-            AV SERVICES & LIVE SOUND
-          </h2>
-          <p class="section-intro">
-            Engineer-led live sound and technical support for community venues, cultural events, and public gatherings.
+          {/* LAYER 3: CAPABILITIES (Concrete Tasks) */}
+          <div style="margin-bottom: 3rem;">
+            <p style="font-size: 0.875rem; font-weight: 700; color: rgba(245, 245, 245, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
+              What you can do here:
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              <li style="padding: 0.5rem 0; color: rgba(245, 245, 245, 0.85); font-size: 0.9375rem;">– Record an EP or single</li>
+              <li style="padding: 0.5rem 0; color: rgba(245, 245, 245, 0.85); font-size: 0.9375rem;">– Track drums and live instruments</li>
+              <li style="padding: 0.5rem 0; color: rgba(245, 245, 245, 0.85); font-size: 0.9375rem;">– Mix and master releases</li>
+              <li style="padding: 0.5rem 0; color: rgba(245, 245, 245, 0.85); font-size: 0.9375rem;">– Rehearse before shows or tours</li>
+              <li style="padding: 0.5rem 0; color: rgba(245, 245, 245, 0.85); font-size: 0.9375rem;">– Record and produce podcasts</li>
+            </ul>
+          </div>
+
+          {/* LAYER 4: SCOPE STATEMENT (System Closure) */}
+          <p style="font-size: 0.9375rem; color: rgba(245, 245, 245, 0.7);">
+            CRS operates studio and venue facilities across Oxford.
           </p>
-        </div>
-        <div class="hero-cta">
-          <a href="/av-services" class="crs-button mono">[ VIEW AV SERVICES ]</a>
-        </div>
-      </section>
 
-      {/* CAFÉ SNAPSHOT - CREATIVE HEARTBEAT */}
-      <section class="crs-section cafe-heartbeat">
-        <div class="section-header">
-          <h2 class="section-title cafe-title">
-            WORKSHOP CAFÉ
-          </h2>
-          <p class="section-intro cafe-intro">
-            The public-facing space of CRS — a café, workspace, and small venue supporting community events and creative activity.
-          </p>
-        </div>
-        
-        {/* WHAT'S ON PREVIEW */}
-        <div class="content-block" style="margin-top: 2rem;">
-          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-            <h3 class="content-heading mono" style="font-size: 1rem; margin: 0; color: var(--mustard);">WHAT'S ON</h3>
-            <img 
-              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/Shop%20Sign%20Logo.png" 
-              alt="Workshop Café"
-              style="width: 80px; height: auto; opacity: 0.8;"
-              loading="lazy"
-            />
-          </div>
-          <div id="events-preview" style="margin-top: 1rem;">
-            <p style="font-size: 0.875rem; font-style: italic; color: rgba(245, 245, 245, 0.7);">Loading events...</p>
-          </div>
-        </div>
-        
-        <script dangerouslySetInnerHTML={{__html: `
-          // Load events preview (first 3 only)
-          fetch('/events.json')
-            .then(res => res.json())
-            .then(data => {
-              const container = document.getElementById('events-preview');
-              if (!container) return;
-              
-              if (!data.events || data.events.length === 0) {
-                container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">No upcoming events — <a href="/workshop-cafe" style="color: var(--mustard); text-decoration: none; font-weight: 700;">explore the space</a></p>';
-                return;
-              }
-              
-              const eventsToShow = data.events.slice(0, 3);
-              
-              container.innerHTML = eventsToShow.map(event => {
-                const date = new Date(event.start);
-                const dateStr = date.toLocaleDateString('en-GB', { 
-                  day: 'numeric', 
-                  month: 'short'
-                });
-                
-                return \`
-                  <div style="margin-bottom: 0.75rem; padding: 0.75rem; background: rgba(0,0,0,0.3); border-left: 2px solid var(--mustard);">
-                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; text-transform: uppercase; margin-bottom: 0.25rem;">\${dateStr}</div>
-                    <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">\${event.title}</div>
-                  </div>
-                \`;
-              }).join('') + '<p style="margin-top: 1rem; font-size: 0.875rem;"><a href="/workshop-cafe" style="color: var(--mustard); text-decoration: none; font-weight: 700;">→ View full schedule</a></p>';
-            })
-            .catch(err => {
-              const container = document.getElementById('events-preview');
-              if (container) {
-                container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);"><a href="/workshop-cafe" style="color: var(--mustard); text-decoration: none;">View upcoming events</a></p>';
-              }
-            });
-        `}} />
-        
-        <div class="hero-cta" style="margin-top: 2rem;">
-          <a href="/workshop-cafe" class="crs-button mono">[ EXPLORE CAFÉ ]</a>
-        </div>
-      </section>
-
-      {/* PUBLIC VALUE */}
-      <section class="crs-section section-dark">
-        <div class="section-header">
-          <h2 class="section-title heading">PUBLIC ACCESS</h2>
-          <div class="content-text" style="max-width: 800px;">
-            <p style="margin-bottom: 1rem;">
-              CRS provides publicly accessible recording, rehearsal, and technical development infrastructure for grassroots music and cultural activity across Oxford.
-            </p>
-            <p style="margin-bottom: 1rem;">
-              Facilities are operational at 118 Cowley Road and available for community use, skills development, and independent creative work.
-            </p>
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">
-              Workshop Café offers a separate publicly accessible events space for talks, workshops, and community gatherings.
-            </p>
-          </div>
         </div>
       </section>
 
