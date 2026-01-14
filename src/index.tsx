@@ -236,7 +236,13 @@ const Header = () => (
       {/* LEFT ZONE: CRS Logo + Traffic Lights + Nav Links */}
       <div class="rack-header-left">
         <div class="rack-logo-block">
-          <div class="logo-text">CRS</div>
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS%20SQUARE%20STAMP%20SVG%20design.svg" 
+            alt="CRS"
+            class="logo-svg"
+            width="40"
+            height="40"
+          />
           <div class="traffic-lights">
             <span class="traffic-light red"></span>
             <span class="traffic-light yellow"></span>
