@@ -587,43 +587,18 @@ app.get('/', (c) => {
         Cowley Road Studios is a purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford.
       </div>
 
-      {/* RACK UNIT 1: 4-LAYER CLARITY STACK */}
+      {/* RACK UNIT 1: CRS */}
       <section class="rack-unit">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
             <span class="led green"></span>
           </div>
-          <h2 class="rack-unit-title">/// SYSTEM OVERVIEW</h2>
+          <h2 class="rack-unit-title">CRS</h2>
         </div>
         
-        <div class="rack-unit-content" style="max-width: 900px; margin: 0 auto;">
-          {/* LAYER 1: SYSTEM IDENTITY */}
-          <h1 style="font-family: 'Archivo Black', sans-serif; font-size: 2.5rem; font-weight: 900; color: rgba(245, 245, 245, 0.95); margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.05em;">
-            CRS
-          </h1>
-
-          {/* LAYER 2: CORE OFFERING */}
-          <p style="font-size: 1.125rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9); margin-bottom: 3rem;">
-            Recording, mixing and rehearsal space for bands, producers and podcasters.
-          </p>
-
-          {/* LAYER 3: CAPABILITIES */}
-          <div style="margin-bottom: 3rem;">
-            <p style="font-size: 0.875rem; font-weight: 700; color: rgba(245, 245, 245, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
-              What you can do here:
-            </p>
-            <ul>
-              <li>– Record an EP or single</li>
-              <li>– Track drums and live instruments</li>
-              <li>– Mix and master releases</li>
-              <li>– Rehearse before shows or tours</li>
-              <li>– Record and produce podcasts</li>
-            </ul>
-          </div>
-
-          {/* LAYER 4: SCOPE */}
-          <p style="font-size: 0.9375rem; color: rgba(245, 245, 245, 0.7);">
-            CRS operates studio and venue facilities across Oxford.
+        <div class="rack-unit-content" style="max-width: 900px; margin: 0 auto; text-align: center;">
+          <p style="font-size: 1.125rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9);">
+            Studio, venue hire and live event support
           </p>
         </div>
       </section>
