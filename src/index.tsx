@@ -408,6 +408,41 @@ app.get('/book', (c) => {
           </div>
         </div>
 
+        {/* PAYMENT TERMS (Rack Authority Panel) */}
+        <div class="content-block" style="margin-top: 3rem;">
+          <div class="payment-terms-panel">
+            <div class="panel-header">
+              <h2 class="panel-title">PAYMENT TERMS</h2>
+            </div>
+            
+            <div class="panel-content">
+              <div class="payment-rule">
+                <div class="rule-label">REHEARSALS</div>
+                <div class="rule-value">100% DUE AT BOOKING</div>
+              </div>
+              
+              <div class="panel-divider"></div>
+              
+              <div class="payment-rule">
+                <div class="rule-label">RECORDING</div>
+                <div class="rule-value">50% DEPOSIT</div>
+              </div>
+              
+              <div class="payment-rule">
+                <div class="rule-label">PRODUCTION</div>
+                <div class="rule-value">50% DEPOSIT</div>
+              </div>
+              
+              <div class="panel-divider"></div>
+              
+              <div class="panel-note">
+                <p>Rehearsal bookings are paid in full at the time of booking.</p>
+                <p style="margin-top: 0.75rem;">Recording and audio production sessions require a 50% deposit to confirm the session. The remaining balance is payable on the day.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </section>
       <Footer />
     </>
