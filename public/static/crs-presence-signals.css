@@ -4,6 +4,35 @@
  */
 
 /* ============================================
+   HEADER SQUARE LOGO
+   ============================================ */
+
+.crs-square-logo {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 1rem;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.crs-square-logo:hover {
+  opacity: 1;
+}
+
+.crs-square-logo img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+/* Hide on mobile to preserve space */
+@media (max-width: 767px) {
+  .crs-square-logo {
+    display: none;
+  }
+}
+
+/* ============================================
    BOOK STATUS INDICATOR (LED Logic)
    ============================================ */
 

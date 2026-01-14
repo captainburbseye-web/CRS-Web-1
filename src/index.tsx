@@ -234,8 +234,16 @@ const Header = () => (
   <>
     <header class="crs-header">
       <div class="crs-header-nav-row">
-        {/* LEFT: CRS Brand + Service Categories */}
+        {/* LEFT: Square Logo + CRS Brand + Service Categories */}
         <div class="crs-header-left">
+          <a href="/" class="crs-square-logo" aria-label="CRS Home">
+            <img 
+              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-favicon-stamp.png" 
+              alt="CRS"
+              width="32"
+              height="32"
+            />
+          </a>
           <a href="/" class="crs-brand">CRS</a>
           <nav class="header-services">
             <span class="service-label">Studios</span>
