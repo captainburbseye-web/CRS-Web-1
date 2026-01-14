@@ -408,66 +408,23 @@ app.get('/book/venue', (c) => {
   return c.redirect('/contact?service=venue')
 })
 
-// LOCATIONS PAGE
+// LOCATIONS SELECTOR
 app.get('/locations', (c) => {
   return c.render(
     <>
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">CRS LOCATIONS</h2>
-          <p class="section-intro">
-            CRS operates studio and venue facilities across Oxford at two primary locations.
-          </p>
+          <h1 class="section-title heading">CRS LOCATIONS</h1>
         </div>
 
-        {/* COWLEY ROAD */}
-        <div class="content-block">
-          <h3 class="content-heading heading">CRS — COWLEY ROAD</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              <strong>Address:</strong><br />
-              118 Cowley Road<br />
-              Oxford OX4 1JE
-            </p>
-            <p style="margin-bottom: 1rem;">
-              <strong>Facilities:</strong>
-            </p>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.5rem;">→ Recording studios and rehearsal rooms</li>
-              <li style="margin-bottom: 0.5rem;">→ Workshop Café (events space)</li>
-              <li style="margin-bottom: 0.5rem;">→ Technical development facilities</li>
-            </ul>
-            <p style="margin-top: 1.5rem; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">
-              Main operational site with full studio infrastructure and publicly accessible event space.
-            </p>
-          </div>
-        </div>
-
-        {/* CRICKET ROAD */}
-        <div class="content-block">
-          <h3 class="content-heading heading">CRS — CRICKET ROAD</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              <strong>Address:</strong><br />
-              Cricket Road<br />
-              Oxford
-            </p>
-            <p style="margin-bottom: 1rem;">
-              <strong>Facilities:</strong>
-            </p>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.5rem;">→ Rehearsal rooms</li>
-              <li style="margin-bottom: 0.5rem;">→ Community practice spaces</li>
-            </ul>
-            <p style="margin-top: 1.5rem; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">
-              Partner studio location with dedicated rehearsal facilities.
-            </p>
-          </div>
-        </div>
-
-        <div class="hero-cta">
-          <a href="/contact" class="crs-button mono">[ CONTACT FOR ACCESS ]</a>
+        <div style="max-width: 700px; margin: 0 auto; display: grid; gap: 1.5rem;">
+          <a href="/crs-cowley-road" class="crs-button mono" style="display: block; padding: 1.5rem; text-align: center;">
+            CRS — COWLEY ROAD
+          </a>
+          <a href="/crs-cricket-road" class="crs-button mono" style="display: block; padding: 1.5rem; text-align: center;">
+            CRS — CRICKET ROAD
+          </a>
         </div>
       </section>
       <Footer />
@@ -475,56 +432,98 @@ app.get('/locations', (c) => {
   )
 })
 
-// LOCATIONS
-app.get('/locations', (c) => {
+// CRS — COWLEY ROAD
+app.get('/crs-cowley-road', (c) => {
   return c.render(
     <>
       <Header />
-      
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h1 class="section-title heading">CRS Locations</h1>
+          <h1 class="section-title heading">CRS — COWLEY ROAD</h1>
         </div>
 
-        {/* Cowley Road */}
-        <div class="content-block" style="margin-bottom: 3rem;">
-          <h2 class="content-heading heading">CRS — Cowley Road</h2>
-          <div class="content-text">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 1rem;">
-              118 Cowley Road, Oxford, OX4 1JE
+        <div class="content-block" style="max-width: 700px; margin: 0 auto;">
+          {/* ADDRESS */}
+          <div style="margin-bottom: 2rem;">
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
+              118 Cowley Road<br />
+              Oxford<br />
+              OX4 1JE
             </p>
-            <p style="margin-bottom: 1rem; font-weight: 600;">What operates here:</p>
+          </div>
+
+          {/* WHAT OPERATES HERE */}
+          <div style="margin-bottom: 2rem;">
+            <p style="font-weight: 600; margin-bottom: 1rem; font-size: 0.9375rem;">What operates here:</p>
             <ul style="list-style: none; padding: 0; margin: 0;">
               <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Recording studio</li>
               <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Production rooms</li>
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Workshop Café (public venue)</li>
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Equipment repair services</li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Workshop Café</li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Equipment repair</li>
             </ul>
           </div>
-          <div class="hero-cta" style="margin-top: 1.5rem;">
+
+          {/* BOOKING CTA */}
+          <div class="hero-cta">
             <a href="/book" class="crs-button mono">[ BOOK CRS — COWLEY ROAD ]</a>
           </div>
+
+          {/* ACCESS / HOURS */}
+          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(245, 245, 245, 0.1);">
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
+              <strong>Access:</strong> By booking only<br />
+              <strong>Contact:</strong> <a href="mailto:info@cowleyroadstudios.com" style="color: var(--mustard);">info@cowleyroadstudios.com</a>
+            </p>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+})
+
+// CRS — CRICKET ROAD
+app.get('/crs-cricket-road', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h1 class="section-title heading">CRS — CRICKET ROAD</h1>
         </div>
 
-        {/* Cricket Road */}
-        <div class="content-block">
-          <h2 class="content-heading heading">CRS — Cricket Road</h2>
-          <div class="content-text">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 1rem;">
-              Cricket Road, Oxford
+        <div class="content-block" style="max-width: 700px; margin: 0 auto;">
+          {/* ADDRESS */}
+          <div style="margin-bottom: 2rem;">
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
+              Cricket Road<br />
+              Oxford
             </p>
-            <p style="margin-bottom: 1rem; font-weight: 600;">What operates here:</p>
+          </div>
+
+          {/* WHAT OPERATES HERE */}
+          <div style="margin-bottom: 2rem;">
+            <p style="font-weight: 600; margin-bottom: 1rem; font-size: 0.9375rem;">What operates here:</p>
             <ul style="list-style: none; padding: 0; margin: 0;">
               <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Rehearsal space</li>
               <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Live room</li>
             </ul>
           </div>
-          <div class="hero-cta" style="margin-top: 1.5rem;">
+
+          {/* BOOKING CTA */}
+          <div class="hero-cta">
             <a href="/book" class="crs-button mono">[ BOOK CRS — CRICKET ROAD ]</a>
+          </div>
+
+          {/* ACCESS / HOURS */}
+          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(245, 245, 245, 0.1);">
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
+              <strong>Access:</strong> By booking only<br />
+              <strong>Contact:</strong> <a href="mailto:info@cowleyroadstudios.com" style="color: var(--mustard);">info@cowleyroadstudios.com</a>
+            </p>
           </div>
         </div>
       </section>
-
       <Footer />
     </>
   )
