@@ -331,7 +331,7 @@ app.get('/book', (c) => {
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">SERVICE BOOKING</h2>
+          <h1 class="section-title heading">CRS — Book</h1>
         </div>
 
         {/* Recording & Production */}
@@ -593,10 +593,7 @@ app.get('/studio', (c) => {
 
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">STUDIO SESSIONS</h2>
-          <p class="section-intro">
-            Purpose-built studio spaces designed for reliable, repeatable results.
-          </p>
+          <h1 class="section-title heading">CRS — Studio</h1>
         </div>
 
         {/* OVERVIEW */}
@@ -710,10 +707,7 @@ app.get('/studio/infrastructure', (c) => {
 
       <section class="crs-section section-dark" style="padding-top: 2rem; padding-bottom: 4rem;">
         <div class="section-header" style="margin-bottom: 2rem;">
-          <h2 class="section-title heading" style="font-size: 1.75rem; margin-bottom: 0.5rem;">INFRASTRUCTURE / CAPABILITIES SNAPSHOT</h2>
-          <p class="section-intro mono" style="font-size: 0.8125rem; opacity: 0.7; letter-spacing: 0.05em;">
-            Coordinated system architecture — 118 Cowley Road HQ
-          </p>
+          <h1 class="section-title heading" style="font-size: 1.75rem; margin-bottom: 0.5rem;">CRS — Studio Infrastructure</h1>
         </div>
 
         {/* CONTROL PANEL MOTIF */}
@@ -1234,7 +1228,7 @@ app.get('/repairs/status', (c) => {
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
-          <h2 class="section-title heading">Repairs & Technical Bench</h2>
+          <h1 class="section-title heading">CRS — Repair Status</h1>
           
           {/* STATUS LINE - PROMINENT */}
           <div class="repairs-status-banner">
@@ -1343,10 +1337,7 @@ app.get('/av-services', (c) => {
 
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">AV SERVICES & LIVE SOUND</h2>
-          <p class="section-intro">
-            Engineer-led live sound, installations, and technical support for community venues, cultural events, and public gatherings.
-          </p>
+          <h1 class="section-title heading">CRS — AV Services</h1>
         </div>
 
         {/* WHAT WE DO */}
@@ -1443,10 +1434,7 @@ app.get('/av-services/repairs', (c) => {
 
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">REPAIRS & TECHNICAL BENCH</h2>
-          <p class="section-intro">
-            Analogue, digital, and practical fixes — done properly.
-          </p>
+          <h1 class="section-title heading">CRS — Repairs</h1>
           
           {/* STATUS NOTE */}
           <div class="repairs-status-banner" style="margin-top: 1.5rem;">
@@ -2024,7 +2012,7 @@ app.get('/about', (c) => {
 
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">ABOUT COWLEY ROAD STUDIOS</h2>
+          <h1 class="section-title heading">CRS — About</h1>
         </div>
 
         {/* OVERVIEW */}
@@ -2056,7 +2044,7 @@ app.get('/contact', (c) => {
 
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h2 class="section-title heading">CONTACT</h2>
+          <h1 class="section-title heading">CRS — Contact</h1>
           <p class="section-intro">
             For general enquiries only.
           </p>
