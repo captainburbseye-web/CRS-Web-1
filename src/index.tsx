@@ -233,16 +233,16 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="crs-header">
-      {/* NAVIGATION ROW: Console Labels (Left) + BOOK NOW (Right) */}
       <div class="crs-header-nav-row">
-        {/* ZONE A (LEFT): Console Labels */}
+        {/* LEFT: CRS Brand + Service Categories */}
         <div class="crs-header-left">
+          <a href="/" class="crs-brand">CRS</a>
           <nav class="header-services">
-            <a href="/studio" class="nav-item">Studio</a>
+            <span class="service-label">Studios</span>
             <span class="separator">·</span>
-            <a href="/workshop-cafe" class="nav-item">Workshop Café</a>
+            <span class="service-label">Venues</span>
             <span class="separator">·</span>
-            <a href="/av-services" class="nav-item">AV</a>
+            <span class="service-label">Technical Services</span>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -252,20 +252,15 @@ const Header = () => (
           </button>
         </div>
 
-        {/* ZONE C (RIGHT): Transport Control — BOOK NOW ONLY */}
+        {/* RIGHT: Locations | Book | Contact */}
         <div class="crs-header-right">
-          <div class="book-now-panel neon-flash" id="book-now-panel">
-            <button class="book-now-trigger" id="book-now-trigger">
-              BOOK NOW
-            </button>
-            <div class="book-now-dropdown" id="book-now-dropdown">
-              <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
-              <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
-              <a href="/contact?service=repairs">BOOK REPAIR</a>
-              <a href="/contact?service=av">BOOK AV SERVICES</a>
-              <a href="/contact?service=venue">BOOK VENUE</a>
-            </div>
-          </div>
+          <nav class="header-nav">
+            <a href="/locations" class="nav-link">Locations</a>
+            <span class="separator">|</span>
+            <a href="/book" class="nav-link">Book</a>
+            <span class="separator">|</span>
+            <a href="/contact" class="nav-link">Contact</a>
+          </nav>
         </div>
       </div>
     </header>
@@ -274,7 +269,7 @@ const Header = () => (
     <div class="mobile-nav-overlay" id="mobile-nav-overlay">
       <div class="mobile-nav-container">
         <div class="mobile-nav-header">
-          <div class="mobile-nav-logo">CRS OXFORD</div>
+          <div class="mobile-nav-logo">CRS</div>
           <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close navigation menu">
             ✕
           </button>
@@ -282,27 +277,12 @@ const Header = () => (
 
         {/* Mobile Nav Links */}
         <nav class="mobile-nav-links">
-          <a href="/studio" class="nav-button nav-studio">Studio</a>
-          <a href="/workshop-cafe" class="nav-button nav-cafe">Workshop Café</a>
-          <a href="/av-services" class="nav-button nav-av">AV</a>
+          <a href="/locations" class="nav-button">Locations</a>
+          <a href="/book" class="nav-button">Book</a>
+          <a href="/contact" class="nav-button">Contact</a>
         </nav>
 
-        {/* Mobile Book Section */}
-        <div class="mobile-book-section">
-          <div class="mobile-book-title">/// BOOK NOW</div>
-          <div class="mobile-book-links">
-            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start">BOOK RECORDING</a>
-            <a href="/contact?service=rehearsal">BOOK REHEARSAL</a>
-            <a href="/contact?service=repairs">BOOK REPAIR</a>
-            <a href="/contact?service=av">BOOK AV SERVICES</a>
-            <a href="/contact?service=venue">BOOK VENUE</a>
-          </div>
-        </div>
-
-        {/* Mobile Contact Section */}
-        <div class="mobile-contact-section">
-          <a href="/contact" class="mobile-contact-link">Contact</a>
-        </div>
+        {/* Mobile Book Section - Removed (simplification) */}
       </div>
     </div>
   </>
@@ -312,72 +292,32 @@ const Footer = () => (
   <>
     {/* MOBILE NAVIGATION (FIXED BOTTOM) */}
     <nav class="mobile-nav mono">
-      <a href="/studio">STUDIO</a>
-      <a href="/av-services">AV</a>
-      <a href="/workshop-cafe">CAFÉ</a>
-      <a href="/about">ABOUT</a>
+      <a href="/locations">LOCATIONS</a>
+      <a href="/book">BOOK</a>
       <a href="/contact">CONTACT</a>
-      <a href="/" class="primary-book-button-mobile mono">BOOK</a>
     </nav>
 
     <footer class="crs-footer mono">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <p class="footer-col-title">01 / TERMINAL</p>
-        <p>LOC: 118 Cowley Rd</p>
-        <p>OXF: OX4 1JE</p>
-        <p>LAT: 51.7483° N</p>
-        <p>LON: 1.2331° W</p>
+      {/* CRS Locations (Quiet List) */}
+      <div class="footer-locations">
+        <p class="footer-locations-header">CRS Locations</p>
+        <p class="footer-location-item">– Cowley Road</p>
+        <p class="footer-location-item">– Cricket Road</p>
       </div>
 
-      <div class="footer-col">
-        <p class="footer-col-title">02 / STATUS</p>
-        <p>STATUS: OPERATIONAL</p>
-        <p>VER: 2026.1.0_LOCKED</p>
-        <p>UPTIME: 99.9%</p>
-        <p>SIGNAL: ACTIVE</p>
+      {/* Contact */}
+      <div class="footer-contact">
+        <p>CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a></p>
       </div>
 
-      <div class="footer-col">
-        <p class="footer-col-title">03 / NAVIGATION</p>
-        <p><a href="/studio">_STUDIO: [Recording]</a></p>
-        <p><a href="/workshop-cafe">_CAFÉ: [Venue Hire]</a></p>
-        <p><a href="/av-services">_AV: [Live Sound]</a></p>
-        <p><a href="/repairs/status">_AV_REPAIRS: [Diagnostics]</a></p>
+      {/* Footer Signature */}
+      <div class="footer-signature">
+        <p class="footer-credit">© 2026 CRS</p>
+        <p class="footer-credit mono">
+          POWERED BY <span style="color: var(--standby-gold); font-weight: 800;">0DR0</span> ENGINEERING
+        </p>
       </div>
-
-      <div class="footer-col">
-        <p class="footer-col-title">04 / LEGAL</p>
-        <p>© 2026 CRS & WC</p>
-        <p>BUILT FOR OXFORD</p>
-        <p>GRASSROOTS_CORE</p>
-        <p>NO_CHAOS_POLICY</p>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p class="footer-locations-header">CRS Locations</p>
-      <p class="footer-location-item">– Cowley Road</p>
-      <p class="footer-location-item">– Cricket Road</p>
-      <p class="footer-contact">
-        CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a>
-      </p>
-    </div>
-
-    {/* Footer Signature - End Cap */}
-    <div class="footer-signature">
-      <img 
-        src="https://www.genspark.ai/api/files/s/hItia3i9" 
-        alt="CRS Cowley Road Studios"
-        class="brand-stamp"
-        style="max-width: 300px; height: auto;"
-        loading="lazy"
-      />
-      <p class="footer-credit mono">
-        POWERED BY <span style="color: var(--standby-gold); font-weight: 800;">0DR0</span> ENGINEERING
-      </p>
-    </div>
-  </footer>
+    </footer>
   </>
 )
 
@@ -530,6 +470,61 @@ app.get('/locations', (c) => {
           <a href="/contact" class="crs-button mono">[ CONTACT FOR ACCESS ]</a>
         </div>
       </section>
+      <Footer />
+    </>
+  )
+})
+
+// LOCATIONS
+app.get('/locations', (c) => {
+  return c.render(
+    <>
+      <Header />
+      
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h1 class="section-title heading">CRS Locations</h1>
+        </div>
+
+        {/* Cowley Road */}
+        <div class="content-block" style="margin-bottom: 3rem;">
+          <h2 class="content-heading heading">CRS — Cowley Road</h2>
+          <div class="content-text">
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 1rem;">
+              118 Cowley Road, Oxford, OX4 1JE
+            </p>
+            <p style="margin-bottom: 1rem; font-weight: 600;">What operates here:</p>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Recording studio</li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Production rooms</li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Workshop Café (public venue)</li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Equipment repair services</li>
+            </ul>
+          </div>
+          <div class="hero-cta" style="margin-top: 1.5rem;">
+            <a href="/book" class="crs-button mono">[ BOOK CRS — COWLEY ROAD ]</a>
+          </div>
+        </div>
+
+        {/* Cricket Road */}
+        <div class="content-block">
+          <h2 class="content-heading heading">CRS — Cricket Road</h2>
+          <div class="content-text">
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 1rem;">
+              Cricket Road, Oxford
+            </p>
+            <p style="margin-bottom: 1rem; font-weight: 600;">What operates here:</p>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Rehearsal space</li>
+              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Live room</li>
+            </ul>
+          </div>
+          <div class="hero-cta" style="margin-top: 1.5rem;">
+            <a href="/book" class="crs-button mono">[ BOOK CRS — CRICKET ROAD ]</a>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </>
   )
