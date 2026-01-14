@@ -279,9 +279,8 @@ const Header = () => (
         </nav>
       </div>
 
-      {/* CENTER ZONE: TASCAM + Metal Plates + Traffic Lights */}
+      {/* CENTER ZONE: Metal Plates + Traffic Lights */}
       <div class="rack-header-center">
-        <div class="tascam-label">TASCAM</div>
         <div class="metal-plate">COWLEY ROAD</div>
         <div class="orange-button-plate">STUDIOS</div>
         <div class="traffic-lights">
