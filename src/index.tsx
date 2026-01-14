@@ -313,13 +313,21 @@ const Footer = () => (
       {/* CRS Locations (Quiet List) */}
       <div class="footer-locations">
         <p class="footer-locations-header">CRS Locations</p>
-        <p class="footer-location-item">– Cowley Road</p>
-        <p class="footer-location-item">– Cricket Road</p>
+        <p class="footer-location-item">– Cowley Road, Oxford, OX4 1JE</p>
+        <p class="footer-location-item">– Cricket Road, Oxford</p>
       </div>
 
       {/* Contact */}
       <div class="footer-contact">
         <p>CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a></p>
+      </div>
+
+      {/* No Chaos Policy */}
+      <div class="footer-policy">
+        <p class="footer-policy-header">NO CHAOS POLICY</p>
+        <p class="footer-policy-text">
+          CRS operates under a strict no-chaos protocol. All systems are maintained to function reliably, predictably, and without drama. Equipment is tested, signal paths are documented, and technical decisions are made based on engineering reality—not hype.
+        </p>
       </div>
 
       {/* Footer Signature */}
