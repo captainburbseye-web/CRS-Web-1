@@ -36,13 +36,70 @@ app.get('/manifest.json', (c) => {
 })
 
 // API ENDPOINTS
+// Contact form endpoint - sends email via Cloudflare MailChannels
 app.post('/api/contact', async (c) => {
   try {
     const body = await c.req.json()
     console.log('[API] Contact form submission:', body)
     
-    // TODO: Implement email notification or database storage
-    // For now, log and return success
+    // Get client IP from Cloudflare header
+    const clientIP = c.req.header('cf-connecting-ip') || 'Unknown'
+    
+    // Build email payload for MailChannels
+    const emailData = {
+      personalizations: [
+        {
+          to: [{ email: 'info@cowleyroadstudios.com' }]
+        }
+      ],
+      from: {
+        email: 'noreply@cowleyroadstudios.com',
+        name: 'CRS Contact Form'
+      },
+      subject: `[CRS CONTACT] ${body.subject || 'New Inquiry'}`,
+      content: [
+        {
+          type: 'text/html',
+          value: `
+            <div style="font-family: monospace; max-width: 600px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #00ff00; border: 2px solid #333;">
+              <h2 style="color: #ff6b35; margin-top: 0;">NEW CONTACT FORM SUBMISSION</h2>
+              <div style="border-left: 3px solid #ff6b35; padding-left: 15px; margin: 20px 0;">
+                <p><strong>From:</strong> ${body.name || 'Not provided'}</p>
+                <p><strong>Email:</strong> ${body.email || 'Not provided'}</p>
+                <p><strong>Subject:</strong> ${body.subject || 'Not provided'}</p>
+              </div>
+              <div style="background: #0a0a0a; padding: 15px; margin: 20px 0; border: 1px solid #333;">
+                <p><strong>Message:</strong></p>
+                <p style="white-space: pre-wrap;">${body.message || 'No message provided'}</p>
+              </div>
+              <div style="font-size: 0.85em; color: #666; margin-top: 20px; padding-top: 15px; border-top: 1px solid #333;">
+                <p><strong>Submitted:</strong> ${new Date().toISOString()}</p>
+                <p><strong>IP:</strong> ${clientIP}</p>
+              </div>
+            </div>
+          `
+        }
+      ]
+    }
+    
+    // Send email via MailChannels
+    const mailResponse = await fetch('https://api.mailchannels.net/tx/v1/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(emailData)
+    })
+    
+    if (!mailResponse.ok) {
+      console.error('[MailChannels] Failed to send email:', await mailResponse.text())
+      return c.json({ 
+        success: false, 
+        error: 'Failed to send email'
+      }, 500)
+    }
+    
+    console.log('[MailChannels] Email sent successfully')
     
     return c.json({ 
       success: true, 
@@ -52,7 +109,7 @@ app.post('/api/contact', async (c) => {
     console.error('[API] Contact form error:', error)
     return c.json({ 
       success: false, 
-      message: '[ SIGNAL FAILURE ] Internal server error. Submission not logged. Please direct urgent inquiries to info@cowleyroadstudios.com.' 
+      error: 'Internal server error'
     }, 500)
   }
 })
