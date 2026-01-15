@@ -37,10 +37,10 @@ export const renderer = jsxRenderer(({ children }) => {
           }
         `}} />
         
-        {/* Google Fonts - Industrial-Maverick Typography */}
+        {/* Google Fonts - Hardware Typography */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
         
         {/* Clean CSS */}
         <link href="/static/clean.css" rel="stylesheet" />
@@ -62,8 +62,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-presence-signals.css" rel="stylesheet" />
         {/* FINAL OVERRIDES: Nuclear fixes (MUST load ABSOLUTE LAST) */}
         <link href="/static/crs-final-overrides.css" rel="stylesheet" />
-        {/* RACK UI: DAW-style interface (LOADS LAST TO OVERRIDE ALL) */}
-        <link href="/static/crs-rack-ui.css" rel="stylesheet" />
+        {/* RACK UI V2: Physical hardware aesthetic (LOADS LAST TO OVERRIDE ALL) */}
+        <link href="/static/crs-rack-ui-v2.css" rel="stylesheet" />
       </head>
       <body>
         {children}

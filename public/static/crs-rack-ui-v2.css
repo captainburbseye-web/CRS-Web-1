@@ -1,0 +1,497 @@
+/* ====================================================================
+   CRS RACK INTERFACE V2 — PHYSICAL HARDWARE AESTHETIC
+   Inspired by Workshop Café physical mockup
+   Enhanced depth, materials, and vintage hardware feel
+   ==================================================================== */
+
+:root {
+  /* Chassis & Background */
+  --rack-bg: #0a0a0a;
+  --rack-border: #1a1a1a;
+  --rack-shadow: rgba(0, 0, 0, 0.8);
+  --chassis-dark: #0d0d0d;
+  
+  /* Bronze/Copper Rack Ears */
+  --bronze-light: #cd9575;
+  --bronze-mid: #b87a5a;
+  --bronze-dark: #8b5a3c;
+  --bronze-shadow: #5c3d28;
+  
+  /* Green Panel (CRS) */
+  --panel-green: #2d4a2d;
+  --panel-green-light: #3d5a3d;
+  --panel-green-dark: #1d3a1d;
+  --panel-shadow: rgba(0, 0, 0, 0.6);
+  
+  /* Gold/Cream Text */
+  --text-gold: #d4af37;
+  --text-cream: #f4e8d0;
+  --text-dim: rgba(244, 232, 208, 0.7);
+  
+  /* LEDs */
+  --led-red: #ff3333;
+  --led-green: #44ff44;
+  --led-yellow: #ffaa00;
+  --led-orange: #ff7700;
+  --led-glow: rgba(68, 255, 68, 0.6);
+  
+  /* Metal Elements */
+  --metal-light: #e8e8e8;
+  --metal-mid: #c0c0c0;
+  --metal-dark: #909090;
+  
+  /* CTA Orange */
+  --cta-orange: #ff8833;
+  --cta-orange-dark: #dd6611;
+}
+
+/* ==== GLOBAL RACK CHASSIS ==== */
+body {
+  background: var(--rack-bg);
+  color: var(--text-cream);
+  margin: 0;
+  padding: 0;
+  font-family: 'Space Mono', 'JetBrains Mono', monospace;
+}
+
+/* ==== ENHANCED RACK UNIT WITH BRONZE EARS ==== */
+.rack-unit {
+  position: relative;
+  margin: 0 0 2px 0;
+  background: var(--panel-green);
+  border-top: 3px solid var(--chassis-dark);
+  border-bottom: 3px solid var(--chassis-dark);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.5);
+  padding: 2rem 5rem;
+  min-height: 120px;
+}
+
+/* Bronze Rack Ears (left and right) */
+.rack-unit::before,
+.rack-unit::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4rem;
+  background: linear-gradient(
+    180deg,
+    var(--bronze-light) 0%,
+    var(--bronze-mid) 40%,
+    var(--bronze-dark) 70%,
+    var(--bronze-shadow) 100%
+  );
+  box-shadow: 
+    inset -2px 0 4px rgba(0, 0, 0, 0.3),
+    inset 2px 0 4px rgba(255, 255, 255, 0.1);
+}
+
+.rack-unit::before {
+  left: 0;
+  border-right: 1px solid var(--bronze-shadow);
+}
+
+.rack-unit::after {
+  right: 0;
+  border-left: 1px solid var(--bronze-shadow);
+}
+
+/* Rack Ear Holes (pseudo-elements on ears) */
+.rack-unit {
+  background-image: 
+    /* Left ear holes */
+    radial-gradient(circle at 2rem 2rem, rgba(0, 0, 0, 0.5) 6px, transparent 6px),
+    radial-gradient(circle at 2rem calc(100% - 2rem), rgba(0, 0, 0, 0.5) 6px, transparent 6px),
+    /* Right ear holes */
+    radial-gradient(circle at calc(100% - 2rem) 2rem, rgba(0, 0, 0, 0.5) 6px, transparent 6px),
+    radial-gradient(circle at calc(100% - 2rem) calc(100% - 2rem), rgba(0, 0, 0, 0.5) 6px, transparent 6px);
+  background-repeat: no-repeat;
+  background-color: var(--panel-green);
+}
+
+/* ==== CORNER SCREWS (3D EFFECT) ==== */
+.rack-screw {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 35% 35%, #888, #333 50%, #111);
+  box-shadow: 
+    inset 0 1px 2px rgba(0, 0, 0, 0.8),
+    0 1px 2px rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+/* Phillips head cross */
+.rack-screw::before,
+.rack-screw::after {
+  content: '';
+  position: absolute;
+  background: #000;
+}
+
+.rack-screw::before {
+  width: 1px;
+  height: 6px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rack-screw::after {
+  width: 6px;
+  height: 1px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Position corner screws */
+.rack-unit .rack-screw:nth-of-type(1) { top: 1.5rem; left: 1.5rem; }
+.rack-unit .rack-screw:nth-of-type(2) { top: 1.5rem; right: 1.5rem; }
+.rack-unit .rack-screw:nth-of-type(3) { bottom: 1.5rem; left: 1.5rem; }
+.rack-unit .rack-screw:nth-of-type(4) { bottom: 1.5rem; right: 1.5rem; }
+
+/* ==== SECTION HEADER WITH GOLD TEXT ==== */
+.rack-unit-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 0 0 1.5rem 0;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(212, 175, 55, 0.3);
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+/* Status LED above title */
+.rack-unit-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--led-green);
+  box-shadow: 
+    0 0 8px var(--led-green),
+    0 0 16px var(--led-glow),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Different LED colors per section */
+.rack-unit.led-red .rack-unit-title::before {
+  background: var(--led-red);
+  box-shadow: 
+    0 0 8px var(--led-red),
+    0 0 16px rgba(255, 51, 51, 0.6),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.rack-unit.led-orange .rack-unit-title::before {
+  background: var(--led-orange);
+  box-shadow: 
+    0 0 8px var(--led-orange),
+    0 0 16px rgba(255, 119, 0, 0.6),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ==== BODY TEXT (CREAM ON GREEN) ==== */
+.rack-unit p,
+.rack-unit li {
+  color: var(--text-cream);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ==== ENHANCED CTA BUTTONS ==== */
+.cta-button {
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    var(--cta-orange) 0%,
+    var(--cta-orange-dark) 100%
+  );
+  color: #000;
+  font-weight: 700;
+  padding: 14px 28px;
+  border: 3px solid var(--cta-orange-dark);
+  border-radius: 6px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.cta-button::before { content: "[ "; }
+.cta-button::after { content: " ]"; }
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ==== RACK HEADER (TOP UNIT) ==== */
+.rack-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--chassis-dark);
+  border-bottom: 4px solid var(--rack-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  min-height: 80px;
+}
+
+/* ==== METAL PLATE (ENHANCED) ==== */
+.metal-plate {
+  background: linear-gradient(
+    180deg,
+    var(--metal-light) 0%,
+    var(--metal-mid) 50%,
+    var(--metal-dark) 100%
+  );
+  border: 2px solid #888;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  color: #222;
+  font-weight: 700;
+  padding: 8px 20px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+/* ==== TRAFFIC LIGHTS (ENHANCED GLOW) ==== */
+.traffic-lights {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.traffic-light {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 6px currentColor,
+    0 0 12px currentColor,
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  display: inline-block;
+}
+
+.traffic-light.red { 
+  background: radial-gradient(circle at 35% 35%, #ff6666, var(--led-red));
+  color: var(--led-red); 
+}
+
+.traffic-light.yellow { 
+  background: radial-gradient(circle at 35% 35%, #ffcc66, var(--led-yellow));
+  color: var(--led-yellow); 
+}
+
+.traffic-light.green { 
+  background: radial-gradient(circle at 35% 35%, #66ff66, var(--led-green));
+  color: var(--led-green); 
+}
+
+/* ==== LOGO STYLING ==== */
+.rack-logo-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+/* ==== SUBTITLE BAR ==== */
+.crs-subtitle-bar {
+  background: linear-gradient(
+    180deg,
+    var(--panel-green-light) 0%,
+    var(--panel-green) 100%
+  );
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid var(--chassis-dark);
+  padding: 12px 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-cream);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ==== NAVIGATION LINKS ==== */
+.rack-nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.rack-nav-links a {
+  color: var(--text-cream);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.rack-nav-links a:hover {
+  color: var(--text-gold);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}
+
+/* ==== DROPDOWN MENU ==== */
+.book-dropdown-trigger {
+  background: var(--cta-orange);
+  color: #000;
+  border: 2px solid var(--cta-orange-dark);
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.15s ease;
+}
+
+.book-dropdown-trigger:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.book-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: var(--panel-green);
+  border: 2px solid var(--bronze-dark);
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  min-width: 220px;
+  z-index: 1000;
+}
+
+.book-dropdown-menu[aria-hidden="true"] {
+  display: none;
+}
+
+.book-dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: var(--text-cream);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease;
+}
+
+.book-dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.book-dropdown-menu a:hover {
+  background: var(--panel-green-light);
+  color: var(--text-gold);
+}
+
+/* ==== FOOTER STYLING ==== */
+footer {
+  background: var(--chassis-dark);
+  border-top: 3px solid var(--rack-border);
+  padding: 2rem;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.footer-section {
+  margin-bottom: 1.5rem;
+}
+
+.footer-section h3 {
+  color: var(--text-gold);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.footer-section p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+  .rack-unit {
+    padding: 1.5rem 3rem;
+  }
+  
+  .rack-unit::before,
+  .rack-unit::after {
+    width: 2.5rem;
+  }
+  
+  .rack-header {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .metal-plate {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+  
+  .rack-nav-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
