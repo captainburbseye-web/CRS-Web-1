@@ -1650,7 +1650,43 @@ app.get('/av-services/repairs', (c) => {
 app.get('/workshop-cafe', (c) => {
   return c.render(
     <>
+      {/* Apply WSC mode class to body */}
+      <script dangerouslySetInnerHTML={{__html: `document.body.classList.add('wsc-mode');`}} />
+      
       <Header />
+
+      {/* VENUE WELCOME RACK */}
+      <section class="rack-unit led-orange">
+        <div class="rack-screw"></div>
+        <div class="rack-screw"></div>
+        <div class="rack-screw"></div>
+        <div class="rack-screw"></div>
+        
+        <h2 class="rack-unit-title">Workshop Café — Venue</h2>
+        
+        <p style="margin-bottom: 1.5rem;">
+          Bookable public-facing venue within CRS for small events and private hire.
+        </p>
+        
+        <div class="wsc-capacity-spec">
+          <div class="wsc-capacity-item">
+            Capacity: <strong>25 seated</strong>
+          </div>
+          <div class="wsc-capacity-item">
+            <strong>up to 60 standing</strong>
+          </div>
+        </div>
+        
+        <div class="wsc-use-case-grid">
+          <div class="wsc-use-case-label">listening sessions</div>
+          <div class="wsc-use-case-label">film screenings</div>
+          <div class="wsc-use-case-label">workshops & classes</div>
+          <div class="wsc-use-case-label">talks & discussions</div>
+          <div class="wsc-use-case-label">private bookings</div>
+        </div>
+        
+        <a href="/book" class="cta-button">BOOK WORKSHOP CAFÉ</a>
+      </section>
 
         {/* CAFÉ SIGNAGE HERO - Above the fold */}
         <section class="crs-section cafe-heartbeat" style="padding: 0; max-width: 1400px; margin: 0 auto;">
