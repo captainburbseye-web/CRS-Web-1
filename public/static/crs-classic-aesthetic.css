@@ -1,0 +1,363 @@
+/* ============================================
+   CRS CLASSIC AESTHETIC - SATURDAY BEST LOOK
+   Restores: Simple header, clean sections, original colors
+   Keeps: MailChannels, WSC mode, all functionality
+   ============================================ */
+
+/* OVERRIDE RACK UI V2 - BACK TO CLEAN */
+body:not(.wsc-mode) {
+  /* Simpler colors - back to NASA terminal */
+  --rack-bg: #0D1912;
+  --panel-green: #1A251E;
+  --panel-green-light: #2D3A32;
+  --panel-green-dark: #0D1912;
+  --text-gold: #E89B3C;
+  --text-cream: #FFFFFF;
+  --led-green: #C8FF41;
+}
+
+/* SIMPLIFIED RACK UNITS - NO BRONZE EARS */
+.rack-unit {
+  position: relative;
+  margin: 0;
+  background: var(--panel-green);
+  border-top: 1px solid rgba(212, 160, 23, 0.2);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  box-shadow: none;
+  padding: 3rem 2rem;
+  min-height: auto;
+}
+
+/* Remove bronze ears */
+.rack-unit::before,
+.rack-unit::after {
+  display: none;
+}
+
+/* Remove rack ear holes */
+.rack-unit {
+  background-image: none;
+  background-color: var(--panel-green);
+}
+
+/* SIMPLIFIED SCREWS - SMALL CORNER DOTS */
+.rack-screw {
+  display: none; /* Remove for cleaner look */
+}
+
+/* SECTION KNOBS - SIMPLE COLORED DOTS */
+.section-knob {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.75rem;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.section-knob-green {
+  background: var(--led-green);
+  color: var(--led-green);
+}
+
+.section-knob-yellow {
+  background: #F4D03F;
+  color: #F4D03F;
+}
+
+.section-knob-red {
+  background: #FF4444;
+  color: #FF4444;
+}
+
+/* SIMPLIFIED TITLES - NO LED */
+.rack-unit-title {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: rgba(245, 245, 245, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 1rem 0;
+  text-shadow: none;
+  padding-top: 0;
+}
+
+/* Remove LED from title */
+.rack-unit-title::before {
+  display: none;
+}
+
+/* SIMPLIFIED HEADER - BACK TO CLEAN */
+.rack-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--rack-bg);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 2rem;
+  min-height: auto;
+  gap: 2rem;
+}
+
+/* HEADER LEFT - BADGE + NAV */
+.rack-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.rack-logo-block {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.logo-svg {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+  filter: none;
+}
+
+/* Remove traffic lights */
+.traffic-lights {
+  display: none;
+}
+
+/* HEADER CENTER - OPERATIONAL STATEMENT */
+.rack-header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* SUBTITLE BAR - SIMPLER */
+.crs-subtitle-bar {
+  background: var(--panel-green);
+  border-top: 1px solid rgba(212, 160, 23, 0.1);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  padding: 0.75rem 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(245, 245, 245, 0.65);
+  text-shadow: none;
+  box-shadow: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* METAL PLATES - SIMPLER */
+.metal-plate {
+  background: rgba(232, 155, 60, 0.1);
+  border: 1px solid rgba(232, 155, 60, 0.3);
+  border-radius: 4px;
+  box-shadow: none;
+  text-shadow: none;
+  color: var(--text-gold);
+  font-weight: 600;
+  padding: 6px 16px;
+  font-family: 'Archivo Black', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin: 0 6px;
+}
+
+/* NAVIGATION - CLEANER */
+.rack-nav-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.813rem;
+  font-weight: 400;
+}
+
+.rack-nav-links a {
+  color: rgba(245, 245, 245, 0.85);
+  text-decoration: none;
+  font-size: 0.813rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  transition: color 0.2s ease;
+  text-shadow: none;
+}
+
+.rack-nav-links a:hover {
+  color: var(--text-gold);
+  text-shadow: none;
+}
+
+/* SEPARATOR DOTS */
+.rack-nav-links .separator {
+  color: rgba(245, 245, 245, 0.3);
+  font-weight: 300;
+}
+
+/* CTA BUTTONS - CLEANER BRACKETS */
+.cta-button {
+  display: inline-block;
+  background: transparent;
+  color: var(--text-gold);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--text-gold);
+  border-radius: 4px;
+  text-shadow: none;
+  box-shadow: none;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.cta-button::before { content: "[ "; }
+.cta-button::after { content: " ]"; }
+
+.cta-button:hover {
+  background: rgba(232, 155, 60, 0.1);
+  border-color: var(--text-gold);
+  transform: none;
+  box-shadow: none;
+}
+
+/* HERO SECTION - CLEAN */
+.crs-hero {
+  background: var(--rack-bg);
+  padding: 0;
+  margin: 0;
+}
+
+.hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.hero-power-panel {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.95;
+}
+
+/* BOOK NOW DROPDOWN - SIMPLER */
+.book-dropdown-trigger {
+  background: transparent;
+  color: var(--text-gold);
+  border: 1px solid var(--text-gold);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: none;
+  transition: all 0.2s ease;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.book-dropdown-trigger:hover {
+  background: rgba(232, 155, 60, 0.1);
+  transform: none;
+  box-shadow: none;
+}
+
+.book-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: var(--panel-green);
+  border: 1px solid rgba(232, 155, 60, 0.3);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  min-width: 200px;
+  z-index: 1000;
+}
+
+.book-dropdown-menu a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: rgba(245, 245, 245, 0.85);
+  text-decoration: none;
+  font-size: 0.75rem;
+  border-bottom: 1px solid rgba(232, 155, 60, 0.1);
+  transition: background 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.book-dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.book-dropdown-menu a:hover {
+  background: rgba(232, 155, 60, 0.1);
+  color: var(--text-gold);
+}
+
+/* BODY TEXT - CLEANER */
+.rack-unit p,
+.rack-unit li {
+  color: rgba(245, 245, 245, 0.85);
+  font-size: 0.938rem;
+  line-height: 1.6;
+  text-shadow: none;
+  font-family: 'Inter', sans-serif;
+}
+
+/* FOOTER - CLEANER */
+footer {
+  background: var(--rack-bg);
+  border-top: 1px solid rgba(212, 160, 23, 0.2);
+  padding: 2rem;
+  color: rgba(245, 245, 245, 0.65);
+  font-size: 0.813rem;
+}
+
+.footer-section h3 {
+  color: var(--text-gold);
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* RESPONSIVE - KEEP CLEAN */
+@media (max-width: 768px) {
+  .rack-unit {
+    padding: 2rem 1.5rem;
+  }
+  
+  .rack-header {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .rack-header-center {
+    max-width: 100%;
+  }
+  
+  .crs-subtitle-bar {
+    font-size: 0.688rem;
+    padding: 0.625rem 1rem;
+  }
+}

@@ -66,6 +66,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-rack-ui-v2.css" rel="stylesheet" />
         {/* WSC MODE: Workshop Café warmth overrides (controlled mode switch) */}
         <link href="/static/crs-wsc-mode.css" rel="stylesheet" />
+        {/* CLASSIC AESTHETIC: Saturday best look (loads last, overrides V2 for CRS pages) */}
+        <link href="/static/crs-classic-aesthetic.css" rel="stylesheet" />
       </head>
       <body>
         {children}
