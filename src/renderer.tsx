@@ -42,32 +42,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
         
-        {/* Clean CSS */}
-        <link href="/static/clean.css" rel="stylesheet" />
-        <link href="/static/crs-positioning-fixes.css" rel="stylesheet" />
-        <link href="/static/crs-proportion-fixes.css" rel="stylesheet" />
-        <link href="/static/crs-nav-button-refinement.css" rel="stylesheet" />
-        <link href="/static/crs-nav-correction.css" rel="stylesheet" />
-        <link href="/static/crs-mobile-nav.css" rel="stylesheet" />
-        <link href="/static/crs-audit-fixes.css" rel="stylesheet" />
-        <link href="/static/crs-header-vertical-separation.css" rel="stylesheet" />
-        <link href="/static/crs-header-logo.css" rel="stylesheet" />
-        {/* Hardware Discipline */}
-        <link href="/static/crs-hardware-discipline-final.css" rel="stylesheet" />
-        {/* CONTAINMENT FIX: Layering + Mounting */}
-        <link href="/static/crs-containment-fix.css" rel="stylesheet" />
-        {/* CHASSIS LOCK: Final header specification */}
-        <link href="/static/crs-header-chassis-lock.css" rel="stylesheet" />
-        {/* PRESENCE SIGNALS: Hardware status indicators + imagery */}
-        <link href="/static/crs-presence-signals.css" rel="stylesheet" />
-        {/* FINAL OVERRIDES: Nuclear fixes (MUST load ABSOLUTE LAST) */}
-        <link href="/static/crs-final-overrides.css" rel="stylesheet" />
-        {/* RACK UI V2: Physical hardware aesthetic (LOADS LAST TO OVERRIDE ALL) */}
-        <link href="/static/crs-rack-ui-v2.css" rel="stylesheet" />
-        {/* WSC MODE: Workshop Café warmth overrides (controlled mode switch) */}
-        <link href="/static/crs-wsc-mode.css" rel="stylesheet" />
-        {/* CLASSIC AESTHETIC: Saturday best look (loads last, overrides V2 for CRS pages) */}
-        <link href="/static/crs-classic-aesthetic.css" rel="stylesheet" />
+        {/* RACK SYSTEM CSS - Hardware rack interface */}
+        <link href="/static/rack-system.css" rel="stylesheet" />
       </head>
       <body>
         {children}

@@ -641,61 +641,71 @@ app.get('/crs-cricket-road', (c) => {
 // HOME
 app.get('/', (c) => {
   return c.render(
-    <>
-      <Header />
-
-      {/* SUBTITLE BAR */}
-      <div class="subtitle-bar">
-        Cowley Road Studios is a purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford.
+    <div class="rack-container">
+      
+      {/* MODULE 1: CRS LOGO */}
+      <div class="rack-module module-logo">
+        <img 
+          src="https://www.genspark.ai/api/files/s/yFcJn7lY"
+          alt="Cowley Road Studios"
+          class="module-image"
+        />
       </div>
 
-      {/* RACK UNIT 1: CRS */}
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led green"></span>
-          </div>
-          <h2 class="rack-unit-title">CRS</h2>
-        </div>
-        
-        <div class="rack-unit-content" style="max-width: 900px; margin: 0 auto; text-align: center;">
-          <p style="font-size: 1.125rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9);">
-            Studio, venue hire and live event support
+      {/* MODULE 2: STUDIO (Placeholder - needs waveform) */}
+      <a href="/studio" class="rack-module">
+        <div class="module-content text-center">
+          <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--led-green);">STUDIO SESSIONS</h2>
+          <p style="font-size: 1.125rem; color: var(--text-dim); margin-bottom: 1.5rem;">
+            Recording · Production · Acoustically Treated Rooms
           </p>
+          <div style="color: var(--crs-orange);">[ VIEW STUDIO ]</div>
         </div>
-      </section>
+      </a>
 
-      {/* INFRASTRUCTURE IMAGE */}
-      <section class="rack-unit" style="padding: 1rem;">
-        <div class="infrastructure-image">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v1%20.png"
-            alt="CRS infrastructure"
-            loading="lazy"
-            style="width: 100%; max-width: 1000px; margin: 0 auto; display: block; opacity: 0.85;"
-          />
-        </div>
-      </section>
-
-      {/* RACK UNIT 2: CONTACT */}
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led orange"></span>
-          </div>
-          <h2 class="rack-unit-title">/// PUBLIC ACCESS</h2>
-        </div>
-        
-        <div class="rack-unit-content" style="text-align: center;">
-          <p style="margin-bottom: 2rem;">
-            Enquiries are handled via the contact form.
+      {/* MODULE 3: LIVE SERVICES (Placeholder - needs speaker stack) */}
+      <a href="/services" class="rack-module">
+        <div class="module-content text-center">
+          <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--led-yellow);">LIVE SERVICES</h2>
+          <p style="font-size: 1.125rem; color: var(--text-dim); margin-bottom: 1.5rem;">
+            PA Systems · Event Support · Technical Crew
           </p>
-          <a href="/contact" class="cta-button">CONTACT</a>
+          <div style="color: var(--crs-orange);">[ VIEW SERVICES ]</div>
         </div>
-      </section>
+      </a>
 
-      <Footer />
-    </>
+      {/* MODULE 4: MIXING (Placeholder - needs mixing desk) */}
+      <a href="/mixing" class="rack-module">
+        <div class="module-content text-center">
+          <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--led-red);">MIXING SERVICES</h2>
+          <p style="font-size: 1.125rem; color: var(--text-dim); margin-bottom: 1.5rem;">
+            Professional Mix Engineering · Mastering · Post-Production
+          </p>
+          <div style="color: var(--crs-orange);">[ VIEW MIXING ]</div>
+        </div>
+      </a>
+
+      {/* MODULE 5: WORKSHOP CAFÉ */}
+      <a href="/workshop-cafe" class="rack-module module-workshop">
+        <img 
+          src="https://www.genspark.ai/api/files/s/EXVqpLyn"
+          alt="Workshop Café"
+          class="module-image"
+        />
+      </a>
+
+      {/* MODULE 6: CONTACT (Placeholder - needs XLR patch bay) */}
+      <a href="/contact" class="rack-module">
+        <div class="module-content text-center">
+          <h2 style="font-size: 2rem; margin-bottom: 1rem;">CONTACT / PATCH</h2>
+          <p style="font-size: 1.125rem; color: var(--text-dim); margin-bottom: 1.5rem;">
+            Get in touch for bookings and enquiries
+          </p>
+          <div style="color: var(--crs-orange);">[ SEND MESSAGE ]</div>
+        </div>
+      </a>
+
+    </div>
   )
 })
 
