@@ -45,61 +45,64 @@ app.post('/api/contact', async (c) => {
     // Get client IP from Cloudflare header
     const clientIP = c.req.header('cf-connecting-ip') || 'Unknown'
     
-    // Build email payload for MailChannels
-    const emailData = {
-      personalizations: [
-        {
-          to: [{ email: 'info@cowleyroadstudios.com' }]
-        }
-      ],
-      from: {
-        email: 'noreply@cowleyroadstudios.com',
-        name: 'CRS Contact Form'
-      },
-      subject: `[CRS CONTACT] ${body.subject || 'New Inquiry'}`,
-      content: [
-        {
-          type: 'text/html',
-          value: `
-            <div style="font-family: monospace; max-width: 600px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #00ff00; border: 2px solid #333;">
-              <h2 style="color: #ff6b35; margin-top: 0;">NEW CONTACT FORM SUBMISSION</h2>
-              <div style="border-left: 3px solid #ff6b35; padding-left: 15px; margin: 20px 0;">
-                <p><strong>From:</strong> ${body.name || 'Not provided'}</p>
-                <p><strong>Email:</strong> ${body.email || 'Not provided'}</p>
-                <p><strong>Subject:</strong> ${body.subject || 'Not provided'}</p>
-              </div>
-              <div style="background: #0a0a0a; padding: 15px; margin: 20px 0; border: 1px solid #333;">
-                <p><strong>Message:</strong></p>
-                <p style="white-space: pre-wrap;">${body.message || 'No message provided'}</p>
-              </div>
-              <div style="font-size: 0.85em; color: #666; margin-top: 20px; padding-top: 15px; border-top: 1px solid #333;">
-                <p><strong>Submitted:</strong> ${new Date().toISOString()}</p>
-                <p><strong>IP:</strong> ${clientIP}</p>
-              </div>
-            </div>
-          `
-        }
-      ]
+    // Get Resend API key from environment
+    const resendApiKey = c.env?.RESEND_API_KEY
+    
+    if (!resendApiKey || resendApiKey === 're_placeholder_add_real_key_after_signup') {
+      console.error('[Resend] API key not configured')
+      return c.json({ 
+        success: false, 
+        error: 'Email service not configured. Please contact us directly at info@cowleyroadstudios.com'
+      }, 500)
     }
     
-    // Send email via MailChannels
-    const mailResponse = await fetch('https://api.mailchannels.net/tx/v1/send', {
+    // Build email payload for Resend
+    const emailData = {
+      from: 'CRS Contact Form <noreply@cowleyroadstudios.com>',
+      to: ['info@cowleyroadstudios.com'],
+      subject: `[CRS CONTACT] ${body.subject || 'New Inquiry'}`,
+      html: `
+        <div style="font-family: 'Courier New', monospace; max-width: 600px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #00ff00; border: 2px solid #333;">
+          <h2 style="color: #ff6b35; margin-top: 0;">NEW CONTACT FORM SUBMISSION</h2>
+          <div style="border-left: 3px solid #ff6b35; padding-left: 15px; margin: 20px 0;">
+            <p><strong>From:</strong> ${body.name || 'Not provided'}</p>
+            <p><strong>Email:</strong> ${body.email || 'Not provided'}</p>
+            <p><strong>Subject:</strong> ${body.subject || 'Not provided'}</p>
+          </div>
+          <div style="background: #0a0a0a; padding: 15px; margin: 20px 0; border: 1px solid #333;">
+            <p><strong>Message:</strong></p>
+            <p style="white-space: pre-wrap;">${body.message || 'No message provided'}</p>
+          </div>
+          <div style="font-size: 0.85em; color: #666; margin-top: 20px; padding-top: 15px; border-top: 1px solid #333;">
+            <p><strong>Submitted:</strong> ${new Date().toISOString()}</p>
+            <p><strong>IP:</strong> ${clientIP}</p>
+          </div>
+        </div>
+      `,
+      reply_to: body.email || undefined
+    }
+    
+    // Send email via Resend
+    const mailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${resendApiKey}`
       },
       body: JSON.stringify(emailData)
     })
     
     if (!mailResponse.ok) {
-      console.error('[MailChannels] Failed to send email:', await mailResponse.text())
+      const errorText = await mailResponse.text()
+      console.error('[Resend] Failed to send email:', errorText)
       return c.json({ 
         success: false, 
-        error: 'Failed to send email'
+        error: 'Failed to send email. Please try again or contact us directly at info@cowleyroadstudios.com'
       }, 500)
     }
     
-    console.log('[MailChannels] Email sent successfully')
+    const responseData = await mailResponse.json()
+    console.log('[Resend] Email sent successfully:', responseData)
     
     return c.json({ 
       success: true, 
@@ -109,7 +112,7 @@ app.post('/api/contact', async (c) => {
     console.error('[API] Contact form error:', error)
     return c.json({ 
       success: false, 
-      error: 'Internal server error'
+      error: 'Internal server error. Please contact us directly at info@cowleyroadstudios.com'
     }, 500)
   }
 })
