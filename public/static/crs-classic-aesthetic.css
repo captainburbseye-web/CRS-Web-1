@@ -98,10 +98,10 @@ body:not(.wsc-mode) {
   box-shadow: none;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* CENTER EVERYTHING */
   padding: 0.875rem 2rem;
   min-height: auto;
-  gap: 2rem;
+  gap: 3rem; /* Increased gap between sections */
 }
 
 /* HEADER LEFT - BADGE + NAV */
@@ -132,12 +132,10 @@ body:not(.wsc-mode) {
 
 /* HEADER CENTER - OPERATIONAL STATEMENT */
 .rack-header-center {
-  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 800px;
-  margin: 0 auto;
+  gap: 1rem;
 }
 
 /* SUBTITLE BAR - SIMPLER */
