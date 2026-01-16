@@ -641,61 +641,131 @@ app.get('/crs-cricket-road', (c) => {
 // HOME
 app.get('/', (c) => {
   return c.render(
-    <>
-      <Header />
-
-      {/* SUBTITLE BAR */}
-      <div class="subtitle-bar">
-        Cowley Road Studios is a purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford.
-      </div>
-
-      {/* RACK UNIT 1: CRS */}
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led green"></span>
-          </div>
-          <h2 class="rack-unit-title">CRS</h2>
+    <div class="rack-container">
+      
+      {/* MODULE: CRS SYSTEM OVERVIEW */}
+      <div class="crs-module">
+        <div class="module-header">
+          <span class="module-title">CRS — Cowley Road Studios</span>
         </div>
-        
-        <div class="rack-unit-content" style="max-width: 900px; margin: 0 auto; text-align: center;">
-          <p style="font-size: 1.125rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9);">
+        <div class="module-content text-center">
+          <p style="font-size: 1.25rem; margin-bottom: 2rem;">
             Studio, venue hire and live event support
           </p>
-        </div>
-      </section>
-
-      {/* INFRASTRUCTURE IMAGE */}
-      <section class="rack-unit" style="padding: 1rem;">
-        <div class="infrastructure-image">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v1%20.png"
-            alt="CRS infrastructure"
-            loading="lazy"
-            style="width: 100%; max-width: 1000px; margin: 0 auto; display: block; opacity: 0.85;"
-          />
-        </div>
-      </section>
-
-      {/* RACK UNIT 2: CONTACT */}
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led orange"></span>
-          </div>
-          <h2 class="rack-unit-title">/// PUBLIC ACCESS</h2>
-        </div>
-        
-        <div class="rack-unit-content" style="text-align: center;">
-          <p style="margin-bottom: 2rem;">
-            Enquiries are handled via the contact form.
+          <p style="font-size: 1rem; color: rgba(245, 245, 245, 0.7);">
+            Purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford.
           </p>
-          <a href="/contact" class="cta-button">CONTACT</a>
         </div>
-      </section>
+        <div class="module-footer">
+          <span class="status-led"></span>
+          <span>STATUS: OPERATIONAL</span>
+        </div>
+      </div>
 
-      <Footer />
-    </>
+      {/* MODULE: STUDIO SESSIONS */}
+      <div class="crs-module">
+        <div class="module-header">
+          <span class="module-title">STUDIO SESSIONS</span>
+        </div>
+        <div class="module-content">
+          <h3>Recording · Production · Mixing</h3>
+          <p>
+            Hybrid recording and production environments for musicians, producers, podcasters, and creators who value clarity, focus, and dependable systems.
+          </p>
+          <p>
+            Calibrated monitoring, hybrid analogue/digital workflows, practical acoustics. Engineer-maintained systems designed to work consistently.
+          </p>
+          <a href="/studio" class="crs-button">VIEW STUDIO</a>
+        </div>
+        <div class="module-footer">
+          <span class="status-led"></span>
+          <span>LOCATION: COWLEY ROAD</span>
+        </div>
+      </div>
+
+      {/* MODULE: LIVE SERVICES */}
+      <div class="crs-module">
+        <div class="module-header">
+          <span class="module-title">LIVE SERVICES</span>
+        </div>
+        <div class="module-content">
+          <h3>PA Systems · Event Support · Technical Crew</h3>
+          <p>
+            Live sound reinforcement, event technical support, and equipment hire for performances, conferences, and installations.
+          </p>
+          <p>
+            Professional PA systems, stage lighting, engineer services, and backline rental. Quote-based for off-site events.
+          </p>
+          <a href="/services" class="crs-button">VIEW SERVICES</a>
+        </div>
+        <div class="module-footer">
+          <span class="status-led standby"></span>
+          <span>STATUS: ENQUIRY-BASED</span>
+        </div>
+      </div>
+
+      {/* MODULE: REHEARSAL SPACE */}
+      <div class="crs-module">
+        <div class="module-header">
+          <span class="module-title">REHEARSAL SPACE</span>
+        </div>
+        <div class="module-content">
+          <h3>Live Room — Cricket Road</h3>
+          <p>
+            Acoustically treated rehearsal room for bands and ensembles. Full backline available. Hourly, half-day, and full-day blocks.
+          </p>
+          <p>
+            100% prepayment at booking. Capacity 2-8 people.
+          </p>
+          <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" class="crs-button">BOOK REHEARSAL</a>
+        </div>
+        <div class="module-footer">
+          <span class="status-led"></span>
+          <span>LOCATION: CRICKET ROAD</span>
+        </div>
+      </div>
+
+      {/* MODULE: WORKSHOP CAFÉ */}
+      <div class="crs-module">
+        <div class="module-header">
+          <span class="module-title">WORKSHOP CAFÉ</span>
+        </div>
+        <div class="module-content">
+          <h3>Venue Hire — 118 Cowley Road</h3>
+          <p>
+            Bookable public-facing venue within CRS for small events and private hire. Capacity 25 seated / up to 60 standing.
+          </p>
+          <p>
+            Listening sessions, film screenings, workshops, talks, private bookings. PA system and projection available.
+          </p>
+          <a href="/workshop-cafe" class="crs-button">VIEW VENUE</a>
+        </div>
+        <div class="module-footer">
+          <span class="status-led"></span>
+          <span>LOCATION: COWLEY ROAD</span>
+        </div>
+      </div>
+
+      {/* MODULE: CONTACT */}
+      <div class="crs-module">
+        <div class="module-header">
+          <span class="module-title">PUBLIC ACCESS</span>
+        </div>
+        <div class="module-content text-center">
+          <p>
+            Enquiries, bookings, and general contact handled via the contact form.
+          </p>
+          <p class="mt-2">
+            <a href="/contact" class="crs-button">CONTACT</a>
+          </p>
+        </div>
+        <div class="module-footer">
+          <span class="status-led"></span>
+          <span>RESPONSE TIME: 24 HOURS</span>
+        </div>
+      </div>
+
+    </div>
   )
 })
 
