@@ -37,12 +37,12 @@ export const renderer = jsxRenderer(({ children }) => {
           }
         `}} />
         
-        {/* Google Fonts */}
+        {/* Google Fonts - Hardware Typography */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
         
-        {/* Clean CSS - Orange glow BOOK NOW era */}
+        {/* Clean CSS */}
         <link href="/static/clean.css" rel="stylesheet" />
         <link href="/static/crs-positioning-fixes.css" rel="stylesheet" />
         <link href="/static/crs-proportion-fixes.css" rel="stylesheet" />
@@ -62,6 +62,12 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-presence-signals.css" rel="stylesheet" />
         {/* FINAL OVERRIDES: Nuclear fixes (MUST load ABSOLUTE LAST) */}
         <link href="/static/crs-final-overrides.css" rel="stylesheet" />
+        {/* RACK UI V2: Physical hardware aesthetic (LOADS LAST TO OVERRIDE ALL) */}
+        <link href="/static/crs-rack-ui-v2.css" rel="stylesheet" />
+        {/* WSC MODE: Workshop Café warmth overrides (controlled mode switch) */}
+        <link href="/static/crs-wsc-mode.css" rel="stylesheet" />
+        {/* CLASSIC AESTHETIC: Saturday best look (loads last, overrides V2 for CRS pages) */}
+        <link href="/static/crs-classic-aesthetic.css" rel="stylesheet" />
       </head>
       <body>
         {children}

@@ -256,7 +256,7 @@ body:not(.wsc-mode) {
   opacity: 0.95;
 }
 
-/* BOOK NOW DROPDOWN - SIMPLER */
+/* BOOK NOW DROPDOWN - FLASHING ORANGE */
 .book-dropdown-trigger {
   background: transparent;
   color: var(--text-gold);
@@ -268,15 +268,29 @@ body:not(.wsc-mode) {
   letter-spacing: 0.05em;
   cursor: pointer;
   text-transform: uppercase;
-  box-shadow: none;
-  transition: all 0.2s ease;
+  box-shadow: 0 0 10px rgba(232, 155, 60, 0.3);
   font-family: 'JetBrains Mono', monospace;
+  /* Flashing orange animation */
+  animation: book-now-flash 2s ease-in-out infinite;
 }
 
 .book-dropdown-trigger:hover {
-  background: rgba(232, 155, 60, 0.1);
-  transform: none;
-  box-shadow: none;
+  background: rgba(232, 155, 60, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(232, 155, 60, 0.5);
+  animation: none; /* Stop flashing on hover */
+}
+
+/* Flashing animation - subtle pulse */
+@keyframes book-now-flash {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(232, 155, 60, 0.3);
+    border-color: rgba(232, 155, 60, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(232, 155, 60, 0.6), 0 0 40px rgba(232, 155, 60, 0.3);
+    border-color: rgba(232, 155, 60, 1);
+  }
 }
 
 .book-dropdown-menu {
