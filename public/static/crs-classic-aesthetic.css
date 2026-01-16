@@ -98,10 +98,10 @@ body:not(.wsc-mode) {
   box-shadow: none;
   display: flex;
   align-items: center;
-  justify-content: center; /* CENTER EVERYTHING */
+  justify-content: space-between; /* RESTORE ORIGINAL LAYOUT */
   padding: 0.875rem 2rem;
   min-height: auto;
-  gap: 3rem; /* Increased gap between sections */
+  gap: 2rem;
 }
 
 /* HEADER LEFT - BADGE + NAV */
@@ -133,9 +133,9 @@ body:not(.wsc-mode) {
 /* HEADER CENTER - OPERATIONAL STATEMENT */
 .rack-header-center {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 1rem;
+  flex: 1; /* Take available space */
 }
 
 /* SUBTITLE BAR - SIMPLER */
