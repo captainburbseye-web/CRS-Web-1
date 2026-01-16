@@ -642,53 +642,95 @@ app.get('/', (c) => {
     <>
       <Header />
 
-      {/* SUBTITLE BAR */}
-      <div class="subtitle-bar">
-        Cowley Road Studios is a purpose-built studio and venue system supporting recording, performance, and digital creative work in Oxford.
-      </div>
-
-      {/* RACK UNIT 1: CRS */}
+      {/* ECOSYSTEM INTRO */}
       <section class="rack-unit">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
             <span class="led green"></span>
           </div>
-          <h2 class="rack-unit-title">CRS</h2>
+          <h2 class="rack-unit-title">AN ECOSYSTEM FOR SOUND</h2>
         </div>
         
-        <div class="rack-unit-content" style="max-width: 900px; margin: 0 auto; text-align: center;">
-          <p style="font-size: 1.125rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9);">
-            Studio, venue hire and live event support
+        <div class="rack-unit-content" style="max-width: 900px; margin: 0 auto;">
+          <p style="font-size: 1rem; line-height: 1.7; color: rgba(245, 245, 245, 0.9); margin-bottom: 1rem;">
+            Cowley Road Studios is more than just a room to record in. We are a connected ecosystem of spaces and services designed to support creators at every stage of their journey. From developing your ideas in our <strong>Workshop Café</strong>, to tracking your album in the <strong>Studio</strong>, to taking your performance to the stage with our <strong>AV Services</strong>, CRS provides the technical foundation for Oxford's grassroots music and cultural scene.
           </p>
         </div>
       </section>
 
-      {/* INFRASTRUCTURE IMAGE */}
-      <section class="rack-unit" style="padding: 1rem;">
-        <div class="infrastructure-image">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v1%20.png"
-            alt="CRS infrastructure"
-            loading="lazy"
-            style="width: 100%; max-width: 1000px; margin: 0 auto; display: block; opacity: 0.85;"
-          />
+      {/* STUDIO SESSIONS */}
+      <section class="rack-unit">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led green"></span>
+          </div>
+          <h2 class="rack-unit-title">STUDIO SESSIONS</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
+            Purpose-built recording and production environments designed for reliable, repeatable results. From vocal tracking to full-band production, we provide the technical certainty you need to focus on your performance.
+          </p>
+          <div style="text-align: center;">
+            <a href="/studio" class="cta-button">VIEW STUDIO RATES & SPECS</a>
+          </div>
         </div>
       </section>
 
-      {/* RACK UNIT 2: CONTACT */}
+      {/* AV SERVICES */}
+      <section class="rack-unit">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led yellow"></span>
+          </div>
+          <h2 class="rack-unit-title">AV SERVICES & LIVE SOUND</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
+            Engineer-led live sound, installations, and technical support for community venues, cultural events, and public gatherings. We provide the technical backbone for your event, so you can focus on your audience.
+          </p>
+          <div style="text-align: center;">
+            <a href="/av-services" class="cta-button">GET LIVE SOUND QUOTE</a>
+          </div>
+        </div>
+      </section>
+
+      {/* WORKSHOP CAFÉ */}
+      <section class="rack-unit">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led green"></span>
+          </div>
+          <h2 class="rack-unit-title">WORKSHOP CAFÉ</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
+            The public-facing space of CRS — a café, workspace, and small venue supporting community events and creative activity in the heart of East Oxford. Available for private hire and public programming.
+          </p>
+          <div style="text-align: center;">
+            <a href="/workshop-cafe" class="cta-button">HIRE THE VENUE</a>
+          </div>
+        </div>
+      </section>
+
+      {/* PUBLIC ACCESS */}
       <section class="rack-unit">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
             <span class="led orange"></span>
           </div>
-          <h2 class="rack-unit-title">/// PUBLIC ACCESS</h2>
+          <h2 class="rack-unit-title">/// PUBLIC ACCESS & COMMUNITY</h2>
         </div>
         
-        <div class="rack-unit-content" style="text-align: center;">
-          <p style="margin-bottom: 2rem;">
-            Enquiries are handled via the contact form.
+        <div class="rack-unit-content">
+          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
+            CRS exists to make professional-grade recording and AV infrastructure available to Oxford's grassroots scene. We offer subsidized rates, supported sessions, and training workshops for community groups, emerging artists, and non-profit organizations.
           </p>
-          <a href="/contact" class="cta-button">CONTACT</a>
+          <div style="text-align: center;">
+            <a href="/contact" class="cta-button">GET IN TOUCH</a>
+          </div>
         </div>
       </section>
 
