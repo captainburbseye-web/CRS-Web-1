@@ -138,7 +138,8 @@ body:not(.wsc-mode) {
   flex: 0 0 auto; /* Don't grow, just fit content */
   width: auto;
   max-width: none;
-  justify-content: center;
+  justify-content: flex-start !important; /* Force left alignment */
+  text-align: left;
 }
 
 /* TITLE ROAD SIGN - MAX WIDTH CONSTRAINT (FORCE OVERRIDE) */
@@ -151,7 +152,7 @@ header img[src*="Road Sign"],
   width: 100%;
   height: auto !important;
   display: block;
-  margin: 0 auto;
+  margin: 0; /* Explicit left alignment, no auto centering */
 }
 
 /* SUBTITLE BAR - SIMPLER */
