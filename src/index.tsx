@@ -860,6 +860,16 @@ app.get('/studio', (c) => {
         </div>
 
         {/* OVERVIEW */}
+        {/* BUILD PHASE NOTICE */}
+        <div class="content-block">
+          <div style="background: rgba(255, 140, 0, 0.1); border: 2px solid #FF8C00; padding: 1rem; margin-bottom: 1.5rem;">
+            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #FF8C00; font-weight: 700;">
+              Recording and production services are available by enquiry while the Cowley Road build is completed.
+            </p>
+          </div>
+        </div>
+
+        {/* OVERVIEW */}
         <div class="content-block">
           <h3 class="content-heading mono">OVERVIEW</h3>
           <div class="content-text">
@@ -881,11 +891,6 @@ app.get('/studio', (c) => {
             </ul>
             <p style="margin-top: 1.5rem;">
               Everything is designed to work consistently — not just sound good on day one.
-            </p>
-            <p style="margin-top: 1rem;">
-              <a href="/studio/infrastructure" style="color: var(--mustard); text-decoration: underline;">
-                → View Room-by-Room Infrastructure
-              </a>
             </p>
           </div>
           
@@ -943,10 +948,10 @@ app.get('/studio', (c) => {
 
         {/* STUDIO SERVICES */}
         <div class="content-block">
-          <h3 class="content-heading mono">STUDIO SERVICES</h3>
+          <h3 class="content-heading mono">ENQUIRE ABOUT SERVICES</h3>
           <div class="content-text">
             <p style="margin-bottom: 2rem;">
-              Select a service to submit a booking inquiry:
+              All studio services are available by enquiry:
             </p>
             <div style="display: grid; gap: 1rem; max-width: 600px;">
               <a href="/contact?service=recording" class="crs-button mono" style="display: block; text-align: center; text-decoration: none;">
@@ -1813,6 +1818,16 @@ app.get('/workshop-cafe', (c) => {
         
         <h2 class="rack-unit-title">Workshop Café — Venue</h2>
         
+        {/* STATUS LINE - NON-NEGOTIABLE */}
+        <div style="background: rgba(255, 140, 0, 0.1); border: 2px solid #FF8C00; padding: 1rem; margin-bottom: 1.5rem;">
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.938rem; font-weight: 700; color: #FF8C00; margin-bottom: 0.5rem;">
+            Workshop Café is not currently open for daily café service.
+          </p>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.85);">
+            The space is available by enquiry for private or community use during the build phase.
+          </p>
+        </div>
+        
         <p style="margin-bottom: 1.5rem;">
           Bookable public-facing venue within CRS for small events and private hire.
         </p>
@@ -2190,145 +2205,8 @@ app.get('/cafe', (c) => {
   )
 })
 
-app.get('/venue', (c) => {
-  return c.render(
-    <>
-      <Header />
-
-      <section class="crs-section section-light">
-        <div class="section-header">
-          <h1 class="section-title heading">CRS — WORKSHOP CAFÉ</h1>
-        </div>
-
-        {/* WHAT THE SPACE IS */}
-        <div class="content-block">
-          <h3 class="content-heading mono">WHAT THE SPACE IS</h3>
-          <div class="content-text">
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;">→ Café by day</li>
-              <li style="margin-bottom: 0.75rem;">→ Venue by night</li>
-              <li style="margin-bottom: 0.75rem;">→ Talks, workshops, screenings, small live events</li>
-              <li style="margin-bottom: 0.75rem;">→ Technically supported by CRS</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* WHAT'S ON */}
-        <div class="content-block">
-          <h3 class="content-heading mono">WHAT'S ON</h3>
-          <div class="content-text">
-            <p style="font-style: italic; color: var(--mustard);">
-              Upcoming events, workshops, and sessions.
-            </p>
-            
-            {/* Events feed will load here via JavaScript */}
-            <div id="events-feed" style="margin-top: 1.5rem;">
-              <p style="font-weight: 700;">
-                No public events listed — the space is available to book.
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <script dangerouslySetInnerHTML={{__html: `
-          // Load events from API
-          fetch('/events.json')
-            .then(res => res.json())
-            .then(data => {
-              const container = document.getElementById('events-feed');
-              if (!container) return;
-              
-              if (!data.events || data.events.length === 0) {
-                // Keep default empty state
-                return;
-              }
-              
-              // Display up to 7 events
-              const eventsToShow = data.events.slice(0, 7);
-              
-              container.innerHTML = eventsToShow.map(event => {
-                const date = new Date(event.start);
-                const dateStr = date.toLocaleDateString('en-GB', { 
-                  weekday: 'short', 
-                  day: 'numeric', 
-                  month: 'short',
-                  year: 'numeric'
-                });
-                const timeStr = event.start.includes('T') ? date.toLocaleTimeString('en-GB', {
-                  hour: '2-digit',
-                  minute: '2-digit'
-                }) : '';
-                
-                const bookingButton = event.bookingLink ? 
-                  \`<a href="\${event.bookingLink}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 0.5rem; color: var(--mustard); text-decoration: none; font-weight: 700;">→ Book Tickets / More Info</a>\` : '';
-                
-                return \`
-                  <div style="border-left: 2px solid var(--mustard); padding-left: 1rem; margin-bottom: 1.5rem;">
-                    <h4 style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem;">\${event.title}</h4>
-                    <p style="font-size: 0.875rem; color: var(--mustard); margin-bottom: 0.5rem;">\${dateStr}\${timeStr ? ' · ' + timeStr : ''}</p>
-                    <p style="font-size: 0.875rem; line-height: 1.5;">\${event.description.substring(0, 150)}\${event.description.length > 150 ? '...' : ''}</p>
-                    \${bookingButton}
-                  </div>
-                \`;
-              }).join('');
-            })
-            .catch(err => {
-              console.error('Failed to load events:', err);
-              // Keep default empty state on error
-            });
-        `}} />
-
-        {/* VENUE HIRE */}
-        <div class="content-block">
-          <h3 class="content-heading mono">VENUE HIRE</h3>
-          <div class="content-text">
-            <p>Workshop Café is available for:</p>
-            <ul style="list-style: none; padding: 0; margin-top: 1rem;">
-              <li style="margin-bottom: 0.75rem;">→ Workshops & talks</li>
-              <li style="margin-bottom: 0.75rem;">→ Community events</li>
-              <li style="margin-bottom: 0.75rem;">→ Launches & screenings</li>
-            </ul>
-            <p style="margin-top: 1.5rem;">
-              Technical support is available where required.
-            </p>
-          </div>
-        </div>
-
-        {/* BOOKING CTAs */}
-        <div class="content-block">
-          <h3 class="content-heading mono">BOOK THE SPACE</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1.5rem;">
-              Choose the booking option that fits your needs:
-            </p>
-          </div>
-          
-          <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem;">
-            {/* Venue Hire */}
-            <div style="border: 1px solid var(--mustard); padding: 1.5rem;">
-              <h4 class="mono" style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--mustard);">VENUE HIRE</h4>
-              <p style="font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.5;">Book the space for workshops, talks, community events, launches, or screenings.</p>
-              <a href="mailto:info@cowleyroadstudios.com?subject=Venue%20Hire%20Request" class="crs-button mono" style="width: auto; display: inline-block;">
-                [ BOOK THE SPACE ]
-              </a>
-            </div>
-            
-            {/* Private Enquiries */}
-            <div style="border: 1px solid var(--mustard); padding: 1.5rem;">
-              <h4 class="mono" style="font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--mustard);">PRIVATE ENQUIRIES</h4>
-              <p style="font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.5;">For custom bookings or specific requirements.</p>
-              <a href="mailto:info@cowleyroadstudios.com?subject=Private%20Enquiry" class="crs-button mono" style="width: auto; display: inline-block;">
-                [ REQUEST AVAILABILITY ]
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </>
-  )
-})
+// VENUE REDIRECT (removed - not ready for public launch)
+app.get("/venue", (c) => c.redirect("/contact?service=venue"))
 
 // ABOUT
 app.get('/about', (c) => {
