@@ -138,11 +138,13 @@ body:not(.wsc-mode) {
   flex: 1; /* Take available space */
 }
 
-/* TITLE ROAD SIGN - MAX WIDTH CONSTRAINT */
+/* TITLE ROAD SIGN - MAX WIDTH CONSTRAINT (FORCE OVERRIDE) */
+.rack-header-center .crs-title-image,
+.rack-header-center img[src*="Road Sign"],
 header img[src*="Road Sign"],
 .crs-title-image {
-  max-width: 256px;
-  height: auto;
+  max-width: 256px !important;
+  height: auto !important;
   display: inline-block;
   vertical-align: middle;
 }
