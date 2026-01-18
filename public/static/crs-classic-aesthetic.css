@@ -111,6 +111,7 @@ body:not(.wsc-mode) {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  padding-right: 300px; /* Reserve space for street sign - structural, not tied to one element */
 }
 
 .rack-logo-block {
@@ -142,6 +143,7 @@ body:not(.wsc-mode) {
   display: flex;
   align-items: center;
   gap: 1rem;
+  pointer-events: none; /* Prevents interaction conflicts */
 }
 
 /* TITLE ROAD SIGN - MAX WIDTH CONSTRAINT (FORCE OVERRIDE) */
@@ -287,7 +289,6 @@ header img[src*="Road Sign"],
   text-transform: uppercase;
   box-shadow: 0 0 10px rgba(232, 155, 60, 0.3);
   font-family: 'JetBrains Mono', monospace;
-  margin-right: 280px; /* Space for street sign (256px + 24px gap) */
   /* Flashing orange animation */
   animation: book-now-flash 2s ease-in-out infinite;
 }
