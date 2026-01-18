@@ -113,18 +113,15 @@ body:not(.wsc-mode) {
   gap: 1.5rem;
 }
 
-/* STREET SIGN - PAGE OVERLAY (Top-Right Corner) */
-.crs-street-sign-overlay {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 999;
-  pointer-events: none;
+/* HEADER RIGHT - STREET SIGN */
+.rack-header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
-.crs-street-sign-overlay .crs-title-image {
+.rack-header-right .crs-title-image {
   max-width: 256px;
-  width: auto;
   height: auto;
   display: block;
 }
