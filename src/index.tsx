@@ -337,12 +337,6 @@ const Header = () => (
           </div>
         </nav>
       </div>
-      
-      {/* CENTER ZONE: Title Text */}
-      <div class="rack-header-center">
-        <div class="metal-plate">COWLEY ROAD</div>
-        <div class="orange-button-plate">STUDIOS</div>
-      </div>
     </header>
   </>
 )
@@ -743,22 +737,6 @@ app.get('/', (c) => {
   return c.render(
     <>
       <Header />
-
-      {/* ECOSYSTEM INTRO */}
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led green"></span>
-          </div>
-          <h2 class="rack-unit-title">AN ECOSYSTEM FOR SOUND</h2>
-        </div>
-        
-        <div class="rack-unit-content" style="max-width: 900px; margin: 0 auto;">
-          <p style="font-size: 1rem; line-height: 1.7; color: rgba(245, 245, 245, 0.9); margin-bottom: 1rem;">
-            Cowley Road Studios is more than just a room to record in. We are a connected eco-system of spaces and services designed to support creators at every stage of their journey. From developing your ideas in our <strong>Workshop Café</strong>, to tracking your album in the <strong>Studio</strong>, to taking your performance to the stage with our <strong>AV Services</strong>, CRS provides the technical foundation for Oxford's grassroots music and cultural scene.
-          </p>
-        </div>
-      </section>
 
       {/* STUDIO SESSIONS */}
       <section class="rack-unit">
