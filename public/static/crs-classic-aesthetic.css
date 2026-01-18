@@ -113,11 +113,13 @@ body:not(.wsc-mode) {
   gap: 1.5rem;
 }
 
-/* HEADER RIGHT - STREET SIGN */
+/* HEADER RIGHT - STREET SIGN (ABSOLUTE IN HEADER) */
 .rack-header-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
 }
 
 .rack-header-right .crs-title-image {
