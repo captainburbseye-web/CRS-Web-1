@@ -338,12 +338,12 @@ const Header = () => (
         </nav>
       </div>
       
-      {/* RIGHT ZONE: Street Sign */}
+      {/* STREET SIGN - FIXED TOP RIGHT */}
       <div class="rack-header-right">
         <img 
           src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/512%20CRS%20Title%20Road%20Sign.png"
           alt="Cowley Road Studios"
-          class="crs-title-image"
+          style="position:fixed;top:16px;right:16px;z-index:9999;max-width:220px;height:auto;"
         />
       </div>
     </header>
