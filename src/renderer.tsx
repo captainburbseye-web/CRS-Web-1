@@ -73,7 +73,7 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* COWLEY ROAD SIGN — Fixed Top-Right Overlay */}
         <div class="crs-street-sign-overlay">
           <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/512%20CRS%20Title%20Road%20Sign.png" 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/Web_banner_logo_combining_UK_street_sign_and_numbe-1767970314639%20(1).png" 
             alt="Cowley Road Studios"
             class="crs-title-image"
           />
