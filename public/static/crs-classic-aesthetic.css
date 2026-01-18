@@ -4,33 +4,6 @@
    Keeps: MailChannels, WSC mode, all functionality
    ============================================ */
 
-/* === COWLEY ROAD SIGN OVERLAY — TOP-RIGHT CORNER === */
-.crs-street-sign-overlay {
-  position: fixed;
-  top: 14px;
-  right: 24px;
-  z-index: 9999;
-  pointer-events: none; /* Decorative only - doesn't block clicks */
-}
-
-.crs-street-sign-overlay .crs-title-image {
-  height: 48px; /* Match the CRS badge height */
-  width: auto;
-  display: block;
-}
-
-/* Mobile: Reduce size */
-@media (max-width: 768px) {
-  .crs-street-sign-overlay {
-    top: 10px;
-    right: 10px;
-  }
-  
-  .crs-street-sign-overlay .crs-title-image {
-    height: 32px;
-  }
-}
-
 /* OVERRIDE RACK UI V2 - BACK TO CLEAN */
 body:not(.wsc-mode) {
   /* Simpler colors - back to NASA terminal */
