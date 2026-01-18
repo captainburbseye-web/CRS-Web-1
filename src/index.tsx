@@ -297,11 +297,10 @@ const Header = () => (
       <div class="rack-header-left">
         <div class="rack-logo-block">
           <img 
-            src="https://www.genspark.ai/api/files/s/qGwoJ9TK" 
-            alt="CRS"
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs_badge_dark%20fixed%20for%20web.webp" 
+            alt="Cowley Road Studios"
             class="logo-hardware-panel"
-            width="80"
-            height="80"
+            style="height: 32px; width: auto;"
           />
         </div>
         
