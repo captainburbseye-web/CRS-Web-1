@@ -102,6 +102,8 @@ body:not(.wsc-mode) {
   padding: 0.875rem 2rem;
   min-height: auto;
   gap: 2rem;
+  max-width: 1400px; /* Match content sections max-width */
+  margin: 0 auto; /* Center the header container */
 }
 
 /* HEADER LEFT - BADGE + NAV */
