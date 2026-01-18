@@ -293,7 +293,7 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="rack-header">
-      {/* LEFT ZONE: CRS Logo + Navigation + Title */}
+      {/* LEFT ZONE: CRS Logo + Navigation */}
       <div class="rack-header-left">
         <div class="rack-logo-block">
           <img 
@@ -303,13 +303,6 @@ const Header = () => (
             style="max-height: 64px; width: auto;"
           />
         </div>
-        
-        {/* CRS Title Road Sign - Moved from center to left */}
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/512%20CRS%20Title%20Road%20Sign.png"
-          alt="Cowley Road Studios"
-          class="crs-title-image"
-        />
         
         <nav class="rack-nav-links">
           <a href="/studio">Studio</a>
@@ -345,8 +338,13 @@ const Header = () => (
         </nav>
       </div>
 
-      {/* CENTER ZONE: Transport button only */}
+      {/* RIGHT ZONE: Street Sign (Absolute Positioned) */}
       <div class="rack-header-center">
+        <img 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/512%20CRS%20Title%20Road%20Sign.png"
+          alt="Cowley Road Studios"
+          class="crs-title-image"
+        />
         <div class="transport-button" aria-label="Transport control"></div>
       </div>
     </header>
