@@ -145,6 +145,16 @@ body:not(.wsc-mode) {
   display: none;
 }
 
+/* COWLEY ROAD SIGN - FIXED TOP RIGHT */
+.crs-title-image {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  max-width: 220px;
+  height: auto;
+}
+
 /* TITLE ROAD SIGN - CONSTRAINED SIZE */
 /* (Styling handled in .crs-street-sign-overlay above) */
 
