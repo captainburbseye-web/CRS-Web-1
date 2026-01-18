@@ -7,16 +7,15 @@
 /* === COWLEY ROAD SIGN OVERLAY — TOP-RIGHT CORNER === */
 .crs-street-sign-overlay {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 14px;
+  right: 24px;
   z-index: 9999;
   pointer-events: none; /* Decorative only - doesn't block clicks */
 }
 
 .crs-street-sign-overlay .crs-title-image {
-  max-width: 280px; /* Slightly larger for visibility */
+  height: 48px; /* Match the CRS badge height */
   width: auto;
-  height: auto;
   display: block;
 }
 
@@ -28,7 +27,7 @@
   }
   
   .crs-street-sign-overlay .crs-title-image {
-    max-width: 180px;
+    height: 32px;
   }
 }
 
