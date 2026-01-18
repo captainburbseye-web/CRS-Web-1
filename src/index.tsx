@@ -330,11 +330,10 @@ const Header = () => (
               role="menu"
               aria-hidden="true"
             >
-              <a href="/book" role="menuitem">Recording Sessions</a>
-              <a href="/rehearsal" role="menuitem">Rehearsal Space</a>
-              <a href="/av-services" role="menuitem">AV Services</a>
-              <a href="/venue" role="menuitem">Workshop Café Venue</a>
-              <a href="/av-services/repairs" role="menuitem">Equipment Repair</a>
+              <a href="/rehearsal" role="menuitem">Band Rehearsals</a>
+              <a href="/contact" role="menuitem">Recording (Enquiry)</a>
+              <a href="/contact" role="menuitem">Pod Hire (Enquiry)</a>
+              <a href="/contact" role="menuitem">Repairs (Enquiry)</a>
             </div>
           </div>
         </nav>
@@ -375,6 +374,14 @@ const Footer = () => (
       {/* Contact */}
       <div class="footer-contact">
         <p>CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a></p>
+      </div>
+
+      {/* Build Phase Disclaimer */}
+      <div class="footer-policy">
+        <p class="footer-policy-header">BUILD PHASE</p>
+        <p class="footer-policy-text">
+          Cowley Road Studios is completing the final phase of the Cowley Road build. Band rehearsals and repairs are available now. Recording and production are available by enquiry during this phase.
+        </p>
       </div>
 
       {/* No Chaos Policy */}
