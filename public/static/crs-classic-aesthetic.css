@@ -135,7 +135,8 @@ body:not(.wsc-mode) {
   display: flex;
   align-items: center;
   gap: 1rem;
-  flex: 1; /* Take available space */
+  flex: 0 0 auto; /* Don't grow, just fit content */
+  justify-content: center;
 }
 
 /* TITLE ROAD SIGN - MAX WIDTH CONSTRAINT (FORCE OVERRIDE) */
