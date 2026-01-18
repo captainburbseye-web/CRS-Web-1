@@ -62,7 +62,7 @@ app.post('/api/contact', async (c) => {
       to: ['info@cowleyroadstudios.com'],
       subject: `[CRS CONTACT] ${body.subject || 'New Inquiry'}`,
       html: `
-        <div style="font-family: 'Courier New', monospace; max-width: 600px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #00ff00; border: 2px solid #333;">
+        <div style="font-family: 'JetBrains Mono', monospace; max-width: 600px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #00ff00; border: 2px solid #333;">
           <h2 style="color: #ff6b35; margin-top: 0;">NEW CONTACT FORM SUBMISSION</h2>
           <div style="border-left: 3px solid #ff6b35; padding-left: 15px; margin: 20px 0;">
             <p><strong>From:</strong> ${body.name || 'Not provided'}</p>
@@ -342,11 +342,7 @@ const Header = () => (
       <div class="rack-header-center">
         <div class="metal-plate">COWLEY ROAD</div>
         <div class="orange-button-plate">STUDIOS</div>
-        <div class="traffic-lights">
-          <span class="traffic-light red"></span>
-          <span class="traffic-light yellow"></span>
-          <span class="traffic-light green"></span>
-        </div>
+
         <div class="transport-button" aria-label="Transport control"></div>
       </div>
     </header>
@@ -770,7 +766,7 @@ app.get('/', (c) => {
       <section class="rack-unit">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
-            <span class="led green"></span>
+            <span class="led yellow"></span>
           </div>
           <h2 class="rack-unit-title">STUDIO SESSIONS</h2>
         </div>
@@ -808,7 +804,7 @@ app.get('/', (c) => {
       <section class="rack-unit">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
-            <span class="led green"></span>
+            <span class="led yellow"></span>
           </div>
           <h2 class="rack-unit-title">WORKSHOP CAFÉ</h2>
         </div>
