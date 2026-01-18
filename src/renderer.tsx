@@ -9,12 +9,12 @@ export const renderer = jsxRenderer(({ children }) => {
         <title>CRS Oxford</title>
         <meta name="description" content="CRS operates multi-location studio and AV infrastructure across Oxford. Industry-standard recording, rehearsal, and technical support. Locations on Cowley Road and Cricket Road." />
         
-        {/* Favicon - CRS Stamp */}
-        <link rel="icon" type="image/png" sizes="512x512" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-favicon-stamp.png" />
-        <link rel="icon" type="image/png" sizes="192x192" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-favicon-stamp.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-favicon-stamp.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-favicon-stamp.png" />
-        <link rel="apple-touch-icon" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/Square_app_tile_1024x1024px_Full_CRS_control_pane-1768187252484.png" />
+        {/* Favicon - CRS Badge */}
+        <link rel="icon" type="image/x-icon" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/favicon_io/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="16x16" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/favicon_io/favicon-16x16.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/favicon_io/android-chrome-192x192.png" />
+        <link rel="icon" type="image/png" sizes="512x512" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/favicon_io/android-chrome-512x512.png" />
+        <link rel="apple-touch-icon" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/favicon_io/apple-touch-icon.png" />
         
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
