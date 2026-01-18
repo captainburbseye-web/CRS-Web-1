@@ -879,6 +879,22 @@ app.get('/studio', (c) => {
           </div>
         </div>
 
+        {/* CAPABILITY STATEMENT */}
+        <div class="content-block">
+          <h3 class="content-heading mono">WHAT WE DO</h3>
+          <div class="content-text">
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;">→ Multitrack recording</li>
+              <li style="margin-bottom: 0.75rem;">→ Overdubbing and layering</li>
+              <li style="margin-bottom: 0.75rem;">→ Mixing and production workflows</li>
+              <li style="margin-bottom: 0.75rem;">→ Professional analogue and digital systems</li>
+            </ul>
+            <p style="margin-top: 1.5rem; font-size: 0.9375rem; opacity: 0.85;">
+              We work with a range of recording approaches — from live capture to layered production — using hybrid analogue and digital systems maintained to consistent operating standards.
+            </p>
+          </div>
+        </div>
+
         {/* TECHNICAL ENVIRONMENT */}
         <div class="content-block">
           <h3 class="content-heading mono">TECHNICAL ENVIRONMENT</h3>
@@ -943,6 +959,19 @@ app.get('/studio', (c) => {
                 Rehearsal bookings automatically routed to Cricket Road. Access protocol sent via confirmation.
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* PRICING CONTEXT */}
+        <div class="content-block">
+          <h3 class="content-heading mono">PRICING CONTEXT</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              Recording and production work typically falls in the <strong>£400–£700 per day</strong> range, depending on scope and session type.
+            </p>
+            <p style="font-size: 0.9375rem; opacity: 0.85;">
+              Final pricing is confirmed by enquiry while the Cowley Road build is completed.
+            </p>
           </div>
         </div>
 
@@ -1686,6 +1715,19 @@ app.get('/av-services', (c) => {
               <li style="margin-bottom: 0.25rem;">– The King's Centre</li>
               <li style="margin-bottom: 0.25rem;">– Cowley Workers' Club</li>
             </ul>
+          </div>
+        </div>
+
+        {/* PRICING CONTEXT */}
+        <div class="content-block">
+          <h3 class="content-heading mono">PRICING CONTEXT</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              AV services are quoted per project. Typical jobs range from <strong>£250–£1,500</strong> depending on scale and equipment requirements.
+            </p>
+            <p style="font-size: 0.9375rem; opacity: 0.85;">
+              Get in touch with event details for a specific quote.
+            </p>
           </div>
         </div>
 
