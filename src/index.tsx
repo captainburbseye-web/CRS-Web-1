@@ -338,17 +338,12 @@ const Header = () => (
         </nav>
       </div>
       
-      {/* RIGHT ZONE: Street Sign + QR Code */}
+      {/* RIGHT ZONE: Street Sign */}
       <div class="rack-header-right">
         <img 
           src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS%20Title%20Road%20Sign.png" 
           alt="Cowley Road Studios"
           class="crs-street-sign"
-        />
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/QRcode_c2%20(1).jpg" 
-          alt="CRS QR Code"
-          class="crs-qr-code"
         />
       </div>
     </header>
