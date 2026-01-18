@@ -331,7 +331,7 @@ const Header = () => (
               aria-hidden="true"
             >
               <a href="/book" role="menuitem">Recording Sessions</a>
-              <a href="/book" role="menuitem">Rehearsal Space</a>
+              <a href="/rehearsal" role="menuitem">Rehearsal Space</a>
               <a href="/av-services" role="menuitem">AV Services</a>
               <a href="/venue" role="menuitem">Workshop Café Venue</a>
               <a href="/av-services/repairs" role="menuitem">Equipment Repair</a>
@@ -504,6 +504,108 @@ app.get('/book', (c) => {
           </div>
         </div>
 
+      </section>
+      <Footer />
+    </>
+  )
+})
+
+// REHEARSAL SPACE BOOKING
+app.get('/rehearsal', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <section class="rack-unit">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led green"></span>
+          </div>
+          <h2 class="rack-unit-title">REHEARSAL SPACE — CRICKET ROAD</h2>
+        </div>
+        
+        <div class="rack-unit-content" style="max-width: 800px; margin: 0 auto;">
+          {/* INTRO */}
+          <p style="font-size: 1rem; line-height: 1.7; color: rgba(245, 245, 245, 0.9); margin-bottom: 2rem;">
+            Fully equipped rehearsal room at Cricket Road. Secure, private space with PA system and backline. Book by the hour.
+          </p>
+
+          {/* PRICING TABLE */}
+          <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(212, 160, 23, 0.2); padding: 2rem; margin-bottom: 2rem;">
+            <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.125rem; color: #E89B3C; margin-bottom: 1.5rem; letter-spacing: 0.05em;">
+              PRICING
+            </h3>
+            
+            <div style="display: grid; gap: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #C8FF41;">
+                <div>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">2 HOURS</div>
+                  <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£40</div>
+                </div>
+                <a href="https://square.link/u/WbJGOXN6" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
+                  BOOK NOW
+                </a>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #C8FF41;">
+                <div>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">3 HOURS</div>
+                  <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£50</div>
+                </div>
+                <a href="https://square.link/u/w0KnUxwQ" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
+                  BOOK NOW
+                </a>
+              </div>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #C8FF41;">
+                <div>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">4 HOURS</div>
+                  <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£55</div>
+                </div>
+                <a href="https://square.link/u/RDFyPTNa" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
+                  BOOK NOW
+                </a>
+              </div>
+            </div>
+
+            <p style="font-size: 0.813rem; color: rgba(245, 245, 245, 0.6); margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">
+              Payment in full at time of booking. Exact availability shown in booking calendar.
+            </p>
+          </div>
+
+          {/* WHAT'S INCLUDED */}
+          <div style="margin-bottom: 2rem;">
+            <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.125rem; color: #E89B3C; margin-bottom: 1rem; letter-spacing: 0.05em;">
+              WHAT'S INCLUDED
+            </h3>
+            <ul style="list-style: none; padding: 0; margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.938rem; line-height: 2; color: rgba(245, 245, 245, 0.85);">
+              <li style="padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
+                PA system
+              </li>
+              <li style="padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
+                Backline (amps, basic kit)
+              </li>
+              <li style="padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
+                Secure, private space
+              </li>
+              <li style="padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
+                Up to 8 people
+              </li>
+            </ul>
+          </div>
+
+          {/* LOCATION */}
+          <div style="padding-top: 1.5rem; border-top: 1px solid rgba(245, 245, 245, 0.1);">
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
+              <strong style="color: #E89B3C;">Location:</strong> Cricket Road, Oxford<br />
+              <strong style="color: #E89B3C;">Availability:</strong> Evenings + weekends (see booking calendar)<br />
+              <strong style="color: #E89B3C;">Questions:</strong> <a href="mailto:info@cowleyroadstudios.com" style="color: #C8FF41; text-decoration: none;">info@cowleyroadstudios.com</a>
+            </p>
+          </div>
+        </div>
       </section>
       <Footer />
     </>
