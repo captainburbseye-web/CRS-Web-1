@@ -138,6 +138,12 @@ body:not(.wsc-mode) {
   flex: 1; /* Take available space */
 }
 
+/* TITLE ROAD SIGN - MAX WIDTH CONSTRAINT */
+header img[src*="Road Sign"] {
+  max-width: 350px;
+  height: auto;
+}
+
 /* SUBTITLE BAR - SIMPLER */
 .crs-subtitle-bar {
   background: var(--panel-green);
