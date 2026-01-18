@@ -98,10 +98,8 @@ body:not(.wsc-mode) {
   box-shadow: none;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* RESTORE ORIGINAL LAYOUT */
   padding: 0.875rem 2rem;
   min-height: auto;
-  gap: 2rem;
   max-width: 1400px; /* Match content sections max-width */
   margin: 0 auto; /* Center the header container */
 }
@@ -113,15 +111,17 @@ body:not(.wsc-mode) {
   gap: 1.5rem;
 }
 
-/* HEADER RIGHT - STREET SIGN */
+/* HEADER RIGHT - STREET SIGN (ABSOLUTE POSITIONED) */
 .rack-header-right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
 }
 
 .rack-header-right .crs-title-image {
-  max-width: 256px;
+  max-width: 256px !important;
   height: auto;
   display: block;
 }

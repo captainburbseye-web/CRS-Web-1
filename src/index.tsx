@@ -338,7 +338,7 @@ const Header = () => (
         </nav>
       </div>
       
-      {/* RIGHT ZONE: Street Sign */}
+      {/* ABSOLUTE POSITIONED: Street Sign on Far Right */}
       <div class="rack-header-right">
         <img 
           src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/512%20CRS%20Title%20Road%20Sign.png"
