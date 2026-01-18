@@ -368,6 +368,19 @@ footer {
     max-width: 100%;
   }
   
+  /* Title road sign: behave like text, not a banner */
+  .crs-title-image {
+    max-width: 90vw;
+    height: auto !important;
+    max-height: 2.2em;
+  }
+  
+  /* CRS badge: reduce presence on mobile */
+  .logo-hardware-panel {
+    max-height: 48px;
+    width: auto;
+  }
+  
   .crs-subtitle-bar {
     font-size: 0.688rem;
     padding: 0.625rem 1rem;
