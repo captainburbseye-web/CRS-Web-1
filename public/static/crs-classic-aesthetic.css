@@ -111,7 +111,22 @@ body:not(.wsc-mode) {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  padding-right: 300px; /* Reserve space for street sign - structural, not tied to one element */
+}
+
+/* STREET SIGN - PAGE OVERLAY (Top-Right Corner) */
+.crs-street-sign-overlay {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.crs-street-sign-overlay .crs-title-image {
+  max-width: 256px;
+  width: auto;
+  height: auto;
+  display: block;
 }
 
 .rack-logo-block {
@@ -133,31 +148,8 @@ body:not(.wsc-mode) {
   display: none;
 }
 
-/* HEADER CENTER - STREET SIGN ON FAR RIGHT */
-.rack-header-center {
-  position: absolute;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  pointer-events: none; /* Prevents interaction conflicts */
-}
-
-/* TITLE ROAD SIGN - MAX WIDTH CONSTRAINT (FORCE OVERRIDE) */
-.rack-header-center .crs-title-image,
-.rack-header-center img[src*="Road Sign"],
-.rack-header-center img[src*="CRS Title Road Sign"],
-header img[src*="Road Sign"],
-.crs-title-image {
-  max-width: 256px !important;
-  width: 100%;
-  height: auto !important;
-  display: block;
-  margin: 0; /* Explicit left alignment, no auto centering */
-}
+/* TITLE ROAD SIGN - CONSTRAINED SIZE */
+/* (Styling handled in .crs-street-sign-overlay above) */
 
 /* SUBTITLE BAR - SIMPLER */
 .crs-subtitle-bar {

@@ -337,17 +337,16 @@ const Header = () => (
           </div>
         </nav>
       </div>
-
-      {/* RIGHT ZONE: Street Sign (Absolute Positioned) */}
-      <div class="rack-header-center">
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/512%20CRS%20Title%20Road%20Sign.png"
-          alt="Cowley Road Studios"
-          class="crs-title-image"
-        />
-        <div class="transport-button" aria-label="Transport control"></div>
-      </div>
     </header>
+    
+    {/* STREET SIGN - PAGE OVERLAY (Top-Right Corner) */}
+    <div class="crs-street-sign-overlay">
+      <img 
+        src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/512%20CRS%20Title%20Road%20Sign.png"
+        alt="Cowley Road Studios"
+        class="crs-title-image"
+      />
+    </div>
   </>
 )
 
