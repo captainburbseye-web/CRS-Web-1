@@ -139,9 +139,12 @@ body:not(.wsc-mode) {
 }
 
 /* TITLE ROAD SIGN - MAX WIDTH CONSTRAINT */
-header img[src*="Road Sign"] {
+header img[src*="Road Sign"],
+.crs-title-image {
   max-width: 350px;
   height: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* SUBTITLE BAR - SIMPLER */
