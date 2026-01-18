@@ -136,18 +136,22 @@ body:not(.wsc-mode) {
   align-items: center;
   gap: 1rem;
   flex: 0 0 auto; /* Don't grow, just fit content */
+  width: auto;
+  max-width: none;
   justify-content: center;
 }
 
 /* TITLE ROAD SIGN - MAX WIDTH CONSTRAINT (FORCE OVERRIDE) */
 .rack-header-center .crs-title-image,
 .rack-header-center img[src*="Road Sign"],
+.rack-header-center img[src*="CRS Title Road Sign"],
 header img[src*="Road Sign"],
 .crs-title-image {
   max-width: 256px !important;
+  width: 100%;
   height: auto !important;
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
+  margin: 0 auto;
 }
 
 /* SUBTITLE BAR - SIMPLER */
@@ -380,11 +384,11 @@ footer {
     max-width: 100%;
   }
   
-  /* Title road sign: behave like text, not a banner */
-  .crs-title-image {
-    max-width: 90vw;
+  /* Title road sign: mobile safety */
+  .crs-title-image,
+  .rack-header-center .crs-title-image {
+    max-width: 80vw !important;
     height: auto !important;
-    max-height: 2.2em;
   }
   
   /* CRS badge: reduce presence on mobile */
