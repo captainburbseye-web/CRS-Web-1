@@ -221,7 +221,7 @@ Fire provides transformation and urgency:
 ## 🤝 Contributing
 
 This is a private repository for Cowley Road Studios. For inquiries or collaboration:
-- **Email**: hello@cowleyroadstudios.com
+- **All enquiries are handled via the contact form.**
 - **Location**: 118 Cowley Road, Oxford, OX4 1JE
 
 ---
@@ -253,9 +253,9 @@ MIT License - See [LICENSE](LICENSE) file for details.
 Oxford  
 OX4 1JE
 
-**Email**: hello@cowleyroadstudios.com  
 **Crowdfunder**: https://www.crowdfunder.co.uk/p/cowley-road-studios  
-**Book a Session**: https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start
+**Book a Session**: https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start  
+**Contact**: /contact
 
 ---
 

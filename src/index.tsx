@@ -52,7 +52,7 @@ app.post('/api/contact', async (c) => {
       console.error('[Resend] API key not configured')
       return c.json({ 
         success: false, 
-        error: 'Email service not configured. Please contact us directly at info@cowleyroadstudios.com'
+        error: 'Email service not configured. Please try again later.'
       }, 500)
     }
     
@@ -97,7 +97,7 @@ app.post('/api/contact', async (c) => {
       console.error('[Resend] Failed to send email:', errorText)
       return c.json({ 
         success: false, 
-        error: 'Failed to send email. Please try again or contact us directly at info@cowleyroadstudios.com'
+        error: 'Failed to send email. Please try again later.'
       }, 500)
     }
     
@@ -112,7 +112,7 @@ app.post('/api/contact', async (c) => {
     console.error('[API] Contact form error:', error)
     return c.json({ 
       success: false, 
-      error: 'Internal server error. Please contact us directly at info@cowleyroadstudios.com'
+      error: 'Internal server error. Please try again later.'
     }, 500)
   }
 })
@@ -602,7 +602,7 @@ app.get('/rehearsal', (c) => {
             <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
               <strong style="color: #E89B3C;">Location:</strong> Cricket Road, Oxford<br />
               <strong style="color: #E89B3C;">Availability:</strong> Evenings + weekends (see booking calendar)<br />
-              <strong style="color: #E89B3C;">Questions:</strong> <a href="/contact" style="color: #C8FF41; text-decoration: none;">Use contact form</a>
+              <strong style="color: #E89B3C;">Questions:</strong> <a href="/contact" style="color: #C8FF41; text-decoration: none;">All enquiries via contact form</a>
             </p>
           </div>
         </div>
@@ -681,7 +681,7 @@ app.get('/crs-cowley-road', (c) => {
           <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(245, 245, 245, 0.1);">
             <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
               <strong>Access:</strong> By booking only<br />
-              <strong>Contact:</strong> <a href="/contact" style="color: var(--mustard);">Use contact form</a>
+              <strong>Contact:</strong> <a href="/contact" style="color: var(--mustard);">All enquiries via contact form</a>
             </p>
           </div>
         </div>
@@ -728,7 +728,7 @@ app.get('/crs-cricket-road', (c) => {
           <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(245, 245, 245, 0.1);">
             <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
               <strong>Access:</strong> By booking only<br />
-              <strong>Contact:</strong> <a href="/contact" style="color: var(--mustard);">Use contact form</a>
+              <strong>Contact:</strong> <a href="/contact" style="color: var(--mustard);">All enquiries via contact form</a>
             </p>
           </div>
         </div>
@@ -777,7 +777,7 @@ app.get('/', (c) => {
             Engineer-led live sound, installations, and technical support for community venues, cultural events, and public gatherings. We provide the technical backbone for your event, so you can focus on your audience.
           </p>
           <div style="text-align: center;">
-            <a href="/av-services" class="cta-button">GET LIVE SOUND QUOTE</a>
+            <a href="/av-services" class="cta-button">VIEW AV SERVICES</a>
           </div>
         </div>
       </section>
@@ -1703,7 +1703,7 @@ app.get('/av-services', (c) => {
               AV services are quoted per project. Typical jobs range from <strong>£250–£1,500</strong> depending on scale and equipment requirements.
             </p>
             <p style="font-size: 0.9375rem; opacity: 0.85;">
-              Get in touch with event details for a specific quote.
+              Use the contact form to outline your event and production needs for a quote.
             </p>
           </div>
         </div>
@@ -2303,7 +2303,7 @@ app.get('/contact', (c) => {
         <div class="content-block" style="margin-top: 3rem;">
           <h3 class="content-heading mono">DIRECT CONTACT</h3>
           <div class="content-text mono">
-            <p><strong>EMAIL:</strong> info@cowleyroadstudios.com (for reference only — use form above for enquiries)</p>
+            <p><strong>NOTE:</strong> All enquiries are handled via the contact form above.</p>
             <p style="margin-top: 1rem;"><strong>ADDRESS:</strong> 118 Cowley Road, Oxford, OX4 1JE</p>
           </div>
         </div>
