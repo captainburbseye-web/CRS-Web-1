@@ -293,6 +293,11 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="rack-header">
+      {/* MOBILE MENU TOGGLE */}
+      <button class="mobile-menu-toggle" aria-label="Open menu">
+        <span class="hamburger-icon">☰</span>
+      </button>
+      
       {/* LEFT ZONE: CRS Logo + Tascam Label + Navigation */}
       <div class="rack-header-left">
         <div class="rack-logo-block">
@@ -417,9 +422,14 @@ app.get('/book', (c) => {
               Recording studio · Mixing rooms · Production rooms
             </p>
           </div>
+          {/* Square Appointments Embed */}
+          <div style="margin-top: 2rem; padding: 2rem; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(212, 160, 23, 0.2);">
+            <script src="https://square.site/appointments/buyer/widget/5f88zzreivvg8j/L9RPJZW999RE7.js"></script>
+          </div>
+          
           <div class="hero-cta" style="margin-top: 1.5rem;">
             <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono">
-              [ BOOK A SESSION ]
+              [ OPEN BOOKING IN NEW TAB ]
             </a>
           </div>
         </div>

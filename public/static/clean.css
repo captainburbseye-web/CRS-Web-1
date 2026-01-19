@@ -2477,3 +2477,19 @@ body::after {
     height: 40px;
   }
 }
+
+/* MOBILE NAV IMPROVEMENTS */
+@media (max-width: 767px) {
+  .mobile-nav {
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .mobile-nav.active {
+    transform: translateY(0);
+  }
+  
+  body.mobile-menu-open {
+    overflow: hidden;
+  }
+}

@@ -455,3 +455,113 @@ footer {
     padding: 0.625rem 1rem;
   }
 }
+
+/* ============================================
+   MOBILE RESPONSIVE FIXES
+   ============================================ */
+
+/* Hamburger menu button */
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  color: #E89B3C;
+  font-size: 1.5rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 1001;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-toggle:hover {
+  border-color: #E89B3C;
+  background: rgba(232, 155, 60, 0.1);
+}
+
+/* Mobile breakpoint: Hide desktop nav, show hamburger */
+@media (max-width: 767px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  /* Hide desktop navigation */
+  .rack-nav-links {
+    display: none !important;
+  }
+  
+  /* Reduce header logo sizes */
+  .logo-hardware-panel {
+    max-height: 36px !important;
+    height: 36px !important;
+  }
+  
+  .crs-tascam-label {
+    height: 10px !important;
+  }
+  
+  /* Adjust header padding */
+  .rack-header {
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+  }
+  
+  /* Make rack-header-left wrap better */
+  .rack-header-left {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Reduce button text size */
+  .cta-button,
+  .crs-button {
+    font-size: 0.75rem;
+    padding: 0.75rem 1.25rem;
+  }
+  
+  /* Better section spacing */
+  .rack-unit-content {
+    padding: 2rem 1rem;
+  }
+  
+  /* Optimize text sizing */
+  .rack-unit-title {
+    font-size: 0.875rem;
+  }
+  
+  /* Footer adjustments */
+  .crs-footer {
+    padding: 2rem 1rem;
+  }
+  
+  .footer-locations,
+  .footer-contact,
+  .footer-policy {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Tablet breakpoint: Keep some desktop features */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .rack-header {
+    padding: 0.875rem 1.5rem;
+  }
+  
+  .logo-hardware-panel {
+    max-height: 48px !important;
+    height: 48px !important;
+  }
+  
+  .crs-tascam-label {
+    height: 12px !important;
+  }
+}
+

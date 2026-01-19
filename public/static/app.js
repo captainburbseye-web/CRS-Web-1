@@ -53,43 +53,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // MOBILE NAVIGATION TOGGLE
-  const mobileMenuToggle = document.getElementById('mobile-menu-toggle')
-  const mobileNavOverlay = document.getElementById('mobile-nav-overlay')
-  const mobileNavClose = document.getElementById('mobile-nav-close')
+  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle')
+  const mobileNav = document.querySelector('.mobile-nav')
   
-  if (mobileMenuToggle && mobileNavOverlay && mobileNavClose) {
-    // Open mobile menu
+  if (mobileMenuToggle && mobileNav) {
+    // Toggle mobile menu visibility
     mobileMenuToggle.addEventListener('click', () => {
-      mobileNavOverlay.classList.add('active')
-      document.body.classList.add('mobile-menu-open')
+      mobileNav.classList.toggle('active')
+      mobileMenuToggle.classList.toggle('active')
+      document.body.classList.toggle('mobile-menu-open')
+      
+      // Update aria-label
+      const isOpen = mobileNav.classList.contains('active')
+      mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu')
     })
     
-    // Close mobile menu
-    const closeMobileMenu = () => {
-      mobileNavOverlay.classList.remove('active')
-      document.body.classList.remove('mobile-menu-open')
-    }
-    
-    mobileNavClose.addEventListener('click', closeMobileMenu)
-    
-    // Close on overlay background click
-    mobileNavOverlay.addEventListener('click', (e) => {
-      if (e.target === mobileNavOverlay) {
-        closeMobileMenu()
-      }
-    })
-    
-    // Close on ESC key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileNavOverlay.classList.contains('active')) {
-        closeMobileMenu()
-      }
-    })
-    
-    // Close mobile menu when nav link is clicked
-    mobileNavOverlay.querySelectorAll('a').forEach(link => {
+    // Close when clicking a nav link
+    mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        closeMobileMenu()
+        mobileNav.classList.remove('active')
+        mobileMenuToggle.classList.remove('active')
+        document.body.classList.remove('mobile-menu-open')
       })
     })
   }
