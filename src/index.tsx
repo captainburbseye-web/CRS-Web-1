@@ -754,6 +754,25 @@ app.get('/', (c) => {
     <>
       <Header />
 
+      {/* BAND REHEARSALS - FIRST CLASS VISIBILITY */}
+      <section class="rack-unit">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led green"></span>
+          </div>
+          <h2 class="rack-unit-title">BAND REHEARSALS</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
+            Book rehearsal sessions at Cowley Road Studios or Cricket Road Studio. Fixed-length sessions with a basic PA included. Let us know in advance if you have additional technical requirements.
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="https://square.link/u/WbJGOXN6" target="_blank" rel="noopener noreferrer" class="cta-button">REHEARSE AT CRICKET ROAD</a>
+          </div>
+        </div>
+      </section>
+
       {/* STUDIO SESSIONS */}
       <section class="rack-unit">
         <div class="rack-unit-header">
