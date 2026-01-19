@@ -300,7 +300,7 @@ const Header = () => (
             src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/1024enhanced_crs_badge_dark%20fixed%20for%20web.png" 
             alt="Cowley Road Studios"
             class="logo-hardware-panel"
-            style="max-height: 64px; width: auto;"
+            style="max-height: 48px !important; height: 48px !important; width: auto !important;"
           />
         </div>
         
