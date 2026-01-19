@@ -351,9 +351,9 @@ const Header = () => (
               role="menu"
               aria-hidden="true"
             >
-              <a href="/rehearsal" role="menuitem"><span class="signal-active"></span>Band Rehearsals</a>
-              <a href="/contact?service=recording" role="menuitem">Recording (Enquiry)</a>
-              <a href="/contact?service=pod-hire" role="menuitem">Pod Hire (Enquiry)</a>
+              <a href="/book" role="menuitem"><span class="signal-active"></span>Book Online</a>
+              <a href="/contact?service=av" role="menuitem">AV Services (Enquiry)</a>
+              <a href="/contact?service=venue" role="menuitem">Venue Hire (Enquiry)</a>
               <a href="/contact?service=repairs" role="menuitem">Repairs (Enquiry)</a>
             </div>
           </div>
@@ -425,67 +425,41 @@ app.get('/book', (c) => {
           <h1 class="section-title heading">CRS — Book</h1>
         </div>
 
-        {/* Recording & Production */}
+        {/* Square Booking Widget */}
         <div class="content-block">
-          <h3 class="content-heading heading">RECORDING & PRODUCTION</h3>
+          <h3 class="content-heading heading">BOOK NOW</h3>
           <div class="content-text">
-            <p>
-              Recording studio · Mixing rooms · Production rooms
+            <p class="mono" style="color: var(--standby-gold);">
+              Band Rehearsals · Recording Sessions · Pod Hire
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-cream); opacity: 0.8;">
+              Choose your service, location, and time slot below.
             </p>
           </div>
+          
           {/* Square Appointments Embed */}
-          <div style="margin-top: 2rem; padding: 2rem; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(212, 160, 23, 0.2);">
+          <div class="square-appointments-embed" style="margin-top: 2rem; padding: 2rem; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(212, 160, 23, 0.2); border-radius: 4px;">
             <script src="https://square.site/appointments/buyer/widget/5f88zzreivvg8j/L9RPJZW999RE7.js"></script>
           </div>
           
           <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono">
-              [ OPEN BOOKING IN NEW TAB ]
+            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono" style="font-size: 0.85rem; opacity: 0.7;">
+              [ OPEN IN NEW TAB ]
             </a>
           </div>
         </div>
 
-        {/* AV & Technical Services */}
-        <div class="content-block">
-          <h3 class="content-heading heading">AV & TECHNICAL SERVICES</h3>
+        {/* Service Enquiries */}
+        <div class="content-block" style="margin-top: 3rem;">
+          <h3 class="content-heading heading">ENQUIRIES</h3>
           <div class="content-text">
-            <p>
-              Live sound · AV installations · Technical support · Equipment repair
+            <p style="margin-bottom: 1.5rem;">
+              For AV services, venue hire, repairs, or custom projects:
             </p>
           </div>
-          <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="/contact?service=av" class="crs-button mono">
-              [ CONTACT ]
-            </a>
-          </div>
-        </div>
-
-        {/* Venue Hire */}
-        <div class="content-block">
-          <h3 class="content-heading heading">VENUE HIRE</h3>
-          <div class="content-text">
-            <p>
-              Workshop Café venue space
-            </p>
-          </div>
-          <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="/contact?service=venue" class="crs-button mono">
-              [ CONTACT ]
-            </a>
-          </div>
-        </div>
-
-        {/* Café Service */}
-        <div class="content-block">
-          <h3 class="content-heading heading">CAFÉ SERVICE</h3>
-          <div class="content-text">
-            <p>
-              Coffee · Refreshments
-            </p>
-          </div>
-          <div class="hero-cta" style="margin-top: 1.5rem;">
+          <div class="hero-cta">
             <a href="/contact" class="crs-button mono">
-              [ CONTACT ]
+              [ CONTACT FORM ]
             </a>
           </div>
         </div>
@@ -771,15 +745,18 @@ app.get('/', (c) => {
           <div class="rack-unit-led">
             <span class="led green"></span>
           </div>
-          <h2 class="rack-unit-title">BAND REHEARSALS — CRICKET ROAD</h2>
+          <h2 class="rack-unit-title">BAND REHEARSALS</h2>
         </div>
         
         <div class="rack-unit-content">
-          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
-            Fixed-length sessions with basic PA included. Secure, private space. Let us know in advance if you have additional technical requirements.
+          <p style="margin-bottom: 1rem; color: rgba(245, 245, 245, 0.85);">
+            Fixed-length sessions with basic PA included at Cricket Road or Cowley Road.
+          </p>
+          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.65); font-size: 0.9rem;">
+            Choose your location and duration when you book.
           </p>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="https://square.link/u/WbJGOXN6" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-peak-red">[ BOOK REHEARSAL SLOT ]</a>
+            <a href="/book" class="cta-button cta-button-peak-red">[ BOOK NOW ]</a>
           </div>
         </div>
       </section>
