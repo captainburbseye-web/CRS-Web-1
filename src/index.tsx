@@ -293,7 +293,7 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="rack-header">
-      {/* LEFT ZONE: CRS Logo + Navigation */}
+      {/* LEFT ZONE: CRS Logo + Title + Navigation */}
       <div class="rack-header-left">
         <div class="rack-logo-block">
           <img 
@@ -302,6 +302,11 @@ const Header = () => (
             class="logo-hardware-panel"
             style="max-height: 64px; width: auto;"
           />
+        </div>
+        
+        <div class="site-title">
+          <span class="title-line">COWLEY ROAD</span>
+          <span class="title-line">STUDIOS</span>
         </div>
         
         <nav class="rack-nav-links">
