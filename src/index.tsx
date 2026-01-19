@@ -754,21 +754,21 @@ app.get('/', (c) => {
     <>
       <Header />
 
-      {/* BAND REHEARSALS - FIRST CLASS VISIBILITY */}
+      {/* UNIT 05 — BAND REHEARSALS */}
       <section class="rack-unit">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
             <span class="led green"></span>
           </div>
-          <h2 class="rack-unit-title">BAND REHEARSALS</h2>
+          <h2 class="rack-unit-title">BAND REHEARSALS — CRICKET ROAD</h2>
         </div>
         
         <div class="rack-unit-content">
           <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
-            Book rehearsal sessions at Cowley Road Studios or Cricket Road Studio. Fixed-length sessions with a basic PA included. Let us know in advance if you have additional technical requirements.
+            Fixed-length sessions with basic PA included. Secure, private space. Let us know in advance if you have additional technical requirements.
           </p>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="https://square.link/u/WbJGOXN6" target="_blank" rel="noopener noreferrer" class="cta-button">REHEARSE AT CRICKET ROAD</a>
+            <a href="https://square.link/u/WbJGOXN6" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-peak-red">[ BOOK REHEARSAL SLOT ]</a>
           </div>
         </div>
       </section>
