@@ -305,7 +305,7 @@ const Header = () => (
         </div>
         
         <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/512%20tascam%20crs-dark-v1%20.png" 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v1%20.png" 
           alt="Cowley Road Studios"
           class="crs-tascam-label"
         />
