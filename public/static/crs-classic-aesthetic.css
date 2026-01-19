@@ -106,16 +106,16 @@ body:not(.wsc-mode) {
   margin: 0 auto;
 }
 
-/* HEADER LEFT - BADGE + BANNER + NAV */
+/* HEADER LEFT - BADGE + TASCAM LABEL + NAV */
 .rack-header-left {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
 
-/* STREET BANNER - Same size as text would be */
-.crs-street-banner {
-  height: 32px;
+/* TASCAM LABEL - Small, next to badge */
+.crs-tascam-label {
+  height: 48px;
   width: auto;
   display: block;
 }

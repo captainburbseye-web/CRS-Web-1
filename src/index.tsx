@@ -293,7 +293,7 @@ app.use(renderer)
 const Header = () => (
   <>
     <header class="rack-header">
-      {/* LEFT ZONE: CRS Logo + Title Banner + Navigation */}
+      {/* LEFT ZONE: CRS Logo + Tascam Label + Navigation */}
       <div class="rack-header-left">
         <div class="rack-logo-block">
           <img 
@@ -305,9 +305,9 @@ const Header = () => (
         </div>
         
         <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-street-banner.png" 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/512%20tascam%20crs-dark-v1%20.png" 
           alt="Cowley Road Studios"
-          class="crs-street-banner"
+          class="crs-tascam-label"
         />
         
         <nav class="rack-nav-links">
