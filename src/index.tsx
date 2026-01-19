@@ -366,7 +366,7 @@ const Footer = () => (
 
       {/* Contact */}
       <div class="footer-contact">
-        <p>CONTACT: <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a></p>
+        <p>CONTACT: <a href="/contact">Use contact form</a></p>
       </div>
 
       {/* Build Phase Disclaimer */}
@@ -602,7 +602,7 @@ app.get('/rehearsal', (c) => {
             <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
               <strong style="color: #E89B3C;">Location:</strong> Cricket Road, Oxford<br />
               <strong style="color: #E89B3C;">Availability:</strong> Evenings + weekends (see booking calendar)<br />
-              <strong style="color: #E89B3C;">Questions:</strong> <a href="mailto:info@cowleyroadstudios.com" style="color: #C8FF41; text-decoration: none;">info@cowleyroadstudios.com</a>
+              <strong style="color: #E89B3C;">Questions:</strong> <a href="/contact" style="color: #C8FF41; text-decoration: none;">Use contact form</a>
             </p>
           </div>
         </div>
@@ -681,7 +681,7 @@ app.get('/crs-cowley-road', (c) => {
           <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(245, 245, 245, 0.1);">
             <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
               <strong>Access:</strong> By booking only<br />
-              <strong>Contact:</strong> <a href="mailto:info@cowleyroadstudios.com" style="color: var(--mustard);">info@cowleyroadstudios.com</a>
+              <strong>Contact:</strong> <a href="/contact" style="color: var(--mustard);">Use contact form</a>
             </p>
           </div>
         </div>
@@ -728,7 +728,7 @@ app.get('/crs-cricket-road', (c) => {
           <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(245, 245, 245, 0.1);">
             <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
               <strong>Access:</strong> By booking only<br />
-              <strong>Contact:</strong> <a href="mailto:info@cowleyroadstudios.com" style="color: var(--mustard);">info@cowleyroadstudios.com</a>
+              <strong>Contact:</strong> <a href="/contact" style="color: var(--mustard);">Use contact form</a>
             </p>
           </div>
         </div>
@@ -1720,8 +1720,8 @@ app.get('/av-services', (c) => {
 
         {/* CTA */}
         <div class="hero-cta">
-          <a href="mailto:info@cowleyroadstudios.com?subject=AV%20Services%20Enquiry" class="crs-button mono">
-            [ GET AV QUOTE ]
+          <a href="/contact?enquiry=av" class="crs-button mono">
+            [ REQUEST AV QUOTE ]
           </a>
         </div>
       </section>
@@ -1808,8 +1808,8 @@ app.get('/av-services/repairs', (c) => {
 
         {/* CTA */}
         <div class="hero-cta">
-          <a href="mailto:info@cowleyroadstudios.com?subject=Repair%20Estimate%20Request" class="crs-button mono">
-            [ REQUEST REPAIR ESTIMATE ]
+          <a href="/contact?enquiry=repairs" class="crs-button mono">
+            [ START REPAIR ENQUIRY ]
           </a>
         </div>
       </section>
@@ -2303,7 +2303,7 @@ app.get('/contact', (c) => {
         <div class="content-block" style="margin-top: 3rem;">
           <h3 class="content-heading mono">DIRECT CONTACT</h3>
           <div class="content-text mono">
-            <p><strong>EMAIL:</strong> <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a></p>
+            <p><strong>EMAIL:</strong> info@cowleyroadstudios.com (for reference only — use form above for enquiries)</p>
             <p style="margin-top: 1rem;"><strong>ADDRESS:</strong> 118 Cowley Road, Oxford, OX4 1JE</p>
           </div>
         </div>
