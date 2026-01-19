@@ -2762,4 +2762,180 @@ app.get('/signage', (c) => {
   )
 })
 
+// /signage/fallback - SYSTEM SAFE PLATE (static, no API calls)
+app.get('/signage/fallback', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CRS — System Safe</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+        <style>{`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          
+          body {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0D1912;
+            color: #e5e5e5;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .fallback-container {
+            text-align: center;
+            max-width: 600px;
+          }
+          
+          .crs-badge {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+          }
+          
+          .crs-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+          
+          .status-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 1rem;
+          }
+          
+          .status-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #00B400;
+            margin-bottom: 0.5rem;
+          }
+          
+          .status-message {
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: #c0c0c0;
+          }
+        `}</style>
+      </head>
+      <body>
+        <div class="fallback-container">
+          <div class="crs-badge">
+            <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs_badge_dark%20fixed%20for%20web.webp" alt="CRS Badge" />
+          </div>
+          <div class="status-title">COWLEY ROAD STUDIOS</div>
+          <div class="status-subtitle">SYSTEM LIVE</div>
+          <div class="status-message">Updating shortly</div>
+        </div>
+      </body>
+    </html>
+  )
+})
+
+// /signage/build - BUILD STATUS PLATE (static)
+app.get('/signage/build', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CRS — Build In Progress</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+        <style>{`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          
+          body {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0D1912;
+            color: #e5e5e5;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .build-container {
+            text-align: center;
+            max-width: 700px;
+          }
+          
+          .crs-badge {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+          }
+          
+          .crs-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+          
+          .status-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 1rem;
+          }
+          
+          .status-subtitle {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #FFA000;
+            margin-bottom: 0.5rem;
+          }
+          
+          .status-message {
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            color: #c0c0c0;
+          }
+        `}</style>
+      </head>
+      <body>
+        <div class="build-container">
+          <div class="crs-badge">
+            <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs_badge_dark%20fixed%20for%20web.webp" alt="CRS Badge" />
+          </div>
+          <div class="status-title">COWLEY ROAD STUDIOS</div>
+          <div class="status-subtitle">BUILD IN PROGRESS</div>
+          <div class="status-message">Systems online shortly</div>
+        </div>
+      </body>
+    </html>
+  )
+})
+
 export default app
