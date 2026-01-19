@@ -589,3 +589,26 @@ footer {
   box-shadow: 0 0 8px rgba(220, 0, 0, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3);
   transform: translateY(0);
 }
+
+/* SIGNAL: ACTIVE GREEN DOT */
+.signal-active {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #00FF00;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+  animation: pulse-signal 2s ease-in-out infinite;
+}
+
+@keyframes pulse-signal {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 12px rgba(0, 255, 0, 0.8);
+  }
+}

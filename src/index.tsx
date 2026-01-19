@@ -57,17 +57,28 @@ app.post('/api/contact', async (c) => {
     }
     
     // Build email payload for Resend
+    const serviceType = body.service || 'general'
+    const serviceLabel = {
+      'recording': 'Recording Session',
+      'pod-hire': 'Pod Hire',
+      'repairs': 'Equipment Repair',
+      'av': 'AV Services',
+      'venue': 'Venue Hire',
+      'general': 'General Enquiry'
+    }[serviceType] || 'General Enquiry'
+    
     const emailData = {
       from: 'CRS Contact Form <noreply@cowleyroadstudios.com>',
       to: ['info@cowleyroadstudios.com'],
-      subject: `[CRS CONTACT] ${body.subject || 'New Inquiry'}`,
+      subject: `[CRS ${serviceType.toUpperCase()}] ${body.subject || serviceLabel}`,
       html: `
         <div style="font-family: 'JetBrains Mono', monospace; max-width: 600px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #00ff00; border: 2px solid #333;">
           <h2 style="color: #ff6b35; margin-top: 0;">NEW CONTACT FORM SUBMISSION</h2>
           <div style="border-left: 3px solid #ff6b35; padding-left: 15px; margin: 20px 0;">
+            <p><strong>Service Type:</strong> ${serviceLabel}</p>
             <p><strong>From:</strong> ${body.name || 'Not provided'}</p>
             <p><strong>Email:</strong> ${body.email || 'Not provided'}</p>
-            <p><strong>Subject:</strong> ${body.subject || 'Not provided'}</p>
+            <p><strong>Subject:</strong> ${body.subject || serviceLabel}</p>
           </div>
           <div style="background: #0a0a0a; padding: 15px; margin: 20px 0; border: 1px solid #333;">
             <p><strong>Message:</strong></p>
@@ -340,10 +351,10 @@ const Header = () => (
               role="menu"
               aria-hidden="true"
             >
-              <a href="/rehearsal" role="menuitem">Band Rehearsals</a>
-              <a href="/contact" role="menuitem">Recording (Enquiry)</a>
-              <a href="/contact" role="menuitem">Pod Hire (Enquiry)</a>
-              <a href="/contact" role="menuitem">Repairs (Enquiry)</a>
+              <a href="/rehearsal" role="menuitem"><span class="signal-active"></span>Band Rehearsals</a>
+              <a href="/contact?service=recording" role="menuitem">Recording (Enquiry)</a>
+              <a href="/contact?service=pod-hire" role="menuitem">Pod Hire (Enquiry)</a>
+              <a href="/contact?service=repairs" role="menuitem">Repairs (Enquiry)</a>
             </div>
           </div>
         </nav>
@@ -2290,6 +2301,16 @@ app.get('/about', (c) => {
 
 // CONTACT
 app.get('/contact', (c) => {
+  const serviceType = c.req.query('service') || 'general'
+  const serviceLabel = {
+    'recording': 'Recording Session',
+    'pod-hire': 'Pod Hire',
+    'repairs': 'Equipment Repair',
+    'av': 'AV Services',
+    'venue': 'Venue Hire',
+    'general': 'General Enquiry'
+  }[serviceType] || 'General Enquiry'
+  
   return c.render(
     <>
       <Header />
@@ -2298,7 +2319,7 @@ app.get('/contact', (c) => {
         <div class="section-header">
           <h1 class="section-title heading">CRS — Contact</h1>
           <p class="section-intro">
-            For general enquiries only.
+            {serviceType !== 'general' ? `Enquiry: ${serviceLabel}` : 'For general enquiries only.'}
           </p>
         </div>
 
@@ -2307,6 +2328,8 @@ app.get('/contact', (c) => {
           <h3 class="content-heading mono">SEND A MESSAGE</h3>
           
           <form class="booking-form" method="post" action="/api/contact">
+            <input type="hidden" name="service" value={serviceType} />
+            
             <div class="form-group">
               <label for="name" class="form-label mono">Name *</label>
               <input type="text" id="name" name="name" required class="form-input" />
