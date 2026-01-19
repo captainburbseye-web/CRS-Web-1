@@ -43,8 +43,28 @@ body:not(.wsc-mode) {
   border-top: 1px solid rgba(212, 160, 23, 0.2);
   border-bottom: 1px solid rgba(212, 160, 23, 0.2);
   box-shadow: none;
-  padding: 3rem 2rem;
+  padding: 0;
   min-height: auto;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: center;
+}
+
+/* RACK UNIT CONTENT - CENTERED */
+.rack-unit-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  width: 100%;
+}
+
+/* RACK UNIT HEADER - CENTERED */
+.rack-unit-header {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0 2rem;
+  width: 100%;
 }
 
 /* Remove bronze ears */
