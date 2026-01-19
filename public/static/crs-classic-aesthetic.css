@@ -115,7 +115,7 @@ body:not(.wsc-mode) {
 
 /* TASCAM LABEL - Small, next to badge */
 .crs-tascam-label {
-  height: 48px;
+  height: 14px;
   width: auto;
   display: block;
 }
