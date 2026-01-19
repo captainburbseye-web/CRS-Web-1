@@ -152,11 +152,20 @@ body:not(.wsc-mode) {
   gap: 1.5rem;
 }
 
-/* TASCAM LABEL - Small, next to badge */
+/* HEADER IMAGE SIZE CONSTRAINTS */
+.rack-header img,
+.rack-header-left img,
+.rack-logo-block img,
+.logo-hardware-panel,
 .crs-tascam-label {
-  height: 14px;
-  width: auto;
-  display: block;
+  max-height: 48px !important;
+  height: 48px !important;
+  width: auto !important;
+}
+
+.logo-hardware-panel {
+  max-height: 42px !important;
+  height: 42px !important;
 }
 
 /* HEADER CENTER - TITLE */
