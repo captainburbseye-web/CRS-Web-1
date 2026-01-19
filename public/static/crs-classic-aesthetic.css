@@ -4,6 +4,25 @@
    Keeps: MailChannels, WSC mode, all functionality
    ============================================ */
 
+/* GLOBAL LAYOUT FIX - Prevent horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Ensure all sections center properly */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header, section, footer {
+  width: 100%;
+  max-width: 1400px;
+}
+
 /* OVERRIDE RACK UI V2 - BACK TO CLEAN */
 body:not(.wsc-mode) {
   /* Simpler colors - back to NASA terminal */
