@@ -2314,4 +2314,452 @@ app.get('/contact', (c) => {
   )
 })
 
+// =============================================================================
+// SIGNAGE SYSTEM ROUTES
+// =============================================================================
+
+// /signals/status.json - Core system status for signage
+app.get('/signals/status.json', (c) => {
+  const zones = {
+    cafe: { state: 'standby', status: 'OPENING SOON' },
+    studio: { state: 'standby', status: 'BOOKABLE' },
+    rehearsals: { state: 'live', status: 'BOOKABLE' },
+    av: { state: 'standby', status: 'ENQUIRY' }
+  };
+  
+  return c.json({
+    status: 'BUILD PHASE — OPERATIONAL BY ENQUIRY',
+    zones: zones,
+    updated: new Date().toISOString()
+  })
+})
+
+// /signals/services.json - Service states for signage "NOW ACTIVE" block
+app.get('/signals/services.json', (c) => {
+  return c.json({
+    services: [
+      {
+        id: 'rehearsals',
+        label: 'Rehearsals',
+        state: 'live',
+        status: 'BOOKABLE',
+        color: '#008F00'
+      },
+      {
+        id: 'av-services',
+        label: 'AV Services',
+        state: 'standby',
+        status: 'ENQUIRY',
+        color: '#d4a017'
+      },
+      {
+        id: 'studio',
+        label: 'Studio Sessions',
+        state: 'standby',
+        status: 'ENQUIRY',
+        color: '#d4a017'
+      }
+    ],
+    updated: new Date().toISOString()
+  })
+})
+
+// /signals/schedule.json - Upcoming events for signage "COMING UP" block
+app.get('/signals/schedule.json', (c) => {
+  // Currently empty - will be populated when events are scheduled
+  return c.json({
+    upcoming: [],
+    updated: new Date().toISOString()
+  })
+})
+
+// /signage - Xibo Digital Signage Display
+app.get('/signage', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CRS — Digital Pulse</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+        <style>{`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          
+          body {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0D1912;
+            color: #e5e5e5;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            letter-spacing: -0.01em;
+            line-height: 1.6;
+          }
+          
+          /* SIGNAGE CONTAINER - Full screen 16:9 */
+          .signage-surface {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 2.5rem;
+            gap: 1.5rem;
+          }
+          
+          /* HEADER - Static status line */
+          .signage-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 1.5rem;
+          }
+          
+          .crs-badge {
+            height: 60px;
+            width: auto;
+            max-width: 180px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+          }
+          
+          .crs-badge img {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+          }
+          
+          .status-line {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+            text-transform: uppercase;
+            line-height: 1.1;
+          }
+          
+          .status-line-primary {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            display: block;
+            margin-bottom: 0.5rem;
+          }
+          
+          .status-line-secondary {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            display: block;
+            color: #c0c0c0;
+          }
+          
+          /* PRIMARY BLOCK - Now Active */
+          .signage-block {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+          }
+          
+          .block-label {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #ffffff;
+            text-transform: uppercase;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #3a3a3a;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+          }
+          
+          .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+          }
+          
+          .service-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.2rem;
+            font-weight: 400;
+            padding: 0.35rem 0;
+            color: #e5e5e5;
+          }
+          
+          .state-bar {
+            width: 8px;
+            height: 32px;
+            flex-shrink: 0;
+          }
+          
+          .state-bar.live {
+            background: #C8FF41;
+          }
+          
+          .state-bar.standby {
+            background: #E89B3C;
+          }
+          
+          .state-bar.offline {
+            background: #FF4444;
+          }
+          
+          .service-label {
+            flex: 1;
+            color: #ffffff;
+          }
+          
+          .service-status {
+            font-weight: 700;
+            letter-spacing: 0.05em;
+          }
+          
+          .service-status.live {
+            color: #C8FF41;
+          }
+          
+          .service-status.standby {
+            color: #E89B3C;
+          }
+          
+          .service-status.offline {
+            color: #FF4444;
+          }
+          
+          /* FOOTER - Graphite base with gold accent */
+          .signage-footer {
+            background: #1A251E;
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 2px solid #E89B3C;
+            margin: 0 -2.5rem -2.5rem -2.5rem;
+          }
+          
+          .footer-instruction {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+          }
+          
+          .footer-url {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.05em;
+          }
+          
+          .footer-qr {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            margin-left: 2rem;
+            border: 2px solid #3a3a3a;
+            padding: 0.3rem;
+            background-color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .footer-qr img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+          
+          /* FADE ANIMATION (soft only) */
+          @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+          }
+          
+          .service-item {
+            animation: fadeIn 0.5s ease-in;
+          }
+          
+          /* RESPONSIVE ADJUSTMENTS for different screen sizes */
+          @media (max-width: 1280px) {
+            .signage-surface {
+              padding: 2rem;
+              gap: 1.25rem;
+            }
+            
+            .crs-badge {
+              height: 60px;
+            }
+            
+            .status-line-primary {
+              font-size: 1.1rem;
+            }
+            
+            .status-line-secondary {
+              font-size: 0.85rem;
+            }
+            
+            .service-item {
+              font-size: 1.1rem;
+            }
+            
+            .block-label {
+              font-size: 1.2rem;
+            }
+          }
+        `}</style>
+        <script dangerouslySetInnerHTML={{__html: `
+          // Poll /signals/*.json every 60 seconds and update display
+          let currentServices = [];
+          let currentSchedule = [];
+          
+          async function updateSignage() {
+            try {
+              // Fetch status data
+              const statusRes = await fetch('/signals/status.json');
+              const statusData = await statusRes.json();
+              
+              // Fetch services data
+              const servicesRes = await fetch('/signals/services.json');
+              const servicesData = await servicesRes.json();
+              
+              // Fetch schedule data
+              const scheduleRes = await fetch('/signals/schedule.json');
+              const scheduleData = await scheduleRes.json();
+              
+              // Update status line (two-line format)
+              const statusText = document.getElementById('status-text');
+              const statusParts = statusData.status.split('—').map(s => s.trim());
+              if (statusParts.length === 2) {
+                statusText.innerHTML = '<span class="status-line-primary">COWLEY ROAD STUDIOS</span><span class="status-line-secondary">SYSTEM STATUS DISPLAY</span>';
+              } else {
+                statusText.innerHTML = '<span class="status-line-primary">COWLEY ROAD STUDIOS</span><span class="status-line-secondary">SYSTEM STATUS DISPLAY</span>';
+              }
+              
+              // Update services list
+              const servicesList = document.getElementById('services-list');
+              servicesList.innerHTML = '';
+              
+              servicesData.services.forEach(service => {
+                const item = document.createElement('div');
+                item.className = 'service-item';
+                
+                const stateBar = document.createElement('div');
+                stateBar.className = 'state-bar ' + service.state;
+                
+                const label = document.createElement('div');
+                label.className = 'service-label';
+                label.textContent = service.label;
+                
+                const status = document.createElement('div');
+                status.className = 'service-status ' + service.state;
+                status.textContent = service.status;
+                
+                item.appendChild(stateBar);
+                item.appendChild(label);
+                item.appendChild(status);
+                servicesList.appendChild(item);
+              });
+              
+              // Update schedule (if data exists)
+              const scheduleBlock = document.getElementById('schedule-block');
+              if (scheduleData.upcoming && scheduleData.upcoming.length > 0) {
+                scheduleBlock.style.display = 'block';
+                const scheduleList = document.getElementById('schedule-list');
+                scheduleList.innerHTML = '';
+                
+                scheduleData.upcoming.forEach(event => {
+                  const item = document.createElement('div');
+                  item.className = 'secondary-item';
+                  
+                  const stateBar = document.createElement('div');
+                  stateBar.className = 'state-bar live';
+                  
+                  const text = document.createElement('div');
+                  text.textContent = event.label + ' — ' + event.time;
+                  
+                  item.appendChild(stateBar);
+                  item.appendChild(text);
+                  scheduleList.appendChild(item);
+                });
+              } else {
+                scheduleBlock.style.display = 'none';
+              }
+              
+            } catch (error) {
+              console.error('Failed to update signage:', error);
+            }
+          }
+          
+          // Initial load
+          updateSignage();
+          
+          // Refresh every 60 seconds
+          setInterval(updateSignage, 60000);
+        `}}></script>
+      </head>
+      <body>
+        <div class="signage-surface">
+          {/* HEADER */}
+          <div class="signage-header">
+            <div class="crs-badge">
+              <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs_badge_dark%20fixed%20for%20web.webp" alt="CRS Badge" />
+            </div>
+            <div class="status-line" id="status-text">
+              <span class="status-line-primary">CRS — SYSTEM STATUS</span>
+              <span class="status-line-secondary">BUILD PHASE · OPERATIONAL BY ENQUIRY</span>
+            </div>
+          </div>
+
+          {/* NOW ACTIVE */}
+          <div class="signage-block">
+            <div class="block-label">NOW ACTIVE</div>
+            <div id="services-list" class="service-list">
+              <div class="service-item">
+                <div class="state-bar live"></div>
+                <div class="service-label">Rehearsals</div>
+                <div class="service-status live">BOOKABLE</div>
+              </div>
+              <div class="service-item">
+                <div class="state-bar standby"></div>
+                <div class="service-label">Studio Sessions</div>
+                <div class="service-status standby">ENQUIRY</div>
+              </div>
+              <div class="service-item">
+                <div class="state-bar standby"></div>
+                <div class="service-label">Workshop Café</div>
+                <div class="service-status standby">PRIVATE HIRE</div>
+              </div>
+            </div>
+          </div>
+
+          {/* FOOTER */}
+          <div class="signage-footer">
+            <div class="footer-instruction">FOR DETAILS & BOOKINGS</div>
+            <div class="footer-url">cowleyroadstudios.com</div>
+            <div class="footer-qr">
+              <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/QRcode_c2%20(1).jpg" alt="QR Code" />
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>
+  )
+})
+
 export default app

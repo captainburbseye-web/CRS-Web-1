@@ -4,25 +4,6 @@
    Keeps: MailChannels, WSC mode, all functionality
    ============================================ */
 
-/* GLOBAL LAYOUT FIX - Prevent horizontal overflow */
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-  max-width: 100%;
-}
-
-/* Ensure all sections center properly */
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-header, section, footer {
-  width: 100%;
-  max-width: 1400px;
-}
-
 /* OVERRIDE RACK UI V2 - BACK TO CLEAN */
 body:not(.wsc-mode) {
   /* Simpler colors - back to NASA terminal */
@@ -36,6 +17,7 @@ body:not(.wsc-mode) {
 }
 
 /* SIMPLIFIED RACK UNITS - NO BRONZE EARS */
+/* SPACING LOCKED: Do not increase padding - CRS vertical rhythm rule */
 .rack-unit {
   position: relative;
   margin: 0;
@@ -43,28 +25,8 @@ body:not(.wsc-mode) {
   border-top: 1px solid rgba(212, 160, 23, 0.2);
   border-bottom: 1px solid rgba(212, 160, 23, 0.2);
   box-shadow: none;
-  padding: 0;
-  min-height: auto;
-  width: 100%;
-  max-width: 1400px;
-  display: flex;
-  justify-content: center;
-}
-
-/* RACK UNIT CONTENT - CENTERED */
-.rack-unit-content {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
-  width: 100%;
-}
-
-/* RACK UNIT HEADER - CENTERED */
-.rack-unit-header {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 2rem 2rem 0 2rem;
-  width: 100%;
+  padding: 1rem 2rem !important; /* LOCKED - GenSpark protection */
+  min-height: 80px !important; /* LOCKED - prevents inflation */
 }
 
 /* Remove bronze ears */
@@ -424,7 +386,7 @@ footer {
 /* RESPONSIVE - KEEP CLEAN */
 @media (max-width: 768px) {
   .rack-unit {
-    padding: 2rem 1.5rem;
+    padding: 1rem 1.5rem !important; /* LOCKED - mobile spacing */
   }
   
   .rack-header {
@@ -454,4 +416,24 @@ footer {
     font-size: 0.688rem;
     padding: 0.625rem 1rem;
   }
+}
+
+/* =============================================
+   NUCLEAR HEADER LOGO FIX - FORCE ALL HEADER IMAGES SMALL
+   Danny: "just want the cowleyroad studios small with the other titles"
+   ============================================= */
+.rack-header img,
+.rack-header-left img,
+.rack-logo-block img,
+.logo-hardware-panel,
+.crs-tascam-label {
+  max-height: 48px !important;
+  height: 48px !important;
+  width: auto !important;
+}
+
+/* Double-down on the badge specifically */
+.logo-hardware-panel {
+  max-height: 42px !important;
+  height: 42px !important;
 }

@@ -55,6 +55,7 @@ body {
 }
 
 /* ==== ENHANCED RACK UNIT WITH BRONZE EARS ==== */
+/* 🔒 SPACING LOCKED: Do not increase - CRS vertical rhythm rule */
 .rack-unit {
   position: relative;
   margin: 0 0 2px 0;
@@ -65,8 +66,8 @@ body {
     inset 0 2px 4px rgba(0, 0, 0, 0.4),
     inset 0 -2px 4px rgba(0, 0, 0, 0.4),
     0 4px 8px rgba(0, 0, 0, 0.5);
-  padding: 1rem 2rem; /* REDUCED from 2rem 5rem */
-  min-height: 80px; /* REDUCED from 120px */
+  padding: 1rem 2rem !important; /* LOCKED - GenSpark protection */
+  min-height: 80px !important; /* LOCKED - prevents inflation */
 }
 
 /* Bronze Rack Ears (left and right) */
@@ -471,7 +472,7 @@ footer {
 /* ==== RESPONSIVE ==== */
 @media (max-width: 768px) {
   .rack-unit {
-    padding: 1.5rem 3rem;
+    padding: 1rem 1.5rem !important; /* LOCKED - mobile spacing */
   }
   
   .rack-unit::before,

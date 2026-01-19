@@ -27,20 +27,22 @@
   }
 }
 
-/* FIX 2: Increase CONTENT heading font-size (NOT header titles) */
+/* FIX 2: Increase CONTENT heading font-size (NOT header/nav titles) */
+/* Target only content sections, not header elements */
 .content-section h2,
 .crs-section .section-title,
-.rack-unit .section-title,
-main .heading {
+main .section-title,
+section .heading {
   font-size: clamp(1.75rem, 4vw, 2.25rem) !important;
   margin-bottom: 1.5rem !important;
 }
 
-/* Header and navigation titles should stay compact */
+/* Keep header and navigation titles SMALL and compact */
 header .section-title,
 header .heading,
 .rack-header .section-title,
-.rack-header .heading {
+.rack-header .heading,
+nav .heading {
   font-size: 1rem !important;
   font-weight: 600 !important;
   margin-bottom: 0 !important;
