@@ -15,10 +15,8 @@ html {
 /* ------------------------------
    HEADER CONTAINER HARD RESET
    ------------------------------ */
-header,
-.site-header,
-.crs-header,
-.rack-header {
+header.rack-header,
+.site-header {
   all: unset;                 /* NUCLEAR: remove inherited chaos */
   display: flex;
   align-items: center;
@@ -35,29 +33,29 @@ header,
 /* ------------------------------
    PREVENT WIDTH CONSTRAINTS
    ------------------------------ */
-header *,
-.site-header *,
-.crs-header *,
-.rack-header * {
+header.rack-header *,
+.site-header * {
   max-width: none;
 }
 
 /* ------------------------------
    TYPOGRAPHY IMMUNITY ZONE
+   (ONLY AFFECTS SITE HEADER - NOT BODY CONTENT)
    ------------------------------ */
-header,
-header * {
+header.rack-header,
+header.rack-header * {
   font-size: inherit !important;
   line-height: 1.1;
 }
 
 /* ------------------------------
    LOGO LOCK - MASSIVE WORDMARK SIZE
+   (ONLY SITE HEADER LOGO)
    ------------------------------ */
-header svg,
-header img.logo,
-header .logo,
-header .crs-main-logo {
+header.rack-header svg,
+header.rack-header img.logo,
+header.rack-header .logo,
+header.rack-header .crs-main-logo {
   width: 45vw !important;      /* 45% of viewport width - scales to screen */
   min-width: 600px !important;  /* Never smaller than 600px */
   max-width: 1400px !important; /* Never bigger than 1400px */
@@ -69,10 +67,10 @@ header .crs-main-logo {
 
 /* Mobile logo sizing */
 @media (max-width: 767px) {
-  header svg,
-  header img.logo,
-  header .logo,
-  header .crs-main-logo {
+  header.rack-header svg,
+  header.rack-header img.logo,
+  header.rack-header .logo,
+  header.rack-header .crs-main-logo {
     width: 70vw !important;      /* 70% viewport on mobile */
     min-width: 300px !important;
     max-width: 500px !important;
@@ -81,13 +79,11 @@ header .crs-main-logo {
 
 /* ------------------------------
    NAV & LABEL LOCK
+   (ONLY SITE HEADER NAV)
    ------------------------------ */
-header nav,
-header a,
-header .nav-item,
-header .label,
-header .rack-nav-links,
-header .rack-nav-links a {
+header.rack-header nav,
+header.rack-header .rack-nav-links,
+header.rack-header .rack-nav-links a {
   font-size: clamp(1.5rem, 2.5vw, 3rem) !important;  /* 24-48px, scales with viewport */
   letter-spacing: 0.04em;
   white-space: nowrap;
@@ -95,12 +91,10 @@ header .rack-nav-links a {
 
 /* ------------------------------
    BUTTON / CTA LOCK
+   (ONLY SITE HEADER BUTTONS)
    ------------------------------ */
-header button,
-header .cta,
-header .book-now,
-header .header-button,
-header .book-dropdown-trigger {
+header.rack-header button,
+header.rack-header .book-dropdown-trigger {
   font-size: 0.875rem !important;
   line-height: 1;
   padding: 0.45rem 0.75rem;
@@ -109,16 +103,18 @@ header .book-dropdown-trigger {
 
 /* ------------------------------
    REMOVE RESPONSIVE SCALING
+   (ONLY SITE HEADER)
    ------------------------------ */
-header * {
+header.rack-header * {
   font-variation-settings: normal !important;
   font-optical-sizing: none !important;
 }
 
 /* ------------------------------
    FLEX SAFETY
+   (ONLY SITE HEADER)
    ------------------------------ */
-header {
+header.rack-header {
   justify-content: space-between;
   flex-wrap: nowrap;
 }
@@ -127,7 +123,7 @@ header {
    FINAL SAFETY NET
    ------------------------------ */
 @media (max-width: 480px) {
-  header {
+  header.rack-header {
     padding: 0.6rem 1rem;
   }
 }
