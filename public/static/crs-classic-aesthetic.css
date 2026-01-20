@@ -527,6 +527,12 @@ footer {
     flex-wrap: wrap;
   }
   
+  /* Ensure BOOK NOW button stays visible on mobile */
+  .rack-header-right {
+    margin-left: 0; /* Remove auto margin on mobile */
+    width: auto;
+  }
+  
   /* Reduce button text size */
   .cta-button,
   .crs-button {
