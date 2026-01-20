@@ -5,8 +5,8 @@
 
 :root {
   /* LOGO SIZING (Exact Pixel Lock) */
-  --logo-height-desktop: 128px; /* Doubled from 64px */
-  --logo-height-mobile: 96px; /* Doubled from 48px */
+  --logo-height-desktop: 180px; /* Increased for prominence */
+  --logo-height-mobile: 120px; /* Increased for mobile */
   
   /* BADGE SIZING (Institutional Seal) */
   --badge-size-desktop: 48px;
