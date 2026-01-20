@@ -71,6 +71,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-classic-aesthetic.css" rel="stylesheet" />
         {/* PRECISION CALIBRATION: Exact pixel-level sizing for Technical Institution aesthetic (MUST LOAD ABSOLUTE LAST) */}
         <link href="/static/crs-precision-calibration.css" rel="stylesheet" />
+        {/* TYPOGRAPHY LOCKDOWN: Hard separation of typographic domains - controls immunity (LOADS AFTER EVERYTHING) */}
+        <link href="/static/crs-typography-lockdown.css" rel="stylesheet" />
       </head>
       <body>
         {children}
