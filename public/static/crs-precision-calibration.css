@@ -5,8 +5,8 @@
 
 :root {
   /* LOGO SIZING (Exact Pixel Lock) */
-  --logo-height-desktop: 180px; /* Increased for prominence */
-  --logo-height-mobile: 120px; /* Increased for mobile */
+  --logo-height-desktop: 280px; /* MASSIVE - Wordmark hero size */
+  --logo-height-mobile: 160px; /* Large mobile presence */
   
   /* BADGE SIZING (Institutional Seal) */
   --badge-size-desktop: 48px;
@@ -81,7 +81,7 @@
    ================================ */
 
 .rack-header {
-  padding: 2rem 3rem !important; /* Reduced from 24px 48px (4rem vertical) */
+  padding: 3rem 3rem !important; /* Increased vertical padding for massive wordmark */
   display: flex !important;
   align-items: center !important; /* Keeps nav perfectly centered on big logo */
   justify-content: space-between !important;
@@ -93,7 +93,7 @@
 
 @media (max-width: 767px) {
   .rack-header {
-    padding: 1.5rem 2rem !important; /* Reduced mobile padding */
+    padding: 2rem 1.5rem !important; /* Mobile padding */
   }
 }
 
@@ -307,9 +307,9 @@
 .rack-nav-links {
   display: flex !important;
   align-items: center !important;
-  gap: 1rem !important; /* Reduced from 1.5rem */
+  gap: 1.5rem !important;
   font-family: 'Inter', sans-serif !important;
-  font-size: 2.5rem !important; /* 40px - Much larger for prominence */
+  font-size: 3rem !important; /* 48px - MASSIVE to match wordmark scale */
   font-weight: 700 !important; /* Heavier weight for authority */
   letter-spacing: 0.05rem !important;
 }
