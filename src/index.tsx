@@ -311,11 +311,13 @@ const Header = () => (
       
       {/* LEFT ZONE: CRS Logo + Navigation */}
       <div class="rack-header-left">
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/1024%20BADGE%20%2B%20WORDMARK%20LOCKUP.png" 
-          alt="Cowley Road Studios"
-          class="crs-main-logo"
-        />
+        <a href="/" style="display: block; line-height: 0;">
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/x2%201024%20BADGE%20%2B%20WORDMARK%20LOCKUP.png" 
+            alt="Cowley Road Studios"
+            class="crs-main-logo"
+          />
+        </a>
         
         <nav class="rack-nav-links">
           <a href="/studio">Studio</a>
