@@ -30,7 +30,7 @@
   /* SPACING PRECISION */
   --header-padding-desktop: 24px 48px; /* Increased from 20px 32px */
   --header-padding-mobile: 20px 24px; /* Increased from 16px 20px */
-  --module-padding: 2rem 2.5rem;
+  --module-padding: 3rem 3.5rem; /* Increased from 2rem 2.5rem for Master Console scale */
   
   /* COLORS (Nettle Green + Industrial) */
   --chassis-bg: #0A1A0F;
@@ -41,20 +41,21 @@
   --led-orange: #FF8C00;
   
   /* TYPOGRAPHY PRECISION */
-  --heading-size-desktop: 1.125rem; /* 18px */
-  --heading-size-mobile: 1rem; /* 16px */
-  --body-size: 0.875rem; /* 14px */
-  --mono-size: 0.813rem; /* 13px */
+  --heading-size-desktop: 3rem; /* Increased from 1.125rem (18px) to 48px - matches Master Console scale */
+  --heading-size-mobile: 2rem; /* Increased from 1rem (16px) to 32px */
+  --body-size: 1.125rem; /* Increased from 0.875rem (14px) to 18px for better readability */
+  --mono-size: 1rem; /* Increased from 0.813rem (13px) to 16px */
 }
 
 /* ================================
-   1. HEADER LOGO PRECISION
+   1. HEADER LOGO PRECISION (UNCAGED)
    ================================ */
 
 .crs-main-logo {
   height: var(--logo-height-desktop) !important;
   width: auto !important;
-  max-width: none !important;
+  max-width: none !important; /* UNCAGED: Removes puny ceiling */
+  max-height: none !important; /* UNCAGED: Removes restrictive binding */
   display: block !important;
   object-fit: contain !important;
 }
@@ -66,21 +67,27 @@
 }
 
 /* ================================
-   2. HEADER STRUCTURE
+   2. HEADER STRUCTURE (EXPANDED CHASSIS)
    ================================ */
 
 .rack-header {
   padding: var(--header-padding-desktop) !important;
+  padding-top: 4rem !important; /* X2 Vertical spacing for Master Console impact */
+  padding-bottom: 4rem !important;
   display: flex !important;
-  align-items: center !important;
+  align-items: center !important; /* Keeps nav perfectly centered on big logo */
   justify-content: space-between !important;
   background: var(--chassis-bg) !important;
   border-bottom: var(--module-border-thickness) solid var(--border-gold) !important;
+  height: auto !important; /* Allows header to grow with the logo */
+  min-height: auto !important; /* Removes height constraints */
 }
 
 @media (max-width: 767px) {
   .rack-header {
     padding: var(--header-padding-mobile) !important;
+    padding-top: 2rem !important; /* Scaled down for mobile */
+    padding-bottom: 2rem !important;
   }
 }
 
@@ -249,7 +256,7 @@
 }
 
 /* ================================
-   7. NAVIGATION LINKS
+   7. NAVIGATION LINKS (SCALED & WEIGHTED)
    ================================ */
 
 .rack-nav-links {
@@ -257,12 +264,13 @@
   align-items: center !important;
   gap: 1rem !important;
   font-family: 'Inter', sans-serif !important;
-  font-size: 1.875rem !important; /* Doubled from 0.938rem (15px) to 30px */
-  font-weight: 400 !important;
+  font-size: 1.875rem !important; /* 30px - X2 Wayfinding scale */
+  font-weight: 700 !important; /* Heavier weight for authority */
+  letter-spacing: 0.05rem !important;
 }
 
 .rack-nav-links a {
-  color: rgba(245, 245, 245, 0.85) !important;
+  color: #f5f5f5 !important; /* High-contrast white for impact */
   text-decoration: none !important;
   transition: color 0.2s ease !important;
 }
@@ -398,13 +406,13 @@ If you add a new badge element with class .institutional-seal:
    ================================ */
 
 body {
-  font-size: var(--body-size) !important;
+  font-size: var(--body-size) !important; /* 18px - increased for Master Console scale */
   line-height: 1.6 !important;
 }
 
 .mono {
   font-family: 'JetBrains Mono', monospace !important;
-  font-size: var(--mono-size) !important;
+  font-size: var(--mono-size) !important; /* 16px - increased for readability */
 }
 
 .heading {
