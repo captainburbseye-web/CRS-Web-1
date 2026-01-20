@@ -1,6 +1,7 @@
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { renderer } from './renderer'
+import { rackDemo } from './routes/rack-demo'
 
 const app = new Hono()
 
@@ -297,6 +298,9 @@ function extractBookingLink(description: string): string | null {
   const matches = description.match(urlRegex)
   return matches ? matches[0] : null
 }
+
+// RACK DEMO ROUTE (inline CSS, zero dependencies)
+app.route('/rack-demo', rackDemo)
 
 app.use(renderer)
 
