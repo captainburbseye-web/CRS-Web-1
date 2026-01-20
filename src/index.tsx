@@ -784,6 +784,15 @@ app.get('/', (c) => {
         </div>
         
         <div class="rack-unit-content">
+          {/* Cricket Studio Branding */}
+          <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+            <img 
+              src="https://www.genspark.ai/api/files/s/vMLYjxYq" 
+              alt="Cricket Studio"
+              style="width: 180px; height: auto; max-width: 100%;"
+            />
+          </div>
+          
           <p style="margin-bottom: 1rem; color: rgba(245, 245, 245, 0.85);">
             Fixed-length sessions with basic PA included at Cricket Road.
           </p>
