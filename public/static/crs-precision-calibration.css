@@ -519,17 +519,17 @@ body {
 
 /* BOOK NOW UK Yellow Sign (Image version for dropdown trigger) */
 .book-now-sign-image {
-  height: 70px !important;
+  height: 100px !important; /* Increased from 70px */
   width: auto !important;
   cursor: pointer !important;
   transition: all 0.3s ease !important;
-  filter: drop-shadow(0 2px 10px rgba(255, 204, 0, 0.5));
+  filter: drop-shadow(0 3px 12px rgba(255, 204, 0, 0.6));
   display: block !important;
 }
 
 .book-now-sign-image:hover {
   transform: scale(1.05) !important;
-  filter: drop-shadow(0 4px 16px rgba(255, 204, 0, 0.7)) !important;
+  filter: drop-shadow(0 5px 20px rgba(255, 204, 0, 0.8)) !important;
 }
 
 /* Remove old button styling */

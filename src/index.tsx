@@ -313,7 +313,7 @@ const Header = () => (
       <div class="rack-header-left">
         <a href="/" style="display: block; line-height: 0;">
           <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/CRS%20Title%20Road%20Sign.png" 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v12%20canva%20save%20(1).webp" 
             alt="Cowley Road Studios"
             class="crs-main-logo"
           />
