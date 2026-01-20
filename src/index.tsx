@@ -739,7 +739,7 @@ app.get('/', (c) => {
       <Header />
 
       {/* UNIT 05 — BAND REHEARSALS */}
-      <section class="rack-unit">
+      <section class="rack-unit device-rehearsal">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
             <span class="led green"></span>
@@ -761,7 +761,7 @@ app.get('/', (c) => {
       </section>
 
       {/* STUDIO SESSIONS */}
-      <section class="rack-unit">
+      <section class="rack-unit device-studio">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
             <span class="led yellow"></span>
@@ -780,7 +780,7 @@ app.get('/', (c) => {
       </section>
 
       {/* AV SERVICES */}
-      <section class="rack-unit">
+      <section class="rack-unit device-av">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
             <span class="led yellow"></span>
@@ -799,7 +799,7 @@ app.get('/', (c) => {
       </section>
 
       {/* WORKSHOP CAFÉ */}
-      <section class="rack-unit">
+      <section class="rack-unit device-cafe">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
             <span class="led yellow"></span>
@@ -818,7 +818,7 @@ app.get('/', (c) => {
       </section>
 
       {/* PUBLIC ACCESS */}
-      <section class="rack-unit">
+      <section class="rack-unit device-community">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
             <span class="led orange"></span>
