@@ -29,7 +29,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 1rem;
   /* Vertical rails visual cue */
   position: relative;
   padding: 0 1rem;
@@ -64,9 +64,9 @@ body {
     rgba(18, 18, 18, 0.98) 100%
   );
   border: 1px solid rgba(60, 60, 60, 0.4);
+  border-left: 3px solid rgba(212, 160, 23, 0.3);
   border-radius: 4px;
-  padding: 1.5rem;
-  margin-bottom: 0.5rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
   
   /* Depth physics */
   box-shadow:
@@ -78,102 +78,98 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
-/* Device type indicator (left border) */
-.rack-unit.device-status {
-  border-left: 4px solid #FF8C00; /* Orange — status/alert */
-}
-
-.rack-unit.device-studio {
-  border-left: 4px solid #FFD700; /* Gold — premium */
-}
-
-.rack-unit.device-av {
-  border-left: 4px solid #1E90FF; /* Blue — technical */
-}
-
-.rack-unit.device-cafe {
-  border-left: 4px solid #32CD32; /* Green — community */
-}
-
 /* ================================
-   RACK SCREWS (DECORATIVE)
+   RACK SCREWS (4-CORNER MOUNTING)
    ================================ */
-.rack-unit::before,
-.rack-unit::after {
-  content: '';
+.screw {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   background: radial-gradient(circle, #888 30%, #444 70%);
   border-radius: 50%;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
   pointer-events: none; /* Don't intercept clicks */
 }
 
-.rack-unit::before {
-  left: 8px;
+.screw::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.4);
 }
 
-.rack-unit::after {
-  right: 8px;
+.screw.top-left {
+  top: 12px;
+  left: 12px;
+}
+
+.screw.top-right {
+  top: 12px;
+  right: 12px;
+}
+
+.screw.bottom-left {
+  bottom: 12px;
+  left: 12px;
+}
+
+.screw.bottom-right {
+  bottom: 12px;
+  right: 12px;
 }
 
 /* ================================
-   RACK UNIT HEADER
+   RACK HEADER
    ================================ */
-.rack-unit-header {
+.rack-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  justify-content: space-between;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid rgba(212, 160, 23, 0.2);
 }
 
-.rack-unit-title {
+.rack-label {
   font-family: 'Oswald', 'Arial Black', sans-serif;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(212, 160, 23, 0.9);
-  margin: 0;
 }
 
 /* ================================
-   LED INDICATORS (STATUS ONLY)
+   RACK INDICATORS (STATUS LEDs)
    ================================ */
-.rack-unit-led {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.led {
+.rack-indicator {
   width: 10px;
   height: 10px;
   border-radius: 50%;
   box-shadow: 0 0 8px currentColor;
+  flex-shrink: 0;
 }
 
-.led.green {
+.rack-indicator.green {
   background: #4CAF50;
   color: #4CAF50;
 }
 
-.led.yellow {
+.rack-indicator.yellow {
   background: #FFD700;
   color: #FFD700;
 }
 
-.led.orange {
+.rack-indicator.orange {
   background: #FF8C00;
   color: #FF8C00;
 }
 
-.led.red {
+.rack-indicator.red {
   background: #DC143C;
   color: #DC143C;
 }
@@ -184,72 +180,63 @@ body {
   50% { opacity: 0.5; }
 }
 
-.led.pulse {
+.rack-indicator.pulse {
   animation: pulse-led 2s ease-in-out infinite;
 }
 
 /* ================================
-   RACK UNIT CONTENT
+   RACK CONTENT
    ================================ */
-.rack-unit-content {
+.rack-content {
   font-size: 0.9375rem;
   color: rgba(245, 245, 245, 0.85);
+  line-height: 1.7;
 }
 
-.rack-unit-content p {
+.rack-content p {
   margin-bottom: 1rem;
 }
 
-.rack-unit-content strong {
+.rack-content strong {
   color: #FFD700;
   font-weight: 700;
 }
 
 /* ================================
-   CTA BUTTON (HARDWARE CONTROL)
+   RACK SPEC LIST (TECHNICAL DETAILS)
    ================================ */
-.cta-button {
-  display: inline-block;
-  padding: 0.65rem 1.5rem;
-  background: rgba(212, 160, 23, 0.1);
-  border: 2px solid rgba(212, 160, 23, 0.4);
-  border-radius: 3px;
-  color: rgba(212, 160, 23, 0.95);
-  text-decoration: none;
-  font-family: 'JetBrains Mono', monospace;
+.rack-spec {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
   font-size: 0.875rem;
+  color: rgba(245, 245, 245, 0.75);
+}
+
+.rack-spec li {
+  padding: 0.5rem 0;
+  border-top: 1px solid rgba(60, 60, 60, 0.3);
+}
+
+.rack-spec li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.rack-spec strong {
+  color: rgba(212, 160, 23, 0.8);
   font-weight: 700;
+  font-size: 0.8125rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  transition: all 0.15s ease;
-  cursor: pointer;
-}
-
-.cta-button:hover {
-  background: rgba(212, 160, 23, 0.2);
-  border-color: rgba(212, 160, 23, 0.6);
-  color: #FFD700;
-  transform: translateY(-1px);
-}
-
-.cta-button:active {
-  transform: translateY(0);
 }
 
 /* ================================
    ACCESSIBILITY & REDUCED MOTION
    ================================ */
 @media (prefers-reduced-motion: reduce) {
-  .led.pulse {
+  .rack-indicator.pulse {
     animation: none;
-  }
-  
-  .cta-button {
-    transition: none;
-  }
-  
-  .cta-button:hover {
-    transform: none;
   }
 }
 
@@ -262,81 +249,148 @@ body {
   }
   
   .rack-unit {
-    padding: 1rem;
+    padding: 1.5rem 1rem 1rem 1rem;
   }
   
-  .rack-unit-title {
+  .rack-label {
+    font-size: 0.75rem;
+  }
+  
+  .rack-content {
     font-size: 0.875rem;
   }
   
-  .rack-unit-content {
-    font-size: 0.875rem;
+  .rack-spec {
+    font-size: 0.8125rem;
+  }
+  
+  .screw {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .screw.top-left,
+  .screw.top-right {
+    top: 10px;
+  }
+  
+  .screw.bottom-left,
+  .screw.bottom-right {
+    bottom: 10px;
+  }
+  
+  .screw.top-left,
+  .screw.bottom-left {
+    left: 10px;
+  }
+  
+  .screw.top-right,
+  .screw.bottom-right {
+    right: 10px;
   }
 }
 `
 
-// 🏗️ CANONICAL RACK UNIT HTML
+// 🏗️ CANONICAL RACK UNIT HTML (Your structure)
 const RACK_UNIT_HTML = `
-<section class="rack-unit device-status">
-  <div class="rack-unit-header">
-    <div class="rack-unit-led">
-      <span class="led orange pulse"></span>
-    </div>
-    <h2 class="rack-unit-title">/// SYSTEM STATUS — COWLEY ROAD BUILD</h2>
-  </div>
-  <div class="rack-unit-content">
-    <p><strong style="color: #FF8C00;">STATUS:</strong> Final phase installation in progress</p>
-    <p><strong style="color: #FF8C00;">AVAILABLE NOW:</strong> Band rehearsals (Cricket Road) · Equipment repairs · AV services</p>
-    <p><strong style="color: #FF8C00;">COMING SOON:</strong> Recording sessions · Production rooms · Workshop Café public hours</p>
-    <p style="margin-bottom: 1.5rem;"><strong style="color: #FF8C00;">PRE-SALE:</strong> Book studio time now at discounted rates to support the build</p>
-    <div style="text-align: center;">
-      <a href="/studio" class="cta-button" style="border-color: #FF8C00; color: #FF8C00;">VIEW STUDIO PRE-SALE</a>
-    </div>
+<section class="rack-unit" aria-labelledby="rack-signal-path">
+  <span class="screw top-left"></span>
+  <span class="screw top-right"></span>
+  <span class="screw bottom-left"></span>
+  <span class="screw bottom-right"></span>
+
+  <header class="rack-header">
+    <span class="rack-label" id="rack-signal-path">
+      01 / SIGNAL PATH
+    </span>
+    <span class="rack-indicator green" aria-label="System active"></span>
+  </header>
+
+  <div class="rack-content">
+    <p>
+      Hybrid analogue / digital workflow integrating vintage harmonic character
+      with modern precision and recall.
+    </p>
+
+    <ul class="rack-spec">
+      <li><strong>Front End:</strong> Audient console architecture</li>
+      <li><strong>Preamps:</strong> Boutique tube &amp; Neve-style circuits</li>
+      <li><strong>Tracking:</strong> Low-noise, phase-coherent signal chain</li>
+    </ul>
   </div>
 </section>
 
-<section class="rack-unit device-studio">
-  <div class="rack-unit-header">
-    <div class="rack-unit-led">
-      <span class="led yellow"></span>
-    </div>
-    <h2 class="rack-unit-title">STUDIO SESSIONS</h2>
-  </div>
-  <div class="rack-unit-content">
-    <p>Purpose-built recording and production environments designed for reliable, repeatable results. From vocal tracking to full-band production, we provide the technical certainty you need to focus on your performance.</p>
-    <div style="text-align: center;">
-      <a href="/studio" class="cta-button">BOOK SESSION</a>
-    </div>
+<section class="rack-unit" aria-labelledby="rack-monitoring">
+  <span class="screw top-left"></span>
+  <span class="screw top-right"></span>
+  <span class="screw bottom-left"></span>
+  <span class="screw bottom-right"></span>
+
+  <header class="rack-header">
+    <span class="rack-label" id="rack-monitoring">
+      02 / MONITORING
+    </span>
+    <span class="rack-indicator green" aria-label="System active"></span>
+  </header>
+
+  <div class="rack-content">
+    <p>
+      Transparent, fatigue-resistant monitoring for extended sessions. Multiple reference points available.
+    </p>
+
+    <ul class="rack-spec">
+      <li><strong>Mains:</strong> Neumann KH 120 (stereo field reference)</li>
+      <li><strong>Subs:</strong> Yamaha HS8 (low-end detail)</li>
+      <li><strong>Alternative:</strong> Auratone 5C (mix translation check)</li>
+    </ul>
   </div>
 </section>
 
-<section class="rack-unit device-av">
-  <div class="rack-unit-header">
-    <div class="rack-unit-led">
-      <span class="led green"></span>
-    </div>
-    <h2 class="rack-unit-title">AV SERVICES & LIVE SOUND</h2>
-  </div>
-  <div class="rack-unit-content">
-    <p>Engineer-led live sound, installations, and technical support for community venues, cultural events, and public gatherings. We provide the technical backbone for your event, so you can focus on your audience.</p>
-    <div style="text-align: center;">
-      <a href="/av-services" class="cta-button">AV SERVICES</a>
-    </div>
+<section class="rack-unit" aria-labelledby="rack-outboard">
+  <span class="screw top-left"></span>
+  <span class="screw top-right"></span>
+  <span class="screw bottom-left"></span>
+  <span class="screw bottom-right"></span>
+
+  <header class="rack-header">
+    <span class="rack-label" id="rack-outboard">
+      03 / OUTBOARD
+    </span>
+    <span class="rack-indicator yellow" aria-label="Partially available"></span>
+  </header>
+
+  <div class="rack-content">
+    <p>
+      Curated selection of character processors for tone-shaping and colour.
+    </p>
+
+    <ul class="rack-spec">
+      <li><strong>Compression:</strong> Tube / FET / VCA topologies</li>
+      <li><strong>EQ:</strong> Pultec-style curves, API-style surgical</li>
+      <li><strong>Saturation:</strong> Tape / transformer emulation units</li>
+    </ul>
   </div>
 </section>
 
-<section class="rack-unit device-cafe">
-  <div class="rack-unit-header">
-    <div class="rack-unit-led">
-      <span class="led green"></span>
-    </div>
-    <h2 class="rack-unit-title">WORKSHOP CAFÉ</h2>
-  </div>
-  <div class="rack-unit-content">
-    <p>The public-facing space of CRS — a café, workspace, and small venue supporting community events and creative activity in the heart of East Oxford. Available for private hire and public programming.</p>
-    <div style="text-align: center;">
-      <a href="/workshop-cafe" class="cta-button">HIRE THE VENUE</a>
-    </div>
+<section class="rack-unit" aria-labelledby="rack-status">
+  <span class="screw top-left"></span>
+  <span class="screw top-right"></span>
+  <span class="screw bottom-left"></span>
+  <span class="screw bottom-right"></span>
+
+  <header class="rack-header">
+    <span class="rack-label" id="rack-status">
+      04 / SYSTEM STATUS
+    </span>
+    <span class="rack-indicator orange pulse" aria-label="Build phase"></span>
+  </header>
+
+  <div class="rack-content">
+    <p>
+      <strong>STATUS:</strong> Final phase installation in progress<br>
+      <strong>AVAILABLE NOW:</strong> Band rehearsals (Cricket Road), Equipment repairs, AV services<br>
+      <strong>COMING SOON:</strong> Recording sessions, Production rooms, Workshop Café
+    </p>
   </div>
 </section>
 `
