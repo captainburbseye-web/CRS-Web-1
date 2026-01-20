@@ -738,6 +738,36 @@ app.get('/', (c) => {
     <>
       <Header />
 
+      {/* SYSTEM STATUS BLOCK — BUILD PHASE LED */}
+      <section class="rack-unit device-status" style="background: rgba(255, 140, 0, 0.05); border-left: 4px solid #FF8C00;">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led orange" style="animation: pulse-led 2s ease-in-out infinite;"></span>
+          </div>
+          <h2 class="rack-unit-title" style="color: #FF8C00;">/// SYSTEM STATUS — COWLEY ROAD BUILD</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.8; color: rgba(245, 245, 245, 0.85); margin-bottom: 1.5rem;">
+            <p style="margin-bottom: 0.75rem;">
+              <strong style="color: #FF8C00;">STATUS:</strong> Final phase installation in progress
+            </p>
+            <p style="margin-bottom: 0.75rem;">
+              <strong style="color: #FF8C00;">AVAILABLE NOW:</strong> Band rehearsals (Cricket Road) · Equipment repairs · AV services
+            </p>
+            <p style="margin-bottom: 0.75rem;">
+              <strong style="color: #FF8C00;">COMING SOON:</strong> Recording sessions · Production rooms · Workshop Café public hours
+            </p>
+            <p style="margin-bottom: 0;">
+              <strong style="color: #FF8C00;">PRE-SALE:</strong> Book studio time now at discounted rates to support the build
+            </p>
+          </div>
+          <div style="text-align: center;">
+            <a href="/studio" class="cta-button" style="border-color: #FF8C00; color: #FF8C00;">VIEW STUDIO PRE-SALE</a>
+          </div>
+        </div>
+      </section>
+
       {/* UNIT 05 — BAND REHEARSALS */}
       <section class="rack-unit device-rehearsal">
         <div class="rack-unit-header">
@@ -859,6 +889,59 @@ app.get('/studio', (c) => {
             <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #FF8C00; font-weight: 700;">
               Recording and production services are available by enquiry while the Cowley Road build is completed.
             </p>
+          </div>
+        </div>
+
+        {/* PRE-SALE MODULE — FUND THE BUILD */}
+        <div class="content-block" style="background: rgba(127, 255, 0, 0.05); border: 3px solid #39FF14; padding: 2rem; margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+            <span class="led green" style="animation: pulse-led 2s ease-in-out infinite; width: 14px; height: 14px;"></span>
+            <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.25rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">
+              PRE-SALE: BOOK NOW · FUND THE BUILD
+            </h3>
+          </div>
+          
+          <div style="font-family: 'Inter', sans-serif; font-size: 0.938rem; line-height: 1.7; color: rgba(245, 245, 245, 0.9); margin-bottom: 2rem;">
+            <p style="margin-bottom: 1rem; font-weight: 600; color: #39FF14;">
+              Why book production time now?
+            </p>
+            <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem;">
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #39FF14; font-weight: bold;">→</span>
+                Lock in <strong style="color: #39FF14;">40% discounted rates</strong> for the first 12 months post-launch
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #39FF14; font-weight: bold;">→</span>
+                Your deposit directly funds the Cowley Road fit-out
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #39FF14; font-weight: bold;">→</span>
+                Priority booking access when the studio goes live
+              </li>
+              <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                <span style="position: absolute; left: 0; color: #39FF14; font-weight: bold;">→</span>
+                Support Oxford's only engineer-owned recording infrastructure
+              </li>
+            </ul>
+            
+            <div style="background: rgba(0, 0, 0, 0.3); border-left: 3px solid #39FF14; padding: 1.25rem; margin-bottom: 1.5rem;">
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.75rem;">
+                <strong style="color: #39FF14;">STANDARD RATE (POST-LAUNCH):</strong> £500–£700 per day
+              </p>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; color: rgba(245, 245, 245, 0.7);">
+                <strong style="color: #39FF14;">PRE-SALE RATE (LOCK IN NOW):</strong> £300–£420 per day (40% off)
+              </p>
+            </div>
+            
+            <p style="font-size: 0.875rem; font-style: italic; color: rgba(245, 245, 245, 0.7);">
+              Pre-sale bookings are transferable and can be scheduled flexibly once the studio is operational. No expiry date.
+            </p>
+          </div>
+          
+          <div style="text-align: center;">
+            <a href="/contact?service=recording" class="cta-button" style="background: #39FF14; color: #0A1A0F; border-color: #39FF14; font-weight: 700; padding: 1rem 2rem; font-size: 1rem;">
+              BOOK PRE-SALE SESSION
+            </a>
           </div>
         </div>
 

@@ -86,13 +86,13 @@
 
 .rack-header-left {
   display: flex !important;
-  align-items: center !important;
+  align-items: baseline !important; /* Changed from center to baseline for pixel-perfect alignment */
   gap: 2rem !important;
 }
 
 .rack-header-right {
   display: flex !important;
-  align-items: center !important;
+  align-items: baseline !important; /* Changed from center to baseline for pixel-perfect alignment */
   margin-left: auto !important;
   margin-right: 0 !important; /* Remove previous 1rem inset */
 }
@@ -337,7 +337,39 @@
    ================================ */
 
 /*
-If you add a top-right badge as a "Status Stamp":
+OPTION A: Convert main logo to absolute-positioned stamp
+Uncomment the rules below to enable:
+
+.rack-header {
+  position: relative;
+}
+
+.crs-main-logo {
+  position: absolute !important;
+  right: 20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  height: var(--badge-size-desktop) !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.crs-main-logo:hover {
+  opacity: 1 !important;
+}
+
+@media (max-width: 767px) {
+  .crs-main-logo {
+    height: var(--badge-size-mobile) !important;
+    right: 16px !important;
+  }
+}
+*/
+
+/*
+OPTION B: Add separate institutional seal graphic
+If you add a new badge element with class .institutional-seal:
+*/
 
 .institutional-seal {
   position: absolute;
@@ -346,6 +378,12 @@ If you add a top-right badge as a "Status Stamp":
   transform: translateY(-50%);
   height: var(--badge-size-desktop);
   width: auto;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.institutional-seal:hover {
+  opacity: 1;
 }
 
 @media (max-width: 767px) {
@@ -354,7 +392,6 @@ If you add a top-right badge as a "Status Stamp":
     right: 16px;
   }
 }
-*/
 
 /* ================================
    11. TYPOGRAPHY PRECISION
@@ -378,8 +415,20 @@ body {
 }
 
 /* ================================
-   12. LOAD ORDER NOTE
+   12. LOAD ORDER NOTE + ANIMATIONS
    ================================ */
+
+/* LED Pulse Animation for Build Phase Status */
+@keyframes pulse-led {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px currentColor;
+  }
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 16px currentColor;
+  }
+}
 
 /*
 CRITICAL: This file must load AFTER all other CSS files.
