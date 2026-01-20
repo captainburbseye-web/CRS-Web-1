@@ -522,11 +522,20 @@ body {
   transition: all 0.3s ease !important;
   filter: drop-shadow(0 4px 16px rgba(255, 204, 0, 0.7));
   display: block !important;
+  border: none !important; /* Remove any border */
+  background: none !important; /* Remove any background */
+  padding: 0 !important; /* Remove any padding */
+  margin: 0 !important; /* Remove any margin */
+  outline: none !important; /* Remove focus outline */
 }
 
 .book-now-sign-image:hover {
   transform: scale(1.05) !important;
   filter: drop-shadow(0 6px 24px rgba(255, 204, 0, 0.9)) !important;
+}
+
+.book-now-sign-image:focus {
+  outline: none !important; /* Remove focus outline */
 }
 
 /* Remove old button styling */
