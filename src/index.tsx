@@ -787,7 +787,7 @@ app.get('/', (c) => {
           {/* Cricket Studio Branding */}
           <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
             <img 
-              src="https://www.genspark.ai/api/files/s/vMLYjxYq" 
+              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/NEW%20BADGES%20RACK%20UI/CRICKET%20GUITAR)%20-%20Copy.png" 
               alt="Cricket Studio"
               style="width: 180px; height: auto; max-width: 100%;"
             />
