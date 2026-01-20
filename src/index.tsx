@@ -330,14 +330,16 @@ const Header = () => (
       
       {/* BOOK NOW DROPDOWN (RIGHT ZONE) */}
       <div class="rack-header-right" style="position: relative;">
-        <button 
-          class="book-dropdown-trigger book-now-uk-sign"
+        <img 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/1026CRS%20B%20NOW%20UK_yellow_rear_.png"
+          alt="Book Now"
+          class="book-dropdown-trigger book-now-sign-image"
           data-dropdown-trigger
           aria-expanded="false"
           aria-controls="book-dropdown-menu"
-        >
-          BOOK NOW
-        </button>
+          role="button"
+          tabindex="0"
+        />
         <div 
           id="book-dropdown-menu"
           class="book-dropdown-menu"
