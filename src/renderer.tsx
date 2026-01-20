@@ -61,6 +61,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-header-chassis-lock.css" rel="stylesheet" />
         {/* PRESENCE SIGNALS: Hardware status indicators + imagery */}
         <link href="/static/crs-presence-signals.css" rel="stylesheet" />
+        {/* FRONT PANEL UNITS: Dedicated page unit headers (Studio/Café/AV) */}
+        <link href="/static/crs-front-panel-units.css" rel="stylesheet" />
         {/* FINAL OVERRIDES: Nuclear fixes (MUST load ABSOLUTE LAST) */}
         <link href="/static/crs-final-overrides.css" rel="stylesheet" />
         {/* RACK UI V2: Physical hardware aesthetic (LOADS LAST TO OVERRIDE ALL) */}

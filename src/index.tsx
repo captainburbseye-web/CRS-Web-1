@@ -832,88 +832,78 @@ app.get('/studio', (c) => {
       <Header />
 
       <section class="crs-section section-dark">
-        <div class="section-header">
-          <h1 class="section-title heading">CRS — Studio</h1>
-        </div>
-
-        {/* OVERVIEW */}
-        {/* BUILD PHASE NOTICE */}
-        <div class="content-block">
-          <div style="background: rgba(255, 140, 0, 0.1); border: 2px solid #FF8C00; padding: 1rem; margin-bottom: 1.5rem;">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #FF8C00; font-weight: 700;">
-              Recording and production services are available by enquiry while the Cowley Road build is completed.
-            </p>
+        {/* UNIT HEADER */}
+        <header class="unit-header" data-unit="studio">
+          <div class="unit-header__top">
+            <div class="unit-header__label">
+              <span class="unit-header__tag">UNIT</span>
+              <span class="unit-header__title">STUDIO</span>
+            </div>
+            <div class="unit-header__stamp">CRS-UNIT-STUDIO</div>
           </div>
-        </div>
 
-        {/* OVERVIEW */}
-        <div class="content-block">
-          <h3 class="content-heading mono">OVERVIEW</h3>
-          <div class="content-text">
-            <p>
-              Cowley Road Studios provides hybrid recording and production environments for musicians, producers, podcasters, and creators who value clarity, focus, and dependable systems.
-            </p>
+          <p class="unit-header__lede">
+            Recording and production environments designed for reliable, repeatable results.
+          </p>
+
+          <div class="unit-spec">
+            <div class="unit-spec__row"><span class="unit-spec__key">STATE</span><span class="unit-spec__val" data-state="active">ACTIVE</span></div>
+            <div class="unit-spec__row"><span class="unit-spec__key">ACCESS</span><span class="unit-spec__val">118 COWLEY ROAD / OXFORD</span></div>
           </div>
-        </div>
 
-        {/* CAPABILITY STATEMENT */}
-        <div class="content-block">
+          <div class="unit-controls">
+            <a class="unit-btn unit-btn--primary" href="/book">[ BOOK SESSION ]</a>
+            <a class="unit-btn unit-btn--secondary" href="/contact?service=studio">[ CONTACT ]</a>
+          </div>
+        </header>
+
+        {/* MODULE 1 — CAPABILITIES */}
+        <div class="content-block" style="margin-top: 2rem;">
           <h3 class="content-heading mono">WHAT WE DO</h3>
           <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              Recording and production work is handled using hybrid analogue and digital systems maintained to consistent operating standards.
+            </p>
             <ul style="list-style: none; padding: 0;">
               <li style="margin-bottom: 0.75rem;">→ Multitrack recording</li>
               <li style="margin-bottom: 0.75rem;">→ Overdubbing and layering</li>
               <li style="margin-bottom: 0.75rem;">→ Mixing and production workflows</li>
-              <li style="margin-bottom: 0.75rem;">→ Professional analogue and digital systems</li>
-            </ul>
-            <p style="margin-top: 1.5rem; font-size: 0.9375rem; opacity: 0.85;">
-              We work with a range of recording approaches — from live capture to layered production — using hybrid analogue and digital systems maintained to consistent operating standards.
-            </p>
-          </div>
-        </div>
-
-        {/* TECHNICAL ENVIRONMENT */}
-        <div class="content-block">
-          <h3 class="content-heading mono">TECHNICAL ENVIRONMENT</h3>
-          <div class="content-text">
-            <ul style="list-style: none; padding: 0;">
               <li style="margin-bottom: 0.75rem;">→ Calibrated monitoring</li>
-              <li style="margin-bottom: 0.75rem;">→ Hybrid analogue / digital workflows</li>
-              <li style="margin-bottom: 0.75rem;">→ Practical acoustics and ergonomics</li>
               <li style="margin-bottom: 0.75rem;">→ Engineer-maintained systems</li>
             </ul>
             <p style="margin-top: 1.5rem;">
-              Everything is designed to work consistently — not just sound good on day one.
+              Sessions are available by appointment. Recording and production work is scoped per project.
             </p>
           </div>
-          
-          {/* Hardware Presence: Console */}
-          <div class="hardware-image" style="margin-top: 2rem;">
-            <img 
-              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-master-console-v12.webp"
-              alt="CRS master console"
-              loading="lazy"
-            />
+        </div>
+
+        {/* MODULE 2 — TECHNICAL ENVIRONMENT */}
+        <div class="content-block">
+          <h3 class="content-heading mono">TECHNICAL ENVIRONMENT</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              All rooms and monitoring systems are designed to work consistently—not just sound good on day one.
+            </p>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;">→ 5 isolated recording rooms</li>
+              <li style="margin-bottom: 0.75rem;">→ Dante networked audio system</li>
+              <li style="margin-bottom: 0.75rem;">→ Kii Three + BXT monitoring</li>
+              <li style="margin-bottom: 0.75rem;">→ Sphere DLX modeling microphones</li>
+              <li style="margin-bottom: 0.75rem;">→ Practical acoustics and ergonomics</li>
+            </ul>
           </div>
         </div>
 
-        {/* CONTROL PANEL MOTIF (System Separator) */}
-        <div style="display: flex; justify-content: center; margin: 3rem 0; opacity: 0.75;">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-control-panel-studios.png"
-            alt="CRS Control Panel"
-            style="max-width: 240px; height: auto; display: block;"
-            loading="lazy"
-          />
-        </div>
-
-        {/* LOCATION ROUTING */}
+        {/* MODULE 3 — LOCATION ROUTING */}
         <div class="content-block">
           <h3 class="content-heading mono">LOCATION ROUTING</h3>
           <div class="content-text">
-            <div style="background: rgba(232, 155, 60, 0.1); border: 2px solid rgba(232, 155, 60, 0.3); padding: 1.5rem; margin-bottom: 1.5rem;">
+            <p style="margin-bottom: 1rem;">
+              Studio sessions and production work are conducted at 118 Cowley Road. Rehearsal bookings are automatically routed to Cricket Road.
+            </p>
+            <div style="background: rgba(232, 155, 60, 0.1); border: 2px solid rgba(232, 155, 60, 0.3); padding: 1.5rem; margin-bottom: 1rem;">
               <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--crs-gold); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
-                🟠 118 COWLEY ROAD — HQ & TECHNICAL BRAIN
+                118 COWLEY ROAD
               </p>
               <ul style="list-style: none; padding: 0; font-size: 0.9375rem;">
                 <li style="margin-bottom: 0.5rem;">→ Recording sessions</li>
@@ -925,21 +915,21 @@ app.get('/studio', (c) => {
             
             <div style="background: rgba(127, 255, 0, 0.05); border: 2px solid rgba(127, 255, 0, 0.2); padding: 1.5rem;">
               <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--crs-green); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
-                🟢 CRICKET ROAD — REHEARSAL NODE
+                CRICKET ROAD
               </p>
               <ul style="list-style: none; padding: 0; font-size: 0.9375rem;">
                 <li style="margin-bottom: 0.5rem;">→ Band rehearsals</li>
                 <li style="margin-bottom: 0.5rem;">→ High-decibel sessions</li>
                 <li style="margin-bottom: 0.5rem;">→ Equipment storage</li>
               </ul>
-              <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8; font-style: italic;">
-                Rehearsal bookings automatically routed to Cricket Road. Access protocol sent via confirmation.
+              <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8;">
+                Rehearsal bookings are automatically routed to Cricket Road. Access protocol sent via confirmation.
               </p>
             </div>
           </div>
         </div>
 
-        {/* PRICING CONTEXT */}
+        {/* MODULE 4 — PRICING CONTEXT */}
         <div class="content-block">
           <h3 class="content-heading mono">PRICING CONTEXT</h3>
           <div class="content-text">
@@ -947,33 +937,17 @@ app.get('/studio', (c) => {
               Recording and production work typically falls in the <strong>£400–£700 per day</strong> range, depending on scope and session type.
             </p>
             <p style="font-size: 0.9375rem; opacity: 0.85;">
-              Final pricing is confirmed by enquiry while the Cowley Road build is completed.
+              Final pricing is confirmed by enquiry.
             </p>
           </div>
         </div>
 
-        {/* STUDIO SERVICES */}
-        <div class="content-block">
-          <h3 class="content-heading mono">ENQUIRE ABOUT SERVICES</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 2rem;">
-              All studio services are available by enquiry:
-            </p>
-            <div style="display: grid; gap: 1rem; max-width: 600px;">
-              <a href="/contact?service=recording" class="crs-button mono" style="display: block; text-align: center; text-decoration: none;">
-                [ RECORDING SESSIONS ]
-              </a>
-              <a href="/contact?service=booth-hire" class="crs-button mono" style="display: block; text-align: center; text-decoration: none;">
-                [ BOOTH DRY HIRE ]
-              </a>
-              <a href="/contact?service=rehearsal" class="crs-button mono" style="display: block; text-align: center; text-decoration: none;">
-                [ REHEARSAL BOOKING ]
-              </a>
-              <a href="/contact?service=other-audio" class="crs-button mono" style="display: block; text-align: center; text-decoration: none;">
-                [ OTHER AUDIO SERVICES ]
-              </a>
-            </div>
-          </div>
+        {/* INTAKE VALVE (bottom of page) */}
+        <div class="content-block" style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: 10px;">
+          <p style="margin-bottom: 1rem;">
+            Recording and production work is scoped per project. Use the contact form to outline requirements, timelines, and deliverables.
+          </p>
+          <a href="/contact?service=studio" class="crs-button mono">[ CONTACT ]</a>
         </div>
       </section>
 
@@ -1619,14 +1593,38 @@ app.get('/av-services', (c) => {
       <Header />
 
       <section class="crs-section section-dark">
-        <div class="section-header">
-          <h1 class="section-title heading">CRS — AV Services</h1>
-        </div>
+        {/* UNIT HEADER */}
+        <header class="unit-header" data-unit="av">
+          <div class="unit-header__top">
+            <div class="unit-header__label">
+              <span class="unit-header__tag">UNIT</span>
+              <span class="unit-header__title">AV SERVICES</span>
+            </div>
+            <div class="unit-header__stamp">CRS-UNIT-AV</div>
+          </div>
 
-        {/* WHAT WE DO */}
-        <div class="content-block">
+          <p class="unit-header__lede">
+            Engineer-led live sound and technical support for venues and public events.
+          </p>
+
+          <div class="unit-spec">
+            <div class="unit-spec__row"><span class="unit-spec__key">STATE</span><span class="unit-spec__val" data-state="available">AVAILABLE</span></div>
+            <div class="unit-spec__row"><span class="unit-spec__key">DEPLOYMENT</span><span class="unit-spec__val">MOBILE</span></div>
+          </div>
+
+          <div class="unit-controls">
+            <a class="unit-btn unit-btn--primary" href="/contact?service=av">[ REQUEST AV QUOTE ]</a>
+            <a class="unit-btn unit-btn--secondary" href="/contact">[ CONTACT ]</a>
+          </div>
+        </header>
+
+        {/* MODULE 1 — WHAT WE DO */}
+        <div class="content-block" style="margin-top: 2rem;">
           <h3 class="content-heading mono">WHAT WE DO</h3>
           <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              CRS provides technical management and AV support for external venues.
+            </p>
             <ul style="list-style: none; padding: 0;">
               <li style="margin-bottom: 0.75rem;">→ Live sound for talks, gigs, launches, and community events</li>
               <li style="margin-bottom: 0.75rem;">→ Temporary and permanent AV installs</li>
@@ -1639,7 +1637,7 @@ app.get('/av-services', (c) => {
           </div>
         </div>
 
-        {/* HOW IT WORKS */}
+        {/* MODULE 2 — HOW IT WORKS */}
         <div class="content-block">
           <h3 class="content-heading mono">HOW IT WORKS</h3>
           <div class="content-text">
@@ -1655,10 +1653,13 @@ app.get('/av-services', (c) => {
           </div>
         </div>
 
-        {/* CAPABILITY */}
+        {/* MODULE 3 — CAPABILITY */}
         <div class="content-block">
           <h3 class="content-heading mono">CAPABILITY</h3>
           <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              CRS AV systems are designed for live pressure and calm under failure conditions.
+            </p>
             <ul style="list-style: none; padding: 0;">
               <li style="margin-bottom: 0.75rem;">→ Built for live pressure</li>
               <li style="margin-bottom: 0.75rem;">→ Engineered signal paths</li>
@@ -1666,18 +1667,9 @@ app.get('/av-services', (c) => {
               <li style="margin-bottom: 0.75rem;">→ Human-led, not automated</li>
             </ul>
           </div>
-          
-          {/* Hardware Presence: Live Sound Equipment */}
-          <div class="hardware-image" style="margin-top: 2rem;">
-            <img 
-              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-control-panel-studios.png"
-              alt="CRS AV control panel"
-              loading="lazy"
-            />
-          </div>
         </div>
 
-        {/* TECHNICAL OPERATIONS */}
+        {/* MODULE 4 — TECHNICAL OPERATIONS */}
         <div class="content-block">
           <h3 class="content-heading mono">TECHNICAL OPERATIONS</h3>
           <div class="content-text">
@@ -1695,7 +1687,7 @@ app.get('/av-services', (c) => {
           </div>
         </div>
 
-        {/* PRICING CONTEXT */}
+        {/* MODULE 5 — PRICING CONTEXT */}
         <div class="content-block">
           <h3 class="content-heading mono">PRICING CONTEXT</h3>
           <div class="content-text">
@@ -1708,6 +1700,14 @@ app.get('/av-services', (c) => {
           </div>
         </div>
 
+        {/* INTAKE VALVE (bottom of page) */}
+        <div class="content-block" style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: 10px;">
+          <p style="margin-bottom: 1rem;">
+            AV services are quoted based on scope, venue, and technical requirements. Use the contact form to outline your event.
+          </p>
+          <a href="/contact?service=av" class="crs-button mono">[ REQUEST AV QUOTE ]</a>
+        </div>
+
         {/* BRIDGE TO REPAIRS */}
         <div class="content-block">
           <p class="section-intro">
@@ -1716,13 +1716,6 @@ app.get('/av-services', (c) => {
           <div class="hero-cta" style="margin-top: 1.5rem;">
             <a href="/av-services/repairs" class="crs-button mono">[ REPAIRS & TECHNICAL BENCH ]</a>
           </div>
-        </div>
-
-        {/* CTA */}
-        <div class="hero-cta">
-          <a href="/contact?enquiry=av" class="crs-button mono">
-            [ REQUEST AV QUOTE ]
-          </a>
         </div>
       </section>
 
@@ -1828,47 +1821,124 @@ app.get('/workshop-cafe', (c) => {
       
       <Header />
 
-      {/* VENUE WELCOME RACK */}
-      <section class="rack-unit led-orange">
-        <div class="rack-screw"></div>
-        <div class="rack-screw"></div>
-        <div class="rack-screw"></div>
-        <div class="rack-screw"></div>
-        
-        <h2 class="rack-unit-title">Workshop Café — Venue</h2>
-        
-        {/* STATUS LINE - NON-NEGOTIABLE */}
-        <div style="background: rgba(255, 140, 0, 0.1); border: 2px solid #FF8C00; padding: 1rem; margin-bottom: 1.5rem;">
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.938rem; font-weight: 700; color: #FF8C00; margin-bottom: 0.5rem;">
-            Workshop Café is not currently open for daily café service.
-          </p>
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.85);">
-            The space is available by enquiry for private or community use during the build phase.
-          </p>
-        </div>
-        
-        <p style="margin-bottom: 1.5rem;">
-          Bookable public-facing venue within CRS for small events and private hire.
-        </p>
-        
-        <div class="wsc-capacity-spec">
-          <div class="wsc-capacity-item">
-            Capacity: <strong>25 seated</strong>
+      <section class="crs-section section-dark">
+        {/* UNIT HEADER */}
+        <header class="unit-header" data-unit="cafe">
+          <div class="unit-header__top">
+            <div class="unit-header__label">
+              <span class="unit-header__tag">UNIT</span>
+              <span class="unit-header__title">WORKSHOP CAFÉ</span>
+            </div>
+            <div class="unit-header__stamp">CRS-UNIT-CAFE</div>
           </div>
-          <div class="wsc-capacity-item">
-            <strong>up to 60 standing</strong>
+
+          <p class="unit-header__lede">
+            Day workspace and small-format venue with basic PA on-site.
+          </p>
+
+          <div class="unit-spec">
+            <div class="unit-spec__row"><span class="unit-spec__key">STATE</span><span class="unit-spec__val" data-state="scheduled">SCHEDULED</span></div>
+            <div class="unit-spec__row"><span class="unit-spec__key">CAPACITY</span><span class="unit-spec__val">60</span></div>
+            <div class="unit-spec__row"><span class="unit-spec__key">PA</span><span class="unit-spec__val">BASIC ON-SITE</span></div>
+            <div class="unit-spec__row"><span class="unit-spec__key">ACCESS</span><span class="unit-spec__val">118 COWLEY ROAD / OXFORD</span></div>
+          </div>
+
+          <div class="unit-controls">
+            <a class="unit-btn unit-btn--primary" href="/book">[ BOOK THE SPACE ]</a>
+            <a class="unit-btn unit-btn--secondary" href="/contact?service=venue">[ CONTACT ]</a>
+          </div>
+        </header>
+
+        {/* MODULE 1 — CAPABILITY */}
+        <div class="content-block" style="margin-top: 2rem;">
+          <h3 class="content-heading mono">CAPABILITY</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              Bookable public-facing venue within CRS for small events and private hire.
+            </p>
+            <ul style="list-style: none; padding: 0;">
+              <li style="margin-bottom: 0.75rem;">→ Listening sessions</li>
+              <li style="margin-bottom: 0.75rem;">→ Film screenings</li>
+              <li style="margin-bottom: 0.75rem;">→ Workshops & classes</li>
+              <li style="margin-bottom: 0.75rem;">→ Talks & discussions</li>
+              <li style="margin-bottom: 0.75rem;">→ Private bookings</li>
+            </ul>
+            <p style="margin-top: 1rem; font-size: 0.9375rem;">
+              Flexible layout: seated or standing configuration as required.
+            </p>
           </div>
         </div>
-        
-        <div class="wsc-use-case-grid">
-          <div class="wsc-use-case-label">listening sessions</div>
-          <div class="wsc-use-case-label">film screenings</div>
-          <div class="wsc-use-case-label">workshops & classes</div>
-          <div class="wsc-use-case-label">talks & discussions</div>
-          <div class="wsc-use-case-label">private bookings</div>
+
+        {/* MODULE 2 — RESOURCE ALLOCATION RATES */}
+        <div class="content-block">
+          <h3 class="content-heading mono">RESOURCE ALLOCATION RATES</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1.5rem;">
+              118 Cowley Road — Multi-use infrastructure
+            </p>
+            
+            {/* FULL VENUE HIRE */}
+            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem; margin-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
+                <h4 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">FULL VENUE HIRE</h4>
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£50 per hour</span>
+              </div>
+              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
+                Capacity: 40–60 people · Includes PA system & projection
+              </p>
+            </div>
+
+            {/* MEETING TABLE */}
+            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem; margin-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
+                <h4 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">MEETING TABLE</h4>
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£25 per half-day</span>
+              </div>
+              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
+                Workspace with high-speed connectivity
+              </p>
+            </div>
+
+            {/* COMMUNITY EVENT */}
+            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
+                <h4 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">COMMUNITY EVENT</h4>
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£30 (subsidized)</span>
+              </div>
+              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
+                For grassroots/non-profit cultural activity
+              </p>
+            </div>
+          </div>
         </div>
-        
-        <a href="/book" class="cta-button">BOOK WORKSHOP CAFÉ</a>
+
+        {/* MODULE 3 — ACCESS POLICY */}
+        <div class="content-block">
+          <h3 class="content-heading mono">ACCESS POLICY</h3>
+          <div class="content-text">
+            <p>
+              Priority allocation granted to local grassroots initiatives. All commercial hire directly funds the CRS Creative Infrastructure.
+            </p>
+          </div>
+        </div>
+
+        {/* MODULE 4 — OPERATIONAL NOTES */}
+        <div class="content-block">
+          <h3 class="content-heading mono">OPERATIONAL NOTES</h3>
+          <div class="content-text">
+            <p>
+              Workshop Café is not currently open for daily café service. The space is available by enquiry for private or community use during the build phase.
+            </p>
+          </div>
+        </div>
+
+        {/* INTAKE VALVE */}
+        <div class="content-block" style="padding: 1.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: 10px;">
+          <p style="margin-bottom: 1rem;">
+            Private events, workshops, and custom setups are handled via the contact form.
+          </p>
+          <a href="/contact?service=venue" class="crs-button mono">[ CONTACT ]</a>
+        </div>
       </section>
 
         {/* CAFÉ SIGNAGE HERO - Above the fold */}
