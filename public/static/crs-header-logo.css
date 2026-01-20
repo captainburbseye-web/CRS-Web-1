@@ -8,15 +8,20 @@
 
 /* === HEADER STRUCTURE UPDATE === */
 .crs-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto;
-  gap: 0.75rem;
+  gap: 1.5rem; /* Increased from 1.25rem */
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 2rem 3rem; /* Increased horizontal padding from 2rem */
   background: #1a1a1a;
   border: 2px solid #3a3a3a;
   border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  position: relative; /* Required for absolute badge positioning */
 }
 
 /* Logo spans both rows on desktop */
@@ -40,7 +45,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.75rem;
+  gap: 1rem;
+  font-size: 0.875rem; /* Reduced: quieter than BOOK NOW */
+  color: rgba(245, 245, 245, 0.7); /* Lower contrast: secondary priority */
 }
 
 /* Nav action (BOOK NOW) moves to column 2, row 2 */
@@ -56,15 +63,16 @@
 /* Desktop: Show full lockup */
 .header-logo-desktop {
   display: block;
-  height: 60px;
+  height: 64px; /* Reduced from 75px: less dominant */
   width: auto;
   object-fit: contain;
+  opacity: 0.95; /* Slightly subdued */
 }
 
 /* Mobile: Hide by default */
 .header-logo-mobile {
   display: none;
-  height: 50px;
+  height: 62.5px; /* 50px * 1.25 */
   width: auto;
   object-fit: contain;
 }
@@ -72,11 +80,15 @@
 /* === TABLET ADJUSTMENTS (768px - 1023px) === */
 @media (max-width: 1023px) {
   .header-logo-desktop {
-    height: 50px;
+    height: 62.5px; /* 50px * 1.25 */
   }
   
   .crs-header {
-    padding: 0.875rem 1.25rem;
+    padding: 1.09375rem 1.5625rem; /* 0.875rem * 1.25, 1.25rem * 1.25 */
+  }
+  
+  .crs-nav-primary {
+    font-size: 1rem;
   }
 }
 
@@ -85,8 +97,8 @@
   .crs-header {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
+    gap: 0.625rem; /* 0.5rem * 1.25 */
+    padding: 0.9375rem 1.25rem; /* 0.75rem * 1.25, 1rem * 1.25 */
   }
   
   /* Logo: Show badge only */
@@ -101,7 +113,7 @@
   
   .header-logo-mobile {
     display: block;
-    height: 48px;
+    height: 60px; /* 48px * 1.25 */
   }
   
   /* Nav primary: hamburger + BOOK NOW on same row */
@@ -109,6 +121,7 @@
     grid-column: 2;
     grid-row: 1;
     justify-content: flex-end;
+    font-size: 1rem;
   }
   
   /* Hide nav links on mobile (hamburger handles them) */
@@ -131,21 +144,53 @@
 /* === EXTRA SMALL MOBILE (<480px) === */
 @media (max-width: 480px) {
   .header-logo-mobile {
-    height: 42px;
+    height: 52.5px; /* 42px * 1.25 */
   }
   
   .crs-header {
-    padding: 0.625rem 0.75rem;
+    padding: 0.78125rem 0.9375rem; /* 0.625rem * 1.25, 0.75rem * 1.25 */
   }
 }
 
 /* === DESKTOP LARGE (>1440px) === */
 @media (min-width: 1440px) {
   .header-logo-desktop {
-    height: 70px;
+    height: 87.5px; /* 70px * 1.25 */
   }
   
   .crs-header {
-    padding: 1.25rem 2rem;
+    padding: 1.5625rem 2.5rem; /* 1.25rem * 1.25, 2rem * 1.25 */
+  }
+  
+  .crs-nav-primary {
+    font-size: 1.25rem;
+  }
+}
+
+/* === CRS BADGE STAMP (TOP-RIGHT) === */
+.crs-badge-stamp {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60px; /* Square badge needs more height */
+  width: auto;
+  opacity: 0.9; /* Slightly more visible for the new design */
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Mobile: reduce badge size */
+@media (max-width: 767px) {
+  .crs-badge-stamp {
+    height: 48px;
+    right: 15px;
+  }
+}
+
+/* Tablet: slightly smaller */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .crs-badge-stamp {
+    height: 54px;
   }
 }

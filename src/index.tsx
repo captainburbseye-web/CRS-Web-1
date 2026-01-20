@@ -309,17 +309,8 @@ const Header = () => (
         <span class="hamburger-icon">☰</span>
       </button>
       
-      {/* LEFT ZONE: CRS Logo + Tascam Label + Navigation */}
+      {/* LEFT ZONE: Tascam Label + Navigation */}
       <div class="rack-header-left">
-        <div class="rack-logo-block">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/1024enhanced_crs_badge_dark%20fixed%20for%20web.png" 
-            alt="Cowley Road Studios"
-            class="logo-hardware-panel"
-            style="max-height: 64px; width: auto;"
-          />
-        </div>
-        
         <img 
           src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v1%20.png" 
           alt="Cowley Road Studios"
@@ -332,32 +323,31 @@ const Header = () => (
           <a href="/workshop-cafe">Workshop Café</a>
           <span class="separator">|</span>
           <a href="/av-services">AV</a>
-          <span class="separator">|</span>
-          
-          {/* BOOK NOW DROPDOWN */}
-          <div style="position: relative;">
-            <button 
-              class="book-dropdown-trigger"
-              data-dropdown-trigger
-              aria-expanded="false"
-              aria-controls="book-dropdown-menu"
-            >
-              BOOK NOW
-            </button>
-            <div 
-              id="book-dropdown-menu"
-              class="book-dropdown-menu"
-              data-dropdown-menu
-              role="menu"
-              aria-hidden="true"
-            >
-              <a href="/book" role="menuitem"><span class="signal-active"></span>Book Online</a>
-              <a href="/contact?service=av" role="menuitem">AV Services (Enquiry)</a>
-              <a href="/contact?service=venue" role="menuitem">Venue Hire (Enquiry)</a>
-              <a href="/contact?service=repairs" role="menuitem">Repairs (Enquiry)</a>
-            </div>
-          </div>
         </nav>
+      </div>
+      
+      {/* BOOK NOW DROPDOWN (RIGHT ZONE) */}
+      <div class="rack-header-right" style="position: relative;">
+        <button 
+          class="book-dropdown-trigger"
+          data-dropdown-trigger
+          aria-expanded="false"
+          aria-controls="book-dropdown-menu"
+        >
+          BOOK NOW
+        </button>
+        <div 
+          id="book-dropdown-menu"
+          class="book-dropdown-menu"
+          data-dropdown-menu
+          role="menu"
+          aria-hidden="true"
+        >
+          <a href="/book" role="menuitem"><span class="signal-active"></span>Book Online</a>
+          <a href="/contact?service=av" role="menuitem">AV Services (Enquiry)</a>
+          <a href="/contact?service=venue" role="menuitem">Venue Hire (Enquiry)</a>
+          <a href="/contact?service=repairs" role="menuitem">Repairs (Enquiry)</a>
+        </div>
       </div>
     </header>
   </>
@@ -430,10 +420,10 @@ app.get('/book', (c) => {
           <h3 class="content-heading heading">BOOK NOW</h3>
           <div class="content-text">
             <p class="mono" style="color: var(--standby-gold);">
-              Band Rehearsals · Recording Sessions · Pod Hire
+              Band Rehearsals (Cricket Road) · Recording Sessions · Pod Hire
             </p>
             <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-cream); opacity: 0.8;">
-              Choose your service, location, and time slot below.
+              Choose your service and time slot below. Cowley Road rehearsals coming soon.
             </p>
           </div>
           
@@ -444,7 +434,7 @@ app.get('/book', (c) => {
           
           <div class="hero-cta" style="margin-top: 1.5rem;">
             <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono" style="font-size: 0.85rem; opacity: 0.7;">
-              [ OPEN IN NEW TAB ]
+              OPEN IN NEW TAB
             </a>
           </div>
         </div>
@@ -459,7 +449,7 @@ app.get('/book', (c) => {
           </div>
           <div class="hero-cta">
             <a href="/contact" class="crs-button mono">
-              [ CONTACT FORM ]
+              CONTACT FORM
             </a>
           </div>
         </div>
@@ -669,7 +659,7 @@ app.get('/crs-cowley-road', (c) => {
 
           {/* BOOKING CTA */}
           <div class="hero-cta">
-            <a href="/book" class="crs-button mono">[ BOOK CRS — COWLEY ROAD ]</a>
+            <a href="/book" class="crs-button mono">BOOK CRS — COWLEY ROAD</a>
           </div>
 
           {/* ACCESS / HOURS */}
@@ -716,7 +706,7 @@ app.get('/crs-cricket-road', (c) => {
 
           {/* BOOKING CTA */}
           <div class="hero-cta">
-            <a href="/book" class="crs-button mono">[ BOOK CRS — CRICKET ROAD ]</a>
+            <a href="/book" class="crs-button mono">BOOK CRS — CRICKET ROAD</a>
           </div>
 
           {/* ACCESS / HOURS */}
@@ -745,18 +735,18 @@ app.get('/', (c) => {
           <div class="rack-unit-led">
             <span class="led green"></span>
           </div>
-          <h2 class="rack-unit-title">BAND REHEARSALS</h2>
+          <h2 class="rack-unit-title">BAND REHEARSALS — CRICKET ROAD</h2>
         </div>
         
         <div class="rack-unit-content">
           <p style="margin-bottom: 1rem; color: rgba(245, 245, 245, 0.85);">
-            Fixed-length sessions with basic PA included at Cricket Road or Cowley Road.
+            Fixed-length sessions with basic PA included at Cricket Road.
           </p>
-          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.65); font-size: 0.9rem;">
-            Choose your location and duration when you book.
+          <p style="margin-bottom: 1rem; color: rgba(245, 245, 245, 0.65); font-size: 0.9rem;">
+            Cowley Road rehearsal space is nearing the end of the build phase and will be available soon.
           </p>
           <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="/book" class="cta-button cta-button-peak-red">[ BOOK NOW ]</a>
+            <a href="/book" class="cta-button cta-button-peak-red">BOOK REHEARSAL</a>
           </div>
         </div>
       </section>
@@ -775,7 +765,7 @@ app.get('/', (c) => {
             Purpose-built recording and production environments designed for reliable, repeatable results. From vocal tracking to full-band production, we provide the technical certainty you need to focus on your performance.
           </p>
           <div style="text-align: center;">
-            <a href="/studio" class="cta-button">VIEW STUDIO RATES & SPECS</a>
+            <a href="/studio" class="cta-button">BOOK SESSION</a>
           </div>
         </div>
       </section>
@@ -794,7 +784,7 @@ app.get('/', (c) => {
             Engineer-led live sound, installations, and technical support for community venues, cultural events, and public gatherings. We provide the technical backbone for your event, so you can focus on your audience.
           </p>
           <div style="text-align: center;">
-            <a href="/av-services" class="cta-button">VIEW AV SERVICES</a>
+            <a href="/av-services" class="cta-button">AV SERVICES</a>
           </div>
         </div>
       </section>
@@ -1163,7 +1153,7 @@ app.get('/book/studio', (c) => {
               <textarea id="notes" name="notes" class="form-textarea" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT BOOKING REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT BOOKING REQUEST</button>
           </form>
           
           <p class="form-helper-text">Thanks — we'll confirm availability and next steps shortly.</p>
@@ -1253,7 +1243,7 @@ app.get('/book/rehearsal/cowley-road', (c) => {
               <textarea id="needs" name="needs" class="form-textarea" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT BOOKING REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT BOOKING REQUEST</button>
           </form>
         </div>
       </section>
@@ -1309,7 +1299,7 @@ app.get('/book/rehearsal/cricket-road', (c) => {
               <textarea id="needs" name="needs" class="form-textarea" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT BOOKING REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT BOOKING REQUEST</button>
           </form>
         </div>
       </section>
@@ -1363,7 +1353,7 @@ app.get('/book/lessons', (c) => {
               <textarea id="goals" name="goals" class="form-textarea" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT ENQUIRY ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT ENQUIRY</button>
           </form>
         </div>
       </section>
@@ -1409,7 +1399,7 @@ app.get('/book/mixdown', (c) => {
             
             <p class="form-helper-text">We'll review and confirm timing before starting work.</p>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT REQUEST</button>
           </form>
         </div>
       </section>
@@ -1463,7 +1453,7 @@ app.get('/book/tape', (c) => {
               <textarea id="notes" name="notes" class="form-textarea" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT REQUEST</button>
           </form>
         </div>
       </section>
@@ -1512,7 +1502,7 @@ app.get('/book/hire', (c) => {
               <input type="text" id="location" name="location" required class="form-input" />
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT ENQUIRY ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT ENQUIRY</button>
           </form>
         </div>
       </section>
@@ -1564,7 +1554,7 @@ app.get('/repairs/status', (c) => {
               <input type="text" id="equipment_type" name="equipment_type" class="form-input" />
             </div>
             
-            <button type="submit" class="crs-button mono">[ NOTIFY ME ]</button>
+            <button type="submit" class="crs-button mono">NOTIFY ME</button>
           </form>
           
           <p class="form-helper-text">Thanks — we'll let you know when repairs reopen.</p>
@@ -1620,7 +1610,7 @@ app.get('/book/repairs', (c) => {
             
             <p class="form-helper-text">Diagnosis first. Quote follows.</p>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT REPAIR REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT REPAIR REQUEST</button>
           </form>
         </div>
       </section>
@@ -1731,7 +1721,7 @@ app.get('/av-services', (c) => {
             Behind every clean live setup is a deep technical bench.
           </p>
           <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="/av-services/repairs" class="crs-button mono">[ REPAIRS & TECHNICAL BENCH ]</a>
+            <a href="/av-services/repairs" class="crs-button mono">REPAIRS & TECHNICAL BENCH</a>
           </div>
         </div>
 
@@ -2012,7 +2002,7 @@ app.get('/workshop-cafe', (c) => {
 
             {/* Booking CTA */}
             <div style="margin-top: 2rem; text-align: center;">
-              <a href="/book?service=venue" class="crs-button mono">[ BOOK SPACE ]</a>
+              <a href="/book?service=venue" class="crs-button mono">BOOK SPACE</a>
             </div>
           </div>
         </section>
@@ -2121,7 +2111,7 @@ app.get('/workshop-cafe', (c) => {
             <p style="font-size: 0.9375rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 2rem;">
               For venue hire, technical support, or bookings:
             </p>
-            <a href="/book" class="crs-button mono">[ VIEW CRS SERVICES ]</a>
+            <a href="/book" class="crs-button mono">VIEW CRS SERVICES</a>
           </div>
         </section>
 
@@ -2232,7 +2222,7 @@ app.get('/cafe', (c) => {
         </div>
 
         <div class="hero-cta" style="margin-top: 2rem;">
-          <a href="/contact?service=venue" class="crs-button mono">[ CONTACT ]</a>
+          <a href="/contact?service=venue" class="crs-button mono">CONTACT</a>
         </div>
       </section>
 
@@ -2252,22 +2242,303 @@ app.get('/about', (c) => {
 
       <section class="crs-section section-dark">
         <div class="section-header">
-          <h1 class="section-title heading">CRS — About</h1>
+          <h1 class="section-title heading">About CRS</h1>
+          <p class="section-intro">Built to work. Built to last.</p>
         </div>
 
-        {/* OVERVIEW */}
+        {/* INTRO */}
         <div class="content-block">
           <div class="content-text">
             <p>
-              Cowley Road Studios exists to provide reliable, engineer-led creative infrastructure on Cowley Road.
-            </p>
-            <p style="margin-top: 1.5rem;">
-              Built because something was missing — dependable spaces that prioritise systems, people, and practical outcomes over hype.
-            </p>
-            <p style="margin-top: 1.5rem;">
-              The studio, AV services, and Workshop Café work together as a connected system: infrastructure at the core, public life at the front.
+              Cowley Road Studios is a purpose-built studio and venue system in Oxford, supporting recording, performance, and digital creative work without drama.
             </p>
           </div>
+        </div>
+
+        {/* THE CRS STORY */}
+        <div class="content-block">
+          <h3 class="content-heading heading">The CRS Story</h3>
+          <div class="content-text">
+            <p>
+              Cowley Road Studios was founded on a simple premise: <strong>professional infrastructure shouldn't be a luxury</strong>.
+            </p>
+            <p style="margin-top: 1rem;">
+              Oxford's creative community needed recording facilities, rehearsal space, and technical support that worked reliably — not aspirational branding or fragile setups. We built CRS to prioritise engineering reality, documentation, and predictable outcomes.
+            </p>
+            <p style="margin-top: 1rem;">
+              We began with a single recording room and a commitment to system discipline: signal paths mapped, equipment tested, and decisions made on function rather than fashion.
+            </p>
+            <p style="margin-top: 1rem;">
+              Today, CRS operates across two Oxford locations — <strong>Cowley Road</strong> and <strong>Cricket Road</strong> — providing studio recording, rehearsal space, live sound services, and community venue access. We support grassroots artists, community organisations, and professional projects using the same operational standard.
+            </p>
+            <p style="margin-top: 1rem;">
+              The mission remains unchanged: <strong>make professional-grade creative infrastructure accessible, reliable, and sustainable</strong>.
+            </p>
+          </div>
+        </div>
+
+        {/* THE NO CHAOS POLICY */}
+        <div class="content-block">
+          <h3 class="content-heading heading">The No Chaos Policy</h3>
+          <div class="content-text">
+            <p>
+              CRS operates under a strict <strong>No Chaos Policy</strong>. This is not a slogan — it is an operational baseline.
+            </p>
+            <p style="margin-top: 1.5rem;"><strong>Equipment Maintenance</strong><br/>
+              All equipment is tested, maintained, and documented. If it is in use, it works.
+            </p>
+            <p style="margin-top: 1rem;"><strong>Signal Path Documentation</strong><br/>
+              Studios, PA systems, and installations are fully documented. No undocumented routing. No guesswork.
+            </p>
+            <p style="margin-top: 1rem;"><strong>Engineering-Led Decisions</strong><br/>
+              Systems and workflows are chosen for reliability and suitability, not trends or brand allegiance.
+            </p>
+            <p style="margin-top: 1rem;"><strong>Predictable Results</strong><br/>
+              Sessions and events are designed to start on time and run without technical distraction.
+            </p>
+            <p style="margin-top: 1rem;"><strong>Systematic Problem Solving</strong><br/>
+              When issues arise, they are resolved methodically, documented, and prevented from recurring.
+            </p>
+          </div>
+        </div>
+
+        {/* WHY THIS MATTERS */}
+        <div class="content-block">
+          <h3 class="content-heading heading">Why This Matters</h3>
+          <div class="content-text">
+            <p><strong>For Artists</strong><br/>
+              Your time is for making work, not troubleshooting equipment.
+            </p>
+            <p style="margin-top: 1rem;"><strong>For Event Organisers</strong><br/>
+              You get predictable technical delivery and clear communication.
+            </p>
+            <p style="margin-top: 1rem;"><strong>For Community Groups</strong><br/>
+              Professional infrastructure is available without requiring specialist knowledge or inflated budgets.
+            </p>
+          </div>
+        </div>
+
+        {/* OUR LOCATIONS */}
+        <div class="content-block">
+          <h3 class="content-heading heading">Our Locations</h3>
+          <div class="content-text">
+            <p><strong>Cowley Road, Oxford (OX4 1JE)</strong><br/>
+              <span style="opacity: 0.8;">Recording Studio & Workshop Café</span>
+            </p>
+            <p style="margin-top: 0.5rem;">
+              Multi-room recording facility with control room, live room, and isolation booths. Home to Workshop Café — the public-facing space for events, meetings, and community programming.
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.7;">
+              Services: Studio recording, rehearsal, venue hire, café
+            </p>
+            
+            <p style="margin-top: 2rem;"><strong>Cricket Road, Oxford</strong><br/>
+              <span style="opacity: 0.8;">Rehearsal & Production Node</span>
+            </p>
+            <p style="margin-top: 0.5rem;">
+              Purpose-built rehearsal rooms with PA, monitoring, and backline, designed for bands, theatre groups, and production preparation.
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.875rem; opacity: 0.7;">
+              Services: Rehearsal space, production prep
+            </p>
+          </div>
+        </div>
+
+        {/* WHO WE WORK WITH */}
+        <div class="content-block">
+          <h3 class="content-heading heading">Who We Work With</h3>
+          <div class="content-text">
+            <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
+              <li>Grassroots artists and bands</li>
+              <li>Community and cultural organisations</li>
+              <li>Professional productions and events</li>
+              <li>Public-facing workshops and programmes</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* ODRO ENGINEERING STANDARD */}
+        <div class="content-block">
+          <h3 class="content-heading heading">ODRO Engineering Standard</h3>
+          <div class="content-text">
+            <p>
+              CRS systems are designed and maintained under the <strong>ODRO Engineering Standard</strong> — our internal methodology for infrastructure delivery.
+            </p>
+            <p style="margin-top: 1rem;">ODRO means:</p>
+            <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8; margin-top: 0.5rem;">
+              <li>Document everything</li>
+              <li>Test everything</li>
+              <li>Maintain everything</li>
+              <li>Make decisions based on engineering reality</li>
+            </ul>
+            <p style="margin-top: 1rem;">
+              If a system is powered by ODRO Engineering, it has been designed to operate predictably and sustainably.
+            </p>
+          </div>
+        </div>
+
+        {/* GET INVOLVED */}
+        <div class="content-block">
+          <h3 class="content-heading heading">Get Involved</h3>
+          <div class="content-text">
+            <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
+              <li><strong>Book a session</strong> — recording, rehearsal, or venue hire</li>
+              <li><strong>Community access</strong> — subsidised and supported sessions</li>
+              <li><strong>Workshop Café events</strong> — public programmes and hire</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">
+              <a href="/contact" style="color: var(--text-gold); text-decoration: underline;">Contact us</a> to get started.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem 0; border-top: 1px solid rgba(232, 155, 60, 0.2);">
+          <p class="mono" style="color: var(--text-gold); font-weight: 700;">
+            CRS — Built to work. Built to last. Powered by ODRO Engineering.
+          </p>
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  )
+})
+
+// WORK
+app.get('/work', (c) => {
+  return c.render(
+    <>
+      <Header />
+
+      <section class="crs-section section-dark">
+        <div class="section-header">
+          <h1 class="section-title heading">Work</h1>
+          <p class="section-intro">Evidence of operation.</p>
+        </div>
+
+        <div class="content-block">
+          <div class="content-text">
+            <p>
+              Selected recordings, deployments, and community projects supported by CRS infrastructure.
+            </p>
+          </div>
+        </div>
+
+        {/* STUDIO RECORDINGS */}
+        <div class="content-block">
+          <h3 class="content-heading heading">Studio Recordings</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1.5rem; opacity: 0.7; font-size: 0.9rem;">
+              Multi-room tracking, vocal production, post-production
+            </p>
+            
+            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green); padding: 1rem; margin-bottom: 1rem;">
+              <p class="mono" style="color: var(--text-gold); font-size: 0.875rem; margin-bottom: 0.5rem;">
+                [Project listings coming soon]
+              </p>
+              <p style="font-size: 0.875rem; opacity: 0.7;">
+                Format: EP / Album / Single / Podcast<br/>
+                Year: 2024–2025
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* AV DEPLOYMENTS */}
+        <div class="content-block">
+          <h3 class="content-heading heading">AV Deployments</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1.5rem; opacity: 0.7; font-size: 0.9rem;">
+              PA systems, monitoring, technical crew, permanent installations
+            </p>
+            
+            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green); padding: 1rem; margin-bottom: 1rem;">
+              <p class="mono" style="color: var(--text-gold); font-size: 0.875rem; margin-bottom: 0.5rem;">
+                [Project listings coming soon]
+              </p>
+              <p style="font-size: 0.875rem; opacity: 0.7;">
+                Type: Performance / Conference / Festival / Installation<br/>
+                Year: 2024–2025
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* COMMUNITY PROJECTS */}
+        <div class="content-block">
+          <h3 class="content-heading heading">Community Projects</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1.5rem; opacity: 0.7; font-size: 0.9rem;">
+              Subsidised sessions, technical workshops, community support
+            </p>
+            
+            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1rem; margin-bottom: 1rem;">
+              <p style="font-size: 0.875rem;">
+                <strong>Subsidised Studio Sessions</strong><br/>
+                <span style="opacity: 0.7;">Supporting grassroots artists with access to professional recording infrastructure</span>
+              </p>
+            </div>
+            
+            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1rem;">
+              <p style="font-size: 0.875rem;">
+                <strong>Technical Workshops</strong><br/>
+                <span style="opacity: 0.7;">Signal flow, live sound fundamentals, system operation</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* PARTNER VENUES */}
+        <div class="content-block">
+          <h3 class="content-heading heading">Partner Venues</h3>
+          <div class="content-text">
+            <p style="margin-bottom: 1rem;">
+              CRS provides ongoing technical support for community venues across Oxford.
+            </p>
+            <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8; font-size: 0.875rem; opacity: 0.8;">
+              <li>Event sound & maintenance</li>
+              <li>System consultation</li>
+              <li>Equipment hire</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* TESTIMONIALS */}
+        <div class="content-block">
+          <h3 class="content-heading heading">Testimonials</h3>
+          <div class="content-text">
+            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--text-gold); padding: 1rem; margin-bottom: 1rem;">
+              <p style="font-size: 0.875rem; font-style: italic;">
+                "Professional setup, no delays. We got straight to work."
+              </p>
+              <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 0.5rem;">— Recording client</p>
+            </div>
+            
+            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--text-gold); padding: 1rem;">
+              <p style="font-size: 0.875rem; font-style: italic;">
+                "Clear communication and reliable delivery."
+              </p>
+              <p style="font-size: 0.75rem; opacity: 0.6; margin-top: 0.5rem;">— Event organiser</p>
+            </div>
+          </div>
+        </div>
+
+        {/* WORK WITH US */}
+        <div class="content-block">
+          <h3 class="content-heading heading">Work With Us</h3>
+          <div class="content-text">
+            <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
+              <li><strong>Recording & rehearsal</strong> — <a href="/book" style="color: var(--text-gold); text-decoration: underline;">book studio time</a></li>
+              <li><strong>AV services</strong> — <a href="/contact?service=av" style="color: var(--text-gold); text-decoration: underline;">request a quote</a></li>
+              <li><strong>Community access</strong> — <a href="/contact" style="color: var(--text-gold); text-decoration: underline;">enquire about supported sessions</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding: 2rem 0; border-top: 1px solid rgba(232, 155, 60, 0.2);">
+          <p class="mono" style="color: var(--text-gold); font-weight: 700;">
+            CRS — Built to work. Built to last.
+          </p>
         </div>
       </section>
 
@@ -2322,7 +2593,7 @@ app.get('/contact', (c) => {
               <textarea id="message" name="message" required class="form-textarea" rows="6"></textarea>
             </div>
             
-            <button type="submit" class="crs-button mono">[ SEND MESSAGE ]</button>
+            <button type="submit" class="crs-button mono">SEND MESSAGE</button>
           </form>
           
           <p class="form-helper-text">Message received. Enquiries are processed during operating hours.</p>

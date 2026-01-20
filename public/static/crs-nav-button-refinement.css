@@ -15,96 +15,82 @@
 /* === CORE NAV BUTTON REFINEMENT === */
 
 .nav-button {
-  /* Size compression (critical fix) */
-  font-size: 0.72rem !important;       /* ~11.5px — authority, not loudness */
-  letter-spacing: 0.12em !important;   /* spacing does the work, not size */
-  padding: 6px 14px !important;        /* tight vertical, balanced horizontal */
-  height: 32px !important;             /* compress from ~44-48px */
+  /* Reduced size for secondary priority */
+  font-size: 0.75rem !important;
+  letter-spacing: 0.1em !important;
+  padding: 6px 14px !important;
+  height: 32px !important;
   
-  /* Border discipline */
-  border: 1px solid currentColor !important;  /* thin idle border */
-  border-radius: 3px !important;              /* subtle, not chunky */
+  /* Quiet border - no emphasis */
+  border: 1px solid rgba(245, 245, 245, 0.2) !important;
+  border-radius: 3px !important;
   background: transparent !important;
   
-  /* Typography authority */
+  /* Typography - subdued */
   text-transform: uppercase !important;
-  font-weight: 600 !important;
+  font-weight: 500 !important; /* Lighter weight */
   line-height: 1 !important;
+  color: rgba(245, 245, 245, 0.6) !important; /* Lower contrast */
   
   /* Clean transitions */
   transition: 
     color 0.2s ease,
     background-color 0.2s ease,
-    box-shadow 0.2s ease,
     border-color 0.2s ease !important;
   
-  /* Subtle depth (barely perceptible) */
-  text-shadow: 0 0 2px rgba(0,0,0,0.6) !important;
+  /* Remove text-shadow: no depth needed in idle state */
 }
 
-/* === COLOR STATES: IDLE (MUTED) === */
+/* === COLOR STATES: IDLE (NEUTRAL - NO COLOR) === */
 
-/* Studio - VU Green (idle: darker) */
-.nav-button.nav-studio {
-  color: #2d8a1f !important;           /* darker green, "armed but idle" */
-  border-color: #2d8a1f !important;
-}
-
-/* Workshop Café - Warm Amber (idle: brass) */
-.nav-button.nav-cafe {
-  color: #b8860b !important;           /* brass/dark gold, "idle" */
-  border-color: #b8860b !important;
-}
-
-/* AV - Red (idle: deep oxide) */
+/* All nav buttons idle: neutral, quiet */
+.nav-button.nav-studio,
+.nav-button.nav-cafe,
 .nav-button.nav-av {
-  color: #8b1a1a !important;           /* deep oxide red, "idle" */
-  border-color: #8b1a1a !important;
+  /* Inherit base neutral color from .nav-button */
 }
 
-/* === COLOR STATES: HOVER (ARMED/ACTIVE) === */
+/* === COLOR STATES: HOVER (SUBTLE ACTIVATION) === */
+/* === COLOR STATES: HOVER (SUBTLE ACTIVATION) === */
 
-/* Studio - VU Green (active: bright) */
+/* Studio - VU Green (hover: subtle) */
 .nav-button.nav-studio:hover {
-  color: #0b0b0b !important;           /* black text on bright background */
-  background-color: #39FF14 !important; /* bright VU green */
-  border-color: #39FF14 !important;
-  box-shadow: 0 0 6px rgba(57, 255, 20, 0.4) !important;
+  color: rgba(245, 245, 245, 0.9) !important;
+  background-color: rgba(57, 255, 20, 0.1) !important;
+  border-color: rgba(57, 255, 20, 0.3) !important;
 }
 
-/* Workshop Café - Warm Amber (active: gold) */
+/* Workshop Café - Warm Amber (hover: subtle) */
 .nav-button.nav-cafe:hover {
-  color: #0b0b0b !important;
-  background-color: #D4A017 !important; /* bright mustard gold */
-  border-color: #D4A017 !important;
-  box-shadow: 0 0 6px rgba(212, 160, 23, 0.4) !important;
+  color: rgba(245, 245, 245, 0.9) !important;
+  background-color: rgba(212, 160, 23, 0.1) !important;
+  border-color: rgba(212, 160, 23, 0.3) !important;
 }
 
-/* AV - Red (active: signal red) */
+/* AV - Red (hover: subtle) */
 .nav-button.nav-av:hover {
-  color: #fff !important;               /* white text on bright red */
-  background-color: #C41E3A !important; /* bright signal red */
-  border-color: #C41E3A !important;
-  box-shadow: 0 0 6px rgba(196, 30, 58, 0.4) !important;
+  color: rgba(245, 245, 245, 0.9) !important;
+  background-color: rgba(196, 30, 58, 0.1) !important;
+  border-color: rgba(196, 30, 58, 0.3) !important;
 }
 
 /* === RESPONSIVE: MAINTAIN COMPRESSION === */
 
-/* Tablet: keep tight proportions */
+/* Tablet: keep tight proportions - scaled 25% */
 @media (max-width: 768px) {
   .nav-button {
-    font-size: 0.70rem !important;
-    padding: 5px 12px !important;
-    height: 30px !important;
+    font-size: 0.875rem !important;   /* 0.70rem * 1.25 */
+    padding: 6.25px 15px !important;  /* 5px * 1.25, 12px * 1.25 */
+    height: 37.5px !important;        /* 30px * 1.25 */
   }
 }
 
-/* Mobile: hide Workshop Café, keep tight on remaining buttons */
+/* Mobile: hide Workshop Café, keep tight on remaining buttons - scaled 25% */
 @media (max-width: 640px) {
   .nav-button {
-    font-size: 0.68rem !important;
-    padding: 5px 10px !important;
-    height: 28px !important;
+    font-size: 0.85rem !important;    /* 0.68rem * 1.25 */
+    padding: 6.25px 12.5px !important; /* 5px * 1.25, 10px * 1.25 */
+    height: 35px !important;          /* 28px * 1.25 */
   }
 }
 
@@ -112,9 +98,9 @@
 
 @media (min-width: 1920px) {
   .nav-button {
-    font-size: 0.75rem !important;     /* slightly larger but still compressed */
-    padding: 7px 16px !important;
-    height: 34px !important;
+    font-size: 0.9375rem !important;  /* 0.75rem * 1.25 */
+    padding: 8.75px 20px !important;  /* 7px * 1.25, 16px * 1.25 */
+    height: 42.5px !important;        /* 34px * 1.25 */
   }
 }
 

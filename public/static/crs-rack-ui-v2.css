@@ -240,8 +240,6 @@ body {
   position: relative;
 }
 
-.cta-button::before { content: "[ "; }
-.cta-button::after { content: " ]"; }
 
 .cta-button:hover {
   transform: translateY(-2px);
