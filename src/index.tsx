@@ -336,10 +336,11 @@ const Header = () => (
           class="header-mic-badge"
         />
         <button 
-          class="book-dropdown-trigger"
+          class="book-dropdown-trigger book-now-uk-sign"
           data-dropdown-trigger
           aria-expanded="false"
           aria-controls="book-dropdown-menu"
+          style="background: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/1026CRS%20B%20NOW%20UK_yellow_rear_.png') no-repeat center center; background-size: contain; border: none; padding: 0; width: auto; height: 60px; min-width: 120px; text-indent: -9999px; overflow: hidden;"
         >
           BOOK NOW
         </button>
