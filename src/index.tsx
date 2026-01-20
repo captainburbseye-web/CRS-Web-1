@@ -330,6 +330,11 @@ const Header = () => (
       
       {/* BOOK NOW DROPDOWN (RIGHT ZONE) */}
       <div class="rack-header-right" style="position: relative;">
+        <img 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/Remove_background_from_this_horizontal_microphone_-1768907746794.png" 
+          alt="Book Now microphone signal"
+          class="header-mic-badge"
+        />
         <button 
           class="book-dropdown-trigger"
           data-dropdown-trigger

@@ -12,6 +12,9 @@
   --badge-size-desktop: 48px;
   --badge-size-mobile: 40px;
   
+  /* MIC BADGE SIZING (Header decorative signal) */
+  --mic-badge-height: 48px;
+  
   /* LED INDICATORS */
   --led-size: 10px;
   --led-spacing: 8px;
@@ -435,6 +438,46 @@ body {
   50% {
     opacity: 0.4;
     box-shadow: 0 0 16px currentColor;
+  }
+}
+
+/* ================================
+   HEADER MIC BADGE (Decorative Booking Signal)
+   ================================ */
+
+/* Container: ensure flex layout with gap */
+.rack-header-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  margin-left: auto !important;
+  position: relative;
+}
+
+/* Mic Badge: decorative signal next to BOOK NOW */
+.header-mic-badge {
+  height: var(--mic-badge-height) !important;
+  width: auto !important;
+  display: block !important;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 8px rgba(255, 204, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.header-mic-badge:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Mobile: hide mic badge to avoid clutter */
+@media (max-width: 768px) {
+  .header-mic-badge {
+    display: none !important;
+  }
+  
+  .book-dropdown-trigger {
+    font-size: 0.85rem !important;
+    padding: 8px 16px !important;
   }
 }
 
