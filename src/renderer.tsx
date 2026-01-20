@@ -73,6 +73,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-precision-calibration.css" rel="stylesheet" />
         {/* TYPOGRAPHY LOCKDOWN: Hard separation of typographic domains - controls immunity (LOADS AFTER EVERYTHING) */}
         <link href="/static/crs-typography-lockdown.css" rel="stylesheet" />
+        {/* BOOK NOW CONTROL: Hardware-grade control spec - sacred, do not iterate (LOADS ABSOLUTE LAST) */}
+        <link href="/static/crs-book-now-control.css" rel="stylesheet" />
       </head>
       <body>
         {children}

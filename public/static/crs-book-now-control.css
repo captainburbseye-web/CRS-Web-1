@@ -1,0 +1,122 @@
+/* ================================
+   BOOK NOW — CONTROL SPEC (LOCKED)
+   Hardware-grade control, not marketing CTA
+   ================================ */
+
+/* ROLE: This is a control, not a call-to-action.
+   It must feel like a transport button, power switch, labeled hardware control.
+   No persuasion. No excitement. Just availability. */
+
+/* BOOK NOW — Primary Control */
+.book-now,
+.book-dropdown-trigger {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* SIZE (HARD LOCK) */
+  width: 150px;
+  height: 32px;
+  min-width: 120px; /* Absolute floor */
+
+  /* COLOUR SYSTEM — Default (Standby) */
+  background: #111;
+  color: #EAEAEA;
+  border: 1px solid #2A2A2A;
+
+  /* TYPOGRAPHY (ISOLATED DOMAIN) */
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.875rem !important; /* 14px - IMMUTABLE */
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+
+  /* FORM & PROPORTION */
+  border-radius: 0 !important; /* Perfect rectangle, no rounding */
+
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Hover / Focus (Armed, Not Excited) */
+.book-now:hover,
+.book-now:focus-visible,
+.book-dropdown-trigger:hover,
+.book-dropdown-trigger:focus-visible {
+  border-color: #00B400 !important; /* Signal Green */
+  outline: none !important;
+  
+  /* DO NOT: change background, animate, glow, pulse
+     Border shift only. Like a console arming state. */
+}
+
+/* Active (Engaged) */
+.book-now:active,
+.book-dropdown-trigger:active {
+  background: #111 !important;
+  border-color: #00B400 !important;
+  
+  /* No press animation. No compression. Real hardware does not bounce. */
+}
+
+/* STATUS INDICATOR (Signal Dot) */
+.book-now::after,
+.book-dropdown-trigger::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #00B400;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  /* Reads as: booking system online. Not decoration. Status. */
+}
+
+/* ================================
+   USAGE RULES (CRITICAL)
+   ================================ */
+
+/* ALLOWED:
+   - Header
+   - Booking panels
+   - Rack units
+   - Footer booking access
+
+   FORBIDDEN:
+   - Inside body paragraphs
+   - Large hero CTAs
+   - Animated contexts
+   - Color variants
+   - Rounded versions
+   - Marketing copy near it
+
+   RULE: If it starts "feeling exciting", it's wrong. */
+
+/* ================================
+   MENTAL MODEL
+   ================================ */
+
+/* Wordmark      = System identity
+   BOOK NOW      = System access
+   Signal dot    = Availability
+   Border change = Armed state
+
+   This is INDUSTRIAL UI, not conversion UI. */
+
+/* ================================
+   SACRED RULE
+   ================================ */
+
+/* Once deployed, DO NOT ITERATE this control.
+   You don't redesign power switches.
+   
+   This control:
+   - Matches CRS wordmark visually and philosophically
+   - Will NEVER collapse with typography changes
+   - Will age well
+   - Reinforces CRS as an INSTITUTION, not a startup */
