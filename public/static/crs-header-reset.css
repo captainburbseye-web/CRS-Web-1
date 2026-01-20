@@ -60,6 +60,8 @@ header.rack-header .crs-main-logo {
   min-width: 600px !important;  /* Never smaller than 600px */
   max-width: 1400px !important; /* Never bigger than 1400px */
   height: auto !important;
+  max-height: none !important;  /* CRITICAL: Override 48px cap from crs-classic-aesthetic.css */
+  min-height: none !important;
   flex-shrink: 0;
   display: block !important;
   object-fit: contain !important;
@@ -74,6 +76,7 @@ header.rack-header .crs-main-logo {
     width: 70vw !important;      /* 70% viewport on mobile */
     min-width: 300px !important;
     max-width: 500px !important;
+    max-height: none !important;  /* Override 48px cap on mobile too */
   }
 }
 
