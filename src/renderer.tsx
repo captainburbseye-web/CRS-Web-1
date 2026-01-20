@@ -65,6 +65,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-final-overrides.css" rel="stylesheet" />
         {/* RACK UI V2: Physical hardware aesthetic (LOADS LAST TO OVERRIDE ALL) */}
         <link href="/static/crs-rack-ui-v2.css" rel="stylesheet" />
+        {/* RACK UNIT CANONICAL: Single source of truth for rack modules (REFERENCE OBJECT) */}
+        <link href="/static/crs-rack-unit-canonical.css" rel="stylesheet" />
         {/* WSC MODE: Workshop Café warmth overrides (controlled mode switch) */}
         <link href="/static/crs-wsc-mode.css" rel="stylesheet" />
         {/* CLASSIC AESTHETIC: Saturday best look (loads last, overrides V2 for CRS pages) */}

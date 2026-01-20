@@ -1,0 +1,318 @@
+/* =========================================================
+   CRS CANONICAL RACK UNIT
+   
+   Purpose: Single source of truth for rack-mounted modules
+   Scope: CRS pages only (NOT Workshop Café)
+   Philosophy: Infrastructure, not decoration
+   
+   This is the reference object. Do not drift.
+   ========================================================= */
+
+/* ------------------------------
+   RACK CONTAINER
+   Vertical alignment rails
+   ------------------------------ */
+.rack-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Vertical alignment rails - subtle infrastructure cue */
+.rack-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 48px;
+  right: 48px;
+  height: 100%;
+  border-left: 1px solid rgba(255,255,255,0.05);
+  border-right: 1px solid rgba(255,255,255,0.05);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ------------------------------
+   RACK UNIT (CANONICAL)
+   The reference object
+   ------------------------------ */
+.rack-unit {
+  /* STRUCTURE */
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  
+  /* MATERIAL */
+  background: linear-gradient(
+    135deg,
+    rgba(20, 20, 20, 0.95),
+    rgba(15, 15, 15, 0.85),
+    rgba(18, 18, 18, 0.95)
+  );
+  background-blend-mode: overlay; /* Brushed aluminum simulation */
+  
+  /* MOUNTING */
+  border: 1px solid rgba(212, 160, 23, 0.4); /* Gold accent border */
+  border-left-width: 4px; /* Device-type indicator */
+  border-radius: 4px;
+  
+  /* DEPTH (this is critical - don't flatten) */
+  box-shadow: 
+    inset 0 1px 3px rgba(255, 255, 255, 0.05),  /* Top highlight - manufactured edge */
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),          /* Bottom shadow - depth */
+    0 4px 12px rgba(0, 0, 0, 0.4);              /* Drop shadow - mounted into chassis */
+  
+  /* NOISE (material texture - NOT decoration) */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  
+  /* ACCESSIBILITY */
+  isolation: isolate; /* Prevent blending issues */
+  z-index: 1;
+}
+
+/* ------------------------------
+   DEVICE-TYPE INDICATORS
+   Left border color = function
+   ------------------------------ */
+.rack-unit.device-rehearsal {
+  border-left-color: #39FF14; /* LED Green - Live/Active */
+}
+
+.rack-unit.device-studio {
+  border-left-color: #FFB627; /* LED Amber - Production */
+}
+
+.rack-unit.device-av {
+  border-left-color: #FF8C00; /* LED Orange - Field Operations */
+}
+
+.rack-unit.device-cafe {
+  border-left-color: #FFB627; /* LED Amber - Public Interface */
+}
+
+.rack-unit.device-community {
+  border-left-color: #FF8C00; /* LED Orange - Community Access */
+}
+
+.rack-unit.device-status {
+  border-left-color: #FF8C00; /* LED Orange - System Status */
+}
+
+/* ------------------------------
+   RACK UNIT HEADER
+   Module identification
+   ------------------------------ */
+.rack-unit-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ------------------------------
+   LED STATUS INDICATORS
+   Operational state signaling
+   ------------------------------ */
+.rack-unit-led {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
+.led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+  /* NO pulsing unless tied to real state */
+}
+
+.led.green {
+  background: #39FF14;
+  color: #39FF14;
+}
+
+.led.yellow,
+.led.amber {
+  background: #FFB627;
+  color: #FFB627;
+}
+
+.led.orange {
+  background: #FF8C00;
+  color: #FF8C00;
+}
+
+.led.red {
+  background: #C41E3A;
+  color: #C41E3A;
+}
+
+/* LED pulse animation - USE SPARINGLY, ONLY FOR LIVE STATE */
+@keyframes pulse-led {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Apply pulse ONLY when explicitly needed */
+.led.pulse {
+  animation: pulse-led 2s ease-in-out infinite;
+}
+
+/* ------------------------------
+   RACK UNIT TITLE
+   Module label
+   ------------------------------ */
+.rack-unit-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.9);
+  margin: 0;
+}
+
+/* ------------------------------
+   RACK UNIT CONTENT
+   Module body
+   ------------------------------ */
+.rack-unit-content {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.938rem;
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.85);
+}
+
+/* ------------------------------
+   RACK SCREWS (OPTIONAL)
+   Mounting hardware visual cue
+   ------------------------------ */
+.rack-screw {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #444 30%, #222 70%);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+  pointer-events: none; /* CRITICAL: Don't intercept clicks */
+}
+
+/* Screw positioning (standard rack mounting holes) */
+.rack-screw:nth-of-type(1) { top: 12px; left: 12px; }
+.rack-screw:nth-of-type(2) { top: 12px; right: 12px; }
+.rack-screw:nth-of-type(3) { bottom: 12px; left: 12px; }
+.rack-screw:nth-of-type(4) { bottom: 12px; right: 12px; }
+
+/* Cross-head screw detail */
+.rack-screw::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.4);
+  transform: translate(-50%, -50%);
+}
+
+.rack-screw::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  transform: translate(-50%, -50%);
+}
+
+/* ------------------------------
+   ACCESSIBILITY
+   ------------------------------ */
+
+/* Reduced motion safety - NO animations for users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .led,
+  .rack-unit,
+  .rack-screw {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Ensure adequate contrast for labels */
+.rack-unit-title {
+  color: #e0e0e0; /* WCAG AA compliant on dark background */
+}
+
+/* ------------------------------
+   MOBILE RESPONSIVE
+   ------------------------------ */
+@media (max-width: 767px) {
+  .rack-unit {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .rack-container::after {
+    left: 24px;
+    right: 24px;
+  }
+  
+  .rack-screw {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* ------------------------------
+   USAGE RULES (CRITICAL)
+   ------------------------------ */
+
+/* 
+  ✅ USE ON:
+  - CRS Studio pages
+  - CRS AV Services pages
+  - CRS technical infrastructure pages
+  - Brewforce CTAs (when appropriate)
+  
+  ❌ DO NOT USE ON:
+  - Workshop Café pages (use flat cards instead)
+  - General content pages
+  - Public-facing marketing pages
+  
+  REASONING:
+  Rack UI = institutional engineering
+  Café UI = civic warmth
+  Keep these separate.
+*/
+
+/* ------------------------------
+   CUSTOMIZATION NOTES
+   ------------------------------ */
+
+/*
+  If you need to adjust:
+  
+  1. DEPTH: Modify box-shadow values, not colors
+  2. MATERIAL: Adjust background gradient stops, not blend mode
+  3. BORDER: Change device-type colors, not structure
+  4. LED: Only add .pulse class for LIVE state
+  
+  DO NOT:
+  - Add transitions longer than 250ms
+  - Add glow effects
+  - Add bounce animations
+  - Flatten the shadow (it's load-bearing)
+  
+  This is infrastructure, not decoration.
+*/
