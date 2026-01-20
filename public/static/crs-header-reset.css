@@ -58,10 +58,10 @@ header svg,
 header img.logo,
 header .logo,
 header .crs-main-logo {
-  width: 800px !important;     /* MASSIVE horizontal wordmark */
+  width: 45vw !important;      /* 45% of viewport width - scales to screen */
+  min-width: 600px !important;  /* Never smaller than 600px */
+  max-width: 1400px !important; /* Never bigger than 1400px */
   height: auto !important;
-  max-width: none !important;
-  max-height: none !important;
   flex-shrink: 0;
   display: block !important;
   object-fit: contain !important;
@@ -73,8 +73,9 @@ header .crs-main-logo {
   header img.logo,
   header .logo,
   header .crs-main-logo {
-    width: 400px !important;
-    max-width: 90vw !important;
+    width: 70vw !important;      /* 70% viewport on mobile */
+    min-width: 300px !important;
+    max-width: 500px !important;
   }
 }
 
@@ -87,7 +88,7 @@ header .nav-item,
 header .label,
 header .rack-nav-links,
 header .rack-nav-links a {
-  font-size: 3rem !important;  /* 48px - MASSIVE nav to match wordmark */
+  font-size: clamp(1.5rem, 2.5vw, 3rem) !important;  /* 24-48px, scales with viewport */
   letter-spacing: 0.04em;
   white-space: nowrap;
 }

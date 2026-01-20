@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Size Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #0a0a0a;
+            padding: 2rem;
+            font-family: monospace;
+            color: #fff;
+        }
+        
+        .test-container {
+            margin-bottom: 3rem;
+            border: 2px solid #333;
+            padding: 2rem;
+        }
+        
+        h2 {
+            color: #FF8C00;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        
+        .info {
+            color: #999;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+        }
+        
+        /* Test 1: No CSS at all */
+        .test1 img {
+            /* No CSS - natural size */
+        }
+        
+        /* Test 2: 800px width */
+        .test2 img {
+            width: 800px;
+            height: auto;
+        }
+        
+        /* Test 3: 100% width */
+        .test3 img {
+            width: 100%;
+            height: auto;
+            max-width: 800px;
+        }
+        
+        /* Test 4: Like production */
+        .test4 img {
+            width: 800px !important;
+            height: auto !important;
+            max-width: none !important;
+            max-height: none !important;
+            display: block !important;
+            object-fit: contain !important;
+        }
+        
+        .ruler {
+            height: 2px;
+            background: #FF8C00;
+            margin: 1rem 0;
+        }
+        
+        .ruler.w800 {
+            width: 800px;
+        }
+        
+        .ruler.w400 {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="font-size: 1.5rem; margin-bottom: 2rem; color: #FF8C00;">CRS LOGO SIZE DIAGNOSTIC</h1>
+    
+    <div class="test-container test1">
+        <h2>TEST 1: NO CSS (Natural Size)</h2>
+        <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/x2%201024%20BADGE%20%2B%20WORDMARK%20LOCKUP.png" alt="CRS Logo">
+        <p class="info">Natural image dimensions with zero CSS applied</p>
+    </div>
+    
+    <div class="test-container">
+        <h2>800px RULER (Reference)</h2>
+        <div class="ruler w800"></div>
+        <p class="info">Orange bar = 800px wide (target logo width)</p>
+    </div>
+    
+    <div class="test-container test2">
+        <h2>TEST 2: width: 800px; height: auto;</h2>
+        <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/x2%201024%20BADGE%20%2B%20WORDMARK%20LOCKUP.png" alt="CRS Logo">
+        <p class="info">Standard CSS: width: 800px; height: auto;</p>
+    </div>
+    
+    <div class="test-container test3">
+        <h2>TEST 3: width: 100%; max-width: 800px;</h2>
+        <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/x2%201024%20BADGE%20%2B%20WORDMARK%20LOCKUP.png" alt="CRS Logo">
+        <p class="info">Responsive: width: 100%; max-width: 800px;</p>
+    </div>
+    
+    <div class="test-container test4">
+        <h2>TEST 4: PRODUCTION CSS (!important)</h2>
+        <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/x2%201024%20BADGE%20%2B%20WORDMARK%20LOCKUP.png" alt="CRS Logo" class="crs-main-logo">
+        <p class="info">Exact production CSS with all !important flags</p>
+    </div>
+    
+    <script>
+        // Report actual rendered sizes
+        window.addEventListener('load', () => {
+            const tests = document.querySelectorAll('.test-container img');
+            tests.forEach((img, index) => {
+                const rect = img.getBoundingClientRect();
+                const natural = { w: img.naturalWidth, h: img.naturalHeight };
+                const rendered = { w: Math.round(rect.width), h: Math.round(rect.height) };
+                
+                const info = img.nextElementSibling;
+                info.innerHTML += `<br><strong>Natural: ${natural.w}×${natural.h}px</strong><br><strong>Rendered: ${rendered.w}×${rendered.h}px</strong>`;
+            });
+        });
+    </script>
+</body>
+</html>
