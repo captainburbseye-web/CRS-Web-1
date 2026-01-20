@@ -309,12 +309,12 @@ const Header = () => (
         <span class="hamburger-icon">☰</span>
       </button>
       
-      {/* LEFT ZONE: Tascam Label + Navigation */}
+      {/* LEFT ZONE: CRS Logo + Navigation */}
       <div class="rack-header-left">
         <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v1%20.png" 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/1024%20BADGE%20%2B%20WORDMARK%20LOCKUP.png" 
           alt="Cowley Road Studios"
-          class="crs-tascam-label"
+          class="crs-main-logo"
         />
         
         <nav class="rack-nav-links">
@@ -363,6 +363,15 @@ const Footer = () => (
     </nav>
 
     <footer class="crs-footer mono">
+      {/* CRS Banner Logo */}
+      <div class="footer-logo-container">
+        <img 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/odro%20av/Remove_background-1768893690736.png" 
+          alt="Cowley Road Studios"
+          class="footer-banner-logo"
+        />
+      </div>
+      
       {/* CRS Locations (Quiet List) */}
       <div class="footer-locations">
         <p class="footer-locations-header">CRS Locations</p>
