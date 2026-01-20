@@ -1,0 +1,132 @@
+/* =========================================================
+   CRS HEADER LOCKDOWN RESET
+   Purpose: Prevent typographic and layout drift in header
+   Scope: Header only
+   Load: LAST in the cascade
+   ========================================================= */
+
+/* ------------------------------
+   ROOT GUARANTEE
+   ------------------------------ */
+html {
+  font-size: 16px;
+}
+
+/* ------------------------------
+   HEADER CONTAINER HARD RESET
+   ------------------------------ */
+header,
+.site-header,
+.crs-header,
+.rack-header {
+  all: unset;                 /* NUCLEAR: remove inherited chaos */
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  min-height: 56px;
+  padding: 0.75rem 1.5rem;
+  box-sizing: border-box;
+  font-size: 1rem;             /* LOCKED BASE */
+  line-height: 1;
+  background: #000;            /* or inherited */
+  color: #fff;
+}
+
+/* ------------------------------
+   PREVENT WIDTH CONSTRAINTS
+   ------------------------------ */
+header *,
+.site-header *,
+.crs-header *,
+.rack-header * {
+  max-width: none;
+}
+
+/* ------------------------------
+   TYPOGRAPHY IMMUNITY ZONE
+   ------------------------------ */
+header,
+header * {
+  font-size: inherit !important;
+  line-height: 1.1;
+}
+
+/* ------------------------------
+   LOGO LOCK - MASSIVE WORDMARK SIZE
+   ------------------------------ */
+header svg,
+header img.logo,
+header .logo,
+header .crs-main-logo {
+  width: 800px !important;     /* MASSIVE horizontal wordmark */
+  height: auto !important;
+  max-width: none !important;
+  max-height: none !important;
+  flex-shrink: 0;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+/* Mobile logo sizing */
+@media (max-width: 767px) {
+  header svg,
+  header img.logo,
+  header .logo,
+  header .crs-main-logo {
+    width: 400px !important;
+    max-width: 90vw !important;
+  }
+}
+
+/* ------------------------------
+   NAV & LABEL LOCK
+   ------------------------------ */
+header nav,
+header a,
+header .nav-item,
+header .label,
+header .rack-nav-links,
+header .rack-nav-links a {
+  font-size: 3rem !important;  /* 48px - MASSIVE nav to match wordmark */
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* ------------------------------
+   BUTTON / CTA LOCK
+   ------------------------------ */
+header button,
+header .cta,
+header .book-now,
+header .header-button,
+header .book-dropdown-trigger {
+  font-size: 0.875rem !important;
+  line-height: 1;
+  padding: 0.45rem 0.75rem;
+  height: auto;
+}
+
+/* ------------------------------
+   REMOVE RESPONSIVE SCALING
+   ------------------------------ */
+header * {
+  font-variation-settings: normal !important;
+  font-optical-sizing: none !important;
+}
+
+/* ------------------------------
+   FLEX SAFETY
+   ------------------------------ */
+header {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+/* ------------------------------
+   FINAL SAFETY NET
+   ------------------------------ */
+@media (max-width: 480px) {
+  header {
+    padding: 0.6rem 1rem;
+  }
+}

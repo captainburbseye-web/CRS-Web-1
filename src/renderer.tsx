@@ -75,6 +75,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-typography-lockdown.css" rel="stylesheet" />
         {/* BOOK NOW CONTROL: Hardware-grade control spec - sacred, do not iterate (LOADS ABSOLUTE LAST) */}
         <link href="/static/crs-book-now-control.css" rel="stylesheet" />
+        {/* HEADER LOCKDOWN RESET: Nuclear header reset - prevents all drift (LOADS ABSOLUTE LAST - STEEL BEAM) */}
+        <link href="/static/crs-header-reset.css" rel="stylesheet" />
       </head>
       <body>
         {children}
