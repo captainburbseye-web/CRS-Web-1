@@ -41,7 +41,7 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* Google Fonts - Hardware Typography */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700&family=Archivo+Black&display=swap" rel="stylesheet" />
         
         {/* Clean CSS */}
         <link href="/static/clean.css" rel="stylesheet" />
@@ -69,6 +69,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-wsc-mode.css" rel="stylesheet" />
         {/* CLASSIC AESTHETIC: Saturday best look (loads last, overrides V2 for CRS pages) */}
         <link href="/static/crs-classic-aesthetic.css" rel="stylesheet" />
+        {/* PRECISION CALIBRATION: Exact pixel-level sizing for Technical Institution aesthetic (MUST LOAD ABSOLUTE LAST) */}
+        <link href="/static/crs-precision-calibration.css" rel="stylesheet" />
       </head>
       <body>
         {children}

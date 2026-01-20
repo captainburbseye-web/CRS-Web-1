@@ -1,0 +1,390 @@
+/* ================================
+   CRS PRECISION CALIBRATION
+   Direction A: Front Panel / Technical Institution
+   ================================ */
+
+:root {
+  /* LOGO SIZING (Exact Pixel Lock) */
+  --logo-height-desktop: 64px;
+  --logo-height-mobile: 48px;
+  
+  /* BADGE SIZING (Institutional Seal) */
+  --badge-size-desktop: 48px;
+  --badge-size-mobile: 40px;
+  
+  /* LED INDICATORS */
+  --led-size: 10px;
+  --led-spacing: 8px;
+  
+  /* BUTTON CALIBRATION */
+  --button-padding-y: 0.8rem;
+  --button-padding-x: 1.5rem;
+  --button-border-width: 1.5px;
+  --button-font-size: 0.9375rem; /* 15px */
+  
+  /* MODULE BACKGROUNDS (Rack Chassis) */
+  --module-aspect-ratio: 16 / 9;
+  --module-border-thickness: 1.5px;
+  --module-corner-radius: 4px;
+  
+  /* SPACING PRECISION */
+  --header-padding-desktop: 20px 32px;
+  --header-padding-mobile: 16px 20px;
+  --module-padding: 2rem 2.5rem;
+  
+  /* COLORS (Nettle Green + Industrial) */
+  --chassis-bg: #0A1A0F;
+  --panel-bg: rgba(10, 26, 15, 0.85);
+  --border-gold: rgba(212, 160, 23, 0.3);
+  --led-green: #39FF14;
+  --led-amber: #D4A017;
+  --led-orange: #FF8C00;
+  
+  /* TYPOGRAPHY PRECISION */
+  --heading-size-desktop: 1.125rem; /* 18px */
+  --heading-size-mobile: 1rem; /* 16px */
+  --body-size: 0.875rem; /* 14px */
+  --mono-size: 0.813rem; /* 13px */
+}
+
+/* ================================
+   1. HEADER LOGO PRECISION
+   ================================ */
+
+.crs-main-logo {
+  height: var(--logo-height-desktop) !important;
+  width: auto !important;
+  max-width: none !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 767px) {
+  .crs-main-logo {
+    height: var(--logo-height-mobile) !important;
+  }
+}
+
+/* ================================
+   2. HEADER STRUCTURE
+   ================================ */
+
+.rack-header {
+  padding: var(--header-padding-desktop) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: var(--chassis-bg) !important;
+  border-bottom: var(--module-border-thickness) solid var(--border-gold) !important;
+}
+
+@media (max-width: 767px) {
+  .rack-header {
+    padding: var(--header-padding-mobile) !important;
+  }
+}
+
+.rack-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2rem !important;
+}
+
+.rack-header-right {
+  display: flex !important;
+  align-items: center !important;
+  margin-left: auto !important;
+  margin-right: 0 !important; /* Remove previous 1rem inset */
+}
+
+/* ================================
+   3. LED STATUS INDICATORS
+   ================================ */
+
+.rack-unit-led {
+  display: inline-flex;
+  align-items: center;
+  margin-right: var(--led-spacing);
+}
+
+.led {
+  width: var(--led-size);
+  height: var(--led-size);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.led.green {
+  background: var(--led-green);
+  color: var(--led-green);
+}
+
+.led.yellow,
+.led.amber {
+  background: var(--led-amber);
+  color: var(--led-amber);
+}
+
+.led.orange {
+  background: var(--led-orange);
+  color: var(--led-orange);
+}
+
+/* Position LED before heading */
+.rack-unit-title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--led-spacing);
+}
+
+/* ================================
+   4. "BOOK NOW" BUTTON CALIBRATION
+   ================================ */
+
+.book-dropdown-trigger {
+  padding: var(--button-padding-y) var(--button-padding-x) !important;
+  font-size: var(--button-font-size) !important;
+  font-weight: 600 !important;
+  border: var(--button-border-width) solid var(--text-gold) !important;
+  border-radius: var(--module-corner-radius) !important;
+  background: transparent !important;
+  color: var(--text-gold) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.book-dropdown-trigger:hover {
+  background: rgba(232, 155, 60, 0.15) !important;
+  box-shadow: 0 0 16px rgba(232, 155, 60, 0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Primary CTA Buttons */
+.cta-button,
+.cta-button-peak-red {
+  padding: var(--button-padding-y) var(--button-padding-x) !important;
+  font-size: var(--button-font-size) !important;
+  border-width: var(--button-border-width) !important;
+  border-radius: var(--module-corner-radius) !important;
+}
+
+/* ================================
+   5. MODULE BACKGROUNDS (Rack Chassis)
+   ================================ */
+
+.rack-unit {
+  background: var(--panel-bg) !important;
+  border: var(--module-border-thickness) solid var(--border-gold) !important;
+  border-radius: var(--module-corner-radius) !important;
+  padding: var(--module-padding) !important;
+  margin-bottom: 1.5rem !important;
+  position: relative !important;
+  
+  /* Subtle depth gradient */
+  background-image: linear-gradient(
+    135deg, 
+    rgba(10, 26, 15, 0.95) 0%, 
+    rgba(10, 26, 15, 0.85) 100%
+  ) !important;
+  
+  /* Rack panel inset shadow */
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Device-specific accent borders (Left stripe) */
+.device-rehearsal {
+  border-left: 4px solid var(--led-green) !important;
+}
+
+.device-studio {
+  border-left: 4px solid var(--led-amber) !important;
+}
+
+.device-av {
+  border-left: 4px solid var(--led-orange) !important;
+}
+
+.device-cafe {
+  border-left: 4px solid var(--led-amber) !important;
+}
+
+.device-community {
+  border-left: 4px solid var(--led-orange) !important;
+}
+
+/* ================================
+   6. RACK UNIT HEADERS
+   ================================ */
+
+.rack-unit-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.rack-unit-title {
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: var(--heading-size-desktop) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: #E89B3C !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 767px) {
+  .rack-unit-title {
+    font-size: var(--heading-size-mobile) !important;
+  }
+}
+
+/* ================================
+   7. NAVIGATION LINKS
+   ================================ */
+
+.rack-nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.938rem !important; /* 15px */
+  font-weight: 400 !important;
+}
+
+.rack-nav-links a {
+  color: rgba(245, 245, 245, 0.85) !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.rack-nav-links a:hover {
+  color: var(--text-gold) !important;
+}
+
+.rack-nav-links .separator {
+  color: rgba(245, 245, 245, 0.3) !important;
+  font-weight: 300 !important;
+  margin: 0 0.5rem !important;
+}
+
+/* ================================
+   8. FOOTER BANNER LOGO
+   ================================ */
+
+.footer-banner-logo {
+  max-width: 500px !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+  opacity: 0.85 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.footer-banner-logo:hover {
+  opacity: 1 !important;
+}
+
+@media (max-width: 767px) {
+  .footer-banner-logo {
+    max-width: 300px !important;
+  }
+}
+
+/* ================================
+   9. MOBILE OPTIMIZATIONS
+   ================================ */
+
+@media (max-width: 767px) {
+  .rack-header {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .rack-header-left {
+    gap: 1rem;
+  }
+  
+  .rack-header-right {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0 !important;
+    margin-top: 0.5rem;
+  }
+  
+  .book-dropdown-trigger {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .rack-unit {
+    padding: 1.5rem 1.25rem !important;
+  }
+}
+
+/* ================================
+   10. INSTITUTIONAL SEAL (Optional Enhancement)
+   ================================ */
+
+/*
+If you add a top-right badge as a "Status Stamp":
+
+.institutional-seal {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: var(--badge-size-desktop);
+  width: auto;
+}
+
+@media (max-width: 767px) {
+  .institutional-seal {
+    height: var(--badge-size-mobile);
+    right: 16px;
+  }
+}
+*/
+
+/* ================================
+   11. TYPOGRAPHY PRECISION
+   ================================ */
+
+body {
+  font-size: var(--body-size) !important;
+  line-height: 1.6 !important;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: var(--mono-size) !important;
+}
+
+.heading {
+  font-family: 'Archivo Black', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* ================================
+   12. LOAD ORDER NOTE
+   ================================ */
+
+/*
+CRITICAL: This file must load AFTER all other CSS files.
+Add to index.tsx:
+<link rel="stylesheet" href="/static/crs-precision-calibration.css">
+
+Place it as the LAST stylesheet in the <head> block.
+*/
