@@ -52,13 +52,24 @@ header.rack-header * {
    LOGO LOCK - MASSIVE WORDMARK SIZE
    (ONLY SITE HEADER LOGO)
    ------------------------------ */
+/* =========================================================
+   CRS INSTITUTIONAL LOGO — DO NOT CAP HEIGHT
+   
+   This logo is intentionally large for authority.
+   It scales with viewport width (22.5vw, capped 300-700px).
+   Any max-height applied here is a bug.
+   
+   If you think it's "too big", adjust the vw/px values here.
+   This is infrastructure signage, not decoration.
+   ========================================================= */
+
 header.rack-header svg,
 header.rack-header img.logo,
 header.rack-header .logo,
 header.rack-header .crs-main-logo {
-  width: 45vw !important;      /* 45% of viewport width - scales to screen */
-  min-width: 600px !important;  /* Never smaller than 600px */
-  max-width: 1400px !important; /* Never bigger than 1400px */
+  width: 22.5vw !important;     /* 22.5% of viewport width - half of previous 45vw */
+  min-width: 300px !important;  /* Never smaller than 300px */
+  max-width: 700px !important;  /* Never bigger than 700px */
   height: auto !important;
   max-height: none !important;  /* CRITICAL: Override 48px cap from crs-classic-aesthetic.css */
   min-height: none !important;
@@ -73,9 +84,9 @@ header.rack-header .crs-main-logo {
   header.rack-header img.logo,
   header.rack-header .logo,
   header.rack-header .crs-main-logo {
-    width: 70vw !important;      /* 70% viewport on mobile */
-    min-width: 300px !important;
-    max-width: 500px !important;
+    width: 50vw !important;      /* 50% viewport on mobile - proportionally smaller */
+    min-width: 200px !important;
+    max-width: 350px !important;
     max-height: none !important;  /* Override 48px cap on mobile too */
   }
 }
