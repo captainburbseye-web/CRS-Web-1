@@ -313,7 +313,7 @@ const Header = () => (
       <div class="rack-header-left">
         <a href="/" style="display: block; line-height: 0;">
           <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/A_horizontal_text_wordmark_for_Cowley_Road_Studios-1768255184688.png" 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/1024%20BADGE%20%2B%20WORDMARK%20LOCKUP.png" 
             alt="Cowley Road Studios"
             class="crs-main-logo"
           />
@@ -991,8 +991,8 @@ app.get('/studio', (c) => {
           {/* Hardware Presence: Console */}
           <div class="hardware-image" style="margin-top: 2rem;">
             <img 
-              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-master-console-v12.webp"
-              alt="CRS master console"
+              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/512crs_badge_dark%20fixed%20for%20web.png"
+              alt="CRS badge"
               loading="lazy"
             />
           </div>
