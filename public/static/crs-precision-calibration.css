@@ -61,21 +61,9 @@
    1. HEADER LOGO PRECISION (UNCAGED)
    ================================ */
 
-.crs-main-logo {
-  width: 800px !important; /* MASSIVE horizontal wordmark width */
-  height: auto !important; /* Auto height to maintain aspect ratio */
-  max-width: none !important; /* UNCAGED: Removes puny ceiling */
-  max-height: none !important; /* UNCAGED: Removes restrictive binding */
-  display: block !important;
-  object-fit: contain !important;
-}
-
-@media (max-width: 767px) {
-  .crs-main-logo {
-    width: 400px !important; /* Large mobile width */
-    max-width: 90vw !important; /* Don't overflow mobile screens */
-  }
-}
+/* LOGO SIZING MOVED TO crs-header-reset.css (loads last, viewport-scaled) */
+/* .crs-main-logo rules removed to prevent cascade conflicts */
+/* See crs-header-reset.css for canonical logo sizing: 45vw (600-1400px range) */
 
 /* ================================
    2. HEADER STRUCTURE (EXPANDED CHASSIS)
