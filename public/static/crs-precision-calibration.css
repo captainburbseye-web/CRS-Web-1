@@ -5,8 +5,8 @@
 
 :root {
   /* LOGO SIZING (Exact Pixel Lock) */
-  --logo-height-desktop: 64px;
-  --logo-height-mobile: 48px;
+  --logo-height-desktop: 128px; /* Doubled from 64px */
+  --logo-height-mobile: 96px; /* Doubled from 48px */
   
   /* BADGE SIZING (Institutional Seal) */
   --badge-size-desktop: 48px;
@@ -28,8 +28,8 @@
   --module-corner-radius: 4px;
   
   /* SPACING PRECISION */
-  --header-padding-desktop: 20px 32px;
-  --header-padding-mobile: 16px 20px;
+  --header-padding-desktop: 24px 48px; /* Increased from 20px 32px */
+  --header-padding-mobile: 20px 24px; /* Increased from 16px 20px */
   --module-padding: 2rem 2.5rem;
   
   /* COLORS (Nettle Green + Industrial) */
@@ -87,7 +87,7 @@
 .rack-header-left {
   display: flex !important;
   align-items: baseline !important; /* Changed from center to baseline for pixel-perfect alignment */
-  gap: 2rem !important;
+  gap: 3rem !important; /* Increased from 2rem */
 }
 
 .rack-header-right {
@@ -144,7 +144,7 @@
 
 .book-dropdown-trigger {
   padding: var(--button-padding-y) var(--button-padding-x) !important;
-  font-size: var(--button-font-size) !important;
+  font-size: 1.875rem !important; /* Doubled from 0.9375rem (15px) to 30px */
   font-weight: 600 !important;
   border: var(--button-border-width) solid var(--text-gold) !important;
   border-radius: var(--module-corner-radius) !important;
@@ -257,7 +257,7 @@
   align-items: center !important;
   gap: 1rem !important;
   font-family: 'Inter', sans-serif !important;
-  font-size: 0.938rem !important; /* 15px */
+  font-size: 1.875rem !important; /* Doubled from 0.938rem (15px) to 30px */
   font-weight: 400 !important;
 }
 
