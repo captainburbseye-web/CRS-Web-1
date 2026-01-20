@@ -469,9 +469,9 @@ body {
   transform: scale(1.05);
 }
 
-/* BOOK NOW UK Yellow Sign */
+/* BOOK NOW UK Yellow Sign (Web-ready version) */
 .book-now-uk-sign {
-  background: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/1026CRS%20B%20NOW%20UK_yellow_rear_.png') no-repeat center center !important;
+  background: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/1026CRS%20B%20NOW%20UK_yellow_rear_.png') no-repeat center center !important;
   background-size: contain !important;
   border: 2px solid rgba(255, 204, 0, 0.6) !important;
   padding: 0.8rem 1.5rem !important;
