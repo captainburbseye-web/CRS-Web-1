@@ -5,10 +5,9 @@ export const rackDemo = new Hono()
 
 // 🔒 CRITICAL CSS — INLINE (No external dependencies)
 const CRS_RACK_CSS = `
-/* =========================================================
-   CRS RACK UNIT — CANONICAL REFERENCE
-   Purpose: Single source of truth for rack module styling
-   ========================================================= */
+/* ================================
+   CRS RACK UNIT — CANONICAL
+   ================================ */
 
 * {
   margin: 0;
@@ -17,78 +16,109 @@ const CRS_RACK_CSS = `
 }
 
 body {
-  background: #0a0a0a;
-  font-family: 'JetBrains Mono', 'Space Mono', 'Courier New', monospace;
-  color: #f5f5f5;
-  padding: 2rem;
-  line-height: 1.6;
+  margin: 0;
+  background: #0f0f0f;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .rack-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  /* Vertical rails visual cue */
   position: relative;
-  padding: 0 1rem;
+  background: linear-gradient(to bottom, #111, #1b1b1b);
+  padding: 48px 24px;
+  min-height: 100vh;
 }
 
-.rack-container::before,
 .rack-container::after {
   content: '';
   position: absolute;
   top: 0;
-  bottom: 0;
-  width: 4px;
-  background: rgba(212, 160, 23, 0.15);
+  left: 48px;
+  right: 48px;
+  height: 100%;
+  border-left: 1px solid rgba(255,255,255,0.05);
+  border-right: 1px solid rgba(255,255,255,0.05);
+  pointer-events: none;
 }
 
-.rack-container::before {
-  left: 0;
-}
-
-.rack-container::after {
-  right: 0;
-}
-
-/* ================================
-   RACK UNIT — CORE MODULE
-   ================================ */
 .rack-unit {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    rgba(28, 28, 28, 0.95) 0%,
-    rgba(18, 18, 18, 0.98) 100%
-  );
-  border: 1px solid rgba(60, 60, 60, 0.4);
-  border-left: 3px solid rgba(212, 160, 23, 0.3);
-  border-radius: 4px;
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
-  
-  /* Depth physics */
+  background-color: #1a1a1a;
+  border: 2px solid #333;
+  border-top-color: #444;
+  border-bottom-color: #222;
+  border-radius: 6px;
+  padding: 24px;
+  margin-bottom: 32px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.05),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
-    0 2px 4px rgba(0, 0, 0, 0.3);
-  
-  /* Noise texture */
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    inset 0 1px 3px rgba(255,255,255,0.05),
+    0 4px 12px rgba(0,0,0,0.3);
 }
 
-/* ================================
-   RACK SCREWS (4-CORNER MOUNTING)
-   ================================ */
+.rack-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.rack-label {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: #e0e0e0;
+  background-color: #222;
+  padding: 4px 12px;
+  border: 1px solid #444;
+  text-transform: uppercase;
+}
+
+.rack-content {
+  line-height: 1.6;
+}
+
+.rack-content p {
+  margin: 0 0 12px 0;
+  color: #cfcfcf;
+  line-height: 1.6;
+}
+
+.rack-spec {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0 0 0;
+}
+
+.rack-spec li {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 13px;
+  color: #bdbdbd;
+  margin-bottom: 6px;
+  padding: 6px 0;
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+.rack-spec li:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.rack-spec strong {
+  color: #ffffff;
+  font-weight: 500;
+}
+
 .screw {
-  position: absolute;
   width: 10px;
   height: 10px;
-  background: radial-gradient(circle, #888 30%, #444 70%);
+  background: radial-gradient(circle, #666 30%, #333 70%);
   border-radius: 50%;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
-  pointer-events: none; /* Don't intercept clicks */
+  position: absolute;
+  pointer-events: none;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.5);
 }
 
 .screw::after {
@@ -99,136 +129,50 @@ body {
   transform: translate(-50%, -50%);
   width: 6px;
   height: 1px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.6);
 }
 
-.screw.top-left {
-  top: 12px;
-  left: 12px;
-}
+.top-left { top: 8px; left: 8px; }
+.top-right { top: 8px; right: 8px; }
+.bottom-left { bottom: 8px; left: 8px; }
+.bottom-right { bottom: 8px; right: 8px; }
 
-.screw.top-right {
-  top: 12px;
-  right: 12px;
-}
-
-.screw.bottom-left {
-  bottom: 12px;
-  left: 12px;
-}
-
-.screw.bottom-right {
-  bottom: 12px;
-  right: 12px;
-}
-
-/* ================================
-   RACK HEADER
-   ================================ */
-.rack-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
-}
-
-.rack-label {
-  font-family: 'Oswald', 'Arial Black', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(212, 160, 23, 0.9);
-}
-
-/* ================================
-   RACK INDICATORS (STATUS LEDs)
-   ================================ */
 .rack-indicator {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  box-shadow: 0 0 8px currentColor;
+  border: 1px solid rgba(0,0,0,0.6);
   flex-shrink: 0;
 }
 
 .rack-indicator.green {
-  background: #4CAF50;
-  color: #4CAF50;
+  background: radial-gradient(circle, #66ff66, #0a5f0a);
+  box-shadow: 0 0 6px rgba(102,255,102,0.4);
 }
 
 .rack-indicator.yellow {
-  background: #FFD700;
-  color: #FFD700;
+  background: radial-gradient(circle, #ffff66, #9a7f0a);
+  box-shadow: 0 0 6px rgba(255,255,102,0.4);
 }
 
 .rack-indicator.orange {
-  background: #FF8C00;
-  color: #FF8C00;
+  background: radial-gradient(circle, #ff9966, #8a3f0a);
+  box-shadow: 0 0 6px rgba(255,153,102,0.4);
 }
 
 .rack-indicator.red {
-  background: #DC143C;
-  color: #DC143C;
+  background: radial-gradient(circle, #ff6666, #8a0a0a);
+  box-shadow: 0 0 6px rgba(255,102,102,0.4);
 }
 
 /* LED pulse animation (live state only) */
 @keyframes pulse-led {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0.6; }
 }
 
 .rack-indicator.pulse {
   animation: pulse-led 2s ease-in-out infinite;
-}
-
-/* ================================
-   RACK CONTENT
-   ================================ */
-.rack-content {
-  font-size: 0.9375rem;
-  color: rgba(245, 245, 245, 0.85);
-  line-height: 1.7;
-}
-
-.rack-content p {
-  margin-bottom: 1rem;
-}
-
-.rack-content strong {
-  color: #FFD700;
-  font-weight: 700;
-}
-
-/* ================================
-   RACK SPEC LIST (TECHNICAL DETAILS)
-   ================================ */
-.rack-spec {
-  list-style: none;
-  padding: 0;
-  margin-top: 1rem;
-  font-size: 0.875rem;
-  color: rgba(245, 245, 245, 0.75);
-}
-
-.rack-spec li {
-  padding: 0.5rem 0;
-  border-top: 1px solid rgba(60, 60, 60, 0.3);
-}
-
-.rack-spec li:first-child {
-  border-top: none;
-  padding-top: 0;
-}
-
-.rack-spec strong {
-  color: rgba(212, 160, 23, 0.8);
-  font-weight: 700;
-  font-size: 0.8125rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 /* ================================
@@ -244,24 +188,31 @@ body {
    MOBILE RESPONSIVE
    ================================ */
 @media (max-width: 767px) {
-  body {
-    padding: 1rem;
+  .rack-container {
+    padding: 24px 16px;
+  }
+  
+  .rack-container::after {
+    left: 24px;
+    right: 24px;
   }
   
   .rack-unit {
-    padding: 1.5rem 1rem 1rem 1rem;
+    padding: 20px 16px;
+    margin-bottom: 24px;
   }
   
   .rack-label {
-    font-size: 0.75rem;
+    font-size: 11px;
+    padding: 3px 8px;
   }
   
-  .rack-content {
-    font-size: 0.875rem;
+  .rack-content p {
+    font-size: 14px;
   }
   
-  .rack-spec {
-    font-size: 0.8125rem;
+  .rack-spec li {
+    font-size: 12px;
   }
   
   .screw {
@@ -269,24 +220,24 @@ body {
     height: 8px;
   }
   
-  .screw.top-left,
-  .screw.top-right {
-    top: 10px;
+  .top-left,
+  .top-right {
+    top: 6px;
   }
   
-  .screw.bottom-left,
-  .screw.bottom-right {
-    bottom: 10px;
+  .bottom-left,
+  .bottom-right {
+    bottom: 6px;
   }
   
-  .screw.top-left,
-  .screw.bottom-left {
-    left: 10px;
+  .top-left,
+  .bottom-left {
+    left: 6px;
   }
   
-  .screw.top-right,
-  .screw.bottom-right {
-    right: 10px;
+  .top-right,
+  .bottom-right {
+    right: 6px;
   }
 }
 `
