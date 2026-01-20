@@ -62,8 +62,8 @@
    ================================ */
 
 .crs-main-logo {
-  height: var(--logo-height-desktop) !important;
-  width: auto !important;
+  width: 800px !important; /* MASSIVE horizontal wordmark width */
+  height: auto !important; /* Auto height to maintain aspect ratio */
   max-width: none !important; /* UNCAGED: Removes puny ceiling */
   max-height: none !important; /* UNCAGED: Removes restrictive binding */
   display: block !important;
@@ -72,7 +72,8 @@
 
 @media (max-width: 767px) {
   .crs-main-logo {
-    height: var(--logo-height-mobile) !important;
+    width: 400px !important; /* Large mobile width */
+    max-width: 90vw !important; /* Don't overflow mobile screens */
   }
 }
 
