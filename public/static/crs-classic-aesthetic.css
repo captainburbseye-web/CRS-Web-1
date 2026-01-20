@@ -171,14 +171,14 @@ body:not(.wsc-mode) {
   width: auto !important;
 }
 
-/* CRS MAIN LOGO (badge + wordmark lockup) - let it breathe */
-.crs-main-logo {
-  max-height: none !important;  /* Remove height lock */
+/* CRS MAIN LOGO - CONTROLLED BY crs-precision-calibration.css */
+/* .crs-main-logo {
+  max-height: none !important;
   height: auto !important;
-  max-width: 500px !important;  /* Increased from 400px to 500px */
+  max-width: 500px !important;
   width: auto !important;
   display: block;
-}
+} */
 
 .logo-hardware-panel {
   max-height: 42px !important;
@@ -521,11 +521,11 @@ footer {
     height: 36px !important;
   }
   
-  /* Badge + wordmark scales down on mobile */
-  .crs-main-logo {
-    max-width: 250px !important;  /* Smaller on mobile */
+  /* Badge + wordmark scales down on mobile - CONTROLLED BY crs-precision-calibration.css */
+  /* .crs-main-logo {
+    max-width: 250px !important;
     height: auto !important;
-  }
+  } */
   
   /* Adjust header padding */
   .rack-header {
@@ -697,14 +697,14 @@ footer {
   min-width: 0 !important;
 }
 
-/* 3) Make the lockup bigger, but never distort */
-.crs-main-logo {
-  height: 56px !important;         /* tune 52–68px */
+/* 3) Make the lockup bigger, but never distort - CONTROLLED BY crs-precision-calibration.css */
+/* .crs-main-logo {
+  height: 56px !important;
   width: auto !important;
-  max-width: none !important;      /* don't clamp it */
+  max-width: none !important;
   display: block !important;
   object-fit: contain !important;
-}
+} */
 
 /* 4) Nav alignment and spacing */
 .rack-nav-links {
@@ -741,9 +741,9 @@ footer {
     padding-top: 10px !important;
     padding-bottom: 10px !important;
   }
-  .crs-main-logo {
+  /* .crs-main-logo {
     height: 46px !important;
-  }
+  } */
   .rack-nav-links {
     font-size: .95rem !important;
   }
@@ -779,13 +779,13 @@ footer {
   gap: 24px !important;
 }
 
-.crs-main-logo {
-  height: 56px !important;         /* tune 52–64 */
+/* .crs-main-logo {
+  height: 56px !important;
   width: auto !important;
   display: block !important;
   object-fit: contain !important;
   max-width: none !important;
-}
+} */
 
 /* ================================
    P0.2 — Enforce consistent page grid
