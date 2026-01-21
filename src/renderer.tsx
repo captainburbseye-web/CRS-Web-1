@@ -45,6 +45,10 @@ export const renderer = jsxRenderer(({ children }) => {
         
         {/* Clean CSS */}
         <link href="/static/clean.css" rel="stylesheet" />
+        
+        {/* CRS SPACING SCALE: 8px base unit system - foundation for all rhythm (LOADS EARLY) */}
+        <link href="/static/crs-spacing-scale.css" rel="stylesheet" />
+        
         <link href="/static/crs-positioning-fixes.css" rel="stylesheet" />
         <link href="/static/crs-proportion-fixes.css" rel="stylesheet" />
         <link href="/static/crs-nav-button-refinement.css" rel="stylesheet" />

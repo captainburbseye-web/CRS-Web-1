@@ -1,0 +1,145 @@
+/* =========================================================
+   CRS SPACING SCALE — 8px BASE UNIT SYSTEM
+   Purpose: Mathematical harmony for rack-mounted UI
+   Scope: Global spacing variables
+   Load: EARLY in cascade (before components)
+   ========================================================= */
+
+:root {
+  /* ==========================================
+     8px Base Unit Scale
+     Every measurement is a multiple of 8px
+     ========================================== */
+  
+  --space-xs: 4px;    /* Fine detail / tight borders */
+  --space-sm: 8px;    /* The "Rack Gap" - minimum breathing room */
+  --space-md: 16px;   /* Standard internal padding */
+  --space-lg: 24px;   /* Vertical rhythm for headers */
+  --space-xl: 32px;   /* Section sub-divisions */
+  --space-xxl: 64px;  /* Major rack unit separation */
+  
+  /* ==========================================
+     Standardized Leading (Vertical Rhythm)
+     Predictable text baseline
+     ========================================== */
+  
+  --line-height-base: 1.5;      /* Body text */
+  --line-height-tight: 1.2;     /* Headers */
+  --line-height-loose: 1.8;     /* Technical specs */
+  
+  /* ==========================================
+     Component-Specific Spacing
+     Apply these to maintain rhythm
+     ========================================== */
+  
+  /* Rack Unit Spacing */
+  --rack-unit-gap: var(--space-sm);        /* Between units (8px = tight stack) */
+  --rack-unit-padding: var(--space-xl);    /* Internal padding (32px) */
+  --rack-header-gap: var(--space-lg);      /* Header to content (24px) */
+  
+  /* Text Block Spacing */
+  --text-block-gap: var(--space-md);       /* Between paragraphs (16px) */
+  --section-header-gap: var(--space-xxl);  /* Before major sections (64px) */
+  
+  /* Button/CTA Spacing */
+  --cta-padding-y: var(--space-md);        /* Vertical button padding (16px) */
+  --cta-padding-x: var(--space-lg);        /* Horizontal button padding (24px) */
+  --cta-gap: var(--space-md);              /* Between buttons (16px) */
+}
+
+/* ==========================================
+   ENFORCEMENT: Vertical Rhythm
+   Apply spacing scale to rack components
+   ========================================== */
+
+/* Rack Units - Physical Stacking (No Gap) */
+.rack-unit {
+  margin-bottom: 0; /* Units touch = rack-mounted aesthetic */
+}
+
+/* Rack Unit Content - Internal Rhythm */
+.rack-unit-content {
+  padding: var(--rack-unit-padding) var(--space-lg);
+  line-height: var(--line-height-base);
+}
+
+/* Rack Unit Header */
+.rack-unit-header {
+  margin-bottom: var(--rack-header-gap);
+}
+
+/* Text Blocks - Consistent Baseline */
+.rack-unit-content p {
+  margin-bottom: var(--text-block-gap);
+  line-height: var(--line-height-base);
+}
+
+.rack-unit-content p:last-child {
+  margin-bottom: 0; /* Remove trailing space */
+}
+
+/* Lists - Technical Specs */
+.rack-unit-content ul,
+.rack-unit-content ol {
+  margin-bottom: var(--text-block-gap);
+  line-height: var(--line-height-loose);
+}
+
+/* Headers - Reset Points */
+.rack-unit-content h2,
+.rack-unit-content h3 {
+  margin-top: var(--space-xxl);
+  margin-bottom: var(--space-lg);
+  line-height: var(--line-height-tight);
+}
+
+.rack-unit-content h2:first-child,
+.rack-unit-content h3:first-child {
+  margin-top: 0; /* No gap if first element */
+}
+
+/* Buttons/CTAs - Consistent Touch Targets */
+.cta-button,
+.rack-unit-content button,
+.rack-unit-content a.cta-button {
+  padding: var(--cta-padding-y) var(--cta-padding-x);
+  margin-bottom: var(--cta-gap);
+}
+
+/* CTA Groups - Horizontal Rhythm */
+.rack-unit-content div[style*="display: flex"] {
+  gap: var(--cta-gap);
+}
+
+/* ==========================================
+   LAYER 2: Workshop Café Breathing Room
+   Café gets more space = warmer, less industrial
+   ========================================== */
+
+.rack-unit.device-cafe .rack-unit-content {
+  padding: var(--space-xxl) var(--space-xl); /* More generous padding */
+}
+
+.rack-unit.device-cafe p {
+  margin-bottom: var(--space-lg); /* Looser text rhythm */
+}
+
+/* ==========================================
+   MOBILE: Tighter Rhythm
+   Smaller screens need less space
+   ========================================== */
+
+@media (max-width: 767px) {
+  :root {
+    --rack-unit-padding: var(--space-lg); /* 24px on mobile */
+    --space-xxl: 48px;                     /* Smaller section gaps */
+  }
+  
+  .rack-unit-content {
+    padding: var(--rack-unit-padding) var(--space-md);
+  }
+  
+  .rack-unit.device-cafe .rack-unit-content {
+    padding: var(--space-xl) var(--space-lg); /* Still more generous than CRS */
+  }
+}
