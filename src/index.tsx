@@ -379,62 +379,51 @@ const Footer = () => (
     </nav>
 
     <footer class="crs-footer-technical mono">
-      {/* Technical Footer: Datasheet Format */}
+      {/* Technical Footer: Legal-Spec Datasheet Format */}
       <div class="footer-metadata">
         
-        {/* Section Label */}
-        <p class="footer-section-label">CRS OPERATIONAL PARAMETERS</p>
-        
-        {/* Primary Location */}
-        <div class="footer-data-block">
-          <p class="footer-data-line">COWLEY ROAD STUDIOS (CRS)</p>
-          <p class="footer-data-line">118 Cowley Road</p>
-          <p class="footer-data-line">Oxford, OX4 1JE</p>
-          <p class="footer-data-line">United Kingdom</p>
+        {/* Revision Header */}
+        <div class="footer-revision-header">
+          <p class="footer-revision-id">CRS-SYS-FOOTER v1.2</p>
+          <p class="footer-revision-date">LAST REVISED: 2026-01-21</p>
         </div>
         
-        {/* Coordinates */}
+        {/* Section Label */}
+        <p class="footer-section-label">OPERATIONAL PARAMETERS</p>
+        
+        {/* Primary Entity */}
         <div class="footer-data-block">
-          <p class="footer-data-label">COORDINATES</p>
-          <p class="footer-data-line">Lat: 51.7436 N</p>
-          <p class="footer-data-line">Long: 1.2304 W</p>
+          <p class="footer-data-line">COWLEY ROAD STUDIOS (CRS) · 118 Cowley Road, Oxford, OX4 1JE, United Kingdom</p>
+          <p class="footer-data-line">COORDINATES: 51.7436 N, 1.2304 W</p>
         </div>
         
         {/* System Status */}
         <div class="footer-data-block">
-          <p class="footer-data-label">SYSTEM STATUS</p>
-          <p class="footer-data-line">Hybrid commissioning phase.</p>
-          <p class="footer-data-line">Infrastructure live. Build completion ongoing.</p>
+          <p class="footer-data-label">STATUS</p>
+          <p class="footer-data-line">Hybrid commissioning. Infrastructure operational. Build phase in progress.</p>
         </div>
         
-        {/* Operating Principle */}
+        {/* Operating Protocol */}
         <div class="footer-data-block">
-          <p class="footer-data-label">OPERATING PRINCIPLE</p>
-          <p class="footer-data-line">CRS operates under a no-chaos protocol.</p>
-          <p class="footer-data-line">All activity is scheduled, signal-managed,</p>
-          <p class="footer-data-line">and capacity-governed. Unallocated access</p>
-          <p class="footer-data-line">is not supported.</p>
+          <p class="footer-data-label">PROTOCOL</p>
+          <p class="footer-data-line">No-chaos operation. Scheduled access only. Signal-managed capacity. Unallocated entry not supported.</p>
         </div>
         
-        {/* Access Conditions */}
+        {/* Access Terms */}
         <div class="footer-data-block">
-          <p class="footer-data-label">ACCESS CONDITIONS</p>
-          <p class="footer-data-line">Studio sessions by allocation only.</p>
-          <p class="footer-data-line">Dry hire subject to prior system clearance.</p>
-          <p class="footer-data-line">Public-facing services operate within</p>
-          <p class="footer-data-line">posted parameters.</p>
+          <p class="footer-data-label">ACCESS</p>
+          <p class="footer-data-line">Studio sessions: allocation-based. Dry hire: subject to clearance. Public services: within posted parameters.</p>
         </div>
         
-        {/* Contact Interface */}
+        {/* Contact */}
         <div class="footer-data-block">
-          <p class="footer-data-label">CONTACT INTERFACE</p>
+          <p class="footer-data-label">CONTACT</p>
           <p class="footer-data-line"><a href="/contact" class="footer-link">studio@cowleyroadstudios.com</a></p>
         </div>
         
         {/* System Signature */}
         <div class="footer-data-block footer-signature-block">
-          <p class="footer-data-line">© 2026 CRS</p>
-          <p class="footer-data-line">POWERED BY <span class="footer-highlight">0DR0</span> ENGINEERING</p>
+          <p class="footer-data-line">© 2026 CRS · POWERED BY <span class="footer-highlight">0DR0</span> ENGINEERING</p>
         </div>
         
       </div>
