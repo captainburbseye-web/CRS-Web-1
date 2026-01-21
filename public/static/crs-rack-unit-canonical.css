@@ -163,6 +163,7 @@
 /* Apply pulse ONLY when explicitly needed */
 .led.pulse {
   animation: pulse-led 2s ease-in-out infinite;
+  will-change: opacity; /* Hardware acceleration - prevent mobile stutter */
 }
 
 /* ------------------------------

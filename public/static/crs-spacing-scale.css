@@ -52,9 +52,13 @@
    Apply spacing scale to rack components
    ========================================== */
 
-/* Rack Units - Physical Stacking (No Gap) */
+/* Rack Units - Physical Stacking (16px Gap = Rack-Mounted) */
 .rack-unit {
-  margin-bottom: 0; /* Units touch = rack-mounted aesthetic */
+  margin-bottom: var(--space-md); /* 16px gap between units */
+}
+
+.rack-unit:last-of-type {
+  margin-bottom: 0; /* No trailing gap after last unit */
 }
 
 /* Rack Unit Content - Internal Rhythm */
@@ -136,10 +140,10 @@
   }
   
   .rack-unit-content {
-    padding: var(--rack-unit-padding) var(--space-md);
+    padding: var(--rack-unit-padding) var(--space-md); /* 24px vertical, 16px horizontal */
   }
   
   .rack-unit.device-cafe .rack-unit-content {
-    padding: var(--space-xl) var(--space-lg); /* Still more generous than CRS */
+    padding: var(--space-xl) var(--space-md); /* 32px vertical, 16px horizontal - still more generous */
   }
 }
