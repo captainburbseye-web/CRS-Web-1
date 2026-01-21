@@ -749,7 +749,7 @@ app.get('/', (c) => {
       <section class="rack-unit device-status" style="background: rgba(255, 140, 0, 0.05); border-left: 4px solid #FF8C00;">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
-            <span class="led orange" style="animation: pulse-led 2s ease-in-out infinite;"></span>
+            <span class="led orange"></span>
           </div>
           <h2 class="rack-unit-title" style="color: #FF8C00;">/// SYSTEM STATUS — COWLEY ROAD BUILD</h2>
         </div>
@@ -770,7 +770,7 @@ app.get('/', (c) => {
             </p>
           </div>
           <div style="text-align: center;">
-            <a href="/studio" class="cta-button" style="border-color: #FF8C00; color: #FF8C00;">VIEW STUDIO PRE-SALE</a>
+            <a href="/studio" class="cta-button" style="border-color: #FF8C00; color: #FF8C00;">STUDIO PRE-SALE</a>
           </div>
         </div>
       </section>
@@ -911,7 +911,7 @@ app.get('/studio', (c) => {
         {/* PRE-SALE MODULE — FUND THE BUILD */}
         <div class="content-block" style="background: rgba(127, 255, 0, 0.05); border: 3px solid #39FF14; padding: 2rem; margin-bottom: 2rem;">
           <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-            <span class="led green" style="animation: pulse-led 2s ease-in-out infinite; width: 14px; height: 14px;"></span>
+            <span class="led green" style="width: 14px; height: 14px;"></span>
             <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.25rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">
               PRE-SALE: BOOK NOW · FUND THE BUILD
             </h3>

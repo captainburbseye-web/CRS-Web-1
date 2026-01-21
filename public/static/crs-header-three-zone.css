@@ -15,7 +15,7 @@ header.rack-header {
   grid-template-areas: "logo nav cta";
   align-items: center;
   gap: var(--space-xl); /* 32px between zones */
-  padding: var(--space-lg) var(--space-xl); /* 24px vertical, 32px horizontal */
+  padding: var(--space-md) var(--space-xl); /* TIGHTENED: 16px vertical (was 24px), 32px horizontal */
   background: #000;
   border-bottom: 1px solid rgba(212, 160, 23, 0.2);
 }
