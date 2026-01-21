@@ -322,13 +322,13 @@ const Header = () => (
         <span class="hamburger-icon">☰</span>
       </button>
       
-      {/* LEFT ZONE: Logo (Authority) */}
+      {/* LEFT ZONE: CRS Badge Only (No Text) */}
       <div class="rack-header-logo">
         <a href="/" style="display: block; line-height: 0;">
           <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/x2%201024%20BADGE%20%2B%20WORDMARK%20LOCKUP.png" 
-            alt="Cowley Road Studios"
-            class="crs-main-logo"
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/128%20px%20crs_badge_dark%20-%20Copy.png" 
+            alt="CRS"
+            class="header-crs-badge"
           />
         </a>
       </div>

@@ -21,7 +21,8 @@ header.rack-header {
 }
 
 /* ==========================================
-   ZONE 1: Logo (Authority — Left)
+   ZONE 1: CRS Badge (Authority — Left)
+   64px x 64px, no text
    ========================================== */
 
 .rack-header-logo {
@@ -30,13 +31,18 @@ header.rack-header {
   align-items: center;
 }
 
-.rack-header-logo .crs-main-logo {
-  width: 22.5vw !important;
-  min-width: 300px !important;
-  max-width: 700px !important;
-  height: auto !important;
-  max-height: none !important;
+.header-crs-badge {
+  width: 64px;
+  height: 64px;
+  /* Ensure it doesn't shrink or grow */
+  flex-shrink: 0;
+  flex-grow: 0;
   display: block;
+}
+
+/* Remove old logo sizing rules (no longer needed) */
+.rack-header-logo .crs-main-logo {
+  display: none; /* Hidden - replaced by badge */
 }
 
 /* ==========================================
@@ -113,11 +119,9 @@ header.rack-header {
 
 @media (max-width: 768px) {
   header.rack-header {
-    grid-template-columns: 1fr auto; /* Logo | Menu toggle */
+    grid-template-columns: auto 1fr auto; /* Badge | Nav | Toggle */
     grid-template-areas: 
-      "logo toggle"
-      "nav nav"
-      "cta cta";
+      "logo nav toggle";
     gap: var(--space-md);
     padding: var(--space-md) var(--space-lg);
   }
@@ -137,30 +141,23 @@ header.rack-header {
     grid-area: logo;
   }
   
-  .rack-header-logo .crs-main-logo {
-    width: 50vw !important;
-    min-width: 200px !important;
-    max-width: 350px !important;
+  .header-crs-badge {
+    width: 48px; /* Slightly smaller on mobile */
+    height: 48px;
   }
   
   .rack-header-nav {
     grid-area: nav;
-    flex-direction: column;
+    justify-content: flex-start; /* Left-align on mobile */
     gap: var(--space-sm);
-    display: none; /* Hidden by default on mobile */
   }
   
-  .rack-header-nav.mobile-open {
-    display: flex; /* Show when menu is open */
-  }
-  
-  .rack-header-nav .separator {
-    display: none; /* Hide separators on mobile */
+  .rack-header-nav a {
+    font-size: 14px; /* Smaller nav text on mobile */
   }
   
   .rack-header-cta {
-    grid-area: cta;
-    justify-content: center;
+    display: none; /* Hide Book Now on mobile - use hamburger menu */
   }
 }
 
