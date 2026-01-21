@@ -1,0 +1,136 @@
+/* =========================================================
+   CRS TECHNICAL FOOTER
+   Purpose: Service manual / datasheet footer format
+   Aesthetic: Equipment documentation, not brand prose
+   Load: After all other footer CSS
+   ========================================================= */
+
+/* ==========================================
+   CONTAINER: Technical Metadata Block
+   ========================================== */
+
+footer.crs-footer-technical {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: #8f8f8f; /* Low-contrast gray */
+  background: #0f0f0f; /* Deep black */
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 32px 24px;
+  letter-spacing: 0.02em;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* ==========================================
+   SECTION LABEL: Small Print Header
+   ========================================== */
+
+.footer-section-label {
+  font-size: 10px;
+  color: #bdbdbd;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+/* ==========================================
+   DATA BLOCKS: Stacked Metadata
+   ========================================== */
+
+.footer-data-block {
+  margin-bottom: 20px;
+  line-height: 1.65;
+}
+
+.footer-data-label {
+  font-size: 10px;
+  color: #a8a8a8;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.footer-data-line {
+  font-size: 11.5px;
+  color: #8f8f8f;
+  margin: 0;
+  padding: 0;
+  line-height: 1.65;
+}
+
+/* ==========================================
+   LINKS: Subtle, No Button Styling
+   ========================================== */
+
+.footer-link {
+  color: #a8a8a8;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(168, 168, 168, 0.3);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.footer-link:hover {
+  color: #d4a017; /* Subtle gold hover */
+  border-bottom-color: rgba(212, 160, 23, 0.6);
+}
+
+/* ==========================================
+   SIGNATURE BLOCK: System Credits
+   ========================================== */
+
+.footer-signature-block {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.footer-highlight {
+  color: #d4a017; /* Standby gold */
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================
+   MOBILE: Maintain Readability
+   ========================================== */
+
+@media (max-width: 768px) {
+  footer.crs-footer-technical {
+    padding: 24px 16px;
+    font-size: 11px;
+  }
+  
+  .footer-section-label {
+    font-size: 9px;
+  }
+  
+  .footer-data-label {
+    font-size: 9px;
+  }
+  
+  .footer-data-line {
+    font-size: 11px;
+  }
+}
+
+/* ==========================================
+   ANTI-DRIFT: Lock Typography
+   ========================================================= */
+
+footer.crs-footer-technical * {
+  box-sizing: border-box;
+}
+
+footer.crs-footer-technical p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove any inherited brand styling */
+footer.crs-footer-technical .footer-data-block:last-child {
+  margin-bottom: 0;
+}

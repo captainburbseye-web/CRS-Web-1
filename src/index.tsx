@@ -378,50 +378,65 @@ const Footer = () => (
       <a href="/contact">CONTACT</a>
     </nav>
 
-    <footer class="crs-footer mono">
-      {/* CRS Banner Logo */}
-      <div class="footer-logo-container">
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/odro%20av/Remove_background-1768893690736.png" 
-          alt="Cowley Road Studios"
-          class="footer-banner-logo"
-        />
-      </div>
-      
-      {/* CRS Locations (Quiet List) */}
-      <div class="footer-locations">
-        <p class="footer-locations-header">CRS Locations</p>
-        <p class="footer-location-item">– Cowley Road, Oxford, OX4 1JE</p>
-        <p class="footer-location-item">– Cricket Road, Oxford</p>
-      </div>
-
-      {/* Contact */}
-      <div class="footer-contact">
-        <p>CONTACT: <a href="/contact">Use contact form</a></p>
-      </div>
-
-      {/* Build Phase Disclaimer */}
-      <div class="footer-policy">
-        <p class="footer-policy-header">BUILD PHASE</p>
-        <p class="footer-policy-text">
-          Cowley Road Studios is completing the final phase of the Cowley Road build. Band rehearsals and repairs are available now. Recording and production are available by enquiry during this phase.
-        </p>
-      </div>
-
-      {/* No Chaos Policy */}
-      <div class="footer-policy">
-        <p class="footer-policy-header">NO CHAOS POLICY</p>
-        <p class="footer-policy-text">
-          CRS operates under a strict no-chaos protocol. All systems are maintained to function reliably, predictably, and without drama. Equipment is tested, signal paths are documented, and technical decisions are made based on engineering reality—not hype.
-        </p>
-      </div>
-
-      {/* Footer Signature */}
-      <div class="footer-signature">
-        <p class="footer-credit">© 2026 CRS</p>
-        <p class="footer-credit mono">
-          POWERED BY <span style="color: var(--standby-gold); font-weight: 800;">0DR0</span> ENGINEERING
-        </p>
+    <footer class="crs-footer-technical mono">
+      {/* Technical Footer: Datasheet Format */}
+      <div class="footer-metadata">
+        
+        {/* Section Label */}
+        <p class="footer-section-label">CRS OPERATIONAL PARAMETERS</p>
+        
+        {/* Primary Location */}
+        <div class="footer-data-block">
+          <p class="footer-data-line">COWLEY ROAD STUDIOS (CRS)</p>
+          <p class="footer-data-line">118 Cowley Road</p>
+          <p class="footer-data-line">Oxford, OX4 1JE</p>
+          <p class="footer-data-line">United Kingdom</p>
+        </div>
+        
+        {/* Coordinates */}
+        <div class="footer-data-block">
+          <p class="footer-data-label">COORDINATES</p>
+          <p class="footer-data-line">Lat: 51.7436 N</p>
+          <p class="footer-data-line">Long: 1.2304 W</p>
+        </div>
+        
+        {/* System Status */}
+        <div class="footer-data-block">
+          <p class="footer-data-label">SYSTEM STATUS</p>
+          <p class="footer-data-line">Hybrid commissioning phase.</p>
+          <p class="footer-data-line">Infrastructure live. Build completion ongoing.</p>
+        </div>
+        
+        {/* Operating Principle */}
+        <div class="footer-data-block">
+          <p class="footer-data-label">OPERATING PRINCIPLE</p>
+          <p class="footer-data-line">CRS operates under a no-chaos protocol.</p>
+          <p class="footer-data-line">All activity is scheduled, signal-managed,</p>
+          <p class="footer-data-line">and capacity-governed. Unallocated access</p>
+          <p class="footer-data-line">is not supported.</p>
+        </div>
+        
+        {/* Access Conditions */}
+        <div class="footer-data-block">
+          <p class="footer-data-label">ACCESS CONDITIONS</p>
+          <p class="footer-data-line">Studio sessions by allocation only.</p>
+          <p class="footer-data-line">Dry hire subject to prior system clearance.</p>
+          <p class="footer-data-line">Public-facing services operate within</p>
+          <p class="footer-data-line">posted parameters.</p>
+        </div>
+        
+        {/* Contact Interface */}
+        <div class="footer-data-block">
+          <p class="footer-data-label">CONTACT INTERFACE</p>
+          <p class="footer-data-line"><a href="/contact" class="footer-link">studio@cowleyroadstudios.com</a></p>
+        </div>
+        
+        {/* System Signature */}
+        <div class="footer-data-block footer-signature-block">
+          <p class="footer-data-line">© 2026 CRS</p>
+          <p class="footer-data-line">POWERED BY <span class="footer-highlight">0DR0</span> ENGINEERING</p>
+        </div>
+        
       </div>
     </footer>
 

@@ -87,6 +87,8 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-typography-lockdown.css" rel="stylesheet" />
         {/* BOOK NOW CONTROL: Hardware-grade control spec - sacred, do not iterate (LOADS ABSOLUTE LAST) */}
         <link href="/static/crs-book-now-control.css" rel="stylesheet" />
+        {/* FOOTER TECHNICAL: Service manual / datasheet footer format */}
+        <link href="/static/crs-footer-technical.css" rel="stylesheet" />
         {/* RACK FOOTER TERMINATION: 1U rack unit that closes the rack case at bottom */}
         <link href="/static/crs-rack-footer-termination.css" rel="stylesheet" />
         {/* HEADER LOCKDOWN RESET: Nuclear header reset - prevents all drift (LOADS ABSOLUTE LAST - STEEL BEAM) */}
