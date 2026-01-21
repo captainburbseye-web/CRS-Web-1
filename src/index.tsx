@@ -936,7 +936,7 @@ app.get('/studio', (c) => {
           <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
             <span class="led green" style="width: 14px; height: 14px;"></span>
             <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.25rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">
-              PRE-SALE: BOOK NOW · FUND THE BUILD
+              BUILD RATE PRE-SALE · FUND THE BUILD
             </h3>
           </div>
           
@@ -947,11 +947,11 @@ app.get('/studio', (c) => {
             <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem;">
               <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
                 <span style="position: absolute; left: 0; color: #39FF14; font-weight: bold;">→</span>
-                Lock in <strong style="color: #39FF14;">40% discounted rates</strong> for the first 12 months post-launch
+                Lock in <strong style="color: #39FF14;">commissioning rates</strong> for 2025/26
               </li>
               <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
                 <span style="position: absolute; left: 0; color: #39FF14; font-weight: bold;">→</span>
-                Your deposit directly funds the Cowley Road fit-out
+                Your allocation directly funds final-stage construction
               </li>
               <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
                 <span style="position: absolute; left: 0; color: #39FF14; font-weight: bold;">→</span>
@@ -963,24 +963,71 @@ app.get('/studio', (c) => {
               </li>
             </ul>
             
-            <div style="background: rgba(0, 0, 0, 0.3); border-left: 3px solid #39FF14; padding: 1.25rem; margin-bottom: 1.5rem;">
-              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.75rem;">
-                <strong style="color: #39FF14;">STANDARD RATE (POST-LAUNCH):</strong> £500–£700 per day
-              </p>
-              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; color: rgba(245, 245, 245, 0.7);">
-                <strong style="color: #39FF14;">PRE-SALE RATE (LOCK IN NOW):</strong> £300–£420 per day (40% off)
-              </p>
-            </div>
-            
-            <p style="font-size: 0.875rem; font-style: italic; color: rgba(245, 245, 245, 0.7);">
-              Pre-sale bookings are transferable and can be scheduled flexibly once the studio is operational. No expiry date.
+            <p style="font-size: 0.875rem; font-style: italic; color: rgba(245, 245, 245, 0.7); margin-bottom: 2rem;">
+              All allocations are transferable and can be scheduled flexibly once the studio is operational. Valid for 12 months from opening.
             </p>
           </div>
           
-          <div style="text-align: center;">
-            <a href="/contact?service=recording" class="cta-button" style="background: #39FF14; color: #0A1A0F; border-color: #39FF14; font-weight: 700; padding: 1rem 2rem; font-size: 1rem;">
-              BOOK PRE-SALE SESSION
-            </a>
+          {/* Pre-Sale Packages */}
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            
+            {/* Package 1: 5-Hour Production */}
+            <div style="background: rgba(0, 0, 0, 0.3); border: 2px solid #39FF14; padding: 1.5rem; display: flex; flex-direction: column;">
+              <h4 style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
+                BUILD RATE: 5-HOUR PRODUCTION
+              </h4>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin-bottom: 1.5rem; flex-grow: 1;">
+                <p style="margin-bottom: 0.5rem;">• Advance commissioning allocation</p>
+                <p style="margin-bottom: 0.5rem;">• Includes engineer</p>
+                <p style="margin-bottom: 0.5rem;">• Recording, mixing, or podcast</p>
+                <p style="margin-bottom: 0.5rem;">• Limited to 50 allocations</p>
+                <p style="margin-bottom: 0;">• Locked at 2025/26 rates</p>
+              </div>
+              <a href="https://square.link/u/yDNnuBwl" target="_blank" rel="noopener" class="cta-button" style="background: #39FF14; color: #0A1A0F; border-color: #39FF14; font-weight: 700; width: 100%; text-align: center;">
+                BUY NOW
+              </a>
+            </div>
+            
+            {/* Package 2: Rehearsal Block */}
+            <div style="background: rgba(0, 0, 0, 0.3); border: 2px solid #39FF14; padding: 1.5rem; display: flex; flex-direction: column;">
+              <h4 style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
+                REHEARSAL BLOCK (10 HOURS)
+              </h4>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin-bottom: 1.5rem; flex-grow: 1;">
+                <p style="margin-bottom: 0.5rem;">• 10 hours total rehearsal access</p>
+                <p style="margin-bottom: 0.5rem;">• Cowley Road rehearsal rooms</p>
+                <p style="margin-bottom: 0.5rem;">• Band rehearsals & prep sessions</p>
+                <p style="margin-bottom: 0.5rem;">• Scheduling after facility opens</p>
+                <p style="margin-bottom: 0;">• Valid 12 months from opening</p>
+              </div>
+              <a href="https://square.link/u/P5sTeIon" target="_blank" rel="noopener" class="cta-button" style="background: #39FF14; color: #0A1A0F; border-color: #39FF14; font-weight: 700; width: 100%; text-align: center;">
+                BUY NOW
+              </a>
+            </div>
+            
+            {/* Package 3: System Clearance */}
+            <div style="background: rgba(0, 0, 0, 0.3); border: 2px solid #39FF14; padding: 1.5rem; display: flex; flex-direction: column;">
+              <h4 style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
+                SYSTEM CLEARANCE (INDUCTION)
+              </h4>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin-bottom: 1.5rem; flex-grow: 1;">
+                <p style="margin-bottom: 0.5rem;">• Studio access induction</p>
+                <p style="margin-bottom: 0.5rem;">• + 2 hours booth hire</p>
+                <p style="margin-bottom: 0.5rem;">• Learn signal paths & routing</p>
+                <p style="margin-bottom: 0.5rem;">• Unlock dry hire access</p>
+                <p style="margin-bottom: 0;">• One-time clearance</p>
+              </div>
+              <a href="https://square.link/u/fOfAljaX" target="_blank" rel="noopener" class="cta-button" style="background: #39FF14; color: #0A1A0F; border-color: #39FF14; font-weight: 700; width: 100%; text-align: center;">
+                BUY NOW
+              </a>
+            </div>
+            
+          </div>
+          
+          <div style="background: rgba(0, 0, 0, 0.3); border-left: 3px solid #39FF14; padding: 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; color: rgba(245, 245, 245, 0.7);">
+            <p style="margin: 0;">
+              <strong style="color: #39FF14;">NOTE:</strong> These are advance commissioning allocations. Funds construction. Redeemable once operational.
+            </p>
           </div>
         </div>
 
