@@ -774,7 +774,26 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* UNIT 05 — BAND REHEARSALS */}
+      {/* STUDIO SESSIONS */}
+      <section class="rack-unit device-studio">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led yellow"></span>
+          </div>
+          <h2 class="rack-unit-title">STUDIO SESSIONS</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
+            Purpose-built recording and production environments designed for reliable, repeatable results. From vocal tracking to full-band production, we provide the technical certainty you need to focus on your performance.
+          </p>
+          <div style="text-align: center;">
+            <a href="/studio" class="cta-button">BOOK SESSION</a>
+          </div>
+        </div>
+      </section>
+
+      {/* BAND REHEARSALS — CRICKET ROAD */}
       <section class="rack-unit device-rehearsal">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
@@ -805,25 +824,6 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* STUDIO SESSIONS */}
-      <section class="rack-unit device-studio">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led yellow"></span>
-          </div>
-          <h2 class="rack-unit-title">STUDIO SESSIONS</h2>
-        </div>
-        
-        <div class="rack-unit-content">
-          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
-            Purpose-built recording and production environments designed for reliable, repeatable results. From vocal tracking to full-band production, we provide the technical certainty you need to focus on your performance.
-          </p>
-          <div style="text-align: center;">
-            <a href="/studio" class="cta-button">BOOK SESSION</a>
-          </div>
-        </div>
-      </section>
-
       {/* AV SERVICES */}
       <section class="rack-unit device-av">
         <div class="rack-unit-header">
@@ -847,7 +847,7 @@ app.get('/', (c) => {
       <section class="rack-unit device-cafe">
         <div class="rack-unit-header">
           <div class="rack-unit-led">
-            <span class="led yellow"></span>
+            <span class="led green"></span>
           </div>
           <h2 class="rack-unit-title">WORKSHOP CAFÉ</h2>
         </div>
