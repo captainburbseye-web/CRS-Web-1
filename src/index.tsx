@@ -326,7 +326,7 @@ const Header = () => (
       <div class="rack-header-logo">
         <a href="/" style="display: block; line-height: 0;">
           <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/128%20px%20crs_badge_dark%20-%20Copy.png" 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/512crs_badge_dark%20fixed%20for%20web.png" 
             alt="CRS"
             class="header-crs-badge"
           />
