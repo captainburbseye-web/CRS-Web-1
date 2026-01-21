@@ -1,0 +1,97 @@
+/* =========================================================
+   CRS RACK FOOTER TERMINATION PANEL
+   Purpose: 1U rack unit that "closes" the rack case
+   Asset: transparentMaster Rack BOTTOM.png from Cloudflare R2
+   Load: After all other CSS
+   ========================================================= */
+
+/* ==========================================
+   CONTAINER: Rack Unit at Bottom
+   Physics: Flush to content, no gaps
+   ========================================== */
+
+.rack-footer-container {
+  /* Sits at the very bottom of the page */
+  width: 100%;
+  background-color: #1a1a1a; /* Dark Charcoal - matches header */
+  overflow: hidden; /* Clean edges */
+  line-height: 0; /* Removes ghost spacing below image */
+  position: relative;
+  
+  /* Top seam - creates the joint between content and footer unit */
+  border-top: 2px solid #000;
+  
+  /* Ensure no gap from content above */
+  margin-top: 0;
+}
+
+/* ==========================================
+   IMAGE: Full-Width Desktop Rack Unit
+   ========================================== */
+
+.rack-footer-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: crisp-edges; /* Sharp rendering for technical asset */
+}
+
+/* ==========================================
+   MOBILE: Center-Crop to Keep Text Readable
+   DO NOT shrink - keep fixed height and center
+   ========================================== */
+
+@media (max-width: 768px) {
+  .rack-footer-container {
+    height: 80px; /* Fixed readable height (matches 1U rack unit) */
+    overflow: hidden; /* Crop sides */
+  }
+  
+  .rack-footer-img {
+    width: auto; /* Let it be wider than screen */
+    height: 80px; /* Match container height */
+    
+    /* Center the "OX4 STUDIO NETWORK" screen */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Ensure minimum width to keep text readable */
+    min-width: 100%; /* Don't let it be narrower than screen */
+  }
+}
+
+/* ==========================================
+   TABLET: Intermediate Responsive Step
+   ========================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .rack-footer-container {
+    height: 100px; /* Slightly taller for tablets */
+  }
+  
+  .rack-footer-img {
+    height: 100px;
+  }
+}
+
+/* ==========================================
+   ANTI-DRIFT: Lock the Physics
+   ========================================== */
+
+.rack-footer-container * {
+  box-sizing: border-box;
+}
+
+/* Remove any inherited margins that could break alignment */
+.rack-footer-container img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Ensure footer content sits flush against the termination panel */
+footer.crs-footer {
+  margin-bottom: 0 !important;
+  padding-bottom: 2rem; /* Add some breathing room inside footer */
+}

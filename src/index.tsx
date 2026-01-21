@@ -424,6 +424,16 @@ const Footer = () => (
         </p>
       </div>
     </footer>
+
+    {/* FOOTER TERMINATION PANEL: 1U Rack Unit at Bottom */}
+    <div class="rack-footer-container">
+      <img 
+        src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20BOTTOM.png" 
+        alt="Cowley Road Studios Footer Rack" 
+        class="rack-footer-img"
+        aria-label="Footer: OX4 Studio Network - No Chaos Policy - System Ready. Cowley Road Studios, Oxford."
+      />
+    </div>
   </>
 )
 
