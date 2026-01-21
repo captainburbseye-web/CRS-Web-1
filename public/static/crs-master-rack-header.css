@@ -10,9 +10,9 @@
    ========================================== */
 
 .rack-header-container {
-  /* Sits below the sticky nav */
+  /* Sits at the very top - BEFORE sticky nav */
   width: 100%;
-  background-color: #1a1a1a; /* Matches the chassis color - prevents white gaps */
+  background: transparent; /* Transparent PNG - no background needed */
   overflow: hidden; /* Clean edges */
   line-height: 0; /* Removes ghost spacing below image */
   position: relative;

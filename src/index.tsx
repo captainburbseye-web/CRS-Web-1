@@ -307,6 +307,15 @@ app.use(renderer)
 // SHARED COMPONENTS
 const Header = () => (
   <>
+    {/* MASTER RACK HEADER: 1U Rack Unit AT THE TOP */}
+    <div class="rack-header-container">
+      <img 
+        src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png" 
+        alt="Cowley Road Studios Master Rack" 
+        class="rack-header-img"
+      />
+    </div>
+    
     <header class="rack-header">
       {/* MOBILE MENU TOGGLE */}
       <button class="mobile-menu-toggle" aria-label="Open menu">
@@ -357,15 +366,6 @@ const Header = () => (
         </div>
       </div>
     </header>
-    
-    {/* MASTER RACK HEADER: 1U Rack Unit Below Sticky Nav */}
-    <div class="rack-header-container">
-      <img 
-        src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/NEW%20BADGES%20RACK%20UI/Master%20Rack%20Header.png" 
-        alt="Cowley Road Studios Master Rack" 
-        class="rack-header-img"
-      />
-    </div>
   </>
 )
 
