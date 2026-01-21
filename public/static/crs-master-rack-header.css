@@ -32,15 +32,10 @@
 
 /* ==========================================
    STICKY NAV: Top Rail Shadow Effect
-   Create illusion that rack unit is slotted below
+   Nav bar sticks to top when Master Rack scrolls away
    ========================================== */
 
-header.rack-header {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Shadow falls onto rack unit */
-  z-index: 1000; /* Above rack unit */
-  position: sticky;
-  top: 0;
-}
+/* No additional styles needed - handled in crs-header-three-zone.css */
 
 /* ==========================================
    MOBILE: Center-Crop to Keep Text Readable

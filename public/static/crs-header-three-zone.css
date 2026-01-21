@@ -10,14 +10,32 @@
    ========================================== */
 
 header.rack-header {
+  /* 1. The Sticky Logic */
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  
+  /* 2. The Locking Point */
+  /* Stop scrolling when you hit the very top of the screen */
+  top: 0;
+  
+  /* 3. The Stack Order */
+  z-index: 9999; /* Must be higher than all page content */
+  
   display: grid;
   grid-template-columns: auto 1fr auto; /* left | middle | right */
   grid-template-areas: "logo nav cta";
   align-items: center;
   gap: var(--space-xl); /* 32px between zones */
   padding: var(--space-md) var(--space-xl); /* TIGHTENED: 16px vertical (was 24px), 32px horizontal */
-  background: #000;
-  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  
+  /* 4. The "Solid Metal" Background */
+  /* CRITICAL: Since this bar floats over content, it needs a solid color */
+  background-color: #1a1a1a;
+  
+  border-bottom: 2px solid #000; /* Bottom seam */
+  
+  /* 5. The Shadow */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
 }
 
 /* ==========================================
