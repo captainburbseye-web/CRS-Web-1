@@ -313,8 +313,8 @@ const Header = () => (
         <span class="hamburger-icon">☰</span>
       </button>
       
-      {/* LEFT ZONE: CRS Logo + Navigation */}
-      <div class="rack-header-left">
+      {/* LEFT ZONE: Logo (Authority) */}
+      <div class="rack-header-logo">
         <a href="/" style="display: block; line-height: 0;">
           <img 
             src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/x2%201024%20BADGE%20%2B%20WORDMARK%20LOCKUP.png" 
@@ -322,18 +322,19 @@ const Header = () => (
             class="crs-main-logo"
           />
         </a>
-        
-        <nav class="rack-nav-links">
-          <a href="/studio">Studio</a>
-          <span class="separator">|</span>
-          <a href="/workshop-cafe">Workshop Café</a>
-          <span class="separator">|</span>
-          <a href="/av-services">AV</a>
-        </nav>
       </div>
       
-      {/* BOOK NOW DROPDOWN (RIGHT ZONE) */}
-      <div class="rack-header-right" style="position: relative;">
+      {/* MIDDLE ZONE: Navigation (Three Links) */}
+      <nav class="rack-header-nav">
+        <a href="/studio">Studio</a>
+        <span class="separator">|</span>
+        <a href="/workshop-cafe">Workshop Café</a>
+        <span class="separator">|</span>
+        <a href="/av-services">AV</a>
+      </nav>
+      
+      {/* RIGHT ZONE: Book Now (Action) */}
+      <div class="rack-header-cta" style="position: relative;">
         <button 
           class="book-dropdown-trigger"
           data-dropdown-trigger

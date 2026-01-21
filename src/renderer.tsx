@@ -49,6 +49,9 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* CRS SPACING SCALE: 8px base unit system - foundation for all rhythm (LOADS EARLY) */}
         <link href="/static/crs-spacing-scale.css" rel="stylesheet" />
         
+        {/* CRS HEADER THREE-ZONE: Institutional header grid - logo | nav | cta (LOADS BEFORE OTHER HEADER CSS) */}
+        <link href="/static/crs-header-three-zone.css" rel="stylesheet" />
+        
         <link href="/static/crs-positioning-fixes.css" rel="stylesheet" />
         <link href="/static/crs-proportion-fixes.css" rel="stylesheet" />
         <link href="/static/crs-nav-button-refinement.css" rel="stylesheet" />

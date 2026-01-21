@@ -1,0 +1,180 @@
+/* =========================================================
+   CRS HEADER — THREE-ZONE GRID
+   Purpose: Institutional header with clear hierarchy
+   Layout: Logo (left) | Nav (middle) | Action (right)
+   Load: After spacing scale, before other header CSS
+   ========================================================= */
+
+/* ==========================================
+   DESKTOP: Three-Zone Grid
+   ========================================== */
+
+header.rack-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* left | middle | right */
+  grid-template-areas: "logo nav cta";
+  align-items: center;
+  gap: var(--space-xl); /* 32px between zones */
+  padding: var(--space-lg) var(--space-xl); /* 24px vertical, 32px horizontal */
+  background: #000;
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+}
+
+/* ==========================================
+   ZONE 1: Logo (Authority — Left)
+   ========================================== */
+
+.rack-header-logo {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+}
+
+.rack-header-logo .crs-main-logo {
+  width: 22.5vw !important;
+  min-width: 300px !important;
+  max-width: 700px !important;
+  height: auto !important;
+  max-height: none !important;
+  display: block;
+}
+
+/* ==========================================
+   ZONE 2: Navigation (Middle)
+   ========================================== */
+
+.rack-header-nav {
+  grid-area: nav;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md); /* 16px between links */
+}
+
+.rack-header-nav a {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(245, 245, 245, 0.85);
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.rack-header-nav a:hover {
+  color: #E89B3C;
+}
+
+.rack-header-nav .separator {
+  color: rgba(212, 160, 23, 0.3);
+  font-size: 14px;
+}
+
+/* ==========================================
+   ZONE 3: Book Now (Action — Right)
+   ========================================== */
+
+.rack-header-cta {
+  grid-area: cta;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rack-header-cta .book-dropdown-trigger {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.05em;
+  border: 2px solid #FF4500;
+  background: transparent;
+  color: #FF4500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.rack-header-cta .book-dropdown-trigger:hover {
+  background: #FF4500;
+  color: #000;
+}
+
+/* ==========================================
+   MOBILE: Collapse to Single Column
+   Hide mobile menu toggle on desktop
+   ========================================== */
+
+.mobile-menu-toggle {
+  display: none; /* Hidden on desktop */
+}
+
+@media (max-width: 768px) {
+  header.rack-header {
+    grid-template-columns: 1fr auto; /* Logo | Menu toggle */
+    grid-template-areas: 
+      "logo toggle"
+      "nav nav"
+      "cta cta";
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+    grid-area: toggle;
+    background: transparent;
+    border: 1px solid rgba(212, 160, 23, 0.3);
+    color: #E89B3C;
+    padding: 8px 12px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .rack-header-logo {
+    grid-area: logo;
+  }
+  
+  .rack-header-logo .crs-main-logo {
+    width: 50vw !important;
+    min-width: 200px !important;
+    max-width: 350px !important;
+  }
+  
+  .rack-header-nav {
+    grid-area: nav;
+    flex-direction: column;
+    gap: var(--space-sm);
+    display: none; /* Hidden by default on mobile */
+  }
+  
+  .rack-header-nav.mobile-open {
+    display: flex; /* Show when menu is open */
+  }
+  
+  .rack-header-nav .separator {
+    display: none; /* Hide separators on mobile */
+  }
+  
+  .rack-header-cta {
+    grid-area: cta;
+    justify-content: center;
+  }
+}
+
+/* ==========================================
+   ANTI-DRIFT: Lock Sizes
+   Prevent other CSS from interfering
+   ========================================== */
+
+header.rack-header * {
+  box-sizing: border-box;
+}
+
+header.rack-header .rack-header-logo,
+header.rack-header .rack-header-nav,
+header.rack-header .rack-header-cta {
+  flex-shrink: 0; /* Never collapse */
+}
