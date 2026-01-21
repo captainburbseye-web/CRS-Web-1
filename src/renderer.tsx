@@ -52,6 +52,9 @@ export const renderer = jsxRenderer(({ children }) => {
         {/* CRS HEADER THREE-ZONE: Institutional header grid - logo | nav | cta (LOADS BEFORE OTHER HEADER CSS) */}
         <link href="/static/crs-header-three-zone.css" rel="stylesheet" />
         
+        {/* CRS MASTER RACK HEADER: 1U rack unit below sticky nav (LOADS AFTER THREE-ZONE) */}
+        <link href="/static/crs-master-rack-header.css" rel="stylesheet" />
+        
         <link href="/static/crs-positioning-fixes.css" rel="stylesheet" />
         <link href="/static/crs-proportion-fixes.css" rel="stylesheet" />
         <link href="/static/crs-nav-button-refinement.css" rel="stylesheet" />
