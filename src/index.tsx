@@ -1067,14 +1067,7 @@ app.get('/studio', (c) => {
             </p>
           </div>
           
-          {/* Hardware Presence: Console */}
-          <div class="hardware-image" style="margin-top: 2rem;">
-            <img 
-              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/512crs_badge_dark%20fixed%20for%20web.png"
-              alt="CRS badge"
-              loading="lazy"
-            />
-          </div>
+
         </div>
 
         {/* CONTROL PANEL MOTIF (System Separator) */}
