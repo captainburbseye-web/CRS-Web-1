@@ -333,13 +333,19 @@ const Header = () => (
         </a>
       </div>
       
-      {/* MIDDLE ZONE: Navigation (Three Links) */}
+      {/* MIDDLE ZONE: Navigation (Six Links) */}
       <nav class="rack-header-nav">
         <a href="/studio">Studio</a>
         <span class="separator">|</span>
         <a href="/workshop-cafe">Workshop Café</a>
         <span class="separator">|</span>
         <a href="/av-services">AV</a>
+        <span class="separator">|</span>
+        <a href="/about">About</a>
+        <span class="separator">|</span>
+        <a href="/work">Work</a>
+        <span class="separator">|</span>
+        <a href="/contact">Contact</a>
       </nav>
       
       {/* RIGHT ZONE: Book Now (Action) */}
@@ -2297,6 +2303,394 @@ app.get('/workshop-cafe', (c) => {
     </>
   )
 })
+
+// NEW ROUTES TO ADD AFTER LINE 2299 in src/index.tsx
+
+// ============================================================================
+// ABOUT PAGE
+// ============================================================================
+app.get('/about', (c) => {
+  return c.render(
+    <>
+      <Header />
+      
+      {/* ABOUT HERO */}
+      <section class="rack-unit">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led green"></span>
+          </div>
+          <h2 class="rack-unit-title">/// ABOUT CRS</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(245, 245, 245, 0.9); text-align: center;">
+            Built to work. Built to last.
+          </p>
+          
+          <div style="max-width: 700px; margin: 0 auto; line-height: 1.8; color: rgba(245, 245, 245, 0.85);">
+            <p style="margin-bottom: 1.5rem;">
+              Cowley Road Studios (CRS) exists to make professional-grade recording and AV infrastructure available to Oxford's grassroots scene. We offer subsidized rates, supported sessions, and training workshops for community groups, emerging artists, and non-profit organizations.
+            </p>
+            
+            <p style="margin-bottom: 1.5rem;">
+              We operate two locations: <strong>Cowley Road</strong> (118 Cowley Road, OX4 1JE) serves as the main recording and production facility, while <strong>Cricket Road</strong> (13E United Kingdom) provides rehearsal space and equipment storage.
+            </p>
+            
+            <p style="margin-bottom: 2rem;">
+              CRS is a public-interest system—not a boutique studio. Our goal is reliable operation, not premium branding.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* NO CHAOS POLICY */}
+      <section class="rack-unit section-dark">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led green"></span>
+          </div>
+          <h2 class="rack-unit-title">/// NO CHAOS POLICY</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <div style="max-width: 700px; margin: 0 auto; line-height: 1.8; color: rgba(245, 245, 245, 0.85);">
+            <p style="margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--crs-green); text-transform: uppercase; letter-spacing: 0.05em;">
+              [ OPERATIONAL COMMITMENTS ]
+            </p>
+            
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              <li style="margin-bottom: 1.25rem; padding-left: 1.5rem; border-left: 3px solid var(--crs-green);">
+                <strong>Equipment maintenance:</strong> All systems are tested and documented. Signal paths are mapped. Equipment is maintained to function reliably.
+              </li>
+              <li style="margin-bottom: 1.25rem; padding-left: 1.5rem; border-left: 3px solid var(--crs-green);">
+                <strong>Technical decisions:</strong> Based on engineering reality, not hype. We use what works, not what's trendy.
+              </li>
+              <li style="margin-bottom: 1.25rem; padding-left: 1.5rem; border-left: 3px solid var(--crs-green);">
+                <strong>Predictable results:</strong> We provide a baseline, not a premium. Reliable operation is the goal.
+              </li>
+              <li style="margin-bottom: 1.25rem; padding-left: 1.5rem; border-left: 3px solid var(--crs-green);">
+                <strong>No drama:</strong> Problems are solved systematically. No chaos, no excuses.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      
+      {/* LOCATIONS */}
+      <section class="rack-unit">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led green"></span>
+          </div>
+          <h2 class="rack-unit-title">/// LOCATIONS</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <div style="max-width: 700px; margin: 0 auto;">
+            <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard);">
+              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1rem; color: var(--mustard); margin-bottom: 0.75rem;">COWLEY ROAD STUDIOS (HQ)</h3>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.85); margin-bottom: 0.5rem;">
+                118 Cowley Road, Oxford, OX4 1JE
+              </p>
+              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.75);">
+                Main recording and production facility. Workshop Café. AV services. Currently in final build phase.
+              </p>
+            </div>
+            
+            <div style="padding: 1.5rem; background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green);">
+              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1rem; color: var(--crs-green); margin-bottom: 0.75rem;">CRICKET ROAD (NODE)</h3>
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.85); margin-bottom: 0.5rem;">
+                13E, United Kingdom, COORDINATES: 51.7630 N, 1.2304 W
+              </p>
+              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.75);">
+                Rehearsal space and equipment storage. Operational now.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* CTA */}
+      <section class="rack-unit section-dark">
+        <div class="rack-unit-content" style="text-align: center;">
+          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
+            Ready to work with us?
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="/book" class="cta-button">BOOK NOW</a>
+            <a href="/contact" class="cta-button" style="background: transparent; border: 2px dashed var(--mustard); color: var(--mustard);">GET IN TOUCH</a>
+          </div>
+        </div>
+      </section>
+      
+      <Footer />
+    </>
+  )
+})
+
+// ============================================================================
+// WORK PAGE
+// ============================================================================
+app.get('/work', (c) => {
+  return c.render(
+    <>
+      <Header />
+      
+      {/* WORK HERO */}
+      <section class="rack-unit">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led green"></span>
+          </div>
+          <h2 class="rack-unit-title">/// WORK</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(245, 245, 245, 0.9); text-align: center;">
+            Evidence of operation.
+          </p>
+          
+          <div style="max-width: 700px; margin: 0 auto; line-height: 1.8; color: rgba(245, 245, 245, 0.85); text-align: center;">
+            <p>
+              This page will showcase completed studio recordings, AV deployments, and community projects once the Cowley Road build is complete and operational.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* PLACEHOLDER FOR FUTURE CONTENT */}
+      <section class="rack-unit section-dark">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led yellow"></span>
+          </div>
+          <h2 class="rack-unit-title">/// COMING SOON</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <div style="max-width: 700px; margin: 0 auto; line-height: 1.8; color: rgba(245, 245, 245, 0.85);">
+            <p style="margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.05em;">
+              [ PORTFOLIO IN PROGRESS ]
+            </p>
+            
+            <p style="margin-bottom: 1.5rem;">
+              As the Cowley Road facility becomes operational, we'll document completed projects here:
+            </p>
+            
+            <ul style="list-style: none; padding: 0; margin: 0 0 2rem 0;">
+              <li style="margin-bottom: 1rem; padding-left: 1.5rem; border-left: 3px solid var(--crs-green);">
+                Studio recordings (albums, EPs, singles, podcasts)
+              </li>
+              <li style="margin-bottom: 1rem; padding-left: 1.5rem; border-left: 3px solid var(--crs-green);">
+                AV deployments (live events, installations, technical support)
+              </li>
+              <li style="margin-bottom: 1rem; padding-left: 1.5rem; border-left: 3px solid var(--crs-green);">
+                Community projects (workshops, subsidized sessions, training)
+              </li>
+            </ul>
+            
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65);">
+              In the meantime, Cricket Road rehearsal space and AV services are operational. Contact us to discuss your project.
+            </p>
+          </div>
+        </div>
+      </section>
+      
+      {/* CTA */}
+      <section class="rack-unit">
+        <div class="rack-unit-content" style="text-align: center;">
+          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
+            Want to work with us?
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="/book" class="cta-button">BOOK NOW</a>
+            <a href="/contact" class="cta-button" style="background: transparent; border: 2px dashed var(--mustard); color: var(--mustard);">GET IN TOUCH</a>
+          </div>
+        </div>
+      </section>
+      
+      <Footer />
+    </>
+  )
+})
+
+// ============================================================================
+// CONTACT PAGE
+// ============================================================================
+app.get('/contact', (c) => {
+  return c.render(
+    <>
+      <Header />
+      
+      {/* CONTACT HERO */}
+      <section class="rack-unit">
+        <div class="rack-unit-header">
+          <div class="rack-unit-led">
+            <span class="led green"></span>
+          </div>
+          <h2 class="rack-unit-title">/// CONTACT</h2>
+        </div>
+        
+        <div class="rack-unit-content">
+          <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(245, 245, 245, 0.9); text-align: center;">
+            Get in touch.
+          </p>
+          
+          <div style="max-width: 600px; margin: 0 auto;">
+            {/* Contact Info */}
+            <div style="margin-bottom: 3rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green);">
+              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; color: var(--crs-green); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">[ DIRECT CONTACT ]</h3>
+              
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; margin-bottom: 0.75rem; color: rgba(245, 245, 245, 0.85);">
+                <strong>Email:</strong> <a href="mailto:studio@cowleyroadstudios.com" style="color: var(--mustard); text-decoration: none;">studio@cowleyroadstudios.com</a>
+              </p>
+              
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; margin-bottom: 0.75rem; color: rgba(245, 245, 245, 0.85);">
+                <strong>Phone:</strong> <a href="tel:+441865000000" style="color: var(--mustard); text-decoration: none;">+44 1865 000 000</a>
+              </p>
+              
+              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.85);">
+                <strong>Address:</strong> 118 Cowley Road, Oxford, OX4 1JE
+              </p>
+            </div>
+            
+            {/* Contact Form */}
+            <div style="padding: 2rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(245, 245, 245, 0.1);">
+              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; color: var(--mustard); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">[ SEND MESSAGE ]</h3>
+              
+              <form id="contact-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                <div>
+                  <label for="name" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Name</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    required
+                    style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 245, 245, 0.2); color: rgba(245, 245, 245, 0.9); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;"
+                  />
+                </div>
+                
+                <div>
+                  <label for="email" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Email</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required
+                    style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 245, 245, 0.2); color: rgba(245, 245, 245, 0.9); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;"
+                  />
+                </div>
+                
+                <div>
+                  <label for="service" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Service</label>
+                  <select 
+                    id="service" 
+                    name="service"
+                    style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 245, 245, 0.2); color: rgba(245, 245, 245, 0.9); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;"
+                  >
+                    <option value="general">General Enquiry</option>
+                    <option value="recording">Recording Session</option>
+                    <option value="rehearsal">Rehearsal Space</option>
+                    <option value="av">AV Services</option>
+                    <option value="venue">Venue Hire</option>
+                    <option value="repairs">Equipment Repair</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label for="subject" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Subject</label>
+                  <input 
+                    type="text" 
+                    id="subject" 
+                    name="subject" 
+                    required
+                    style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 245, 245, 0.2); color: rgba(245, 245, 245, 0.9); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;"
+                  />
+                </div>
+                
+                <div>
+                  <label for="message" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Message</label>
+                  <textarea 
+                    id="message" 
+                    name="message" 
+                    rows="6"
+                    required
+                    style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 245, 245, 0.2); color: rgba(245, 245, 245, 0.9); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; resize: vertical;"
+                  ></textarea>
+                </div>
+                
+                <button 
+                  type="submit" 
+                  class="cta-button"
+                  style="width: 100%; margin-top: 0.5rem;"
+                >
+                  SEND MESSAGE
+                </button>
+                
+                <div id="form-status" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-align: center; display: none;"></div>
+              </form>
+              
+              <script>
+                {`
+                  document.getElementById('contact-form').addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const form = e.target;
+                    const status = document.getElementById('form-status');
+                    const button = form.querySelector('button[type="submit"]');
+                    
+                    // Disable button and show loading
+                    button.disabled = true;
+                    button.textContent = 'SENDING...';
+                    status.style.display = 'block';
+                    status.style.color = 'var(--mustard)';
+                    status.textContent = 'Sending message...';
+                    
+                    try {
+                      const formData = {
+                        name: form.name.value,
+                        email: form.email.value,
+                        service: form.service.value,
+                        subject: form.subject.value,
+                        message: form.message.value
+                      };
+                      
+                      const response = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                      });
+                      
+                      const result = await response.json();
+                      
+                      if (result.success) {
+                        status.style.color = 'var(--crs-green)';
+                        status.textContent = 'Message sent successfully!';
+                        form.reset();
+                      } else {
+                        throw new Error(result.error || 'Failed to send message');
+                      }
+                    } catch (error) {
+                      status.style.color = '#ff4444';
+                      status.textContent = 'Error: ' + error.message;
+                    } finally {
+                      button.disabled = false;
+                      button.textContent = 'SEND MESSAGE';
+                    }
+                  });
+                `}
+              </script>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <Footer />
+    </>
+  )
+})
+
 
 app.get('/cafe', (c) => {
   return c.render(
