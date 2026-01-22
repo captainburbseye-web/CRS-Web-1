@@ -6,8 +6,15 @@ export const renderer = jsxRenderer(({ children }) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CRS Oxford</title>
-        <meta name="description" content="CRS operates multi-location studio and AV infrastructure across Oxford. Industry-standard recording, rehearsal, and technical support. Locations on Cowley Road and Cricket Road." />
+        <title>Cowley Road Studios | Recording Studio & AV Services Oxford</title>
+        <meta name="description" content="Professional recording studio, rehearsal space, and live AV services in Oxford. No-chaos operation. Subsidized rates for community groups." />
+        <meta name="keywords" content="recording studio oxford, rehearsal space oxford, live sound oxford, av services oxford" />
+        
+        {/* Open Graph (social sharing) */}
+        <meta property="og:title" content="Cowley Road Studios" />
+        <meta property="og:description" content="Professional recording & AV in Oxford" />
+        <meta property="og:image" content="https://pub-991d8d2677374c528678829280f50c98.r2.dev/512crs_badge_dark%20fixed%20for%20web.png" />
+        <meta property="og:url" content="https://cowleyroadstudios.com" />
         
         {/* Favicon - CRS Sig-Log */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
