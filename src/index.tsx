@@ -322,18 +322,7 @@ const Header = () => (
         <span class="hamburger-icon">☰</span>
       </button>
       
-      {/* LEFT ZONE: CRS Badge Only (No Text) */}
-      <div class="rack-header-logo">
-        <a href="/" style="display: block; line-height: 0;">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/512crs_badge_dark%20fixed%20for%20web.png" 
-            alt="CRS"
-            class="header-crs-badge"
-          />
-        </a>
-      </div>
-      
-      {/* MIDDLE ZONE: Navigation (Six Links) */}
+      {/* NAVIGATION */}
       <nav class="rack-header-nav">
         <a href="/studio">Studio</a>
         <span class="separator">|</span>
