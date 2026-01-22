@@ -17,17 +17,11 @@ html {
    ------------------------------ */
 header.rack-header,
 .site-header {
-  all: unset;                 /* NUCLEAR: remove inherited chaos */
-  display: flex;
-  align-items: center;
-  width: 100vw;
-  min-height: 56px;
-  padding: 0.75rem 1.5rem;
+  /* DO NOT use 'all: unset' - it breaks the grid layout from crs-header-three-zone.css */
+  /* The three-zone grid (logo | nav | cta) is defined in crs-header-three-zone.css and must be preserved */
   box-sizing: border-box;
   font-size: 1rem;             /* LOCKED BASE */
   line-height: 1;
-  background: #000;            /* or inherited */
-  color: #fff;
 }
 
 /* ------------------------------
@@ -125,13 +119,10 @@ header.rack-header * {
 }
 
 /* ------------------------------
-   FLEX SAFETY
+   GRID SAFETY (preserve three-zone layout)
    (ONLY SITE HEADER)
    ------------------------------ */
-header.rack-header {
-  justify-content: space-between;
-  flex-wrap: nowrap;
-}
+/* Grid layout is defined in crs-header-three-zone.css - do not override */
 
 /* ------------------------------
    FINAL SAFETY NET
