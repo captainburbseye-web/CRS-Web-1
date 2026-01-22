@@ -894,7 +894,12 @@ app.get('/', (c) => {
       </section>
 
       <Footer />
-    </>
+    </>,
+    {
+      title: 'Cowley Road Studios | Recording Studio & AV Services Oxford',
+      description: 'Professional recording studio, rehearsal space, and live AV services in Oxford. No-chaos operation. Subsidized rates for community groups.',
+      keywords: 'recording studio oxford, rehearsal space oxford, live sound oxford, av services oxford, cowley road studios'
+    }
   )
 })
 
@@ -1144,11 +1149,15 @@ app.get('/studio', (c) => {
       </section>
 
       <Footer />
-    </>
+    </>,
+    {
+      title: 'Recording Studio Oxford | Cowley Road Studios',
+      description: 'Purpose-built recording and production rooms in Oxford. Hybrid analogue/digital workflows, engineer-maintained systems. Book studio sessions now.',
+      keywords: 'recording studio oxford, music studio oxford, production studio oxford, recording sessions oxford'
+    }
   )
 })
-
-// INFRASTRUCTURE SNAPSHOT (SINGULAR STRUCTURAL CENTRE OF GRAVITY)
+// INFRASTRUCTURE SNAPSHOTT (SINGULAR STRUCTURAL CENTRE OF GRAVITY)
 app.get('/studio/infrastructure', (c) => {
   return c.render(
     <>
@@ -1981,7 +1990,12 @@ app.get('/av-services/repairs', (c) => {
       </section>
 
       <Footer />
-    </>
+    </>,
+    {
+      title: 'Live Sound & AV Services Oxford | Cowley Road Studios',
+      description: 'Engineer-led live sound, installations, and technical support for venues and events in Oxford. Professional AV infrastructure for community events.',
+      keywords: 'live sound oxford, av services oxford, sound engineer oxford, event av oxford, pa hire oxford'
+    }
   )
 })
 
@@ -2275,7 +2289,12 @@ app.get('/workshop-cafe', (c) => {
         </section>
 
         <Footer />
-    </>
+    </>,
+    {
+      title: 'Workshop Café Oxford | Community Space & Venue Hire',
+      description: 'Café, workspace, and small venue in East Oxford. Available for private hire and public programming. Part of Cowley Road Studios.',
+      keywords: 'cafe oxford, workshop cafe oxford, venue hire oxford, community space oxford, east oxford cafe'
+    }
   )
 })
 
@@ -2399,11 +2418,15 @@ app.get('/about', (c) => {
         </div>
       </section>
       
-      <Footer />
-    </>
+       <Footer />
+    </>,
+    {
+      title: 'About Cowley Road Studios | Recording Studio Oxford',
+      description: 'Learn about CRS: purpose-built recording studio and AV infrastructure in Oxford. No-chaos policy, engineer-maintained systems, community-focused.',
+      keywords: 'about crs, cowley road studios oxford, recording studio oxford history, music studio oxford'
+    }
   )
 })
-
 // ============================================================================
 // WORK PAGE
 // ============================================================================
@@ -2486,12 +2509,16 @@ app.get('/work', (c) => {
       </section>
       
       <Footer />
-    </>
+    </>,
+    {
+      title: 'Work & Portfolio | Cowley Road Studios Oxford',
+      description: 'View completed projects and work from Cowley Road Studios. Recording sessions, AV deployments, and community projects in Oxford.',
+      keywords: 'crs portfolio, recording studio work oxford, music production oxford, studio projects'
+    }
   )
 })
-
 // ============================================================================
-// CONTACT PAGE
+// CONTACT PAGEE
 // ============================================================================
 app.get('/contact', (c) => {
   return c.render(
@@ -2774,12 +2801,16 @@ app.get('/cafe', (c) => {
       </section>
 
       <Footer />
-    </>
+    </>,
+    {
+      title: 'Contact Cowley Road Studios | Recording Studio Oxford',
+      description: 'Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Located in East Oxford. Email: studio@cowleyroadstudios.com',
+      keywords: 'contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford'
+    }
   )
 })
-
 // VENUE REDIRECT (removed - not ready for public launch)
-app.get("/venue", (c) => c.redirect("/contact?service=venue"))
+app.get("/venue"", (c) => c.redirect("/contact?service=venue"))
 
 // ABOUT
 app.get('/about', (c) => {
@@ -2947,12 +2978,16 @@ app.get('/about', (c) => {
       </section>
 
       <Footer />
-    </>
+    </>,
+    {
+      title: 'About Cowley Road Studios | Recording Studio Oxford',
+      description: 'Learn about CRS: purpose-built recording studio and AV infrastructure in Oxford. No-chaos policy, engineer-maintained systems, community-focused.',
+      keywords: 'about crs, cowley road studios oxford, recording studio oxford history, music studio oxford'
+    }
   )
 })
-
 // WORK
-app.get('/work', (c) => {
+app.get('/work'', (c) => {
   return c.render(
     <>
       <Header />
@@ -3089,11 +3124,15 @@ app.get('/work', (c) => {
         </div>
       </section>
 
-      <Footer />
-    </>
+       <Footer />
+    </>,
+    {
+      title: 'Work & Portfolio | Cowley Road Studios Oxford',
+      description: 'View completed projects and work from Cowley Road Studios. Recording sessions, AV deployments, and community projects in Oxford.',
+      keywords: 'crs portfolio, recording studio work oxford, music production oxford, studio projects'
+    }
   )
 })
-
 // CONTACT
 app.get('/contact', (c) => {
   const serviceType = c.req.query('service') || 'general'
@@ -3156,9 +3195,13 @@ app.get('/contact', (c) => {
         </div>
       </section>
 
-      <Footer />
-    </>
+       <Footer />
+    </>,
+    {
+      title: 'Contact Cowley Road Studios | Recording Studio Oxford',
+      description: 'Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Located in East Oxford. Email: studio@cowleyroadstudios.com',
+      keywords: 'contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford'
+    }
   )
 })
-
 export default app
