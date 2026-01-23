@@ -3089,7 +3089,7 @@ app.get('/cafe', (c) => {
   )
 })
 // VENUE REDIRECT (removed - not ready for public launch)
-app.get("/venue"", (c) => c.redirect("/contact?service=venue"))
+app.get("/venue", (c) => c.redirect("/contact?service=venue"))
 
 // ABOUT
 app.get('/about', (c) => {
