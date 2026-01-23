@@ -34,6 +34,11 @@
   height: auto;
   display: block;
   image-rendering: crisp-edges; /* Sharp rendering for technical asset */
+  
+  /* Crop right side to hide CRS badge */
+  object-fit: cover;
+  object-position: left center;
+  max-width: 85%; /* Hide the rightmost 15% where the badge is */
 }
 
 /* ==========================================
