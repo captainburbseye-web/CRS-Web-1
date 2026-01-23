@@ -125,6 +125,15 @@ header.rack-header * {
 /* Grid layout is defined in crs-header-three-zone.css - do not override */
 
 /* ------------------------------
+   HIDE CRS BADGE
+   ------------------------------ */
+.rack-header-logo,
+.header-crs-badge {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* ------------------------------
    FINAL SAFETY NET
    ------------------------------ */
 @media (max-width: 480px) {
