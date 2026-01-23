@@ -347,7 +347,7 @@ const Header = () => (
           role="menu"
           aria-hidden="true"
         >
-          <a href="/book" role="menuitem"><span class="signal-active"></span>Book Online</a>
+          <a href="/book" role="menuitem"><span class="signal-active"></span>Studio & Rehearsal</a>
           <a href="/contact?service=av" role="menuitem">AV Services (Enquiry)</a>
           <a href="/contact?service=venue" role="menuitem">Venue Hire (Enquiry)</a>
           <a href="/contact?service=repairs" role="menuitem">Repairs (Enquiry)</a>
