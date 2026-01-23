@@ -2432,7 +2432,7 @@ app.get('/soundworks', (c) => {
       <section class="crs-section section-dark">
         <div class="section-header">
           <h1 class="section-title heading">Soundworks Oxford → Cowley Road Studios</h1>
-          <p class="section-intro">2004–2024 · Twenty years of service</p>
+          <p class="section-intro">1999–2024 · Twenty-five years of service</p>
         </div>
 
         {/* TRANSITION NOTICE */}
@@ -2452,7 +2452,7 @@ app.get('/soundworks', (c) => {
           <h3 class="content-heading heading">Operational Continuity</h3>
           <div class="content-text">
             <p>
-              Cowley Road Studios continues the Soundworks Oxford legacy, providing professional recording, rehearsal, and AV infrastructure to Oxford's creative community since 2004.
+              Cowley Road Studios continues the Soundworks Oxford legacy, providing professional recording, rehearsal, and AV infrastructure to Oxford's creative community since 1999.
             </p>
             <p style="margin-top: 1rem;">
               The rebrand reflects our expanded scope: multi-room recording facilities, dedicated rehearsal spaces, live AV services, and Workshop Café — a public-facing venue for community programming.
@@ -2464,10 +2464,10 @@ app.get('/soundworks', (c) => {
         <div class="content-block">
           <h3 class="content-heading heading">Timeline</h3>
           <div class="content-text">
-            <p><strong>2004</strong><br/>
-              Soundworks Oxford founded. Single recording room, engineer-led operation.
+            <p><strong>1999</strong><br/>
+              Soundworks Oxford founded by David Norland. Single recording room, engineer-led operation.
             </p>
-            <p style="margin-top: 1rem;"><strong>2004–2024</strong><br/>
+            <p style="margin-top: 1rem;"><strong>1999–2024</strong><br/>
               Two decades serving Oxford's artists, bands, community groups, and professional productions.
             </p>
             <p style="margin-top: 1rem;"><strong>2024</strong><br/>
@@ -2491,6 +2491,24 @@ app.get('/soundworks', (c) => {
             </p>
             <p style="margin-top: 1rem;"><strong>Locations</strong><br/>
               One site → Two locations (Cowley Road + Cricket Road)
+            </p>
+          </div>
+        </div>
+
+        {/* DAVID NORLAND MEMORIAL */}
+        <div class="content-block">
+          <div class="content-text" style="padding: 2rem; background: rgba(0, 0, 0, 0.4); border-left: 3px solid var(--text-gold);">
+            <p style="font-style: italic; margin-bottom: 1rem;">
+              In memory of David Norland (1974–2014)
+            </p>
+            <p>
+              Soundworks Oxford was founded in 1999 by David Norland, a sound engineer, musician, and community advocate who dedicated his life to making professional recording infrastructure accessible to Oxford's grassroots music scene.
+            </p>
+            <p style="margin-top: 1rem;">
+              David produced Supergrass's first single <em>Caught By The Fuzz</em> under his Backbeat Records label in 1994, helped establish OX4 FM community radio, and worked tirelessly to support local artists and community groups until his death in 2014.
+            </p>
+            <p style="margin-top: 1rem;">
+              Cowley Road Studios continues his mission: professional-grade creative infrastructure, available to all, operated without chaos.
             </p>
           </div>
         </div>
@@ -2546,7 +2564,7 @@ app.get('/soundworks', (c) => {
 
         <div style="text-align: center; margin-top: 3rem; padding: 2rem 0; border-top: 1px solid rgba(232, 155, 60, 0.2);">
           <p class="mono" style="color: var(--text-gold); font-weight: 700;">
-            SOUNDWORKS OXFORD (2004–2024) · NOW COWLEY ROAD STUDIOS
+            SOUNDWORKS OXFORD (1999–2024) · NOW COWLEY ROAD STUDIOS
           </p>
         </div>
       </section>
@@ -2555,7 +2573,7 @@ app.get('/soundworks', (c) => {
     </>,
     {
       title: 'Soundworks Oxford is now Cowley Road Studios | Recording Studio Oxford',
-      description: 'Soundworks Oxford (2004–2024) is now Cowley Road Studios. Same commitment to professional recording, rehearsal, and AV services in Oxford.',
+      description: 'Soundworks Oxford (1999–2024) is now Cowley Road Studios. Same commitment to professional recording, rehearsal, and AV services in Oxford.',
       keywords: 'soundworks oxford, cowley road studios, recording studio oxford, soundworks oxford history, oxford recording studio'
     }
   )
@@ -3092,7 +3110,7 @@ app.get('/about', (c) => {
               Located in the heart of OX4, Cowley Road Studios (CRS) is a multifaceted creative hub dedicated to the craft of sound, technical repair, and community collaboration. We bridge the gap between high-end professional production and accessible local culture.
             </p>
             <p style="margin-top: 1.5rem; padding: 1rem; background: rgba(232, 155, 60, 0.1); border-left: 3px solid var(--text-gold);">
-              <strong>Formerly Soundworks Oxford</strong> — Cowley Road Studios evolved from Soundworks Oxford, continuing our commitment to serving Oxford's creative community with professional-grade recording, rehearsal, and AV infrastructure.
+              <strong>Formerly Soundworks Oxford</strong> — Cowley Road Studios evolved from Soundworks Oxford, continuing our commitment to serving Oxford's creative community with professional-grade recording, rehearsal, and AV infrastructure since 1999.
             </p>
           </div>
         </div>
