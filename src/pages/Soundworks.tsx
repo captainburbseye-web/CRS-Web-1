@@ -2,15 +2,15 @@ import React from 'react';
 
 export const Soundworks = () => {
   return (
-    <section class="crs-section section-dark">
-      <div class="section-header">
-        <h1 class="section-title heading">Soundworks Oxford → Cowley Road Studios</h1>
-        <p class="section-intro">1999–2024 · Twenty-five years of service</p>
+    <section className="crs-section section-dark">
+      <div className="section-header">
+        <h1 className="section-title heading">Soundworks Oxford → Cowley Road Studios</h1>
+        <p className="section-intro">1999–2024 · Twenty-five years of service</p>
       </div>
 
       {/* TRANSITION NOTICE */}
-      <div class="content-block">
-        <div class="content-text" style="text-align: center; padding: 2rem; background: rgba(232, 155, 60, 0.1); border: 1px solid rgba(232, 155, 60, 0.3);">
+      <div className="content-block">
+        <div className="content-text" style="text-align: center; padding: 2rem; background: rgba(232, 155, 60, 0.1); border: 1px solid rgba(232, 155, 60, 0.3);">
           <p style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">
             Soundworks Oxford is now Cowley Road Studios
           </p>
@@ -21,9 +21,9 @@ export const Soundworks = () => {
       </div>
 
       {/* CONTINUITY STATEMENT */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Operational Continuity</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Operational Continuity</h3>
+        <div className="content-text">
           <p>
             Cowley Road Studios continues the Soundworks Oxford legacy, providing professional recording, rehearsal, and AV infrastructure to Oxford's creative community since 1999.
           </p>
@@ -34,9 +34,9 @@ export const Soundworks = () => {
       </div>
 
       {/* TIMELINE */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Timeline</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Timeline</h3>
+        <div className="content-text">
           <p><strong>1999</strong><br/>
             Soundworks Oxford founded by David Norland. Single recording room, engineer-led operation.
           </p>
@@ -53,9 +53,9 @@ export const Soundworks = () => {
       </div>
 
       {/* WHAT CHANGED */}
-      <div class="content-block">
-        <h3 class="content-heading heading">What Changed</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">What Changed</h3>
+        <div className="content-text">
           <p><strong>Name</strong><br/>
             Soundworks Oxford → Cowley Road Studios
           </p>
@@ -69,8 +69,8 @@ export const Soundworks = () => {
       </div>
 
       {/* DAVID NORLAND MEMORIAL */}
-      <div class="content-block">
-        <div class="content-text" style="padding: 2rem; background: rgba(0, 0, 0, 0.4); border-left: 3px solid var(--text-gold);">
+      <div className="content-block">
+        <div className="content-text" style="padding: 2rem; background: rgba(0, 0, 0, 0.4); border-left: 3px solid var(--text-gold);">
           <p style="font-style: italic; margin-bottom: 1rem;">
             In memory of David Norland (1974–2014)
           </p>
@@ -87,9 +87,9 @@ export const Soundworks = () => {
       </div>
 
       {/* WHAT STAYED THE SAME */}
-      <div class="content-block">
-        <h3 class="content-heading heading">What Stayed the Same</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">What Stayed the Same</h3>
+        <div className="content-text">
           <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
             <li>Engineer-led operation</li>
             <li>No-chaos policy</li>
@@ -102,9 +102,9 @@ export const Soundworks = () => {
       </div>
 
       {/* EXPLORE SERVICES */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Explore Our Services</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Explore Our Services</h3>
+        <div className="content-text">
           <p><strong><a href="/studio" style="color: var(--text-gold); text-decoration: underline;">Recording Studio</a></strong><br/>
             Purpose-built recording and production rooms at Cowley Road HQ (build phase in progress).
           </p>
@@ -121,8 +121,8 @@ export const Soundworks = () => {
       </div>
 
       {/* CONTACT */}
-      <div class="content-block">
-        <div class="content-text" style="text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(232, 155, 60, 0.1); border: 1px solid rgba(232, 155, 60, 0.3);">
+      <div className="content-block">
+        <div className="content-text" style="text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(232, 155, 60, 0.1); border: 1px solid rgba(232, 155, 60, 0.3);">
           <p style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">
             Questions about the transition?
           </p>
@@ -136,7 +136,7 @@ export const Soundworks = () => {
       </div>
 
       <div style="text-align: center; margin-top: 3rem; padding: 2rem 0; border-top: 1px solid rgba(232, 155, 60, 0.2);">
-        <p class="mono" style="color: var(--text-gold); font-weight: 700;">
+        <p className="mono" style="color: var(--text-gold); font-weight: 700;">
           SOUNDWORKS OXFORD (1999–2024) · NOW COWLEY ROAD STUDIOS
         </p>
       </div>

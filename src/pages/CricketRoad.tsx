@@ -2,15 +2,15 @@ import React from 'react';
 
 export const CricketRoad = () => {
   return (
-    <section class="crs-section section-dark">
-      <div class="section-header">
-        <h1 class="section-title heading">Cricket Road Studio</h1>
-        <p class="section-intro">Fully operational. Bookable now.</p>
+    <section className="crs-section section-dark">
+      <div className="section-header">
+        <h1 className="section-title heading">Cricket Road Studio</h1>
+        <p className="section-intro">Fully operational. Bookable now.</p>
       </div>
 
       {/* INTRO */}
-      <div class="content-block">
-        <div class="content-text">
+      <div className="content-block">
+        <div className="content-text">
           <p>
             Cricket Road is CRS's fully refurbished, operational rehearsal and live capture facility — the working room while Cowley Road HQ completes commissioning.
           </p>
@@ -21,9 +21,9 @@ export const CricketRoad = () => {
       </div>
 
       {/* LIVE ROOM SPECS */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Live Room Specs</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Live Room Specs</h3>
+        <div className="content-text">
           <p><strong>Room Size</strong><br/>
             Large live room — 6m × 4m
           </p>
@@ -31,9 +31,9 @@ export const CricketRoad = () => {
       </div>
 
       {/* BACKLINE & INSTRUMENTS */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Backline & Instruments</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Backline & Instruments</h3>
+        <div className="content-text">
           <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
             <li>Yamaha CLP electric piano, routed through PA</li>
             <li>2 × Shure SM58 vocal microphones</li>
@@ -44,9 +44,9 @@ export const CricketRoad = () => {
       </div>
 
       {/* PA & DESK */}
-      <div class="content-block">
-        <h3 class="content-heading heading">PA & Desk</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">PA & Desk</h3>
+        <div className="content-text">
           <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
             <li>Live room desk with reverb and compression available</li>
             <li>Vocal and instrument routing ready for rehearsal or capture</li>
@@ -55,9 +55,9 @@ export const CricketRoad = () => {
       </div>
 
       {/* DRUM KIT SUPPORT */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Drum Kit Support</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Drum Kit Support</h3>
+        <div className="content-text">
           <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
             <li>Drum kit available</li>
             <li>Bass drum mic installed (kick mic in place)</li>
@@ -66,9 +66,9 @@ export const CricketRoad = () => {
       </div>
 
       {/* USE CASES */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Use Cases</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Use Cases</h3>
+        <div className="content-text">
           <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
             <li>Band rehearsals</li>
             <li>Live run-throughs</li>
@@ -79,8 +79,8 @@ export const CricketRoad = () => {
       </div>
 
       {/* BOOKING */}
-      <div class="content-block">
-        <div class="content-text" style="text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(232, 155, 60, 0.1); border: 1px solid rgba(232, 155, 60, 0.3);">
+      <div className="content-block">
+        <div className="content-text" style="text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(232, 155, 60, 0.1); border: 1px solid rgba(232, 155, 60, 0.3);">
           <p style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">
             Cricket Road is operational and taking bookings now.
           </p>
@@ -94,7 +94,7 @@ export const CricketRoad = () => {
       </div>
 
       <div style="text-align: center; margin-top: 3rem; padding: 2rem 0; border-top: 1px solid rgba(232, 155, 60, 0.2);">
-        <p class="mono" style="color: var(--text-gold); font-weight: 700;">
+        <p className="mono" style="color: var(--text-gold); font-weight: 700;">
           CRICKET ROAD — OPERATIONAL NOW
         </p>
       </div>

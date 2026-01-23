@@ -2,15 +2,15 @@ import React from 'react';
 
 export const About = () => {
   return (
-    <section class="crs-section section-dark">
-      <div class="section-header">
-        <h1 class="section-title heading">About CRS</h1>
-        <p class="section-intro">Built to work. Built to last.</p>
+    <section className="crs-section section-dark">
+      <div className="section-header">
+        <h1 className="section-title heading">About CRS</h1>
+        <p className="section-intro">Built to work. Built to last.</p>
       </div>
 
       {/* INTRO */}
-      <div class="content-block">
-        <div class="content-text">
+      <div className="content-block">
+        <div className="content-text">
           <p>
             Located in the heart of OX4, Cowley Road Studios (CRS) is a multifaceted creative hub dedicated to the craft of sound, technical repair, and community collaboration. We bridge the gap between high-end professional production and accessible local culture.
           </p>
@@ -21,9 +21,9 @@ export const About = () => {
       </div>
 
       {/* OUR ECOSYSTEM */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Our Ecosystem</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Our Ecosystem</h3>
+        <div className="content-text">
           <p><strong>The Recording Studio</strong><br/>
             Specialized in vintage audio recording and modern production, providing a unique sonic character you won't find in a digital-only environment.
           </p>
@@ -37,9 +37,9 @@ export const About = () => {
       </div>
 
       {/* THE TEAM */}
-      <div class="content-block">
-        <h3 class="content-heading heading">The Team</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">The Team</h3>
+        <div className="content-text">
           <p><strong>Daniel Burbidge</strong> — Founder and lead strategist. Focused on building a robust network of industry partners to expand the reach and capabilities of CRS.
           </p>
           <p style="margin-top: 1rem;"><strong>Oli</strong> — Co-founder and resident technical lead. An expert in music production and hardware technology, ensuring the studio's vintage gear and modern workflows are seamless.
@@ -48,9 +48,9 @@ export const About = () => {
       </div>
 
       {/* BUILD 2026 */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Our Mission: Build 2026</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Our Mission: Build 2026</h3>
+        <div className="content-text">
           <p>
             We are currently in a major growth phase, with limited audio services launching as early as February 2026 (March at latest). New workspaces and expanded creative facilities are under development.
           </p>
@@ -64,9 +64,9 @@ export const About = () => {
       </div>
 
       {/* THE CRS STORY */}
-      <div class="content-block">
-        <h3 class="content-heading heading">The CRS Story</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">The CRS Story</h3>
+        <div className="content-text">
           <p>
             Cowley Road Studios was founded on a simple premise: <strong>professional infrastructure shouldn't be a luxury</strong>.
           </p>
@@ -86,9 +86,9 @@ export const About = () => {
       </div>
 
       {/* THE NO CHAOS POLICY */}
-      <div class="content-block">
-        <h3 class="content-heading heading">The No Chaos Policy</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">The No Chaos Policy</h3>
+        <div className="content-text">
           <p>
             CRS operates under a strict <strong>No Chaos Policy</strong>. This is not a slogan — it is an operational baseline.
           </p>
@@ -111,9 +111,9 @@ export const About = () => {
       </div>
 
       {/* WHY THIS MATTERS */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Why This Matters</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Why This Matters</h3>
+        <div className="content-text">
           <p><strong>For Artists</strong><br/>
             Your time is for making work, not troubleshooting equipment.
           </p>
@@ -127,9 +127,9 @@ export const About = () => {
       </div>
 
       {/* OUR LOCATIONS */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Our Locations</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Our Locations</h3>
+        <div className="content-text">
           <p><strong>Cowley Road, Oxford (OX4 1JE)</strong><br/>
             <span style="opacity: 0.8;">Recording Studio & Workshop Café</span>
           </p>
@@ -153,9 +153,9 @@ export const About = () => {
       </div>
 
       {/* WHO WE WORK WITH */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Who We Work With</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Who We Work With</h3>
+        <div className="content-text">
           <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
             <li>Grassroots artists and bands</li>
             <li>Community and cultural organisations</li>
@@ -166,9 +166,9 @@ export const About = () => {
       </div>
 
       {/* ODRO ENGINEERING STANDARD */}
-      <div class="content-block">
-        <h3 class="content-heading heading">ODRO Engineering Standard</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">ODRO Engineering Standard</h3>
+        <div className="content-text">
           <p>
             CRS systems are designed and maintained under the <strong>ODRO Engineering Standard</strong> — our internal methodology for infrastructure delivery.
           </p>
@@ -186,9 +186,9 @@ export const About = () => {
       </div>
 
       {/* GET INVOLVED */}
-      <div class="content-block">
-        <h3 class="content-heading heading">Get Involved</h3>
-        <div class="content-text">
+      <div className="content-block">
+        <h3 className="content-heading heading">Get Involved</h3>
+        <div className="content-text">
           <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
             <li><strong>Book a session</strong> — recording, rehearsal, or venue hire</li>
             <li><strong>Community access</strong> — subsidised and supported sessions</li>
@@ -201,7 +201,7 @@ export const About = () => {
       </div>
 
       <div style="text-align: center; margin-top: 3rem; padding: 2rem 0; border-top: 1px solid rgba(232, 155, 60, 0.2);">
-        <p class="mono" style="color: var(--text-gold); font-weight: 700;">
+        <p className="mono" style="color: var(--text-gold); font-weight: 700;">
           CRS — Built to work. Built to last. Powered by ODRO Engineering.
         </p>
       </div>
