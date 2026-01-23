@@ -774,9 +774,9 @@ app.get('/', (c) => {
   return c.render(
     <HomePage />,
     {
-      title: 'Cowley Road Studios | Recording Studio & AV Services Oxford',
-      description: 'Professional recording studio, rehearsal space, and live AV services in Oxford. No-chaos operation. Subsidized rates for community groups.',
-      keywords: 'recording studio oxford, rehearsal space oxford, live sound oxford, av services oxford, cowley road studios'
+      title: 'Cowley Road Studios Oxford | Recording Studio, Rehearsal Space & AV Services',
+      description: 'Professional recording studio, rehearsal space, and live AV services in Oxford. Multi-room tracking, vintage gear, and community-focused pricing. Formerly Soundworks Oxford.',
+      keywords: 'recording studio oxford, rehearsal space oxford, live sound oxford, av services oxford, cowley road studios, soundworks oxford, music production oxford, podcast studio oxford, band rehearsal oxford, audio repair oxford, workshop cafe oxford, cricket road studio'
     }
   )
 })
