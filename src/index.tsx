@@ -2828,7 +2828,50 @@ app.get('/about', (c) => {
         <div class="content-block">
           <div class="content-text">
             <p>
-              Cowley Road Studios is a purpose-built studio and venue system in Oxford, supporting recording, performance, and digital creative work without drama.
+              Located in the heart of OX4, Cowley Road Studios (CRS) is a multifaceted creative hub dedicated to the craft of sound, technical repair, and community collaboration. We bridge the gap between high-end professional production and accessible local culture.
+            </p>
+          </div>
+        </div>
+
+        {/* OUR ECOSYSTEM */}
+        <div class="content-block">
+          <h3 class="content-heading heading">Our Ecosystem</h3>
+          <div class="content-text">
+            <p><strong>The Recording Studio</strong><br/>
+              Specialized in vintage audio recording and modern production, providing a unique sonic character you won't find in a digital-only environment.
+            </p>
+            <p style="margin-top: 1rem;"><strong>The Workshop Café</strong><br/>
+              Featuring specialty coffee and a dedicated, flexible workspace designed for freelancers and the local creative community. Currently available for private hire.
+            </p>
+            <p style="margin-top: 1rem;"><strong>Technical Services</strong><br/>
+              Professional-grade electronic repairs and AV services, keeping the tools of the trade in peak condition.
+            </p>
+          </div>
+        </div>
+
+        {/* THE TEAM */}
+        <div class="content-block">
+          <h3 class="content-heading heading">The Team</h3>
+          <div class="content-text">
+            <p><strong>Daniel Burbidge</strong> — Founder and lead strategist. Focused on building a robust network of industry partners to expand the reach and capabilities of CRS.
+            </p>
+            <p style="margin-top: 1rem;"><strong>Oli</strong> — Co-founder and resident technical lead. An expert in music production and hardware technology, ensuring the studio's vintage gear and modern workflows are seamless.
+            </p>
+          </div>
+        </div>
+
+        {/* BUILD 2026 */}
+        <div class="content-block">
+          <h3 class="content-heading heading">Our Mission: Build 2026</h3>
+          <div class="content-text">
+            <p>
+              We are currently in a major growth phase, with limited audio services launching as early as February 2026 (March at latest). New workspaces and expanded creative facilities are under development.
+            </p>
+            <p style="margin-top: 1rem;">
+              To fund the next stage of our build-out, we are currently offering <strong>exclusive, discounted rates on recording, production, and podcast sessions</strong> for those who book in advance. Your early support directly funds the completion of Oxford's most comprehensive creative infrastructure.
+            </p>
+            <p style="margin-top: 1rem;">
+              <a href="/contact" style="color: var(--text-gold); text-decoration: underline; font-weight: 600;">Book your pre-build session now</a>
             </p>
           </div>
         </div>
