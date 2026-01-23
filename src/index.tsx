@@ -2944,6 +2944,9 @@ app.get('/about', (c) => {
             <p>
               Located in the heart of OX4, Cowley Road Studios (CRS) is a multifaceted creative hub dedicated to the craft of sound, technical repair, and community collaboration. We bridge the gap between high-end professional production and accessible local culture.
             </p>
+            <p style="margin-top: 1.5rem; padding: 1rem; background: rgba(232, 155, 60, 0.1); border-left: 3px solid var(--text-gold);">
+              <strong>Formerly Soundworks Oxford</strong> — Cowley Road Studios evolved from Soundworks Oxford, continuing our commitment to serving Oxford's creative community with professional-grade recording, rehearsal, and AV infrastructure.
+            </p>
           </div>
         </div>
 
