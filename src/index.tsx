@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { renderer } from './renderer'
 import { rackDemo } from './routes/rack-demo'
+import { ContactSection } from './components/ContactSection'
 
 const app = new Hono()
 
@@ -2796,182 +2797,6 @@ app.get('/work', (c) => {
     }
   )
 })
-// ============================================================================
-// CONTACT PAGEE
-// ============================================================================
-app.get('/contact', (c) => {
-  return c.render(
-    <>
-      <Header />
-      
-      {/* CONTACT HERO */}
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led green"></span>
-          </div>
-          <h2 class="rack-unit-title">/// CONTACT</h2>
-        </div>
-        
-        <div class="rack-unit-content">
-          <p style="font-size: 1.25rem; margin-bottom: 2rem; color: rgba(245, 245, 245, 0.9); text-align: center;">
-            Get in touch.
-          </p>
-          
-          <div style="max-width: 600px; margin: 0 auto;">
-            {/* Contact Info */}
-            <div style="margin-bottom: 3rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green);">
-              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; color: var(--crs-green); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">[ DIRECT CONTACT ]</h3>
-              
-              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; margin-bottom: 0.75rem; color: rgba(245, 245, 245, 0.85);">
-                <strong>Email:</strong> <a href="mailto:studio@cowleyroadstudios.com" style="color: var(--mustard); text-decoration: none;">studio@cowleyroadstudios.com</a>
-              </p>
-              
-              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; margin-bottom: 0.75rem; color: rgba(245, 245, 245, 0.85);">
-                <strong>Phone:</strong> <a href="tel:+441865000000" style="color: var(--mustard); text-decoration: none;">+44 1865 000 000</a>
-              </p>
-              
-              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.85);">
-                <strong>Address:</strong> 118 Cowley Road, Oxford, OX4 1JE
-              </p>
-            </div>
-            
-            {/* Contact Form */}
-            <div style="padding: 2rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(245, 245, 245, 0.1);">
-              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; color: var(--mustard); margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;">[ SEND MESSAGE ]</h3>
-              
-              <form id="contact-form" style="display: flex; flex-direction: column; gap: 1.25rem;">
-                <div>
-                  <label for="name" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Name</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    name="name" 
-                    required
-                    style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 245, 245, 0.2); color: rgba(245, 245, 245, 0.9); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;"
-                  />
-                </div>
-                
-                <div>
-                  <label for="email" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Email</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    required
-                    style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 245, 245, 0.2); color: rgba(245, 245, 245, 0.9); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;"
-                  />
-                </div>
-                
-                <div>
-                  <label for="service" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Service</label>
-                  <select 
-                    id="service" 
-                    name="service"
-                    style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 245, 245, 0.2); color: rgba(245, 245, 245, 0.9); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;"
-                  >
-                    <option value="general">General Enquiry</option>
-                    <option value="recording">Recording Session</option>
-                    <option value="rehearsal">Rehearsal Space</option>
-                    <option value="av">AV Services</option>
-                    <option value="venue">Venue Hire</option>
-                    <option value="repairs">Equipment Repair</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label for="subject" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Subject</label>
-                  <input 
-                    type="text" 
-                    id="subject" 
-                    name="subject" 
-                    required
-                    style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 245, 245, 0.2); color: rgba(245, 245, 245, 0.9); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;"
-                  />
-                </div>
-                
-                <div>
-                  <label for="message" style="display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Message</label>
-                  <textarea 
-                    id="message" 
-                    name="message" 
-                    rows="6"
-                    required
-                    style="width: 100%; padding: 0.75rem; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 245, 245, 0.2); color: rgba(245, 245, 245, 0.9); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; resize: vertical;"
-                  ></textarea>
-                </div>
-                
-                <button 
-                  type="submit" 
-                  class="cta-button"
-                  style="width: 100%; margin-top: 0.5rem;"
-                >
-                  SEND MESSAGE
-                </button>
-                
-                <div id="form-status" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-align: center; display: none;"></div>
-              </form>
-              
-              <script>
-                {`
-                  document.getElementById('contact-form').addEventListener('submit', async (e) => {
-                    e.preventDefault();
-                    
-                    const form = e.target;
-                    const status = document.getElementById('form-status');
-                    const button = form.querySelector('button[type="submit"]');
-                    
-                    // Disable button and show loading
-                    button.disabled = true;
-                    button.textContent = 'SENDING...';
-                    status.style.display = 'block';
-                    status.style.color = 'var(--mustard)';
-                    status.textContent = 'Sending message...';
-                    
-                    try {
-                      const formData = {
-                        name: form.name.value,
-                        email: form.email.value,
-                        service: form.service.value,
-                        subject: form.subject.value,
-                        message: form.message.value
-                      };
-                      
-                      const response = await fetch('/api/contact', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(formData)
-                      });
-                      
-                      const result = await response.json();
-                      
-                      if (result.success) {
-                        status.style.color = 'var(--crs-green)';
-                        status.textContent = 'Message sent successfully!';
-                        form.reset();
-                      } else {
-                        throw new Error(result.error || 'Failed to send message');
-                      }
-                    } catch (error) {
-                      status.style.color = '#ff4444';
-                      status.textContent = 'Error: ' + error.message;
-                    } finally {
-                      button.disabled = false;
-                      button.textContent = 'SEND MESSAGE';
-                    }
-                  });
-                `}
-              </script>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <Footer />
-    </>
-  )
-})
-
 
 app.get('/cafe', (c) => {
   return c.render(
@@ -3461,66 +3286,12 @@ app.get('/work', (c) => {
 // CONTACT
 app.get('/contact', (c) => {
   const serviceType = c.req.query('service') || 'general'
-  const serviceLabel = {
-    'recording': 'Recording Session',
-    'pod-hire': 'Pod Hire',
-    'repairs': 'Equipment Repair',
-    'av': 'AV Services',
-    'venue': 'Venue Hire',
-    'general': 'General Enquiry'
-  }[serviceType] || 'General Enquiry'
   
   return c.render(
     <>
       <Header />
-
-      <section class="crs-section section-dark">
-        <div class="section-header">
-          <h1 class="section-title heading">CRS — Contact</h1>
-          <p class="section-intro">
-            {serviceType !== 'general' ? `Enquiry: ${serviceLabel}` : 'For general enquiries only.'}
-          </p>
-        </div>
-
-        {/* CONTACT FORM */}
-        <div class="booking-form-container">
-          <h3 class="content-heading mono">SEND A MESSAGE</h3>
-          
-          <form class="booking-form" method="post" action="/api/contact">
-            <input type="hidden" name="service" value={serviceType} />
-            
-            <div class="form-group">
-              <label for="name" class="form-label mono">Name *</label>
-              <input type="text" id="name" name="name" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label mono">Email *</label>
-              <input type="email" id="email" name="email" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="message" class="form-label mono">Message *</label>
-              <textarea id="message" name="message" required class="form-textarea" rows="6"></textarea>
-            </div>
-            
-            <button type="submit" class="crs-button mono">SEND MESSAGE</button>
-          </form>
-          
-          <p class="form-helper-text">Message received. Enquiries are processed during operating hours.</p>
-        </div>
-
-        {/* CONTACT METHODS */}
-        <div class="content-block" style="margin-top: 3rem;">
-          <h3 class="content-heading mono">DIRECT CONTACT</h3>
-          <div class="content-text mono">
-            <p><strong>NOTE:</strong> All enquiries are handled via the contact form above.</p>
-            <p style="margin-top: 1rem;"><strong>ADDRESS:</strong> 118 Cowley Road, Oxford, OX4 1JE</p>
-          </div>
-        </div>
-      </section>
-
-       <Footer />
+      <ContactSection serviceType={serviceType} />
+      <Footer />
     </>,
     {
       title: 'Contact Cowley Road Studios | Recording Studio Oxford',
