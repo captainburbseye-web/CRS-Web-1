@@ -1421,14 +1421,19 @@ app.get('/book/repairs', (c) => {
 // AV SERVICES
 app.get('/av-services', (c) => {
   return c.render(
-      <AVServicesPage />
+      <AVServicesPage />,
+    {
+      title: 'AV Services Oxford | Cowley Road Studios',
+      description: 'Professional audio-visual services including live sound, installations, repairs, and technical support for venues and events in Oxford.',
+      keywords: 'av services oxford, live sound oxford, sound engineer oxford, event av oxford, pa hire oxford, audio visual oxford'
+    }
   )
 })
 
 // REPAIRS
 app.get('/av-services/repairs', (c) => {
   return c.render(
-      <AVRepairsPage />
+      <AVRepairsPage />,
     {
       title: 'Live Sound & AV Services Oxford | Cowley Road Studios',
       description: 'Engineer-led live sound, installations, and technical support for venues and events in Oxford. Professional AV infrastructure for community events.',
@@ -1440,7 +1445,7 @@ app.get('/av-services/repairs', (c) => {
 // WORKSHOP CAFÉ (VENUE)
 app.get('/workshop-cafe', (c) => {
   return c.render(
-      <WorkshopCafePage />
+      <WorkshopCafePage />,
     {
       title: 'Workshop Café Oxford | Community Space & Venue Hire',
       description: 'Café, workspace, and small venue in East Oxford. Available for private hire and public programming. Part of Cowley Road Studios.',
