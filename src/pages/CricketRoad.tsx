@@ -14,7 +14,7 @@ export const CricketRoad = () => {
           <p>
             Cricket Road is CRS's fully refurbished, operational rehearsal and live capture facility — the working room while Cowley Road HQ completes commissioning.
           </p>
-          <p style="margin-top: 1rem;">
+          <p style={{ marginTop: '1rem' }}>
             This is where bands rehearse, writers develop material, and projects capture live energy without waiting for the main studio build to finish.
           </p>
         </div>
@@ -34,7 +34,7 @@ export const CricketRoad = () => {
       <div className="content-block">
         <h3 className="content-heading heading">Backline & Instruments</h3>
         <div className="content-text">
-          <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
+          <ul style={{ listStyle: 'disc', marginLeft: '1.5rem', lineHeight: 1.8 }}>
             <li>Yamaha CLP electric piano, routed through PA</li>
             <li>2 × Shure SM58 vocal microphones</li>
             <li>2 × Guitar amplifiers (general backline)</li>
@@ -47,7 +47,7 @@ export const CricketRoad = () => {
       <div className="content-block">
         <h3 className="content-heading heading">PA & Desk</h3>
         <div className="content-text">
-          <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
+          <ul style={{ listStyle: 'disc', marginLeft: '1.5rem', lineHeight: 1.8 }}>
             <li>Live room desk with reverb and compression available</li>
             <li>Vocal and instrument routing ready for rehearsal or capture</li>
           </ul>
@@ -58,7 +58,7 @@ export const CricketRoad = () => {
       <div className="content-block">
         <h3 className="content-heading heading">Drum Kit Support</h3>
         <div className="content-text">
-          <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
+          <ul style={{ listStyle: 'disc', marginLeft: '1.5rem', lineHeight: 1.8 }}>
             <li>Drum kit available</li>
             <li>Bass drum mic installed (kick mic in place)</li>
           </ul>
@@ -69,7 +69,7 @@ export const CricketRoad = () => {
       <div className="content-block">
         <h3 className="content-heading heading">Use Cases</h3>
         <div className="content-text">
-          <ul style="list-style: disc; margin-left: 1.5rem; line-height: 1.8;">
+          <ul style={{ listStyle: 'disc', marginLeft: '1.5rem', lineHeight: 1.8 }}>
             <li>Band rehearsals</li>
             <li>Live run-throughs</li>
             <li>Writing sessions</li>
@@ -80,21 +80,21 @@ export const CricketRoad = () => {
 
       {/* BOOKING */}
       <div className="content-block">
-        <div className="content-text" style="text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(232, 155, 60, 0.1); border: 1px solid rgba(232, 155, 60, 0.3);">
-          <p style="font-size: 1.125rem; font-weight: 600; margin-bottom: 1rem;">
+        <div className="content-text" style={{ textAlign: 'center', marginTop: '2rem', padding: '2rem', background: 'rgba(232, 155, 60, 0.1)', border: '1px solid rgba(232, 155, 60, 0.3)' }}>
+          <p style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem' }}>
             Cricket Road is operational and taking bookings now.
           </p>
-          <p style="margin-bottom: 1.5rem;">
+          <p style={{ marginBottom: '1.5rem' }}>
             This is the working facility while Cowley Road completes its build phase.
           </p>
-          <a href="/contact" style="display: inline-block; padding: 0.75rem 2rem; background: var(--text-gold); color: #000; font-weight: 700; text-decoration: none; border-radius: 4px;">
+          <a href="/contact" style={{ display: 'inline-block', padding: '0.75rem 2rem', background: 'var(--text-gold)', color: '#000', fontWeight: 700, textDecoration: 'none', borderRadius: '4px' }}>
             BOOK CRICKET ROAD
           </a>
         </div>
       </div>
 
-      <div style="text-align: center; margin-top: 3rem; padding: 2rem 0; border-top: 1px solid rgba(232, 155, 60, 0.2);">
-        <p className="mono" style="color: var(--text-gold); font-weight: 700;">
+      <div style={{ textAlign: 'center', marginTop: '3rem', padding: '2rem 0', borderTop: '1px solid rgba(232, 155, 60, 0.2)' }}>
+        <p className="mono" style={{ color: 'var(--text-gold)', fontWeight: 700 }}>
           CRICKET ROAD — OPERATIONAL NOW
         </p>
       </div>
