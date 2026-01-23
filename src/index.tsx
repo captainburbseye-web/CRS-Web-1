@@ -3312,7 +3312,7 @@ app.get('/about', (c) => {
   )
 })
 // WORK
-app.get('/work'', (c) => {
+app.get('/work', (c) => {
   return c.render(
     <>
       <Header />
