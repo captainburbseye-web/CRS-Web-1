@@ -10,6 +10,10 @@ import { StudioPage } from './pages/Studio'
 import { AVServicesPage } from './pages/AVServices'
 import { AVRepairsPage } from './pages/AVRepairs'
 import { WorkshopCafePage } from './pages/WorkshopCafe'
+import { CricketRoad } from './pages/CricketRoad'
+import { Soundworks } from './pages/Soundworks'
+import { About } from './pages/About'
+import { Work } from './pages/Work'
 
 const app = new Hono()
 
