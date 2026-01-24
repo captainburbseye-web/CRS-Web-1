@@ -203,3 +203,30 @@ header.rack-header .rack-header-nav,
 header.rack-header .rack-header-cta {
   flex-shrink: 0; /* Never collapse */
 }
+
+/* ==========================================
+   CRS Logo Home Link (Clickable Logo)
+   ========================================== */
+
+/* Make the CRS logo link invisible but functional */
+.crs-home-link {
+  text-decoration: none;      /* No underline */
+  border: none;               /* No border */
+  display: inline-block;      /* Keeps layout tight */
+  cursor: pointer;            /* Shows the 'hand' icon on hover */
+  color: inherit;             /* Keeps your original text color */
+}
+
+/* Optional: Add a subtle hover effect for tactile feel */
+.crs-home-link:hover .crs-logo {
+  opacity: 0.9;
+  transform: scale(0.98);     /* Slight 'press' effect like a button */
+  transition: all 0.1s ease;
+}
+
+/* Also apply hover effect to the badge if present */
+.crs-home-link:hover .header-crs-badge {
+  opacity: 0.9;
+  transform: scale(0.98);
+  transition: all 0.1s ease;
+}
