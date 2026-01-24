@@ -82,7 +82,7 @@ header.rack-header {
 
 .rack-header-nav a {
   font-family: 'Oswald', sans-serif;
-  font-size: 15px; /* Slightly smaller for tighter spacing */
+  font-size: 12px; /* Reduced for proper rack sizing */
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -92,6 +92,7 @@ header.rack-header {
   transition: color 0.2s;
   display: inline-flex; /* Ensure proper vertical alignment */
   align-items: center; /* Fix Contact link sitting lower */
+  line-height: 1; /* Tighter line height for compact rack aesthetic */
 }
 
 .rack-header-nav a:hover {
@@ -100,9 +101,10 @@ header.rack-header {
 
 .rack-header-nav .separator {
   color: rgba(212, 160, 23, 0.3);
-  font-size: 14px;
+  font-size: 12px; /* Match link font size */
   display: inline-flex; /* Match link alignment */
   align-items: center; /* Ensure vertical centering */
+  line-height: 1; /* Match link line height */
 }
 
 /* ==========================================
