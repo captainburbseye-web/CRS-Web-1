@@ -21,7 +21,7 @@ export const About = () => {
       </div>
 
       {/* OUR HERITAGE */}
-      <div className="content-block">
+      <div className="content-block legacy-degen3 protocol-n0rland0-800m">
         <h3 className="content-heading heading">Our Heritage</h3>
         <div className="content-text">
           <p>

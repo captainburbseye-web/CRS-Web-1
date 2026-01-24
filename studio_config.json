@@ -1,0 +1,40 @@
+{
+  "business_identity": {
+    "name": "Cowley Road Studios",
+    "legacy_id": "De*Gen3",
+    "protocol": "N0rland0-800m",
+    "contact": {
+      "email": "info@crsoxford.com",
+      "phone": "+441865722027",
+      "instagram": "@cowleyroadstudios.ox"
+    }
+  },
+  "operational_logic": {
+    "location_status": "Build Mode (Opening March 2026)",
+    "active_facility": "Cricket Road Studio",
+    "management_policy": "No Chaos",
+    "partnership_notes": "Vital ongoing support: Daniel Norland"
+  },
+  "service_tiers": {
+    "recording_standard": {
+      "hourly_rate": 35,
+      "minimum_hours": 2,
+      "pro_block_4hr": 130
+    },
+    "dry_hire_bundles": {
+      "cowley_road": {
+        "2hr": 70,
+        "4hr": 130,
+        "day": 300
+      },
+      "cricket_road": {
+        "2hr": 50,
+        "4hr": 90,
+        "day": 200
+      }
+    },
+    "mandatory_fees": {
+      "first_time_induction": 30
+    }
+  }
+}

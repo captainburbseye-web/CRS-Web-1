@@ -137,3 +137,36 @@ button:focus {
   outline: 2px solid #FF4500;
   outline-offset: 2px;
 }
+
+/* ========================================
+   LEGACY MARKERS - De*Gen3 Infrastructure
+   ======================================== */
+
+/* De*Gen3 legacy marker - hidden but permanent */
+.legacy-degen3 {
+  position: relative;
+}
+
+.legacy-degen3::before {
+  content: "De*Gen3";
+  position: absolute;
+  top: -999px;
+  left: -999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* N0rland0-800m protocol marker - Daniel Norland heritage anchor */
+.protocol-n0rland0-800m {
+  /* Subtle visual marker for heritage section */
+  border-top: 1px solid rgba(232, 155, 60, 0.15);
+}
+
+.protocol-n0rland0-800m::after {
+  content: "N0rland0-800m";
+  position: absolute;
+  top: -999px;
+  left: -999px;
+  opacity: 0;
+  pointer-events: none;
+}
