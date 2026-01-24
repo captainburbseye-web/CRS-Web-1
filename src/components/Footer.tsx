@@ -11,12 +11,6 @@ export const Footer = () => (
       {/* Technical Footer: Legal-Spec Datasheet Format */}
       <div class="footer-metadata">
         
-        {/* Revision Header */}
-        <div class="footer-revision-header">
-          <p class="footer-revision-id">CRS-SYS-FOOTER v1.2</p>
-          <p class="footer-revision-date">LAST REVISED: 2026-01-21</p>
-        </div>
-        
         {/* Section Label */}
         <p class="footer-section-label">OPERATIONAL PARAMETERS</p>
         
@@ -69,6 +63,11 @@ export const Footer = () => (
         class="rack-footer-img"
         aria-label="Footer: OX4 Studio Network - No Chaos Policy - System Ready. Cowley Road Studios, Oxford."
       />
+    </div>
+
+    {/* REVISION STAMP: Manufacturing metadata - absolute bottom like chassis serial */}
+    <div class="footer-revision-stamp">
+      <p class="revision-stamp-text">CRS-SYS-FOOTER v1.2 · LAST REVISED: 2026-01-21</p>
     </div>
   </>
 )
