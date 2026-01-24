@@ -71,6 +71,9 @@ export const AVRepairsPage = () => (
           <p style="margin-top: 1.5rem;">
             No cosmetic fixes. No guesswork.
           </p>
+          <p style="margin-top: 1.5rem; font-size: 0.9375rem; opacity: 0.85;">
+            <strong>Repair Diagnostics:</strong> £60 flat rate (credited toward repair if you proceed)
+          </p>
         </div>
       </div>
 

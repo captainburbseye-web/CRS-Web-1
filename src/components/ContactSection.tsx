@@ -26,6 +26,19 @@ export const ContactSection = ({ serviceType = 'general' }: { serviceType?: stri
             <input type="hidden" name="service" value={serviceType} />
             
             <div class="form-group">
+              <label for="service_type" class="form-label mono">Service Required *</label>
+              <select id="service_type" name="service_type" required class="form-input">
+                <option value="">Select a service...</option>
+                <option value="recording">Recording</option>
+                <option value="rehearsal">Rehearsal</option>
+                <option value="repairs">Repairs</option>
+                <option value="venue_hire">Venue Hire</option>
+                <option value="av_services">AV Services</option>
+                <option value="general">General Enquiry</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
               <label for="name" class="form-label mono">Name *</label>
               <input type="text" id="name" name="name" required class="form-input" />
             </div>

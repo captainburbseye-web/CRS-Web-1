@@ -211,10 +211,16 @@ export const StudioPage = () => (
         <h3 class="content-heading mono">PRICING CONTEXT</h3>
         <div class="content-text">
           <p style="margin-bottom: 1rem;">
-            Recording and production work typically falls in the <strong>£400–£700 per day</strong> range, depending on scope and session type.
+            <strong>Recording & Production (with Engineer):</strong> £35/hour (2-hour minimum) | £130 for 4 hours
+          </p>
+          <p style="margin-bottom: 1rem;">
+            <strong>Dry Hire (Self-sufficient users):</strong> Cowley Road: £70/2hrs, £130/4hrs, £300/day | Cricket Road: £50/2hrs, £90/4hrs, £200/day
+          </p>
+          <p style="margin-bottom: 1rem; font-size: 0.9375rem; opacity: 0.85;">
+            <strong>First-time dry hire users:</strong> £30 one-off induction session required to unlock self-service access.
           </p>
           <p style="font-size: 0.9375rem; opacity: 0.85;">
-            Final pricing is confirmed by enquiry while the Cowley Road build is completed.
+            Typical full-day projects: £400–£700 depending on scope and session type.
           </p>
         </div>
       </div>

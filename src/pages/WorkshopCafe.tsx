@@ -133,7 +133,7 @@ export const WorkshopCafePage = () => (
           <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
             <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
               <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">FULL VENUE HIRE</h3>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£50 per hour</span>
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£25/hr | £90/4hrs | £200/day</span>
             </div>
             <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
               Capacity: 40–60 people · Includes PA system & projection
@@ -209,7 +209,7 @@ export const WorkshopCafePage = () => (
     <section class="crs-section section-dark">
       <div class="section-header">
         <h2 class="section-title heading">[ REFRESHMENT_PROTOCOL ]</h2>
-        <p class="section-intro" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem;">UE Coffee System — Oxford Roasted</p>
+        <p class="section-intro" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem;">Specialty Coffee — Oxford Roasted</p>
       </div>
 
       <div style="max-width: 800px; margin: 0 auto;">

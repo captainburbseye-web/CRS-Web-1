@@ -5,6 +5,7 @@ import { rackDemo } from './routes/rack-demo'
 import { ContactSection } from './components/ContactSection'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
+import { BuildStatusBanner } from './components/BuildStatusBanner'
 import { HomePage } from './pages/Home'
 import { StudioPage } from './pages/Studio'
 import { AVServicesPage } from './pages/AVServices'
@@ -455,6 +456,7 @@ app.get('/av', (c) => c.redirect('/av-services'))
 app.get('/book', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
@@ -545,6 +547,7 @@ app.get('/book', (c) => {
 app.get('/rehearsal', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="rack-unit">
         <div class="rack-unit-header">
@@ -652,6 +655,7 @@ app.get('/book/venue', (c) => {
 app.get('/locations', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
@@ -676,6 +680,7 @@ app.get('/locations', (c) => {
 app.get('/crs-cowley-road', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
@@ -726,6 +731,7 @@ app.get('/crs-cowley-road', (c) => {
 app.get('/crs-cricket-road', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
@@ -796,6 +802,7 @@ app.get('/studio', (c) => {
 app.get('/studio/infrastructure', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
 
       <section class="crs-section section-dark" style="padding-top: 2rem; padding-bottom: 4rem;">
@@ -916,6 +923,7 @@ app.get('/studio/infrastructure', (c) => {
 app.get('/book/studio', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -971,6 +979,7 @@ app.get('/book/studio', (c) => {
 app.get('/book/rehearsal', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1006,6 +1015,7 @@ app.get('/book/rehearsal', (c) => {
 app.get('/book/rehearsal/cowley-road', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1059,6 +1069,7 @@ app.get('/book/rehearsal/cowley-road', (c) => {
 app.get('/book/rehearsal/cricket-road', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1115,6 +1126,7 @@ app.get('/book/rehearsal/cricket-road', (c) => {
 app.get('/book/lessons', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1169,6 +1181,7 @@ app.get('/book/lessons', (c) => {
 app.get('/book/mixdown', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1215,6 +1228,7 @@ app.get('/book/mixdown', (c) => {
 app.get('/book/tape', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1269,6 +1283,7 @@ app.get('/book/tape', (c) => {
 app.get('/book/hire', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1318,6 +1333,7 @@ app.get('/book/hire', (c) => {
 app.get('/repairs/status', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1372,6 +1388,7 @@ app.get('/repairs/status', (c) => {
 app.get('/book/repairs', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1464,6 +1481,7 @@ app.get('/workshop-cafe', (c) => {
 app.get('/cricket-road', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <CricketRoad />
       <Footer />
@@ -1482,6 +1500,7 @@ app.get('/cricket-road', (c) => {
 app.get('/soundworks', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <Soundworks />
       <Footer />
@@ -1504,6 +1523,7 @@ app.get('/soundworks', (c) => {
 app.get('/cafe', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
 
       {/* CAFÉ HERO - Full-width Nettle Green */}
@@ -1623,6 +1643,7 @@ app.get("/venue", (c) => c.redirect("/contact?service=venue"))
 app.get('/about', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <About />
       <Footer />
@@ -1638,6 +1659,7 @@ app.get('/about', (c) => {
 app.get('/work', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <Work />
       <Footer />
@@ -1655,6 +1677,7 @@ app.get('/contact', (c) => {
   
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <ContactSection serviceType={serviceType} />
       <Footer />
