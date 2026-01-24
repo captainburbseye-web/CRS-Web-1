@@ -49,9 +49,11 @@ export const ContactSection = ({ serviceType = 'general' }: { serviceType?: stri
         {/* CONTACT METHODS */}
         <div class="content-block" style="margin-top: 3rem;">
           <h3 class="content-heading mono">DIRECT CONTACT</h3>
-          <div class="content-text mono">
-            <p><strong>NOTE:</strong> All enquiries are handled via the contact form above.</p>
-            <p style="margin-top: 1rem;"><strong>ADDRESS:</strong> 118 Cowley Road, Oxford, OX4 1JE</p>
+          <div class="content-text mono" style="font-size: 1.1rem; line-height: 1.8;">
+            <p><strong>✉️ EMAIL:</strong> <a href="mailto:info@crsoxford.com" style="color: #ff6b35; text-decoration: none;">info@crsoxford.com</a></p>
+            <p style="margin-top: 0.5rem;"><strong>☎️ PHONE:</strong> <a href="tel:+441865722027" style="color: #ff6b35; text-decoration: none;">+44 (0)1865 722027</a></p>
+            <p style="margin-top: 1.5rem;"><strong>📍 ADDRESS:</strong> 118 Cowley Road, Oxford, OX4 1JE</p>
+            <p style="margin-top: 1.5rem;"><strong>📸 SOCIAL:</strong> <a href="https://instagram.com/cowleyroadstudios.ox" target="_blank" rel="noopener" style="color: #ff6b35; text-decoration: none;">@cowleyroadstudios.ox</a> · <a href="https://facebook.com/cowleyroadstudios" target="_blank" rel="noopener" style="color: #ff6b35; text-decoration: none;">facebook.com/cowleyroadstudios</a></p>
           </div>
         </div>
       </section>

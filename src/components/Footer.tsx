@@ -47,7 +47,10 @@ export const Footer = () => (
         {/* Contact */}
         <div class="footer-data-block">
           <p class="footer-data-label">CONTACT</p>
-          <p class="footer-data-line"><a href="/contact" class="footer-link">studio@cowleyroadstudios.com</a></p>
+          <p class="footer-data-line">✉️ <a href="mailto:info@crsoxford.com" class="footer-link">info@crsoxford.com</a></p>
+          <p class="footer-data-line">☎️ <a href="tel:+441865722027" class="footer-link">+44 (0)1865 722027</a></p>
+          <p class="footer-data-line">📸 <a href="https://instagram.com/cowleyroadstudios.ox" target="_blank" rel="noopener" class="footer-link">@cowleyroadstudios.ox</a></p>
+          <p class="footer-data-line">🔗 <a href="https://facebook.com/cowleyroadstudios" target="_blank" rel="noopener" class="footer-link">facebook.com/cowleyroadstudios</a></p>
         </div>
         
         {/* System Signature */}

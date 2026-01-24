@@ -50,6 +50,7 @@ export const HomePage = () => (
         </p>
         <div style="text-align: center;">
           <a href="/studio" class="cta-button">BOOK SESSION</a>
+          <p style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.7;">Questions? Email <a href="mailto:info@crsoxford.com" style="color: #ff6b35; text-decoration: none;">info@crsoxford.com</a></p>
         </div>
       </div>
     </section>
@@ -79,8 +80,9 @@ export const HomePage = () => (
         <p style="margin-bottom: 1rem; color: rgba(245, 245, 245, 0.65); font-size: 0.9rem;">
           Cowley Road rehearsal space is nearing the end of the build phase and will be available soon.
         </p>
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
           <a href="/book" class="cta-button cta-button-peak-red">BOOK REHEARSAL</a>
+          <p style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.7;">Questions? Email <a href="mailto:info@crsoxford.com" style="color: #ff6b35; text-decoration: none;">info@crsoxford.com</a></p>
         </div>
       </div>
     </section>
@@ -119,6 +121,7 @@ export const HomePage = () => (
         </p>
         <div style="text-align: center;">
           <a href="/workshop-cafe" class="cta-button">HIRE THE VENUE</a>
+          <p style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.7;">Questions? Email <a href="mailto:info@crsoxford.com" style="color: #ff6b35; text-decoration: none;">info@crsoxford.com</a></p>
         </div>
       </div>
     </section>
@@ -138,6 +141,7 @@ export const HomePage = () => (
         </p>
         <div style="text-align: center;">
           <a href="/contact" class="cta-button">GET IN TOUCH</a>
+          <p style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.7;">Questions? Email <a href="mailto:info@crsoxford.com" style="color: #ff6b35; text-decoration: none;">info@crsoxford.com</a></p>
         </div>
       </div>
     </section>
