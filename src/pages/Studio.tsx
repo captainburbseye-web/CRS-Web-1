@@ -65,7 +65,7 @@ export const StudioPage = () => (
             <h4 style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
               BUILD RATE: 5-HOUR PRODUCTION
             </h4>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin-bottom: 1.5rem; flex-grow: 1;">
+            <div style="font-family: 'Inter', sans-serif; font-size: 0.938rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin-bottom: 1.5rem; flex-grow: 1;">
               <p style="margin-bottom: 0.5rem;">• Advance commissioning allocation</p>
               <p style="margin-bottom: 0.5rem;">• Includes engineer</p>
               <p style="margin-bottom: 0.5rem;">• Recording, mixing, or podcast</p>
@@ -82,7 +82,7 @@ export const StudioPage = () => (
             <h4 style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
               REHEARSAL BLOCK (10 HOURS)
             </h4>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin-bottom: 1.5rem; flex-grow: 1;">
+            <div style="font-family: 'Inter', sans-serif; font-size: 0.938rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin-bottom: 1.5rem; flex-grow: 1;">
               <p style="margin-bottom: 0.5rem;">• 10 hours total rehearsal access</p>
               <p style="margin-bottom: 0.5rem;">• Cowley Road rehearsal rooms</p>
               <p style="margin-bottom: 0.5rem;">• Band rehearsals & prep sessions</p>
@@ -99,7 +99,7 @@ export const StudioPage = () => (
             <h4 style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
               SYSTEM CLEARANCE (INDUCTION)
             </h4>
-            <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin-bottom: 1.5rem; flex-grow: 1;">
+            <div style="font-family: 'Inter', sans-serif; font-size: 0.938rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin-bottom: 1.5rem; flex-grow: 1;">
               <p style="margin-bottom: 0.5rem;">• Studio access induction</p>
               <p style="margin-bottom: 0.5rem;">• + 2 hours booth hire</p>
               <p style="margin-bottom: 0.5rem;">• Learn signal paths & routing</p>
@@ -113,9 +113,9 @@ export const StudioPage = () => (
           
         </div>
         
-        <div style="background: rgba(0, 0, 0, 0.3); border-left: 3px solid #39FF14; padding: 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.813rem; color: rgba(245, 245, 245, 0.7);">
-          <p style="margin: 0;">
-            <strong style="color: #39FF14;">NOTE:</strong> These are advance commissioning allocations. Funds construction. Redeemable once operational.
+        <div style="background: rgba(0, 0, 0, 0.3); border-left: 3px solid #39FF14; padding: 1.25rem;">
+          <p style="font-family: 'Inter', sans-serif; font-size: 0.938rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin: 0;">
+            <strong style="font-family: 'JetBrains Mono', monospace; color: #39FF14;">NOTE:</strong> These are advance commissioning allocations. Funds construction. Redeemable once operational.
           </p>
         </div>
       </div>
