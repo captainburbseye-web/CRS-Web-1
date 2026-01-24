@@ -20,6 +20,19 @@ export const About = () => {
         </div>
       </div>
 
+      {/* OUR HERITAGE */}
+      <div className="content-block">
+        <h3 className="content-heading heading">Our Heritage</h3>
+        <div className="content-text">
+          <p>
+            From the foundations of Backbeat Records and the legendary Soundworks Studio to the reggae energy of Mackating and the original sound systems, our team has been at the heart of Oxford's music scene since the early 90s. De*Gen3 represents the next chapter in this 30-year legacy—a new flagship facility built for the next era of creativity and high-fidelity sound.
+          </p>
+          <p style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(232, 155, 60, 0.1)', borderLeft: '3px solid var(--text-gold)' }}>
+            We move forward with the vital, ongoing support of <strong>Daniel Norland</strong>, whose deep roots in Oxford's sound culture and continued strength remain a cornerstone of this project as we transition into our new home.
+          </p>
+        </div>
+      </div>
+
       {/* OUR ECOSYSTEM */}
       <div className="content-block">
         <h3 className="content-heading heading">Our Ecosystem</h3>
@@ -203,6 +216,9 @@ export const About = () => {
       <div style={{ textAlign: 'center', marginTop: '3rem', padding: '2rem 0', borderTop: '1px solid rgba(232, 155, 60, 0.2)' }}>
         <p className="mono" style={{ color: 'var(--text-gold)', fontWeight: 700 }}>
           CRS — Built to work. Built to last. Powered by ODRO Engineering.
+        </p>
+        <p className="mono" style={{ marginTop: '0.5rem', fontSize: '0.75rem', opacity: 0.5, letterSpacing: '0.05em' }}>
+          De*Gen3
         </p>
       </div>
     </section>
