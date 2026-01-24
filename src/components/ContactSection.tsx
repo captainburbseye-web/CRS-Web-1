@@ -29,11 +29,11 @@ export const ContactSection = ({ serviceType = 'general' }: { serviceType?: stri
               <label for="service_type" class="form-label mono">Service Required *</label>
               <select id="service_type" name="service_type" required class="form-input">
                 <option value="">Select a service...</option>
-                <option value="recording">Recording</option>
-                <option value="rehearsal">Rehearsal</option>
+                <option value="recording">Studio & Recording (with engineer)</option>
+                <option value="rehearsal">Rehearsals – Cricket Road</option>
+                <option value="podcast">Podcast / AV Suite</option>
                 <option value="repairs">Repairs</option>
                 <option value="venue_hire">Venue Hire</option>
-                <option value="av_services">AV Services</option>
                 <option value="general">General Enquiry</option>
               </select>
             </div>
