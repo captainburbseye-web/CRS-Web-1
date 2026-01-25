@@ -84,12 +84,24 @@
   height: 100vh;
   object-fit: cover;
   z-index: -1; /* Sits behind LED and text layers */
-  filter: brightness(0.7) contrast(1.2); /* Deepens blacks for street visibility */
+  filter: brightness(0.6) contrast(1.3); /* Darker vignette for cinematic rack aesthetic */
   
   /* Performance optimization */
   will-change: opacity;
   transform: translateZ(0);
   backface-visibility: hidden;
+}
+
+/* Radial vignette overlay for Studio HQ module */
+.module-studio .signage-video-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.4) 70%, rgba(0, 0, 0, 0.7) 100%);
+  pointer-events: none;
 }
 
 /* Prevent video flicker during module transitions */
@@ -242,6 +254,12 @@
   display: flex;
   flex-direction: column;
   gap: 80px;
+}
+
+/* Studio HQ specific positioning adjustment */
+.module-studio .module-content {
+  /* Push content down by 100px to prevent header collision */
+  padding-top: 100px;
 }
 
 /* ==========================================================

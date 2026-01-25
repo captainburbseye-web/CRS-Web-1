@@ -14,9 +14,23 @@
  * Deployment: /signage
  * Mode: Kiosk (Chrome --kiosk --disable-infobars)
  * Rotation: 15s cycle, 1s cross-fade
+ * 
+ * CINEMATIC RACK AESTHETIC: Video playback at 0.6x speed for atmospheric presence
  */
 
+import { useEffect, useRef } from 'react';
+
 export function Signage() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  
+  useEffect(() => {
+    // Apply 0.6x playback speed for cinematic rack aesthetic
+    // Creates slower, more atmospheric VU meter movement
+    // Prevents "frantic advertisement" feel
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.6;
+    }
+  }, []);
   return (
     <html lang="en">
       <head>
@@ -64,7 +78,7 @@ export function Signage() {
         {/* MODULE 1: STUDIO HQ */}
         <div class="signage-module module-studio" id="module-studio" data-module="studio" style="display: flex; opacity: 1;">
           {/* VIDEO BACKGROUND: Tascam VU Meter Rack Loop */}
-          <video autoplay loop muted playsinline class="signage-video-bg active">
+          <video ref={videoRef} autoPlay loop muted playsInline className="signage-video-bg active">
             <source src="https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/20260118_2231_Remix%20Video_remix_01kf9kq0cxea1tn65695jjpzab.mp4" type="video/mp4" />
           </video>
           
