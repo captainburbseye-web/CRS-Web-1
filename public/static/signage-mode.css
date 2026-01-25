@@ -164,9 +164,10 @@
   pointer-events: none;
 }
 
-.signage-stamp svg {
+.signage-stamp img {
   width: 100%;
   height: 100%;
+  object-fit: contain;
   filter: drop-shadow(0 0 30px rgba(232, 155, 60, 0.4));
 }
 
@@ -427,17 +428,11 @@
    Tascam/Revox Rack Background Integration
    ========================================================== */
 
-/* Studio HQ Module - Analog-First Chassis Background */
+/* Studio HQ Module - Video Background (Tascam VU Meters) */
 #module-studio,
 .signage-module[data-module="studio"] {
-  /* Background: Tascam/Revox rack texture with 60% black overlay */
-  background-image: 
-    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url('CLOUDFLARE_RACK_URL_PLACEHOLDER');
-  
-  background-size: cover;              /* Fill entire module */
-  background-position: center;         /* Center rack image */
-  background-repeat: no-repeat;
+  /* Video background handled by <video> element in HTML */
+  /* No static background-image needed */
   
   /* Industrial framing */
   border: 4px solid #333;              /* Dark grey industrial border */
@@ -489,13 +484,13 @@
    LED Readout Panel Background Integration
    ========================================================== */
 
-/* Workshop Café Module - LED Readout Panel Background */
+/* Workshop Café Module - 19-inch Rack Chassis Background */
 #module-cafe,
 .signage-module[data-module="cafe"] {
-  /* Background: LED readout rack panel with 50% black overlay */
+  /* Background: Photorealistic 19-inch rack chassis with 50% black overlay */
   background-image: 
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('CLOUDFLARE_LED_PANEL_URL_PLACEHOLDER');
+    url('https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/Photorealistic_19-inch_rack_...png');
   
   background-size: cover;
   background-position: center;

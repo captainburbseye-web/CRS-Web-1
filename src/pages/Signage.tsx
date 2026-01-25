@@ -39,20 +39,21 @@ export function Signage() {
         {/* WORKSHOP CAFÉ CIRCULAR BADGE — Hardware Seal (Z-Index 10005) */}
         <div class="cafe-billet-badge">
           <img 
-            src="https://imagedelivery.net/YOUR_ACCOUNT_ID/workshop-cafe-badge/public" 
+            src="https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/no_bkground_workshop_cafe_png.png" 
             alt="Workshop Café — Specialty Coffee & Creative Workspace"
             loading="eager"
           />
         </div>
 
-        {/* SVG SQUARE STAMP — 250px Anchor (Static during transitions) */}
+        {/* CRS MUSTARD STAMP — 250px Anchor (Static during transitions) */}
         <div class="signage-stamp">
-          <svg width="250" height="250" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            {/* CRS Square Stamp SVG */}
-            <rect x="10" y="10" width="80" height="80" fill="none" stroke="#E89B3C" stroke-width="2" />
-            <rect x="15" y="15" width="70" height="70" fill="none" stroke="#E89B3C" stroke-width="1" />
-            <text x="50" y="55" font-family="JetBrains Mono" font-size="20" font-weight="800" fill="#E89B3C" text-anchor="middle">CRS</text>
-          </svg>
+          <img 
+            src="https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/1024FINAL_CRS_WEB_HEADER_2.png" 
+            alt="Cowley Road Studios"
+            width="250"
+            height="250"
+            loading="eager"
+          />
         </div>
 
         {/* BOOK NOW BUTTON — Only Moving Element (1.5s Industrial Pulse) */}
@@ -62,6 +63,11 @@ export function Signage() {
 
         {/* MODULE 1: STUDIO HQ */}
         <div class="signage-module module-studio" id="module-studio" data-module="studio" style="display: flex; opacity: 1;">
+          {/* VIDEO BACKGROUND: Tascam VU Meter Rack Loop */}
+          <video autoplay loop muted playsinline class="signage-video-bg active">
+            <source src="https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/20260118_2231_Remix%20Video_remix_01kf9kq0cxea1tn65695jjpzab.mp4" type="video/mp4" />
+          </video>
+          
           <div class="module-content">
             <div class="status-led led-active">
               <span class="led-dot"></span>
