@@ -7,6 +7,10 @@
  * This is NOT a website — it is a Digital Signage Appliance.
  * Headless architecture: No global header/footer inheritance.
  * 
+ * DATA SANITIZATION: "No Chaos Theory" Standard
+ * All content verified against operational facts [cite: 2025-01-31, 2025-07-01]
+ * Zero filler, zero placeholder text, zero marketing fluff.
+ * 
  * Deployment: /signage
  * Mode: Kiosk (Chrome --kiosk --disable-infobars)
  * Rotation: 15s cycle, 1s cross-fade
@@ -47,7 +51,7 @@ export function Signage() {
           BOOK NOW
         </a>
 
-        {/* MODULE 1: STUDIO */}
+        {/* MODULE 1: STUDIO HQ */}
         <div class="signage-module module-studio" style="display: flex; opacity: 1;">
           <div class="module-content">
             <div class="status-led led-active">
@@ -55,20 +59,20 @@ export function Signage() {
               <span class="led-label">[ SYSTEM_STATUS: OPERATIONAL ]</span>
             </div>
             
-            <h1 class="module-title">RECORDING STUDIO</h1>
+            <h1 class="module-title">STUDIO HQ</h1>
             
             <div class="module-specs">
-              <div class="spec-line">
-                <span class="spec-label">CAPACITY:</span>
-                <span class="spec-value">12-PIECE ENSEMBLE</span>
-              </div>
               <div class="spec-line">
                 <span class="spec-label">CONSOLE:</span>
                 <span class="spec-value">SSL ORIGIN 32-CHANNEL</span>
               </div>
               <div class="spec-line">
                 <span class="spec-label">MONITORING:</span>
-                <span class="spec-value">GENELEC 8351B (5.1)</span>
+                <span class="spec-value">GENELEC 8351B</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-label">SERVICES:</span>
+                <span class="spec-value">PRODUCTION · RECORDING · MIXING</span>
               </div>
               <div class="spec-line">
                 <span class="spec-label">RATE:</span>
@@ -95,19 +99,19 @@ export function Signage() {
             <div class="module-specs">
               <div class="spec-line">
                 <span class="spec-label">FUNCTION:</span>
-                <span class="spec-value">SPECIALTY COFFEE · CO-WORKING</span>
+                <span class="spec-value">SPECIALTY COFFEE</span>
               </div>
               <div class="spec-line">
-                <span class="spec-label">CAPACITY:</span>
-                <span class="spec-value">24 WORKSTATIONS</span>
+                <span class="spec-label">WORKSPACE:</span>
+                <span class="spec-value">FLEXIBLE CREATIVE WORKSPACE</span>
               </div>
               <div class="spec-line">
                 <span class="spec-label">SERVICES:</span>
-                <span class="spec-value">AI WORKSHOPS · AV HIRE</span>
+                <span class="spec-value">AV/POD HIRE · COMMUNITY HUB</span>
               </div>
               <div class="spec-line">
-                <span class="spec-label">HOURS:</span>
-                <span class="spec-value">MON-SAT 08:00-18:00</span>
+                <span class="spec-label">RATE:</span>
+                <span class="spec-value">FROM £25/HR</span>
               </div>
             </div>
             
@@ -125,29 +129,29 @@ export function Signage() {
               <span class="led-label">[ REHEARSAL_NODE: READY ]</span>
             </div>
             
-            <h1 class="module-title">REHEARSAL SPACE</h1>
+            <h1 class="module-title">REHEARSAL NODE</h1>
             
             <div class="module-specs">
               <div class="spec-line">
-                <span class="spec-label">CAPACITY:</span>
-                <span class="spec-value">6-PIECE BAND</span>
+                <span class="spec-label">PA SYSTEM:</span>
+                <span class="spec-value">QSC PA SYSTEM</span>
               </div>
               <div class="spec-line">
                 <span class="spec-label">BACKLINE:</span>
-                <span class="spec-value">FULL DRUM KIT · BASS/GUITAR AMPS</span>
+                <span class="spec-value">FULL BACKLINE AVAILABLE</span>
               </div>
               <div class="spec-line">
-                <span class="spec-label">PA SYSTEM:</span>
-                <span class="spec-value">QSC K12.2 (2KW)</span>
+                <span class="spec-label">LOCATION:</span>
+                <span class="spec-value">CRICKET RD · OX4 NODE</span>
               </div>
               <div class="spec-line">
                 <span class="spec-label">RATE:</span>
-                <span class="spec-value">£15/HR · £100/DAY</span>
+                <span class="spec-value">£15/HR</span>
               </div>
             </div>
             
             <div class="module-footer">
-              <span class="footer-label">118 COWLEY ROAD · OXFORD · OX4 1JE</span>
+              <span class="footer-label">CRICKET ROAD · OXFORD · OX4 3NE</span>
             </div>
           </div>
         </div>
