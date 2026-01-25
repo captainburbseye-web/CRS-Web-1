@@ -27,14 +27,20 @@ const CRS_SIGNAGE = {
   
   // Initialization Flag
   initialized: false,
+  
+  // Network Status
+  isOnline: true,
 
   /**
    * Initialize the signage system
    */
   init() {
-    console.log("🎚️ CRS BROADCAST INITIALIZED: 55-INCH TERMINAL MODE");
+    console.log("🏚️ CRS BROADCAST INITIALIZED: 55-INCH TERMINAL MODE");
     console.log("📡 Hardware Profile: 3840×2160px (4K Native)");
     console.log("🔄 Rotation: 15s cycle, 1s cross-fade");
+    
+    // Initialize network monitoring
+    this.initNetworkMonitoring();
     
     // Verify all modules exist
     const moduleElements = this.modules.map(selector => document.querySelector(selector));
@@ -199,6 +205,42 @@ const CRS_SIGNAGE = {
     console.error("❌ CRITICAL FAILURE: Activating fallback mode");
     document.body.classList.remove('loaded');
     // Fallback message will be shown via CSS ::before
+  },
+  
+  /**
+   * Network Monitoring — Detect connection loss
+   */
+  initNetworkMonitoring() {
+    // Monitor online/offline events
+    window.addEventListener('online', () => {
+      console.log("✅ NETWORK: Connection restored");
+      this.isOnline = true;
+      document.body.classList.remove('offline');
+      
+      // Force page reload to refresh content after reconnection
+      setTimeout(() => {
+        console.log("🔄 NETWORK: Reloading page to sync content...");
+        window.location.reload();
+      }, 2000);
+    });
+    
+    window.addEventListener('offline', () => {
+      console.error("❌ NETWORK: Connection lost");
+      this.isOnline = false;
+      document.body.classList.add('offline');
+      
+      // Show reconnecting message (via CSS ::after)
+      // Mustard Stamp remains visible (via CSS animation)
+    });
+    
+    // Initial network check
+    if (!navigator.onLine) {
+      console.warn("⚠️ NETWORK: Starting in offline mode");
+      this.isOnline = false;
+      document.body.classList.add('offline');
+    }
+    
+    console.log("📡 NETWORK MONITORING: Active");
   },
 
   /**

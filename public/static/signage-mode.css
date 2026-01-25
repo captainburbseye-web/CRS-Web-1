@@ -22,8 +22,8 @@
   /* True Black Point — High-contrast street visibility */
   background-color: #000000;
   
-  /* Kiosk Mode Hard-Locks */
-  cursor: none;
+  /* Kiosk Mode Hard-Locks — ABSOLUTE CURSOR PURGE */
+  cursor: none !important;
   user-select: none;
   touch-action: none;
   overflow: hidden;
@@ -44,6 +44,7 @@
 
 .signage-mode * {
   box-sizing: border-box;
+  cursor: none !important; /* Absolute cursor purge across all children */
 }
 
 .signage-module {
@@ -68,6 +69,78 @@
   
   /* Prevent Interaction */
   pointer-events: none;
+}
+
+/* ==========================================================
+   VIDEO BACKGROUND INFRASTRUCTURE — ACTIVE MACHINE LAYERING
+   ========================================================== */
+
+/* Video backgrounds occupy full 4K viewport without borders */
+.signage-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1; /* Sits behind LED and text layers */
+  filter: brightness(0.7) contrast(1.2); /* Deepens blacks for street visibility */
+  
+  /* Performance optimization */
+  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Prevent video flicker during module transitions */
+.signage-video-bg.preload {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.signage-video-bg.active {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+/* ==========================================================
+   WORKSHOP CAFÉ CIRCULAR BADGE — HARDWARE SEAL (Z-INDEX 10005)
+   ========================================================== */
+
+/* Workshop Café Badge: Permanent "Billet" Anchor */
+.cafe-billet-badge {
+  /* Absolute Positioning — Top-Right Corner */
+  position: fixed;
+  top: 40px;
+  right: 80px; /* Safe zone: 80px from edge prevents bezel overscan */
+  
+  /* Size Lock */
+  width: 200px;
+  height: 200px;
+  
+  /* Z-Index — HIGHEST LAYER (Hardware Seal) */
+  z-index: 10005;
+  
+  /* No Interaction */
+  pointer-events: none;
+  
+  /* Mustard Glow Synch with Status LEDs */
+  filter: drop-shadow(0 0 30px rgba(232, 155, 60, 0.3));
+  
+  /* Depth Layering — Prevents "sticker" look */
+  opacity: 0.95;
+}
+
+.cafe-billet-badge img {
+  width: 100%;
+  height: 100%;
+  
+  /* 4K Resilience — Prevents fuzzing on 55" display */
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  
+  /* Ensure transparency is preserved (no white boxes) */
+  background: transparent;
 }
 
 /* ==========================================================
@@ -304,6 +377,49 @@
 /* Hide fallback when modules are loaded */
 .signage-mode.loaded::before {
   display: none;
+}
+
+/* ==========================================================
+   NETWORK RESILIENCE — OFFLINE FALLBACK
+   ========================================================== */
+
+/* Network outage fallback state */
+.signage-mode.offline::after {
+  content: "RECONNECTING TO BROADCAST...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  font-weight: 800;
+  color: #39FF14; /* Nettle Green status LED */
+  text-shadow: 0 0 40px rgba(57, 255, 20, 0.6);
+  animation: reconnect-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 10001; /* Above all content */
+}
+
+@keyframes reconnect-pulse {
+  0%, 100% { 
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+/* Ensure Mustard Stamp remains visible during network outage */
+.signage-mode.offline .signage-stamp {
+  opacity: 1;
+  z-index: 10002; /* Above reconnect message */
+  animation: stamp-pulse 2s ease-in-out infinite;
+}
+
+@keyframes stamp-pulse {
+  0%, 100% { filter: drop-shadow(0 0 30px rgba(232, 155, 60, 0.4)); }
+  50% { filter: drop-shadow(0 0 50px rgba(232, 155, 60, 0.8)); }
 }
 
 /* ==========================================================

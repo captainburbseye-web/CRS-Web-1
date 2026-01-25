@@ -36,6 +36,15 @@ export function Signage() {
       </head>
       
       <body class="signage-mode">
+        {/* WORKSHOP CAFÉ CIRCULAR BADGE — Hardware Seal (Z-Index 10005) */}
+        <div class="cafe-billet-badge">
+          <img 
+            src="https://imagedelivery.net/YOUR_ACCOUNT_ID/workshop-cafe-badge/public" 
+            alt="Workshop Café — Specialty Coffee & Creative Workspace"
+            loading="eager"
+          />
+        </div>
+
         {/* SVG SQUARE STAMP — 250px Anchor (Static during transitions) */}
         <div class="signage-stamp">
           <svg width="250" height="250" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +68,8 @@ export function Signage() {
               <span class="led-label">[ SYSTEM_STATUS: OPERATIONAL ]</span>
             </div>
             
-            <h1 class="module-title">STUDIO HQ</h1>
+            <h1 class="module-title">ANALOG-FIRST PRODUCTION</h1>
+            <p class="module-subtitle" style="font-size: 48px; font-weight: 700; letter-spacing: 0.2em; color: #FFFFFF; text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); margin-top: 20px; text-transform: uppercase;">STUDIO HQ</p>
             
             <div class="module-specs">
               <div class="spec-line">
