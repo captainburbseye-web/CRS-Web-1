@@ -148,11 +148,21 @@ header.rack-header {
 
 @media (max-width: 768px) {
   header.rack-header {
+    /* Reinforce sticky positioning for mobile */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    
     grid-template-columns: auto 1fr auto; /* Badge | Nav | Toggle */
     grid-template-areas: 
       "logo nav toggle";
     gap: var(--space-md);
     padding: var(--space-md) var(--space-lg);
+    
+    /* Ensure solid background for sticky header */
+    background-color: #1a1a1a;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
   }
   
   .mobile-menu-toggle {
@@ -179,11 +189,20 @@ header.rack-header {
   .rack-header-nav {
     grid-area: nav;
     justify-content: flex-start; /* Left-align on mobile */
-    gap: var(--space-sm);
+    gap: 12px; /* Increased spacing for better tap separation */
   }
   
   .rack-header-nav a {
-    font-size: 14px; /* Smaller nav text on mobile */
+    font-size: 16px; /* Increased for better mobile readability and tap targets */
+    padding: 12px 8px; /* Add padding to create 44px minimum tap height */
+    min-height: 44px; /* Apple HIG minimum tap target */
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .rack-header-nav .separator {
+    font-size: 14px; /* Slightly smaller than links */
+    padding: 0 4px; /* Minimal padding for separators */
   }
   
   .rack-header-cta {

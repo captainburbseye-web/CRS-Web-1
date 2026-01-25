@@ -5,32 +5,29 @@ export const HomePage = () => (
   <>
     <Header />
 
-    {/* SYSTEM STATUS BLOCK — BUILD PHASE LED */}
+    {/* SYSTEM STATUS BLOCK — BUILD PHASE LED (CONDENSED FOR MOBILE) */}
     <section class="rack-unit device-status" style="background: rgba(255, 140, 0, 0.05); border-left: 4px solid #FF8C00;">
       <div class="rack-unit-header">
         <div class="rack-unit-led">
           <span class="led orange"></span>
         </div>
-        <h2 class="rack-unit-title" style="color: #FF8C00;">/// SYSTEM STATUS — COWLEY ROAD BUILD</h2>
+        <h2 class="rack-unit-title" style="color: #FF8C00;">/// SYSTEM STATUS</h2>
       </div>
       
       <div class="rack-unit-content">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.8; color: rgba(245, 245, 245, 0.85); margin-bottom: 1.5rem;">
-          <p style="margin-bottom: 0.75rem;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin-bottom: 1rem;">
+          <p style="margin-bottom: 0.5rem;">
             <strong style="color: #FF8C00;">STATUS:</strong> Final phase installation in progress
           </p>
-          <p style="margin-bottom: 0.75rem;">
+          <p style="margin-bottom: 0.5rem;">
             <strong style="color: #FF8C00;">AVAILABLE NOW:</strong> Band rehearsals (Cricket Road) · Equipment repairs · AV services
           </p>
-          <p style="margin-bottom: 0.75rem;">
-            <strong style="color: #FF8C00;">COMING SOON:</strong> Recording sessions · Production rooms · Workshop Café public hours
-          </p>
           <p style="margin-bottom: 0;">
-            <strong style="color: #FF8C00;">PRE-SALE:</strong> Book studio time now at discounted rates to support the build
+            <strong style="color: #FF8C00;">PRE-SALE:</strong> Book studio time now at discounted rates
           </p>
         </div>
         <div style="text-align: center;">
-          <a href="/studio" class="cta-button" style="border-color: #FF8C00; color: #FF8C00;">STUDIO PRE-SALE</a>
+          <a href="/studio" class="cta-button cta-button-primary" style="border-color: #FF8C00; color: #FF8C00; background: rgba(255, 140, 0, 0.1); font-size: 1.1rem; padding: 14px 28px;">STUDIO PRE-SALE</a>
         </div>
       </div>
     </section>
@@ -49,8 +46,7 @@ export const HomePage = () => (
           Purpose-built recording and production environments designed for reliable, repeatable results. From vocal tracking to full-band production, we provide the technical certainty you need to focus on your performance.
         </p>
         <div style="text-align: center;">
-          <a href="/studio" class="cta-button">BOOK SESSION</a>
-          <p style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.7;">Questions? Email <a href="mailto:info@crsoxford.com" style="color: #ff6b35; text-decoration: none;">info@crsoxford.com</a></p>
+          <a href="/studio" class="cta-button cta-button-primary">BOOK SESSION</a>
         </div>
       </div>
     </section>
@@ -81,32 +77,12 @@ export const HomePage = () => (
           Cowley Road rehearsal space is nearing the end of the build phase and will be available soon.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
-          <a href="/book" class="cta-button cta-button-peak-red">BOOK REHEARSAL</a>
-          <p style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.7;">Questions? Email <a href="mailto:info@crsoxford.com" style="color: #ff6b35; text-decoration: none;">info@crsoxford.com</a></p>
+          <a href="/book" class="cta-button cta-button-peak-red cta-button-primary">BOOK REHEARSAL</a>
         </div>
       </div>
     </section>
 
-    {/* AV SERVICES */}
-    <section class="rack-unit device-av">
-      <div class="rack-unit-header">
-        <div class="rack-unit-led">
-          <span class="led yellow"></span>
-        </div>
-        <h2 class="rack-unit-title">AV SERVICES & LIVE SOUND</h2>
-      </div>
-      
-      <div class="rack-unit-content">
-        <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
-          Engineer-led live sound, installations, and technical support for community venues, cultural events, and public gatherings. We provide the technical backbone for your event, so you can focus on your audience.
-        </p>
-        <div style="text-align: center;">
-          <a href="/av-services" class="cta-button">AV SERVICES</a>
-        </div>
-      </div>
-    </section>
-
-    {/* WORKSHOP CAFÉ */}
+    {/* WORKSHOP CAFÉ - MOVED UP (was position 5, now position 4) */}
     <section class="rack-unit device-cafe">
       <div class="rack-unit-header">
         <div class="rack-unit-led">
@@ -120,13 +96,31 @@ export const HomePage = () => (
           The public-facing space of CRS — a café, workspace, and small venue supporting community events and creative activity in the heart of East Oxford. Available for private hire and public programming.
         </p>
         <div style="text-align: center;">
-          <a href="/workshop-cafe" class="cta-button">HIRE THE VENUE</a>
-          <p style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.7;">Questions? Email <a href="mailto:info@crsoxford.com" style="color: #ff6b35; text-decoration: none;">info@crsoxford.com</a></p>
+          <a href="/workshop-cafe" class="cta-button cta-button-secondary">LEARN MORE</a>
         </div>
       </div>
     </section>
 
-    {/* PUBLIC ACCESS */}
+    {/* AV SERVICES - MOVED DOWN (was position 4, now position 5) */}
+    <section class="rack-unit device-av">
+      <div class="rack-unit-header">
+        <div class="rack-unit-led">
+          <span class="led yellow"></span>
+        </div>
+        <h2 class="rack-unit-title">AV SERVICES & LIVE SOUND</h2>
+      </div>
+      
+      <div class="rack-unit-content">
+        <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
+          Engineer-led live sound, installations, and technical support for community venues, cultural events, and public gatherings. We provide the technical backbone for your event, so you can focus on your audience.
+        </p>
+        <div style="text-align: center;">
+          <a href="/av-services" class="cta-button cta-button-secondary">LEARN MORE</a>
+        </div>
+      </div>
+    </section>
+
+    {/* PUBLIC ACCESS - CONDENSED */}
     <section class="rack-unit device-community">
       <div class="rack-unit-header">
         <div class="rack-unit-led">
@@ -140,8 +134,7 @@ export const HomePage = () => (
           CRS exists to make professional-grade recording and AV infrastructure available to Oxford's grassroots scene. We offer subsidized rates, supported sessions, and training workshops for community groups, emerging artists, and non-profit organizations.
         </p>
         <div style="text-align: center;">
-          <a href="/contact" class="cta-button">GET IN TOUCH</a>
-          <p style="margin-top: 0.75rem; font-size: 0.9rem; opacity: 0.7;">Questions? Email <a href="mailto:info@crsoxford.com" style="color: #ff6b35; text-decoration: none;">info@crsoxford.com</a></p>
+          <a href="/contact" class="cta-button cta-button-secondary">GET IN TOUCH</a>
         </div>
       </div>
     </section>
