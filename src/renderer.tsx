@@ -100,13 +100,30 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="/static/crs-rack-footer-termination.css" rel="stylesheet" />
         {/* HEADER LOCKDOWN RESET: Nuclear header reset - prevents all drift (LOADS ABSOLUTE LAST - STEEL BEAM) */}
         <link href="/static/crs-header-reset.css" rel="stylesheet" />
+        {/* BACK TO TOP BUTTON: Floating button for scroll navigation */}
+        <link href="/static/back-to-top.css" rel="stylesheet" />
       </head>
       <body>
         {children}
+        
+        {/* Back to Top Button - Appears after 800px scroll */}
+        <button 
+          class="back-to-top" 
+          aria-label="Back to top"
+          aria-hidden="true"
+          title="Scroll to top"
+        >
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 15l-6-6-6 6" />
+          </svg>
+        </button>
+        
         {/* Client-side interactions */}
         <script src="/static/app.js"></script>
         {/* Rack dropdown behavior */}
         <script src="/static/rack-dropdown.js"></script>
+        {/* Back to top functionality */}
+        <script src="/static/back-to-top.js"></script>
       </body>
     </html>
   )

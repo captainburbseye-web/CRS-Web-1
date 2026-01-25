@@ -1,0 +1,121 @@
+/* ==========================================================
+   BACK TO TOP BUTTON - HYBRID "RETURN TO ZERO" PROTOCOL
+   React state management + Industrial mustard styling
+   ========================================================== */
+
+.back-to-top {
+  /* Positioning - Fixed bottom-right corner, ABOVE sticky header */
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  z-index: 10000; /* Above sticky header (9999) - Exit always accessible */
+  
+  /* Size - 60px diameter for 55" display + mobile optimization */
+  width: 60px;
+  height: 60px;
+  
+  /* Visual - High-visibility Mustard "Signal" indicator */
+  background: rgba(232, 155, 60, 0.2); /* Mustard with 20% opacity */
+  border: 2px solid rgba(232, 155, 60, 0.8);
+  border-radius: 50%; /* Circular */
+  
+  /* Shadow - Industrial floating control aesthetic */
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(232, 155, 60, 0.3);
+  
+  /* Interaction */
+  cursor: pointer;
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.2s ease;
+  
+  /* Content centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Initial state - hidden */
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Visible state - triggered by React useState after 800px scroll */
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hover state - Brighter "Machine Control" signal */
+.back-to-top:hover {
+  background: rgba(232, 155, 60, 0.35);
+  border-color: rgba(232, 155, 60, 1);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(232, 155, 60, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Active state - Mechanical feedback (scale down) */
+.back-to-top:active {
+  transform: scale(0.9);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(232, 155, 60, 0.4);
+}
+
+/* SVG Icon - Crisp 4K rendering on 55" display */
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: rgba(232, 155, 60, 1); /* Mustard stroke */
+  stroke-width: 3;
+  stroke-linecap: square; /* Industrial aesthetic */
+  transition: stroke 0.3s ease;
+}
+
+.back-to-top:hover svg {
+  stroke: rgba(232, 155, 60, 1); /* Full brightness on hover */
+}
+
+/* Mobile adjustments - Maintain 60px for thumb accessibility */
+@media (max-width: 768px) {
+  .back-to-top {
+    width: 56px;
+    height: 56px;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .back-to-top svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Accessibility - Focus state for keyboard navigation */
+.back-to-top:focus {
+  outline: 2px solid rgba(232, 155, 60, 1);
+  outline-offset: 2px;
+}
+
+/* Small screens - Maintain visibility without interference */
+@media (max-height: 600px) {
+  .back-to-top {
+    bottom: 16px;
+    right: 16px;
+    width: 52px;
+    height: 52px;
+  }
+  
+  .back-to-top svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* High DPI displays - Ensure crisp rendering on 4K 55" */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .back-to-top svg {
+    stroke-width: 2.5; /* Slightly thinner on high-DPI to prevent boldness */
+  }
+}
