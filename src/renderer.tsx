@@ -102,6 +102,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="/static/crs-header-reset.css" rel="stylesheet" />
         {/* BACK TO TOP BUTTON: Floating button for scroll navigation */}
         <link href="/static/back-to-top.css" rel="stylesheet" />
+        {/* CONTACT AFFORDANCE: 44px button-style blocks for email/phone links */}
+        <link href="/static/contact-affordance.css" rel="stylesheet" />
       </head>
       <body>
         {children}
