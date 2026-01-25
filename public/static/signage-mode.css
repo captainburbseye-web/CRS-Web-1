@@ -1,0 +1,307 @@
+/**
+ * SIGNAGE MODE — DIGITAL BROADCAST TERMINAL
+ * 
+ * Hardware Profile: 3840×2160px (4K Native)
+ * Black Point: #000000 (True Black for street visibility)
+ * Safe Zone: 80px margin (bezel clearance)
+ * Interaction: pointer-events: none (ghost input prevention)
+ * 
+ * This is a £10,000 custom hardware build aesthetic.
+ * Professional broadcast terminal, not interactive web content.
+ */
+
+/* ==========================================================
+   HARDWARE PROFILE — 4K NATIVE MAPPING
+   ========================================================== */
+
+.signage-mode {
+  /* Viewport Lock */
+  width: 3840px;
+  height: 2160px;
+  
+  /* True Black Point — High-contrast street visibility */
+  background-color: #000000;
+  
+  /* Kiosk Mode Hard-Locks */
+  cursor: none;
+  user-select: none;
+  touch-action: none;
+  overflow: hidden;
+  
+  /* Typography Foundation */
+  font-family: 'JetBrains Mono', monospace;
+  color: #FFFFFF;
+  
+  /* Hardware Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================
+   SAFE ZONE — 80px BEZEL CLEARANCE
+   ========================================================== */
+
+.signage-mode * {
+  box-sizing: border-box;
+}
+
+.signage-module {
+  /* Safe Zone Padding */
+  padding: 80px;
+  
+  /* Full Viewport Coverage */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Flexbox Centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Transition for Cross-Fade */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  
+  /* Prevent Interaction */
+  pointer-events: none;
+}
+
+/* ==========================================================
+   SVG SQUARE STAMP — 250px ANCHOR (Static)
+   ========================================================== */
+
+.signage-stamp {
+  /* Absolute Positioning — Top-Left Anchor */
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  
+  /* Size Lock */
+  width: 250px;
+  height: 250px;
+  
+  /* Z-Index — Above Modules, Below CTA */
+  z-index: 100;
+  
+  /* No Interaction */
+  pointer-events: none;
+}
+
+.signage-stamp svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 30px rgba(232, 155, 60, 0.4));
+}
+
+/* ==========================================================
+   BOOK NOW BUTTON — ONLY MOVING ELEMENT
+   ========================================================== */
+
+.book-now-btn.signage-cta {
+  /* Absolute Positioning — Bottom-Right */
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  
+  /* Size */
+  padding: 32px 64px;
+  
+  /* Typography — Street-Level Visibility */
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000000;
+  
+  /* Mustard Background */
+  background: #E89B3C;
+  border: 4px solid #E89B3C;
+  
+  /* Shadow */
+  box-shadow: 0 0 40px rgba(232, 155, 60, 0.6);
+  
+  /* Z-Index — Highest Layer */
+  z-index: 200;
+  
+  /* Enable Interaction (Only Interactive Element) */
+  pointer-events: auto;
+  cursor: pointer;
+  
+  /* Industrial Pulse Animation */
+  animation: industrial-pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes industrial-pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 40px rgba(232, 155, 60, 0.6);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 60px rgba(232, 155, 60, 0.9);
+  }
+}
+
+.book-now-btn.signage-cta:hover {
+  background: #FFA500;
+  border-color: #FFA500;
+  box-shadow: 0 0 80px rgba(255, 165, 0, 1);
+}
+
+/* ==========================================================
+   MODULE CONTENT LAYOUT
+   ========================================================== */
+
+.module-content {
+  /* Centering Container */
+  max-width: 2400px;
+  width: 100%;
+  text-align: center;
+  
+  /* Spacing */
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* ==========================================================
+   MODULE TITLE — 80-100px STREET VISIBILITY
+   ========================================================== */
+
+.module-title {
+  /* Typography — Maximum Street Visibility */
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 100px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #E89B3C;
+  
+  /* Shadow for Depth */
+  text-shadow: 0 0 40px rgba(232, 155, 60, 0.5);
+  
+  /* Spacing */
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================
+   MODULE SPECIFICATIONS — DATA GRID
+   ========================================================== */
+
+.module-specs {
+  /* Grid Layout */
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  
+  /* Alignment */
+  align-items: center;
+}
+
+.spec-line {
+  /* Flexbox Row */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+  
+  /* Width */
+  width: 100%;
+  max-width: 1800px;
+  
+  /* Typography */
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.spec-label {
+  /* Label Styling */
+  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+  flex: 1;
+}
+
+.spec-value {
+  /* Value Styling */
+  color: #FFFFFF;
+  text-align: left;
+  flex: 1;
+  font-weight: 800;
+}
+
+/* ==========================================================
+   MODULE FOOTER — ADDRESS LINE
+   ========================================================== */
+
+.module-footer {
+  /* Typography */
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  
+  /* Spacing */
+  margin-top: 40px;
+}
+
+/* ==========================================================
+   PERFORMANCE OPTIMIZATIONS — 60FPS TARGET
+   ========================================================== */
+
+.signage-module,
+.signage-stamp,
+.book-now-btn {
+  /* GPU Acceleration */
+  will-change: opacity, transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ==========================================================
+   ANTI-ALIASING — 4K CRISP RENDERING
+   ========================================================== */
+
+.signage-mode,
+.signage-mode * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================
+   HARDWARE WATCHDOG — PREVENT BLANK SCREEN
+   ========================================================== */
+
+.signage-mode::before {
+  /* Fallback Content if JS Fails */
+  content: "CRS BROADCAST TERMINAL — INITIALIZING...";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  font-weight: 800;
+  color: #E89B3C;
+  opacity: 0;
+  animation: fallback-fade 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes fallback-fade {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+/* Hide fallback when modules are loaded */
+.signage-mode.loaded::before {
+  display: none;
+}

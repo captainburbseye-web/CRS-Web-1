@@ -15,6 +15,7 @@ import { CricketRoad } from './pages/CricketRoad'
 import { Soundworks } from './pages/Soundworks'
 import { About } from './pages/About'
 import { Work } from './pages/Work'
+import { Signage } from './pages/Signage'
 
 const app = new Hono()
 
@@ -1689,4 +1690,12 @@ app.get('/contact', (c) => {
     }
   )
 })
+
+// SIGNAGE TERMINAL — DIGITAL BROADCAST MODE (55" Street Display)
+// Headless route: No global header/footer, SEO excluded
+app.get('/signage', (c) => {
+  // Return raw HTML (Signage component is a complete <html> document)
+  return c.html(<Signage />)
+})
+
 export default app
