@@ -305,3 +305,132 @@
 .signage-mode.loaded::before {
   display: none;
 }
+
+/* ==========================================================
+   ANALOG-FIRST STUDIO HQ MODULE
+   Tascam/Revox Rack Background Integration
+   ========================================================== */
+
+/* Studio HQ Module - Analog-First Chassis Background */
+#module-studio,
+.signage-module[data-module="studio"] {
+  /* Background: Tascam/Revox rack texture with 60% black overlay */
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('CLOUDFLARE_RACK_URL_PLACEHOLDER');
+  
+  background-size: cover;              /* Fill entire module */
+  background-position: center;         /* Center rack image */
+  background-repeat: no-repeat;
+  
+  /* Industrial framing */
+  border: 4px solid #333;              /* Dark grey industrial border */
+  box-shadow: 
+    inset 0 0 40px rgba(0, 0, 0, 0.8), /* Inner shadow for depth */
+    0 8px 24px rgba(0, 0, 0, 0.6);     /* Outer shadow for lift */
+}
+
+/* Ensure text remains readable over rack texture */
+#module-studio .module-title,
+.signage-module[data-module="studio"] .module-title {
+  text-shadow: 
+    0 0 20px rgba(0, 0, 0, 0.9),
+    0 4px 12px rgba(0, 0, 0, 0.8);     /* Strong shadow for street-grade legibility */
+  position: relative;
+  z-index: 10;                         /* Above background texture */
+}
+
+#module-studio .spec-list,
+#module-studio .module-specs,
+.signage-module[data-module="studio"] .spec-list,
+.signage-module[data-module="studio"] .module-specs {
+  background: rgba(0, 0, 0, 0.7);      /* Semi-transparent black for spec text */
+  padding: 30px;
+  border-radius: 8px;
+  backdrop-filter: blur(4px);          /* Subtle blur for readability */
+}
+
+/* VU meter visibility enhancement (if rack image has VU meters) */
+#module-studio::before,
+.signage-module[data-module="studio"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0, 0, 0, 0.4) 100%
+  );                                   /* Vignette effect to focus attention */
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================
+   FLEXIBLE SPACE CAFÉ MODULE
+   LED Readout Panel Background Integration
+   ========================================================== */
+
+/* Workshop Café Module - LED Readout Panel Background */
+#module-cafe,
+.signage-module[data-module="cafe"] {
+  /* Background: LED readout rack panel with 50% black overlay */
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('CLOUDFLARE_LED_PANEL_URL_PLACEHOLDER');
+  
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Industrial framing matching Studio module */
+  border: 4px solid #3a5a40;           /* Olive/Nettle Green border */
+  box-shadow: 
+    inset 0 0 40px rgba(0, 0, 0, 0.8),
+    0 8px 24px rgba(57, 255, 20, 0.2); /* Nettle Green glow */
+}
+
+/* High-contrast text for "Engineered for Events" messaging */
+#module-cafe .module-title,
+.signage-module[data-module="cafe"] .module-title {
+  color: #39FF14;                      /* Nettle Green for high contrast */
+  text-shadow: 
+    0 0 25px rgba(57, 255, 20, 0.6),
+    0 4px 12px rgba(0, 0, 0, 0.9);     /* Nettle Green glow + black shadow */
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  letter-spacing: 0.15em;              /* LED readout spacing */
+  text-transform: uppercase;
+}
+
+#module-cafe .spec-list,
+#module-cafe .module-specs,
+.signage-module[data-module="cafe"] .spec-list,
+.signage-module[data-module="cafe"] .module-specs {
+  background: rgba(58, 90, 64, 0.8);   /* Olive green semi-transparent */
+  padding: 30px;
+  border-radius: 8px;
+  border: 2px solid rgba(57, 255, 20, 0.3); /* Nettle Green border */
+  backdrop-filter: blur(4px);
+}
+
+/* LED readout aesthetic for spec values */
+#module-cafe .spec-value,
+.signage-module[data-module="cafe"] .spec-value {
+  color: #39FF14;                      /* Nettle Green */
+  text-shadow: 0 0 10px rgba(57, 255, 20, 0.8);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* "ENGINEERED FOR EVENTS" messaging */
+#module-cafe .module-subtitle,
+.signage-module[data-module="cafe"] .module-subtitle {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #E89B3C;                      /* Mustard accent */
+  text-shadow: 0 0 20px rgba(232, 155, 60, 0.5);
+  margin-top: 20px;
+  text-transform: uppercase;
+}

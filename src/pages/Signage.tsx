@@ -52,7 +52,7 @@ export function Signage() {
         </a>
 
         {/* MODULE 1: STUDIO HQ */}
-        <div class="signage-module module-studio" style="display: flex; opacity: 1;">
+        <div class="signage-module module-studio" id="module-studio" data-module="studio" style="display: flex; opacity: 1;">
           <div class="module-content">
             <div class="status-led led-active">
               <span class="led-dot"></span>
@@ -87,7 +87,7 @@ export function Signage() {
         </div>
 
         {/* MODULE 2: WORKSHOP CAFÉ */}
-        <div class="signage-module module-cafe" style="display: none; opacity: 0;">
+        <div class="signage-module module-cafe" id="module-cafe" data-module="cafe" style="display: none; opacity: 0;">
           <div class="module-content">
             <div class="status-led led-active">
               <span class="led-dot"></span>
@@ -95,19 +95,24 @@ export function Signage() {
             </div>
             
             <h1 class="module-title">WORKSHOP CAFÉ</h1>
+            <p class="module-subtitle">ENGINEERED FOR EVENTS</p>
             
             <div class="module-specs">
               <div class="spec-line">
-                <span class="spec-label">FUNCTION:</span>
-                <span class="spec-value">SPECIALTY COFFEE</span>
+                <span class="spec-label">COFFEE:</span>
+                <span class="spec-value">SPECIALTY ROASTS</span>
               </div>
               <div class="spec-line">
                 <span class="spec-label">WORKSPACE:</span>
-                <span class="spec-value">FLEXIBLE CREATIVE WORKSPACE</span>
+                <span class="spec-value">FLEXIBLE CREATIVE SPACE</span>
               </div>
               <div class="spec-line">
-                <span class="spec-label">SERVICES:</span>
-                <span class="spec-value">AV/POD HIRE · COMMUNITY HUB</span>
+                <span class="spec-label">AV SERVICES:</span>
+                <span class="spec-value">POD HIRE · LIGHTING · SOUND · PROJECTION</span>
+              </div>
+              <div class="spec-line">
+                <span class="spec-label">COMMUNITY:</span>
+                <span class="spec-value">WORKSHOPS · EVENTS · OPEN MIC</span>
               </div>
               <div class="spec-line">
                 <span class="spec-label">RATE:</span>
