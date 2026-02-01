@@ -104,6 +104,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="/static/back-to-top.css" rel="stylesheet" />
         {/* CONTACT AFFORDANCE: 44px button-style blocks for email/phone links */}
         <link href="/static/contact-affordance.css" rel="stylesheet" />
+        {/* WIDTH ALIGNMENT PATCH: Canonical 900px width for header, cards, footer (CANONICAL / LOCKED) */}
+        <link href="/static/width-alignment-patch.css" rel="stylesheet" />
       </head>
       <body>
         {children}
