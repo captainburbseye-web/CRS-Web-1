@@ -16,6 +16,7 @@ import { Soundworks } from './pages/Soundworks'
 import { About } from './pages/About'
 import { Work } from './pages/Work'
 import { Signage } from './pages/Signage'
+import { BookingConfirmed } from './pages/BookingConfirmed'
 
 const app = new Hono()
 
@@ -711,7 +712,8 @@ app.get('/crs-cowley-road', (c) => {
 
           {/* BOOKING CTA */}
           <div class="hero-cta">
-            <a href="/book" class="crs-button mono">BOOK CRS — COWLEY ROAD</a>
+            <a href="https://square.link/u/UQidDzE0" target="_blank" rel="noopener noreferrer" class="crs-button mono">Book rehearsal — Cowley Road</a>
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65); margin-top: 0.75rem; text-align: center;">£45 / 2 hours · Rehearsal use only</p>
           </div>
 
           {/* ACCESS / HOURS */}
@@ -1687,6 +1689,24 @@ app.get('/contact', (c) => {
       title: 'Contact Cowley Road Studios | Recording Studio Oxford',
       description: 'Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Located in East Oxford. Email: studio@cowleyroadstudios.com',
       keywords: 'contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford'
+    }
+  )
+})
+
+// BOOKING CONFIRMED PAGE
+// Post-Square redirect: Static confirmation page
+app.get('/booking-confirmed', (c) => {
+  return c.render(
+    <>
+      <BuildStatusBanner />
+      <Header />
+      <BookingConfirmed />
+      <Footer />
+    </>,
+    {
+      title: 'Booking Confirmed | Cowley Road Studios',
+      description: 'Your booking at Cowley Road Studios is confirmed. Check your email for booking details and access information.',
+      keywords: 'booking confirmed, cowley road studios booking, studio booking confirmation'
     }
   )
 })

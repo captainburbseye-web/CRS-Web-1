@@ -20,7 +20,7 @@ export const HomePage = () => (
             <strong style="color: #FF8C00;">STATUS:</strong> Final phase installation in progress
           </p>
           <p style="margin-bottom: 0.5rem;">
-            <strong style="color: #FF8C00;">AVAILABLE NOW:</strong> Band rehearsals (Cricket Road) · Equipment repairs · AV services
+            <strong style="color: #FF8C00;">AVAILABLE NOW:</strong> Band rehearsals (Cowley Road & Cricket Road) · Equipment repairs · AV services
           </p>
           <p style="margin-bottom: 0;">
             <strong style="color: #FF8C00;">PRE-SALE:</strong> Book studio time now at discounted rates
@@ -51,8 +51,28 @@ export const HomePage = () => (
       </div>
     </section>
 
-    {/* BAND REHEARSALS — CRICKET ROAD */}
+    {/* BAND REHEARSALS — COWLEY ROAD */}
     <section class="rack-unit device-rehearsal">
+      <div class="rack-unit-header">
+        <div class="rack-unit-led">
+          <span class="led green"></span>
+        </div>
+        <h2 class="rack-unit-title">BAND REHEARSALS — COWLEY ROAD</h2>
+      </div>
+      
+      <div class="rack-unit-content">
+        <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
+          Rehearsal space at our main Cowley Road location. Fully equipped for band sessions.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
+          <a href="https://square.link/u/UQidDzE0" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">Book rehearsal — Cowley Road</a>
+          <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65);">£45 / 2 hours · Rehearsal use only</p>
+        </div>
+      </div>
+    </section>
+
+    {/* BAND REHEARSALS — CRICKET ROAD */}
+    <section class="rack-unit device-rehearsal-cricket">
       <div class="rack-unit-header">
         <div class="rack-unit-led">
           <span class="led green"></span>
@@ -72,9 +92,6 @@ export const HomePage = () => (
         
         <p style="margin-bottom: 1rem; color: rgba(245, 245, 245, 0.85);">
           Fixed-length sessions with basic PA included at Cricket Road.
-        </p>
-        <p style="margin-bottom: 1rem; color: rgba(245, 245, 245, 0.65); font-size: 0.9rem;">
-          Cowley Road rehearsal space is nearing the end of the build phase and will be available soon.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
           <a href="/book" class="cta-button cta-button-peak-red cta-button-primary">BOOK REHEARSAL</a>
