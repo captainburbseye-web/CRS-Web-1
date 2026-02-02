@@ -7,51 +7,48 @@ export const Footer = () => (
       <a href="/contact">CONTACT</a>
     </nav>
 
-    <footer class="crs-footer-technical mono">
-      {/* Technical Footer: Legal-Spec Datasheet Format */}
-      <div class="footer-metadata">
-        
-        {/* Section Label */}
-        <p class="footer-section-label">OPERATIONAL PARAMETERS</p>
-        
-        {/* Primary Entity */}
-        <div class="footer-data-block">
-          <p class="footer-data-line">COWLEY ROAD STUDIOS (CRS) · 118 Cowley Road, Oxford, OX4 1JE, United Kingdom</p>
-          <p class="footer-data-line">COORDINATES: 51.7436 N, 1.2304 W</p>
+    {/* RACK FOOTER — HORIZONTAL BACK PANEL */}
+    <footer class="site-footer">
+      <div class="rack-footer">
+        <div class="rack-footer-row">
+          
+          {/* LOCATION */}
+          <div class="rack-footer-item">
+            <span class="rack-footer-label">LOCATION</span>
+            <span>118 Cowley Road · Oxford</span>
+          </div>
+
+          {/* STATUS */}
+          <div class="rack-footer-item">
+            <span class="rack-footer-label">STATUS</span>
+            <span>Operational</span>
+          </div>
+
+          {/* CONTACT */}
+          <div class="rack-footer-item">
+            <span class="rack-footer-label">CONTACT</span>
+            <a href="mailto:info@crsoxford.com">info@crsoxford.com</a>
+          </div>
+
+          {/* PHONE */}
+          <div class="rack-footer-item">
+            <span class="rack-footer-label">PHONE</span>
+            <a href="tel:+441865722027">+44 1865 722027</a>
+          </div>
+
+          {/* SOCIAL */}
+          <div class="rack-footer-item">
+            <span class="rack-footer-label">SOCIAL</span>
+            <a href="https://instagram.com/cowleyroadstudios.ox" target="_blank" rel="noopener">@cowleyroadstudios.ox</a>
+          </div>
+
+          {/* COPYRIGHT */}
+          <div class="rack-footer-item">
+            <span class="rack-footer-label">© 2026</span>
+            <span>CRS · 0DR0 ENGINEERING</span>
+          </div>
+
         </div>
-        
-        {/* System Status */}
-        <div class="footer-data-block">
-          <p class="footer-data-label">STATUS</p>
-          <p class="footer-data-line">Hybrid commissioning. Infrastructure operational. Build phase in progress.</p>
-        </div>
-        
-        {/* Operating Protocol */}
-        <div class="footer-data-block">
-          <p class="footer-data-label">PROTOCOL</p>
-          <p class="footer-data-line">No-chaos operation. Scheduled access only. Signal-managed capacity. Unallocated entry not supported.</p>
-        </div>
-        
-        {/* Access Terms */}
-        <div class="footer-data-block">
-          <p class="footer-data-label">ACCESS</p>
-          <p class="footer-data-line">Studio sessions: allocation-based. Dry hire: subject to clearance. Public services: within posted parameters.</p>
-        </div>
-        
-        {/* Contact */}
-        <div class="footer-data-block">
-          <p class="footer-data-label">CONTACT</p>
-          <p class="footer-data-line">✉️ <a href="mailto:info@crsoxford.com" class="footer-link">info@crsoxford.com</a></p>
-          <p class="footer-data-line">☎️ <a href="tel:+441865722027" class="footer-link">+44 (0)1865 722027</a></p>
-          <p class="footer-data-line">📸 <a href="https://instagram.com/cowleyroadstudios.ox" target="_blank" rel="noopener" class="footer-link">@cowleyroadstudios.ox</a></p>
-          <p class="footer-data-line">🔗 <a href="https://facebook.com/cowleyroadstudios" target="_blank" rel="noopener" class="footer-link">facebook.com/cowleyroadstudios</a></p>
-        </div>
-        
-        {/* System Signature */}
-        <div class="footer-data-block footer-signature-block">
-          <p class="footer-data-line">© 2026 CRS · POWERED BY <span class="footer-highlight">0DR0</span> ENGINEERING</p>
-        </div>
-        
       </div>
     </footer>
 
@@ -67,7 +64,7 @@ export const Footer = () => (
 
     {/* REVISION STAMP: Manufacturing metadata - absolute bottom like chassis serial */}
     <div class="footer-revision-stamp">
-      <p class="revision-stamp-text">CRS-SYS-FOOTER v1.2 · LAST REVISED: 2026-01-21</p>
+      <p class="revision-stamp-text">CRS-SYS-FOOTER v2.0 · RACK FOOTER NORMALISATION</p>
     </div>
   </>
 )

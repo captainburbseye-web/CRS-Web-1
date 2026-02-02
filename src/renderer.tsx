@@ -110,6 +110,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="/static/rack-module.css" rel="stylesheet" />
         {/* HEADER VERTICAL ALIGNMENT: Ensures logo, nav, and CTA sit on same midline (MICRO-PATCH) */}
         <link href="/static/header-vertical-alignment-patch.css" rel="stylesheet" />
+        {/* RACK FOOTER: Horizontal back-panel layout for footer (FINAL PASS) */}
+        <link href="/static/rack-footer.css" rel="stylesheet" />
       </head>
       <body>
         {children}
