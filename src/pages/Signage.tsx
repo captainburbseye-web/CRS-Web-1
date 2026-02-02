@@ -193,6 +193,9 @@ export function Signage() {
 
         {/* ROTATION ENGINE — 15s Cycle / 1s Cross-Fade */}
         <script src="/static/signage-engine.js"></script>
+        
+        {/* OVERLAY TEXT ROTATION ENGINE — Yodeck Compatible */}
+        <script src="/static/signage-overlay-engine.js"></script>
       </body>
     </html>
   );
