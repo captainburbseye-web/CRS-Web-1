@@ -64,12 +64,15 @@ export const HomePage = () => (
       </div>
       
       <div class="rack-unit-content">
+        <p style="margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.85); font-size: 0.875rem; font-family: 'JetBrains Mono', monospace;">
+          118 Cowley Road, Oxford OX4 1JE
+        </p>
         <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
           Rehearsal space at our main Cowley Road location. Fully equipped for band sessions.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
-          <a href="https://square.link/u/UQidDzE0" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">Book rehearsal — Cowley Road</a>
-          <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65);">£45 / 2 hours · Rehearsal use only</p>
+          <a href="https://square.link/u/UQidDzE0" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">BOOK REHEARSAL — COWLEY ROAD</a>
+          <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65);">Rehearsal use only · Cowley Road</p>
         </div>
       </div>
     </section>
@@ -84,6 +87,10 @@ export const HomePage = () => (
       </div>
       
       <div class="rack-unit-content">
+        <p style="margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.85); font-size: 0.875rem; font-family: 'JetBrains Mono', monospace;">
+          92 Cricket Road, Oxford OX4 3DJ
+        </p>
+        
         {/* Cricket Studio Branding */}
         <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
           <img 
@@ -97,7 +104,30 @@ export const HomePage = () => (
           Fixed-length sessions with basic PA included at Cricket Road.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
-          <a href="/book" class="cta-button cta-button-peak-red cta-button-primary">BOOK REHEARSAL</a>
+          <a href="https://square.link/u/WPqRFIGW" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-peak-red cta-button-primary">BOOK REHEARSAL — CRICKET ROAD</a>
+        </div>
+      </div>
+    </section>
+
+    {/* CONTROL ROOM — DRY HIRE (CRICKET ROAD) */}
+    <section class="rack-unit device-control-room">
+      <div class="rack-unit-header">
+        <div class="rack-unit-led">
+          <span class="led yellow"></span>
+        </div>
+        <h2 class="rack-unit-title">CONTROL ROOM — DRY HIRE</h2>
+      </div>
+      
+      <div class="rack-unit-content">
+        <p style="margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.85); font-size: 0.875rem; font-family: 'JetBrains Mono', monospace;">
+          92 Cricket Road, Oxford OX4 3DJ
+        </p>
+        <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
+          Monitoring and control room access. No engineer included. Ideal for independent production, mixing, and mastering work.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
+          <a href="https://square.link/u/bCOHXtdl" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">BOOK CONTROL ROOM — DRY HIRE</a>
+          <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65);">Dry hire only · No engineer included</p>
         </div>
       </div>
     </section>
