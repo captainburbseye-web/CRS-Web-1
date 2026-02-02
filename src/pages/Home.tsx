@@ -71,7 +71,7 @@ export const HomePage = () => (
           Rehearsal space at our main Cowley Road location. Fully equipped for band sessions.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
-          <a href="https://square.link/u/UQidDzE0" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">BOOK REHEARSAL — COWLEY ROAD</a>
+          <a href="https://square.link/u/UQidDzE0?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">BOOK REHEARSAL — COWLEY ROAD</a>
           <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65);">Rehearsal use only · Cowley Road</p>
         </div>
       </div>
@@ -104,7 +104,7 @@ export const HomePage = () => (
           Fixed-length sessions with basic PA included at Cricket Road.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
-          <a href="https://square.link/u/WPqRFIGW" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-peak-red cta-button-primary">BOOK REHEARSAL — CRICKET ROAD</a>
+          <a href="https://square.link/u/WPqRFIGW?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-peak-red cta-button-primary">BOOK REHEARSAL — CRICKET ROAD</a>
         </div>
       </div>
     </section>
@@ -126,7 +126,7 @@ export const HomePage = () => (
           Monitoring and control room access. No engineer included. Ideal for independent production, mixing, and mastering work.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
-          <a href="https://square.link/u/bCOHXtdl" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">BOOK CONTROL ROOM — DRY HIRE</a>
+          <a href="https://square.link/u/bCOHXtdl?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">BOOK CONTROL ROOM — DRY HIRE</a>
           <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65);">Dry hire only · No engineer included</p>
         </div>
       </div>
