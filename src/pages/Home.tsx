@@ -6,7 +6,7 @@ export const HomePage = () => (
     <Header />
 
     {/* SYSTEM STATUS BLOCK — BUILD PHASE LED (CONDENSED FOR MOBILE) */}
-    <section class="rack-unit device-status" style="background: rgba(255, 140, 0, 0.05); border-left: 4px solid #FF8C00;">
+    <section class="rack-unit device-status rack-module" style="background: rgba(255, 140, 0, 0.05); border-left: 4px solid #FF8C00;">
       <div class="rack-unit-header">
         <div class="rack-unit-led">
           <span class="led orange"></span>
