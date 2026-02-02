@@ -17,13 +17,16 @@ export const HomePage = () => (
       <div class="rack-unit-content">
         <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin-bottom: 1rem;">
           <p style="margin-bottom: 0.5rem;">
-            <strong style="color: #FF8C00;">STATUS:</strong> Final phase installation in progress
+            <strong style="color: #FF8C00;">AVAILABLE NOW:</strong>
           </p>
-          <p style="margin-bottom: 0.5rem;">
-            <strong style="color: #FF8C00;">AVAILABLE NOW:</strong> Band rehearsals (Cowley Road & Cricket Road) · Equipment repairs · AV services
+          <p style="margin-bottom: 0.5rem; margin-left: 1rem;">
+            Band rehearsals (Cowley Road & Cricket Road)
           </p>
-          <p style="margin-bottom: 0;">
-            <strong style="color: #FF8C00;">PRE-SALE:</strong> Book studio time now at discounted rates
+          <p style="margin-bottom: 0.5rem; margin-left: 1rem;">
+            AV hire & technical services
+          </p>
+          <p style="margin-bottom: 0; margin-left: 1rem;">
+            Workshop Café (events & public access)
           </p>
         </div>
         <div style="text-align: center;">
@@ -52,7 +55,7 @@ export const HomePage = () => (
     </section>
 
     {/* BAND REHEARSALS — COWLEY ROAD */}
-    <section class="rack-unit device-rehearsal">
+    <section class="rack-unit device-rehearsal rack-module">
       <div class="rack-unit-header">
         <div class="rack-unit-led">
           <span class="led green"></span>

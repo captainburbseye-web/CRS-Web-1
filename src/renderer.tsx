@@ -108,6 +108,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="/static/width-alignment-patch.css" rel="stylesheet" />
         {/* RACK MODULE: Heavyweight institutional styling for scoped modules (PHASE 1 DEPLOYMENT) */}
         <link href="/static/rack-module.css" rel="stylesheet" />
+        {/* HEADER VERTICAL ALIGNMENT: Ensures logo, nav, and CTA sit on same midline (MICRO-PATCH) */}
+        <link href="/static/header-vertical-alignment-patch.css" rel="stylesheet" />
       </head>
       <body>
         {children}
