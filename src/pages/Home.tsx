@@ -122,7 +122,7 @@ export const HomePage = () => (
     </section>
 
     {/* AV SERVICES - MOVED DOWN (was position 4, now position 5) */}
-    <section class="rack-unit device-av">
+    <section class="rack-unit device-av rack-module">
       <div class="rack-unit-header">
         <div class="rack-unit-led">
           <span class="led yellow"></span>
