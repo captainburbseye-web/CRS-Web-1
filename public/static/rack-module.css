@@ -8,6 +8,60 @@
   --black-panel: #111;
 }
 
+/* === ACCESSIBILITY === */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--mustard-mus);
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* === OPTIONAL: SYSTEM HEARTBEAT === */
+
+@keyframes heartbeat {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.08; }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--mustard-mus);
+  animation: heartbeat 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* === PERFORMANCE: DNS PREFETCH (in <head>) ===
+   Link tags added to index.html:
+   <link rel="dns-prefetch" href="https://square.link">
+   <link rel="preconnect" href="https://square.link">
+*/
+
 /* === 🛠️ METAL FACEPLATE TEXTURE === */
 
 .rack-module {

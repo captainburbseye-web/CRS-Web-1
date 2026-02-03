@@ -43,7 +43,7 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
             </div>
           )}
           {bookingRoute ? (
-            <a href={bookingUrl || '#'} class="rack-connector">
+            <a href={bookingUrl || '#'} rel="noopener noreferrer" class="rack-connector">
               <button 
                 class="power-switch" 
                 data-route={bookingRoute}
@@ -54,7 +54,7 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
               </button>
             </a>
           ) : bookingUrl ? (
-            <a href={bookingUrl} class="rack-connector">
+            <a href={bookingUrl} rel="noopener noreferrer" class="rack-connector">
               <button 
                 class="power-switch" 
                 title={`Route to ${buttonLabel || 'booking'}`}
@@ -76,7 +76,13 @@ export const RackPage = () => (
   <>
     <Header />
 
-    <main class="rack-container">
+    {/* ACCESSIBILITY: Skip Link */}
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    {/* ACCESSIBILITY: Page Title for Screen Readers */}
+    <h1 class="sr-only">Cowley Road Studios | Rack Monitor Console</h1>
+
+    <main id="main-content" class="rack-container">
       {/* SYSTEM INTRO / SIGNAL PATH */}
       <section class="rack-module op-intro">
         <div class="module-body">

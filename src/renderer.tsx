@@ -45,6 +45,10 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
           }
         `}} />
         
+        {/* Performance: DNS Prefetch & Preconnect for Square Booking */}
+        <link rel="dns-prefetch" href="https://square.link" />
+        <link rel="preconnect" href="https://square.link" />
+        
         {/* Google Fonts - Hardware Typography */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
