@@ -17,6 +17,7 @@ import { About } from './pages/About'
 import { Work } from './pages/Work'
 import { Signage } from './pages/Signage'
 import { BookingConfirmed } from './pages/BookingConfirmed'
+import { Rack } from './pages/Rack'
 
 const app = new Hono()
 
@@ -1707,6 +1708,23 @@ app.get('/booking-confirmed', (c) => {
       title: 'Booking Confirmed | Cowley Road Studios',
       description: 'Your booking at Cowley Road Studios is confirmed. Check your email for booking details and access information.',
       keywords: 'booking confirmed, cowley road studios booking, studio booking confirmation'
+    }
+  )
+})
+
+// RACK CONSOLE — REASON DAW-STYLE INTERFACE
+// Testbed for rack UI: Video backgrounds, QR codes, LED status
+app.get('/rack', (c) => {
+  return c.render(
+    <>
+      <Header />
+      <Rack />
+      <Footer />
+    </>,
+    {
+      title: 'Rack Console | Cowley Road Studios',
+      description: 'CRS Rack Console: Signal routing, booking surface, system status. Reason DAW-style interface.',
+      keywords: 'rack console, booking, cowley road studios, signal routing'
     }
   )
 })

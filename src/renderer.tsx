@@ -114,6 +114,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="/static/rack-footer.css" rel="stylesheet" />
         {/* TERMINAL STATUS FOOTER: Firmware-style system readout (NORMALISATION) */}
         <link href="/static/terminal-status-footer.css" rel="stylesheet" />
+        {/* RACK CONSOLE: Reason DAW-style interface for /rack page */}
+        <link href="/static/rack-console.css" rel="stylesheet" />
       </head>
       <body>
         {children}
