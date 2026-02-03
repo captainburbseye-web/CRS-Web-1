@@ -17,7 +17,7 @@ import { About } from './pages/About'
 import { Work } from './pages/Work'
 import { Signage } from './pages/Signage'
 import { BookingConfirmed } from './pages/BookingConfirmed'
-import { Rack } from './pages/Rack'
+import { RackPage } from './pages/Rack'
 
 const app = new Hono()
 
@@ -1718,7 +1718,7 @@ app.get('/rack', (c) => {
   return c.render(
     <>
       <Header />
-      <Rack />
+      <RackPage />
       <Footer />
     </>,
     {
