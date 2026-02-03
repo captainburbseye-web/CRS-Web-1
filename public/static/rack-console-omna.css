@@ -1,17 +1,61 @@
 /* ============================================================================
-   RACK CONSOLE — OMNA SIGNAL PATH ARCHITECTURE
-   Cowley Road Studios v4.0 — Reason DAW-style Interface
+   RACK CONSOLE v4.0 — PRODUCTION PALETTE
+   Cowley Road Studios Signal Path Interface
+   Brand Colors: Nettle Green, Mustard, Fire Red, Vegetation Dark
    ============================================================================ */
 
 :root {
-  --nettle-green: #2d3a27;
-  --mustard: #e3b448;
-  --fire-orange: #f05e23;
-  --rack-grey: #2a2a2a;
-  --rack-black: #0D1912;
+  /* Brand Palette Implementation */
+  --nettle-green: #2d3a27;           /* Nettle green */
+  --mustard-mus: #e3b448;            /* Mustard mus */
+  --fire-red: #d32f2f;               /* Fire colors */
+  --vegetation-dark: #1b2618;        /* Vegetation tones */
+  --rack-grey: #404940;              /* 40yy 49/400 grey */
+  --panel-black: #121212;
+  --led-glow: #39ff14;
   --text-light: #f5f5f5;
   --text-muted: rgba(245, 245, 245, 0.65);
   --border-subtle: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================================
+   SIGNAL RAIL - SPINE AND PULSING DOT
+   ============================================================================ */
+
+.signal-rail {
+  position: relative;
+  padding-left: 30px;
+}
+
+.signal-rail::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--rack-grey);
+  border-left: 2px solid var(--mustard-mus);
+  box-shadow: 0 0 8px var(--mustard-mus);
+}
+
+.signal-rail::after {
+  content: '';
+  position: absolute;
+  left: 13px;
+  width: 8px;
+  height: 8px;
+  background: var(--led-glow);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--led-glow);
+  animation: signal-travel 4s infinite linear;
+}
+
+@keyframes signal-travel {
+  0% { top: 0%; opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
 }
 
 /* ============================================================================
@@ -19,15 +63,17 @@
    ============================================================================ */
 
 .rack-container {
-  background: var(--rack-black);
-  padding: 2rem 1rem;
+  background-color: var(--vegetation-dark);
+  background-image: linear-gradient(var(--rack-grey) 1px, transparent 1px);
+  background-size: 100% 4px; /* Mimics rack-unit spacing */
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 12px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  color: var(--text-light);
   max-width: 1440px;
   margin: 0 auto;
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--text-light);
 }
 
 /* ============================================================================
@@ -44,24 +90,27 @@
 }
 
 .rack-module.op-intro {
-  border: 3px solid var(--mustard);
+  border: 3px solid var(--mustard-mus);
   background: linear-gradient(to right, rgba(227, 180, 72, 0.05), rgba(227, 180, 72, 0.02));
   padding: 3rem 2rem;
   text-align: center;
 }
 
+/* Parent Chassis for Rehearsals */
 .rack-module.parent {
-  border: 4px solid var(--nettle-green);
-  background: #1a1a1a;
-  padding: 2rem;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border: 3px solid var(--nettle-green);
+  border-left: 8px solid var(--nettle-green); /* Visual "handle" */
+  background: var(--panel-black);
+  padding: 20px;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
+/* Individual Sub-Modules (Cowley & Cricket) */
 .rack-module.sub-rack {
-  border: 1px solid var(--border-subtle);
-  background: #222;
-  padding: 1rem;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--rack-grey);
+  background: #1e1e1e;
+  padding: 15px;
+  position: relative;
 }
 
 /* ============================================================================
@@ -83,31 +132,31 @@
 }
 
 .led {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   flex-shrink: 0;
-  box-shadow: 0 0 8px currentColor;
+  margin-right: 10px;
 }
 
 .led.green {
-  background: #00ff00;
-  color: #00ff00;
+  background: var(--led-glow);
+  box-shadow: 0 0 10px var(--led-glow);
 }
 
 .led.yellow {
   background: #ffff00;
-  color: #ffff00;
+  box-shadow: 0 0 10px #ffff00;
 }
 
 .led.orange {
-  background: var(--fire-orange);
-  color: var(--fire-orange);
+  background: #ff9f1c;
+  box-shadow: 0 0 10px #ff9f1c;
 }
 
-.led.red {
-  background: #ff0000;
-  color: #ff0000;
+.led.fire {
+  background: var(--fire-red);
+  box-shadow: 0 0 10px var(--fire-red);
 }
 
 .module-title {
@@ -126,11 +175,49 @@
 
 .module-id {
   font-size: 0.75rem;
-  color: var(--mustard);
+  color: var(--mustard-mus);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   font-weight: 600;
   flex-shrink: 0;
+}
+
+.phase-id {
+  font-size: 0.7rem;
+  color: var(--mustard-mus);
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: -5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.label-block {
+  flex: 1;
+}
+
+.label-block h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+.led-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pulsing {
+  animation: led-pulse 2s infinite ease-in-out;
+}
+
+@keyframes led-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
 }
 
 /* ============================================================================
@@ -184,14 +271,14 @@
 }
 
 .contact-info a {
-  color: var(--mustard);
+  color: var(--mustard-mus);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s;
 }
 
 .contact-info a:hover {
-  color: var(--fire-orange);
+  color: var(--fire-red);
   text-decoration: underline;
 }
 
@@ -202,8 +289,8 @@
 .sub-rack-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 1rem;
+  gap: 15px;
+  margin-top: 15px;
 }
 
 @media (max-width: 768px) {
@@ -217,6 +304,7 @@
    PATCH POINT (QR + CTA)
    ============================================================================ */
 
+.patch-out,
 .patch-point {
   display: flex;
   flex-direction: column;
@@ -251,34 +339,36 @@
 }
 
 /* ============================================================================
-   CALL-TO-ACTION BUTTONS
+   CALL-TO-ACTION BUTTONS (The Functional "Patch Point")
    ============================================================================ */
 
 .cta-button {
-  display: inline-block;
-  background: var(--mustard);
-  color: #000;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 2px;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.2s;
+  background: var(--mustard-mus);
+  color: var(--panel-black);
+  font-weight: 900;
   text-decoration: none;
-  font-family: 'JetBrains Mono', monospace;
+  padding: 12px 24px;
+  display: block;
+  text-align: center;
+  border: 2px solid #000;
+  box-shadow: 2px 2px 0px #000;
+  transition: transform 0.1s;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .cta-button:hover {
-  background: var(--fire-orange);
-  box-shadow: 0 4px 12px rgba(240, 94, 35, 0.4);
-  transform: translateY(-2px);
+  background: var(--fire-red);
+  color: var(--text-light);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
 }
 
 .cta-button:active {
-  transform: translateY(0);
+  transform: translate(2px, 2px);
+  box-shadow: 0px 0px 0px #000;
 }
 
 .cta-button-primary {
@@ -368,16 +458,12 @@
   }
 }
 
-.cta-button:hover {
-  animation: none;
-}
-
 /* ============================================================================
    UTILITY CLASSES
    ============================================================================ */
 
 .mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
 }
 
 .text-muted {
@@ -385,5 +471,25 @@
 }
 
 .text-mustard {
-  color: var(--mustard);
+  color: var(--mustard-mus);
+}
+
+.text-nettle {
+  color: var(--nettle-green);
+}
+
+.text-fire {
+  color: var(--fire-red);
+}
+
+/* CSS LIVE MARKER TEST */
+body::after {
+  content: "CSS LIVE MARKER";
+  position: fixed;
+  bottom: 6px;
+  right: 10px;
+  font-size: 12px;
+  color: #ffcc00;
+  opacity: 0.3;
+  z-index: 9999;
 }
