@@ -112,6 +112,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="/static/header-vertical-alignment-patch.css" rel="stylesheet" />
         {/* RACK FOOTER: Horizontal back-panel layout for footer (FINAL PASS) */}
         <link href="/static/rack-footer.css" rel="stylesheet" />
+        {/* TERMINAL STATUS FOOTER: Firmware-style system readout (NORMALISATION) */}
+        <link href="/static/terminal-status-footer.css" rel="stylesheet" />
       </head>
       <body>
         {children}

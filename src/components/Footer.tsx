@@ -52,6 +52,33 @@ export const Footer = () => (
       </div>
     </footer>
 
+    {/* TERMINAL STATUS FOOTER — FIRMWARE OUTPUT */}
+    <div class="terminal-status-footer">
+      <div class="terminal-status-section">
+        <div class="terminal-status-label">SYSTEM STATUS</div>
+        <div class="terminal-status-line">MODE: OPERATIONAL</div>
+        <div class="terminal-status-line">PHASE: COMMISSIONING</div>
+        <div class="terminal-status-line">ACCESS: SCHEDULED ONLY</div>
+        <div class="terminal-status-line">CAPACITY: SIGNAL-MANAGED</div>
+        <div class="terminal-status-line">ENTRY: ALLOCATED ONLY</div>
+      </div>
+
+      <div class="terminal-status-section">
+        <div class="terminal-status-label">LOCATION</div>
+        <div class="terminal-status-line">118 COWLEY ROAD, OXFORD, OX4 1JE</div>
+        <div class="terminal-status-line">COORDINATES: 51.7466 N, 1.2384 W</div>
+      </div>
+
+      <div class="terminal-status-section">
+        <div class="terminal-status-label">CONTACT</div>
+        <div class="terminal-status-line"><a href="mailto:studio@cowleyroadstudios.com">studio@cowleyroadstudios.com</a></div>
+      </div>
+
+      <div class="terminal-status-section">
+        <div class="terminal-status-line">© 2026 CRS · POWERED BY 0DR0 ENGINEERING</div>
+      </div>
+    </div>
+
     {/* FOOTER TERMINATION PANEL: 1U Rack Unit at Bottom */}
     <div class="rack-footer-container">
       <img 
