@@ -1,0 +1,389 @@
+/* ============================================================================
+   RACK CONSOLE — OMNA SIGNAL PATH ARCHITECTURE
+   Cowley Road Studios v4.0 — Reason DAW-style Interface
+   ============================================================================ */
+
+:root {
+  --nettle-green: #2d3a27;
+  --mustard: #e3b448;
+  --fire-orange: #f05e23;
+  --rack-grey: #2a2a2a;
+  --rack-black: #0D1912;
+  --text-light: #f5f5f5;
+  --text-muted: rgba(245, 245, 245, 0.65);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================================================
+   CONTAINER & LAYOUT
+   ============================================================================ */
+
+.rack-container {
+  background: var(--rack-black);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-light);
+}
+
+/* ============================================================================
+   MODULE STRUCTURE
+   ============================================================================ */
+
+.rack-module {
+  border: 2px solid var(--nettle-green);
+  background: linear-gradient(135deg, #1a1a1a 0%, #222 100%);
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.rack-module.op-intro {
+  border: 3px solid var(--mustard);
+  background: linear-gradient(to right, rgba(227, 180, 72, 0.05), rgba(227, 180, 72, 0.02));
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.rack-module.parent {
+  border: 4px solid var(--nettle-green);
+  background: #1a1a1a;
+  padding: 2rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.rack-module.sub-rack {
+  border: 1px solid var(--border-subtle);
+  background: #222;
+  padding: 1rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ============================================================================
+   MODULE HEADER (LED + TITLE + ID)
+   ============================================================================ */
+
+.module-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.rack-module.sub-rack .module-header {
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+}
+
+.led {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.led.green {
+  background: #00ff00;
+  color: #00ff00;
+}
+
+.led.yellow {
+  background: #ffff00;
+  color: #ffff00;
+}
+
+.led.orange {
+  background: var(--fire-orange);
+  color: var(--fire-orange);
+}
+
+.led.red {
+  background: #ff0000;
+  color: #ff0000;
+}
+
+.module-title {
+  flex: 1;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin: 0;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+.rack-module.sub-rack .module-title {
+  font-size: 1rem;
+}
+
+.module-id {
+  font-size: 0.75rem;
+  color: var(--mustard);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* ============================================================================
+   MODULE BODY & CONTENT
+   ============================================================================ */
+
+.module-body {
+  position: relative;
+  z-index: 1;
+}
+
+.module-video {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 1rem;
+  opacity: 0.7;
+  filter: saturate(0.8);
+}
+
+.rack-module.sub-rack .module-video {
+  height: 120px;
+  margin-bottom: 0.75rem;
+}
+
+.module-description,
+.sub-rack-description,
+.system-status,
+.op-blurb {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0 0 1rem 0;
+}
+
+.op-blurb {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.contact-info {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.contact-info p {
+  margin: 0.5rem 0;
+}
+
+.contact-info a {
+  color: var(--mustard);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.contact-info a:hover {
+  color: var(--fire-orange);
+  text-decoration: underline;
+}
+
+/* ============================================================================
+   SUB-RACK ROW (PARENT CHILDREN)
+   ============================================================================ */
+
+.sub-rack-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .sub-rack-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* ============================================================================
+   PATCH POINT (QR + CTA)
+   ============================================================================ */
+
+.patch-point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.rack-module.sub-rack .patch-point {
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.qr-container {
+  background: white;
+  padding: 0.5rem;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.qr-code {
+  width: 150px;
+  height: 150px;
+  display: block;
+}
+
+.rack-module.sub-rack .qr-code {
+  width: 100px;
+  height: 100px;
+}
+
+/* ============================================================================
+   CALL-TO-ACTION BUTTONS
+   ============================================================================ */
+
+.cta-button {
+  display: inline-block;
+  background: var(--mustard);
+  color: #000;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 2px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.cta-button:hover {
+  background: var(--fire-orange);
+  box-shadow: 0 4px 12px rgba(240, 94, 35, 0.4);
+  transform: translateY(-2px);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+.cta-button-primary {
+  width: 100%;
+  text-align: center;
+}
+
+/* ============================================================================
+   RESPONSIVE BEHAVIOR
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .rack-container {
+    padding: 1rem 0.5rem;
+    gap: 1rem;
+  }
+
+  .rack-module {
+    padding: 1rem;
+  }
+
+  .rack-module.parent {
+    padding: 1.5rem;
+  }
+
+  .rack-module.op-intro {
+    padding: 2rem 1rem;
+  }
+
+  .module-header {
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .module-title {
+    font-size: 1rem;
+  }
+
+  .module-id {
+    font-size: 0.65rem;
+  }
+
+  .module-video {
+    height: 150px;
+  }
+
+  .qr-code {
+    width: 120px;
+    height: 120px;
+  }
+
+  .cta-button {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================================================================
+   ANIMATION & EFFECTS
+   ============================================================================ */
+
+.rack-module {
+  animation: rack-mount 0.4s ease-out;
+}
+
+@keyframes rack-mount {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.led {
+  animation: led-pulse 2s infinite;
+}
+
+@keyframes led-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.cta-button:hover {
+  animation: none;
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-mustard {
+  color: var(--mustard);
+}

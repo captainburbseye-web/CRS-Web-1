@@ -1,183 +1,129 @@
-export const Rack = () => {
-  const modules = [
-    {
-      id: 'cowley-rehearsals',
-      title: 'COWLEY ROAD — REHEARSALS',
-      video: 3,
-      squareLink: 'https://square.link/u/UQidDzE0',
-      status: 'ACTIVE',
-      description: '118 Cowley Road · £45 / 2 hours',
-      led: 'green'
-    },
-    {
-      id: 'cricket-rehearsals',
-      title: 'CRICKET ROAD — REHEARSALS',
-      video: 5,
-      squareLink: 'https://square.link/u/WPqRFIGW',
-      status: 'ACTIVE',
-      description: '92 Cricket Road · Hourly rates',
-      led: 'green'
-    },
-    {
-      id: 'control-room',
-      title: 'CONTROL ROOM — DRY HIRE',
-      video: 7,
-      squareLink: 'https://square.link/u/bCOHXtdl',
-      status: 'ACTIVE',
-      description: '92 Cricket Road · No engineer',
-      led: 'green'
-    },
-    {
-      id: 'av-services',
-      title: 'AV SERVICES — HIRE & REPAIR',
-      video: 11,
-      squareLink: 'https://square.link/u/AVServiceLink',
-      status: 'ACTIVE',
-      description: 'Equipment rental & technical support',
-      led: 'green'
-    },
-    {
-      id: 'workshop-cafe',
-      title: 'WORKSHOP CAFÉ',
-      video: 10,
-      squareLink: 'https://square.link/u/WorkshopCafeLink',
-      status: 'ACTIVE',
-      description: 'Co-working · Events · AI workshops',
-      led: 'green'
-    },
-    {
-      id: 'live-services',
-      title: 'LIVE SERVICES',
-      video: 2,
-      squareLink: 'https://square.link/u/LiveServicesLink',
-      status: 'ACTIVE',
-      description: 'Sound & lighting for events',
-      led: 'green'
-    },
-    {
-      id: 'music-lessons',
-      title: 'MUSIC LESSONS',
-      video: 1,
-      squareLink: 'https://square.link/u/MusicLessonsLink',
-      status: 'ACTIVE',
-      description: 'One-on-one & group instruction',
-      led: 'green'
-    },
-    {
-      id: 'studio-hire',
-      title: 'STUDIO HIRE',
-      video: 7,
-      squareLink: 'https://square.link/u/StudioHireLink',
-      status: 'ACTIVE',
-      description: '92 Cricket Road · Full production',
-      led: 'green'
-    },
-    {
-      id: 'contact',
-      title: 'CONTACT',
-      video: 23,
-      squareLink: 'mailto:info@crsoxford.com',
-      status: 'ACTIVE',
-      description: 'info@crsoxford.com · +44 1865 722027',
-      led: 'green'
-    },
-    {
-      id: 'system',
-      title: 'SYSTEM',
-      video: 12,
-      squareLink: 'https://crsoxford.com',
-      status: 'ACTIVE',
-      description: 'Cowley Road Studios · Oxford',
-      led: 'green'
-    }
-  ];
+import { Header } from '../components/Header'
+import { Footer } from '../components/Footer'
 
-  return (
-    <>
-      <div class="rack-console">
-        <div class="rack-header">
-          <h1 class="rack-title">COWLEY ROAD STUDIOS — RACK CONSOLE</h1>
-          <p class="rack-subtitle">Signal routing · Booking surface · System status</p>
+interface RackModuleProps {
+  label: string
+  type?: 'standard' | 'parent' | 'sub-rack'
+  children?: any
+  videoId?: number
+  qrLink?: string
+}
+
+const RackModule = ({ label, type = 'standard', children, videoId, qrLink }: RackModuleProps) => (
+  <section class={`rack-module ${type}`}>
+    <div class="module-header">
+      <div class="led green"></div>
+      <h2 class="module-title">{label}</h2>
+      <span class="module-id">[{label.substring(0, 3).toUpperCase()}-MOD]</span>
+    </div>
+    <div class="module-body">
+      {videoId && (
+        <video 
+          autoplay 
+          loop 
+          muted 
+          class="module-video"
+          src={`https://pub-b79b90db3c594763bf7e4c9e96ae461d.r2.dev/${videoId}.mp4`}
+        />
+      )}
+      {children}
+      {qrLink && (
+        <div class="patch-point">
+          <div class="qr-container">
+            <img 
+              src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrLink)}`} 
+              alt="Booking QR"
+              class="qr-code"
+            />
+          </div>
+          <a href={qrLink} target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">PATCH TO BOOK</a>
         </div>
+      )}
+    </div>
+  </section>
+)
 
-        <div class="rack-modules">
-          {modules.map((module) => (
-            <div class={`rack-module rack-module-${module.id}`} key={module.id}>
-              {/* VIDEO BACKGROUND */}
-              <div class="rack-module-video">
-                <video
-                  autoplay
-                  muted
-                  loop
-                  class="rack-video-bg"
-                  src={`https://pub-b79b90db3c594763bf7e4c9e96ae461d.r2.dev/${module.video}.mp4`}
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    const parent = e.currentTarget.parentElement;
-                    if (parent) {
-                      parent.style.backgroundImage = 'url(data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="rack" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="10" y2="10" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="%231a2620" /><rect width="100" height="100" fill="url(%23rack)" opacity="0.3" /></svg>)';
-                      parent.style.backgroundSize = 'cover';
-                      parent.style.backgroundPosition = 'center';
-                    }
-                  }}
-                />
-              </div>
+export const RackPage = () => (
+  <>
+    <Header />
 
-              {/* MODULE PANEL */}
-              <div class="rack-module-panel">
-                {/* MODULE IDENTIFIER */}
-                <div class="rack-module-id" style="font-size: 0.7rem; color: rgba(227, 176, 75, 0.6); letter-spacing: 0.1em; margin-bottom: 0.5rem;">[ MODULE {String(modules.indexOf(module) + 1).padStart(2, '0')} ]</div>
-
-                {/* LED STATUS */}
-                <div class={`rack-led rack-led-${module.led}`} title={module.status} />
-
-                {/* SERVICE LABEL */}
-                <h2 class="rack-module-title">{module.title}</h2>
-
-                {/* DESCRIPTION */}
-                <p class="rack-module-description">{module.description}</p>
-
-                {/* CTA BUTTON */}
-                <a href={module.squareLink} target="_blank" rel="noopener" class="rack-cta">
-                  BOOK NOW
-                </a>
-
-                {/* QR CODE CONTAINER */}
-                <div class="rack-qr-container">
-                  <div class="rack-qr" id={`qr-${module.id}`} />
-                </div>
-              </div>
-            </div>
-          ))}
+    <main class="rack-container">
+      {/* SYSTEM INTRO / SIGNAL PATH */}
+      <section class="rack-module op-intro">
+        <div class="module-body">
+          <p class="op-blurb">
+            Welcome to Cowley Road Studios — a fully modular, operational creative venue. 
+            This is your signal path to booking rehearsals, control room access, AV services, and community events.
+          </p>
         </div>
+      </section>
 
-        {/* SYSTEM FOOTER */}
-        <div class="rack-footer-system">
-          <p>© 2026 CRS · POWERED BY 0DR0 ENGINEERING</p>
-          <p>Cowley Road Studios · Oxford · OX4 1JE</p>
+      {/* GROUP MODULE: REHEARSALS (PARENT) */}
+      <RackModule type="parent" label="REHEARSALS">
+        <div class="sub-rack-row">
+          <RackModule 
+            type="sub-rack" 
+            label="Cowley Road" 
+            videoId={3} 
+            qrLink="https://square.link/u/UQidDzE0"
+          >
+            <p class="sub-rack-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
+          </RackModule>
+          <RackModule 
+            type="sub-rack" 
+            label="Cricket Road" 
+            videoId={5} 
+            qrLink="https://square.link/u/WPqRFIGW"
+          >
+            <p class="sub-rack-description">92 Cricket Road, Oxford OX4 3DJ · Hourly rates</p>
+          </RackModule>
         </div>
-      </div>
+      </RackModule>
 
-      {/* QR CODE LIBRARY */}
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" />
-      <script>
-        {`
-          // Generate QR codes for each module
-          const modules = ${JSON.stringify(modules)};
-          modules.forEach(module => {
-            const qrContainer = document.getElementById('qr-' + module.id);
-            if (qrContainer) {
-              new QRCode(qrContainer, {
-                text: module.squareLink,
-                width: 100,
-                height: 100,
-                colorDark: '#ffffff',
-                colorLight: '#0D1912'
-              });
-            }
-          });
-        `}
-      </script>
-    </>
-  );
-};
+      {/* STANDARD MODULES */}
+      <RackModule 
+        label="CONTROL ROOM — DRY HIRE" 
+        videoId={7} 
+        qrLink="https://square.link/u/bCOHXtdl"
+      >
+        <p class="module-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
+      </RackModule>
+
+      <RackModule 
+        label="AV SERVICES — HIRE & REPAIR" 
+        videoId={11}
+      >
+        <p class="module-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
+      </RackModule>
+
+      <RackModule 
+        label="WORKSHOP CAFÉ + EVENTS" 
+        videoId={10}
+      >
+        <p class="module-description">118 Cowley Road · Public-facing space for community events, workshops, and creative programming.</p>
+      </RackModule>
+
+      <RackModule 
+        label="CONTACT + LOCATION" 
+        videoId={23}
+      >
+        <div class="contact-info">
+          <p><strong>Email:</strong> <a href="mailto:info@crsoxford.com">info@crsoxford.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+441865722027">+44 1865 722027</a></p>
+          <p><strong>Socials:</strong> @cowleyroadstudios.ox</p>
+        </div>
+      </RackModule>
+
+      {/* SYSTEM MODULE (FILLER) */}
+      <RackModule 
+        type="standard" 
+        label="SYSTEM STATUS" 
+        videoId={12}
+      >
+        <p class="system-status">SIGNAL CLEAR · SYSTEM LIVE · READY FOR BOOKING</p>
+      </RackModule>
+    </main>
+
+    <Footer />
+  </>
+)

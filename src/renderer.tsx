@@ -98,6 +98,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="/static/crs-footer-technical.css" rel="stylesheet" />
         {/* RACK FOOTER TERMINATION: 1U rack unit that closes the rack case at bottom */}
         <link href="/static/crs-rack-footer-termination.css" rel="stylesheet" />
+        {/* RACK CONSOLE OMNA: Signal path architecture with parent/sub-rack hierarchy (LOADS LAST FOR /rack ROUTE) */}
+        <link href="/static/rack-console-omna.css" rel="stylesheet" />
         {/* HEADER LOCKDOWN RESET: Nuclear header reset - prevents all drift (LOADS ABSOLUTE LAST - STEEL BEAM) */}
         <link href="/static/crs-header-reset.css" rel="stylesheet" />
         {/* BACK TO TOP BUTTON: Floating button for scroll navigation */}
