@@ -11,11 +11,11 @@
  */
 
 const CRS_ROUTING_MAP = {
-  'rehearsals-cowley': 'https://square.link/u/UQidDzE0',
-  'rehearsals-cricket': 'https://square.link/u/WPqRFIGW',
-  'control-room': 'https://square.link/u/bCOHXtdl',
-  'av-services': 'https://square.link/u/bCOHXtdl',
-  'workshop-cafe': 'https://square.link/u/UQidDzE0',
+  'rehearsals-cowley': 'https://square.link/u/UQidDzE0?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=rehearsals_cowley',
+  'rehearsals-cricket': 'https://square.link/u/WPqRFIGW?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=rehearsals_cricket',
+  'control-room': 'https://square.link/u/bCOHXtdl?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=control_room',
+  'av-services': 'https://square.link/u/bCOHXtdl?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=av_services',
+  'workshop-cafe': 'https://square.link/u/UQidDzE0?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=workshop_cafe',
   'contact': '/contact',
 }
 

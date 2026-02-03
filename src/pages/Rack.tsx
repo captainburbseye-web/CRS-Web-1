@@ -4,6 +4,7 @@ import { Footer } from '../components/Footer'
 interface RackModuleProps {
   label: string
   type?: 'standard' | 'parent' | 'sub-rack'
+  className?: string
   children?: any
   videoId?: number
   qrLink?: string
@@ -12,8 +13,8 @@ interface RackModuleProps {
   buttonLabel?: string
 }
 
-const RackModule = ({ label, type = 'standard', children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel }: RackModuleProps) => (
-  <section class={`rack-module ${type}`}>
+const RackModule = ({ label, type = 'standard', className, children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel }: RackModuleProps) => (
+  <section class={`rack-module ${type} ${className || ''}`}>
     <div class="module-header">
       <div class="led green"></div>
       <h2 class="module-title">{label}</h2>
@@ -135,6 +136,7 @@ export const RackPage = () => (
 
       <RackModule 
         label="WORKSHOP CAFÉ + EVENTS" 
+        className="workshop-cafe"
         videoId={10}
         bookingRoute="workshop-cafe"
         bookingUrl="https://square.link/u/UQidDzE0"

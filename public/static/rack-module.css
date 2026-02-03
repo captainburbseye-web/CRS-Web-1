@@ -1,4 +1,5 @@
 /* === HEAVYWEIGHT INSTITUTIONAL MODULE (SCOPED) === */
+/* Phase 2: Hardware Realism - Powder-Coat Texture & Mobile Stack */
 
 :root {
   --mustard-mus: #e3b448;
@@ -7,13 +8,24 @@
   --black-panel: #111;
 }
 
+/* === 🛠️ METAL FACEPLATE TEXTURE === */
+
 .rack-module {
-  background: rgba(42, 59, 42, 0.15);
-  border: 3px solid #2f3a2f;
+  background-color: var(--nettle-green);
+  background-image: 
+    repeating-radial-gradient(circle at 0 0, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 100%),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.1) 100%);
+  background-size: 3px 3px, 100% 100%;
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 6px;
   padding: 4rem;
   margin-bottom: 3rem;
-  box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.1), 
+    inset 0 -1px 0 rgba(0,0,0,0.4),
+    0 2px 8px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
 }
 
 .rack-module h2 {
@@ -68,6 +80,7 @@
   font-size: 0.9rem;
   font-weight: 600;
   padding: 10px 16px;
+  min-height: 44px; /* WCAG touch target */
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -78,10 +91,16 @@
   border-radius: 2px;
 }
 
+/* === 🔘 REFINED MUSTARD GLOW === */
+
 .power-switch:hover {
-  background: var(--mustard-mus);
-  color: var(--black-panel);
-  box-shadow: 0 0 8px var(--mustard-mus);
+  background-color: var(--mustard-mus);
+  color: #000;
+  box-shadow: 
+    0 0 15px rgba(227, 180, 72, 0.5),
+    0 0 30px rgba(227, 180, 72, 0.2),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  text-shadow: 0 0 2px rgba(0,0,0,0.3);
   transform: translateY(-1px);
 }
 
@@ -101,18 +120,48 @@
   box-shadow: 0 0 3px rgba(227, 180, 72, 0.2);
 }
 
-/* === MOBILE SAFETY === */
-@media (max-width: 768px){
-  .rack-module{
+/* === WORKSHOP CAFÉ TYPOGRAPHY VARIANT === */
+/* Softer sans-serif for welcoming space */
+
+.rack-module.workshop-cafe h2,
+.rack-module.workshop-cafe p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.rack-module.workshop-cafe h2 {
+  font-size: 3.8rem;
+  font-weight: 500;
+}
+
+/* === 📱 MOBILE VERTICAL STACKING === */
+
+@media (max-width: 768px) {
+  .rack-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px;
+  }
+  
+  .rack-module {
+    width: 100%;
+    min-height: 180px; /* Equivalent to a 4U mobile block */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 2rem;
   }
 
-  .rack-module h2{
+  .rack-module h2 {
     font-size: 2.4rem;
   }
 
   .power-switch {
-    font-size: 0.8rem;
-    padding: 8px 12px;
+    font-size: 0.85rem;
+    padding: 12px 16px;
+    min-height: 48px; /* Enhanced touch target for mobile */
   }
 }
