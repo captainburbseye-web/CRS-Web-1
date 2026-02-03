@@ -7,11 +7,12 @@ interface RackModuleProps {
   children?: any
   videoId?: number
   qrLink?: string
+  bookingRoute?: string
   bookingUrl?: string
   buttonLabel?: string
 }
 
-const RackModule = ({ label, type = 'standard', children, videoId, qrLink, bookingUrl, buttonLabel }: RackModuleProps) => (
+const RackModule = ({ label, type = 'standard', children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel }: RackModuleProps) => (
   <section class={`rack-module ${type}`}>
     <div class="module-header">
       <div class="led green"></div>
@@ -29,7 +30,7 @@ const RackModule = ({ label, type = 'standard', children, videoId, qrLink, booki
         />
       )}
       {children}
-      {(qrLink || bookingUrl) && (
+      {(qrLink || bookingRoute || bookingUrl) && (
         <div class="patch-point">
           {qrLink && (
             <div class="qr-container">
@@ -40,14 +41,27 @@ const RackModule = ({ label, type = 'standard', children, videoId, qrLink, booki
               />
             </div>
           )}
-          {bookingUrl ? (
-            <button 
-              class="power-switch" 
-              data-url={bookingUrl}
-              title={`Route to ${buttonLabel || 'booking'}`}
-            >
-              {buttonLabel || 'PATCH TO BOOK'}
-            </button>
+          {bookingRoute ? (
+            <a href={bookingUrl || '#'} class="rack-connector">
+              <button 
+                class="power-switch" 
+                data-route={bookingRoute}
+                title={`Route to ${buttonLabel || 'booking'}`}
+                type="button"
+              >
+                {buttonLabel || 'PATCH TO BOOK'}
+              </button>
+            </a>
+          ) : bookingUrl ? (
+            <a href={bookingUrl} class="rack-connector">
+              <button 
+                class="power-switch" 
+                title={`Route to ${buttonLabel || 'booking'}`}
+                type="button"
+              >
+                {buttonLabel || 'PATCH TO BOOK'}
+              </button>
+            </a>
           ) : qrLink ? (
             <a href={qrLink} target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">PATCH TO BOOK</a>
           ) : null}
@@ -79,6 +93,7 @@ export const RackPage = () => (
             type="sub-rack" 
             label="Cowley Road" 
             videoId={3} 
+            bookingRoute="rehearsals-cowley"
             bookingUrl="https://square.link/u/UQidDzE0"
             buttonLabel="REC START"
           >
@@ -88,6 +103,7 @@ export const RackPage = () => (
             type="sub-rack" 
             label="Cricket Road" 
             videoId={5} 
+            bookingRoute="rehearsals-cricket"
             bookingUrl="https://square.link/u/WPqRFIGW"
             buttonLabel="REC START"
           >
@@ -100,6 +116,7 @@ export const RackPage = () => (
       <RackModule 
         label="CONTROL ROOM — DRY HIRE" 
         videoId={7} 
+        bookingRoute="control-room"
         bookingUrl="https://square.link/u/bCOHXtdl"
         buttonLabel="CONSOLE ON"
       >
@@ -109,6 +126,7 @@ export const RackPage = () => (
       <RackModule 
         label="AV SERVICES — HIRE & REPAIR" 
         videoId={11}
+        bookingRoute="av-services"
         bookingUrl="https://square.link/u/bCOHXtdl"
         buttonLabel="AV ON"
       >
@@ -118,6 +136,7 @@ export const RackPage = () => (
       <RackModule 
         label="WORKSHOP CAFÉ + EVENTS" 
         videoId={10}
+        bookingRoute="workshop-cafe"
         bookingUrl="https://square.link/u/UQidDzE0"
         buttonLabel="CAFÉ OPEN"
       >
@@ -147,23 +166,10 @@ export const RackPage = () => (
 
     <Footer />
 
-    {/* PATCH BAY ROUTING LOGIC */}
-    <script>
-      {`
-        document.querySelectorAll('.power-switch').forEach(button => {
-          button.addEventListener('click', function() {
-            const targetUrl = this.getAttribute('data-url');
-            
-            // Add visual feedback: "switch activation" animation
-            this.classList.add('active');
-            
-            // Brief delay for physical relay feel (150ms)
-            setTimeout(() => {
-              window.location.href = targetUrl;
-            }, 150);
-          });
-        });
-      `}
-    </script>
+    {/* AUDIO: SWITCH CLICK SFX */}
+    <audio id="click-sfx" src="/assets/click.wav" preload="auto"></audio>
+
+    {/* PATCH BAY ROUTING LOGIC - v4.1 */}
+    <script src="/assets/booking-router.js"></script>
   </>
 )

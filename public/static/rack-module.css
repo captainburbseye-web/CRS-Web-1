@@ -1,5 +1,12 @@
 /* === HEAVYWEIGHT INSTITUTIONAL MODULE (SCOPED) === */
 
+:root {
+  --mustard-mus: #e3b448;
+  --fire-red: #d32f2f;
+  --nettle-green: #404940;
+  --black-panel: #111;
+}
+
 .rack-module {
   background: rgba(42, 59, 42, 0.15);
   border: 3px solid #2f3a2f;
@@ -43,51 +50,55 @@
   box-shadow: 0 0 14px rgba(255,159,28,0.3);
 }
 
+/* === RACK CONNECTOR (FALLBACK ANCHOR) === */
+
+.rack-connector {
+  text-decoration: none;
+  display: inline-block;
+}
+
 /* === POWER SWITCH BUTTONS (PATCH BAY) === */
+/* Vintage illuminated toggle on preamp aesthetic */
 
 .power-switch {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.2rem;
+  background: var(--black-panel);
+  color: var(--mustard-mus);
+  border: 2px solid var(--mustard-mus);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
   font-weight: 600;
-  padding: 1rem 2.2rem;
-  background: rgba(0, 0, 0, 0.6);
-  border: 2px solid #00FF00;
-  color: #00FF00;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  padding: 10px 16px;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 
-    0 0 10px rgba(0, 255, 0, 0.4),
-    inset 0 0 8px rgba(0, 255, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.15s ease-in-out;
+  box-shadow: 0 0 4px rgba(227, 180, 72, 0.3);
   position: relative;
-  overflow: hidden;
+  z-index: 2;
+  border-radius: 2px;
 }
 
 .power-switch:hover {
-  background: rgba(0, 255, 0, 0.08);
-  box-shadow: 
-    0 0 20px rgba(0, 255, 0, 0.6),
-    inset 0 0 12px rgba(0, 255, 0, 0.2),
-    0 0 30px rgba(0, 255, 0, 0.3);
-  transform: translateY(-2px);
+  background: var(--mustard-mus);
+  color: var(--black-panel);
+  box-shadow: 0 0 8px var(--mustard-mus);
+  transform: translateY(-1px);
 }
 
 .power-switch:active,
 .power-switch.active {
-  background: rgba(0, 255, 0, 0.15);
-  box-shadow: 
-    0 0 30px rgba(0, 255, 0, 0.8),
-    inset 0 0 16px rgba(0, 255, 0, 0.3),
-    0 0 50px rgba(0, 255, 0, 0.5);
-  transform: translateY(0);
-  filter: brightness(1.2);
+  background: var(--fire-red) !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: 0 0 8px var(--fire-red);
+  transform: scale(0.97);
+  transition: background 0.1s ease-out;
 }
 
 .power-switch:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  box-shadow: 0 0 5px rgba(0, 255, 0, 0.2);
+  box-shadow: 0 0 3px rgba(227, 180, 72, 0.2);
 }
 
 /* === MOBILE SAFETY === */
@@ -98,5 +109,10 @@
 
   .rack-module h2{
     font-size: 2.4rem;
+  }
+
+  .power-switch {
+    font-size: 0.8rem;
+    padding: 8px 12px;
   }
 }
