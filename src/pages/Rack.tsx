@@ -7,9 +7,11 @@ interface RackModuleProps {
   children?: any
   videoId?: number
   qrLink?: string
+  bookingUrl?: string
+  buttonLabel?: string
 }
 
-const RackModule = ({ label, type = 'standard', children, videoId, qrLink }: RackModuleProps) => (
+const RackModule = ({ label, type = 'standard', children, videoId, qrLink, bookingUrl, buttonLabel }: RackModuleProps) => (
   <section class={`rack-module ${type}`}>
     <div class="module-header">
       <div class="led green"></div>
@@ -27,16 +29,28 @@ const RackModule = ({ label, type = 'standard', children, videoId, qrLink }: Rac
         />
       )}
       {children}
-      {qrLink && (
+      {(qrLink || bookingUrl) && (
         <div class="patch-point">
-          <div class="qr-container">
-            <img 
-              src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrLink)}`} 
-              alt="Booking QR"
-              class="qr-code"
-            />
-          </div>
-          <a href={qrLink} target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">PATCH TO BOOK</a>
+          {qrLink && (
+            <div class="qr-container">
+              <img 
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(qrLink)}`} 
+                alt="Booking QR"
+                class="qr-code"
+              />
+            </div>
+          )}
+          {bookingUrl ? (
+            <button 
+              class="power-switch" 
+              data-url={bookingUrl}
+              title={`Route to ${buttonLabel || 'booking'}`}
+            >
+              {buttonLabel || 'PATCH TO BOOK'}
+            </button>
+          ) : qrLink ? (
+            <a href={qrLink} target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">PATCH TO BOOK</a>
+          ) : null}
         </div>
       )}
     </div>
@@ -65,7 +79,8 @@ export const RackPage = () => (
             type="sub-rack" 
             label="Cowley Road" 
             videoId={3} 
-            qrLink="https://square.link/u/UQidDzE0"
+            bookingUrl="https://square.link/u/UQidDzE0"
+            buttonLabel="REC START"
           >
             <p class="sub-rack-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
           </RackModule>
@@ -73,7 +88,8 @@ export const RackPage = () => (
             type="sub-rack" 
             label="Cricket Road" 
             videoId={5} 
-            qrLink="https://square.link/u/WPqRFIGW"
+            bookingUrl="https://square.link/u/WPqRFIGW"
+            buttonLabel="REC START"
           >
             <p class="sub-rack-description">92 Cricket Road, Oxford OX4 3DJ · Hourly rates</p>
           </RackModule>
@@ -84,7 +100,8 @@ export const RackPage = () => (
       <RackModule 
         label="CONTROL ROOM — DRY HIRE" 
         videoId={7} 
-        qrLink="https://square.link/u/bCOHXtdl"
+        bookingUrl="https://square.link/u/bCOHXtdl"
+        buttonLabel="CONSOLE ON"
       >
         <p class="module-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
       </RackModule>
@@ -92,6 +109,8 @@ export const RackPage = () => (
       <RackModule 
         label="AV SERVICES — HIRE & REPAIR" 
         videoId={11}
+        bookingUrl="https://square.link/u/bCOHXtdl"
+        buttonLabel="AV ON"
       >
         <p class="module-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
       </RackModule>
@@ -99,6 +118,8 @@ export const RackPage = () => (
       <RackModule 
         label="WORKSHOP CAFÉ + EVENTS" 
         videoId={10}
+        bookingUrl="https://square.link/u/UQidDzE0"
+        buttonLabel="CAFÉ OPEN"
       >
         <p class="module-description">118 Cowley Road · Public-facing space for community events, workshops, and creative programming.</p>
       </RackModule>
@@ -125,5 +146,24 @@ export const RackPage = () => (
     </main>
 
     <Footer />
+
+    {/* PATCH BAY ROUTING LOGIC */}
+    <script>
+      {`
+        document.querySelectorAll('.power-switch').forEach(button => {
+          button.addEventListener('click', function() {
+            const targetUrl = this.getAttribute('data-url');
+            
+            // Add visual feedback: "switch activation" animation
+            this.classList.add('active');
+            
+            // Brief delay for physical relay feel (150ms)
+            setTimeout(() => {
+              window.location.href = targetUrl;
+            }, 150);
+          });
+        });
+      `}
+    </script>
   </>
 )
