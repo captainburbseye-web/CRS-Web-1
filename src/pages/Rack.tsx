@@ -111,11 +111,23 @@ export const Rack = () => {
                   loop
                   class="rack-video-bg"
                   src={`https://pub-b79b90db3c594763bf7e4c9e96ae461d.r2.dev/${module.video}.mp4`}
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      parent.style.backgroundImage = 'url(data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="rack" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="10" y2="10" stroke="%23333" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="%231a2620" /><rect width="100" height="100" fill="url(%23rack)" opacity="0.3" /></svg>)';
+                      parent.style.backgroundSize = 'cover';
+                      parent.style.backgroundPosition = 'center';
+                    }
+                  }}
                 />
               </div>
 
               {/* MODULE PANEL */}
               <div class="rack-module-panel">
+                {/* MODULE IDENTIFIER */}
+                <div class="rack-module-id" style="font-size: 0.7rem; color: rgba(227, 176, 75, 0.6); letter-spacing: 0.1em; margin-bottom: 0.5rem;">[ MODULE {String(modules.indexOf(module) + 1).padStart(2, '0')} ]</div>
+
                 {/* LED STATUS */}
                 <div class={`rack-led rack-led-${module.led}`} title={module.status} />
 

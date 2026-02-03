@@ -484,7 +484,7 @@ app.get('/book', (c) => {
           </div>
           
           <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono" style="font-size: 0.85rem; opacity: 0.7;">
+            <a href="https://square.link/u/UQidDzE0?src=embed" target="_blank" rel="noopener noreferrer" class="crs-button mono" style="font-size: 0.85rem; opacity: 0.7;">
               OPEN IN NEW TAB
             </a>
           </div>
