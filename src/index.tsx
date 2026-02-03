@@ -713,7 +713,7 @@ app.get('/crs-cowley-road', (c) => {
 
           {/* BOOKING CTA */}
           <div class="hero-cta">
-            <a href="https://square.link/u/UQidDzE0?src=embed" target="_blank" rel="noopener noreferrer" class="crs-button mono">Book rehearsal — Cowley Road</a>
+            <a href="https://square.link/u/UQidDzE0" target="_blank" rel="noopener noreferrer" class="crs-button mono">Book rehearsal — Cowley Road</a>
             <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65); margin-top: 0.75rem; text-align: center;">£45 / 2 hours · Rehearsal use only</p>
           </div>
 

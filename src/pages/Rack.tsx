@@ -4,7 +4,7 @@ export const Rack = () => {
       id: 'cowley-rehearsals',
       title: 'COWLEY ROAD — REHEARSALS',
       video: 3,
-      squareLink: 'https://square.link/u/UQidDzE0?src=embed',
+      squareLink: 'https://square.link/u/UQidDzE0',
       status: 'ACTIVE',
       description: '118 Cowley Road · £45 / 2 hours',
       led: 'green'
@@ -13,7 +13,7 @@ export const Rack = () => {
       id: 'cricket-rehearsals',
       title: 'CRICKET ROAD — REHEARSALS',
       video: 5,
-      squareLink: 'https://square.link/u/WPqRFIGW?src=embed',
+      squareLink: 'https://square.link/u/WPqRFIGW',
       status: 'ACTIVE',
       description: '92 Cricket Road · Hourly rates',
       led: 'green'
@@ -22,7 +22,7 @@ export const Rack = () => {
       id: 'control-room',
       title: 'CONTROL ROOM — DRY HIRE',
       video: 7,
-      squareLink: 'https://square.link/u/bCOHXtdl?src=embed',
+      squareLink: 'https://square.link/u/bCOHXtdl',
       status: 'ACTIVE',
       description: '92 Cricket Road · No engineer',
       led: 'green'
