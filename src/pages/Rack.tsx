@@ -100,9 +100,9 @@ export const RackPage = () => (
             type="sub-rack" 
             label="Cowley Road" 
             videoId={3} 
-            bookingRoute="rehearsals-cowley"
-            bookingUrl="https://square.link/u/UQidDzE0"
-            buttonLabel="REC START"
+            bookingRoute="commission-studio"
+            bookingUrl="https://square.link/u/commission-link-1"
+            buttonLabel="COMMISSION ALLOCATION"
           >
             <p class="sub-rack-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
           </RackModule>
@@ -110,9 +110,9 @@ export const RackPage = () => (
             type="sub-rack" 
             label="Cricket Road" 
             videoId={5} 
-            bookingRoute="rehearsals-cricket"
+            bookingRoute="recording-live"
             bookingUrl="https://square.link/u/WPqRFIGW"
-            buttonLabel="REC START"
+            buttonLabel="REHEARSE NOW"
           >
             <p class="sub-rack-description">92 Cricket Road, Oxford OX4 3DJ · Hourly rates</p>
           </RackModule>
@@ -123,9 +123,9 @@ export const RackPage = () => (
       <RackModule 
         label="CONTROL ROOM — DRY HIRE" 
         videoId={7} 
-        bookingRoute="control-room"
-        bookingUrl="https://square.link/u/bCOHXtdl"
-        buttonLabel="CONSOLE ON"
+        bookingRoute="commission-studio"
+        bookingUrl="https://square.link/u/commission-link-1"
+        buttonLabel="COMMISSION ALLOCATION"
       >
         <p class="module-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
       </RackModule>
@@ -133,9 +133,9 @@ export const RackPage = () => (
       <RackModule 
         label="AV SERVICES — HIRE & REPAIR" 
         videoId={11}
-        bookingRoute="av-services"
-        bookingUrl="https://square.link/u/bCOHXtdl"
-        buttonLabel="AV ON"
+        bookingRoute="allocation-av"
+        bookingUrl="https://square.link/u/commission-link-3"
+        buttonLabel="ALLOCATION AVAILABLE"
       >
         <p class="module-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
       </RackModule>
@@ -144,9 +144,9 @@ export const RackPage = () => (
         label="WORKSHOP CAFÉ + EVENTS" 
         className="workshop-cafe"
         videoId={10}
-        bookingRoute="workshop-cafe"
-        bookingUrl="https://square.link/u/UQidDzE0"
-        buttonLabel="CAFÉ OPEN"
+        bookingRoute="commission-podcast"
+        bookingUrl="https://square.link/u/commission-link-2"
+        buttonLabel="COMMISSION ALLOCATION"
       >
         <p class="module-description">118 Cowley Road · Public-facing space for community events, workshops, and creative programming.</p>
       </RackModule>

@@ -10,13 +10,30 @@
  * - Centralized routing map for easy platform migration
  */
 
+// v4.2: Commissioning Allocations Framework
+// Operational services (Cricket Road — Live Now) + Commissioning phase (Cowley Road HQ — Pre-Build)
 const CRS_ROUTING_MAP = {
-  'rehearsals-cowley': 'https://square.link/u/UQidDzE0?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=rehearsals_cowley',
+  // --- OPERATIONAL SERVICES (Cricket Road — Live Now) ---
+  'recording-live': 'https://square.link/u/bCOHXtdl?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=recording_live',
   'rehearsals-cricket': 'https://square.link/u/WPqRFIGW?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=rehearsals_cricket',
+  'podcast-live': 'https://square.link/u/bCOHXtdl?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=podcast_live',
+  
+  // --- COMMISSIONING ALLOCATIONS (Cowley Road HQ — Pre-Build) ---
+  'commission-studio': 'https://square.link/u/commission-link-1?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=commission_studio',
+  'commission-podcast': 'https://square.link/u/commission-link-2?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=commission_podcast',
+  'allocation-av': 'https://square.link/u/commission-link-3?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=allocation_av',
+  
+  // --- SYSTEM ROUTES ---
+  'rack': '/rack',
+  'workshop': '/workshop-cafe',
+  'about': '/about',
+  'contact': '/contact',
+  
+  // --- LEGACY ROUTES (Fallback for backward compatibility) ---
+  'rehearsals-cowley': 'https://square.link/u/UQidDzE0?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=rehearsals_cowley',
   'control-room': 'https://square.link/u/bCOHXtdl?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=control_room',
   'av-services': 'https://square.link/u/bCOHXtdl?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=av_services',
   'workshop-cafe': 'https://square.link/u/UQidDzE0?utm_source=rack_ui&utm_medium=power_switch&utm_campaign=workshop_cafe',
-  'contact': '/contact',
 }
 
 /**

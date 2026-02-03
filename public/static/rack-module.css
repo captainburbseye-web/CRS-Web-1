@@ -39,7 +39,7 @@
   top: 0;
 }
 
-/* === OPTIONAL: SYSTEM HEARTBEAT === */
+/* === SYSTEM HEARTBEAT (Optional) === */
 
 @keyframes heartbeat {
   0%, 100% { opacity: 0.03; }
@@ -54,6 +54,18 @@ body::after {
   animation: heartbeat 4s ease-in-out infinite;
   pointer-events: none;
   z-index: -1;
+}
+
+/* === SYSTEM PULSE (Commissioning Phase Indicator) === */
+
+@keyframes system-pulse {
+  0% { box-shadow: 0 0 5px rgba(227, 180, 72, 0.1); }
+  50% { box-shadow: 0 0 15px rgba(227, 180, 72, 0.3); }
+  100% { box-shadow: 0 0 5px rgba(227, 180, 72, 0.1); }
+}
+
+.system-status-panel {
+  animation: system-pulse 4s infinite ease-in-out;
 }
 
 /* === PERFORMANCE: DNS PREFETCH (in <head>) ===
