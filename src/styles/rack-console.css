@@ -61,3 +61,13 @@
 .phase-05::before {
   background-color: #2d3a27;
 }
+
+.button-primary {
+  background-color: #e3b04b;
+  color: black;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
