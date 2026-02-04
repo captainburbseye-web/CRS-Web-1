@@ -70,4 +70,10 @@
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.button-primary:hover,
+.button-primary:active {
+  box-shadow: 0 0 20px #ff9f1c;
 }
