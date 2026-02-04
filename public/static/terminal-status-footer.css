@@ -1,0 +1,58 @@
+/* === TERMINAL STATUS FOOTER — FIRMWARE OUTPUT === */
+
+.terminal-status-footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  text-align: left;
+}
+
+.terminal-status-section {
+  margin-bottom: 1rem;
+}
+
+.terminal-status-section:last-child {
+  margin-bottom: 0;
+}
+
+.terminal-status-label {
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.terminal-status-line {
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.25rem;
+}
+
+.terminal-status-line::before {
+  content: '• ';
+  color: rgba(255, 255, 255, 0.4);
+  margin-right: 0.4rem;
+}
+
+.terminal-status-footer a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+}
+
+.terminal-status-footer a:hover {
+  text-decoration: underline;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* === MOBILE SAFETY === */
+@media (max-width: 768px) {
+  .terminal-status-footer {
+    padding: 1.25rem 1rem;
+    font-size: 0.7rem;
+  }
+}

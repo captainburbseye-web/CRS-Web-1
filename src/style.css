@@ -1,0 +1,197 @@
+@theme {
+  /* SYSTEM TRUTH COLOR PALETTE */
+  /* CRS LAYER (Spine) - DARK */
+  --color-nettle-green: #2d3e2f;
+  --color-deep-charcoal: #1a1a1a;
+  
+  /* WORKSHOP CAFÉ LAYER (Interface) - LIGHT */
+  --color-off-white: #faf9f6;
+  --color-mustard: #d4a017;
+  
+  /* BREWFORCE LAYER (Trigger - CTAs ONLY) */
+  --color-electric-orange: #FF4500;
+  
+  /* Supporting */
+  --color-moss-green: #8b9467;
+  
+  /* COLOUR-CODED BUTTON SYSTEM */
+  --color-studio-yellow: #d4a017; /* Burnt yellow/mustard for Studio */
+  --color-cafe-green: #2d3e2f;   /* Nettle green for Café */
+  --color-av-red: #dc2626;       /* Red for AV/Services */
+  
+  /* TYPOGRAPHY SYSTEM (LOCKED) */
+  --font-heading: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-accent: 'Oswald', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px; /* Account for status bar (32px) + nav (56px) */
+}
+
+/* Custom Scrollbar - System Truth */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d3e2f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4a017;
+  border-radius: 0; /* BRUTALIST: No rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF4500;
+}
+
+/* Section Padding for Anchor Links */
+section {
+  scroll-margin-top: 120px; /* Account for status bar + nav */
+}
+
+/* ========================================
+   TYPOGRAPHY SYSTEM - ROLE-BASED HIERARCHY
+   ======================================== */
+
+/* PRIMARY HEADINGS - Bebas Neue */
+/* Use for: Main page titles, section headers */
+h1, h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* HUMAN NARRATIVE - Inter (Sans-Serif) */
+/* Use for: All readable content, service descriptions, body copy */
+body, p, li, a, span {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  letter-spacing: 0;
+  font-size: 1rem; /* Base 16px */
+}
+
+/* SUBHEADINGS & SECTION TITLES - Inter */
+h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* ACCENT - Oswald (Rare Use) */
+/* Use for: Event titles, poster sub-headings only */
+.font-accent {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+}
+
+/* MONOSPACE - JetBrains Mono (INFRASTRUCTURE ONLY) */
+/* ⚠️ RESTRICTED USE - Only for system labels, metadata, status panels */
+/* DO NOT use for: Paragraphs, service descriptions, narrative content */
+.mono,
+.font-mono,
+.system-label,
+.status-panel,
+.metadata {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0;
+  font-size: 0.875rem; /* Slightly smaller than body */
+}
+
+/* NARRATIVE CONTENT - Explicit Sans-Serif Override */
+/* Use this class to force sans-serif on previously monospace elements */
+.narrative,
+.service-description,
+.human-content {
+  font-family: 'Inter', sans-serif !important;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* BRUTALIST BORDERS - 2px solid, zero border-radius */
+.brutalist-card {
+  border: 2px solid currentColor;
+  border-radius: 0;
+}
+
+/* Remove all rounded corners globally */
+* {
+  border-radius: 0 !important;
+}
+
+/* Animation for fade-in on scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Hover effects - minimal */
+a {
+  transition: color 0.2s ease;
+}
+
+/* Button hover effects - no scale, just darken */
+button, .button {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid #FF4500;
+  outline-offset: 2px;
+}
+
+/* ========================================
+   LEGACY MARKERS - De*Gen3 Infrastructure
+   ======================================== */
+
+/* De*Gen3 legacy marker - hidden but permanent */
+.legacy-degen3 {
+  position: relative;
+}
+
+.legacy-degen3::before {
+  content: "De*Gen3";
+  position: absolute;
+  top: -999px;
+  left: -999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* N0rland0-800m protocol marker - Daniel Norland heritage anchor */
+.protocol-n0rland0-800m {
+  /* Subtle visual marker for heritage section */
+  border-top: 1px solid rgba(232, 155, 60, 0.15);
+}
+
+.protocol-n0rland0-800m::after {
+  content: "N0rland0-800m";
+  position: absolute;
+  top: -999px;
+  left: -999px;
+  opacity: 0;
+  pointer-events: none;
+}

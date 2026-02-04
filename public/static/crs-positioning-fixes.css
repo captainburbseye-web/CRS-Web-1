@@ -1,0 +1,357 @@
+/* ============================================================================
+   CRS POSITIONING FIXES - COMPLETE OVERRIDE
+   ============================================================================
+   
+   ISSUES FIXED:
+   1. Hero logo cropped (only showing COWLEY ROAD, missing STUDIOS)
+   2. Hero logo not properly centered
+   3. Hero panel not matching section widths
+   4. Rack rails alignment with hero
+   5. Section spacing inconsistencies
+   
+   INSTRUCTIONS:
+   1. Add this file to your project: /public/static/crs-positioning-fixes.css
+   2. Link it AFTER clean.css in your HTML:
+      <link rel="stylesheet" href="/static/clean.css">
+      <link rel="stylesheet" href="/static/crs-positioning-fixes.css">
+   3. Clear browser cache and test
+   
+   ============================================================================ */
+
+
+/* ============================================================================
+   1. HERO SECTION - FULL LOGO VISIBILITY
+   ============================================================================ */
+
+/* Hero section container */
+.hero-section {
+  position: relative;
+  width: 100%;
+  padding: 60px 0 80px 0; /* Top padding for header clearance, bottom for spacing */
+  margin-top: 0;
+  background: var(--crs-background, #0A1A0F);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px; /* Ensure enough vertical space */
+}
+
+/* Hero logo container - NO HEIGHT RESTRICTIONS */
+.hero-logo-container {
+  position: relative;
+  width: 100%;
+  max-width: var(--crs-chassis-width, 1200px);
+  height: auto !important; /* CRITICAL: Remove any fixed height */
+  min-height: unset !important;
+  overflow: visible !important; /* Don't crop anything */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 48px; /* Match rack rail spacing */
+  margin: 0 auto;
+}
+
+/* Hero logo image - FULL ASPECT RATIO */
+.hero-logo,
+.hero-section img,
+img[alt*="Cowley Road Studios"],
+img[alt*="Rack Mounted Control Panel"] {
+  width: 100% !important;
+  max-width: 1200px !important;
+  height: auto !important; /* CRITICAL: Maintain aspect ratio */
+  object-fit: contain !important; /* Don't crop */
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+/* Remove any wrapper constraints */
+.hero-content,
+.hero-wrapper {
+  width: 100%;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+
+/* ============================================================================
+   2. RACK RAILS ALIGNMENT
+   ============================================================================ */
+
+/* Ensure rack rails don't interfere with hero */
+.rack-rail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rack-rail.left {
+  left: 0;
+}
+
+.rack-rail.right {
+  right: 0;
+}
+
+/* Hero should be above rack rails visually but not overlap */
+.hero-section {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ============================================================================
+   3. SECTION CONTAINER CONSISTENCY
+   ============================================================================ */
+
+/* All main sections should match hero width */
+.crs-section,
+section,
+.section-container,
+.container {
+  max-width: var(--crs-chassis-width, 1200px);
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 48px; /* Match rack rail + gap */
+  padding-right: 48px; /* Match rack rail + gap */
+}
+
+/* Section spacing */
+.crs-section {
+  margin-bottom: 40px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+/* Rack module styling consistency */
+.rack-module,
+.crs-section {
+  position: relative;
+  background: linear-gradient(180deg, #1E1E1E 0%, #141414 100%);
+  border: 2px solid #333;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 4px 8px rgba(0,0,0,0.6);
+}
+
+
+/* ============================================================================
+   4. HEADER FIXES (IF OVERLAPPING HERO)
+   ============================================================================ */
+
+/* Fixed header shouldn't cover hero */
+header,
+.site-header,
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 26, 15, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+/* Push body content below fixed header */
+body {
+  padding-top: 80px; /* Adjust based on your actual header height */
+}
+
+/* Alternatively, if header is not fixed: */
+.site-header {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.hero-section {
+  margin-top: 0; /* No extra space if header is relative */
+}
+
+
+/* ============================================================================
+   5. RESPONSIVE MOBILE ADJUSTMENTS
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  /* Hero adjustments for mobile */
+  .hero-section {
+    padding: 40px 0 60px 0;
+    min-height: 400px;
+  }
+  
+  .hero-logo-container {
+    padding: 0 24px; /* Smaller side padding */
+  }
+  
+  .hero-logo {
+    max-width: 100% !important;
+  }
+  
+  /* Hide rack rails on mobile */
+  .rack-rail {
+    display: none;
+  }
+  
+  /* Adjust section padding */
+  .crs-section {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-bottom: 32px;
+  }
+  
+  /* Adjust body padding if header is smaller on mobile */
+  body {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 30px 0 40px 0;
+    min-height: 300px;
+  }
+  
+  .hero-logo-container {
+    padding: 0 16px;
+  }
+}
+
+
+/* ============================================================================
+   6. RACK EARS POSITIONING
+   ============================================================================ */
+
+/* Rack ears on sections */
+.crs-section::before,
+.crs-section::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 85%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, #4A4A4A 0%, #2A2A2A 50%, #1A1A1A 100%);
+  border: 1px solid #555;
+  box-shadow: 
+    inset -2px 0 4px rgba(0,0,0,0.5),
+    2px 0 4px rgba(0,0,0,0.3);
+  z-index: 3;
+}
+
+.crs-section::before {
+  left: -12px;
+  border-right: none;
+}
+
+.crs-section::after {
+  right: -12px;
+  border-left: none;
+}
+
+/* Mounting screws on rack ears */
+.crs-section::before::after,
+.crs-section::after::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #666 0%, #333 70%, #222 100%);
+  border: 1px solid #444;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.8);
+}
+
+
+/* ============================================================================
+   7. DEBUG HELPERS (REMOVE AFTER TESTING)
+   ============================================================================ */
+
+/* Uncomment these to visualize boundaries during debugging */
+
+/*
+.hero-section {
+  outline: 3px solid red !important;
+}
+
+.hero-logo-container {
+  outline: 3px solid blue !important;
+}
+
+.hero-logo {
+  outline: 3px solid green !important;
+}
+
+.crs-section {
+  outline: 2px dashed yellow !important;
+}
+*/
+
+
+/* ============================================================================
+   8. CRITICAL OVERRIDES (NUCLEAR OPTION)
+   ============================================================================ */
+
+/* If hero logo is STILL cropped, use these nuclear overrides */
+
+.hero-logo-container * {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Remove any inline styles that might be forcing dimensions */
+.hero-logo[style*="height"],
+.hero-logo-container[style*="height"] {
+  height: auto !important;
+}
+
+/* Ensure no parent container is constraining */
+.hero-section > * {
+  height: auto !important;
+}
+
+
+/* ============================================================================
+   9. ADDITIONAL COMMON FIXES
+   ============================================================================ */
+
+/* Fix for logo aspect ratio if using background-image instead of <img> */
+.hero-logo-bg {
+  background-image: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v1%20.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio - adjust based on your actual logo ratio */
+  height: 0;
+}
+
+/* Typography consistency */
+.hero-section h1,
+.hero-section .hero-title {
+  margin: 20px 0 0 0;
+  text-align: center;
+  font-family: var(--font-chassis, 'JetBrains Mono', monospace);
+}
+
+
+/* ============================================================================
+   10. FOOTER / BOTTOM SPACING
+   ============================================================================ */
+
+/* Ensure last section has proper bottom spacing */
+.crs-section:last-of-type {
+  margin-bottom: 80px;
+}
+
+footer {
+  margin-top: 60px;
+}
+
+
+/* ============================================================================
+   END OF FIXES
+   ============================================================================ */

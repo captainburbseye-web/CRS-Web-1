@@ -1,0 +1,131 @@
+<!-- =========================================================
+     CRS CANONICAL RACK UNIT - HTML USAGE EXAMPLE
+     
+     This is the reference implementation.
+     Copy this structure exactly.
+     ========================================================= -->
+
+<!-- MINIMAL RACK UNIT (Most Common) -->
+<section class="rack-unit device-studio">
+  <div class="rack-unit-header">
+    <div class="rack-unit-led">
+      <span class="led amber"></span>
+    </div>
+    <h2 class="rack-unit-title">STUDIO SESSIONS</h2>
+  </div>
+  
+  <div class="rack-unit-content">
+    <p>Purpose-built recording and production environments designed for reliable, repeatable results.</p>
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <a href="/studio" class="cta-button">BOOK SESSION</a>
+    </div>
+  </div>
+</section>
+
+<!-- RACK UNIT WITH SCREWS (Optional - use for critical systems) -->
+<section class="rack-unit device-av">
+  <!-- Mounting hardware -->
+  <div class="rack-screw"></div>
+  <div class="rack-screw"></div>
+  <div class="rack-screw"></div>
+  <div class="rack-screw"></div>
+  
+  <div class="rack-unit-header">
+    <div class="rack-unit-led">
+      <span class="led orange"></span>
+    </div>
+    <h2 class="rack-unit-title">AV SERVICES & LIVE SOUND</h2>
+  </div>
+  
+  <div class="rack-unit-content">
+    <p>Engineer-led live sound, installations, and technical support for community venues.</p>
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <a href="/av-services" class="cta-button">AV SERVICES</a>
+    </div>
+  </div>
+</section>
+
+<!-- SYSTEM STATUS UNIT (With pulsing LED) -->
+<section class="rack-unit device-status" style="background: rgba(255, 140, 0, 0.05); border-left: 4px solid #FF8C00;">
+  <div class="rack-unit-header">
+    <div class="rack-unit-led">
+      <span class="led orange pulse"></span>
+    </div>
+    <h2 class="rack-unit-title" style="color: #FF8C00;">/// SYSTEM STATUS — COWLEY ROAD BUILD</h2>
+  </div>
+  
+  <div class="rack-unit-content">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.8; margin-bottom: 1.5rem;">
+      <p style="margin-bottom: 0.75rem;">
+        <strong style="color: #FF8C00;">STATUS:</strong> Final phase installation in progress
+      </p>
+      <p style="margin-bottom: 0.75rem;">
+        <strong style="color: #FF8C00;">AVAILABLE NOW:</strong> Band rehearsals (Cricket Road) · Equipment repairs · AV services
+      </p>
+    </div>
+    <div style="text-align: center;">
+      <a href="/studio" class="cta-button" style="border-color: #FF8C00; color: #FF8C00;">VIEW STUDIO PRE-SALE</a>
+    </div>
+  </div>
+</section>
+
+<!-- RACK CONTAINER (Wrap multiple units) -->
+<div class="rack-container">
+  <section class="rack-unit device-rehearsal">
+    <!-- ... -->
+  </section>
+  
+  <section class="rack-unit device-studio">
+    <!-- ... -->
+  </section>
+  
+  <section class="rack-unit device-av">
+    <!-- ... -->
+  </section>
+</div>
+
+<!-- =========================================================
+     DEVICE TYPE CLASSES
+     ========================================================= -->
+<!--
+  .device-rehearsal  → Green border   (#39FF14) → Live/Active
+  .device-studio     → Amber border   (#FFB627) → Production
+  .device-av         → Orange border  (#FF8C00) → Field Operations
+  .device-cafe       → Amber border   (#FFB627) → Public Interface
+  .device-community  → Orange border  (#FF8C00) → Community Access
+  .device-status     → Orange border  (#FF8C00) → System Status
+-->
+
+<!-- =========================================================
+     LED STATES
+     ========================================================= -->
+<!--
+  .led.green   → Live/Active
+  .led.amber   → Standby/Production
+  .led.orange  → Warning/Build Phase
+  .led.red     → Error/Offline
+  
+  Add .pulse class ONLY for live state:
+  <span class="led green pulse"></span>
+-->
+
+<!-- =========================================================
+     USAGE RULES
+     ========================================================= -->
+<!--
+  ✅ USE ON:
+  - CRS Studio pages
+  - CRS AV Services pages
+  - CRS technical infrastructure pages
+  - Homepage (CRS overview)
+  
+  ❌ DO NOT USE ON:
+  - Workshop Café pages (use flat cards)
+  - General content pages
+  - Non-technical pages
+  
+  WHY:
+  Rack UI = institutional engineering
+  Café UI = civic warmth
+  Keep separate for system truth.
+-->

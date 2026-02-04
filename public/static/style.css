@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Custom Scrollbar - Foliage Physics */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8F6EE;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4A5B43;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D4A437;
+}
+
+/* Section Padding for Anchor Links */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Brewforce Typography System */
+/* Bebas Neue - Primary Headings ONLY (not body text) */
+.font-display,
+h1, h2, h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* Inter - Body & System (comfortable reading, NO uppercase) */
+.font-body,
+body {
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+p, li {
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+/* Oswald - Accent (rare use) */
+.font-accent {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+/* Animation for fade-in on scroll */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Hover effects */
+a {
+  transition: all 0.2s ease;
+}
+
+/* Button hover effects */
+button {
+  transition: all 0.3s ease;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid #D4A437;
+  outline-offset: 2px;
+}
+
+/* SYSTEM TRUTH: KILL SWITCH BUTTON */
+.crs-button {
+  background-color: #ff4d00 !important; /* Safety Orange */
+  color: #f5f5f5 !important; /* Signal White */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important; /* Increased for mechanical feel */
+  border: none !important;
+  border-radius: 0 !important; /* NO ROUNDED CORNERS */
+  padding: 14px 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.05s ease !important;
+  cursor: pointer !important;
+  width: 100% !important;
+}
+
+.crs-button:hover {
+  background-color: #ff6a2e !important; /* Slight brightness shift */
+  color: #f5f5f5 !important;
+  border: 1px solid #d4a017 !important; /* Mustard border on hover */
+}
+
+.crs-button:active {
+  background-color: #ff4d00 !important;
+  transform: scale(0.98) !important; /* Tactile feedback */
+}
+
+/* MICRO-INTERACTIONS: MECHANICAL MOTION */
+@keyframes statusFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.status-line-animate {
+  animation: statusFadeIn 0.6s ease-out 0.3s both;
+}
+
+/* Card hover: subtle shift */
+.card-hover-shift {
+  transition: transform 0.1s ease;
+}
+
+.card-hover-shift:hover {
+  transform: translateX(2px);
+}
+
+/* CRS VU-BUTTON: AV/REPAIR SERVICES HIGH-VOLTAGE SWITCH */
+.crs-vu-button {
+  background-color: #DC0000 !important; /* Bright Red */
+  color: #FFFFFF !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border: 3px solid #8C0000 !important; /* Dark Red border */
+  border-radius: 0 !important;
+  padding: 14px 32px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.05s ease !important; /* Instant feedback */
+  cursor: pointer !important;
+  width: 100% !important;
+}
+
+.crs-vu-button:hover {
+  background-color: #FFA000 !important; /* Bright Gold */
+  color: #000000 !important;
+  border-color: #B45A00 !important; /* Dark Gold */
+}
+
+.crs-vu-button:active {
+  background-color: #00B400 !important; /* Bright Green */
+  color: #000000 !important;
+  transform: scale(0.98) !important;
+}

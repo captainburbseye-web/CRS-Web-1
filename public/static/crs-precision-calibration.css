@@ -1,0 +1,553 @@
+/* ================================
+   CRS PRECISION CALIBRATION
+   Direction A: Front Panel / Technical Institution
+   ================================ */
+
+:root {
+  /* LOGO SIZING (Exact Pixel Lock) */
+  --logo-height-desktop: 280px; /* MASSIVE - Wordmark hero size */
+  --logo-height-mobile: 160px; /* Large mobile presence */
+  
+  /* BADGE SIZING (Institutional Seal) */
+  --badge-size-desktop: 48px;
+  --badge-size-mobile: 40px;
+  
+  /* MIC BADGE SIZING (Header decorative signal) */
+  --mic-badge-height: 48px;
+  
+  /* LED INDICATORS */
+  --led-size: 10px;
+  --led-spacing: 8px;
+  
+  /* BUTTON CALIBRATION */
+  --button-padding-y: 0.8rem;
+  --button-padding-x: 1.5rem;
+  --button-border-width: 1.5px;
+  --button-font-size: 0.9375rem; /* 15px */
+  
+  /* MODULE BACKGROUNDS (Rack Chassis) */
+  --module-aspect-ratio: 16 / 9;
+  --module-border-thickness: 1.5px;
+  --module-corner-radius: 4px;
+  
+  /* SPACING PRECISION */
+  --header-padding-desktop: 24px 48px; /* Increased from 20px 32px */
+  --header-padding-mobile: 20px 24px; /* Increased from 16px 20px */
+  --module-padding: 3rem 3.5rem; /* Increased from 2rem 2.5rem for Master Console scale */
+  
+  /* COLORS (Rack Chassis - Industrial Black/Charcoal with Tascam accents) */
+  --chassis-bg: #0D0D0D; /* Deep charcoal, not green */
+  --panel-bg: rgba(18, 18, 18, 0.95); /* Metallic dark panel */
+  --border-gold: rgba(212, 160, 23, 0.4); /* Gold accent borders */
+  
+  /* Tascam-inspired color palette */
+  --tascam-red: #8B0000; /* Dark red (Tascam recording red) */
+  --tascam-silver: #C0C0C0; /* Brushed aluminum */
+  --tascam-orange: #FF6B35; /* Vintage VU meter orange */
+  --tascam-blue: #1E3A5F; /* Deep blue accent */
+  
+  --led-green: #39FF14;
+  --led-amber: #FFB627;
+  --led-orange: #FF8C00;
+  
+  /* TYPOGRAPHY PRECISION */
+  --heading-size-desktop: 3rem; /* Increased from 1.125rem (18px) to 48px - matches Master Console scale */
+  --heading-size-mobile: 2rem; /* Increased from 1rem (16px) to 32px */
+  --body-size: 1.125rem; /* Increased from 0.875rem (14px) to 18px for better readability */
+  --mono-size: 1rem; /* Increased from 0.813rem (13px) to 16px */
+}
+
+/* ================================
+   1. HEADER LOGO PRECISION (UNCAGED)
+   ================================ */
+
+/* LOGO SIZING MOVED TO crs-header-reset.css (loads last, viewport-scaled) */
+/* .crs-main-logo rules removed to prevent cascade conflicts */
+/* See crs-header-reset.css for canonical logo sizing: 45vw (600-1400px range) */
+
+/* ================================
+   2. HEADER STRUCTURE (EXPANDED CHASSIS)
+   ================================ */
+
+.rack-header {
+  padding: 3rem 3rem !important; /* Increased vertical padding for massive wordmark */
+  display: flex !important;
+  align-items: center !important; /* Keeps nav perfectly centered on big logo */
+  justify-content: space-between !important;
+  background: var(--chassis-bg) !important;
+  border-bottom: var(--module-border-thickness) solid var(--border-gold) !important;
+  height: auto !important; /* Allows header to grow with the logo */
+  min-height: auto !important; /* Removes height constraints */
+}
+
+@media (max-width: 767px) {
+  .rack-header {
+    padding: 2rem 1.5rem !important; /* Mobile padding */
+  }
+}
+
+.rack-header-left {
+  display: flex !important;
+  align-items: baseline !important; /* Changed from center to baseline for pixel-perfect alignment */
+  gap: 2rem !important; /* Reduced from 3rem for tighter spacing */
+}
+
+.rack-header-right {
+  display: flex !important;
+  align-items: baseline !important; /* Changed from center to baseline for pixel-perfect alignment */
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* ================================
+   3. LED STATUS INDICATORS
+   ================================ */
+
+.rack-unit-led {
+  display: inline-flex;
+  align-items: center;
+  margin-right: var(--led-spacing);
+}
+
+.led {
+  width: var(--led-size);
+  height: var(--led-size);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.led.green {
+  background: var(--led-green);
+  color: var(--led-green);
+}
+
+.led.yellow,
+.led.amber {
+  background: var(--led-amber);
+  color: var(--led-amber);
+}
+
+.led.orange {
+  background: var(--led-orange);
+  color: var(--led-orange);
+}
+
+/* Position LED before heading */
+.rack-unit-title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--led-spacing);
+}
+
+/* ================================
+   4. "BOOK NOW" BUTTON CALIBRATION
+   ================================ */
+
+.book-dropdown-trigger {
+  padding: var(--button-padding-y) var(--button-padding-x) !important;
+  font-size: 1.875rem !important; /* Doubled from 0.9375rem (15px) to 30px */
+  font-weight: 600 !important;
+  border: var(--button-border-width) solid var(--text-gold) !important;
+  border-radius: var(--module-corner-radius) !important;
+  background: transparent !important;
+  color: var(--text-gold) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.book-dropdown-trigger:hover {
+  background: rgba(232, 155, 60, 0.15) !important;
+  box-shadow: 0 0 16px rgba(232, 155, 60, 0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Primary CTA Buttons */
+.cta-button,
+.cta-button-peak-red {
+  padding: var(--button-padding-y) var(--button-padding-x) !important;
+  font-size: var(--button-font-size) !important;
+  border-width: var(--button-border-width) !important;
+  border-radius: var(--module-corner-radius) !important;
+}
+
+/* ================================
+   5. MODULE BACKGROUNDS (Rack Chassis)
+   ================================ */
+
+.rack-unit {
+  background: var(--panel-bg) !important;
+  border: var(--module-border-thickness) solid var(--border-gold) !important;
+  border-radius: var(--module-corner-radius) !important;
+  padding: var(--module-padding) !important;
+  margin-bottom: 2rem !important;
+  position: relative !important;
+  
+  /* Metallic panel gradient (charcoal, not green) */
+  background-image: linear-gradient(
+    135deg, 
+    rgba(20, 20, 20, 0.98) 0%, 
+    rgba(15, 15, 15, 0.95) 50%,
+    rgba(18, 18, 18, 0.98) 100%
+  ) !important;
+  
+  /* Brushed metal texture simulation */
+  background-blend-mode: overlay;
+  
+  /* Industrial rack panel shadow (deep inset) */
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.03),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Device-specific accent borders (Tascam-inspired color palette) */
+.device-rehearsal {
+  border-left: 4px solid var(--led-green) !important;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.03),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    inset 4px 0 8px rgba(57, 255, 20, 0.1) !important; /* Subtle green glow */
+}
+
+.device-studio {
+  border-left: 4px solid var(--tascam-red) !important; /* Tascam recording red */
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.03),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    inset 4px 0 8px rgba(139, 0, 0, 0.15) !important; /* Subtle red glow */
+}
+
+.device-av {
+  border-left: 4px solid var(--tascam-orange) !important; /* VU meter orange */
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.03),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    inset 4px 0 8px rgba(255, 107, 53, 0.12) !important; /* Subtle orange glow */
+}
+
+.device-cafe {
+  border-left: 4px solid var(--tascam-silver) !important; /* Brushed aluminum */
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.03),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    inset 4px 0 8px rgba(192, 192, 192, 0.08) !important; /* Subtle silver glow */
+}
+
+.device-community {
+  border-left: 4px solid var(--tascam-blue) !important; /* Deep blue */
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.03),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.6),
+    inset 4px 0 8px rgba(30, 58, 95, 0.15) !important; /* Subtle blue glow */
+}
+
+.device-status {
+  border-left: 4px solid var(--led-orange) !important; /* Keep orange for status */
+}
+
+/* ================================
+   6. RACK UNIT HEADERS
+   ================================ */
+
+.rack-unit-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-gold);
+}
+
+.rack-unit-title {
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: var(--heading-size-desktop) !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: #E89B3C !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 767px) {
+  .rack-unit-title {
+    font-size: var(--heading-size-mobile) !important;
+  }
+}
+
+/* ================================
+   7. NAVIGATION LINKS (SCALED & WEIGHTED)
+   ================================ */
+
+.rack-nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1.5rem !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 3rem !important; /* 48px - MASSIVE to match wordmark scale */
+  font-weight: 700 !important; /* Heavier weight for authority */
+  letter-spacing: 0.05rem !important;
+}
+
+.rack-nav-links a {
+  color: #f5f5f5 !important; /* High-contrast white for impact */
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+  padding: 0.25rem 0.5rem !important; /* Reduced padding for less frame restriction */
+}
+
+.rack-nav-links a:hover {
+  color: var(--text-gold) !important;
+}
+
+.rack-nav-links .separator {
+  color: rgba(245, 245, 245, 0.3) !important;
+  font-weight: 300 !important;
+  margin: 0 0.75rem !important;
+}
+
+/* ================================
+   8. FOOTER BANNER LOGO
+   ================================ */
+
+.footer-banner-logo {
+  max-width: 500px !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+  opacity: 0.85 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.footer-banner-logo:hover {
+  opacity: 1 !important;
+}
+
+@media (max-width: 767px) {
+  .footer-banner-logo {
+    max-width: 300px !important;
+  }
+}
+
+/* ================================
+   9. MOBILE OPTIMIZATIONS
+   ================================ */
+
+@media (max-width: 767px) {
+  .rack-header {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .rack-header-left {
+    gap: 1rem;
+  }
+  
+  .rack-header-right {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0 !important;
+    margin-top: 0.5rem;
+  }
+  
+  .book-dropdown-trigger {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .rack-unit {
+    padding: 1.5rem 1.25rem !important;
+  }
+}
+
+/* ================================
+   10. INSTITUTIONAL SEAL (Optional Enhancement)
+   ================================ */
+
+/*
+OPTION A: Convert main logo to absolute-positioned stamp
+Uncomment the rules below to enable:
+
+.rack-header {
+  position: relative;
+}
+
+.crs-main-logo {
+  position: absolute !important;
+  right: 20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  height: var(--badge-size-desktop) !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.crs-main-logo:hover {
+  opacity: 1 !important;
+}
+
+@media (max-width: 767px) {
+  .crs-main-logo {
+    height: var(--badge-size-mobile) !important;
+    right: 16px !important;
+  }
+}
+*/
+
+/*
+OPTION B: Add separate institutional seal graphic
+If you add a new badge element with class .institutional-seal:
+*/
+
+.institutional-seal {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: var(--badge-size-desktop);
+  width: auto;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.institutional-seal:hover {
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .institutional-seal {
+    height: var(--badge-size-mobile);
+    right: 16px;
+  }
+}
+
+/* ================================
+   11. TYPOGRAPHY PRECISION
+   ================================ */
+
+body {
+  font-size: var(--body-size) !important; /* 18px - increased for Master Console scale */
+  line-height: 1.6 !important;
+  background: var(--chassis-bg) !important; /* Dark charcoal chassis background */
+  color: #f5f5f5 !important;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: var(--mono-size) !important; /* 16px - increased for readability */
+}
+
+.heading {
+  font-family: 'Archivo Black', sans-serif !important;
+  font-weight: 900 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/* ================================
+   12. LOAD ORDER NOTE + ANIMATIONS
+   ================================ */
+
+/* LED Pulse Animation for Build Phase Status */
+@keyframes pulse-led {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px currentColor;
+  }
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 16px currentColor;
+  }
+}
+
+/* ================================
+   HEADER MIC BADGE (Decorative Booking Signal)
+   ================================ */
+
+/* Container: ensure flex layout with gap */
+.rack-header-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  margin-left: auto !important;
+  position: relative;
+}
+
+/* Mic Badge: decorative signal next to BOOK NOW */
+.header-mic-badge {
+  height: var(--mic-badge-height) !important;
+  width: auto !important;
+  display: block !important;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 8px rgba(255, 204, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.header-mic-badge:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* BOOK NOW UK Yellow Sign (Image version for dropdown trigger) */
+.book-now-sign-image {
+  height: 140px !important; /* Increased from 100px for much larger prominence */
+  width: auto !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: block !important;
+  border: none !important; /* Remove any border */
+  background: none !important; /* Remove any background */
+  padding: 0 !important; /* Remove any padding */
+  margin: 0 !important; /* Remove any margin */
+  outline: none !important; /* Remove focus outline */
+  filter: none !important; /* No glow - sign is bright enough */
+}
+
+.book-now-sign-image:hover {
+  transform: scale(1.05) !important;
+  filter: none !important; /* No hover glow - keep it clean */
+}
+
+.book-now-sign-image:focus {
+  outline: none !important; /* Remove focus outline */
+}
+
+/* Remove old button styling */
+.book-now-uk-sign {
+  display: none !important;
+}
+
+/* Mobile: hide mic badge to avoid clutter */
+@media (max-width: 768px) {
+  .header-mic-badge {
+    display: none !important;
+  }
+  
+  .book-dropdown-trigger {
+    font-size: 0.85rem !important;
+    padding: 8px 16px !important;
+  }
+}
+
+/*
+CRITICAL: This file must load AFTER all other CSS files.
+Add to index.tsx:
+<link rel="stylesheet" href="/static/crs-precision-calibration.css">
+
+Place it as the LAST stylesheet in the <head> block.
+*/

@@ -1,0 +1,108 @@
+/**
+ * CRS CONTAINMENT & MOUNTING FIX
+ * 
+ * Fixes:
+ * 1. Hard-separate Header and Hero (z-index stack + margin)
+ * 2. Full-bleed HERO console - edge-to-edge, rack-mounted concept
+ * 3. Kill accidental overlay bars (pseudo-element artifacts)
+ * 
+ * NOTE: Header stamp (crs-rack-badge) is already correctly sized at 72px via hardware-discipline-final.css
+ */
+
+/* === FIX 1: HARD-SEPARATE HEADER AND HERO === */
+
+/* Header: Separate rack with z-index dominance */
+.crs-header {
+  position: relative !important;
+  z-index: 100 !important;
+  background: #0E0E0E !important; /* Match existing deep black */
+}
+
+/* Hero: Below header, full-bleed rack mount */
+.crs-hero {
+  position: relative !important;
+  z-index: 1 !important;
+  margin-top: 0 !important;
+  padding: 0 !important; /* Remove all padding for edge-to-edge */
+  
+  /* Keep existing background */
+  background: #0D1912 !important;
+  
+  /* Remove border - full bleed */
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.crs-hero::before,
+.crs-hero::after {
+  display: none !important; /* Kill accidental overlay bars */
+}
+
+/* === FIX 2: FULL-BLEED HERO CONSOLE (RACK-MOUNTED CONCEPT) === */
+
+/* Hero container: Full-width, edge-to-edge */
+.hero-container {
+  max-width: var(--crs-chassis-width, 1200px) !important; /* Match content sections */
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important; /* No padding - edge-to-edge */
+  display: block !important;
+}
+
+/* Hero console: Big, full-width, rack-mounted */
+.hero-power-panel {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important; /* Full container width */
+  height: auto !important;
+  object-fit: contain !important;
+  
+  /* Remove any constraints - let it be BIG */
+  max-height: none !important;
+  min-height: auto !important;
+  
+  /* Drop shadow for depth */
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)) !important;
+  
+  /* Edge-to-edge alignment */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Responsive: Maintain edge-to-edge across all sizes */
+@media (max-width: 1440px) {
+  .hero-container {
+    max-width: 1200px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero-container {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    max-width: 100% !important;
+  }
+  
+  .hero-power-panel {
+    /* Still full-width on mobile */
+    width: 100% !important;
+  }
+}
+
+/* === FIX 3: CLEAN STACKING === */
+
+/* Ensure all sections have proper stacking context */
+.crs-section {
+  position: relative;
+  z-index: 2;
+}
+
+/* Main content area */
+main {
+  position: relative;
+  z-index: 2;
+}

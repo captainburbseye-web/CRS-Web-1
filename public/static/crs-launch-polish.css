@@ -1,0 +1,129 @@
+/* ================================================
+   CRS LAUNCH POLISH — P0/P1/P2 FIXES
+   ================================================
+   Drop-in CSS overrides to fix:
+   - P0.1: Header breathing room + logo scale
+   - P0.2: Page container alignment
+   - P0.3: CTA consistency
+   - P1.1: Vertical rhythm
+   - P1.2: Body copy readability
+   - P1.3: Nav separators
+   - P2.1: Desktop typography micro-scale
+   - P2.2: Heading grid lock
+   ================================================ */
+
+/* ================================
+   P0.1 — Header breathing room + logo scale
+   ================================ */
+.rack-header {
+  padding-left: 32px !important;   /* tune 24–40 */
+  padding-right: 32px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.rack-header-left {
+  gap: 24px !important;
+}
+
+.crs-main-logo {
+  height: 56px !important;         /* tune 52–64 */
+  width: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+  max-width: none !important;
+}
+
+/* ================================
+   P0.2 — Enforce consistent page grid
+   ================================ */
+main,
+.page,
+.container,
+.content-wrap {
+  max-width: 1200px !important;     /* tune 1120–1280 */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 32px !important;    /* keeps mobile sane */
+  padding-right: 32px !important;
+  box-sizing: border-box !important;
+}
+
+.rack-unit {
+  max-width: 1200px !important;
+  margin: 0 auto 28px auto !important;
+}
+
+/* ================================
+   P0.3 — Normalize CTA buttons
+   ================================ */
+button,
+.btn,
+a.btn,
+.rack-cta,
+.cta-button {
+  min-height: 42px !important;
+  padding: 10px 18px !important;
+  line-height: 1 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ================================
+   P1.1 — Standard panel rhythm
+   ================================ */
+.rack-unit,
+.service-panel,
+section {
+  padding: 28px 32px !important;
+}
+
+.rack-unit + .rack-unit,
+section + section {
+  margin-top: 22px !important;
+}
+
+/* ================================
+   P1.2 — Body copy readability
+   ================================ */
+p,
+.body-copy,
+.service-desc,
+.rack-unit-content p {
+  max-width: 62ch !important;
+  color: rgba(255, 255, 255, .78) !important;
+  line-height: 1.55 !important;
+}
+
+/* ================================
+   P1.3 — Separator discipline
+   ================================ */
+.rack-nav-links .separator {
+  opacity: .35 !important;
+  margin: 0 10px !important;
+}
+
+/* ================================
+   P2.1 — Desktop typography micro-scale
+   ================================ */
+@media (min-width: 1200px) {
+  html {
+    font-size: 15px !important; /* from 16px → 15px */
+  }
+}
+
+/* ================================
+   P2.2 — Headings grid lock
+   ================================ */
+h2,
+h3,
+.service-title,
+.rack-unit-title {
+  max-width: 70ch !important;
+}

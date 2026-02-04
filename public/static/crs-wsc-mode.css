@@ -1,0 +1,151 @@
+/* ====================================================================
+   WORKSHOP CAFÉ MODE — WARMTH WITHIN DISCIPLINE
+   Applies when body has .wsc-mode class
+   Same rack structure, warmer presentation
+   ==================================================================== */
+
+/* ==== MODE-SPECIFIC VARIABLE OVERRIDES ==== */
+body.wsc-mode {
+  /* Warmer panel backgrounds */
+  --panel-green: #3a4a3a;
+  --panel-green-light: #4a5a4a;
+  --panel-green-dark: #2a3a2a;
+  
+  /* More amber LEDs */
+  --led-green: #ffaa44;
+  --led-glow: rgba(255, 170, 68, 0.6);
+  
+  /* Bronze rack ears stay the same (hardware consistency) */
+  /* --bronze-light, --bronze-mid, --bronze-dark unchanged */
+  
+  /* Slightly softer shadows */
+  --panel-shadow: rgba(0, 0, 0, 0.5);
+  
+  /* Warmer text tones */
+  --text-gold: #e8b84d;
+  --text-cream: #f8ecd8;
+}
+
+/* ==== MARGINALLY MORE OPEN SPACING ==== */
+body.wsc-mode .rack-unit {
+  padding: 2.5rem 5rem; /* +0.5rem vertical vs CRS */
+}
+
+body.wsc-mode .rack-unit-title {
+  margin-bottom: 2rem; /* +0.5rem vs CRS */
+}
+
+body.wsc-mode .rack-unit p {
+  line-height: 1.7; /* +0.1 vs CRS */
+}
+
+/* ==== USE-CASE GRID (HARDWARE LABELS) ==== */
+.wsc-use-case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 2rem 0;
+}
+
+.wsc-use-case-label {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  border: 1px solid rgba(244, 232, 208, 0.2);
+  border-radius: 4px;
+  padding: 12px 16px;
+  text-align: center;
+  color: var(--text-cream);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+  font-family: 'Space Mono', monospace;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.05);
+}
+
+/* Hardware label brackets */
+.wsc-use-case-label::before { content: "[ "; }
+.wsc-use-case-label::after { content: " ]"; }
+
+/* ==== EVENT LOG PANEL (TERMINAL READOUT) ==== */
+.wsc-event-log {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(244, 232, 208, 0.2);
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.wsc-event-log-title {
+  color: var(--text-gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+}
+
+.wsc-event-log-title::before { content: "[ "; }
+.wsc-event-log-title::after { content: " ]"; }
+
+.wsc-event-log-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wsc-event-log-list li {
+  color: var(--text-cream);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(244, 232, 208, 0.1);
+  opacity: 0.85;
+}
+
+.wsc-event-log-list li:last-child {
+  border-bottom: none;
+}
+
+.wsc-event-log-list li::before {
+  content: "– ";
+  color: var(--text-gold);
+}
+
+/* ==== VENUE CAPACITY SPEC (HARDWARE DATA) ==== */
+.wsc-capacity-spec {
+  display: flex;
+  gap: 2rem;
+  margin: 1.5rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+}
+
+.wsc-capacity-item {
+  color: var(--text-cream);
+  opacity: 0.9;
+}
+
+.wsc-capacity-item strong {
+  color: var(--text-gold);
+  font-weight: 700;
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+  body.wsc-mode .rack-unit {
+    padding: 1.5rem 3rem;
+  }
+  
+  .wsc-use-case-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .wsc-capacity-spec {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}

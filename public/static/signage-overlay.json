@@ -1,0 +1,38 @@
+{
+  "overlayTexts": [
+    "[ COWLEY ROAD STUDIOS · OXFORD ]",
+    "[ WORKSHOP CAFÉ · EVENTS + TECH ]",
+    "REHEARSALS — COWLEY ROAD — BOOK NOW",
+    "REHEARSALS — CRICKET ROAD — PAY ONLINE",
+    "CONTROL ROOM — DRY HIRE — 24HR ACCESS",
+    "AV HIRE & REPAIR — INFO@CRSOXFORD.COM",
+    "FOLLOW @COWLEYROADSTUDIOS",
+    "@WORKSHOPCAFE.OX — LIVE EVENTS + SPECIALS",
+    "CONTACT → INFO@CRSOXFORD.COM",
+    "BOOK ONLINE → COWLEYROADSTUDIOS.COM",
+    "→ SCAN TO BOOK YOUR SESSION",
+    "→ NEED GEAR? ASK ABOUT AV SERVICES",
+    "→ HOT DRINK + WARM SOUND — WORKSHOP CAFÉ",
+    "→ DRY HIRE YOUR MIX ROOM — 2HR · 3HR · 4HR",
+    "→ BRING YOUR OWN ENGINEER — CRICKET ROAD",
+    "[ REHEARSAL ROOM — AVAILABLE NOW ]",
+    "[ MIXING ROOM — BOOK ONLINE ]",
+    "[ EVENTS THIS WEEK — WORKSHOP CAFÉ ]",
+    "[ AV SUPPORT — INFO@CRSOXFORD.COM ]",
+    "[ STUDIO 1 · STATUS: ACTIVE ]",
+    "[ SYSTEM VIDEO MODE ]",
+    "[ SQUARE VERIFIED BOOKING ONLY ]",
+    "[ LIVE VENUE · CREATIVE SPACE ]"
+  ],
+  "rotationInterval": 12000,
+  "fadeTransitionMs": 1000,
+  "position": "bottom",
+  "fontSize": "32px",
+  "fontFamily": "JetBrains Mono, monospace",
+  "colors": {
+    "text": "#FFFFFF",
+    "mustard": "#E3B04B",
+    "amber": "#FF9F1C",
+    "background": "rgba(0, 0, 0, 0.6)"
+  }
+}

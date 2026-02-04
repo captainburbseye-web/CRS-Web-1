@@ -1,0 +1,290 @@
+/* === RACK CONSOLE — REASON DAW INTERFACE EMULATION === */
+
+:root {
+  --rack-bg: #0D1912;
+  --rack-panel: #1a2620;
+  --rack-text: #f5f5f5;
+  --rack-label: #E3B04B;
+  --rack-action: #FF9F1C;
+  --rack-led-on: #00ff00;
+  --rack-led-off: #cc0000;
+  --rack-border: #2f3a2f;
+}
+
+.rack-console {
+  background-color: var(--rack-bg);
+  color: var(--rack-text);
+  font-family: 'JetBrains Mono', monospace;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+/* === RACK HEADER === */
+.rack-header {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  border-bottom: 3px solid var(--rack-border);
+  padding-bottom: 2rem;
+}
+
+.rack-title {
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5rem;
+  color: var(--rack-label);
+  text-transform: uppercase;
+}
+
+.rack-subtitle {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* === RACK MODULES CONTAINER === */
+.rack-modules {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* === INDIVIDUAL RACK MODULE === */
+.rack-module {
+  position: relative;
+  border: 3px solid var(--rack-border);
+  background-color: var(--rack-panel);
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.rack-module:hover {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 159, 28, 0.3);
+  border-color: var(--rack-action);
+}
+
+/* === VIDEO BACKGROUND === */
+.rack-module-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.rack-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  filter: saturate(0.5) brightness(0.8);
+}
+
+/* === MODULE PANEL (OVERLAY) === */
+.rack-module-panel {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(13, 25, 18, 0.95) 0%, rgba(26, 38, 32, 0.92) 100%);
+  border-top: 2px solid var(--rack-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* === LED STATUS INDICATOR === */
+.rack-led {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.rack-led-green {
+  background-color: var(--rack-led-on);
+  color: var(--rack-led-on);
+}
+
+.rack-led-red {
+  background-color: var(--rack-led-off);
+  color: var(--rack-led-off);
+}
+
+/* === MODULE TITLE === */
+.rack-module-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin: 0;
+  color: var(--rack-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* === MODULE DESCRIPTION === */
+.rack-module-description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* === CTA BUTTON === */
+.rack-cta {
+  background-color: var(--rack-action);
+  color: var(--rack-bg);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  border: 2px solid var(--rack-action);
+  min-width: 150px;
+  text-align: center;
+}
+
+.rack-cta:hover {
+  background-color: transparent;
+  color: var(--rack-action);
+  box-shadow: 0 0 12px var(--rack-action);
+}
+
+/* === QR CODE CONTAINER === */
+.rack-qr-container {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rack-border);
+  display: flex;
+  justify-content: center;
+}
+
+.rack-qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rack-qr canvas,
+.rack-qr img {
+  filter: invert(1);
+  background-color: var(--rack-bg);
+  padding: 0.5rem;
+  border: 2px solid var(--rack-label);
+}
+
+/* === RACK FOOTER === */
+.rack-footer-system {
+  max-width: 900px;
+  margin: 3rem auto 0;
+  padding-top: 2rem;
+  border-top: 3px solid var(--rack-border);
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+}
+
+.rack-footer-system p {
+  margin: 0.25rem 0;
+}
+
+/* === MOBILE RESPONSIVE === */
+@media (max-width: 768px) {
+  .rack-console {
+    padding: 1.5rem 0.75rem;
+  }
+
+  .rack-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .rack-title {
+    font-size: 1.8rem;
+  }
+
+  .rack-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .rack-modules {
+    gap: 1rem;
+  }
+
+  .rack-module {
+    min-height: 240px;
+  }
+
+  .rack-module-panel {
+    padding: 1.5rem;
+    gap: 0.75rem;
+  }
+
+  .rack-module-title {
+    font-size: 1.1rem;
+  }
+
+  .rack-module-description {
+    font-size: 0.8rem;
+  }
+
+  .rack-cta {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    min-width: 120px;
+  }
+
+  .rack-qr canvas,
+  .rack-qr img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+/* === TABLET === */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .rack-module {
+    min-height: 300px;
+  }
+
+  .rack-module-panel {
+    padding: 1.75rem;
+  }
+}
+
+/* === DESKTOP === */
+@media (min-width: 1025px) {
+  .rack-console {
+    padding: 2.5rem 1rem;
+  }
+
+  .rack-module {
+    min-height: 320px;
+  }
+
+  .rack-module:hover {
+    transform: translateY(-2px);
+  }
+}

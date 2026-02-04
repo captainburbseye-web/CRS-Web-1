@@ -1,0 +1,313 @@
+/**
+ * CRS HARDWARE DISCIPLINE — FINAL PASS
+ * 
+ * DOCTRINE LOCKED:
+ * - INFORMATION ≠ ACTION
+ * - LABEL ≠ BUTTON
+ * - NAVIGATION ≠ TRANSPORT CONTROL
+ * 
+ * ZONE A (LEFT): Console Labels - Static, engraved, calm
+ * ZONE B (CENTER): CRS Logo - System identity
+ * ZONE C (RIGHT): BOOK NOW - The ONLY animated transport control
+ */
+
+/* === HEADER STRUCTURAL RESET === */
+.crs-header {
+  display: flex !important;
+  position: relative !important; /* Required for absolute positioning of stamp */
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 1rem 1.5rem !important;
+  background: #0E0E0E !important; /* Deep Black Terminal */
+  border: 2px solid #3a3a3a !important;
+  border-radius: 4px !important;
+  
+  /* Kill any grid attempts */
+  grid-template-columns: unset !important;
+  grid-template-rows: unset !important;
+}
+
+/* === CRS RACK BADGE (Static Manufacturer Plate) === */
+/* ABSOLUTE LEFT ANCHOR — Bolted to chassis edge */
+.crs-rack-badge {
+  /* ABSOLUTE POSITIONING — Far Left Edge */
+  position: absolute !important;
+  left: 15px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  
+  /* FIXED SCALE LOCK — 72px Hardware Component */
+  height: 72px !important;
+  width: auto !important;
+  
+  /* HARD LOCKS — Passive Hardware Only */
+  pointer-events: none !important;      /* Not clickable */
+  cursor: default !important;
+  filter: none !important;              /* No glow */
+  box-shadow: none !important;
+  animation: none !important;
+  transition: none !important;
+  
+  /* Governance: This is a rack plate, not a logo */
+  user-select: none;
+  flex-shrink: 0;
+  opacity: 0.95;
+  z-index: 1; /* Above background, below interactive elements */
+}
+
+/* === NAVIGATION ROW === */
+.crs-header-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+  margin-left: 100px; /* OFFSET: Prevents overlap with 72px stamp */
+}
+
+/* === ZONE A: LEFT CONTAINER (Console Labels only) === */
+.crs-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 0 1 auto;
+}
+
+/* === ZONE A: CONSOLE LABELS (NAVIGATION) === */
+.crs-nav-primary {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+}
+
+.header-services {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+}
+
+/* CONSOLE LABEL STYLING — ENGRAVED, NOT BUTTONS */
+.nav-item,
+.nav-button,
+.header-services a {
+  /* Typography — Console Terminal */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.70rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  
+  /* IDLE STATE — Engraved Console Label */
+  color: #d1d1d1 !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+  
+  /* Remove all button styling */
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 0 !important;
+  
+  /* Subtle transition */
+  transition: color 0.15s ease, text-shadow 0.15s ease !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+/* HOVER STATE — Slight brightening only (like LED backlight barely coming on) */
+.nav-item:hover,
+.nav-button:hover,
+.header-services a:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 4px rgba(255,255,255,0.3) !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ACTIVE STATE — Same as hover, no distinction needed for labels */
+.nav-item.active,
+.nav-button.active,
+.header-services a.active,
+.nav-item[aria-current="page"],
+.nav-button[aria-current="page"],
+.header-services a[aria-current="page"] {
+  color: #ffffff !important;
+  text-shadow: 0 0 4px rgba(255,255,255,0.4) !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* SEPARATOR — Engraved dot between labels */
+.separator {
+  color: #666 !important;
+  font-size: 0.8rem !important;
+  margin: 0 0.5rem !important;
+  user-select: none;
+}
+
+/* === ZONE C: RIGHT CONTAINER (BOOK NOW ONLY) === */
+.crs-header-right,
+.crs-nav-action {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  flex: 0 0 auto !important;
+}
+
+/* BOOK NOW — THE ONLY TRANSPORT CONTROL */
+.book-now-panel,
+.neon-flash {
+  /* This is the ONLY element allowed to glow/pulse */
+  /* Keep existing animation from crs-industrial-pulse.css */
+  /* Do NOT suppress it */
+}
+
+.book-now-trigger {
+  /* Keep existing orange pulse */
+  /* This is correct behavior — transport control */
+}
+
+/* === KILL ALL COLOR-CODED NAV STATES === */
+.nav-studio,
+.nav-cafe,
+.nav-av,
+.nav-button.nav-studio,
+.nav-button.nav-cafe,
+.nav-button.nav-av {
+  /* These are console labels, not status indicators */
+  color: #d1d1d1 !important;
+  border-color: transparent !important;
+  background: transparent !important;
+}
+
+.nav-studio:hover,
+.nav-cafe:hover,
+.nav-av:hover,
+.nav-button.nav-studio:hover,
+.nav-button.nav-cafe:hover,
+.nav-button.nav-av:hover {
+  /* Uniform hover — no color coding */
+  color: #ffffff !important;
+  text-shadow: 0 0 4px rgba(255,255,255,0.3) !important;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* === MOBILE BEHAVIOR === */
+@media (max-width: 1023px) {
+  .crs-header {
+    padding: 0.875rem 1.25rem !important;
+  }
+  
+  .crs-rack-badge {
+    height: 64px !important; /* Slightly smaller on tablet */
+    left: 12px !important;
+  }
+  
+  .crs-header-nav-row {
+    gap: 1.5rem;
+    margin-left: 85px; /* Adjust for smaller badge */
+  }
+  
+  .nav-item,
+  .nav-button,
+  .header-services a {
+    font-size: 0.68rem !important;
+    padding: 0.25rem 0.4rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .crs-header {
+    padding: 0.75rem 1rem !important;
+  }
+  
+  /* Hide rack badge on mobile (too small) */
+  .crs-rack-badge {
+    display: none !important;
+  }
+  
+  .crs-header-nav-row {
+    justify-content: space-between;
+    gap: 1rem;
+    margin-left: 0 !important; /* Reset offset when badge is hidden */
+  }
+  
+  /* Hide desktop nav */
+  .header-services {
+    display: none !important;
+  }
+  
+  /* Show hamburger */
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+}
+
+/* === OVERRIDES FOR PREVIOUS CSS === */
+/* Kill any previous button treatments */
+.nav-button {
+  /* Reset to console label */
+  height: auto !important;
+  min-height: unset !important;
+  border-radius: 0 !important;
+}
+
+/* Kill vertical separation grid */
+.crs-header[style*="grid"] {
+  display: flex !important;
+}
+
+/* === HAMBURGER MENU (MOBILE ONLY) === */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid #666;
+  color: #d1d1d1;
+  font-size: 1.25rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 3px;
+}
+
+.mobile-menu-toggle:hover {
+  color: #fff;
+  border-color: #999;
+}
+
+/* === ACCESSIBILITY === */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* === DOCTRINE ENFORCEMENT === */
+/* If any future CSS tries to add glow to nav items, this kills it */
+.nav-item *,
+.nav-button *,
+.header-services a * {
+  animation: none !important;
+}
+
+.nav-item::before,
+.nav-item::after,
+.nav-button::before,
+.nav-button::after,
+.header-services a::before,
+.header-services a::after {
+  display: none !important;
+}

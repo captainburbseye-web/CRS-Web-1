@@ -1,0 +1,25 @@
+{
+  "system_monitor": {
+    "last_updated": "2026-01-09T08:00:00Z",
+    "zones": [
+      {
+        "id": "cafe",
+        "display_name": "CAFÉ",
+        "status": "OPEN",
+        "pulse_alert": false
+      },
+      {
+        "id": "studio",
+        "display_name": "STUDIO",
+        "status": "IN SESSION",
+        "pulse_alert": true
+      },
+      {
+        "id": "electronics",
+        "display_name": "ELECTRONICS",
+        "status": "TAKING REPAIRS",
+        "pulse_alert": false
+      }
+    ]
+  }
+}

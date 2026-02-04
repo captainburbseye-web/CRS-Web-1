@@ -1,0 +1,63 @@
+.rack-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.vertical-rail {
+  position: absolute;
+  left: 50px;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background-color: #e3b448;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.phase {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 80px;
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.phase::before {
+  content: '';
+  position: absolute;
+  left: -25px;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background-color: #e3b448;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.phase-01::before {
+  background-color: #2d3a27;
+}
+
+.phase-02::before {
+  background-color: #2d3a27;
+}
+
+.phase-03::before {
+  background-color: #2d3a27;
+}
+
+.phase-04::before {
+  background-color: #2d3a27;
+}
+
+.phase-05::before {
+  background-color: #2d3a27;
+}

@@ -1,0 +1,299 @@
+/* ====================================================================
+   CRS HYBRID RACK/WEB INTERFACE
+   Hardware context + Web content
+   ==================================================================== */
+
+/* ==== COLOUR SYSTEM (LOCKED) ==== */
+:root {
+  /* Core Neutrals */
+  --void-black: #0A0A0A;
+  --signal-white: #F5F5F5;
+  --battleship-grey: #2E2E2E;
+  --structural-depth: #3A332C;
+  
+  /* Operational Colours (Semantic Only) */
+  --nettle-green: #6B8E23;
+  --mustard-gold: #C5A32F;
+  --fire-orange: #E94E1B;
+  --cosmic-teal: #008C91;
+  
+  /* LED Status */
+  --led-operational: var(--nettle-green);
+  --led-standby: var(--mustard-gold);
+  --led-offline: #CC3333;
+}
+
+/* ==== GLOBAL RESET ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--void-black);
+  color: var(--signal-white);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* ==== RACK RAILS (CONTEXT) ==== */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+  z-index: 100;
+  pointer-events: none;
+  
+  /* Mounting holes (subtle) */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 48px,
+    rgba(0, 0, 0, 0.3) 48px,
+    rgba(0, 0, 0, 0.3) 50px
+  );
+}
+
+body::before { left: 0; }
+body::after { right: 0; }
+
+/* ==== CONTAINER ==== */
+.rack-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 48px;
+}
+
+/* ==== MODULE (STANDARD PANEL) ==== */
+.crs-module {
+  background: var(--battleship-grey);
+  border: 1px solid #1a1a1a;
+  margin: 24px 0;
+  padding: 0;
+  position: relative;
+  
+  /* Subtle inset */
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Corner screws (max 4) */
+.crs-module::before,
+.crs-module::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #444 0%, #1a1a1a 70%);
+  border: 1px solid #000;
+  top: 8px;
+}
+
+.crs-module::before { left: 8px; }
+.crs-module::after { right: 8px; }
+
+/* ==== MODULE HEADER ==== */
+.module-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.module-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--signal-white);
+  font-weight: 600;
+}
+
+/* Module corner dots */
+.module-header::before,
+.module-header::after {
+  content: '▪';
+  color: var(--mustard-gold);
+  font-size: 8px;
+}
+
+/* ==== MODULE CONTENT ==== */
+.module-content {
+  padding: 32px 40px;
+}
+
+/* Clear readable text */
+.module-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(245, 245, 245, 0.9);
+  margin-bottom: 1rem;
+}
+
+.module-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--signal-white);
+}
+
+.module-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--signal-white);
+}
+
+/* ==== MODULE FOOTER (STATUS) ==== */
+.module-footer {
+  padding: 12px 24px;
+  border-top: 1px solid #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(245, 245, 245, 0.6);
+}
+
+/* LED Status Indicator (≤10px, static) */
+.status-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--led-operational);
+  box-shadow: 0 0 4px currentColor;
+}
+
+.status-led.standby {
+  background: var(--led-standby);
+}
+
+.status-led.offline {
+  background: var(--led-offline);
+}
+
+/* ==== BUTTONS (WEB-CLICKABLE) ==== */
+.crs-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: var(--fire-orange);
+  color: var(--void-black);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.crs-button::before { content: '[ '; }
+.crs-button::after { content: ' ]'; }
+
+.crs-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.crs-button:active {
+  transform: translateY(0);
+}
+
+/* Secondary button (non-CTA actions) */
+.crs-button-secondary {
+  background: transparent;
+  color: var(--signal-white);
+  border: 1px solid var(--battleship-grey);
+}
+
+.crs-button-secondary:hover {
+  border-color: var(--mustard-gold);
+  color: var(--mustard-gold);
+}
+
+/* ==== LINKS ==== */
+a {
+  color: var(--mustard-gold);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--fire-orange);
+}
+
+/* ==== LISTS ==== */
+ul, ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* ==== WORKSHOP CAFÉ MODE (WARMER) ==== */
+body.wsc-mode {
+  /* Slightly warmer neutrals */
+  --battleship-grey: #3a3a3a;
+  --structural-depth: #4a3d32;
+}
+
+body.wsc-mode .crs-module {
+  background: var(--battleship-grey);
+}
+
+body.wsc-mode .module-content {
+  padding: 40px 48px; /* More breathing space */
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+  body::before,
+  body::after {
+    display: none;
+  }
+  
+  .rack-container {
+    padding: 20px 16px;
+  }
+  
+  .module-content {
+    padding: 24px 20px;
+  }
+  
+  .crs-module::before,
+  .crs-module::after {
+    display: none;
+  }
+}
+
+/* ==== UTILITY CLASSES ==== */
+.text-center {
+  text-align: center;
+}
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }

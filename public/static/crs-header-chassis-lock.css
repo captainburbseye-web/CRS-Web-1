@@ -1,0 +1,185 @@
+/**
+ * CRS HEADER CHASSIS LOCK
+ * 
+ * Final production header specification.
+ * This file MUST load LAST to override all prior header CSS.
+ * 
+ * Three-zone architecture:
+ * - ZONE A: The Rack Ear (absolute left, 72px stamp)
+ * - ZONE B: Console Labels (margin-left: 110px to clear stamp)
+ * - ZONE C: Transport Control (BOOK NOW with industrial pulse)
+ */
+
+/* === HEADER CHASSIS LOCK === */
+header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 90px !important; /* Fixed height for consistent baseline */
+  background: #0E0E0E !important; /* Deep Black Chassis */
+  border-bottom: 2px solid rgba(201, 162, 39, 0.2) !important; /* Subtle Gold Rail */
+  padding: 0 !important; /* Remove padding - use absolute positioning */
+}
+
+/* Override any conflicting header classes */
+.crs-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 90px !important;
+  background: #0E0E0E !important;
+  border-bottom: 2px solid rgba(201, 162, 39, 0.2) !important;
+  padding: 0 !important;
+  border-radius: 0 !important; /* Kill any border-radius */
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+}
+
+/* === ZONE A: THE RACK EAR === */
+.crs-stamp,
+.crs-rack-badge {
+  position: absolute !important;
+  left: 20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  height: 72px !important; /* Scale discipline */
+  width: auto !important;
+  z-index: 10 !important;
+  pointer-events: none !important; /* Physical plate logic */
+  opacity: 0.95 !important;
+  filter: none !important;
+  box-shadow: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* === ZONE B: CONSOLE LABELS === */
+.nav-group,
+.crs-header-nav-row,
+.crs-header-left {
+  margin-left: 110px !important; /* Clears the 72px stamp */
+  display: flex !important;
+  gap: 1.5rem !important;
+  align-items: center !important;
+}
+
+/* Navigation items - engraved console labels */
+.header-services,
+.crs-nav-primary {
+  display: flex !important;
+  gap: 1.5rem !important;
+  align-items: center !important;
+}
+
+.nav-item {
+  font-family: 'JetBrains Mono', monospace !important;
+  text-transform: uppercase !important;
+  color: #d1d1d1 !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.05em !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.nav-item:hover {
+  color: #C9A227 !important; /* Subtle gold on hover */
+}
+
+.separator {
+  color: #666 !important;
+  font-size: 0.75rem !important;
+  user-select: none !important;
+}
+
+/* === ZONE C: TRANSPORT CONTROL === */
+.book-now-btn,
+.book-now-trigger {
+  margin-right: 20px !important;
+  background: #C9A227 !important; /* Signal Yellow */
+  color: #0E0E0E !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.1em !important;
+  padding: 0.75rem 1.5rem !important;
+  border: none !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  animation: industrial-pulse 1.5s infinite !important; /* Only this signals action */
+  transition: transform 0.1s ease, box-shadow 0.2s ease !important;
+}
+
+.book-now-btn:hover,
+.book-now-trigger:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 0 15px rgba(201, 162, 39, 0.5) !important;
+}
+
+/* Right container alignment */
+.crs-header-right {
+  margin-left: auto !important; /* Push to far right */
+}
+
+/* === INDUSTRIAL PULSE ANIMATION === */
+@keyframes industrial-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(201, 162, 39, 0.3);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(201, 162, 39, 0.6);
+    opacity: 0.95;
+  }
+}
+
+/* === MOBILE OVERRIDES === */
+@media (max-width: 767px) {
+  header,
+  .crs-header {
+    height: 70px !important; /* Smaller on mobile */
+  }
+  
+  .crs-stamp,
+  .crs-rack-badge {
+    display: none !important; /* Hide stamp on mobile */
+  }
+  
+  .nav-group,
+  .crs-header-nav-row,
+  .crs-header-left {
+    margin-left: 15px !important; /* No stamp offset needed */
+  }
+  
+  .book-now-btn,
+  .book-now-trigger {
+    margin-right: 15px !important;
+    padding: 0.6rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* === TABLET OVERRIDES === */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .crs-stamp,
+  .crs-rack-badge {
+    height: 64px !important; /* Slightly smaller on tablet */
+    left: 15px !important;
+  }
+  
+  .nav-group,
+  .crs-header-nav-row,
+  .crs-header-left {
+    margin-left: 95px !important; /* Adjusted for smaller stamp */
+  }
+}
