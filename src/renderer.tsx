@@ -54,7 +54,7 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* Google Fonts - Hardware Typography */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700&family=Archivo+Black&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700;800&family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700&family=Archivo+Black&display=swap" rel="stylesheet" />
         
         {/* Clean CSS */}
         <link href="/static/clean.css" rel="stylesheet" />
@@ -74,7 +74,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="/static/crs-nav-correction.css" rel="stylesheet" />
         <link href="/static/crs-mobile-nav.css" rel="stylesheet" />
         <link href="/static/crs-audit-fixes.css" rel="stylesheet" />
-        <link href="/static/crs-header-vertical-separation.css" rel="stylesheet" />
+        {/* CRS HEADER VERTICAL SEPARATION: Removed to disable double headers */}
+        {/* <link href="/static/crs-header-vertical-separation.css" rel="stylesheet" /> */}
         <link href="/static/crs-header-logo.css" rel="stylesheet" />
         {/* Hardware Discipline */}
         <link href="/static/crs-hardware-discipline-final.css" rel="stylesheet" />
@@ -150,5 +151,3 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
     </html>
   )
 })
-
-
