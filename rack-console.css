@@ -25,7 +25,7 @@
   width: 200px;
   height: 80px;
   margin-top: 10px;
-  background-color: #333; /* Updated to a darker metallic color */
+  background-color: #e3b448; /* Updated to mustard color */
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   position: relative;
@@ -46,7 +46,7 @@
 .phase-label {
   position: relative;
   z-index: 1;
-  color: white; /* Updated text color for better visibility */
+  color: black; /* Updated text color to black */
   font-size: 16px;
   font-weight: bold;
 }
