@@ -126,7 +126,7 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* RACK CONSOLE: Reason DAW-style interface for /rack page */}
         <link href="/static/rack-console.css" rel="stylesheet" />
       </head>
-      <body>
+      <body style="overflow-x: hidden;">
         {children}
         
         {/* Back to Top Button - Appears after 800px scroll */}
