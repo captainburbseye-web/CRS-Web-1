@@ -1,6 +1,5 @@
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
-import { HomePage } from './Home'
 
 export const HomePage = () => (
   <>
@@ -69,11 +68,11 @@ export const HomePage = () => (
           118 Cowley Road, Oxford OX4 1JE
         </p>
         <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
-          Rehearsal space at our main Cowley Road location. Fully equipped for band sessions.
+          Fully equipped high-fidelity rehearsal space at Cowley Road Node.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
-          <a href="https://square.link/u/UQidDzE0" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">BOOK REHEARSAL — COWLEY ROAD</a>
-          <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65);">Rehearsal use only · Cowley Road</p>
+          <a href="/studio" class="cta-button cta-button-primary">BOOK REHEARSAL — COWLEY ROAD</a>
+          <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65);">Rehearsal use only · Cowley Road Node</p>
         </div>
       </div>
     </section>
@@ -102,10 +101,10 @@ export const HomePage = () => (
         </div>
         
         <p style="margin-bottom: 1rem; color: rgba(245, 245, 245, 0.85);">
-          Fixed-length sessions with basic PA included at Cricket Road.
+          Fully equipped high-fidelity rehearsal space at Cricket Road Node.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
-          <a href="https://square.link/u/WPqRFIGW" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-peak-red cta-button-primary">BOOK REHEARSAL — CRICKET ROAD</a>
+          <a href="/studio" class="cta-button cta-button-peak-red cta-button-primary">BOOK REHEARSAL — CRICKET ROAD</a>
         </div>
       </div>
     </section>
@@ -127,7 +126,7 @@ export const HomePage = () => (
           Monitoring and control room access. No engineer included. Ideal for independent production, mixing, and mastering work.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
-          <a href="https://square.link/u/bCOHXtdl" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">BOOK CONTROL ROOM — DRY HIRE</a>
+          <a href="/studio" class="cta-button cta-button-primary">BOOK CONTROL ROOM — DRY HIRE</a>
           <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65);">Dry hire only · No engineer included</p>
         </div>
       </div>
