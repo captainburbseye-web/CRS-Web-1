@@ -16,7 +16,7 @@ const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/con
       target="_blank"
       rel="noopener noreferrer"
       sx={{
-        backgroundColor: '#007bff',
+        backgroundColor: '#006aff',
         '&:hover': {
           backgroundColor: '#0056b3',
         },
