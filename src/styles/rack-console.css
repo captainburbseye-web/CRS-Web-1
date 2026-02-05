@@ -89,6 +89,18 @@
   color: #e3b04b;
 }
 
+.rack-module {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.rack-module:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
   .rack-unit-header h2,
   .nav-link {
