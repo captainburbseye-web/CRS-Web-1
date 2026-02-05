@@ -74,6 +74,8 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
 
 export const RackPage = () => (
   <>
+    <Header />
+
     {/* ACCESSIBILITY: Skip Link */}
     <a href="#main-content" class="skip-link">Skip to main content</a>
 

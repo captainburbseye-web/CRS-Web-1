@@ -30,4 +30,3 @@ logs/
 *.tar.gz
 *.zip
 deploy.sh
-.aider*

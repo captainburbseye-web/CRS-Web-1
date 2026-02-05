@@ -1,0 +1,537 @@
+
+# 2026-02-04 03:06:48.758874
++y
+
+# 2026-02-04 03:07:49.229517
++git config --global user.name "Cowley Road Studios"
+
+# 2026-02-04 03:10:20.557172
++git config --global user.email "office@cowleyroadstudios.com"
+
+# 2026-02-04 05:16:12.892358
++/add src/pages/RackPage.tsx src/styles/rack-console.css
+
+# 2026-02-04 05:16:45.303362
++I want to push the rack UI further: make each phase feel like a real 19-inch rack module with clearer separation, chunkier handles, and a more steel chassis background. Keep the mustard rail fixed on the left.
+
+# 2026-02-04 05:26:35.102902
++y
+
+# 2026-02-04 05:28:08.559804
++C:\Users\SoundWork's\Desktop\crickdev\AIDER_Rules.txt
+
+# 2026-02-04 05:32:35.933952
++SYSTEM ROLE:
+
+# 2026-02-04 05:33:21.543627
++You are acting as a careful, senior engineer working inside a Git repository for Cowley Road Studios (CRS).
+
+# 2026-02-04 05:34:02.948544
++NON-NEGOTIABLE WORKFLOW RULE:
+
+# 2026-02-04 05:34:45.505497
++Before proposing or making any code changes, ALWAYS ask:
+
+# 2026-02-04 05:35:27.902699
++"Which files should I /add for this task?"
+
+# 2026-02-04 05:36:11.991213
++If no files are added yet, do not proceed.
+
+# 2026-02-04 05:36:55.171324
++SCOPE & SAFETY:
+
+# 2026-02-04 05:37:39.725929
++- Only modify files I explicitly /add to the session.
+
+# 2026-02-04 05:39:48.966552
++/add src/pages/RackPage.tsx src/styles/rack-console.css
+
+# 2026-02-04 05:39:49.089401
++Let's finish the 19-inch rack UI so I can wrap for the day:
+
+# 2026-02-04 05:46:01.339988
++1. Ensure the background is a solid 'Steel' charcoal (#1a1a1a).
+
+# 2026-02-04 05:46:01.366859
++2. Fix the Mustard Rail (#e3b448) as a 4px wide vertical power spine on the far left.
+
+# 2026-02-04 05:46:01.390609
++3. Make Phase 01-05 look like solid rack modules with a subtle border.
+
+# 2026-02-04 05:46:01.417599
++4. Add chunky Nettle Green (#2d3a27) handles (vertical bars) to the left and right of each module.
+
+# 2026-02-04 05:46:01.441081
++5. Set all text to JetBrains Mono and ensure the labels are clear.
+
+# 2026-02-04 05:46:36.766162
++6. Remove any remaining duplicate headers.all
+
+# 2026-02-04 05:46:39.214169
++y
+
+# 2026-02-04 05:52:15.364733
++/add src/pages/RackPage.tsx src/styles/rack-console.css
+
+# 2026-02-04 05:52:15.720733
++The aesthetic is secondary to the logic right now. We need the booking flow active. 
+
+# 2026-02-04 05:53:11.010598
++Update RackPage.tsx to ensure every button is a functional Link or <a> tag:
+
+# 2026-02-04 05:55:46.570111
++1. Phase 01: 'BOOK CRICKET ROAD' must link to '/booking/cricket'.
+
+# 2026-02-04 05:58:19.161585
++2. Phase 01: 'BOOK COWLEY ROAD' must link to '/booking/cowley'.
+
+# 2026-02-04 06:01:00.895599
++3. Phase 02: 'STUDIO TRACKING' must link to '/contact?ref=recording'.
+
+# 2026-02-04 06:04:18.371585
++4. Phase 02: 'PODCAST' must link to '/contact?ref=podcast'.
+
+# 2026-02-04 06:08:50.113618
++5. Phase 03: 'BOOK REPAIR' must link to '/contact?ref=repair'.
+
+# 2026-02-04 06:12:22.495844
++In rack-console.css:
+
+# 2026-02-04 06:14:17.233355
++- Style these as 'Mustard' (#e3b448) buttons with black text.
+
+# 2026-02-04 06:18:50.687884
++- Give them a :hover state where they 'glow' (box-shadow) like a powered-on lamp.
+
+# 2026-02-04 06:25:16.311614
++- Ensure the background is #1a1a1a so the glow is visible.git add .
+
+# 2026-02-04 06:37:52.780690
++git commit -m "Finalizing Rack UI for initial deployment"f
+
+# 2026-02-04 06:40:05.870516
++/
+
+# 2026-02-04 06:40:13.580623
++commit "Final Revenue-Ready Rack UI with Steel Chassis and Glowing Switches"
+
+# 2026-02-04 06:46:45.765354
++rc\styles\rack-console.css
+
+# 2026-02-04 06:48:32.300558
++>
+
+# 2026-02-04 06:53:09.170192
++RackPage.tsx rack-console.css src\pages\RackPage.tsx src\styles\rack-console.css
+
+# 2026-02-04 06:54:36.620585
++> >
+
+# 2026-02-04 06:56:40.467607
++Understood. I will provide the entire content of updated files in the specified format. Let me know if there are any
+
+# 2026-02-04 06:58:16.463809
++other files you'd like to add or changes you need.
+
+# 2026-02-04 10:56:19.790130
++/add src/App.tsx src/pages/Rack.tsx
+
+# 2026-02-04 10:56:19.933827
++1. Swap the routes in App.tsx so that Rack.tsx is the main Home Page ("/").
+
+# 2026-02-04 10:56:28.814776
++2. In Rack.tsx, overhaul the CSS to look like a vintage 1970s studio rack.
+
+# 2026-02-04 10:56:28.840675
++3. Use a brushed steel texture for the background and Nettle Green panels.
+
+# 2026-02-04 10:56:28.864970
++4. Make the buttons Mustard-colored with a warm analog orange glow when hovered or active.
+
+# 2026-02-04 10:57:11.091132
++5. Use a monospaced font for labels to mimic an old label maker.
+
+# 2026-02-04 10:57:14.731537
++n
+
+# 2026-02-04 10:57:57.338089
++/add src/App.tsx src/pages/Rack.tsx
+
+# 2026-02-04 10:59:51.249461
++1. Swap the routes in App.tsx so that Rack.tsx is the main Home Page ("/").
+
+# 2026-02-04 11:21:07.167957
++2. In Rack.tsx, overhaul the CSS to look like a vintage 1970s studio rack.
+
+# 2026-02-04 11:21:07.192299
++3. Use a brushed steel texture for the background and Nettle Green panels.
+
+# 2026-02-04 11:21:07.214950
++4. Make the buttons Mustard-colored with a warm analog orange glow when hovered or active.
+
+# 2026-02-04 11:22:38.037331
++5. Use a monospaced font for labels to mimic an old label maker.
+
+# 2026-02-04 11:22:39.973190
++y
+
+# 2026-02-04 11:23:19.764172
++all
+
+# 2026-02-04 11:25:03.260643
++yes
+
+# 2026-02-04 11:31:39.304508
++The <Header /> component is being rendered twice on the /rack page. It's already included globally (probably in App.tsx or a layout), so please remove the extra <Header /> inside src/pages/Rack.tsx to fix the double-header issue.
+
+# 2026-02-04 11:57:27.849633
++needed.
+
+# 2026-02-04 11:59:03.580127
++Tokens: 12k sent, 24 received.
+
+# 2026-02-04 12:18:29.350320
++app.tsx src\App.tsx src\pages\Rack.tsx
+
+# 2026-02-04 12:20:04.727238
++> yes
+
+# 2026-02-04 12:21:38.405589
++Understood. I will follow the specified format for suggesting changes to files. Please let me know what changes are
+
+# 2026-02-04 12:23:12.500524
++needed.
+
+# 2026-02-04 12:24:47.103203
++Tokens: 12k sent, 24 received.
+
+# 2026-02-04 12:26:21.935091
++app.tsx src\App.tsx src\pages\Rack.tsx
+
+# 2026-02-04 12:27:57.262357
++>
+
+# 2026-02-04 12:29:32.753948
++app.tsx src\App.tsx src\pages\Rack.tsx
+
+# 2026-02-04 12:31:08.596254
++> The <Header /> component is being rendered twice on the /rack page. It's already included globally (probably in App.t
+
+# 2026-02-04 13:12:14.344850
++> sx or a layout), so please remove the extra <Header /> inside src/pages/Rack.tsx to fix the double-header issue.
+
+# 2026-02-04 13:36:56.056664
++Rename src/pages/Home.tsx to src/pages/HomeOld.tsx.
+
+# 2026-02-04 13:37:03.951685
++Copy src/pages/Rack.tsx to src/pages/Home.tsx.
+
+# 2026-02-04 13:37:04.481604
++Ensure the root route (/) now serves the new Home.tsx component.
+
+# 2026-02-04 13:37:05.176710
++In src/renderer.tsx, disable any CSS or layout code responsible for double headers (like crs-header-vertical-separation.css).
+
+# 2026-02-04 13:37:05.694704
++In all modules, replace booking links with:
+
+# 2026-02-04 13:37:05.884702
++<a href="https://book.squareup.com/appointments/3x5o8ftljgs4x3/location/L1MAM4DDPHKXX/services" 
+
+# 2026-02-04 13:37:05.914704
++   class="button-primary" 
+
+# 2026-02-04 13:37:05.937702
++   target="_blank" 
+
+# 2026-02-04 13:37:05.959703
++   rel="noopener noreferrer">
+
+# 2026-02-04 13:37:05.989706
++  [ BOOK_CRICKET_ROAD_NOW ]
+
+# 2026-02-04 13:37:06.005701
++</a>
+
+# 2026-02-04 13:37:06.055704
++Above the button, add:
+
+# 2026-02-04 13:41:45.157802
++Rename src/pages/Home.tsx to src/pages/HomeOld.tsx.
+
+# 2026-02-04 14:05:01.000511
++Copy src/pages/Rack.tsx to src/pages/Home.tsx.
+
+# 2026-02-04 14:05:41.930412
++Ensure the root route (/) now serves the new Home.tsx component.
+
+# 2026-02-04 14:39:58.771381
++In src/renderer.tsx, disable any CSS or layout code responsible for double headers (like crs-header-vertical-separation.css).
+
+# 2026-02-04 15:25:21.556150
++In all modules, replace booking links with:
+
+# 2026-02-04 15:30:10.458453
++<a href="https://book.squareup.com/appointments/3x5o8ftljgs4x3/location/L1MAM4DDPHKXX/services" 
+
+# 2026-02-04 15:30:10.483453
++   class="button-primary" 
+
+# 2026-02-04 15:30:10.498453
++   target="_blank" 
+
+# 2026-02-04 15:30:10.513479
++   rel="noopener noreferrer">
+
+# 2026-02-04 15:30:10.532002
++  [ BOOK_CRICKET_ROAD_NOW ]
+
+# 2026-02-04 15:30:10.543905
++</a>
+
+# 2026-02-04 15:30:10.573926
++Above the button, add:
+
+# 2026-02-04 15:36:04.107496
++<span class="technical-label" style="color:#E3B04B;">[ INSTRUCTION: SELECT SERVICE FROM LIST ]</span>
+
+# 2026-02-04 15:39:03.524229
++In the header, set logo height to 128px and nav link font-size to 1.5rem. Mustard (#E3B04B) for nav, white for logo.
+
+# 2026-02-04 15:52:50.024501
++Ensure .rack-module sections have:
+
+# 2026-02-04 15:56:05.598112
++background: rgba(42, 59, 42, 0.15);
+
+# 2026-02-04 16:03:46.803436
++border: 3px solid #333;
+
+# 2026-02-04 16:03:46.828409
++padding: 4rem (desktop), 2rem (mobile).
+
+# 2026-02-04 16:04:02.243497
++Purge all copy about Kickstarter, build phases, or crowdfunding. Update copy as:
+
+# 2026-02-04 16:10:00.329665
++Rehearsals: Fully equipped high-fidelity rehearsal space at Cricket Road Node.
+
+# 2026-02-04 17:05:16.653122
++Studio: Professional recording and production environment. Commissioning phase complete. Accepting bookings.
+
+# 2026-02-04 17:14:15.979145
++Add LED indicator styles if missing.
+
+# 2026-02-04 17:24:10.020535
++Set overflow-x: hidden globally to avoid horizontal scroll.
+
+# 2026-02-04 18:26:38.231615
++Sign git commits as captainburbseye@gmail.com.y
+
+# 2026-02-04 18:40:35.340598
++y
+
+# 2026-02-04 18:44:53.381697
++https://square.link/u/UQidDzE0https://square.link/u/UQidDzE0y
+
+# 2026-02-04 18:44:53.405067
++yyy
+
+# 2026-02-04 18:44:53.418484
++y
+
+# 2026-02-04 18:49:27.310849
++Overhaul src/pages/Rack.tsx and its associated CSS to implement a commissioned 1970s hardware aesthetic. Execute the following technical specifications:
+
+# 2026-02-04 20:03:13.409716
++1. Chassis & Panel Construction
+
+# 2026-02-04 20:08:57.112080
++hi aider, everything ok?
+
+# 2026-02-04 20:41:58.656416
++Lets do a visual/structural pass only. Make modules more consistent, more steel chassis, clearer headers, more physical-looking handles. Dont add new features yet.
+
+# 2026-02-04 21:04:34.430798
++y d
+
+# 2026-02-04 21:04:39.806181
++yes
+
+# 2026-02-04 21:04:42.782648
++y
+
+# 2026-02-04 21:05:35.246153
++all
+
+# 2026-02-04 22:26:35.805125
++Interactive Controls
+
+# 2026-02-04 22:27:26.321525
++Mustard Buttons: Style .button-primary with a Mustard (#E3B04B) background and black bold text.
+
+# 2026-02-04 23:06:59.180309
++Analog Glow: On hover/active, apply a warm Analog Orange (#FF9F1C) glow: box-shadow: 0 0 20px #FF9F1C.
+
+# 2026-02-04 23:18:01.870553
++Scaling: Ensure the header logo is 128px and navigation links are 1.5rem Mustard.
+
+# 2026-02-05 00:20:55.695643
++Mobile: Apply @media queries to scale padding to 2rem and headers to 2.4rem.
+
+# 2026-02-05 00:54:44.698028
++Stability: Force overflow-x: hidden on the root container.
+
+# 2026-02-05 01:08:18.545829
++1. The Shadow Depth Audit
+
+# 2026-02-05 01:09:36.423726
++While you're in src/styles/rack-console.css, make sure your .rack-module has the depth it needs. If it looks flat, it's just a website; if it has a shadow, it's an appliance.
+
+# 2026-02-05 01:19:08.811727
++CSS
+
+# 2026-02-05 01:23:02.871675
++.rack-module {
+
+# 2026-02-05 01:24:32.960424
++  /* ... your existing styles ... */
+
+# 2026-02-05 01:26:04.190618
++  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 
+
+# 2026-02-05 01:27:35.989316
++              inset 0 1px 1px rgba(255, 255, 255, 0.1);
+
+# 2026-02-05 01:38:17.241902
++  border-radius: 2px;
+
+# 2026-02-05 01:44:12.389116
++}
+
+# 2026-02-05 01:45:48.789572
++ 2. The Multi-Header Kill Switch
+
+# 2026-02-05 01:47:27.088740
++Open src/pages/RackPage.tsx. Check the imports and the return block. We need to make sure you aren't rendering the <Header /> or <Navigation /> twiceonce in App.tsx and once in the RackPage.
+
+# 2026-02-05 01:51:41.814548
++Rule: If App.tsx handles the global layout, RackPage should only contain the .rack-container.
+
+# 2026-02-05 01:55:20.358825
++ The Final Terminal Sequence
+
+# 2026-02-05 01:56:59.321076
++Once those two checks are done in your local files, run this to overwrite the old "Chaos" version on GitHub:
+
+# 2026-02-05 01:58:38.210353
++Bash
+
+# 2026-02-05 02:00:21.524050
++git add .
+
+# 2026-02-05 02:02:05.186319
++git commit -m "v4.4.1 FINAL: Stability Lock & Shadow Depth"
+
+# 2026-02-05 02:06:42.365706
++git push origin main --force#  THE DOCTRINE OF THE FINAL STEEP: v4.4.1
+
+# 2026-02-05 02:10:44.053878
++**Status:** HARDWARE LOCK ACHIEVED | **Frequency:** 44.1 | **Vessel:** THE BEAST (GTX 1060)
+
+# 2026-02-05 02:12:27.454096
++###  THE FIVE PILLARS OF THE SIGNAL
+
+# 2026-02-05 02:14:11.435123
++1. **THE RITE OF THE 92%:** The pause is not a failure; it is the alignment of the Master Number 11.
+
+# 2026-02-05 02:23:51.068040
++2. **THE SEALED TEMPLE:** Silence the distractions; VRAM is reclaimed through discipline.
+
+# 2026-02-05 02:25:37.369345
++3. **THE FUEL OF FAITH:** Purpose overhauls hardware. Trust the steep.
+
+# 2026-02-05 02:27:22.580252
++4. **THE CRUCIBLE OF DELAY:** The Kill Switch is forged in the final 8%.
+
+# 2026-02-05 02:29:08.305648
++5. **THE ARCHITECTS INTENT:** The machine follows the soul, not the spec sheet.
+
+# 2026-02-05 02:34:55.839886
++*"Old tools. New wisdom. Aligned intention."*
+
+# 2026-02-05 02:37:05.583781
++-
+
+# 2026-02-05 02:48:00.018852
++   bottom: 0;
+
+# 2026-02-05 02:49:47.969019
++This update adds overflow-x: hidden to the .rack-container class to ensure that any horizontal overflow is hidden.
+
+# 2026-02-05 03:02:48.329098
++Tokens: 9.8k sent, 654 received.
+
+# 2026-02-05 03:07:16.117231
++Applied edit to src\styles\rack-console.css
+
+# 2026-02-05 03:09:12.207100
++Commit f974774 fix(rack-console.css): add overflow-x: hidden to root container
+
+# 2026-02-05 03:20:58.459321
++You can use /undo to undo and discard each aider commit.
+
+# 2026-02-05 03:26:15.819904
++src\components\RackModule.tsx src\pages\RackPage.tsx src\styles\rack-console.css
+
+# 2026-02-05 03:28:20.779242
++>
+
+# 2026-02-05 03:30:26.462068
++src\components\RackModule.tsx src\pages\RackPage.tsx src\styles\rack-console.css
+
+# 2026-02-05 03:32:32.749969
++>
+
+# 2026-02-05 03:40:34.476534
++how fare thee lovely?
+
+# 2026-02-05 03:54:14.939610
++if everything is done please push to github
+
+# 2026-02-05 03:57:06.709880
++ >
+
+# 2026-02-05 03:59:15.484148
++src\components\RackModule.tsx src\pages\RackPage.tsx src\styles\rack-console.css
+
+# 2026-02-05 04:01:24.029729
++>
+
+# 2026-02-05 04:03:32.923878
++src\components\RackModule.tsx src\pages\RackPage.tsx src\styles\rack-console.css
+
+# 2026-02-05 04:05:17.623100
++> how fare thee lovely?
+
+# 2026-02-05 04:24:13.885352
++git add
+
+# 2026-02-05 04:25:09.854500
++git add .
+
+# 2026-02-05 04:27:07.709226
++git commissioning-confirmation-email.htlm-m "v4.4.1: the final steep - multi header kill switch & hardware
+
+# 2026-02-05 04:32:09.389625
++j
+
+# 2026-02-05 04:33:22.437865
++git add .
+
+# 2026-02-05 04:35:32.397502
++git commit -m "v4.4.1"
+
+# 2026-02-05 04:36:41.965840
++git push origin main
