@@ -87,3 +87,14 @@
   font-size: 1.5rem;
   color: #e3b04b;
 }
+
+@media (max-width: 768px) {
+  .rack-unit-header h2,
+  .nav-link {
+    font-size: 2.4rem;
+  }
+
+  .rack-unit-content .cta-button {
+    padding: 2rem 4rem;
+  }
+}
