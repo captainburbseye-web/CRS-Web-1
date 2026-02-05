@@ -26,7 +26,8 @@ const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/con
         padding: '12px 24px',
         fontSize: '16px',
         fontWeight: 'bold',
-        textTransform: 'none',
+        textTransform: 'uppercase', // Use uppercase text
+        letterSpacing: '1px', // Slightly tracked-out text
         transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Add transitions for smooth effects
       }}
     >
