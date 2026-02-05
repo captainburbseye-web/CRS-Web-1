@@ -1,4 +1,5 @@
-import { Link } from 'hono/jsx'
+import React from 'react';
+import BookingButton from './BookingButton';
 
 export const RackModule = ({ label, type = 'standard', className, children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel }) => (
   <section class={`rack-unit device-${type} ${className}`}>
@@ -15,8 +16,8 @@ export const RackModule = ({ label, type = 'standard', className, children, vide
       
       {/* Booking Button */}
       {bookingUrl && (
-        <a href={bookingUrl} class="cta-button cta-button-primary" style="border-color: #E3B04B; color: #E3B04B; background: rgba(255, 140, 0, 0.1); font-size: 1.1rem; padding: 14px 28px;">{buttonLabel || 'BOOK NOW'}</a>
+        <BookingButton label={label} bookingUrl={bookingUrl} buttonLabel={buttonLabel || 'BOOK NOW'} />
       )}
     </div>
   </section>
-)
+);

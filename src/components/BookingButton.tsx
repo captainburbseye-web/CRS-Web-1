@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '@mui/material';
 
 interface BookingButtonProps {
   label: string;
@@ -9,30 +8,21 @@ interface BookingButtonProps {
 
 const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/contact?service=venue', buttonLabel = 'Book Now' }) => {
   return (
-    <Button
-      variant="contained"
-      color="primary"
+    <a
       href={bookingUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      sx={{
+      style={{
         backgroundColor: '#006aff',
-        '&:hover': {
-          backgroundColor: '#0056b3',
-          transform: 'scale(1.02)', // Slightly lift the button
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Add a subtle glow effect
-        },
-        borderRadius: '8px',
+        color: '#fff',
         padding: '12px 24px',
-        fontSize: '16px',
+        borderRadius: '4px',
         fontWeight: 'bold',
-        textTransform: 'uppercase', // Use uppercase text
-        letterSpacing: '1px', // Slightly tracked-out text
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Add transitions for smooth effects
+        textTransform: 'uppercase',
+        textDecoration: 'none',
+        transition: '0.2s',
       }}
     >
       {buttonLabel}
-    </Button>
+    </a>
   );
 };
 
