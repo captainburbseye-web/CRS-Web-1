@@ -19,12 +19,15 @@ const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/con
         backgroundColor: '#006aff',
         '&:hover': {
           backgroundColor: '#0056b3',
+          transform: 'scale(1.02)', // Slightly lift the button
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', // Add a subtle glow effect
         },
         borderRadius: '8px',
         padding: '12px 24px',
         fontSize: '16px',
         fontWeight: 'bold',
         textTransform: 'none',
+        transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Add transitions for smooth effects
       }}
     >
       {buttonLabel}
