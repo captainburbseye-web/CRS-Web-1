@@ -77,3 +77,13 @@
 .button-primary:active {
   box-shadow: 0 0 20px #ff9f1c;
 }
+
+.header-logo {
+  width: 128px;
+  height: auto;
+}
+
+.nav-link {
+  font-size: 1.5rem;
+  color: #e3b04b;
+}
