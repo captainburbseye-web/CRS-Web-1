@@ -535,3 +535,186 @@
 
 # 2026-02-05 04:36:41.965840
 +git push origin main
+
+# 2026-02-05 23:17:27.310349
++y
+
+# 2026-02-05 23:23:57.331464
++TASK: Create a ultra-slick src/components/BookingButton.tsx.
+
+# 2026-02-05 23:26:04.726560
++STYLE GUIDE: > * Background: Use a deep gradient starting at #006aff (the Square Blue).
+
+# 2026-02-05 23:27:26.673944
++Hover State: Make the button glow or slightly lift when hovered to give it a "tactile" feel.
+
+# 2026-02-05 23:29:22.794181
++Typography: Use uppercase, bold, and slightly tracked-out (letter-spacing) text for a professional AV look.
+
+# 2026-02-05 23:31:38.343120
++Layout: Wrap the buttons in a container with display: flex and gap: 15px so they don't look cramped like the previous version.
+
+# 2026-02-05 23:33:36.843200
++EXECUTION: Replace the placeholder CTA in RackModule.tsx with this new component. Ensure the overflow-x: hidden remains on the parent to keep the "Hardware Lock" tight.
+
+# 2026-02-05 23:33:36.921976
++STYLE GUIDE: > * Background: Use a deep gradient starting at #006aff (the Square Blue).STYLE GUIDE: > * Background: Use a deep gradient starting at #006aff (the Square Blue).y
+
+# 2026-02-05 23:33:59.807852
++y
+
+# 2026-02-05 23:37:16.530660
++/add src/components/BookingButton.tsx src/components/RackModule.tsx
+
+# 2026-02-05 23:37:16.710691
++TASK: Create a 'Slick' modular BookingButton. 
+
+# 2026-02-05 23:41:36.595765
++SPECS: React component, background: #006aff, text: #FFFFFF, bold uppercase, letter-spacing: 1px. 
+
+# 2026-02-05 23:44:25.737622
++EFFECTS: Use CSS transitions for a 'tactile' shadow lift on hover. 
+
+# 2026-02-05 23:47:54.119598
++INTEGRATION: Replace the old rehearsal links in RackModule with this new component using the Square link: https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX. 
+
+# 2026-02-05 23:47:54.167597
++NO EXTERNAL LIBRARIES.Rewrite src/components/BookingButton.tsx: 
+
+# 2026-02-05 23:47:54.193600
++1. Remove all MUI imports/components. 
+
+# 2026-02-05 23:47:54.215601
++2. Use a standard <button> or <a> tag with style={{...}}. 
+
+# 2026-02-05 23:47:54.259602
++3. Style: background '#006aff', color '#fff', padding '12px 24px', border 'none', borderRadius '4px', fontWeight 'bold', textTransform 'uppercase', letterSpacing '1px', cursor 'pointer'. 
+
+# 2026-02-05 23:47:54.301621
++4. Add a transition 'all 0.2s ease' and a box-shadow that 'lifts' on hover (0 4px 15px rgba(0,106,255,0.4)).Rewrite src/components/BookingButton.tsx: 
+
+# 2026-02-05 23:47:54.324622
++1. Remove all MUI imports/components. 
+
+# 2026-02-05 23:47:54.345620
++2. Use a standard <button> or <a> tag with style={{...}}. 
+
+# 2026-02-05 23:47:54.384616
++3. Style: background '#006aff', color '#fff', padding '12px 24px', border 'none', borderRadius '4px', fontWeight 'bold', textTransform 'uppercase', letterSpacing '1px', cursor 'pointer'. 
+
+# 2026-02-05 23:48:00.568708
++4. Add a transition 'all 0.2s ease' and a box-shadow that 'lifts' on hover (0 4px 15px rgba(0,106,255,0.4)).n
+
+# 2026-02-05 23:48:04.264021
++n
+
+# 2026-02-05 23:48:16.680702
++/undo
+
+# 2026-02-05 23:48:30.632485
++Stop. No Tailwind. No MUI. Create src/components/BookingButton.tsx as a pure React component using only inline styles. Style: { backgroundColor: '#006aff', color: '#fff', padding: '12px 24px', borderRadius: '4px', fontWeight: 'bold', textTransform: 'uppercase', textDecoration: 'none', transition: '0.2s' }. Use the Square link provided. Replace the old CTA in RackModule.tsx with this component. Clean out all unused imports now.
+
+# 2026-02-05 23:49:51.329020
++/undo
+
+# 2026-02-05 23:50:08.089014
++Create src/components/BookingButton.tsx as a PURE React component (NO MUI/Tailwind). Use style={{ backgroundColor: '#006aff', color: '#fff', padding: '12px 24px', borderRadius: '4px', fontWeight: 'bold', textTransform: 'uppercase', textDecoration: 'none', transition: '0.2s' }}. Use Square link: https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX. Swap the links in RackModule.tsx for this component.
+
+# 2026-02-06 00:38:32.897671
++/add src/components/BookingButton.tsx src/components/RackModule.tsx
+
+# 2026-02-06 00:38:33.094390
++REFACTOR TASK:
+
+# 2026-02-06 00:39:17.100176
++- DELETE all 'className' attributes and MUI/Tailwind imports from both files.
+
+# 2026-02-06 00:43:15.049888
++- FILE: src/components/BookingButton.tsx
+
+# 2026-02-06 00:46:04.646886
++  * Use a standard <a> tag.
+
+# 2026-02-06 00:46:49.934447
++  * HREF: https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX
+
+# 2026-02-06 00:49:17.868971
++  * STYLE: { backgroundColor: '#006aff', color: '#fff', padding: '12px 24px', borderRadius: '4px', fontWeight: 'bold', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block' }
+
+# 2026-02-06 01:06:34.987751
++- FILE: src/components/RackModule.tsx
+
+# 2026-02-06 01:09:53.581252
++  * DELETE legacy 'commission-link-1' links.
+
+# 2026-02-06 01:12:16.639624
++  * CONTAINER STYLE: { width: '100%', maxWidth: '100vw', overflowX: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 auto' }
+
+# 2026-02-06 01:16:06.749482
++  * FIX PROPORTIONS: Ensure rack images are 'max-width: 100%' and 'height: auto'.TASK: Finish the weld. 
+
+# 2026-02-06 01:17:03.784555
++1. Ensure 'ButtonContainer.tsx' has ZERO padding or margins that could cause "Clunky Creep."
+
+# 2026-02-06 01:19:17.028611
++2. In 'RackModule.tsx', make sure the images are set to { display: 'block', width: '100%' } so they don't leave "Ghost Gaps" between the rack ears.
+
+# 2026-02-06 01:47:14.782038
++3. If 'ButtonContainer' is a new file, make sure it is imported into 'RackModule' with 'width: 100%' so it doesn't drift off into the nebula.The most useful research direction to pursue right now is High-Performance Engineering (Direction 2), specifically focusing on React 20 and the WebGPU/WebGL 2.0 pipeline.
+
+# 2026-02-06 01:48:11.870230
++In the 2026 digital landscape, performance has shifted from an optimization step to a foundational prerequisite for all design trends . For a complex, modular "Rack UI" like yours, technical execution is the primary bottleneck. If the interface lags while a user is "turning" a virtual knob or "plugging in" a patch cable, the experience will feel disconnected and unprofessional, regardless of its visual beauty .
+
+# 2026-02-06 01:49:14.335436
++Why this is the "Most Useful" Next Step:
+
+# 2026-02-06 01:50:18.633589
++Award Criteria: Organizations like Awwwards and CSSDA specifically judge "Intricacy of Code" and "Performance" as core metrics. Winning the "Developer Award" is often the gateway to "Site of the Year" status.
+
+# 2026-02-06 01:51:20.923107
++User Retention: On mobile devices, which account for nearly 60% of traffic, performance is the only trend that guarantees conversion .
+
+# 2026-02-06 01:52:25.174407
++The "Engine" vs. The "Body": Before you can implement "Agentic UX" or "IoT Digital Twins," you must have a rendering engine capable of handling hundreds of interactive 3D elements simultaneously.
+
+# 2026-02-06 01:53:29.721207
++Specific Technical Research Targets:
+
+# 2026-02-06 01:54:32.970237
++The React Compiler (React 19/20): Research how to utilize the new compiler to eliminate manual memoization (useMemo, useCallback). This ensures that your rack's individual modules only re-render when their specific data (like a signal level or switch state) changes, maintaining "zero-lag" performance .
+
+# 2026-02-06 01:59:48.051639
++React Three Fiber & Rapier Physics: For your rack to feel "modular," you need a physics engine that handles interactive cabling. Research the Rapier library, which is currently preferred over older engines like Cannon because it is faster and more stable for modern web standards .
+
+# 2026-02-06 02:04:50.543965
++Metal Performance Shaders & WebGPU: To achieve the realistic metallic textures and reflections expected of high-end studio gear, research how to transition from standard WebGL to WebGPU. This offers 510x faster performance, allowing for rendering complexity that was previously impossible in a browser .
+
+# 2026-02-06 02:05:50.786682
++AudioMotion-analyzer Integration: Research how to embed this high-resolution, zero-dependency spectral analyzer into your rack's "Master Meter" module. It provides real-time visualizations that are both lightweight and visually stunning .
+
+# 2026-02-06 02:06:52.911025
++The Strategy for your /rack
+
+# 2026-02-06 02:08:14.682691
++By mastering the engineering first, you ensure that when you eventually add the Psychological Brand Synergy (Direction 4)like the "enable sound to start" interactive gateway used by Chiara Luzzanathe transition is seamless and immersive rather than stuttered .
+
+# 2026-02-06 03:33:49.940274
++git log -n 1 --stat
+
+# 2026-02-06 03:34:50.090648
++/add src/components/BookingButton.tsx src/components/RackModule.tsx src/index.css
+
+# 2026-02-06 03:34:50.244348
++/clear
+
+# 2026-02-06 03:34:50.275474
++Apply the final Technical Mono visual anchors:
+
+# 2026-02-06 03:42:38.372890
++1. In BookingButton.tsx: Style the button with 'background: #000', 'color: #377867', 'border: 1px solid #377867', and 'font-family: monospace'. Ensure the text is 'EXECUTE_BOOKING'.
+
+# 2026-02-06 03:45:07.730478
++2. In RackModule.tsx: Add the 8px L-bracket corner crops to the image wrapper using pseudo-elements ::before and ::after with a #377867 stroke.
+
+# 2026-02-06 03:56:23.058587
++3. In index.css: Force 'JetBrains Mono' globally./add src/index.css
