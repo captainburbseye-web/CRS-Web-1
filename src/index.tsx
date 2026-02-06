@@ -85,8 +85,8 @@ app.post('/api/contact', async (c) => {
     }[serviceType] || 'General Enquiry'
     
     const emailData = {
-      from: 'CRS Contact Form <noreply@cowleyroadstudios.com>',
-      to: ['info@cowleyroadstudios.com'],
+      from: 'CRS Contact Form <noreply@crsoxford.com>',
+      to: ['info@crsoxford.com'],
       subject: `[CRS ${serviceType.toUpperCase()}] ${body.subject || serviceLabel}`,
       html: `
         <div style="font-family: 'JetBrains Mono', monospace; max-width: 600px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #00ff00; border: 2px solid #333;">
@@ -429,7 +429,7 @@ const Footer = () => (
         {/* Contact */}
         <div class="footer-data-block">
           <p class="footer-data-label">CONTACT</p>
-          <p class="footer-data-line"><a href="/contact" class="footer-link">studio@cowleyroadstudios.com</a></p>
+          <p class="footer-data-line"><a href="/contact" class="footer-link">info@crsoxford.com</a></p>
         </div>
         
         {/* System Signature */}
@@ -1643,7 +1643,7 @@ app.get('/cafe', (c) => {
     </>,
     {
       title: 'Contact Cowley Road Studios | Recording Studio Oxford',
-      description: 'Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Located in East Oxford. Email: studio@cowleyroadstudios.com',
+      description: 'Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Located in East Oxford. Email: info@crsoxford.com',
       keywords: 'contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford'
     }
   )
@@ -1696,7 +1696,7 @@ app.get('/contact', (c) => {
     </>,
     {
       title: 'Contact Cowley Road Studios | Recording Studio Oxford',
-      description: 'Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Located in East Oxford. Email: studio@cowleyroadstudios.com',
+      description: 'Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Located in East Oxford. Email: info@crsoxford.com',
       keywords: 'contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford'
     }
   )

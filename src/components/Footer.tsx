@@ -71,7 +71,7 @@ export const Footer = () => (
 
       <div class="terminal-status-section">
         <div class="terminal-status-label">CONTACT</div>
-        <div class="terminal-status-line"><a href="mailto:studio@cowleyroadstudios.com">studio@cowleyroadstudios.com</a></div>
+        <div class="terminal-status-line"><a href="mailto:info@crsoxford.com">info@crsoxford.com</a></div>
       </div>
 
       <div class="terminal-status-section">

@@ -127,7 +127,7 @@ export const Soundworks = () => {
             Questions about the transition?
           </p>
           <p style={{ marginBottom: '1.5rem' }}>
-            Contact us at <a href="mailto:studio@cowleyroadstudios.com" style={{ color: 'var(--text-gold)', textDecoration: 'underline' }}>studio@cowleyroadstudios.com</a>
+            Contact us at <a href="mailto:info@crsoxford.com" style={{ color: 'var(--text-gold)', textDecoration: 'underline' }}>info@crsoxford.com</a>
           </p>
           <a href="/contact" style={{ display: 'inline-block', padding: '0.75rem 2rem', background: 'var(--text-gold)', color: '#000', fontWeight: 700, textDecoration: 'none', borderRadius: '4px' }}>
             GET IN TOUCH

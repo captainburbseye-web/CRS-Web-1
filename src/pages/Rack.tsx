@@ -284,7 +284,7 @@ export const RackPage = () => (
         className="channel-active-white"
       >
         <div class="contact-info">
-          <p><strong>Email:</strong> <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a></p>
+          <p><strong>Email:</strong> <a href="mailto:info@crsoxford.com">info@crsoxford.com</a></p>
           <p><strong>Phone:</strong> <a href="tel:+447515886945">+44 7515 886945</a></p>
           <p><strong>Socials:</strong> 
             <a href="https://www.instagram.com/cowleyroadstudios" target="_blank" rel="noopener">Instagram</a> ·
