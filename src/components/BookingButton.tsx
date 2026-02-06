@@ -11,8 +11,9 @@ const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/con
     <a
       href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
       style={{
-        backgroundColor: '#377867',
-        color: '#fff',
+        backgroundColor: '#000',
+        color: '#377867',
+        border: '1px solid #377867',
         padding: '12px 24px',
         borderRadius: '4px',
         fontWeight: 'bold',
