@@ -28,7 +28,7 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
           loop 
           muted 
           class="module-video"
-          src={`https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/${videoId}.mp4`}
+          src={`https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/-RACK%20MP4%20%20GRAPHICS/${videoId}.mp4`}
         />
       )}
       {children}
