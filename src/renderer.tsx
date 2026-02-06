@@ -108,6 +108,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* 10. MACHINED ASSETS: Glass Pane architecture with static PBR assets (Phase 3B - Strike 6) */}
         <link href="/static/crs-machined-assets.css" rel="stylesheet" />
+        
+        {/* 11. SVG WAVEFORMS: Living signal presence for visual feedback (Phase 3C - Strike 8) */}
+        <link href="/static/crs-waveform.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}

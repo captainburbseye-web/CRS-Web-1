@@ -1,6 +1,7 @@
 import { Footer } from '../components/Footer'
 import { RotaryKnob } from '../components/RotaryKnob'
 import { GlassOverlay } from '../components/GlassOverlay'
+import { Waveform } from '../components/Waveform'
 
 interface RackModuleProps {
   label: string
@@ -28,10 +29,18 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
           {/* LAYER 1: Base Machined Asset (static image) */}
           <div class="rack-asset-base"></div>
           
-          {/* LAYER 2: Machined Window (glass or organic grain) */}
+          {/* LAYER 2: SVG Waveform Signal Feed (living pulse) */}
+          <Waveform 
+            channel={channel} 
+            style={channel === '7' ? 'oscilloscope' : 'oscilloscope'}
+            amplitude={1}
+            frequency={1}
+          />
+          
+          {/* LAYER 3: Machined Window (glass or organic grain) */}
           <div class="rack-glass-overlay"></div>
           
-          {/* LAYER 3: Neon Pulse Rail (active signal) */}
+          {/* LAYER 4: Neon Pulse Rail (active signal) */}
           <div class="rack-signal-pulse"></div>
         </div>
       )}
