@@ -6,7 +6,7 @@ interface BookingButtonProps {
   buttonLabel?: string;
 }
 
-const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/contact?service=venue', buttonLabel = 'VIEW_DETAILS' }) => {
+const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/contact?service=venue', buttonLabel = 'EXECUTE_BOOKING' }) => {
   return (
     <a
       href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
