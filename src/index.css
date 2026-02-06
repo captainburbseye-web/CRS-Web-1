@@ -10,3 +10,7 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
+
+.technical-mono {
+  font-family: 'Technical Mono', monospace;
+}

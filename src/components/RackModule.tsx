@@ -77,7 +77,7 @@ const RackModule: React.FC<RackModuleProps> = ({ label, type = 'standard', child
         
         {/* Booking Button */}
         {bookingUrl && (
-          <BookingButton label={label} bookingUrl={bookingUrl} buttonLabel={buttonLabel || 'BOOK NOW'} />
+          <BookingButton label={label} bookingUrl={bookingUrl} buttonLabel={buttonLabel || 'BOOK NOW'} className="technical-mono" />
         )}
       </div>
     </section>
