@@ -2269,9 +2269,11 @@ body::after {
 
 /* Sub-Rack Power Switch Button */
 .rack-module.sub-rack .power-switch {
-  font-size: 0.75rem; /* REDUCED from default */
-  padding: 8px 16px; /* REDUCED from 12px 24px */
-  letter-spacing: 0.08em;
+  font-size: 0.7rem; /* Further reduced from 0.75rem */
+  padding: 6px 12px; /* Further reduced from 8px 16px */
+  letter-spacing: 0.06em;
+  min-height: 36px; /* Reduced from default 44px */
+  font-weight: 500; /* Lighter weight for smaller size */
 }
 
 /* Mobile Sub-Rack Adjustments */
