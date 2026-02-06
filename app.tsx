@@ -50,7 +50,7 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
                 title={`Route to ${buttonLabel || 'booking'}`}
                 type="button"
               >
-                {buttonLabel || 'PATCH TO BOOK'}
+                {buttonLabel || 'VIEW_DETAILS'}
               </button>
             </a>
           ) : bookingUrl ? (
@@ -60,11 +60,11 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
                 title={`Route to ${buttonLabel || 'booking'}`}
                 type="button"
               >
-                {buttonLabel || 'PATCH TO BOOK'}
+                {buttonLabel || 'VIEW_DETAILS'}
               </button>
             </a>
           ) : qrLink ? (
-            <a href={qrLink} target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">PATCH TO BOOK</a>
+            <a href={qrLink} target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">VIEW_DETAILS</a>
           ) : null}
         </div>
       )}
@@ -102,7 +102,7 @@ export const RackPage = () => (
             videoId={3} 
             bookingRoute="commission-studio"
             bookingUrl="https://square.link/u/commission-link-1"
-            buttonLabel="COMMISSION ALLOCATION"
+            buttonLabel="VIEW_DETAILS"
           >
             <p class="sub-rack-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
           </RackModule>
@@ -112,7 +112,7 @@ export const RackPage = () => (
             videoId={5} 
             bookingRoute="recording-live"
             bookingUrl="https://square.link/u/WPqRFIGW"
-            buttonLabel="REHEARSE NOW"
+            buttonLabel="VIEW_DETAILS"
           >
             <p class="sub-rack-description">92 Cricket Road, Oxford OX4 3DJ · Hourly rates</p>
           </RackModule>
@@ -125,7 +125,7 @@ export const RackPage = () => (
         videoId={7} 
         bookingRoute="commission-studio"
         bookingUrl="https://square.link/u/commission-link-1"
-        buttonLabel="COMMISSION ALLOCATION"
+        buttonLabel="VIEW_DETAILS"
       >
         <p class="module-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
       </RackModule>
@@ -135,7 +135,7 @@ export const RackPage = () => (
         videoId={11}
         bookingRoute="allocation-av"
         bookingUrl="https://square.link/u/commission-link-3"
-        buttonLabel="ALLOCATION AVAILABLE"
+        buttonLabel="VIEW_DETAILS"
       >
         <p class="module-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
       </RackModule>
@@ -146,7 +146,7 @@ export const RackPage = () => (
         videoId={10}
         bookingRoute="commission-podcast"
         bookingUrl="https://square.link/u/commission-link-2"
-        buttonLabel="COMMISSION ALLOCATION"
+        buttonLabel="VIEW_DETAILS"
       >
         <p class="module-description">118 Cowley Road · Public-facing space for community events, workshops, and creative programming.</p>
       </RackModule>
@@ -212,7 +212,7 @@ export const HomePage = () => (
             videoId={3} 
             bookingRoute="commission-studio"
             bookingUrl="https://square.link/u/commission-link-1"
-            buttonLabel="COMMISSION ALLOCATION"
+            buttonLabel="VIEW_DETAILS"
           >
             <p class="sub-rack-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
           </RackModule>
@@ -222,7 +222,7 @@ export const HomePage = () => (
             videoId={5} 
             bookingRoute="recording-live"
             bookingUrl="https://square.link/u/WPqRFIGW"
-            buttonLabel="REHEARSE NOW"
+            buttonLabel="VIEW_DETAILS"
           >
             <p class="sub-rack-description">92 Cricket Road, Oxford OX4 3DJ · Hourly rates</p>
           </RackModule>
@@ -235,7 +235,7 @@ export const HomePage = () => (
         videoId={7} 
         bookingRoute="commission-studio"
         bookingUrl="https://square.link/u/commission-link-1"
-        buttonLabel="COMMISSION ALLOCATION"
+        buttonLabel="VIEW_DETAILS"
       >
         <p class="module-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
       </RackModule>
@@ -245,7 +245,7 @@ export const HomePage = () => (
         videoId={11}
         bookingRoute="allocation-av"
         bookingUrl="https://square.link/u/commission-link-3"
-        buttonLabel="ALLOCATION AVAILABLE"
+        buttonLabel="VIEW_DETAILS"
       >
         <p class="module-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
       </RackModule>
@@ -256,7 +256,7 @@ export const HomePage = () => (
         videoId={10}
         bookingRoute="commission-podcast"
         bookingUrl="https://square.link/u/commission-link-2"
-        buttonLabel="COMMISSION ALLOCATION"
+        buttonLabel="VIEW_DETAILS"
       >
         <p class="module-description">118 Cowley Road · Public-facing space for community events, workshops, and creative programming.</p>
       </RackModule>

@@ -12,7 +12,7 @@ interface RackModuleProps {
   buttonLabel?: string;
 }
 
-const RackModule: React.FC<RackModuleProps> = ({ label, type = 'standard', children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel }) => {
+const RackModule: React.FC<RackModuleProps> = ({ label, type = 'standard', children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel }: RackModuleProps) => {
   const imageSrc = useMemo(() => videoId || qrLink, [videoId, qrLink]);
 
   return (
@@ -115,7 +115,7 @@ const RackModule: React.FC<RackModuleProps> = ({ label, type = 'standard', child
         
         {/* Booking Button */}
         {bookingUrl && (
-          <BookingButton label={label} bookingUrl={bookingUrl} buttonLabel={buttonLabel || 'BOOK NOW'} className="technical-mono" />
+          <BookingButton label={label} bookingUrl={bookingUrl} buttonLabel={buttonLabel || 'VIEW_DETAILS'} className="technical-mono" />
         )}
       </div>
     </section>
