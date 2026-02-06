@@ -56,74 +56,31 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700&family=Archivo+Black&display=swap" rel="stylesheet" />
         
-        {/* Clean CSS */}
-        <link href="/static/clean.css" rel="stylesheet" />
+        {/* ============================================
+             CRS CORE CSS — 7 Files (Consolidated 44 → 7)
+             Load order: Reset → Typography → Spacing → Rack UI → Header → Footer → Mobile
+             ============================================ */}
         
-        {/* CRS SPACING SCALE: 8px base unit system - foundation for all rhythm (LOADS EARLY) */}
-        <link href="/static/crs-spacing-scale.css" rel="stylesheet" />
+        {/* 1. RESET: Browser reset, global box-sizing, root variables */}
+        <link href="/static/crs-reset.css" rel="stylesheet" />
         
-        {/* CRS HEADER THREE-ZONE: Institutional header grid - logo | nav | cta (LOADS BEFORE OTHER HEADER CSS) */}
-        <link href="/static/crs-header-three-zone.css" rel="stylesheet" />
+        {/* 2. TYPOGRAPHY: Font families, sizes, weights, letter-spacing */}
+        <link href="/static/crs-typography.css" rel="stylesheet" />
         
-        {/* CRS MASTER RACK HEADER: 1U rack unit below sticky nav (LOADS AFTER THREE-ZONE) */}
-        <link href="/static/crs-master-rack-header.css" rel="stylesheet" />
+        {/* 3. SPACING: 8px scale system, gaps, margins, padding */}
+        <link href="/static/crs-spacing.css" rel="stylesheet" />
         
-        <link href="/static/crs-positioning-fixes.css" rel="stylesheet" />
-        <link href="/static/crs-proportion-fixes.css" rel="stylesheet" />
-        <link href="/static/crs-nav-button-refinement.css" rel="stylesheet" />
-        <link href="/static/crs-nav-correction.css" rel="stylesheet" />
-        <link href="/static/crs-mobile-nav.css" rel="stylesheet" />
-        <link href="/static/crs-audit-fixes.css" rel="stylesheet" />
-        <link href="/static/crs-header-vertical-separation.css" rel="stylesheet" />
-        <link href="/static/crs-header-logo.css" rel="stylesheet" />
-        {/* Hardware Discipline */}
-        <link href="/static/crs-hardware-discipline-final.css" rel="stylesheet" />
-        {/* CONTAINMENT FIX: Layering + Mounting */}
-        <link href="/static/crs-containment-fix.css" rel="stylesheet" />
-        {/* CHASSIS LOCK: Final header specification */}
-        <link href="/static/crs-header-chassis-lock.css" rel="stylesheet" />
-        {/* PRESENCE SIGNALS: Hardware status indicators + imagery */}
-        <link href="/static/crs-presence-signals.css" rel="stylesheet" />
-        {/* FINAL OVERRIDES: Nuclear fixes (MUST load ABSOLUTE LAST) */}
-        <link href="/static/crs-final-overrides.css" rel="stylesheet" />
-        {/* RACK UI V2: Physical hardware aesthetic (LOADS LAST TO OVERRIDE ALL) */}
-        <link href="/static/crs-rack-ui-v2.css" rel="stylesheet" />
-        {/* RACK UNIT CANONICAL: Single source of truth for rack modules (REFERENCE OBJECT) */}
-        <link href="/static/crs-rack-unit-canonical.css" rel="stylesheet" />
-        {/* WSC MODE: Workshop Café warmth overrides (controlled mode switch) */}
-        <link href="/static/crs-wsc-mode.css" rel="stylesheet" />
-        {/* CLASSIC AESTHETIC: Saturday best look (loads last, overrides V2 for CRS pages) */}
-        <link href="/static/crs-classic-aesthetic.css" rel="stylesheet" />
-        {/* PRECISION CALIBRATION: Exact pixel-level sizing for Technical Institution aesthetic (MUST LOAD ABSOLUTE LAST) */}
-        <link href="/static/crs-precision-calibration.css" rel="stylesheet" />
-        {/* TYPOGRAPHY LOCKDOWN: Hard separation of typographic domains - controls immunity (LOADS AFTER EVERYTHING) */}
-        <link href="/static/crs-typography-lockdown.css" rel="stylesheet" />
-        {/* BOOK NOW CONTROL: Hardware-grade control spec - sacred, do not iterate (LOADS ABSOLUTE LAST) */}
-        <link href="/static/crs-book-now-control.css" rel="stylesheet" />
-        {/* FOOTER TECHNICAL: Service manual / datasheet footer format */}
-        <link href="/static/crs-footer-technical.css" rel="stylesheet" />
-        {/* RACK FOOTER TERMINATION: 1U rack unit that closes the rack case at bottom */}
-        <link href="/static/crs-rack-footer-termination.css" rel="stylesheet" />
-        {/* RACK CONSOLE OMNA: Signal path architecture with parent/sub-rack hierarchy (LOADS LAST FOR /rack ROUTE) */}
-        <link href="/static/rack-console-omna.css" rel="stylesheet" />
-        {/* HEADER LOCKDOWN RESET: Nuclear header reset - prevents all drift (LOADS ABSOLUTE LAST - STEEL BEAM) */}
-        <link href="/static/crs-header-reset.css" rel="stylesheet" />
-        {/* BACK TO TOP BUTTON: Floating button for scroll navigation */}
-        <link href="/static/back-to-top.css" rel="stylesheet" />
-        {/* CONTACT AFFORDANCE: 44px button-style blocks for email/phone links */}
-        <link href="/static/contact-affordance.css" rel="stylesheet" />
-        {/* WIDTH ALIGNMENT PATCH: Canonical 900px width for header, cards, footer (CANONICAL / LOCKED) */}
-        <link href="/static/width-alignment-patch.css" rel="stylesheet" />
-        {/* RACK MODULE: Heavyweight institutional styling for scoped modules (PHASE 1 DEPLOYMENT) */}
-        <link href="/static/rack-module.css" rel="stylesheet" />
-        {/* HEADER VERTICAL ALIGNMENT: Ensures logo, nav, and CTA sit on same midline (MICRO-PATCH) */}
-        <link href="/static/header-vertical-alignment-patch.css" rel="stylesheet" />
-        {/* RACK FOOTER: Horizontal back-panel layout for footer (FINAL PASS) */}
-        <link href="/static/rack-footer.css" rel="stylesheet" />
-        {/* TERMINAL STATUS FOOTER: Firmware-style system readout (NORMALISATION) */}
-        <link href="/static/terminal-status-footer.css" rel="stylesheet" />
-        {/* RACK CONSOLE: Reason DAW-style interface for /rack page */}
-        <link href="/static/rack-console.css" rel="stylesheet" />
+        {/* 4. RACK UI: Rack units, LED indicators, hardware aesthetic */}
+        <link href="/static/crs-rack-ui.css" rel="stylesheet" />
+        
+        {/* 5. HEADER: Header, nav, sticky behavior, logo, CTA */}
+        <link href="/static/crs-header.css" rel="stylesheet" />
+        
+        {/* 6. FOOTER: Footer (technical metadata + termination panel) */}
+        <link href="/static/crs-footer.css" rel="stylesheet" />
+        
+        {/* 7. MOBILE: Mobile overrides, hamburger menu, responsive */}
+        <link href="/static/crs-mobile.css" rel="stylesheet" />
       </head>
       <body>
         {children}

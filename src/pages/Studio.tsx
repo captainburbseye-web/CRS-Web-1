@@ -20,18 +20,18 @@ export const StudioPage = () => (
         </div>
       </div>
 
-      {/* PRE-SALE MODULE — FUND THE BUILD */}
+      {/* BUILD RATE FUNDING — COMMISSION YOUR SESSION */}
       <div class="content-block" style="background: rgba(127, 255, 0, 0.05); border: 3px solid #39FF14; padding: 2rem; margin-bottom: 2rem;">
         <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
           <span class="led green" style="width: 14px; height: 14px;"></span>
           <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.25rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">
-            BUILD RATE PRE-SALE · FUND THE BUILD
+            BUILD RATE BOOKING · COMMISSION YOUR SESSION
           </h3>
         </div>
         
         <div style="font-family: 'Inter', sans-serif; font-size: 0.938rem; line-height: 1.7; color: rgba(245, 245, 245, 0.9); margin-bottom: 2rem;">
           <p style="margin-bottom: 1rem; font-weight: 600; color: #39FF14;">
-            Why book production time now?
+            Book production time now at build rates
           </p>
           <ul style="list-style: none; padding: 0; margin-bottom: 1.5rem;">
             <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
@@ -40,7 +40,7 @@ export const StudioPage = () => (
             </li>
             <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
               <span style="position: absolute; left: 0; color: #39FF14; font-weight: bold;">→</span>
-              Your allocation directly funds final-stage construction
+              Your booking directly funds final-stage construction
             </li>
             <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
               <span style="position: absolute; left: 0; color: #39FF14; font-weight: bold;">→</span>
@@ -53,11 +53,11 @@ export const StudioPage = () => (
           </ul>
           
           <p style="font-size: 0.875rem; font-style: italic; color: rgba(245, 245, 245, 0.7); margin-bottom: 2rem;">
-            All allocations are transferable and can be scheduled flexibly once the studio is operational. Valid for 12 months from opening.
+            All bookings are transferable and can be scheduled flexibly once operational. Valid for 12 months from opening.
           </p>
         </div>
         
-        {/* Pre-Sale Packages */}
+        {/* Build Rate Packages */}
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
           
           {/* Package 1: 5-Hour Production */}

@@ -26,7 +26,7 @@ export const Work = () => {
           
           <div style={{ background: 'rgba(0,0,0,0.3)', borderLeft: '3px solid var(--crs-green)', padding: '1rem', marginBottom: '1rem' }}>
             <p className="mono" style={{ color: 'var(--text-gold)', fontSize: '0.875rem', marginBottom: '0.5rem' }}>
-              [Project listings coming soon]
+              [Portfolio archive in progress]
             </p>
             <p style={{ fontSize: '0.875rem', opacity: 0.7 }}>
               Format: EP / Album / Single / Podcast<br/>
@@ -46,7 +46,7 @@ export const Work = () => {
           
           <div style={{ background: 'rgba(0,0,0,0.3)', borderLeft: '3px solid var(--crs-green)', padding: '1rem', marginBottom: '1rem' }}>
             <p className="mono" style={{ color: 'var(--text-gold)', fontSize: '0.875rem', marginBottom: '0.5rem' }}>
-              [Project listings coming soon]
+              [Portfolio archive in progress]
             </p>
             <p style={{ fontSize: '0.875rem', opacity: 0.7 }}>
               Type: Performance / Conference / Festival / Installation<br/>

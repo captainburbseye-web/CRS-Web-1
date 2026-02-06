@@ -780,16 +780,24 @@ app.get('/crs-cricket-road', (c) => {
 })
 
 // HOME
+// ROOT: HARDWARE RACK CONSOLE (Hardware-first landing page)
 app.get('/', (c) => {
   return c.render(
-    <HomePage />,
+    <>
+      <Header />
+      <RackPage />
+      <Footer />
+    </>,
     {
       title: 'Cowley Road Studios Oxford | Recording Studio, Rehearsal Space & AV Services',
-      description: 'Professional recording studio, rehearsal space, and live AV services in Oxford. Multi-room tracking, vintage gear, and community-focused pricing. Formerly Soundworks Oxford.',
+      description: 'Professional recording studio, rehearsal space, and live AV services in Oxford. Hardware rack console for signal routing and bookings. Formerly Soundworks Oxford.',
       keywords: 'recording studio oxford, rehearsal space oxford, live sound oxford, av services oxford, cowley road studios, soundworks oxford, music production oxford, podcast studio oxford, band rehearsal oxford, audio repair oxford, workshop cafe oxford, cricket road studio'
     }
   )
 })
+
+// HOME PAGE: Redirect to root (kept for legacy compatibility)
+app.get('/home', (c) => c.redirect('/'))
 
 // STUDIO
 app.get('/studio', (c) => {

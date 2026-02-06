@@ -30,7 +30,7 @@ export const HomePage = () => (
           </p>
         </div>
         <div style="text-align: center;">
-          <a href="/studio" class="cta-button cta-button-primary" style="border-color: #FF8C00; color: #FF8C00; background: rgba(255, 140, 0, 0.1); font-size: 1.1rem; padding: 14px 28px;">STUDIO PRE-SALE</a>
+          <a href="/studio" class="cta-button cta-button-primary" style="border-color: #FF8C00; color: #FF8C00; background: rgba(255, 140, 0, 0.1); font-size: 1.1rem; padding: 14px 28px;">BOOK STUDIO SESSION</a>
         </div>
       </div>
     </section>
