@@ -9,7 +9,7 @@ interface BookingButtonProps {
 const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/contact?service=venue', buttonLabel = 'Book Now' }) => {
   return (
     <a
-      href={bookingUrl}
+      href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
       style={{
         backgroundColor: '#006aff',
         color: '#fff',
