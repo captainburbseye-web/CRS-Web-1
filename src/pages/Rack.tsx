@@ -1,5 +1,6 @@
 import { Footer } from '../components/Footer'
 import { RotaryKnob } from '../components/RotaryKnob'
+import { GlassOverlay } from '../components/GlassOverlay'
 
 interface RackModuleProps {
   label: string
@@ -23,13 +24,16 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
     </div>
     <div class="module-body">
       {videoId && (
-        <video 
-          autoplay 
-          loop 
-          muted 
-          class="module-video"
-          src={`https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/-RACK%20MP4%20%20GRAPHICS/${videoId}.mp4`}
-        />
+        <div class="rack-window-container">
+          <video 
+            autoplay 
+            loop 
+            muted 
+            class="module-video"
+            src={`https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/-RACK%20MP4%20%20GRAPHICS/${videoId}.mp4`}
+          />
+          <GlassOverlay />
+        </div>
       )}
       {children}
       {(qrLink || bookingRoute || bookingUrl) && (

@@ -1,13 +1,23 @@
 /* ====================================================================
-   CRS NEON SYSTEM v1.0 — TRIPLE-LAYER GLOW ARCHITECTURE
+   CRS MASTER SIGNAL PATH v2.0 — AWWWARDS-LEVEL IMMERSION
+   
    THE 186th LAW: "Balance the cold precision of the gear with 
                    the warm texture of the shop."
    
-   Phase 2A: Award-Winning Visual Enhancement
+   THE 197th LAW: "The Global Rail — one source, total illumination."
+   
+   THE 201st LAW: "The Lived-In Digital — imperfections are the brand."
+   
+   THE 202nd LAW: "The Protective Pane — reflection creates trust."
+   
+   Awwwards Enhancement (Strike 5):
+   - Master signal path with consolidated variables
    - Triple-layer box-shadow for gas tube bloom effect
    - Channel-specific color mapping (7 channels)
    - Pulsing LED animations with signal presence
-   - Kinetic typography for hero text
+   - Kinetic typography with CRT boot-up
+   - Machined window glass overlay for depth
+   - Nature Distilled warmth (Workshop Café)
    ==================================================================== */
 
 :root {
@@ -45,6 +55,11 @@
   --clay: #D2B48C;
   --off-white: #FAF9F6;
   --amber-glow: rgba(255, 165, 0, 0.5);
+  --dark-grey: #1a1a1a;          /* Machined Steel */
+  
+  /* Tactical Spacing & Timing (201st LAW) */
+  --unit-gap: 8px;               /* 8px Grid System */
+  --torque-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
   
   /* Channel Color Mapping */
   --channel-1-color: var(--neon-orange);
@@ -654,4 +669,71 @@
       0 0 2px var(--neon-green),
       0 0 4px var(--neon-green);
   }
+}
+
+/* ============================================================
+   THE 202nd LAW: THE PROTECTIVE PANE
+   Machined Window Glass Overlay for Skeuomorphic Depth
+   ============================================================ */
+
+.rack-window-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--unit-gap);
+  background: var(--dark-grey);
+}
+
+.rack-window-glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: 2; /* Above video/image, below neon border */
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  transition: opacity var(--glow-transition);
+}
+
+/* The "Lived-In Digital" grain texture (201st LAW) */
+.rack-window-glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.02) 30%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  filter: contrast(1.1) brightness(1.05);
+}
+
+/* Top-edge highlight: bezel reflection */
+.rack-window-glass::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* Hover effect: reflection brightens when operator engages */
+.rack-module:hover .rack-window-glass {
+  opacity: 1;
+}
+
+/* Module video gets glass overlay treatment */
+.module-video {
+  position: relative;
 }
