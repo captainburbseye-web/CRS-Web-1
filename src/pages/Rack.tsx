@@ -29,6 +29,9 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
             autoplay 
             loop 
             muted 
+            playsinline
+            loading="lazy"
+            preload="none"
             class="module-video"
             src={`https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/-RACK%20MP4%20%20GRAPHICS/${videoId}.mp4`}
           />
@@ -236,6 +239,6 @@ export const RackPage = () => (
     <Footer />
 
     {/* PATCH BAY ROUTING LOGIC - v4.1 */}
-    <script src="/assets/booking-router.js"></script>
+    <script src="/assets/booking-router.js" defer></script>
   </>
 )
