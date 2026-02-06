@@ -3,15 +3,9 @@ import BookingButton from './BookingButton';
 
 export const RackModule = ({ label, type = 'standard', children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel }) => (
   <section>
-    <div>
-      <div>
-        {/* Placeholder for LED status */}
-        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: #ccc;"></span>
-      </div>
-      <h2>{label}</h2>
-    </div>
-    
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 auto' }}>
+      <img src={videoId || qrLink} alt={label} style={{ display: 'block', width: '100%' }} />
+      
       {children}
       
       {/* Booking Button */}
