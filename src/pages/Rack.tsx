@@ -1,4 +1,5 @@
 import { Footer } from '../components/Footer'
+import { RotaryKnob } from '../components/RotaryKnob'
 
 interface RackModuleProps {
   label: string
@@ -195,7 +196,36 @@ export const RackPage = () => (
         videoId={12}
         channel="7"
       >
-        <p class="system-status">SIGNAL CLEAR · SYSTEM LIVE · READY FOR BOOKING</p>
+        <div class="system-status-panel">
+          <p class="system-status">SIGNAL CLEAR · SYSTEM LIVE · READY FOR BOOKING</p>
+          
+          <div class="knobs-row">
+            <RotaryKnob 
+              label="INPUT GAIN" 
+              min={0} 
+              max={100} 
+              defaultValue={75} 
+              channel="7"
+              unit="dB"
+            />
+            <RotaryKnob 
+              label="MONITOR MIX" 
+              min={0} 
+              max={100} 
+              defaultValue={60} 
+              channel="7"
+              unit="%"
+            />
+            <RotaryKnob 
+              label="SIGNAL LEVEL" 
+              min={0} 
+              max={100} 
+              defaultValue={85} 
+              channel="7"
+              unit="dB"
+            />
+          </div>
+        </div>
       </RackModule>
     </main>
 

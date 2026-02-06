@@ -523,6 +523,31 @@
 }
 
 /* ============================================================
+   SYSTEM STATUS PANEL — Knobs Integration
+   ============================================================ */
+
+.system-status-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.knobs-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .knobs-row {
+    gap: 1rem;
+  }
+}
+
+/* ============================================================
    RESPONSIVE ADJUSTMENTS
    Scale glow effects for mobile/tablet
    ============================================================ */

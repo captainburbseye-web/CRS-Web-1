@@ -84,6 +84,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* 8. NEON SYSTEM: Triple-layer glow, LED pulse, kinetic typography (Phase 2A) */}
         <link href="/static/crs-neon-system.css" rel="stylesheet" />
+        
+        {/* 9. ROTARY KNOBS: Physics-driven interactive controls (Phase 2B - Strike 2) */}
+        <link href="/static/crs-rotary-knob.css" rel="stylesheet" />
       </head>
       <body>
         {children}
