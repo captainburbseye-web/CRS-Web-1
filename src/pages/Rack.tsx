@@ -101,8 +101,8 @@ export const RackPage = () => (
             label="Cowley Road" 
             videoId={1} 
             bookingRoute="commission-studio"
-            bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
-            buttonLabel="COMMISSION ALLOCATION"
+            bookingUrl="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services"
+            buttonLabel="BOOK REHEARSAL"
             channel="1"
           >
             <p class="sub-rack-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
@@ -112,8 +112,8 @@ export const RackPage = () => (
             label="Cricket Road" 
             videoId={2} 
             bookingRoute="recording-live"
-            bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
-            buttonLabel="REHEARSE NOW"
+            bookingUrl="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services"
+            buttonLabel="BOOK REHEARSAL"
             channel="2"
           >
             <p class="sub-rack-description">92 Cricket Road, Oxford OX4 3DJ · Hourly rates</p>
