@@ -1,17 +1,17 @@
 import React from 'react';
 import BookingButton from './BookingButton';
 
-export const RackModule = ({ label, type = 'standard', className, children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel }) => (
-  <section class={`rack-unit device-${type} ${className}`}>
-    <div class="rack-unit-header">
-      <div class="rack-unit-led">
+export const RackModule = ({ label, type = 'standard', children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel }) => (
+  <section>
+    <div>
+      <div>
         {/* Placeholder for LED status */}
-        <span class="led" style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: #ccc;"></span>
+        <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: #ccc;"></span>
       </div>
-      <h2 class="rack-unit-title">{label}</h2>
+      <h2>{label}</h2>
     </div>
     
-    <div class="rack-unit-content">
+    <div>
       {children}
       
       {/* Booking Button */}
