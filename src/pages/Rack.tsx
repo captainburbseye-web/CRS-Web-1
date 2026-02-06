@@ -126,8 +126,8 @@ export const RackPage = () => (
         label="CONTROL ROOM — DRY HIRE" 
         videoId={7} 
         bookingRoute="commission-studio"
-        bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
-        buttonLabel="COMMISSION ALLOCATION"
+        bookingUrl="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
+        buttonLabel="BOOK DRY HIRE"
         channel="3"
       >
         <p class="module-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>

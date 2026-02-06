@@ -126,7 +126,7 @@ export const HomePage = () => (
           Monitoring and control room access. No engineer included. Ideal for independent production, mixing, and mastering work.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center;">
-          <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">BOOK CONTROL ROOM — DRY HIRE</a>
+          <a href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services" target="_blank" rel="noopener noreferrer" class="cta-button cta-button-primary">BOOK CONTROL ROOM — DRY HIRE</a>
           <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65);">Dry hire only · No engineer included</p>
         </div>
       </div>
