@@ -16,6 +16,7 @@ interface WaveformProps {
   frequency?: number
   color?: string
   style?: 'oscilloscope' | 'spectrum' | 'pulse'
+  signalIntensity?: number  // 0.1 to 1.5 (direct mechanical control)
 }
 
 export const Waveform = ({ 
@@ -23,7 +24,8 @@ export const Waveform = ({
   amplitude = 1,
   frequency = 1,
   color,
-  style = 'oscilloscope' 
+  style = 'oscilloscope',
+  signalIntensity = 1
 }: WaveformProps) => {
   
   // Channel-specific colors (matches neon system)

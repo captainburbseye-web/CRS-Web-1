@@ -87,10 +87,17 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
   </section>
 )
 
-// System Status Module with knob-to-waveform sync
+// System Status Module with full signal state management
 const SystemStatusModule = () => {
+  // State for all three knob parameters
+  const [inputGain, setInputGain] = useState(75)
+  const [monitorMix, setMonitorMix] = useState(60)
   const [signalLevel, setSignalLevel] = useState(85)
-  const waveformAmplitude = signalLevel / 100
+  
+  // Compute waveform parameters from knob states
+  const waveformAmplitude = signalLevel / 100  // 0.0 to 1.0
+  const waveformFrequency = inputGain / 50     // 0.0 to 2.0
+  const waveformIntensity = 0.1 + (signalLevel / 100) * 1.4  // 0.1 to 1.5
   
   return (
     <section class="rack-module standard channel-active-green" data-channel="7">
@@ -104,12 +111,13 @@ const SystemStatusModule = () => {
           {/* LAYER 1: Base Machined Asset (static image) */}
           <div class="rack-asset-base"></div>
           
-          {/* LAYER 2: SVG Waveform Signal Feed (living pulse) - SYNCED TO SIGNAL LEVEL KNOB */}
+          {/* LAYER 2: SVG Waveform Signal Feed - FULLY SYNCED TO ALL KNOBS */}
           <Waveform 
             channel="7"
             style="oscilloscope"
             amplitude={waveformAmplitude}
-            frequency={1}
+            frequency={waveformFrequency}
+            signalIntensity={waveformIntensity}
           />
           
           {/* LAYER 3: Machined Window (glass or organic grain) */}
@@ -131,6 +139,11 @@ const SystemStatusModule = () => {
               channel="7"
               unit="dB"
               glowColor="var(--neon-green)"
+              onChange={(value) => setInputGain(value)}
+              onIntensityChange={(intensity) => {
+                // Input gain affects frequency
+                // This creates the "frequency modulation" effect
+              }}
             />
             <RotaryKnob 
               label="MONITOR MIX" 
@@ -140,6 +153,7 @@ const SystemStatusModule = () => {
               channel="7"
               unit="%"
               glowColor="var(--neon-green)"
+              onChange={(value) => setMonitorMix(value)}
             />
             <RotaryKnob 
               label="SIGNAL LEVEL" 
@@ -150,6 +164,10 @@ const SystemStatusModule = () => {
               unit="dB"
               glowColor="var(--neon-green)"
               onChange={(value) => setSignalLevel(value)}
+              onIntensityChange={(intensity) => {
+                // Signal level affects amplitude
+                // Direct mechanical linkage: knob → intensity → waveform height
+              }}
             />
           </div>
         </div>

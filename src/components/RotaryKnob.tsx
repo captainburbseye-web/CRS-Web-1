@@ -28,6 +28,7 @@ interface RotaryKnobProps {
   glowColor?: string
   channel?: string
   onChange?: (value: number) => void
+  onIntensityChange?: (intensity: number) => void  // Direct signal intensity output
 }
 
 export const RotaryKnob = ({
