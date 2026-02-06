@@ -2,7 +2,7 @@
 body {
   font-family: 'JetBrains Mono', monospace !important;
   font-weight: 700 !important;
-  background: #000;
+  background-color: #000 !important;
   color: #fff;
   margin: 0;
   padding: 0;
