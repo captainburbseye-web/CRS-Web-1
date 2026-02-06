@@ -101,7 +101,7 @@ export const RackPage = () => (
             label="Cowley Road" 
             videoId={3} 
             bookingRoute="commission-studio"
-            bookingUrl="https://square.link/u/commission-link-1"
+            bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
             buttonLabel="COMMISSION ALLOCATION"
           >
             <p class="sub-rack-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
@@ -111,7 +111,7 @@ export const RackPage = () => (
             label="Cricket Road" 
             videoId={5} 
             bookingRoute="recording-live"
-            bookingUrl="https://square.link/u/WPqRFIGW"
+            bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
             buttonLabel="REHEARSE NOW"
           >
             <p class="sub-rack-description">92 Cricket Road, Oxford OX4 3DJ · Hourly rates</p>
@@ -124,7 +124,7 @@ export const RackPage = () => (
         label="CONTROL ROOM — DRY HIRE" 
         videoId={7} 
         bookingRoute="commission-studio"
-        bookingUrl="https://square.link/u/commission-link-1"
+        bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
         buttonLabel="COMMISSION ALLOCATION"
       >
         <p class="module-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
@@ -134,7 +134,7 @@ export const RackPage = () => (
         label="AV SERVICES — HIRE & REPAIR" 
         videoId={11}
         bookingRoute="allocation-av"
-        bookingUrl="https://square.link/u/commission-link-3"
+        bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
         buttonLabel="ALLOCATION AVAILABLE"
       >
         <p class="module-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
@@ -145,7 +145,7 @@ export const RackPage = () => (
         className="workshop-cafe"
         videoId={10}
         bookingRoute="commission-podcast"
-        bookingUrl="https://square.link/u/commission-link-2"
+        bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
         buttonLabel="COMMISSION ALLOCATION"
       >
         <p class="module-description">118 Cowley Road · Public-facing space for community events, workshops, and creative programming.</p>

@@ -484,7 +484,7 @@ app.get('/book', (c) => {
           </div>
           
           <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="https://square.link/u/UQidDzE0?src=embed" target="_blank" rel="noopener noreferrer" class="crs-button mono" style="font-size: 0.85rem; opacity: 0.7;">
+            <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX?src=embed" target="_blank" rel="noopener noreferrer" class="crs-button mono" style="font-size: 0.85rem; opacity: 0.7;">
               OPEN IN NEW TAB
             </a>
           </div>
@@ -578,7 +578,7 @@ app.get('/rehearsal', (c) => {
                   <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">2 HOURS</div>
                   <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£40</div>
                 </div>
-                <a href="https://square.link/u/WPqRFIGW?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
+                <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
                   BOOK NOW
                 </a>
               </div>
@@ -588,7 +588,7 @@ app.get('/rehearsal', (c) => {
                   <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">3 HOURS</div>
                   <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£55</div>
                 </div>
-                <a href="https://square.link/u/WPqRFIGW?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
+                <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
                   BOOK NOW
                 </a>
               </div>
@@ -598,7 +598,7 @@ app.get('/rehearsal', (c) => {
                   <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">4 HOURS</div>
                   <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£60</div>
                 </div>
-                <a href="https://square.link/u/WPqRFIGW?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
+                <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
                   BOOK NOW
                 </a>
               </div>
@@ -713,7 +713,7 @@ app.get('/crs-cowley-road', (c) => {
 
           {/* BOOKING CTA */}
           <div class="hero-cta">
-            <a href="https://square.link/u/UQidDzE0" target="_blank" rel="noopener noreferrer" class="crs-button mono">Book rehearsal — Cowley Road</a>
+            <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" target="_blank" rel="noopener noreferrer" class="crs-button mono">Book rehearsal — Cowley Road</a>
             <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65); margin-top: 0.75rem; text-align: center;">£45 / 2 hours · Rehearsal use only</p>
           </div>
 

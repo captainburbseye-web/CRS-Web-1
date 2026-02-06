@@ -72,7 +72,7 @@ export const StudioPage = () => (
               <p style="margin-bottom: 0.5rem;">• Limited to 50 allocations</p>
               <p style="margin-bottom: 0;">• Locked at 2025/26 rates</p>
             </div>
-            <a href="https://square.link/u/yDNnuBwl" target="_blank" rel="noopener" class="cta-button" style="background: #39FF14; color: #0A1A0F; border-color: #39FF14; font-weight: 700; width: 100%; text-align: center;">
+            <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" target="_blank" rel="noopener" class="cta-button" style="background: #39FF14; color: #0A1A0F; border-color: #39FF14; font-weight: 700; width: 100%; text-align: center;">
               BUY NOW
             </a>
           </div>
@@ -89,7 +89,7 @@ export const StudioPage = () => (
               <p style="margin-bottom: 0.5rem;">• Scheduling after facility opens</p>
               <p style="margin-bottom: 0;">• Valid 12 months from opening</p>
             </div>
-            <a href="https://square.link/u/P5sTeIon" target="_blank" rel="noopener" class="cta-button" style="background: #39FF14; color: #0A1A0F; border-color: #39FF14; font-weight: 700; width: 100%; text-align: center;">
+            <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" target="_blank" rel="noopener" class="cta-button" style="background: #39FF14; color: #0A1A0F; border-color: #39FF14; font-weight: 700; width: 100%; text-align: center;">
               BUY NOW
             </a>
           </div>
@@ -106,7 +106,7 @@ export const StudioPage = () => (
               <p style="margin-bottom: 0.5rem;">• Unlock dry hire access</p>
               <p style="margin-bottom: 0;">• One-time clearance</p>
             </div>
-            <a href="https://square.link/u/fOfAljaX" target="_blank" rel="noopener" class="cta-button" style="background: #39FF14; color: #0A1A0F; border-color: #39FF14; font-weight: 700; width: 100%; text-align: center;">
+            <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" target="_blank" rel="noopener" class="cta-button" style="background: #39FF14; color: #0A1A0F; border-color: #39FF14; font-weight: 700; width: 100%; text-align: center;">
               BUY NOW
             </a>
           </div>

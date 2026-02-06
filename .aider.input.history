@@ -718,3 +718,132 @@
 
 # 2026-02-06 03:56:23.058587
 +3. In index.css: Force 'JetBrains Mono' globally./add src/index.css
+
+# 2026-02-06 06:58:54.079797
++aider --architect
+
+# 2026-02-06 07:00:05.374993
++===============================================
+
+# 2026-02-06 07:01:37.292109
++"The site has double banners and ghost links. I need a total structural purge.
+
+# 2026-02-06 07:01:40.328525
++In src/App.tsx, remove any global <Header /> or <Footer /> that wraps the routes. The / path must return ONLY the <Rack /> component.
+
+# 2026-02-06 07:01:40.928514
++Hunt down every instance of square.link/u/ in the project and replace it with the master widget: https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX.
+
+# 2026-02-06 07:02:17.360243
++aider --model ollama_chat/qwen2.5-coder:7b --architect
+
+# 2026-02-06 07:02:46.113746
++aider --model ollama_chat/qwen2.5-coder:7b --editor-model ollama_chat/qwen2.5-coder:7b --architect
+
+# 2026-02-06 07:03:14.490543
++export OPENAI_API_KEY="" && aider --model ollama_chat/qwen2.5-coder:7b --architect
+
+# 2026-02-06 07:06:43.451481
++"Execute a total structural purge.
+
+# 2026-02-06 07:08:40.532849
++In src/App.tsx, delete the global <Header /> and <Footer /> components.
+
+# 2026-02-06 07:10:35.658231
++Ensure the / route returns ONLY <Rack /> with no wrappers.
+
+# 2026-02-06 07:13:31.049715
++Hunt and replace all square.link/u/ strings with https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX."
+
+# 2026-02-06 07:13:34.705640
++y
+
+# 2026-02-06 07:16:18.067868
++git add .
+
+# 2026-02-06 07:16:46.518793
++git commit -m "FINAL PURGE: Banners removed. Links unified. Rack is Home."
+
+# 2026-02-06 07:17:48.042880
++git push origin master/clear
+
+# 2026-02-06 07:21:23.240994
++In src/App.tsx, ensure <Header /> and <Footer /> are gone and / returns only <Rack />.
+
+# 2026-02-06 07:23:15.189639
++Replace every instance of square.link/u/ with https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX.
+
+# 2026-02-06 07:24:33.623705
++Do not explain. Just apply the edits."
+
+# 2026-02-06 07:26:52.727064
++ /add src/components/BookingButton.tsx src/components/Footer.tsx
+
+# 2026-02-06 07:27:07.238178
++/clear/clear/clear
+
+# 2026-02-06 07:27:23.968698
++I am the Captain. The links are NOT in App.tsx. 
+
+# 2026-02-06 07:27:23.993038
++Find every instance of 'square.link/u/' in the files I just added and the rest of the src folder.
+
+# 2026-02-06 07:27:24.022825
++Replace them all with 'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX'.
+
+# 2026-02-06 07:27:24.727255
++DO NOT SCRAPE THE URL. Just swap the text.I am the Captain. The links are NOT in App.tsx. 
+
+# 2026-02-06 07:27:24.748255
++Find every instance of 'square.link/u/' in the files I just added and the rest of the src folder.
+
+# 2026-02-06 07:27:24.777259
++Replace them all with 'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX'.
+
+# 2026-02-06 07:27:35.550290
++DO NOT SCRAPE THE URL. Just swap the text.y
+
+# 2026-02-06 07:27:42.574039
++d
+
+# 2026-02-06 07:27:48.319311
++y
+
+# 2026-02-06 07:28:57.770488
++/add src/components/BookingButton.tsx src/components/Footer.tsx
+
+# 2026-02-06 07:28:57.923966
++/clear
+
+# 2026-02-06 07:28:57.956516
++I am the Captain. The links are NOT in App.tsx. 
+
+# 2026-02-06 07:33:54.729116
++Find every instance of 'square.link/u/' in the files I just added and the rest of the src folder.
+
+# 2026-02-06 07:33:54.760876
++Replace them all with 'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX'.
+
+# 2026-02-06 07:34:11.888338
++DO NOT SCRAPE THE URL. Just swap the text.y
+
+# 2026-02-06 07:34:14.704796
++y
+
+# 2026-02-06 07:36:50.230356
++n
+
+# 2026-02-06 07:36:57.758920
++/add src/components/BookingButton.tsx src/components/Footer.tsx
+
+# 2026-02-06 07:36:57.926969
++/clear
+
+# 2026-02-06 07:36:57.957162
++I am the Captain. Stop the tutorials. 
+
+# 2026-02-06 07:37:57.688647
++Find every instance of 'square.link/u/' in the files I just added and the rest of the src folder.
+
+# 2026-02-06 07:39:40.607555
++Replace them all with 'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX'.
