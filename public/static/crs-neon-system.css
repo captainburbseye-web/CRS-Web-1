@@ -444,9 +444,82 @@
 }
 
 /* Warm text for café content */
-.cafe-module .module-description {
+.cafe-module .module-description,
+.cafe-content {
   color: var(--cafe-off-white);
   text-shadow: 0 0 2px rgba(255, 165, 0, 0.2);
+}
+
+/* Café Hero Text */
+.cafe-hero {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--cafe-off-white);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  text-shadow: 0 0 3px rgba(255, 165, 0, 0.15);
+}
+
+/* Café Section Titles */
+.cafe-section-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cafe-amber);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+/* Café Programming List */
+.cafe-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.cafe-list li {
+  font-family: 'Inter', 'Helvetica', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(250, 249, 246, 0.9);
+  margin-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.cafe-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--cafe-amber);
+  font-weight: bold;
+}
+
+.cafe-list li strong {
+  color: var(--cafe-off-white);
+  font-weight: 600;
+}
+
+/* Café Details */
+.cafe-details {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgba(250, 249, 246, 0.85);
+  border-top: 1px solid rgba(210, 180, 140, 0.3);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.cafe-details p {
+  margin-bottom: 0.5rem;
+}
+
+.cafe-details strong {
+  color: var(--cafe-amber);
+  font-weight: 700;
 }
 
 /* ============================================================

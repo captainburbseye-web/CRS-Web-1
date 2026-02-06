@@ -145,14 +145,35 @@ export const RackPage = () => (
 
       <RackModule 
         label="WORKSHOP CAFÉ + EVENTS" 
-        className="workshop-cafe"
+        className="workshop-cafe cafe-module"
         videoId={10}
         bookingRoute="commission-podcast"
         bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
         buttonLabel="COMMISSION ALLOCATION"
         channel="4"
       >
-        <p class="module-description">118 Cowley Road · Public-facing space for community events, workshops, and creative programming.</p>
+        <div class="cafe-content">
+          <p class="cafe-hero">
+            The Workshop Café is where ideas brew as freely as the coffee. A warm, analog space 
+            for collaboration, conversation, and creativity—no booking required for café hours, 
+            community programming by allocation.
+          </p>
+          
+          <div class="cafe-programming">
+            <h3 class="cafe-section-title">What We Offer</h3>
+            <ul class="cafe-list">
+              <li><strong>Open Creative Sessions</strong> — Drop-in workspace for artists, makers, and thinkers</li>
+              <li><strong>Technical Workshops</strong> — Hands-on learning (recording, mixing, live sound fundamentals)</li>
+              <li><strong>Community Events</strong> — Live sessions, listening parties, creative showcases</li>
+              <li><strong>Subsidised Rates</strong> — Community groups and cultural projects eligible for reduced hire</li>
+            </ul>
+          </div>
+          
+          <div class="cafe-details">
+            <p><strong>Location:</strong> 118 Cowley Road, Oxford OX4 1JE (ground floor, street-level access)</p>
+            <p><strong>Vibe:</strong> Vintage audio gear meets community coffee shop—analog warmth, technical credibility</p>
+          </div>
+        </div>
       </RackModule>
 
       <RackModule 
