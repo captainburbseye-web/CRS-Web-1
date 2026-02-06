@@ -172,9 +172,6 @@ export const RackPage = () => (
 
     <Footer />
 
-    {/* AUDIO: SWITCH CLICK SFX */}
-    <audio id="click-sfx" src="/assets/click.wav" preload="auto"></audio>
-
     {/* PATCH BAY ROUTING LOGIC - v4.1 */}
     <script src="/assets/booking-router.js"></script>
   </>

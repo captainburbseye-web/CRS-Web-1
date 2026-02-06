@@ -2190,3 +2190,99 @@ body::after {
 .header-services a::after {
   display: none !important;
 }
+
+/* ============================================================================
+   SUB-RACK UNIFORMITY FIX — THE 169th LAW
+   Tightened tolerances for machined aesthetic
+   ============================================================================ */
+
+/* Sub-Rack Row (Parent Container for Cowley + Cricket) */
+.sub-rack-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px; /* REDUCED from 15px */
+  margin-top: 12px; /* REDUCED from 15px */
+}
+
+@media (max-width: 768px) {
+  .sub-rack-row {
+    grid-template-columns: 1fr;
+    gap: 8px; /* REDUCED for mobile */
+  }
+}
+
+/* Individual Sub-Rack Modules (Cowley Road, Cricket Road) */
+.rack-module.sub-rack {
+  border: 2px solid #333; /* UNIFIED border with standard modules */
+  background: #1a1a1a; /* DARKER for contrast */
+  padding: 12px; /* REDUCED 50% from 24px (was padding: 15px, now tighter) */
+  position: relative;
+  min-height: 180px; /* REDUCED from 240px */
+}
+
+/* Sub-Rack Module Header */
+.rack-module.sub-rack .module-header {
+  margin-bottom: 8px; /* REDUCED from 1rem */
+  padding-bottom: 8px; /* REDUCED from 0.75rem */
+  border-bottom: 1px solid rgba(51, 51, 51, 0.5); /* SUBTLE separator */
+}
+
+/* Sub-Rack Module Title */
+.rack-module.sub-rack .module-title {
+  font-size: 0.938rem; /* REDUCED from 1rem */
+  font-family: 'Oswald', sans-serif; /* UNIFIED with headers */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.9);
+}
+
+/* Sub-Rack Description */
+.sub-rack-description {
+  font-family: 'JetBrains Mono', monospace; /* UNIFIED data font */
+  font-size: 0.813rem; /* REDUCED from 0.95rem */
+  line-height: 1.5; /* TIGHTENED from 1.6 */
+  color: rgba(245, 245, 245, 0.7);
+  margin: 0 0 10px 0; /* REDUCED bottom margin */
+}
+
+/* Sub-Rack Video */
+.rack-module.sub-rack .module-video {
+  height: 100px; /* REDUCED from 120px */
+  margin-bottom: 8px; /* REDUCED from 0.75rem */
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+/* Sub-Rack Patch Point */
+.rack-module.sub-rack .patch-point {
+  margin-top: 8px; /* REDUCED from 1rem */
+  padding-top: 8px; /* REDUCED from 1rem */
+  border-top: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+/* Sub-Rack QR Code */
+.rack-module.sub-rack .qr-code {
+  width: 80px; /* REDUCED from 100px */
+  height: 80px;
+}
+
+/* Sub-Rack Power Switch Button */
+.rack-module.sub-rack .power-switch {
+  font-size: 0.75rem; /* REDUCED from default */
+  padding: 8px 16px; /* REDUCED from 12px 24px */
+  letter-spacing: 0.08em;
+}
+
+/* Mobile Sub-Rack Adjustments */
+@media (max-width: 768px) {
+  .rack-module.sub-rack {
+    padding: 10px; /* FURTHER REDUCED for mobile */
+    min-height: 160px;
+  }
+  
+  .rack-module.sub-rack .module-video {
+    height: 80px; /* REDUCED for mobile */
+  }
+}
+
