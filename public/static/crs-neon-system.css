@@ -35,6 +35,16 @@
   --pulse-duration: 2s;
   --glow-transition: 0.4s ease-out;
   --flicker-duration: 1.5s;
+  --crt-boot-duration: 1.2s;
+  
+  /* Typography System (197th LAW) */
+  --font-tech: 'JetBrains Mono', 'Space Mono', monospace;
+  --font-warm: 'Playfair Display', serif;
+  
+  /* Nature Distilled Palette (Workshop Café CH4) */
+  --clay: #D2B48C;
+  --off-white: #FAF9F6;
+  --amber-glow: rgba(255, 165, 0, 0.5);
   
   /* Channel Color Mapping */
   --channel-1-color: var(--neon-orange);
@@ -403,6 +413,56 @@
   90% { opacity: 0.96; }
 }
 
+/* ============================================================
+   CRT BOOT-UP FLICKER (197th LAW: Kinetic Typography)
+   Dramatic initialization sequence for rack headers
+   ============================================================ */
+
+@keyframes crt-boot {
+  0% { 
+    opacity: 0; 
+    text-shadow: 0 0 20px var(--neon-green);
+  }
+  5% { opacity: 0.3; }
+  10% { opacity: 0; }
+  15% { opacity: 0.7; }
+  20% { opacity: 0.2; }
+  25% { opacity: 0.9; }
+  30% { opacity: 0.4; }
+  35% { opacity: 1; }
+  40% { opacity: 0.6; }
+  45% { opacity: 0.95; }
+  50% { opacity: 0.7; }
+  55% { opacity: 1; }
+  60% { opacity: 0.85; }
+  70% { opacity: 1; }
+  80% { opacity: 0.9; }
+  90% { opacity: 1; }
+  100% { 
+    opacity: 1;
+    text-shadow: 
+      0 0 2px var(--neon-green),
+      0 0 4px var(--neon-green);
+  }
+}
+
+/* Apply CRT boot to rack master header */
+.rack-container > h1,
+.page-title,
+.rack-master-title {
+  font-family: var(--font-tech);
+  animation: crt-boot var(--crt-boot-duration) ease-out both;
+  animation-delay: 0.2s;
+}
+
+/* Apply subtle flicker to module titles */
+.module-title {
+  font-family: var(--font-tech);
+  animation: flicker var(--flicker-duration) ease-in-out infinite;
+  animation-delay: var(--crt-boot-duration);
+}
+
+
 /* Subtle text glow for rack titles */
 .rack-title,
 .module-title {
@@ -416,54 +476,54 @@
    Contrasts with the cold industrial neon
    ============================================================ */
 
+/* ============================================================
+   NATURE DISTILLED: WORKSHOP CAFÉ (CHANNEL 4)
+   197th LAW: Balance cold neon precision with warm organic texture
+   ============================================================ */
+
 .cafe-module,
-.rack-module[data-channel="4"] .module-body {
-  /* Warm amber glow instead of cold neon */
-  --cafe-clay: #D2B48C;
-  --cafe-amber: #FFA500;
-  --cafe-off-white: #FAF9F6;
-}
-
-.cafe-module {
+.rack-module[data-channel="4"] {
+  /* Use global Nature Distilled palette */
   background: linear-gradient(135deg, 
-    rgba(210, 180, 140, 0.1) 0%, 
-    rgba(210, 180, 140, 0.05) 100%);
-  border-color: rgba(210, 180, 140, 0.3);
+    rgba(210, 180, 140, 0.12) 0%, 
+    rgba(210, 180, 140, 0.06) 100%);
+  border-color: var(--clay);
   box-shadow:
     inset 0 1px 3px rgba(0, 0, 0, 0.6),
-    0 0 12px rgba(255, 165, 0, 0.3),
-    0 0 24px rgba(255, 165, 0, 0.15);
+    0 0 var(--glow-md) var(--amber-glow),
+    0 0 var(--glow-lg) rgba(255, 165, 0, 0.15);
 }
 
-.cafe-module:hover {
-  border-color: var(--cafe-clay);
+.cafe-module:hover,
+.rack-module[data-channel="4"]:hover {
+  border-color: var(--clay);
   box-shadow:
     inset 0 1px 3px rgba(0, 0, 0, 0.6),
-    0 0 16px rgba(255, 165, 0, 0.4),
-    0 0 32px rgba(255, 165, 0, 0.2);
+    0 0 calc(var(--glow-md) * 1.3) var(--amber-glow),
+    0 0 calc(var(--glow-lg) * 1.3) rgba(255, 165, 0, 0.25);
 }
 
 /* Warm text for café content */
 .cafe-module .module-description,
 .cafe-content {
-  color: var(--cafe-off-white);
-  text-shadow: 0 0 2px rgba(255, 165, 0, 0.2);
+  color: var(--off-white);
+  text-shadow: 0 0 2px var(--amber-glow);
 }
 
-/* Café Hero Text */
+/* Café Hero Text — Playfair Display serif for warmth */
 .cafe-hero {
-  font-family: 'Playfair Display', 'Georgia', serif;
+  font-family: var(--font-warm);
   font-size: 1.1rem;
   line-height: 1.7;
-  color: var(--cafe-off-white);
+  color: var(--off-white);
   margin-bottom: 1.5rem;
   font-style: italic;
   text-shadow: 0 0 3px rgba(255, 165, 0, 0.15);
 }
 
-/* Café Section Titles */
+/* Café Section Titles — maintain technical font */
 .cafe-section-title {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-tech);
   font-size: 0.875rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -573,11 +633,25 @@
 
 @media (prefers-reduced-motion: reduce) {
   .rack-module[data-channel],
-  .led {
-    animation: none;
+  .led,
+  .module-title,
+  .rack-container > h1,
+  .page-title,
+  .rack-master-title {
+    animation: none !important;
   }
   
   .crt-flicker {
     animation: none;
+  }
+  
+  /* Keep text shadows for visual identity */
+  .rack-container > h1,
+  .page-title,
+  .rack-master-title {
+    opacity: 1;
+    text-shadow: 
+      0 0 2px var(--neon-green),
+      0 0 4px var(--neon-green);
   }
 }
