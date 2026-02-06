@@ -25,17 +25,14 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
     <div class="module-body">
       {videoId && (
         <div class="rack-window-container">
-          <video 
-            autoplay 
-            loop 
-            muted 
-            playsinline
-            loading="lazy"
-            preload="none"
-            class="module-video"
-            src={`https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/-RACK%20MP4%20%20GRAPHICS/${videoId}.mp4`}
-          />
-          <GlassOverlay />
+          {/* LAYER 1: Base Machined Asset (static image) */}
+          <div class="rack-asset-base"></div>
+          
+          {/* LAYER 2: Machined Window (glass or organic grain) */}
+          <div class="rack-glass-overlay"></div>
+          
+          {/* LAYER 3: Neon Pulse Rail (active signal) */}
+          <div class="rack-signal-pulse"></div>
         </div>
       )}
       {children}
@@ -111,6 +108,7 @@ export const RackPage = () => (
             bookingUrl="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services"
             buttonLabel="BOOK REHEARSAL"
             channel="1"
+            className="channel-active-orange"
           >
             <p class="sub-rack-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
           </RackModule>
@@ -122,6 +120,7 @@ export const RackPage = () => (
             bookingUrl="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services"
             buttonLabel="BOOK REHEARSAL"
             channel="2"
+            className="channel-active-orange"
           >
             <p class="sub-rack-description">92 Cricket Road, Oxford OX4 3DJ · Hourly rates</p>
           </RackModule>
@@ -136,6 +135,7 @@ export const RackPage = () => (
         bookingUrl="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
         buttonLabel="BOOK DRY HIRE"
         channel="3"
+        className="channel-active-magenta"
       >
         <p class="module-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
       </RackModule>
@@ -147,13 +147,14 @@ export const RackPage = () => (
         bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
         buttonLabel="ALLOCATION AVAILABLE"
         channel="5"
+        className="channel-active-amber"
       >
         <p class="module-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
       </RackModule>
 
       <RackModule 
         label="WORKSHOP CAFÉ + EVENTS" 
-        className="workshop-cafe cafe-module"
+        className="workshop-cafe cafe-module channel-active-cyan"
         videoId={10}
         bookingRoute="commission-podcast"
         bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
@@ -188,6 +189,7 @@ export const RackPage = () => (
         label="CONTACT + LOCATION" 
         videoId={23}
         channel="6"
+        className="channel-active-white"
       >
         <div class="contact-info">
           <p><strong>Email:</strong> <a href="mailto:info@crsoxford.com">info@crsoxford.com</a></p>
@@ -202,6 +204,7 @@ export const RackPage = () => (
         label="SYSTEM STATUS" 
         videoId={12}
         channel="7"
+        className="channel-active-green"
       >
         <div class="system-status-panel">
           <p class="system-status">SIGNAL CLEAR · SYSTEM LIVE · READY FOR BOOKING</p>

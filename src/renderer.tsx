@@ -105,8 +105,22 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* 9. ROTARY KNOBS: Physics-driven interactive controls (Phase 2B - Strike 2) */}
         <link href="/static/crs-rotary-knob.css" rel="stylesheet" />
+        
+        {/* 10. MACHINED ASSETS: Glass Pane architecture with static PBR assets (Phase 3B - Strike 6) */}
+        <link href="/static/crs-machined-assets.css" rel="stylesheet" />
       </head>
       <body>
+        {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}
+        <svg style="display: none;" aria-hidden="true">
+          <defs>
+            <filter id="organic-grain-filter" x="0" y="0" width="100%" height="100%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.45" numOctaves="4" seed="5" />
+              <feColorMatrix type="saturate" values="0.3" />
+              <feBlend mode="multiply" in2="SourceGraphic" />
+            </filter>
+          </defs>
+        </svg>
+        
         {children}
         
         {/* Back to Top Button - Appears after 800px scroll */}
