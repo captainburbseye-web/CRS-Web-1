@@ -81,6 +81,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* 7. MOBILE: Mobile overrides, hamburger menu, responsive */}
         <link href="/static/crs-mobile.css" rel="stylesheet" />
+        
+        {/* 8. NEON SYSTEM: Triple-layer glow, LED pulse, kinetic typography (Phase 2A) */}
+        <link href="/static/crs-neon-system.css" rel="stylesheet" />
       </head>
       <body>
         {children}

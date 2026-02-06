@@ -10,10 +10,11 @@ interface RackModuleProps {
   bookingRoute?: string
   bookingUrl?: string
   buttonLabel?: string
+  channel?: string
 }
 
-const RackModule = ({ label, type = 'standard', className, children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel }: RackModuleProps) => (
-  <section class={`rack-module ${type} ${className || ''}`}>
+const RackModule = ({ label, type = 'standard', className, children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel, channel }: RackModuleProps) => (
+  <section class={`rack-module ${type} ${className || ''}`} data-channel={channel}>
     <div class="module-header">
       <div class="led green"></div>
       <h2 class="module-title">{label}</h2>
@@ -101,6 +102,7 @@ export const RackPage = () => (
             bookingRoute="commission-studio"
             bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
             buttonLabel="COMMISSION ALLOCATION"
+            channel="1"
           >
             <p class="sub-rack-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
           </RackModule>
@@ -111,6 +113,7 @@ export const RackPage = () => (
             bookingRoute="recording-live"
             bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
             buttonLabel="REHEARSE NOW"
+            channel="2"
           >
             <p class="sub-rack-description">92 Cricket Road, Oxford OX4 3DJ · Hourly rates</p>
           </RackModule>
@@ -124,6 +127,7 @@ export const RackPage = () => (
         bookingRoute="commission-studio"
         bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
         buttonLabel="COMMISSION ALLOCATION"
+        channel="3"
       >
         <p class="module-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
       </RackModule>
@@ -134,6 +138,7 @@ export const RackPage = () => (
         bookingRoute="allocation-av"
         bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
         buttonLabel="ALLOCATION AVAILABLE"
+        channel="5"
       >
         <p class="module-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
       </RackModule>
@@ -145,6 +150,7 @@ export const RackPage = () => (
         bookingRoute="commission-podcast"
         bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
         buttonLabel="COMMISSION ALLOCATION"
+        channel="4"
       >
         <p class="module-description">118 Cowley Road · Public-facing space for community events, workshops, and creative programming.</p>
       </RackModule>
@@ -152,6 +158,7 @@ export const RackPage = () => (
       <RackModule 
         label="CONTACT + LOCATION" 
         videoId={23}
+        channel="6"
       >
         <div class="contact-info">
           <p><strong>Email:</strong> <a href="mailto:info@crsoxford.com">info@crsoxford.com</a></p>
@@ -165,6 +172,7 @@ export const RackPage = () => (
         type="standard" 
         label="SYSTEM STATUS" 
         videoId={12}
+        channel="7"
       >
         <p class="system-status">SIGNAL CLEAR · SYSTEM LIVE · READY FOR BOOKING</p>
       </RackModule>
