@@ -383,7 +383,9 @@ ${CRS_CRITICAL_CSS}
   <div class="crs-shell">
     <!-- HEADER -->
     <header class="crs-header">
-      <div class="crs-logo">CRS</div>
+      <a href="/" class="crs-home-link" title="Back to Homepage">
+        <div class="crs-logo">CRS</div>
+      </a>
       <div class="crs-status">
         SYSTEM STATUS — ${systemStatus.toUpperCase()}
       </div>

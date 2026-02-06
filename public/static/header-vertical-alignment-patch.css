@@ -1,0 +1,51 @@
+/* === HEADER VERTICAL ALIGNMENT MICRO-PATCH === */
+/* Ensures logo, nav, and BOOK NOW sit on same vertical midline */
+
+header.rack-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rack-header-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.rack-header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.rack-header-cta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+/* Ensure all text elements align vertically */
+.rack-header-nav a,
+.rack-header-nav .separator,
+.rack-header-cta .book-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+/* Mobile alignment */
+@media (max-width: 768px) {
+  header.rack-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

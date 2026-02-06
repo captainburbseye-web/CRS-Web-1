@@ -176,3 +176,38 @@ footer.crs-footer-technical p {
 footer.crs-footer-technical .footer-data-block:last-child {
   margin-bottom: 0;
 }
+
+/* ==========================================
+   REVISION STAMP: Manufacturing Metadata
+   Absolute bottom - like laser-etched chassis serial
+   ========================================== */
+
+.footer-revision-stamp {
+  background: #0a0a0a; /* Slightly darker than footer */
+  padding: 8px 24px;
+  text-align: right; /* Edge-aligned like serial number */
+  border-top: 1px solid rgba(255, 255, 255, 0.03); /* Barely visible seam */
+}
+
+.revision-stamp-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px; /* Smallest text size on page */
+  color: #5a5a5a; /* Low contrast - present but not calling attention */
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin: 0;
+  opacity: 0.6; /* Further reduce visibility */
+}
+
+/* Mobile: Even smaller, centered */
+@media (max-width: 768px) {
+  .footer-revision-stamp {
+    padding: 6px 16px;
+    text-align: center;
+  }
+  
+  .revision-stamp-text {
+    font-size: 7px;
+  }
+}

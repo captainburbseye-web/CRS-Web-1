@@ -75,12 +75,14 @@ header.rack-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-md); /* 16px between links */
+  gap: var(--space-sm); /* 8px between links - tighter for rack aesthetic */
+  max-width: 600px; /* Constrain width to fit rack unit aesthetic */
+  margin: 0 auto; /* Center within grid area */
 }
 
 .rack-header-nav a {
   font-family: 'Oswald', sans-serif;
-  font-size: 16px;
+  font-size: 12px; /* Reduced for proper rack sizing */
   font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -88,6 +90,9 @@ header.rack-header {
   color: rgba(245, 245, 245, 0.85);
   white-space: nowrap;
   transition: color 0.2s;
+  display: inline-flex; /* Ensure proper vertical alignment */
+  align-items: center; /* Fix Contact link sitting lower */
+  line-height: 1; /* Tighter line height for compact rack aesthetic */
 }
 
 .rack-header-nav a:hover {
@@ -96,7 +101,10 @@ header.rack-header {
 
 .rack-header-nav .separator {
   color: rgba(212, 160, 23, 0.3);
-  font-size: 14px;
+  font-size: 12px; /* Match link font size */
+  display: inline-flex; /* Match link alignment */
+  align-items: center; /* Ensure vertical centering */
+  line-height: 1; /* Match link line height */
 }
 
 /* ==========================================
@@ -140,11 +148,21 @@ header.rack-header {
 
 @media (max-width: 768px) {
   header.rack-header {
+    /* Reinforce sticky positioning for mobile */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    
     grid-template-columns: auto 1fr auto; /* Badge | Nav | Toggle */
     grid-template-areas: 
       "logo nav toggle";
     gap: var(--space-md);
     padding: var(--space-md) var(--space-lg);
+    
+    /* Ensure solid background for sticky header */
+    background-color: #1a1a1a;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
   }
   
   .mobile-menu-toggle {
@@ -171,11 +189,20 @@ header.rack-header {
   .rack-header-nav {
     grid-area: nav;
     justify-content: flex-start; /* Left-align on mobile */
-    gap: var(--space-sm);
+    gap: 12px; /* Increased spacing for better tap separation */
   }
   
   .rack-header-nav a {
-    font-size: 14px; /* Smaller nav text on mobile */
+    font-size: 16px; /* Increased for better mobile readability and tap targets */
+    padding: 12px 8px; /* Add padding to create 44px minimum tap height */
+    min-height: 44px; /* Apple HIG minimum tap target */
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .rack-header-nav .separator {
+    font-size: 14px; /* Slightly smaller than links */
+    padding: 0 4px; /* Minimal padding for separators */
   }
   
   .rack-header-cta {
@@ -196,4 +223,31 @@ header.rack-header .rack-header-logo,
 header.rack-header .rack-header-nav,
 header.rack-header .rack-header-cta {
   flex-shrink: 0; /* Never collapse */
+}
+
+/* ==========================================
+   CRS Logo Home Link (Clickable Logo)
+   ========================================== */
+
+/* Make the CRS logo link invisible but functional */
+.crs-home-link {
+  text-decoration: none;      /* No underline */
+  border: none;               /* No border */
+  display: inline-block;      /* Keeps layout tight */
+  cursor: pointer;            /* Shows the 'hand' icon on hover */
+  color: inherit;             /* Keeps your original text color */
+}
+
+/* Optional: Add a subtle hover effect for tactile feel */
+.crs-home-link:hover .crs-logo {
+  opacity: 0.9;
+  transform: scale(0.98);     /* Slight 'press' effect like a button */
+  transition: all 0.1s ease;
+}
+
+/* Also apply hover effect to the badge if present */
+.crs-home-link:hover .header-crs-badge {
+  opacity: 0.9;
+  transform: scale(0.98);
+  transition: all 0.1s ease;
 }

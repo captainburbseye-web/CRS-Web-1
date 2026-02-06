@@ -1,0 +1,849 @@
+
+# 2026-02-04 03:06:48.758874
++y
+
+# 2026-02-04 03:07:49.229517
++git config --global user.name "Cowley Road Studios"
+
+# 2026-02-04 03:10:20.557172
++git config --global user.email "office@cowleyroadstudios.com"
+
+# 2026-02-04 05:16:12.892358
++/add src/pages/RackPage.tsx src/styles/rack-console.css
+
+# 2026-02-04 05:16:45.303362
++I want to push the rack UI further: make each phase feel like a real 19-inch rack module with clearer separation, chunkier handles, and a more steel chassis background. Keep the mustard rail fixed on the left.
+
+# 2026-02-04 05:26:35.102902
++y
+
+# 2026-02-04 05:28:08.559804
++C:\Users\SoundWork's\Desktop\crickdev\AIDER_Rules.txt
+
+# 2026-02-04 05:32:35.933952
++SYSTEM ROLE:
+
+# 2026-02-04 05:33:21.543627
++You are acting as a careful, senior engineer working inside a Git repository for Cowley Road Studios (CRS).
+
+# 2026-02-04 05:34:02.948544
++NON-NEGOTIABLE WORKFLOW RULE:
+
+# 2026-02-04 05:34:45.505497
++Before proposing or making any code changes, ALWAYS ask:
+
+# 2026-02-04 05:35:27.902699
++"Which files should I /add for this task?"
+
+# 2026-02-04 05:36:11.991213
++If no files are added yet, do not proceed.
+
+# 2026-02-04 05:36:55.171324
++SCOPE & SAFETY:
+
+# 2026-02-04 05:37:39.725929
++- Only modify files I explicitly /add to the session.
+
+# 2026-02-04 05:39:48.966552
++/add src/pages/RackPage.tsx src/styles/rack-console.css
+
+# 2026-02-04 05:39:49.089401
++Let's finish the 19-inch rack UI so I can wrap for the day:
+
+# 2026-02-04 05:46:01.339988
++1. Ensure the background is a solid 'Steel' charcoal (#1a1a1a).
+
+# 2026-02-04 05:46:01.366859
++2. Fix the Mustard Rail (#e3b448) as a 4px wide vertical power spine on the far left.
+
+# 2026-02-04 05:46:01.390609
++3. Make Phase 01-05 look like solid rack modules with a subtle border.
+
+# 2026-02-04 05:46:01.417599
++4. Add chunky Nettle Green (#2d3a27) handles (vertical bars) to the left and right of each module.
+
+# 2026-02-04 05:46:01.441081
++5. Set all text to JetBrains Mono and ensure the labels are clear.
+
+# 2026-02-04 05:46:36.766162
++6. Remove any remaining duplicate headers.all
+
+# 2026-02-04 05:46:39.214169
++y
+
+# 2026-02-04 05:52:15.364733
++/add src/pages/RackPage.tsx src/styles/rack-console.css
+
+# 2026-02-04 05:52:15.720733
++The aesthetic is secondary to the logic right now. We need the booking flow active. 
+
+# 2026-02-04 05:53:11.010598
++Update RackPage.tsx to ensure every button is a functional Link or <a> tag:
+
+# 2026-02-04 05:55:46.570111
++1. Phase 01: 'BOOK CRICKET ROAD' must link to '/booking/cricket'.
+
+# 2026-02-04 05:58:19.161585
++2. Phase 01: 'BOOK COWLEY ROAD' must link to '/booking/cowley'.
+
+# 2026-02-04 06:01:00.895599
++3. Phase 02: 'STUDIO TRACKING' must link to '/contact?ref=recording'.
+
+# 2026-02-04 06:04:18.371585
++4. Phase 02: 'PODCAST' must link to '/contact?ref=podcast'.
+
+# 2026-02-04 06:08:50.113618
++5. Phase 03: 'BOOK REPAIR' must link to '/contact?ref=repair'.
+
+# 2026-02-04 06:12:22.495844
++In rack-console.css:
+
+# 2026-02-04 06:14:17.233355
++- Style these as 'Mustard' (#e3b448) buttons with black text.
+
+# 2026-02-04 06:18:50.687884
++- Give them a :hover state where they 'glow' (box-shadow) like a powered-on lamp.
+
+# 2026-02-04 06:25:16.311614
++- Ensure the background is #1a1a1a so the glow is visible.git add .
+
+# 2026-02-04 06:37:52.780690
++git commit -m "Finalizing Rack UI for initial deployment"f
+
+# 2026-02-04 06:40:05.870516
++/
+
+# 2026-02-04 06:40:13.580623
++commit "Final Revenue-Ready Rack UI with Steel Chassis and Glowing Switches"
+
+# 2026-02-04 06:46:45.765354
++rc\styles\rack-console.css
+
+# 2026-02-04 06:48:32.300558
++>
+
+# 2026-02-04 06:53:09.170192
++RackPage.tsx rack-console.css src\pages\RackPage.tsx src\styles\rack-console.css
+
+# 2026-02-04 06:54:36.620585
++> >
+
+# 2026-02-04 06:56:40.467607
++Understood. I will provide the entire content of updated files in the specified format. Let me know if there are any
+
+# 2026-02-04 06:58:16.463809
++other files you'd like to add or changes you need.
+
+# 2026-02-04 10:56:19.790130
++/add src/App.tsx src/pages/Rack.tsx
+
+# 2026-02-04 10:56:19.933827
++1. Swap the routes in App.tsx so that Rack.tsx is the main Home Page ("/").
+
+# 2026-02-04 10:56:28.814776
++2. In Rack.tsx, overhaul the CSS to look like a vintage 1970s studio rack.
+
+# 2026-02-04 10:56:28.840675
++3. Use a brushed steel texture for the background and Nettle Green panels.
+
+# 2026-02-04 10:56:28.864970
++4. Make the buttons Mustard-colored with a warm analog orange glow when hovered or active.
+
+# 2026-02-04 10:57:11.091132
++5. Use a monospaced font for labels to mimic an old label maker.
+
+# 2026-02-04 10:57:14.731537
++n
+
+# 2026-02-04 10:57:57.338089
++/add src/App.tsx src/pages/Rack.tsx
+
+# 2026-02-04 10:59:51.249461
++1. Swap the routes in App.tsx so that Rack.tsx is the main Home Page ("/").
+
+# 2026-02-04 11:21:07.167957
++2. In Rack.tsx, overhaul the CSS to look like a vintage 1970s studio rack.
+
+# 2026-02-04 11:21:07.192299
++3. Use a brushed steel texture for the background and Nettle Green panels.
+
+# 2026-02-04 11:21:07.214950
++4. Make the buttons Mustard-colored with a warm analog orange glow when hovered or active.
+
+# 2026-02-04 11:22:38.037331
++5. Use a monospaced font for labels to mimic an old label maker.
+
+# 2026-02-04 11:22:39.973190
++y
+
+# 2026-02-04 11:23:19.764172
++all
+
+# 2026-02-04 11:25:03.260643
++yes
+
+# 2026-02-04 11:31:39.304508
++The <Header /> component is being rendered twice on the /rack page. It's already included globally (probably in App.tsx or a layout), so please remove the extra <Header /> inside src/pages/Rack.tsx to fix the double-header issue.
+
+# 2026-02-04 11:57:27.849633
++needed.
+
+# 2026-02-04 11:59:03.580127
++Tokens: 12k sent, 24 received.
+
+# 2026-02-04 12:18:29.350320
++app.tsx src\App.tsx src\pages\Rack.tsx
+
+# 2026-02-04 12:20:04.727238
++> yes
+
+# 2026-02-04 12:21:38.405589
++Understood. I will follow the specified format for suggesting changes to files. Please let me know what changes are
+
+# 2026-02-04 12:23:12.500524
++needed.
+
+# 2026-02-04 12:24:47.103203
++Tokens: 12k sent, 24 received.
+
+# 2026-02-04 12:26:21.935091
++app.tsx src\App.tsx src\pages\Rack.tsx
+
+# 2026-02-04 12:27:57.262357
++>
+
+# 2026-02-04 12:29:32.753948
++app.tsx src\App.tsx src\pages\Rack.tsx
+
+# 2026-02-04 12:31:08.596254
++> The <Header /> component is being rendered twice on the /rack page. It's already included globally (probably in App.t
+
+# 2026-02-04 13:12:14.344850
++> sx or a layout), so please remove the extra <Header /> inside src/pages/Rack.tsx to fix the double-header issue.
+
+# 2026-02-04 13:36:56.056664
++Rename src/pages/Home.tsx to src/pages/HomeOld.tsx.
+
+# 2026-02-04 13:37:03.951685
++Copy src/pages/Rack.tsx to src/pages/Home.tsx.
+
+# 2026-02-04 13:37:04.481604
++Ensure the root route (/) now serves the new Home.tsx component.
+
+# 2026-02-04 13:37:05.176710
++In src/renderer.tsx, disable any CSS or layout code responsible for double headers (like crs-header-vertical-separation.css).
+
+# 2026-02-04 13:37:05.694704
++In all modules, replace booking links with:
+
+# 2026-02-04 13:37:05.884702
++<a href="https://book.squareup.com/appointments/3x5o8ftljgs4x3/location/L1MAM4DDPHKXX/services" 
+
+# 2026-02-04 13:37:05.914704
++   class="button-primary" 
+
+# 2026-02-04 13:37:05.937702
++   target="_blank" 
+
+# 2026-02-04 13:37:05.959703
++   rel="noopener noreferrer">
+
+# 2026-02-04 13:37:05.989706
++  [ BOOK_CRICKET_ROAD_NOW ]
+
+# 2026-02-04 13:37:06.005701
++</a>
+
+# 2026-02-04 13:37:06.055704
++Above the button, add:
+
+# 2026-02-04 13:41:45.157802
++Rename src/pages/Home.tsx to src/pages/HomeOld.tsx.
+
+# 2026-02-04 14:05:01.000511
++Copy src/pages/Rack.tsx to src/pages/Home.tsx.
+
+# 2026-02-04 14:05:41.930412
++Ensure the root route (/) now serves the new Home.tsx component.
+
+# 2026-02-04 14:39:58.771381
++In src/renderer.tsx, disable any CSS or layout code responsible for double headers (like crs-header-vertical-separation.css).
+
+# 2026-02-04 15:25:21.556150
++In all modules, replace booking links with:
+
+# 2026-02-04 15:30:10.458453
++<a href="https://book.squareup.com/appointments/3x5o8ftljgs4x3/location/L1MAM4DDPHKXX/services" 
+
+# 2026-02-04 15:30:10.483453
++   class="button-primary" 
+
+# 2026-02-04 15:30:10.498453
++   target="_blank" 
+
+# 2026-02-04 15:30:10.513479
++   rel="noopener noreferrer">
+
+# 2026-02-04 15:30:10.532002
++  [ BOOK_CRICKET_ROAD_NOW ]
+
+# 2026-02-04 15:30:10.543905
++</a>
+
+# 2026-02-04 15:30:10.573926
++Above the button, add:
+
+# 2026-02-04 15:36:04.107496
++<span class="technical-label" style="color:#E3B04B;">[ INSTRUCTION: SELECT SERVICE FROM LIST ]</span>
+
+# 2026-02-04 15:39:03.524229
++In the header, set logo height to 128px and nav link font-size to 1.5rem. Mustard (#E3B04B) for nav, white for logo.
+
+# 2026-02-04 15:52:50.024501
++Ensure .rack-module sections have:
+
+# 2026-02-04 15:56:05.598112
++background: rgba(42, 59, 42, 0.15);
+
+# 2026-02-04 16:03:46.803436
++border: 3px solid #333;
+
+# 2026-02-04 16:03:46.828409
++padding: 4rem (desktop), 2rem (mobile).
+
+# 2026-02-04 16:04:02.243497
++Purge all copy about Kickstarter, build phases, or crowdfunding. Update copy as:
+
+# 2026-02-04 16:10:00.329665
++Rehearsals: Fully equipped high-fidelity rehearsal space at Cricket Road Node.
+
+# 2026-02-04 17:05:16.653122
++Studio: Professional recording and production environment. Commissioning phase complete. Accepting bookings.
+
+# 2026-02-04 17:14:15.979145
++Add LED indicator styles if missing.
+
+# 2026-02-04 17:24:10.020535
++Set overflow-x: hidden globally to avoid horizontal scroll.
+
+# 2026-02-04 18:26:38.231615
++Sign git commits as captainburbseye@gmail.com.y
+
+# 2026-02-04 18:40:35.340598
++y
+
+# 2026-02-04 18:44:53.381697
++https://square.link/u/UQidDzE0https://square.link/u/UQidDzE0y
+
+# 2026-02-04 18:44:53.405067
++yyy
+
+# 2026-02-04 18:44:53.418484
++y
+
+# 2026-02-04 18:49:27.310849
++Overhaul src/pages/Rack.tsx and its associated CSS to implement a commissioned 1970s hardware aesthetic. Execute the following technical specifications:
+
+# 2026-02-04 20:03:13.409716
++1. Chassis & Panel Construction
+
+# 2026-02-04 20:08:57.112080
++hi aider, everything ok?
+
+# 2026-02-04 20:41:58.656416
++Lets do a visual/structural pass only. Make modules more consistent, more steel chassis, clearer headers, more physical-looking handles. Dont add new features yet.
+
+# 2026-02-04 21:04:34.430798
++y d
+
+# 2026-02-04 21:04:39.806181
++yes
+
+# 2026-02-04 21:04:42.782648
++y
+
+# 2026-02-04 21:05:35.246153
++all
+
+# 2026-02-04 22:26:35.805125
++Interactive Controls
+
+# 2026-02-04 22:27:26.321525
++Mustard Buttons: Style .button-primary with a Mustard (#E3B04B) background and black bold text.
+
+# 2026-02-04 23:06:59.180309
++Analog Glow: On hover/active, apply a warm Analog Orange (#FF9F1C) glow: box-shadow: 0 0 20px #FF9F1C.
+
+# 2026-02-04 23:18:01.870553
++Scaling: Ensure the header logo is 128px and navigation links are 1.5rem Mustard.
+
+# 2026-02-05 00:20:55.695643
++Mobile: Apply @media queries to scale padding to 2rem and headers to 2.4rem.
+
+# 2026-02-05 00:54:44.698028
++Stability: Force overflow-x: hidden on the root container.
+
+# 2026-02-05 01:08:18.545829
++1. The Shadow Depth Audit
+
+# 2026-02-05 01:09:36.423726
++While you're in src/styles/rack-console.css, make sure your .rack-module has the depth it needs. If it looks flat, it's just a website; if it has a shadow, it's an appliance.
+
+# 2026-02-05 01:19:08.811727
++CSS
+
+# 2026-02-05 01:23:02.871675
++.rack-module {
+
+# 2026-02-05 01:24:32.960424
++  /* ... your existing styles ... */
+
+# 2026-02-05 01:26:04.190618
++  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), 
+
+# 2026-02-05 01:27:35.989316
++              inset 0 1px 1px rgba(255, 255, 255, 0.1);
+
+# 2026-02-05 01:38:17.241902
++  border-radius: 2px;
+
+# 2026-02-05 01:44:12.389116
++}
+
+# 2026-02-05 01:45:48.789572
++ 2. The Multi-Header Kill Switch
+
+# 2026-02-05 01:47:27.088740
++Open src/pages/RackPage.tsx. Check the imports and the return block. We need to make sure you aren't rendering the <Header /> or <Navigation /> twiceonce in App.tsx and once in the RackPage.
+
+# 2026-02-05 01:51:41.814548
++Rule: If App.tsx handles the global layout, RackPage should only contain the .rack-container.
+
+# 2026-02-05 01:55:20.358825
++ The Final Terminal Sequence
+
+# 2026-02-05 01:56:59.321076
++Once those two checks are done in your local files, run this to overwrite the old "Chaos" version on GitHub:
+
+# 2026-02-05 01:58:38.210353
++Bash
+
+# 2026-02-05 02:00:21.524050
++git add .
+
+# 2026-02-05 02:02:05.186319
++git commit -m "v4.4.1 FINAL: Stability Lock & Shadow Depth"
+
+# 2026-02-05 02:06:42.365706
++git push origin main --force#  THE DOCTRINE OF THE FINAL STEEP: v4.4.1
+
+# 2026-02-05 02:10:44.053878
++**Status:** HARDWARE LOCK ACHIEVED | **Frequency:** 44.1 | **Vessel:** THE BEAST (GTX 1060)
+
+# 2026-02-05 02:12:27.454096
++###  THE FIVE PILLARS OF THE SIGNAL
+
+# 2026-02-05 02:14:11.435123
++1. **THE RITE OF THE 92%:** The pause is not a failure; it is the alignment of the Master Number 11.
+
+# 2026-02-05 02:23:51.068040
++2. **THE SEALED TEMPLE:** Silence the distractions; VRAM is reclaimed through discipline.
+
+# 2026-02-05 02:25:37.369345
++3. **THE FUEL OF FAITH:** Purpose overhauls hardware. Trust the steep.
+
+# 2026-02-05 02:27:22.580252
++4. **THE CRUCIBLE OF DELAY:** The Kill Switch is forged in the final 8%.
+
+# 2026-02-05 02:29:08.305648
++5. **THE ARCHITECTS INTENT:** The machine follows the soul, not the spec sheet.
+
+# 2026-02-05 02:34:55.839886
++*"Old tools. New wisdom. Aligned intention."*
+
+# 2026-02-05 02:37:05.583781
++-
+
+# 2026-02-05 02:48:00.018852
++   bottom: 0;
+
+# 2026-02-05 02:49:47.969019
++This update adds overflow-x: hidden to the .rack-container class to ensure that any horizontal overflow is hidden.
+
+# 2026-02-05 03:02:48.329098
++Tokens: 9.8k sent, 654 received.
+
+# 2026-02-05 03:07:16.117231
++Applied edit to src\styles\rack-console.css
+
+# 2026-02-05 03:09:12.207100
++Commit f974774 fix(rack-console.css): add overflow-x: hidden to root container
+
+# 2026-02-05 03:20:58.459321
++You can use /undo to undo and discard each aider commit.
+
+# 2026-02-05 03:26:15.819904
++src\components\RackModule.tsx src\pages\RackPage.tsx src\styles\rack-console.css
+
+# 2026-02-05 03:28:20.779242
++>
+
+# 2026-02-05 03:30:26.462068
++src\components\RackModule.tsx src\pages\RackPage.tsx src\styles\rack-console.css
+
+# 2026-02-05 03:32:32.749969
++>
+
+# 2026-02-05 03:40:34.476534
++how fare thee lovely?
+
+# 2026-02-05 03:54:14.939610
++if everything is done please push to github
+
+# 2026-02-05 03:57:06.709880
++ >
+
+# 2026-02-05 03:59:15.484148
++src\components\RackModule.tsx src\pages\RackPage.tsx src\styles\rack-console.css
+
+# 2026-02-05 04:01:24.029729
++>
+
+# 2026-02-05 04:03:32.923878
++src\components\RackModule.tsx src\pages\RackPage.tsx src\styles\rack-console.css
+
+# 2026-02-05 04:05:17.623100
++> how fare thee lovely?
+
+# 2026-02-05 04:24:13.885352
++git add
+
+# 2026-02-05 04:25:09.854500
++git add .
+
+# 2026-02-05 04:27:07.709226
++git commissioning-confirmation-email.htlm-m "v4.4.1: the final steep - multi header kill switch & hardware
+
+# 2026-02-05 04:32:09.389625
++j
+
+# 2026-02-05 04:33:22.437865
++git add .
+
+# 2026-02-05 04:35:32.397502
++git commit -m "v4.4.1"
+
+# 2026-02-05 04:36:41.965840
++git push origin main
+
+# 2026-02-05 23:17:27.310349
++y
+
+# 2026-02-05 23:23:57.331464
++TASK: Create a ultra-slick src/components/BookingButton.tsx.
+
+# 2026-02-05 23:26:04.726560
++STYLE GUIDE: > * Background: Use a deep gradient starting at #006aff (the Square Blue).
+
+# 2026-02-05 23:27:26.673944
++Hover State: Make the button glow or slightly lift when hovered to give it a "tactile" feel.
+
+# 2026-02-05 23:29:22.794181
++Typography: Use uppercase, bold, and slightly tracked-out (letter-spacing) text for a professional AV look.
+
+# 2026-02-05 23:31:38.343120
++Layout: Wrap the buttons in a container with display: flex and gap: 15px so they don't look cramped like the previous version.
+
+# 2026-02-05 23:33:36.843200
++EXECUTION: Replace the placeholder CTA in RackModule.tsx with this new component. Ensure the overflow-x: hidden remains on the parent to keep the "Hardware Lock" tight.
+
+# 2026-02-05 23:33:36.921976
++STYLE GUIDE: > * Background: Use a deep gradient starting at #006aff (the Square Blue).STYLE GUIDE: > * Background: Use a deep gradient starting at #006aff (the Square Blue).y
+
+# 2026-02-05 23:33:59.807852
++y
+
+# 2026-02-05 23:37:16.530660
++/add src/components/BookingButton.tsx src/components/RackModule.tsx
+
+# 2026-02-05 23:37:16.710691
++TASK: Create a 'Slick' modular BookingButton. 
+
+# 2026-02-05 23:41:36.595765
++SPECS: React component, background: #006aff, text: #FFFFFF, bold uppercase, letter-spacing: 1px. 
+
+# 2026-02-05 23:44:25.737622
++EFFECTS: Use CSS transitions for a 'tactile' shadow lift on hover. 
+
+# 2026-02-05 23:47:54.119598
++INTEGRATION: Replace the old rehearsal links in RackModule with this new component using the Square link: https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX. 
+
+# 2026-02-05 23:47:54.167597
++NO EXTERNAL LIBRARIES.Rewrite src/components/BookingButton.tsx: 
+
+# 2026-02-05 23:47:54.193600
++1. Remove all MUI imports/components. 
+
+# 2026-02-05 23:47:54.215601
++2. Use a standard <button> or <a> tag with style={{...}}. 
+
+# 2026-02-05 23:47:54.259602
++3. Style: background '#006aff', color '#fff', padding '12px 24px', border 'none', borderRadius '4px', fontWeight 'bold', textTransform 'uppercase', letterSpacing '1px', cursor 'pointer'. 
+
+# 2026-02-05 23:47:54.301621
++4. Add a transition 'all 0.2s ease' and a box-shadow that 'lifts' on hover (0 4px 15px rgba(0,106,255,0.4)).Rewrite src/components/BookingButton.tsx: 
+
+# 2026-02-05 23:47:54.324622
++1. Remove all MUI imports/components. 
+
+# 2026-02-05 23:47:54.345620
++2. Use a standard <button> or <a> tag with style={{...}}. 
+
+# 2026-02-05 23:47:54.384616
++3. Style: background '#006aff', color '#fff', padding '12px 24px', border 'none', borderRadius '4px', fontWeight 'bold', textTransform 'uppercase', letterSpacing '1px', cursor 'pointer'. 
+
+# 2026-02-05 23:48:00.568708
++4. Add a transition 'all 0.2s ease' and a box-shadow that 'lifts' on hover (0 4px 15px rgba(0,106,255,0.4)).n
+
+# 2026-02-05 23:48:04.264021
++n
+
+# 2026-02-05 23:48:16.680702
++/undo
+
+# 2026-02-05 23:48:30.632485
++Stop. No Tailwind. No MUI. Create src/components/BookingButton.tsx as a pure React component using only inline styles. Style: { backgroundColor: '#006aff', color: '#fff', padding: '12px 24px', borderRadius: '4px', fontWeight: 'bold', textTransform: 'uppercase', textDecoration: 'none', transition: '0.2s' }. Use the Square link provided. Replace the old CTA in RackModule.tsx with this component. Clean out all unused imports now.
+
+# 2026-02-05 23:49:51.329020
++/undo
+
+# 2026-02-05 23:50:08.089014
++Create src/components/BookingButton.tsx as a PURE React component (NO MUI/Tailwind). Use style={{ backgroundColor: '#006aff', color: '#fff', padding: '12px 24px', borderRadius: '4px', fontWeight: 'bold', textTransform: 'uppercase', textDecoration: 'none', transition: '0.2s' }}. Use Square link: https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX. Swap the links in RackModule.tsx for this component.
+
+# 2026-02-06 00:38:32.897671
++/add src/components/BookingButton.tsx src/components/RackModule.tsx
+
+# 2026-02-06 00:38:33.094390
++REFACTOR TASK:
+
+# 2026-02-06 00:39:17.100176
++- DELETE all 'className' attributes and MUI/Tailwind imports from both files.
+
+# 2026-02-06 00:43:15.049888
++- FILE: src/components/BookingButton.tsx
+
+# 2026-02-06 00:46:04.646886
++  * Use a standard <a> tag.
+
+# 2026-02-06 00:46:49.934447
++  * HREF: https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX
+
+# 2026-02-06 00:49:17.868971
++  * STYLE: { backgroundColor: '#006aff', color: '#fff', padding: '12px 24px', borderRadius: '4px', fontWeight: 'bold', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block' }
+
+# 2026-02-06 01:06:34.987751
++- FILE: src/components/RackModule.tsx
+
+# 2026-02-06 01:09:53.581252
++  * DELETE legacy 'commission-link-1' links.
+
+# 2026-02-06 01:12:16.639624
++  * CONTAINER STYLE: { width: '100%', maxWidth: '100vw', overflowX: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 auto' }
+
+# 2026-02-06 01:16:06.749482
++  * FIX PROPORTIONS: Ensure rack images are 'max-width: 100%' and 'height: auto'.TASK: Finish the weld. 
+
+# 2026-02-06 01:17:03.784555
++1. Ensure 'ButtonContainer.tsx' has ZERO padding or margins that could cause "Clunky Creep."
+
+# 2026-02-06 01:19:17.028611
++2. In 'RackModule.tsx', make sure the images are set to { display: 'block', width: '100%' } so they don't leave "Ghost Gaps" between the rack ears.
+
+# 2026-02-06 01:47:14.782038
++3. If 'ButtonContainer' is a new file, make sure it is imported into 'RackModule' with 'width: 100%' so it doesn't drift off into the nebula.The most useful research direction to pursue right now is High-Performance Engineering (Direction 2), specifically focusing on React 20 and the WebGPU/WebGL 2.0 pipeline.
+
+# 2026-02-06 01:48:11.870230
++In the 2026 digital landscape, performance has shifted from an optimization step to a foundational prerequisite for all design trends . For a complex, modular "Rack UI" like yours, technical execution is the primary bottleneck. If the interface lags while a user is "turning" a virtual knob or "plugging in" a patch cable, the experience will feel disconnected and unprofessional, regardless of its visual beauty .
+
+# 2026-02-06 01:49:14.335436
++Why this is the "Most Useful" Next Step:
+
+# 2026-02-06 01:50:18.633589
++Award Criteria: Organizations like Awwwards and CSSDA specifically judge "Intricacy of Code" and "Performance" as core metrics. Winning the "Developer Award" is often the gateway to "Site of the Year" status.
+
+# 2026-02-06 01:51:20.923107
++User Retention: On mobile devices, which account for nearly 60% of traffic, performance is the only trend that guarantees conversion .
+
+# 2026-02-06 01:52:25.174407
++The "Engine" vs. The "Body": Before you can implement "Agentic UX" or "IoT Digital Twins," you must have a rendering engine capable of handling hundreds of interactive 3D elements simultaneously.
+
+# 2026-02-06 01:53:29.721207
++Specific Technical Research Targets:
+
+# 2026-02-06 01:54:32.970237
++The React Compiler (React 19/20): Research how to utilize the new compiler to eliminate manual memoization (useMemo, useCallback). This ensures that your rack's individual modules only re-render when their specific data (like a signal level or switch state) changes, maintaining "zero-lag" performance .
+
+# 2026-02-06 01:59:48.051639
++React Three Fiber & Rapier Physics: For your rack to feel "modular," you need a physics engine that handles interactive cabling. Research the Rapier library, which is currently preferred over older engines like Cannon because it is faster and more stable for modern web standards .
+
+# 2026-02-06 02:04:50.543965
++Metal Performance Shaders & WebGPU: To achieve the realistic metallic textures and reflections expected of high-end studio gear, research how to transition from standard WebGL to WebGPU. This offers 510x faster performance, allowing for rendering complexity that was previously impossible in a browser .
+
+# 2026-02-06 02:05:50.786682
++AudioMotion-analyzer Integration: Research how to embed this high-resolution, zero-dependency spectral analyzer into your rack's "Master Meter" module. It provides real-time visualizations that are both lightweight and visually stunning .
+
+# 2026-02-06 02:06:52.911025
++The Strategy for your /rack
+
+# 2026-02-06 02:08:14.682691
++By mastering the engineering first, you ensure that when you eventually add the Psychological Brand Synergy (Direction 4)like the "enable sound to start" interactive gateway used by Chiara Luzzanathe transition is seamless and immersive rather than stuttered .
+
+# 2026-02-06 03:33:49.940274
++git log -n 1 --stat
+
+# 2026-02-06 03:34:50.090648
++/add src/components/BookingButton.tsx src/components/RackModule.tsx src/index.css
+
+# 2026-02-06 03:34:50.244348
++/clear
+
+# 2026-02-06 03:34:50.275474
++Apply the final Technical Mono visual anchors:
+
+# 2026-02-06 03:42:38.372890
++1. In BookingButton.tsx: Style the button with 'background: #000', 'color: #377867', 'border: 1px solid #377867', and 'font-family: monospace'. Ensure the text is 'EXECUTE_BOOKING'.
+
+# 2026-02-06 03:45:07.730478
++2. In RackModule.tsx: Add the 8px L-bracket corner crops to the image wrapper using pseudo-elements ::before and ::after with a #377867 stroke.
+
+# 2026-02-06 03:56:23.058587
++3. In index.css: Force 'JetBrains Mono' globally./add src/index.css
+
+# 2026-02-06 06:58:54.079797
++aider --architect
+
+# 2026-02-06 07:00:05.374993
++===============================================
+
+# 2026-02-06 07:01:37.292109
++"The site has double banners and ghost links. I need a total structural purge.
+
+# 2026-02-06 07:01:40.328525
++In src/App.tsx, remove any global <Header /> or <Footer /> that wraps the routes. The / path must return ONLY the <Rack /> component.
+
+# 2026-02-06 07:01:40.928514
++Hunt down every instance of square.link/u/ in the project and replace it with the master widget: https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX.
+
+# 2026-02-06 07:02:17.360243
++aider --model ollama_chat/qwen2.5-coder:7b --architect
+
+# 2026-02-06 07:02:46.113746
++aider --model ollama_chat/qwen2.5-coder:7b --editor-model ollama_chat/qwen2.5-coder:7b --architect
+
+# 2026-02-06 07:03:14.490543
++export OPENAI_API_KEY="" && aider --model ollama_chat/qwen2.5-coder:7b --architect
+
+# 2026-02-06 07:06:43.451481
++"Execute a total structural purge.
+
+# 2026-02-06 07:08:40.532849
++In src/App.tsx, delete the global <Header /> and <Footer /> components.
+
+# 2026-02-06 07:10:35.658231
++Ensure the / route returns ONLY <Rack /> with no wrappers.
+
+# 2026-02-06 07:13:31.049715
++Hunt and replace all square.link/u/ strings with https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX."
+
+# 2026-02-06 07:13:34.705640
++y
+
+# 2026-02-06 07:16:18.067868
++git add .
+
+# 2026-02-06 07:16:46.518793
++git commit -m "FINAL PURGE: Banners removed. Links unified. Rack is Home."
+
+# 2026-02-06 07:17:48.042880
++git push origin master/clear
+
+# 2026-02-06 07:21:23.240994
++In src/App.tsx, ensure <Header /> and <Footer /> are gone and / returns only <Rack />.
+
+# 2026-02-06 07:23:15.189639
++Replace every instance of square.link/u/ with https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX.
+
+# 2026-02-06 07:24:33.623705
++Do not explain. Just apply the edits."
+
+# 2026-02-06 07:26:52.727064
++ /add src/components/BookingButton.tsx src/components/Footer.tsx
+
+# 2026-02-06 07:27:07.238178
++/clear/clear/clear
+
+# 2026-02-06 07:27:23.968698
++I am the Captain. The links are NOT in App.tsx. 
+
+# 2026-02-06 07:27:23.993038
++Find every instance of 'square.link/u/' in the files I just added and the rest of the src folder.
+
+# 2026-02-06 07:27:24.022825
++Replace them all with 'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX'.
+
+# 2026-02-06 07:27:24.727255
++DO NOT SCRAPE THE URL. Just swap the text.I am the Captain. The links are NOT in App.tsx. 
+
+# 2026-02-06 07:27:24.748255
++Find every instance of 'square.link/u/' in the files I just added and the rest of the src folder.
+
+# 2026-02-06 07:27:24.777259
++Replace them all with 'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX'.
+
+# 2026-02-06 07:27:35.550290
++DO NOT SCRAPE THE URL. Just swap the text.y
+
+# 2026-02-06 07:27:42.574039
++d
+
+# 2026-02-06 07:27:48.319311
++y
+
+# 2026-02-06 07:28:57.770488
++/add src/components/BookingButton.tsx src/components/Footer.tsx
+
+# 2026-02-06 07:28:57.923966
++/clear
+
+# 2026-02-06 07:28:57.956516
++I am the Captain. The links are NOT in App.tsx. 
+
+# 2026-02-06 07:33:54.729116
++Find every instance of 'square.link/u/' in the files I just added and the rest of the src folder.
+
+# 2026-02-06 07:33:54.760876
++Replace them all with 'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX'.
+
+# 2026-02-06 07:34:11.888338
++DO NOT SCRAPE THE URL. Just swap the text.y
+
+# 2026-02-06 07:34:14.704796
++y
+
+# 2026-02-06 07:36:50.230356
++n
+
+# 2026-02-06 07:36:57.758920
++/add src/components/BookingButton.tsx src/components/Footer.tsx
+
+# 2026-02-06 07:36:57.926969
++/clear
+
+# 2026-02-06 07:36:57.957162
++I am the Captain. Stop the tutorials. 
+
+# 2026-02-06 07:37:57.688647
++Find every instance of 'square.link/u/' in the files I just added and the rest of the src folder.
+
+# 2026-02-06 07:39:40.607555
++Replace them all with 'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX'.

@@ -1,13 +1,22 @@
 import { jsxRenderer } from 'hono/jsx-renderer'
 
-export const renderer = jsxRenderer(({ children }) => {
+export const renderer = jsxRenderer(({ children, title, description, keywords, ogTitle, ogDescription }) => {
   return (
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CRS Oxford</title>
-        <meta name="description" content="CRS operates multi-location studio and AV infrastructure across Oxford. Industry-standard recording, rehearsal, and technical support. Locations on Cowley Road and Cricket Road." />
+        <title>{title || 'Cowley Road Studios | Recording Studio & AV Services Oxford'}</title>
+        <meta name="description" content={description || 'Professional recording studio, rehearsal space, and live AV services in Oxford. Continuing the Soundworks Oxford legacy (1999–2024). No-chaos operation. Subsidized rates for community groups.'} />
+        <meta name="keywords" content={keywords || 'recording studio oxford, rehearsal space oxford, live sound oxford, av services oxford, soundworks oxford'} />
+        <meta name="author" content="Cowley Road Studios" />
+        <meta name="copyright" content="© 2026 Cowley Road Studios. Continuing the Soundworks Oxford legacy (1999–2024)." />
+        
+        {/* Open Graph (social sharing) */}
+        <meta property="og:title" content={ogTitle || title || 'Cowley Road Studios | Continuing the Soundworks Oxford Legacy'} />
+        <meta property="og:description" content={ogDescription || description || 'Professional recording & AV in Oxford. Continuing 25 years of Soundworks Oxford infrastructure.'} />
+        <meta property="og:image" content="https://pub-991d8d2677374c528678829280f50c98.r2.dev/512crs_badge_dark%20fixed%20for%20web.png" />
+        <meta property="og:url" content="https://cowleyroadstudios.com" />
         
         {/* Favicon - CRS Sig-Log */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -37,6 +46,10 @@ export const renderer = jsxRenderer(({ children }) => {
             }
           }
         `}} />
+        
+        {/* Performance: DNS Prefetch & Preconnect for Square Booking */}
+        <link rel="dns-prefetch" href="https://square.link" />
+        <link rel="preconnect" href="https://square.link" />
         
         {/* Google Fonts - Hardware Typography */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -91,15 +104,48 @@ export const renderer = jsxRenderer(({ children }) => {
         <link href="/static/crs-footer-technical.css" rel="stylesheet" />
         {/* RACK FOOTER TERMINATION: 1U rack unit that closes the rack case at bottom */}
         <link href="/static/crs-rack-footer-termination.css" rel="stylesheet" />
+        {/* RACK CONSOLE OMNA: Signal path architecture with parent/sub-rack hierarchy (LOADS LAST FOR /rack ROUTE) */}
+        <link href="/static/rack-console-omna.css" rel="stylesheet" />
         {/* HEADER LOCKDOWN RESET: Nuclear header reset - prevents all drift (LOADS ABSOLUTE LAST - STEEL BEAM) */}
         <link href="/static/crs-header-reset.css" rel="stylesheet" />
+        {/* BACK TO TOP BUTTON: Floating button for scroll navigation */}
+        <link href="/static/back-to-top.css" rel="stylesheet" />
+        {/* CONTACT AFFORDANCE: 44px button-style blocks for email/phone links */}
+        <link href="/static/contact-affordance.css" rel="stylesheet" />
+        {/* WIDTH ALIGNMENT PATCH: Canonical 900px width for header, cards, footer (CANONICAL / LOCKED) */}
+        <link href="/static/width-alignment-patch.css" rel="stylesheet" />
+        {/* RACK MODULE: Heavyweight institutional styling for scoped modules (PHASE 1 DEPLOYMENT) */}
+        <link href="/static/rack-module.css" rel="stylesheet" />
+        {/* HEADER VERTICAL ALIGNMENT: Ensures logo, nav, and CTA sit on same midline (MICRO-PATCH) */}
+        <link href="/static/header-vertical-alignment-patch.css" rel="stylesheet" />
+        {/* RACK FOOTER: Horizontal back-panel layout for footer (FINAL PASS) */}
+        <link href="/static/rack-footer.css" rel="stylesheet" />
+        {/* TERMINAL STATUS FOOTER: Firmware-style system readout (NORMALISATION) */}
+        <link href="/static/terminal-status-footer.css" rel="stylesheet" />
+        {/* RACK CONSOLE: Reason DAW-style interface for /rack page */}
+        <link href="/static/rack-console.css" rel="stylesheet" />
       </head>
       <body>
         {children}
+        
+        {/* Back to Top Button - Appears after 800px scroll */}
+        <button 
+          class="back-to-top" 
+          aria-label="Back to top"
+          aria-hidden="true"
+          title="Scroll to top"
+        >
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 15l-6-6-6 6" />
+          </svg>
+        </button>
+        
         {/* Client-side interactions */}
         <script src="/static/app.js"></script>
         {/* Rack dropdown behavior */}
         <script src="/static/rack-dropdown.js"></script>
+        {/* Back to top functionality */}
+        <script src="/static/back-to-top.js"></script>
       </body>
     </html>
   )
