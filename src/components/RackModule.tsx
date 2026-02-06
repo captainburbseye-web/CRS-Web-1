@@ -18,7 +18,22 @@ const RackModule: React.FC<RackModuleProps> = ({ label, type = 'standard', child
   return (
     <section>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 auto' }}>
-        <img src={imageSrc} alt={label} style={{ display: 'block', width: '100%' }} />
+        <div style={{
+          position: 'relative',
+          border: '1px solid #377867',
+          borderRadius: '4px'
+        }}>
+          <img src={imageSrc} alt={label} style={{ display: 'block', width: '100%', height: 'auto' }} />
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0))',
+            pointerEvents: 'none'
+          }}></div>
+        </div>
         
         {children}
         
