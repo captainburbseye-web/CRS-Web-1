@@ -135,6 +135,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
           </svg>
         </button>
         
+        {/* Performance Monitor - Critical CSS tracking (Phase 3B) */}
+        <script src="/static/performance-monitor.js" defer></script>
+        
         {/* Client-side interactions - Deferred for performance */}
         <script src="/static/app.js" defer></script>
         {/* Rack dropdown behavior - Deferred */}
