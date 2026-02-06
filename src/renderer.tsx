@@ -106,6 +106,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* 9. ROTARY KNOBS: Physics-driven interactive controls (Phase 2B - Strike 2) */}
         <link href="/static/crs-rotary-knob.css" rel="stylesheet" />
         
+        {/* 9b. ROTARY KNOBS v2: Physics simulation with torque & inertia (Strike 9) */}
+        <link href="/static/crs-rotary-knob-v2.css" rel="stylesheet" />
+        
         {/* 10. MACHINED ASSETS: Glass Pane architecture with static PBR assets (Phase 3B - Strike 6) */}
         <link href="/static/crs-machined-assets.css" rel="stylesheet" />
         

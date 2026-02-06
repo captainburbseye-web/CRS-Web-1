@@ -2,6 +2,7 @@ import { Footer } from '../components/Footer'
 import { RotaryKnob } from '../components/RotaryKnob'
 import { GlassOverlay } from '../components/GlassOverlay'
 import { Waveform } from '../components/Waveform'
+import { useState } from 'hono/jsx'
 
 interface RackModuleProps {
   label: string
@@ -86,52 +87,120 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
   </section>
 )
 
+// System Status Module with knob-to-waveform sync
+const SystemStatusModule = () => {
+  const [signalLevel, setSignalLevel] = useState(85)
+  const waveformAmplitude = signalLevel / 100
+  
+  return (
+    <section class="rack-module standard channel-active-green" data-channel="7">
+      <div class="module-header">
+        <div class="led green"></div>
+        <h2 class="module-title">SYSTEM STATUS</h2>
+        <span class="module-id">[SYS-MOD]</span>
+      </div>
+      <div class="module-body">
+        <div class="rack-window-container">
+          {/* LAYER 1: Base Machined Asset (static image) */}
+          <div class="rack-asset-base"></div>
+          
+          {/* LAYER 2: SVG Waveform Signal Feed (living pulse) - SYNCED TO SIGNAL LEVEL KNOB */}
+          <Waveform 
+            channel="7"
+            style="oscilloscope"
+            amplitude={waveformAmplitude}
+            frequency={1}
+          />
+          
+          {/* LAYER 3: Machined Window (glass or organic grain) */}
+          <div class="rack-glass-overlay"></div>
+          
+          {/* LAYER 4: Neon Pulse Rail (active signal) */}
+          <div class="rack-signal-pulse"></div>
+        </div>
+        
+        <div class="system-status-panel">
+          <p class="system-status">SIGNAL CLEAR · SYSTEM LIVE · READY FOR BOOKING</p>
+          
+          <div class="knobs-row">
+            <RotaryKnob 
+              label="INPUT GAIN" 
+              min={0} 
+              max={100} 
+              defaultValue={75} 
+              channel="7"
+              unit="dB"
+              glowColor="var(--neon-green)"
+            />
+            <RotaryKnob 
+              label="MONITOR MIX" 
+              min={0} 
+              max={100} 
+              defaultValue={60} 
+              channel="7"
+              unit="%"
+              glowColor="var(--neon-green)"
+            />
+            <RotaryKnob 
+              label="SIGNAL LEVEL" 
+              min={0} 
+              max={100} 
+              defaultValue={85} 
+              channel="7"
+              unit="dB"
+              glowColor="var(--neon-green)"
+              onChange={(value) => setSignalLevel(value)}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export const RackPage = () => (
   <>
-
-    {/* ACCESSIBILITY: Skip Link */}
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    {/* ACCESSIBILITY: Page Title for Screen Readers */}
-    <h1 class="sr-only">Cowley Road Studios | Rack Monitor Console</h1>
+    <main class="rack-page" id="main-content">
+      <h1 class="screen-reader-only">Cowley Road Studios - Rack Monitor Console</h1>
+      
+      <div class="rack-intro">
+        <h2>CRS RACK MONITOR CONSOLE</h2>
+        <p>Signal routing ·  Booking surface · System status</p>
+      </div>
 
-    <main id="main-content" class="rack-container">
-      {/* SYSTEM INTRO / SIGNAL PATH */}
-      <section class="rack-module op-intro">
-        <div class="module-body">
-          <p class="op-blurb">
-            Welcome to Cowley Road Studios — a fully modular, operational creative venue. 
-            This is your signal path to booking rehearsals, control room access, AV services, and community events.
-          </p>
-        </div>
-      </section>
-
-      {/* GROUP MODULE: REHEARSALS (PARENT) */}
-      <RackModule type="parent" label="REHEARSALS">
-        <div class="sub-rack-row">
+      {/* PARENT MODULES - Contain sub-racks */}
+      <RackModule 
+        label="REHEARSALS" 
+        type="parent"
+        className="channel-active-orange"
+      >
+        <div class="sub-racks">
           <RackModule 
-            type="sub-rack" 
             label="Cowley Road" 
-            videoId={1} 
+            type="sub-rack"
+            videoId={1}
             bookingRoute="commission-studio"
             bookingUrl="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services"
             buttonLabel="BOOK REHEARSAL"
             channel="1"
             className="channel-active-orange"
           >
-            <p class="sub-rack-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
+            <p class="channel-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
           </RackModule>
+
           <RackModule 
-            type="sub-rack" 
             label="Cricket Road" 
-            videoId={2} 
+            type="sub-rack"
+            videoId={2}
             bookingRoute="recording-live"
-            bookingUrl="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services"
+            bookingUrl="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX"
             buttonLabel="BOOK REHEARSAL"
             channel="2"
             className="channel-active-orange"
           >
-            <p class="sub-rack-description">92 Cricket Road, Oxford OX4 3DJ · Hourly rates</p>
+            <p class="channel-description">92 Cricket Road, Oxford OX4 3DJ · Hourly rates</p>
           </RackModule>
         </div>
       </RackModule>
@@ -139,14 +208,14 @@ export const RackPage = () => (
       {/* STANDARD MODULES */}
       <RackModule 
         label="CONTROL ROOM — DRY HIRE" 
-        videoId={7} 
+        videoId={7}
         bookingRoute="commission-studio"
         bookingUrl="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
         buttonLabel="BOOK DRY HIRE"
         channel="3"
         className="channel-active-magenta"
       >
-        <p class="module-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
+        <p class="channel-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
       </RackModule>
 
       <RackModule 
@@ -158,7 +227,7 @@ export const RackPage = () => (
         channel="5"
         className="channel-active-amber"
       >
-        <p class="module-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
+        <p class="channel-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
       </RackModule>
 
       <RackModule 
@@ -171,22 +240,18 @@ export const RackPage = () => (
         channel="4"
       >
         <div class="cafe-content">
-          <p class="cafe-hero">
-            The Workshop Café is where ideas brew as freely as the coffee. A warm, analog space 
-            for collaboration, conversation, and creativity—no booking required for café hours, 
-            community programming by allocation.
-          </p>
+          <p class="cafe-description">The Workshop Café is where ideas brew as freely as the coffee. A warm, analog space for collaboration, conversation, and creativity—no booking required for café hours, community programming by allocation.</p>
           
           <div class="cafe-programming">
-            <h3 class="cafe-section-title">What We Offer</h3>
-            <ul class="cafe-list">
-              <li><strong>Open Creative Sessions</strong> — Drop-in workspace for artists, makers, and thinkers</li>
-              <li><strong>Technical Workshops</strong> — Hands-on learning (recording, mixing, live sound fundamentals)</li>
-              <li><strong>Community Events</strong> — Live sessions, listening parties, creative showcases</li>
-              <li><strong>Subsidised Rates</strong> — Community groups and cultural projects eligible for reduced hire</li>
+            <h3>What We Offer</h3>
+            <ul>
+              <li><strong>Open Creative Sessions</strong> · Fridays & Saturdays, drop-in coworking</li>
+              <li><strong>Technical Workshops</strong> · Audio gear tutorials & sound design clinics</li>
+              <li><strong>Community Events</strong> · Album listening parties, gear swap nights, open mics</li>
+              <li><strong>Subsidised Rates</strong> · Pay-what-you-can model for local artists & grassroots orgs</li>
             </ul>
           </div>
-          
+
           <div class="cafe-details">
             <p><strong>Location:</strong> 118 Cowley Road, Oxford OX4 1JE (ground floor, street-level access)</p>
             <p><strong>Vibe:</strong> Vintage audio gear meets community coffee shop—analog warmth, technical credibility</p>
@@ -201,51 +266,17 @@ export const RackPage = () => (
         className="channel-active-white"
       >
         <div class="contact-info">
-          <p><strong>Email:</strong> <a href="mailto:info@crsoxford.com">info@crsoxford.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+441865722027">+44 1865 722027</a></p>
-          <p><strong>Socials:</strong> @cowleyroadstudios.ox</p>
+          <p><strong>Email:</strong> <a href="mailto:info@cowleyroadstudios.com">info@cowleyroadstudios.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+447515886945">+44 7515 886945</a></p>
+          <p><strong>Socials:</strong> 
+            <a href="https://www.instagram.com/cowleyroadstudios" target="_blank" rel="noopener">Instagram</a> ·
+            <a href="https://www.facebook.com/cowleyroadstudios" target="_blank" rel="noopener">Facebook</a>
+          </p>
         </div>
       </RackModule>
 
-      {/* SYSTEM MODULE (FILLER) */}
-      <RackModule 
-        type="standard" 
-        label="SYSTEM STATUS" 
-        videoId={12}
-        channel="7"
-        className="channel-active-green"
-      >
-        <div class="system-status-panel">
-          <p class="system-status">SIGNAL CLEAR · SYSTEM LIVE · READY FOR BOOKING</p>
-          
-          <div class="knobs-row">
-            <RotaryKnob 
-              label="INPUT GAIN" 
-              min={0} 
-              max={100} 
-              defaultValue={75} 
-              channel="7"
-              unit="dB"
-            />
-            <RotaryKnob 
-              label="MONITOR MIX" 
-              min={0} 
-              max={100} 
-              defaultValue={60} 
-              channel="7"
-              unit="%"
-            />
-            <RotaryKnob 
-              label="SIGNAL LEVEL" 
-              min={0} 
-              max={100} 
-              defaultValue={85} 
-              channel="7"
-              unit="dB"
-            />
-          </div>
-        </div>
-      </RackModule>
+      {/* SYSTEM STATUS - Now with knob-to-waveform sync */}
+      <SystemStatusModule />
     </main>
 
     <Footer />
