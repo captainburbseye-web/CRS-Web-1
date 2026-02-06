@@ -18,7 +18,7 @@ const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/con
         fontWeight: 'bold',
         textTransform: 'uppercase',
         textDecoration: 'none',
-        transition: '0.2s',
+        display: 'inline-block',
       }}
     >
       {buttonLabel}
