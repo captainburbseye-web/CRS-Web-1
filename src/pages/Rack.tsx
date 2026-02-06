@@ -26,7 +26,7 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
           loop 
           muted 
           class="module-video"
-          src={`https://pub-b79b90db3c594763bf7e4c9e96ae461d.r2.dev/${videoId}.mp4`}
+          src={`https://pub-30f2bf10509141bba382d98d130c358b.r2.dev/${videoId}.mp4`}
         />
       )}
       {children}
@@ -97,7 +97,7 @@ export const RackPage = () => (
           <RackModule 
             type="sub-rack" 
             label="Cowley Road" 
-            videoId={3} 
+            videoId={1} 
             bookingRoute="commission-studio"
             bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
             buttonLabel="COMMISSION ALLOCATION"
@@ -107,7 +107,7 @@ export const RackPage = () => (
           <RackModule 
             type="sub-rack" 
             label="Cricket Road" 
-            videoId={5} 
+            videoId={2} 
             bookingRoute="recording-live"
             bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
             buttonLabel="REHEARSE NOW"
