@@ -1730,9 +1730,9 @@ app.get('/rack', (c) => {
       <Footer />
     </>,
     {
-      title: 'Rack Console | Cowley Road Studios',
-      description: 'CRS Rack Console: Signal routing, booking surface, system status. Reason DAW-style interface.',
-      keywords: 'rack console, booking, cowley road studios, signal routing'
+      title: 'CRS Studio Network | Cowley Road Studios',
+      description: 'CRS Studio Network: Signal routing, booking surface, system status. Hardware-inspired interface.',
+      keywords: 'studio network, booking, cowley road studios, signal routing'
     }
   )
 })

@@ -181,10 +181,10 @@ export const RackPage = () => (
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <main class="rack-page" id="main-content">
-      <h1 class="screen-reader-only">Cowley Road Studios - Rack Monitor Console</h1>
+      <h1 class="screen-reader-only">CRS Studio Network</h1>
       
       <div class="rack-intro">
-        <h2>CRS RACK MONITOR CONSOLE</h2>
+        <h2>CRS STUDIO NETWORK</h2>
         <p>Signal routing ·  Booking surface · System status</p>
       </div>
 
