@@ -6,12 +6,12 @@ interface BookingButtonProps {
   buttonLabel?: string;
 }
 
-const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/contact?service=venue', buttonLabel = 'Book Now' }) => {
+const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/contact?service=venue', buttonLabel = 'EXECUTE_BOOKING' }) => {
   return (
     <a
       href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
       style={{
-        backgroundColor: '#006aff',
+        backgroundColor: '#377867',
         color: '#fff',
         padding: '12px 24px',
         borderRadius: '4px',
@@ -19,6 +19,7 @@ const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/con
         textTransform: 'uppercase',
         textDecoration: 'none',
         display: 'inline-block',
+        fontFamily: 'monospace'
       }}
     >
       {buttonLabel}
