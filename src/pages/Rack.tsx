@@ -40,7 +40,7 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
               
               {/* LAYER 2: Transparent Machined Plate (the faceplate) */}
               <img 
-                src="/static/machined-assets/cricket-rehearsal-raw.png"
+                src="/static/machined-assets/cricket-rehearsal-optimized.webp"
                 alt="Cricket Road Rehearsal Module Faceplate"
                 class="rack-ghost-chassis"
                 loading="lazy"
