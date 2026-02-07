@@ -25,8 +25,6 @@ export const Header = () => (
         <span class="separator">|</span>
         <a href="/about">About</a>
         <span class="separator">|</span>
-        <a href="/work">Work</a>
-        <span class="separator">|</span>
         <a href="/contact">Contact</a>
       </nav>
       

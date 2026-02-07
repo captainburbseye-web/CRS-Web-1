@@ -93,6 +93,9 @@ header.rack-header {
   display: inline-flex; /* Ensure proper vertical alignment */
   align-items: center; /* Fix Contact link sitting lower */
   line-height: 1; /* Tighter line height for compact rack aesthetic */
+  vertical-align: middle; /* Force pixel-perfect alignment */
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
 }
 
 .rack-header-nav a:hover {
@@ -105,6 +108,9 @@ header.rack-header {
   display: inline-flex; /* Match link alignment */
   align-items: center; /* Ensure vertical centering */
   line-height: 1; /* Match link line height */
+  vertical-align: middle; /* Force pixel-perfect alignment */
+  margin: 0; /* Remove any default margin */
+  padding: 0; /* Remove any default padding */
 }
 
 /* ==========================================
