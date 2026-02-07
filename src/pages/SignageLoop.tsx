@@ -1,62 +1,92 @@
 import { useState, useEffect } from 'hono/jsx'
-import { CowleyRehearsal } from '../components/rack/modules/CowleyRehearsal'
-import { CricketRehearsal } from '../components/rack/modules/CricketRehearsal'
-import { CricketControlRoom } from '../components/rack/modules/CricketControlRoom'
-import { WorkshopCafe } from '../components/rack/modules/WorkshopCafe'
-import { MasterBus } from '../components/rack/modules/MasterBus'
 
 export const SignageLoop = () => {
   // CONFIGURATION
-  const SLIDE_DURATION = 10000 // 10 Seconds per module
+  const SLIDE_DURATION = 8000  // 8 Seconds per slide
   const FADE_DURATION = 500    // 0.5s transition
 
   // STATE
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
 
-  // THE PLAYLIST (Order matters - this is the loop)
-  // Updated with Info-HUD data for high-utility street display
+  // THE PLAYLIST - NOUNS AND VERBS (NOT VIBES)
+  // Clear, functional copy based on UK studio signage standards
   const playlist = [
     { 
-      id: 'ch1', 
-      component: <CowleyRehearsal />,
-      serviceName: 'BAND REHEARSAL',
-      features: 'Full Backline Included',
-      cta: 'Open 7 Days',
-      accentColor: '#FFDB58' // Yellow
+      id: 'ch1',
+      service: 'BAND REHEARSAL',
+      details: [
+        'Full Backline Provided',
+        'Drum Kit & Amps Included',
+        'Ground Floor Load-in'
+      ],
+      cta: 'OPEN 7 DAYS',
+      img: '/static/machined-assets/cowley-rehearsal-optimized.webp',
+      color: '#F9E400', // Yellow
+      textClass: 'text-[#F9E400]',
+      bgClass: 'bg-[#F9E400]',
+      borderClass: 'border-[#F9E400]'
     },
     { 
-      id: 'ch8', 
-      component: <CricketRehearsal />,
-      serviceName: 'JAM SPACE',
-      features: 'Plug & Play Practice',
-      cta: 'From £12/hr',
-      accentColor: '#FF00FF' // Magenta
+      id: 'ch8',
+      service: 'JAM SPACE',
+      details: [
+        'Plug & Play Practice',
+        'Instant Online Booking',
+        'Soundproof & Air Con'
+      ],
+      cta: 'FROM £12 / HOUR',
+      img: '/static/machined-assets/cricket-rehearsal-magenta-optimized.webp',
+      color: '#F6287D', // Magenta
+      textClass: 'text-[#F6287D]',
+      bgClass: 'bg-[#F6287D]',
+      borderClass: 'border-[#F6287D]'
     },
     { 
-      id: 'ch2', 
-      component: <CricketControlRoom />,
-      serviceName: 'PRODUCTION SUITE',
-      features: 'Vocal Booth & Mixing Desk',
-      cta: 'For Producers',
-      accentColor: '#00FFFF' // Cyan
+      id: 'ch2',
+      service: 'PRODUCTION SUITE',
+      details: [
+        'Vocal Booth & Control Room',
+        'Universal Audio / Logic / Ableton',
+        'Perfect for Vocals & Mixing'
+      ],
+      cta: 'DRY HIRE AVAILABLE',
+      img: '/static/machined-assets/cricket-control-room-optimized.webp',
+      color: '#00CAFF', // Cyan
+      textClass: 'text-[#00CAFF]',
+      bgClass: 'bg-[#00CAFF]',
+      borderClass: 'border-[#00CAFF]'
     },
     { 
-      id: 'ch4', 
-      component: <WorkshopCafe />,
-      serviceName: 'WORKSHOP CAFÉ',
-      features: 'Specialty Coffee & Co-Working',
-      cta: 'Open to Public',
-      accentColor: '#FFD700' // Gold
+      id: 'ch4',
+      service: 'WORKSHOP CAFÉ',
+      details: [
+        'Specialty Coffee & Food',
+        'Co-Working Space',
+        'Creative Community Hub'
+      ],
+      cta: 'OPEN TO PUBLIC',
+      img: '/static/machined-assets/workshop-cafe-optimized.webp',
+      color: '#FFB627', // Amber
+      textClass: 'text-[#FFB627]',
+      bgClass: 'bg-[#FFB627]',
+      borderClass: 'border-[#FFB627]'
     },
     { 
-      id: 'ch3', 
-      component: <MasterBus />,
-      serviceName: 'PODCAST STUDIO',
-      features: 'Pro Audio & Video Recording',
-      cta: 'Instant Booking',
-      accentColor: '#2CFF05' // System Green
-    },
+      id: 'ch3',
+      service: 'PODCAST STUDIO',
+      details: [
+        '4x Shure SM7B Mics',
+        '4K Multi-Cam Video',
+        'Acoustically Treated'
+      ],
+      cta: 'RECORD & EDIT HERE',
+      img: 'https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png',
+      color: '#F9E400', // Yellow/Charcoal
+      textClass: 'text-[#F9E400]',
+      bgClass: 'bg-[#F9E400]',
+      borderClass: 'border-[#F9E400]'
+    }
   ]
 
   // 1. CYCLE LOGIC
@@ -81,83 +111,85 @@ export const SignageLoop = () => {
   return (
     <div class="w-screen h-screen bg-black overflow-hidden relative cursor-none">
       
-      {/* 2. BURN-IN PROTECTION (Subtle Pixel Shift) */}
-      <div class="w-full h-full animate-pixelShift">
+      {/* 1. BACKGROUND IMAGE (The Vibe - Keep the cool gear aesthetic) */}
+      <div 
+        class={`
+          absolute inset-0 
+          transition-opacity duration-500 ease-in-out
+          ${isVisible ? 'opacity-100' : 'opacity-0'}
+        `}
+      >
+        <img 
+          src={currentSlide.img} 
+          alt={currentSlide.service}
+          class="w-full h-full object-cover opacity-60"
+        />
+        {/* Grain Overlay */}
+        <div class="absolute inset-0 bg-[url('/static/noise.png')] opacity-10 mix-blend-overlay"></div>
+      </div>
+
+      {/* 2. BURN-IN PROTECTION (Pixel Shift) */}
+      <div class="absolute inset-0 animate-pixelShift flex items-center justify-end pr-16">
         
-        {/* 3. CENTERED STAGE */}
-        <div class="flex items-center justify-center w-full h-full p-8">
+        {/* 3. THE INFO-HUD (The Utility - NOUNS AND VERBS) */}
+        <div 
+          class={`
+            w-[45%] bg-black/85 backdrop-blur-md border-l-8 p-12 shadow-2xl
+            flex flex-col justify-center gap-6
+            transition-all duration-500 transform
+            ${currentSlide.borderClass}
+            ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}
+          `}
+        >
           
+          {/* SERVICE TITLE (The What) */}
+          <h1 
+            class={`text-7xl font-black italic uppercase tracking-tighter ${currentSlide.textClass}`}
+            style={`text-shadow: 0 0 30px ${currentSlide.color}80;`}
+          >
+            {currentSlide.service}
+          </h1>
+
+          {/* FEATURES LIST (The Detail) */}
+          <ul class="space-y-4">
+            {currentSlide.details.map((item, i) => (
+              <li key={i} class="text-3xl font-bold tracking-wide flex items-center gap-3">
+                <span 
+                  class={`w-3 h-3 rounded-full ${currentSlide.bgClass}`}
+                  style={`box-shadow: 0 0 10px ${currentSlide.color};`}
+                ></span>
+                <span class="text-white/90">{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          {/* CALL TO ACTION (The Action) */}
           <div 
             class={`
-              relative w-full max-w-5xl aspect-video 
-              transition-opacity duration-500 ease-in-out
-              ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
+              mt-8 text-4xl font-black text-black py-4 px-6 text-center 
+              uppercase tracking-widest ${currentSlide.bgClass}
             `}
+            style={`box-shadow: 0 0 20px ${currentSlide.color}80;`}
           >
-            {/* BACKGROUND: RACK MODULE IMAGE */}
-            <div class="absolute inset-0">
-              {currentSlide.component}
-            </div>
+            {currentSlide.cta}
+          </div>
 
-            {/* INFO-HUD OVERLAY: High-Contrast Information Box */}
-            <div class="absolute inset-0 flex items-center justify-end p-12">
-              <div 
-                class="bg-black/80 backdrop-blur-sm border-l-8 p-8 max-w-xl"
-                style={`border-color: ${currentSlide.accentColor}`}
-              >
-                {/* Service Name - Maximum Impact */}
-                <h1 
-                  class="text-7xl font-black tracking-tighter leading-none mb-4"
-                  style={`
-                    color: ${currentSlide.accentColor};
-                    font-family: 'Impact', 'Oswald', 'Arial Black', sans-serif;
-                    text-transform: uppercase;
-                    letter-spacing: -0.05em;
-                    text-shadow: 0 0 20px ${currentSlide.accentColor}40;
-                  `}
-                >
-                  {currentSlide.serviceName}
-                </h1>
-
-                {/* Features - Clear Utility */}
-                <p class="text-3xl font-bold text-white/90 mb-6 tracking-wide">
-                  {currentSlide.features}
-                </p>
-
-                {/* Call to Action / Key Info */}
-                <div 
-                  class="text-2xl font-bold px-6 py-3 inline-block"
-                  style={`
-                    background: ${currentSlide.accentColor}20;
-                    border: 2px solid ${currentSlide.accentColor};
-                    color: ${currentSlide.accentColor};
-                  `}
-                >
-                  {currentSlide.cta}
-                </div>
-
-                {/* Booking URL (Always Visible) */}
-                <div class="mt-8 pt-6 border-t border-white/20">
-                  <p class="text-xl font-bold text-white/80 tracking-wider">
-                    BOOK ONLINE @ COWLEYROADSTUDIOS.COM
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* BOOKING URL (Always Visible) */}
+          <div class="mt-6 pt-6 border-t border-white/20">
+            <p class="text-xl font-bold text-white/70 tracking-wider text-center">
+              COWLEYROADSTUDIOS.COM
+            </p>
           </div>
 
         </div>
       </div>
 
-      {/* 4. PROGRESS BAR (Visual Timer) */}
-      <div class="absolute bottom-0 left-0 h-1 bg-white/20 w-full">
+      {/* 4. PROGRESS BAR */}
+      <div class="absolute bottom-0 left-0 h-2 bg-white/20 w-full">
         <div 
-          key={currentIndex} // Resets animation on change
-          class="h-full origin-left animate-progress" 
-          style={`
-            background: ${currentSlide.accentColor};
-            animation-duration: ${SLIDE_DURATION}ms;
-          `}
+          key={currentIndex}
+          class={`h-full origin-left animate-progress ${currentSlide.bgClass}`}
+          style={`animation-duration: ${SLIDE_DURATION}ms;`}
         />
       </div>
 
