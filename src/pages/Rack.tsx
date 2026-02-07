@@ -30,15 +30,15 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
     <div class="module-body">
       {videoId && (
         <div class="rack-window-container">
-          {(channel === '1' || channel === '2' || channel === '3' || channel === '4' || channel === '8') ? (
+          {(channel === '1' || channel === '2' || channel === '3' || channel === '4' || channel === '6' || channel === '8') ? (
             <>
-              {/* CH1/CH2/CH3/CH4/CH8 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
+              {/* CH1/CH2/CH3/CH4/CH6/CH8 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
               {/* LAYER 1: Reactive SVG Signal (behind chassis) */}
               <Waveform 
                 channel={channel} 
                 style="oscilloscope"
-                amplitude={channel === '1' ? 1.2 : channel === '3' ? 1.15 : channel === '4' ? 1.1 : channel === '8' ? 1.3 : 1}
-                frequency={channel === '1' ? 0.8 : channel === '3' ? 0.85 : channel === '4' ? 0.9 : channel === '8' ? 0.9 : 1}
+                amplitude={channel === '1' ? 1.2 : channel === '3' ? 1.15 : channel === '4' ? 1.1 : channel === '6' ? 0.95 : channel === '8' ? 1.3 : 1}
+                frequency={channel === '1' ? 0.8 : channel === '3' ? 0.85 : channel === '4' ? 0.9 : channel === '6' ? 0.7 : channel === '8' ? 0.9 : 1}
               />
               
               {/* LAYER 2: Transparent Machined Plate (the faceplate) */}
@@ -52,6 +52,8 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
                     ? "/static/machined-assets/cowley-pods-rack.webp"
                     : channel === '4'
                     ? "/static/machined-assets/workshop-cafe-optimized.webp"
+                    : channel === '6'
+                    ? "/static/machined-assets/contact-patchbay-rack.webp"
                     : channel === '8'
                     ? "/static/machined-assets/cricket-rehearsal-magenta-optimized.webp"
                     : "/static/machined-assets/cricket-rehearsal-optimized.webp"
@@ -184,6 +186,61 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
                         borderRadius: '2px'
                       }}
                       aria-label="Venue Hire Enquiry"
+                      rel="noopener noreferrer"
+                    />
+                  </>
+                ) : channel === '6' ? (
+                  <>
+                    {/* CH6: Contact & Location Patch Bay - 3 Input Jacks */}
+                    {/* HITBOX 1: EMAIL INPUT (Top Jack) */}
+                    <a 
+                      href="mailto:info@cowleyroadstudios.com"
+                      class="ghost-hitbox"
+                      style={{
+                        position: 'absolute',
+                        top: '24%',
+                        left: '7.5%',
+                        width: '11%',
+                        height: '26%',
+                        borderRadius: '50%'
+                      }}
+                      aria-label="Send Email · info@cowleyroadstudios.com"
+                      title="Email Us"
+                      rel="noopener noreferrer"
+                    />
+                    
+                    {/* HITBOX 2: PHONE LINE (Bottom Jack) */}
+                    <a 
+                      href="tel:+441865123456"
+                      class="ghost-hitbox"
+                      style={{
+                        position: 'absolute',
+                        bottom: '18%',
+                        left: '7.5%',
+                        width: '11%',
+                        height: '26%',
+                        borderRadius: '50%'
+                      }}
+                      aria-label="Call Studio · +44 1865 123456"
+                      title="Call Us"
+                      rel="noopener noreferrer"
+                    />
+                    
+                    {/* HITBOX 3: LOCATION MAP (Glowing Screen) */}
+                    <a 
+                      href="https://maps.google.com/?q=118+Cowley+Road,Oxford,UK"
+                      target="_blank"
+                      class="ghost-hitbox"
+                      style={{
+                        position: 'absolute',
+                        top: '21%',
+                        right: '14.5%',
+                        width: '43%',
+                        height: '57%',
+                        borderRadius: '2px'
+                      }}
+                      aria-label="View on Google Maps · 118 Cowley Road, Oxford"
+                      title="Find Us on Maps"
                       rel="noopener noreferrer"
                     />
                   </>
@@ -455,8 +512,23 @@ export const RackPage = () => (
         pricing="Pod 1: £35/hr · Pods 2 & 3: Coming Soon"
       />
 
+      {/* CH6: CONTACT & LOCATION PATCH BAY */}
+      <RackModule 
+        label="Contact & Location" 
+        type="sub-rack"
+        videoId={6}
+        bookingRoute="contact"
+        bookingUrl="/contact"
+        buttonLabel="GET IN TOUCH"
+        channel="6"
+        className="channel-active-black"
+        virtualInterface={true}
+        description="Communications Hub · Find Us"
+        pricing="Email · Phone · Maps"
+      />
+
       {/* The following modules are hidden in Virtual Interface mode until assets are created */}
-      {/* TODO: Create Ghost Chassis assets for CH5, CH6 */}
+      {/* TODO: Create Ghost Chassis assets for CH5 */}
 
       {/* SYSTEM STATUS - Now with knob-to-waveform sync */}
       <SystemStatusModule />
