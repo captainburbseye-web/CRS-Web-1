@@ -51,8 +51,8 @@ export const SignagePage = () => {
             </div>
           </div>
 
-          {/* TOP RIGHT: Cricket Road Rehearsal */}
-          <div class="signage-module cricket-road" data-channel="2">
+          {/* TOP RIGHT: Cricket Road Control Room */}
+          <div class="signage-module cricket-control-room" data-channel="2">
             <div class="module-chassis">
               {/* LAYER 1: Reactive Signal */}
               <svg viewBox="0 0 200 60" class="signage-waveform" aria-hidden="true">
@@ -77,52 +77,29 @@ export const SignagePage = () => {
               
               {/* LAYER 2: Ghost Chassis Asset */}
               <img 
-                src="/static/machined-assets/cricket-rehearsal-optimized.webp"
-                alt="Cricket Road Rehearsal Module"
+                src="/static/machined-assets/cricket-control-room-optimized.webp"
+                alt="Cricket Road Control Room Module"
                 class="chassis-asset"
               />
               
               <div class="module-header-signage overlay">
-                <h2 class="kinetic-title oxford-flicker cyan">CRICKET ROAD</h2>
-                <p class="module-address cyan">92 Cricket Road · Rehearsal</p>
+                <h2 class="kinetic-title oxford-flicker cyan">CONTROL ROOM</h2>
+                <p class="module-address cyan">92 Cricket Road · Control Room Hire</p>
               </div>
             </div>
           </div>
 
-          {/* BOTTOM LEFT: Control Room Dry Hire */}
-          <div class="signage-module control-room" data-channel="3">
+          {/* BOTTOM LEFT: AV Services */}
+          <div class="signage-module av-services" data-channel="5">
             <div class="module-chassis">
-              {/* LAYER 1: Reactive Signal */}
-              <svg viewBox="0 0 200 60" class="signage-waveform" aria-hidden="true">
-                <defs>
-                  <filter id="waveform-glow-signage-3">
-                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                    <feMerge>
-                      <feMergeNode in="coloredBlur"/>
-                      <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                  </filter>
-                </defs>
-                <path 
-                  d="M0,30 Q10,10 20,30 T40,30 T60,30 T80,50 T100,30 T120,10 T140,30 T160,30 T180,45 T200,30"
-                  fill="none"
-                  stroke="#FF00D9"
-                  stroke-width="3"
-                  filter="url(#waveform-glow-signage-3)"
-                  class="signage-pulse"
-                />
-              </svg>
+              {/* NO WAVEFORM: Service Module */}
               
-              {/* LAYER 2: Ghost Chassis Asset */}
-              <img 
-                src="/static/machined-assets/cricket-rehearsal-optimized.webp"
-                alt="Control Room Module"
-                class="chassis-asset"
-              />
-              
-              <div class="module-header-signage overlay">
-                <h2 class="kinetic-title oxford-flicker magenta">CONTROL ROOM</h2>
-                <p class="module-address magenta">Dry Hire · 92 Cricket Road</p>
+              {/* LAYER 2: Service Chassis (placeholder) */}
+              <div class="chassis-placeholder" style="background: linear-gradient(135deg, #3d3d3d, #1a1a1a);">
+                <div class="module-header-signage">
+                  <h2 class="kinetic-title oxford-flicker" style="color: #FFB627;">AV SERVICES</h2>
+                  <p class="module-address" style="color: rgba(255, 182, 39, 0.8);">Hire & Repair · Technical Support</p>
+                </div>
               </div>
             </div>
           </div>
