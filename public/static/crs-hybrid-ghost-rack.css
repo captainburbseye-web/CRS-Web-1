@@ -1,0 +1,270 @@
+/* ====================================================================
+   HYBRID GHOST RACK — Best of Both Worlds
+   Mark II Rack Faceplates + Ghost Chassis Magic
+   Applied: 2026-02-07 12:25 UTC
+   ==================================================================== */
+
+/* ============================================
+   PHYSICAL RACK FRAME (from 5am)
+   16px rack rails with metallic texture
+   ============================================ */
+
+.rack-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #0a0a0a;
+  border-left: 16px solid #1a1a1a;
+  border-right: 16px solid #1a1a1a;
+  box-shadow: 
+    inset 12px 0 24px rgba(0, 0, 0, 0.9),
+    inset -12px 0 24px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(0, 0, 0, 0.6);
+  position: relative;
+  padding: 0;
+}
+
+/* Rack rail metallic texture */
+.rack-container::before,
+.rack-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 16px;
+  background: 
+    linear-gradient(90deg, 
+      rgba(40, 40, 40, 1) 0%,
+      rgba(30, 30, 30, 1) 50%,
+      rgba(20, 20, 20, 1) 100%
+    );
+  z-index: 10;
+  pointer-events: none;
+}
+
+.rack-container::before {
+  left: 0;
+  box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.8);
+}
+
+.rack-container::after {
+  right: 0;
+  box-shadow: inset 2px 0 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ============================================
+   GLASSMORPHIC HOVER EFFECTS (from 3am)
+   Transparent glass layer on hover
+   ============================================ */
+
+.rack-unit a:hover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: brightness(1.2) saturate(1.3) blur(2px);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 50;
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.3),
+    inset 0 0 15px rgba(255, 255, 255, 0.1);
+  animation: glassGlow 2s ease-in-out infinite;
+}
+
+@keyframes glassGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(255, 255, 255, 0.3),
+      inset 0 0 15px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(255, 255, 255, 0.4),
+      inset 0 0 20px rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* ============================================
+   TACTILE BUTTON PRESS (from 3am)
+   Physical button feeling
+   ============================================ */
+
+.rack-unit a:active {
+  transform: scale(0.95) !important;
+  transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rack-unit a {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================
+   ANIMATED STATUS LEDs (enhanced)
+   More alive pulsing
+   ============================================ */
+
+.rack-unit div[class*="animate-pulse"] {
+  animation: statusPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite !important;
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1) blur(0);
+  }
+  50% {
+    opacity: 0.6;
+    filter: brightness(1.4) blur(1px);
+  }
+}
+
+/* ============================================
+   POWER SWITCH WAVEFORM INDICATOR (subtle)
+   Small animated pulse on power switches
+   ============================================ */
+
+.rack-unit a[title*="POWER"]::after,
+.rack-unit a[aria-label*="POWER"]::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, currentColor 0%, transparent 70%);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: powerPulse 1.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 60;
+}
+
+@keyframes powerPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.3;
+  }
+}
+
+/* Color-code power pulses by channel */
+.rack-unit a[href*="7n0e94bokii6s3"]::after { color: #F9E400; } /* CH1 Yellow */
+.rack-unit a[href*="ea1ume9ju9zwqk"]::after { color: #F6287D; } /* CH8 Magenta */
+.rack-unit a[href*="42x52tys6ettug"]::after { color: #2DD4BF; } /* CH2 Cyan */
+.rack-unit a[href*="cafe"]::after { color: #FFC107; } /* CH4 Amber */
+.rack-unit a[href*="pod1"]::after { color: #D4AF37; } /* CH3 Gold */
+
+/* ============================================
+   MULTI-LAYER LIGHTING (from 3am)
+   Enhanced glow on hover
+   ============================================ */
+
+.rack-unit:hover {
+  box-shadow: 
+    0 0 30px rgba(255, 255, 255, 0.1),
+    0 0 60px rgba(255, 255, 255, 0.05),
+    0 8px 16px rgba(0, 0, 0, 0.6);
+  transition: box-shadow 0.3s ease-out;
+}
+
+/* ============================================
+   DEPTH ENHANCEMENT
+   Subtle 3D effect on rack units
+   ============================================ */
+
+.rack-unit img {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: filter 0.3s ease-out;
+}
+
+.rack-unit:hover img {
+  filter: 
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4))
+    drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+}
+
+/* ============================================
+   TOOLTIP ENHANCEMENT (from 3am)
+   Better tooltip on hover
+   ============================================ */
+
+.rack-unit a:hover::before {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.95);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: 'Space Mono', monospace;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  animation: tooltipFadeIn 0.3s ease-out 0.5s forwards;
+  z-index: 100;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ============================================
+   KINETIC ENERGY (subtle)
+   Slight movement on hover for life
+   ============================================ */
+
+.rack-unit a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rack-unit a:hover {
+  transform: translateY(-1px);
+}
+
+.rack-unit a:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* ============================================
+   BREATHING EFFECT (very subtle)
+   Units feel alive, not dead static
+   ============================================ */
+
+@keyframes breathe {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.98;
+  }
+}
+
+.rack-unit {
+  animation: breathe 8s ease-in-out infinite;
+}
+
+/* Stagger breathing between units */
+.rack-unit:nth-child(1) { animation-delay: 0s; }
+.rack-unit:nth-child(2) { animation-delay: 1s; }
+.rack-unit:nth-child(3) { animation-delay: 2s; }
+.rack-unit:nth-child(4) { animation-delay: 3s; }
+.rack-unit:nth-child(5) { animation-delay: 4s; }
+.rack-unit:nth-child(6) { animation-delay: 5s; }
+.rack-unit:nth-child(7) { animation-delay: 6s; }
