@@ -16,6 +16,7 @@ import { Soundworks } from './pages/Soundworks'
 import { About } from './pages/About'
 import { Work } from './pages/Work'
 import { SignagePage } from './pages/Signage'
+import { SignageLoop } from './pages/SignageLoop'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 
@@ -1624,6 +1625,38 @@ app.get('/signage', (c) => {
       </head>
       <body>
         <SignagePage />
+      </body>
+    </html>
+  )
+})
+
+// SIGNAGE LOOP — BROADCAST ENGINE (Yodeck Kiosk Mode)
+// Auto-cycling slideshow of all Elite Signage Components
+// 10-second intervals with fade transitions and burn-in protection
+app.get('/signage-loop', (c) => {
+  return c.html(
+    <html>
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>CRS Signage Loop | Broadcast Mode</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="/static/crs-ghost-chassis.css" rel="stylesheet" />
+        <style>{`
+          body { 
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden; 
+            background: #000;
+          }
+        `}</style>
+      </head>
+      <body>
+        <SignageLoop />
       </body>
     </html>
   )

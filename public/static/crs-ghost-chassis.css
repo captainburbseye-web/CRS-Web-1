@@ -875,3 +875,35 @@
     opacity: 0.5;
   }
 }
+
+/* ============================================
+   SIGNAGE LOOP: KIOSK MODE UTILITIES
+   ============================================ */
+
+/* Hide Cursor for Kiosk Mode */
+.cursor-none {
+  cursor: none;
+}
+
+/* Pixel Shift: Moves entire screen 1px every minute to prevent burn-in */
+@keyframes pixelShift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(1px, 0); }
+  50% { transform: translate(1px, 1px); }
+  75% { transform: translate(0, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-pixelShift {
+  animation: pixelShift 60s infinite linear;
+}
+
+/* Progress Bar Loader */
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.animate-progress {
+  animation: progress linear forwards;
+}
