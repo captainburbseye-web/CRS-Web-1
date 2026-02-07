@@ -27,9 +27,9 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
     <div class="module-body">
       {videoId && (
         <div class="rack-window-container">
-          {channel === '2' ? (
+          {(channel === '2' || channel === '3') ? (
             <>
-              {/* CH2 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
+              {/* CH2/CH3 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
               {/* LAYER 1: Reactive SVG Signal (behind chassis) */}
               <Waveform 
                 channel={channel} 
@@ -41,7 +41,7 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
               {/* LAYER 2: Transparent Machined Plate (the faceplate) */}
               <img 
                 src="/static/machined-assets/cricket-rehearsal-optimized.webp"
-                alt="Cricket Road Rehearsal Module Faceplate"
+                alt={`${label} Module Faceplate`}
                 class="rack-ghost-chassis"
                 loading="lazy"
               />
@@ -53,7 +53,7 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
               <a 
                 href={bookingUrl || '#'}
                 class="rack-booking-hitbox"
-                aria-label="Book Cricket Road Rehearsals"
+                aria-label={`Book ${label}`}
                 rel="noopener noreferrer"
               />
             </>

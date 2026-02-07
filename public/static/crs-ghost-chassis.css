@@ -1,5 +1,5 @@
 /**
- * CRS GHOST CHASSIS — CH2 CRICKET ROAD REHEARSALS
+ * CRS GHOST CHASSIS — CH2 & CH3
  * The 238th Law: "Real hardware has depth."
  * 
  * 4-Layer Recessed-Depth Stack:
@@ -12,12 +12,14 @@
 /* ============================================
    LAYER 0: GHOST CHASSIS CONTAINER
    ============================================ */
-[data-channel="2"] .rack-module {
+[data-channel="2"] .rack-module,
+[data-channel="3"] .rack-module {
   position: relative;
   isolation: isolate; /* Create stacking context */
 }
 
-[data-channel="2"] .rack-window-container {
+[data-channel="2"] .rack-window-container,
+[data-channel="3"] .rack-window-container {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -41,14 +43,27 @@
           drop-shadow(0 0 16px var(--neon-cyan));
 }
 
+[data-channel="3"] .waveform-svg {
+  position: absolute;
+  top: 24%;
+  left: 42.1%;
+  width: 50%;
+  height: 40%;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px var(--neon-magenta)) 
+          drop-shadow(0 0 16px var(--neon-magenta));
+}
+
 /* Heartbeat Double-Pump Animation */
-[data-channel="2"] .waveform-path {
-  stroke: var(--neon-cyan);
+[data-channel="2"] .waveform-path,
+[data-channel="3"] .waveform-path {
   stroke-width: 0.8;
   transition: stroke-width 0.3s ease-out;
 }
 
-[data-channel="2"]:hover .waveform-path {
+[data-channel="2"]:hover .waveform-path,
+[data-channel="3"]:hover .waveform-path {
   stroke-width: 1.5;
   animation: heartbeat-pulse 1.2s ease-in-out infinite;
 }
@@ -80,7 +95,8 @@
    LAYER 2: TRANSPARENT MACHINED PLATE (CHASSIS)
    The physical faceplate with depth
    ============================================ */
-[data-channel="2"] .rack-ghost-chassis {
+[data-channel="2"] .rack-ghost-chassis,
+[data-channel="3"] .rack-ghost-chassis {
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -92,7 +108,8 @@
 }
 
 /* Tactile Feedback: Hardware "Powers Up" */
-[data-channel="2"]:hover .rack-ghost-chassis {
+[data-channel="2"]:hover .rack-ghost-chassis,
+[data-channel="3"]:hover .rack-ghost-chassis {
   filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.9)) brightness(1.2);
   transform: scale(1.01);
 }
@@ -101,7 +118,8 @@
    LAYER 3: INTERACTIVE GLASS OVERLAY
    Subtle blur and noise restricted to monitor window
    ============================================ */
-[data-channel="2"] .rack-glass-monitor {
+[data-channel="2"] .rack-glass-monitor,
+[data-channel="3"] .rack-glass-monitor {
   position: absolute;
   top: 24%;
   left: 42.1%;
@@ -125,7 +143,8 @@
    LAYER 4: INVISIBLE HITBOX NAVIGATION
    "BOOK NOW" button coordinates
    ============================================ */
-[data-channel="2"] .rack-booking-hitbox {
+[data-channel="2"] .rack-booking-hitbox,
+[data-channel="3"] .rack-booking-hitbox {
   position: absolute;
   top: 34%;
   right: 8%;
@@ -146,13 +165,23 @@
   background: rgba(0, 255, 255, 0.1);
 }
 
+[data-channel="3"] .rack-booking-hitbox:hover {
+  background: rgba(255, 0, 217, 0.1);
+}
+
 [data-channel="2"] .rack-booking-hitbox:focus {
   outline: 2px solid var(--neon-cyan);
   outline-offset: 2px;
 }
 
+[data-channel="3"] .rack-booking-hitbox:focus {
+  outline: 2px solid var(--neon-magenta);
+  outline-offset: 2px;
+}
+
 /* Screen Reader Label */
-[data-channel="2"] .rack-booking-hitbox::after {
+[data-channel="2"] .rack-booking-hitbox::after,
+[data-channel="3"] .rack-booking-hitbox::after {
   content: attr(aria-label);
   position: absolute;
   width: 1px;
@@ -169,12 +198,14 @@
    REDUCED MOTION SUPPORT
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
-  [data-channel="2"] .waveform-path {
+  [data-channel="2"] .waveform-path,
+  [data-channel="3"] .waveform-path {
     animation: none !important;
     transition: none !important;
   }
   
-  [data-channel="2"] .rack-ghost-chassis {
+  [data-channel="2"] .rack-ghost-chassis,
+  [data-channel="3"] .rack-ghost-chassis {
     transition: filter 0.1s ease-out !important;
     transform: none !important;
   }
@@ -184,18 +215,25 @@
    MOBILE OPTIMIZATIONS
    ============================================ */
 @media (max-width: 768px) {
-  [data-channel="2"] .rack-booking-hitbox {
+  [data-channel="2"] .rack-booking-hitbox,
+  [data-channel="3"] .rack-booking-hitbox {
     width: 30%;
     height: 15%;
     top: 32%;
     right: 6%;
   }
   
-  [data-channel="2"] .waveform-svg {
+  [data-channel="2"] .waveform-svg,
+  [data-channel="3"] .waveform-svg {
     filter: drop-shadow(0 0 6px var(--neon-cyan));
   }
   
-  [data-channel="2"] .rack-ghost-chassis {
+  [data-channel="3"] .waveform-svg {
+    filter: drop-shadow(0 0 6px var(--neon-magenta));
+  }
+  
+  [data-channel="2"] .rack-ghost-chassis,
+  [data-channel="3"] .rack-ghost-chassis {
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.8));
   }
 }
