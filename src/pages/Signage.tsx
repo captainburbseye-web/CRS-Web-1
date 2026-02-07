@@ -133,37 +133,42 @@ export const SignagePage = () => {
 
           {/* BOTTOM RIGHT: Workshop Café */}
           <div class="signage-module workshop-cafe" data-channel="4">
-            <div class="module-chassis">
-              {/* LAYER 1: Amber Analog Heartbeat (Rear Ambience) */}
-              <div class="absolute inset-0 bg-amber-700/30 blur-3xl opacity-60" style="animation: pulse 4s ease-in-out infinite;"></div>
+            <div class="module-chassis" style="position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 0.75rem; background: #23263a;">
               
-              {/* LAYER 2: Asset Placeholder (Awaiting Upload) */}
-              <div class="chassis-placeholder clay-warm" style="background: linear-gradient(135deg, #3d2817, #1a1410); position: relative; width: 100%; height: 100%;">
-                
-                {/* LAYER 3: Nature Distilled Texture */}
-                <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);"></div>
-                
-                {/* LAYER 4: UI Overlay */}
-                <div class="absolute inset-0 flex flex-col justify-between p-6" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent, rgba(0,0,0,0.4));">
-                  
-                  {/* Top Label */}
-                  <div class="flex justify-between items-start">
-                    <span class="font-mono text-amber-200 text-xs tracking-widest px-2 py-1 rounded" style="border: 1px solid rgba(245, 158, 11, 0.5); background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);">
-                      CH4 · ANALOG REST
-                    </span>
-                    {/* Status Light */}
-                    <div class="led-indicator" style="background: radial-gradient(circle, #f59e0b 60%, #78350f 100%); box-shadow: 0 0 12px #f59e0b, 0 0 24px #f59e0b;"></div>
-                  </div>
+              {/* LAYER 1: Amber Analog Heartbeat (The Soul) */}
+              <div style="position: absolute; inset: 0; background: rgba(180, 83, 9, 0.4); filter: blur(3rem); animation: pulse 4s ease-in-out infinite; mix-blend-mode: screen;"></div>
 
-                  {/* Bottom Kinetic Typography */}
-                  <div class="module-header-signage">
-                    <h2 class="kinetic-title oxford-flicker warm" style="font-size: 2.5rem; line-height: 1.1;">
-                      WORKSHOP<br/>CAFÉ
-                    </h2>
-                    <p class="module-address warm" style="display: flex; align-items: center; gap: 0.5rem;">
-                      <span>☕</span> 118 COWLEY RD · COMMUNITY SPACE
-                    </p>
-                  </div>
+              {/* LAYER 2: The Portal (Master Asset) */}
+              <img 
+                src="/static/machined-assets/workshop-cafe-optimized.webp"
+                alt="Workshop Café - Analog Community Space"
+                style="position: relative; z-index: 10; width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: transform 0.7s, opacity 0.7s;"
+                loading="lazy"
+              />
+
+              {/* LAYER 3: Nature Distilled Texture (Grain) */}
+              <div style="position: absolute; inset: 0; z-index: 20; pointer-events: none; opacity: 0.2; mix-blend-mode: overlay; background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);"></div>
+
+              {/* LAYER 4: UI Overlay (The Info) */}
+              <div class="absolute inset-0 flex flex-col justify-between p-6" style="z-index: 30; background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0.2), rgba(0,0,0,0.4));">
+                
+                {/* Status Header */}
+                <div class="flex justify-between items-start">
+                  <span class="font-mono text-amber-200" style="font-size: 10px; letter-spacing: 0.1em; border: 1px solid rgba(245, 158, 11, 0.5); padding: 0.25rem 0.5rem; border-radius: 0.25rem; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);">
+                    CH4 · ANALOG REST
+                  </span>
+                  {/* Live Indicator */}
+                  <div class="led-indicator" style="background: radial-gradient(circle, #f59e0b 60%, #78350f 100%); box-shadow: 0 0 12px #f59e0b, 0 0 24px #f59e0b;"></div>
+                </div>
+                
+                {/* Kinetic Typography */}
+                <div>
+                  <h2 class="kinetic-title oxford-flicker warm" style="font-size: 3rem; line-height: 0.9; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em;">
+                    WORKSHOP<br/>CAFÉ
+                  </h2>
+                  <p class="module-address warm" style="font-family: 'Space Mono', monospace; font-size: 0.75rem; margin-top: 0.75rem; display: flex; align-items: center; gap: 0.5rem; color: rgba(251, 191, 36, 0.6);">
+                    <span>☕</span> 118 COWLEY ROAD · OXFORD
+                  </p>
                 </div>
               </div>
             </div>
