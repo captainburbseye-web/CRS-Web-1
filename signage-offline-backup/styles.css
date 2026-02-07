@@ -1,0 +1,244 @@
+/* ============================================
+   OFFLINE SIGNAGE BACKUP - ELITE TREND TECH
+   ============================================ */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  cursor: none; /* Kiosk mode */
+  font-family: 'Space Mono', 'JetBrains Mono', monospace;
+}
+
+/* Signage Container */
+.signage-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+/* Pixel Shift (Burn-in Protection) */
+.pixel-shift-wrapper {
+  width: 100%;
+  height: 100%;
+  animation: pixelShift 60s infinite linear;
+}
+
+@keyframes pixelShift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(1px, 0); }
+  50%  { transform: translate(1px, 1px); }
+  75%  { transform: translate(0, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Centered Stage */
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+}
+
+/* Slide Container */
+.slide-container {
+  position: relative;
+  width: 100%;
+  max-width: 80rem; /* 1280px */
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background: #23263a;
+}
+
+/* Individual Slides */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 10;
+}
+
+/* Slide Layers */
+.slide-bg-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  filter: blur(80px);
+  mix-blend-mode: screen;
+}
+
+.slide-asset {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.slide-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  pointer-events: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="300" height="300" filter="url(%23n)" opacity="0.1"/></svg>');
+  opacity: 0.1;
+  mix-blend-mode: overlay;
+}
+
+.slide-ui-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8),
+    transparent,
+    rgba(0, 0, 0, 0.4)
+  );
+}
+
+/* Top Label */
+.slide-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  width: fit-content;
+}
+
+/* Bottom Content */
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.slide-title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  background: linear-gradient(to right, #fff 30%, currentColor);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px currentColor);
+  animation: oxfordFlicker 3s ease-in-out infinite;
+}
+
+@keyframes oxfordFlicker {
+  0%, 100% { 
+    opacity: 1;
+    filter: drop-shadow(0 0 20px currentColor);
+  }
+  45%, 55% { 
+    opacity: 0.95;
+    filter: drop-shadow(0 0 30px currentColor) drop-shadow(0 0 50px currentColor);
+  }
+}
+
+.slide-description {
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+}
+
+/* Status LED */
+.status-led {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  animation: ledPulse 2s ease-in-out infinite;
+}
+
+@keyframes ledPulse {
+  0%, 100% { 
+    opacity: 1;
+    box-shadow: 0 0 24px currentColor;
+  }
+  50% { 
+    opacity: 0.8;
+    box-shadow: 0 0 48px currentColor, 0 0 72px currentColor;
+  }
+}
+
+/* Channel-Specific Colors */
+.slide[data-channel="1"] .slide-bg-glow { background: #FFDB58; }
+.slide[data-channel="1"] .slide-title { color: #FFDB58; }
+.slide[data-channel="1"] .status-led { background: #FFDB58; box-shadow: 0 0 24px #FFDB58; }
+
+.slide[data-channel="8"] .slide-bg-glow { background: #FF006E; }
+.slide[data-channel="8"] .slide-title { color: #FF006E; }
+.slide[data-channel="8"] .status-led { background: #FF006E; box-shadow: 0 0 24px #FF006E; }
+
+.slide[data-channel="2"] .slide-bg-glow { background: #00FFFF; }
+.slide[data-channel="2"] .slide-title { color: #00FFFF; }
+.slide[data-channel="2"] .status-led { background: #00FFFF; box-shadow: 0 0 24px #00FFFF; }
+
+.slide[data-channel="4"] .slide-bg-glow { background: #D4A574; }
+.slide[data-channel="4"] .slide-title { color: #D4A574; }
+.slide[data-channel="4"] .status-led { background: #D4A574; box-shadow: 0 0 24px #D4A574; }
+
+.slide[data-channel="7"] .slide-bg-glow { background: #2CFF05; }
+.slide[data-channel="7"] .slide-title { color: #2CFF05; }
+.slide[data-channel="7"] .status-led { background: #2CFF05; box-shadow: 0 0 24px #2CFF05; }
+
+/* Progress Bar */
+.progress-bar-track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.25rem;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 100;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #2CFF05;
+  transform-origin: left;
+  animation: progress 10s linear forwards;
+}
+
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* Restart animation on class change */
+.progress-bar.restart {
+  animation: none;
+}
