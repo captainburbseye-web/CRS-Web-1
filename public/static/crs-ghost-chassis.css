@@ -433,6 +433,54 @@
    "The image IS the UI" — Remove all external text/buttons
    ============================================ */
 
+/* THE RACK FRAME — Physical rack rails and depth */
+.rack-page.virtual-interface {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #0a0a0a;
+  border-left: 16px solid #1a1a1a; /* Left rail */
+  border-right: 16px solid #1a1a1a; /* Right rail */
+  box-shadow: 
+    inset 12px 0 24px rgba(0, 0, 0, 0.9),
+    inset -12px 0 24px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(0, 0, 0, 0.6);
+  position: relative;
+  padding: 0;
+}
+
+/* Rack rail texture */
+.rack-page.virtual-interface::before,
+.rack-page.virtual-interface::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    #1a1a1a 0%, 
+    #2a2a2a 10%, 
+    #1a1a1a 50%, 
+    #0a0a0a 90%, 
+    #000 100%);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.rack-page.virtual-interface::before {
+  left: 0;
+  top: 0;
+}
+
+.rack-page.virtual-interface::after {
+  right: 0;
+  top: 0;
+  background: linear-gradient(-90deg, 
+    #1a1a1a 0%, 
+    #2a2a2a 10%, 
+    #1a1a1a 50%, 
+    #0a0a0a 90%, 
+    #000 100%);
+}
+
 /* Hide external UI chrome (module headers, text blocks, external buttons) */
 .rack-module.virtual-interface .module-header {
   display: none !important;
@@ -443,6 +491,29 @@
 }
 
 .rack-module.virtual-interface .patch-point {
+  display: none !important;
+}
+
+/* Hide parent module chrome */
+.rack-page.virtual-interface .rack-module.parent .module-header {
+  display: none !important;
+}
+
+.rack-page.virtual-interface .rack-module.parent .module-body {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.rack-page.virtual-interface .sub-racks {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* Hide modules without virtual interface */
+.rack-page.virtual-interface .rack-module:not(.virtual-interface) {
   display: none !important;
 }
 
@@ -461,13 +532,29 @@
   margin: 0;
   padding: 0;
   background: transparent;
+  line-height: 0; /* Kill ghost space under images */
 }
 
-/* Full-width rack faceplates */
+.rack-page.virtual-interface .rack-module.parent {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Full-width rack faceplates — zero gaps */
 .rack-page.virtual-interface .rack-window-container {
   width: 100%;
   max-width: 100%;
   margin: 0;
+  line-height: 0;
+  display: block;
+}
+
+.rack-page.virtual-interface .rack-ghost-chassis {
+  width: 100%;
+  display: block;
+  line-height: 0;
 }
 
 /* Ghost hitbox system — invisible buttons overlaid on rack controls */
@@ -477,22 +564,36 @@
   border: none;
   cursor: pointer;
   z-index: 100;
+  border-radius: 50%; /* Default circular for buttons */
   
-  /* Debug mode — enable to see hitbox boundaries */
-  /* outline: 2px dashed rgba(255, 0, 0, 0.5); */
+  /* Debug mode — uncomment to see hitbox boundaries */
+  /* background: rgba(255, 0, 0, 0.3) !important; */
+  /* outline: 2px dashed rgba(255, 255, 0, 0.8) !important; */
   
   /* Accessibility */
-  transition: all 0.2s ease-out;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Hover — Subtle glow on the painted control */
 .ghost-hitbox:hover {
-  /* Subtle glow on hover */
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent);
+  backdrop-filter: brightness(1.3) saturate(1.2);
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.4),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Active — Physical button press feeling */
+.ghost-hitbox:active {
+  transform: scale(0.95);
+  backdrop-filter: brightness(0.8);
+  box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.2),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .ghost-hitbox:focus {
-  outline: 2px solid rgba(255, 255, 255, 0.8);
-  outline-offset: 4px;
+  outline: 3px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 6px;
 }
 
 /* Tooltip system for hidden text */
