@@ -1,67 +1,55 @@
 /**
- * CH1 COWLEY REHEARSAL — Elite Ghost Chassis Signage Component
+ * CH1 COWLEY REHEARSAL — 19" Rack Mount Unit (Mark II)
  * 
- * 5-Layer Architecture:
- * Layer 1: Warm Analog Pulse (Rear Ambience)
- * Layer 2: The Portal (Asset Window)
- * Layer 3: Analog Grain Filter (Texture)
- * Layer 4: The Interface (UI Overlay)
- * Layer 5: Interaction Hitbox (Navigation)
+ * RETROFITTED: Now matches CH6/CH7 Master Bus aesthetic
  * 
- * Color: Mustard Yellow #FFDB58 (Warm Analog)
- * Asset: Cowley Rehearsal Master (56KB WebP)
+ * Hardware Spec:
+ * - 19-inch Rack Mount (EIA-310-D)
+ * - 2U Height (3.5 inches / 88px)
+ * - Brushed aluminum faceplate
+ * - Rack ears with mounting holes
+ * - Guitar amp head aesthetic (Marshall/Mesa Boogie)
+ * 
+ * Controls:
+ * - STUDIO POWER toggle switch (center)
+ * - Analog VU meter (left)
+ * - GUITAR IN jacks (right)
+ * 
+ * Color: Neon Yellow #F9E400
+ * Asset: CH1 Rack Faceplate (51KB WebP, 1920×384, 5:1 ratio)
  */
 
 export const CowleyRehearsal = () => (
-  <div class="relative w-full h-full group overflow-hidden rounded-xl bg-[#23263a]">
+  <div class="rack-unit relative w-full group overflow-hidden bg-[#0a0a0a]">
     
-    {/* LAYER 1: Warm Analog Pulse (Rear Ambience) */}
-    <div class="absolute inset-0 bg-yellow-500/30 blur-3xl animate-pulse-slow mix-blend-screen" />
-
-    {/* LAYER 2: The Portal (Asset) */}
+    {/* RACK FACEPLATE: 19-inch 2U Module */}
     <img 
-      src="/static/machined-assets/cowley-rehearsal-optimized.webp"
-      alt="Cowley Road Rehearsal Studio"
-      class="relative z-10 w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-100"
+      src="/static/machined-assets/cowley-rehearsal-ch1-rack.webp"
+      alt="CH1 Cowley Rehearsal - 19 inch rack mount guitar amp head"
+      class="rack-faceplate w-full h-full object-cover"
+      style="aspect-ratio: 5/1; min-height: 88px; max-height: 88px;"
       loading="lazy"
     />
 
-    {/* LAYER 3: Analog Grain Filter (Texture) */}
-    <div 
-      class="absolute inset-0 z-20 pointer-events-none opacity-10 mix-blend-overlay"
-      style={{ filter: 'url(#organic-grain-filter)' }}
-    />
-
-    {/* LAYER 4: The Interface (UI Overlay) */}
-    <div class="absolute z-30 inset-0 flex flex-col justify-between p-6 bg-gradient-to-t from-black/80 via-transparent to-black/40">
-      
-      {/* Top Label */}
-      <div class="flex justify-between items-start">
-        <span class="font-mono text-yellow-200 text-xs tracking-widest border border-yellow-500/50 px-2 py-1 rounded bg-black/40 backdrop-blur-sm">
-          CH1 · REHEARSAL
-        </span>
-        {/* Status Light (Yellow Pulse) */}
-        <div class="h-3 w-3 rounded-full bg-yellow-500 shadow-[0_0_10px_#eab308] animate-pulse" />
-      </div>
-
-      {/* Bottom Kinetic Typography */}
-      <div>
-        <h2 class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-100 to-yellow-500 drop-shadow-lg font-display uppercase tracking-tighter">
-          COWLEY<br/>REHEARSAL
-        </h2>
-        <p class="font-mono text-yellow-100/80 text-sm mt-2 flex items-center gap-2">
-          <span>🎸</span> 118 COWLEY ROAD
-        </p>
-      </div>
-    </div>
-
-    {/* LAYER 5: Interaction Hitbox */}
+    {/* INTERACTION HITBOX: STUDIO POWER Toggle (Center) */}
     <a 
       href="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services" 
-      class="absolute inset-0 z-40 cursor-pointer"
-      aria-label="Book Cowley Road Rehearsal · £45 / 2 hours"
-      title="Cowley Road Rehearsal - Book Now"
+      class="absolute z-40 cursor-pointer"
+      style="
+        left: 40%;
+        top: 30%;
+        width: 20%;
+        height: 40%;
+      "
+      aria-label="Book Cowley Road Rehearsal · Full Backline · Open 7 Days"
+      title="CH1: STUDIO POWER - Book Now"
       rel="noopener noreferrer"
+    />
+
+    {/* Status LED (Yellow) - Top Right Corner */}
+    <div 
+      class="absolute top-2 right-4 h-2 w-2 rounded-full bg-[#F9E400] shadow-[0_0_8px_#F9E400] animate-pulse z-30"
+      aria-label="CH1 Status: Online"
     />
   </div>
 )
