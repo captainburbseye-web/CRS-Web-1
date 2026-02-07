@@ -15,7 +15,7 @@ import { CricketRoad } from './pages/CricketRoad'
 import { Soundworks } from './pages/Soundworks'
 import { About } from './pages/About'
 import { Work } from './pages/Work'
-import { Signage } from './pages/Signage'
+import { SignagePage } from './pages/Signage'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 
@@ -1607,9 +1607,26 @@ app.get('/rack', (c) => {
 
 // SIGNAGE TERMINAL — DIGITAL BROADCAST MODE (55" Street Display)
 // Headless route: No global header/footer, SEO excluded
+// SIGNAGE TERMINAL — DIGITAL BROADCAST MODE (55" Street Display)
+// Full-screen rack module display for street-level presence
 app.get('/signage', (c) => {
-  // Return raw HTML (Signage component is a complete <html> document)
-  return c.html(<Signage />)
+  return c.html(
+    <html>
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>CRS Signage Broadcast</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
+        <link href="/static/crs-signage.css" rel="stylesheet" />
+      </head>
+      <body>
+        <SignagePage />
+      </body>
+    </html>
+  )
 })
 
 export default app
