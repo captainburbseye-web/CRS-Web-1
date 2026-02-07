@@ -1,23 +1,55 @@
 /**
- * CRS SIGNAGE: STREET BROADCAST STYLING
+ * CRS SIGNAGE: ELITE TREND TECH CSS + GHOST CHASSIS
  * Purpose: Full-screen digital signage for 55" displays
- * Architecture: Deep blacks, saturated neons, kinetic typography
+ * Architecture: Animated neon gradients, kinetic typography, tactile rack elements
  * The 242nd Law encoded in CSS
  */
 
 /* ============================================
-   SIGNAGE CONTAINER: Full-Screen Black Canvas
+   CORE VARIABLES & NEON PALETTE
+   ============================================ */
+:root {
+  /* Neon Brand Palette */
+  --neon-blue: #00CAFF;
+  --neon-pink: #F6287D;
+  --neon-yellow: #F9E400;
+  --neon-green: #2CFF05;
+  --neon-purple: #B915CC;
+  --neon-magenta: #FF006E;
+  --neon-cyan: #00FFFF;
+  --neon-amber: #FFB627;
+  
+  /* Backgrounds */
+  --neon-bg: #0a0a0a;
+  --module-bg: rgba(17, 17, 17, 0.95);
+  
+  /* Spacing & Borders */
+  --bento-gap: 2px;
+  --border-radius: 0.5rem;
+  --shadow-glow: 0 0 32px var(--neon-blue), 0 0 64px var(--neon-pink);
+}
+
+/* ============================================
+   SIGNAGE CONTAINER: Animated Neon Background
    ============================================ */
 .signage-container {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background: #0a0a0a;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a2e, #0d0d0d);
+  background-size: 200% 200%;
+  animation: moveGradient 20s ease-in-out infinite;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   font-family: 'Space Mono', 'JetBrains Mono', monospace;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* ============================================
@@ -34,16 +66,45 @@
 }
 
 /* ============================================
-   SIGNAGE MODULES: Rack Unit Containers
+   SIGNAGE MODULES: Rack Unit Containers with Neon Glow
    ============================================ */
 .signage-module {
   position: relative;
-  background: #111;
+  background: var(--module-bg);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.4, 2, 0.6, 1), box-shadow 0.3s;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+
+.signage-module:hover {
+  transform: scale(1.02) translateY(-2px);
+  z-index: 10;
+}
+
+/* Channel-specific neon borders */
+.signage-module[data-channel="1"] {
+  border-top: 3px solid var(--neon-yellow);
+  box-shadow: 0 0 16px rgba(249, 228, 0, 0.3);
+}
+
+.signage-module[data-channel="2"] {
+  border-top: 3px solid var(--neon-cyan);
+  box-shadow: 0 0 16px rgba(0, 255, 255, 0.3);
+}
+
+.signage-module[data-channel="8"] {
+  border-top: 3px solid var(--neon-magenta);
+  box-shadow: 0 0 16px rgba(255, 0, 110, 0.3);
+}
+
+.signage-module[data-channel="4"] {
+  border-top: 3px solid var(--neon-amber);
+  box-shadow: 0 0 16px rgba(255, 182, 39, 0.3);
 }
 
 .module-chassis {
@@ -53,6 +114,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(10px);
 }
 
 /* ============================================
@@ -360,5 +422,143 @@ html.night-mode .signage-container {
   .qr-code {
     width: 100px;
     height: 100px;
+  }
+}
+
+/* ============================================
+   KINETIC TYPOGRAPHY & NEON TEXT EFFECTS
+   ============================================ */
+.kinetic-title {
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink), var(--neon-yellow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: neonFlicker 3s infinite alternate;
+}
+
+@keyframes neonFlicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px var(--neon-blue));
+  }
+  20%, 24%, 55% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 4px var(--neon-blue));
+  }
+}
+
+/* Channel-specific text colors */
+.kinetic-title.yellow {
+  background: linear-gradient(90deg, var(--neon-yellow), #FFD700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.kinetic-title.cyan {
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.kinetic-title.magenta {
+  background: linear-gradient(90deg, var(--neon-magenta), var(--neon-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.kinetic-title.warm {
+  background: linear-gradient(90deg, var(--neon-amber), #D4A574);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================
+   LED INDICATORS & MICRO-ANIMATIONS
+   ============================================ */
+.led-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--neon-green) 60%, #060 100%);
+  box-shadow: 0 0 12px var(--neon-green), 0 0 24px var(--neon-green);
+  animation: ledPulse 1.5s infinite alternate;
+}
+
+@keyframes ledPulse {
+  0%, 100% {
+    box-shadow: 0 0 8px var(--neon-green), 0 0 16px var(--neon-green);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--neon-green), 0 0 40px var(--neon-green);
+  }
+}
+
+/* ============================================
+   TACTILE RACK BUTTON ELEMENTS
+   ============================================ */
+.rack-button-signage {
+  background: linear-gradient(180deg, #444 0%, #222 100%);
+  border: none;
+  border-radius: 1.5rem;
+  color: var(--neon-green);
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.6rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 12px var(--neon-green);
+  position: relative;
+  transition: transform 0.18s cubic-bezier(0.4, 2, 0.6, 1), box-shadow 0.18s;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rack-button-signage::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 80%;
+  height: 60%;
+  border-radius: 1rem;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 16px 4px var(--neon-green);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.rack-button-signage:active {
+  transform: scale(0.97);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.8) inset, 0 0 8px var(--neon-green);
+}
+
+/* ============================================
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .signage-container,
+  .kinetic-title,
+  .led-indicator,
+  .signage-pulse,
+  .rack-button-signage {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   RESPONSIVE & MOBILE-FIRST ENHANCEMENTS
+   ============================================ */
+@media (max-width: 1024px) {
+  .signage-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+  
+  .signage-module {
+    min-height: 200px;
   }
 }
