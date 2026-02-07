@@ -24,8 +24,8 @@ export const CowleyRehearsal = () => (
     
     {/* RACK FACEPLATE: 19-inch 2U Module */}
     <img 
-      src="/static/machined-assets/cowley-rehearsal-ch1-rack.webp"
-      alt="CH1 Cowley Rehearsal - 19 inch rack mount guitar amp head"
+      src="/static/machined-assets/cowley-rehearsal-optimized.webp"
+      alt="Cowley Rehearsal - Yellow Identity"
       class="rack-faceplate w-full h-full object-cover"
       style="aspect-ratio: 5/1; min-height: 88px; max-height: 88px;"
       loading="lazy"

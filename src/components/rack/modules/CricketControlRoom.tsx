@@ -24,8 +24,8 @@ export const CricketControlRoom = () => (
     
     {/* RACK FACEPLATE: 19-inch 2U Module */}
     <img 
-      src="/static/machined-assets/cricket-control-room-ch2-rack.webp"
-      alt="CH2 Control Room - 19 inch rack mount mixer/controller"
+      src="/static/machined-assets/cricket-control-room-optimized.webp"
+      alt="Control Room - Cyan Identity"
       class="rack-faceplate w-full h-full object-cover"
       style="aspect-ratio: 5/1; min-height: 88px; max-height: 88px;"
       loading="lazy"
