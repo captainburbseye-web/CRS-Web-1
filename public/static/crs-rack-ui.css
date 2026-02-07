@@ -2288,3 +2288,36 @@ body::after {
   }
 }
 
+
+/* ====================================================================
+   EMERGENCY PATCH: FORCE RACK HARDWARE DIMENSIONS
+   Applied 2026-02-07 - Forces proper 19" rack aspect ratio
+   ==================================================================== */
+
+/* FORCE FULL WIDTH - Treat images as structural components */
+.rack-unit img,
+.rack-window img,
+.rack-faceplate,
+.rack-asset-img {
+  width: 100% !important;       /* Force it to touch the edges */
+  display: block !important;    /* Remove the "ghost gap" at the bottom */
+  aspect-ratio: 5/1 !important; /* Enforce the wide rack shape (19" x 2U) */
+  object-fit: cover !important; /* Crop the edges if needed, don't squish */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove any container constraints that might squish images */
+.rack-window,
+.rack-unit > div:first-child {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Ensure consistent 2U rack height across all units */
+.rack-unit {
+  min-height: 88px !important;  /* 2U = 3.5" at screen scale */
+  max-height: 88px !important;
+}
+
