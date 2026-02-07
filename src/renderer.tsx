@@ -114,6 +114,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* 11. SVG WAVEFORMS: Living signal presence for visual feedback (Phase 3C - Strike 8) */}
         <link href="/static/crs-waveform.css" rel="stylesheet" />
+        
+        {/* 12. GHOST CHASSIS: 4-layer recessed-depth stack for CH2 (The 238th Law) */}
+        <link href="/static/crs-ghost-chassis.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}

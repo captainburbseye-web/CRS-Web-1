@@ -1,0 +1,201 @@
+/**
+ * CRS GHOST CHASSIS — CH2 CRICKET ROAD REHEARSALS
+ * The 238th Law: "Real hardware has depth."
+ * 
+ * 4-Layer Recessed-Depth Stack:
+ * Layer 1: Reactive SVG Signal (behind)
+ * Layer 2: Transparent Machined Plate (chassis)
+ * Layer 3: Interactive Glass Overlay
+ * Layer 4: Invisible Hitbox Navigation
+ */
+
+/* ============================================
+   LAYER 0: GHOST CHASSIS CONTAINER
+   ============================================ */
+[data-channel="2"] .rack-module {
+  position: relative;
+  isolation: isolate; /* Create stacking context */
+}
+
+[data-channel="2"] .rack-window-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+}
+
+/* ============================================
+   LAYER 1: REACTIVE SVG SIGNAL (BACK-PLANE)
+   Waveform lives BEHIND the transparent chassis
+   ============================================ */
+[data-channel="2"] .waveform-svg {
+  position: absolute;
+  top: 24%; /* Monitor window position */
+  left: 42.1%;
+  width: 50%; /* Monitor cutout width */
+  height: 40%; /* Monitor cutout height */
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px var(--neon-cyan)) 
+          drop-shadow(0 0 16px var(--neon-cyan));
+}
+
+/* Heartbeat Double-Pump Animation */
+[data-channel="2"] .waveform-path {
+  stroke: var(--neon-cyan);
+  stroke-width: 0.8;
+  transition: stroke-width 0.3s ease-out;
+}
+
+[data-channel="2"]:hover .waveform-path {
+  stroke-width: 1.5;
+  animation: heartbeat-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes heartbeat-pulse {
+  0%, 100% { 
+    stroke-width: 1.5; 
+    opacity: 1;
+  }
+  20% { 
+    stroke-width: 2.2; 
+    opacity: 0.9;
+  }
+  25% { 
+    stroke-width: 1.5; 
+    opacity: 1;
+  }
+  35% { 
+    stroke-width: 2.5; 
+    opacity: 0.85;
+  }
+  45% { 
+    stroke-width: 1.5; 
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   LAYER 2: TRANSPARENT MACHINED PLATE (CHASSIS)
+   The physical faceplate with depth
+   ============================================ */
+[data-channel="2"] .rack-ghost-chassis {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.9));
+  transition: filter 0.3s ease-out, transform 0.3s ease-out;
+}
+
+/* Tactile Feedback: Hardware "Powers Up" */
+[data-channel="2"]:hover .rack-ghost-chassis {
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.9)) brightness(1.2);
+  transform: scale(1.01);
+}
+
+/* ============================================
+   LAYER 3: INTERACTIVE GLASS OVERLAY
+   Subtle blur and noise restricted to monitor window
+   ============================================ */
+[data-channel="2"] .rack-glass-monitor {
+  position: absolute;
+  top: 24%;
+  left: 42.1%;
+  width: 50%;
+  height: 40%;
+  z-index: 3;
+  pointer-events: none;
+  backdrop-filter: blur(1px);
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 3px
+    );
+  opacity: 0.6;
+}
+
+/* ============================================
+   LAYER 4: INVISIBLE HITBOX NAVIGATION
+   "BOOK NOW" button coordinates
+   ============================================ */
+[data-channel="2"] .rack-booking-hitbox {
+  position: absolute;
+  top: 34%;
+  right: 8%;
+  width: 20%;
+  height: 12%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: transparent;
+  background: transparent;
+  border-radius: 4px;
+  transition: background 0.2s ease-out;
+}
+
+[data-channel="2"] .rack-booking-hitbox:hover {
+  background: rgba(0, 255, 255, 0.1);
+}
+
+[data-channel="2"] .rack-booking-hitbox:focus {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 2px;
+}
+
+/* Screen Reader Label */
+[data-channel="2"] .rack-booking-hitbox::after {
+  content: attr(aria-label);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  [data-channel="2"] .waveform-path {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  [data-channel="2"] .rack-ghost-chassis {
+    transition: filter 0.1s ease-out !important;
+    transform: none !important;
+  }
+}
+
+/* ============================================
+   MOBILE OPTIMIZATIONS
+   ============================================ */
+@media (max-width: 768px) {
+  [data-channel="2"] .rack-booking-hitbox {
+    width: 30%;
+    height: 15%;
+    top: 32%;
+    right: 6%;
+  }
+  
+  [data-channel="2"] .waveform-svg {
+    filter: drop-shadow(0 0 6px var(--neon-cyan));
+  }
+  
+  [data-channel="2"] .rack-ghost-chassis {
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.8));
+  }
+}

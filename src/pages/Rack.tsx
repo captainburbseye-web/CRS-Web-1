@@ -27,22 +27,57 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
     <div class="module-body">
       {videoId && (
         <div class="rack-window-container">
-          {/* LAYER 1: Base Machined Asset (static image) */}
-          <div class="rack-asset-base"></div>
-          
-          {/* LAYER 2: SVG Waveform Signal Feed (living pulse) */}
-          <Waveform 
-            channel={channel} 
-            style={channel === '7' ? 'oscilloscope' : 'oscilloscope'}
-            amplitude={1}
-            frequency={1}
-          />
-          
-          {/* LAYER 3: Machined Window (glass or organic grain) */}
-          <div class="rack-glass-overlay"></div>
-          
-          {/* LAYER 4: Neon Pulse Rail (active signal) */}
-          <div class="rack-signal-pulse"></div>
+          {channel === '2' ? (
+            <>
+              {/* CH2 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
+              {/* LAYER 1: Reactive SVG Signal (behind chassis) */}
+              <Waveform 
+                channel={channel} 
+                style="oscilloscope"
+                amplitude={1}
+                frequency={1}
+              />
+              
+              {/* LAYER 2: Transparent Machined Plate (the faceplate) */}
+              <img 
+                src="/static/machined-assets/cricket-rehearsal-raw.png"
+                alt="Cricket Road Rehearsal Module Faceplate"
+                class="rack-ghost-chassis"
+                loading="lazy"
+              />
+              
+              {/* LAYER 3: Interactive Glass Overlay (monitor window) */}
+              <div class="rack-glass-monitor"></div>
+              
+              {/* LAYER 4: Invisible Hitbox Navigation (BOOK NOW button) */}
+              <a 
+                href={bookingUrl || '#'}
+                class="rack-booking-hitbox"
+                aria-label="Book Cricket Road Rehearsals"
+                rel="noopener noreferrer"
+              />
+            </>
+          ) : (
+            <>
+              {/* STANDARD 4-LAYER STACK (other channels) */}
+              {/* LAYER 1: Base Machined Asset (static image) */}
+              <div class="rack-asset-base"></div>
+              
+              {/* LAYER 2: SVG Waveform Signal Feed (living pulse) */}
+              <Waveform 
+                channel={channel} 
+                style={channel === '7' ? 'oscilloscope' : 'oscilloscope'}
+                amplitude={1}
+                frequency={1}
+              />
+              
+              {/* LAYER 3: Machined Window (glass or organic grain) */}
+              <div class="rack-glass-overlay"></div>
+              
+              {/* LAYER 4: Neon Pulse Rail (active signal) */}
+              <div class="rack-signal-pulse"></div>
+            </>
+          )}
         </div>
       )}
       {children}
