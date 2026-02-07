@@ -32,13 +32,13 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
         <div class="rack-window-container">
           {(channel === '1' || channel === '2' || channel === '3' || channel === '4' || channel === '8') ? (
             <>
-              {/* CH1/CH2/CH3/CH8 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
+              {/* CH1/CH2/CH3/CH4/CH8 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
               {/* LAYER 1: Reactive SVG Signal (behind chassis) */}
               <Waveform 
                 channel={channel} 
                 style="oscilloscope"
-                amplitude={channel === '1' ? 1.2 : channel === '4' ? 1.1 : channel === '8' ? 1.3 : 1}
-                frequency={channel === '1' ? 0.8 : channel === '4' ? 0.9 : channel === '8' ? 0.9 : 1}
+                amplitude={channel === '1' ? 1.2 : channel === '3' ? 1.15 : channel === '4' ? 1.1 : channel === '8' ? 1.3 : 1}
+                frequency={channel === '1' ? 0.8 : channel === '3' ? 0.85 : channel === '4' ? 0.9 : channel === '8' ? 0.9 : 1}
               />
               
               {/* LAYER 2: Transparent Machined Plate (the faceplate) */}
@@ -48,6 +48,8 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
                     ? "/static/machined-assets/cowley-rehearsal-optimized.webp"
                     : channel === '2'
                     ? "/static/machined-assets/cricket-control-room-optimized.webp"
+                    : channel === '3'
+                    ? "/static/machined-assets/cowley-pods-rack.webp"
                     : channel === '4'
                     ? "/static/machined-assets/workshop-cafe-optimized.webp"
                     : channel === '8'
@@ -64,7 +66,61 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
               
               {/* LAYER 4: Invisible Hitbox Navigation */}
               {virtualInterface ? (
-                channel === '4' ? (
+                channel === '3' ? (
+                  <>
+                    {/* CH3: Cowley Pods - 3 Isolation Units (1 Active + 2 Standby) */}
+                    {/* POD 1: Main Suite (Green ENGAGE - Active) */}
+                    <a 
+                      href="/book/pod1"
+                      class="ghost-hitbox"
+                      style={{
+                        position: 'absolute',
+                        bottom: '18%',
+                        left: '36.5%',
+                        width: '15.5%',
+                        height: '34%',
+                        borderRadius: '4px'
+                      }}
+                      aria-label="Pod 1 · Main Suite · £35/hr · Book Now"
+                      title="Book Main Suite"
+                      rel="noopener noreferrer"
+                    />
+                    
+                    {/* POD 2: Vocal A (Amber STANDBY - Coming Soon) */}
+                    <div 
+                      class="ghost-hitbox-disabled"
+                      style={{
+                        position: 'absolute',
+                        top: '26%',
+                        right: '16.5%',
+                        width: '10.5%',
+                        height: '26%',
+                        borderRadius: '4px',
+                        cursor: 'not-allowed',
+                        opacity: 0.6
+                      }}
+                      aria-label="Pod 2 · Vocal A · Coming Soon"
+                      title="Vocal A - Coming Soon"
+                    />
+                    
+                    {/* POD 3: Vocal B (Amber STANDBY - Coming Soon) */}
+                    <div 
+                      class="ghost-hitbox-disabled"
+                      style={{
+                        position: 'absolute',
+                        bottom: '18%',
+                        right: '16.5%',
+                        width: '10.5%',
+                        height: '26%',
+                        borderRadius: '4px',
+                        cursor: 'not-allowed',
+                        opacity: 0.6
+                      }}
+                      aria-label="Pod 3 · Vocal B · Coming Soon"
+                      title="Vocal B - Coming Soon"
+                    />
+                  </>
+                ) : channel === '4' ? (
                   <>
                     {/* CH4: Multiple hitboxes for Workshop Café controls */}
                     {/* HITBOX 1: Main Engage Button (Red Light - Right) */}
@@ -384,8 +440,23 @@ export const RackPage = () => (
         pricing="Open Sessions · Events · Venue Hire"
       />
 
+      {/* CH3: COWLEY PODS (ISOLATION UNITS) — 3-Pod Configuration */}
+      <RackModule 
+        label="Cowley Pods" 
+        type="sub-rack"
+        videoId={3}
+        bookingRoute="isolation-units"
+        bookingUrl="/book/pod1"
+        buttonLabel="BOOK POD 1"
+        channel="3"
+        className="channel-active-charcoal"
+        virtualInterface={true}
+        description="118 Cowley Road · Isolation Recording Units"
+        pricing="Pod 1: £35/hr · Pods 2 & 3: Coming Soon"
+      />
+
       {/* The following modules are hidden in Virtual Interface mode until assets are created */}
-      {/* TODO: Create Ghost Chassis assets for CH3, CH5, CH6 */}
+      {/* TODO: Create Ghost Chassis assets for CH5, CH6 */}
 
       {/* SYSTEM STATUS - Now with knob-to-waveform sync */}
       <SystemStatusModule />
