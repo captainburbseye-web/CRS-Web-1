@@ -134,13 +134,36 @@ export const SignagePage = () => {
           {/* BOTTOM RIGHT: Workshop Café */}
           <div class="signage-module workshop-cafe" data-channel="4">
             <div class="module-chassis">
-              {/* NO WAVEFORM: Contemplative Space */}
+              {/* LAYER 1: Amber Analog Heartbeat (Rear Ambience) */}
+              <div class="absolute inset-0 bg-amber-700/30 blur-3xl opacity-60" style="animation: pulse 4s ease-in-out infinite;"></div>
               
-              {/* LAYER 2: Organic Chassis (when ready) */}
-              <div class="chassis-placeholder clay-warm">
-                <div class="module-header-signage">
-                  <h2 class="kinetic-title oxford-flicker warm">WORKSHOP CAFÉ</h2>
-                  <p class="module-address warm">Open Creative Sessions · Community Space</p>
+              {/* LAYER 2: Asset Placeholder (Awaiting Upload) */}
+              <div class="chassis-placeholder clay-warm" style="background: linear-gradient(135deg, #3d2817, #1a1410); position: relative; width: 100%; height: 100%;">
+                
+                {/* LAYER 3: Nature Distilled Texture */}
+                <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);"></div>
+                
+                {/* LAYER 4: UI Overlay */}
+                <div class="absolute inset-0 flex flex-col justify-between p-6" style="background: linear-gradient(to top, rgba(0,0,0,0.8), transparent, rgba(0,0,0,0.4));">
+                  
+                  {/* Top Label */}
+                  <div class="flex justify-between items-start">
+                    <span class="font-mono text-amber-200 text-xs tracking-widest px-2 py-1 rounded" style="border: 1px solid rgba(245, 158, 11, 0.5); background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);">
+                      CH4 · ANALOG REST
+                    </span>
+                    {/* Status Light */}
+                    <div class="led-indicator" style="background: radial-gradient(circle, #f59e0b 60%, #78350f 100%); box-shadow: 0 0 12px #f59e0b, 0 0 24px #f59e0b;"></div>
+                  </div>
+
+                  {/* Bottom Kinetic Typography */}
+                  <div class="module-header-signage">
+                    <h2 class="kinetic-title oxford-flicker warm" style="font-size: 2.5rem; line-height: 1.1;">
+                      WORKSHOP<br/>CAFÉ
+                    </h2>
+                    <p class="module-address warm" style="display: flex; align-items: center; gap: 0.5rem;">
+                      <span>☕</span> 118 COWLEY RD · COMMUNITY SPACE
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
