@@ -34,19 +34,23 @@ export const SignagePage = () => {
                 <path 
                   d="M0,30 Q10,10 20,30 T40,30 T60,30 T80,50 T100,30 T120,10 T140,30 T160,30 T180,45 T200,30"
                   fill="none"
-                  stroke="#FFB627"
+                  stroke="#FFDB58"
                   stroke-width="3"
                   filter="url(#waveform-glow-signage-1)"
                   class="signage-pulse"
                 />
               </svg>
               
-              {/* LAYER 2: Chassis Asset (when ready) */}
-              <div class="chassis-placeholder nettle-green">
-                <div class="module-header-signage">
-                  <h2 class="kinetic-title oxford-flicker">COWLEY ROAD</h2>
-                  <p class="module-address">118 Cowley Road · Rehearsal</p>
-                </div>
+              {/* LAYER 2: Ghost Chassis Asset */}
+              <img 
+                src="/static/machined-assets/cowley-rehearsal-optimized.webp"
+                alt="Cowley Road Rehearsal Module"
+                class="chassis-asset"
+              />
+              
+              <div class="module-header-signage overlay">
+                <h2 class="kinetic-title oxford-flicker yellow">COWLEY ROAD</h2>
+                <p class="module-address yellow">118 Cowley Road · Rehearsal</p>
               </div>
             </div>
           </div>
