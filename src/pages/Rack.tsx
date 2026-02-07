@@ -431,73 +431,56 @@ export const RackPage = () => (
       
       <span class="sr-context">You are viewing a virtual rack interface. Click on the booking button overlaid on each rack module to book a session. Hover over buttons to see session details.</span>
 
-      {/* PARENT MODULES - Contain sub-racks */}
+      {/* ═══════════════════════════════════════════════════════════════ */}
+      {/* SERVICE STACK ARCHITECTURE: Studio Services → Lifestyle         */}
+      {/* ═══════════════════════════════════════════════════════════════ */}
+
+      {/* UNIT 1: CH1 COWLEY REHEARSAL (Yellow) — Studio Services */}
       <RackModule 
-        label="REHEARSALS" 
-        type="parent"
-        className="channel-active-orange"
-      >
-        <div class="sub-racks">
-          <RackModule 
-            label="Cowley Road" 
-            type="sub-rack"
-            videoId={1}
-            bookingRoute="commission-studio"
-            bookingUrl="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services"
-            buttonLabel="BOOK REHEARSAL"
-            channel="1"
-            className="channel-active-orange"
-            virtualInterface={true}
-            description="118 Cowley Road, Oxford OX4 1JE"
-            pricing="£45 / 2 hours"
-          />
-
-          <RackModule 
-            label="Control Room — Cricket Road" 
-            type="sub-rack"
-            videoId={2}
-            bookingRoute="commission-studio"
-            bookingUrl="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
-            buttonLabel="BOOK CONTROL ROOM"
-            channel="2"
-            className="channel-active-cyan"
-            virtualInterface={true}
-            description="92 Cricket Road · Control Room Hire"
-            pricing="No engineer included"
-          />
-
-          <RackModule 
-            label="Cricket Road Rehearsal" 
-            type="sub-rack"
-            videoId={8}
-            bookingRoute="recording-live"
-            bookingUrl="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX"
-            buttonLabel="BOOK REHEARSAL"
-            channel="8"
-            className="channel-active-magenta"
-            virtualInterface={true}
-            description="📍 CRICKET ROAD · Rehearsal Studio (10 min walk)"
-            pricing="£40 / 2 hours"
-          />
-        </div>
-      </RackModule>
-
-      {/* CH4: WORKSHOP CAFÉ — Standalone 4U Module */}
-      <RackModule 
-        label="Workshop Café" 
+        label="Cowley Road Rehearsal" 
         type="sub-rack"
-        videoId={4}
-        bookingRoute="cafe"
-        bookingUrl="/cafe"
-        buttonLabel="ENGAGE"
-        channel="4"
-        className="channel-active-amber"
+        videoId={1}
+        bookingRoute="commission-studio"
+        bookingUrl="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services"
+        buttonLabel="BOOK REHEARSAL"
+        channel="1"
+        className="channel-active-orange"
         virtualInterface={true}
-        description="118 Cowley Road · Creative Community Space"
-        pricing="Open Sessions · Events · Venue Hire"
+        description="118 Cowley Road, Oxford OX4 1JE"
+        pricing="£45 / 2 hours"
       />
 
-      {/* CH3: COWLEY PODS (ISOLATION UNITS) — 3-Pod Configuration */}
+      {/* UNIT 2: CH8 CRICKET REHEARSAL (Magenta) — Studio Services */}
+      <RackModule 
+        label="Cricket Road Rehearsal" 
+        type="sub-rack"
+        videoId={8}
+        bookingRoute="recording-live"
+        bookingUrl="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX"
+        buttonLabel="BOOK REHEARSAL"
+        channel="8"
+        className="channel-active-magenta"
+        virtualInterface={true}
+        description="📍 CRICKET ROAD · Rehearsal Studio (10 min walk)"
+        pricing="£40 / 2 hours"
+      />
+
+      {/* UNIT 3: CH2 CONTROL ROOM (Cyan) — Studio Services */}
+      <RackModule 
+        label="Control Room — Cricket Road" 
+        type="sub-rack"
+        videoId={2}
+        bookingRoute="commission-studio"
+        bookingUrl="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
+        buttonLabel="BOOK CONTROL ROOM"
+        channel="2"
+        className="channel-active-cyan"
+        virtualInterface={true}
+        description="92 Cricket Road · Control Room Hire"
+        pricing="No engineer included"
+      />
+
+      {/* UNIT 4: CH3 COWLEY PODS (Gold) — Studio Services (Isolation Recording) */}
       <RackModule 
         label="Cowley Pods" 
         type="sub-rack"
@@ -512,7 +495,7 @@ export const RackPage = () => (
         pricing="Pod 1: £35/hr · Pods 2 & 3: Coming Soon"
       />
 
-      {/* CH6: CONTACT & LOCATION PATCH BAY */}
+      {/* UNIT 5: CH6 CONTACT & LOCATION (Orange) — Studio Services (Communications) */}
       <RackModule 
         label="Contact & Location" 
         type="sub-rack"
@@ -525,6 +508,21 @@ export const RackPage = () => (
         virtualInterface={true}
         description="Communications Hub · Find Us"
         pricing="Email · Phone · Maps"
+      />
+
+      {/* UNIT 6: CH4 WORKSHOP CAFÉ (Amber) — Lifestyle (Community Space) */}
+      <RackModule 
+        label="Workshop Café" 
+        type="sub-rack"
+        videoId={4}
+        bookingRoute="cafe"
+        bookingUrl="/cafe"
+        buttonLabel="ENGAGE"
+        channel="4"
+        className="channel-active-amber"
+        virtualInterface={true}
+        description="118 Cowley Road · Creative Community Space"
+        pricing="Open Sessions · Events · Venue Hire"
       />
 
       {/* The following modules are hidden in Virtual Interface mode until assets are created */}
