@@ -30,15 +30,15 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
     <div class="module-body">
       {videoId && (
         <div class="rack-window-container">
-          {(channel === '1' || channel === '2' || channel === '3' || channel === '8') ? (
+          {(channel === '1' || channel === '2' || channel === '3' || channel === '4' || channel === '8') ? (
             <>
               {/* CH1/CH2/CH3/CH8 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
               {/* LAYER 1: Reactive SVG Signal (behind chassis) */}
               <Waveform 
                 channel={channel} 
                 style="oscilloscope"
-                amplitude={channel === '1' ? 1.2 : channel === '8' ? 1.3 : 1}
-                frequency={channel === '1' ? 0.8 : channel === '8' ? 0.9 : 1}
+                amplitude={channel === '1' ? 1.2 : channel === '4' ? 1.1 : channel === '8' ? 1.3 : 1}
+                frequency={channel === '1' ? 0.8 : channel === '4' ? 0.9 : channel === '8' ? 0.9 : 1}
               />
               
               {/* LAYER 2: Transparent Machined Plate (the faceplate) */}
@@ -48,6 +48,8 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
                     ? "/static/machined-assets/cowley-rehearsal-optimized.webp"
                     : channel === '2'
                     ? "/static/machined-assets/cricket-control-room-optimized.webp"
+                    : channel === '4'
+                    ? "/static/machined-assets/workshop-cafe-optimized.webp"
                     : channel === '8'
                     ? "/static/machined-assets/cricket-rehearsal-magenta-optimized.webp"
                     : "/static/machined-assets/cricket-rehearsal-optimized.webp"
@@ -60,21 +62,90 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
               {/* LAYER 3: Interactive Glass Overlay (monitor window) */}
               <div class="rack-glass-monitor"></div>
               
-              {/* LAYER 4: Invisible Hitbox Navigation (BOOK NOW button) */}
+              {/* LAYER 4: Invisible Hitbox Navigation */}
               {virtualInterface ? (
-                <a 
-                  href={bookingUrl || '#'}
-                  class="ghost-hitbox"
-                  style={{
-                    position: 'absolute',
-                    bottom: '15%',
-                    right: '3%',
-                    width: '22%',
-                    height: '12%'
-                  }}
-                  aria-label={`${label} · ${description || 'Book now'} · ${pricing || ''}`}
-                  rel="noopener noreferrer"
-                />
+                channel === '4' ? (
+                  <>
+                    {/* CH4: Multiple hitboxes for Workshop Café controls */}
+                    {/* HITBOX 1: Main Engage Button (Red Light - Right) */}
+                    <a 
+                      href="/cafe"
+                      class="ghost-hitbox"
+                      style={{
+                        position: 'absolute',
+                        bottom: '18%',
+                        right: '6%',
+                        width: '9%',
+                        height: '32%',
+                        borderRadius: '50%'
+                      }}
+                      aria-label="Workshop Café · Enter Site · 118 Cowley Road"
+                      rel="noopener noreferrer"
+                    />
+                    
+                    {/* HITBOX 2: Menu Button (Green Square - Left) */}
+                    <a 
+                      href="/cafe/menu"
+                      class="ghost-hitbox"
+                      style={{
+                        position: 'absolute',
+                        bottom: '22%',
+                        right: '27%',
+                        width: '4.5%',
+                        height: '11%',
+                        borderRadius: '2px'
+                      }}
+                      aria-label="View Café Menu"
+                      rel="noopener noreferrer"
+                    />
+                    
+                    {/* HITBOX 3: Events Button (Green Square - Middle) */}
+                    <a 
+                      href="/cafe/events"
+                      class="ghost-hitbox"
+                      style={{
+                        position: 'absolute',
+                        bottom: '22%',
+                        right: '21%',
+                        width: '4.5%',
+                        height: '11%',
+                        borderRadius: '2px'
+                      }}
+                      aria-label="View Café Events"
+                      rel="noopener noreferrer"
+                    />
+                    
+                    {/* HITBOX 4: Hire Button (Green Square - Right) */}
+                    <a 
+                      href="/cafe/hire"
+                      class="ghost-hitbox"
+                      style={{
+                        position: 'absolute',
+                        bottom: '22%',
+                        right: '15%',
+                        width: '4.5%',
+                        height: '11%',
+                        borderRadius: '2px'
+                      }}
+                      aria-label="Venue Hire Enquiry"
+                      rel="noopener noreferrer"
+                    />
+                  </>
+                ) : (
+                  <a 
+                    href={bookingUrl || '#'}
+                    class="ghost-hitbox"
+                    style={{
+                      position: 'absolute',
+                      bottom: '15%',
+                      right: '3%',
+                      width: '22%',
+                      height: '12%'
+                    }}
+                    aria-label={`${label} · ${description || 'Book now'} · ${pricing || ''}`}
+                    rel="noopener noreferrer"
+                  />
+                )
               ) : (
                 <a 
                   href={bookingUrl || '#'}
@@ -298,8 +369,23 @@ export const RackPage = () => (
         </div>
       </RackModule>
 
+      {/* CH4: WORKSHOP CAFÉ — Standalone 4U Module */}
+      <RackModule 
+        label="Workshop Café" 
+        type="sub-rack"
+        videoId={4}
+        bookingRoute="cafe"
+        bookingUrl="/cafe"
+        buttonLabel="ENGAGE"
+        channel="4"
+        className="channel-active-amber"
+        virtualInterface={true}
+        description="118 Cowley Road · Creative Community Space"
+        pricing="Open Sessions · Events · Venue Hire"
+      />
+
       {/* The following modules are hidden in Virtual Interface mode until assets are created */}
-      {/* TODO: Create Ghost Chassis assets for CH3, CH4, CH5, CH6 */}
+      {/* TODO: Create Ghost Chassis assets for CH3, CH5, CH6 */}
 
       {/* SYSTEM STATUS - Now with knob-to-waveform sync */}
       <SystemStatusModule />

@@ -87,10 +87,24 @@
           drop-shadow(0 0 24px rgba(255, 0, 110, 0.4));
 }
 
+[data-channel="4"] .waveform-svg {
+  position: absolute;
+  top: 24%;
+  left: 42.1%;
+  width: 50%;
+  height: 40%;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px #D4A574) 
+          drop-shadow(0 0 16px #FFB627)
+          drop-shadow(0 0 24px rgba(212, 165, 116, 0.3));
+}
+
 /* Continuous Waveform Flow Animation */
 [data-channel="1"] .waveform-path,
 [data-channel="2"] .waveform-path,
 [data-channel="3"] .waveform-path,
+[data-channel="4"] .waveform-path,
 [data-channel="8"] .waveform-path {
   stroke-width: 0.8;
   stroke-dasharray: 400;
@@ -119,6 +133,17 @@
 [data-channel="8"]:hover .waveform-path {
   stroke-width: 1.6;
   animation: pulse-wave 2s linear infinite, live-jam-throb 1s ease-in-out infinite;
+}
+
+/* CH4: Amber Nature Pulse (Workshop Café) */
+[data-channel="4"] .waveform-path {
+  stroke: #D4A574 !important;
+  animation: pulse-wave 3.2s linear infinite, analog-throb 1.8s ease-in-out infinite !important;
+}
+
+[data-channel="4"]:hover .waveform-path {
+  stroke-width: 1.4;
+  animation: pulse-wave 2.4s linear infinite, analog-throb 1.3s ease-in-out infinite;
 }
 
 [data-channel="2"]:hover .waveform-path,
@@ -566,9 +591,11 @@
   z-index: 100;
   border-radius: 50%; /* Default circular for buttons */
   
-  /* Debug mode — uncomment to see hitbox boundaries */
-  /* background: rgba(255, 0, 0, 0.3) !important; */
-  /* outline: 2px dashed rgba(255, 255, 0, 0.8) !important; */
+  /* === DEBUG MODE: RED CALIBRATION === */
+  /* Uncomment these lines to see hitbox boundaries for alignment */
+  /* background: rgba(255, 0, 0, 0.4) !important; */
+  /* outline: 2px solid yellow !important; */
+  /* === END DEBUG MODE === */
   
   /* Accessibility */
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
