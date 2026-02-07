@@ -427,3 +427,137 @@
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.8));
   }
 }
+
+/* ============================================
+   VIRTUAL RACK INTERFACE ARCHITECTURE
+   "The image IS the UI" — Remove all external text/buttons
+   ============================================ */
+
+/* Hide external UI chrome (module headers, text blocks, external buttons) */
+.rack-module.virtual-interface .module-header {
+  display: none !important;
+}
+
+.rack-module.virtual-interface .channel-description {
+  display: none !important;
+}
+
+.rack-module.virtual-interface .patch-point {
+  display: none !important;
+}
+
+/* Zero-gap vertical stacking — continuous rack */
+.rack-page.virtual-interface {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  background: #000;
+}
+
+.rack-page.virtual-interface .rack-module {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+/* Full-width rack faceplates */
+.rack-page.virtual-interface .rack-window-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Ghost hitbox system — invisible buttons overlaid on rack controls */
+.ghost-hitbox {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  
+  /* Debug mode — enable to see hitbox boundaries */
+  /* outline: 2px dashed rgba(255, 0, 0, 0.5); */
+  
+  /* Accessibility */
+  transition: all 0.2s ease-out;
+}
+
+.ghost-hitbox:hover {
+  /* Subtle glow on hover */
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05), transparent);
+}
+
+.ghost-hitbox:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 4px;
+}
+
+/* Tooltip system for hidden text */
+.ghost-hitbox::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(0, 0, 0, 0.95);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Space Mono', monospace;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ghost-hitbox:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* LED pulse for active hitboxes */
+.ghost-hitbox.active::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: var(--neon-green);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--neon-green);
+  animation: led-pulse 2s ease-in-out infinite;
+}
+
+@keyframes led-pulse {
+  0%, 100% { 
+    opacity: 1;
+    box-shadow: 0 0 12px var(--neon-green);
+  }
+  50% { 
+    opacity: 0.5;
+    box-shadow: 0 0 24px var(--neon-green);
+  }
+}
+
+/* Debug mode — enable to visualize hitbox grid */
+.rack-page.debug-hitboxes .ghost-hitbox {
+  outline: 2px dashed rgba(255, 0, 0, 0.8);
+  background: rgba(255, 0, 0, 0.1);
+}
+
+/* Accessibility: Screen reader only text for context */
+.sr-context {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

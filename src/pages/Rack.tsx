@@ -15,10 +15,13 @@ interface RackModuleProps {
   bookingUrl?: string
   buttonLabel?: string
   channel?: string
+  virtualInterface?: boolean
+  description?: string
+  pricing?: string
 }
 
-const RackModule = ({ label, type = 'standard', className, children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel, channel }: RackModuleProps) => (
-  <section class={`rack-module ${type} ${className || ''}`} data-channel={channel}>
+const RackModule = ({ label, type = 'standard', className, children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel, channel, virtualInterface = false, description, pricing }: RackModuleProps) => (
+  <section class={`rack-module ${type} ${className || ''} ${virtualInterface ? 'virtual-interface' : ''}`} data-channel={channel}>
     <div class="module-header">
       <div class="led green"></div>
       <h2 class="module-title">{label}</h2>
@@ -58,12 +61,28 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
               <div class="rack-glass-monitor"></div>
               
               {/* LAYER 4: Invisible Hitbox Navigation (BOOK NOW button) */}
-              <a 
-                href={bookingUrl || '#'}
-                class="rack-booking-hitbox"
-                aria-label={`Book ${label}`}
-                rel="noopener noreferrer"
-              />
+              {virtualInterface ? (
+                <a 
+                  href={bookingUrl || '#'}
+                  class="ghost-hitbox"
+                  style={{
+                    position: 'absolute',
+                    bottom: '15%',
+                    right: '3%',
+                    width: '22%',
+                    height: '12%'
+                  }}
+                  aria-label={`${label} · ${description || 'Book now'} · ${pricing || ''}`}
+                  rel="noopener noreferrer"
+                />
+              ) : (
+                <a 
+                  href={bookingUrl || '#'}
+                  class="rack-booking-hitbox"
+                  aria-label={`Book ${label}`}
+                  rel="noopener noreferrer"
+                />
+              )}
             </>
           ) : (
             <>
@@ -223,13 +242,10 @@ export const RackPage = () => (
   <>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main class="rack-page" id="main-content">
-      <h1 class="screen-reader-only">CRS Studio Network</h1>
+    <main class="rack-page virtual-interface" id="main-content">
+      <h1 class="screen-reader-only">CRS Studio Network — Virtual Rack Interface</h1>
       
-      <div class="rack-intro">
-        <h2>CRS STUDIO NETWORK</h2>
-        <p>Signal routing ·  Booking surface · System status</p>
-      </div>
+      <span class="sr-context">You are viewing a virtual rack interface. Click on the booking button overlaid on each rack module to book a session. Hover over buttons to see session details.</span>
 
       {/* PARENT MODULES - Contain sub-racks */}
       <RackModule 
@@ -247,9 +263,10 @@ export const RackPage = () => (
             buttonLabel="BOOK REHEARSAL"
             channel="1"
             className="channel-active-orange"
-          >
-            <p class="channel-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
-          </RackModule>
+            virtualInterface={true}
+            description="118 Cowley Road, Oxford OX4 1JE"
+            pricing="£45 / 2 hours"
+          />
 
           <RackModule 
             label="Control Room — Cricket Road" 
@@ -260,9 +277,10 @@ export const RackPage = () => (
             buttonLabel="BOOK CONTROL ROOM"
             channel="2"
             className="channel-active-cyan"
-          >
-            <p class="channel-description">92 Cricket Road · Control Room Hire · No engineer included</p>
-          </RackModule>
+            virtualInterface={true}
+            description="92 Cricket Road · Control Room Hire"
+            pricing="No engineer included"
+          />
 
           <RackModule 
             label="Cricket Road Rehearsal" 
@@ -273,78 +291,15 @@ export const RackPage = () => (
             buttonLabel="BOOK REHEARSAL"
             channel="8"
             className="channel-active-magenta"
-          >
-            <p class="channel-description">📍 CRICKET ROAD · Rehearsal Studio (10 min walk) · £40 / 2 hours</p>
-          </RackModule>
+            virtualInterface={true}
+            description="📍 CRICKET ROAD · Rehearsal Studio (10 min walk)"
+            pricing="£40 / 2 hours"
+          />
         </div>
       </RackModule>
 
-      {/* STANDARD MODULES */}
-      <RackModule 
-        label="CONTROL ROOM — DRY HIRE" 
-        videoId={7}
-        bookingRoute="commission-studio"
-        bookingUrl="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
-        buttonLabel="BOOK DRY HIRE"
-        channel="3"
-        className="channel-active-magenta"
-      >
-        <p class="channel-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
-      </RackModule>
-
-      <RackModule 
-        label="AV SERVICES — HIRE & REPAIR" 
-        bookingRoute="allocation-av"
-        bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
-        buttonLabel="ALLOCATION AVAILABLE"
-        channel="5"
-        className="channel-active-amber"
-      >
-        <p class="channel-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
-      </RackModule>
-
-      <RackModule 
-        label="WORKSHOP CAFÉ + EVENTS" 
-        className="workshop-cafe cafe-module channel-active-cyan"
-        bookingRoute="commission-podcast"
-        bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
-        buttonLabel="COMMISSION ALLOCATION"
-        channel="4"
-      >
-        <div class="cafe-content">
-          <p class="cafe-description">The Workshop Café is where ideas brew as freely as the coffee. A warm, analog space for collaboration, conversation, and creativity—no booking required for café hours, community programming by allocation.</p>
-          
-          <div class="cafe-programming">
-            <h3>What We Offer</h3>
-            <ul>
-              <li><strong>Open Creative Sessions</strong> · Fridays & Saturdays, drop-in coworking</li>
-              <li><strong>Technical Workshops</strong> · Audio gear tutorials & sound design clinics</li>
-              <li><strong>Community Events</strong> · Album listening parties, gear swap nights, open mics</li>
-              <li><strong>Subsidised Rates</strong> · Pay-what-you-can model for local artists & grassroots orgs</li>
-            </ul>
-          </div>
-
-          <div class="cafe-details">
-            <p><strong>Location:</strong> 118 Cowley Road, Oxford OX4 1JE (ground floor, street-level access)</p>
-            <p><strong>Vibe:</strong> Vintage audio gear meets community coffee shop—analog warmth, technical credibility</p>
-          </div>
-        </div>
-      </RackModule>
-
-      <RackModule 
-        label="CONTACT + LOCATION" 
-        channel="6"
-        className="channel-active-white"
-      >
-        <div class="contact-info">
-          <p><strong>Email:</strong> <a href="mailto:info@crsoxford.com">info@crsoxford.com</a></p>
-          <p><strong>Phone:</strong> <a href="tel:+447515886945">+44 7515 886945</a></p>
-          <p><strong>Socials:</strong> 
-            <a href="https://www.instagram.com/cowleyroadstudios" target="_blank" rel="noopener">Instagram</a> ·
-            <a href="https://www.facebook.com/cowleyroadstudios" target="_blank" rel="noopener">Facebook</a>
-          </p>
-        </div>
-      </RackModule>
+      {/* The following modules are hidden in Virtual Interface mode until assets are created */}
+      {/* TODO: Create Ghost Chassis assets for CH3, CH4, CH5, CH6 */}
 
       {/* SYSTEM STATUS - Now with knob-to-waveform sync */}
       <SystemStatusModule />
