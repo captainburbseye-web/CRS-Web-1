@@ -27,22 +27,25 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
     <div class="module-body">
       {videoId && (
         <div class="rack-window-container">
-          {(channel === '2' || channel === '3') ? (
+          {(channel === '1' || channel === '2' || channel === '3') ? (
             <>
-              {/* CH2/CH3 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
+              {/* CH1/CH2/CH3 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
               {/* LAYER 1: Reactive SVG Signal (behind chassis) */}
               <Waveform 
                 channel={channel} 
                 style="oscilloscope"
-                amplitude={1}
-                frequency={1}
+                amplitude={channel === '1' ? 1.2 : 1}
+                frequency={channel === '1' ? 0.8 : 1}
               />
               
               {/* LAYER 2: Transparent Machined Plate (the faceplate) */}
               <img 
-                src={channel === '2' 
-                  ? "/static/machined-assets/cricket-control-room-optimized.webp"
-                  : "/static/machined-assets/cricket-rehearsal-optimized.webp"
+                src={
+                  channel === '1' 
+                    ? "/static/machined-assets/cowley-rehearsal-optimized.webp"
+                    : channel === '2'
+                    ? "/static/machined-assets/cricket-control-room-optimized.webp"
+                    : "/static/machined-assets/cricket-rehearsal-optimized.webp"
                 }
                 alt={`${label} Module Faceplate`}
                 class="rack-ghost-chassis"

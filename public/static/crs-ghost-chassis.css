@@ -1,5 +1,5 @@
 /**
- * CRS GHOST CHASSIS — CH2 & CH3
+ * CRS GHOST CHASSIS — CH1, CH2 & CH3
  * The 238th Law: "Real hardware has depth."
  * 
  * 4-Layer Recessed-Depth Stack:
@@ -12,12 +12,14 @@
 /* ============================================
    LAYER 0: GHOST CHASSIS CONTAINER
    ============================================ */
+[data-channel="1"] .rack-module,
 [data-channel="2"] .rack-module,
 [data-channel="3"] .rack-module {
   position: relative;
   isolation: isolate; /* Create stacking context */
 }
 
+[data-channel="1"] .rack-window-container,
 [data-channel="2"] .rack-window-container,
 [data-channel="3"] .rack-window-container {
   position: relative;
@@ -31,6 +33,19 @@
    LAYER 1: REACTIVE SVG SIGNAL (BACK-PLANE)
    Waveform lives BEHIND the transparent chassis
    ============================================ */
+[data-channel="1"] .waveform-svg {
+  position: absolute;
+  top: 24%; /* Monitor window position */
+  left: 42.1%;
+  width: 50%; /* Monitor cutout width */
+  height: 40%; /* Monitor cutout height */
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px #FFDB58) 
+          drop-shadow(0 0 16px #FFDB58)
+          drop-shadow(0 0 24px rgba(255, 219, 88, 0.3));
+}
+
 [data-channel="2"] .waveform-svg {
   position: absolute;
   top: 24%; /* Monitor window position */
