@@ -27,15 +27,15 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
     <div class="module-body">
       {videoId && (
         <div class="rack-window-container">
-          {(channel === '1' || channel === '2' || channel === '3') ? (
+          {(channel === '1' || channel === '2' || channel === '3' || channel === '8') ? (
             <>
-              {/* CH1/CH2/CH3 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
+              {/* CH1/CH2/CH3/CH8 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
               {/* LAYER 1: Reactive SVG Signal (behind chassis) */}
               <Waveform 
                 channel={channel} 
                 style="oscilloscope"
-                amplitude={channel === '1' ? 1.2 : 1}
-                frequency={channel === '1' ? 0.8 : 1}
+                amplitude={channel === '1' ? 1.2 : channel === '8' ? 1.3 : 1}
+                frequency={channel === '1' ? 0.8 : channel === '8' ? 0.9 : 1}
               />
               
               {/* LAYER 2: Transparent Machined Plate (the faceplate) */}
@@ -45,6 +45,8 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
                     ? "/static/machined-assets/cowley-rehearsal-optimized.webp"
                     : channel === '2'
                     ? "/static/machined-assets/cricket-control-room-optimized.webp"
+                    : channel === '8'
+                    ? "/static/machined-assets/cricket-rehearsal-magenta-optimized.webp"
                     : "/static/machined-assets/cricket-rehearsal-optimized.webp"
                 }
                 alt={`${label} Module Faceplate`}
@@ -260,6 +262,19 @@ export const RackPage = () => (
             className="channel-active-cyan"
           >
             <p class="channel-description">92 Cricket Road · Control Room Hire · No engineer included</p>
+          </RackModule>
+
+          <RackModule 
+            label="Cricket Road Rehearsal" 
+            type="sub-rack"
+            videoId={8}
+            bookingRoute="recording-live"
+            bookingUrl="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX"
+            buttonLabel="BOOK REHEARSAL"
+            channel="8"
+            className="channel-active-magenta"
+          >
+            <p class="channel-description">📍 CRICKET ROAD · Rehearsal Studio (10 min walk) · £40 / 2 hours</p>
           </RackModule>
         </div>
       </RackModule>

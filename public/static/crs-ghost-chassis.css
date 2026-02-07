@@ -1,5 +1,5 @@
 /**
- * CRS GHOST CHASSIS — CH1, CH2 & CH3
+ * CRS GHOST CHASSIS — CH1, CH2, CH3 & CH8
  * The 238th Law: "Real hardware has depth."
  * 
  * 4-Layer Recessed-Depth Stack:
@@ -14,14 +14,16 @@
    ============================================ */
 [data-channel="1"] .rack-module,
 [data-channel="2"] .rack-module,
-[data-channel="3"] .rack-module {
+[data-channel="3"] .rack-module,
+[data-channel="8"] .rack-module {
   position: relative;
   isolation: isolate; /* Create stacking context */
 }
 
 [data-channel="1"] .rack-window-container,
 [data-channel="2"] .rack-window-container,
-[data-channel="3"] .rack-window-container {
+[data-channel="3"] .rack-window-container,
+[data-channel="8"] .rack-window-container {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -72,14 +74,51 @@
           drop-shadow(0 0 24px rgba(255, 0, 217, 0.3));
 }
 
+[data-channel="8"] .waveform-svg {
+  position: absolute;
+  top: 24%;
+  left: 42.1%;
+  width: 50%;
+  height: 40%;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px #FF006E) 
+          drop-shadow(0 0 16px #FF6B35)
+          drop-shadow(0 0 24px rgba(255, 0, 110, 0.4));
+}
+
 /* Continuous Waveform Flow Animation */
+[data-channel="1"] .waveform-path,
 [data-channel="2"] .waveform-path,
-[data-channel="3"] .waveform-path {
+[data-channel="3"] .waveform-path,
+[data-channel="8"] .waveform-path {
   stroke-width: 0.8;
   stroke-dasharray: 400;
   stroke-dashoffset: 400;
   animation: pulse-wave 3s linear infinite, heartbeat-pulse 1.2s ease-in-out infinite;
   transition: stroke-width 0.3s ease-out;
+}
+
+/* CH1: Warm Analog Pulse */
+[data-channel="1"] .waveform-path {
+  stroke: #FFDB58 !important;
+  animation: pulse-wave 3.5s linear infinite, analog-throb 2s ease-in-out infinite !important;
+}
+
+[data-channel="1"]:hover .waveform-path {
+  stroke-width: 1.5;
+  animation: pulse-wave 2.5s linear infinite, analog-throb 1.5s ease-in-out infinite;
+}
+
+/* CH8: Magenta Live Jam (Guitar Cricket) */
+[data-channel="8"] .waveform-path {
+  stroke: #FF006E !important;
+  animation: pulse-wave 2.8s linear infinite, live-jam-throb 1.5s ease-in-out infinite !important;
+}
+
+[data-channel="8"]:hover .waveform-path {
+  stroke-width: 1.6;
+  animation: pulse-wave 2s linear infinite, live-jam-throb 1s ease-in-out infinite;
 }
 
 [data-channel="2"]:hover .waveform-path,
@@ -117,12 +156,40 @@
   }
 }
 
+@keyframes analog-throb {
+  0%, 100% { 
+    stroke-width: 0.8; 
+    opacity: 0.95;
+  }
+  50% { 
+    stroke-width: 1.2; 
+    opacity: 1;
+  }
+}
+
+@keyframes live-jam-throb {
+  0%, 100% { 
+    stroke-width: 0.9; 
+    opacity: 1;
+  }
+  30% { 
+    stroke-width: 1.5; 
+    opacity: 0.95;
+  }
+  60% { 
+    stroke-width: 0.9; 
+    opacity: 1;
+  }
+}
+
 /* ============================================
    LAYER 2: TRANSPARENT MACHINED PLATE (CHASSIS)
    The physical faceplate with depth
    ============================================ */
+[data-channel="1"] .rack-ghost-chassis,
 [data-channel="2"] .rack-ghost-chassis,
-[data-channel="3"] .rack-ghost-chassis {
+[data-channel="3"] .rack-ghost-chassis,
+[data-channel="8"] .rack-ghost-chassis {
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -137,8 +204,10 @@
 }
 
 /* Tactile Feedback: Hardware "Powers Up" */
+[data-channel="1"]:hover .rack-ghost-chassis,
 [data-channel="2"]:hover .rack-ghost-chassis,
-[data-channel="3"]:hover .rack-ghost-chassis {
+[data-channel="3"]:hover .rack-ghost-chassis,
+[data-channel="8"]:hover .rack-ghost-chassis {
   filter: 
     drop-shadow(0 12px 24px rgba(0, 0, 0, 0.9)) 
     drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6))
