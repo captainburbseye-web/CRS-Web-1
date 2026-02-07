@@ -8,36 +8,45 @@ This is a standalone HTML/CSS/JS version of the Cowley Road Studios Signage Loop
 signage-offline-backup/
 ├── index.html          # Main HTML file
 ├── styles.css          # Elite Trend Tech styling
-├── script.js           # Vanilla JS slideshow logic
-├── assets/             # Production WebP assets
+├── script.js           # Vanilla JS slideshow logic (7-unit playlist)
+├── assets/             # Local WebP assets (CH1, CH2, CH4, CH8)
 │   ├── cowley-rehearsal-optimized.webp (56KB)
 │   ├── cricket-rehearsal-magenta-optimized.webp (52KB)
 │   ├── cricket-control-room-optimized.webp (29KB)
-│   ├── workshop-cafe-optimized.webp (169KB)
-│   └── master-bus-ch7-optimized.webp (134KB)
+│   └── workshop-cafe-optimized.webp (169KB)
 └── README.md           # This file
 ```
 
-**Total Size:** ~450 KB (all assets + code)
+**R2 Assets (CH3, CH6, CH7):** Loaded from production URLs (requires internet):
+- `https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png`
+- `https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/Contact%20rack%20ui.png`
+- `https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png`
+
+**Total Size:** ~310 KB local + 3 R2 assets (~6.4 MB raw from R2)
 
 ## Features
-✅ **Auto-Cycling Slideshow** - 5 modules × 10 seconds = 50-second loop  
+✅ **Auto-Cycling Slideshow** - 7 modules × 10 seconds = 70-second loop  
 ✅ **Smooth Transitions** - 500ms fade in/out  
 ✅ **Progress Bar** - Visual timer at bottom  
 ✅ **Burn-in Protection** - 1px pixel shift every 60 seconds  
 ✅ **Kiosk Mode** - Cursor hidden, no scrollbars  
 ✅ **Zero Dependencies** - Pure HTML/CSS/JS (no npm, no React)  
-✅ **Elite Trend Tech Aesthetic** - Ghost Chassis + Neon Glow + Kinetic Typography
+✅ **Elite Trend Tech Aesthetic** - Ghost Chassis + Neon Glow + Kinetic Typography  
+✅ **R2 Integration** - Uses exact production URLs for CH3, CH6, CH7
 
 ## Playlist
 ```
 0:00-0:10  →  CH1 Cowley Rehearsal (Yellow)
 0:10-0:20  →  CH8 Cricket Rehearsal (Magenta)
 0:20-0:30  →  CH2 Control Room (Cyan)
-0:30-0:40  →  CH4 Workshop Café (Amber)
-0:40-0:50  →  CH7 Master Bus (Green)
-0:50       →  ↻ Loop back to CH1
+0:30-0:40  →  CH3 Cowley Pods (Charcoal/Yellow) [R2]
+0:40-0:50  →  CH6 Contact & Location (Black/Amber) [R2]
+0:50-1:00  →  CH4 Workshop Café (Amber)
+1:00-1:10  →  CH7 Master Bus (Green) [R2] ← Footer position
+1:10       →  ↻ Loop back to CH1
 ```
+
+**Note:** CH3, CH6, CH7 use direct R2 URLs (requires internet). CH1, CH2, CH4, CH8 use local assets.
 
 ## Deployment Instructions
 

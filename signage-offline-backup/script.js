@@ -7,6 +7,7 @@ const SLIDE_DURATION = 10000; // 10 seconds per slide
 const FADE_DURATION = 500;    // 0.5s transition
 
 // Playlist (Order matters - this is the loop)
+// Uses EXACT R2 URLs for CH3, CH6, CH7 as specified
 const playlist = [
   {
     id: 'ch1',
@@ -33,6 +34,22 @@ const playlist = [
     label: 'CH2 · CONTROL ROOM'
   },
   {
+    id: 'ch3',
+    channel: '3',
+    title: 'Cowley Pods',
+    description: 'The Zone Controller · Pod System',
+    asset: 'https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png',
+    label: 'CH3 · COWLEY PODS'
+  },
+  {
+    id: 'ch6',
+    channel: '6',
+    title: 'Contact & Location',
+    description: 'The Patch Bay · Communications Hub',
+    asset: 'https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/Contact%20rack%20ui.png',
+    label: 'CH6 · CONTACT'
+  },
+  {
     id: 'ch4',
     channel: '4',
     title: 'Workshop Café',
@@ -45,7 +62,7 @@ const playlist = [
     channel: '7',
     title: 'System Status',
     description: 'Master Bus · All Systems Operational',
-    asset: 'assets/master-bus-ch7-optimized.webp',
+    asset: 'https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png',
     label: 'CH7 · MASTER BUS'
   }
 ];
