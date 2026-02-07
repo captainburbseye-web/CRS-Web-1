@@ -1,0 +1,97 @@
+/* ====================================================================
+   NUCLEAR RACK FIX - Strip All Container Styling
+   Applied: 2026-02-07 12:50 UTC
+   Removes ALL padding, borders, cards to let images be full-width
+   ==================================================================== */
+
+/* KILL ALL CONTAINER STYLING */
+.rack-unit,
+.rack-module,
+.rack-window,
+.rack-window-container,
+.module-body {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* KILL RACK EARS */
+.rack-unit::before,
+.rack-unit::after {
+  display: none !important;
+}
+
+/* IMAGES FILL 100% WIDTH */
+.rack-unit img,
+.rack-window img,
+.rack-module img,
+img[src*="machined-assets"],
+img[src*="r2.dev"] {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* ZERO GAP STACKING */
+.rack-unit,
+.rack-module {
+  line-height: 0 !important;
+  font-size: 0 !important;
+  display: block !important;
+}
+
+/* KILL MODULE HEADERS/UI CHROME */
+.module-header,
+.module-id,
+.led,
+.power-switch,
+.qr-code {
+  display: none !important;
+}
+
+/* CONTAINER WIDTH */
+.rack-container,
+.rack-page {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* ====================================================================
+   MOBILE OVERRIDE - FIX MINIATURIZATION BUG
+   Applied: 2026-02-07 12:55 UTC
+   Mobile CSS was re-adding padding, shrinking images
+   ==================================================================== */
+@media (max-width: 768px) {
+  .rack-unit,
+  .rack-module {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  .rack-unit::before,
+  .rack-unit::after {
+    display: none !important;
+    width: 0 !important;
+  }
+  
+  .rack-unit img,
+  .rack-window img,
+  img[src*="machined-assets"] {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .rack-unit,
+  .rack-module {
+    padding: 0 !important;
+  }
+}

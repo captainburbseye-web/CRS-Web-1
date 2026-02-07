@@ -76,6 +76,7 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link rel="preload" href="/static/crs-spacing.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         <link rel="preload" href="/static/crs-rack-ui.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         <link rel="preload" href="/static/crs-hybrid-ghost-rack.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+        <link rel="preload" href="/static/crs-nuclear-rack-fix.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         <link rel="preload" href="/static/crs-header.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         <link rel="preload" href="/static/crs-neon-system.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         <link rel="preload" href="/static/crs-rotary-knob.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
