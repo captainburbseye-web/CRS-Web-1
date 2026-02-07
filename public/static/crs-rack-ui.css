@@ -2321,3 +2321,43 @@ body::after {
   max-height: 88px !important;
 }
 
+
+/* ====================================================================
+   ULTRA PATCH: ABSOLUTE EDGE-TO-EDGE FILL (2026-02-07 12:05 UTC)
+   Remove ALL padding and make images fill entire rack frame area
+   ==================================================================== */
+
+/* Step 1: Remove all padding from rack-unit container */
+.rack-unit {
+  padding: 0 !important;
+  margin: 0 0 2px 0 !important;
+  overflow: hidden !important;
+}
+
+/* Step 2: Make images absolutely positioned to fill parent completely */
+.rack-unit img,
+.rack-unit .rack-faceplate {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Step 3: Hide rack ears (bronze sidebars) so image fills edge-to-edge */
+.rack-unit::before,
+.rack-unit::after {
+  display: none !important;
+}
+
+/* Step 4: Ensure parent is positioned for absolute children */
+.rack-unit > div,
+.rack-unit > a {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+}
