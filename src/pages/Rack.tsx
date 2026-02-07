@@ -238,7 +238,6 @@ export const RackPage = () => (
 
       <RackModule 
         label="AV SERVICES — HIRE & REPAIR" 
-        videoId={11}
         bookingRoute="allocation-av"
         bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
         buttonLabel="ALLOCATION AVAILABLE"
@@ -251,7 +250,6 @@ export const RackPage = () => (
       <RackModule 
         label="WORKSHOP CAFÉ + EVENTS" 
         className="workshop-cafe cafe-module channel-active-cyan"
-        videoId={10}
         bookingRoute="commission-podcast"
         bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
         buttonLabel="COMMISSION ALLOCATION"
@@ -279,7 +277,6 @@ export const RackPage = () => (
 
       <RackModule 
         label="CONTACT + LOCATION" 
-        videoId={23}
         channel="6"
         className="channel-active-white"
       >
