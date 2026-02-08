@@ -12,10 +12,20 @@
 .module-body {
   padding: 0 !important;
   margin: 0 !important;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
   border: none !important;
   border-radius: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
+  gap: 0 !important;
+}
+
+/* KILL DEVICE GAP SPACING */
+:root {
+  --device-gap: 0px !important;
+  --device-padding: 0px !important;
+  --device-radius: 0px !important;
 }
 
 /* KILL RACK EARS */
@@ -45,6 +55,23 @@ img[src*="r2.dev"] {
   line-height: 0 !important;
   font-size: 0 !important;
   display: block !important;
+}
+
+/* KILL ALL GAPS BETWEEN UNITS */
+.rack-container > *,
+.rack-page > * {
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+}
+
+/* FORCE VERTICAL STACKING WITH ZERO GAP */
+.rack-container,
+.rack-page,
+main {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
 }
 
 /* KILL MODULE HEADERS/UI CHROME */
