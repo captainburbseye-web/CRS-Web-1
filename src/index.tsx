@@ -19,6 +19,7 @@ import { SignagePage } from './pages/Signage'
 import { SignageLoop } from './pages/SignageLoop'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
+import { RackTestPage } from './pages/RackTest'
 
 const app = new Hono()
 
@@ -1602,6 +1603,19 @@ app.get('/rack', (c) => {
       title: 'CRS Studio Network | Cowley Road Studios',
       description: 'CRS Studio Network: Signal routing, booking surface, system status. Hardware-inspired interface.',
       keywords: 'studio network, booking, cowley road studios, signal routing'
+    }
+  )
+})
+
+// RACK TEST — STRUCTURAL ASSEMBLY SANDBOX
+// Isolated test route for 19-inch rack interface development
+app.get('/rack-test', (c) => {
+  return c.render(
+    <RackTestPage />,
+    {
+      title: 'CRS Rack Test | Structural Assembly',
+      description: 'Test environment for 19-inch equipment rack interface',
+      keywords: 'rack test, studio equipment, structural assembly'
     }
   )
 })
