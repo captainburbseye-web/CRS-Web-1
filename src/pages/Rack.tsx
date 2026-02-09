@@ -1,4 +1,4 @@
-import { CowleyRehearsal } from '../components/rack/modules/CowleyRehearsal'
+import { Footer } from '../components/Footer'
 import { RotaryKnob } from '../components/RotaryKnob'
 import { GlassOverlay } from '../components/GlassOverlay'
 import { Waveform } from '../components/Waveform'
@@ -15,13 +15,10 @@ interface RackModuleProps {
   bookingUrl?: string
   buttonLabel?: string
   channel?: string
-  virtualInterface?: boolean
-  description?: string
-  pricing?: string
 }
 
-const RackModule = ({ label, type = 'standard', className, children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel, channel, virtualInterface = false, description, pricing }: RackModuleProps) => (
-  <section class={`rack-module ${type} ${className || ''} ${virtualInterface ? 'virtual-interface' : ''}`} data-channel={channel}>
+const RackModule = ({ label, type = 'standard', className, children, videoId, qrLink, bookingRoute, bookingUrl, buttonLabel, channel }: RackModuleProps) => (
+  <section class={`rack-module ${type} ${className || ''}`} data-channel={channel}>
     <div class="module-header">
       <div class="led green"></div>
       <h2 class="module-title">{label}</h2>
@@ -30,33 +27,22 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
     <div class="module-body">
       {videoId && (
         <div class="rack-window-container">
-          {(channel === '1' || channel === '2' || channel === '3' || channel === '4' || channel === '6' || channel === '8') ? (
+          {(channel === '2' || channel === '3') ? (
             <>
-              {/* CH1/CH2/CH3/CH4/CH6/CH8 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
+              {/* CH2/CH3 GHOST CHASSIS: 4-Layer Recessed-Depth Stack */}
               {/* LAYER 1: Reactive SVG Signal (behind chassis) */}
               <Waveform 
                 channel={channel} 
                 style="oscilloscope"
-                amplitude={channel === '1' ? 1.2 : channel === '3' ? 1.15 : channel === '4' ? 1.1 : channel === '6' ? 0.95 : channel === '8' ? 1.3 : 1}
-                frequency={channel === '1' ? 0.8 : channel === '3' ? 0.85 : channel === '4' ? 0.9 : channel === '6' ? 0.7 : channel === '8' ? 0.9 : 1}
+                amplitude={1}
+                frequency={1}
               />
               
               {/* LAYER 2: Transparent Machined Plate (the faceplate) */}
               <img 
-                src={
-                  channel === '1' 
-                    ? "/static/machined-assets/cowley-rehearsal-optimized.webp"
-                    : channel === '2'
-                    ? "/static/machined-assets/cricket-control-room-optimized.webp"
-                    : channel === '3'
-                    ? "/static/machined-assets/cowley-pods-rack.webp"
-                    : channel === '4'
-                    ? "/static/machined-assets/workshop-cafe-optimized.webp"
-                    : channel === '6'
-                    ? "/static/machined-assets/contact-patchbay-rack.webp"
-                    : channel === '8'
-                    ? "/static/machined-assets/cricket-rehearsal-magenta-optimized.webp"
-                    : "/static/machined-assets/cricket-rehearsal-optimized.webp"
+                src={channel === '2' 
+                  ? "/static/machined-assets/cricket-control-room-optimized.webp"
+                  : "/static/machined-assets/cricket-rehearsal-optimized.webp"
                 }
                 alt={`${label} Module Faceplate`}
                 class="rack-ghost-chassis"
@@ -66,207 +52,13 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
               {/* LAYER 3: Interactive Glass Overlay (monitor window) */}
               <div class="rack-glass-monitor"></div>
               
-              {/* LAYER 4: Invisible Hitbox Navigation */}
-              {virtualInterface ? (
-                channel === '3' ? (
-                  <>
-                    {/* CH3: Cowley Pods - 3 Isolation Units (1 Active + 2 Standby) */}
-                    {/* POD 1: Main Suite (Green ENGAGE - Active) */}
-                    <a 
-                      href="/book/pod1"
-                      class="ghost-hitbox"
-                      style={{
-                        position: 'absolute',
-                        bottom: '18%',
-                        left: '36.5%',
-                        width: '15.5%',
-                        height: '34%',
-                        borderRadius: '4px'
-                      }}
-                      aria-label="Pod 1 · Main Suite · £35/hr · Book Now"
-                      title="Book Main Suite"
-                      rel="noopener noreferrer"
-                    />
-                    
-                    {/* POD 2: Vocal A (Amber STANDBY - Coming Soon) */}
-                    <div 
-                      class="ghost-hitbox-disabled"
-                      style={{
-                        position: 'absolute',
-                        top: '26%',
-                        right: '16.5%',
-                        width: '10.5%',
-                        height: '26%',
-                        borderRadius: '4px',
-                        cursor: 'not-allowed',
-                        opacity: 0.6
-                      }}
-                      aria-label="Pod 2 · Vocal A · Coming Soon"
-                      title="Vocal A - Coming Soon"
-                    />
-                    
-                    {/* POD 3: Vocal B (Amber STANDBY - Coming Soon) */}
-                    <div 
-                      class="ghost-hitbox-disabled"
-                      style={{
-                        position: 'absolute',
-                        bottom: '18%',
-                        right: '16.5%',
-                        width: '10.5%',
-                        height: '26%',
-                        borderRadius: '4px',
-                        cursor: 'not-allowed',
-                        opacity: 0.6
-                      }}
-                      aria-label="Pod 3 · Vocal B · Coming Soon"
-                      title="Vocal B - Coming Soon"
-                    />
-                  </>
-                ) : channel === '4' ? (
-                  <>
-                    {/* CH4: Multiple hitboxes for Workshop Café controls */}
-                    {/* HITBOX 1: Main Engage Button (Red Light - Right) */}
-                    <a 
-                      href="/cafe"
-                      class="ghost-hitbox"
-                      style={{
-                        position: 'absolute',
-                        bottom: '18%',
-                        right: '6%',
-                        width: '9%',
-                        height: '32%',
-                        borderRadius: '50%'
-                      }}
-                      aria-label="Workshop Café · Enter Site · 118 Cowley Road"
-                      rel="noopener noreferrer"
-                    />
-                    
-                    {/* HITBOX 2: Menu Button (Green Square - Left) */}
-                    <a 
-                      href="/cafe/menu"
-                      class="ghost-hitbox"
-                      style={{
-                        position: 'absolute',
-                        bottom: '22%',
-                        right: '27%',
-                        width: '4.5%',
-                        height: '11%',
-                        borderRadius: '2px'
-                      }}
-                      aria-label="View Café Menu"
-                      rel="noopener noreferrer"
-                    />
-                    
-                    {/* HITBOX 3: Events Button (Green Square - Middle) */}
-                    <a 
-                      href="/cafe/events"
-                      class="ghost-hitbox"
-                      style={{
-                        position: 'absolute',
-                        bottom: '22%',
-                        right: '21%',
-                        width: '4.5%',
-                        height: '11%',
-                        borderRadius: '2px'
-                      }}
-                      aria-label="View Café Events"
-                      rel="noopener noreferrer"
-                    />
-                    
-                    {/* HITBOX 4: Hire Button (Green Square - Right) */}
-                    <a 
-                      href="/cafe/hire"
-                      class="ghost-hitbox"
-                      style={{
-                        position: 'absolute',
-                        bottom: '22%',
-                        right: '15%',
-                        width: '4.5%',
-                        height: '11%',
-                        borderRadius: '2px'
-                      }}
-                      aria-label="Venue Hire Enquiry"
-                      rel="noopener noreferrer"
-                    />
-                  </>
-                ) : channel === '6' ? (
-                  <>
-                    {/* CH6: Contact & Location Patch Bay - 3 Input Jacks */}
-                    {/* HITBOX 1: EMAIL INPUT (Top Jack) */}
-                    <a 
-                      href="mailto:info@cowleyroadstudios.com"
-                      class="ghost-hitbox"
-                      style={{
-                        position: 'absolute',
-                        top: '24%',
-                        left: '7.5%',
-                        width: '11%',
-                        height: '26%',
-                        borderRadius: '50%'
-                      }}
-                      aria-label="Send Email · info@cowleyroadstudios.com"
-                      title="Email Us"
-                      rel="noopener noreferrer"
-                    />
-                    
-                    {/* HITBOX 2: PHONE LINE (Bottom Jack) */}
-                    <a 
-                      href="tel:+441865123456"
-                      class="ghost-hitbox"
-                      style={{
-                        position: 'absolute',
-                        bottom: '18%',
-                        left: '7.5%',
-                        width: '11%',
-                        height: '26%',
-                        borderRadius: '50%'
-                      }}
-                      aria-label="Call Studio · +44 1865 123456"
-                      title="Call Us"
-                      rel="noopener noreferrer"
-                    />
-                    
-                    {/* HITBOX 3: LOCATION MAP (Glowing Screen) */}
-                    <a 
-                      href="https://maps.google.com/?q=118+Cowley+Road,Oxford,UK"
-                      target="_blank"
-                      class="ghost-hitbox"
-                      style={{
-                        position: 'absolute',
-                        top: '21%',
-                        right: '14.5%',
-                        width: '43%',
-                        height: '57%',
-                        borderRadius: '2px'
-                      }}
-                      aria-label="View on Google Maps · 118 Cowley Road, Oxford"
-                      title="Find Us on Maps"
-                      rel="noopener noreferrer"
-                    />
-                  </>
-                ) : (
-                  <a 
-                    href={bookingUrl || '#'}
-                    class="ghost-hitbox"
-                    style={{
-                      position: 'absolute',
-                      bottom: '15%',
-                      right: '3%',
-                      width: '22%',
-                      height: '12%'
-                    }}
-                    aria-label={`${label} · ${description || 'Book now'} · ${pricing || ''}`}
-                    rel="noopener noreferrer"
-                  />
-                )
-              ) : (
-                <a 
-                  href={bookingUrl || '#'}
-                  class="rack-booking-hitbox"
-                  aria-label={`Book ${label}`}
-                  rel="noopener noreferrer"
-                />
-              )}
+              {/* LAYER 4: Invisible Hitbox Navigation (BOOK NOW button) */}
+              <a 
+                href={bookingUrl || '#'}
+                class="rack-booking-hitbox"
+                aria-label={`Book ${label}`}
+                rel="noopener noreferrer"
+              />
             </>
           ) : (
             <>
@@ -426,111 +218,121 @@ export const RackPage = () => (
   <>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <main class="rack-page virtual-interface" id="main-content">
-      <h1 class="screen-reader-only">CRS Studio Network — Virtual Rack Interface</h1>
+    <main class="rack-page" id="main-content">
+      <h1 class="screen-reader-only">CRS Studio Network</h1>
       
-      <span class="sr-context">You are viewing a virtual rack interface. Click on the booking button overlaid on each rack module to book a session. Hover over buttons to see session details.</span>
+      <div class="rack-intro">
+        <h2>CRS STUDIO NETWORK</h2>
+        <p>Signal routing ·  Booking surface · System status</p>
+      </div>
 
-      {/* ═══════════════════════════════════════════════════════════════ */}
-      {/* SERVICE STACK ARCHITECTURE: Studio Services → Lifestyle         */}
-      {/* ═══════════════════════════════════════════════════════════════ */}
-
-      {/* UNIT 1: CH1 COWLEY REHEARSAL (Yellow) — Studio Services */}
+      {/* PARENT MODULES - Contain sub-racks */}
       <RackModule 
-        label="Cowley Road Rehearsal" 
-        type="sub-rack"
-        videoId={1}
-        bookingRoute="commission-studio"
-        bookingUrl="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services"
-        buttonLabel="BOOK REHEARSAL"
-        channel="1"
+        label="REHEARSALS" 
+        type="parent"
         className="channel-active-orange"
-        virtualInterface={true}
-        description="118 Cowley Road, Oxford OX4 1JE"
-        pricing="£45 / 2 hours"
-      />
+      >
+        <div class="sub-racks">
+          <RackModule 
+            label="Cowley Road" 
+            type="sub-rack"
+            videoId={1}
+            bookingRoute="commission-studio"
+            bookingUrl="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services"
+            buttonLabel="BOOK REHEARSAL"
+            channel="1"
+            className="channel-active-orange"
+          >
+            <p class="channel-description">118 Cowley Road, Oxford OX4 1JE · £45 / 2 hours</p>
+          </RackModule>
 
-      {/* UNIT 2: CH8 CRICKET REHEARSAL (Magenta) — Studio Services */}
-      <RackModule 
-        label="Cricket Road Rehearsal" 
-        type="sub-rack"
-        videoId={8}
-        bookingRoute="recording-live"
-        bookingUrl="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX"
-        buttonLabel="BOOK REHEARSAL"
-        channel="8"
-        className="channel-active-magenta"
-        virtualInterface={true}
-        description="📍 CRICKET ROAD · Rehearsal Studio (10 min walk)"
-        pricing="£40 / 2 hours"
-      />
+          <RackModule 
+            label="Control Room — Cricket Road" 
+            type="sub-rack"
+            videoId={2}
+            bookingRoute="commission-studio"
+            bookingUrl="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
+            buttonLabel="BOOK CONTROL ROOM"
+            channel="2"
+            className="channel-active-cyan"
+          >
+            <p class="channel-description">92 Cricket Road · Control Room Hire · No engineer included</p>
+          </RackModule>
+        </div>
+      </RackModule>
 
-      {/* UNIT 3: CH2 CONTROL ROOM (Cyan) — Studio Services */}
+      {/* STANDARD MODULES */}
       <RackModule 
-        label="Control Room — Cricket Road" 
-        type="sub-rack"
-        videoId={2}
+        label="CONTROL ROOM — DRY HIRE" 
+        videoId={7}
         bookingRoute="commission-studio"
         bookingUrl="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
-        buttonLabel="BOOK CONTROL ROOM"
-        channel="2"
-        className="channel-active-cyan"
-        virtualInterface={true}
-        description="92 Cricket Road · Control Room Hire"
-        pricing="No engineer included"
-      />
-
-      {/* UNIT 4: CH3 COWLEY PODS (Gold) — Studio Services (Isolation Recording) */}
-      <RackModule 
-        label="Cowley Pods" 
-        type="sub-rack"
-        videoId={3}
-        bookingRoute="isolation-units"
-        bookingUrl="/book/pod1"
-        buttonLabel="BOOK POD 1"
+        buttonLabel="BOOK DRY HIRE"
         channel="3"
-        className="channel-active-charcoal"
-        virtualInterface={true}
-        description="118 Cowley Road · Isolation Recording Units"
-        pricing="Pod 1: £35/hr · Pods 2 & 3: Coming Soon"
-      />
+        className="channel-active-magenta"
+      >
+        <p class="channel-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
+      </RackModule>
 
-      {/* UNIT 5: CH6 CONTACT & LOCATION (Orange) — Studio Services (Communications) */}
       <RackModule 
-        label="Contact & Location" 
-        type="sub-rack"
-        videoId={6}
-        bookingRoute="contact"
-        bookingUrl="/contact"
-        buttonLabel="GET IN TOUCH"
-        channel="6"
-        className="channel-active-black"
-        virtualInterface={true}
-        description="Communications Hub · Find Us"
-        pricing="Email · Phone · Maps"
-      />
-
-      {/* UNIT 6: CH4 WORKSHOP CAFÉ (Amber) — Lifestyle (Community Space) */}
-      <RackModule 
-        label="Workshop Café" 
-        type="sub-rack"
-        videoId={4}
-        bookingRoute="cafe"
-        bookingUrl="/cafe"
-        buttonLabel="ENGAGE"
-        channel="4"
+        label="AV SERVICES — HIRE & REPAIR" 
+        bookingRoute="allocation-av"
+        bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
+        buttonLabel="ALLOCATION AVAILABLE"
+        channel="5"
         className="channel-active-amber"
-        virtualInterface={true}
-        description="118 Cowley Road · Creative Community Space"
-        pricing="Open Sessions · Events · Venue Hire"
-      />
+      >
+        <p class="channel-description">Engineer-led live sound, installations, and technical support for community venues and cultural events.</p>
+      </RackModule>
 
-      {/* The following modules are hidden in Virtual Interface mode until assets are created */}
-      {/* TODO: Create Ghost Chassis assets for CH5 */}
+      <RackModule 
+        label="WORKSHOP CAFÉ + EVENTS" 
+        className="workshop-cafe cafe-module channel-active-cyan"
+        bookingRoute="commission-podcast"
+        bookingUrl="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
+        buttonLabel="COMMISSION ALLOCATION"
+        channel="4"
+      >
+        <div class="cafe-content">
+          <p class="cafe-description">The Workshop Café is where ideas brew as freely as the coffee. A warm, analog space for collaboration, conversation, and creativity—no booking required for café hours, community programming by allocation.</p>
+          
+          <div class="cafe-programming">
+            <h3>What We Offer</h3>
+            <ul>
+              <li><strong>Open Creative Sessions</strong> · Fridays & Saturdays, drop-in coworking</li>
+              <li><strong>Technical Workshops</strong> · Audio gear tutorials & sound design clinics</li>
+              <li><strong>Community Events</strong> · Album listening parties, gear swap nights, open mics</li>
+              <li><strong>Subsidised Rates</strong> · Pay-what-you-can model for local artists & grassroots orgs</li>
+            </ul>
+          </div>
+
+          <div class="cafe-details">
+            <p><strong>Location:</strong> 118 Cowley Road, Oxford OX4 1JE (ground floor, street-level access)</p>
+            <p><strong>Vibe:</strong> Vintage audio gear meets community coffee shop—analog warmth, technical credibility</p>
+          </div>
+        </div>
+      </RackModule>
+
+      <RackModule 
+        label="CONTACT + LOCATION" 
+        channel="6"
+        className="channel-active-white"
+      >
+        <div class="contact-info">
+          <p><strong>Email:</strong> <a href="mailto:info@crsoxford.com">info@crsoxford.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+447515886945">+44 7515 886945</a></p>
+          <p><strong>Socials:</strong> 
+            <a href="https://www.instagram.com/cowleyroadstudios" target="_blank" rel="noopener">Instagram</a> ·
+            <a href="https://www.facebook.com/cowleyroadstudios" target="_blank" rel="noopener">Facebook</a>
+          </p>
+        </div>
+      </RackModule>
 
       {/* SYSTEM STATUS - Now with knob-to-waveform sync */}
       <SystemStatusModule />
     </main>
+
+    <Footer />
 
     {/* PATCH BAY ROUTING LOGIC - v4.1 */}
     <script src="/assets/booking-router.js" defer></script>
