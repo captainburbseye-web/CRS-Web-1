@@ -12,9 +12,13 @@ export function RackTestPage() {
       lineHeight: 0,
       fontSize: 0
     }}>
-      {/* CHASSIS CONTAINER - NUCLEAR ZERO-GAP */}
+      {/* CHASSIS CONTAINER - FLEX STACK (NO GRID) */}
       <div 
+        className="rack-container"
         style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 0,
           maxWidth: '1200px',
           margin: '0 auto',
           borderLeft: '24px solid #222',
@@ -22,13 +26,16 @@ export function RackTestPage() {
           position: 'relative',
           minHeight: '100vh',
           lineHeight: 0,
-          fontSize: 0
+          fontSize: 0,
+          padding: 0,
+          background: '#000'
         }}
       >
-        {/* COWLEY ROAD STUDIOS BRAND HEADER */}
+        {/* COWLEY ROAD STUDIOS BRAND HEADER - UNIT 0 */}
         <img 
           src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png"
           alt="Cowley Road Studios"
+          className="rack-unit-img"
           style={{
             width: '100%',
             height: 'auto',
@@ -36,6 +43,7 @@ export function RackTestPage() {
             margin: 0,
             padding: 0,
             border: 'none',
+            borderRadius: 0,
             verticalAlign: 'top'
           }}
         />
@@ -135,13 +143,20 @@ export function RackTestPage() {
           font-size: 0 !important;
         }
 
-        img {
+        img, .rack-unit-img {
           display: block !important;
           margin: 0 !important;
           padding: 0 !important;
           border: none !important;
+          border-radius: 0 !important;
           vertical-align: top !important;
           line-height: 0 !important;
+        }
+
+        .rack-container {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 0 !important;
         }
       `}</style>
     </div>
@@ -187,6 +202,7 @@ function RackUnit({
       <img 
         src={imageUrl}
         alt={label}
+        className="rack-unit-img"
         style={{
           width: '100%',
           height: 'auto',
@@ -195,6 +211,7 @@ function RackUnit({
           margin: 0,
           padding: 0,
           border: 'none',
+          borderRadius: 0,
           verticalAlign: 'top'
         }}
       />
@@ -289,6 +306,7 @@ function RackUnitContact({ imageUrl, label }: RackUnitContactProps) {
       <img 
         src={imageUrl}
         alt={label}
+        className="rack-unit-img"
         style={{
           width: '100%',
           height: 'auto',
@@ -297,6 +315,7 @@ function RackUnitContact({ imageUrl, label }: RackUnitContactProps) {
           margin: 0,
           padding: 0,
           border: 'none',
+          borderRadius: 0,
           verticalAlign: 'top'
         }}
       />
