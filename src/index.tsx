@@ -20,6 +20,7 @@ import { SignageLoop } from './pages/SignageLoop'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
+import { DigitalPulsePage } from './pages/DigitalPulse'
 
 const app = new Hono()
 
@@ -1616,6 +1617,19 @@ app.get('/rack-test', (c) => {
       title: 'CRS Rack Test | Structural Assembly',
       description: 'Test environment for 19-inch equipment rack interface',
       keywords: 'rack test, studio equipment, structural assembly'
+    }
+  )
+})
+
+// DIGITAL PULSE — FUNDERS LANDING PAGE
+// Professional grassroots infrastructure pitch for funding partners
+app.get('/digital-pulse', (c) => {
+  return c.render(
+    <DigitalPulsePage />,
+    {
+      title: 'Digital Pulse | Grassroots Infrastructure Funding',
+      description: 'Cowley Road Studios is the hardware running Oxford\'s creative software. Partner with us to repair the infrastructure that keeps culture alive.',
+      keywords: 'digital pulse, grassroots funding, arts infrastructure, community technology, oxford'
     }
   )
 })
