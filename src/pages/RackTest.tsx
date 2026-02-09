@@ -1,119 +1,119 @@
 /**
- * RACK TEST - STRUCTURAL ASSEMBLY V.2.06
- * 19-inch equipment rack with live waveforms
- * Zero-gap brick stacking with full-height chassis
- * Final calibration: Header, blanking panel, refined hitboxes
+ * RACK TEST - NUCLEAR ZERO-GAP BUILD
+ * NO GAPS. NO SPACES. SOLID STEEL WALL.
+ * 19-inch equipment rack - structural assembly
  */
 
 export function RackTestPage() {
   return (
-    <div style={{ background: '#050505', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* CHASSIS CONTAINER - Full Height Frame */}
+    <div style={{ 
+      background: '#050505', 
+      minHeight: '100vh',
+      lineHeight: 0,
+      fontSize: 0
+    }}>
+      {/* CHASSIS CONTAINER - NUCLEAR ZERO-GAP */}
       <div 
         style={{
-          maxWidth: '1000px',
+          maxWidth: '1200px',
           margin: '0 auto',
-          borderLeft: '16px solid #222',
-          borderRight: '16px solid #222',
+          borderLeft: '24px solid #222',
+          borderRight: '24px solid #222',
           position: 'relative',
           minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column'
+          lineHeight: 0,
+          fontSize: 0
         }}
       >
-        {/* 1U HEADER PLATE - System Identification */}
+        {/* COWLEY ROAD STUDIOS BRAND HEADER */}
+        <img 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png"
+          alt="Cowley Road Studios"
+          style={{
+            width: '100%',
+            height: 'auto',
+            display: 'block',
+            margin: 0,
+            padding: 0,
+            border: 'none',
+            verticalAlign: 'top'
+          }}
+        />
+
+        {/* CH1 - COWLEY ROAD REHEARSAL */}
+        <RackUnit
+          imageUrl="/static/machined-assets/cowley-rehearsal-optimized.webp"
+          linkUrl="/book/rehearsal"
+          label="CH1 - Cowley Road Rehearsal"
+        />
+
+        {/* CH8 - CRICKET ROAD REHEARSAL */}
+        <RackUnit
+          imageUrl="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp"
+          linkUrl="/book/rehearsal"
+          label="CH8 - Cricket Road Rehearsal"
+        />
+
+        {/* CH2 - CONTROL ROOM (with waveform) */}
+        <RackUnit
+          imageUrl="/static/machined-assets/cricket-control-room-optimized.webp"
+          linkUrl="/book/control-room"
+          label="CH2 - Control Room"
+          showWaveform={true}
+          waveformColor="#00ffff"
+          waveformLeft="35%"
+          waveformWidth="30%"
+        />
+
+        {/* CH3 - PODCAST POD (with adjusted waveform) */}
+        <RackUnit
+          imageUrl="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png"
+          linkUrl="/book/podcast"
+          label="CH3 - Podcast Pod"
+          showWaveform={true}
+          waveformColor="#00ffff"
+          waveformLeft="42%"
+          waveformWidth="25%"
+        />
+
+        {/* CH4 - WORKSHOP CAFÉ */}
+        <RackUnit
+          imageUrl="/static/machined-assets/workshop-cafe-optimized.webp"
+          linkUrl="/cafe"
+          label="CH4 - Workshop Café"
+        />
+
+        {/* CH6 - CONTACT (with dual XLR/Phone hitboxes) */}
+        <RackUnitContact
+          imageUrl="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/Contact%20rack%20ui.png"
+          label="CH6 - Contact"
+        />
+
+        {/* CH7 - MASTER BUS / SYSTEM STATUS */}
+        <RackUnit
+          imageUrl="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png"
+          linkUrl="/status"
+          label="CH7 - Master Bus"
+        />
+
+        {/* BLANKING PANEL - Fills remaining space */}
         <div 
           style={{
             width: '100%',
-            background: 'linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%)',
-            padding: '12px 0',
-            textAlign: 'center',
-            borderBottom: '2px solid #333',
-            fontFamily: '"Courier New", "Courier", monospace',
-            fontSize: '14px',
-            fontWeight: 'bold',
-            color: '#FFBF00',
-            letterSpacing: '2px',
-            textShadow: '0 0 8px rgba(255, 191, 0, 0.6)',
-            lineHeight: 1
-          }}
-        >
-          CRS STUDIO NETWORK — SYSTEM V.2.06
-        </div>
-
-        {/* RACK UNITS STACK */}
-        <div style={{ flex: '0 0 auto' }}>
-          {/* CH1 - COWLEY ROAD REHEARSAL */}
-          <RackUnit
-            imageUrl="/static/machined-assets/cowley-rehearsal-optimized.webp"
-            linkUrl="/book/rehearsal"
-            label="CH1 - Cowley Road Rehearsal"
-          />
-
-          {/* CH8 - CRICKET ROAD REHEARSAL */}
-          <RackUnit
-            imageUrl="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp"
-            linkUrl="/book/rehearsal"
-            label="CH8 - Cricket Road Rehearsal"
-          />
-
-          {/* CH2 - CONTROL ROOM (with waveform) */}
-          <RackUnit
-            imageUrl="/static/machined-assets/cricket-control-room-optimized.webp"
-            linkUrl="/book/control-room"
-            label="CH2 - Control Room"
-            showWaveform={true}
-            waveformColor="#00ffff"
-            waveformLeft="35%"
-            waveformWidth="30%"
-          />
-
-          {/* CH3 - PODCAST POD (with adjusted waveform) */}
-          <RackUnit
-            imageUrl="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png"
-            linkUrl="/book/podcast"
-            label="CH3 - Podcast Pod"
-            showWaveform={true}
-            waveformColor="#00ffff"
-            waveformLeft="42%"
-            waveformWidth="25%"
-          />
-
-          {/* CH4 - WORKSHOP CAFÉ */}
-          <RackUnit
-            imageUrl="/static/machined-assets/workshop-cafe-optimized.webp"
-            linkUrl="/cafe"
-            label="CH4 - Workshop Café"
-          />
-
-          {/* CH6 - CONTACT (with dual XLR/Phone hitboxes) */}
-          <RackUnitContact
-            imageUrl="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/Contact%20rack%20ui.png"
-            label="CH6 - Contact"
-          />
-
-          {/* CH7 - SYSTEM STATUS / BOTTOM */}
-          <RackUnit
-            imageUrl="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png"
-            linkUrl="/status"
-            label="CH7 - System Status"
-          />
-        </div>
-
-        {/* BLANKING PANEL - Fills remaining vertical space */}
-        <div 
-          style={{
-            flex: '1 1 auto',
+            minHeight: '200px',
             backgroundImage: 'url(https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/blanking_panel.png)',
             backgroundRepeat: 'repeat-y',
             backgroundSize: '100% auto',
-            minHeight: '100px'
+            display: 'block',
+            margin: 0,
+            padding: 0
           }}
         />
       </div>
 
-      {/* INLINE CSS FOR WAVEFORM ANIMATION */}
+      {/* NUCLEAR CSS - KILL ALL GAPS */}
       <style>{`
+        /* WAVEFORM ANIMATION */
         @keyframes pulse-waveform {
           0%, 100% { 
             opacity: 0.6;
@@ -128,14 +128,28 @@ export function RackTestPage() {
         .animate-pulse-waveform {
           animation: pulse-waveform 2s ease-in-out infinite;
         }
+
+        /* NUCLEAR ZERO-GAP ENFORCEMENT */
+        body {
+          line-height: 0 !important;
+          font-size: 0 !important;
+        }
+
+        img {
+          display: block !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          border: none !important;
+          vertical-align: top !important;
+          line-height: 0 !important;
+        }
       `}</style>
     </div>
   )
 }
 
 /**
- * RACK UNIT COMPONENT
- * Zero-gap brick with optional live waveform
+ * RACK UNIT COMPONENT - NUCLEAR ZERO-GAP
  */
 interface RackUnitProps {
   imageUrl: string
@@ -162,13 +176,14 @@ function RackUnit({
         position: 'relative',
         width: '100%',
         margin: 0,
-        marginTop: '-1px', // Gap fix
+        marginTop: '-2px', // NUCLEAR OVERLAP
         padding: 0,
         lineHeight: 0,
-        fontSize: 0
+        fontSize: 0,
+        display: 'block'
       }}
     >
-      {/* THE IMAGE - Zero gap brick */}
+      {/* THE IMAGE - NUCLEAR ZERO-GAP */}
       <img 
         src={imageUrl}
         alt={label}
@@ -179,11 +194,12 @@ function RackUnit({
           objectFit: 'cover',
           margin: 0,
           padding: 0,
-          border: 'none'
+          border: 'none',
+          verticalAlign: 'top'
         }}
       />
 
-      {/* LIVE WAVEFORM (CH2 & CH3 only) */}
+      {/* LIVE WAVEFORM */}
       {showWaveform && (
         <svg 
           viewBox="0 0 200 60" 
@@ -208,7 +224,7 @@ function RackUnit({
         </svg>
       )}
 
-      {/* GHOST HITBOX - Tactile interaction layer */}
+      {/* GHOST HITBOX */}
       <a 
         href={linkUrl}
         aria-label={label}
@@ -249,7 +265,6 @@ function RackUnit({
 
 /**
  * CONTACT RACK UNIT - Dual Hitbox (XLR + Phone Jack)
- * Tactile "plug-in" interaction zones
  */
 interface RackUnitContactProps {
   imageUrl: string
@@ -263,10 +278,11 @@ function RackUnitContact({ imageUrl, label }: RackUnitContactProps) {
         position: 'relative',
         width: '100%',
         margin: 0,
-        marginTop: '-1px', // Gap fix
+        marginTop: '-2px', // NUCLEAR OVERLAP
         padding: 0,
         lineHeight: 0,
-        fontSize: 0
+        fontSize: 0,
+        display: 'block'
       }}
     >
       {/* THE IMAGE */}
@@ -280,11 +296,12 @@ function RackUnitContact({ imageUrl, label }: RackUnitContactProps) {
           objectFit: 'cover',
           margin: 0,
           padding: 0,
-          border: 'none'
+          border: 'none',
+          verticalAlign: 'top'
         }}
       />
 
-      {/* HITBOX 1: XLR INPUT (Left side, circular) */}
+      {/* HITBOX 1: XLR INPUT */}
       <a 
         href="mailto:captainburbseye@gmail.com"
         aria-label="Contact via XLR Input"
@@ -322,7 +339,7 @@ function RackUnitContact({ imageUrl, label }: RackUnitContactProps) {
         }}
       />
 
-      {/* HITBOX 2: PHONE JACK (Right side, circular) */}
+      {/* HITBOX 2: PHONE JACK */}
       <a 
         href="mailto:captainburbseye@gmail.com"
         aria-label="Contact via Phone Jack"
