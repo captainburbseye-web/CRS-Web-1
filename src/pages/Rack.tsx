@@ -42,7 +42,7 @@ const RackModule = ({ label, type = 'standard', className, children, videoId, qr
               <img 
                 src={channel === '2' 
                   ? "/static/machined-assets/cricket-control-room-optimized.webp"
-                  : "/static/machined-assets/cricket-rehearsal-optimized.webp"
+                  : "/static/machined-assets/cricket-rehearsal-magenta-optimized.webp"
                 }
                 alt={`${label} Module Faceplate`}
                 class="rack-ghost-chassis"
@@ -247,16 +247,16 @@ export const RackPage = () => (
           </RackModule>
 
           <RackModule 
-            label="Control Room — Cricket Road" 
+            label="Cricket Road Rehearsal" 
             type="sub-rack"
-            videoId={2}
+            videoId={3}
             bookingRoute="commission-studio"
-            bookingUrl="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
-            buttonLabel="BOOK CONTROL ROOM"
-            channel="2"
-            className="channel-active-cyan"
+            bookingUrl="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX"
+            buttonLabel="BOOK REHEARSAL"
+            channel="3"
+            className="channel-active-magenta"
           >
-            <p class="channel-description">92 Cricket Road · Control Room Hire · No engineer included</p>
+            <p class="channel-description">92 Cricket Road · Rehearsal Space · £40 / 2 hours</p>
           </RackModule>
         </div>
       </RackModule>
