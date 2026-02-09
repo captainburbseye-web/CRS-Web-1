@@ -264,12 +264,12 @@ export const RackPage = () => (
       {/* STANDARD MODULES */}
       <RackModule 
         label="CONTROL ROOM — DRY HIRE" 
-        videoId={7}
+        videoId={2}
         bookingRoute="commission-studio"
         bookingUrl="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
         buttonLabel="BOOK DRY HIRE"
-        channel="3"
-        className="channel-active-magenta"
+        channel="2"
+        className="channel-active-cyan"
       >
         <p class="channel-description">92 Cricket Road · No engineer included · Monitoring & mixing only</p>
       </RackModule>
