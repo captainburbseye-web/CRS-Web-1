@@ -1,425 +1,209 @@
 /**
- * RACK TEST - NUCLEAR ZERO-GAP BUILD
- * NO GAPS. NO SPACES. SOLID STEEL WALL.
- * 19-inch equipment rack - structural assembly
+ * RACK TEST - NUCLEAR OVERWRITE
+ * Hardcoded inline styles - bypasses all CSS issues
+ * Fixed header, forced overlap, zero tolerance
  */
 
 export function RackTestPage() {
-  return (
-    <div style={{ 
-      background: '#050505', 
-      minHeight: '100vh',
-      lineHeight: 0,
-      fontSize: 0
+  // NUCLEAR STYLE OBJECTS (Immutable)
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    maxWidth: '1000px',
+    margin: '0 auto',
+    backgroundColor: '#000',
+    borderLeft: '24px solid #222',
+    borderRight: '24px solid #222',
+    minHeight: '100vh',
+    boxShadow: 'inset 10px 0 20px #000'
+  }
+
+  const brickStyle = {
+    display: 'block',
+    width: '100%',
+    margin: '0',
+    padding: '0',
+    border: 'none',
+    lineHeight: '0',
+    verticalAlign: 'top' as const,
+    marginTop: '-1px',
+    position: 'relative' as const,
+    zIndex: 1
+  }
+
+  // Live Waveform Component (Internal)
+  const LiveWaveform = ({ style }: { style: any }) => (
+    <div style={{
+      position: 'absolute',
+      pointerEvents: 'none',
+      zIndex: 10,
+      ...style
     }}>
-      {/* CHASSIS CONTAINER - FLEX STACK (NO GRID) */}
-      <div 
-        className="rack-container"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 0,
-          maxWidth: '1200px',
-          margin: '0 auto',
-          borderLeft: '24px solid #222',
-          borderRight: '24px solid #222',
-          position: 'relative',
-          minHeight: '100vh',
-          lineHeight: 0,
-          fontSize: 0,
-          padding: 0,
-          background: '#000'
-        }}
-      >
-        {/* COWLEY ROAD STUDIOS BRAND HEADER - UNIT 0 */}
-        <div 
+      <svg viewBox="0 0 200 60" style={{
+        width: '100%',
+        height: '100%',
+        filter: 'drop-shadow(0 0 5px cyan)'
+      }}>
+        <path
+          d="M0,30 Q10,5 20,30 T40,30 T60,30 T80,55 T100,30 T120,5 T140,30 T160,30 T180,45 T200,30"
+          stroke="#00ffff"
+          strokeWidth="2"
+          fill="none"
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            position: 'relative',
-            width: '100%',
-            margin: 0,
-            marginBottom: '-1px',
-            padding: 0,
-            lineHeight: 0,
-            fontSize: 0,
-            background: '#111'
+            animation: 'pulse 2s infinite'
           }}
-        >
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png"
-            alt="Cowley Road Studios"
-            className="rack-unit-img"
+        />
+      </svg>
+    </div>
+  )
+
+  return (
+    <div style={{
+      backgroundColor: '#050505',
+      minHeight: '100vh',
+      padding: '0'
+    }}>
+      {/* THE CHASSIS */}
+      <div style={containerStyle}>
+        {/* UNIT 0: HEADER (CSS TEXT FALLBACK) */}
+        <div style={{
+          ...brickStyle,
+          background: '#111',
+          height: 'auto',
+          padding: '20px 0',
+          borderBottom: '2px solid #333',
+          zIndex: 2
+        }}>
+          <h1 style={{
+            color: '#ddd',
+            fontFamily: 'monospace',
+            textAlign: 'center',
+            margin: 0,
+            fontSize: '2rem',
+            letterSpacing: '4px',
+            textTransform: 'uppercase'
+          }}>
+            COWLEY ROAD STUDIOS
+          </h1>
+        </div>
+
+        {/* UNIT 1: COWLEY REHEARSAL */}
+        <a href="/book/rehearsal" style={brickStyle}>
+          <img
+            src="/static/machined-assets/cowley-rehearsal-optimized.webp"
+            alt="CH1"
+            style={{ width: '100%', display: 'block' }}
+          />
+        </a>
+
+        {/* UNIT 8: CRICKET REHEARSAL */}
+        <a href="/book/rehearsal" style={brickStyle}>
+          <img
+            src="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp"
+            alt="CH8"
+            style={{ width: '100%', display: 'block' }}
+          />
+        </a>
+
+        {/* UNIT 2: CONTROL ROOM + WAVEFORM */}
+        <a href="/book/control-room" style={brickStyle}>
+          <img
+            src="/static/machined-assets/cricket-control-room-optimized.webp"
+            alt="CH2"
+            style={{ width: '100%', display: 'block' }}
+          />
+          <LiveWaveform style={{
+            top: '35%',
+            left: '35%',
+            width: '25%',
+            opacity: 0.8
+          }} />
+        </a>
+
+        {/* UNIT 3: PODCAST + WAVEFORM */}
+        <a href="/book/podcast" style={brickStyle}>
+          <img
+            src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png"
+            alt="CH3"
+            style={{ width: '100%', display: 'block' }}
+          />
+          <LiveWaveform style={{
+            top: '30%',
+            left: '42%',
+            width: '25%',
+            opacity: 0.8,
+            filter: 'drop-shadow(0 0 5px magenta)'
+          }} />
+        </a>
+
+        {/* UNIT 4: CAFE */}
+        <a href="/cafe" style={brickStyle}>
+          <img
+            src="/static/machined-assets/workshop-cafe-optimized.webp"
+            alt="CH4"
+            style={{ width: '100%', display: 'block' }}
+          />
+        </a>
+
+        {/* UNIT 6: CONTACT (Dual Hitboxes) */}
+        <div style={brickStyle}>
+          <img
+            src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/Contact%20rack%20ui.png"
+            alt="CH6"
+            style={{ width: '100%', display: 'block' }}
+          />
+          {/* XLR Hitbox */}
+          <a
+            href="mailto:captainburbseye@gmail.com"
             style={{
-              width: '100%',
-              height: 'auto',
-              display: 'block',
-              margin: 0,
-              padding: 0,
-              border: 'none',
-              borderRadius: 0,
-              verticalAlign: 'top'
+              position: 'absolute',
+              top: '20%',
+              left: '15%',
+              width: '15%',
+              height: '60%',
+              background: 'transparent'
+            }}
+          />
+          {/* Jack Hitbox */}
+          <a
+            href="mailto:captainburbseye@gmail.com"
+            style={{
+              position: 'absolute',
+              top: '20%',
+              right: '15%',
+              width: '15%',
+              height: '60%',
+              background: 'transparent'
             }}
           />
         </div>
 
-        {/* CH1 - COWLEY ROAD REHEARSAL */}
-        <RackUnit
-          imageUrl="/static/machined-assets/cowley-rehearsal-optimized.webp"
-          linkUrl="/book/rehearsal"
-          label="CH1 - Cowley Road Rehearsal"
-        />
+        {/* UNIT 7: MASTER BUS */}
+        <a href="/status" style={brickStyle}>
+          <img
+            src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png"
+            alt="CH7"
+            style={{ width: '100%', display: 'block' }}
+          />
+        </a>
 
-        {/* CH8 - CRICKET ROAD REHEARSAL */}
-        <RackUnit
-          imageUrl="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp"
-          linkUrl="/book/rehearsal"
-          label="CH8 - Cricket Road Rehearsal"
-        />
-
-        {/* CH2 - CONTROL ROOM (with waveform) */}
-        <RackUnit
-          imageUrl="/static/machined-assets/cricket-control-room-optimized.webp"
-          linkUrl="/book/control-room"
-          label="CH2 - Control Room"
-          showWaveform={true}
-          waveformColor="#00ffff"
-          waveformLeft="35%"
-          waveformWidth="30%"
-        />
-
-        {/* CH3 - PODCAST POD (with adjusted waveform) */}
-        <RackUnit
-          imageUrl="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png"
-          linkUrl="/book/podcast"
-          label="CH3 - Podcast Pod"
-          showWaveform={true}
-          waveformColor="#00ffff"
-          waveformLeft="42%"
-          waveformWidth="25%"
-        />
-
-        {/* CH4 - WORKSHOP CAFÉ */}
-        <RackUnit
-          imageUrl="/static/machined-assets/workshop-cafe-optimized.webp"
-          linkUrl="/cafe"
-          label="CH4 - Workshop Café"
-        />
-
-        {/* CH6 - CONTACT (with dual XLR/Phone hitboxes) */}
-        <RackUnitContact
-          imageUrl="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/Contact%20rack%20ui.png"
-          label="CH6 - Contact"
-        />
-
-        {/* CH7 - MASTER BUS / SYSTEM STATUS */}
-        <RackUnit
-          imageUrl="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png"
-          linkUrl="/status"
-          label="CH7 - Master Bus"
-        />
-
-        {/* BLANKING PANEL - Fills remaining space */}
-        <div 
-          style={{
-            width: '100%',
-            minHeight: '200px',
-            backgroundImage: 'url(https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/blanking_panel.png)',
-            backgroundRepeat: 'repeat-y',
-            backgroundSize: '100% auto',
-            display: 'block',
-            margin: 0,
-            padding: 0
-          }}
-        />
+        {/* BLANKING FILLER */}
+        <div style={{
+          ...brickStyle,
+          flexGrow: 1,
+          backgroundImage: 'url(https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/blanking_panel.png)',
+          backgroundRepeat: 'repeat-y',
+          minHeight: '200px'
+        }} />
       </div>
 
-      {/* NUCLEAR CSS - KILL ALL GAPS */}
+      {/* INLINE CSS FOR WAVEFORM ANIMATION */}
       <style>{`
-        /* WAVEFORM ANIMATION */
-        @keyframes pulse-waveform {
-          0%, 100% { 
-            opacity: 0.6;
-            transform: scaleX(1);
-          }
-          50% { 
-            opacity: 0.8;
-            transform: scaleX(1.02);
-          }
-        }
-
-        .animate-pulse-waveform {
-          animation: pulse-waveform 2s ease-in-out infinite;
-        }
-
-        /* NUCLEAR ZERO-GAP ENFORCEMENT */
-        body {
-          line-height: 0 !important;
-          font-size: 0 !important;
-        }
-
-        img, .rack-unit-img {
-          display: block !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          border: none !important;
-          border-radius: 0 !important;
-          vertical-align: top !important;
-          line-height: 0 !important;
-        }
-
-        .rack-container {
-          display: flex !important;
-          flex-direction: column !important;
-          gap: 0 !important;
-        }
-
-        .rack-container > div {
-          display: flex !important;
-          flex-direction: column !important;
-          margin-bottom: -1px !important;
+        @keyframes pulse {
+          0%, 100% { opacity: 0.6; }
+          50% { opacity: 1; }
         }
       `}</style>
-    </div>
-  )
-}
-
-/**
- * RACK UNIT COMPONENT - NUCLEAR ZERO-GAP
- */
-interface RackUnitProps {
-  imageUrl: string
-  linkUrl: string
-  label: string
-  showWaveform?: boolean
-  waveformColor?: string
-  waveformLeft?: string
-  waveformWidth?: string
-}
-
-function RackUnit({ 
-  imageUrl, 
-  linkUrl, 
-  label, 
-  showWaveform = false, 
-  waveformColor = '#00ffff',
-  waveformLeft = '35%',
-  waveformWidth = '30%'
-}: RackUnitProps) {
-  return (
-    <div 
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
-        width: '100%',
-        margin: 0,
-        marginTop: '-2px',
-        marginBottom: '-1px',
-        padding: 0,
-        lineHeight: 0,
-        fontSize: 0
-      }}
-    >
-      {/* THE IMAGE - NUCLEAR ZERO-GAP */}
-      <img 
-        src={imageUrl}
-        alt={label}
-        className="rack-unit-img"
-        style={{
-          width: '100%',
-          height: 'auto',
-          display: 'block',
-          objectFit: 'cover',
-          margin: 0,
-          padding: 0,
-          border: 'none',
-          borderRadius: 0,
-          verticalAlign: 'top'
-        }}
-      />
-
-      {/* LIVE WAVEFORM */}
-      {showWaveform && (
-        <svg 
-          viewBox="0 0 200 60" 
-          style={{
-            position: 'absolute',
-            width: waveformWidth,
-            height: '40%',
-            top: '30%',
-            left: waveformLeft,
-            opacity: 0.6,
-            mixBlendMode: 'screen',
-            pointerEvents: 'none'
-          }}
-        >
-          <path 
-            d="M0,30 Q10,5 20,30 T40,30 T60,30 T80,55 T100,30 T120,5 T140,30 T160,30 T180,45 T200,30" 
-            stroke={waveformColor}
-            strokeWidth="2"
-            fill="none"
-            className="animate-pulse-waveform"
-          />
-        </svg>
-      )}
-
-      {/* GHOST HITBOX */}
-      <a 
-        href={linkUrl}
-        aria-label={label}
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          cursor: 'pointer',
-          transition: 'all 0.2s ease',
-          display: 'block'
-        }}
-        onMouseEnter={(e) => {
-          const container = e.currentTarget.parentElement
-          const img = container?.querySelector('img') as HTMLElement
-          if (img) {
-            img.style.filter = 'brightness(1.1) saturate(1.1)'
-          }
-        }}
-        onMouseLeave={(e) => {
-          const container = e.currentTarget.parentElement
-          const img = container?.querySelector('img') as HTMLElement
-          if (img) {
-            img.style.filter = 'none'
-          }
-        }}
-        onMouseDown={(e) => {
-          e.currentTarget.style.transform = 'scale(0.99)'
-        }}
-        onMouseUp={(e) => {
-          e.currentTarget.style.transform = 'scale(1)'
-        }}
-      />
-    </div>
-  )
-}
-
-/**
- * CONTACT RACK UNIT - Dual Hitbox (XLR + Phone Jack)
- */
-interface RackUnitContactProps {
-  imageUrl: string
-  label: string
-}
-
-function RackUnitContact({ imageUrl, label }: RackUnitContactProps) {
-  return (
-    <div 
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'relative',
-        width: '100%',
-        margin: 0,
-        marginTop: '-2px',
-        marginBottom: '-1px',
-        padding: 0,
-        lineHeight: 0,
-        fontSize: 0
-      }}
-    >
-      {/* THE IMAGE */}
-      <img 
-        src={imageUrl}
-        alt={label}
-        className="rack-unit-img"
-        style={{
-          width: '100%',
-          height: 'auto',
-          display: 'block',
-          objectFit: 'cover',
-          margin: 0,
-          padding: 0,
-          border: 'none',
-          borderRadius: 0,
-          verticalAlign: 'top'
-        }}
-      />
-
-      {/* HITBOX 1: XLR INPUT */}
-      <a 
-        href="mailto:captainburbseye@gmail.com"
-        aria-label="Contact via XLR Input"
-        style={{
-          position: 'absolute',
-          width: '80px',
-          height: '80px',
-          borderRadius: '50%',
-          top: '50%',
-          left: '25%',
-          transform: 'translate(-50%, -50%)',
-          cursor: 'pointer',
-          transition: 'all 0.2s ease',
-          display: 'block'
-        }}
-        onMouseEnter={(e) => {
-          const container = e.currentTarget.parentElement
-          const img = container?.querySelector('img') as HTMLElement
-          if (img) {
-            img.style.filter = 'brightness(1.1) saturate(1.1)'
-          }
-        }}
-        onMouseLeave={(e) => {
-          const container = e.currentTarget.parentElement
-          const img = container?.querySelector('img') as HTMLElement
-          if (img) {
-            img.style.filter = 'none'
-          }
-        }}
-        onMouseDown={(e) => {
-          e.currentTarget.style.transform = 'translate(-50%, -50%) scale(0.95)'
-        }}
-        onMouseUp={(e) => {
-          e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1)'
-        }}
-      />
-
-      {/* HITBOX 2: PHONE JACK */}
-      <a 
-        href="mailto:captainburbseye@gmail.com"
-        aria-label="Contact via Phone Jack"
-        style={{
-          position: 'absolute',
-          width: '80px',
-          height: '80px',
-          borderRadius: '50%',
-          top: '50%',
-          left: '75%',
-          transform: 'translate(-50%, -50%)',
-          cursor: 'pointer',
-          transition: 'all 0.2s ease',
-          display: 'block'
-        }}
-        onMouseEnter={(e) => {
-          const container = e.currentTarget.parentElement
-          const img = container?.querySelector('img') as HTMLElement
-          if (img) {
-            img.style.filter = 'brightness(1.1) saturate(1.1)'
-          }
-        }}
-        onMouseLeave={(e) => {
-          const container = e.currentTarget.parentElement
-          const img = container?.querySelector('img') as HTMLElement
-          if (img) {
-            img.style.filter = 'none'
-          }
-        }}
-        onMouseDown={(e) => {
-          e.currentTarget.style.transform = 'translate(-50%, -50%) scale(0.95)'
-        }}
-        onMouseUp={(e) => {
-          e.currentTarget.style.transform = 'translate(-50%, -50%) scale(1)'
-        }}
-      />
     </div>
   )
 }
