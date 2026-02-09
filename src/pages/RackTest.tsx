@@ -32,21 +32,36 @@ export function RackTestPage() {
         }}
       >
         {/* COWLEY ROAD STUDIOS BRAND HEADER - UNIT 0 */}
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png"
-          alt="Cowley Road Studios"
-          className="rack-unit-img"
+        <div 
           style={{
+            display: 'flex',
+            flexDirection: 'column',
+            position: 'relative',
             width: '100%',
-            height: 'auto',
-            display: 'block',
             margin: 0,
+            marginBottom: '-1px',
             padding: 0,
-            border: 'none',
-            borderRadius: 0,
-            verticalAlign: 'top'
+            lineHeight: 0,
+            fontSize: 0,
+            background: '#111'
           }}
-        />
+        >
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png"
+            alt="Cowley Road Studios"
+            className="rack-unit-img"
+            style={{
+              width: '100%',
+              height: 'auto',
+              display: 'block',
+              margin: 0,
+              padding: 0,
+              border: 'none',
+              borderRadius: 0,
+              verticalAlign: 'top'
+            }}
+          />
+        </div>
 
         {/* CH1 - COWLEY ROAD REHEARSAL */}
         <RackUnit
@@ -158,6 +173,12 @@ export function RackTestPage() {
           flex-direction: column !important;
           gap: 0 !important;
         }
+
+        .rack-container > div {
+          display: flex !important;
+          flex-direction: column !important;
+          margin-bottom: -1px !important;
+        }
       `}</style>
     </div>
   )
@@ -188,14 +209,16 @@ function RackUnit({
   return (
     <div 
       style={{
+        display: 'flex',
+        flexDirection: 'column',
         position: 'relative',
         width: '100%',
         margin: 0,
-        marginTop: '-2px', // NUCLEAR OVERLAP
+        marginTop: '-2px',
+        marginBottom: '-1px',
         padding: 0,
         lineHeight: 0,
-        fontSize: 0,
-        display: 'block'
+        fontSize: 0
       }}
     >
       {/* THE IMAGE - NUCLEAR ZERO-GAP */}
@@ -292,14 +315,16 @@ function RackUnitContact({ imageUrl, label }: RackUnitContactProps) {
   return (
     <div 
       style={{
+        display: 'flex',
+        flexDirection: 'column',
         position: 'relative',
         width: '100%',
         margin: 0,
-        marginTop: '-2px', // NUCLEAR OVERLAP
+        marginTop: '-2px',
+        marginBottom: '-1px',
         padding: 0,
         lineHeight: 0,
-        fontSize: 0,
-        display: 'block'
+        fontSize: 0
       }}
     >
       {/* THE IMAGE */}
