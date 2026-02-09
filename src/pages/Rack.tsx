@@ -1,4 +1,3 @@
-import { Footer } from '../components/Footer'
 import { RotaryKnob } from '../components/RotaryKnob'
 import { GlassOverlay } from '../components/GlassOverlay'
 import { Waveform } from '../components/Waveform'
@@ -331,8 +330,6 @@ export const RackPage = () => (
       {/* SYSTEM STATUS - Now with knob-to-waveform sync */}
       <SystemStatusModule />
     </main>
-
-    <Footer />
 
     {/* PATCH BAY ROUTING LOGIC - v4.1 */}
     <script src="/assets/booking-router.js" defer></script>
