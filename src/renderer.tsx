@@ -82,6 +82,7 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* Defer footer and mobile CSS (below-the-fold) */}
         <link rel="preload" href="/static/crs-footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         <link rel="preload" href="/static/crs-mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+        <link rel="preload" href="/static/crs-map-embed.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         
         {/* Fallback for browsers without JS */}
         <noscript>
@@ -94,6 +95,7 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
           <link href="/static/crs-mobile.css" rel="stylesheet" />
           <link href="/static/crs-neon-system.css" rel="stylesheet" />
           <link href="/static/crs-rotary-knob.css" rel="stylesheet" />
+          <link href="/static/crs-map-embed.css" rel="stylesheet" />
         </noscript>
 
         
@@ -117,6 +119,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* 12. GHOST CHASSIS: 4-layer recessed-depth stack for CH2 (The 238th Law) */}
         <link href="/static/crs-ghost-chassis.css" rel="stylesheet" />
+        
+        {/* 13. MAP EMBED: Google Maps integration for local SEO */}
+        <link href="/static/crs-map-embed.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}
