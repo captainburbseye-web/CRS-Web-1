@@ -1,34 +1,35 @@
 import React from 'react';
 
 export const RackTestPage = () => {
-  // 1. THE CHASSIS CONTAINER
   const chassisStyle = {
     display: 'flex',
     flexDirection: 'column' as const,
     width: '100%',
     maxWidth: '1000px',
     margin: '0 auto',
-    backgroundColor: '#000', // If gaps appear, they will be black.
+    // CHAMELEON FIX: Background matches Rails (#222) so gaps disappear
+    backgroundColor: '#222',
     borderLeft: '24px solid #222',
     borderRight: '24px solid #222',
     boxSizing: 'content-box' as const,
   };
 
-  // 2. THE BRICK STYLE (FORCE STRETCH)
   const brickStyle = {
     display: 'block',
-    width: '100%',          // Target width
-    minWidth: '100%',       // Force width
+    width: '100%',
     height: 'auto',
     margin: '0',
     padding: '0',
     border: 'none',
     lineHeight: '0',
     verticalAlign: 'top' as const,
-    marginBottom: '-2px',   // The Vertical Seal
+    marginBottom: '-2px',
     position: 'relative' as const,
     zIndex: 1,
-    objectFit: 'fill' as const, // CRITICAL: Forces image to stretch to edges
+    objectFit: 'fill' as const,
+    // SCALE FIX: Slightly magnify image to eat the gap
+    transform: 'scale(1.02)',
+    transformOrigin: 'center' as const,
   };
 
   // Live Waveform Component
@@ -45,71 +46,55 @@ export const RackTestPage = () => {
   );
 
   return (
-    <div style={{ backgroundColor: '#050505', minHeight: '100vh', padding: '0', margin: '0' }}>
-      {/* INTERNAL STYLE OVERRIDE to ensure no global CSS interferes */}
-      <style>{`
-        .rack-img-force {
-          width: 100% !important;
-          min-width: 100% !important;
-          height: auto !important;
-          object-fit: fill !important;
-          display: block !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          border: none !important;
-          line-height: 0 !important;
-        }
-      `}</style>
-
+    <div style={{ backgroundColor: '#050505', minHeight: '100vh', padding: '0', margin: '0', overflowX: 'hidden' }}>
       <div style={chassisStyle}>
 
         {/* UNIT 0: BRAND HEADER */}
         <div style={{...brickStyle, background: '#111', zIndex: 2}}>
              <img 
-                className="rack-img-force"
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png" 
                 alt="Cowley Road Studios" 
                 style={brickStyle}
              />
         </div>
 
-        {/* UNIT 1: COWLEY REHEARSAL */}
+        {/* UNIT 1 */}
         <a href="/book/rehearsal" style={brickStyle}>
-          <img className="rack-img-force" src="/static/machined-assets/cowley-rehearsal-optimized.webp" alt="Cowley" style={brickStyle} />
+          <img src="/static/machined-assets/cowley-rehearsal-optimized.webp" alt="Cowley" style={brickStyle} />
         </a>
 
-        {/* UNIT 8: CRICKET REHEARSAL */}
+        {/* UNIT 8 */}
         <a href="/book/rehearsal" style={brickStyle}>
-          <img className="rack-img-force" src="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp" alt="Cricket" style={brickStyle} />
+          <img src="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp" alt="Cricket" style={brickStyle} />
         </a>
 
-        {/* UNIT 2: CONTROL ROOM + WAVEFORM */}
+        {/* UNIT 2 */}
         <a href="/book/control-room" style={brickStyle}>
-          <img className="rack-img-force" src="/static/machined-assets/cricket-control-room-optimized.webp" alt="Control Room" style={brickStyle} />
+          <img src="/static/machined-assets/cricket-control-room-optimized.webp" alt="Control Room" style={brickStyle} />
           <LiveWaveform style={{ top: '35%', left: '35%', width: '25%', opacity: 0.8 }} />
         </a>
 
-        {/* UNIT 3: PODCAST + WAVEFORM */}
+        {/* UNIT 3 */}
         <a href="/book/podcast" style={brickStyle}>
-          <img className="rack-img-force" src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png" alt="Podcast" style={brickStyle} />
+          <img src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png" alt="Podcast" style={brickStyle} />
           <LiveWaveform style={{ top: '30%', left: '42%', width: '25%', opacity: 0.8, filter: 'drop-shadow(0 0 5px magenta)' }} />
         </a>
 
-        {/* UNIT 4: CAFE */}
+        {/* UNIT 4 */}
         <a href="/cafe" style={brickStyle}>
-          <img className="rack-img-force" src="/static/machined-assets/workshop-cafe-optimized.webp" alt="Cafe" style={brickStyle} />
+          <img src="/static/machined-assets/workshop-cafe-optimized.webp" alt="Cafe" style={brickStyle} />
         </a>
 
-        {/* UNIT 6: CONTACT */}
+        {/* UNIT 6 */}
         <div style={brickStyle}>
-          <img className="rack-img-force" src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/Contact%20rack%20ui.png" alt="Contact" style={brickStyle} />
+          <img src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/Contact%20rack%20ui.png" alt="Contact" style={brickStyle} />
           <a href="mailto:captainburbseye@gmail.com" style={{ position: 'absolute', top: '20%', left: '15%', width: '15%', height: '60%' }}></a>
           <a href="mailto:captainburbseye@gmail.com" style={{ position: 'absolute', top: '20%', right: '15%', width: '15%', height: '60%' }}></a>
         </div>
 
-        {/* UNIT 7: MASTER BUS */}
+        {/* UNIT 7 */}
         <a href="/status" style={brickStyle}>
-          <img className="rack-img-force" src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png" alt="Bottom" style={brickStyle} />
+          <img src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png" alt="Bottom" style={brickStyle} />
         </a>
 
         {/* BLANKING PANEL */}
