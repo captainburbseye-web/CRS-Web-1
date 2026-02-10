@@ -1,75 +1,58 @@
 import React from 'react';
 
-// V8: THE CLEAN SHEET ASSEMBLY
-// No patches. No grey borders. Pure textured steel.
+// V9: PRODUCTION RACK - USING ACTUAL R2 ASSETS
+// Clean implementation with real hybrid rack images
 
 export const RackTestPage = () => {
   
-  // 1. THE VIEWPORT (The dark room the rack sits in)
   const viewportStyle: React.CSSProperties = {
     backgroundColor: '#050505', 
     minHeight: '100vh', 
     display: 'flex', 
     justifyContent: 'center',
-    alignItems: 'flex-start', // Start from top
+    alignItems: 'flex-start',
     padding: '0', 
     margin: '0',
     overflowX: 'hidden',
   };
 
-  // 2. THE CHASSIS (The Physical Metal Slab)
   const chassisStyle: React.CSSProperties = {
     position: 'relative',
     width: '100%',
-    maxWidth: '1048px', // Exact width of Gear + Rails
+    maxWidth: '1048px',
     display: 'flex',
     flexDirection: 'column',
-    // TEXTURE: The Rack is made of this metal. No flat colors.
     backgroundImage: 'url(https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/blanking_panel.png)',
     backgroundRepeat: 'repeat',
-    boxShadow: '0 0 80px rgba(0,0,0,0.9)', // Deep shadow to separate it from the room
+    boxShadow: '0 0 80px rgba(0,0,0,0.9)',
     margin: '0 auto',
   };
 
-  // 3. THE UNIT (Bolted to the Slab)
   const brickStyle: React.CSSProperties = {
     display: 'block',
-    width: '100%',     // Force stretch to chassis edges
+    width: '100%',
     height: 'auto',
     margin: '0',
     padding: '0',
     border: 'none',
     lineHeight: '0',
     verticalAlign: 'top',
-    marginBottom: '-2px', // The Seal
+    marginBottom: '-2px',
     position: 'relative',
-    zIndex: 2, // Sits above the chassis
-    objectFit: 'fill', // Force the image to fit the slab
+    zIndex: 2,
   };
 
-  // 4. THE HEADER (Textured Plate)
   const headerStyle: React.CSSProperties = {
     ...brickStyle,
-    background: 'rgba(10,10,10, 0.95)', // Darker backing for the logo
+    background: 'rgba(10,10,10, 0.95)',
     zIndex: 3,
   };
 
-  // LIVE WAVEFORM (The Pulse)
-  const LiveWaveform = ({ style }: { style: React.CSSProperties }) => (
-    <div style={{ position: 'absolute', pointerEvents: 'none', zIndex: 10, ...style }}>
-      <svg viewBox="0 0 200 60" style={{ width: '100%', height: '100%', filter: 'drop-shadow(0 0 5px cyan)' }}>
-        <path d="M0,30 Q10,5 20,30 T40,30 T60,30 T80,55 T100,30 T120,5 T140,30 T160,30 T180,45 T200,30"
-              fill="none" stroke="#00ffff" strokeWidth="2" strokeLinecap="round">
-          <animate attributeName="stroke-dasharray" from="0, 400" to="400, 0" dur="2s" repeatCount="indefinite" />
-          <animate attributeName="stroke-dashoffset" from="400" to="0" dur="2s" repeatCount="indefinite" />
-        </path>
-      </svg>
-    </div>
-  );
+  // Base R2 URL for rack parts
+  const R2_BASE = 'https://pub-b79b90db3c594763bf7e4c9e96ae461d.r2.dev/rack%20parts';
 
   return (
     <div style={viewportStyle}>
-      {/* GLOBAL RESET TO KILL BROWSER GHOSTS */}
       <style>{`
         body, html { margin: 0; padding: 0; background: #050505; }
         * { box-sizing: border-box; }
@@ -77,56 +60,116 @@ export const RackTestPage = () => {
 
       <div style={chassisStyle}>
         
-        {/* UNIT 0: HEADER */}
+        {/* RACK 0: CRS BRANDING */}
         <div style={headerStyle}>
-             <img 
-                src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png" 
-                alt="Cowley Road Studios" 
-                style={brickStyle}
-             />
+          <img 
+            src={`${R2_BASE}/rack%200%20crs.png`}
+            alt="CRS" 
+            style={brickStyle}
+          />
         </div>
 
-        {/* UNIT 1: REHEARSAL */}
-        <a href="/book/rehearsal" style={brickStyle}>
-          <img src="/static/machined-assets/cowley-rehearsal-optimized.webp" alt="Cowley" style={brickStyle} />
+        {/* RACK 1: HEADER */}
+        <a href="/" style={brickStyle}>
+          <img 
+            src={`${R2_BASE}/rack%201%20CRS%20Header.png`}
+            alt="CRS Oxford Studio Network" 
+            style={brickStyle}
+          />
         </a>
 
-        {/* UNIT 8: CRICKET */}
-        <a href="/book/rehearsal" style={brickStyle}>
-          <img src="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp" alt="Cricket" style={brickStyle} />
-        </a>
-
-        {/* UNIT 2: CONTROL ROOM */}
-        <a href="/book/control-room" style={brickStyle}>
-          <img src="/static/machined-assets/cricket-control-room-optimized.webp" alt="Control Room" style={brickStyle} />
-          <LiveWaveform style={{ top: '35%', left: '35%', width: '25%', opacity: 0.8 }} />
-        </a>
-
-        {/* UNIT 3: PODCAST */}
-        <a href="/book/podcast" style={brickStyle}>
-          <img src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png" alt="Podcast" style={brickStyle} />
-          <LiveWaveform style={{ top: '30%', left: '42%', width: '25%', opacity: 0.8, filter: 'drop-shadow(0 0 5px magenta)' }} />
-        </a>
-
-        {/* UNIT 4: CAFE */}
-        <a href="/cafe" style={brickStyle}>
-          <img src="/static/machined-assets/workshop-cafe-optimized.webp" alt="Cafe" style={brickStyle} />
-        </a>
-
-        {/* UNIT 6: CONTACT */}
+        {/* RACK 3: CONTROL ROOMS (HYBRID) */}
         <div style={brickStyle}>
-          <img src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/Contact%20rack%20ui.png" alt="Contact" style={brickStyle} />
-          <a href="mailto:captainburbseye@gmail.com" style={{ position: 'absolute', top: '20%', left: '15%', width: '15%', height: '60%' }}></a>
-          <a href="mailto:captainburbseye@gmail.com" style={{ position: 'absolute', top: '20%', right: '15%', width: '15%', height: '60%' }}></a>
+          <img 
+            src={`${R2_BASE}/rack%203%20control%20rooms.png`}
+            alt="Control Rooms" 
+            style={brickStyle}
+          />
+          {/* Split hitboxes - left/right */}
+          <a href="/book/control-room?location=cowley" 
+             style={{
+               position: 'absolute', left: '0', width: '50%', 
+               top: '0', height: '100%', cursor: 'pointer', zIndex: 10
+             }} 
+             title="Cowley Control Room" />
+          <a href="/book/control-room?location=cricket" 
+             style={{
+               position: 'absolute', left: '50%', width: '50%', 
+               top: '0', height: '100%', cursor: 'pointer', zIndex: 10
+             }} 
+             title="Cricket Control Room" />
         </div>
 
-        {/* UNIT 7: MASTER BUS */}
-        <a href="/status" style={brickStyle}>
-          <img src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png" alt="Bottom" style={brickStyle} />
+        {/* RACK 4: RECORDING SERVICES / MIXING SERVICES (HYBRID) */}
+        <div style={brickStyle}>
+          <img 
+            src={`${R2_BASE}/rack%204%20Recording%20srvices%20mixing%20services%20hybrid.png`}
+            alt="Recording & Mixing Services" 
+            style={brickStyle}
+          />
+          {/* Split hitboxes - left/right */}
+          <a href="/book/recording" 
+             style={{
+               position: 'absolute', left: '0', width: '50%', 
+               top: '0', height: '100%', cursor: 'pointer', zIndex: 10
+             }} 
+             title="Recording Services" />
+          <a href="/book/mixing" 
+             style={{
+               position: 'absolute', left: '50%', width: '50%', 
+               top: '0', height: '100%', cursor: 'pointer', zIndex: 10
+             }} 
+             title="Mixing Services" />
+        </div>
+
+        {/* RACK 5: AV HIRE */}
+        <a href="/av-services" style={brickStyle}>
+          <img 
+            src={`${R2_BASE}/rack%205%20av.png`}
+            alt="AV Hire" 
+            style={brickStyle}
+          />
         </a>
 
-        {/* FILLER PLATE (For huge screens) */}
-        <div style={{ ...brickStyle, minHeight: '500px', flexGrow: 1 }}></div>
+        {/* RACK 6: CAFE / VENUE / CONTACT (TRIPLE?) */}
+        <div style={brickStyle}>
+          <img 
+            src={`${R2_BASE}/rack%206%20%20cafe%20venue%20%20contact.png`}
+            alt="Café, Venue & Contact" 
+            style={brickStyle}
+          />
+          {/* Triple split hitboxes - thirds */}
+          <a href="/cafe" 
+             style={{
+               position: 'absolute', left: '0', width: '33.33%', 
+               top: '0', height: '100%', cursor: 'pointer', zIndex: 10
+             }} 
+             title="Workshop Café" />
+          <a href="/venue-hire" 
+             style={{
+               position: 'absolute', left: '33.33%', width: '33.33%', 
+               top: '0', height: '100%', cursor: 'pointer', zIndex: 10
+             }} 
+             title="Venue Hire" />
+          <a href="mailto:captainburbseye@gmail.com" 
+             style={{
+               position: 'absolute', left: '66.66%', width: '33.34%', 
+               top: '0', height: '100%', cursor: 'pointer', zIndex: 10
+             }} 
+             title="Contact" />
+        </div>
+
+        {/* RACK 7: POWER (BOTTOM) */}
+        <a href="/status" style={brickStyle}>
+          <img 
+            src={`${R2_BASE}/rack%207%20power%20at%20the%20bottom.png`}
+            alt="System Power" 
+            style={brickStyle}
+          />
+        </a>
+
+        {/* FILLER */}
+        <div style={{ ...brickStyle, minHeight: '300px', flexGrow: 1 }}></div>
 
       </div>
     </div>
