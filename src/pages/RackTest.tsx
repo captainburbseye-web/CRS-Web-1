@@ -32,19 +32,6 @@ export const RackTestPage = () => {
     objectFit: 'cover' as const,
   };
 
-  // Live Waveform Component
-  const LiveWaveform = ({ style }: { style: React.CSSProperties }) => (
-    <div style={{ position: 'absolute', pointerEvents: 'none', zIndex: 10, ...style }}>
-      <svg viewBox="0 0 200 60" style={{ width: '100%', height: '100%', filter: 'drop-shadow(0 0 5px cyan)' }}>
-        <path d="M0,30 Q10,5 20,30 T40,30 T60,30 T80,55 T100,30 T120,5 T140,30 T160,30 T180,45 T200,30"
-              fill="none" stroke="#00ffff" strokeWidth="2" strokeLinecap="round">
-          <animate attributeName="stroke-dasharray" from="0, 400" to="400, 0" dur="2s" repeatCount="indefinite" />
-          <animate attributeName="stroke-dashoffset" from="400" to="0" dur="2s" repeatCount="indefinite" />
-        </path>
-      </svg>
-    </div>
-  );
-
   return (
     <div style={{ backgroundColor: '#050505', minHeight: '100vh', padding: '0', margin: '0' }}>
       <div style={chassisStyle}>
@@ -68,16 +55,14 @@ export const RackTestPage = () => {
           <img src="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp" alt="Cricket" style={brickStyle} />
         </a>
 
-        {/* UNIT 2: CONTROL ROOM + WAVEFORM */}
+        {/* UNIT 2: CONTROL ROOM */}
         <a href="/book/control-room" style={brickStyle}>
           <img src="/static/machined-assets/cricket-control-room-optimized.webp" alt="Control Room" style={brickStyle} />
-          <LiveWaveform style={{ top: '35%', left: '35%', width: '25%', opacity: 0.8 }} />
         </a>
 
-        {/* UNIT 3: PODCAST + WAVEFORM */}
+        {/* UNIT 3: PODCAST */}
         <a href="/book/podcast" style={brickStyle}>
           <img src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png" alt="Podcast" style={brickStyle} />
-          <LiveWaveform style={{ top: '30%', left: '42%', width: '25%', opacity: 0.8, filter: 'drop-shadow(0 0 5px magenta)' }} />
         </a>
 
         {/* UNIT 4: CAFE */}
