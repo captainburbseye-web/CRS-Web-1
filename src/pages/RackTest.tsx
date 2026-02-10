@@ -9,13 +9,11 @@ export function RackTestPage() {
   const containerStyle = {
     display: 'flex',
     flexDirection: 'column' as const,
-    maxWidth: '1000px',
-    margin: '0 auto',
+    maxWidth: '100%',
+    width: '100%',
+    margin: '0',
     backgroundColor: '#000',
-    borderLeft: '24px solid #222',
-    borderRight: '24px solid #222',
-    minHeight: '100vh',
-    boxShadow: 'inset 10px 0 20px #000'
+    minHeight: '100vh'
   }
 
   const brickStyle = {
@@ -26,7 +24,7 @@ export function RackTestPage() {
     border: 'none',
     lineHeight: '0',
     verticalAlign: 'top' as const,
-    marginTop: '-1px',
+    marginTop: '-5px',
     position: 'relative' as const,
     zIndex: 1
   }
@@ -70,7 +68,7 @@ export function RackTestPage() {
           <img
             src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png"
             alt="Cowley Road Studios"
-            style={{ width: '100%', display: 'block' }}
+            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
           />
         </div>
 
@@ -79,7 +77,7 @@ export function RackTestPage() {
           <img
             src="/static/machined-assets/cowley-rehearsal-optimized.webp"
             alt="CH1"
-            style={{ width: '100%', display: 'block' }}
+            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
           />
         </a>
 
@@ -88,7 +86,7 @@ export function RackTestPage() {
           <img
             src="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp"
             alt="CH8"
-            style={{ width: '100%', display: 'block' }}
+            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
           />
         </a>
 
@@ -97,7 +95,7 @@ export function RackTestPage() {
           <img
             src="/static/machined-assets/cricket-control-room-optimized.webp"
             alt="CH2"
-            style={{ width: '100%', display: 'block' }}
+            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
           />
           <LiveWaveform style={{
             top: '35%',
@@ -112,7 +110,7 @@ export function RackTestPage() {
           <img
             src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png"
             alt="CH3"
-            style={{ width: '100%', display: 'block' }}
+            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
           />
           <LiveWaveform style={{
             top: '30%',
@@ -128,7 +126,7 @@ export function RackTestPage() {
           <img
             src="/static/machined-assets/workshop-cafe-optimized.webp"
             alt="CH4"
-            style={{ width: '100%', display: 'block' }}
+            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
           />
         </a>
 
@@ -137,7 +135,7 @@ export function RackTestPage() {
           <img
             src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/Contact%20rack%20ui.png"
             alt="CH6"
-            style={{ width: '100%', display: 'block' }}
+            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
           />
           {/* XLR Hitbox */}
           <a
@@ -170,7 +168,7 @@ export function RackTestPage() {
           <img
             src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png"
             alt="CH7"
-            style={{ width: '100%', display: 'block' }}
+            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover' }}
           />
         </a>
 
