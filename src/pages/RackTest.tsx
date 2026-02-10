@@ -1,37 +1,60 @@
 import React from 'react';
 
+// V8: THE CLEAN SHEET ASSEMBLY
+// No patches. No grey borders. Pure textured steel.
+
 export const RackTestPage = () => {
-  // 1. THE CHASSIS (Now Textured, No Flat Borders)
-  const chassisStyle = {
-    display: 'flex',
-    flexDirection: 'column' as const,
-    width: '100%',
-    maxWidth: '1048px', // Slightly wider to account for lost borders
-    margin: '0 auto',
-    // TEXTURE FIX: The entire rack acts as a metal plate
-    backgroundColor: '#050505',
-    backgroundImage: 'url(https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/blanking_panel.png)',
-    backgroundRepeat: 'repeat',
-    boxShadow: '0 0 50px rgba(0,0,0,0.8)', // Deep shadow behind the rack
+  
+  // 1. THE VIEWPORT (The dark room the rack sits in)
+  const viewportStyle: React.CSSProperties = {
+    backgroundColor: '#050505', 
+    minHeight: '100vh', 
+    display: 'flex', 
+    justifyContent: 'center',
+    alignItems: 'flex-start', // Start from top
+    padding: '0', 
+    margin: '0',
+    overflowX: 'hidden',
   };
 
-  // 2. THE BRICK STYLE
-  const brickStyle = {
-    display: 'block',
+  // 2. THE CHASSIS (The Physical Metal Slab)
+  const chassisStyle: React.CSSProperties = {
+    position: 'relative',
     width: '100%',
+    maxWidth: '1048px', // Exact width of Gear + Rails
+    display: 'flex',
+    flexDirection: 'column',
+    // TEXTURE: The Rack is made of this metal. No flat colors.
+    backgroundImage: 'url(https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/blanking_panel.png)',
+    backgroundRepeat: 'repeat',
+    boxShadow: '0 0 80px rgba(0,0,0,0.9)', // Deep shadow to separate it from the room
+    margin: '0 auto',
+  };
+
+  // 3. THE UNIT (Bolted to the Slab)
+  const brickStyle: React.CSSProperties = {
+    display: 'block',
+    width: '100%',     // Force stretch to chassis edges
     height: 'auto',
     margin: '0',
     padding: '0',
     border: 'none',
     lineHeight: '0',
-    verticalAlign: 'top' as const,
-    marginBottom: '-2px',
-    position: 'relative' as const,
-    zIndex: 1,
-    objectFit: 'fill' as const, // Continue to force stretch
+    verticalAlign: 'top',
+    marginBottom: '-2px', // The Seal
+    position: 'relative',
+    zIndex: 2, // Sits above the chassis
+    objectFit: 'fill', // Force the image to fit the slab
   };
 
-  // Live Waveform Component
+  // 4. THE HEADER (Textured Plate)
+  const headerStyle: React.CSSProperties = {
+    ...brickStyle,
+    background: 'rgba(10,10,10, 0.95)', // Darker backing for the logo
+    zIndex: 3,
+  };
+
+  // LIVE WAVEFORM (The Pulse)
   const LiveWaveform = ({ style }: { style: React.CSSProperties }) => (
     <div style={{ position: 'absolute', pointerEvents: 'none', zIndex: 10, ...style }}>
       <svg viewBox="0 0 200 60" style={{ width: '100%', height: '100%', filter: 'drop-shadow(0 0 5px cyan)' }}>
@@ -45,11 +68,17 @@ export const RackTestPage = () => {
   );
 
   return (
-    <div style={{ backgroundColor: '#050505', minHeight: '100vh', padding: '0', margin: '0' }}>
-      <div style={chassisStyle}>
+    <div style={viewportStyle}>
+      {/* GLOBAL RESET TO KILL BROWSER GHOSTS */}
+      <style>{`
+        body, html { margin: 0; padding: 0; background: #050505; }
+        * { box-sizing: border-box; }
+      `}</style>
 
-        {/* UNIT 0: BRAND HEADER */}
-        <div style={{...brickStyle, background: 'rgba(17,17,17,0.9)', zIndex: 2}}>
+      <div style={chassisStyle}>
+        
+        {/* UNIT 0: HEADER */}
+        <div style={headerStyle}>
              <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png" 
                 alt="Cowley Road Studios" 
@@ -57,47 +86,47 @@ export const RackTestPage = () => {
              />
         </div>
 
-        {/* UNIT 1 */}
+        {/* UNIT 1: REHEARSAL */}
         <a href="/book/rehearsal" style={brickStyle}>
           <img src="/static/machined-assets/cowley-rehearsal-optimized.webp" alt="Cowley" style={brickStyle} />
         </a>
 
-        {/* UNIT 8 */}
+        {/* UNIT 8: CRICKET */}
         <a href="/book/rehearsal" style={brickStyle}>
           <img src="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp" alt="Cricket" style={brickStyle} />
         </a>
 
-        {/* UNIT 2 */}
+        {/* UNIT 2: CONTROL ROOM */}
         <a href="/book/control-room" style={brickStyle}>
           <img src="/static/machined-assets/cricket-control-room-optimized.webp" alt="Control Room" style={brickStyle} />
           <LiveWaveform style={{ top: '35%', left: '35%', width: '25%', opacity: 0.8 }} />
         </a>
 
-        {/* UNIT 3 */}
+        {/* UNIT 3: PODCAST */}
         <a href="/book/podcast" style={brickStyle}>
           <img src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/pod%20rack%20ui%20.png" alt="Podcast" style={brickStyle} />
           <LiveWaveform style={{ top: '30%', left: '42%', width: '25%', opacity: 0.8, filter: 'drop-shadow(0 0 5px magenta)' }} />
         </a>
 
-        {/* UNIT 4 */}
+        {/* UNIT 4: CAFE */}
         <a href="/cafe" style={brickStyle}>
           <img src="/static/machined-assets/workshop-cafe-optimized.webp" alt="Cafe" style={brickStyle} />
         </a>
 
-        {/* UNIT 6 */}
+        {/* UNIT 6: CONTACT */}
         <div style={brickStyle}>
           <img src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/Contact%20rack%20ui.png" alt="Contact" style={brickStyle} />
           <a href="mailto:captainburbseye@gmail.com" style={{ position: 'absolute', top: '20%', left: '15%', width: '15%', height: '60%' }}></a>
           <a href="mailto:captainburbseye@gmail.com" style={{ position: 'absolute', top: '20%', right: '15%', width: '15%', height: '60%' }}></a>
         </div>
 
-        {/* UNIT 7 */}
+        {/* UNIT 7: MASTER BUS */}
         <a href="/status" style={brickStyle}>
           <img src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png" alt="Bottom" style={brickStyle} />
         </a>
 
-        {/* BLANKING FILLER (Continues the texture at the bottom) */}
-        <div style={{ ...brickStyle, flexGrow: 1, minHeight: '50vh' }}></div>
+        {/* FILLER PLATE (For huge screens) */}
+        <div style={{ ...brickStyle, minHeight: '500px', flexGrow: 1 }}></div>
 
       </div>
     </div>
