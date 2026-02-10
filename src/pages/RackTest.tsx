@@ -65,26 +65,13 @@ export function RackTestPage() {
     }}>
       {/* THE CHASSIS */}
       <div style={containerStyle}>
-        {/* UNIT 0: HEADER (CSS TEXT FALLBACK) */}
-        <div style={{
-          ...brickStyle,
-          background: '#111',
-          height: 'auto',
-          padding: '20px 0',
-          borderBottom: '2px solid #333',
-          zIndex: 2
-        }}>
-          <h1 style={{
-            color: '#ddd',
-            fontFamily: 'monospace',
-            textAlign: 'center',
-            margin: 0,
-            fontSize: '2rem',
-            letterSpacing: '4px',
-            textTransform: 'uppercase'
-          }}>
-            COWLEY ROAD STUDIOS
-          </h1>
+        {/* UNIT 0: HEADER IMAGE */}
+        <div style={brickStyle}>
+          <img
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png"
+            alt="Cowley Road Studios"
+            style={{ width: '100%', display: 'block' }}
+          />
         </div>
 
         {/* UNIT 1: COWLEY REHEARSAL */}
