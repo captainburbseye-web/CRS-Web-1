@@ -8,11 +8,13 @@ export const RackModular = () => {
     <>
       {/* Inject CSS directly into the page */}
       <style>{`
-        /* Rack Module Styling with FixLogic Enhancements */
+        /* Rack Module Styling with VARIANT SYSTEM */
 
         :root {
           --steel-bg: rgba(20, 20, 20, 0.95);
           --panel-green: rgba(42, 59, 42, 0.15);
+          --panel-command: rgba(50, 40, 20, 0.3);
+          --panel-passive: rgba(17, 17, 17, 0.8);
           --mustard: #e3b04b;
           --fire-amber: #ff9f1c;
           --led-green: #c8ff41;
@@ -50,7 +52,7 @@ export const RackModular = () => {
           width: 100%;
         }
 
-        /* Individual Rack Module - ENHANCED with FixLogic */
+        /* ===== BASE RACK MODULE ===== */
         .rack-module {
           background: var(--panel-green);
           border: 3px solid #333;
@@ -59,9 +61,80 @@ export const RackModular = () => {
           padding: 2rem;
           font-family: 'Courier New', monospace;
           position: relative;
+          transition: all 0.3s ease;
         }
 
-        /* Complete Screw Head Decoration (all 4 corners) */
+        /* ===== VARIANT: COMMAND (Interactive/Brighter) ===== */
+        .rack-command {
+          background: var(--panel-command);
+          border: 4px solid var(--fire-amber);
+          box-shadow: 
+            inset 0 0 8px rgba(255, 159, 28, 0.2),
+            0 0 20px rgba(255, 159, 28, 0.3),
+            0 4px 16px rgba(0,0,0,0.5);
+        }
+
+        .rack-command:hover {
+          box-shadow: 
+            inset 0 0 12px rgba(255, 159, 28, 0.3),
+            0 0 32px rgba(255, 159, 28, 0.5),
+            0 4px 20px rgba(0,0,0,0.6);
+          transform: translateY(-2px);
+        }
+
+        .rack-command .rack-title {
+          color: var(--fire-amber);
+          text-shadow: 0 0 8px rgba(255, 159, 28, 0.4);
+        }
+
+        /* Double screw heads for command modules */
+        .rack-command::before,
+        .rack-command::after {
+          width: 14px !important;
+          height: 14px !important;
+          background: #777 !important;
+          box-shadow: 
+            inset 0 0 3px #000,
+            0 0 4px rgba(255, 159, 28, 0.3) !important;
+        }
+
+        /* ===== VARIANT: RACK (Standard Hardware) ===== */
+        .rack-rack {
+          background: var(--panel-green);
+          border: 3px solid #333;
+        }
+
+        .rack-rack:hover {
+          border-color: #4a4a4a;
+          box-shadow: inset 0 0 6px rgba(0,0,0,0.5), 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        /* ===== VARIANT: PASSIVE (Info/Dimmed) ===== */
+        .rack-passive {
+          background: var(--panel-passive);
+          border: 2px solid #222;
+          opacity: 0.85;
+          box-shadow: inset 0 0 6px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4);
+        }
+
+        .rack-passive .rack-title {
+          color: #999;
+          font-style: italic;
+        }
+
+        .rack-passive .rack-description {
+          color: #888;
+        }
+
+        .rack-passive .rack-label {
+          color: #888;
+        }
+
+        .rack-passive:hover {
+          opacity: 0.95;
+        }
+
+        /* Screw Head Decoration (all 4 corners) */
         .rack-module::before,
         .rack-module::after {
           content: '';
@@ -71,6 +144,7 @@ export const RackModular = () => {
           background: #555;
           border-radius: 50%;
           box-shadow: inset 0 0 2px #000;
+          z-index: 10;
         }
 
         .rack-module::before {
@@ -94,6 +168,7 @@ export const RackModular = () => {
           border-radius: 50%;
           box-shadow: inset 0 0 2px #000;
           bottom: 6px;
+          z-index: 10;
         }
 
         .rack-module .rack-label-strip::before {
@@ -113,7 +188,6 @@ export const RackModular = () => {
           position: relative;
         }
 
-        /* FIXLOGIC: Increased from 0.85rem to 1rem (16px minimum) */
         .rack-label {
           color: var(--mustard);
           font-size: 1rem;
@@ -149,7 +223,6 @@ export const RackModular = () => {
           margin: 0.5rem 0 0.8rem;
         }
 
-        /* FIXLOGIC: Improved contrast from #ccc to #e0e0e0 */
         .rack-description {
           color: #e0e0e0;
           font-size: 1rem;
@@ -166,14 +239,12 @@ export const RackModular = () => {
           position: relative;
         }
 
-        /* FIXLOGIC: Increased from 0.8rem to 1rem */
         .booking-instruction {
           color: var(--mustard);
           font-size: 1rem;
           letter-spacing: 0.06em;
         }
 
-        /* FIXLOGIC: Increased padding for 44px+ touch target */
         .rack-button {
           background-color: var(--fire-amber);
           border: 2px solid #ff9f1c;
@@ -252,46 +323,46 @@ export const RackModular = () => {
 
       <div className="rack-modular-viewport">
         <div className="rack-container">
-          {/* Row 1: Header */}
+          {/* Row 1: Header (COMMAND) */}
           <RackModule {...rackServices[0]} />
 
-          {/* Row 2: Booking Hub */}
+          {/* Row 2: Booking Hub (COMMAND) */}
           <RackModule {...rackServices[1]} />
 
-          {/* Row 3: Rehearsal (Split) */}
+          {/* Row 3: Rehearsal (RACK - Split) */}
           <SplitRackRow
             left={getSplitServices(3).left!}
             right={getSplitServices(3).right!}
           />
 
-          {/* Row 4: Control Room (Split) */}
+          {/* Row 4: Control Room (RACK - Split) */}
           <SplitRackRow
             left={getSplitServices(4).left!}
             right={getSplitServices(4).right!}
           />
 
-          {/* Row 5: Recording & Production */}
+          {/* Row 5: Recording & Production (RACK) */}
           <RackModule {...rackServices[6]} />
 
-          {/* Row 6: Music Lessons */}
+          {/* Row 6: Music Lessons (RACK) */}
           <RackModule {...rackServices[7]} />
 
-          {/* Row 7: AV Hire */}
+          {/* Row 7: AV Hire (RACK) */}
           <RackModule {...rackServices[8]} />
 
-          {/* Row 8: AV Repairs */}
+          {/* Row 8: AV Repairs (RACK) */}
           <RackModule {...rackServices[9]} />
 
-          {/* Row 9: Workshop Café */}
+          {/* Row 9: Workshop Café (PASSIVE) */}
           <RackModule {...rackServices[10]} />
 
-          {/* Row 10: Venue Hire */}
+          {/* Row 10: Venue Hire (RACK) */}
           <RackModule {...rackServices[11]} />
 
-          {/* Row 11: Contact */}
+          {/* Row 11: Contact (PASSIVE) */}
           <RackModule {...rackServices[12]} />
 
-          {/* Row 12: System Status */}
+          {/* Row 12: System Status (COMMAND) */}
           <RackModule {...rackServices[13]} />
         </div>
       </div>

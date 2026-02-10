@@ -1,5 +1,6 @@
 // Service configuration for all 12 rack modules
 // Design Philosophy: Industrial rack aesthetic with sage green dominant, mustard accents, warm browns
+// VARIANT SYSTEM: command (interactive), rack (standard), passive (info)
 
 export interface RackService {
   id: string;
@@ -9,6 +10,7 @@ export interface RackService {
   description: string;
   url: string;
   ledColor: 'green' | 'amber' | 'red';
+  variant: 'command' | 'rack' | 'passive';
   instruction?: string;
   isSplit?: boolean;
   splitPosition?: 'left' | 'right';
@@ -24,6 +26,7 @@ export const rackServices: RackService[] = [
     description: 'Central booking system for all Cowley Road Studios services. Navigate to specific services below or use the main booking portal.',
     url: '/',
     ledColor: 'green',
+    variant: 'command',
     instruction: '[ SYSTEM: ONLINE ]',
   },
 
@@ -36,6 +39,7 @@ export const rackServices: RackService[] = [
     description: 'Unified booking interface for all studio services. Access rehearsal rooms, control rooms, recording sessions, and venue hire.',
     url: '/book',
     ledColor: 'green',
+    variant: 'command',
     instruction: '[ INSTRUCTION: SELECT SERVICE TYPE ]',
   },
 
@@ -48,6 +52,7 @@ export const rackServices: RackService[] = [
     description: 'Professional rehearsal space at Cowley Road HQ. Full backline, PA system, and monitoring available.',
     url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services',
     ledColor: 'amber',
+    variant: 'rack',
     instruction: '[ STATUS: COMMISSIONING ]',
     isSplit: true,
     splitPosition: 'left',
@@ -62,6 +67,7 @@ export const rackServices: RackService[] = [
     description: 'Fully operational 6m × 4m live room. Yamaha CLP piano, drum kit, backline, and vocal mics ready.',
     url: 'https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services',
     ledColor: 'green',
+    variant: 'rack',
     instruction: '[ STATUS: OPERATIONAL ]',
     isSplit: true,
     splitPosition: 'right',
@@ -76,6 +82,7 @@ export const rackServices: RackService[] = [
     description: 'High-end recording and production facility. Analog console, outboard gear, and isolation booths.',
     url: '/book/studio?location=cowley',
     ledColor: 'amber',
+    variant: 'rack',
     instruction: '[ STATUS: FINAL_COMMISSIONING ]',
     isSplit: true,
     splitPosition: 'left',
@@ -90,6 +97,7 @@ export const rackServices: RackService[] = [
     description: 'Compact control room with live room integration. Perfect for tracking and basic mixing.',
     url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
     ledColor: 'green',
+    variant: 'rack',
     instruction: '[ STATUS: OPERATIONAL ]',
     isSplit: true,
     splitPosition: 'right',
@@ -104,6 +112,7 @@ export const rackServices: RackService[] = [
     description: 'Full-service audio production: recording, mixing, mastering, tape transfer, and sound design. Experienced engineers available.',
     url: '/book/studio',
     ledColor: 'green',
+    variant: 'rack',
     instruction: '[ INSTRUCTION: SELECT SERVICE ]',
   },
 
@@ -116,6 +125,7 @@ export const rackServices: RackService[] = [
     description: 'Professional music tuition and creative workshops. Individual lessons, group sessions, and production masterclasses.',
     url: '/book/lessons',
     ledColor: 'green',
+    variant: 'rack',
     instruction: '[ INSTRUCTION: BOOK SESSION ]',
   },
 
@@ -128,6 +138,7 @@ export const rackServices: RackService[] = [
     description: 'Professional audio and visual equipment rental. Microphones, PA systems, lighting, cameras, and backline available.',
     url: '/av-services',
     ledColor: 'green',
+    variant: 'rack',
     instruction: '[ INSTRUCTION: VIEW INVENTORY ]',
   },
 
@@ -140,6 +151,7 @@ export const rackServices: RackService[] = [
     description: 'Expert repair and maintenance for audio equipment. Amplifiers, mixers, instruments, and vintage gear restoration.',
     url: '/av-services/repairs',
     ledColor: 'green',
+    variant: 'rack',
     instruction: '[ INSTRUCTION: REQUEST QUOTE ]',
   },
 
@@ -152,6 +164,7 @@ export const rackServices: RackService[] = [
     description: 'Creative workspace and community hub. Specialty coffee, hot-desking, meeting rooms, and AI learning lab.',
     url: '/cafe',
     ledColor: 'green',
+    variant: 'passive',
     instruction: '[ STATUS: READY ]',
   },
 
@@ -164,6 +177,7 @@ export const rackServices: RackService[] = [
     description: 'Full venue booking for live performances, showcases, and events. Professional PA, lighting, and technical support.',
     url: '/book/venue',
     ledColor: 'green',
+    variant: 'rack',
     instruction: '[ INSTRUCTION: ENQUIRE AVAILABILITY ]',
   },
 
@@ -176,6 +190,7 @@ export const rackServices: RackService[] = [
     description: 'Get in touch with the Cowley Road Studios team. General enquiries, technical support, and booking assistance.',
     url: '/contact',
     ledColor: 'green',
+    variant: 'passive',
     instruction: '[ INSTRUCTION: SEND MESSAGE ]',
   },
 
@@ -188,6 +203,7 @@ export const rackServices: RackService[] = [
     description: 'Real-time system status monitor. Check service availability, operational status, and system health.',
     url: '/status',
     ledColor: 'green',
+    variant: 'command',
     instruction: '[ SYSTEM: ALL_SYSTEMS_OPERATIONAL ]',
   },
 ];
