@@ -1,19 +1,21 @@
 import React from 'react';
 
 export const RackTestPage = () => {
+  // 1. THE CHASSIS (Now Textured, No Flat Borders)
   const chassisStyle = {
     display: 'flex',
     flexDirection: 'column' as const,
     width: '100%',
-    maxWidth: '1000px',
+    maxWidth: '1048px', // Slightly wider to account for lost borders
     margin: '0 auto',
-    // CHAMELEON FIX: Background matches Rails (#222) so gaps disappear
-    backgroundColor: '#222',
-    borderLeft: '24px solid #222',
-    borderRight: '24px solid #222',
-    boxSizing: 'content-box' as const,
+    // TEXTURE FIX: The entire rack acts as a metal plate
+    backgroundColor: '#050505',
+    backgroundImage: 'url(https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/blanking_panel.png)',
+    backgroundRepeat: 'repeat',
+    boxShadow: '0 0 50px rgba(0,0,0,0.8)', // Deep shadow behind the rack
   };
 
+  // 2. THE BRICK STYLE
   const brickStyle = {
     display: 'block',
     width: '100%',
@@ -26,10 +28,7 @@ export const RackTestPage = () => {
     marginBottom: '-2px',
     position: 'relative' as const,
     zIndex: 1,
-    objectFit: 'fill' as const,
-    // SCALE FIX: Slightly magnify image to eat the gap
-    transform: 'scale(1.02)',
-    transformOrigin: 'center' as const,
+    objectFit: 'fill' as const, // Continue to force stretch
   };
 
   // Live Waveform Component
@@ -46,11 +45,11 @@ export const RackTestPage = () => {
   );
 
   return (
-    <div style={{ backgroundColor: '#050505', minHeight: '100vh', padding: '0', margin: '0', overflowX: 'hidden' }}>
+    <div style={{ backgroundColor: '#050505', minHeight: '100vh', padding: '0', margin: '0' }}>
       <div style={chassisStyle}>
 
         {/* UNIT 0: BRAND HEADER */}
-        <div style={{...brickStyle, background: '#111', zIndex: 2}}>
+        <div style={{...brickStyle, background: 'rgba(17,17,17,0.9)', zIndex: 2}}>
              <img 
                 src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png" 
                 alt="Cowley Road Studios" 
@@ -97,8 +96,8 @@ export const RackTestPage = () => {
           <img src="https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/ch7%20rack%20bottom%20ui.png" alt="Bottom" style={brickStyle} />
         </a>
 
-        {/* BLANKING PANEL */}
-        <div style={{ ...brickStyle, flexGrow: 1, minHeight: '50vh', backgroundImage: 'url(https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/blanking_panel.png)', backgroundRepeat: 'repeat' }}></div>
+        {/* BLANKING FILLER (Continues the texture at the bottom) */}
+        <div style={{ ...brickStyle, flexGrow: 1, minHeight: '50vh' }}></div>
 
       </div>
     </div>
