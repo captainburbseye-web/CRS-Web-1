@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const RackTestPage = () => {
-  // 1. THE CHASSIS CONTAINER (Refined Edition)
+  // 1. THE CHASSIS CONTAINER (Zero Tolerance Edition)
   const chassisStyle = {
     display: 'flex',
     flexDirection: 'column' as const,
@@ -9,14 +9,16 @@ export const RackTestPage = () => {
     maxWidth: '900px', 
     margin: '0 auto',
     backgroundColor: '#000',
-    // Refined rails - subtle but visible
     borderLeft: '20px solid #222',  
     borderRight: '20px solid #222', 
     boxSizing: 'content-box' as const, 
     boxShadow: 'inset 10px 0 20px #000',
+    lineHeight: '0',
+    fontSize: '0',
+    gap: '0',
   };
 
-  // 2. THE BRICK STYLE (Refined Seal)
+  // 2. THE BRICK STYLE (EXTREME CRUSH)
   const brickStyle = {
     display: 'block',
     width: '100%',
@@ -26,7 +28,7 @@ export const RackTestPage = () => {
     border: 'none',
     lineHeight: '0',
     verticalAlign: 'top' as const,
-    marginBottom: '-3px', // Refined overlap - tight but not crushed
+    marginBottom: '-10px', // EXTREME CRUSH - eliminate all black space
     position: 'relative' as const,
     zIndex: 1,
     objectFit: 'cover' as const,
