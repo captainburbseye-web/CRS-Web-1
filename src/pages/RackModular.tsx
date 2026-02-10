@@ -1,0 +1,300 @@
+import React from 'react';
+import { RackModule } from '../components/rack/RackModule';
+import { SplitRackRow } from '../components/rack/SplitRackRow';
+import { rackServices, getSplitServices } from '../data/services';
+
+export const RackModular = () => {
+  return (
+    <>
+      {/* Inject CSS directly into the page */}
+      <style>{`
+        /* Rack Module Styling with FixLogic Enhancements */
+
+        :root {
+          --steel-bg: rgba(20, 20, 20, 0.95);
+          --panel-green: rgba(42, 59, 42, 0.15);
+          --mustard: #e3b04b;
+          --fire-amber: #ff9f1c;
+          --led-green: #c8ff41;
+          --led-amber: #ff9f1c;
+          --led-red: #ff4136;
+        }
+
+        .rack-modular-viewport {
+          background-color: #050505;
+          min-height: 100vh;
+          padding: 2rem 1rem;
+        }
+
+        /* Rack container layout */
+        .rack-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          padding: 2rem;
+          background-color: var(--steel-bg);
+          border-radius: 12px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Split Row Container */
+        .split-rack-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.5rem;
+        }
+
+        .split-rack-module {
+          width: 100%;
+        }
+
+        /* Individual Rack Module - ENHANCED with FixLogic */
+        .rack-module {
+          background: var(--panel-green);
+          border: 3px solid #333;
+          border-radius: 6px;
+          box-shadow: inset 0 0 4px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.3);
+          padding: 2rem;
+          font-family: 'Courier New', monospace;
+          position: relative;
+        }
+
+        /* Complete Screw Head Decoration (all 4 corners) */
+        .rack-module::before,
+        .rack-module::after {
+          content: '';
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background: #555;
+          border-radius: 50%;
+          box-shadow: inset 0 0 2px #000;
+        }
+
+        .rack-module::before {
+          top: 6px;
+          left: 6px;
+        }
+
+        .rack-module::after {
+          top: 6px;
+          right: 6px;
+        }
+
+        /* Bottom screws using pseudo-element on child */
+        .rack-module .rack-label-strip::before,
+        .rack-module .rack-button-group::after {
+          content: '';
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background: #555;
+          border-radius: 50%;
+          box-shadow: inset 0 0 2px #000;
+          bottom: 6px;
+        }
+
+        .rack-module .rack-label-strip::before {
+          left: 6px;
+        }
+
+        .rack-module .rack-button-group::after {
+          right: 6px;
+        }
+
+        /* Label Strip + LEDs */
+        .rack-label-strip {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 0.5rem;
+          position: relative;
+        }
+
+        /* FIXLOGIC: Increased from 0.85rem to 1rem (16px minimum) */
+        .rack-label {
+          color: var(--mustard);
+          font-size: 1rem;
+          letter-spacing: 0.08em;
+        }
+
+        .led-indicator {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background: var(--led-green);
+          box-shadow: 0 0 8px var(--led-green);
+          animation: pulse-led 2s infinite;
+          flex-shrink: 0;
+        }
+
+        .led-amber {
+          background: var(--led-amber);
+          box-shadow: 0 0 8px var(--led-amber);
+          animation: pulse-led-amber 2s infinite;
+        }
+
+        .led-red {
+          background: var(--led-red);
+          box-shadow: 0 0 8px var(--led-red);
+          animation: pulse-led-red 1.5s infinite;
+        }
+
+        /* Module Title */
+        .rack-title {
+          font-size: 1.4rem;
+          color: white;
+          margin: 0.5rem 0 0.8rem;
+        }
+
+        /* FIXLOGIC: Improved contrast from #ccc to #e0e0e0 */
+        .rack-description {
+          color: #e0e0e0;
+          font-size: 1rem;
+          margin-bottom: 1.5rem;
+          line-height: 1.6;
+        }
+
+        /* Buttons */
+        .rack-button-group {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+          position: relative;
+        }
+
+        /* FIXLOGIC: Increased from 0.8rem to 1rem */
+        .booking-instruction {
+          color: var(--mustard);
+          font-size: 1rem;
+          letter-spacing: 0.06em;
+        }
+
+        /* FIXLOGIC: Increased padding for 44px+ touch target */
+        .rack-button {
+          background-color: var(--fire-amber);
+          border: 2px solid #ff9f1c;
+          padding: 0.85rem 1.75rem;
+          min-height: 44px;
+          border-radius: 40px;
+          color: black;
+          font-weight: bold;
+          text-decoration: none;
+          transition: all 0.2s ease-in-out;
+          box-shadow: 0 0 8px var(--fire-amber);
+          cursor: pointer;
+          font-family: 'Courier New', monospace;
+          letter-spacing: 0.05em;
+          font-size: 1rem;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .rack-button:hover {
+          box-shadow: 0 0 14px var(--fire-amber);
+          transform: scale(1.03);
+        }
+
+        .rack-button:active {
+          box-shadow: inset 0 0 6px var(--fire-amber);
+          transform: scale(0.98);
+        }
+
+        /* LED Pulse Animations */
+        @keyframes pulse-led {
+          0%, 100% {
+            opacity: 1;
+            box-shadow: 0 0 6px var(--led-green);
+          }
+          50% {
+            opacity: 0.6;
+            box-shadow: 0 0 12px var(--led-green);
+          }
+        }
+
+        @keyframes pulse-led-amber {
+          0%, 100% {
+            opacity: 1;
+            box-shadow: 0 0 6px var(--led-amber);
+          }
+          50% {
+            opacity: 0.6;
+            box-shadow: 0 0 12px var(--led-amber);
+          }
+        }
+
+        @keyframes pulse-led-red {
+          0%, 100% {
+            opacity: 1;
+            box-shadow: 0 0 8px var(--led-red);
+          }
+          50% {
+            opacity: 0.4;
+            box-shadow: 0 0 16px var(--led-red);
+          }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .split-rack-row {
+            grid-template-columns: 1fr;
+          }
+          
+          .rack-container {
+            padding: 1rem;
+          }
+        }
+      `}</style>
+
+      <div className="rack-modular-viewport">
+        <div className="rack-container">
+          {/* Row 1: Header */}
+          <RackModule {...rackServices[0]} />
+
+          {/* Row 2: Booking Hub */}
+          <RackModule {...rackServices[1]} />
+
+          {/* Row 3: Rehearsal (Split) */}
+          <SplitRackRow
+            left={getSplitServices(3).left!}
+            right={getSplitServices(3).right!}
+          />
+
+          {/* Row 4: Control Room (Split) */}
+          <SplitRackRow
+            left={getSplitServices(4).left!}
+            right={getSplitServices(4).right!}
+          />
+
+          {/* Row 5: Recording & Production */}
+          <RackModule {...rackServices[6]} />
+
+          {/* Row 6: Music Lessons */}
+          <RackModule {...rackServices[7]} />
+
+          {/* Row 7: AV Hire */}
+          <RackModule {...rackServices[8]} />
+
+          {/* Row 8: AV Repairs */}
+          <RackModule {...rackServices[9]} />
+
+          {/* Row 9: Workshop Café */}
+          <RackModule {...rackServices[10]} />
+
+          {/* Row 10: Venue Hire */}
+          <RackModule {...rackServices[11]} />
+
+          {/* Row 11: Contact */}
+          <RackModule {...rackServices[12]} />
+
+          {/* Row 12: System Status */}
+          <RackModule {...rackServices[13]} />
+        </div>
+      </div>
+    </>
+  );
+};

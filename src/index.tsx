@@ -20,6 +20,7 @@ import { SignageLoop } from './pages/SignageLoop'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
+import { RackModular } from './pages/RackModular'
 import { DigitalPulsePage } from './pages/DigitalPulse'
 
 const app = new Hono()
@@ -1617,6 +1618,19 @@ app.get('/rack-test', (c) => {
       title: 'CRS Rack Test | Structural Assembly',
       description: 'Test environment for 19-inch equipment rack interface',
       keywords: 'rack test, studio equipment, structural assembly'
+    }
+  )
+})
+
+// RACK MODULAR — MANUS'S COMPONENT SYSTEM
+// Modular rack architecture: RackModule + SplitRackRow components
+app.get('/rack-modular', (c) => {
+  return c.render(
+    <RackModular />,
+    {
+      title: 'CRS Rack Modular | Component System',
+      description: 'Modular rack interface with 12 service modules, LED indicators, and split layouts',
+      keywords: 'modular rack, component system, studio services, booking hub'
     }
   )
 })
