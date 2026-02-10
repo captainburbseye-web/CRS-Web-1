@@ -1,35 +1,35 @@
 import React from 'react';
 
 export const RackTestPage = () => {
-  // 1. THE CHASSIS CONTAINER (Hydraulic Press Edition)
+  // 1. THE CHASSIS CONTAINER (Refined Edition)
   const chassisStyle = {
     display: 'flex',
     flexDirection: 'column' as const,
     width: '100%',
-    maxWidth: '1400px', 
+    maxWidth: '900px', 
     margin: '0 auto',
     backgroundColor: '#000',
-    // KEY FIX: The borders + content-box ensure the rails sit OUTSIDE the 1400px content area
-    borderLeft: '32px solid #222',  
-    borderRight: '32px solid #222', 
+    // Refined rails - subtle but visible
+    borderLeft: '20px solid #222',  
+    borderRight: '20px solid #222', 
     boxSizing: 'content-box' as const, 
     boxShadow: 'inset 10px 0 20px #000',
   };
 
-  // 2. THE BRICK STYLE (Force Full Stretch)
+  // 2. THE BRICK STYLE (Refined Seal)
   const brickStyle = {
     display: 'block',
-    width: '100%',      // Forces image to hit the rails
+    width: '100%',
     height: 'auto',
     margin: '0',
     padding: '0',
     border: 'none',
     lineHeight: '0',
     verticalAlign: 'top' as const,
-    marginBottom: '-5px', // MAXIMUM HYDRAULIC PRESS (Forces overlap)
+    marginBottom: '-3px', // Refined overlap - tight but not crushed
     position: 'relative' as const,
     zIndex: 1,
-    objectFit: 'cover' as const, // Ensures no aspect ratio gaps
+    objectFit: 'cover' as const,
   };
 
   // Live Waveform Component
