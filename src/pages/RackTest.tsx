@@ -6,12 +6,12 @@ export const RackTestPage = () => {
     display: 'flex',
     flexDirection: 'column' as const,
     width: '100%',
-    maxWidth: '1000px', 
+    maxWidth: '1400px', 
     margin: '0 auto',
     backgroundColor: '#000',
-    // KEY FIX: The borders + content-box ensure the rails sit OUTSIDE the 1000px content area
-    borderLeft: '24px solid #222',  
-    borderRight: '24px solid #222', 
+    // KEY FIX: The borders + content-box ensure the rails sit OUTSIDE the 1400px content area
+    borderLeft: '32px solid #222',  
+    borderRight: '32px solid #222', 
     boxSizing: 'content-box' as const, 
     boxShadow: 'inset 10px 0 20px #000',
   };
@@ -26,7 +26,7 @@ export const RackTestPage = () => {
     border: 'none',
     lineHeight: '0',
     verticalAlign: 'top' as const,
-    marginBottom: '-2px', // The Perfect Seal (not -5px which is too much)
+    marginBottom: '-5px', // MAXIMUM HYDRAULIC PRESS (Forces overlap)
     position: 'relative' as const,
     zIndex: 1,
     objectFit: 'cover' as const, // Ensures no aspect ratio gaps
