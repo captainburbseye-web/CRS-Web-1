@@ -1,0 +1,440 @@
+/* ====================================================================
+   CRS RACK MODULAR - PHASE 2 UX ENHANCEMENTS
+   Visual polish, interactive features, mobile optimization
+   ==================================================================== */
+
+/* ====================================================================
+   1. ELIMINATE BLACK GAPS - METALLIC CHASSIS BACKGROUND
+   ==================================================================== */
+
+/* Unified metallic rack chassis */
+.rack-container {
+  background: 
+    /* Metallic texture overlay */
+    repeating-linear-gradient(
+      90deg,
+      #1a1a1a 0px,
+      #252525 2px,
+      #1a1a1a 4px
+    ),
+    /* Vertical grain */
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      rgba(255,255,255,0.01) 1px,
+      transparent 2px
+    ),
+    /* Base dark metal */
+    linear-gradient(to right, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+  
+  /* Remove gaps by tightening module spacing */
+  padding: 0;
+  gap: 0;
+}
+
+/* Tight stacking - remove black gaps */
+.rack-module {
+  margin-bottom: -2px !important;  /* Overlap borders for seamless stacking */
+  border-bottom: 2px solid #000;
+  border-top: 1px solid #2a2a2a;
+  
+  /* Subtle depth for each unit */
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.03),
+    0 1px 0 rgba(0,0,0,0.5);
+}
+
+/* First rack unit - special top treatment */
+.rack-module:first-child {
+  border-top: 2px solid #2a2a2a;
+  margin-top: 0;
+}
+
+/* Last rack unit - rounded bottom corners */
+.rack-module:last-child {
+  border-bottom: 3px solid #000;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.03),
+    0 4px 8px rgba(0,0,0,0.8);
+}
+
+/* Split rack rows - no gaps */
+.split-rack-row {
+  margin-bottom: -2px !important;
+  display: flex;
+  gap: 0;
+}
+
+.split-rack-module {
+  border-right: 1px solid #0a0a0a;  /* Divider between split modules */
+}
+
+.split-rack-module:last-child {
+  border-right: none;
+}
+
+/* ====================================================================
+   2. ENHANCED CTA BUTTONS - PULSE ANIMATIONS & GLOWING HOVER
+   ==================================================================== */
+
+/* Primary booking buttons - premium feel */
+.rack-button {
+  position: relative;
+  background: linear-gradient(135deg, #ffcc66 0%, #e3b04b 100%) !important;
+  color: #000000 !important;
+  border: 2px solid #ffcc66 !important;
+  padding: 12px 24px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  min-height: 48px !important;
+  min-width: 140px !important;
+  border-radius: 4px;
+  box-shadow: 
+    0 2px 8px rgba(255, 204, 102, 0.3),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Animated pulse effect (subtle, respects reduced-motion) */
+@keyframes button-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 2px 8px rgba(255, 204, 102, 0.3),
+      0 0 0 0 rgba(255, 204, 102, 0.7),
+      inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+  50% {
+    box-shadow: 
+      0 2px 12px rgba(255, 204, 102, 0.5),
+      0 0 0 8px rgba(255, 204, 102, 0),
+      inset 0 1px 0 rgba(255,255,255,0.3);
+  }
+}
+
+/* Apply pulse to high-priority CTAs only */
+.rack-module[data-priority="high"] .rack-button {
+  animation: button-pulse 3s ease-in-out infinite;
+}
+
+/* Disable pulse for reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  .rack-button {
+    animation: none !important;
+  }
+}
+
+/* Hover state - glowing emphasis */
+.rack-button:hover {
+  background: linear-gradient(135deg, #99cc99 0%, #88aa88 100%) !important;
+  border-color: #99cc99 !important;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 
+    0 0 20px rgba(153, 204, 153, 0.8),
+    0 0 40px rgba(153, 204, 153, 0.4),
+    0 4px 16px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+/* Active/pressed state */
+.rack-button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 
+    0 1px 4px rgba(255, 204, 102, 0.4),
+    inset 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Focus state for keyboard navigation */
+.rack-button:focus-visible {
+  outline: 3px solid var(--wcag-focus-outline, #00ffff) !important;
+  outline-offset: 3px !important;
+  box-shadow: 
+    0 0 0 6px rgba(0, 255, 255, 0.3),
+    0 0 30px rgba(153, 204, 153, 0.6) !important;
+}
+
+/* Shimmer effect on button (optional premium touch) */
+.rack-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.rack-button:hover::before {
+  left: 100%;
+}
+
+/* Dropdown trigger button - matching style */
+.rack-dropdown-trigger {
+  background: linear-gradient(135deg, #ffcc66 0%, #e3b04b 100%) !important;
+  border: 2px solid #ffcc66 !important;
+  animation: button-pulse 3s ease-in-out infinite;
+}
+
+.rack-dropdown-trigger:hover {
+  background: linear-gradient(135deg, #99cc99 0%, #88aa88 100%) !important;
+  border-color: #99cc99 !important;
+  box-shadow: 
+    0 0 20px rgba(153, 204, 153, 0.8),
+    0 0 40px rgba(153, 204, 153, 0.4);
+}
+
+/* ====================================================================
+   3. MOBILE-OPTIMIZED SINGLE-COLUMN LAYOUT
+   ==================================================================== */
+
+/* Mobile breakpoint - simplified rack view */
+@media (max-width: 768px) {
+  /* Container adjustments */
+  .rack-container {
+    max-width: 100%;
+    padding: 0;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+  }
+  
+  /* Rack modules - full width stacking */
+  .rack-module {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1rem 1rem 1.5rem;
+    min-height: auto;
+    gap: 0.75rem;
+  }
+  
+  /* Hide decorative screws on mobile */
+  .rack-module::before,
+  .rack-module::after {
+    display: none;
+  }
+  
+  /* LED strip - horizontal layout */
+  .rack-label-strip {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: auto;
+  }
+  
+  /* Title - smaller on mobile */
+  .rack-title {
+    font-size: 1rem;
+    padding: 0.25rem 0;
+  }
+  
+  /* Description - better readability */
+  .rack-description {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin: 0.5rem 0;
+  }
+  
+  /* Button group - stacked */
+  .rack-button-group {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* Buttons - full width on mobile */
+  .rack-button,
+  .rack-dropdown-trigger {
+    width: 100%;
+    min-width: 100%;
+    padding: 14px 20px !important;
+    min-height: 52px !important;  /* Extra thumb comfort */
+  }
+  
+  /* Split rows - vertical stacking */
+  .split-rack-row {
+    flex-direction: column;
+  }
+  
+  .split-rack-module {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #0a0a0a;
+  }
+  
+  /* Dropdown menu - full width */
+  .rack-dropdown-menu {
+    width: 100%;
+    min-width: 100%;
+    left: 0;
+  }
+  
+  .rack-dropdown-item {
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+  }
+  
+  /* Sticky nav - bottom positioning */
+  .rack-nav {
+    bottom: 0;
+    top: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 8px 0;
+    border-top: 2px solid var(--wcag-sage-green, #99cc99);
+    border-bottom: none;
+  }
+  
+  .rack-nav-button {
+    font-size: 11px;
+    padding: 8px 12px !important;
+    min-width: auto;
+    flex: 1;
+  }
+}
+
+/* Extra small screens (320px width) */
+@media (max-width: 400px) {
+  .rack-title {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+  }
+  
+  .rack-description {
+    font-size: 13px !important;
+  }
+  
+  .rack-button {
+    font-size: 14px !important;
+    padding: 12px 16px !important;
+  }
+}
+
+/* ====================================================================
+   4. COLLAPSIBLE RACK MODULES (JavaScript-driven)
+   ==================================================================== */
+
+/* Default collapsed state */
+.rack-module.collapsible {
+  height: 88px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Expanded state */
+.rack-module.collapsible.expanded {
+  height: auto;
+  cursor: default;
+}
+
+/* Collapse indicator (chevron icon) */
+.rack-module.collapsible::after {
+  content: '▼';
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: var(--wcag-sage-green, #99cc99);
+  transition: transform 0.3s ease;
+}
+
+.rack-module.collapsible.expanded::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Hide details when collapsed */
+.rack-module.collapsible:not(.expanded) .rack-description,
+.rack-module.collapsible:not(.expanded) .rack-button-group {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rack-module.collapsible.expanded .rack-description,
+.rack-module.collapsible.expanded .rack-button-group {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease 0.2s;  /* Delayed fade-in */
+}
+
+/* Always show header module (no collapse) */
+.rack-module[data-priority="high"]:first-child {
+  height: auto !important;
+  cursor: default !important;
+}
+
+.rack-module[data-priority="high"]:first-child::after {
+  display: none;
+}
+
+/* ====================================================================
+   5. ENHANCED LED INDICATORS
+   ==================================================================== */
+
+/* Brighter, more realistic LED glow */
+.led-indicator {
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, var(--wcag-led-green) 30%, transparent 70%);
+  box-shadow: 
+    0 0 8px var(--wcag-led-green),
+    0 0 16px var(--wcag-led-green),
+    0 0 24px rgba(0, 255, 136, 0.3),
+    inset 0 0 4px rgba(255,255,255,0.6);
+}
+
+/* Amber LED - enhanced glow */
+.led-amber {
+  background: radial-gradient(circle, var(--wcag-led-amber) 30%, transparent 70%);
+  box-shadow: 
+    0 0 8px var(--wcag-led-amber),
+    0 0 16px var(--wcag-led-amber),
+    0 0 24px rgba(255, 204, 51, 0.3),
+    inset 0 0 4px rgba(255,255,255,0.6);
+}
+
+/* Smooth pulse animation */
+@keyframes pulse-led {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 
+      0 0 8px var(--wcag-led-green),
+      0 0 16px var(--wcag-led-green),
+      0 0 24px rgba(0, 255, 136, 0.3);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 
+      0 0 6px var(--wcag-led-green),
+      0 0 12px var(--wcag-led-green),
+      0 0 18px rgba(0, 255, 136, 0.2);
+  }
+}
+
+/* ====================================================================
+   6. ACCESSIBILITY ENHANCEMENTS FOR NEW FEATURES
+   ==================================================================== */
+
+/* Focus indicators for collapsible modules */
+.rack-module.collapsible:focus-visible {
+  outline: 3px solid var(--wcag-focus-outline, #00ffff) !important;
+  outline-offset: -3px !important;
+}
+
+/* Announce collapsed/expanded state to screen readers */
+.rack-module.collapsible[aria-expanded="false"] {
+  /* Add visual cue for collapsed state */
+}
+
+.rack-module.collapsible[aria-expanded="true"] {
+  /* Add visual cue for expanded state */
+}

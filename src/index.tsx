@@ -1646,7 +1646,9 @@ app.get('/rack-modular', (c) => {
   return c.render(
     <>
       <link href="/static/crs-accessibility-fixes.css" rel="stylesheet" />
+      <link href="/static/crs-phase2-enhancements.css" rel="stylesheet" />
       <RackModular />
+      <script src="/static/rack-interactive.js" defer></script>
     </>,
     {
       title: 'CRS Rack Modular | Component System with Waveforms',

@@ -20,6 +20,7 @@ export interface RackModuleProps {
   visible?: boolean;
   priority?: 'high' | 'normal' | 'low';
   status?: 'online' | 'offline' | 'maintenance';
+  row?: number;  // Row number for nav targeting
 }
 
 export const RackModule = ({
@@ -33,6 +34,7 @@ export const RackModule = ({
   visible = true,
   priority = 'normal',
   status = 'online',
+  row,
 }: RackModuleProps) => {
   // Construct LED class based on color prop
   const ledClass = `led-indicator${ledColor !== 'green' ? ` led-${ledColor}` : ''}`;
@@ -48,6 +50,11 @@ export const RackModule = ({
     attrs['data-visible'] = String(visible);
     attrs['data-priority'] = priority;
     attrs['data-status'] = status;
+    
+    // Add row number for navigation targeting
+    if (row !== undefined) {
+      attrs['data-row'] = String(row);
+    }
     
     if (label.includes('COWLEY')) {
       attrs['data-location'] = 'cowley';

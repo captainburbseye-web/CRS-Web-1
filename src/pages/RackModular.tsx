@@ -83,6 +83,10 @@ export const RackModular = () => {
             ledColor={service.ledColor}
             instruction={service.instruction}
             dropdownServices={service.dropdownServices}
+            visible={service.visible}
+            priority={service.priority}
+            status={service.status}
+            row={service.row}
           />
         ));
       })}
