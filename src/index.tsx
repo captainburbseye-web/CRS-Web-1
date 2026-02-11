@@ -1622,15 +1622,15 @@ app.get('/rack-test', (c) => {
   )
 })
 
-// RACK MODULAR — MANUS'S COMPONENT SYSTEM
-// Modular rack architecture: RackModule + SplitRackRow components
+// RACK MODULAR — MANUS'S COMPONENT SYSTEM + WAVEFORMS
+// Modular rack architecture: RackModule + SplitRackRow + Waveform
 app.get('/rack-modular', (c) => {
   return c.render(
     <RackModular />,
     {
-      title: 'CRS Rack Modular | Component System',
-      description: 'Modular rack interface with 12 service modules, LED indicators, and split layouts',
-      keywords: 'modular rack, component system, studio services, booking hub'
+      title: 'CRS Rack Modular | Component System with Waveforms',
+      description: 'Modular rack interface with 12 service modules, LED indicators, animated waveforms, and split layouts',
+      keywords: 'modular rack, component system, waveforms, studio services, booking hub'
     }
   )
 })

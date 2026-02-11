@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface RackModuleProps {
   label: string;
   title: string;
@@ -8,9 +6,10 @@ export interface RackModuleProps {
   ledColor?: 'green' | 'amber' | 'red';
   variant?: 'command' | 'rack' | 'passive';
   instruction?: string;
+  children?: any;
 }
 
-export const RackModule: React.FC<RackModuleProps> = ({
+export const RackModule = ({
   label,
   title,
   description,
@@ -18,7 +17,8 @@ export const RackModule: React.FC<RackModuleProps> = ({
   ledColor = 'green',
   variant = 'rack',
   instruction = '[ INSTRUCTION: SELECT SERVICE FROM LIST ]',
-}) => {
+  children,
+}: RackModuleProps) => {
   // Construct LED class based on color prop
   const ledClass = ledColor !== 'green' 
     ? `led-indicator led-${ledColor}` 
@@ -31,23 +31,30 @@ export const RackModule: React.FC<RackModuleProps> = ({
   const buttonText = `BOOK_${title.toUpperCase().replace(/\s/g, '_')}_NOW`;
 
   return (
-    <div className={moduleClass}>
-      <div className="rack-label-strip">
-        <span className={ledClass}></span>
-        <span className="rack-label">{label}</span>
+    <div class={moduleClass}>
+      <div class="rack-label-strip">
+        <span class={ledClass}></span>
+        <span class="rack-label">{label}</span>
       </div>
 
-      <h2 className="rack-title">{title}</h2>
+      <h2 class="rack-title">{title}</h2>
 
-      <p className="rack-description">{description}</p>
+      <p class="rack-description">{description}</p>
 
-      <div className="rack-button-group">
-        <span className="booking-instruction">{instruction}</span>
+      {/* Children slot for waveforms, visualizations, etc. */}
+      {children && (
+        <div class="rack-module-content">
+          {children}
+        </div>
+      )}
+
+      <div class="rack-button-group">
+        <span class="booking-instruction">{instruction}</span>
         <a
           href={bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="rack-button"
+          class="rack-button"
         >
           [ {buttonText} ]
         </a>

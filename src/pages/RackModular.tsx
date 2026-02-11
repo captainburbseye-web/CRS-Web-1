@@ -1,6 +1,6 @@
-import React from 'react';
 import { RackModule } from '../components/rack/RackModule';
 import { SplitRackRow } from '../components/rack/SplitRackRow';
+import { Waveform } from '../components/rack/Waveform';
 import { rackServices, getSplitServices } from '../data/services';
 
 export const RackModular = () => {
@@ -132,6 +132,21 @@ export const RackModular = () => {
 
         .rack-passive:hover {
           opacity: 0.95;
+        }
+
+        /* Waveform content area */
+        .rack-module-content {
+          margin: 1rem 0;
+          padding: 1rem;
+          background: rgba(0, 0, 0, 0.3);
+          border-radius: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .waveform {
+          opacity: 0.9;
         }
 
         /* Screw Head Decoration (all 4 corners) */
@@ -342,7 +357,9 @@ export const RackModular = () => {
           />
 
           {/* Row 5: Recording & Production (RACK) */}
-          <RackModule {...rackServices[6]} />
+          <RackModule {...rackServices[6]}>
+            <Waveform color="#c8ff41" amplitude={0.4} frequency={2.5} width={300} height={80} />
+          </RackModule>
 
           {/* Row 6: Music Lessons (RACK) */}
           <RackModule {...rackServices[7]} />
@@ -363,7 +380,9 @@ export const RackModular = () => {
           <RackModule {...rackServices[12]} />
 
           {/* Row 12: System Status (COMMAND) */}
-          <RackModule {...rackServices[13]} />
+          <RackModule {...rackServices[13]}>
+            <Waveform color="#ff9f1c" amplitude={0.3} frequency={3} width={300} height={60} />
+          </RackModule>
         </div>
       </div>
     </>
