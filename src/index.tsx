@@ -21,6 +21,7 @@ import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
 import { RackModular } from './pages/RackModular'
+import { RackModularEnhanced } from './pages/RackModularEnhanced'
 import { Book } from './pages/Book'
 import { DigitalPulsePage } from './pages/DigitalPulse'
 
@@ -1636,6 +1637,24 @@ app.get('/rack-test', (c) => {
       title: 'CRS Rack Test | Structural Assembly',
       description: 'Test environment for 19-inch equipment rack interface',
       keywords: 'rack test, studio equipment, structural assembly'
+    }
+  )
+})
+
+// RACK VARIANTS — HARDWARE REALISM WITH VISUAL HIERARCHY
+// Enhanced modular rack with command/rack/passive variants
+// Mission: Bring the rack to life (tactile, styled, variant-aware)
+app.get('/rack-variants', (c) => {
+  return c.render(
+    <>
+      <link href="/static/rack-variants-hardware.css" rel="stylesheet" />
+      <RackModularEnhanced />
+      <script src="/static/rack-dropdown.js" defer></script>
+    </>,
+    {
+      title: 'CRS Rack Variants | Hardware Realism',
+      description: 'Modular rack interface with visual variants - command, rack, and passive. Hardware-inspired design with tactile interactions.',
+      keywords: 'rack modules, hardware ui, studio equipment, variant system'
     }
   )
 })
