@@ -30,8 +30,8 @@ export const RackModule = ({
   // Construct LED class based on color prop
   const ledClass = `led-indicator${ledColor !== 'green' ? ` led-${ledColor}` : ''}`;
 
-  // Auto-generate button text from title
-  const buttonText = `BOOK_${title.toUpperCase().replace(/\s+/g, '_')}_NOW`;
+  // Simple button text - no brackets, no underscores
+  const buttonText = `BOOK NOW`;
 
   // Determine rack type and location from label for differentiation
   const getDataAttributes = () => {
@@ -81,7 +81,7 @@ export const RackModule = ({
               aria-haspopup="true"
               aria-expanded="false"
             >
-              [ {buttonText} ]
+              {buttonText}
             </button>
             <div
               class="rack-dropdown-menu"
@@ -110,7 +110,7 @@ export const RackModule = ({
             rel="noopener noreferrer"
             class="rack-button"
           >
-            [ {buttonText} ]
+            {buttonText}
           </a>
         )}
       </div>
