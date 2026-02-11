@@ -19,6 +19,8 @@ export interface RackService {
   visible?: boolean; // Control visibility (CMS toggle)
   priority?: 'high' | 'normal' | 'low'; // Display priority
   status?: 'online' | 'offline' | 'maintenance'; // Real-time status
+  // Phase 3: CTA optimization
+  ctaText?: string; // Custom call-to-action text (e.g., "Book Your Session")
 }
 
 export const rackServices: RackService[] = [
@@ -50,6 +52,7 @@ export const rackServices: RackService[] = [
     variant: 'command',
     instruction: '',
     priority: 'high',
+    ctaText: 'CHOOSE SERVICE',
     dropdownServices: [
       { name: '🎸 Book Rehearsal Room (Cowley or Cricket)', url: '/book?type=rehearsal' },
       { name: '🎛️ Book Recording Session (Full Production)', url: '/book?type=recording' },
@@ -68,6 +71,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    ctaText: 'RESERVE SPACE',
     isSplit: true,
     splitPosition: 'left',
     priority: 'high',
@@ -84,6 +88,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    ctaText: 'RESERVE SPACE',
     isSplit: true,
     splitPosition: 'right',
     priority: 'high',
@@ -100,6 +105,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    ctaText: 'BOOK STUDIO',
     isSplit: true,
     splitPosition: 'left',
     priority: 'high',
@@ -116,6 +122,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    ctaText: 'BOOK STUDIO',
     isSplit: true,
     splitPosition: 'right',
     priority: 'high',
@@ -132,6 +139,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    ctaText: 'BOOK SESSION',
     priority: 'high',
   },
 
@@ -146,6 +154,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    ctaText: 'SCHEDULE LESSON',
     priority: 'normal',
   },
 
@@ -160,6 +169,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    ctaText: 'GET QUOTE',
     priority: 'normal',
   },
 
@@ -174,6 +184,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    ctaText: 'REQUEST REPAIR',
     priority: 'normal',
   },
 
@@ -188,6 +199,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'passive',
     instruction: '',
+    ctaText: 'VISIT CAFÉ',
     priority: 'normal',
   },
 
@@ -202,6 +214,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    ctaText: 'BOOK VENUE',
     priority: 'normal',
   },
 
@@ -216,6 +229,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'passive',
     instruction: '',
+    ctaText: 'CONTACT US',
     priority: 'low',
   },
 
@@ -230,6 +244,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'command',
     instruction: '',
+    ctaText: 'VIEW STATUS',
     priority: 'low',
   },
 ];

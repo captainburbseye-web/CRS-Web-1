@@ -21,6 +21,8 @@ export interface RackModuleProps {
   priority?: 'high' | 'normal' | 'low';
   status?: 'online' | 'offline' | 'maintenance';
   row?: number;  // Row number for nav targeting
+  // Phase 3: CTA optimization
+  ctaText?: string;  // Custom call-to-action text
 }
 
 export const RackModule = ({
@@ -35,12 +37,13 @@ export const RackModule = ({
   priority = 'normal',
   status = 'online',
   row,
+  ctaText = 'BOOK NOW',
 }: RackModuleProps) => {
   // Construct LED class based on color prop
   const ledClass = `led-indicator${ledColor !== 'green' ? ` led-${ledColor}` : ''}`;
 
-  // Simple button text - no brackets, no underscores
-  const buttonText = `BOOK NOW`;
+  // Use custom CTA text or default
+  const buttonText = ctaText;
 
   // Determine rack type and location from label for differentiation
   const getDataAttributes = () => {

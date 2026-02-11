@@ -1,0 +1,321 @@
+/* ====================================================================
+   RACK HERO SECTION - HOMEPAGE INTEGRATION
+   ==================================================================== */
+
+.rack-hero-section {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 4rem 2rem;
+}
+
+.rack-hero-container {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Hero Content */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero-title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title-line-1 {
+  font-family: 'Courier New', monospace;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--wcag-sage-green, #99cc99);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 20px rgba(153, 204, 153, 0.5);
+  line-height: 1.1;
+}
+
+.title-line-2 {
+  font-family: 'Courier New', monospace;
+  font-size: 1.2rem;
+  color: var(--wcag-text-secondary, #cccccc);
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+
+.hero-description {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--wcag-text-secondary, #cccccc);
+  margin: 0;
+  max-width: 500px;
+}
+
+/* Hero CTAs */
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-cta-primary,
+.hero-cta-secondary {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 32px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 56px;
+}
+
+.hero-cta-primary {
+  background: linear-gradient(135deg, var(--wcag-sage-green, #99cc99), #88aa88);
+  color: #000000;
+  border: 2px solid var(--wcag-sage-green, #99cc99);
+  box-shadow: 0 4px 16px rgba(153, 204, 153, 0.3);
+}
+
+.hero-cta-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(153, 204, 153, 0.5);
+  background: linear-gradient(135deg, #aaddaa, var(--wcag-sage-green, #99cc99));
+}
+
+.hero-cta-secondary {
+  background: transparent;
+  color: var(--wcag-text-primary, #ffffff);
+  border: 2px solid #444;
+}
+
+.hero-cta-secondary:hover {
+  border-color: var(--wcag-mustard, #ffcc66);
+  color: var(--wcag-mustard, #ffcc66);
+  box-shadow: 0 0 16px rgba(255, 204, 102, 0.3);
+}
+
+.cta-icon {
+  font-size: 1.5rem;
+}
+
+/* Trust Badges */
+.hero-trust-badges {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: var(--wcag-text-secondary, #cccccc);
+}
+
+.trust-icon {
+  font-size: 18px;
+  color: var(--wcag-sage-green, #99cc99);
+}
+
+/* Mini Rack Visual */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mini-rack-container {
+  width: 100%;
+  max-width: 400px;
+  background: linear-gradient(to right, #1a1a1a 0%, #0f0f0f 50%, #1a1a1a 100%);
+  border: 3px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 
+    0 20px 60px rgba(0,0,0,0.9),
+    inset 0 0 20px rgba(0,0,0,0.8);
+}
+
+.mini-rack-module {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 50%, #1a1a1a 100%);
+  border-top: 1px solid #333;
+  border-bottom: 2px solid #000;
+  padding: 1rem 1.5rem;
+  margin-bottom: -1px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.mini-rack-module:hover {
+  background: linear-gradient(180deg, #222222 0%, #111111 50%, #222222 100%);
+  border-left: 3px solid var(--wcag-sage-green, #99cc99);
+}
+
+.mini-rack-module.header-module {
+  border-top: 2px solid #2a2a2a;
+  background: linear-gradient(180deg, #252525 0%, #1a1a1a 50%, #252525 100%);
+}
+
+.mini-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #333;
+  border: 1px solid #000;
+  flex-shrink: 0;
+}
+
+.mini-led.active {
+  background: var(--wcag-led-green, #00ff88);
+  box-shadow: 
+    0 0 6px var(--wcag-led-green),
+    0 0 12px var(--wcag-led-green);
+  animation: pulse-led 2s infinite;
+}
+
+.module-label {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: var(--wcag-text-primary, #ffffff);
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.mini-rack-view-all {
+  display: block;
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #2a2a2a, #1a1a1a);
+  border: 2px solid #444;
+  border-radius: 4px;
+  margin-top: 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--wcag-sage-green, #99cc99);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+}
+
+.mini-rack-view-all:hover {
+  border-color: var(--wcag-sage-green, #99cc99);
+  box-shadow: 0 0 16px rgba(153, 204, 153, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.6;
+  animation: bounce 2s infinite;
+}
+
+.scroll-text {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--wcag-text-secondary, #cccccc);
+  letter-spacing: 0.1em;
+}
+
+.scroll-arrow {
+  font-size: 24px;
+  color: var(--wcag-sage-green, #99cc99);
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 10px);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .rack-hero-section {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+
+  .rack-hero-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .title-line-1 {
+    font-size: 2rem;
+  }
+
+  .title-line-2 {
+    font-size: 1rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+  }
+
+  .hero-cta-primary,
+  .hero-cta-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-trust-badges {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .mini-rack-container {
+    max-width: 100%;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator {
+    animation: none;
+  }
+
+  .mini-led.active {
+    animation: none;
+  }
+}

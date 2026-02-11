@@ -1,6 +1,7 @@
 import { RackModule } from '../components/rack/RackModule';
 import { SplitRackRow } from '../components/rack/SplitRackRow';
 import { RackNav } from '../components/rack/RackNav';
+import { TestimonialsRackModule } from '../components/rack/TestimonialsRackModule';
 import { rackServices, getAllRows, getServicesByRow, getSplitServices } from '../data/services';
 
 /**
@@ -8,6 +9,7 @@ import { rackServices, getAllRows, getServicesByRow, getSplitServices } from '..
  * Design Philosophy: Industrial rack aesthetic with sage green, mustard accents
  * FixLogic: 16px fonts, 44px touch targets, high contrast
  * Phase 2: Sticky nav, entrance animations, future-proofing
+ * Phase 3: Social proof, CTA optimization, pricing transparency
  * Built by Manus - Clean implementation
  */
 
@@ -38,6 +40,9 @@ export const RackModular = () => {
       {allRows.map((rowNumber) => {
         const services = getServicesByRow(rowNumber);
         
+        // Insert Testimonials Module after Row 2 (BOOK NOW)
+        const testimonialsAfterRow2 = rowNumber === 2 ? <TestimonialsRackModule key="testimonials" /> : null;
+        
         // Check if this row has split modules
         const hasSplitModules = services.some(s => s.isSplit);
         
@@ -50,45 +55,54 @@ export const RackModular = () => {
           }
           
           return (
-            <SplitRackRow
-              key={`row-${rowNumber}`}
-              left={{
-                label: left.label,
-                title: left.title,
-                description: left.description,
-                bookingUrl: left.url,
-                ledColor: left.ledColor,
-                instruction: left.instruction,
-              }}
-              right={{
-                label: right.label,
-                title: right.title,
-                description: right.description,
-                bookingUrl: right.url,
-                ledColor: right.ledColor,
-                instruction: right.instruction,
-              }}
-            />
+            <>
+              <SplitRackRow
+                key={`row-${rowNumber}`}
+                left={{
+                  label: left.label,
+                  title: left.title,
+                  description: left.description,
+                  bookingUrl: left.url,
+                  ledColor: left.ledColor,
+                  instruction: left.instruction,
+                }}
+                right={{
+                  label: right.label,
+                  title: right.title,
+                  description: right.description,
+                  bookingUrl: right.url,
+                  ledColor: right.ledColor,
+                  instruction: right.instruction,
+                }}
+              />
+              {testimonialsAfterRow2}
+            </>
           );
         }
         
         // Regular full-width module
-        return services.map((service) => (
-          <RackModule
-            key={service.id}
-            label={service.label}
-            title={service.title}
-            description={service.description}
-            bookingUrl={service.url}
-            ledColor={service.ledColor}
-            instruction={service.instruction}
-            dropdownServices={service.dropdownServices}
-            visible={service.visible}
-            priority={service.priority}
-            status={service.status}
-            row={service.row}
-          />
-        ));
+        return (
+          <>
+            {services.map((service) => (
+              <RackModule
+                key={service.id}
+                label={service.label}
+                title={service.title}
+                description={service.description}
+                bookingUrl={service.url}
+                ledColor={service.ledColor}
+                instruction={service.instruction}
+                dropdownServices={service.dropdownServices}
+                visible={service.visible}
+                priority={service.priority}
+                status={service.status}
+                row={service.row}
+                ctaText={service.ctaText}
+              />
+            ))}
+            {testimonialsAfterRow2}
+          </>
+        );
       })}
     </main>
     </>
