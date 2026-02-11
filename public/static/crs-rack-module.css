@@ -1,387 +1,308 @@
 /* ====================================================================
-   CRS RACK MODULE STYLING - ENHANCED DIFFERENTIATION & IMMERSION
-   - Unique color themes per rack type
-   - Tight stacking with no black gaps
-   - Interactive hover effects
-   - Hardware-realistic design
+   CRS RACK HARDWARE INTERFACE - REALISTIC STUDIO EQUIPMENT
+   Each module styled as actual hardware: preamps, patch bays, meters
    ==================================================================== */
 
 :root {
-  /* Base Colors */
-  --steel-bg: rgba(20, 20, 20, 0.95);
-  --metal-dark: #1a1a1a;
-  --metal-light: #2a2a2a;
-  
-  /* Rack Type Color Themes */
-  --color-cowley: #c8ff41;        /* Neon green for Cowley */
-  --color-cricket: #ff00ff;       /* Magenta for Cricket */
-  --color-control: #00ffff;       /* Cyan for Control Rooms */
-  --color-cafe: #ffaa00;          /* Orange for Café */
-  --color-system: #ff9f1c;        /* Amber for System/Command */
-  
-  /* Panel Backgrounds with Themes */
-  --panel-cowley: rgba(200, 255, 65, 0.08);
-  --panel-cricket: rgba(255, 0, 255, 0.08);
-  --panel-control: rgba(0, 255, 255, 0.08);
-  --panel-cafe: rgba(255, 170, 0, 0.08);
-  --panel-system: rgba(255, 159, 28, 0.12);
-  --panel-default: rgba(42, 59, 42, 0.15);
-  
-  /* Legacy colors */
-  --mustard: #e3b04b;
-  --fire-amber: #ff9f1c;
-  --led-green: #c8ff41;
-  --led-amber: #ff9f1c;
-  --led-red: #ff4136;
+  /* Hardware Colors */
+  --rack-black: #0a0a0a;
+  --brushed-steel: linear-gradient(90deg, #2a2a2a 0%, #3a3a3a 50%, #2a2a2a 100%);
+  --led-green: #00ff00;
+  --led-amber: #ffaa00;
+  --led-red: #ff0000;
+  --knob-metal: radial-gradient(circle at 30% 30%, #888, #444);
+  --display-glow: #00ff88;
+  --meter-green: #00ff00;
+  --meter-yellow: #ffff00;
+  --meter-red: #ff0000;
 }
 
 /* ====================================================================
-   RACK CONTAINER - METALLIC BACKGROUND, TIGHT STACKING
+   RACK CONTAINER - 19" STUDIO RACK
    ==================================================================== */
 
 .rack-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-  gap: 1rem;
-  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
   background: 
-    linear-gradient(180deg, 
-      rgba(30, 30, 30, 1) 0%, 
-      rgba(20, 20, 20, 1) 50%, 
-      rgba(30, 30, 30, 1) 100%);
-  background-size: 100% 100px;
-  border-radius: 8px;
+    linear-gradient(to right, #1a1a1a 0%, #0a0a0a 2%, #0a0a0a 98%, #1a1a1a 100%),
+    repeating-linear-gradient(0deg, transparent 0px, rgba(255,255,255,0.02) 1px, transparent 2px, transparent 44px);
   box-shadow: 
-    inset 0 2px 4px rgba(0,0,0,0.5),
-    0 8px 32px rgba(0, 0, 0, 0.6);
+    inset 0 0 20px rgba(0,0,0,0.8),
+    0 20px 60px rgba(0,0,0,0.9);
+  border-left: 3px solid #2a2a2a;
+  border-right: 3px solid #2a2a2a;
   position: relative;
 }
 
-/* Metallic texture overlay */
-.rack-container::before {
+/* Rack rails with holes */
+.rack-container::before,
+.rack-container::after {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
   bottom: 0;
-  background-image: 
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(255,255,255,0.02) 2px,
-      rgba(255,255,255,0.02) 4px
-    );
-  pointer-events: none;
-  z-index: 1;
+  width: 12px;
+  background: 
+    linear-gradient(180deg, #333 0%, #222 50%, #333 100%),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 20px, #1a1a1a 20px, #1a1a1a 22px, transparent 22px, transparent 44px);
+  box-shadow: inset -2px 0 4px rgba(0,0,0,0.6);
 }
 
+.rack-container::before { left: 0; }
+.rack-container::after { right: 0; }
+
 /* ====================================================================
-   RACK MODULE BASE - TIGHT STACKING
+   BASE RACK MODULE - 1U/2U HARDWARE UNIT
    ==================================================================== */
 
 .rack-module {
-  background: var(--panel-default);
-  border: 3px solid #333;
-  border-radius: 6px;
-  box-shadow: 
-    inset 0 0 4px rgba(0,0,0,0.4), 
-    0 2px 8px rgba(0,0,0,0.3);
-  padding: 2rem;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 50%, #1a1a1a 100%);
+  border: none;
+  border-top: 1px solid #333;
+  border-bottom: 2px solid #000;
+  margin: 0;
+  padding: 0;
   font-family: 'Courier New', monospace;
   position: relative;
-  margin-bottom: -2px; /* Tight stacking - eliminates black gaps */
-  transition: all 0.3s ease;
-  z-index: 2;
+  min-height: 88px; /* 2U rack height */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2rem 0 2rem;
 }
 
-.rack-module:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    inset 0 0 6px rgba(0,0,0,0.5), 
-    0 6px 16px rgba(0,0,0,0.4);
-  z-index: 3;
-}
-
-/* ====================================================================
-   RACK TYPE DIFFERENTIATION - UNIQUE COLOR THEMES
-   ==================================================================== */
-
-/* Cowley Road - Neon Green */
-.rack-module[data-location="cowley"] {
-  background: var(--panel-cowley);
-  border-color: var(--color-cowley);
-  box-shadow: 
-    inset 0 0 8px rgba(200, 255, 65, 0.1),
-    0 0 12px rgba(200, 255, 65, 0.2),
-    0 2px 8px rgba(0,0,0,0.3);
-}
-
-.rack-module[data-location="cowley"]:hover {
-  box-shadow: 
-    inset 0 0 12px rgba(200, 255, 65, 0.15),
-    0 0 20px rgba(200, 255, 65, 0.3),
-    0 6px 16px rgba(0,0,0,0.4);
-}
-
-/* Cricket Road - Magenta */
-.rack-module[data-location="cricket"] {
-  background: var(--panel-cricket);
-  border-color: var(--color-cricket);
-  box-shadow: 
-    inset 0 0 8px rgba(255, 0, 255, 0.1),
-    0 0 12px rgba(255, 0, 255, 0.2),
-    0 2px 8px rgba(0,0,0,0.3);
-}
-
-.rack-module[data-location="cricket"]:hover {
-  box-shadow: 
-    inset 0 0 12px rgba(255, 0, 255, 0.15),
-    0 0 20px rgba(255, 0, 255, 0.3),
-    0 6px 16px rgba(0,0,0,0.4);
-}
-
-/* Control Rooms - Cyan */
-.rack-module[data-type="control"] {
-  background: var(--panel-control);
-  border-color: var(--color-control);
-  box-shadow: 
-    inset 0 0 8px rgba(0, 255, 255, 0.1),
-    0 0 12px rgba(0, 255, 255, 0.2),
-    0 2px 8px rgba(0,0,0,0.3);
-}
-
-.rack-module[data-type="control"]:hover {
-  box-shadow: 
-    inset 0 0 12px rgba(0, 255, 255, 0.15),
-    0 0 20px rgba(0, 255, 255, 0.3),
-    0 6px 16px rgba(0,0,0,0.4);
-}
-
-/* Workshop Café - Orange */
-.rack-module[data-type="cafe"] {
-  background: var(--panel-cafe);
-  border-color: var(--color-cafe);
-  box-shadow: 
-    inset 0 0 8px rgba(255, 170, 0, 0.1),
-    0 0 12px rgba(255, 170, 0, 0.2),
-    0 2px 8px rgba(0,0,0,0.3);
-}
-
-.rack-module[data-type="cafe"]:hover {
-  box-shadow: 
-    inset 0 0 12px rgba(255, 170, 0, 0.15),
-    0 0 20px rgba(255, 170, 0, 0.3),
-    0 6px 16px rgba(0,0,0,0.4);
-}
-
-/* System/Command - Amber Glow */
-.rack-module[data-type="system"],
-.rack-module[data-type="command"] {
-  background: var(--panel-system);
-  border: 4px solid var(--color-system);
-  box-shadow: 
-    inset 0 0 12px rgba(255, 159, 28, 0.15),
-    0 0 16px rgba(255, 159, 28, 0.3),
-    0 4px 16px rgba(0,0,0,0.5);
-}
-
-.rack-module[data-type="system"]:hover,
-.rack-module[data-type="command"]:hover {
-  box-shadow: 
-    inset 0 0 16px rgba(255, 159, 28, 0.2),
-    0 0 28px rgba(255, 159, 28, 0.4),
-    0 6px 20px rgba(0,0,0,0.6);
-}
-
-/* ====================================================================
-   SCREW HEADS - 4 CORNERS
-   ==================================================================== */
-
+/* Rack ears with screws */
 .rack-module::before,
 .rack-module::after {
   content: '';
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle at 30% 30%, #666, #444);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 30%, #666, #333);
   border-radius: 50%;
   box-shadow: 
     inset 0 0 2px #000,
-    0 1px 2px rgba(0,0,0,0.5);
-  z-index: 10;
+    0 1px 2px rgba(0,0,0,0.8);
 }
 
-.rack-module::before {
-  top: 8px;
-  left: 8px;
-}
-
-.rack-module::after {
-  top: 8px;
-  right: 8px;
-}
-
-/* Bottom screws */
-.rack-module .rack-label-strip::before,
-.rack-module .rack-button-group::after {
-  content: '';
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle at 30% 30%, #666, #444);
-  border-radius: 50%;
-  box-shadow: 
-    inset 0 0 2px #000,
-    0 1px 2px rgba(0,0,0,0.5);
-  bottom: 8px;
-  z-index: 10;
-}
-
-.rack-module .rack-label-strip::before {
-  left: 8px;
-}
-
-.rack-module .rack-button-group::after {
-  right: 8px;
-}
-
-/* Larger screws for command modules */
-.rack-module[data-type="system"]::before,
-.rack-module[data-type="system"]::after,
-.rack-module[data-type="command"]::before,
-.rack-module[data-type="command"]::after {
-  width: 14px;
-  height: 14px;
-  background: radial-gradient(circle at 30% 30%, #888, #555);
-  box-shadow: 
-    inset 0 0 3px #000,
-    0 0 4px rgba(255, 159, 28, 0.3);
-}
+.rack-module::before { left: 18px; }
+.rack-module::after { right: 18px; }
 
 /* ====================================================================
-   LABEL STRIP + LED INDICATORS
+   HARDWARE COMPONENTS LAYOUT
    ==================================================================== */
 
+/* Left section: LEDs + Labels */
 .rack-label-strip {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 100px;
   position: relative;
 }
 
-.rack-label {
-  color: var(--mustard);
-  font-size: 1rem;
-  letter-spacing: 0.08em;
-  font-weight: 500;
-  text-shadow: 0 0 8px rgba(227, 176, 75, 0.3);
-}
-
-/* LED with dynamic colors */
+/* LED Indicator - actual hardware style */
 .led-indicator {
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--led-green);
-  box-shadow: 0 0 8px var(--led-green);
+  box-shadow: 
+    0 0 4px var(--led-green),
+    0 0 8px var(--led-green),
+    inset 0 0 2px rgba(255,255,255,0.5);
+  border: 1px solid #000;
   animation: pulse-led 2s infinite;
-  flex-shrink: 0;
 }
 
 .led-amber {
   background: var(--led-amber);
-  box-shadow: 0 0 8px var(--led-amber);
-  animation: pulse-led-amber 2s infinite;
+  box-shadow: 
+    0 0 4px var(--led-amber),
+    0 0 8px var(--led-amber),
+    inset 0 0 2px rgba(255,255,255,0.5);
 }
 
-.led-red {
-  background: var(--led-red);
-  box-shadow: 0 0 8px var(--led-red);
-  animation: pulse-led-red 1.5s infinite;
+/* Labels - screen-printed style */
+.rack-label {
+  display: none; /* Hidden per your request */
 }
 
-/* ====================================================================
-   MODULE CONTENT
-   ==================================================================== */
-
+/* Center section: Title + Display */
 .rack-title {
-  font-size: 1.4rem;
-  color: white;
-  margin: 0.5rem 0 0.8rem;
+  flex: 1;
+  font-size: 1.2rem;
+  color: var(--display-glow);
+  margin: 0;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  text-shadow: 0 0 4px rgba(255,255,255,0.1);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-shadow: 
+    0 0 8px rgba(0, 255, 136, 0.6),
+    0 0 2px rgba(0, 255, 136, 1);
+  font-family: 'Courier New', monospace;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 20, 10, 0.8);
+  border: 1px solid #1a3a2a;
+  border-radius: 2px;
+  min-width: 300px;
 }
 
+/* Description - small screen-print under title */
 .rack-description {
-  color: #e0e0e0;
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
+  position: absolute;
+  bottom: 8px;
+  left: 140px;
+  right: 200px;
+  font-size: 0.7rem;
+  color: #666;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* ====================================================================
-   BUTTONS & INTERACTIONS
-   ==================================================================== */
-
+/* Right section: Buttons/Controls */
 .rack-button-group {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.5rem;
   position: relative;
+  min-width: 140px;
 }
 
 .booking-instruction {
-  color: var(--mustard);
-  font-size: 1rem;
-  letter-spacing: 0.06em;
-  opacity: 0.9;
+  display: none; /* Hidden per your request */
 }
 
+/* Hardware button - momentary push button style */
 .rack-button {
-  background-color: var(--fire-amber);
-  border: 2px solid var(--fire-amber);
-  padding: 0.85rem 1.75rem;
+  background: 
+    radial-gradient(ellipse at center top, #ff9f1c 0%, #cc7a10 50%, #aa6608 100%);
+  border: 2px solid #1a1a1a;
+  padding: 0.7rem 1.5rem;
   min-height: 44px;
-  border-radius: 40px;
-  color: black;
+  border-radius: 4px;
+  color: #000;
   font-weight: 700;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 0 8px var(--fire-amber);
-  cursor: pointer;
   font-family: 'Courier New', monospace;
-  letter-spacing: 0.05em;
-  font-size: 1rem;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 
+    inset 0 1px 2px rgba(255,255,255,0.3),
+    0 3px 8px rgba(0,0,0,0.6),
+    0 1px 0 rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: all 0.1s ease;
   position: relative;
+  text-transform: uppercase;
+}
+
+.rack-button::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  height: 40%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+  border-radius: 2px;
 }
 
 .rack-button:hover {
-  box-shadow: 0 0 16px var(--fire-amber);
-  transform: scale(1.05);
-  filter: brightness(1.1);
+  background: 
+    radial-gradient(ellipse at center top, #ffaa33 0%, #dd8a20 50%, #bb7715 100%);
+  box-shadow: 
+    inset 0 1px 2px rgba(255,255,255,0.4),
+    0 4px 12px rgba(255, 159, 28, 0.4),
+    0 1px 0 rgba(255,255,255,0.2);
+  transform: translateY(-1px);
 }
 
 .rack-button:active {
-  box-shadow: inset 0 0 6px var(--fire-amber);
-  transform: scale(0.98);
-}
-
-/* Keyboard focus */
-.rack-button:focus-visible {
-  outline: 2px solid var(--fire-amber);
-  outline-offset: 4px;
+  transform: translateY(2px);
+  box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.4),
+    0 1px 2px rgba(0,0,0,0.4);
 }
 
 /* ====================================================================
-   DROPDOWN MENU STYLING
+   SPECIALIZED HARDWARE TYPES
+   ==================================================================== */
+
+/* Command/System - Master Section with VU Meter */
+.rack-module[data-type="system"],
+.rack-module[data-type="command"] {
+  min-height: 132px; /* 3U */
+  background: 
+    linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 50%, #2a2a2a 100%);
+  border-top: 2px solid #3a3a3a;
+  border-bottom: 3px solid #000;
+}
+
+.rack-module[data-type="system"] .rack-title,
+.rack-module[data-type="command"] .rack-title {
+  font-size: 1.4rem;
+  color: #ff9f1c;
+  text-shadow: 
+    0 0 12px rgba(255, 159, 28, 0.8),
+    0 0 4px rgba(255, 159, 28, 1);
+  background: rgba(20, 15, 0, 0.9);
+  border-color: #3a2a0a;
+}
+
+/* Cowley - Green Channel Strip */
+.rack-module[data-location="cowley"] .rack-title {
+  color: #00ff88;
+  text-shadow: 
+    0 0 8px rgba(0, 255, 136, 0.8),
+    0 0 2px rgba(0, 255, 136, 1);
+  background: rgba(0, 20, 15, 0.9);
+  border-color: #0a3a2a;
+}
+
+/* Cricket - Magenta Channel Strip */
+.rack-module[data-location="cricket"] .rack-title {
+  color: #ff00ff;
+  text-shadow: 
+    0 0 8px rgba(255, 0, 255, 0.8),
+    0 0 2px rgba(255, 0, 255, 1);
+  background: rgba(20, 0, 20, 0.9);
+  border-color: #3a0a3a;
+}
+
+/* Control Room - Cyan Mix Console */
+.rack-module[data-type="control"] .rack-title {
+  color: #00ffff;
+  text-shadow: 
+    0 0 8px rgba(0, 255, 255, 0.8),
+    0 0 2px rgba(0, 255, 255, 1);
+  background: rgba(0, 20, 20, 0.9);
+  border-color: #0a3a3a;
+}
+
+/* Cafe - Amber Display */
+.rack-module[data-type="cafe"] .rack-title {
+  color: #ffaa00;
+  text-shadow: 
+    0 0 8px rgba(255, 170, 0, 0.8),
+    0 0 2px rgba(255, 170, 0, 1);
+  background: rgba(20, 15, 0, 0.9);
+  border-color: #3a2a0a;
+}
+
+/* ====================================================================
+   DROPDOWN MENU - PATCH BAY STYLE
    ==================================================================== */
 
 .rack-dropdown {
@@ -389,22 +310,27 @@
   width: 100%;
 }
 
+.rack-dropdown-trigger {
+  min-width: 140px;
+}
+
 .rack-dropdown-menu {
   position: absolute;
   top: calc(100% + 0.5rem);
-  left: 0;
-  min-width: 280px;
-  background: rgba(20, 20, 20, 0.98);
-  border: 2px solid var(--fire-amber);
-  border-radius: 8px;
+  right: 0;
+  min-width: 300px;
+  background: 
+    linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 50%, #1a1a1a 100%);
+  border: 2px solid #3a3a3a;
+  border-radius: 4px;
   padding: 0.5rem;
   box-shadow: 
-    0 0 16px rgba(255, 159, 28, 0.3),
-    0 8px 32px rgba(0,0,0,0.8);
+    inset 0 1px 2px rgba(255,255,255,0.1),
+    0 8px 32px rgba(0,0,0,0.9);
   z-index: 100;
   opacity: 0;
   transform: translateY(-10px);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   pointer-events: none;
 }
 
@@ -415,27 +341,70 @@
 }
 
 .rack-dropdown-item {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.75rem 1rem;
-  color: #fff;
+  color: #aaa;
   text-decoration: none;
   font-family: 'Courier New', monospace;
-  font-size: 0.95rem;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  border-radius: 2px;
+  transition: all 0.15s ease;
   margin-bottom: 0.25rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid #2a2a2a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rack-dropdown-item::before {
+  content: '●';
+  color: #00ff00;
+  font-size: 0.6rem;
+  text-shadow: 0 0 4px #00ff00;
 }
 
 .rack-dropdown-item:hover,
 .rack-dropdown-item:focus {
   background: rgba(255, 159, 28, 0.2);
-  color: var(--fire-amber);
+  border-color: #ff9f1c;
+  color: #fff;
   transform: translateX(4px);
   outline: none;
 }
 
-.rack-dropdown-item:last-child {
-  margin-bottom: 0;
+.rack-dropdown-item:hover::before {
+  color: #ff9f1c;
+  text-shadow: 0 0 6px #ff9f1c;
+}
+
+/* ====================================================================
+   SPLIT RACK ROW - DUAL CHANNEL STRIP
+   ==================================================================== */
+
+.split-rack-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid #333;
+  border-bottom: 2px solid #000;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 50%, #1a1a1a 100%);
+}
+
+.split-rack-module {
+  width: 100%;
+  position: relative;
+}
+
+.split-rack-module:first-child {
+  border-right: 2px solid #000;
+}
+
+.split-rack-module .rack-module {
+  border: none;
+  border-bottom: none;
+  margin: 0;
 }
 
 /* ====================================================================
@@ -443,112 +412,82 @@
    ==================================================================== */
 
 @keyframes pulse-led {
-  0%, 100% {
+  0%, 100% { 
     opacity: 1;
-    box-shadow: 0 0 8px var(--led-green);
+    box-shadow: 
+      0 0 4px var(--led-green),
+      0 0 8px var(--led-green);
   }
-  50% {
-    opacity: 0.6;
-    box-shadow: 0 0 16px var(--led-green);
+  50% { 
+    opacity: 0.7;
+    box-shadow: 
+      0 0 6px var(--led-green),
+      0 0 12px var(--led-green);
   }
 }
 
 @keyframes pulse-led-amber {
-  0%, 100% {
+  0%, 100% { 
     opacity: 1;
-    box-shadow: 0 0 8px var(--led-amber);
+    box-shadow: 
+      0 0 4px var(--led-amber),
+      0 0 8px var(--led-amber);
   }
-  50% {
-    opacity: 0.6;
-    box-shadow: 0 0 16px var(--led-amber);
-  }
-}
-
-@keyframes pulse-led-red {
-  0%, 100% {
-    opacity: 1;
-    box-shadow: 0 0 10px var(--led-red);
-  }
-  50% {
-    opacity: 0.4;
-    box-shadow: 0 0 20px var(--led-red);
+  50% { 
+    opacity: 0.7;
+    box-shadow: 
+      0 0 6px var(--led-amber),
+      0 0 12px var(--led-amber);
   }
 }
 
 /* ====================================================================
-   SPLIT RACK ROW
-   ==================================================================== */
-
-.split-rack-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.split-rack-module {
-  width: 100%;
-}
-
-/* ====================================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE
    ==================================================================== */
 
 @media (max-width: 768px) {
-  .rack-container {
-    grid-template-columns: 1fr;
+  .rack-module {
+    flex-direction: column;
+    align-items: flex-start;
     padding: 1rem;
+    min-height: auto;
     gap: 0.5rem;
+  }
+  
+  .rack-title {
+    font-size: 1rem;
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .rack-description {
+    position: static;
+    white-space: normal;
+    margin-top: 0.5rem;
+  }
+  
+  .rack-button-group {
+    width: 100%;
+  }
+  
+  .rack-button {
+    width: 100%;
   }
   
   .split-rack-row {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
   }
   
-  .rack-module {
-    padding: 1.5rem;
-  }
-  
-  .rack-title {
-    font-size: 1.2rem;
-  }
-  
-  .rack-dropdown-menu {
-    min-width: 100%;
+  .split-rack-module:first-child {
+    border-right: none;
+    border-bottom: 2px solid #000;
   }
 }
 
-/* ====================================================================
-   ACCESSIBILITY
-   ==================================================================== */
-
-/* High contrast mode */
-@media (prefers-contrast: high) {
-  .rack-module {
-    border-width: 4px;
-  }
-  
-  .rack-button {
-    border-width: 3px;
-  }
-}
-
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-/* Hide empty labels and instructions */
-.rack-label:empty,
-.booking-instruction:empty {
-  display: none;
-}
-
-/* Hide label strip when label is empty */
-.rack-label-strip:has(.rack-label:empty:only-child) .led-indicator {
-  margin-left: 0;
 }
