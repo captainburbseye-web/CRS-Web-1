@@ -4,78 +4,14 @@
  * Simplifies user journey from 8 options → 3 categories
  */
 
+import { bookingOptions } from '../data/bookingData';
+
 export const Book = () => {
   // Parse URL query params (simple approach for Hono JSX)
   const urlParams = typeof window !== 'undefined' 
     ? new URLSearchParams(window.location.search) 
     : new URLSearchParams();
   const bookingType = urlParams.get('type') || 'all';
-
-  // Booking options organized by type
-  const bookingOptions = {
-    rehearsal: [
-      {
-        title: 'Cowley Rehearsal Room',
-        location: 'Cowley Road HQ',
-        price: '£15/hr',
-        features: ['Full backline', 'PA system', 'Professional monitoring'],
-        url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services'
-      },
-      {
-        title: 'Cricket Rehearsal Room',
-        location: 'Cricket Road',
-        price: '£12/hr',
-        features: ['6m × 4m live room', 'Yamaha CLP piano', 'Drum kit + backline'],
-        url: 'https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services'
-      }
-    ],
-    recording: [
-      {
-        title: 'Cowley Control Room',
-        location: 'Cowley Road HQ',
-        price: 'From £30/hr',
-        features: ['Analog console', 'Outboard gear', 'Isolation booths'],
-        url: '/book/studio?location=cowley'
-      },
-      {
-        title: 'Cricket Control Room',
-        location: 'Cricket Road',
-        price: 'From £25/hr',
-        features: ['Live room integration', 'Tracking & mixing', 'Engineer available'],
-        url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services'
-      },
-      {
-        title: 'Full Production Services',
-        location: 'Both locations',
-        price: 'Day rates available',
-        features: ['Recording', 'Mixing & mastering', 'Sound design'],
-        url: '/book/studio'
-      }
-    ],
-    other: [
-      {
-        title: 'Music Lessons & Workshops',
-        location: 'Both locations',
-        price: 'From £25/session',
-        features: ['Individual tuition', 'Group workshops', 'Production masterclasses'],
-        url: '/book/lessons'
-      },
-      {
-        title: 'AV Equipment Hire',
-        location: 'Both locations',
-        price: 'Varies',
-        features: ['Microphones', 'PA systems', 'Lighting & cameras'],
-        url: '/av-services'
-      },
-      {
-        title: 'Venue & Event Space',
-        location: 'Both locations',
-        price: 'Contact for quote',
-        features: ['Live performances', 'Showcases', 'Professional PA & lighting'],
-        url: '/book/venue'
-      }
-    ]
-  };
 
   // Get relevant options based on type
   const getOptions = () => {
@@ -133,7 +69,7 @@ export const Book = () => {
       {/* Booking Options Grid */}
       <div class="booking-options-grid">
         {options.map((option) => (
-          <div class="booking-card">
+          <div class="booking-card" key={option.url}>
             <div class="booking-card-header">
               <h3 class="booking-card-title">{option.title}</h3>
               <span class="booking-card-location">{option.location}</span>
@@ -142,8 +78,8 @@ export const Book = () => {
             <div class="booking-card-price">{option.price}</div>
             
             <ul class="booking-card-features">
-              {option.features.map((feature) => (
-                <li>✓ {feature}</li>
+              {option.features.map((feature, index) => (
+                <li key={index}>✓ {feature}</li>
               ))}
             </ul>
             

@@ -22,17 +22,20 @@ export interface RackService {
 }
 
 export const rackServices: RackService[] = [
-  // Row 1: CRS HEADER - SEO OPTIMIZED
+  // Row 1: CRS HEADER - SEO OPTIMIZED (No UI elements - pure text display)
   {
     id: 'header',
     row: 1,
     label: '',
     title: 'COWLEY ROAD STUDIOS',
-    description: 'Professional recording studio Oxford and rehearsal space in East Oxford. Offering music production, mixing, mastering, band rehearsal rooms, and creative workspace. Two locations: Cowley Road HQ and Cricket Road. Continuing the Soundworks Oxford legacy since 1999.',
+    description: 'RECORDING STUDIO OXFORD | REHEARSAL SPACE | MUSIC PRODUCTION. Professional recording studio and rehearsal space in East Oxford. Offering mixing, mastering, band rehearsal rooms, and creative workspace. Two locations: Cowley Road HQ and Cricket Road. Continuing the Soundworks Oxford legacy since 1999.',
     url: '/',
     ledColor: 'green',
-    variant: 'command',
+    variant: 'passive', // Changed to passive to indicate no UI interaction
     instruction: '',
+    visible: true,
+    priority: 'high',
+    status: 'online',
   },
 
   // Row 2: BOOKING HUB - SIMPLIFIED 3-OPTION DROPDOWN

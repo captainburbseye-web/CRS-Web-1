@@ -81,10 +81,12 @@ export const RackModule = ({
 
       <p class="rack-description">{description}</p>
 
-      <div class="rack-button-group">
-        <span class="booking-instruction">{instruction}</span>
-        
-        {dropdownServices ? (
+      {/* Hide UI elements for header/passive modules (e.g., Row 1) */}
+      {title !== 'COWLEY ROAD STUDIOS' && (
+        <div class="rack-button-group">
+          <span class="booking-instruction">{instruction}</span>
+          
+          {dropdownServices ? (
           // Dropdown button
           <div class="rack-dropdown">
             <button
@@ -126,6 +128,7 @@ export const RackModule = ({
           </a>
         )}
       </div>
+      )}
     </div>
   );
 };
