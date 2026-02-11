@@ -25,43 +25,44 @@ export const RackModular = () => {
         .rack-modular-viewport {
           background-color: #050505;
           min-height: 100vh;
-          padding: 2rem 1rem;
+          padding: 0;
         }
 
-        /* Rack container layout */
+        /* Rack container layout - MANUS SPEC: full width, zero gaps */
         .rack-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 2rem;
-          padding: 2rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+          padding: 0;
           background-color: var(--steel-bg);
-          border-radius: 12px;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+          min-height: 100vh;
         }
 
-        /* Split Row Container */
+        /* Split Row Container - MANUS SPEC: zero gap */
         .split-rack-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 1.5rem;
+          gap: 0;
         }
 
         .split-rack-module {
-          width: 100%;
+          border-right: 1px solid #222;
         }
 
-        /* ===== BASE RACK MODULE ===== */
+        .split-rack-module:last-child {
+          border-right: none;
+        }
+
+        /* ===== BASE RACK MODULE - MANUS SPEC: gap-free ===== */
         .rack-module {
           background: var(--panel-green);
           border: 3px solid #333;
-          border-radius: 6px;
-          box-shadow: inset 0 0 4px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.3);
+          border-bottom: 1px solid #222;
+          box-shadow: inset 0 0 4px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
           padding: 2rem;
           font-family: 'Courier New', monospace;
           position: relative;
-          transition: all 0.3s ease;
+          transition: all 0.2s ease;
         }
 
         /* ===== VARIANT: COMMAND (Interactive/Brighter) ===== */
@@ -330,8 +331,21 @@ export const RackModular = () => {
             grid-template-columns: 1fr;
           }
           
-          .rack-container {
-            padding: 1rem;
+          .split-rack-module {
+            border-right: none;
+            border-bottom: 1px solid #222;
+          }
+          
+          .split-rack-module:last-child {
+            border-bottom: none;
+          }
+          
+          .rack-module {
+            padding: 1.5rem;
+          }
+          
+          .rack-title {
+            font-size: 1.2rem;
           }
         }
       `}</style>
