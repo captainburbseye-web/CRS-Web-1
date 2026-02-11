@@ -21,44 +21,32 @@ import { rackServices } from '../data/services';
  */
 
 export const RackModular = () => {
-  // Get header service for SEO (rendered as static header, not in channel system)
-  const headerService = rackServices.find(s => s.id === 'header');
-
   return (
-    <>
+    <div className="console-screen">
       {/* Skip Navigation Link for Keyboard Users */}
       <a href="#main-content" className="skip-to-content">
         Skip to main content
       </a>
       
-      {/* Header with semantic markup and SEO-optimized alt text */}
-      <header>
-        <div className="crs-header-container">
-          <h1 className="crs-main-title">
-            {headerService?.title || 'COWLEY ROAD STUDIOS'}
-          </h1>
-          <p className="crs-main-description">
-            {headerService?.description || 'Professional Recording Studio & Rehearsal Space in Oxford'}
-          </p>
-        </div>
-      </header>
+      {/* System Badge - Not a website header */}
+      <div className="system-badge" role="banner">
+        <span className="system-badge-led" aria-label="System online"></span>
+        <span className="system-badge-text">CRS RACK SYSTEM — ONLINE</span>
+      </div>
       
-      {/* Main content landmark - Hardware Channel System */}
-      <main id="main-content" role="main" aria-label="Cowley Road Studios Services">
+      {/* Main Console Interface */}
+      <main id="main-content" role="main" aria-label="Cowley Road Studios Console">
         <RackChannelSystem defaultChannel="booking-hub" />
       </main>
       
-      {/* Footer information (optional) */}
-      <footer className="crs-footer" role="contentinfo">
-        <p className="footer-text">
-          <strong>Cowley Road Studios</strong> — Professional Recording & Rehearsal Space in Oxford
-        </p>
-        <p className="footer-links">
-          <a href="/contact">Contact</a> | 
-          <a href="/status">System Status</a> | 
-          <a href="/accessibility">Accessibility</a>
-        </p>
-      </footer>
-    </>
+      {/* System Status Strip - Not a website footer */}
+      <div className="system-status-strip" role="status" aria-live="polite">
+        <span className="status-item">SYSTEM: ONLINE</span>
+        <span className="status-separator">·</span>
+        <span className="status-item">ACCESS: OK</span>
+        <span className="status-separator">·</span>
+        <span className="status-item">CRS v1.0</span>
+      </div>
+    </div>
   );
 };
