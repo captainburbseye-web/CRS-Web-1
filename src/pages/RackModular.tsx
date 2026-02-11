@@ -13,7 +13,15 @@ export const RackModular = () => {
   const allRows = getAllRows();
 
   return (
-    <div className="rack-container">
+    <>
+      {/* CRS Rack Header Image */}
+      <img 
+        src="https://pub-b79b90db3c594763bf7e4c9e96ae461d.r2.dev/rack%20parts/rack%201%20CRS%20Header.png"
+        alt="Cowley Road Studios Rack Header"
+        style="width: 100%; display: block; max-width: 1200px; margin: 0 auto;"
+      />
+      
+      <div className="rack-container">
       {allRows.map((rowNumber) => {
         const services = getServicesByRow(rowNumber);
         
@@ -66,5 +74,6 @@ export const RackModular = () => {
         ));
       })}
     </div>
+    </>
   );
 };
