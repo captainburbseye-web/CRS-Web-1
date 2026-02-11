@@ -1642,23 +1642,49 @@ app.get('/rack-test', (c) => {
 
 // RACK MODULAR — PHASE 4: HARDWARE CHANNEL SELECTOR SYSTEM
 // Single expandable rack with hardware aesthetics (console metaphor)
-// Refactored from stacked accordion to channel selector (only one service active at a time)
-// PHASE 4.1: Progressive disclosure wizard for BOOK NOW
+// CONSOLE INTERFACE — Hardware Control Surface (No Global Layout)
+// Pure console UI with zero website chrome
+// Uses c.html() to bypass global layout and theme CSS
 app.get('/rack-modular', (c) => {
-  return c.render(
-    <>
-      <link href="/static/crs-accessibility-fixes.css" rel="stylesheet" />
-      <link href="/static/rack-channel-system.css" rel="stylesheet" />
-      <link href="/static/booking-wizard.css" rel="stylesheet" />
-      <RackModular />
-      <script src="/static/rack-channel-system.js" defer></script>
-      <script src="/static/booking-wizard.js" defer></script>
-    </>,
-    {
-      title: 'Cowley Road Studios | Professional Recording & Rehearsal Oxford',
-      description: 'Professional recording studios and rehearsal spaces in Oxford. Control rooms, live rooms, music production, equipment hire, and venue space at Cowley Road and Cricket Road locations.',
-      keywords: 'recording studio oxford, rehearsal space oxford, music production oxford, control room hire, live room hire, professional studio oxford'
-    }
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <title>CRS Rack Console | Cowley Road Studios</title>
+        <meta name="description" content="Hardware-style console interface for Cowley Road Studios. Professional recording studios and rehearsal spaces in Oxford." />
+        
+        {/* Minimal fonts for console UI */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        
+        {/* ONLY Console CSS - Zero Website Theme */}
+        <link href="/static/rack-channel-system.css" rel="stylesheet" />
+        <link href="/static/booking-wizard.css" rel="stylesheet" />
+        
+        {/* Minimal reset for console */}
+        <style>{`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          body {
+            font-family: 'JetBrains Mono', 'Space Mono', monospace;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+          }
+        `}</style>
+      </head>
+      <body>
+        <RackModular />
+        <script src="/static/rack-channel-system.js" defer></script>
+        <script src="/static/booking-wizard.js" defer></script>
+      </body>
+    </html>
   )
 })
 
