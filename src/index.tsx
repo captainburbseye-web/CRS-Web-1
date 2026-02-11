@@ -1660,9 +1660,8 @@ app.get('/rack-modular', (c) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
         
-        {/* ONLY Console CSS - Zero Website Theme */}
-        <link href="/static/rack-channel-system.css" rel="stylesheet" />
-        <link href="/static/booking-wizard.css" rel="stylesheet" />
+        {/* ONLY Console CSS - Final Art Direction Pass */}
+        <link href="/static/rack-console-final.css" rel="stylesheet" />
         
         {/* Minimal reset for console */}
         <style>{`
