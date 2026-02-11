@@ -1,12 +1,20 @@
+/**
+ * RackModule Component - Manus's Clean Implementation
+ * Design Philosophy: Industrial rack hardware aesthetic
+ * - Sage green dominant with mustard accents
+ * - Warm browns for structure
+ * - Red used sparingly and playfully
+ * - Soft industrial feel, not militarized
+ * - FixLogic: 16px fonts, 44px touch targets, high contrast
+ */
+
 export interface RackModuleProps {
   label: string;
   title: string;
   description: string;
   bookingUrl: string;
   ledColor?: 'green' | 'amber' | 'red';
-  variant?: 'command' | 'rack' | 'passive';
   instruction?: string;
-  children?: any;
 }
 
 export const RackModule = ({
@@ -15,23 +23,16 @@ export const RackModule = ({
   description,
   bookingUrl,
   ledColor = 'green',
-  variant = 'rack',
   instruction = '[ INSTRUCTION: SELECT SERVICE FROM LIST ]',
-  children,
 }: RackModuleProps) => {
   // Construct LED class based on color prop
-  const ledClass = ledColor !== 'green' 
-    ? `led-indicator led-${ledColor}` 
-    : 'led-indicator';
-
-  // Construct module class with variant
-  const moduleClass = `rack-module rack-${variant}`;
+  const ledClass = `led-indicator${ledColor !== 'green' ? ` led-${ledColor}` : ''}`;
 
   // Auto-generate button text from title
-  const buttonText = `BOOK_${title.toUpperCase().replace(/\s/g, '_')}_NOW`;
+  const buttonText = `BOOK_${title.toUpperCase().replace(/\s+/g, '_')}_NOW`;
 
   return (
-    <div class={moduleClass}>
+    <div class="rack-module">
       <div class="rack-label-strip">
         <span class={ledClass}></span>
         <span class="rack-label">{label}</span>
@@ -40,13 +41,6 @@ export const RackModule = ({
       <h2 class="rack-title">{title}</h2>
 
       <p class="rack-description">{description}</p>
-
-      {/* Children slot for waveforms, visualizations, etc. */}
-      {children && (
-        <div class="rack-module-content">
-          {children}
-        </div>
-      )}
 
       <div class="rack-button-group">
         <span class="booking-instruction">{instruction}</span>
