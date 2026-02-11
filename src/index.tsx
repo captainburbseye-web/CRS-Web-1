@@ -21,6 +21,7 @@ import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
 import { RackModular } from './pages/RackModular'
+import { Book } from './pages/Book'
 import { DigitalPulsePage } from './pages/DigitalPulse'
 
 const app = new Hono()
@@ -327,8 +328,25 @@ app.use(renderer)
 // REDIRECTS & MISSING PAGES
 app.get('/av', (c) => c.redirect('/av-services'))
 
-// BOOKING GATEWAY
+// UNIFIED BOOKING PAGE (Phase 2: Simplified 3-category booking)
 app.get('/book', (c) => {
+  return c.render(
+    <>
+      <link href="/static/crs-booking.css" rel="stylesheet" />
+      <Header />
+      <Book />
+      <Footer />
+    </>,
+    {
+      title: 'Book Your Session | Cowley Road Studios Oxford',
+      description: 'Book rehearsal rooms, recording sessions, control rooms, music lessons, equipment hire, and venue space. Choose your service and book instantly.',
+      keywords: 'book studio oxford, recording session booking, rehearsal room booking, music lessons oxford, equipment hire oxford'
+    }
+  )
+})
+
+// OLD BOOKING GATEWAY (kept for reference, can be removed later)
+app.get('/book-old', (c) => {
   return c.render(
     <>
       <BuildStatusBanner />

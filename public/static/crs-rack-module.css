@@ -680,3 +680,141 @@
 /* ====================================================================
    END PHASE 2 ENHANCEMENTS
    ==================================================================== */
+
+/* ====================================================================
+   VISUAL HIERARCHY - 3-TIER PRIORITY SYSTEM
+   ==================================================================== */
+
+/* TIER 1: Hero Services (High Priority) - Larger, Prominent */
+.rack-module[data-priority="high"] {
+  /* Larger scale */
+  transform: scale(1.02);
+  
+  /* Stronger borders and glow */
+  border-left: 4px solid var(--sage-green, #88aa88);
+  box-shadow: 
+    0 0 20px rgba(136, 170, 136, 0.2),
+    inset 0 0 30px rgba(136, 170, 136, 0.05);
+  
+  /* Slightly brighter background */
+  background: 
+    linear-gradient(135deg, rgba(136, 170, 136, 0.08) 0%, rgba(136, 170, 136, 0.03) 100%),
+    #0a0a0a;
+}
+
+.rack-module[data-priority="high"] .rack-title {
+  font-size: 1.6rem;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 12px rgba(136, 170, 136, 0.4);
+}
+
+.rack-module[data-priority="high"] .rack-description {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.rack-module[data-priority="high"] .led-indicator {
+  width: 14px;
+  height: 14px;
+  box-shadow: 0 0 12px currentColor;
+}
+
+.rack-module[data-priority="high"] .rack-button {
+  font-size: 1.1rem;
+  padding: 1rem 2rem;
+  box-shadow: 0 0 16px rgba(227, 176, 75, 0.4);
+}
+
+/* TIER 2: Secondary Services (Normal Priority) - Standard */
+.rack-module[data-priority="normal"] {
+  /* Default styling - no changes needed */
+}
+
+/* TIER 3: Utility Services (Low Priority) - Smaller, Faded */
+.rack-module[data-priority="low"] {
+  opacity: 0.75;
+  transform: scale(0.96);
+  
+  /* Subtle background */
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%),
+    #0a0a0a;
+}
+
+.rack-module[data-priority="low"] .rack-title {
+  font-size: 1.2rem;
+  color: rgba(136, 170, 136, 0.8);
+}
+
+.rack-module[data-priority="low"] .rack-description {
+  font-size: 0.95rem;
+  color: rgba(224, 224, 224, 0.7);
+}
+
+.rack-module[data-priority="low"] .led-indicator {
+  width: 10px;
+  height: 10px;
+  opacity: 0.7;
+}
+
+.rack-module[data-priority="low"] .rack-button {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* Hover states restore full prominence */
+.rack-module[data-priority="low"]:hover {
+  opacity: 1;
+  transform: scale(0.98);
+}
+
+.rack-module[data-priority="high"]:hover {
+  transform: scale(1.03);
+  box-shadow: 
+    0 0 30px rgba(136, 170, 136, 0.3),
+    inset 0 0 40px rgba(136, 170, 136, 0.08);
+}
+
+/* Mobile: reduce scale differences */
+@media (max-width: 768px) {
+  .rack-module[data-priority="high"],
+  .rack-module[data-priority="low"] {
+    transform: scale(1);
+  }
+  
+  .rack-module[data-priority="high"] .rack-title {
+    font-size: 1.4rem;
+  }
+  
+  .rack-module[data-priority="low"] {
+    opacity: 0.85;
+  }
+}
+
+/* ====================================================================
+   SIMPLIFIED BOOKING DROPDOWN - 3-OPTION LAYOUT
+   ==================================================================== */
+
+/* Add emoji/icon support in dropdown items */
+.rack-dropdown-item {
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Larger dropdown for better readability */
+.rack-dropdown-menu {
+  min-width: 400px;
+}
+
+@media (max-width: 768px) {
+  .rack-dropdown-menu {
+    min-width: 100%;
+  }
+}
+
+/* ====================================================================
+   END VISUAL HIERARCHY ENHANCEMENTS
+   ==================================================================== */

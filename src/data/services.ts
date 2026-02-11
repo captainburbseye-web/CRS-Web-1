@@ -35,103 +35,104 @@ export const rackServices: RackService[] = [
     instruction: '',
   },
 
-  // Row 2: BOOKING HUB - DROPDOWN SELECTOR
+  // Row 2: BOOKING HUB - SIMPLIFIED 3-OPTION DROPDOWN
   {
     id: 'booking-hub',
     row: 2,
     label: '',
     title: 'BOOK NOW',
-    description: 'Select your service below and book instantly. Rehearsal rooms, recording sessions, control rooms, music lessons, venue hire, and equipment rental available.',
+    description: 'Choose your service type below. All bookings include instant confirmation and flexible scheduling.',
     url: '/book',
     ledColor: 'green',
     variant: 'command',
     instruction: '',
+    priority: 'high',
     dropdownServices: [
-      { name: 'Cowley Rehearsal Room', url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services' },
-      { name: 'Cricket Rehearsal Room', url: 'https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services' },
-      { name: 'Cowley Control Room', url: '/book/studio?location=cowley' },
-      { name: 'Cricket Control Room', url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services' },
-      { name: 'Recording & Production', url: '/book/studio' },
-      { name: 'Music Lessons', url: '/book/lessons' },
-      { name: 'Venue & Event Space', url: '/book/venue' },
-      { name: 'Equipment Hire', url: '/av-services' },
+      { name: '🎸 Book Rehearsal Room (Cowley or Cricket)', url: '/book?type=rehearsal' },
+      { name: '🎛️ Book Recording Session (Full Production)', url: '/book?type=recording' },
+      { name: '🎓 Book Lessons, Equipment or Venue', url: '/book?type=other' },
     ],
   },
 
-  // Row 3: REHEARSAL (SPLIT LEFT)
+  // Row 3: REHEARSAL (SPLIT LEFT) - TIER 1 HERO SERVICE
   {
     id: 'rehearsal-cowley',
     row: 3,
     label: '',
     title: 'COWLEY REHEARSAL',
-    description: 'Professional rehearsal space at Cowley Road HQ. Full backline, PA system, and monitoring available.',
+    description: 'Professional rehearsal space at Cowley Road HQ. Full backline, PA system, and monitoring available. £15/hr.',
     url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services',
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
     isSplit: true,
     splitPosition: 'left',
+    priority: 'high',
   },
 
-  // Row 3: REHEARSAL (SPLIT RIGHT)
+  // Row 3: REHEARSAL (SPLIT RIGHT) - TIER 1 HERO SERVICE
   {
     id: 'rehearsal-cricket',
     row: 3,
     label: '',
     title: 'CRICKET REHEARSAL',
-    description: '6m × 4m live room. Yamaha CLP piano, drum kit, backline, and vocal mics ready.',
+    description: '6m × 4m live room. Yamaha CLP piano, drum kit, backline, and vocal mics ready. £12/hr.',
     url: 'https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services',
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
     isSplit: true,
     splitPosition: 'right',
+    priority: 'high',
   },
 
-  // Row 4: CONTROL ROOM (SPLIT LEFT)
+  // Row 4: CONTROL ROOM (SPLIT LEFT) - TIER 1 HERO SERVICE
   {
     id: 'control-cowley',
     row: 4,
     label: '',
     title: 'COWLEY CONTROL ROOM',
-    description: 'High-end recording and production facility. Analog console, outboard gear, and isolation booths.',
+    description: 'High-end recording and production facility. Analog console, outboard gear, and isolation booths. From £30/hr.',
     url: '/book/studio?location=cowley',
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
     isSplit: true,
     splitPosition: 'left',
+    priority: 'high',
   },
 
-  // Row 4: CONTROL ROOM (SPLIT RIGHT)
+  // Row 4: CONTROL ROOM (SPLIT RIGHT) - TIER 1 HERO SERVICE
   {
     id: 'control-cricket',
     row: 4,
     label: '',
     title: 'CRICKET CONTROL ROOM',
-    description: 'Compact control room with live room integration. Perfect for tracking and basic mixing.',
+    description: 'Compact control room with live room integration. Perfect for tracking and basic mixing. From £25/hr.',
     url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
     isSplit: true,
     splitPosition: 'right',
+    priority: 'high',
   },
 
-  // Row 5: RECORDING & PRODUCTION SERVICES
+  // Row 5: RECORDING & PRODUCTION SERVICES - TIER 1 HERO SERVICE
   {
     id: 'recording-services',
     row: 5,
     label: '',
     title: 'RECORDING & PRODUCTION',
-    description: 'Full-service audio production: recording, mixing, mastering, tape transfer, and sound design. Experienced engineers available.',
+    description: 'Full-service audio production: recording, mixing, mastering, tape transfer, and sound design. Experienced engineers available. Day rates available.',
     url: '/book/studio',
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    priority: 'high',
   },
 
-  // Row 6: MUSIC LESSONS ✨ NEW
+  // Row 6: MUSIC LESSONS - TIER 2 SECONDARY SERVICE
   {
     id: 'music-lessons',
     row: 6,
@@ -142,9 +143,10 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    priority: 'normal',
   },
 
-  // Row 7: AV HIRE
+  // Row 7: AV HIRE - TIER 2 SECONDARY SERVICE
   {
     id: 'av-hire',
     row: 7,
@@ -155,9 +157,10 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    priority: 'normal',
   },
 
-  // Row 8: AV REPAIRS ✨ NEW
+  // Row 8: AV REPAIRS - TIER 2 SECONDARY SERVICE
   {
     id: 'av-repairs',
     row: 8,
@@ -168,9 +171,10 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    priority: 'normal',
   },
 
-  // Row 9: WORKSHOP CAFÉ
+  // Row 9: WORKSHOP CAFÉ - TIER 2 SECONDARY SERVICE
   {
     id: 'workshop-cafe',
     row: 9,
@@ -181,9 +185,10 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'passive',
     instruction: '',
+    priority: 'normal',
   },
 
-  // Row 10: VENUE HIRE ✨ NEW
+  // Row 10: VENUE HIRE - TIER 2 SECONDARY SERVICE
   {
     id: 'venue-hire',
     row: 10,
@@ -194,9 +199,10 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'rack',
     instruction: '',
+    priority: 'normal',
   },
 
-  // Row 11: CONTACT
+  // Row 11: CONTACT - TIER 3 UTILITY
   {
     id: 'contact',
     row: 11,
@@ -207,9 +213,10 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'passive',
     instruction: '',
+    priority: 'low',
   },
 
-  // Row 12: MASTER BUS / SYSTEM STATUS
+  // Row 12: MASTER BUS / SYSTEM STATUS - TIER 3 UTILITY
   {
     id: 'system-status',
     row: 12,
@@ -220,6 +227,7 @@ export const rackServices: RackService[] = [
     ledColor: 'green',
     variant: 'command',
     instruction: '',
+    priority: 'low',
   },
 ];
 
