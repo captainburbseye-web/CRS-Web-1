@@ -22,6 +22,7 @@ import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
 import { RackModular } from './pages/RackModular'
 import { RackModularEnhanced } from './pages/RackModularEnhanced'
+import { RackAccordion } from './pages/RackAccordion'
 import { Book } from './pages/Book'
 import { DigitalPulsePage } from './pages/DigitalPulse'
 
@@ -1657,6 +1658,29 @@ app.get('/rack-variants', (c) => {
       keywords: 'rack modules, hardware ui, studio equipment, variant system'
     }
   )
+})
+
+// RACK ACCORDION — Hardware Rack with Expandable Modules
+// Click any module to expand it, others stay collapsed
+// Pure hardware aesthetic with LED indicators
+app.get('/rack-accordion', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CRS Rack Accordion | Cowley Road Studios</title>
+        <meta name="description" content="Expandable hardware rack interface for Cowley Road Studios. Professional recording studios and rehearsal spaces in Oxford." />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="/static/rack-accordion.css" rel="stylesheet" />
+      </head>
+      <body>
+        <RackAccordion />
+      </body>
+    </html>
+  );
 })
 
 // RACK MODULAR — PHASE 4: HARDWARE CHANNEL SELECTOR SYSTEM

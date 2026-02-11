@@ -1,0 +1,410 @@
+/**
+ * RACK ACCORDION - Hardware Rack with Expandable Modules
+ * Design: Audio hardware aesthetic with collapsible panels
+ * Each module is a rack unit that expands on click
+ */
+
+:root {
+  --hardware-green: #00ff88;
+  --hardware-amber: #ff9f1c;
+  --hardware-red: #ff4444;
+  --metal-dark: #0a0a0a;
+  --metal-plate: #1a1a1a;
+  --metal-edge: rgba(255,255,255,0.08);
+  --font-tech: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Courier New', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--metal-dark);
+  color: #ffffff;
+  font-family: var(--font-tech);
+  overflow-x: hidden;
+}
+
+/* ========================================
+   VIEWPORT & SYSTEM BADGE
+   ======================================== */
+
+.rack-accordion-viewport {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--metal-dark);
+}
+
+.system-badge {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 48px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+  border-bottom: 1px solid var(--metal-edge);
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: var(--hardware-green);
+}
+
+.system-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hardware-green);
+  box-shadow: 0 0 12px rgba(0,255,136,0.8);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ========================================
+   RACK CONTAINER
+   ======================================== */
+
+.rack-accordion-container {
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ========================================
+   ACCORDION MODULE (COLLAPSED STATE)
+   ======================================== */
+
+.rack-accordion-module {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 50%, #0f0f0f 100%);
+  border: 2px solid rgba(42,42,42,0.8);
+  border-radius: 6px;
+  box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.4),
+    inset 0 -1px 0 rgba(255,255,255,0.03),
+    0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.2s ease-out;
+  overflow: hidden;
+}
+
+/* Variant styling for collapsed state */
+.rack-accordion-module.rack-command {
+  border-color: rgba(255,159,28,0.5);
+}
+
+.rack-accordion-module.rack-rack {
+  border-color: rgba(153,204,153,0.4);
+}
+
+.rack-accordion-module.rack-passive {
+  opacity: 0.75;
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* ========================================
+   ACCORDION HEADER (ALWAYS VISIBLE)
+   ======================================== */
+
+.rack-accordion-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 24px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  position: relative;
+  transition: all 0.15s ease-out;
+}
+
+.rack-accordion-header::-webkit-details-marker {
+  display: none;
+}
+
+.rack-accordion-header:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.rack-accordion-module[open] .rack-accordion-header {
+  background: rgba(0,255,136,0.05);
+  border-bottom: 1px solid rgba(153,204,153,0.15);
+}
+
+/* LED Indicator */
+.rack-led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #8b6f47;
+  box-shadow: 0 0 8px rgba(139,111,71,0.3);
+  transition: all 0.2s ease-out;
+  flex-shrink: 0;
+}
+
+.rack-led[data-color="green"] {
+  background: var(--hardware-green);
+  box-shadow: 0 0 12px rgba(0,255,136,0.6);
+}
+
+.rack-led[data-color="amber"] {
+  background: var(--hardware-amber);
+  box-shadow: 0 0 12px rgba(255,159,28,0.6);
+}
+
+.rack-led[data-color="red"] {
+  background: var(--hardware-red);
+  box-shadow: 0 0 12px rgba(255,68,68,0.6);
+}
+
+.rack-accordion-module[open] .rack-led {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Label (e.g., "ROW_02") */
+.rack-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 60px;
+}
+
+/* Title (e.g., "BOOK NOW") */
+.rack-title {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.9);
+}
+
+/* Chevron indicator */
+.rack-chevron {
+  font-size: 20px;
+  color: rgba(255,255,255,0.4);
+  transition: transform 0.2s ease-out;
+  line-height: 1;
+}
+
+.rack-accordion-module[open] .rack-chevron {
+  transform: rotate(90deg);
+  color: var(--hardware-green);
+}
+
+/* ========================================
+   ACCORDION CONTENT (EXPANDED STATE)
+   ======================================== */
+
+.rack-accordion-content {
+  border-top: 1px solid rgba(153,204,153,0.1);
+  animation: expandContent 0.25s ease-out;
+}
+
+@keyframes expandContent {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rack-content-inner {
+  padding: 2rem 2.5rem;
+  background: rgba(0,0,0,0.2);
+}
+
+.rack-description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 2rem;
+  max-width: 65ch;
+}
+
+/* ========================================
+   SERVICES LIST (FOR DROPDOWN MODULES)
+   ======================================== */
+
+.rack-services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.services-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 8px;
+}
+
+.rack-service-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(153,204,153,0.08);
+  border: 1px solid rgba(153,204,153,0.2);
+  border-radius: 4px;
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.15s ease-out;
+}
+
+.rack-service-link:hover {
+  background: rgba(153,204,153,0.15);
+  border-color: rgba(153,204,153,0.4);
+  transform: translateX(4px);
+}
+
+.service-bullet {
+  color: var(--hardware-green);
+  font-size: 12px;
+}
+
+/* ========================================
+   CTA BUTTON (FOR SINGLE ACTION MODULES)
+   ======================================== */
+
+.rack-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: linear-gradient(180deg, rgba(0,255,136,0.15) 0%, rgba(0,255,136,0.08) 100%);
+  border: 2px solid rgba(0,255,136,0.4);
+  border-radius: 4px;
+  color: var(--hardware-green);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.15s ease-out;
+  box-shadow: 0 0 20px rgba(0,255,136,0.15);
+}
+
+.rack-cta-button:hover {
+  background: linear-gradient(180deg, rgba(0,255,136,0.25) 0%, rgba(0,255,136,0.15) 100%);
+  border-color: rgba(0,255,136,0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(0,255,136,0.3);
+}
+
+.button-led {
+  font-size: 10px;
+  color: var(--hardware-green);
+}
+
+/* ========================================
+   SYSTEM STATUS STRIP (BOTTOM)
+   ======================================== */
+
+.system-status-strip {
+  position: sticky;
+  bottom: 0;
+  height: 32px;
+  background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
+  border-top: 1px solid var(--metal-edge);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.5);
+  gap: 16px;
+}
+
+/* ========================================
+   MOBILE RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .rack-accordion-container {
+    padding: 1rem 0.75rem;
+  }
+  
+  .rack-accordion-header {
+    padding: 16px 18px;
+    gap: 12px;
+  }
+  
+  .rack-label {
+    display: none; /* Hide row labels on mobile */
+  }
+  
+  .rack-title {
+    font-size: 13px;
+  }
+  
+  .rack-content-inner {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .rack-description {
+    font-size: 14px;
+  }
+  
+  .system-badge {
+    padding: 0 1rem;
+    font-size: 12px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY & REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states for keyboard navigation */
+.rack-accordion-header:focus {
+  outline: 2px solid var(--hardware-green);
+  outline-offset: 2px;
+}
+
+.rack-service-link:focus,
+.rack-cta-button:focus {
+  outline: 2px solid var(--hardware-green);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .rack-accordion-module {
+    border-width: 3px;
+  }
+  
+  .rack-cta-button {
+    border-width: 3px;
+  }
+}
