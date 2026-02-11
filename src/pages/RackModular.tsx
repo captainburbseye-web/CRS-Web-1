@@ -25,44 +25,43 @@ export const RackModular = () => {
         .rack-modular-viewport {
           background-color: #050505;
           min-height: 100vh;
-          padding: 0;
+          padding: 2rem 1rem;
         }
 
-        /* Rack container layout - MANUS SPEC: full width, zero gaps */
+        /* Rack container layout - MANUS SPEC: responsive grid with gaps */
         .rack-container {
-          display: flex;
-          flex-direction: column;
-          gap: 0;
-          padding: 0;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+          gap: 2rem;
+          padding: 2rem;
           background-color: var(--steel-bg);
-          min-height: 100vh;
+          border-radius: 12px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+          max-width: 1400px;
+          margin: 0 auto;
         }
 
-        /* Split Row Container - MANUS SPEC: zero gap */
+        /* Split Row Container - MANUS SPEC */
         .split-rack-row {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 0;
+          gap: 1.5rem;
         }
 
         .split-rack-module {
-          border-right: 1px solid #222;
+          width: 100%;
         }
 
-        .split-rack-module:last-child {
-          border-right: none;
-        }
-
-        /* ===== BASE RACK MODULE - MANUS SPEC: gap-free ===== */
+        /* ===== BASE RACK MODULE - MANUS SPEC ===== */
         .rack-module {
           background: var(--panel-green);
           border: 3px solid #333;
-          border-bottom: 1px solid #222;
-          box-shadow: inset 0 0 4px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3);
+          border-radius: 6px;
+          box-shadow: inset 0 0 4px rgba(0,0,0,0.4), 0 4px 12px rgba(0,0,0,0.3);
           padding: 2rem;
           font-family: 'Courier New', monospace;
           position: relative;
-          transition: all 0.2s ease;
+          transition: all 0.3s ease;
         }
 
         /* ===== VARIANT: COMMAND (Interactive/Brighter) ===== */
@@ -327,25 +326,14 @@ export const RackModular = () => {
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
+          .rack-container {
+            grid-template-columns: 1fr;
+            padding: 1rem;
+          }
+          
           .split-rack-row {
             grid-template-columns: 1fr;
-          }
-          
-          .split-rack-module {
-            border-right: none;
-            border-bottom: 1px solid #222;
-          }
-          
-          .split-rack-module:last-child {
-            border-bottom: none;
-          }
-          
-          .rack-module {
-            padding: 1.5rem;
-          }
-          
-          .rack-title {
-            font-size: 1.2rem;
+            gap: 1.5rem;
           }
         }
       `}</style>
