@@ -21,20 +21,20 @@ export const rackServices: RackService[] = [
   {
     id: 'header',
     row: 1,
-    label: '[ SYSTEM: COWLEY_ROAD_STUDIOS ]',
+    label: '[ COWLEY_ROAD_STUDIOS ]',
     title: 'CRS BOOKING HUB',
     description: 'Central booking system for all Cowley Road Studios services. Navigate to specific services below or use the main booking portal.',
     url: '/',
     ledColor: 'green',
     variant: 'command',
-    instruction: '[ SYSTEM: ONLINE ]',
+    instruction: '[ SELECT SERVICE BELOW ]',
   },
 
   // Row 2: BOOKING HUB
   {
     id: 'booking-hub',
     row: 2,
-    label: '[ NODE: MAIN_PORTAL ]',
+    label: '[ MAIN_PORTAL ]',
     title: 'MAIN BOOKING PORTAL',
     description: 'Unified booking interface for all studio services. Access rehearsal rooms, control rooms, recording sessions, and venue hire.',
     url: '/book',
@@ -47,13 +47,13 @@ export const rackServices: RackService[] = [
   {
     id: 'rehearsal-cowley',
     row: 3,
-    label: '[ NODE: COWLEY_ROAD ]',
+    label: '[ COWLEY_ROAD ]',
     title: 'COWLEY REHEARSAL',
     description: 'Professional rehearsal space at Cowley Road HQ. Full backline, PA system, and monitoring available.',
     url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services',
-    ledColor: 'amber',
+    ledColor: 'green',
     variant: 'rack',
-    instruction: '[ STATUS: COMMISSIONING ]',
+    instruction: '[ BOOK NOW ]',
     isSplit: true,
     splitPosition: 'left',
   },
@@ -62,13 +62,13 @@ export const rackServices: RackService[] = [
   {
     id: 'rehearsal-cricket',
     row: 3,
-    label: '[ NODE: CRICKET_ROAD ]',
+    label: '[ CRICKET_ROAD ]',
     title: 'CRICKET REHEARSAL',
-    description: 'Fully operational 6m × 4m live room. Yamaha CLP piano, drum kit, backline, and vocal mics ready.',
+    description: '6m × 4m live room. Yamaha CLP piano, drum kit, backline, and vocal mics ready.',
     url: 'https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services',
     ledColor: 'green',
     variant: 'rack',
-    instruction: '[ STATUS: OPERATIONAL ]',
+    instruction: '[ BOOK NOW ]',
     isSplit: true,
     splitPosition: 'right',
   },
@@ -77,13 +77,13 @@ export const rackServices: RackService[] = [
   {
     id: 'control-cowley',
     row: 4,
-    label: '[ NODE: COWLEY_HQ ]',
+    label: '[ COWLEY_HQ ]',
     title: 'COWLEY CONTROL ROOM',
     description: 'High-end recording and production facility. Analog console, outboard gear, and isolation booths.',
     url: '/book/studio?location=cowley',
-    ledColor: 'amber',
+    ledColor: 'green',
     variant: 'rack',
-    instruction: '[ STATUS: FINAL_COMMISSIONING ]',
+    instruction: '[ BOOK NOW ]',
     isSplit: true,
     splitPosition: 'left',
   },
@@ -92,13 +92,13 @@ export const rackServices: RackService[] = [
   {
     id: 'control-cricket',
     row: 4,
-    label: '[ NODE: CRICKET_ROAD ]',
+    label: '[ CRICKET_ROAD ]',
     title: 'CRICKET CONTROL ROOM',
     description: 'Compact control room with live room integration. Perfect for tracking and basic mixing.',
     url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
     ledColor: 'green',
     variant: 'rack',
-    instruction: '[ STATUS: OPERATIONAL ]',
+    instruction: '[ BOOK NOW ]',
     isSplit: true,
     splitPosition: 'right',
   },
@@ -113,7 +113,7 @@ export const rackServices: RackService[] = [
     url: '/book/studio',
     ledColor: 'green',
     variant: 'rack',
-    instruction: '[ INSTRUCTION: SELECT SERVICE ]',
+    instruction: '[ SELECT SERVICE ]',
   },
 
   // Row 6: MUSIC LESSONS ✨ NEW
@@ -126,7 +126,7 @@ export const rackServices: RackService[] = [
     url: '/book/lessons',
     ledColor: 'green',
     variant: 'rack',
-    instruction: '[ INSTRUCTION: BOOK SESSION ]',
+    instruction: '[ BOOK SESSION ]',
   },
 
   // Row 7: AV HIRE
@@ -139,7 +139,7 @@ export const rackServices: RackService[] = [
     url: '/av-services',
     ledColor: 'green',
     variant: 'rack',
-    instruction: '[ INSTRUCTION: VIEW INVENTORY ]',
+    instruction: '[ VIEW INVENTORY ]',
   },
 
   // Row 8: AV REPAIRS ✨ NEW
@@ -152,20 +152,20 @@ export const rackServices: RackService[] = [
     url: '/av-services/repairs',
     ledColor: 'green',
     variant: 'rack',
-    instruction: '[ INSTRUCTION: REQUEST QUOTE ]',
+    instruction: '[ REQUEST QUOTE ]',
   },
 
   // Row 9: WORKSHOP CAFÉ
   {
     id: 'workshop-cafe',
     row: 9,
-    label: '[ NODE: WORKSHOP_CAFE ]',
+    label: '[ WORKSHOP_CAFE ]',
     title: 'WORKSHOP CAFÉ',
     description: 'Creative workspace and community hub. Specialty coffee, hot-desking, meeting rooms, and AI learning lab.',
     url: '/cafe',
     ledColor: 'green',
     variant: 'passive',
-    instruction: '[ STATUS: READY ]',
+    instruction: '[ VISIT CAFE ]',
   },
 
   // Row 10: VENUE HIRE ✨ NEW
@@ -178,7 +178,7 @@ export const rackServices: RackService[] = [
     url: '/book/venue',
     ledColor: 'green',
     variant: 'rack',
-    instruction: '[ INSTRUCTION: ENQUIRE AVAILABILITY ]',
+    instruction: '[ ENQUIRE AVAILABILITY ]',
   },
 
   // Row 11: CONTACT
@@ -191,7 +191,7 @@ export const rackServices: RackService[] = [
     url: '/contact',
     ledColor: 'green',
     variant: 'passive',
-    instruction: '[ INSTRUCTION: SEND MESSAGE ]',
+    instruction: '[ SEND MESSAGE ]',
   },
 
   // Row 12: MASTER BUS / SYSTEM STATUS
@@ -204,7 +204,7 @@ export const rackServices: RackService[] = [
     url: '/status',
     ledColor: 'green',
     variant: 'command',
-    instruction: '[ SYSTEM: ALL_SYSTEMS_OPERATIONAL ]',
+    instruction: '[ ALL_SYSTEMS_OPERATIONAL ]',
   },
 ];
 
