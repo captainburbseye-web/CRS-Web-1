@@ -1643,13 +1643,16 @@ app.get('/rack-test', (c) => {
 // RACK MODULAR — PHASE 4: HARDWARE CHANNEL SELECTOR SYSTEM
 // Single expandable rack with hardware aesthetics (console metaphor)
 // Refactored from stacked accordion to channel selector (only one service active at a time)
+// PHASE 4.1: Progressive disclosure wizard for BOOK NOW
 app.get('/rack-modular', (c) => {
   return c.render(
     <>
       <link href="/static/crs-accessibility-fixes.css" rel="stylesheet" />
       <link href="/static/rack-channel-system.css" rel="stylesheet" />
+      <link href="/static/booking-wizard.css" rel="stylesheet" />
       <RackModular />
       <script src="/static/rack-channel-system.js" defer></script>
+      <script src="/static/booking-wizard.js" defer></script>
     </>,
     {
       title: 'Cowley Road Studios | Professional Recording & Rehearsal Oxford',

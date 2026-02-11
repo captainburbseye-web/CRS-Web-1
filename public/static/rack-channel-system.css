@@ -180,17 +180,19 @@
    ============================================ */
 .rack-channel-selector {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 1.5rem;
+  flex-wrap: nowrap; /* Never wrap - horizontal scroll only */
+  gap: 12px; /* Increased from 8px */
+  height: 64px; /* Fixed hardware rail height */
+  padding: 10px 20px; /* 8-12px spec applied */
   background: var(--anodized-black);
   border-radius: 8px 8px 0 0;
   box-shadow: var(--shadow-panel-outer);
-  border-bottom: 2px solid rgba(153, 204, 153, 0.2);
+  border-bottom: 3px solid rgba(153, 204, 153, 0.25); /* Stronger separator */
   position: relative;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  align-items: center; /* Vertical center */
 }
 
 /* Horizontal scroll optimization for mobile */
@@ -227,15 +229,16 @@
 .rack-channel-button {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
+  gap: 10px; /* Increased from 8px */
+  padding: 12px 20px; /* Increased from 10px 16px */
+  min-width: 160px; /* Prevent cramping */
   background: var(--panel-face-gradient);
   border: 1px solid rgba(42, 42, 42, 0.8);
   border-radius: 4px;
   color: var(--text-inactive);
   font-family: var(--font-tech);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px; /* Inactive: smaller, lighter */
+  font-weight: 400; /* Lighter weight when inactive */
   text-transform: uppercase;
   letter-spacing: 0.5px;
   cursor: pointer;
@@ -244,7 +247,7 @@
   position: relative;
   scroll-snap-align: start;
   white-space: nowrap;
-  min-width: fit-content;
+  flex-shrink: 0; /* Don't shrink on small screens */
 }
 
 /* Hover state - LED flicker preview */
@@ -267,6 +270,8 @@
   background: linear-gradient(180deg, #1f2f1f 0%, #142014 100%);
   border-color: rgba(0, 255, 136, 0.5);
   color: var(--text-active);
+  font-size: 14px; /* Active: larger, bolder */
+  font-weight: 600; /* Bold when active */
   box-shadow: 
     var(--shadow-button-pressed),
     0 0 16px rgba(0, 255, 136, 0.2),
@@ -328,23 +333,38 @@
 }
 
 /* ============================================
-   CHANNEL LABEL & NUMBER
+   CHANNEL LABEL & CHEVRON
    ============================================ */
 .channel-label {
   flex: 1;
   text-align: left;
-  font-weight: 600;
+  position: relative;
 }
 
+/* Chevron icon for expand/collapse affordance */
+.channel-label::after {
+  content: '›';
+  display: inline-block;
+  margin-left: 8px;
+  opacity: 0.4;
+  font-size: 16px;
+  transition: transform 0.2s ease-out, opacity 0.2s;
+  vertical-align: middle;
+}
+
+.rack-channel-button.active .channel-label::after {
+  transform: rotate(90deg);
+  opacity: 0.8;
+  color: var(--led-active-green);
+}
+
+.rack-channel-button:hover .channel-label::after {
+  opacity: 0.6;
+}
+
+/* Remove channel numbers entirely */
 .channel-number {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.25);
-  font-weight: 400;
-  margin-left: 4px;
-}
-
-.rack-channel-button.active .channel-number {
-  color: rgba(0, 255, 136, 0.5);
+  display: none;
 }
 
 /* ============================================
@@ -353,27 +373,26 @@
 .rack-main-bay {
   position: relative;
   min-height: 600px;
+  max-height: 80vh; /* Constrain to viewport */
   background: var(--rack-chassis-bg);
   padding: 0;
+  overflow-y: auto; /* Scroll within bay if needed */
+  /* Smooth scroll behavior */
+  scroll-behavior: smooth;
 }
 
 /* Bay Panel - Individual service content area */
 .rack-bay-panel {
-  display: none;
   opacity: 0;
   transform: scale(0.98);
-  transition: 
-    opacity var(--transition-channel-switch),
-    transform var(--transition-channel-switch);
   background: var(--panel-face-gradient);
   border-radius: 0 0 8px 8px;
   box-shadow: var(--shadow-panel-outer);
   overflow: hidden;
 }
 
-/* Active panel - Powered up */
+/* Active panel - Powered up (always in DOM now, just fade in) */
 .rack-bay-panel.active {
-  display: block;
   opacity: 1;
   transform: scale(1);
   animation: panel-power-on 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -493,14 +512,17 @@
    BAY CONTENT - Service Details
    ============================================ */
 .bay-content {
-  padding: 2.5rem;
+  padding: 3rem 3.5rem; /* Increased from 2.5rem - 16-24px spec */
+  max-width: 900px; /* Constrain content width */
+  margin: 0 auto; /* Center content */
 }
 
 .bay-description {
   font-size: 1.125rem;
-  line-height: 1.75;
+  line-height: 1.8; /* Increased from 1.75 */
   color: var(--text-label);
   margin-bottom: 2rem;
+  max-width: 65ch; /* Constrain line length for readability */
 }
 
 /* Dropdown section */
@@ -572,8 +594,9 @@
    ============================================ */
 .bay-actions {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem; /* Increased from 1rem */
   flex-wrap: wrap;
+  align-items: center; /* Vertical alignment */
   margin-top: 2.5rem;
   padding-top: 2rem;
   border-top: 1px solid rgba(153, 204, 153, 0.1);
@@ -634,12 +657,21 @@
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.2);
   color: var(--text-label);
+  padding: 14px 24px; /* Match primary height */
+  min-width: 180px; /* Consistent sizing */
+  margin-left: 0; /* No extra margin needed with gap */
 }
 
 .bay-button-secondary:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.4);
   color: var(--text-active);
+}
+
+/* Icon in secondary button */
+.button-icon {
+  margin-right: 8px;
+  font-size: 14px;
 }
 
 /* Button LED indicator */

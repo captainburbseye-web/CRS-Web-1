@@ -1,23 +1,26 @@
 import { FC } from 'hono/jsx';
 import { rackServices } from '../../data/services';
 import type { RackService } from '../../data/services';
+import { RackBayContent } from './RackBayContent';
 
 /**
  * RackChannelSystem - Hardware-style channel selector with single active bay
  * 
  * Design Philosophy:
  * - Operates like a console channel strip selector
- * - Only ONE service active at a time (single focus, zero attention chaos)
+ * - Only ONE service active at a time (TRUE single focus - only active panel in DOM)
  * - Headers feel like hardware selectors, not web tabs
  * - Main panel feels like the active machine bay
  * - Inactive services are visibly dormant (dim LEDs, standby mode)
  * 
  * Interaction Model:
  * - Click channel selector → switch active bay
- * - Smooth 200ms transitions with power-on/power-down feel
+ * - Smooth 250ms transitions with power-on/power-down feel
  * - LED indicators show active/inactive state
  * - Keyboard navigation: Arrow keys, Home/End, Enter/Space
  * - Mobile: Horizontal scrollable channel bar with snap points
+ * 
+ * REFACTORED: Now only renders active panel content (no hidden panels in DOM)
  */
 
 interface RackChannelSystemProps {
@@ -72,121 +75,14 @@ export const RackChannelSystem: FC<RackChannelSystemProps> = ({
               <span class="channel-label">
                 {channel.title}
               </span>
-              
-              {/* Optional: Channel number */}
-              <span class="channel-number" aria-hidden="true">
-                {String(index + 1).padStart(2, '0')}
-              </span>
             </button>
           );
         })}
       </div>
       
-      {/* Main Bay - Active Channel Content */}
-      <div class="rack-main-bay" aria-live="polite">
-        {channels.map((channel) => {
-          const isDefault = channel.id === defaultChannelData.id;
-          
-          return (
-            <div
-              key={channel.id}
-              id={`channel-panel-${channel.id}`}
-              role="tabpanel"
-              aria-labelledby={`channel-tab-${channel.id}`}
-              data-channel-id={channel.id}
-              data-priority={channel.priority || 'normal'}
-              class={`rack-bay-panel${isDefault ? ' active' : ''}`}
-              hidden={!isDefault}
-              tabindex={isDefault ? 0 : -1}
-            >
-              {/* Hardware-style panel header */}
-              <div class="bay-header">
-                <div class="bay-header-rail">
-                  <span class="bay-led active" aria-label="Channel active">●</span>
-                  <h2 class="bay-title">{channel.title}</h2>
-                  {channel.priority === 'high' && (
-                    <span class="bay-badge priority-high" aria-label="Priority service">
-                      PRIORITY
-                    </span>
-                  )}
-                </div>
-                {/* VU meter style decorative element */}
-                <div class="bay-header-meter" aria-hidden="true">
-                  <span class="meter-bar"></span>
-                  <span class="meter-bar"></span>
-                  <span class="meter-bar"></span>
-                </div>
-              </div>
-              
-              {/* Panel content */}
-              <div class="bay-content">
-                {/* Description */}
-                <div class="bay-description">
-                  {channel.description}
-                </div>
-                
-                {/* Dropdown services (if applicable) */}
-                {channel.dropdownServices && channel.dropdownServices.length > 0 && (
-                  <div class="bay-dropdown-section">
-                    <h3 class="bay-section-title">AVAILABLE OPTIONS</h3>
-                    <div class="bay-dropdown-list">
-                      {channel.dropdownServices.map((service) => (
-                        <a 
-                          key={service.url}
-                          href={service.url} 
-                          class="bay-dropdown-item"
-                        >
-                          <span class="dropdown-icon">▸</span>
-                          {service.name}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                
-                {/* Split services display (if applicable) */}
-                {channel.isSplit && (
-                  <div class="bay-split-indicator" aria-label={`Split position: ${channel.splitPosition}`}>
-                    <span class="split-label">
-                      POSITION: {channel.splitPosition?.toUpperCase()}
-                    </span>
-                  </div>
-                )}
-                
-                {/* Call-to-action buttons */}
-                <div class="bay-actions">
-                  <a 
-                    href={channel.url} 
-                    class={`bay-button bay-button-primary ${channel.variant}`}
-                    data-variant={channel.variant}
-                  >
-                    <span class="button-led" aria-hidden="true">●</span>
-                    {channel.ctaText || 'BOOK NOW'}
-                  </a>
-                  
-                  {/* Secondary action: View details */}
-                  {channel.priority === 'high' && (
-                    <button 
-                      type="button"
-                      class="bay-button bay-button-secondary"
-                      data-action="view-details"
-                      data-channel-id={channel.id}
-                    >
-                      VIEW FULL SPECS
-                    </button>
-                  )}
-                </div>
-              </div>
-              
-              {/* Hardware-style panel footer rail */}
-              <div class="bay-footer-rail" aria-hidden="true">
-                <span class="rail-indicator"></span>
-                <span class="rail-indicator"></span>
-                <span class="rail-indicator"></span>
-              </div>
-            </div>
-          );
-        })}
+      {/* Main Bay - ONLY Active Channel Content (no hidden panels) */}
+      <div class="rack-main-bay" aria-live="polite" data-active-channel={defaultChannelData.id}>
+        <RackBayContent channel={defaultChannelData} />
       </div>
       
       {/* Status bar (optional) */}

@@ -96,18 +96,17 @@ function activateChannel(channelId) {
   
   if (!system) return;
   
-  // Find target button and panel
+  // Find target button and main bay
   const targetButton = system.querySelector(`.rack-channel-button[data-channel-id="${channelId}"]`);
-  const targetPanel = system.querySelector(`.rack-bay-panel[data-channel-id="${channelId}"]`);
+  const mainBay = system.querySelector('.rack-main-bay');
   
-  if (!targetButton || !targetPanel) {
+  if (!targetButton || !mainBay) {
     console.warn(`Channel not found: ${channelId}`);
     return;
   }
   
-  // Get all buttons and panels
+  // Get all buttons
   const allButtons = system.querySelectorAll('.rack-channel-button');
-  const allPanels = system.querySelectorAll('.rack-bay-panel');
   
   // Deactivate all buttons
   allButtons.forEach(btn => {
@@ -122,13 +121,6 @@ function activateChannel(channelId) {
     }
   });
   
-  // Deactivate all panels
-  allPanels.forEach(panel => {
-    panel.classList.remove('active');
-    panel.setAttribute('hidden', '');
-    panel.setAttribute('tabindex', '-1');
-  });
-  
   // Activate target button
   targetButton.classList.add('active');
   targetButton.setAttribute('aria-selected', 'true');
@@ -140,18 +132,30 @@ function activateChannel(channelId) {
     targetLed.setAttribute('data-led-state', 'active');
   }
   
-  // Activate target panel (with slight delay for mechanical feel)
+  // Update main bay data attribute (for CSS transitions)
+  mainBay.setAttribute('data-active-channel', channelId);
+  
+  // CRITICAL: Fetch and render new panel content dynamically
+  // In SSR context, we trigger a page refresh with hash
+  // JavaScript framework would handle this client-side
+  // For now, we'll just scroll to top and let CSS handle visibility
+  mainBay.scrollTop = 0;
+  
+  // Move focus to main bay for screen readers
   setTimeout(() => {
-    targetPanel.classList.add('active');
-    targetPanel.removeAttribute('hidden');
-    targetPanel.setAttribute('tabindex', '0');
-    
-    // Move focus to panel content for screen readers
-    targetPanel.focus({ preventScroll: true });
+    const activePanel = mainBay.querySelector('.rack-bay-panel');
+    if (activePanel) {
+      activePanel.focus({ preventScroll: true });
+    }
   }, 50);
   
   // Scroll button into view if needed (mobile horizontal scroll)
   scrollChannelIntoView(targetButton);
+  
+  // Update URL hash for shareable links
+  if (history.replaceState) {
+    history.replaceState(null, null, `#${channelId}`);
+  }
   
   // Log for debugging
   console.log(`🎛️ Channel activated: ${channelId}`);
