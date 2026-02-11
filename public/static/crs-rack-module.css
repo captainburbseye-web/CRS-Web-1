@@ -541,3 +541,14 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hide empty labels and instructions */
+.rack-label:empty,
+.booking-instruction:empty {
+  display: none;
+}
+
+/* Hide label strip when label is empty */
+.rack-label-strip:has(.rack-label:empty:only-child) .led-indicator {
+  margin-left: 0;
+}
