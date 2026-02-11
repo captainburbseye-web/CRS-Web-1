@@ -14,33 +14,44 @@ export interface RackService {
   instruction?: string;
   isSplit?: boolean;
   splitPosition?: 'left' | 'right';
+  dropdownServices?: Array<{ name: string; url: string }>;
 }
 
 export const rackServices: RackService[] = [
-  // Row 1: CRS HEADER
+  // Row 1: CRS HEADER - SEO OPTIMIZED
   {
     id: 'header',
     row: 1,
     label: '[ COWLEY_ROAD_STUDIOS ]',
-    title: 'CRS BOOKING HUB',
-    description: 'Central booking system for all Cowley Road Studios services. Navigate to specific services below or use the main booking portal.',
+    title: 'RECORDING STUDIO OXFORD | REHEARSAL SPACE | MUSIC PRODUCTION',
+    description: 'Professional recording studio and rehearsal space in East Oxford. Offering music production, mixing, mastering, band rehearsal rooms, and creative workspace. Two locations: Cowley Road HQ and Cricket Road. Continuing the Soundworks Oxford legacy since 1999.',
     url: '/',
     ledColor: 'green',
     variant: 'command',
-    instruction: '[ SELECT SERVICE BELOW ]',
+    instruction: '[ WELCOME TO CRS ]',
   },
 
-  // Row 2: BOOKING HUB
+  // Row 2: BOOKING HUB - DROPDOWN SELECTOR
   {
     id: 'booking-hub',
     row: 2,
     label: '[ MAIN_PORTAL ]',
-    title: 'MAIN BOOKING PORTAL',
-    description: 'Unified booking interface for all studio services. Access rehearsal rooms, control rooms, recording sessions, and venue hire.',
+    title: 'BOOK NOW',
+    description: 'Select your service below and book instantly. Rehearsal rooms, recording sessions, control rooms, music lessons, venue hire, and equipment rental available.',
     url: '/book',
     ledColor: 'green',
     variant: 'command',
-    instruction: '[ INSTRUCTION: SELECT SERVICE TYPE ]',
+    instruction: '[ SELECT SERVICE BELOW ]',
+    dropdownServices: [
+      { name: 'Cowley Rehearsal Room', url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services' },
+      { name: 'Cricket Rehearsal Room', url: 'https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services' },
+      { name: 'Cowley Control Room', url: '/book/studio?location=cowley' },
+      { name: 'Cricket Control Room', url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services' },
+      { name: 'Recording & Production', url: '/book/studio' },
+      { name: 'Music Lessons', url: '/book/lessons' },
+      { name: 'Venue & Event Space', url: '/book/venue' },
+      { name: 'Equipment Hire', url: '/av-services' },
+    ],
   },
 
   // Row 3: REHEARSAL (SPLIT LEFT)

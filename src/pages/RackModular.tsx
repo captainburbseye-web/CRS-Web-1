@@ -61,6 +61,7 @@ export const RackModular = () => {
             bookingUrl={service.url}
             ledColor={service.ledColor}
             instruction={service.instruction}
+            dropdownServices={service.dropdownServices}
           />
         ));
       })}

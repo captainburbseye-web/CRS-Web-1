@@ -15,6 +15,7 @@ export interface RackModuleProps {
   bookingUrl: string;
   ledColor?: 'green' | 'amber' | 'red';
   instruction?: string;
+  dropdownServices?: Array<{ name: string; url: string }>;
 }
 
 export const RackModule = ({
@@ -24,6 +25,7 @@ export const RackModule = ({
   bookingUrl,
   ledColor = 'green',
   instruction = '[ INSTRUCTION: SELECT SERVICE FROM LIST ]',
+  dropdownServices,
 }: RackModuleProps) => {
   // Construct LED class based on color prop
   const ledClass = `led-indicator${ledColor !== 'green' ? ` led-${ledColor}` : ''}`;
@@ -44,14 +46,48 @@ export const RackModule = ({
 
       <div class="rack-button-group">
         <span class="booking-instruction">{instruction}</span>
-        <a
-          href={bookingUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rack-button"
-        >
-          [ {buttonText} ]
-        </a>
+        
+        {dropdownServices ? (
+          // Dropdown button
+          <div class="rack-dropdown">
+            <button
+              class="rack-button rack-dropdown-trigger"
+              data-dropdown-trigger
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              [ {buttonText} ]
+            </button>
+            <div
+              class="rack-dropdown-menu"
+              data-dropdown-menu
+              role="menu"
+              aria-hidden="true"
+            >
+              {dropdownServices.map((service) => (
+                <a
+                  href={service.url}
+                  class="rack-dropdown-item"
+                  role="menuitem"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {service.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          // Regular button
+          <a
+            href={bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rack-button"
+          >
+            [ {buttonText} ]
+          </a>
+        )}
       </div>
     </div>
   );
