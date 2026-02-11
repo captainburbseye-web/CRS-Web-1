@@ -33,8 +33,33 @@ export const RackModule = ({
   // Auto-generate button text from title
   const buttonText = `BOOK_${title.toUpperCase().replace(/\s+/g, '_')}_NOW`;
 
+  // Determine rack type and location from label for differentiation
+  const getDataAttributes = () => {
+    const attrs: Record<string, string> = {};
+    
+    if (label.includes('COWLEY')) {
+      attrs['data-location'] = 'cowley';
+    } else if (label.includes('CRICKET')) {
+      attrs['data-location'] = 'cricket';
+    }
+    
+    if (label.includes('CONTROL') || title.includes('CONTROL')) {
+      attrs['data-type'] = 'control';
+    } else if (label.includes('WORKSHOP_CAFE') || title.includes('CAFÉ')) {
+      attrs['data-type'] = 'cafe';
+    } else if (label.includes('SYSTEM') || label.includes('MASTER_BUS')) {
+      attrs['data-type'] = 'system';
+    } else if (title.includes('BOOK NOW') || title.includes('BOOKING HUB')) {
+      attrs['data-type'] = 'command';
+    }
+    
+    return attrs;
+  };
+
+  const dataAttrs = getDataAttributes();
+
   return (
-    <div class="rack-module">
+    <div class="rack-module" {...dataAttrs}>
       <div class="rack-label-strip">
         <span class={ledClass}></span>
         <span class="rack-label">{label}</span>
