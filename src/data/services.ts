@@ -15,6 +15,10 @@ export interface RackService {
   isSplit?: boolean;
   splitPosition?: 'left' | 'right';
   dropdownServices?: Array<{ name: string; url: string }>;
+  // Phase 2: Future-proofing fields (CMS-ready)
+  visible?: boolean; // Control visibility (CMS toggle)
+  priority?: 'high' | 'normal' | 'low'; // Display priority
+  status?: 'online' | 'offline' | 'maintenance'; // Real-time status
 }
 
 export const rackServices: RackService[] = [

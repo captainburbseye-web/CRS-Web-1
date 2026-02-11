@@ -1,11 +1,13 @@
 import { RackModule } from '../components/rack/RackModule';
 import { SplitRackRow } from '../components/rack/SplitRackRow';
+import { RackNav } from '../components/rack/RackNav';
 import { rackServices, getAllRows, getServicesByRow, getSplitServices } from '../data/services';
 
 /**
  * Rack Modular Page: Complete 12-row rack system
  * Design Philosophy: Industrial rack aesthetic with sage green, mustard accents
  * FixLogic: 16px fonts, 44px touch targets, high contrast
+ * Phase 2: Sticky nav, entrance animations, future-proofing
  * Built by Manus - Clean implementation
  */
 
@@ -14,6 +16,9 @@ export const RackModular = () => {
 
   return (
     <>
+      {/* Phase 2: Sticky Navigation */}
+      <RackNav />
+      
       {/* CRS Rack Header Image */}
       <img 
         src="https://pub-b79b90db3c594763bf7e4c9e96ae461d.r2.dev/rack%20parts/rack%201%20CRS%20Header.png"

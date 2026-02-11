@@ -16,6 +16,10 @@ export interface RackModuleProps {
   ledColor?: 'green' | 'amber' | 'red';
   instruction?: string;
   dropdownServices?: Array<{ name: string; url: string }>;
+  // Phase 2: Future-proofing props
+  visible?: boolean;
+  priority?: 'high' | 'normal' | 'low';
+  status?: 'online' | 'offline' | 'maintenance';
 }
 
 export const RackModule = ({
@@ -26,6 +30,9 @@ export const RackModule = ({
   ledColor = 'green',
   instruction = '[ INSTRUCTION: SELECT SERVICE FROM LIST ]',
   dropdownServices,
+  visible = true,
+  priority = 'normal',
+  status = 'online',
 }: RackModuleProps) => {
   // Construct LED class based on color prop
   const ledClass = `led-indicator${ledColor !== 'green' ? ` led-${ledColor}` : ''}`;
@@ -36,6 +43,11 @@ export const RackModule = ({
   // Determine rack type and location from label for differentiation
   const getDataAttributes = () => {
     const attrs: Record<string, string> = {};
+    
+    // Phase 2: Add future-proofing attributes
+    attrs['data-visible'] = String(visible);
+    attrs['data-priority'] = priority;
+    attrs['data-status'] = status;
     
     if (label.includes('COWLEY')) {
       attrs['data-location'] = 'cowley';

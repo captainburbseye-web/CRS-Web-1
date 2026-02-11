@@ -491,3 +491,192 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ====================================================================
+   PHASE 2 ENHANCEMENTS - ENTRANCE ANIMATIONS & STICKY NAV
+   ==================================================================== */
+
+/* Entrance Animation - Staggered Module Load */
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes ledFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.rack-module {
+  animation: slideInFromLeft 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+/* Stagger entrance: row 1 → row 12 */
+.rack-module:nth-child(1) { animation-delay: 0.05s; }
+.rack-module:nth-child(2) { animation-delay: 0.1s; }
+.rack-module:nth-child(3) { animation-delay: 0.15s; }
+.rack-module:nth-child(4) { animation-delay: 0.2s; }
+.rack-module:nth-child(5) { animation-delay: 0.25s; }
+.rack-module:nth-child(6) { animation-delay: 0.3s; }
+.rack-module:nth-child(7) { animation-delay: 0.35s; }
+.rack-module:nth-child(8) { animation-delay: 0.4s; }
+.rack-module:nth-child(9) { animation-delay: 0.45s; }
+.rack-module:nth-child(10) { animation-delay: 0.5s; }
+.rack-module:nth-child(11) { animation-delay: 0.55s; }
+.rack-module:nth-child(12) { animation-delay: 0.6s; }
+
+/* LED flicker on entrance */
+.led-indicator {
+  animation: ledFlicker 0.2s ease-out 0.8s;
+}
+
+/* ====================================================================
+   STICKY NAVIGATION - QUICK ACCESS
+   ==================================================================== */
+
+.rack-nav {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 1000;
+  padding: 1rem;
+  background: rgba(10, 10, 10, 0.9);
+  border: 2px solid var(--sage-green, #88aa88);
+  border-radius: 6px;
+  box-shadow: 
+    0 4px 12px rgba(0,0,0,0.6),
+    inset 0 0 10px rgba(136, 170, 136, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.rack-nav-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 100%);
+  border: 1px solid #444;
+  border-radius: 4px;
+  color: var(--sage-green, #88aa88);
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.rack-nav-button:hover {
+  background: linear-gradient(90deg, #2a2a2a 0%, #3a3a3a 100%);
+  border-color: var(--sage-green, #88aa88);
+  box-shadow: 0 0 8px rgba(136, 170, 136, 0.3);
+  transform: translateX(-2px);
+}
+
+.rack-nav-button:active {
+  transform: translateX(-1px) scale(0.98);
+}
+
+.rack-nav-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sage-green, #88aa88);
+  box-shadow: 0 0 6px var(--sage-green, #88aa88);
+  animation: pulse-led 2s ease-in-out infinite;
+}
+
+/* Hide nav on mobile */
+@media (max-width: 768px) {
+  .rack-nav {
+    display: none;
+  }
+}
+
+/* ====================================================================
+   ALTERNATING ROW STYLING - SUBTLE VARIATION
+   ==================================================================== */
+
+.rack-module:nth-child(even) {
+  background: 
+    linear-gradient(135deg, rgba(136, 170, 136, 0.02) 0%, rgba(136, 170, 136, 0.01) 100%),
+    #0a0a0a;
+}
+
+.rack-module:nth-child(odd) {
+  background: 
+    linear-gradient(135deg, rgba(255, 170, 0, 0.02) 0%, rgba(255, 170, 0, 0.01) 100%),
+    #0a0a0a;
+}
+
+/* Command modules get stronger background */
+.rack-module[data-type="command"] {
+  background: 
+    linear-gradient(135deg, rgba(255, 170, 0, 0.05) 0%, rgba(255, 170, 0, 0.02) 100%),
+    #0a0a0a;
+}
+
+/* ====================================================================
+   FUTURE-PROOFING - CMS-READY VISIBILITY CONTROLS
+   ==================================================================== */
+
+.rack-module[data-visible="false"] {
+  display: none;
+}
+
+.rack-module[data-priority="high"] {
+  border-left: 3px solid var(--led-amber, #ffaa00);
+}
+
+.rack-module[data-priority="low"] {
+  opacity: 0.7;
+}
+
+/* ====================================================================
+   DROPDOWN SERVICE SELECTOR ENHANCEMENTS
+   ==================================================================== */
+
+.rack-dropdown {
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sage-green, #88aa88) rgba(255, 255, 255, 0.1);
+}
+
+.rack-dropdown::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rack-dropdown::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.rack-dropdown::-webkit-scrollbar-thumb {
+  background: var(--sage-green, #88aa88);
+  border-radius: 4px;
+}
+
+.rack-dropdown::-webkit-scrollbar-thumb:hover {
+  background: var(--mustard, #e3b04b);
+}
+
+.rack-dropdown-item:hover {
+  transform: translateX(4px);
+  background: rgba(136, 170, 136, 0.15);
+}
+
+/* ====================================================================
+   END PHASE 2 ENHANCEMENTS
+   ==================================================================== */
