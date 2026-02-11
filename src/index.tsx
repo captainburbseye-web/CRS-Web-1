@@ -1644,7 +1644,10 @@ app.get('/rack-test', (c) => {
 // Modular rack architecture: RackModule + SplitRackRow + Waveform
 app.get('/rack-modular', (c) => {
   return c.render(
-    <RackModular />,
+    <>
+      <link href="/static/crs-accessibility-fixes.css" rel="stylesheet" />
+      <RackModular />
+    </>,
     {
       title: 'CRS Rack Modular | Component System with Waveforms',
       description: 'Modular rack interface with 12 service modules, LED indicators, animated waveforms, and split layouts',
