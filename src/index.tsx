@@ -1640,22 +1640,21 @@ app.get('/rack-test', (c) => {
   )
 })
 
-// RACK MODULAR — MANUS'S COMPONENT SYSTEM + WAVEFORMS
-// Modular rack architecture: RackModule + SplitRackRow + Waveform
+// RACK MODULAR — PHASE 4: HARDWARE CHANNEL SELECTOR SYSTEM
+// Single expandable rack with hardware aesthetics (console metaphor)
+// Refactored from stacked accordion to channel selector (only one service active at a time)
 app.get('/rack-modular', (c) => {
   return c.render(
     <>
       <link href="/static/crs-accessibility-fixes.css" rel="stylesheet" />
-      <link href="/static/crs-phase2-enhancements.css" rel="stylesheet" />
-      <link href="/static/testimonials-module.css" rel="stylesheet" />
-      <link href="/static/crs-spacing-hierarchy-fixes.css" rel="stylesheet" />
+      <link href="/static/rack-channel-system.css" rel="stylesheet" />
       <RackModular />
-      <script src="/static/rack-interactive.js" defer></script>
+      <script src="/static/rack-channel-system.js" defer></script>
     </>,
     {
-      title: 'CRS Rack Modular | Component System with Waveforms',
-      description: 'Modular rack interface with 12 service modules, LED indicators, animated waveforms, and split layouts',
-      keywords: 'modular rack, component system, waveforms, studio services, booking hub'
+      title: 'Cowley Road Studios | Professional Recording & Rehearsal Oxford',
+      description: 'Professional recording studios and rehearsal spaces in Oxford. Control rooms, live rooms, music production, equipment hire, and venue space at Cowley Road and Cricket Road locations.',
+      keywords: 'recording studio oxford, rehearsal space oxford, music production oxford, control room hire, live room hire, professional studio oxford'
     }
   )
 })

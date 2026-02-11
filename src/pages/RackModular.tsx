@@ -1,20 +1,28 @@
-import { RackModule } from '../components/rack/RackModule';
-import { SplitRackRow } from '../components/rack/SplitRackRow';
-import { RackNav } from '../components/rack/RackNav';
-import { TestimonialsRackModule } from '../components/rack/TestimonialsRackModule';
-import { rackServices, getAllRows, getServicesByRow, getSplitServices } from '../data/services';
+import { RackChannelSystem } from '../components/rack/RackChannelSystem';
+import { rackServices } from '../data/services';
 
 /**
- * Rack Modular Page: Complete 12-row rack system
- * Design Philosophy: Industrial rack aesthetic with sage green, mustard accents
- * FixLogic: 16px fonts, 44px touch targets, high contrast
- * Phase 2: Sticky nav, entrance animations, future-proofing
- * Phase 3: Social proof, CTA optimization, pricing transparency
- * Built by Manus - Clean implementation
+ * Rack Modular Page: Hardware Channel Selector System
+ * 
+ * Design Philosophy:
+ * - Operates like a console channel strip selector
+ * - Single active bay at a time (no attention chaos)
+ * - Hardware aesthetic (not web tabs, not dashboard patterns)
+ * - LED indicators, metallic surfaces, mechanical transitions
+ * 
+ * Refactored: Phase 4 - Single Expandable Rack
+ * - Replaced stacked accordion with channel selector system
+ * - Only one service visible at a time (single focus)
+ * - Headers feel like hardware selectors
+ * - Main panel feels like the active machine bay
+ * - Full WCAG 2.1 AA accessibility preserved
+ * 
+ * Built by Manus - Hardware-first approach
  */
 
 export const RackModular = () => {
-  const allRows = getAllRows();
+  // Get header service for SEO (rendered as static header, not in channel system)
+  const headerService = rackServices.find(s => s.id === 'header');
 
   return (
     <>
@@ -22,89 +30,35 @@ export const RackModular = () => {
       <a href="#main-content" className="skip-to-content">
         Skip to main content
       </a>
-
-      {/* Phase 2: Sticky Navigation */}
-      <RackNav />
       
-      {/* Header with semantic markup */}
+      {/* Header with semantic markup and SEO-optimized alt text */}
       <header>
-        <img 
-          src="https://pub-b79b90db3c594763bf7e4c9e96ae461d.r2.dev/rack%20parts/rack%201%20CRS%20Header.png"
-          alt="Cowley Road Studios - Professional Recording Studio Oxford. Modular rack system interface showing available services including rehearsal space, control rooms, and music production facilities."
-          style="width: 100%; display: block; max-width: 1200px; margin: 0 auto;"
-        />
+        <div className="crs-header-container">
+          <h1 className="crs-main-title">
+            {headerService?.title || 'COWLEY ROAD STUDIOS'}
+          </h1>
+          <p className="crs-main-description">
+            {headerService?.description || 'Professional Recording Studio & Rehearsal Space in Oxford'}
+          </p>
+        </div>
       </header>
       
-      {/* Main content landmark */}
-      <main id="main-content" className="rack-container" role="main" aria-label="Cowley Road Studios Services">
-      {allRows.map((rowNumber) => {
-        const services = getServicesByRow(rowNumber);
-        
-        // Insert Testimonials Module after Row 2 (BOOK NOW)
-        const testimonialsAfterRow2 = rowNumber === 2 ? <TestimonialsRackModule key="testimonials" /> : null;
-        
-        // Check if this row has split modules
-        const hasSplitModules = services.some(s => s.isSplit);
-        
-        if (hasSplitModules) {
-          const { left, right } = getSplitServices(rowNumber);
-          
-          if (!left || !right) {
-            console.error(`Split row ${rowNumber} missing left or right module`);
-            return null;
-          }
-          
-          return (
-            <>
-              <SplitRackRow
-                key={`row-${rowNumber}`}
-                left={{
-                  label: left.label,
-                  title: left.title,
-                  description: left.description,
-                  bookingUrl: left.url,
-                  ledColor: left.ledColor,
-                  instruction: left.instruction,
-                }}
-                right={{
-                  label: right.label,
-                  title: right.title,
-                  description: right.description,
-                  bookingUrl: right.url,
-                  ledColor: right.ledColor,
-                  instruction: right.instruction,
-                }}
-              />
-              {testimonialsAfterRow2}
-            </>
-          );
-        }
-        
-        // Regular full-width module
-        return (
-          <>
-            {services.map((service) => (
-              <RackModule
-                key={service.id}
-                label={service.label}
-                title={service.title}
-                description={service.description}
-                bookingUrl={service.url}
-                ledColor={service.ledColor}
-                instruction={service.instruction}
-                dropdownServices={service.dropdownServices}
-                visible={service.visible}
-                priority={service.priority}
-                status={service.status}
-                row={service.row}
-                ctaText={service.ctaText}
-              />
-            ))}
-            {testimonialsAfterRow2}
-          </>
-        );
-      })}
-    </main>
+      {/* Main content landmark - Hardware Channel System */}
+      <main id="main-content" role="main" aria-label="Cowley Road Studios Services">
+        <RackChannelSystem defaultChannel="booking-hub" />
+      </main>
+      
+      {/* Footer information (optional) */}
+      <footer className="crs-footer" role="contentinfo">
+        <p className="footer-text">
+          <strong>Cowley Road Studios</strong> — Professional Recording & Rehearsal Space in Oxford
+        </p>
+        <p className="footer-links">
+          <a href="/contact">Contact</a> | 
+          <a href="/status">System Status</a> | 
+          <a href="/accessibility">Accessibility</a>
+        </p>
+      </footer>
     </>
   );
 };
