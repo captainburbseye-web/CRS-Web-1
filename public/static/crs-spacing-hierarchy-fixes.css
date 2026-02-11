@@ -1,0 +1,365 @@
+/* ====================================================================
+   HIGH-IMPACT SPACING & HIERARCHY FIXES
+   Transforms from "card stack" to "premium hardware console"
+   ==================================================================== */
+
+/* ====================================================================
+   1. INCREASE OVERALL BREATHING ROOM
+   ==================================================================== */
+
+.rack-container {
+  padding: 3rem 2rem !important;
+  /* Add subtle vertical rhythm */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Remove tight stacking - let modules breathe */
+.rack-module {
+  padding: 2.25rem !important;
+  margin: 2rem 0 !important;
+  /* Override previous -2px overlap */
+  margin-bottom: 2rem !important;
+}
+
+/* ====================================================================
+   2. STRENGTHEN HIERARCHY - TITLES
+   ==================================================================== */
+
+.rack-title {
+  font-size: 1.35rem !important; /* Up from 1.2rem */
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem !important;
+  line-height: 1.3;
+}
+
+/* Add subtitle/meta line support */
+.rack-subtitle {
+  font-size: 0.85rem;
+  color: var(--wcag-sage-green, #99cc99);
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+/* ====================================================================
+   3. ADD DEPTH - REPLACE HARD BORDERS
+   ==================================================================== */
+
+.rack-module {
+  /* Remove hard borders */
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  
+  /* Soft border + inner shadow for depth */
+  box-shadow: 
+    /* Soft outer border (replaces hard border) */
+    0 0 0 1px rgba(42, 42, 42, 0.5),
+    /* Inner shadow for machined depth */
+    inset 0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 4px rgba(0, 0, 0, 0.2),
+    /* Very light outer shadow for lift */
+    0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  /* Slightly rounded corners for premium feel */
+  border-radius: 6px;
+  
+  /* Subtle gradient for hardware feel */
+  background: linear-gradient(180deg, #1c1c1c 0%, #0f0f0f 50%, #1a1a1a 100%);
+}
+
+/* Hover state - lift slightly */
+.rack-module:hover {
+  box-shadow: 
+    0 0 0 1px rgba(153, 204, 153, 0.3),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 -1px 4px rgba(0, 0, 0, 0.2),
+    0 8px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+}
+
+/* Remove decorative screws - cleaner hardware look */
+.rack-module::before,
+.rack-module::after {
+  display: none;
+}
+
+/* ====================================================================
+   4. HEADER FEELS LIKE HARDWARE
+   ==================================================================== */
+
+/* Increase vertical padding in header image */
+.rack-container > header {
+  padding: 2rem 0 !important;
+  margin-bottom: 2rem;
+}
+
+/* Add bottom shadow/rail to header */
+.rack-container > header::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to bottom, 
+    rgba(153, 204, 153, 0.3) 0%,
+    rgba(153, 204, 153, 0.1) 50%,
+    transparent 100%
+  );
+  margin-top: 2rem;
+  border-radius: 2px;
+}
+
+/* ====================================================================
+   5. NAVIGATION IMPROVEMENTS
+   ==================================================================== */
+
+/* Slightly increase nav text size */
+.rack-nav-button {
+  font-size: 14px !important; /* Up from 12px */
+  padding: 10px 16px !important;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* Better visual separation */
+.rack-nav {
+  padding: 12px 0 !important;
+  backdrop-filter: blur(10px);
+}
+
+/* ====================================================================
+   6. VERTICAL RHYTHM - SPACING BETWEEN ELEMENTS
+   ==================================================================== */
+
+/* Space between header and content */
+.rack-container > main {
+  margin-top: 3rem;
+}
+
+/* Space between module header and body */
+.rack-module .rack-title {
+  margin-bottom: 1.25rem !important;
+}
+
+.rack-description {
+  margin-top: 1rem !important;
+  margin-bottom: 1.5rem !important;
+  line-height: 1.7 !important;
+}
+
+/* Space between description and buttons */
+.rack-button-group {
+  margin-top: 1.75rem !important;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(153, 204, 153, 0.1);
+}
+
+/* ====================================================================
+   7. LED STRIP - MORE BREATHING ROOM
+   ==================================================================== */
+
+.rack-label-strip {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(42, 42, 42, 0.3);
+}
+
+/* ====================================================================
+   8. SPLIT ROWS - BETTER SEPARATION
+   ==================================================================== */
+
+.split-rack-row {
+  margin: 2rem 0 !important;
+  gap: 1.5rem !important;
+}
+
+.split-rack-module {
+  padding: 2.25rem !important;
+}
+
+/* Remove vertical divider, add subtle gap */
+.split-rack-module:first-child {
+  border-right: none;
+  margin-right: 0.75rem;
+}
+
+.split-rack-module:last-child {
+  margin-left: 0.75rem;
+}
+
+/* ====================================================================
+   9. TESTIMONIALS MODULE - PREMIUM SPACING
+   ==================================================================== */
+
+.testimonials-module {
+  padding: 3rem 2.25rem !important;
+  margin: 3rem 0 !important;
+}
+
+.testimonials-grid {
+  gap: 2rem !important;
+  margin: 2rem 0 !important;
+}
+
+.testimonial-card {
+  padding: 2rem !important;
+}
+
+.trust-badges {
+  gap: 2.5rem !important;
+  margin: 2rem 0 !important;
+}
+
+/* ====================================================================
+   10. BUTTONS - MORE SUBSTANTIAL
+   ==================================================================== */
+
+.rack-button {
+  padding: 14px 28px !important;
+  font-size: 15px !important;
+  min-height: 52px !important;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* ====================================================================
+   11. MOBILE ADJUSTMENTS - MAINTAIN BREATHING ROOM
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  .rack-container {
+    padding: 2rem 1.5rem !important;
+    gap: 1.5rem;
+  }
+  
+  .rack-module {
+    padding: 1.75rem !important;
+    margin: 1.5rem 0 !important;
+  }
+  
+  .rack-title {
+    font-size: 1.2rem !important;
+  }
+  
+  .rack-description {
+    margin-top: 0.75rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+  
+  .rack-button-group {
+    margin-top: 1.5rem !important;
+    padding-top: 1.25rem;
+  }
+  
+  .testimonials-module {
+    padding: 2rem 1.5rem !important;
+  }
+  
+  .testimonials-grid {
+    gap: 1.5rem !important;
+  }
+}
+
+/* ====================================================================
+   12. REMOVE LINE NOISE - CLEANER SEPARATIONS
+   ==================================================================== */
+
+/* Remove heavy borders from all elements */
+.rack-module,
+.split-rack-module,
+.testimonial-card {
+  border: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Replace with subtle depth */
+.split-rack-module .rack-module {
+  box-shadow: 
+    0 0 0 1px rgba(42, 42, 42, 0.4),
+    inset 0 2px 6px rgba(0, 0, 0, 0.25),
+    0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Testimonial cards - soft depth */
+.testimonial-card {
+  box-shadow: 
+    0 0 0 1px rgba(42, 42, 42, 0.3),
+    inset 0 1px 4px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card:hover {
+  box-shadow: 
+    0 0 0 1px rgba(153, 204, 153, 0.4),
+    inset 0 1px 4px rgba(0, 0, 0, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ====================================================================
+   13. CONTAINER BACKGROUND - SOFTER, LESS STRIPED
+   ==================================================================== */
+
+.rack-container {
+  /* Remove harsh stripe pattern */
+  background: 
+    linear-gradient(to right, #0f0f0f 0%, #0a0a0a 50%, #0f0f0f 100%);
+  
+  /* Remove rail perforations */
+  box-shadow: 
+    inset 0 0 40px rgba(0,0,0,0.6);
+}
+
+.rack-container::before,
+.rack-container::after {
+  /* Remove or soften rack rails */
+  opacity: 0.3;
+}
+
+/* ====================================================================
+   14. HIERARCHY - VISUAL WEIGHT DIFFERENTIATION
+   ==================================================================== */
+
+/* High priority modules - more visual weight */
+.rack-module[data-priority="high"] {
+  box-shadow: 
+    0 0 0 1px rgba(153, 204, 153, 0.5),
+    inset 0 2px 8px rgba(0, 0, 0, 0.35),
+    inset 0 -1px 4px rgba(0, 0, 0, 0.25),
+    0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Low priority modules - less visual weight */
+.rack-module[data-priority="low"] {
+  opacity: 0.85;
+  box-shadow: 
+    0 0 0 1px rgba(42, 42, 42, 0.3),
+    inset 0 1px 4px rgba(0, 0, 0, 0.2),
+    0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* ====================================================================
+   15. FINAL POLISH - PREMIUM HARDWARE FEEL
+   ==================================================================== */
+
+/* Overall page background - darker, more premium */
+body {
+  background: #050505;
+}
+
+/* Main container - slight elevation */
+main.rack-container {
+  background: 
+    linear-gradient(to bottom, #0f0f0f 0%, #0a0a0a 50%, #0f0f0f 100%);
+  box-shadow: 
+    0 20px 80px rgba(0, 0, 0, 0.8),
+    inset 0 0 60px rgba(0, 0, 0, 0.5);
+}

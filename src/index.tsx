@@ -1648,6 +1648,7 @@ app.get('/rack-modular', (c) => {
       <link href="/static/crs-accessibility-fixes.css" rel="stylesheet" />
       <link href="/static/crs-phase2-enhancements.css" rel="stylesheet" />
       <link href="/static/testimonials-module.css" rel="stylesheet" />
+      <link href="/static/crs-spacing-hierarchy-fixes.css" rel="stylesheet" />
       <RackModular />
       <script src="/static/rack-interactive.js" defer></script>
     </>,
