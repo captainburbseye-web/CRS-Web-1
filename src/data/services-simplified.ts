@@ -139,28 +139,29 @@ export const simplifiedServices: SimplifiedService[] = [
     ]
   },
 
-  // 7. WORKSHOP CAFÉ (Passive module)
+  // 7. WORKSHOP CAFÉ & VENUE (Combined module)
   {
     id: 'cafe',
     title: 'WORKSHOP CAFÉ',
     icon: '☕',
-    description: 'Bookable public-facing venue. Listening sessions, film screenings, community events. Capacity: 25 seated, up to 60 standing.',
+    description: 'Bookable public-facing venue space. Daily café service, event hire, and community gatherings.',
     variant: 'passive',
     ledColor: 'green',
-    url: '/cafe',
-    ctaText: 'VISIT CAFÉ',
-  },
-
-  // 8. VENUE HIRE
-  {
-    id: 'venue',
-    title: 'VENUE & EVENT SPACE',
-    icon: '🎪',
-    description: 'Full venue booking for live performances, showcases, and private events. Professional PA, lighting, and technical support included.',
-    variant: 'rack',
-    ledColor: 'green',
-    url: '/book/venue',
-    ctaText: 'BOOK VENUE',
+    locations: [
+      {
+        location: 'DAILY CAFÉ',
+        price: 'Free entry',
+        description: 'Specialty coffee, coworking space, and community hub. Open daily.',
+        url: '/cafe',
+      },
+      {
+        location: 'EVENT BOOKING',
+        price: 'Quote on request',
+        description: 'Full venue hire for gigs, listening sessions, film screenings. Capacity: 25 seated, up to 60 standing. PA and lighting included.',
+        url: '/book/venue',
+        features: ['Professional PA', 'Stage lighting', 'Up to 60 capacity', 'AV equipment']
+      }
+    ]
   },
 
   // 9. CONTACT (Passive module)

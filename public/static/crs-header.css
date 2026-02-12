@@ -81,25 +81,44 @@ header.rack-header {
 }
 
 .rack-header-nav a {
-  font-family: 'Oswald', sans-serif;
-  font-size: 12px; /* Reduced for proper rack sizing */
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  /* Hardware button styling */
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
-  color: rgba(245, 245, 245, 0.85);
   white-space: nowrap;
-  transition: color 0.2s;
-  display: inline-flex; /* Ensure proper vertical alignment */
-  align-items: center; /* Fix Contact link sitting lower */
-  line-height: 1; /* Tighter line height for compact rack aesthetic */
-  vertical-align: middle; /* Force pixel-perfect alignment */
-  margin: 0; /* Remove any default margin */
-  padding: 0; /* Remove any default padding */
+  
+  /* Button appearance */
+  color: rgba(245, 245, 245, 0.7);
+  background: rgba(26, 26, 26, 0.6);
+  border: 1px solid rgba(153, 204, 153, 0.25);
+  border-radius: 2px;
+  padding: 6px 12px;
+  
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  vertical-align: middle;
+  margin: 0;
+  
+  /* Effects */
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
 }
 
 .rack-header-nav a:hover {
-  color: #E89B3C;
+  color: #99CC99;
+  background: rgba(153, 204, 153, 0.08);
+  border-color: rgba(153, 204, 153, 0.4);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 8px rgba(153, 204, 153, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .rack-header-nav .separator {
