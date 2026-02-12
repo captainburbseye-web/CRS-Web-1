@@ -44,6 +44,7 @@ export const RackAccordion = () => {
       {/* MAIN ACCORDION RACK */}
       <div class="rack-accordion-viewport">
         <div class="system-badge">
+          <img src="/static/images/crs-badge-dark.webp" alt="CRS" class="system-badge-logo" />
           <span class="system-led"></span>
           CRS RACK SYSTEM — ONLINE
         </div>
@@ -189,7 +190,8 @@ export const RackAccordion = () => {
             <div class="terminal-status-line">Continuing the Soundworks Oxford legacy (1999–2024).</div>
           </div>
 
-          <div class="terminal-status-section">
+          <div class="terminal-status-section footer-branding">
+            <img src="/static/images/crs-control-panel-badge.jpg" alt="CRS Control Panel" class="footer-badge" />
             <div class="terminal-status-line">© 2026 Cowley Road Studios / Workshop Cafe · POWERED BY 0DR0 ENGINEERING</div>
           </div>
 
