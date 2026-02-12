@@ -227,6 +227,120 @@
   max-width: 65ch;
 }
 
+/* Icon in header */
+.rack-icon {
+  font-size: 18px;
+  margin-right: 4px;
+}
+
+/* ========================================
+   LOCATION OPTIONS (FOR MULTI-LOCATION SERVICES)
+   ======================================== */
+
+.location-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.location-card {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(153,204,153,0.2);
+  border-radius: 6px;
+  padding: 1.5rem;
+  transition: all 0.2s ease-out;
+}
+
+.location-card:hover {
+  background: rgba(0,0,0,0.4);
+  border-color: rgba(153,204,153,0.4);
+  transform: translateX(4px);
+}
+
+.location-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+}
+
+.location-name {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--hardware-green);
+  margin: 0;
+  font-family: var(--font-tech);
+}
+
+.location-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  white-space: nowrap;
+}
+
+.location-description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 1rem;
+}
+
+.location-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.5rem;
+}
+
+.location-features li {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.feature-bullet {
+  color: var(--hardware-green);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.location-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(153,204,153,0.1);
+  border: 1px solid rgba(153,204,153,0.3);
+  border-radius: 4px;
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.15s ease-out;
+}
+
+.location-cta:hover {
+  background: rgba(153,204,153,0.2);
+  border-color: rgba(153,204,153,0.5);
+  transform: translateY(-2px);
+}
+
+.location-cta .button-led {
+  font-size: 8px;
+  color: var(--hardware-green);
+}
+
+
 /* ========================================
    SERVICES LIST (FOR DROPDOWN MODULES)
    ======================================== */
@@ -344,6 +458,10 @@
     display: none; /* Hide row labels on mobile */
   }
   
+  .rack-icon {
+    font-size: 16px;
+  }
+  
   .rack-title {
     font-size: 13px;
   }
@@ -360,6 +478,27 @@
     padding: 0 1rem;
     font-size: 12px;
   }
+  
+  /* Location cards stack on mobile */
+  .location-card {
+    padding: 1.25rem;
+  }
+  
+  .location-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .location-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .location-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
 }
 
 /* ========================================

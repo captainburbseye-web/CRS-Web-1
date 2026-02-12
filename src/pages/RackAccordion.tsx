@@ -1,16 +1,13 @@
-import { rackServices } from '../data/services';
+import { simplifiedServices } from '../data/services-simplified';
 
 /**
- * Rack Accordion: Hardware rack with expandable modules
- * Click any module to expand it, others stay collapsed
+ * Rack Accordion: Service-First Approach
+ * Simplified structure: 9 main services instead of 13 modules
+ * Services with multiple locations show expandable location cards
  * Hardware aesthetic with LED indicators
- * With full branding (header + footer)
  */
 
 export const RackAccordion = () => {
-  // Filter out header service
-  const services = rackServices.filter(s => s.id !== 'header');
-  
   return (
     <>
       {/* HEADER: Master Rack Unit + Navigation */}
@@ -52,16 +49,16 @@ export const RackAccordion = () => {
         </div>
         
         <div class="rack-accordion-container">
-          {services.map((service) => (
+          {simplifiedServices.map((service) => (
             <details 
               key={service.id}
-              class={`rack-accordion-module rack-${service.variant || 'rack'}`}
-              data-variant={service.variant || 'rack'}
+              class={`rack-accordion-module rack-${service.variant}`}
+              data-variant={service.variant}
               data-led-color={service.ledColor}
             >
               <summary class="rack-accordion-header">
                 <span class="rack-led" data-color={service.ledColor}></span>
-                <span class="rack-label">{service.label}</span>
+                <span class="rack-icon">{service.icon}</span>
                 <span class="rack-title">{service.title}</span>
                 <span class="rack-chevron">›</span>
               </summary>
@@ -70,21 +67,37 @@ export const RackAccordion = () => {
                 <div class="rack-content-inner">
                   <p class="rack-description">{service.description}</p>
                   
-                  {service.dropdownServices && service.dropdownServices.length > 0 ? (
-                    <div class="rack-services-list">
-                      <div class="services-label">AVAILABLE SERVICES:</div>
-                      {service.dropdownServices.map((s, i) => (
-                        <a 
-                          key={i}
-                          href={s.url} 
-                          class="rack-service-link"
-                        >
-                          <span class="service-bullet">▸</span>
-                          {s.name}
-                        </a>
+                  {/* If service has multiple locations */}
+                  {service.locations && service.locations.length > 0 ? (
+                    <div class="location-options">
+                      {service.locations.map((location, i) => (
+                        <div key={i} class="location-card">
+                          <div class="location-card-header">
+                            <h4 class="location-name">{location.location}</h4>
+                            <span class="location-price">{location.price}</span>
+                          </div>
+                          <p class="location-description">{location.description}</p>
+                          
+                          {location.features && location.features.length > 0 && (
+                            <ul class="location-features">
+                              {location.features.map((feature, j) => (
+                                <li key={j}>
+                                  <span class="feature-bullet">✓</span>
+                                  {feature}
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          
+                          <a href={location.url} class="location-cta">
+                            <span class="button-led">●</span>
+                            BOOK {location.location}
+                          </a>
+                        </div>
                       ))}
                     </div>
                   ) : (
+                    /* Single action service */
                     <a href={service.url} class="rack-cta-button">
                       <span class="button-led">●</span>
                       {service.ctaText || 'BOOK NOW'}
@@ -97,7 +110,7 @@ export const RackAccordion = () => {
         </div>
         
         <div class="system-status-strip">
-          SYSTEM: ONLINE · {services.length} MODULES · CRS v1.0
+          SYSTEM: ONLINE · {simplifiedServices.length} SERVICES · CRS v1.0
         </div>
       </div>
 

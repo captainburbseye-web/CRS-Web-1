@@ -1,0 +1,184 @@
+// SIMPLIFIED SERVICE STRUCTURE - Service-First Approach
+// Fewer modules, each contains location options
+// Best practice: Users think "I need rehearsal" not "I need Cowley"
+
+export interface LocationOption {
+  location: string;
+  price: string;
+  description: string;
+  url: string;
+  features?: string[];
+}
+
+export interface SimplifiedService {
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  variant: 'command' | 'rack' | 'passive';
+  ledColor: 'green' | 'amber' | 'red';
+  
+  // Either single URL or multiple locations
+  url?: string;
+  locations?: LocationOption[];
+  
+  // For services without locations
+  ctaText?: string;
+}
+
+export const simplifiedServices: SimplifiedService[] = [
+  // 1. BOOKING HUB (Command module)
+  {
+    id: 'booking-hub',
+    title: 'BOOK NOW',
+    icon: '📅',
+    description: 'Quick booking for all services. Instant confirmation and flexible scheduling.',
+    variant: 'command',
+    ledColor: 'green',
+    url: '/book',
+    ctaText: 'START BOOKING',
+  },
+
+  // 2. REHEARSAL SPACES (Service with locations)
+  {
+    id: 'rehearsal',
+    title: 'REHEARSAL SPACES',
+    icon: '🎸',
+    description: 'Professional rehearsal rooms with full backline, PA systems, and monitoring. Choose your location below:',
+    variant: 'rack',
+    ledColor: 'green',
+    locations: [
+      {
+        location: 'COWLEY ROAD',
+        price: '£15/hour',
+        description: 'Main HQ location. Full backline, PA system, and professional monitoring.',
+        url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services',
+        features: ['Full backline', 'PA system', 'Monitoring', 'Central location']
+      },
+      {
+        location: 'CRICKET ROAD',
+        price: '£12/hour',
+        description: '6m × 4m live room with Yamaha CLP piano, drum kit, backline, and vocal mics.',
+        url: 'https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services',
+        features: ['Yamaha CLP piano', 'Drum kit', 'Vocal mics', 'Intimate space']
+      }
+    ]
+  },
+
+  // 3. RECORDING STUDIOS (Service with locations)
+  {
+    id: 'recording',
+    title: 'RECORDING STUDIOS',
+    icon: '🎛️',
+    description: 'Professional recording and production facilities. Full-service audio production with experienced engineers.',
+    variant: 'rack',
+    ledColor: 'green',
+    locations: [
+      {
+        location: 'COWLEY CONTROL ROOM',
+        price: 'From £30/hour',
+        description: 'High-end recording facility with analog console, outboard gear, and isolation booths.',
+        url: '/book/studio?location=cowley',
+        features: ['Analog console', 'Outboard gear', 'Isolation booths', 'Premium equipment']
+      },
+      {
+        location: 'CRICKET CONTROL ROOM',
+        price: 'From £25/hour',
+        description: 'Compact control room with live room integration. Perfect for tracking and basic mixing.',
+        url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
+        features: ['Integrated live room', 'Tracking setup', 'Mixing capabilities', 'Cost-effective']
+      }
+    ]
+  },
+
+  // 4. PRODUCTION SERVICES
+  {
+    id: 'production',
+    title: 'PRODUCTION SERVICES',
+    icon: '🎚️',
+    description: 'Full-service audio production: recording, mixing, mastering, tape transfer, and sound design. Experienced engineers available. Day rates available.',
+    variant: 'rack',
+    ledColor: 'green',
+    url: '/book/studio',
+    ctaText: 'BOOK SESSION',
+  },
+
+  // 5. LESSONS & WORKSHOPS
+  {
+    id: 'lessons',
+    title: 'LESSONS & WORKSHOPS',
+    icon: '🎓',
+    description: 'Professional music tuition and creative workshops. Individual lessons, group sessions, and production masterclasses. Available at both Cowley and Cricket locations.',
+    variant: 'rack',
+    ledColor: 'green',
+    url: '/book/lessons',
+    ctaText: 'SCHEDULE LESSON',
+  },
+
+  // 6. AV SERVICES
+  {
+    id: 'av-services',
+    title: 'AV EQUIPMENT & REPAIRS',
+    icon: '🔧',
+    description: 'Professional equipment hire and expert repair services. Microphones, PA systems, lighting, cameras, and backline rental. Amplifier and mixer repairs, vintage gear restoration.',
+    variant: 'rack',
+    ledColor: 'green',
+    locations: [
+      {
+        location: 'EQUIPMENT HIRE',
+        price: 'Quote on request',
+        description: 'Professional audio and visual equipment rental for events, productions, and performances.',
+        url: '/av-services',
+      },
+      {
+        location: 'REPAIRS & SERVICING',
+        price: 'Quote on request',
+        description: 'Expert repair and maintenance for audio equipment. Vintage gear specialists.',
+        url: '/av-services/repairs',
+      }
+    ]
+  },
+
+  // 7. WORKSHOP CAFÉ (Passive module)
+  {
+    id: 'cafe',
+    title: 'WORKSHOP CAFÉ',
+    icon: '☕',
+    description: 'Creative workspace and community hub. Specialty coffee, hot-desking, meeting rooms, and AI learning lab.',
+    variant: 'passive',
+    ledColor: 'green',
+    url: '/cafe',
+    ctaText: 'VISIT CAFÉ',
+  },
+
+  // 8. VENUE HIRE
+  {
+    id: 'venue',
+    title: 'VENUE & EVENT SPACE',
+    icon: '🎪',
+    description: 'Full venue booking for live performances, showcases, and private events. Professional PA, lighting, and technical support included.',
+    variant: 'rack',
+    ledColor: 'green',
+    url: '/book/venue',
+    ctaText: 'BOOK VENUE',
+  },
+
+  // 9. CONTACT (Passive module)
+  {
+    id: 'contact',
+    title: 'CONTACT & ENQUIRIES',
+    icon: '📞',
+    description: 'Get in touch with the Cowley Road Studios team. General enquiries, technical support, and booking assistance.',
+    variant: 'passive',
+    ledColor: 'green',
+    url: '/contact',
+    ctaText: 'CONTACT US',
+  },
+];
+
+// Helper to get service by ID
+export const getServiceById = (id: string) => 
+  simplifiedServices.find(s => s.id === id);
+
+// Count total services
+export const getTotalServices = () => simplifiedServices.length;
