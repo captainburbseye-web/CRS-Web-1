@@ -1669,15 +1669,45 @@ app.get('/rack-accordion', (c) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CRS Rack Accordion | Cowley Road Studios</title>
-        <meta name="description" content="Expandable hardware rack interface for Cowley Road Studios. Professional recording studios and rehearsal spaces in Oxford." />
+        <title>Cowley Road Studios Oxford | Recording Studio & Rehearsal Space</title>
+        <meta name="description" content="Professional recording studio, rehearsal space, and live AV services in Oxford. Hardware rack console for signal routing and bookings. Formerly Soundworks Oxford." />
+        <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        
+        {/* Core CSS files from homepage */}
+        <link href="/static/crs-reset.css" rel="stylesheet" />
+        <link href="/static/crs-typography.css" rel="stylesheet" />
+        <link href="/static/crs-header.css" rel="stylesheet" />
+        <link href="/static/crs-footer.css" rel="stylesheet" />
+        <link href="/static/crs-map-embed.css" rel="stylesheet" />
+        <link href="/static/crs-mobile.css" rel="stylesheet" />
+        
+        {/* Accordion-specific CSS */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />
       </head>
       <body>
         <RackAccordion />
+        
+        {/* Structured data for SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "MusicVenue",
+            "name": "Cowley Road Studios / Workshop Cafe",
+            "description": "Professional recording studio, rehearsal space, and creative workspace in East Oxford.",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "118 Cowley Road",
+              "addressLocality": "Oxford",
+              "postalCode": "OX41JE",
+              "addressCountry": "GB"
+            },
+            "telephone": "+441865722027",
+            "email": "info@crsoxford.com"
+          })}
+        </script>
       </body>
     </html>
   );

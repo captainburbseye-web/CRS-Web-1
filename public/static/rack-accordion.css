@@ -2,6 +2,7 @@
  * RACK ACCORDION - Hardware Rack with Expandable Modules
  * Design: Audio hardware aesthetic with collapsible panels
  * Each module is a rack unit that expands on click
+ * Works with CRS Header/Footer branding
  */
 
 :root {
@@ -14,25 +15,12 @@
   --font-tech: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Courier New', monospace;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background: var(--metal-dark);
-  color: #ffffff;
-  font-family: var(--font-tech);
-  overflow-x: hidden;
-}
-
 /* ========================================
    VIEWPORT & SYSTEM BADGE
    ======================================== */
 
 .rack-accordion-viewport {
-  min-height: 100vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   background: var(--metal-dark);
