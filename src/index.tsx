@@ -1995,4 +1995,29 @@ app.get('/signage-loop', (c) => {
   )
 })
 
+// ===================================================================
+// LEGACY ROUTE CLEANUP - Redirect old pages to accordion design
+// ===================================================================
+
+// Old service pages → Homepage accordion
+app.get('/studio-old', (c) => c.redirect('/'))
+app.get('/workshop-cafe-old', (c) => c.redirect('/'))
+app.get('/cricket-road', (c) => c.redirect('/'))
+app.get('/crs-cowley-road', (c) => c.redirect('/'))
+app.get('/crs-cricket-road', (c) => c.redirect('/'))
+app.get('/locations', (c) => c.redirect('/'))
+app.get('/rehearsal', (c) => c.redirect('/book'))
+
+// Old booking pages → New /book accordion
+app.get('/book/studio-old', (c) => c.redirect('/book'))
+app.get('/book/rehearsal-old', (c) => c.redirect('/book'))
+app.get('/book/rehearsal/cowley-road', (c) => c.redirect('/book'))
+app.get('/book/rehearsal/cricket-road', (c) => c.redirect('/book'))
+app.get('/book/lessons-old', (c) => c.redirect('/book'))
+app.get('/book/mixdown', (c) => c.redirect('/book'))
+app.get('/book/tape', (c) => c.redirect('/book'))
+app.get('/book/hire', (c) => c.redirect('/book'))
+app.get('/book/repairs', (c) => c.redirect('/book'))
+app.get('/book-old', (c) => c.redirect('/book'))
+
 export default app
