@@ -24,6 +24,7 @@ import { RackModular } from './pages/RackModular'
 import { RackModularEnhanced } from './pages/RackModularEnhanced'
 import { RackAccordion } from './pages/RackAccordion'
 import { Book } from './pages/Book'
+import { BookAccordion } from './pages/BookAccordion'
 import { DigitalPulsePage } from './pages/DigitalPulse'
 
 const app = new Hono()
@@ -332,18 +333,31 @@ app.get('/av', (c) => c.redirect('/av-services'))
 
 // UNIFIED BOOKING PAGE (Phase 2: Simplified 3-category booking)
 app.get('/book', (c) => {
-  return c.render(
-    <>
-      <link href="/static/crs-booking.css" rel="stylesheet" />
-      <Header />
-      <Book />
-      <Footer />
-    </>,
-    {
-      title: 'Book Your Session | Cowley Road Studios Oxford',
-      description: 'Book rehearsal rooms, recording sessions, control rooms, music lessons, equipment hire, and venue space. Choose your service and book instantly.',
-      keywords: 'book studio oxford, recording session booking, rehearsal room booking, music lessons oxford, equipment hire oxford'
-    }
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Book Your Session | Cowley Road Studios Oxford</title>
+        <meta name="description" content="Book rehearsal rooms, recording sessions, music lessons, equipment hire, and venue space. Choose your service and book instantly." />
+        <meta name="keywords" content="book studio oxford, recording session booking, rehearsal room booking, music lessons oxford, equipment hire oxford" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        
+        {/* Core CSS files */}
+        <link href="/static/crs-reset.css" rel="stylesheet" />
+        <link href="/static/crs-typography.css" rel="stylesheet" />
+        <link href="/static/crs-header.css" rel="stylesheet" />
+        <link href="/static/crs-mobile.css" rel="stylesheet" />
+        
+        {/* Accordion-specific CSS */}
+        <link href="/static/rack-accordion.css" rel="stylesheet" />
+      </head>
+      <body>
+        <BookAccordion />
+      </body>
+    </html>
   )
 })
 

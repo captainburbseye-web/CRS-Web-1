@@ -478,6 +478,45 @@
   gap: 16px;
 }
 
+/* ========================================
+   BOOKING FOOTER INFO
+   ======================================== */
+
+.booking-footer-info {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  text-align: center;
+  background: var(--metal-plate);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+}
+
+.booking-footer-info h3 {
+  font-family: var(--font-tech);
+  font-size: 1.5rem;
+  color: var(--hardware-green);
+  margin: 0 0 1rem 0;
+}
+
+.booking-footer-info p {
+  font-family: var(--font-tech);
+  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.booking-footer-info a {
+  color: var(--hardware-green);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.booking-footer-info a:hover {
+  color: var(--hardware-amber);
+}
+
 /* Footer branding with badge */
 .footer-branding {
   display: flex;
