@@ -1713,6 +1713,123 @@ app.get('/rack-accordion', (c) => {
   );
 })
 
+// PHOTO GALLERY - View all location photos
+app.get('/photos', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CRS Location Photos</title>
+        <style>{`
+          body {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0a0a0a;
+            color: #fff;
+            padding: 2rem;
+            margin: 0;
+          }
+          h1 {
+            color: #00ff88;
+            text-align: center;
+          }
+          .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+          }
+          .photo-card {
+            background: #1a1a1a;
+            border: 2px solid rgba(153,204,153,0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: transform 0.2s;
+          }
+          .photo-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(153,204,153,0.6);
+          }
+          .photo-card h3 {
+            color: #00ff88;
+            margin-top: 0;
+            font-size: 18px;
+          }
+          .photo-card img {
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+          }
+          .photo-info {
+            margin-top: 0.5rem;
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+          }
+          @media (max-width: 768px) {
+            .gallery {
+              grid-template-columns: 1fr;
+            }
+          }
+        `}</style>
+      </head>
+      <body>
+        <h1>📸 CRS Location Photos Available</h1>
+        
+        <div class="gallery">
+          <div class="photo-card">
+            <h3>🎸 Cowley Rehearsal</h3>
+            <img src="/static/machined-assets/cowley-rehearsal-optimized.webp" alt="Cowley Rehearsal" />
+            <div class="photo-info">cowley-rehearsal-optimized.webp (56KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>🎸 Cricket Rehearsal</h3>
+            <img src="/static/machined-assets/cricket-rehearsal-optimized.webp" alt="Cricket Rehearsal" />
+            <div class="photo-info">cricket-rehearsal-optimized.webp (29KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>🎛️ Cowley Control Room (Pods)</h3>
+            <img src="/static/machined-assets/cowley-pods-rack.webp" alt="Cowley Control Room" />
+            <div class="photo-info">cowley-pods-rack.webp (114KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>🎛️ Cricket Control Room</h3>
+            <img src="/static/machined-assets/cricket-control-room-optimized.webp" alt="Cricket Control Room" />
+            <div class="photo-info">cricket-control-room-optimized.webp (29KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>☕ Workshop Café</h3>
+            <img src="/static/machined-assets/workshop-cafe-optimized.webp" alt="Workshop Café" />
+            <div class="photo-info">workshop-cafe-optimized.webp (169KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>📞 Contact/Patchbay</h3>
+            <img src="/static/machined-assets/contact-patchbay-rack.webp" alt="Contact Patchbay" />
+            <div class="photo-info">contact-patchbay-rack.webp (74KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>🎸 Cricket Rehearsal (Alt - Magenta)</h3>
+            <img src="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp" alt="Cricket Rehearsal Magenta" />
+            <div class="photo-info">cricket-rehearsal-magenta-optimized.webp (52KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>🎛️ Master Bus</h3>
+            <img src="/static/machined-assets/master-bus-ch7-optimized.webp" alt="Master Bus" />
+            <div class="photo-info">master-bus-ch7-optimized.webp (134KB)</div>
+          </div>
+        </div>
+      </body>
+    </html>
+  );
+})
+
 // RACK MODULAR — PHASE 4: HARDWARE CHANNEL SELECTOR SYSTEM
 // Single expandable rack with hardware aesthetics (console metaphor)
 // CONSOLE INTERFACE — Hardware Control Surface (No Global Layout)

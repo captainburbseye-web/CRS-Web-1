@@ -144,7 +144,7 @@ export const simplifiedServices: SimplifiedService[] = [
     id: 'cafe',
     title: 'WORKSHOP CAFÉ',
     icon: '☕',
-    description: 'Creative workspace and community hub. Specialty coffee, hot-desking, meeting rooms, and AI learning lab.',
+    description: 'Bookable public-facing venue. Listening sessions, film screenings, community events. Capacity: 25 seated, up to 60 standing.',
     variant: 'passive',
     ledColor: 'green',
     url: '/cafe',
