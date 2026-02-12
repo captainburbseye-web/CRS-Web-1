@@ -50,14 +50,14 @@ export const simplifiedServices: SimplifiedService[] = [
     locations: [
       {
         location: 'COWLEY ROAD',
-        price: '£15/hour',
-        description: 'Main HQ location. Full backline, PA system, and professional monitoring.',
+        price: '£45 (2hrs) | £60 (3hrs) | £65 (4hrs)',
+        description: 'Main HQ location. Full backline, PA system, and professional monitoring. Max 4 members.',
         url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services',
-        features: ['Full backline', 'PA system', 'Monitoring', 'Central location']
+        features: ['Full backline', 'PA system', 'Monitoring', 'Max 4 members']
       },
       {
         location: 'CRICKET ROAD',
-        price: '£12/hour',
+        price: '£40 (2hrs) | £55 (3hrs) | £60 (4hrs)',
         description: '6m × 4m live room with Yamaha CLP piano, drum kit, backline, and vocal mics.',
         url: 'https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services',
         features: ['Yamaha CLP piano', 'Drum kit', 'Vocal mics', 'Intimate space']
@@ -156,7 +156,7 @@ export const simplifiedServices: SimplifiedService[] = [
       },
       {
         location: 'EVENT BOOKING',
-        price: 'Quote on request',
+        price: '£150 for 5 hours',
         description: 'Full venue hire for gigs, listening sessions, film screenings. Capacity: 25 seated, up to 60 standing. PA and lighting included.',
         url: '/book/venue',
         features: ['Professional PA', 'Stage lighting', 'Up to 60 capacity', 'AV equipment']

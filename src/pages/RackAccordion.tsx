@@ -10,7 +10,7 @@ import { simplifiedServices } from '../data/services-simplified';
 export const RackAccordion = () => {
   return (
     <>
-      {/* HEADER: Master Rack Unit + Navigation */}
+      {/* HEADER: Master Rack Unit Only - No Navigation */}
       <div class="rack-header-container">
         <a href="/" aria-label="Home">
           <img 
@@ -21,27 +21,11 @@ export const RackAccordion = () => {
         </a>
       </div>
       
-      <header class="rack-header">
-        <button class="mobile-menu-toggle" aria-label="Open menu">
-          <span class="hamburger-icon">☰</span>
-        </button>
-        
-        <nav class="rack-header-nav">
-          <a href="/studio">Studio</a>
-          <span class="separator">|</span>
-          <a href="/workshop-cafe">Workshop Café</a>
-          <span class="separator">|</span>
-          <a href="/av-services">AV</a>
-          <span class="separator">|</span>
-          <a href="/about">About</a>
-          <span class="separator">|</span>
-          <a href="/contact">Contact</a>
-        </nav>
-        
-        <div class="rack-header-cta">
-          <a href="/book" class="book-now-button">BOOK NOW</a>
-        </div>
-      </header>
+      {/* STUDIO INTRODUCTION */}
+      <div class="studio-intro">
+        <h1>Professional Recording Studios & Rehearsal Spaces in Oxford</h1>
+        <p>Two locations in East Oxford offering rehearsal rooms, recording studios, and professional audio services. Click below to explore our facilities and book your session.</p>
+      </div>
 
       {/* MAIN ACCORDION RACK */}
       <div class="rack-accordion-viewport">

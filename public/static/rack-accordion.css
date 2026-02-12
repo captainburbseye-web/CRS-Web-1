@@ -16,6 +16,37 @@
 }
 
 /* ========================================
+   STUDIO INTRODUCTION
+   ======================================== */
+
+.studio-intro {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  background: var(--metal-dark);
+}
+
+.studio-intro h1 {
+  font-family: var(--font-tech);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.studio-intro p {
+  font-family: var(--font-tech);
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  color: rgba(255,255,255,0.7);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ========================================
    VIEWPORT & SYSTEM BADGE
    ======================================== */
 
