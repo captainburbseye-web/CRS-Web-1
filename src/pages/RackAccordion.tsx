@@ -23,8 +23,20 @@ export const RackAccordion = () => {
       
       {/* STUDIO INTRODUCTION */}
       <div class="studio-intro">
-        <h1>Professional Recording Studios & Rehearsal Spaces in Oxford</h1>
-        <p>Two locations in East Oxford offering rehearsal rooms, recording studios, and professional audio services. Click below to explore our facilities and book your session.</p>
+        <h1>Independent Creative Infrastructure</h1>
+        <p>Recording • Rehearsal • Technical Repair<br/>Oxford — Est. 1999 (as Soundworks)</p>
+      </div>
+
+      {/* INFRASTRUCTURE FRAME */}
+      <div class="infrastructure-frame">
+        <h2 class="infrastructure-title">The Infrastructure</h2>
+        <p>Cowley Road Studios provides recording, rehearsal, and technical services across Oxford.</p>
+        <p>Originally founded as Soundworks in 1999, the studio now operates across two locations:</p>
+        <ul class="infrastructure-list">
+          <li><strong>Cowley Road</strong> — Commissioning 2026</li>
+          <li><strong>Cricket Road</strong> — Operational rehearsal & podcast facility</li>
+        </ul>
+        <p>All services are independently operated. No institutional affiliation required.</p>
       </div>
 
       {/* MAIN ACCORDION RACK */}
@@ -137,13 +149,18 @@ export const RackAccordion = () => {
         <div class="terminal-status-footer">
           
           <div class="terminal-status-section nap-section">
-            <div class="terminal-status-label">COWLEY ROAD STUDIOS / WORKSHOP CAFE</div>
-            <div class="terminal-status-line nap-address">118 Cowley Road, Oxford OX41JE</div>
-            <div class="terminal-status-line nap-phone">
-              <a href="tel:+441865722027">01865 722027</a>
+            <div class="terminal-status-label">COWLEY ROAD STUDIOS</div>
+            <div class="terminal-status-line nap-address">118 Cowley Road, Oxford</div>
+            <div class="terminal-status-line" style="margin-top: 0.5rem; opacity: 0.7;">Formerly Soundworks Oxford (1999–2023)</div>
+            <div class="terminal-status-line" style="opacity: 0.7;">Continuing the Oxford Sound & Light 722027 lineage</div>
+            <div class="terminal-status-line nap-phone" style="margin-top: 0.75rem;">
+              <a href="tel:+441865722027">+44 (0)1865 722027</a>
             </div>
             <div class="terminal-status-line nap-email">
               <a href="mailto:info@crsoxford.com">info@crsoxford.com</a>
+            </div>
+            <div class="terminal-status-line" style="margin-top: 0.5rem;">
+              <a href="https://instagram.com/cowleyroadstudios.ox" target="_blank" rel="noopener">@cowleyroadstudios.ox</a>
             </div>
           </div>
 

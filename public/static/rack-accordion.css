@@ -47,6 +47,63 @@
 }
 
 /* ========================================
+   INFRASTRUCTURE FRAME
+   ======================================== */
+
+.infrastructure-frame {
+  max-width: 800px;
+  margin: 2rem auto 3rem;
+  padding: 2rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+
+.infrastructure-title {
+  font-family: var(--font-tech);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--hardware-green);
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.infrastructure-frame p {
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin: 0 0 1rem 0;
+}
+
+.infrastructure-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.infrastructure-list li {
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+}
+
+.infrastructure-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--hardware-green);
+}
+
+.infrastructure-list strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ========================================
    VIEWPORT & SYSTEM BADGE
    ======================================== */
 
