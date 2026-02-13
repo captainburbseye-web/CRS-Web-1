@@ -23,55 +23,138 @@ export const RackAccordion = () => {
       
       {/* STUDIO INTRODUCTION */}
       <div class="studio-intro">
-        <h1>Recording Studio & Rehearsal Rooms in Oxford</h1>
-        <p>Independent infrastructure. Live and operational.</p>
+        <h1>Cowley Road Studios</h1>
+        <p class="subtitle">Recording • Rehearsal • AV • Repairs</p>
+        <p class="location">Oxford</p>
+        <p class="tagline">Independent creative infrastructure in the heart of Cowley Road.</p>
+        <div class="hero-ctas">
+          <a href="/book" class="cta-primary">BOOK A SESSION</a>
+          <a href="#services" class="cta-secondary">VIEW SERVICES</a>
+        </div>
       </div>
 
-      {/* WHAT'S LIVE */}
-      <div class="infrastructure-frame">
-        <h2 class="infrastructure-title">What's Live</h2>
+      {/* SYSTEM STATUS STRIP */}
+      <div class="status-strip">
+        <div class="status-header">SYSTEM STATUS</div>
+        <div class="status-items">
+          <div class="status-item">
+            <span class="status-led green"></span>
+            <span>Cowley Road Live Room — Operational</span>
+          </div>
+          <div class="status-item">
+            <span class="status-led green"></span>
+            <span>Cricket Road Studio — Operational</span>
+          </div>
+          <div class="status-item">
+            <span class="status-led amber"></span>
+            <span>Control Room — Coming Online</span>
+          </div>
+        </div>
+      </div>
+
+      {/* SECTION 1 — RECORDING */}
+      <div class="service-block recording-block">
+        <h2>Recording Studio — Oxford</h2>
+        <p class="service-tagline">From Source to Master.</p>
+        <p class="service-intro">Professional recording at two locations:</p>
         
-        <div class="infra-service">
-          <h3>Cowley Road Rehearsal Room</h3>
-          <p>Professional treated live room. Self-run sessions.</p>
-          <div class="price-block">
-            <div class="price-line">2 hrs – £40</div>
-            <div class="price-line">3 hrs – £55</div>
-            <div class="price-line">4 hrs – £60</div>
+        <div class="location-pricing-grid">
+          <div class="location-card">
+            <h3>Cowley Road</h3>
+            <p class="service-desc">Engineer-led sessions</p>
+            <div class="price-highlight">£35/hr</div>
+            <p class="price-note">(2hr min)</p>
+          </div>
+          
+          <div class="location-card">
+            <h3>Cricket Road</h3>
+            <p class="service-desc">Engineer-led sessions</p>
+            <div class="price-highlight">£30/hr</div>
+            <p class="price-note">(2hr min)</p>
           </div>
         </div>
 
-        <div class="infra-service">
-          <h3>Cricket Road Recording</h3>
-          <p>Engineer-led recording from £30/hr.</p>
-          <div class="price-block">
-            <div class="price-line">£30/hr</div>
-            <div class="price-line">2 hour minimum</div>
-          </div>
-        </div>
-
-        <div class="infra-service">
-          <h3>Big Booth Workspace</h3>
-          <p>Private isolation suite for focused creative work.</p>
-          <div class="price-block">
-            <div class="price-line">1 hr – £15</div>
-            <div class="price-line">2 hrs – £25</div>
-            <div class="price-line">4 hrs – £45</div>
-          </div>
+        <p class="service-summary">Acoustic sessions, vocals, band tracking and production.</p>
+        
+        <div class="service-cta">
+          <a href="/studio" class="cta-service">BOOK STUDIO SESSION</a>
         </div>
       </div>
 
-      {/* WHY CRS */}
-      <div class="why-crs-section">
-        <h2>Why CRS</h2>
-        <p>Independent. No institutional gatekeeping. Built by working engineers and musicians. Operating within a 25-year Oxford sound legacy.</p>
+      {/* SECTION 2 — REHEARSAL */}
+      <div class="service-block rehearsal-block">
+        <h2>Band Rehearsals</h2>
+        <p class="service-intro">Cowley Road Live Room & Cricket Road</p>
+        
+        <div class="pricing-simple">
+          <div class="price-row">2 hours — £40</div>
+          <div class="price-row">3 hours — £55</div>
+          <div class="price-row">4 hours — £60</div>
+        </div>
+
+        <ul class="feature-list">
+          <li>Large treated space</li>
+          <li>Drum kit ready</li>
+          <li>Backline available</li>
+        </ul>
+        
+        <div class="service-cta">
+          <a href="/rehearsal" class="cta-service">BOOK REHEARSAL</a>
+        </div>
       </div>
 
-      {/* AUTHORITY ANCHOR */}
-      <div class="authority-section">
-        <h2>Independent Studio Infrastructure – Oxford</h2>
-        <p>Cowley Road Studios provides rehearsal, recording, repair, and live sound infrastructure to Oxford's creative community.</p>
-        <p>Formerly Soundworks Oxford (1999–2024).</p>
+      {/* SECTION 3 — PODCAST & AV */}
+      <div class="service-block podcast-block">
+        <h2>Podcast & AV Suite</h2>
+        <p class="service-intro">Spoken word, interviews, broadcast content.</p>
+        
+        <ul class="feature-list">
+          <li>Engineer-assisted recording available</li>
+          <li>Professional signal chain</li>
+          <li>Clean delivery</li>
+        </ul>
+        
+        <div class="service-cta">
+          <a href="/av-services" class="cta-service">BOOK PODCAST SESSION</a>
+        </div>
+      </div>
+
+      {/* SECTION 4 — REPAIRS */}
+      <div class="service-block repairs-block">
+        <h2>Audio & AV Repairs</h2>
+        
+        <div class="price-highlight-inline">
+          <span>Bench diagnostics — </span>
+          <span class="price">£60 flat rate</span>
+        </div>
+
+        <p class="service-intro">Vintage amps, mixers, signal issues. Professional fault tracing and restoration.</p>
+        
+        <div class="service-cta">
+          <a href="/contact" class="cta-service">BOOK REPAIR</a>
+        </div>
+      </div>
+
+      {/* SECTION 5 — ABOUT PREVIEW */}
+      <div class="service-block about-preview-block">
+        <h2>Built on Oxford Sound Since 1999</h2>
+        <p class="service-intro">Cowley Road Studios continues the Soundworks legacy founded in 1999.</p>
+        <p class="heritage-note">25+ years of independent infrastructure serving Oxford's creative community.</p>
+        
+        <ul class="philosophy-list">
+          <li>Boutique vintage equipment</li>
+          <li>Modern workflow</li>
+          <li>No institutional barriers</li>
+        </ul>
+        
+        <div class="service-cta">
+          <a href="/about" class="cta-service">READ OUR STORY</a>
+        </div>
+      </div>
+
+      {/* SERVICES ANCHOR */}
+      <div id="services" class="services-anchor">
+        <h2>All Services</h2>
       </div>
 
       {/* MAIN ACCORDION RACK */}
