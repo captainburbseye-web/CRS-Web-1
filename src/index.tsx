@@ -26,6 +26,7 @@ import { RackAccordion } from './pages/RackAccordion'
 import { Book } from './pages/Book'
 import { BookAccordion } from './pages/BookAccordion'
 import { RehearsalSpaces } from './pages/RehearsalSpaces'
+import { RecordingPage } from './pages/Recording'
 import { PodcastAVPage } from './pages/PodcastAV'
 import { DigitalPulsePage } from './pages/DigitalPulse'
 
@@ -649,17 +650,35 @@ app.get('/', (c) => {
 // HOME PAGE: Redirect to root (kept for legacy compatibility)
 app.get('/home', (c) => c.redirect('/'))
 
-// STUDIO
+// RECORDING / STUDIO
 app.get('/studio', (c) => {
-  return c.render(
-    <StudioPage />,
-    {
-      title: 'Recording Studio Oxford | Cowley Road Studios',
-      description: 'Purpose-built recording and production rooms in Oxford. Hybrid analogue/digital workflows, engineer-maintained systems. Book studio sessions now.',
-      keywords: 'recording studio oxford, music studio oxford, production studio oxford, recording sessions oxford'
-    }
-  )
+  return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recording Studio Oxford | Engineer-Led Sessions | Cowley Road Studios</title>
+    <meta name="description" content="Professional recording studio in Oxford. Engineer-led sessions from £30/hr at Cricket Road, £35/hr at Cowley Road. Independent studio infrastructure since 1999.">
+    <meta name="keywords" content="recording studio oxford, music recording oxford, engineer led recording oxford, professional studio oxford, cowley road recording">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="/static/crs-reset.css" rel="stylesheet">
+    <link href="/static/crs-typography.css" rel="stylesheet">
+    <link href="/static/crs-header.css" rel="stylesheet">
+    <link href="/static/crs-mobile.css" rel="stylesheet">
+    <link href="/static/rack-accordion.css" rel="stylesheet">
+</head>
+<body>
+    ${<RecordingPage />}
+</body>
+</html>`)
 })
+
+// Add redirect for /recording
+app.get('/recording', (c) => c.redirect('/studio'))
 // INFRASTRUCTURE SNAPSHOTT (SINGULAR STRUCTURAL CENTRE OF GRAVITY)
 app.get('/studio/infrastructure', (c) => {
   return c.render(
