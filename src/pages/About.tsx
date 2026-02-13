@@ -214,6 +214,9 @@ export const About = () => {
       </div>
 
       <div style={{ textAlign: 'center', marginTop: '3rem', padding: '2rem 0', borderTop: '1px solid rgba(232, 155, 60, 0.2)' }}>
+        <p style={{ marginBottom: '1rem', fontSize: '0.9375rem', lineHeight: 1.6, color: 'rgba(245, 245, 245, 0.8)' }}>
+          Cowley Road Studios continues this independent recording studio legacy in Oxford, combining live sound, rehearsal infrastructure, and boutique studio practice under one roof.
+        </p>
         <p className="mono" style={{ color: 'var(--text-gold)', fontWeight: 700 }}>
           CRS — Built to work. Built to last. Powered by ODRO Engineering.
         </p>

@@ -23,20 +23,36 @@ export const RackAccordion = () => {
       
       {/* STUDIO INTRODUCTION */}
       <div class="studio-intro">
-        <h1>Independent Creative Infrastructure</h1>
-        <p>Recording • Rehearsal • Technical Repair<br/>Oxford — Est. 1999 (as Soundworks)</p>
+        <h1>Recording Studio & Rehearsal Rooms in Oxford</h1>
+        <p>Professional band rehearsal, engineer-led recording, and private creative workspace — now live in Cowley Road and Cricket Road.</p>
       </div>
 
       {/* INFRASTRUCTURE FRAME */}
       <div class="infrastructure-frame">
-        <h2 class="infrastructure-title">The Infrastructure</h2>
-        <p>Cowley Road Studios provides recording, rehearsal, and technical services across Oxford.</p>
-        <p>Originally founded as Soundworks in 1999, the studio now operates across two locations:</p>
-        <ul class="infrastructure-list">
-          <li><strong>Cowley Road</strong> — Commissioning 2026</li>
-          <li><strong>Cricket Road</strong> — Operational rehearsal & podcast facility</li>
-        </ul>
-        <p>All services are independently operated. No institutional affiliation required.</p>
+        <h2 class="infrastructure-title">What's Live</h2>
+        
+        <div class="infra-service">
+          <h3>Rehearsal Rooms – Cowley Road</h3>
+          <p>Treated live room. Backline available. Self-run sessions.</p>
+          <p class="infra-price">2 hrs £40 · 3 hrs £55 · 4 hrs £60</p>
+        </div>
+
+        <div class="infra-service">
+          <h3>Recording Sessions – With Engineer</h3>
+          <p>Available immediately at Cricket Road. Engineer-led sessions only.</p>
+          <p class="infra-price">From £30 per hour (2 hour minimum)</p>
+        </div>
+
+        <div class="infra-service">
+          <h3>Big Booth – Creative Isolation Suite</h3>
+          <p>Private, sound-treated workspace for writing, editing, content creation.</p>
+          <p class="infra-price">From £15 per hour</p>
+        </div>
+
+        <div class="infra-service">
+          <h3>Control Room</h3>
+          <p>Launching shortly. Dry hire and engineer-led options available on completion.</p>
+        </div>
       </div>
 
       {/* MAIN ACCORDION RACK */}
@@ -166,8 +182,8 @@ export const RackAccordion = () => {
 
           <div class="terminal-status-section">
             <div class="terminal-status-label">SYSTEM STATUS</div>
-            <div class="terminal-status-line">MODE: OPERATIONAL</div>
-            <div class="terminal-status-line">PHASE: COMMISSIONING</div>
+            <div class="terminal-status-line">MODE: LIVE</div>
+            <div class="terminal-status-line">SERVICES: OPERATIONAL</div>
             <div class="terminal-status-line">ACCESS: SCHEDULED ONLY</div>
           </div>
 

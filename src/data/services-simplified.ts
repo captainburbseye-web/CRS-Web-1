@@ -27,16 +27,16 @@ export interface SimplifiedService {
 }
 
 export const simplifiedServices: SimplifiedService[] = [
-  // 1. BOOKING HUB (Command module)
+  // 1. PRIMARY CTA
   {
     id: 'booking-hub',
-    title: 'COMMISSION ALLOCATION',
-    icon: '📅',
-    description: 'Pre-completion allocations available at commissioning rates. Cricket Road operates at standard live rates.',
+    title: 'BOOK REHEARSAL',
+    icon: '🎸',
+    description: 'Professional band rehearsal now live at Cowley Road. Treated live room with backline.',
     variant: 'command',
     ledColor: 'green',
-    url: '/book',
-    ctaText: 'VIEW ALLOCATIONS',
+    url: '/rehearsal',
+    ctaText: 'BOOK REHEARSAL',
   },
 
   // 2. REHEARSAL SPACES (Service with locations)
@@ -53,14 +53,14 @@ export const simplifiedServices: SimplifiedService[] = [
       {
         location: 'COWLEY ROAD',
         price: '£40 (2hrs) | £55 (3hrs) | £60 (4hrs)',
-        description: 'Commissioning allocation. Full backline, PA system, monitoring. Max 4 members.',
+        description: 'Live now. Full backline, PA system, monitoring. Max 4 members.',
         url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services',
         features: ['Full backline', 'PA system', 'Monitoring', 'Max 4 members']
       },
       {
         location: 'CRICKET ROAD',
         price: '£40 (2hrs) | £55 (3hrs) | £60 (4hrs)',
-        description: 'Operational. 6m × 4m live room with Yamaha CLP piano, drum kit, backline, vocal mics.',
+        description: 'Live now. 6m × 4m live room with Yamaha CLP piano, drum kit, backline, vocal mics.',
         url: 'https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services',
         features: ['Yamaha CLP piano', 'Drum kit', 'Vocal mics', 'Independent access']
       }
@@ -78,15 +78,15 @@ export const simplifiedServices: SimplifiedService[] = [
     locations: [
       {
         location: 'COWLEY CONTROL ROOM',
-        price: 'From £30/hour',
-        description: 'Commissioning allocation. Analog console, outboard gear, isolation booths.',
+        price: 'Launching shortly',
+        description: 'Analog console, outboard gear, isolation booths. Dry hire and engineer-led options available on completion.',
         url: '/book/studio?location=cowley',
-        features: ['Analog console', 'Outboard gear', 'Isolation booths', 'Commissioning rate']
+        features: ['Analog console', 'Outboard gear', 'Isolation booths', 'Launching shortly']
       },
       {
         location: 'CRICKET CONTROL ROOM',
         price: '£30/hr · 2hr minimum · 4hr block £110',
-        description: 'Operational. With engineer. Compact control room with live room integration for tracking and mixing.',
+        description: 'Live now. With engineer. Control room with live room integration for tracking and mixing.',
         url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
         features: ['With engineer', 'Tracking setup', 'Mixing capabilities', '2-hour minimum']
       },
@@ -166,9 +166,9 @@ export const simplifiedServices: SimplifiedService[] = [
       {
         location: 'EVENT BOOKING',
         price: '£150 for 5 hours',
-        description: 'Commissioning allocation. Venue hire for events. Capacity: 25 seated, 60 standing. PA and lighting included.',
+        description: 'Available now. Venue hire for events. Capacity: 25 seated, 60 standing. PA and lighting included.',
         url: '/book/venue',
-        features: ['Professional PA', 'Stage lighting', 'Up to 60 capacity', 'Commissioning rate']
+        features: ['Professional PA', 'Stage lighting', 'Up to 60 capacity', 'Available now']
       }
     ]
   },

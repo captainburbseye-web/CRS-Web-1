@@ -19,8 +19,8 @@ export const RehearsalSpaces = () => {
       
       {/* REHEARSAL INTRODUCTION */}
       <div class="studio-intro">
-        <h1>Rehearsal Spaces</h1>
-        <p>Professional rehearsal rooms at two Oxford locations. Full backline, PA systems, and flexible hourly rates. Book your session below.</p>
+        <h1>Professional Band Rehearsal – Oxford</h1>
+        <p>Treated live room. Backline available. Self-run sessions. Book and pay online.</p>
       </div>
 
       {/* MAIN CONTENT */}
@@ -49,7 +49,8 @@ export const RehearsalSpaces = () => {
           </div>
 
           <div class="rehearsal-description">
-            <p>Commissioning allocation. Full professional setup. Perfect for bands up to 4 members.</p>
+            <p>Live now. Full professional setup. Perfect for bands up to 4 members.</p>
+            <p style="margin-top: 0.5rem; font-weight: 600; color: var(--hardware-green);">Engineer not included in rehearsal sessions.</p>
           </div>
 
           <div class="rehearsal-features">
@@ -97,7 +98,8 @@ export const RehearsalSpaces = () => {
           </div>
 
           <div class="rehearsal-description">
-            <p>Operational. 6m × 4m live room with quality equipment. 4-hour rate = £15/hour.</p>
+            <p>Live now. 6m × 4m live room with quality equipment. 4-hour rate = £15/hour.</p>
+            <p style="margin-top: 0.5rem; font-weight: 600; color: var(--hardware-green);">Engineer not included in rehearsal sessions.</p>
           </div>
 
           <div class="rehearsal-features">
