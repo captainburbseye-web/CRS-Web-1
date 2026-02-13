@@ -128,6 +128,7 @@ export const RehearsalSpaces = () => {
 
       {/* CONTACT INFO */}
       <div class="booking-footer-info">
+        <p style="font-weight: 600; color: var(--hardware-green); margin-bottom: 1rem; font-size: 1.05rem;">Rehearsal and dry hire sessions do not include engineer support.</p>
         <h3>Questions About Rehearsal Spaces?</h3>
         <p>Call us: <a href="tel:+441865722027">01865 722027</a></p>
         <p>Email: <a href="mailto:info@crsoxford.com">info@crsoxford.com</a></p>

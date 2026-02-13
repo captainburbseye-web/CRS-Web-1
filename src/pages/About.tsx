@@ -60,22 +60,6 @@ export const About = () => {
         </div>
       </div>
 
-      {/* BUILD 2026 */}
-      <div className="content-block">
-        <h3 className="content-heading heading">Our Mission: Build 2026</h3>
-        <div className="content-text">
-          <p>
-            We are currently in a major growth phase, with limited audio services launching as early as February 2026 (March at latest). New workspaces and expanded creative facilities are under development.
-          </p>
-          <p style={{ marginTop: '1rem' }}>
-            To fund the next stage of our build-out, we are currently offering <strong>exclusive, discounted rates on recording, production, and podcast sessions</strong> for those who book in advance. Your early support directly funds the completion of Oxford's most comprehensive creative infrastructure.
-          </p>
-          <p style={{ marginTop: '1rem' }}>
-            <a href="/contact" style={{ color: 'var(--text-gold)', textDecoration: 'underline', fontWeight: 600 }}>Book your pre-build session now</a>
-          </p>
-        </div>
-      </div>
-
       {/* THE CRS STORY */}
       <div className="content-block">
         <h3 className="content-heading heading">The CRS Story</h3>
@@ -215,7 +199,7 @@ export const About = () => {
 
       <div style={{ textAlign: 'center', marginTop: '3rem', padding: '2rem 0', borderTop: '1px solid rgba(232, 155, 60, 0.2)' }}>
         <p style={{ marginBottom: '1rem', fontSize: '0.9375rem', lineHeight: 1.6, color: 'rgba(245, 245, 245, 0.8)' }}>
-          Cowley Road Studios continues this independent recording studio legacy in Oxford, combining live sound, rehearsal infrastructure, and boutique studio practice under one roof.
+          Cowley Road Studios continues the independent recording studio lineage established in Oxford in 1999, combining live sound experience, venue technical management, boutique repair expertise, and modern creative infrastructure under one roof.
         </p>
         <p className="mono" style={{ color: 'var(--text-gold)', fontWeight: 700 }}>
           CRS — Built to work. Built to last. Powered by ODRO Engineering.

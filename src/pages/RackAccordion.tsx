@@ -24,35 +24,54 @@ export const RackAccordion = () => {
       {/* STUDIO INTRODUCTION */}
       <div class="studio-intro">
         <h1>Recording Studio & Rehearsal Rooms in Oxford</h1>
-        <p>Professional band rehearsal, engineer-led recording, and private creative workspace — now live in Cowley Road and Cricket Road.</p>
+        <p>Independent infrastructure. Live and operational.</p>
       </div>
 
-      {/* INFRASTRUCTURE FRAME */}
+      {/* WHAT'S LIVE */}
       <div class="infrastructure-frame">
         <h2 class="infrastructure-title">What's Live</h2>
         
         <div class="infra-service">
-          <h3>Rehearsal Rooms – Cowley Road</h3>
-          <p>Treated live room. Backline available. Self-run sessions.</p>
-          <p class="infra-price">2 hrs £40 · 3 hrs £55 · 4 hrs £60</p>
+          <h3>Cowley Road Rehearsal Room</h3>
+          <p>Professional treated live room. Self-run sessions.</p>
+          <div class="price-block">
+            <div class="price-line">2 hrs – £40</div>
+            <div class="price-line">3 hrs – £55</div>
+            <div class="price-line">4 hrs – £60</div>
+          </div>
         </div>
 
         <div class="infra-service">
-          <h3>Recording Sessions – With Engineer</h3>
-          <p>Available immediately at Cricket Road. Engineer-led sessions only.</p>
-          <p class="infra-price">From £30 per hour (2 hour minimum)</p>
+          <h3>Cricket Road Recording</h3>
+          <p>Engineer-led recording from £30/hr.</p>
+          <div class="price-block">
+            <div class="price-line">£30/hr</div>
+            <div class="price-line">2 hour minimum</div>
+          </div>
         </div>
 
         <div class="infra-service">
-          <h3>Big Booth – Creative Isolation Suite</h3>
-          <p>Private, sound-treated workspace for writing, editing, content creation.</p>
-          <p class="infra-price">From £15 per hour</p>
+          <h3>Big Booth Workspace</h3>
+          <p>Private isolation suite for focused creative work.</p>
+          <div class="price-block">
+            <div class="price-line">1 hr – £15</div>
+            <div class="price-line">2 hrs – £25</div>
+            <div class="price-line">4 hrs – £45</div>
+          </div>
         </div>
+      </div>
 
-        <div class="infra-service">
-          <h3>Control Room</h3>
-          <p>Launching shortly. Dry hire and engineer-led options available on completion.</p>
-        </div>
+      {/* WHY CRS */}
+      <div class="why-crs-section">
+        <h2>Why CRS</h2>
+        <p>Independent. No institutional gatekeeping. Built by working engineers and musicians. Operating within a 25-year Oxford sound legacy.</p>
+      </div>
+
+      {/* AUTHORITY ANCHOR */}
+      <div class="authority-section">
+        <h2>Independent Studio Infrastructure – Oxford</h2>
+        <p>Cowley Road Studios provides rehearsal, recording, repair, and live sound infrastructure to Oxford's creative community.</p>
+        <p>Formerly Soundworks Oxford (1999–2024).</p>
       </div>
 
       {/* MAIN ACCORDION RACK */}
@@ -166,9 +185,9 @@ export const RackAccordion = () => {
           
           <div class="terminal-status-section nap-section">
             <div class="terminal-status-label">COWLEY ROAD STUDIOS</div>
+            <div class="terminal-status-line" style="font-weight: 600; margin-bottom: 0.5rem;">Independent Recording Studio & Rehearsal Rooms – Oxford</div>
             <div class="terminal-status-line nap-address">118 Cowley Road, Oxford</div>
-            <div class="terminal-status-line" style="margin-top: 0.5rem; opacity: 0.7;">Formerly Soundworks Oxford (1999–2023)</div>
-            <div class="terminal-status-line" style="opacity: 0.7;">Continuing the Oxford Sound & Light 722027 lineage</div>
+            <div class="terminal-status-line" style="margin-top: 0.75rem; opacity: 0.7;">Formerly Soundworks Oxford (1999–2024)</div>
             <div class="terminal-status-line nap-phone" style="margin-top: 0.75rem;">
               <a href="tel:+441865722027">+44 (0)1865 722027</a>
             </div>

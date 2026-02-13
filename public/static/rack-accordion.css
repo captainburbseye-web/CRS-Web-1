@@ -105,6 +105,160 @@
   font-size: 1rem !important;
 }
 
+.price-block {
+  margin-top: 0.75rem;
+  padding: 1rem;
+  background: rgba(0,255,136,0.05);
+  border-left: 3px solid var(--hardware-green);
+  border-radius: 4px;
+}
+
+.price-line {
+  font-family: var(--font-tech);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--hardware-green);
+  padding: 0.25rem 0;
+}
+
+/* WHY CRS SECTION */
+.why-crs-section {
+  max-width: 800px;
+  margin: 3rem auto 2rem;
+  padding: 2rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+
+.why-crs-section h2 {
+  font-family: var(--font-tech);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--hardware-green);
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.why-crs-section p {
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* AUTHORITY SECTION */
+.authority-section {
+  max-width: 800px;
+  margin: 2rem auto 3rem;
+  padding: 2rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(0,255,136,0.15);
+  border-radius: 4px;
+}
+
+.authority-section h2 {
+  font-family: var(--font-tech);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.01em;
+}
+
+.authority-section p {
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin: 0 0 0.75rem 0;
+}
+
+.authority-section p:last-child {
+  margin-bottom: 0;
+  font-weight: 600;
+  color: var(--hardware-green);
+}
+
+.price-block {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(0,255,136,0.05);
+  border-left: 3px solid var(--hardware-green);
+}
+
+.price-line {
+  font-family: var(--font-tech);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--hardware-green);
+  padding: 0.25rem 0;
+}
+
+/* WHY CRS SECTION */
+.why-crs-section {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  text-align: center;
+}
+
+.why-crs-section h2 {
+  font-family: var(--font-tech);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--hardware-green);
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.why-crs-section p {
+  font-family: var(--font-tech);
+  font-size: 1rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* AUTHORITY SECTION */
+.authority-section {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--hardware-green);
+  border-radius: 4px;
+}
+
+.authority-section h2 {
+  font-family: var(--font-tech);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  letter-spacing: 0.01em;
+}
+
+.authority-section p {
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin: 0 0 0.75rem 0;
+}
+
+.authority-section p:last-child {
+  margin-bottom: 0;
+  font-weight: 600;
+  color: var(--hardware-green);
+}
+
 /* ========================================
    VIEWPORT & SYSTEM BADGE
    ======================================== */
