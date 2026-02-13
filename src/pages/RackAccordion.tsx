@@ -154,7 +154,9 @@ export const RackAccordion = () => {
 
       {/* SERVICES ANCHOR */}
       <div id="services" class="services-anchor">
-        <h2>All Services</h2>
+        <h2>Services</h2>
+        <p class="services-intro">Cowley Road Studios operates across two Oxford locations.</p>
+        <p class="services-intro-note">All pricing is transparent. All bookings are direct.</p>
       </div>
 
       {/* MAIN ACCORDION RACK */}
