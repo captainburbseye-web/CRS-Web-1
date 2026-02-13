@@ -44,9 +44,11 @@ export const simplifiedServices: SimplifiedService[] = [
     id: 'rehearsal',
     title: 'REHEARSAL SPACES',
     icon: '🎸',
-    description: 'Professional rehearsal rooms with full backline, PA systems, and monitoring. Choose your location below:',
+    description: 'Professional rehearsal rooms with full backline, PA systems, and monitoring. View full details or book directly below:',
     variant: 'rack',
     ledColor: 'green',
+    url: '/rehearsal', // Link to detailed page
+    ctaText: 'VIEW DETAILS',
     locations: [
       {
         location: 'COWLEY ROAD',

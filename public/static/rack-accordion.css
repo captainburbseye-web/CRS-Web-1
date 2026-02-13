@@ -517,6 +517,178 @@
   color: var(--hardware-amber);
 }
 
+/* ========================================
+   REHEARSAL SPACES PAGE
+   ======================================== */
+
+.rehearsal-page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+  background: var(--metal-dark);
+}
+
+.rehearsal-location-card {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 50%, #0f0f0f 100%);
+  border: 2px solid rgba(153, 204, 153, 0.3);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.4),
+    0 4px 12px rgba(0,0,0,0.3);
+}
+
+.rehearsal-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(153, 204, 153, 0.2);
+}
+
+.rehearsal-header h2 {
+  font-family: var(--font-tech);
+  font-size: 1.5rem;
+  color: var(--hardware-green);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.rehearsal-address {
+  font-family: var(--font-tech);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.rehearsal-pricing {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+
+.price-item {
+  flex: 1;
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(153, 204, 153, 0.05);
+  border: 1px solid rgba(153, 204, 153, 0.2);
+  border-radius: 4px;
+}
+
+.price-item .price {
+  display: block;
+  font-family: var(--font-tech);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--hardware-green);
+  margin-bottom: 0.25rem;
+}
+
+.price-item .duration {
+  display: block;
+  font-family: var(--font-tech);
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.rehearsal-description {
+  margin-bottom: 1.5rem;
+}
+
+.rehearsal-description p {
+  font-family: var(--font-tech);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.8);
+}
+
+.rehearsal-features {
+  margin-bottom: 2rem;
+}
+
+.rehearsal-features h3 {
+  font-family: var(--font-tech);
+  font-size: 1rem;
+  color: rgba(255,255,255,0.9);
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.rehearsal-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rehearsal-features li {
+  font-family: var(--font-tech);
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.feature-icon {
+  color: var(--hardware-green);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.rehearsal-book-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(180deg, rgba(0,255,136,0.15) 0%, rgba(0,255,136,0.08) 100%);
+  border: 2px solid rgba(0,255,136,0.4);
+  border-radius: 4px;
+  color: var(--hardware-green);
+  text-decoration: none;
+  font-family: var(--font-tech);
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.15s ease-out;
+  box-shadow: 0 0 20px rgba(0,255,136,0.15);
+  width: 100%;
+  justify-content: center;
+}
+
+.rehearsal-book-button:hover {
+  background: linear-gradient(180deg, rgba(0,255,136,0.25) 0%, rgba(0,255,136,0.15) 100%);
+  border-color: rgba(0,255,136,0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(0,255,136,0.3);
+}
+
+@media (max-width: 1024px) {
+  .rehearsal-page-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .rehearsal-page-content {
+    padding: 1rem;
+  }
+  
+  .rehearsal-location-card {
+    padding: 1.5rem;
+  }
+  
+  .rehearsal-pricing {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
 /* Footer branding with badge */
 .footer-branding {
   display: flex;

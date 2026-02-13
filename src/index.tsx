@@ -25,6 +25,7 @@ import { RackModularEnhanced } from './pages/RackModularEnhanced'
 import { RackAccordion } from './pages/RackAccordion'
 import { Book } from './pages/Book'
 import { BookAccordion } from './pages/BookAccordion'
+import { RehearsalSpaces } from './pages/RehearsalSpaces'
 import { DigitalPulsePage } from './pages/DigitalPulse'
 
 const app = new Hono()
@@ -453,107 +454,7 @@ app.get('/book-old', (c) => {
 })
 
 // REHEARSAL SPACE BOOKING
-app.get('/rehearsal', (c) => {
-  return c.render(
-    <>
-      <BuildStatusBanner />
-      <Header />
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led green"></span>
-          </div>
-          <h2 class="rack-unit-title">REHEARSAL SPACE — CRICKET ROAD</h2>
-        </div>
-        
-        <div class="rack-unit-content" style="max-width: 800px; margin: 0 auto;">
-          {/* INTRO */}
-          <p style="font-size: 1rem; line-height: 1.7; color: rgba(245, 245, 245, 0.9); margin-bottom: 2rem;">
-            Fully equipped rehearsal room at Cricket Road. Secure, private space with PA system and backline. Book by the hour.
-          </p>
-
-          {/* PRICING TABLE */}
-          <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(212, 160, 23, 0.2); padding: 2rem; margin-bottom: 2rem;">
-            <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.125rem; color: #E89B3C; margin-bottom: 1.5rem; letter-spacing: 0.05em;">
-              PRICING
-            </h3>
-            
-            <div style="display: grid; gap: 1rem;">
-              <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #C8FF41;">
-                <div>
-                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">2 HOURS</div>
-                  <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£40</div>
-                </div>
-                <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
-                  BOOK NOW
-                </a>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #C8FF41;">
-                <div>
-                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">3 HOURS</div>
-                  <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£55</div>
-                </div>
-                <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
-                  BOOK NOW
-                </a>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #C8FF41;">
-                <div>
-                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">4 HOURS</div>
-                  <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£60</div>
-                </div>
-                <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX?src=embed" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
-                  BOOK NOW
-                </a>
-              </div>
-            </div>
-
-            <p style="font-size: 0.813rem; color: rgba(245, 245, 245, 0.6); margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">
-              Payment in full at time of booking. Exact availability shown in booking calendar.
-            </p>
-          </div>
-
-          {/* WHAT'S INCLUDED */}
-          <div style="margin-bottom: 2rem;">
-            <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.125rem; color: #E89B3C; margin-bottom: 1rem; letter-spacing: 0.05em;">
-              WHAT'S INCLUDED
-            </h3>
-            <ul style="list-style: none; padding: 0; margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.938rem; line-height: 2; color: rgba(245, 245, 245, 0.85);">
-              <li style="padding-left: 1.5rem; position: relative;">
-                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
-                PA system
-              </li>
-              <li style="padding-left: 1.5rem; position: relative;">
-                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
-                Backline (amps, basic kit)
-              </li>
-              <li style="padding-left: 1.5rem; position: relative;">
-                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
-                Secure, private space
-              </li>
-              <li style="padding-left: 1.5rem; position: relative;">
-                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
-                Up to 8 people
-              </li>
-            </ul>
-          </div>
-
-          {/* LOCATION */}
-          <div style="padding-top: 1.5rem; border-top: 1px solid rgba(245, 245, 245, 0.1);">
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
-              <strong style="color: #E89B3C;">Location:</strong> Cricket Road, Oxford<br />
-              <strong style="color: #E89B3C;">Availability:</strong> Evenings + weekends (see booking calendar)<br />
-              <strong style="color: #E89B3C;">Questions:</strong> <a href="/contact" style="color: #C8FF41; text-decoration: none;">All enquiries via contact form</a>
-            </p>
-          </div>
-        </div>
-      </section>
-      <Footer />
-    </>
-  )
-})
+// Removed old legacy /rehearsal route - using new RehearsalSpaces component below
 
 // VENUE BOOKING REDIRECT
 app.get('/book/venue', (c) => {
@@ -1995,6 +1896,36 @@ app.get('/signage-loop', (c) => {
   )
 })
 
+// REHEARSAL SPACES PAGE
+app.get('/rehearsal', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Rehearsal Spaces | Cowley Road Studios Oxford</title>
+        <meta name="description" content="Professional rehearsal rooms at Cowley Road and Cricket Road, Oxford. Full backline, PA systems, flexible hourly rates. Book your session now." />
+        <meta name="keywords" content="rehearsal space oxford, band rehearsal oxford, music rehearsal oxford, practice room oxford" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        
+        {/* Core CSS files */}
+        <link href="/static/crs-reset.css" rel="stylesheet" />
+        <link href="/static/crs-typography.css" rel="stylesheet" />
+        <link href="/static/crs-header.css" rel="stylesheet" />
+        <link href="/static/crs-mobile.css" rel="stylesheet" />
+        
+        {/* Accordion-specific CSS */}
+        <link href="/static/rack-accordion.css" rel="stylesheet" />
+      </head>
+      <body>
+        <RehearsalSpaces />
+      </body>
+    </html>
+  )
+})
+
 // ===================================================================
 // LEGACY ROUTE CLEANUP - Redirect old pages to accordion design
 // ===================================================================
@@ -2006,7 +1937,7 @@ app.get('/cricket-road', (c) => c.redirect('/'))
 app.get('/crs-cowley-road', (c) => c.redirect('/'))
 app.get('/crs-cricket-road', (c) => c.redirect('/'))
 app.get('/locations', (c) => c.redirect('/'))
-app.get('/rehearsal', (c) => c.redirect('/book'))
+// '/rehearsal' now shows dedicated RehearsalSpaces page
 
 // Old booking pages → New /book accordion
 app.get('/book/studio-old', (c) => c.redirect('/book'))
