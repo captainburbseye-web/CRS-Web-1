@@ -52,7 +52,7 @@ export const simplifiedServices: SimplifiedService[] = [
     locations: [
       {
         location: 'COWLEY ROAD',
-        price: '£45 (2hrs) | £60 (3hrs) | £65 (4hrs)',
+        price: '£40 (2hrs) | £55 (3hrs) | £60 (4hrs)',
         description: 'Commissioning allocation. Full backline, PA system, monitoring. Max 4 members.',
         url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services',
         features: ['Full backline', 'PA system', 'Monitoring', 'Max 4 members']
@@ -85,10 +85,17 @@ export const simplifiedServices: SimplifiedService[] = [
       },
       {
         location: 'CRICKET CONTROL ROOM',
-        price: 'From £25/hour',
-        description: 'Operational. Compact control room with live room integration for tracking and mixing.',
+        price: '£30/hr · 2hr minimum · 4hr block £110',
+        description: 'Operational. With engineer. Compact control room with live room integration for tracking and mixing.',
         url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
-        features: ['Integrated live room', 'Tracking setup', 'Mixing capabilities', 'Operational']
+        features: ['With engineer', 'Tracking setup', 'Mixing capabilities', '2-hour minimum']
+      },
+      {
+        location: 'BIG BOOTH — CREATIVE ISOLATION',
+        price: '£15 (1hr) | £25 (2hrs) | £45 (4hrs)',
+        description: 'Sound-treated writing and content room. Ideal for focused creative work, remote calls, quiet practice, mix prep.',
+        url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
+        features: ['Sound-treated', 'Isolation suite', 'Content creation', 'No engineer required']
       }
     ]
   },

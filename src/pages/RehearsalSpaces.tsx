@@ -35,21 +35,21 @@ export const RehearsalSpaces = () => {
 
           <div class="rehearsal-pricing">
             <div class="price-item">
-              <span class="price">£45</span>
+              <span class="price">£40</span>
               <span class="duration">2 hours</span>
             </div>
             <div class="price-item">
-              <span class="price">£60</span>
+              <span class="price">£55</span>
               <span class="duration">3 hours</span>
             </div>
             <div class="price-item">
-              <span class="price">£65</span>
+              <span class="price">£60</span>
               <span class="duration">4 hours</span>
             </div>
           </div>
 
           <div class="rehearsal-description">
-            <p>Main HQ location with full professional setup. Perfect for bands up to 4 members.</p>
+            <p>Commissioning allocation. Full professional setup. Perfect for bands up to 4 members.</p>
           </div>
 
           <div class="rehearsal-features">
@@ -97,7 +97,7 @@ export const RehearsalSpaces = () => {
           </div>
 
           <div class="rehearsal-description">
-            <p>Intimate 6m × 4m live room with quality equipment. Great value for smaller setups.</p>
+            <p>Operational. 6m × 4m live room with quality equipment. 4-hour rate = £15/hour.</p>
           </div>
 
           <div class="rehearsal-features">
