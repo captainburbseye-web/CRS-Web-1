@@ -33,28 +33,9 @@ export const RackAccordion = () => {
         </div>
       </div>
 
-      {/* SYSTEM STATUS STRIP */}
-      <div class="status-strip">
-        <div class="status-header">SYSTEM STATUS</div>
-        <div class="status-items">
-          <div class="status-item">
-            <span class="status-led green"></span>
-            <span>Cowley Road Live Room — Operational</span>
-          </div>
-          <div class="status-item">
-            <span class="status-led green"></span>
-            <span>Cricket Road Studio — Operational</span>
-          </div>
-          <div class="status-item">
-            <span class="status-led amber"></span>
-            <span>Control Room — Coming Online</span>
-          </div>
-        </div>
-      </div>
-
       {/* SECTION 1 — RECORDING */}
       <div class="service-block recording-block">
-        <h2>Recording Studio — Oxford</h2>
+        <h2>Recording Services</h2>
         <p class="service-tagline">From Source to Master.</p>
         <p class="service-intro">Professional recording at two locations:</p>
         
@@ -230,6 +211,25 @@ export const RackAccordion = () => {
         
         <div class="system-status-strip">
           SYSTEM: ONLINE · {simplifiedServices.length} SERVICES · CRS v1.0
+        </div>
+      </div>
+
+      {/* SYSTEM STATUS STRIP - Bottom of page */}
+      <div class="status-strip">
+        <div class="status-header">SYSTEM STATUS</div>
+        <div class="status-items">
+          <div class="status-item">
+            <span class="status-led green"></span>
+            <span>Cowley Road Live Room — Operational</span>
+          </div>
+          <div class="status-item">
+            <span class="status-led green"></span>
+            <span>Cricket Road Studio — Operational</span>
+          </div>
+          <div class="status-item">
+            <span class="status-led amber"></span>
+            <span>Control Room — Coming Online</span>
+          </div>
         </div>
       </div>
 
