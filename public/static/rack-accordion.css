@@ -1113,6 +1113,303 @@
   text-decoration: underline;
 }
 
+/* Contact page layout */
+.contact-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.contact-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(153,204,153,0.2);
+  border-radius: 8px;
+}
+
+.contact-section h2 {
+  font-size: 1.6rem;
+  color: var(--hardware-green);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.location-blocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.location-block {
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(153,204,153,0.2);
+  border-radius: 6px;
+}
+
+.location-block h3 {
+  font-size: 1.3rem;
+  color: var(--hardware-green);
+  margin-bottom: 1rem;
+}
+
+.location-block .address {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.status-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.status-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.status-dot.green {
+  background: var(--hardware-green);
+  box-shadow: 0 0 8px var(--hardware-green);
+}
+
+.status-dot.amber {
+  background: #ffa500;
+  box-shadow: 0 0 8px #ffa500;
+}
+
+.contact-direct {
+  background: linear-gradient(135deg, rgba(0,255,136,0.08) 0%, rgba(0,0,0,0.3) 100%);
+  border-left: 4px solid var(--hardware-green);
+}
+
+.contact-methods {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+
+.contact-label {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: var(--font-mono);
+}
+
+.contact-value {
+  font-size: 1.2rem;
+  color: var(--hardware-green);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.contact-value:hover {
+  color: rgba(0,255,136,1);
+  text-decoration: underline;
+}
+
+.booking-routes {
+  background: rgba(0,0,0,0.4);
+}
+
+.section-intro {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 2rem;
+}
+
+.booking-route-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.booking-route-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(153,204,153,0.2);
+  border-radius: 6px;
+}
+
+.route-label {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 600;
+}
+
+.route-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  background: linear-gradient(180deg, rgba(0,255,136,0.15) 0%, rgba(0,255,136,0.08) 100%);
+  border: 2px solid rgba(0,255,136,0.4);
+  border-radius: 5px;
+  color: var(--hardware-green);
+  text-decoration: none;
+  font-family: var(--font-tech);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: all 0.15s ease-out;
+}
+
+.route-button:hover {
+  background: linear-gradient(180deg, rgba(0,255,136,0.25) 0%, rgba(0,255,136,0.15) 100%);
+  border-color: rgba(0,255,136,0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0,255,136,0.3);
+}
+
+.email-note {
+  padding: 1.5rem;
+  background: rgba(0,255,136,0.05);
+  border-left: 3px solid var(--hardware-green);
+  border-radius: 4px;
+  margin-top: 2rem;
+}
+
+.email-note p {
+  margin: 0.5rem 0;
+  color: rgba(255,255,255,0.85);
+}
+
+.subject-example {
+  font-family: var(--font-mono);
+  color: var(--hardware-green);
+  font-weight: 600;
+}
+
+.important-notes {
+  background: linear-gradient(135deg, rgba(255,200,100,0.08) 0%, rgba(0,0,0,0.3) 100%);
+  border-left: 4px solid rgba(255,200,100,0.5);
+}
+
+.notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notes-list li {
+  padding: 0.75rem 0;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.9);
+  border-bottom: 1px solid rgba(153,204,153,0.1);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.notes-list li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: rgba(255,200,100,0.7);
+  font-weight: 700;
+}
+
+.professional-enquiries {
+  background: rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+.professional-enquiries p {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.85);
+  margin: 0.75rem 0;
+}
+
+.pro-note {
+  font-weight: 600;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 2rem !important;
+}
+
+.pro-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 36px;
+  background: linear-gradient(180deg, rgba(0,255,136,0.18) 0%, rgba(0,255,136,0.1) 100%);
+  border: 2px solid rgba(0,255,136,0.45);
+  border-radius: 5px;
+  color: var(--hardware-green);
+  text-decoration: none;
+  font-family: var(--font-tech);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: all 0.15s ease-out;
+  margin-top: 1rem;
+}
+
+.pro-cta:hover {
+  background: linear-gradient(180deg, rgba(0,255,136,0.28) 0%, rgba(0,255,136,0.18) 100%);
+  border-color: rgba(0,255,136,0.65);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(0,255,136,0.3);
+}
+
+.legacy-divider {
+  text-align: center;
+  padding: 2rem 0;
+  margin: 3rem 0 1rem;
+  border-top: 1px solid rgba(153,204,153,0.2);
+}
+
+.legacy-divider span {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.5);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    padding: 1rem;
+  }
+  
+  .contact-section {
+    padding: 1.5rem;
+  }
+  
+  .location-blocks,
+  .booking-route-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ========================================
    HOMEPAGE SECTIONS
    ======================================== */

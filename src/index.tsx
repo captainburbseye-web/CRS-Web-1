@@ -28,6 +28,7 @@ import { BookAccordion } from './pages/BookAccordion'
 import { RehearsalSpaces } from './pages/RehearsalSpaces'
 import { RecordingPage } from './pages/Recording'
 import { PodcastAVPage } from './pages/PodcastAV'
+import { ContactPage } from './pages/Contact'
 import { DigitalPulsePage } from './pages/DigitalPulse'
 
 const app = new Hono()
@@ -1563,21 +1564,29 @@ app.get('/work', (c) => {
 })
 // CONTACT
 app.get('/contact', (c) => {
-  const serviceType = c.req.query('service') || 'general'
-  
-  return c.render(
-    <>
-      <BuildStatusBanner />
-      <Header />
-      <ContactSection serviceType={serviceType} />
-      <Footer />
-    </>,
-    {
-      title: 'Contact Cowley Road Studios | Recording Studio Oxford',
-      description: 'Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Located in East Oxford. Email: info@crsoxford.com',
-      keywords: 'contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford'
-    }
-  )
+  return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Cowley Road Studios | Recording Studio Oxford</title>
+    <meta name="description" content="Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Two Oxford locations. Direct booking routes. Email: info@crsoxford.com">
+    <meta name="keywords" content="contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="/static/crs-reset.css" rel="stylesheet">
+    <link href="/static/crs-typography.css" rel="stylesheet">
+    <link href="/static/crs-header.css" rel="stylesheet">
+    <link href="/static/crs-mobile.css" rel="stylesheet">
+    <link href="/static/rack-accordion.css" rel="stylesheet">
+</head>
+<body>
+    ${<ContactPage />}
+</body>
+</html>`)
 })
 
 // BOOKING CONFIRMED PAGE
