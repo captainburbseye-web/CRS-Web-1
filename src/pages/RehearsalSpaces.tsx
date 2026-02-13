@@ -19,120 +19,87 @@ export const RehearsalSpaces = () => {
       
       {/* REHEARSAL INTRODUCTION */}
       <div class="studio-intro">
-        <h1>Professional Band Rehearsal – Oxford</h1>
-        <p>Treated live room. Backline available. Self-run sessions. Book and pay online.</p>
+        <h1>Rehearsal Rooms in Oxford</h1>
+        <p>Cowley Road Studios — Now Live</p>
+        <p style="margin-top: 0.75rem; font-size: 0.95rem;">Professional rehearsal space in central Oxford. Simple pricing. Book online. No gatekeeping.</p>
       </div>
 
       {/* MAIN CONTENT */}
       <div class="rehearsal-page-content">
         
-        {/* Cowley Road Rehearsal */}
-        <div class="rehearsal-location-card">
-          <div class="rehearsal-header">
-            <h2>Cowley Road Rehearsal Space</h2>
-            <div class="rehearsal-address">118 Cowley Road, Oxford OX4 1JE</div>
-          </div>
-
-          <div class="rehearsal-pricing">
-            <div class="price-item">
-              <span class="price">£40</span>
-              <span class="duration">2 hours</span>
+        {/* PRICING SECTION */}
+        <div class="pricing-hero">
+          <h2>Band Rehearsal Rates</h2>
+          <div class="price-grid">
+            <div class="price-item-large">
+              <span class="price-value">£40</span>
+              <span class="price-duration">2 Hours</span>
             </div>
-            <div class="price-item">
-              <span class="price">£55</span>
-              <span class="duration">3 hours</span>
+            <div class="price-item-large">
+              <span class="price-value">£55</span>
+              <span class="price-duration">3 Hours</span>
             </div>
-            <div class="price-item">
-              <span class="price">£60</span>
-              <span class="duration">4 hours</span>
+            <div class="price-item-large">
+              <span class="price-value">£60</span>
+              <span class="price-duration">4 Hours</span>
             </div>
           </div>
-
-          <div class="rehearsal-description">
-            <p>Live now. Full professional setup. Perfect for bands up to 4 members.</p>
-            <p style="margin-top: 0.5rem; font-weight: 600; color: var(--hardware-green);">Engineer not included in rehearsal sessions.</p>
-          </div>
-
-          <div class="rehearsal-features">
-            <h3>Included Equipment:</h3>
-            <ul>
-              <li><span class="feature-icon">✓</span> Full backline (bass amp, guitar amp, drum kit)</li>
-              <li><span class="feature-icon">✓</span> Professional PA system</li>
-              <li><span class="feature-icon">✓</span> Monitoring and foldback</li>
-              <li><span class="feature-icon">✓</span> Central Oxford location</li>
-              <li><span class="feature-icon">✓</span> Maximum 4 band members</li>
-            </ul>
-          </div>
-
-          <a 
-            href="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services" 
-            class="rehearsal-book-button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span class="button-led">●</span>
-            BOOK COWLEY ROAD
-          </a>
+          <p class="pricing-note">That's it. No hidden fees.</p>
+          <p class="pricing-note">Need regular slots? Ask about weekly bookings.</p>
         </div>
 
-        {/* Cricket Road Rehearsal */}
-        <div class="rehearsal-location-card">
-          <div class="rehearsal-header">
-            <h2>Cricket Road Rehearsal Space</h2>
-            <div class="rehearsal-address">Cricket Road, Oxford</div>
-          </div>
+        {/* WHAT YOU GET */}
+        <div class="what-you-get-section">
+          <h2>The Space</h2>
+          <ul>
+            <li>Treated rehearsal room</li>
+            <li>PA system</li>
+            <li>Vocal microphones</li>
+            <li>Backline options available</li>
+            <li>Clean, secure environment</li>
+          </ul>
+          <p style="margin-top: 1rem;">Located at Cowley Road Studios, central Oxford.</p>
+          <p>Easy access from Cowley, St Clements, and city centre.</p>
+        </div>
 
-          <div class="rehearsal-pricing">
-            <div class="price-item">
-              <span class="price">£40</span>
-              <span class="duration">2 hours</span>
-            </div>
-            <div class="price-item">
-              <span class="price">£55</span>
-              <span class="duration">3 hours</span>
-            </div>
-            <div class="price-item">
-              <span class="price">£60</span>
-              <span class="duration">4 hours</span>
-            </div>
+        {/* WHO IT'S FOR */}
+        <div class="who-its-for-section">
+          <h2>Built for Real Bands</h2>
+          <div class="band-types">
+            <span>Independent artists</span>
+            <span>Student bands</span>
+            <span>Working musicians</span>
+            <span>Tour rehearsals</span>
+            <span>Acoustic or amplified</span>
           </div>
-
-          <div class="rehearsal-description">
-            <p>Live now. 6m × 4m live room with quality equipment. 4-hour rate = £15/hour.</p>
-            <p style="margin-top: 0.5rem; font-weight: 600; color: var(--hardware-green);">Engineer not included in rehearsal sessions.</p>
-          </div>
-
-          <div class="rehearsal-features">
-            <h3>Included Equipment:</h3>
-            <ul>
-              <li><span class="feature-icon">✓</span> Yamaha CLP digital piano</li>
-              <li><span class="feature-icon">✓</span> Full drum kit with cymbals</li>
-              <li><span class="feature-icon">✓</span> Backline amplifiers</li>
-              <li><span class="feature-icon">✓</span> Vocal microphones</li>
-              <li><span class="feature-icon">✓</span> Intimate rehearsal environment</li>
-            </ul>
-          </div>
-
-          <a 
-            href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" 
-            class="rehearsal-book-button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span class="button-led">●</span>
-            BOOK CRICKET ROAD
-          </a>
+          <p style="margin-top: 1.5rem; font-weight: 600;">No university ballots. No faculty approval. Just book and play.</p>
+        </div>
+        
+        {/* CRICKET ROAD CLARITY */}
+        <div class="cricket-road-section">
+          <h2>Additional Rehearsal & Recording – Cricket Road</h2>
+          <p>Cricket Road remains fully operational for:</p>
+          <ul>
+            <li>Recording sessions (£30/hr with engineer)</li>
+            <li>Pod hire</li>
+            <li>Smaller rehearsal formats</li>
+          </ul>
+          <p style="margin-top: 1rem;">If you need recording + rehearsal back-to-back, we can structure that.</p>
         </div>
 
       </div>
 
-      {/* CONTACT INFO */}
+      {/* CTA BLOCK */}
       <div class="booking-footer-info">
-        <p style="font-weight: 600; color: var(--hardware-green); margin-bottom: 1rem; font-size: 1.05rem;">Rehearsal and dry hire sessions do not include engineer support.</p>
-        <h3>Questions About Rehearsal Spaces?</h3>
-        <p>Call us: <a href="tel:+441865722027">01865 722027</a></p>
+        <h3>Ready to rehearse?</h3>
+        <a href="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services" class="rehearsal-book-button-large" target="_blank" rel="noopener noreferrer">
+          <span class="button-led">●</span>
+          REHEARSE NOW
+        </a>
+        <p style="margin-top: 1.5rem; font-weight: 600; color: var(--hardware-green);">Rehearsal and dry hire sessions do not include engineer support.</p>
+        <h4 style="margin-top: 2rem;">Questions?</h4>
         <p>Email: <a href="mailto:info@crsoxford.com">info@crsoxford.com</a></p>
-        <p><a href="/">← Back to Homepage</a> | <a href="/book">View All Services</a></p>
+        <p>Phone: <a href="tel:+441865722027">+44 (0)1865 722027</a></p>
       </div>
 
       {/* FOOTER */}

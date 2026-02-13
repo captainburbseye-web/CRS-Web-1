@@ -881,9 +881,251 @@
   box-shadow: 0 4px 24px rgba(0,255,136,0.3);
 }
 
+/* Rehearsal page - pricing hero */
+.pricing-hero {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(180deg, rgba(0,255,136,0.08) 0%, rgba(0,0,0,0.4) 100%);
+  border: 2px solid rgba(0,255,136,0.3);
+  border-radius: 8px;
+  margin-bottom: 3rem;
+}
+
+.pricing-hero h2 {
+  font-size: 1.8rem;
+  color: var(--hardware-green);
+  margin-bottom: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+.price-item-large {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 2rem 1rem;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,255,136,0.2);
+  border-radius: 6px;
+}
+
+.price-value {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--hardware-green);
+  font-family: var(--font-mono);
+}
+
+.price-duration {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.7);
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pricing-note {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  margin: 0.5rem 0;
+  font-family: var(--font-tech);
+}
+
+/* What you get section */
+.what-you-get-section {
+  padding: 2rem;
+  background: rgba(0,0,0,0.3);
+  border-left: 4px solid var(--hardware-green);
+  margin-bottom: 2rem;
+}
+
+.what-you-get-section h2 {
+  font-size: 1.5rem;
+  color: var(--hardware-green);
+  margin-bottom: 1.5rem;
+}
+
+.what-you-get-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.what-you-get-section li {
+  padding: 0.75rem 0;
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.9);
+  border-bottom: 1px solid rgba(153,204,153,0.1);
+}
+
+.what-you-get-section li:before {
+  content: "✓ ";
+  color: var(--hardware-green);
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+/* Who it's for section */
+.who-its-for-section {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(0,0,0,0.3) 100%);
+  border: 1px solid rgba(0,255,136,0.2);
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+.who-its-for-section h2 {
+  font-size: 1.5rem;
+  color: var(--hardware-green);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.band-types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.band-types span {
+  padding: 0.75rem 1.5rem;
+  background: rgba(0,255,136,0.1);
+  border: 1px solid rgba(0,255,136,0.3);
+  border-radius: 20px;
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.9);
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Cricket Road section */
+.cricket-road-section {
+  padding: 2rem;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(153,204,153,0.2);
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+.cricket-road-section h2 {
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 1rem;
+}
+
+.cricket-road-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.cricket-road-section li {
+  padding: 0.5rem 0;
+  color: rgba(255,255,255,0.85);
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.cricket-road-section li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--hardware-green);
+  font-weight: 700;
+}
+
+/* Large CTA button */
+.rehearsal-book-button-large {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 48px;
+  background: linear-gradient(180deg, rgba(0,255,136,0.2) 0%, rgba(0,255,136,0.1) 100%);
+  border: 3px solid rgba(0,255,136,0.5);
+  border-radius: 6px;
+  color: var(--hardware-green);
+  text-decoration: none;
+  font-family: var(--font-tech);
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease-out;
+  box-shadow: 0 0 30px rgba(0,255,136,0.2);
+  margin: 1rem 0;
+}
+
+.rehearsal-book-button-large:hover {
+  background: linear-gradient(180deg, rgba(0,255,136,0.3) 0%, rgba(0,255,136,0.2) 100%);
+  border-color: rgba(0,255,136,0.7);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 32px rgba(0,255,136,0.4);
+}
+
+.rehearsal-book-button-large .button-led {
+  font-size: 20px;
+  color: var(--hardware-green);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Booking footer info */
+.booking-footer-info {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: rgba(0,0,0,0.3);
+  border-top: 2px solid rgba(0,255,136,0.3);
+  margin-top: 3rem;
+}
+
+.booking-footer-info h3 {
+  font-size: 1.8rem;
+  color: var(--hardware-green);
+  margin-bottom: 1.5rem;
+}
+
+.booking-footer-info h4 {
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 1rem;
+}
+
+.booking-footer-info a {
+  color: var(--hardware-green);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s;
+}
+
+.booking-footer-info a:hover {
+  color: rgba(0,255,136,1);
+  text-decoration: underline;
+}
+
 @media (max-width: 1024px) {
   .rehearsal-page-content {
     grid-template-columns: 1fr;
+  }
+  
+  .price-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+  
+  .band-types {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
