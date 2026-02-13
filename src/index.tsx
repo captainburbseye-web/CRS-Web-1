@@ -26,6 +26,7 @@ import { RackAccordion } from './pages/RackAccordion'
 import { Book } from './pages/Book'
 import { BookAccordion } from './pages/BookAccordion'
 import { RehearsalSpaces } from './pages/RehearsalSpaces'
+import { PodcastAVPage } from './pages/PodcastAV'
 import { DigitalPulsePage } from './pages/DigitalPulse'
 
 const app = new Hono()
@@ -1300,29 +1301,38 @@ app.get('/book/repairs', (c) => {
   )
 })
 
-// AV SERVICES
+// PODCAST & AV SERVICES
 app.get('/av-services', (c) => {
-  return c.render(
-      <AVServicesPage />,
-    {
-      title: 'AV Services Oxford | Cowley Road Studios',
-      description: 'Professional audio-visual services including live sound, installations, repairs, and technical support for venues and events in Oxford.',
-      keywords: 'av services oxford, live sound oxford, sound engineer oxford, event av oxford, pa hire oxford, audio visual oxford'
-    }
-  )
+  return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Studio & AV Services Oxford | Cowley Road Studios</title>
+    <meta name="description" content="Professional podcast studio hire and AV services in Oxford. £30/hr engineer-led recording, live sound installation, equipment repairs. Cricket Road & Cowley Road.">
+    <meta name="keywords" content="podcast studio oxford, podcast recording oxford, av services oxford, live sound oxford, sound engineer oxford, equipment repair oxford">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="/static/crs-reset.css" rel="stylesheet">
+    <link href="/static/crs-typography.css" rel="stylesheet">
+    <link href="/static/crs-header.css" rel="stylesheet">
+    <link href="/static/crs-mobile.css" rel="stylesheet">
+    <link href="/static/rack-accordion.css" rel="stylesheet">
+</head>
+<body>
+    ${<PodcastAVPage />}
+</body>
+</html>`)
 })
 
-// REPAIRS
-app.get('/av-services/repairs', (c) => {
-  return c.render(
-      <AVRepairsPage />,
-    {
-      title: 'Live Sound & AV Services Oxford | Cowley Road Studios',
-      description: 'Engineer-led live sound, installations, and technical support for venues and events in Oxford. Professional AV infrastructure for community events.',
-      keywords: 'live sound oxford, av services oxford, sound engineer oxford, event av oxford, pa hire oxford'
-    }
-  )
-})
+// Add redirect for podcast
+app.get('/podcast', (c) => c.redirect('/av-services'))
+
+// REPAIRS (now part of main AV page, keep old route for SEO)
+app.get('/av-services/repairs', (c) => c.redirect('/av-services'))
 
 // WORKSHOP CAFÉ (VENUE)
 app.get('/workshop-cafe', (c) => {
