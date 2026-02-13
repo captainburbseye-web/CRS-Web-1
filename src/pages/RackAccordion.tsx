@@ -228,6 +228,14 @@ export const RackAccordion = () => {
             <div class="terminal-status-line">Continuing the Soundworks Oxford legacy (1999–2024).</div>
           </div>
 
+          <div class="terminal-status-section">
+            <div class="terminal-status-label">SERVICES</div>
+            <div class="terminal-status-line">Independent Recording Studio – Oxford</div>
+            <div class="terminal-status-line">Rehearsal Rooms – Cowley Road</div>
+            <div class="terminal-status-line">Recording Sessions – Cricket Road</div>
+            <div class="terminal-status-line" style="margin-top: 0.5rem; opacity: 0.7;">Formerly Soundworks Oxford (1999–2024)</div>
+          </div>
+
           <div class="terminal-status-section footer-branding">
             <img src="/static/images/crs-control-panel-badge.jpg" alt="CRS Control Panel" class="footer-badge" />
             <div class="terminal-status-line">© 2026 Cowley Road Studios / Workshop Cafe · POWERED BY 0DR0 ENGINEERING</div>

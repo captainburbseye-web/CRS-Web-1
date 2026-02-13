@@ -594,8 +594,8 @@ app.get('/', (c) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cowley Road Studios Oxford | Recording Studio & Rehearsal Space</title>
-        <meta name="description" content="Professional recording studio, rehearsal space, and live AV services in Oxford. Hardware rack console for signal routing and bookings. Formerly Soundworks Oxford." />
+        <title>Recording Studio & Rehearsal Rooms Oxford | Cowley Road Studios</title>
+        <meta name="description" content="Independent recording studio, rehearsal rooms and engineer-led sessions in Oxford. Formerly Soundworks Oxford (1999–2024). Book rehearsal, recording, or creative workspace." />
         <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -619,18 +619,25 @@ app.get('/', (c) => {
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "MusicVenue",
-            "name": "Cowley Road Studios / Workshop Cafe",
-            "description": "Professional recording studio, rehearsal space, and creative workspace in East Oxford.",
+            "@type": "LocalBusiness",
+            "name": "Cowley Road Studios",
+            "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
+            "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "118 Cowley Road",
               "addressLocality": "Oxford",
-              "postalCode": "OX41JE",
+              "postalCode": "OX4 1JE",
               "addressCountry": "GB"
             },
             "telephone": "+441865722027",
-            "email": "info@crsoxford.com"
+            "email": "info@crsoxford.com",
+            "url": "https://cowley-road-studios.pages.dev",
+            "priceRange": "££",
+            "areaServed": "Oxford",
+            "sameAs": [
+              "https://instagram.com/cowleyroadstudios.ox"
+            ]
           })}
         </script>
       </body>
@@ -1619,8 +1626,8 @@ app.get('/rack-accordion', (c) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cowley Road Studios Oxford | Recording Studio & Rehearsal Space</title>
-        <meta name="description" content="Professional recording studio, rehearsal space, and live AV services in Oxford. Hardware rack console for signal routing and bookings. Formerly Soundworks Oxford." />
+        <title>Recording Studio & Rehearsal Rooms Oxford | Cowley Road Studios</title>
+        <meta name="description" content="Independent recording studio, rehearsal rooms and engineer-led sessions in Oxford. Formerly Soundworks Oxford (1999–2024). Book rehearsal, recording, or creative workspace." />
         <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -1644,18 +1651,25 @@ app.get('/rack-accordion', (c) => {
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "MusicVenue",
-            "name": "Cowley Road Studios / Workshop Cafe",
-            "description": "Professional recording studio, rehearsal space, and creative workspace in East Oxford.",
+            "@type": "LocalBusiness",
+            "name": "Cowley Road Studios",
+            "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
+            "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "118 Cowley Road",
               "addressLocality": "Oxford",
-              "postalCode": "OX41JE",
+              "postalCode": "OX4 1JE",
               "addressCountry": "GB"
             },
             "telephone": "+441865722027",
-            "email": "info@crsoxford.com"
+            "email": "info@crsoxford.com",
+            "url": "https://cowley-road-studios.pages.dev",
+            "priceRange": "££",
+            "areaServed": "Oxford",
+            "sameAs": [
+              "https://instagram.com/cowleyroadstudios.ox"
+            ]
           })}
         </script>
       </body>
@@ -1903,8 +1917,8 @@ app.get('/rehearsal', (c) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Rehearsal Spaces | Cowley Road Studios Oxford</title>
-        <meta name="description" content="Professional rehearsal rooms at Cowley Road and Cricket Road, Oxford. Full backline, PA systems, flexible hourly rates. Book your session now." />
+        <title>Rehearsal Rooms Oxford | Cowley Road Studios</title>
+        <meta name="description" content="Professional rehearsal rooms in Oxford. Cowley Road live room. 2 hrs £40. Independent access. Book online." />
         <meta name="keywords" content="rehearsal space oxford, band rehearsal oxford, music rehearsal oxford, practice room oxford" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
