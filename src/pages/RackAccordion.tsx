@@ -24,6 +24,10 @@ export const RackAccordion = () => {
       {/* NAVIGATION BAR */}
       <header class="rack-header">
         <nav class="rack-header-nav">
+          <a href="#recording">Recording</a>
+          <span class="separator">|</span>
+          <a href="#rehearsal">Rehearsal</a>
+          <span class="separator">|</span>
           <a href="/about">About</a>
           <span class="separator">|</span>
           <a href="/contact">Contact</a>
@@ -44,7 +48,7 @@ export const RackAccordion = () => {
       </div>
 
       {/* SECTION 1 — RECORDING */}
-      <div class="service-block recording-block">
+      <div id="recording" class="service-block recording-block">
         <h2>Recording Services</h2>
         <p class="service-tagline">From Source to Master.</p>
         <p class="service-intro">Professional recording at two locations:</p>
@@ -73,7 +77,7 @@ export const RackAccordion = () => {
       </div>
 
       {/* SECTION 2 — REHEARSAL */}
-      <div class="service-block rehearsal-block">
+      <div id="rehearsal" class="service-block rehearsal-block">
         <h2>Band Rehearsals</h2>
         <p class="service-intro">Cowley Road Live Room & Cricket Road</p>
         
@@ -262,18 +266,9 @@ export const RackAccordion = () => {
       </div>
 
       <nav class="mobile-nav mono">
-        <a href="/studio">STUDIO</a>
         <a href="/book">BOOK</a>
         <a href="/contact">CONTACT</a>
       </nav>
-
-      <div class="rack-footer-container">
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20BOTTOM.png" 
-          alt="Cowley Road Studios Footer Rack" 
-          class="rack-footer-img"
-        />
-      </div>
 
       <footer class="site-footer">
         <div class="terminal-status-footer">

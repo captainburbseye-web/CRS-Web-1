@@ -289,6 +289,8 @@ header.rack-header .rack-header-cta {
 
 .rack-header-container {
   /* Sits at the very top - BEFORE sticky nav */
+  max-width: 1200px;
+  margin: 0 auto;
   width: 100%;
   background: transparent; /* Transparent PNG - no background needed */
   overflow: hidden; /* Clean edges */
