@@ -28,11 +28,15 @@ header.rack-header {
   gap: var(--space-xl); /* 32px between zones */
   padding: var(--space-md) var(--space-xl); /* TIGHTENED: 16px vertical (was 24px), 32px horizontal */
   
-  /* 4. The "Solid Metal" Background */
-  /* CRITICAL: Since this bar floats over content, it needs a solid color */
-  background-color: #000000; /* Pure black for rack section */
+  /* 4. Metal Texture Background (R2 Asset) */
+  background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #000000; /* Fallback */
   
-  border-bottom: 2px solid #000; /* Bottom seam */
+  /* Bevel edges for depth */
+  border-top: 1px solid #3d3d3d; /* Highlight bevel */
+  border-bottom: 1px solid #000; /* Shadow bevel */
   
   /* 5. The Shadow */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
@@ -2260,4 +2264,67 @@ main {
     max-width: 100%;
     box-shadow: none;
   }
+}
+/**
+ * LED SPRITE IMPLEMENTATION
+ * R2 Asset: LED sprite with Green, Amber, Red in horizontal row
+ * Uses background-position to show the correct LED color
+ */
+
+/* Base LED sprite styling - applies to all LED indicators */
+.status-led,
+.rack-led,
+.system-led,
+.button-led {
+  /* Remove old circular background */
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  
+  /* Apply LED sprite image */
+  background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(1).png') !important;
+  background-size: 300% 100% !important; /* 3 LEDs in a row, show only one */
+  background-repeat: no-repeat !important;
+  
+  /* Set consistent LED dimensions */
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+/* Green LED - show first LED in sprite (leftmost) */
+.status-led.green,
+.rack-led[data-color="green"],
+.system-led,
+.button-led {
+  background-position: 0% 0 !important;
+}
+
+/* Amber LED - show middle LED in sprite */
+.status-led.amber,
+.rack-led[data-color="amber"],
+.rack-led[data-color="orange"] {
+  background-position: 50% 0 !important;
+}
+
+/* Red LED - show last LED in sprite (rightmost) */
+.status-led.red,
+.status-led.offline,
+.rack-led[data-color="red"] {
+  background-position: 100% 0 !important;
+}
+
+/* Standby state (use amber) */
+.status-led.standby {
+  background-position: 50% 0 !important;
+}
+
+/* Animation for active LEDs (optional pulse effect) */
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.rack-accordion-module[open] .rack-led {
+  animation: led-pulse 2s ease-in-out infinite;
 }
