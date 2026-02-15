@@ -24,9 +24,13 @@ export const RackAccordion = () => {
       {/* NAVIGATION BAR */}
       <header class="rack-header">
         <nav class="rack-header-nav">
-          <a href="/about">About</a>
+          <a href="/studio">RECORDING</a>
           <span class="separator">|</span>
-          <a href="/contact">Contact</a>
+          <a href="/rehearsal">REHEARSAL</a>
+          <span class="separator">|</span>
+          <a href="/about">ABOUT</a>
+          <span class="separator">|</span>
+          <a href="/contact">CONTACT</a>
         </nav>
         
         <div class="rack-header-cta">
@@ -36,7 +40,6 @@ export const RackAccordion = () => {
       
       {/* STUDIO INTRODUCTION */}
       <div class="studio-intro">
-        <p class="subtitle">Recording • Rehearsal • AV • Repairs</p>
         <p class="tagline">Independent creative infrastructure in the heart of Cowley Road, Oxford.</p>
         <div class="hero-ctas">
           <a href="#services" class="cta-secondary">VIEW SERVICES</a>
