@@ -49,29 +49,13 @@ export const RackAccordion = () => {
       {/* SECTION 1 — RECORDING */}
       <div class="service-block recording-block">
         <h2>Recording Services</h2>
-        <p class="service-tagline">From Source to Master.</p>
-        <p class="service-intro">Professional recording at two locations:</p>
-        
-        <div class="location-pricing-grid">
-          <div class="location-card">
-            <h3>Cowley Road</h3>
-            <p class="service-desc">Engineer-led sessions</p>
-            <div class="price-highlight">£35/hr</div>
-            <p class="price-note">(2hr min)</p>
-          </div>
-          
-          <div class="location-card">
-            <h3>Cricket Road</h3>
-            <p class="service-desc">Engineer-led sessions</p>
-            <div class="price-highlight">£30/hr</div>
-            <p class="price-note">(2hr min)</p>
-          </div>
-        </div>
-
-        <p class="service-summary">Acoustic sessions, vocals, band tracking and production.</p>
+        <p class="service-intro">With Engineer — £35/hr (2-hour minimum)</p>
+        <p class="service-intro">Cricket Road available now. Cowley Road Control Room coming online very soon.</p>
+        <p class="service-summary">All recording sessions include engineer support. Dry hire is available for the Control Room only.</p>
         
         <div class="service-cta">
-          <a href="/studio" class="cta-service">BOOK STUDIO SESSION</a>
+          <a href="https://square.link/u/bCOHXtdl" class="cta-service">BOOK CRICKET ROAD RECORDING</a>
+          <a href="/contact?ref=cowley-recording" class="cta-service secondary">ENQUIRE: COWLEY ROAD CONTROL ROOM</a>
         </div>
       </div>
 
