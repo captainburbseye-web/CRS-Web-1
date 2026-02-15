@@ -78,22 +78,32 @@ export const RackAccordion = () => {
       {/* SECTION 2 — REHEARSAL */}
       <div class="service-block rehearsal-block">
         <h2>Band Rehearsals</h2>
-        <p class="service-intro">Cowley Road Live Room & Cricket Road</p>
+        <p class="service-intro">Fully treated live rooms. PA included.</p>
         
-        <div class="pricing-simple">
-          <div class="price-row">2 hours — £40</div>
-          <div class="price-row">3 hours — £55</div>
-          <div class="price-row">4 hours — £60</div>
+        <div class="location-pricing-grid">
+          <div class="location-card">
+            <h3>Cowley Road</h3>
+            <div class="pricing-simple">
+              <div class="price-row">2 hours — £45</div>
+              <div class="price-row">3 hours — £60</div>
+              <div class="price-row">4 hours — £65</div>
+            </div>
+            <p class="price-note">Max 4 members</p>
+          </div>
+          
+          <div class="location-card">
+            <h3>Cricket Road</h3>
+            <div class="pricing-simple">
+              <div class="price-row">2 hours — £40</div>
+              <div class="price-row">3 hours — £55</div>
+              <div class="price-row">4 hours — £60</div>
+            </div>
+          </div>
         </div>
-
-        <ul class="feature-list">
-          <li>Large treated space</li>
-          <li>Drum kit ready</li>
-          <li>Backline available</li>
-        </ul>
         
         <div class="service-cta">
-          <a href="/rehearsal" class="cta-service">BOOK REHEARSAL</a>
+          <a href="https://square.link/u/UQidDzE0" class="cta-service">BOOK COWLEY ROAD REHEARSAL</a>
+          <a href="https://square.link/u/WPqRFIGW" class="cta-service">BOOK CRICKET ROAD REHEARSAL</a>
         </div>
       </div>
 
