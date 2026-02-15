@@ -20,7 +20,7 @@
    ======================================== */
 
 .studio-intro {
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 3rem 2rem 2rem;
   text-align: center;
@@ -314,7 +314,6 @@
 
 .rack-accordion-container {
   flex: 1;
-  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
   padding: 64px 32px;
@@ -683,6 +682,9 @@
 .system-status-strip {
   position: sticky;
   bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  width: 100%;
   height: 32px;
   background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
   border-top: 1px solid var(--metal-edge);
@@ -2268,6 +2270,42 @@
   }
 }
 
+/* ========================================
+   DUAL MAP GRID
+   ======================================== */
+
+.dual-map-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.map-location {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(212, 165, 116, 0.2); /* Mustard tint */
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.map-location-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #E89B3C; /* Mustard */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.map-location-address {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 1024px) {
   .rehearsal-page-content {
     grid-template-columns: 1fr;
@@ -2682,6 +2720,15 @@
   .map-embed-container {
     padding: 0 1rem;
     margin: 2rem 0;
+  }
+  
+  .dual-map-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .map-location iframe {
+    height: 250px !important;
   }
   
   .map-embed-header {

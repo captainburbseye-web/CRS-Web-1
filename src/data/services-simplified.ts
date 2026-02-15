@@ -40,14 +40,14 @@ export const simplifiedServices: SimplifiedService[] = [
         location: 'COWLEY ROAD',
         price: '£35/hr (2hr min)',
         description: 'Live room + large vocal booth. Professional signal chain. Engineer included.',
-        url: '/studio',
+        url: '/contact',
         features: ['Engineer included', 'Live room', 'Vocal booth', 'Professional signal chain']
       },
       {
         location: 'CRICKET ROAD',
         price: '£30/hr (2hr min)',
         description: 'Treated recording space. Ideal for acoustic, vocals, production work. Engineer included.',
-        url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
+        url: 'https://square.link/u/bCOHXtdl',
         features: ['Engineer included', 'Acoustic sessions', 'Vocal recording', 'Production work']
       }
     ]
@@ -83,16 +83,16 @@ export const simplifiedServices: SimplifiedService[] = [
     locations: [
       {
         location: 'COWLEY ROAD',
-        price: '£40 (2hrs) | £55 (3hrs) | £60 (4hrs)',
+        price: '£45 (2hrs) | £60 (3hrs) | £65 (4hrs)',
         description: 'Engineer not included. Full backline, PA system, monitoring, max 4 members.',
-        url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services',
+        url: 'https://square.link/u/UQidDzE0',
         features: ['Engineer not included', 'Full backline', 'PA system', 'Max 4 members']
       },
       {
         location: 'CRICKET ROAD',
         price: '£40 (2hrs) | £55 (3hrs) | £60 (4hrs)',
         description: 'Engineer not included. 6m × 4m live room with Yamaha CLP piano, drum kit, backline, vocal mics.',
-        url: 'https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services',
+        url: 'https://square.link/u/WPqRFIGW',
         features: ['Engineer not included', 'Yamaha CLP piano', 'Drum kit', 'Vocal mics']
       }
     ]
@@ -106,7 +106,7 @@ export const simplifiedServices: SimplifiedService[] = [
     description: 'Spoken word, interviews, streamed content. Engineer-assisted sessions available. £30–£35/hr depending on location.',
     variant: 'rack',
     ledColor: 'green',
-    url: '/av-services',
+    url: '/contact',
     ctaText: 'BOOK PODCAST SESSION',
   },
 

@@ -226,6 +226,7 @@ footer.crs-footer-technical .footer-data-block:last-child {
 .rack-footer-container {
   /* Sits at the very bottom of the page */
   width: 100%;
+  margin: 0 auto;
   background-color: #1a1a1a; /* Dark Charcoal - matches header */
   overflow: hidden; /* Clean edges */
   line-height: 0; /* Removes ghost spacing below image */

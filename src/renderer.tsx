@@ -71,6 +71,7 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
              ============================================ */}
         
         {/* Preload critical CSS files for second paint */}
+        <link rel="preload" href="/static/master-rack-chassis.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         <link rel="preload" href="/static/crs-reset.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         <link rel="preload" href="/static/crs-typography.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         <link rel="preload" href="/static/crs-spacing.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
@@ -86,11 +87,13 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* Fallback for browsers without JS */}
         <noscript>
+          <link href="/static/master-rack-chassis.css" rel="stylesheet" />
           <link href="/static/crs-reset.css" rel="stylesheet" />
           <link href="/static/crs-typography.css" rel="stylesheet" />
           <link href="/static/crs-spacing.css" rel="stylesheet" />
           <link href="/static/crs-rack-ui.css" rel="stylesheet" />
           <link href="/static/crs-header.css" rel="stylesheet" />
+          <link href="/static/master-rack-header.css" rel="stylesheet" />
           <link href="/static/crs-footer.css" rel="stylesheet" />
           <link href="/static/crs-mobile.css" rel="stylesheet" />
           <link href="/static/crs-neon-system.css" rel="stylesheet" />
@@ -98,6 +101,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
           <link href="/static/crs-map-embed.css" rel="stylesheet" />
         </noscript>
 
+        {/* MASTER RACK HEADER: Banner image over dark nav bar with amber neon button */}
+        <link href="/static/master-rack-header.css" rel="stylesheet" />
         
         {/* 7. MOBILE: Mobile overrides, hamburger menu, responsive */}
         <link href="/static/crs-mobile.css" rel="stylesheet" />

@@ -288,9 +288,7 @@ header.rack-header .rack-header-cta {
    ========================================== */
 
 .rack-header-container {
-  /* Sits at the very top - BEFORE sticky nav */
-  max-width: 1200px;
-  margin: 0 auto;
+  /* Sits at the very top - spans full width */
   width: 100%;
   background: transparent; /* Transparent PNG - no background needed */
   overflow: hidden; /* Clean edges */
@@ -1960,4 +1958,313 @@ a.crs-button.mono {
 main {
   position: relative;
   z-index: 2;
+}
+
+/* ==========================================
+   NAVIGATION BAR WITH BOOK NOW BUTTON
+   ======================================== */
+
+.nav-bar-with-button {
+  width: 100%;
+  background: #1a1a1a;
+  border-bottom: 2px solid #2a2a2a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  min-height: 60px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.2s ease;
+  padding: 0.5rem 1rem;
+}
+
+.nav-links a:hover {
+  color: #E89B3C; /* Mustard */
+}
+
+.book-now-container {
+  display: flex;
+  align-items: center;
+}
+
+.book-now-button {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  background: #E89B3C; /* Mustard */
+  border: 2px solid #E89B3C;
+  padding: 0.75rem 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.book-now-button:hover {
+  background: transparent;
+  color: #E89B3C;
+  border-color: #E89B3C;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .nav-bar-with-button {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .book-now-container {
+    width: 100%;
+  }
+  
+  .book-now-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* ==========================================
+   MASTER RACK HEADER
+   Banner Image over Dark Nav Bar Layout
+   ======================================== */
+
+/* Container: Vertical Stack */
+.master-rack-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================
+   TOP: MASTER RACK BANNER IMAGE
+   ======================================== */
+
+.master-rack-banner {
+  width: 100%;
+  line-height: 0; /* Remove ghost spacing */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.master-rack-banner a {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.master-rack-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  image-rendering: crisp-edges;
+}
+
+/* ==========================================
+   BOTTOM: DARK NAVIGATION BAR
+   ======================================== */
+
+.dark-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  background: #081408; /* Dark Nettle Green/Black */
+  padding: 1rem 2rem;
+  margin: 0;
+  border: 0;
+  min-height: 60px;
+}
+
+/* Navigation Links - Centered */
+.nav-links-centered {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links-centered a {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s ease;
+}
+
+.nav-links-centered a:hover {
+  color: #FF9F1C; /* Amber */
+}
+
+/* ==========================================
+   AMBER NEON BUTTON - Far Right
+   ======================================== */
+
+.amber-neon-button {
+  position: absolute;
+  right: 2rem;
+  
+  /* Amber Neon Style */
+  background: transparent;
+  border: 1px solid #FF9F1C; /* Amber */
+  color: #FF9F1C;
+  
+  /* Typography */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  
+  /* Spacing */
+  padding: 8px 24px;
+  
+  /* Glow Effect */
+  text-shadow: 0px 0px 8px rgba(255, 159, 28, 0.6);
+  box-shadow: 0px 0px 12px rgba(255, 159, 28, 0.3);
+  
+  /* Animation */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.amber-neon-button:hover {
+  background: rgba(255, 159, 28, 0.1);
+  border-color: #FFB84D;
+  color: #FFB84D;
+  text-shadow: 0px 0px 12px rgba(255, 159, 28, 0.8);
+  box-shadow: 0px 0px 20px rgba(255, 159, 28, 0.5);
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .dark-nav-bar {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .nav-links-centered {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .nav-links-centered a {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1rem;
+  }
+  
+  .amber-neon-button {
+    position: static;
+    width: 100%;
+    text-align: center;
+  }
+}
+/**
+ * MASTER RACK CHASSIS
+ * The single container that defines the width of the entire site.
+ * Header, Nav, Accordion, Footer - all children inherit this width.
+ */
+
+.master-rack-chassis {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  background: var(--metal-dark, #0a0a0a);
+}
+
+/* CRITICAL: All direct children must be 100% of chassis width */
+.master-rack-chassis > * {
+  width: 100%;
+  max-width: none; /* Remove any child max-width constraints */
+}
+
+/* Header Image: Full width of chassis */
+.master-rack-chassis .rack-header-container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.master-rack-chassis .rack-header-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: crisp-edges;
+}
+
+/* Nav Bar: Full width of chassis, looks like metal strip bolted under header */
+.master-rack-chassis .rack-header {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+/* Accordion Stack: Full width of chassis */
+.master-rack-chassis .rack-accordion-viewport {
+  width: 100%;
+  max-width: none;
+}
+
+/* Footer: Full width of chassis */
+.master-rack-chassis footer {
+  width: 100%;
+  max-width: none;
+}
+
+/* Mobile: Reduce chassis width and remove shadow for cleaner look */
+@media (max-width: 768px) {
+  .master-rack-chassis {
+    max-width: 100%;
+    box-shadow: none;
+  }
 }
