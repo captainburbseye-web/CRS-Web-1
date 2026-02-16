@@ -336,6 +336,10 @@
   transition: all 0.2s ease-out;
   overflow: hidden;
   margin-bottom: 16px;
+  
+  /* Grooved panel effect */
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.5);
 }
 
 /* Variant styling for collapsed state - NO COLOR BORDERS */
