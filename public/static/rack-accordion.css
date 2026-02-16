@@ -3003,3 +3003,93 @@
     max-width: 80px;
   }
 }
+
+/* ==========================================
+   RACK ORIENTATION STRIP
+   ========================================== */
+
+.rack-orientation {
+  text-align: center;
+  margin: 2rem auto 1rem;
+  max-width: 1100px;
+  padding: 0 1rem;
+}
+
+.rack-orientation p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin: 0.25rem 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ==========================================
+   HUMAN SIGNAL LINE
+   ========================================== */
+
+.rack-human-line {
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  opacity: 0.7;
+  margin: 0.5rem auto 2rem;
+  max-width: 1100px;
+  padding: 0 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* ==========================================
+   PRIMARY MODULE HIERARCHY
+   ========================================== */
+
+.rack-accordion-module.primary {
+  border: 2px solid #39FF14;
+}
+
+.rack-accordion-module.primary .rack-led {
+  animation: ledPulse 3s ease-in-out infinite;
+}
+
+@keyframes ledPulse {
+  0% { box-shadow: 0 0 2px #39FF14; }
+  50% { box-shadow: 0 0 8px #39FF14; }
+  100% { box-shadow: 0 0 2px #39FF14; }
+}
+
+
+/* ==========================================
+   HOVER TACTILITY (ALL MODULES)
+   ========================================== */
+
+.rack-accordion-module:hover .rack-led,
+.rack-accordion-module:hover .status-led {
+  box-shadow: 0 0 10px #39FF14;
+  transition: box-shadow 0.2s ease;
+}
+
+.rack-accordion-module:hover {
+  transform: translateY(-2px);
+  transition: transform 0.15s ease;
+}
+
+
+/* ==========================================
+   SYSTEM STATUS STRIP (BOTTOM)
+   ========================================== */
+
+.system-status-strip {
+  border-top: 1px solid #404040;
+  padding: 12px 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  opacity: 0.75;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 3rem 0 0 0;
+}
+

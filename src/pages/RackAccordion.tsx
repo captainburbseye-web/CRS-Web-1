@@ -147,6 +147,17 @@ export const RackAccordion = () => {
         <p class="services-intro-note">All pricing is transparent. All bookings are direct.</p>
       </div>
 
+      {/* OPERATIONAL ORIENTATION STRIP */}
+      <div class="rack-orientation">
+        <p>CRS RACK INTERFACE</p>
+        <p>LIVE STATUS PANEL — SELECT MODULE TO ACCESS SERVICE</p>
+      </div>
+
+      {/* HUMAN SIGNAL LINE */}
+      <p class="rack-human-line">
+        Built and restored by working engineers on Cowley Road.
+      </p>
+
       {/* MAIN ACCORDION RACK */}
       <div class="rack-accordion-viewport">
         <div class="system-badge">
@@ -159,7 +170,7 @@ export const RackAccordion = () => {
           {simplifiedServices.map((service) => (
             <details 
               key={service.id}
-              class={`rack-accordion-module rack-${service.variant}`}
+              class={`rack-accordion-module rack-${service.variant}${service.id === 'rehearsal' ? ' primary' : ''}`}
               data-variant={service.variant}
               data-led-color={service.ledColor}
             >
@@ -262,6 +273,13 @@ export const RackAccordion = () => {
         <a href="#services">SERVICES</a>
         <a href="/contact">CONTACT</a>
       </nav>
+
+      {/* SYSTEM STATUS STRIP */}
+      <div class="system-status-strip">
+        CRS SYSTEM STATUS: OPERATIONAL · 
+        LOCATION: 118 COWLEY ROAD — OXFORD · 
+        INFRASTRUCTURE: BUILD PHASE 92% COMPLETE
+      </div>
 
       <footer class="site-footer">
         <div class="terminal-status-footer">
