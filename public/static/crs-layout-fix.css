@@ -33,18 +33,53 @@ body {
     /* Define the edges */
     max-width: 1100px !important;
     margin: 0 auto !important;
+    margin-top: 20px !important; /* Space from top */
+    margin-bottom: 20px !important;
     
-    /* Remove borders - use box-shadow instead for "Rack Ears" */
+    /* Prepare for pseudo-element rack ears */
+    position: relative !important; /* Anchor for the ears */
     border: none !important;
+    overflow: visible !important; /* Let ears hang off the side */
     
-    /* The "Rack Ears" via Spread Shadow + Depth Shadow */
-    /* First shadow = 15px spread = thick black mounting rails */
-    /* Second shadow = depth/glow to lift rack off black background */
-    box-shadow: 
-        0 0 0 15px #0a0a0a,
-        0 0 80px 20px rgba(0,0,0,0.9) !important;
+    /* Depth shadow only */
+    box-shadow: 0 0 50px rgba(0,0,0,0.8) !important;
+}
+
+/* --- 4a. LEFT RACK EAR (Graphic with bolts) --- */
+.master-rack-chassis::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -40px !important; /* Pull it out to the left */
+    width: 40px !important; /* Width of the ear */
     
-    overflow: visible !important;
+    /* The actual graphic (metal strip with bolt holes) */
+    background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb.png') !important;
+    background-size: 100% 100% !important; /* Stretch to full height */
+    background-repeat: no-repeat !important;
+    
+    z-index: 100 !important; /* Sit above background, below buttons */
+    pointer-events: none !important; /* Don't block clicks */
+}
+
+/* --- 4b. RIGHT RACK EAR (Flipped graphic) --- */
+.master-rack-chassis::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: -40px !important; /* Pull it out to the right */
+    width: 40px !important; /* Width of the ear */
+    
+    /* Same graphic, flipped horizontally */
+    background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb.png') !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    transform: scaleX(-1) !important; /* FLIP IT to look like the right side */
+    
+    z-index: 100 !important;
+    pointer-events: none !important; /* Don't block clicks */
 }
 
 /* --- 5. HEADER IMAGE FLUSH TOP --- */
