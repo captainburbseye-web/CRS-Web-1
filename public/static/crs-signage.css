@@ -291,8 +291,8 @@
 }
 
 .status-value.operational {
-  color: #39FF14;
-  text-shadow: 0 0 10px #39FF14;
+  color: #B5A642;
+  text-shadow: 0 0 10px rgba(181, 166, 66, 0.5);
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
@@ -503,7 +503,7 @@ html.night-mode .signage-container {
   background: linear-gradient(180deg, #444 0%, #222 100%);
   border: none;
   border-radius: 1.5rem;
-  color: var(--neon-green);
+  color: #B5A642;
   font-size: 0.9rem;
   font-weight: 700;
   padding: 0.6rem 1.5rem;
