@@ -280,6 +280,14 @@ export const RackAccordion = () => {
         INFRASTRUCTURE: BUILD PHASE 92% COMPLETE
       </div>
 
+      {/* SEO FOOTER LINKS */}
+      <div class="rack-footer-links">
+        <a href="/recording-studio-oxford" class="rack-footer-link">Recording Studio in Oxford</a>
+        <a href="/rehearsal-rooms-oxford" class="rack-footer-link">Rehearsal Rooms in Oxford</a>
+        <a href="/av-services-oxford" class="rack-footer-link">Live Sound & AV Services in Oxford</a>
+        <a href="/venue-hire-oxford" class="rack-footer-link">Venue Hire in Cowley Road, Oxford</a>
+      </div>
+
       <footer class="site-footer">
         <div class="terminal-status-footer">
           
