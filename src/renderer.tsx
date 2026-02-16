@@ -1,22 +1,32 @@
 import { jsxRenderer } from 'hono/jsx-renderer'
 
-export const renderer = jsxRenderer(({ children, title, description, keywords, ogTitle, ogDescription }) => {
+export const renderer = jsxRenderer(({ children, title, description, keywords, ogTitle, ogDescription, canonicalUrl, ogUrl, ogImage }) => {
+  const baseUrl = 'https://cowleyroadstudios.com';
+  const defaultImage = 'https://pub-991d8d2677374c528678829280f50c98.r2.dev/512crs_badge_dark%20fixed%20for%20web.png';
+  
   return (
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>{title || 'Cowley Road Studios | Recording Studio & AV Services Oxford'}</title>
-        <meta name="description" content={description || 'Professional recording studio, rehearsal space, and live AV services in Oxford. Continuing the Soundworks Oxford legacy (1999–2024). No-chaos operation. Subsidized rates for community groups.'} />
-        <meta name="keywords" content={keywords || 'recording studio oxford, rehearsal space oxford, live sound oxford, av services oxford, soundworks oxford'} />
+        <title>{title || 'Cowley Road Studios | Recording Studio & Rehearsal Rooms Oxford'}</title>
+        <meta name="description" content={description || 'Recording studio, rehearsal rooms, AV services and venue hire in Oxford. Professional infrastructure on Cowley Road. Book sessions online.'} />
+        <meta name="keywords" content={keywords || 'recording studio oxford, rehearsal rooms oxford, live sound oxford, av services oxford, venue hire oxford'} />
         <meta name="author" content="Cowley Road Studios" />
         <meta name="copyright" content="© 2026 Cowley Road Studios. Continuing the Soundworks Oxford legacy (1999–2024)." />
         
+        {/* Canonical URL */}
+        <link rel="canonical" href={canonicalUrl || baseUrl} />
+        
+        {/* Google Search Console Verification - REPLACE WITH ACTUAL CODE */}
+        <meta name="google-site-verification" content="ADD_VERIFICATION_CODE_HERE" />
+        
         {/* Open Graph (social sharing) */}
-        <meta property="og:title" content={ogTitle || title || 'Cowley Road Studios | Continuing the Soundworks Oxford Legacy'} />
-        <meta property="og:description" content={ogDescription || description || 'Professional recording & AV in Oxford. Continuing 25 years of Soundworks Oxford infrastructure.'} />
-        <meta property="og:image" content="https://pub-991d8d2677374c528678829280f50c98.r2.dev/512crs_badge_dark%20fixed%20for%20web.png" />
-        <meta property="og:url" content="https://cowleyroadstudios.com" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={ogTitle || title || 'Cowley Road Studios | Recording Studio & Rehearsal Rooms Oxford'} />
+        <meta property="og:description" content={ogDescription || description || 'Recording studio, rehearsal rooms, AV services and venue hire in Oxford. Professional infrastructure on Cowley Road.'} />
+        <meta property="og:image" content={ogImage || defaultImage} />
+        <meta property="og:url" content={ogUrl || canonicalUrl || baseUrl} />
         
         {/* Favicon - CRS Sig-Log */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />

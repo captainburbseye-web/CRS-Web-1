@@ -2003,4 +2003,76 @@ app.get('/book/hire', (c) => c.redirect('/book'))
 app.get('/book/repairs', (c) => c.redirect('/book'))
 app.get('/book-old', (c) => c.redirect('/book'))
 
+// ===================================================================
+// SEO LANDING PAGES (PHASE 4)
+// ===================================================================
+import { RecordingStudioOxford } from './pages/RecordingStudioOxford.tsx'
+import { RehearsalRoomsOxford } from './pages/RehearsalRoomsOxford.tsx'
+import { AVServicesOxford } from './pages/AVServicesOxford.tsx'
+import { VenueHireOxford } from './pages/VenueHireOxford.tsx'
+
+// RECORDING STUDIO OXFORD
+app.get('/recording-studio-oxford', (c) => {
+  return c.render(
+    <RecordingStudioOxford />,
+    {
+      title: 'Recording Studio in Oxford | Cowley Road Studios',
+      description: 'Professional recording studio in Oxford for music, podcast and broadcast. Engineer-assisted sessions at Cowley Road and Cricket Road.',
+      keywords: 'recording studio oxford, music recording oxford, engineer led recording oxford, professional studio oxford, cowley road recording',
+      canonicalUrl: 'https://cowleyroadstudios.com/recording-studio-oxford',
+      ogUrl: 'https://cowleyroadstudios.com/recording-studio-oxford',
+      ogTitle: 'Recording Studio in Oxford | Cowley Road Studios',
+      ogDescription: 'Professional recording studio in Oxford for music, podcast and broadcast. Engineer-assisted sessions at Cowley Road and Cricket Road.'
+    }
+  )
+})
+
+// REHEARSAL ROOMS OXFORD
+app.get('/rehearsal-rooms-oxford', (c) => {
+  return c.render(
+    <RehearsalRoomsOxford />,
+    {
+      title: 'Rehearsal Rooms in Oxford | Cowley Road Studios',
+      description: 'Operational rehearsal rooms in Oxford with backline, PA and calibrated monitoring. Book Cowley Road or Cricket Road sessions online.',
+      keywords: 'rehearsal rooms oxford, band rehearsal oxford, practice space oxford, music rehearsal oxford, cowley road rehearsal',
+      canonicalUrl: 'https://cowleyroadstudios.com/rehearsal-rooms-oxford',
+      ogUrl: 'https://cowleyroadstudios.com/rehearsal-rooms-oxford',
+      ogTitle: 'Rehearsal Rooms in Oxford | Cowley Road Studios',
+      ogDescription: 'Operational rehearsal rooms in Oxford with backline, PA and calibrated monitoring. Book Cowley Road or Cricket Road sessions online.'
+    }
+  )
+})
+
+// AV SERVICES OXFORD
+app.get('/av-services-oxford', (c) => {
+  return c.render(
+    <AVServicesOxford />,
+    {
+      title: 'Live Sound & AV Services in Oxford | Cowley Road Studios',
+      description: 'Live sound hire, system installs and equipment repair in Oxford. Professional technical support for venues and events.',
+      keywords: 'av services oxford, live sound oxford, sound engineer oxford, equipment repair oxford, system installation oxford',
+      canonicalUrl: 'https://cowleyroadstudios.com/av-services-oxford',
+      ogUrl: 'https://cowleyroadstudios.com/av-services-oxford',
+      ogTitle: 'Live Sound & AV Services in Oxford | Cowley Road Studios',
+      ogDescription: 'Live sound hire, system installs and equipment repair in Oxford. Professional technical support for venues and events.'
+    }
+  )
+})
+
+// VENUE HIRE OXFORD
+app.get('/venue-hire-oxford', (c) => {
+  return c.render(
+    <VenueHireOxford />,
+    {
+      title: 'Venue Hire in Cowley Road, Oxford | Workshop Café',
+      description: 'Creative venue hire in Cowley Road, Oxford. Capacity up to 60 standing with PA support. Private events and community programming.',
+      keywords: 'venue hire oxford, workshop cafe oxford, event space oxford, cowley road venue, private hire oxford',
+      canonicalUrl: 'https://cowleyroadstudios.com/venue-hire-oxford',
+      ogUrl: 'https://cowleyroadstudios.com/venue-hire-oxford',
+      ogTitle: 'Venue Hire in Cowley Road, Oxford | Workshop Café',
+      ogDescription: 'Creative venue hire in Cowley Road, Oxford. Capacity up to 60 standing with PA support. Private events and community programming.'
+    }
+  )
+})
+
 export default app
