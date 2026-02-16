@@ -2,6 +2,28 @@
 /* INDUSTRIAL POLISH: Final High-Fidelity Layer */
 /* ============================================= */
 
+/* --- 0. SCORCHED EARTH: KILL THE YELLOW BORDER --- */
+/* Nuke all left/right borders on main containers */
+
+body, 
+.master-rack-chassis, 
+.rack-header-container, 
+.rack-header, 
+.rack-accordion-viewport {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* Hide specific rail elements if they exist */
+.rack-left-rail, 
+.rack-right-rail, 
+.rack-rail {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    visibility: hidden !important;
+}
+
 /* --- 1. FIX THE "PALE YELLOW" BUTTONS --- */
 /* Convert weak yellow to Industrial Amber/Black style */
 
@@ -14,12 +36,13 @@
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 1px !important;
-    box-shadow: 0 0 10px rgba(255, 159, 28, 0.2) !important; /* Subtle Glow */
+    box-shadow: 0 0 5px rgba(255, 159, 28, 0.3) !important; /* Subtle Glow */
     transition: all 0.2s ease !important;
     text-align: center !important;
     display: inline-block !important;
     padding: 12px 24px !important;
     cursor: pointer !important;
+    border-radius: 2px !important; /* Sharp industrial corners */
 }
 
 .cta-service:hover, 
@@ -31,56 +54,25 @@
     transform: translateY(-1px) !important; /* Subtle lift */
 }
 
-/* --- 2. GRAPHIC RACK EARS (High Fidelity) --- */
-/* Attach bolt-texture strips to sides of chassis */
+/* --- 2. GRAPHIC RACK EARS & CENTER-DARK VIGNETTE --- */
+/* Attach bolt-texture strips to sides and apply readability gradient */
 
 .master-rack-chassis {
     position: relative !important;
     overflow: visible !important; /* Let ears hang out */
-    border: none !important; /* Remove old borders */
-}
-
-/* LEFT EAR */
-.master-rack-chassis::before {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    left: -38px !important; /* Width of ear */
-    width: 38px !important;
-    background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb.png') !important;
-    background-size: 100% 100% !important;
-    background-repeat: no-repeat !important;
-    z-index: 10 !important;
-    pointer-events: none !important; /* Don't block clicks */
-}
-
-/* RIGHT EAR (Flipped) */
-.master-rack-chassis::after {
-    content: "" !important;
-    position: absolute !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    right: -38px !important;
-    width: 38px !important;
-    background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb.png') !important;
-    background-size: 100% 100% !important;
-    background-repeat: no-repeat !important;
-    transform: scaleX(-1) !important; /* Mirror image */
-    z-index: 10 !important;
-    pointer-events: none !important; /* Don't block clicks */
-}
-
-/* --- 3. CENTER-DARK GRADIENT (Vignette for Readability) --- */
-/* Darken middle for text, keep metal visible on edges */
-
-.master-rack-chassis {
+    border: none !important; /* Remove ALL borders */
+    
+    /* Reset margins and sizing */
+    margin: 20px auto !important;
+    max-width: 1100px !important;
+    
+    /* CENTER-DARK VIGNETTE + METAL TEXTURE (layered) */
     background-image: 
         linear-gradient(
             90deg, 
             rgba(0,0,0,0.1) 0%,   /* Metal visible on edges */
-            rgba(0,0,0,0.85) 15%, /* Fade to dark */
-            rgba(0,0,0,0.85) 85%, /* Stay dark in center */
+            rgba(0,0,0,0.9) 20%,  /* Fade to dark for text */
+            rgba(0,0,0,0.9) 80%,  /* Stay dark in center */
             rgba(0,0,0,0.1) 100%  /* Metal visible on edges */
         ),
         url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
@@ -88,4 +80,33 @@
     background-size: 100% 100%, 100% auto !important;
     background-repeat: no-repeat, repeat-y !important;
     color: #e0e0e0 !important;
+}
+
+/* LEFT EAR (Graphic with bolts) */
+.master-rack-chassis::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -38px !important;
+    width: 38px !important;
+    background: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb.png') no-repeat !important;
+    background-size: 100% 100% !important;
+    z-index: 10 !important;
+    pointer-events: none !important;
+}
+
+/* RIGHT EAR (Flipped graphic) */
+.master-rack-chassis::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: -38px !important;
+    width: 38px !important;
+    background: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb.png') no-repeat !important;
+    background-size: 100% 100% !important;
+    transform: scaleX(-1) !important; /* Mirror horizontally */
+    z-index: 10 !important;
+    pointer-events: none !important;
 }
