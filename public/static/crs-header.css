@@ -28,9 +28,15 @@ header.rack-header {
   gap: var(--space-xl); /* 32px between zones */
   padding: var(--space-md) var(--space-xl); /* TIGHTENED: 16px vertical (was 24px), 32px horizontal */
   
-  /* 4. Clean Background */
-  background-color: #000000;
-  border-bottom: 2px solid #000;
+  /* 4. Metal Texture Background (R2 Asset) */
+  background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #000000; /* Fallback */
+  
+  /* Bevel edges for depth */
+  border-top: 1px solid #3d3d3d; /* Highlight bevel */
+  border-bottom: 1px solid #000; /* Shadow bevel */
   
   /* 5. The Shadow */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
