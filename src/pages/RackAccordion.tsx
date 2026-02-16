@@ -175,7 +175,7 @@ export const RackAccordion = () => {
             >
               <summary class="rack-accordion-header">
                 <span class="rack-led" data-color={service.ledColor}></span>
-                <span class="rack-icon">{service.icon}</span>
+                {service.icon && <span class="rack-icon">{service.icon}</span>}
                 <span class="rack-title">{service.title}</span>
                 <span class="rack-chevron">›</span>
               </summary>

@@ -30,8 +30,8 @@ export const simplifiedServices: SimplifiedService[] = [
   // 1. RECORDING (WITH ENGINEER)
   {
     id: 'recording',
-    title: 'RECORDING (WITH ENGINEER)',
-    icon: '🎛️',
+    title: 'CH-01 RECORDING',
+    icon: '',
     description: 'Multi-room recording system.\nCommissioning in final phase.\n\nAdvance bookings accepted.\nTechnical spec available on request.',
     variant: 'rack',
     ledColor: 'green',
@@ -56,8 +56,8 @@ export const simplifiedServices: SimplifiedService[] = [
   // 2. CONTROL ROOM (DRY HIRE)
   {
     id: 'control-room',
-    title: 'CONTROL ROOM (DRY HIRE)',
-    icon: '🎚️',
+    title: 'CH-02 CONTROL ROOM',
+    icon: '',
     description: 'For producers and engineers who run their own sessions. Induction required.',
     variant: 'rack',
     ledColor: 'green',
@@ -82,8 +82,8 @@ export const simplifiedServices: SimplifiedService[] = [
   // 3. BAND REHEARSALS
   {
     id: 'rehearsal',
-    title: 'BAND REHEARSALS',
-    icon: '🎸',
+    title: 'CH-03 REHEARSAL',
+    icon: '',
     description: 'Rehearsal rooms at Cowley Road (HQ) and Cricket Road (Node).\nBackline, PA, monitoring calibrated.\n\nSelect duration. Lock slot. Confirm.',
     variant: 'rack',
     ledColor: 'green',
@@ -108,8 +108,8 @@ export const simplifiedServices: SimplifiedService[] = [
   // 4. PODCAST & AV RECORDING
   {
     id: 'podcast',
-    title: 'PODCAST & AV RECORDING',
-    icon: '🎙️',
+    title: 'CH-04 BROADCAST',
+    icon: '',
     description: 'Spoken word. Interviews. Broadcast content.\nEngineer-assisted recording available.\n\n£30–£35/hr depending on location.',
     variant: 'rack',
     ledColor: 'green',
@@ -120,8 +120,8 @@ export const simplifiedServices: SimplifiedService[] = [
   // 5. REPAIRS & TECHNICAL SERVICES
   {
     id: 'repairs',
-    title: 'REPAIRS & TECHNICAL SERVICES',
-    icon: '🔧',
+    title: 'CH-05 TECHNICAL',
+    icon: '',
     description: 'Live sound support.\nSystem installs.\nDiagnostics-led equipment repair.\n\nSubmit fault report or event brief.',
     variant: 'rack',
     ledColor: 'green',
@@ -132,8 +132,8 @@ export const simplifiedServices: SimplifiedService[] = [
   // 6. WORKSHOP CAFÉ VENUE HIRE
   {
     id: 'cafe',
-    title: 'WORKSHOP CAFÉ VENUE HIRE',
-    icon: '☕',
+    title: 'CH-06 VENUE',
+    icon: '',
     description: 'Front-of-house venue interface.\nPrivate hire and community programming.\n\nOperational hours published via system updates.',
     variant: 'passive',
     ledColor: 'green',
@@ -151,8 +151,8 @@ export const simplifiedServices: SimplifiedService[] = [
   // 7. CONTACT
   {
     id: 'contact',
-    title: 'CONTACT & ENQUIRIES',
-    icon: '📞',
+    title: 'CH-07 CONTACT',
+    icon: '',
     description: 'All bookings are direct. General enquiries, technical support, and booking assistance.',
     variant: 'passive',
     ledColor: 'green',
