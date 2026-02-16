@@ -592,59 +592,47 @@ app.get('/crs-cricket-road', (c) => {
 // HOME
 // ROOT: HARDWARE RACK CONSOLE (Hardware-first landing page)
 app.get('/', (c) => {
-  return c.html(
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Recording Studio & Rehearsal Rooms Oxford | Cowley Road Studios</title>
-        <meta name="description" content="Independent recording studio, rehearsal rooms and engineer-led sessions in Oxford. Formerly Soundworks Oxford (1999–2024). Book rehearsal, recording, or creative workspace." />
-        <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-        
-        {/* Core CSS files */}
-        <link href="/static/crs-reset.css" rel="stylesheet" />
-        <link href="/static/crs-typography.css" rel="stylesheet" />
-        <link href="/static/crs-header.css" rel="stylesheet" />
-        <link href="/static/crs-footer.css" rel="stylesheet" />
-        <link href="/static/crs-map-embed.css" rel="stylesheet" />
-        <link href="/static/crs-mobile.css" rel="stylesheet" />
-        
-        {/* Accordion-specific CSS */}
-        <link href="/static/rack-accordion.css" rel="stylesheet" />
-      </head>
-      <body>
-        <RackAccordion />
-        
-        {/* Structured data for SEO */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Cowley Road Studios",
-            "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
-            "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "118 Cowley Road",
-              "addressLocality": "Oxford",
-              "postalCode": "OX4 1JE",
-              "addressCountry": "GB"
-            },
-            "telephone": "+441865722027",
-            "email": "info@crsoxford.com",
-            "url": "https://cowley-road-studios.pages.dev",
-            "priceRange": "££",
-            "areaServed": "Oxford",
-            "sameAs": [
-              "https://instagram.com/cowleyroadstudios.ox"
-            ]
-          })}
-        </script>
-      </body>
-    </html>
+  return c.render(
+    <>
+      <RackAccordion />
+      
+      {/* Structured data for SEO */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "name": "Cowley Road Studios",
+          "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
+          "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "118 Cowley Road",
+            "addressLocality": "Oxford",
+            "postalCode": "OX4 1JE",
+            "addressCountry": "GB"
+          },
+          "telephone": "+441865722027",
+          "email": "info@crsoxford.com",
+          "url": "https://cowleyroadstudios.com",
+          "priceRange": "££",
+          "areaServed": "Oxford",
+          "sameAs": [
+            "https://instagram.com/cowleyroadstudios.ox"
+          ]
+        })}
+      </script>
+      
+      <link href="/static/rack-accordion.css" rel="stylesheet" />
+    </>,
+    {
+      title: 'Cowley Road Studios | Recording Studio & Rehearsal Rooms Oxford',
+      description: 'Recording studio, rehearsal rooms, AV services and venue hire in Oxford. Professional infrastructure on Cowley Road. Book sessions online.',
+      keywords: 'recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford',
+      canonicalUrl: 'https://cowleyroadstudios.com/',
+      ogTitle: 'Cowley Road Studios | Recording Studio & Rehearsal Rooms Oxford',
+      ogDescription: 'Recording studio, rehearsal rooms, AV services and venue hire in Oxford. Professional infrastructure on Cowley Road.',
+      ogUrl: 'https://cowleyroadstudios.com/'
+    }
   )
 })
 
@@ -1564,29 +1552,19 @@ app.get('/work', (c) => {
 })
 // CONTACT
 app.get('/contact', (c) => {
-  return c.html(`<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Cowley Road Studios | Recording Studio Oxford</title>
-    <meta name="description" content="Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Two Oxford locations. Direct booking routes. Email: info@crsoxford.com">
-    <meta name="keywords" content="contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <link href="/static/crs-reset.css" rel="stylesheet">
-    <link href="/static/crs-typography.css" rel="stylesheet">
-    <link href="/static/crs-header.css" rel="stylesheet">
-    <link href="/static/crs-mobile.css" rel="stylesheet">
-    <link href="/static/rack-accordion.css" rel="stylesheet">
-</head>
-<body>
-    ${<ContactPage />}
-</body>
-</html>`)
+  return c.render(
+    <>
+      <ContactPage />
+      <link href="/static/rack-accordion.css" rel="stylesheet" />
+    </>,
+    {
+      title: 'Contact Cowley Road Studios | Recording Studio Oxford',
+      description: 'Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Two Oxford locations. Direct booking routes. Email: info@crsoxford.com',
+      keywords: 'contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford',
+      canonicalUrl: 'https://cowleyroadstudios.com/contact',
+      ogUrl: 'https://cowleyroadstudios.com/contact'
+    }
+  )
 })
 
 // BOOKING CONFIRMED PAGE
@@ -1617,9 +1595,11 @@ app.get('/rack', (c) => {
       <Footer />
     </>,
     {
-      title: 'CRS Studio Network | Cowley Road Studios',
-      description: 'CRS Studio Network: Signal routing, booking surface, system status. Hardware-inspired interface.',
-      keywords: 'studio network, booking, cowley road studios, signal routing'
+      title: 'Service Status & Booking | Cowley Road Studios',
+      description: 'Live service status, booking interface and studio infrastructure overview for Cowley Road Studios recording and rehearsal facilities.',
+      keywords: 'studio network, booking, cowley road studios, signal routing',
+      canonicalUrl: 'https://cowleyroadstudios.com/rack',
+      ogUrl: 'https://cowleyroadstudios.com/rack'
     }
   )
 })
