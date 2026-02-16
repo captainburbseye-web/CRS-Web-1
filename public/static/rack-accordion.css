@@ -328,7 +328,7 @@
 
 .rack-accordion-module {
   background: #1a1a1a;
-  border: 2px solid #2a2a2a;
+  border: 2px solid #404040; /* Chassis grey */
   border-radius: 6px;
   box-shadow: 
     inset 0 1px 2px rgba(255,255,255,0.03),
@@ -433,8 +433,9 @@
   font-size: 15px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.15em;
+  color: #B5A642; /* Brass panel engraving */
+  text-shadow: 0 1px 0 #000; /* Subtle engraved effect */
 }
 
 /* Chevron indicator */
@@ -3054,9 +3055,9 @@
 }
 
 @keyframes ledPulse {
-  0% { box-shadow: 0 0 2px #39FF14; }
-  50% { box-shadow: 0 0 8px #39FF14; }
-  100% { box-shadow: 0 0 2px #39FF14; }
+  0% { box-shadow: 0 0 2px rgba(57,255,20,0.6); }
+  50% { box-shadow: 0 0 6px rgba(57,255,20,0.6); }
+  100% { box-shadow: 0 0 2px rgba(57,255,20,0.6); }
 }
 
 
@@ -3066,7 +3067,7 @@
 
 .rack-accordion-module:hover .rack-led,
 .rack-accordion-module:hover .status-led {
-  box-shadow: 0 0 10px #39FF14;
+  box-shadow: 0 0 6px rgba(57,255,20,0.6);
   transition: box-shadow 0.2s ease;
 }
 

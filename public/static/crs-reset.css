@@ -40,10 +40,10 @@ body {
 /* COLORS - NASA TERMINAL AESTHETIC (LOCKED) */
 :root {
   /* CORE PALETTE - CRT Monitor / Mission Control */
-  --crs-black: #0D1912;           /* Deep dark green/black (CRT monitor) */
+  --crs-black: #0E0E0E;           /* Chassis Black - engineered panel */
   --crs-graphite: #1A251E;        /* Card/panel background */
   --crs-border: #2D3A32;          /* Green-tinted borders */
-  --crs-text: #FFFFFF;            /* Pure white foreground */
+  --crs-text: #E0E0E0;            /* Lit panel text */
   
   /* ACCENT COLORS - CRT Glow & Status */
   --crs-gold: #E89B3C;            /* Warm orange/amber (CRT glow) */
@@ -2792,3 +2792,15 @@ body.wsc-mode .module-content {
 .mt-2 { margin-top: 1rem; }
 .mt-3 { margin-top: 1.5rem; }
 .mt-4 { margin-top: 2rem; }
+
+/* ==========================================
+   CRS COLOUR REFINEMENT
+   Material language upgrade - brass accents
+   ========================================== */
+
+:root {
+  --chassis-grey: #404040;    /* Rack metal structural lines */
+  --brass-panel: #B5A642;     /* Engraved billet plate accent */
+  --secondary-text: rgba(255,255,255,0.65);  /* Secondary copy */
+}
+
