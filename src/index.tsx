@@ -1747,7 +1747,7 @@ app.get('/rack-accordion', (c) => {
             },
             "telephone": "+441865722027",
             "email": "info@crsoxford.com",
-            "url": "https://cowley-road-studios.pages.dev",
+            "url": "https://cowleyroadstudios.com",
             "priceRange": "££",
             "areaServed": "Oxford",
             "sameAs": [
