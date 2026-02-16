@@ -1,5 +1,5 @@
 /* --- BRUTE FORCE LAYOUT FIX --- */
-/* Kill dead space, orange borders, and extend metal texture */
+/* Kill dead space, orange borders, and create black void + metal rack */
 
 /* --- 1. KILL DEAD SPACE (Top & Sides) --- */
 html, body {
@@ -7,36 +7,41 @@ html, body {
     padding: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background-color: #1a1a1a !important; /* Dark Grey background for side gutters */
 }
 
-/* --- 2. FULL METAL JACKET (Global Texture) --- */
-/* Apply texture to the body so it covers 100% of the screen, not just the center */
+/* --- 2. THE VOID (Pitch Black Background) --- */
 body {
-    background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
-    background-repeat: repeat !important;
-    background-attachment: fixed !important; /* Parallax effect: rack moves, metal stays */
+    background-color: #050505 !important; /* Pitch black void */
+    background-image: none !important; /* Remove global metal texture */
 }
 
 /* --- 3. KILL THE ORANGE BORDER --- */
 /* Target every possible container to ensure that border dies */
-.master-rack-chassis, 
-.rack-header-container,
 .rack-left-rail, 
-.rack-right-rail,
-div {
-    border-left: none !important;
-    border-right: none !important;
-    border-top: none !important;
-    outline: none !important;
+.rack-right-rail {
+    display: none !important;
 }
 
-/* --- 4. CENTER THE RACK --- */
+/* --- 4. THE CHASSIS (Metal Rack Unit) --- */
 .master-rack-chassis {
-    margin: 0 auto !important; /* Center the unit */
+    /* Keep the Metal Texture ONLY here */
+    background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
+    background-repeat: repeat-y !important;
+    background-size: 100% auto !important;
+    background-color: #1a1a1a !important;
+    
+    /* Define the edges */
     max-width: 1100px !important;
-    box-shadow: 0 0 50px 10px rgba(0,0,0,0.9) !important; /* Heavy shadow to lift it off the metal background */
-    background: transparent !important; /* Let body texture show through */
+    margin: 0 auto !important;
+    
+    /* The "Rack Edge" Simulation (Thick dark borders to look like mounting rails) */
+    border-left: 12px solid #111 !important;
+    border-right: 12px solid #111 !important;
+    border-top: none !important;
+    border-bottom: none !important;
+    
+    /* The Shadow (Lifts the rack off the black background) */
+    box-shadow: 0 0 80px rgba(0, 0, 0, 1.0) !important;
 }
 
 /* --- 5. HEADER IMAGE FLUSH TOP --- */
@@ -44,4 +49,16 @@ div {
     display: block !important;
     width: 100% !important;
     margin-top: 0 !important;
+}
+
+/* --- 6. TEXT VISIBILITY --- */
+.master-rack-chassis p, 
+.master-rack-chassis h1, 
+.master-rack-chassis h2,
+.master-rack-chassis h3,
+.master-rack-chassis li,
+.master-rack-chassis label,
+.master-rack-chassis span {
+    color: #e0e0e0 !important; /* Ensure text pops against the dark metal */
+    text-shadow: 0 1px 2px rgba(0,0,0,0.8); /* subtle depth */
 }
