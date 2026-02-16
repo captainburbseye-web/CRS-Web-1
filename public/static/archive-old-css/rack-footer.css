@@ -1,0 +1,49 @@
+/* === RACK FOOTER — HORIZONTAL BACK PANEL === */
+
+.rack-footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.75rem 1rem;
+  border-top: 2px solid #2f3a2f;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.75);
+}
+
+.rack-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  white-space: nowrap;
+}
+
+.rack-footer-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rack-footer-label {
+  color: #E3B04B;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.rack-footer a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+}
+
+.rack-footer a:hover {
+  text-decoration: underline;
+}
+
+/* === MOBILE SAFETY === */
+@media (max-width: 768px){
+  .rack-footer-row {
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+    white-space: normal;
+  }
+}

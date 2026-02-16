@@ -1,0 +1,154 @@
+/* ================================
+   CRS TYPOGRAPHY LOCKDOWN
+   Hard Separation of Typographic Domains
+   ================================ */
+
+/* PRINCIPLE: Headings = signal amplitude, Buttons = physical controls
+   Controls do not resize with signal. This is hardware. */
+
+:root {
+  /* TYPOGRAPHY — HEADERS (Responsive, Fluid) */
+  --type-h1: clamp(2.4rem, 5vw, 4.2rem);
+  --type-h2: clamp(1.8rem, 3vw, 2.8rem);
+  --type-h3: 1.4rem;
+
+  /* TYPOGRAPHY — BODY (Fixed) */
+  --type-body: 1rem;
+  --type-small: 0.875rem;
+
+  /* TYPOGRAPHY — CONTROLS (LOCKED, NO DRIFT) */
+  --type-button: 0.875rem;      /* 14px - standard button */
+  --type-button-lg: 1rem;        /* 16px - large button */
+  --type-nav: 1.25rem;           /* 20px - navigation links (readable, professional) */
+  --type-nav-lg: 1.5rem;         /* 24px - large nav if needed */
+}
+
+/* ================================
+   HEADINGS — USE HEADER SCALE ONLY
+   ================================ */
+
+h1, 
+.system-title,
+.hero-title {
+  font-size: var(--type-h1) !important;
+  line-height: 1.1;
+}
+
+h2,
+.rack-unit-title,
+.section-title {
+  font-size: var(--type-h2) !important;
+  line-height: 1.2;
+}
+
+h3,
+.subsection-title {
+  font-size: var(--type-h3) !important;
+  line-height: 1.3;
+}
+
+/* ================================
+   BUTTONS — HARD-LOCKED (IMMUNITY)
+   ================================ */
+
+/* Base button styling - LOCKED */
+button,
+.button,
+.cta,
+.cta-button,
+.book-now,
+.book-dropdown-trigger {
+  font-size: var(--type-button) !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+}
+
+/* Large button variant */
+.button--large,
+.cta-button-peak-red {
+  font-size: var(--type-button-lg) !important;
+}
+
+/* Book Now Sign Image - SIZE LOCKED */
+.book-now-sign-image {
+  height: 140px !important; /* FIXED - does not scale with typography */
+  width: auto !important;
+}
+
+/* ================================
+   NAVIGATION — HARD-LOCKED
+   ================================ */
+
+/* Header navigation - LOCKED */
+.rack-nav-links,
+.rack-nav-links a {
+  font-size: var(--type-nav-lg) !important; /* 20px - readable, not massive */
+  line-height: 1 !important;
+}
+
+/* Mobile nav - LOCKED */
+.mobile-nav a {
+  font-size: var(--type-nav) !important;
+  line-height: 1 !important;
+}
+
+/* ================================
+   CONTAINERS — NO GLOBAL SCALING
+   ================================ */
+
+/* Reset containers that might scale children */
+.site-header,
+.rack-header {
+  font-size: 1rem !important; /* RESET - prevents inheritance */
+}
+
+.hero,
+.rack-unit,
+.system-status {
+  /* Containers should NOT scale text globally */
+  /* Typography controlled by specific child selectors only */
+}
+
+/* ================================
+   BODY TEXT — FIXED
+   ================================ */
+
+body {
+  font-size: var(--type-body);
+  line-height: 1.6;
+}
+
+p,
+.body-text {
+  font-size: var(--type-body);
+}
+
+small,
+.text-small {
+  font-size: var(--type-small);
+}
+
+/* ================================
+   LED INDICATORS — SIZE LOCKED
+   ================================ */
+
+.led {
+  width: 10px !important; /* FIXED - hardware component */
+  height: 10px !important;
+}
+
+/* ================================
+   MENTAL MODEL ENFORCEMENT
+   ================================ */
+
+/* 
+RULE 1: Headings respond to viewport (signal amplitude)
+RULE 2: Buttons stay fixed (physical controls)
+RULE 3: Controls do not resize with signal
+RULE 4: Containers never scale text globally
+RULE 5: Use !important for control hardware isolation
+
+This is how real hardware works.
+This is how CRS typography works.
+*/

@@ -1,0 +1,953 @@
+/**
+ * RACK CHANNEL SYSTEM - Hardware Console Aesthetic
+ * 
+ * Design Philosophy:
+ * - Feels like operating professional studio equipment
+ * - NOT a web dashboard, NOT SaaS tabs, NOT card UI
+ * - Hardware selectors / channel strips
+ * - Single active bay (console metaphor)
+ * - Metallic surfaces, LED indicators, VU meters
+ * - Depth through shadows and bevels (not flat web design)
+ * 
+ * Visual Language:
+ * - Brushed aluminium and anodized black textures
+ * - Green LEDs for active, dim amber for inactive
+ * - Soft panel lighting on activation
+ * - Mechanical transitions (power-on/power-down feel)
+ */
+
+/* ============================================
+   DESIGN TOKENS - Hardware Palette
+   ============================================ */
+:root {
+  /* LEDs - Professional Equipment Colors */
+  --led-active-green: #00ff88;
+  --led-inactive-amber: #8b6f47;
+  --led-glow-green: rgba(0, 255, 136, 0.6);
+  --led-glow-amber: rgba(139, 111, 71, 0.3);
+  
+  /* Hardware Surfaces */
+  --rack-chassis-bg: #0a0a0a;
+  --panel-face-gradient: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 50%, #0f0f0f 100%);
+  --panel-edge-highlight: rgba(255, 255, 255, 0.05);
+  --panel-edge-shadow: rgba(0, 0, 0, 0.6);
+  --panel-rail-separator: rgba(153, 204, 153, 0.15);
+  
+  /* Metallic Textures */
+  --brushed-metal: linear-gradient(90deg, 
+    rgba(255,255,255,0.03) 0%, 
+    rgba(255,255,255,0.08) 50%, 
+    rgba(255,255,255,0.03) 100%
+  );
+  --anodized-black: linear-gradient(180deg, #1c1c1c 0%, #0f0f0f 100%);
+  
+  /* Text - Hardware Typography */
+  --text-active: #ffffff;
+  --text-inactive: rgba(255, 255, 255, 0.35);
+  --text-label: rgba(255, 255, 255, 0.7);
+  --font-tech: 'SF Mono', 'Monaco', 'Courier New', monospace;
+  
+  /* Depth & Shadow */
+  --shadow-panel-inset: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.03);
+  --shadow-panel-outer: 
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(42, 42, 42, 0.5);
+  --shadow-button-raised:
+    0 2px 0 rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --shadow-button-pressed:
+    inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    
+  /* Transitions - Mechanical Feel */
+  --transition-channel-switch: 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
+  --transition-led: 150ms ease-out;
+  --transition-button: 100ms ease-out;
+}
+
+/* ============================================
+   CONSOLE SCREEN LAYOUT - Single Purpose Interface
+   ============================================ */
+.console-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--rack-chassis-bg);
+  overflow: hidden;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--led-active-green) !important;
+  color: #000 !important;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: 600;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* ============================================
+   SYSTEM BADGE - Not a website header
+   ============================================ */
+.system-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: rgba(10, 10, 10, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-tech);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--text-label);
+}
+
+.system-badge-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--led-active-green) !important;
+  box-shadow: 0 0 12px var(--led-glow-green);
+  animation: pulse-led 2s ease-in-out infinite;
+}
+
+@keyframes pulse-led {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.system-badge-text {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   SYSTEM STATUS STRIP - Not a website footer
+   ============================================ */
+.system-status-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 10px 24px;
+  background: rgba(10, 10, 10, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-tech);
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: var(--text-inactive);
+  text-transform: uppercase;
+  margin-top: auto; /* Push to bottom */
+}
+
+.status-item {
+  color: var(--text-label);
+}
+
+.status-separator {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   MAIN CONSOLE INTERFACE
+   ============================================ */
+main[role="main"] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.rack-channel-system {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: transparent;
+}
+
+/* ============================================
+   CHANNEL SELECTOR RAIL - Hardware Plate
+   ============================================ */
+.rack-channel-selector {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+  height: 68px; /* Fixed hardware rail height */
+  padding: 10px 20px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #141414 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 2px solid rgba(0, 255, 136, 0.15);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  align-items: center;
+  margin-bottom: 0;
+  border-radius: 6px 6px 0 0;
+}
+
+/* Horizontal scroll optimization for mobile */
+@media (max-width: 768px) {
+  .rack-channel-selector {
+    flex-wrap: nowrap;
+    gap: 12px;
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Scrollbar styling (WebKit browsers) */
+.rack-channel-selector::-webkit-scrollbar {
+  height: 6px;
+}
+
+.rack-channel-selector::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+.rack-channel-selector::-webkit-scrollbar-thumb {
+  background: rgba(153, 204, 153, 0.3);
+  border-radius: 3px;
+}
+
+.rack-channel-selector::-webkit-scrollbar-thumb:hover {
+  background: rgba(153, 204, 153, 0.5);
+}
+
+/* ============================================
+   CHANNEL BUTTON - Hardware Selector
+   ============================================ */
+.rack-channel-button {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Increased from 8px */
+  padding: 12px 20px; /* Increased from 10px 16px */
+  min-width: 160px; /* Prevent cramping */
+  background: var(--panel-face-gradient);
+  border: 1px solid rgba(42, 42, 42, 0.8);
+  border-radius: 4px;
+  color: var(--text-inactive);
+  font-family: var(--font-tech);
+  font-size: 12px; /* Inactive: smaller, lighter */
+  font-weight: 400; /* Lighter weight when inactive */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all var(--transition-button);
+  box-shadow: var(--shadow-button-raised);
+  position: relative;
+  scroll-snap-align: start;
+  white-space: nowrap;
+  flex-shrink: 0; /* Don't shrink on small screens */
+}
+
+/* Hover state - LED flicker preview */
+.rack-channel-button:hover {
+  border-color: rgba(153, 204, 153, 0.3);
+  color: var(--text-label);
+  box-shadow: 
+    var(--shadow-button-raised),
+    0 0 12px rgba(0, 255, 136, 0.1);
+}
+
+.rack-channel-button:hover .channel-led[data-led-state="inactive"] {
+  color: var(--led-inactive-amber);
+  filter: brightness(1.3);
+  text-shadow: 0 0 6px var(--led-glow-amber);
+}
+
+/* Active state - Channel selected */
+.rack-channel-button.active {
+  background: linear-gradient(180deg, #1f2f1f 0%, #142014 100%);
+  border-color: rgba(0, 255, 136, 0.5);
+  color: var(--text-active);
+  font-size: 14px; /* Active: larger, bolder */
+  font-weight: 600; /* Bold when active */
+  box-shadow: 
+    var(--shadow-button-pressed),
+    0 0 16px rgba(0, 255, 136, 0.2),
+    inset 0 0 20px rgba(0, 255, 136, 0.05);
+}
+
+/* Focus state - Keyboard navigation */
+.rack-channel-button:focus-visible {
+  outline: 2px solid var(--led-active-green);
+  outline-offset: 3px;
+  box-shadow: 
+    var(--shadow-button-raised),
+    0 0 0 4px rgba(0, 255, 136, 0.2);
+}
+
+/* Pressed state */
+.rack-channel-button:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-button-pressed);
+}
+
+/* ============================================
+   CHANNEL LED INDICATOR
+   ============================================ */
+.channel-led {
+  font-size: 10px;
+  line-height: 1;
+  transition: all var(--transition-led);
+  display: inline-block;
+}
+
+/* Inactive LED - Dim amber */
+.channel-led[data-led-state="inactive"] {
+  color: var(--led-inactive-amber);
+  text-shadow: 0 0 3px var(--led-glow-amber);
+  opacity: 0.6;
+}
+
+/* Active LED - Bright green with glow */
+.channel-led[data-led-state="active"],
+.rack-channel-button.active .channel-led {
+  color: var(--led-active-green);
+  text-shadow: 
+    0 0 6px var(--led-glow-green),
+    0 0 12px var(--led-glow-green);
+  opacity: 1;
+  animation: led-pulse 2s ease-in-out infinite;
+}
+
+@keyframes led-pulse {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.85;
+    filter: brightness(1.2);
+  }
+}
+
+/* ============================================
+   CHANNEL LABEL & CHEVRON
+   ============================================ */
+.channel-label {
+  flex: 1;
+  text-align: left;
+  position: relative;
+}
+
+/* Chevron icon for expand/collapse affordance */
+.channel-label::after {
+  content: '›';
+  display: inline-block;
+  margin-left: 8px;
+  opacity: 0.4;
+  font-size: 16px;
+  transition: transform 0.2s ease-out, opacity 0.2s;
+  vertical-align: middle;
+}
+
+.rack-channel-button.active .channel-label::after {
+  transform: rotate(90deg);
+  opacity: 0.8;
+  color: var(--led-active-green);
+}
+
+.rack-channel-button:hover .channel-label::after {
+  opacity: 0.6;
+}
+
+/* Remove channel numbers entirely */
+.channel-number {
+  display: none;
+}
+
+/* ============================================
+   MAIN BAY - Framed Viewport (Console Screen)
+   ============================================ */
+.rack-main-bay {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+  max-height: 75vh;
+  background: #0f0f0f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  box-shadow: 
+    inset 0 4px 12px rgba(0, 0, 0, 0.6),
+    0 6px 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* Bay Panel - Individual service content area */
+.rack-bay-panel {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0.98);
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Active panel - Powered up (always in DOM now, just fade in) */
+.rack-bay-panel.active {
+  opacity: 1;
+  transform: scale(1);
+  animation: panel-power-on 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+@keyframes panel-power-on {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+    filter: brightness(0.8);
+  }
+  50% {
+    filter: brightness(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .rack-bay-panel {
+    transition: none;
+    animation: none;
+  }
+  
+  .rack-bay-panel.active {
+    animation: none;
+  }
+}
+
+/* ============================================
+   BAY HEADER BEZEL - Framed Title Bar
+   ============================================ */
+.bay-header {
+  padding: 1.25rem 2.5rem;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+  position: relative;
+  box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.bay-header-rail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.bay-led {
+  font-size: 12px;
+  color: var(--led-active-green);
+  text-shadow: 
+    0 0 6px var(--led-glow-green),
+    0 0 12px var(--led-glow-green);
+  animation: led-pulse 2s ease-in-out infinite;
+}
+
+.bay-title {
+  font-family: var(--font-tech);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-active);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  flex: 1;
+}
+
+.bay-badge {
+  padding: 4px 12px;
+  background: rgba(0, 255, 136, 0.15);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--led-active-green);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* VU Meter Style Decorative Element */
+.bay-header-meter {
+  display: flex;
+  gap: 3px;
+  height: 4px;
+  margin-top: 0.5rem;
+}
+
+.meter-bar {
+  flex: 1;
+  background: linear-gradient(to right,
+    var(--led-active-green) 0%,
+    var(--led-active-green) 70%,
+    transparent 100%
+  );
+  opacity: 0.3;
+  border-radius: 2px;
+  animation: meter-flicker 3s ease-in-out infinite;
+}
+
+.meter-bar:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.meter-bar:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes meter-flicker {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* ============================================
+   BAY CONTENT - Service Details (Scrollable Viewport)
+   ============================================ */
+.bay-content {
+  flex: 1;
+  padding: 3rem 3.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #0d0d0d 0%, #0a0a0a 100%);
+}
+
+.bay-description {
+  font-size: 1.125rem;
+  line-height: 1.8; /* Increased from 1.75 */
+  color: var(--text-label);
+  margin-bottom: 2rem;
+  max-width: 65ch; /* Constrain line length for readability */
+}
+
+/* Dropdown section */
+.bay-dropdown-section {
+  margin-bottom: 2rem;
+}
+
+.bay-section-title {
+  font-family: var(--font-tech);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--led-active-green);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.bay-dropdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bay-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem 1.25rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(153, 204, 153, 0.15);
+  border-radius: 4px;
+  color: var(--text-label);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all var(--transition-button);
+}
+
+.bay-dropdown-item:hover {
+  background: rgba(0, 255, 136, 0.05);
+  border-color: rgba(0, 255, 136, 0.3);
+  color: var(--text-active);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.1);
+}
+
+.dropdown-icon {
+  color: var(--led-active-green);
+  font-size: 1.25rem;
+}
+
+/* Split indicator */
+.bay-split-indicator {
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid var(--led-active-green);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.split-label {
+  font-family: var(--font-tech);
+  font-size: 0.875rem;
+  color: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   BAY ACTIONS - CTA Buttons
+   ============================================ */
+.bay-actions {
+  display: flex;
+  gap: 1.5rem; /* Increased from 1rem */
+  flex-wrap: wrap;
+  align-items: center; /* Vertical alignment */
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(153, 204, 153, 0.1);
+}
+
+.bay-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-family: var(--font-tech);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-button);
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Primary button - Command variant (bright green) */
+.bay-button-primary {
+  background: linear-gradient(180deg, 
+    rgba(0, 255, 136, 0.2) 0%, 
+    rgba(0, 255, 136, 0.15) 100%
+  ) !important;
+  border: 2px solid rgba(0, 255, 136, 0.4) !important;
+  color: var(--led-active-green) !important;
+  box-shadow: 
+    var(--shadow-button-raised),
+    0 0 20px rgba(0, 255, 136, 0.1) !important;
+}
+
+.bay-button-primary:hover {
+  background: linear-gradient(180deg, 
+    rgba(0, 255, 136, 0.3) 0%, 
+    rgba(0, 255, 136, 0.2) 100%
+  ) !important;
+  border-color: rgba(0, 255, 136, 0.6) !important;
+  color: #ffffff !important;
+  box-shadow: 
+    var(--shadow-button-raised),
+    0 0 24px rgba(0, 255, 136, 0.3) !important;
+  transform: translateY(-1px);
+}
+
+.bay-button-primary:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-button-pressed);
+}
+
+/* Secondary button - Outline style */
+.bay-button-secondary {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-label);
+  padding: 14px 24px; /* Match primary height */
+  min-width: 180px; /* Consistent sizing */
+  margin-left: 0; /* No extra margin needed with gap */
+}
+
+.bay-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--text-active);
+}
+
+/* Icon in secondary button */
+.button-icon {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+/* Button LED indicator */
+.button-led {
+  font-size: 10px;
+  color: var(--led-active-green);
+  text-shadow: 0 0 6px var(--led-glow-green);
+}
+
+/* ============================================
+   BAY FOOTER RAIL - Hardware Panel Bottom
+   ============================================ */
+.bay-footer-rail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 1rem;
+  background: linear-gradient(180deg, #121212 0%, #0a0a0a 100%);
+  border-top: 1px solid rgba(153, 204, 153, 0.1);
+}
+
+.rail-indicator {
+  width: 8px;
+  height: 8px;
+  background: rgba(139, 111, 71, 0.3);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   STATUS BAR - System Status Display
+   ============================================ */
+.rack-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem 1.5rem;
+  background: var(--anodized-black);
+  border-radius: 0 0 8px 8px;
+  margin-top: 2px;
+  box-shadow: var(--shadow-panel-inset);
+  font-family: var(--font-tech);
+  font-size: 12px;
+  color: var(--text-inactive);
+}
+
+.status-indicator {
+  font-size: 10px;
+  color: var(--led-active-green);
+  text-shadow: 0 0 6px var(--led-glow-green);
+  animation: led-pulse 2s ease-in-out infinite;
+}
+
+.status-text {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-label);
+}
+
+.status-channels {
+  margin-left: auto;
+  opacity: 0.6;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .rack-channel-system {
+    padding: 1rem 0.75rem;
+  }
+  
+  .rack-channel-selector {
+    border-radius: 6px 6px 0 0;
+  }
+  
+  .rack-channel-button {
+    padding: 12px 20px;
+    font-size: 12px;
+    min-width: 140px;
+  }
+  
+  .channel-number {
+    display: none;
+  }
+  
+  .bay-header {
+    padding: 1.5rem 1.25rem 1rem;
+  }
+  
+  .bay-title {
+    font-size: 1.35rem;
+  }
+  
+  .bay-content {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .bay-description {
+    font-size: 1rem;
+  }
+  
+  .bay-actions {
+    flex-direction: column;
+  }
+  
+  .bay-button {
+    width: 100%;
+    justify-content: center;
+    min-height: 52px;
+  }
+  
+  .rack-status-bar {
+    flex-wrap: wrap;
+    font-size: 11px;
+  }
+  
+  .status-channels {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE SUPPORT
+   ============================================ */
+@media (prefers-contrast: high) {
+  .rack-channel-button {
+    border-width: 2px;
+  }
+  
+  .rack-channel-button.active {
+    border-width: 3px;
+  }
+  
+  .bay-button-primary {
+    border-width: 3px;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .rack-channel-selector,
+  .rack-status-bar {
+    display: none;
+  }
+  
+  .rack-bay-panel {
+    display: block !important;
+    opacity: 1 !important;
+    box-shadow: none;
+  }
+  
+  .bay-header-meter,
+  .bay-footer-rail {
+    display: none;
+  }
+}
+
+/* ============================================
+   STANDBY SCREEN - No Channel Active
+   ============================================ */
+.standby-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 60vh;
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: var(--font-tech);
+  color: var(--text-inactive);
+}
+
+.standby-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-label);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.standby-separator {
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(to right, 
+    transparent 0%, 
+    rgba(139, 111, 71, 0.3) 50%, 
+    transparent 100%
+  );
+  margin-bottom: 1rem;
+}
+
+.standby-instruction {
+  font-size: 1rem;
+  color: var(--text-inactive);
+  letter-spacing: 0.5px;
+}
+
+.standby-led {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--led-inactive-amber);
+  box-shadow: 0 0 12px var(--led-glow-amber);
+  margin-top: 2rem;
+  animation: standby-blink 3s ease-in-out infinite;
+}
+
+@keyframes standby-blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* ============================================
+   COLOR OVERRIDES - Force Hardware Green
+   ============================================ */
+/* Override any neon orange from theme */
+.cta-button,
+.primary-button,
+.book-button,
+[class*="neon"] button,
+[class*="neon"] .button {
+  background: linear-gradient(180deg, 
+    rgba(0, 255, 136, 0.2) 0%, 
+    rgba(0, 255, 136, 0.15) 100%
+  ) !important;
+  border-color: rgba(0, 255, 136, 0.4) !important;
+  color: var(--led-active-green) !important;
+}
+
+/* Override hover states */
+.cta-button:hover,
+.primary-button:hover,
+.book-button:hover,
+[class*="neon"] button:hover,
+[class*="neon"] .button:hover {
+  background: linear-gradient(180deg, 
+    rgba(0, 255, 136, 0.3) 0%, 
+    rgba(0, 255, 136, 0.2) 100%
+  ) !important;
+  border-color: rgba(0, 255, 136, 0.6) !important;
+  color: #ffffff !important;
+}
+
+/* Kill any orange accents from other CSS */
+*[style*="rgb(255, 107, 0)"],
+*[style*="#ff6b00"],
+*[style*="orange"] {
+  color: var(--led-active-green) !important;
+  background-color: transparent !important;
+}

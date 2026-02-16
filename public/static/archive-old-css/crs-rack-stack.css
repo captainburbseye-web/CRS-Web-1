@@ -1,0 +1,318 @@
+/* ==========================================================
+   CRS RACK STACK — Front Panel Devices (v2)
+   Each service section becomes a distinct rack-mounted unit
+   Build: 2026-01-20
+   ========================================================== */
+
+:root {
+  /* Chassis & Plate Colors */
+  --chassis-bg: #07140C;
+  --plate-bg: rgba(26, 31, 28, 0.85);
+  --plate-border: rgba(212, 160, 23, 0.25);
+  --plate-border-hover: rgba(212, 160, 23, 0.4);
+  
+  /* Text Hierarchy */
+  --text-primary: rgba(245, 245, 245, 0.92);
+  --text-secondary: rgba(245, 245, 245, 0.74);
+  --text-dim: rgba(245, 245, 245, 0.55);
+  
+  /* Device Accent Colors */
+  --signal-green: #39FF14;
+  --signal-amber: #D4A017;
+  --signal-orange: #FF8C00;
+  --signal-red: #C41E3A;
+  
+  /* Hardware Specs */
+  --device-radius: 6px;
+  --device-padding: 28px 32px;
+  --device-gap: 20px;
+  --fastener-size: 3px;
+}
+
+/* ==========================================================
+   RACK UNIT BASE — Every section becomes a device
+   ========================================================== */
+
+.rack-unit {
+  position: relative;
+  background: var(--plate-bg) !important;
+  border: 1px solid var(--plate-border) !important;
+  border-radius: var(--device-radius) !important;
+  padding: var(--device-padding) !important;
+  margin-bottom: var(--device-gap) !important;
+  overflow: visible !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Top Label Strip (engraved edge) */
+.rack-unit::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212, 160, 23, 0.3) 50%, 
+    transparent 100%) !important;
+}
+
+/* Corner Fasteners (screw holes) */
+.rack-unit {
+  background-image:
+    radial-gradient(circle at 14px 14px, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)),
+    radial-gradient(circle at calc(100% - 14px) 14px, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)),
+    radial-gradient(circle at 14px calc(100% - 14px), rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)),
+    radial-gradient(circle at calc(100% - 14px) calc(100% - 14px), rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)) !important;
+  background-repeat: no-repeat !important;
+  background-color: var(--plate-bg) !important;
+}
+
+/* ==========================================================
+   RACK UNIT HEADER — Faceplate Label Zone
+   ========================================================== */
+
+.rack-unit-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid rgba(212, 160, 23, 0.15) !important;
+}
+
+.rack-unit-led {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.led {
+  display: inline-block !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 8px currentColor !important;
+}
+
+.led.green {
+  background: var(--signal-green) !important;
+  color: rgba(57, 255, 20, 0.6) !important;
+}
+
+.led.yellow {
+  background: var(--signal-amber) !important;
+  color: rgba(212, 160, 23, 0.6) !important;
+}
+
+.led.orange {
+  background: var(--signal-orange) !important;
+  color: rgba(255, 140, 0, 0.6) !important;
+}
+
+.led.red {
+  background: var(--signal-red) !important;
+  color: rgba(196, 30, 58, 0.6) !important;
+}
+
+/* Device Title (engraved label) */
+.rack-unit-title {
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: 1.125rem !important;
+  font-weight: 800 !important;
+  color: rgba(232, 155, 60, 0.95) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  margin: 0 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ==========================================================
+   RACK UNIT CONTENT — Spec Lines & Controls
+   ========================================================== */
+
+.rack-unit-content {
+  padding-left: 20px !important; /* Inset from left edge */
+}
+
+.rack-unit-content p {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.875rem !important;
+  line-height: 1.55 !important;
+  color: var(--text-secondary) !important;
+  max-width: 62ch !important;
+  margin-bottom: 12px !important;
+}
+
+.rack-unit-content p:last-of-type {
+  margin-bottom: 20px !important;
+}
+
+/* ==========================================================
+   DEVICE-SPECIFIC SIGNATURES
+   Per-service gear identity (add classes to sections)
+   ========================================================== */
+
+/* Device A: Band Rehearsals (Patch Bay) */
+.rack-unit.device-rehearsal {
+  border-left: 3px solid var(--signal-green) !important;
+}
+
+.rack-unit.device-rehearsal .rack-unit-title {
+  color: rgba(57, 255, 20, 0.85) !important;
+}
+
+/* Device B: Studio Sessions (Channel Strip) */
+.rack-unit.device-studio {
+  border-left: 3px solid var(--signal-amber) !important;
+}
+
+.rack-unit.device-studio .rack-unit-title::after {
+  content: "" !important;
+  display: block !important;
+  width: 60px !important;
+  height: 2px !important;
+  background: var(--signal-amber) !important;
+  margin-top: 6px !important;
+  box-shadow: 0 0 4px var(--signal-amber) !important;
+}
+
+/* Device C: AV Services (Power Conditioner) */
+.rack-unit.device-av {
+  border-left: 3px solid var(--signal-orange) !important;
+}
+
+.rack-unit.device-av .rack-unit-header {
+  border-bottom-color: rgba(255, 140, 0, 0.2) !important;
+}
+
+/* Device D: Workshop Café (Routing Matrix) */
+.rack-unit.device-cafe {
+  border-left: 3px solid var(--signal-amber) !important;
+}
+
+.rack-unit.device-cafe::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212, 160, 23, 0.5) 50%, 
+    transparent 100%) !important;
+}
+
+/* Device E: Community Access (Utility Module) */
+.rack-unit.device-community {
+  border-left: 3px solid rgba(245, 245, 245, 0.3) !important;
+}
+
+.rack-unit.device-community .rack-unit-title {
+  color: rgba(245, 245, 245, 0.75) !important;
+}
+
+/* ==========================================================
+   BUTTON CONTROLS — Primary Device Actions
+   ========================================================== */
+
+.cta-button {
+  min-height: 42px !important;
+  padding: 11px 22px !important;
+  border-radius: 4px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 700 !important;
+  font-size: 0.813rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+/* Primary Button (Red Lit Control) */
+.cta-button-peak-red {
+  background: linear-gradient(180deg, #DC0000 0%, #B00000 100%) !important;
+  border: 2px solid #FF3030 !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    0 0 12px rgba(220, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.cta-button-peak-red:hover {
+  background: linear-gradient(180deg, #FF0000 0%, #DC0000 100%) !important;
+  border-color: #FF5050 !important;
+  box-shadow: 
+    0 0 20px rgba(220, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Utility Button (Amber/Orange) */
+.cta-button:not(.cta-button-peak-red) {
+  background: rgba(232, 155, 60, 0.08) !important;
+  border: 1px solid rgba(232, 155, 60, 0.5) !important;
+  color: rgba(232, 155, 60, 0.95) !important;
+}
+
+.cta-button:not(.cta-button-peak-red):hover {
+  background: rgba(232, 155, 60, 0.15) !important;
+  border-color: rgba(232, 155, 60, 0.8) !important;
+  color: rgba(232, 155, 60, 1) !important;
+}
+
+/* ==========================================================
+   MOBILE RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 768px) {
+  .rack-unit {
+    padding: 22px 18px !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .rack-unit-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  
+  .rack-unit-title {
+    font-size: 1rem !important;
+  }
+  
+  .rack-unit-content {
+    padding-left: 0 !important;
+  }
+  
+  .rack-unit-content p {
+    font-size: 0.813rem !important;
+  }
+  
+  .cta-button {
+    font-size: 0.75rem !important;
+    padding: 10px 18px !important;
+  }
+}
+
+/* ==========================================================
+   RACK CONTAINER — Enforce consistent device spacing
+   ========================================================== */
+
+main,
+.page-content,
+.content-wrap {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 32px !important;
+}
+
+@media (max-width: 768px) {
+  main,
+  .page-content,
+  .content-wrap {
+    padding: 18px !important;
+  }
+}

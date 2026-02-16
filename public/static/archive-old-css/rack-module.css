@@ -1,0 +1,233 @@
+/* === HEAVYWEIGHT INSTITUTIONAL MODULE (SCOPED) === */
+/* Phase 2: Hardware Realism - Powder-Coat Texture & Mobile Stack */
+
+:root {
+  --mustard-mus: #e3b448;
+  --fire-red: #d32f2f;
+  --nettle-green: #404940;
+  --black-panel: #111;
+}
+
+/* === ACCESSIBILITY === */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--mustard-mus);
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* === SYSTEM HEARTBEAT (Optional) === */
+
+@keyframes heartbeat {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.08; }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--mustard-mus);
+  animation: heartbeat 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* === SYSTEM PULSE (Commissioning Phase Indicator) === */
+
+@keyframes system-pulse {
+  0% { box-shadow: 0 0 5px rgba(227, 180, 72, 0.1); }
+  50% { box-shadow: 0 0 15px rgba(227, 180, 72, 0.3); }
+  100% { box-shadow: 0 0 5px rgba(227, 180, 72, 0.1); }
+}
+
+.system-status-panel {
+  animation: system-pulse 4s infinite ease-in-out;
+}
+
+/* === PERFORMANCE: DNS PREFETCH (in <head>) ===
+   Link tags added to index.html:
+   <link rel="dns-prefetch" href="https://square.link">
+   <link rel="preconnect" href="https://square.link">
+*/
+
+/* === 🛠️ METAL FACEPLATE TEXTURE === */
+
+.rack-module {
+  background-color: var(--nettle-green);
+  background-image: 
+    repeating-radial-gradient(circle at 0 0, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 100%),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.1) 100%);
+  background-size: 3px 3px, 100% 100%;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 4rem;
+  margin-bottom: 3rem;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.1), 
+    inset 0 -1px 0 rgba(0,0,0,0.4),
+    0 2px 8px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.rack-module h2 {
+  font-size: 4.2rem;
+  color: #FFFFFF;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.rack-module p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+  max-width: 72ch;
+}
+
+.rack-module .technical-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.05rem;
+  color: #E3B04B;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.rack-module .button-primary {
+  font-size: 1.4rem;
+  padding: 1.1rem 2.4rem;
+  background: transparent;
+  border: 2px solid #FF9F1C;
+  color: #FF9F1C;
+  box-shadow: 0 0 14px rgba(255,159,28,0.3);
+}
+
+/* === RACK CONNECTOR (FALLBACK ANCHOR) === */
+
+.rack-connector {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* === POWER SWITCH BUTTONS (PATCH BAY) === */
+/* Vintage illuminated toggle on preamp aesthetic */
+
+.power-switch {
+  background: var(--black-panel);
+  color: var(--mustard-mus);
+  border: 2px solid var(--mustard-mus);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  min-height: 44px; /* WCAG touch target */
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.15s ease-in-out;
+  box-shadow: 0 0 4px rgba(227, 180, 72, 0.3);
+  position: relative;
+  z-index: 2;
+  border-radius: 2px;
+}
+
+/* === 🔘 REFINED MUSTARD GLOW === */
+
+.power-switch:hover {
+  background-color: var(--mustard-mus);
+  color: #000;
+  box-shadow: 
+    0 0 15px rgba(227, 180, 72, 0.5),
+    0 0 30px rgba(227, 180, 72, 0.2),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  text-shadow: 0 0 2px rgba(0,0,0,0.3);
+  transform: translateY(-1px);
+}
+
+.power-switch:active,
+.power-switch.active {
+  background: var(--fire-red) !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: 0 0 8px var(--fire-red);
+  transform: scale(0.97);
+  transition: background 0.1s ease-out;
+}
+
+.power-switch:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: 0 0 3px rgba(227, 180, 72, 0.2);
+}
+
+/* === WORKSHOP CAFÉ TYPOGRAPHY VARIANT === */
+/* Softer sans-serif for welcoming space */
+
+.rack-module.workshop-cafe h2,
+.rack-module.workshop-cafe p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.rack-module.workshop-cafe h2 {
+  font-size: 3.8rem;
+  font-weight: 500;
+}
+
+/* === 📱 MOBILE VERTICAL STACKING === */
+
+@media (max-width: 768px) {
+  .rack-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px;
+  }
+  
+  .rack-module {
+    width: 100%;
+    min-height: 180px; /* Equivalent to a 4U mobile block */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .rack-module h2 {
+    font-size: 2.4rem;
+  }
+
+  .power-switch {
+    font-size: 0.85rem;
+    padding: 12px 16px;
+    min-height: 48px; /* Enhanced touch target for mobile */
+  }
+}

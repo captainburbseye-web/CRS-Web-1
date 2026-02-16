@@ -4,18 +4,25 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:critical": "node scripts/extract-critical-css.js && vite build",
     "preview": "wrangler pages dev",
-    "deploy": "npm run build && wrangler pages deploy",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+    "deploy": "npm run build && wrangler pages deploy dist --project-name crs-web-1",
+    "deploy:optimized": "npm run build:critical && wrangler pages deploy dist --project-name crs-web-1",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings",
+    "perf:test": "node scripts/extract-critical-css.js",
+    "perf:monitor": "echo 'Open browser console to see performance metrics'"
   },
   "dependencies": {
+    "gsap": "^3.14.2",
     "hono": "^4.11.3"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^8.0.0",
     "@hono/vite-build": "^1.2.0",
     "@hono/vite-dev-server": "^0.18.2",
     "@tailwindcss/postcss": "^4.1.18",
     "autoprefixer": "^10.4.23",
+    "cssnano": "^7.1.2",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.18",
     "vite": "^6.3.5",

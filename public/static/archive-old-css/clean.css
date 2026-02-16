@@ -1,0 +1,2495 @@
+/* ============================================
+   COWLEY ROAD STUDIOS - CLEAN CSS REBUILD
+   System Truth Aesthetic - No Bloat
+   ============================================ */
+
+/* RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--crs-black); /* NASA terminal deep green/black */
+  color: var(--crs-text);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+/* TYPOGRAPHY */
+.mono {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+.heading {
+  font-family: 'Archivo Black', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: -0.05em; /* The Glint - compressed and powerful */
+}
+
+/* COLORS - NASA TERMINAL AESTHETIC (LOCKED) */
+:root {
+  /* CORE PALETTE - CRT Monitor / Mission Control */
+  --crs-black: #0D1912;           /* Deep dark green/black (CRT monitor) */
+  --crs-graphite: #1A251E;        /* Card/panel background */
+  --crs-border: #2D3A32;          /* Green-tinted borders */
+  --crs-text: #FFFFFF;            /* Pure white foreground */
+  
+  /* ACCENT COLORS - CRT Glow & Status */
+  --crs-gold: #E89B3C;            /* Warm orange/amber (CRT glow) */
+  --crs-mustard: #E89B3C;         /* Unified with gold */
+  --crs-green: #C8FF41;           /* Bright lime green (operational) */
+  --crs-yellow: #F4D03F;          /* Yellow caution */
+  --crs-muted: #6B7870;           /* Secondary text */
+  
+  /* LEGACY TOKEN NORMALIZATION */
+  --void-black: var(--crs-black);
+  --signal-white: var(--crs-text);
+  --steel-grey: var(--crs-border);
+  --live-green: var(--crs-green);
+  --standby-gold: var(--crs-gold);
+  --offline-red: #FF4444;
+  --fire-orange: var(--crs-gold);
+  --nettle-green: var(--crs-graphite);
+  --mustard: var(--crs-gold);
+  
+  /* UNIFIED RACK CHASSIS */
+  --crs-chassis-width: 1200px;    /* Single canonical width for all rack modules */
+}
+
+/* ============================================
+   COMPLIANCE FRAMEWORK - STRUCTURAL AUTHORITY
+   ============================================ */
+
+/* HEADER - Identity + Navigation Only */
+.crs-header {
+  position: sticky;
+  top: 0;
+  background: var(--void-black);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  padding: 0.875rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  z-index: 50;
+  margin-bottom: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-shrink: 0;
+}
+
+.header-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.813rem;
+  font-weight: 400;
+  color: rgba(245, 245, 245, 0.75);
+  text-decoration: none;
+  transition: color 0.15s;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.header-link:hover {
+  color: rgba(245, 245, 245, 0.95);
+}
+
+/* CENTER: BOOK NOW (absolute positioned) */
+.header-center-action {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 51;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.header-logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.header-logo-badge {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.header-brand {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: rgba(245, 245, 245, 0.95);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+}
+
+.header-services {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.813rem;
+  font-weight: 400;
+}
+
+.header-services a {
+  color: rgba(245, 245, 245, 0.75);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.header-services a:hover {
+  color: rgba(245, 245, 245, 0.95);
+}
+
+.header-services .separator {
+  color: rgba(245, 245, 245, 0.25);
+  font-size: 0.75rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center; /* CRITICAL: Keep header actions aligned */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  gap: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.813rem;
+  font-weight: 400;
+  white-space: nowrap; /* No line breaks */
+}
+
+.header-actions a {
+  color: rgba(245, 245, 245, 0.75);
+  text-decoration: none;
+  transition: color 0.15s;
+  display: inline-flex;
+  align-items: center;
+}
+
+.header-actions a:hover {
+  color: rgba(245, 245, 245, 0.95);
+}
+
+.header-actions .separator {
+  color: rgba(245, 245, 245, 0.25);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* BOOK NOW PANEL - Neon Signal Service Access */
+.book-now-panel {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.book-now-trigger {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 140, 0, 0.4);
+  border-radius: 4px;
+  color: #FF8C00;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 12px 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.15s ease;
+  backdrop-filter: blur(4px);
+  box-shadow: 
+    inset 0 0 20px rgba(255, 140, 0, 0.1),
+    0 0 20px rgba(255, 140, 0, 0.3);
+}
+
+.book-now-trigger:hover {
+  background: rgba(255, 140, 0, 0.1);
+  border-color: rgba(255, 140, 0, 0.6);
+  color: #FFA500;
+  transform: translateY(-2px);
+  box-shadow: 
+    inset 0 0 30px rgba(255, 140, 0, 0.2),
+    0 0 30px rgba(255, 140, 0, 0.5),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.book-now-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid rgba(255, 140, 0, 0.4);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.9),
+    inset 0 0 20px rgba(255, 140, 0, 0.05),
+    0 0 30px rgba(255, 140, 0, 0.2);
+  padding: 0.5rem 0;
+  min-width: 240px;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  border-radius: 4px;
+}
+
+/* Show dropdown on hover (CSS fallback) */
+.book-now-panel:hover .book-now-dropdown {
+  display: block;
+}
+
+/* Show dropdown when active (JS control) */
+.book-now-panel.active .book-now-dropdown {
+  display: block;
+}
+
+.book-now-dropdown a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: #FF8C00;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid rgba(255, 140, 0, 0.15);
+  text-shadow: 0 0 4px rgba(255, 140, 0, 0.3);
+}
+
+.book-now-dropdown a:last-child {
+  border-bottom: none;
+}
+
+.book-now-dropdown a:hover,
+.book-now-dropdown a:focus {
+  background: rgba(255, 140, 0, 0.1);
+  color: #FFA500;
+  text-shadow: 
+    0 0 8px rgba(255, 140, 0, 0.6),
+    0 0 12px rgba(255, 140, 0, 0.4);
+  padding-left: 1.5rem;
+  border-left: 3px solid rgba(255, 140, 0, 0.6);
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .book-now-dropdown {
+    right: -1rem;
+    min-width: calc(100vw - 2rem);
+  }
+  
+  .book-now-dropdown a {
+    padding: 1rem 1.25rem;
+    font-size: 0.813rem;
+  }
+}
+
+/* OPERATIONAL STATEMENT - Single Sentence Authority */
+.operational-statement {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1.4;
+  color: rgba(245, 245, 245, 0.9);
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-align: center;
+}
+
+/* FOOTER LOCATIONS - Quiet Scale Signal */
+.footer-locations-header {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.688rem;
+  font-weight: 600;
+  color: rgba(245, 245, 245, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.footer-location-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.688rem;
+  font-weight: 400;
+  color: rgba(245, 245, 245, 0.5);
+  margin: 0.25rem 0;
+  letter-spacing: 0.02em;
+}
+
+.footer-contact {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.688rem;
+  font-weight: 400;
+  color: rgba(245, 245, 245, 0.5);
+  margin-top: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.crs-header-logo {
+  max-height: 40px; /* Increased for brand presence (was 32px) */
+  width: auto;
+  object-fit: contain; /* Preserve panel proportions */
+}
+
+/* COMPLIANCE MOBILE ADJUSTMENTS */
+@media (max-width: 767px) {
+  .crs-header {
+    padding: 0.75rem 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .header-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header-center {
+    width: 100%;
+    order: 2;
+  }
+
+  .header-operational-statement {
+    font-size: 0.688rem;
+    text-align: left;
+    padding: 0;
+  }
+
+  .header-services {
+    font-size: 0.75rem;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: flex-start;
+    font-size: 0.75rem;
+    order: 3;
+  }
+
+  .operational-statement {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .section-knob {
+    width: 36px;
+    height: 36px;
+  }
+
+  .section-knob::before {
+    height: 9px;
+    top: 4px;
+  }
+
+  .section-knob::after {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* DESKTOP: Ensure header actions stay aligned */
+@media (min-width: 768px) {
+  .header-actions {
+    align-items: center; /* Force center alignment on desktop */
+  }
+}
+
+/* Mobile: slightly smaller but still prominent */
+@media (max-width: 767px) {
+  .crs-header-logo {
+    max-height: 36px; /* ~13% increase from original 32px */
+  }
+}
+
+.crs-header-locations {
+  font-size: 0.625rem;
+  color: rgba(245, 245, 245, 0.5);
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+  line-height: 1;
+}
+
+.crs-header-loc {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(245, 245, 245, 0.6);
+  margin-left: 1rem;
+}
+
+.crs-header-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.status-pulse {
+  width: 8px;
+  height: 8px;
+  background: #008F00; /* Muted green - space station hardware */
+  animation: pulse 4s infinite; /* Slowed for calm, space-station breathing */
+}
+
+/* SERVICE SELECTOR (Header - Consolidated booking entry) */
+.service-selector {
+  position: relative;
+}
+
+.service-selector-button {
+  background: transparent;
+  color: var(--signal-white);
+  padding: 0.625rem 1.5rem; /* Slightly larger */
+  font-size: 1rem; /* Increased from 0.875rem */
+  font-weight: 900; /* Bolder */
+  letter-spacing: 0.05em;
+  border: 2px solid var(--mustard); /* Stronger border */
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.service-selector-button:hover {
+  background: var(--mustard);
+  color: #000;
+}
+
+.service-selector-button:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+/* Dropdown Menu */
+.service-selector-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: var(--mustard); /* Mustard background */
+  border: 1px solid var(--mustard);
+  min-width: 260px;
+  z-index: 100;
+  display: none !important;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.service-selector:hover .service-selector-menu,
+.service-selector:focus-within .service-selector-menu {
+  display: block !important;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.service-selector-item {
+  display: block;
+  padding: 0.875rem 1.25rem;
+  color: #000; /* Black text on mustard */
+  text-decoration: none;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background 0.2s ease;
+}
+
+.service-selector-item:last-child {
+  border-bottom: none;
+}
+
+.service-selector-item:hover,
+.service-selector-item:focus {
+  background: #ff0000; /* Fire red on hover */
+  color: #fff;
+  outline: none;
+}
+
+/* Mobile Book Button */
+.primary-book-button-mobile {
+  background: var(--fire-orange);
+  color: var(--signal-white);
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  border-top: 2px solid var(--mustard); /* Top accent for mobile */
+  transition: background 0.2s ease;
+  display: block;
+  text-align: center;
+}
+
+.primary-book-button-mobile:hover {
+  background: #ff6a2e;
+}
+
+.primary-book-button-mobile:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: -2px;
+  border-top: 2px solid var(--mustard);
+}
+
+.primary-book-button-mobile:active {
+  background: #d94400;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* SECTIONS */
+.crs-section {
+  padding: 2.5rem 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .crs-section {
+    padding: 4rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .crs-section {
+    padding: 4rem 4rem;
+  }
+}
+
+.section-dark {
+  background: var(--void-black);
+  border-top: 2px solid var(--mustard);
+}
+
+.section-light {
+  background: #f8f6ee; /* Cream - Café/story sections only */
+  color: #1e1e1e;
+}
+
+.section-light-crs {
+  background: var(--crs-graphite); /* NASA terminal panel */
+  color: var(--crs-text);
+  border-top: 2px solid var(--crs-gold);
+}
+
+/* CAFÉ HEARTBEAT - Warm panel with amber CRT glow */
+.cafe-heartbeat {
+  background: linear-gradient(
+    to bottom,
+    var(--crs-graphite),
+    rgba(232, 155, 60, 0.04)
+  ); /* Panel base with amber warmth */
+  color: var(--crs-text);
+  border-top: 2px solid var(--crs-gold);
+  position: relative;
+}
+
+/* Subtle CRT glow overlay for café warmth */
+.cafe-heartbeat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at 50% 20%, 
+    rgba(232, 155, 60, 0.03) 0%, 
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.cafe-title {
+  color: var(--mustard);
+}
+
+.cafe-intro {
+  color: rgba(245, 245, 245, 0.9);
+}
+
+/* Service snapshot cards */
+.cafe-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cafe-service-card {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid var(--mustard);
+  padding: 1.5rem;
+}
+
+.cafe-service-title {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--mustard);
+  margin: 0 0 0.5rem 0;
+}
+
+.cafe-service-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(245, 245, 245, 0.8);
+  margin: 0;
+}
+
+/* HERO - Industrial header panel (NOT full-screen landing) */
+.crs-hero {
+  /* Rack-mounted fascia: let image determine height */
+  height: auto !important;
+  min-height: unset !important;
+  max-height: none; /* FIXED: Remove height constraint to show full logo */
+  overflow: visible; /* FIXED: Don't crop the image */
+  
+  /* Remove all centering */
+  display: block;
+  
+  /* Minimal padding - rack unit feel */
+  padding-top: 1rem;
+  padding-bottom: 1rem; /* FIXED: Add bottom padding */
+  padding-left: 2rem;
+  padding-right: 2rem;
+  
+  /* Dark background */
+  background: #0D1912;
+  
+  /* Fascia plate frame */
+  border-bottom: 2px solid #E89B3C;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-container {
+  max-width: var(--crs-chassis-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .hero-container {
+    padding: 0;
+  }
+}
+
+/* Hero Power Panel - Scales within unified chassis */
+.hero-power-panel {
+  display: block;
+  width: 100%;
+  max-width: 100%; /* Scale naturally within chassis */
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+@media (min-width: 768px) {
+  .hero-power-panel {
+    margin-bottom: 0;
+  }
+}
+
+.status-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.125rem;
+  color: var(--mustard);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 2rem;
+  animation: fadeInDown 0.6s ease-out 0.3s both;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.status-line .separator {
+  opacity: 0.3;
+}
+
+.hero-location {
+  font-size: 1rem;
+  color: var(--mustard);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.hero-banner {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain; /* Maintain UK road sign geometry */
+  margin-bottom: 1.5rem;
+}
+
+/* Mobile padding for hero banner - breathable space */
+@media (max-width: 767px) {
+  .hero-banner {
+    padding: 0 1rem;
+  }
+}
+
+.hero-tagline {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 1.875rem;
+  color: rgba(245, 245, 245, 0.9);
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--mustard);
+  padding-left: 1.5rem;
+  max-width: 600px;
+  letter-spacing: -0.05em; /* The Glint - UK road sign energy */
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .hero-tagline {
+    font-size: 2.25rem;
+  }
+}
+
+.hero-description {
+  font-size: 1rem;
+  color: rgba(245, 245, 245, 0.8);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+@media (min-width: 768px) {
+  .hero-description {
+    font-size: 1.125rem;
+  }
+}
+
+.hero-cta {
+  margin-bottom: 1rem;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
+.hero-links a {
+  color: rgba(245, 245, 245, 0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hero-links a:hover {
+  color: var(--mustard);
+}
+
+/* SECTION HEADERS */
+.section-header {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+/* ANALOG SERVICE KNOBS */
+.section-knob {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  position: relative;
+  margin: 0 auto 1.5rem;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 2px 2px rgba(255, 255, 255, 0.1);
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%),
+    radial-gradient(circle, var(--knob-color) 0%, var(--knob-color-dark) 100%);
+}
+
+.section-knob::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.section-knob::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.15), transparent 60%);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+/* Knob colors matching CRS signals */
+.section-knob-green {
+  --knob-color: #C8FF41;
+  --knob-color-dark: #9AC830;
+}
+
+.section-knob-yellow {
+  --knob-color: #E89B3C;
+  --knob-color-dark: #C47E28;
+}
+
+.section-knob-red {
+  --knob-color: #FF4444;
+  --knob-color-dark: #CC3333;
+}
+
+.section-title {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: var(--mustard);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.04em;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+  }
+}
+
+.section-title-brewforce {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
+  color: var(--fire-orange);
+  letter-spacing: -0.05em; /* The Glint - Brewforce intensity */
+}
+
+@media (min-width: 768px) {
+  .section-title-brewforce {
+    font-size: 3.75rem;
+  }
+}
+
+.section-intro {
+  font-size: 1.125rem;
+  color: rgba(245, 245, 245, 0.9);
+  max-width: 60ch;
+  border-left: 4px solid var(--mustard);
+  padding-left: 1.5rem;
+  line-height: 1.65;
+}
+
+@media (min-width: 768px) {
+  .section-intro {
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+}
+
+.section-intro-brewforce {
+  border-left-color: var(--fire-orange);
+}
+
+/* CARDS */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .card-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .card-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.crs-card {
+  background: #0F1A14; /* Canonical dark green - material base */
+  border: 1px solid var(--mustard);
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+}
+
+.card-image {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-label {
+  font-size: 0.875rem;
+  color: var(--mustard);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--signal-white);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.card-list {
+  list-style: none;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.card-list li {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 245, 0.8);
+  margin-bottom: 0.75rem;
+}
+
+.card-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--fire-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: auto;
+  font-weight: 800;
+}
+
+.card-status::before {
+  content: '[ ';
+}
+
+.card-status::after {
+  content: ' ]';
+}
+
+/* SERVICE CARDS (BREWFORCE) */
+.service-card {
+  background: #0F1A14; /* Canonical dark green - material base */
+  border: 3px solid var(--mustard);
+  box-shadow: inset 0 0 0 1px #ff0000; /* Inner Fire red line - high-voltage equipment */
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+}
+
+.service-card-image {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 160px;
+  height: 160px;
+  border: 1px solid var(--mustard);
+  overflow: hidden;
+}
+
+.service-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-card-content {
+  padding-right: 180px;
+}
+
+@media (max-width: 767px) {
+  .service-card-content {
+    padding-right: 0;
+  }
+  
+  .service-card-image {
+    position: static;
+    width: 100%;
+    height: 160px;
+    margin-bottom: 1rem;
+  }
+}
+
+.service-headline {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 1.875rem;
+  color: var(--fire-orange);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  letter-spacing: -0.05em; /* The Glint - Brewforce Maverick energy */
+}
+
+@media (min-width: 768px) {
+  .service-headline {
+    font-size: 2.25rem;
+  }
+}
+
+.service-subhead {
+  font-size: 1.125rem;
+  color: var(--mustard);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.service-data {
+  margin-bottom: 1.5rem;
+  flex: 1;
+}
+
+.service-data p {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 245, 0.9);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.service-data span {
+  color: var(--mustard);
+}
+
+/* BUTTONS */
+.crs-button {
+  display: inline-block;
+  background: var(--fire-orange);
+  color: var(--signal-white);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  font-size: 0.9375rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.875rem 1.75rem;
+  min-height: 44px;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.2s ease;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  width: auto;
+}
+
+@media (min-width: 768px) {
+  .crs-button {
+    font-size: 0.875rem;
+    padding: 0.625rem 1.75rem;
+  }
+}
+
+.crs-button:hover {
+  background: #ff6a2e;
+  border-color: var(--mustard);
+}
+
+.crs-button:active {
+  background: #d94400;
+}
+
+.crs-vu-button {
+  display: inline-block;
+  background: #DC0000;
+  color: #FFFFFF;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.875rem 2rem;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.05s ease;
+  border: 3px solid #8C0000;
+  cursor: pointer;
+  width: 100%;
+}
+
+.crs-vu-button:hover {
+  background: #FFA000;
+  color: #000000;
+  border-color: #B45A00;
+}
+
+.crs-vu-button:active {
+  background: #008F00; /* Muted green - space station hardware */
+  color: #000000;
+  transform: scale(0.98);
+}
+
+/* BOOKING ROUTER - Signal Path Selection (Mustard attention bar) */
+.booking-router {
+  background: var(--mustard); /* #E3B448 - Immediate attention layer */
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid #ff0000; /* Fire red base line */
+}
+
+.booking-router-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.booking-router-link {
+  color: #000; /* Black text on mustard */
+  text-decoration: none;
+  font-size: 1.125rem;
+  letter-spacing: 0.05em;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.booking-router-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff0000; /* Fire red underline */
+  transition: width 0.2s ease;
+}
+
+.booking-router-link:hover::after,
+.booking-router-link:focus::after {
+  width: 100%; /* Fire red underline expands on hover */
+}
+
+.booking-router-link:hover,
+.booking-router-link:focus {
+  color: #000;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 767px) {
+  .booking-router-container {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .booking-router-link {
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.75rem;
+    border: 1px solid rgba(0,0,0,0.2);
+  }
+}
+
+/* BOOKING GATEWAY (Primary function - routing interface) */
+.booking-gateway {
+  background: #0F1A14; /* Canonical dark green - material base */
+  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+  padding: 2rem 1rem;
+}
+
+.booking-gateway-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.booking-gateway-title {
+  font-size: 1.25rem;
+  color: var(--signal-white);
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.booking-gateway-subtitle {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 245, 0.6);
+  margin: 0 0 1.5rem 0;
+}
+
+.booking-list {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .booking-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .booking-gateway {
+    padding: 3rem 2rem;
+  }
+}
+
+.booking-item {
+  display: block;
+  background: #0F1A14; /* Canonical dark green - material base */
+  border: 1px solid rgba(245, 245, 245, 0.2);
+  color: var(--signal-white);
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.booking-item:hover {
+  background: #162a1d; /* Slightly lighter dark green for hover */
+  border-color: var(--mustard);
+  color: var(--mustard);
+}
+
+.booking-item:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+/* REPAIRS STATUS BANNER (Availability gating) */
+.repairs-status-banner {
+  background: rgba(212, 160, 23, 0.15);
+  border-left: 4px solid var(--mustard);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  color: var(--mustard);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+}
+
+/* LOCATION SELECTOR (Rehearsal multi-location choice) */
+.location-selector-card {
+  display: block;
+  background: #0F1A14;
+  border: 2px solid rgba(245, 245, 245, 0.2);
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.location-selector-card:hover,
+.location-selector-card:focus {
+  border-color: var(--mustard);
+  background: #162a1d;
+  transform: translateX(4px);
+}
+
+.location-selector-header {
+  font-size: 1.125rem;
+  color: var(--signal-white);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.location-selector-desc {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 245, 0.6);
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  .location-selector-card {
+    padding: 1.25rem;
+  }
+  
+  .location-selector-header {
+    font-size: 1rem;
+  }
+}
+
+/* BOOKING FORMS (Structured intake forms) */
+.booking-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.booking-form {
+  margin-top: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--signal-white);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: #0F1A14; /* Canonical dark green - material base */
+  border: 1px solid rgba(245, 245, 245, 0.2);
+  color: var(--signal-white);
+  padding: 0.75rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  border-radius: 2px;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--mustard);
+  background: #162a1d; /* Slightly lighter dark green for focus */
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-helper-text {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 245, 0.6);
+  margin: 1.5rem 0;
+  font-style: italic;
+}
+
+/* INFRASTRUCTURE PAGE (Room-by-Room Technical Ledger) */
+.system-status-banner {
+  background: rgba(227, 180, 72, 0.1);
+  border-left: 4px solid var(--mustard);
+  padding: 1rem 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.infrastructure-room {
+  background: #0F1A14; /* Canonical dark green - material base */
+  border: 3px solid var(--mustard);
+  box-shadow: inset 0 0 0 1px #ff0000; /* Fire red inner line */
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.room-specs {
+  font-size: 0.875rem;
+  color: rgba(245, 245, 245, 0.7);
+  letter-spacing: 0.05em;
+  margin: 0.75rem 0 1.5rem 0;
+}
+
+.room-specs .spec-label {
+  color: var(--mustard);
+  font-weight: 700;
+}
+
+.room-status {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(245, 245, 245, 0.1);
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+}
+
+.status-badge.status-active {
+  background: rgba(0, 143, 0, 0.15);
+  color: #008F00;
+  border: 1px solid #008F00;
+}
+
+.status-badge.status-calibrating {
+  background: rgba(212, 160, 23, 0.15);
+  color: #d4a017;
+  border: 1px solid #d4a017;
+}
+
+.status-badge.status-pending {
+  background: rgba(192, 57, 43, 0.15);
+  color: #C0392B;
+  border: 1px solid #C0392B;
+}
+
+/* FOOTER */
+.crs-footer {
+  background: var(--void-black);
+  border-top: 1px solid var(--mustard);
+  padding: 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer-col {
+  border-left: 2px solid var(--mustard);
+  padding-left: 1rem;
+}
+
+.footer-col-title {
+  color: var(--mustard);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.footer-col p {
+  color: rgba(245, 245, 245, 0.8);
+  margin-bottom: 0.25rem;
+}
+
+.footer-col a {
+  color: rgba(245, 245, 245, 0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-col a:hover {
+  color: var(--mustard);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(212, 160, 23, 0.3);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 10px;
+  color: rgba(245, 245, 245, 0.6);
+}
+
+.footer-bottom a {
+  color: var(--mustard);
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  color: var(--signal-white);
+}
+
+/* Footer Signature - End Cap */
+.footer-signature {
+  text-align: center;
+  padding: 2rem 0 3rem 0;
+  opacity: 0.7;
+}
+
+.brand-stamp {
+  max-width: 150px;
+  height: auto;
+  filter: brightness(0.9);
+}
+
+.footer-credit {
+  margin-top: 1rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: rgba(245, 245, 245, 0.4);
+  text-transform: uppercase;
+}
+
+/* NAVIGATION */
+.crs-header-nav {
+  display: none;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 1 auto;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .crs-header-nav {
+    display: flex;
+  }
+}
+
+.crs-header-nav a {
+  font-size: 0.65rem; /* Match status strip size */
+  font-weight: 600; /* Match status weight */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(245, 245, 245, 0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.crs-header-nav a:hover {
+  color: var(--mustard);
+}
+
+/* MOBILE NAVIGATION */
+.mobile-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--void-black);
+  border-top: 1px solid var(--mustard);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.75rem 0.5rem;
+  gap: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
+.mobile-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(245, 245, 245, 0.8);
+  text-decoration: none;
+  padding: 0.5rem 0.25rem;
+  transition: color 0.2s;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.mobile-nav a:hover,
+.mobile-nav a:focus {
+  color: var(--mustard);
+}
+
+/* Add bottom padding to body on mobile to prevent content hiding behind mobile nav */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 60px;
+  }
+}
+
+/* CONTENT BLOCKS */
+.content-block {
+  margin-bottom: 3rem;
+}
+
+.content-heading {
+  font-size: 1.25rem;
+  color: var(--mustard);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(212, 160, 23, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.content-text {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(245, 245, 245, 0.9);
+  max-width: 60ch;
+}
+
+@media (min-width: 768px) {
+  .content-text {
+    line-height: 1.6;
+  }
+}
+
+.content-text p {
+  margin-bottom: 1rem;
+}
+
+.content-text ul,
+.content-text ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.content-text li {
+  margin-bottom: 0.5rem;
+}
+
+.section-light .content-text {
+  color: #1e1e1e;
+}
+
+.section-light .content-heading {
+  color: #1e1e1e;
+  border-bottom-color: rgba(30, 30, 30, 0.2);
+}
+
+/* STATUS INDICATORS - MACHINE LANGUAGE */
+.indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  position: relative;
+}
+
+/* State colours - functional only (space station hardware aesthetic) */
+.indicator-live {
+  background: #008F00; /* Muted green - readable, not glaring */
+  box-shadow: 0 0 8px rgba(0, 143, 0, 0.6);
+}
+
+.indicator-standby {
+  background: var(--mustard); /* Yellow - STANDBY */
+  box-shadow: 0 0 8px rgba(212, 160, 23, 0.6);
+}
+
+.indicator-offline {
+  background: #C0392B; /* Deep signal red - not error red */
+  box-shadow: 0 0 8px rgba(192, 57, 43, 0.5);
+}
+
+.indicator-prebuild {
+  background: #FF0000; /* Fire red - PRE-BUILD STATE */
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+/* Subtle play triangle inside green lens (OPTION A - transport control logic) */
+.indicator-live::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid rgba(0, 0, 0, 0.2);
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+
+/* STATUS PANEL - Operational readout (compact) */
+.status-panel {
+  background: var(--void-black);
+  border-top: 1px solid rgba(227, 180, 72, 0.2);
+  border-bottom: 1px solid rgba(227, 180, 72, 0.2);
+  padding: 1.5rem 2rem; /* Compact vertical padding */
+}
+
+/* STATUS PANEL BOTTOM RAIL - Anchored to hero absolute bottom */
+.status-panel-bottom-rail {
+  background: var(--void-black); /* Chassis color */
+  border-top: 2px solid var(--mustard);
+  padding: 1.5rem 1.5rem;
+  margin-top: 3rem; /* Space from hero CTA */
+  width: 100%; /* Spans full 600px container */
+}
+
+.status-panel-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.status-panel-label {
+  font-size: 0.75rem;
+  color: rgba(245, 245, 245, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.status-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.status-panel-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-panel-name {
+  font-size: 0.75rem;
+  color: var(--mustard);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: 70px;
+}
+
+.status-panel-state {
+  font-size: 0.75rem;
+  color: rgba(245, 245, 245, 0.7);
+}
+
+.status-panel-note {
+  font-size: 0.7rem;
+  color: rgba(245, 245, 245, 0.4);
+  font-style: italic;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .status-panel {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .status-panel-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* Status strip container */
+.status-strip {
+  display: flex;
+  gap: 0.75rem; /* Reduced from 1.5rem */
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; /* Reduced from 0.75rem */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Mobile: ensure indicators breathe on smaller screens */
+@media (max-width: 767px) {
+  .status-strip {
+    gap: 1rem;
+    font-size: 0.7rem;
+  }
+  
+  .indicator {
+    width: 10px;
+    height: 10px;
+    margin-right: 0.4rem;
+  }
+}
+
+/* Accessibility: visually hidden text for screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* UTILITIES */
+.hidden-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hidden-mobile {
+    display: block;
+  }
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+/* FOCUS STATES (ACCESSIBILITY) */
+/* Apply visible focus to all interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+/* Button focus (already has fire-orange bg, use mustard outline) */
+.crs-button:focus-visible,
+.crs-vu-button:focus-visible {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+/* Link focus in light sections */
+.section-light a:focus-visible {
+  outline-color: #1e1e1e;
+}
+
+/* Fallback for browsers without :focus-visible support */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--mustard);
+  outline-offset: 2px;
+}
+
+/* Remove default focus for :focus-visible supported browsers */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ========================================
+   MOBILE AUDIT — GOVERNANCE-SAFE PASS
+   CSS-only legibility, rhythm, authority
+   ======================================== */
+
+@media (max-width: 640px) {
+  /* 1. HERO SECTION — Scale & breathing room */
+  .hero-power-panel {
+    max-width: 85vw; /* Scale down gracefully for small screens */
+  }
+
+  .operational-statement {
+    font-size: 1rem; /* Down from 1.25rem for mobile readability */
+    line-height: 1.4;
+    margin-top: 2rem; /* Increased spacing from logo */
+  }
+
+  /* 2. SECTION SPACING — Air, not compression */
+  .crs-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  /* 3. HEADINGS & TYPE SCALE — Clear hierarchy */
+  .section-title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+  }
+
+  .section-intro,
+  .content-text p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* 4. CTA BUTTONS — Thumb-friendly, decisive */
+  .crs-button {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.95rem;
+  }
+
+  .hero-cta .crs-button {
+    width: 100%;
+  }
+
+  /* 5. WORKSHOP CAFÉ — Warm, clear stacking */
+  .cafe-service-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .cafe-service-title {
+    font-size: 1.05rem;
+  }
+
+  .cafe-services {
+    gap: 1.25rem;
+  }
+
+  /* 6. NAVIGATION — Clear tap targets */
+  .header-services a,
+  .header-actions a {
+    padding: 0.75rem 0;
+  }
+
+  /* 7. RATE CARD — Mobile stacking */
+  .cafe-heartbeat .section-header {
+    margin-bottom: 2rem;
+  }
+
+  /* 8. FOCUS STATES — Accessibility on mobile */
+  a:focus,
+  button:focus {
+    outline: 2px solid var(--mustard);
+    outline-offset: 2px;
+  }
+}
+
+/* Mobile-specific hero container adjustment */
+@media (max-width: 640px) {
+  .hero-container {
+    padding: 2rem 1.25rem;
+  }
+}
+
+/* ========================================
+   VERTICAL RHYTHM PASS — BREATHING ROOM
+   ======================================== */
+
+/* 1) Section Vertical Padding — Add +0.75rem breathing room */
+.crs-section {
+  padding-top: 3.25rem;  /* was 2.5rem, now 3.25rem (+0.75rem) */
+  padding-bottom: 3.25rem;
+}
+
+@media (min-width: 768px) {
+  .crs-section {
+    padding-top: 4.75rem;  /* was 4rem, now 4.75rem (+0.75rem) */
+    padding-bottom: 4.75rem;
+  }
+}
+
+/* 2) Paragraph Stack Spacing — Mobile only */
+@media (max-width: 768px) {
+  .section-intro {
+    margin-bottom: 1.25rem;  /* Add breathing room below intro paragraphs */
+  }
+}
+
+/* 3) CTA Separation — Increase margin-top for clearer visual separation */
+.crs-button,
+a[href*="/book"],
+a[href*="/contact"] {
+  margin-top: 1.5rem;  /* Increase from default to create clearer separation */
+}
+
+/* ========================================
+   NASA × NEVE CONTROL PANEL AESTHETIC
+   CSS-only visual texture pass
+   ======================================== */
+
+/* Section containers feel like rack-mounted control panels */
+.crs-section {
+  position: relative;
+  border: 1px solid rgba(255, 215, 0, 0.15); /* Subtle panel border */
+  box-shadow: inset 0 1px 0 rgba(255, 215, 0, 0.05); /* Engraved edge */
+}
+
+/* Section headers feel like engraved equipment labels */
+.section-title {
+  position: relative;
+  padding-left: 0.5rem;
+  border-left: 3px solid var(--standby-gold);
+  letter-spacing: 0.1em; /* Wide spacing = engraved plate */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8); /* Depth */
+}
+
+.section-title::before {
+  content: '// ';
+  color: rgba(255, 215, 0, 0.3);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
+/* Section intro text feels like system metadata */
+.section-intro {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  opacity: 0.85;
+  border-left: 4px solid rgba(255, 215, 0, 0.3);
+  padding-left: 1.5rem;
+  background: rgba(0, 0, 0, 0.2); /* Subtle panel backing */
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* Buttons feel like physical hardware toggles */
+.crs-button {
+  border: 2px solid var(--standby-gold);
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 215, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  transition: all 0.1s ease; /* Fast response = hardware feel */
+}
+
+.crs-button:hover {
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 215, 0, 0.3),
+    0 3px 6px rgba(0, 0, 0, 0.7);
+  transform: translateY(-1px); /* Physical button press */
+}
+
+.crs-button:active {
+  transform: translateY(1px); /* Depressed button */
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Hero power panel feels bolted to infrastructure */
+.hero-power-panel {
+  filter: 
+    contrast(1.05)
+    brightness(0.95)
+    drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
+}
+
+/* Footer feels like system terminal output */
+.crs-footer {
+  border-top: 2px solid rgba(255, 215, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 215, 0, 0.05);
+}
+
+.footer-col-title {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.15em;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  padding-bottom: 0.25rem;
+}
+
+.footer-col-title::before {
+  content: '[ ';
+  color: rgba(255, 215, 0, 0.4);
+}
+
+.footer-col-title::after {
+  content: ' ]';
+  color: rgba(255, 215, 0, 0.4);
+}
+
+/* Operational statement feels like mission control readout */
+.operational-statement {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.05em;
+  position: relative;
+}
+
+.operational-statement::before {
+  content: '▶';
+  color: var(--live-green);
+  margin-right: 0.5rem;
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+
+/* Header feels like control panel strip */
+.crs-header {
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    inset 0 -1px 0 rgba(255, 215, 0, 0.1);
+}
+
+/* Content blocks feel like modular rack units */
+.content-block {
+  border: 1px solid rgba(255, 215, 0, 0.1);
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 215, 0, 0.05);
+}
+
+.content-heading {
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ========================================
+   REASON RACK UI SYSTEM
+   Propellerhead-style vertical rack interface
+   ======================================== */
+
+/* RACK RAILS - Vertical mounting strips on viewport sides */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
+  z-index: 10;
+  pointer-events: none;
+  
+  /* Mounting hole pattern */
+  background-image: 
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 48px,
+      rgba(0, 0, 0, 0.5) 48px,
+      rgba(0, 0, 0, 0.5) 50px
+    ),
+    repeating-radial-gradient(
+      circle at center,
+      rgba(0, 0, 0, 0.8) 0,
+      rgba(0, 0, 0, 0.8) 3px,
+      transparent 3px,
+      transparent 50px
+    );
+  background-position: 0 25px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+body::before {
+  left: 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+body::after {
+  right: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+/* RACK MODULE SECTIONS - Convert sections to rack panels */
+.crs-section,
+.section-dark,
+.cafe-heartbeat {
+  position: relative;
+  max-width: var(--crs-chassis-width); /* Unified chassis width */
+  width: calc(100% - 112px); /* Account for rail spacing (56px each side) */
+  margin: 24px auto; /* Center with vertical spacing */
+  padding: 2.5rem 3.5rem;
+  background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+  border: 2px solid #1a1a1a;
+  border-radius: 3px;
+  
+  /* Dramatic rack panel depth */
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.9),
+    inset 2px 0 0 rgba(255, 255, 255, 0.02),
+    inset -2px 0 0 rgba(0, 0, 0, 0.5),
+    0 8px 16px rgba(0, 0, 0, 0.6),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* RACK EARS - Chunkier mounting brackets */
+.crs-section::before,
+.crs-section::after,
+.section-dark::before,
+.section-dark::after,
+.cafe-heartbeat::before,
+.cafe-heartbeat::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px; /* Increased from 24px */
+  height: 90%;
+  background: linear-gradient(to right, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  border: 2px solid #333;
+  border-radius: 3px;
+  box-shadow: 
+    inset 0 2px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 1px rgba(0, 0, 0, 0.8),
+    3px 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.crs-section::before,
+.section-dark::before,
+.cafe-heartbeat::before {
+  left: -32px; /* Adjusted for wider ears */
+}
+
+.crs-section::after,
+.section-dark::after,
+.cafe-heartbeat::after {
+  right: -32px;
+}
+
+/* MOUNTING SCREWS - Larger, more visible */
+.crs-section::before,
+.section-dark::before,
+.cafe-heartbeat::before {
+  background-image: 
+    radial-gradient(circle at 16px 16px, #444 0, #444 5px, #222 5px, #222 6px, transparent 6px),
+    radial-gradient(circle at 16px calc(100% - 16px), #444 0, #444 5px, #222 5px, #222 6px, transparent 6px);
+  background-repeat: no-repeat;
+}
+
+.crs-section::after,
+.section-dark::after,
+.cafe-heartbeat::after {
+  background-image: 
+    radial-gradient(circle at 16px 16px, #444 0, #444 5px, #222 5px, #222 6px, transparent 6px),
+    radial-gradient(circle at 16px calc(100% - 16px), #444 0, #444 5px, #222 5px, #222 6px, transparent 6px);
+  background-repeat: no-repeat;
+}
+
+/* HERO RACK MODULE - Darker logo panel */
+.crs-hero {
+  position: relative;
+  max-width: var(--crs-chassis-width); /* Unified chassis width */
+  width: calc(100% - 112px); /* Account for rail spacing */
+  margin: 24px auto; /* Center with vertical spacing */
+  padding: 1.5rem 3.5rem;
+  background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+  border: 2px solid #1a1a1a;
+  border-radius: 3px;
+  box-shadow: 
+    inset 0 2px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.9),
+    0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Hero rack ears - Chunkier to match */
+.crs-hero::before,
+.crs-hero::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px; /* Increased */
+  height: 90%;
+  background: linear-gradient(to right, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
+  border: 2px solid #333;
+  border-radius: 3px;
+  box-shadow: 
+    inset 0 2px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -2px 1px rgba(0, 0, 0, 0.8),
+    3px 0 6px rgba(0, 0, 0, 0.5);
+  
+  /* Larger screw holes */
+  background-image: 
+    radial-gradient(circle at 16px 20px, #444 0, #444 5px, #222 5px, #222 6px, transparent 6px),
+    radial-gradient(circle at 16px calc(100% - 20px), #444 0, #444 5px, #222 5px, #222 6px, transparent 6px);
+  background-repeat: no-repeat;
+}
+
+.crs-hero::before { left: -32px; } /* Adjusted */
+.crs-hero::after { right: -32px; }
+
+/* MOBILE RESPONSIVE - Hide rack rails on small screens */
+@media (max-width: 768px) {
+  body::before,
+  body::after {
+    display: none;
+  }
+  
+  .crs-section,
+  .section-dark,
+  .cafe-heartbeat,
+  .crs-hero {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  /* Hide rack ears on mobile */
+  .crs-section::before,
+  .crs-section::after,
+  .section-dark::before,
+  .section-dark::after,
+  .cafe-heartbeat::before,
+  .cafe-heartbeat::after,
+  .crs-hero::before,
+  .crs-hero::after {
+    display: none;
+  }
+}
+
+/* ========================================
+   NEON FLASH BOOK NOW
+   Flashing neon sign effect for booking CTA
+   ======================================== */
+
+/* Neon flash animation */
+/* ============================================
+   FALLOUT PRE-WAR NEON SIGN ANIMATION
+   Art Deco 1950s optimistic retrofuturism
+   ============================================ */
+
+@keyframes fallout-neon-flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 
+      0 0 4px rgba(255, 140, 0, 0.5),
+      0 0 8px rgba(255, 140, 0, 0.5),
+      0 0 12px rgba(255, 140, 0, 0.8),
+      0 0 20px rgba(255, 100, 0, 0.6),
+      0 0 30px rgba(255, 100, 0, 0.4),
+      0 0 40px rgba(255, 100, 0, 0.2),
+      2px 2px 0px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    filter: brightness(1.1);
+  }
+  
+  20%, 24%, 55% {  
+    text-shadow: 
+      0 0 2px rgba(255, 140, 0, 0.3),
+      0 0 4px rgba(255, 140, 0, 0.3),
+      2px 2px 0px rgba(0, 0, 0, 0.3);
+    opacity: 0.7;
+    filter: brightness(0.9);
+  }
+}
+
+/* BOOK NOW button in center - Fallout pre-war neon style */
+.book-now-trigger {
+  color: #FF8C00 !important; /* Dark orange (warm neon) */
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  animation: fallout-neon-flicker 4s ease-in-out infinite;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 140, 0, 0.4);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 12px 24px;
+  font-size: 0.875rem;
+  position: relative;
+  backdrop-filter: blur(4px);
+  box-shadow: 
+    inset 0 0 20px rgba(255, 140, 0, 0.1),
+    0 0 20px rgba(255, 140, 0, 0.3);
+  transition: all 0.15s ease;
+}
+
+.book-now-trigger:hover {
+  background: rgba(255, 140, 0, 0.1);
+  border-color: rgba(255, 140, 0, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 
+    inset 0 0 30px rgba(255, 140, 0, 0.2),
+    0 0 30px rgba(255, 140, 0, 0.5),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+}
+}
+
+/* BOOK NOW panel positioning in right nav */
+.header-actions .book-now-panel {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.75rem;
+}
+
+/* Dropdown positioning from right side */
+.header-actions .book-now-dropdown {
+  right: 0;
+  left: auto;
+}
+
+/* ============================================
+   SIGNAL ICON SYSTEM - R2 Assets
+   ============================================ */
+
+/* Header logo strip */
+.header-logo-strip {
+  height: 60px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* BOOK NOW icon (green play button) */
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .header-logo-strip {
+    height: 40px;
+  }
+}
+
+/* MOBILE NAV IMPROVEMENTS */
+@media (max-width: 767px) {
+  .mobile-nav {
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .mobile-nav.active {
+    transform: translateY(0);
+  }
+  
+  body.mobile-menu-open {
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,253 @@
+/* =========================================================
+   CRS HEADER — THREE-ZONE GRID
+   Purpose: Institutional header with clear hierarchy
+   Layout: Logo (left) | Nav (middle) | Action (right)
+   Load: After spacing scale, before other header CSS
+   ========================================================= */
+
+/* ==========================================
+   DESKTOP: Three-Zone Grid
+   ========================================== */
+
+header.rack-header {
+  /* 1. The Sticky Logic */
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  
+  /* 2. The Locking Point */
+  /* Stop scrolling when you hit the very top of the screen */
+  top: 0;
+  
+  /* 3. The Stack Order */
+  z-index: 9999; /* Must be higher than all page content */
+  
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* left | middle | right */
+  grid-template-areas: "logo nav cta";
+  align-items: center;
+  gap: var(--space-xl); /* 32px between zones */
+  padding: var(--space-md) var(--space-xl); /* TIGHTENED: 16px vertical (was 24px), 32px horizontal */
+  
+  /* 4. The "Solid Metal" Background */
+  /* CRITICAL: Since this bar floats over content, it needs a solid color */
+  background-color: #1a1a1a;
+  
+  border-bottom: 2px solid #000; /* Bottom seam */
+  
+  /* 5. The Shadow */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================
+   ZONE 1: CRS Badge (Authority — Left)
+   96px x 96px (increased by 50% for industrial presence)
+   ========================================== */
+
+.rack-header-logo {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+}
+
+/* UPDATE: Increase size by 50% for more presence */
+.header-crs-badge {
+  width: 96px;  /* Changed from 64px */
+  height: 96px; /* Changed from 64px */
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: block;
+  /* Ensure it's vertically centered in the nav bar */
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* Remove old logo sizing rules (no longer needed) */
+.rack-header-logo .crs-main-logo {
+  display: none; /* Hidden - replaced by badge */
+}
+
+/* ==========================================
+   ZONE 2: Navigation (Middle)
+   ========================================== */
+
+.rack-header-nav {
+  grid-area: nav;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm); /* 8px between links - tighter for rack aesthetic */
+  max-width: 600px; /* Constrain width to fit rack unit aesthetic */
+  margin: 0 auto; /* Center within grid area */
+}
+
+.rack-header-nav a {
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px; /* Reduced for proper rack sizing */
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(245, 245, 245, 0.85);
+  white-space: nowrap;
+  transition: color 0.2s;
+  display: inline-flex; /* Ensure proper vertical alignment */
+  align-items: center; /* Fix Contact link sitting lower */
+  line-height: 1; /* Tighter line height for compact rack aesthetic */
+}
+
+.rack-header-nav a:hover {
+  color: #E89B3C;
+}
+
+.rack-header-nav .separator {
+  color: rgba(212, 160, 23, 0.3);
+  font-size: 12px; /* Match link font size */
+  display: inline-flex; /* Match link alignment */
+  align-items: center; /* Ensure vertical centering */
+  line-height: 1; /* Match link line height */
+}
+
+/* ==========================================
+   ZONE 3: Book Now (Action — Right)
+   ========================================== */
+
+.rack-header-cta {
+  grid-area: cta;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rack-header-cta .book-dropdown-trigger {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.05em;
+  border: 2px solid #FF4500;
+  background: transparent;
+  color: #FF4500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.rack-header-cta .book-dropdown-trigger:hover {
+  background: #FF4500;
+  color: #000;
+}
+
+/* ==========================================
+   MOBILE: Collapse to Single Column
+   Hide mobile menu toggle on desktop
+   ========================================== */
+
+.mobile-menu-toggle {
+  display: none; /* Hidden on desktop */
+}
+
+@media (max-width: 768px) {
+  header.rack-header {
+    /* Reinforce sticky positioning for mobile */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    
+    grid-template-columns: auto 1fr auto; /* Badge | Nav | Toggle */
+    grid-template-areas: 
+      "logo nav toggle";
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    
+    /* Ensure solid background for sticky header */
+    background-color: #1a1a1a;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+    grid-area: toggle;
+    background: transparent;
+    border: 1px solid rgba(212, 160, 23, 0.3);
+    color: #E89B3C;
+    padding: 8px 12px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .rack-header-logo {
+    grid-area: logo;
+  }
+  
+  .header-crs-badge {
+    /* Keep mobile slightly smaller so it doesn't crowd the burger menu */
+    width: 72px; 
+    height: 72px;
+  }
+  
+  .rack-header-nav {
+    grid-area: nav;
+    justify-content: flex-start; /* Left-align on mobile */
+    gap: 12px; /* Increased spacing for better tap separation */
+  }
+  
+  .rack-header-nav a {
+    font-size: 16px; /* Increased for better mobile readability and tap targets */
+    padding: 12px 8px; /* Add padding to create 44px minimum tap height */
+    min-height: 44px; /* Apple HIG minimum tap target */
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .rack-header-nav .separator {
+    font-size: 14px; /* Slightly smaller than links */
+    padding: 0 4px; /* Minimal padding for separators */
+  }
+  
+  .rack-header-cta {
+    display: none; /* Hide Book Now on mobile - use hamburger menu */
+  }
+}
+
+/* ==========================================
+   ANTI-DRIFT: Lock Sizes
+   Prevent other CSS from interfering
+   ========================================== */
+
+header.rack-header * {
+  box-sizing: border-box;
+}
+
+header.rack-header .rack-header-logo,
+header.rack-header .rack-header-nav,
+header.rack-header .rack-header-cta {
+  flex-shrink: 0; /* Never collapse */
+}
+
+/* ==========================================
+   CRS Logo Home Link (Clickable Logo)
+   ========================================== */
+
+/* Make the CRS logo link invisible but functional */
+.crs-home-link {
+  text-decoration: none;      /* No underline */
+  border: none;               /* No border */
+  display: inline-block;      /* Keeps layout tight */
+  cursor: pointer;            /* Shows the 'hand' icon on hover */
+  color: inherit;             /* Keeps your original text color */
+}
+
+/* Optional: Add a subtle hover effect for tactile feel */
+.crs-home-link:hover .crs-logo {
+  opacity: 0.9;
+  transform: scale(0.98);     /* Slight 'press' effect like a button */
+  transition: all 0.1s ease;
+}
+
+/* Also apply hover effect to the badge if present */
+.crs-home-link:hover .header-crs-badge {
+  opacity: 0.9;
+  transform: scale(0.98);
+  transition: all 0.1s ease;
+}

@@ -1,0 +1,232 @@
+/* ==========================================================
+   CONTACT AFFORDANCE FIX - 44px Button-Style Blocks
+   Eliminates "Precision-Tap" frustration for email/phone links
+   ========================================================== */
+
+/* Base contact button styling - replaces inline text links */
+.contact-button,
+a.contact-button,
+.footer-link.contact-button {
+  /* Layout - Block-level for full tap target */
+  display: inline-block;
+  width: auto;
+  min-width: 200px;
+  
+  /* Size - 44px minimum for thumb accessibility */
+  min-height: 44px;
+  padding: 12px 20px;
+  
+  /* Typography - JetBrains Mono for industrial aesthetic */
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  
+  /* Visual - Nettle Green status color */
+  background: rgba(127, 255, 0, 0.1);
+  border: 2px solid rgba(127, 255, 0, 0.6);
+  color: rgba(127, 255, 0, 1);
+  
+  /* Shadow - Subtle depth */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  
+  /* Interaction */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  /* Alignment */
+  vertical-align: middle;
+}
+
+/* Hover state - Brighter "Contact Active" signal */
+.contact-button:hover,
+a.contact-button:hover {
+  background: rgba(127, 255, 0, 0.2);
+  border-color: rgba(127, 255, 0, 1);
+  color: rgba(127, 255, 0, 1);
+  box-shadow: 0 4px 12px rgba(127, 255, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Active state - Pressed feedback */
+.contact-button:active,
+a.contact-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Mustard variant - For primary contact actions */
+.contact-button-mustard,
+a.contact-button-mustard {
+  background: rgba(232, 155, 60, 0.15);
+  border-color: rgba(232, 155, 60, 0.7);
+  color: rgba(232, 155, 60, 1);
+}
+
+.contact-button-mustard:hover,
+a.contact-button-mustard:hover {
+  background: rgba(232, 155, 60, 0.25);
+  border-color: rgba(232, 155, 60, 1);
+  color: rgba(232, 155, 60, 1);
+  box-shadow: 0 4px 12px rgba(232, 155, 60, 0.3);
+}
+
+/* Icon styling - Emoji or SVG indicators */
+.contact-button::before,
+a.contact-button::before {
+  content: attr(data-icon);
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+/* Email button specific */
+.contact-button-email::before {
+  content: "✉️";
+}
+
+/* Phone button specific */
+.contact-button-phone::before {
+  content: "☎️";
+}
+
+/* Mobile optimizations - Larger tap targets */
+@media (max-width: 768px) {
+  .contact-button,
+  a.contact-button {
+    min-height: 48px;
+    padding: 14px 24px;
+    font-size: 0.875rem;
+    width: 100%; /* Full width on mobile for easy tapping */
+    max-width: 100%;
+  }
+}
+
+/* Footer contact block - Stacked layout */
+.footer-contact-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+.footer-contact-block .contact-button {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* Contact section - Grid layout for multiple buttons */
+.contact-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .contact-buttons-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Accessibility - Focus state */
+.contact-button:focus,
+a.contact-button:focus {
+  outline: 2px solid rgba(127, 255, 0, 1);
+  outline-offset: 2px;
+}
+
+.contact-button-mustard:focus,
+a.contact-button-mustard:focus {
+  outline-color: rgba(232, 155, 60, 1);
+}
+
+/* Inline contact link conversion - Override existing styles */
+a[href^="mailto:"],
+a[href^="tel:"] {
+  /* Only apply if not already a button */
+  &:not(.contact-button):not(.cta-button) {
+    display: inline-block;
+    padding: 8px 16px;
+    min-height: 40px;
+    background: rgba(127, 255, 0, 0.08);
+    border: 1px solid rgba(127, 255, 0, 0.4);
+    border-radius: 3px;
+    color: rgba(127, 255, 0, 0.9);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.813rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  &:not(.contact-button):not(.cta-button):hover {
+    background: rgba(127, 255, 0, 0.15);
+    border-color: rgba(127, 255, 0, 0.7);
+    color: rgba(127, 255, 0, 1);
+  }
+}
+
+/* Footer-specific overrides */
+.footer-data-line a[href^="mailto:"],
+.footer-data-line a[href^="tel:"] {
+  display: inline-block;
+  padding: 6px 12px;
+  min-height: 36px;
+  background: rgba(127, 255, 0, 0.05);
+  border: 1px solid rgba(127, 255, 0, 0.3);
+  color: rgba(127, 255, 0, 0.85);
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.footer-data-line a[href^="mailto:"]:hover,
+.footer-data-line a[href^="tel:"]:hover {
+  background: rgba(127, 255, 0, 0.12);
+  border-color: rgba(127, 255, 0, 0.6);
+  color: rgba(127, 255, 0, 1);
+}
+
+/* Contact section primary button */
+.contact-section-primary {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.contact-section-primary .contact-button {
+  min-width: 280px;
+}
+
+@media (max-width: 768px) {
+  .contact-section-primary .contact-button {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* High contrast mode - Ensure visibility */
+@media (prefers-contrast: high) {
+  .contact-button,
+  a.contact-button {
+    border-width: 3px;
+  }
+}
+
+/* Reduced motion - Disable animations */
+@media (prefers-reduced-motion: reduce) {
+  .contact-button,
+  a.contact-button,
+  .contact-button:hover,
+  a.contact-button:hover {
+    transition: none;
+    transform: none;
+  }
+}

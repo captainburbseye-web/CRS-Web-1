@@ -1,0 +1,739 @@
+/* ====================================================================
+   CRS MASTER SIGNAL PATH v2.0 — AWWWARDS-LEVEL IMMERSION
+   
+   THE 186th LAW: "Balance the cold precision of the gear with 
+                   the warm texture of the shop."
+   
+   THE 197th LAW: "The Global Rail — one source, total illumination."
+   
+   THE 201st LAW: "The Lived-In Digital — imperfections are the brand."
+   
+   THE 202nd LAW: "The Protective Pane — reflection creates trust."
+   
+   Awwwards Enhancement (Strike 5):
+   - Master signal path with consolidated variables
+   - Triple-layer box-shadow for gas tube bloom effect
+   - Channel-specific color mapping (7 channels)
+   - Pulsing LED animations with signal presence
+   - Kinetic typography with CRT boot-up
+   - Machined window glass overlay for depth
+   - Nature Distilled warmth (Workshop Café)
+   ==================================================================== */
+
+:root {
+  /* ============================================================
+     NEON CHANNEL PALETTE
+     Each channel gets a distinct neon signature
+     ============================================================ */
+  
+  /* Primary Neon Colors */
+  --neon-orange: #FF8833;        /* Rehearsals (Channels 1–2) */
+  --neon-magenta: #FF00D9;       /* Control Room (Channel 3) */
+  --neon-cyan: #00D9FF;          /* Workshop Café (Channel 4) */
+  --neon-amber: #FFB627;         /* AV Services (Channel 5) */
+  --neon-white: #F4F4F4;         /* Contact (Channel 6) */
+  --neon-green: #39FF14;         /* System Status (Channel 7) */
+  --neon-red: #FF3333;           /* Alert/Offline state */
+  
+  /* Glow Intensity Levels */
+  --glow-sm: 4px;                /* Subtle inner glow */
+  --glow-md: 12px;               /* Standard module glow */
+  --glow-lg: 24px;               /* Strong emphasis glow */
+  --glow-xl: 40px;               /* Maximum burn (hover) */
+  
+  /* Animation Timing */
+  --pulse-duration: 2s;
+  --glow-transition: 0.4s ease-out;
+  --flicker-duration: 1.5s;
+  --crt-boot-duration: 1.2s;
+  
+  /* Typography System (197th LAW) */
+  --font-tech: 'JetBrains Mono', 'Space Mono', monospace;
+  --font-warm: 'Playfair Display', serif;
+  
+  /* Nature Distilled Palette (Workshop Café CH4) */
+  --clay: #D2B48C;
+  --off-white: #FAF9F6;
+  --amber-glow: rgba(255, 165, 0, 0.5);
+  --dark-grey: #1a1a1a;          /* Machined Steel */
+  
+  /* Tactical Spacing & Timing (201st LAW) */
+  --unit-gap: 8px;               /* 8px Grid System */
+  --torque-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  
+  /* Channel Color Mapping */
+  --channel-1-color: var(--neon-orange);
+  --channel-2-color: var(--neon-orange);
+  --channel-3-color: var(--neon-magenta);
+  --channel-4-color: var(--neon-cyan);
+  --channel-5-color: var(--neon-amber);
+  --channel-6-color: var(--neon-white);
+  --channel-7-color: var(--neon-green);
+}
+
+/* ============================================================
+   BASE RACK MODULE NEON ENHANCEMENT
+   Adds subtle default glow to all rack modules
+   ============================================================ */
+
+.rack-module {
+  transition: 
+    border-color var(--glow-transition),
+    box-shadow var(--glow-transition);
+  
+  /* Subtle default green glow (signal ready) */
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-sm) rgba(57, 255, 20, 0.2),
+    0 0 var(--glow-md) rgba(57, 255, 20, 0.1);
+}
+
+.rack-module:hover {
+  border-color: rgba(57, 255, 20, 0.4);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-md) rgba(57, 255, 20, 0.4),
+    0 0 var(--glow-lg) rgba(57, 255, 20, 0.3),
+    0 0 var(--glow-xl) rgba(57, 255, 20, 0.15);
+}
+
+/* ============================================================
+   CHANNEL-SPECIFIC NEON GLOW MAPPING
+   Each channel gets its signature triple-layer glow
+   ============================================================ */
+
+/* CHANNELS 1 & 2: REHEARSALS (Orange) */
+.rack-module[data-channel="1"],
+.rack-module[data-channel="2"] {
+  border-color: rgba(255, 136, 51, 0.3);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-sm) rgba(255, 136, 51, 0.3),
+    0 0 var(--glow-md) rgba(255, 136, 51, 0.15);
+  animation: pulse-orange var(--pulse-duration) ease-in-out infinite;
+}
+
+.rack-module[data-channel="1"]:hover,
+.rack-module[data-channel="2"]:hover {
+  border-color: var(--neon-orange);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-md) rgba(255, 136, 51, 0.5),
+    0 0 var(--glow-lg) rgba(255, 136, 51, 0.35),
+    0 0 var(--glow-xl) rgba(255, 136, 51, 0.2);
+  animation: none; /* Stop pulse on hover for clarity */
+}
+
+@keyframes pulse-orange {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 var(--glow-sm) rgba(255, 136, 51, 0.3),
+      0 0 var(--glow-md) rgba(255, 136, 51, 0.15);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 calc(var(--glow-sm) * 1.3) rgba(255, 136, 51, 0.4),
+      0 0 calc(var(--glow-md) * 1.3) rgba(255, 136, 51, 0.25);
+  }
+}
+
+/* CHANNEL 3: CONTROL ROOM (Magenta) */
+.rack-module[data-channel="3"] {
+  border-color: rgba(255, 0, 217, 0.3);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-sm) rgba(255, 0, 217, 0.3),
+    0 0 var(--glow-md) rgba(255, 0, 217, 0.15);
+  animation: pulse-magenta var(--pulse-duration) ease-in-out infinite;
+}
+
+.rack-module[data-channel="3"]:hover {
+  border-color: var(--neon-magenta);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-md) rgba(255, 0, 217, 0.5),
+    0 0 var(--glow-lg) rgba(255, 0, 217, 0.35),
+    0 0 var(--glow-xl) rgba(255, 0, 217, 0.2);
+  animation: none;
+}
+
+@keyframes pulse-magenta {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 var(--glow-sm) rgba(255, 0, 217, 0.3),
+      0 0 var(--glow-md) rgba(255, 0, 217, 0.15);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 calc(var(--glow-sm) * 1.3) rgba(255, 0, 217, 0.4),
+      0 0 calc(var(--glow-md) * 1.3) rgba(255, 0, 217, 0.25);
+  }
+}
+
+/* CHANNEL 4: WORKSHOP CAFÉ (Cyan) */
+.rack-module[data-channel="4"] {
+  border-color: rgba(0, 217, 255, 0.3);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-sm) rgba(0, 217, 255, 0.3),
+    0 0 var(--glow-md) rgba(0, 217, 255, 0.15);
+  animation: pulse-cyan var(--pulse-duration) ease-in-out infinite;
+}
+
+.rack-module[data-channel="4"]:hover {
+  border-color: var(--neon-cyan);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-md) rgba(0, 217, 255, 0.5),
+    0 0 var(--glow-lg) rgba(0, 217, 255, 0.35),
+    0 0 var(--glow-xl) rgba(0, 217, 255, 0.2);
+  animation: none;
+}
+
+@keyframes pulse-cyan {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 var(--glow-sm) rgba(0, 217, 255, 0.3),
+      0 0 var(--glow-md) rgba(0, 217, 255, 0.15);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 calc(var(--glow-sm) * 1.3) rgba(0, 217, 255, 0.4),
+      0 0 calc(var(--glow-md) * 1.3) rgba(0, 217, 255, 0.25);
+  }
+}
+
+/* CHANNEL 5: AV SERVICES (Amber) */
+.rack-module[data-channel="5"] {
+  border-color: rgba(255, 182, 39, 0.3);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-sm) rgba(255, 182, 39, 0.3),
+    0 0 var(--glow-md) rgba(255, 182, 39, 0.15);
+  animation: pulse-amber var(--pulse-duration) ease-in-out infinite;
+}
+
+.rack-module[data-channel="5"]:hover {
+  border-color: var(--neon-amber);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-md) rgba(255, 182, 39, 0.5),
+    0 0 var(--glow-lg) rgba(255, 182, 39, 0.35),
+    0 0 var(--glow-xl) rgba(255, 182, 39, 0.2);
+  animation: none;
+}
+
+@keyframes pulse-amber {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 var(--glow-sm) rgba(255, 182, 39, 0.3),
+      0 0 var(--glow-md) rgba(255, 182, 39, 0.15);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 calc(var(--glow-sm) * 1.3) rgba(255, 182, 39, 0.4),
+      0 0 calc(var(--glow-md) * 1.3) rgba(255, 182, 39, 0.25);
+  }
+}
+
+/* CHANNEL 6: CONTACT (White) */
+.rack-module[data-channel="6"] {
+  border-color: rgba(244, 244, 244, 0.3);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-sm) rgba(244, 244, 244, 0.3),
+    0 0 var(--glow-md) rgba(244, 244, 244, 0.15);
+  animation: pulse-white var(--pulse-duration) ease-in-out infinite;
+}
+
+.rack-module[data-channel="6"]:hover {
+  border-color: var(--neon-white);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-md) rgba(244, 244, 244, 0.5),
+    0 0 var(--glow-lg) rgba(244, 244, 244, 0.35),
+    0 0 var(--glow-xl) rgba(244, 244, 244, 0.2);
+  animation: none;
+}
+
+@keyframes pulse-white {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 var(--glow-sm) rgba(244, 244, 244, 0.3),
+      0 0 var(--glow-md) rgba(244, 244, 244, 0.15);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 calc(var(--glow-sm) * 1.3) rgba(244, 244, 244, 0.4),
+      0 0 calc(var(--glow-md) * 1.3) rgba(244, 244, 244, 0.25);
+  }
+}
+
+/* CHANNEL 7: SYSTEM STATUS (Green) */
+.rack-module[data-channel="7"] {
+  border-color: rgba(57, 255, 20, 0.4);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-sm) rgba(57, 255, 20, 0.4),
+    0 0 var(--glow-md) rgba(57, 255, 20, 0.2);
+  animation: pulse-green var(--pulse-duration) ease-in-out infinite;
+}
+
+.rack-module[data-channel="7"]:hover {
+  border-color: var(--neon-green);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.8),
+    0 0 var(--glow-md) rgba(57, 255, 20, 0.6),
+    0 0 var(--glow-lg) rgba(57, 255, 20, 0.4),
+    0 0 var(--glow-xl) rgba(57, 255, 20, 0.25);
+  animation: none;
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 var(--glow-sm) rgba(57, 255, 20, 0.4),
+      0 0 var(--glow-md) rgba(57, 255, 20, 0.2);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 3px rgba(0, 0, 0, 0.8),
+      0 0 calc(var(--glow-sm) * 1.3) rgba(57, 255, 20, 0.5),
+      0 0 calc(var(--glow-md) * 1.3) rgba(57, 255, 20, 0.3);
+  }
+}
+
+/* ============================================================
+   LED INDICATOR ENHANCEMENTS
+   Pulsing animations synced to channel colors
+   ============================================================ */
+
+.led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Enhanced LED Glow */
+.led.green {
+  background: var(--neon-green);
+  box-shadow: 
+    0 0 4px var(--neon-green),
+    0 0 8px rgba(57, 255, 20, 0.6);
+  animation: led-pulse-green var(--pulse-duration) ease-in-out infinite;
+}
+
+.led.amber,
+.led.yellow {
+  background: var(--neon-amber);
+  box-shadow: 
+    0 0 4px var(--neon-amber),
+    0 0 8px rgba(255, 182, 39, 0.6);
+  animation: led-pulse-amber var(--pulse-duration) ease-in-out infinite;
+}
+
+.led.orange {
+  background: var(--neon-orange);
+  box-shadow: 
+    0 0 4px var(--neon-orange),
+    0 0 8px rgba(255, 136, 51, 0.6);
+  animation: led-pulse-orange var(--pulse-duration) ease-in-out infinite;
+}
+
+.led.red {
+  background: var(--neon-red);
+  box-shadow: 
+    0 0 4px var(--neon-red),
+    0 0 8px rgba(255, 51, 51, 0.6);
+  animation: led-pulse-red var(--pulse-duration) ease-in-out infinite;
+}
+
+/* LED Pulse Animations */
+@keyframes led-pulse-green {
+  0%, 100% { 
+    opacity: 0.7;
+    box-shadow: 0 0 4px var(--neon-green), 0 0 8px rgba(57, 255, 20, 0.4);
+  }
+  50% { 
+    opacity: 1;
+    box-shadow: 0 0 6px var(--neon-green), 0 0 12px rgba(57, 255, 20, 0.8);
+  }
+}
+
+@keyframes led-pulse-amber {
+  0%, 100% { 
+    opacity: 0.7;
+    box-shadow: 0 0 4px var(--neon-amber), 0 0 8px rgba(255, 182, 39, 0.4);
+  }
+  50% { 
+    opacity: 1;
+    box-shadow: 0 0 6px var(--neon-amber), 0 0 12px rgba(255, 182, 39, 0.8);
+  }
+}
+
+@keyframes led-pulse-orange {
+  0%, 100% { 
+    opacity: 0.7;
+    box-shadow: 0 0 4px var(--neon-orange), 0 0 8px rgba(255, 136, 51, 0.4);
+  }
+  50% { 
+    opacity: 1;
+    box-shadow: 0 0 6px var(--neon-orange), 0 0 12px rgba(255, 136, 51, 0.8);
+  }
+}
+
+@keyframes led-pulse-red {
+  0%, 100% { 
+    opacity: 0.7;
+    box-shadow: 0 0 4px var(--neon-red), 0 0 8px rgba(255, 51, 51, 0.4);
+  }
+  50% { 
+    opacity: 1;
+    box-shadow: 0 0 6px var(--neon-red), 0 0 12px rgba(255, 51, 51, 0.8);
+  }
+}
+
+/* ============================================================
+   KINETIC TYPOGRAPHY — CRT FLICKER EFFECT
+   For hero text and system status displays
+   ============================================================ */
+
+.crt-flicker {
+  animation: flicker var(--flicker-duration) infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  10% { opacity: 0.95; }
+  20% { opacity: 1; }
+  30% { opacity: 0.92; }
+  40% { opacity: 1; }
+  50% { opacity: 0.98; }
+  60% { opacity: 1; }
+  70% { opacity: 0.9; }
+  80% { opacity: 1; }
+  90% { opacity: 0.96; }
+}
+
+/* ============================================================
+   CRT BOOT-UP FLICKER (197th LAW: Kinetic Typography)
+   Dramatic initialization sequence for rack headers
+   ============================================================ */
+
+@keyframes crt-boot {
+  0% { 
+    opacity: 0; 
+    text-shadow: 0 0 20px var(--neon-green);
+  }
+  5% { opacity: 0.3; }
+  10% { opacity: 0; }
+  15% { opacity: 0.7; }
+  20% { opacity: 0.2; }
+  25% { opacity: 0.9; }
+  30% { opacity: 0.4; }
+  35% { opacity: 1; }
+  40% { opacity: 0.6; }
+  45% { opacity: 0.95; }
+  50% { opacity: 0.7; }
+  55% { opacity: 1; }
+  60% { opacity: 0.85; }
+  70% { opacity: 1; }
+  80% { opacity: 0.9; }
+  90% { opacity: 1; }
+  100% { 
+    opacity: 1;
+    text-shadow: 
+      0 0 2px var(--neon-green),
+      0 0 4px var(--neon-green);
+  }
+}
+
+/* Apply CRT boot to rack master header */
+.rack-container > h1,
+.page-title,
+.rack-master-title {
+  font-family: var(--font-tech);
+  animation: crt-boot var(--crt-boot-duration) ease-out both;
+  animation-delay: 0.2s;
+}
+
+/* Apply subtle flicker to module titles */
+.module-title {
+  font-family: var(--font-tech);
+  animation: flicker var(--flicker-duration) ease-in-out infinite;
+  animation-delay: var(--crt-boot-duration);
+}
+
+
+/* Subtle text glow for rack titles */
+.rack-title,
+.module-title {
+  text-shadow: 
+    0 0 4px rgba(212, 175, 55, 0.3),
+    0 0 8px rgba(212, 175, 55, 0.2);
+}
+
+/* ============================================================
+   NATURE DISTILLED — WORKSHOP CAFÉ WARM AESTHETIC
+   Contrasts with the cold industrial neon
+   ============================================================ */
+
+/* ============================================================
+   NATURE DISTILLED: WORKSHOP CAFÉ (CHANNEL 4)
+   197th LAW: Balance cold neon precision with warm organic texture
+   ============================================================ */
+
+.cafe-module,
+.rack-module[data-channel="4"] {
+  /* Use global Nature Distilled palette */
+  background: linear-gradient(135deg, 
+    rgba(210, 180, 140, 0.12) 0%, 
+    rgba(210, 180, 140, 0.06) 100%);
+  border-color: var(--clay);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.6),
+    0 0 var(--glow-md) var(--amber-glow),
+    0 0 var(--glow-lg) rgba(255, 165, 0, 0.15);
+}
+
+.cafe-module:hover,
+.rack-module[data-channel="4"]:hover {
+  border-color: var(--clay);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.6),
+    0 0 calc(var(--glow-md) * 1.3) var(--amber-glow),
+    0 0 calc(var(--glow-lg) * 1.3) rgba(255, 165, 0, 0.25);
+}
+
+/* Warm text for café content */
+.cafe-module .module-description,
+.cafe-content {
+  color: var(--off-white);
+  text-shadow: 0 0 2px var(--amber-glow);
+}
+
+/* Café Hero Text — Playfair Display serif for warmth */
+.cafe-hero {
+  font-family: var(--font-warm);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--off-white);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  text-shadow: 0 0 3px rgba(255, 165, 0, 0.15);
+}
+
+/* Café Section Titles — maintain technical font */
+.cafe-section-title {
+  font-family: var(--font-tech);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cafe-amber);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+/* Café Programming List */
+.cafe-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.cafe-list li {
+  font-family: 'Inter', 'Helvetica', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(250, 249, 246, 0.9);
+  margin-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.cafe-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--cafe-amber);
+  font-weight: bold;
+}
+
+.cafe-list li strong {
+  color: var(--cafe-off-white);
+  font-weight: 600;
+}
+
+/* Café Details */
+.cafe-details {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: rgba(250, 249, 246, 0.85);
+  border-top: 1px solid rgba(210, 180, 140, 0.3);
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
+
+.cafe-details p {
+  margin-bottom: 0.5rem;
+}
+
+.cafe-details strong {
+  color: var(--cafe-amber);
+  font-weight: 700;
+}
+
+/* ============================================================
+   SYSTEM STATUS PANEL — Knobs Integration
+   ============================================================ */
+
+.system-status-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.knobs-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .knobs-row {
+    gap: 1rem;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   Scale glow effects for mobile/tablet
+   ============================================================ */
+
+@media (max-width: 768px) {
+  :root {
+    --glow-sm: 3px;
+    --glow-md: 8px;
+    --glow-lg: 16px;
+    --glow-xl: 24px;
+  }
+  
+  /* Reduce pulse intensity on mobile for performance */
+  .rack-module[data-channel] {
+    animation-duration: 3s; /* Slower pulse on mobile */
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY — REDUCED MOTION
+   Respect user preferences for animation
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .rack-module[data-channel],
+  .led,
+  .module-title,
+  .rack-container > h1,
+  .page-title,
+  .rack-master-title {
+    animation: none !important;
+  }
+  
+  .crt-flicker {
+    animation: none;
+  }
+  
+  /* Keep text shadows for visual identity */
+  .rack-container > h1,
+  .page-title,
+  .rack-master-title {
+    opacity: 1;
+    text-shadow: 
+      0 0 2px var(--neon-green),
+      0 0 4px var(--neon-green);
+  }
+}
+
+/* ============================================================
+   THE 202nd LAW: THE PROTECTIVE PANE
+   Machined Window Glass Overlay for Skeuomorphic Depth
+   ============================================================ */
+
+.rack-window-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--unit-gap);
+  background: var(--dark-grey);
+}
+
+.rack-window-glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: 2; /* Above video/image, below neon border */
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  transition: opacity var(--glow-transition);
+}
+
+/* The "Lived-In Digital" grain texture (201st LAW) */
+.rack-window-glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.02) 30%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  filter: contrast(1.1) brightness(1.05);
+}
+
+/* Top-edge highlight: bezel reflection */
+.rack-window-glass::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* Hover effect: reflection brightens when operator engages */
+.rack-module:hover .rack-window-glass {
+  opacity: 1;
+}
+
+/* Module video gets glass overlay treatment */
+.module-video {
+  position: relative;
+}

@@ -1,0 +1,143 @@
+/* =========================================================
+   CRS HEADER LOCKDOWN RESET
+   Purpose: Prevent typographic and layout drift in header
+   Scope: Header only
+   Load: LAST in the cascade
+   ========================================================= */
+
+/* ------------------------------
+   ROOT GUARANTEE
+   ------------------------------ */
+html {
+  font-size: 16px;
+}
+
+/* ------------------------------
+   HEADER CONTAINER HARD RESET
+   ------------------------------ */
+header.rack-header,
+.site-header {
+  /* DO NOT use 'all: unset' - it breaks the grid layout from crs-header-three-zone.css */
+  /* The three-zone grid (logo | nav | cta) is defined in crs-header-three-zone.css and must be preserved */
+  box-sizing: border-box;
+  font-size: 1rem;             /* LOCKED BASE */
+  line-height: 1;
+}
+
+/* ------------------------------
+   PREVENT WIDTH CONSTRAINTS
+   ------------------------------ */
+header.rack-header *,
+.site-header * {
+  max-width: none;
+}
+
+/* ------------------------------
+   TYPOGRAPHY IMMUNITY ZONE
+   (ONLY AFFECTS SITE HEADER - NOT BODY CONTENT)
+   ------------------------------ */
+header.rack-header,
+header.rack-header * {
+  font-size: inherit !important;
+  line-height: 1.1;
+}
+
+/* ------------------------------
+   LOGO LOCK - MASSIVE WORDMARK SIZE
+   (ONLY SITE HEADER LOGO)
+   ------------------------------ */
+/* =========================================================
+   CRS INSTITUTIONAL LOGO — DO NOT CAP HEIGHT
+   
+   This logo is intentionally large for authority.
+   It scales with viewport width (22.5vw, capped 300-700px).
+   Any max-height applied here is a bug.
+   
+   If you think it's "too big", adjust the vw/px values here.
+   This is infrastructure signage, not decoration.
+   ========================================================= */
+
+header.rack-header svg,
+header.rack-header img.logo,
+header.rack-header .logo,
+header.rack-header .crs-main-logo {
+  width: 22.5vw !important;     /* 22.5% of viewport width - half of previous 45vw */
+  min-width: 300px !important;  /* Never smaller than 300px */
+  max-width: 700px !important;  /* Never bigger than 700px */
+  height: auto !important;
+  max-height: none !important;  /* CRITICAL: Override 48px cap from crs-classic-aesthetic.css */
+  min-height: none !important;
+  flex-shrink: 0;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+/* Mobile logo sizing */
+@media (max-width: 767px) {
+  header.rack-header svg,
+  header.rack-header img.logo,
+  header.rack-header .logo,
+  header.rack-header .crs-main-logo {
+    width: 50vw !important;      /* 50% viewport on mobile - proportionally smaller */
+    min-width: 200px !important;
+    max-width: 350px !important;
+    max-height: none !important;  /* Override 48px cap on mobile too */
+  }
+}
+
+/* ------------------------------
+   NAV & LABEL LOCK
+   (ONLY SITE HEADER NAV)
+   ------------------------------ */
+header.rack-header nav,
+header.rack-header .rack-nav-links,
+header.rack-header .rack-nav-links a {
+  font-size: clamp(1.5rem, 2.5vw, 3rem) !important;  /* 24-48px, scales with viewport */
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* ------------------------------
+   BUTTON / CTA LOCK
+   (ONLY SITE HEADER BUTTONS)
+   ------------------------------ */
+header.rack-header button,
+header.rack-header .book-dropdown-trigger {
+  font-size: 0.875rem !important;
+  line-height: 1;
+  padding: 0.45rem 0.75rem;
+  height: auto;
+}
+
+/* ------------------------------
+   REMOVE RESPONSIVE SCALING
+   (ONLY SITE HEADER)
+   ------------------------------ */
+header.rack-header * {
+  font-variation-settings: normal !important;
+  font-optical-sizing: none !important;
+}
+
+/* ------------------------------
+   GRID SAFETY (preserve three-zone layout)
+   (ONLY SITE HEADER)
+   ------------------------------ */
+/* Grid layout is defined in crs-header-three-zone.css - do not override */
+
+/* ------------------------------
+   HIDE CRS BADGE
+   ------------------------------ */
+.rack-header-logo,
+.header-crs-badge {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* ------------------------------
+   FINAL SAFETY NET
+   ------------------------------ */
+@media (max-width: 480px) {
+  header.rack-header {
+    padding: 0.6rem 1rem;
+  }
+}

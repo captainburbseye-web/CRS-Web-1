@@ -1,0 +1,123 @@
+/**
+ * CRS NAV BUTTON REFINEMENT
+ * Purpose: Remove Fisher-Price energy; add broadcast console authority
+ * Target: Header nav buttons (Studio, Workshop Café, AV)
+ * NOT applied to: BOOK NOW (different class, keeps pulse)
+ * 
+ * Key Changes:
+ * - Height: 44-48px → 30-34px
+ * - Padding: 14-18px vertical → 6-8px vertical
+ * - Border: Thick glow → 1px idle / intensify on hover
+ * - Font: Over-scaled → compressed with letter-spacing
+ * - Color: Full neon → muted idle / bright active
+ */
+
+/* === CORE NAV BUTTON REFINEMENT === */
+
+.nav-button {
+  /* Reduced size for secondary priority */
+  font-size: 0.75rem !important;
+  letter-spacing: 0.1em !important;
+  padding: 6px 14px !important;
+  height: 32px !important;
+  
+  /* Quiet border - no emphasis */
+  border: 1px solid rgba(245, 245, 245, 0.2) !important;
+  border-radius: 3px !important;
+  background: transparent !important;
+  
+  /* Typography - subdued */
+  text-transform: uppercase !important;
+  font-weight: 500 !important; /* Lighter weight */
+  line-height: 1 !important;
+  color: rgba(245, 245, 245, 0.6) !important; /* Lower contrast */
+  
+  /* Clean transitions */
+  transition: 
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease !important;
+  
+  /* Remove text-shadow: no depth needed in idle state */
+}
+
+/* === COLOR STATES: IDLE (NEUTRAL - NO COLOR) === */
+
+/* All nav buttons idle: neutral, quiet */
+.nav-button.nav-studio,
+.nav-button.nav-cafe,
+.nav-button.nav-av {
+  /* Inherit base neutral color from .nav-button */
+}
+
+/* === COLOR STATES: HOVER (SUBTLE ACTIVATION) === */
+/* === COLOR STATES: HOVER (SUBTLE ACTIVATION) === */
+
+/* Studio - VU Green (hover: subtle) */
+.nav-button.nav-studio:hover {
+  color: rgba(245, 245, 245, 0.9) !important;
+  background-color: rgba(57, 255, 20, 0.1) !important;
+  border-color: rgba(57, 255, 20, 0.3) !important;
+}
+
+/* Workshop Café - Warm Amber (hover: subtle) */
+.nav-button.nav-cafe:hover {
+  color: rgba(245, 245, 245, 0.9) !important;
+  background-color: rgba(212, 160, 23, 0.1) !important;
+  border-color: rgba(212, 160, 23, 0.3) !important;
+}
+
+/* AV - Red (hover: subtle) */
+.nav-button.nav-av:hover {
+  color: rgba(245, 245, 245, 0.9) !important;
+  background-color: rgba(196, 30, 58, 0.1) !important;
+  border-color: rgba(196, 30, 58, 0.3) !important;
+}
+
+/* === RESPONSIVE: MAINTAIN COMPRESSION === */
+
+/* Tablet: keep tight proportions - scaled 25% */
+@media (max-width: 768px) {
+  .nav-button {
+    font-size: 0.875rem !important;   /* 0.70rem * 1.25 */
+    padding: 6.25px 15px !important;  /* 5px * 1.25, 12px * 1.25 */
+    height: 37.5px !important;        /* 30px * 1.25 */
+  }
+}
+
+/* Mobile: hide Workshop Café, keep tight on remaining buttons - scaled 25% */
+@media (max-width: 640px) {
+  .nav-button {
+    font-size: 0.85rem !important;    /* 0.68rem * 1.25 */
+    padding: 6.25px 12.5px !important; /* 5px * 1.25, 10px * 1.25 */
+    height: 35px !important;          /* 28px * 1.25 */
+  }
+}
+
+/* === 55" TERMINAL: MAINTAIN AUTHORITY AT SCALE === */
+
+@media (min-width: 1920px) {
+  .nav-button {
+    font-size: 0.9375rem !important;  /* 0.75rem * 1.25 */
+    padding: 8.75px 20px !important;  /* 7px * 1.25, 16px * 1.25 */
+    height: 42.5px !important;        /* 34px * 1.25 */
+  }
+}
+
+/* === ENSURE BOOK NOW STAYS SEPARATE === */
+
+/* Book Now button should NOT inherit these styles */
+/* It has its own pulse animation and treatment */
+.book-now,
+.nav-book-now,
+button[class*="book"] {
+  /* Explicitly exclude from nav-button refinement */
+  /* Book Now keeps its own CSS from crs-industrial-pulse.css */
+}
+
+/* === FOOTER CONTACT LINK (IF PRESENT) === */
+
+/* If Contact appears in footer, it should NOT get nav-button treatment */
+footer .nav-button {
+  all: revert !important;
+}

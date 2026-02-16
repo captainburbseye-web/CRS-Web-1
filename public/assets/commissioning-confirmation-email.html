@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commissioning Allocation Confirmed | Cowley Road Studios</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            border: 2px solid #404940;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .header {
+            background: #404940;
+            color: #e3b448;
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Oswald', 'Courier New', monospace;
+            letter-spacing: 1px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+        .status-bar {
+            background: #111;
+            color: #e3b448;
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #e3b448;
+        }
+        .status-bar strong {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .content {
+            padding: 2rem;
+        }
+        .greeting {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .allocation-details {
+            background: #f9f9f9;
+            border-left: 4px solid #e3b448;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px dotted #ddd;
+        }
+        .detail-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .detail-label {
+            font-weight: 600;
+            color: #404940;
+        }
+        .detail-value {
+            text-align: right;
+            color: #666;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #404940;
+            color: #fff;
+            padding: 0.875rem 1.75rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #e3b448;
+            color: #000;
+        }
+        .legacy-note {
+            background: #f0f8ff;
+            border-left: 4px solid #404940;
+            padding: 1rem;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        .legacy-note strong {
+            color: #404940;
+        }
+        .footer {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #999;
+            border-top: 1px solid #ddd;
+        }
+        .footer a {
+            color: #404940;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .system-signature {
+            font-family: 'Courier New', monospace;
+            color: #999;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- HEADER -->
+        <div class="header">
+            <h1>✓ ALLOCATION CONFIRMED</h1>
+        </div>
+
+        <!-- STATUS BAR -->
+        <div class="status-bar">
+            <strong>COMMISSIONING PHASE — LIMITED ALLOCATIONS</strong>
+            Cowley Road Studios HQ
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+            
+            <div class="greeting">
+                <p>Hello {{customer_name}},</p>
+                <p>Your commissioning allocation for Cowley Road Studios has been confirmed. You have successfully locked in pre-completion rates for studio time, AV services, or workshop access.</p>
+            </div>
+
+            <!-- ALLOCATION DETAILS -->
+            <div class="allocation-details">
+                <div class="detail-row">
+                    <span class="detail-label">ALLOCATION TYPE</span>
+                    <span class="detail-value">{{allocation_type}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">RATE LOCKED</span>
+                    <span class="detail-value">{{rate_locked}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">ALLOCATION ID</span>
+                    <span class="detail-value">{{allocation_id}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">VALID FROM</span>
+                    <span class="detail-value">{{valid_from}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">COMMISSIONING CLOSES</span>
+                    <span class="detail-value">March 1, 2026</span>
+                </div>
+            </div>
+
+            <p><strong>What happens next?</strong></p>
+            <p>Your allocation is now reserved. Once the Cowley Road HQ facility completes its build phase (target: March 2026), you'll receive a separate confirmation email with booking instructions and access details.</p>
+
+            <p>In the meantime, you can book sessions at our fully operational Cricket Road Studios:</p>
+            <a href="https://square.link/u/WPqRFIGW" class="cta-button">BOOK CRICKET ROAD NOW</a>
+
+            <!-- LEGACY NOTE -->
+            <div class="legacy-note">
+                <strong>About Your Allocation:</strong> Cowley Road Studios continues the Soundworks Oxford legacy (1999–2024), stewarding over 25 years of professional audio infrastructure into a new, independent creative system for Oxford. Your commissioning allocation supports this transition and locks in rates before standard pricing takes effect after the build phase closes.
+            </div>
+
+            <p><strong>Questions?</strong></p>
+            <p>Contact us at <a href="mailto:info@crsoxford.com">info@crsoxford.com</a> or call <a href="tel:+441865722027">+44 1865 722027</a>.</p>
+
+            <p>Thank you for supporting Cowley Road Studios.</p>
+
+            <p style="margin-top: 2rem; color: #999; font-size: 0.9rem;">
+                Cowley Road Studios<br>
+                118 Cowley Road, Oxford OX4 1JE<br>
+                <a href="https://cowleyroadstudios.com" style="color: #404940; text-decoration: none;">cowleyroadstudios.com</a>
+            </p>
+
+            <div class="system-signature">
+                CRS-ALLOCATION-CONFIRM v1.0<br>
+                SYSTEM STATUS: OPERATIONAL
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p>This is an automated confirmation. Please do not reply to this email.</p>
+            <p><a href="https://cowleyroadstudios.com/rack">Explore the Rack Console</a> | <a href="https://cowleyroadstudios.com/about">About CRS</a></p>
+        </div>
+
+    </div>
+</body>
+</html>

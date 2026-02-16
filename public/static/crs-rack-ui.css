@@ -1,496 +1,2363 @@
 /* ====================================================================
-   CRS RACK INTERFACE — CSS-ONLY DAW/REASON-STYLE UI
-   NO SVG | NO IMAGES | PURE CSS GRADIENTS + PSEUDO-ELEMENTS
+   CRS RACK INTERFACE V2 — PHYSICAL HARDWARE AESTHETIC
+   Inspired by Workshop Café physical mockup
+   Enhanced depth, materials, and vintage hardware feel
    ==================================================================== */
 
 :root {
+  /* Chassis & Background */
   --rack-bg: #0a0a0a;
   --rack-border: #1a1a1a;
   --rack-shadow: rgba(0, 0, 0, 0.8);
+  --chassis-dark: #0d0d0d;
+  
+  /* Bronze/Copper Rack Ears */
+  --bronze-light: #cd9575;
+  --bronze-mid: #b87a5a;
+  --bronze-dark: #8b5a3c;
+  --bronze-shadow: #5c3d28;
+  
+  /* Green Panel (CRS) */
+  --panel-green: #2d4a2d;
+  --panel-green-light: #3d5a3d;
+  --panel-green-dark: #1d3a1d;
+  --panel-shadow: rgba(0, 0, 0, 0.6);
+  
+  /* Gold/Cream Text */
+  --text-gold: #d4af37;
+  --text-cream: #f4e8d0;
+  --text-dim: rgba(244, 232, 208, 0.7);
+  
+  /* LEDs */
+  --led-red: #ff3333;
+  --led-green: #44ff44;
+  --led-yellow: #ffaa00;
+  --led-orange: #ff7700;
+  --led-glow: rgba(68, 255, 68, 0.6);
+  
+  /* Metal Elements */
   --metal-light: #e8e8e8;
   --metal-mid: #c0c0c0;
-  --metal-dark: #a8a8a8;
-  --metal-border: #888;
-  --led-red: #ff4444;
-  --led-yellow: #ffaa00;
-  --led-green: #44ff44;
-  --led-orange: #ff7700;
-  --cta-orange-light: #ff9933;
-  --cta-orange-dark: #ff7700;
-  --text-light: rgba(245, 245, 245, 0.95);
-  --text-dim: rgba(245, 245, 245, 0.7);
-  --green-dark: #1a2f1a;
-  --green-darker: #0d1a0d;
-  --green-darkest: #0a150a;
+  --metal-dark: #909090;
+  
+  /* CTA Orange */
+  --cta-orange: #ff8833;
+  --cta-orange-dark: #dd6611;
 }
 
 /* ==== GLOBAL RACK CHASSIS ==== */
 body {
   background: var(--rack-bg);
-  color: var(--text-light);
+  color: var(--text-cream);
   margin: 0;
   padding: 0;
+  font-family: 'Space Mono', 'JetBrains Mono', monospace;
 }
 
-/* ==== RACK SCREW (REUSABLE) ==== */
-.rack-screw {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #666, #222);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
+/* ==== ENHANCED RACK UNIT WITH BRONZE EARS ==== */
+.rack-unit {
+  position: relative;
+  margin: 0 0 2px 0;
+  background: var(--panel-green);
+  border-top: 3px solid var(--chassis-dark);
+  border-bottom: 3px solid var(--chassis-dark);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.5);
+  padding: 1rem 2rem; /* REDUCED from 2rem 5rem */
+  min-height: 80px; /* REDUCED from 120px */
+}
+
+/* Bronze Rack Ears (left and right) */
+.rack-unit::before,
+.rack-unit::after {
+  content: '';
   position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 4rem;
+  background: linear-gradient(
+    180deg,
+    var(--bronze-light) 0%,
+    var(--bronze-mid) 40%,
+    var(--bronze-dark) 70%,
+    var(--bronze-shadow) 100%
+  );
+  box-shadow: 
+    inset -2px 0 4px rgba(0, 0, 0, 0.3),
+    inset 2px 0 4px rgba(255, 255, 255, 0.1);
 }
 
-/* ==== METAL PLATE EFFECT ==== */
-.metal-plate {
-  background: linear-gradient(180deg, var(--metal-light) 0%, var(--metal-mid) 50%, var(--metal-dark) 100%);
-  border: 2px solid var(--metal-border);
-  border-radius: 4px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
-  color: #222;
-  font-weight: 700;
-  padding: 8px 16px;
-  font-family: 'JetBrains Mono', monospace;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
+.rack-unit::before {
+  left: 0;
+  border-right: 1px solid var(--bronze-shadow);
 }
 
-/* ==== TRAFFIC LIGHTS ==== */
-.traffic-light {
-  width: 12px;
-  height: 12px;
+.rack-unit::after {
+  right: 0;
+  border-left: 1px solid var(--bronze-shadow);
+}
+
+/* Rack Ear Holes (pseudo-elements on ears) */
+.rack-unit {
+  background-image: 
+    /* Left ear holes */
+    radial-gradient(circle at 2rem 2rem, rgba(0, 0, 0, 0.5) 6px, transparent 6px),
+    radial-gradient(circle at 2rem calc(100% - 2rem), rgba(0, 0, 0, 0.5) 6px, transparent 6px),
+    /* Right ear holes */
+    radial-gradient(circle at calc(100% - 2rem) 2rem, rgba(0, 0, 0, 0.5) 6px, transparent 6px),
+    radial-gradient(circle at calc(100% - 2rem) calc(100% - 2rem), rgba(0, 0, 0, 0.5) 6px, transparent 6px);
+  background-repeat: no-repeat;
+  background-color: var(--panel-green);
+}
+
+/* ==== CORNER SCREWS (3D EFFECT) ==== */
+.rack-screw {
+  position: absolute;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  box-shadow: 0 0 4px currentColor, inset 0 -2px 4px rgba(0, 0, 0, 0.3);
-  display: inline-block;
-  margin: 0 2px;
+  background: 
+    radial-gradient(circle at 35% 35%, #888, #333 50%, #111);
+  box-shadow: 
+    inset 0 1px 2px rgba(0, 0, 0, 0.8),
+    0 1px 2px rgba(255, 255, 255, 0.1);
+  z-index: 10;
 }
-.traffic-light.red { background: var(--led-red); color: var(--led-red); }
-.traffic-light.yellow { background: var(--led-yellow); color: var(--led-yellow); }
-.traffic-light.green { background: var(--led-green); color: var(--led-green); }
 
-/* ==== ORANGE BRACKET CTA ==== */
+/* Phillips head cross */
+.rack-screw::before,
+.rack-screw::after {
+  content: '';
+  position: absolute;
+  background: #000;
+}
+
+.rack-screw::before {
+  width: 1px;
+  height: 6px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rack-screw::after {
+  width: 6px;
+  height: 1px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Position corner screws */
+.rack-unit .rack-screw:nth-of-type(1) { top: 1.5rem; left: 1.5rem; }
+.rack-unit .rack-screw:nth-of-type(2) { top: 1.5rem; right: 1.5rem; }
+.rack-unit .rack-screw:nth-of-type(3) { bottom: 1.5rem; left: 1.5rem; }
+.rack-unit .rack-screw:nth-of-type(4) { bottom: 1.5rem; right: 1.5rem; }
+
+/* ==== SECTION HEADER WITH GOLD TEXT ==== */
+.rack-unit-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin: 0 0 1.5rem 0;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(212, 175, 55, 0.3);
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+/* Status LED above title */
+.rack-unit-title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--led-green);
+  box-shadow: 
+    0 0 8px var(--led-green),
+    0 0 16px var(--led-glow),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Different LED colors per section */
+.rack-unit.led-red .rack-unit-title::before {
+  background: var(--led-red);
+  box-shadow: 
+    0 0 8px var(--led-red),
+    0 0 16px rgba(255, 51, 51, 0.6),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.rack-unit.led-orange .rack-unit-title::before {
+  background: var(--led-orange);
+  box-shadow: 
+    0 0 8px var(--led-orange),
+    0 0 16px rgba(255, 119, 0, 0.6),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ==== BODY TEXT (CREAM ON GREEN) ==== */
+.rack-unit p,
+.rack-unit li {
+  color: var(--text-cream);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ==== ENHANCED CTA BUTTONS ==== */
 .cta-button {
-  background: linear-gradient(180deg, var(--cta-orange-light) 0%, var(--cta-orange-dark) 100%);
+  display: inline-block;
+  background: linear-gradient(
+    180deg,
+    var(--cta-orange) 0%,
+    var(--cta-orange-dark) 100%
+  );
   color: #000;
   font-weight: 700;
-  padding: 12px 24px;
-  border: 2px solid var(--cta-orange-dark);
-  border-radius: 4px;
+  padding: 14px 28px;
+  border: 3px solid var(--cta-orange-dark);
+  border-radius: 6px;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
   font-family: 'JetBrains Mono', monospace;
   text-transform: uppercase;
   font-size: 0.875rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   text-decoration: none;
-  display: inline-block;
-  transition: transform 0.1s ease;
+  transition: all 0.15s ease;
+  position: relative;
 }
-.cta-button::before { content: "[ "; }
-.cta-button::after { content: " ]"; }
+
+
 .cta-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* ==== RACK HEADER (TOP UNIT) ==== */
 .rack-header {
-  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
-  border-bottom: 3px solid #333;
-  box-shadow: inset 0 -4px 8px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.5);
-  padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
+  background: var(--chassis-dark);
+  border-bottom: 4px solid var(--rack-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+  padding: 1rem 2rem;
+  min-height: 80px;
 }
 
-/* Header Zones */
-.rack-header-left {
+/* ==== METAL PLATE (ENHANCED) ==== */
+.metal-plate {
+  background: linear-gradient(
+    180deg,
+    var(--metal-light) 0%,
+    var(--metal-mid) 50%,
+    var(--metal-dark) 100%
+  );
+  border: 2px solid #888;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  color: #222;
+  font-weight: 700;
+  padding: 8px 20px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+/* ==== TRAFFIC LIGHTS (ENHANCED GLOW) ==== */
+.traffic-lights {
   display: flex;
+  gap: 6px;
   align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
 }
 
-.rack-header-center {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+.traffic-light {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 6px currentColor,
+    0 0 12px currentColor,
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  display: inline-block;
 }
 
-.rack-header-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+.traffic-light.red { 
+  background: radial-gradient(circle at 35% 35%, #ff6666, var(--led-red));
+  color: var(--led-red); 
 }
 
-/* CRS Logo Block with Traffic Lights */
+.traffic-light.yellow { 
+  background: radial-gradient(circle at 35% 35%, #ffcc66, var(--led-yellow));
+  color: var(--led-yellow); 
+}
+
+.traffic-light.green { 
+  background: radial-gradient(circle at 35% 35%, #66ff66, var(--led-green));
+  color: var(--led-green); 
+}
+
+/* ==== LOGO STYLING ==== */
 .rack-logo-block {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 8px 12px;
-  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
-  border: 2px solid #333;
-  border-radius: 4px;
-  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+  gap: 12px;
 }
 
-.rack-logo-block .logo-text {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 1.25rem;
-  color: var(--text-light);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.logo-svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
 }
 
-.rack-logo-block .traffic-lights {
-  display: flex;
-  gap: 3px;
+/* ==== SUBTITLE BAR ==== */
+.crs-subtitle-bar {
+  background: linear-gradient(
+    180deg,
+    var(--panel-green-light) 0%,
+    var(--panel-green) 100%
+  );
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid var(--chassis-dark);
+  padding: 12px 2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-cream);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* TASCAM Label */
-.tascam-label {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 1.5rem;
-  color: var(--led-red);
-  text-shadow: 0 0 8px var(--led-red), 0 0 4px rgba(255, 68, 68, 0.5);
-  letter-spacing: 0.15em;
-  font-weight: 900;
-}
-
-/* Orange Button Plate */
-.orange-button-plate {
-  background: linear-gradient(180deg, var(--cta-orange-light) 0%, var(--cta-orange-dark) 100%);
-  border: 2px solid var(--cta-orange-dark);
-  border-radius: 4px;
-  padding: 8px 16px;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  font-size: 0.875rem;
-  color: #000;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* Transport Button (Optional) */
-.transport-button {
-  width: 32px;
-  height: 32px;
-  background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
-  border: 2px solid #333;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
-
-.transport-button::after {
-  content: "";
-  width: 0;
-  height: 0;
-  border-left: 8px solid var(--text-dim);
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-}
-
-/* Rack Header Nav Links */
+/* ==== NAVIGATION LINKS ==== */
 .rack-nav-links {
   display: flex;
+  gap: 20px;
   align-items: center;
-  gap: 0.75rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.875rem;
 }
 
 .rack-nav-links a {
-  color: var(--text-dim);
+  color: var(--text-cream);
   text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   transition: color 0.2s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .rack-nav-links a:hover {
-  color: var(--text-light);
+  color: var(--text-gold);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
 }
 
-.rack-nav-links .separator {
-  color: rgba(245, 245, 245, 0.3);
-}
-
-/* BOOK NOW DROPDOWN */
+/* ==== DROPDOWN MENU ==== */
 .book-dropdown-trigger {
-  background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
-  border: 2px solid #333;
-  padding: 8px 16px;
-  font-family: 'JetBrains Mono', monospace;
+  background: var(--cta-orange);
+  color: #000;
+  border: 2px solid var(--cta-orange-dark);
+  padding: 10px 20px;
+  border-radius: 4px;
   font-weight: 700;
-  font-size: 0.875rem;
-  color: var(--text-light);
-  text-transform: uppercase;
+  font-size: 0.9rem;
   letter-spacing: 0.05em;
   cursor: pointer;
-  border-radius: 4px;
-  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.5);
-  position: relative;
-  transition: background 0.2s ease;
+  text-transform: uppercase;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.15s ease;
 }
 
 .book-dropdown-trigger:hover {
-  background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 100%);
-}
-
-.book-dropdown-trigger::after {
-  content: " ▾";
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .book-dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
-  margin-top: 4px;
-  background: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
-  border: 2px solid #333;
+  right: 0;
+  margin-top: 8px;
+  background: var(--panel-green);
+  border: 2px solid var(--bronze-dark);
   border-radius: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
-  min-width: 200px;
-  z-index: 2000;
-  display: none;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  min-width: 220px;
+  z-index: 1000;
 }
 
-.book-dropdown-menu[aria-hidden="false"] {
-  display: block;
+.book-dropdown-menu[aria-hidden="true"] {
+  display: none;
 }
 
 .book-dropdown-menu a {
   display: block;
-  padding: 12px 16px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.875rem;
-  color: var(--text-dim);
+  padding: 12px 20px;
+  color: var(--text-cream);
   text-decoration: none;
-  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
-  transition: background 0.2s ease, color 0.2s ease;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  transition: background 0.2s ease;
 }
 
 .book-dropdown-menu a:last-child {
   border-bottom: none;
 }
 
-.book-dropdown-menu a:hover,
-.book-dropdown-menu a:focus {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-light);
-  outline: none;
+.book-dropdown-menu a:hover {
+  background: var(--panel-green-light);
+  color: var(--text-gold);
 }
 
-/* ==== SUBTITLE BAR ==== */
-.subtitle-bar {
-  background: linear-gradient(180deg, #151515 0%, #0a0a0a 100%);
-  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
-  padding: 1rem 2rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.875rem;
-  color: var(--text-dim);
-  text-align: center;
-  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.4);
-}
-
-/* ==== RACK UNIT (SECTION CONTAINER) ==== */
-.rack-unit {
-  background: linear-gradient(180deg, var(--green-dark) 0%, var(--green-darkest) 100%);
-  border: 3px solid #2a2a2a;
-  border-radius: 8px;
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.6),
-    inset 0 -2px 4px rgba(68, 255, 68, 0.05),
-    0 4px 8px rgba(0, 0, 0, 0.5);
-  margin: 2rem auto;
+/* ==== FOOTER STYLING ==== */
+footer {
+  background: var(--chassis-dark);
+  border-top: 3px solid var(--rack-border);
   padding: 2rem;
-  position: relative;
-  max-width: 1200px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
 }
 
-/* Rack Ears (Side Rails) */
-.rack-unit::before,
-.rack-unit::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 40px;
-  background: 
-    repeating-linear-gradient(
-      0deg,
-      #2a2a2a 0px,
-      #2a2a2a 10px,
-      transparent 10px,
-      transparent 20px
-    ),
-    radial-gradient(circle at center, #1a1a1a 30%, transparent 30%),
-    linear-gradient(180deg, #252525 0%, #1a1a1a 100%);
-  background-size: 100% 100%, 100% 40px, 100% 100%;
-  background-position: 0 0, center, 0 0;
-  border: 2px solid #333;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+.footer-section {
+  margin-bottom: 1.5rem;
 }
 
-.rack-unit::before {
-  left: -40px;
-  border-right: none;
-  border-radius: 8px 0 0 8px;
-}
-
-.rack-unit::after {
-  right: -40px;
-  border-left: none;
-  border-radius: 0 8px 8px 0;
-}
-
-/* Corner Screws */
-.rack-unit-header {
-  position: relative;
-  margin-bottom: 2rem;
-}
-
-.rack-unit-header::before,
-.rack-unit-header::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #666, #222);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.8);
-  position: absolute;
-  top: -12px;
-}
-
-.rack-unit-header::before {
-  left: -12px;
-}
-
-.rack-unit-header::after {
-  right: -12px;
-}
-
-/* Section LED (Above Title) */
-.rack-unit-led {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.rack-unit-led .led {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  box-shadow: 0 0 6px currentColor, inset 0 -2px 4px rgba(0, 0, 0, 0.4);
-}
-
-.rack-unit-led .led.green { background: var(--led-green); color: var(--led-green); }
-.rack-unit-led .led.red { background: var(--led-red); color: var(--led-red); }
-.rack-unit-led .led.orange { background: var(--led-orange); color: var(--led-orange); }
-
-/* Section Title */
-.rack-unit-title {
-  font-family: 'Archivo Black', sans-serif;
-  font-size: 1.5rem;
-  color: var(--text-light);
+.footer-section h3 {
+  color: var(--text-gold);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  text-align: center;
-  margin: 0;
 }
 
-/* Section Content */
-.rack-unit-content {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.9375rem;
-  color: var(--text-dim);
-  line-height: 1.8;
+.footer-section p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
 }
 
-.rack-unit-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0;
-}
-
-.rack-unit-content li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(245, 245, 245, 0.1);
-}
-
-.rack-unit-content li:last-child {
-  border-bottom: none;
-}
-
-/* ==== MOBILE RESPONSIVE ==== */
+/* ==== RESPONSIVE ==== */
 @media (max-width: 768px) {
+  .rack-unit {
+    padding: 1.5rem 3rem;
+  }
+  
+  .rack-unit::before,
+  .rack-unit::after {
+    width: 2.5rem;
+  }
+  
   .rack-header {
+    flex-direction: column;
     padding: 1rem;
     gap: 1rem;
   }
-
-  .rack-header-left,
-  .rack-header-center,
-  .rack-header-right {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .rack-unit {
-    margin: 1rem;
-    padding: 1.5rem;
-  }
-
-  .rack-unit::before,
-  .rack-unit::after {
-    width: 20px;
-  }
-
-  .rack-unit::before {
-    left: -20px;
-  }
-
-  .rack-unit::after {
-    right: -20px;
-  }
-
-  .subtitle-bar {
+  
+  .metal-plate {
     font-size: 0.75rem;
-    padding: 0.75rem 1rem;
+    padding: 6px 12px;
   }
-
-  .tascam-label {
-    font-size: 1.25rem;
+  
+  .rack-nav-links {
+    flex-direction: column;
+    gap: 10px;
   }
+}
+/* =========================================================
+   CRS CANONICAL RACK UNIT
+   
+   Purpose: Single source of truth for rack-mounted modules
+   Scope: CRS pages only (NOT Workshop Café)
+   Philosophy: Infrastructure, not decoration
+   
+   This is the reference object. Do not drift.
+   ========================================================= */
 
-  .rack-unit-title {
-    font-size: 1.25rem;
+/* ------------------------------
+   RACK CONTAINER
+   Vertical alignment rails
+   ------------------------------ */
+.rack-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Vertical alignment rails - subtle infrastructure cue */
+.rack-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 48px;
+  right: 48px;
+  height: 100%;
+  border-left: 1px solid rgba(255,255,255,0.05);
+  border-right: 1px solid rgba(255,255,255,0.05);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ------------------------------
+   RACK UNIT (CANONICAL)
+   The reference object
+   ------------------------------ */
+.rack-unit {
+  /* STRUCTURE */
+  position: relative;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  
+  /* MATERIAL */
+  background: linear-gradient(
+    135deg,
+    rgba(20, 20, 20, 0.95),
+    rgba(15, 15, 15, 0.85),
+    rgba(18, 18, 18, 0.95)
+  );
+  background-blend-mode: overlay; /* Brushed aluminum simulation */
+  
+  /* MOUNTING */
+  border: 1px solid rgba(212, 160, 23, 0.4); /* Gold accent border */
+  border-left-width: 4px; /* Device-type indicator */
+  border-radius: 4px;
+  
+  /* DEPTH (this is critical - don't flatten) */
+  box-shadow: 
+    inset 0 1px 3px rgba(255, 255, 255, 0.05),  /* Top highlight - manufactured edge */
+    inset 0 -1px 0 rgba(0, 0, 0, 0.3),          /* Bottom shadow - depth */
+    0 4px 12px rgba(0, 0, 0, 0.4);              /* Drop shadow - mounted into chassis */
+  
+  /* NOISE (material texture - NOT decoration) */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  
+  /* ACCESSIBILITY */
+  isolation: isolate; /* Prevent blending issues */
+  z-index: 1;
+}
+
+/* ------------------------------
+   DEVICE-TYPE INDICATORS
+   Left border color = function
+   ------------------------------ */
+.rack-unit.device-rehearsal {
+  border-left-color: #39FF14; /* LED Green - Live/Active */
+}
+
+.rack-unit.device-studio {
+  border-left-color: #FFB627; /* LED Amber - Production */
+}
+
+.rack-unit.device-av {
+  border-left-color: #FF8C00; /* LED Orange - Field Operations */
+}
+
+.rack-unit.device-cafe {
+  border-left-color: #FFB627; /* LED Amber - Public Interface */
+}
+
+.rack-unit.device-community {
+  border-left-color: #FF8C00; /* LED Orange - Community Access */
+}
+
+.rack-unit.device-status {
+  border-left-color: #FF8C00; /* LED Orange - System Status */
+}
+
+/* ------------------------------
+   RACK UNIT HEADER
+   Module identification
+   ------------------------------ */
+.rack-unit-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* ------------------------------
+   LED STATUS INDICATORS
+   Operational state signaling
+   ------------------------------ */
+.rack-unit-led {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
+.led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+  /* NO pulsing unless tied to real state */
+}
+
+.led.green {
+  background: #39FF14;
+  color: #39FF14;
+}
+
+.led.yellow,
+.led.amber {
+  background: #FFB627;
+  color: #FFB627;
+}
+
+.led.orange {
+  background: #FF8C00;
+  color: #FF8C00;
+}
+
+.led.red {
+  background: #C41E3A;
+  color: #C41E3A;
+}
+
+/* LED pulse animation - USE SPARINGLY, ONLY FOR LIVE STATE */
+@keyframes pulse-led {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Apply pulse ONLY when explicitly needed */
+.led.pulse {
+  animation: pulse-led 2s ease-in-out infinite;
+  will-change: opacity; /* Hardware acceleration - prevent mobile stutter */
+}
+
+/* ------------------------------
+   RACK UNIT TITLE
+   Module label
+   ------------------------------ */
+.rack-unit-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.9);
+  margin: 0;
+}
+
+/* ------------------------------
+   RACK UNIT CONTENT
+   Module body
+   ------------------------------ */
+.rack-unit-content {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.938rem;
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.85);
+}
+
+/* ------------------------------
+   RACK SCREWS (OPTIONAL)
+   Mounting hardware visual cue
+   ------------------------------ */
+.rack-screw {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #444 30%, #222 70%);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+    0 1px 2px rgba(0, 0, 0, 0.3);
+  pointer-events: none; /* CRITICAL: Don't intercept clicks */
+}
+
+/* Screw positioning (standard rack mounting holes) */
+.rack-screw:nth-of-type(1) { top: 12px; left: 12px; }
+.rack-screw:nth-of-type(2) { top: 12px; right: 12px; }
+.rack-screw:nth-of-type(3) { bottom: 12px; left: 12px; }
+.rack-screw:nth-of-type(4) { bottom: 12px; right: 12px; }
+
+/* Cross-head screw detail */
+.rack-screw::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.4);
+  transform: translate(-50%, -50%);
+}
+
+.rack-screw::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  transform: translate(-50%, -50%);
+}
+
+/* ------------------------------
+   ACCESSIBILITY
+   ------------------------------ */
+
+/* Reduced motion safety - NO animations for users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .led,
+  .rack-unit,
+  .rack-screw {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
-@media (max-width: 480px) {
-  .rack-unit::before,
-  .rack-unit::after {
+/* Ensure adequate contrast for labels */
+.rack-unit-title {
+  color: #e0e0e0; /* WCAG AA compliant on dark background */
+}
+
+/* ------------------------------
+   MOBILE RESPONSIVE
+   ------------------------------ */
+@media (max-width: 767px) {
+  .rack-unit {
+    padding: 1.5rem 1.25rem;
+  }
+  
+  .rack-container::after {
+    left: 24px;
+    right: 24px;
+  }
+  
+  .rack-screw {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* ------------------------------
+   USAGE RULES (CRITICAL)
+   ------------------------------ */
+
+/* 
+  ✅ USE ON:
+  - CRS Studio pages
+  - CRS AV Services pages
+  - CRS technical infrastructure pages
+  - Brewforce CTAs (when appropriate)
+  
+  ❌ DO NOT USE ON:
+  - Workshop Café pages (use flat cards instead)
+  - General content pages
+  - Public-facing marketing pages
+  
+  REASONING:
+  Rack UI = institutional engineering
+  Café UI = civic warmth
+  Keep these separate.
+*/
+
+/* ------------------------------
+   CUSTOMIZATION NOTES
+   ------------------------------ */
+
+/*
+  If you need to adjust:
+  
+  1. DEPTH: Modify box-shadow values, not colors
+  2. MATERIAL: Adjust background gradient stops, not blend mode
+  3. BORDER: Change device-type colors, not structure
+  4. LED: Only add .pulse class for LIVE state
+  
+  DO NOT:
+  - Add transitions longer than 250ms
+  - Add glow effects
+  - Add bounce animations
+  - Flatten the shadow (it's load-bearing)
+  
+  This is infrastructure, not decoration.
+*/
+/* ==========================================================
+   CRS RACK STACK — Front Panel Devices (v2)
+   Each service section becomes a distinct rack-mounted unit
+   Build: 2026-01-20
+   ========================================================== */
+
+:root {
+  /* Chassis & Plate Colors */
+  --chassis-bg: #07140C;
+  --plate-bg: rgba(26, 31, 28, 0.85);
+  --plate-border: rgba(212, 160, 23, 0.25);
+  --plate-border-hover: rgba(212, 160, 23, 0.4);
+  
+  /* Text Hierarchy */
+  --text-primary: rgba(245, 245, 245, 0.92);
+  --text-secondary: rgba(245, 245, 245, 0.74);
+  --text-dim: rgba(245, 245, 245, 0.55);
+  
+  /* Device Accent Colors */
+  --signal-green: #39FF14;
+  --signal-amber: #D4A017;
+  --signal-orange: #FF8C00;
+  --signal-red: #C41E3A;
+  
+  /* Hardware Specs */
+  --device-radius: 6px;
+  --device-padding: 28px 32px;
+  --device-gap: 20px;
+  --fastener-size: 3px;
+}
+
+/* ==========================================================
+   RACK UNIT BASE — Every section becomes a device
+   ========================================================== */
+
+.rack-unit {
+  position: relative;
+  background: var(--plate-bg) !important;
+  border: 1px solid var(--plate-border) !important;
+  border-radius: var(--device-radius) !important;
+  padding: var(--device-padding) !important;
+  margin-bottom: var(--device-gap) !important;
+  overflow: visible !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Top Label Strip (engraved edge) */
+.rack-unit::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212, 160, 23, 0.3) 50%, 
+    transparent 100%) !important;
+}
+
+/* Corner Fasteners (screw holes) */
+.rack-unit {
+  background-image:
+    radial-gradient(circle at 14px 14px, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)),
+    radial-gradient(circle at calc(100% - 14px) 14px, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)),
+    radial-gradient(circle at 14px calc(100% - 14px), rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)),
+    radial-gradient(circle at calc(100% - 14px) calc(100% - 14px), rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)) !important;
+  background-repeat: no-repeat !important;
+  background-color: var(--plate-bg) !important;
+}
+
+/* ==========================================================
+   RACK UNIT HEADER — Faceplate Label Zone
+   ========================================================== */
+
+.rack-unit-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid rgba(212, 160, 23, 0.15) !important;
+}
+
+.rack-unit-led {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.led {
+  display: inline-block !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 8px currentColor !important;
+}
+
+.led.green {
+  background: var(--signal-green) !important;
+  color: rgba(57, 255, 20, 0.6) !important;
+}
+
+.led.yellow {
+  background: var(--signal-amber) !important;
+  color: rgba(212, 160, 23, 0.6) !important;
+}
+
+.led.orange {
+  background: var(--signal-orange) !important;
+  color: rgba(255, 140, 0, 0.6) !important;
+}
+
+.led.red {
+  background: var(--signal-red) !important;
+  color: rgba(196, 30, 58, 0.6) !important;
+}
+
+/* Device Title (engraved label) */
+.rack-unit-title {
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: 1.125rem !important;
+  font-weight: 800 !important;
+  color: rgba(232, 155, 60, 0.95) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  margin: 0 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ==========================================================
+   RACK UNIT CONTENT — Spec Lines & Controls
+   ========================================================== */
+
+.rack-unit-content {
+  padding-left: 20px !important; /* Inset from left edge */
+}
+
+.rack-unit-content p {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.875rem !important;
+  line-height: 1.55 !important;
+  color: var(--text-secondary) !important;
+  max-width: 62ch !important;
+  margin-bottom: 12px !important;
+}
+
+.rack-unit-content p:last-of-type {
+  margin-bottom: 20px !important;
+}
+
+/* ==========================================================
+   DEVICE-SPECIFIC SIGNATURES
+   Per-service gear identity (add classes to sections)
+   ========================================================== */
+
+/* Device A: Band Rehearsals (Patch Bay) */
+.rack-unit.device-rehearsal {
+  border-left: 3px solid var(--signal-green) !important;
+}
+
+.rack-unit.device-rehearsal .rack-unit-title {
+  color: rgba(57, 255, 20, 0.85) !important;
+}
+
+/* Device B: Studio Sessions (Channel Strip) */
+.rack-unit.device-studio {
+  border-left: 3px solid var(--signal-amber) !important;
+}
+
+.rack-unit.device-studio .rack-unit-title::after {
+  content: "" !important;
+  display: block !important;
+  width: 60px !important;
+  height: 2px !important;
+  background: var(--signal-amber) !important;
+  margin-top: 6px !important;
+  box-shadow: 0 0 4px var(--signal-amber) !important;
+}
+
+/* Device C: AV Services (Power Conditioner) */
+.rack-unit.device-av {
+  border-left: 3px solid var(--signal-orange) !important;
+}
+
+.rack-unit.device-av .rack-unit-header {
+  border-bottom-color: rgba(255, 140, 0, 0.2) !important;
+}
+
+/* Device D: Workshop Café (Routing Matrix) */
+.rack-unit.device-cafe {
+  border-left: 3px solid var(--signal-amber) !important;
+}
+
+.rack-unit.device-cafe::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212, 160, 23, 0.5) 50%, 
+    transparent 100%) !important;
+}
+
+/* Device E: Community Access (Utility Module) */
+.rack-unit.device-community {
+  border-left: 3px solid rgba(245, 245, 245, 0.3) !important;
+}
+
+.rack-unit.device-community .rack-unit-title {
+  color: rgba(245, 245, 245, 0.75) !important;
+}
+
+/* ==========================================================
+   BUTTON CONTROLS — Primary Device Actions
+   ========================================================== */
+
+.cta-button {
+  min-height: 42px !important;
+  padding: 11px 22px !important;
+  border-radius: 4px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 700 !important;
+  font-size: 0.813rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+/* Primary Button (Red Lit Control) */
+.cta-button-peak-red {
+  background: linear-gradient(180deg, #DC0000 0%, #B00000 100%) !important;
+  border: 2px solid #FF3030 !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    0 0 12px rgba(220, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.cta-button-peak-red:hover {
+  background: linear-gradient(180deg, #FF0000 0%, #DC0000 100%) !important;
+  border-color: #FF5050 !important;
+  box-shadow: 
+    0 0 20px rgba(220, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Utility Button (Amber/Orange) */
+.cta-button:not(.cta-button-peak-red) {
+  background: rgba(232, 155, 60, 0.08) !important;
+  border: 1px solid rgba(232, 155, 60, 0.5) !important;
+  color: rgba(232, 155, 60, 0.95) !important;
+}
+
+.cta-button:not(.cta-button-peak-red):hover {
+  background: rgba(232, 155, 60, 0.15) !important;
+  border-color: rgba(232, 155, 60, 0.8) !important;
+  color: rgba(232, 155, 60, 1) !important;
+}
+
+/* ==========================================================
+   MOBILE RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 768px) {
+  .rack-unit {
+    padding: 22px 18px !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .rack-unit-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  
+  .rack-unit-title {
+    font-size: 1rem !important;
+  }
+  
+  .rack-unit-content {
+    padding-left: 0 !important;
+  }
+  
+  .rack-unit-content p {
+    font-size: 0.813rem !important;
+  }
+  
+  .cta-button {
+    font-size: 0.75rem !important;
+    padding: 10px 18px !important;
+  }
+}
+
+/* ==========================================================
+   RACK CONTAINER — Enforce consistent device spacing
+   ========================================================== */
+
+main,
+.page-content,
+.content-wrap {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 32px !important;
+}
+
+@media (max-width: 768px) {
+  main,
+  .page-content,
+  .content-wrap {
+    padding: 18px !important;
+  }
+}
+/**
+ * CRS PRESENCE SIGNALS
+ * Hardware-style status indicators (no animation, no urgency)
+ */
+
+/* ============================================
+   HEADER SQUARE LOGO
+   ============================================ */
+
+.crs-square-logo {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 1rem;
+  opacity: 0.9;
+  transition: opacity 0.2s ease;
+}
+
+.crs-square-logo:hover {
+  opacity: 1;
+}
+
+.crs-square-logo img {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+/* Hide on mobile to preserve space */
+@media (max-width: 767px) {
+  .crs-square-logo {
     display: none;
+  }
+}
+
+/* ============================================
+   BOOK STATUS INDICATOR (LED Logic)
+   ============================================ */
+
+.book-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(127, 255, 0, 0.05);
+  border: 1px solid rgba(127, 255, 0, 0.3);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  margin-left: 1rem;
+}
+
+.book-status-indicator:hover {
+  background: rgba(127, 255, 0, 0.1);
+}
+
+.status-led {
+  width: 6px;
+  height: 6px;
+  background: var(--crs-green, #7fff00);
+  border-radius: 50%;
+  /* No pulse, no glow - steady state only */
+}
+
+.status-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--crs-green, #7fff00);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Hide on mobile (nav already has BOOK) */
+@media (max-width: 1023px) {
+  .book-status-indicator {
+    display: none;
+  }
+}
+
+/* ============================================
+   INFRASTRUCTURE IMAGERY (Functional Presence)
+   ============================================ */
+
+.infrastructure-image {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: 3rem auto 0;
+  display: block;
+  opacity: 0.85;
+}
+
+.infrastructure-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   CONTEXTUAL HARDWARE IMAGERY
+   ============================================ */
+
+.hardware-image {
+  max-width: 800px;
+  margin: 2rem 0;
+  opacity: 0.9;
+}
+
+.hardware-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid rgba(245, 245, 245, 0.1);
+}
+
+/* Ensure images never appear above H1 */
+section > .hardware-image:first-child {
+  display: none;
+}
+
+/* ============================================
+   PAYMENT TERMS PANEL (Rack Authority)
+   ============================================ */
+
+.payment-terms-panel {
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(127, 255, 0, 0.3);
+  border-left: 4px solid var(--crs-green, #7fff00);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.panel-header {
+  background: rgba(127, 255, 0, 0.05);
+  border-bottom: 1px solid rgba(127, 255, 0, 0.2);
+  padding: 1rem 1.5rem;
+}
+
+.panel-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: var(--crs-green, #7fff00);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.panel-content {
+  padding: 1.5rem;
+}
+
+.payment-rule {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+
+.rule-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: rgba(245, 245, 245, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.rule-label::before {
+  content: '●';
+  color: var(--crs-green, #7fff00);
+  margin-right: 0.75rem;
+  font-size: 0.5rem;
+  vertical-align: middle;
+}
+
+.rule-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--crs-green, #7fff00);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: right;
+}
+
+.panel-divider {
+  height: 1px;
+  background: rgba(127, 255, 0, 0.15);
+  margin: 1rem 0;
+}
+
+.panel-note {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(245, 245, 245, 0.1);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(245, 245, 245, 0.8);
+}
+
+.panel-note p {
+  margin: 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .payment-rule {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .rule-value {
+    text-align: left;
+    padding-left: 1.5rem;
+  }
+  
+  .panel-content {
+    padding: 1rem;
+  }
+}
+/* === RACK CONSOLE — REASON DAW INTERFACE EMULATION === */
+
+:root {
+  --rack-bg: #0D1912;
+  --rack-panel: #1a2620;
+  --rack-text: #f5f5f5;
+  --rack-label: #E3B04B;
+  --rack-action: #FF9F1C;
+  --rack-led-on: #00ff00;
+  --rack-led-off: #cc0000;
+  --rack-border: #2f3a2f;
+}
+
+.rack-console {
+  background-color: var(--rack-bg);
+  color: var(--rack-text);
+  font-family: 'JetBrains Mono', monospace;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+/* === RACK HEADER === */
+.rack-header {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  border-bottom: 3px solid var(--rack-border);
+  padding-bottom: 2rem;
+}
+
+.rack-title {
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.5rem;
+  color: var(--rack-label);
+  text-transform: uppercase;
+}
+
+.rack-subtitle {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+/* === RACK MODULES CONTAINER === */
+.rack-modules {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* === INDIVIDUAL RACK MODULE === */
+.rack-module {
+  position: relative;
+  border: 3px solid var(--rack-border);
+  background-color: var(--rack-panel);
+  overflow: hidden;
+  min-height: 280px;
+  display: flex;
+  align-items: flex-end;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.rack-module:hover {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 159, 28, 0.3);
+  border-color: var(--rack-action);
+}
+
+/* === VIDEO BACKGROUND === */
+.rack-module-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.rack-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.25;
+  filter: saturate(0.5) brightness(0.8);
+}
+
+/* === MODULE PANEL (OVERLAY) === */
+.rack-module-panel {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(13, 25, 18, 0.95) 0%, rgba(26, 38, 32, 0.92) 100%);
+  border-top: 2px solid var(--rack-border);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* === LED STATUS INDICATOR === */
+.rack-led {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px currentColor;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.rack-led-green {
+  background-color: var(--rack-led-on);
+  color: var(--rack-led-on);
+}
+
+.rack-led-red {
+  background-color: var(--rack-led-off);
+  color: var(--rack-led-off);
+}
+
+/* === MODULE TITLE === */
+.rack-module-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin: 0;
+  color: var(--rack-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* === MODULE DESCRIPTION === */
+.rack-module-description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* === CTA BUTTON === */
+.rack-cta {
+  background-color: var(--rack-action);
+  color: var(--rack-bg);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  border: 2px solid var(--rack-action);
+  min-width: 150px;
+  text-align: center;
+}
+
+.rack-cta:hover {
+  background-color: transparent;
+  color: var(--rack-action);
+  box-shadow: 0 0 12px var(--rack-action);
+}
+
+/* === QR CODE CONTAINER === */
+.rack-qr-container {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rack-border);
+  display: flex;
+  justify-content: center;
+}
+
+.rack-qr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rack-qr canvas,
+.rack-qr img {
+  filter: invert(1);
+  background-color: var(--rack-bg);
+  padding: 0.5rem;
+  border: 2px solid var(--rack-label);
+}
+
+/* === RACK FOOTER === */
+.rack-footer-system {
+  max-width: 900px;
+  margin: 3rem auto 0;
+  padding-top: 2rem;
+  border-top: 3px solid var(--rack-border);
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em;
+}
+
+.rack-footer-system p {
+  margin: 0.25rem 0;
+}
+
+/* === MOBILE RESPONSIVE === */
+@media (max-width: 768px) {
+  .rack-console {
+    padding: 1.5rem 0.75rem;
   }
 
-  .rack-header-center {
-    display: none;
+  .rack-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
   }
+
+  .rack-title {
+    font-size: 1.8rem;
+  }
+
+  .rack-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .rack-modules {
+    gap: 1rem;
+  }
+
+  .rack-module {
+    min-height: 240px;
+  }
+
+  .rack-module-panel {
+    padding: 1.5rem;
+    gap: 0.75rem;
+  }
+
+  .rack-module-title {
+    font-size: 1.1rem;
+  }
+
+  .rack-module-description {
+    font-size: 0.8rem;
+  }
+
+  .rack-cta {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    min-width: 120px;
+  }
+
+  .rack-qr canvas,
+  .rack-qr img {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}
+
+/* === TABLET === */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .rack-module {
+    min-height: 300px;
+  }
+
+  .rack-module-panel {
+    padding: 1.75rem;
+  }
+}
+
+/* === DESKTOP === */
+@media (min-width: 1025px) {
+  .rack-console {
+    padding: 2.5rem 1rem;
+  }
+
+  .rack-module {
+    min-height: 320px;
+  }
+
+  .rack-module:hover {
+    transform: translateY(-2px);
+  }
+}
+/* === HEAVYWEIGHT INSTITUTIONAL MODULE (SCOPED) === */
+/* Phase 2: Hardware Realism - Powder-Coat Texture & Mobile Stack */
+
+:root {
+  --mustard-mus: #e3b448;
+  --fire-red: #d32f2f;
+  --nettle-green: #404940;
+  --black-panel: #111;
+}
+
+/* === ACCESSIBILITY === */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--mustard-mus);
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* === SYSTEM HEARTBEAT (Optional) === */
+
+@keyframes heartbeat {
+  0%, 100% { opacity: 0.03; }
+  50% { opacity: 0.08; }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--mustard-mus);
+  animation: heartbeat 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* === SYSTEM PULSE (Commissioning Phase Indicator) === */
+
+@keyframes system-pulse {
+  0% { box-shadow: 0 0 5px rgba(227, 180, 72, 0.1); }
+  50% { box-shadow: 0 0 15px rgba(227, 180, 72, 0.3); }
+  100% { box-shadow: 0 0 5px rgba(227, 180, 72, 0.1); }
+}
+
+.system-status-panel {
+  animation: system-pulse 4s infinite ease-in-out;
+}
+
+/* === PERFORMANCE: DNS PREFETCH (in <head>) ===
+   Link tags added to index.html:
+   <link rel="dns-prefetch" href="https://square.link">
+   <link rel="preconnect" href="https://square.link">
+*/
+
+/* === 🛠️ METAL FACEPLATE TEXTURE === */
+
+.rack-module {
+  background-color: var(--nettle-green);
+  background-image: 
+    repeating-radial-gradient(circle at 0 0, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 100%),
+    linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.1) 100%);
+  background-size: 3px 3px, 100% 100%;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 4rem;
+  margin-bottom: 3rem;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.1), 
+    inset 0 -1px 0 rgba(0,0,0,0.4),
+    0 2px 8px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.rack-module h2 {
+  font-size: 4.2rem;
+  color: #FFFFFF;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.rack-module p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+  max-width: 72ch;
+}
+
+.rack-module .technical-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.05rem;
+  color: #E3B04B;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.rack-module .button-primary {
+  font-size: 1.4rem;
+  padding: 1.1rem 2.4rem;
+  background: transparent;
+  border: 2px solid #FF9F1C;
+  color: #FF9F1C;
+  box-shadow: 0 0 14px rgba(255,159,28,0.3);
+}
+
+/* === RACK CONNECTOR (FALLBACK ANCHOR) === */
+
+.rack-connector {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* === POWER SWITCH BUTTONS (PATCH BAY) === */
+/* Vintage illuminated toggle on preamp aesthetic */
+
+.power-switch {
+  background: var(--black-panel);
+  color: var(--mustard-mus);
+  border: 2px solid var(--mustard-mus);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  min-height: 44px; /* WCAG touch target */
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.15s ease-in-out;
+  box-shadow: 0 0 4px rgba(227, 180, 72, 0.3);
+  position: relative;
+  z-index: 2;
+  border-radius: 2px;
+}
+
+/* === 🔘 REFINED MUSTARD GLOW === */
+
+.power-switch:hover {
+  background-color: var(--mustard-mus);
+  color: #000;
+  box-shadow: 
+    0 0 15px rgba(227, 180, 72, 0.5),
+    0 0 30px rgba(227, 180, 72, 0.2),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  text-shadow: 0 0 2px rgba(0,0,0,0.3);
+  transform: translateY(-1px);
+}
+
+.power-switch:active,
+.power-switch.active {
+  background: var(--fire-red) !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  box-shadow: 0 0 8px var(--fire-red);
+  transform: scale(0.97);
+  transition: background 0.1s ease-out;
+}
+
+.power-switch:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: 0 0 3px rgba(227, 180, 72, 0.2);
+}
+
+/* === WORKSHOP CAFÉ TYPOGRAPHY VARIANT === */
+/* Softer sans-serif for welcoming space */
+
+.rack-module.workshop-cafe h2,
+.rack-module.workshop-cafe p {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.rack-module.workshop-cafe h2 {
+  font-size: 3.8rem;
+  font-weight: 500;
+}
+
+/* === 📱 MOBILE VERTICAL STACKING === */
+
+@media (max-width: 768px) {
+  .rack-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px;
+  }
+  
+  .rack-module {
+    width: 100%;
+    min-height: 180px; /* Equivalent to a 4U mobile block */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .rack-module h2 {
+    font-size: 2.4rem;
+  }
+
+  .power-switch {
+    font-size: 0.85rem;
+    padding: 12px 16px;
+    min-height: 48px; /* Enhanced touch target for mobile */
+  }
+}
+/**
+ * CRS HARDWARE DISCIPLINE — FINAL PASS
+ * 
+ * DOCTRINE LOCKED:
+ * - INFORMATION ≠ ACTION
+ * - LABEL ≠ BUTTON
+ * - NAVIGATION ≠ TRANSPORT CONTROL
+ * 
+ * ZONE A (LEFT): Console Labels - Static, engraved, calm
+ * ZONE B (CENTER): CRS Logo - System identity
+ * ZONE C (RIGHT): BOOK NOW - The ONLY animated transport control
+ */
+
+/* === HEADER STRUCTURAL RESET === */
+.crs-header {
+  display: flex !important;
+  position: relative !important; /* Required for absolute positioning of stamp */
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 1rem 1.5rem !important;
+  background: #0E0E0E !important; /* Deep Black Terminal */
+  border: 2px solid #3a3a3a !important;
+  border-radius: 4px !important;
+  
+  /* Kill any grid attempts */
+  grid-template-columns: unset !important;
+  grid-template-rows: unset !important;
+}
+
+/* === CRS RACK BADGE (Static Manufacturer Plate) === */
+/* ABSOLUTE LEFT ANCHOR — Bolted to chassis edge */
+.crs-rack-badge {
+  /* ABSOLUTE POSITIONING — Far Left Edge */
+  position: absolute !important;
+  left: 15px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  
+  /* FIXED SCALE LOCK — 72px Hardware Component */
+  height: 72px !important;
+  width: auto !important;
+  
+  /* HARD LOCKS — Passive Hardware Only */
+  pointer-events: none !important;      /* Not clickable */
+  cursor: default !important;
+  filter: none !important;              /* No glow */
+  box-shadow: none !important;
+  animation: none !important;
+  transition: none !important;
+  
+  /* Governance: This is a rack plate, not a logo */
+  user-select: none;
+  flex-shrink: 0;
+  opacity: 0.95;
+  z-index: 1; /* Above background, below interactive elements */
+}
+
+/* === NAVIGATION ROW === */
+.crs-header-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+  margin-left: 100px; /* OFFSET: Prevents overlap with 72px stamp */
+}
+
+/* === ZONE A: LEFT CONTAINER (Console Labels only) === */
+.crs-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 0 1 auto;
+}
+
+/* === ZONE A: CONSOLE LABELS (NAVIGATION) === */
+.crs-nav-primary {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+}
+
+.header-services {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+}
+
+/* CONSOLE LABEL STYLING — ENGRAVED, NOT BUTTONS */
+.nav-item,
+.nav-button,
+.header-services a {
+  /* Typography — Console Terminal */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.70rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  
+  /* IDLE STATE — Engraved Console Label */
+  color: #d1d1d1 !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+  
+  /* Remove all button styling */
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 0 !important;
+  
+  /* Subtle transition */
+  transition: color 0.15s ease, text-shadow 0.15s ease !important;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+/* HOVER STATE — Slight brightening only (like LED backlight barely coming on) */
+.nav-item:hover,
+.nav-button:hover,
+.header-services a:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 4px rgba(255,255,255,0.3) !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ACTIVE STATE — Same as hover, no distinction needed for labels */
+.nav-item.active,
+.nav-button.active,
+.header-services a.active,
+.nav-item[aria-current="page"],
+.nav-button[aria-current="page"],
+.header-services a[aria-current="page"] {
+  color: #ffffff !important;
+  text-shadow: 0 0 4px rgba(255,255,255,0.4) !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* SEPARATOR — Engraved dot between labels */
+.separator {
+  color: #666 !important;
+  font-size: 0.8rem !important;
+  margin: 0 0.5rem !important;
+  user-select: none;
+}
+
+/* === ZONE C: RIGHT CONTAINER (BOOK NOW ONLY) === */
+.crs-header-right,
+.crs-nav-action {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  flex: 0 0 auto !important;
+}
+
+/* BOOK NOW — THE ONLY TRANSPORT CONTROL */
+.book-now-panel,
+.neon-flash {
+  /* This is the ONLY element allowed to glow/pulse */
+  /* Keep existing animation from crs-industrial-pulse.css */
+  /* Do NOT suppress it */
+}
+
+.book-now-trigger {
+  /* Keep existing orange pulse */
+  /* This is correct behavior — transport control */
+}
+
+/* === KILL ALL COLOR-CODED NAV STATES === */
+.nav-studio,
+.nav-cafe,
+.nav-av,
+.nav-button.nav-studio,
+.nav-button.nav-cafe,
+.nav-button.nav-av {
+  /* These are console labels, not status indicators */
+  color: #d1d1d1 !important;
+  border-color: transparent !important;
+  background: transparent !important;
+}
+
+.nav-studio:hover,
+.nav-cafe:hover,
+.nav-av:hover,
+.nav-button.nav-studio:hover,
+.nav-button.nav-cafe:hover,
+.nav-button.nav-av:hover {
+  /* Uniform hover — no color coding */
+  color: #ffffff !important;
+  text-shadow: 0 0 4px rgba(255,255,255,0.3) !important;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* === MOBILE BEHAVIOR === */
+@media (max-width: 1023px) {
+  .crs-header {
+    padding: 0.875rem 1.25rem !important;
+  }
+  
+  .crs-rack-badge {
+    height: 64px !important; /* Slightly smaller on tablet */
+    left: 12px !important;
+  }
+  
+  .crs-header-nav-row {
+    gap: 1.5rem;
+    margin-left: 85px; /* Adjust for smaller badge */
+  }
+  
+  .nav-item,
+  .nav-button,
+  .header-services a {
+    font-size: 0.68rem !important;
+    padding: 0.25rem 0.4rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .crs-header {
+    padding: 0.75rem 1rem !important;
+  }
+  
+  /* Hide rack badge on mobile (too small) */
+  .crs-rack-badge {
+    display: none !important;
+  }
+  
+  .crs-header-nav-row {
+    justify-content: space-between;
+    gap: 1rem;
+    margin-left: 0 !important; /* Reset offset when badge is hidden */
+  }
+  
+  /* Hide desktop nav */
+  .header-services {
+    display: none !important;
+  }
+  
+  /* Show hamburger */
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+}
+
+/* === OVERRIDES FOR PREVIOUS CSS === */
+/* Kill any previous button treatments */
+.nav-button {
+  /* Reset to console label */
+  height: auto !important;
+  min-height: unset !important;
+  border-radius: 0 !important;
+}
+
+/* Kill vertical separation grid */
+.crs-header[style*="grid"] {
+  display: flex !important;
+}
+
+/* === HAMBURGER MENU (MOBILE ONLY) === */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: 1px solid #666;
+  color: #d1d1d1;
+  font-size: 1.25rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 3px;
+}
+
+.mobile-menu-toggle:hover {
+  color: #fff;
+  border-color: #999;
+}
+
+/* === ACCESSIBILITY === */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* === DOCTRINE ENFORCEMENT === */
+/* If any future CSS tries to add glow to nav items, this kills it */
+.nav-item *,
+.nav-button *,
+.header-services a * {
+  animation: none !important;
+}
+
+.nav-item::before,
+.nav-item::after,
+.nav-button::before,
+.nav-button::after,
+.header-services a::before,
+.header-services a::after {
+  display: none !important;
+}
+
+/* ============================================================================
+   SUB-RACK UNIFORMITY FIX — THE 169th LAW
+   Tightened tolerances for machined aesthetic
+   ============================================================================ */
+
+/* Sub-Rack Row (Parent Container for Cowley + Cricket) */
+.sub-rack-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px; /* REDUCED from 15px */
+  margin-top: 12px; /* REDUCED from 15px */
+}
+
+@media (max-width: 768px) {
+  .sub-rack-row {
+    grid-template-columns: 1fr;
+    gap: 8px; /* REDUCED for mobile */
+  }
+}
+
+/* Individual Sub-Rack Modules (Cowley Road, Cricket Road) */
+.rack-module.sub-rack {
+  border: 2px solid #333; /* UNIFIED border with standard modules */
+  background: #1a1a1a; /* DARKER for contrast */
+  padding: 12px; /* REDUCED 50% from 24px (was padding: 15px, now tighter) */
+  position: relative;
+  min-height: 180px; /* REDUCED from 240px */
+}
+
+/* Sub-Rack Module Header */
+.rack-module.sub-rack .module-header {
+  margin-bottom: 8px; /* REDUCED from 1rem */
+  padding-bottom: 8px; /* REDUCED from 0.75rem */
+  border-bottom: 1px solid rgba(51, 51, 51, 0.5); /* SUBTLE separator */
+}
+
+/* Sub-Rack Module Title */
+.rack-module.sub-rack .module-title {
+  font-size: 0.938rem; /* REDUCED from 1rem */
+  font-family: 'Oswald', sans-serif; /* UNIFIED with headers */
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 0.9);
+}
+
+/* Sub-Rack Description */
+.sub-rack-description {
+  font-family: 'JetBrains Mono', monospace; /* UNIFIED data font */
+  font-size: 0.813rem; /* REDUCED from 0.95rem */
+  line-height: 1.5; /* TIGHTENED from 1.6 */
+  color: rgba(245, 245, 245, 0.7);
+  margin: 0 0 10px 0; /* REDUCED bottom margin */
+}
+
+/* Sub-Rack Video */
+.rack-module.sub-rack .module-video {
+  height: 100px; /* REDUCED from 120px */
+  margin-bottom: 8px; /* REDUCED from 0.75rem */
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+/* Sub-Rack Patch Point */
+.rack-module.sub-rack .patch-point {
+  margin-top: 8px; /* REDUCED from 1rem */
+  padding-top: 8px; /* REDUCED from 1rem */
+  border-top: 1px solid rgba(51, 51, 51, 0.5);
+}
+
+/* Sub-Rack QR Code */
+.rack-module.sub-rack .qr-code {
+  width: 80px; /* REDUCED from 100px */
+  height: 80px;
+}
+
+/* Sub-Rack Power Switch Button */
+.rack-module.sub-rack .power-switch {
+  font-size: 0.7rem; /* Further reduced from 0.75rem */
+  padding: 6px 12px; /* Further reduced from 8px 16px */
+  letter-spacing: 0.06em;
+  min-height: 36px; /* Reduced from default 44px */
+  font-weight: 500; /* Lighter weight for smaller size */
+}
+
+/* Mobile Sub-Rack Adjustments */
+@media (max-width: 768px) {
+  .rack-module.sub-rack {
+    padding: 10px; /* FURTHER REDUCED for mobile */
+    min-height: 160px;
+  }
+  
+  .rack-module.sub-rack .module-video {
+    height: 80px; /* REDUCED for mobile */
+  }
+}
+
+
+/* ====================================================================
+   EMERGENCY PATCH: FORCE RACK HARDWARE DIMENSIONS
+   Applied 2026-02-07 - Forces proper 19" rack aspect ratio
+   ==================================================================== */
+
+/* FORCE FULL WIDTH - Treat images as structural components */
+.rack-unit img,
+.rack-window img,
+.rack-faceplate,
+.rack-asset-img {
+  width: 100% !important;       /* Force it to touch the edges */
+  display: block !important;    /* Remove the "ghost gap" at the bottom */
+  aspect-ratio: 5/1 !important; /* Enforce the wide rack shape (19" x 2U) */
+  object-fit: cover !important; /* Crop the edges if needed, don't squish */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Remove any container constraints that might squish images */
+.rack-window,
+.rack-unit > div:first-child {
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Ensure consistent 2U rack height across all units */
+.rack-unit {
+  min-height: 88px !important;  /* 2U = 3.5" at screen scale */
+  max-height: 88px !important;
+}
+
+
+/* ====================================================================
+   ULTRA PATCH: ABSOLUTE EDGE-TO-EDGE FILL (2026-02-07 12:05 UTC)
+   Remove ALL padding and make images fill entire rack frame area
+   ==================================================================== */
+
+/* Step 1: Remove all padding from rack-unit container */
+.rack-unit {
+  padding: 0 !important;
+  margin: 0 0 2px 0 !important;
+  overflow: hidden !important;
+}
+
+/* Step 2: Make images absolutely positioned to fill parent completely */
+.rack-unit img,
+.rack-unit .rack-faceplate {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Step 3: Hide rack ears (bronze sidebars) so image fills edge-to-edge */
+.rack-unit::before,
+.rack-unit::after {
+  display: none !important;
+}
+
+/* Step 4: Ensure parent is positioned for absolute children */
+.rack-unit > div,
+.rack-unit > a {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
 }

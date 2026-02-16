@@ -1,0 +1,271 @@
+/**
+ * CRS NUCLEAR FIX — CRITICAL OVERRIDE
+ * Priority: FINAL LOAD (Must be last in HTML)
+ * Purpose: Force-remove persistent yellow border & fix button colors
+ * 
+ * This file uses !important on everything to ensure it wins the CSS specificity war.
+ */
+
+/* ============================================
+   KILL THE LEFT BORDER — UNIVERSAL NUKE
+   Target every possible element that could have it
+   ============================================ */
+
+/* Nuclear option: Remove left border from EVERYTHING */
+*,
+*::before,
+*::after {
+    border-left: none !important;
+}
+
+/* Specifically target the known culprits */
+.rack-page,
+.rack-page.virtual-interface,
+.master-rack-chassis,
+body,
+html,
+main,
+#root,
+#app,
+[class*="rail"],
+[class*="sidebar"],
+[class*="rack-left"] {
+    border-left: none !important;
+    border-left-width: 0 !important;
+}
+
+/* Force the rack page to NOT have the left rail */
+.rack-page.virtual-interface {
+    border-left: none !important;
+    border-right: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove the pseudo-element rails entirely */
+.rack-page.virtual-interface::before,
+.rack-page.virtual-interface::after {
+    display: none !important;
+    content: none !important;
+    border: none !important;
+}
+
+/* Hide any rail/sidebar divs */
+[class*="rail"],
+[class*="sidebar"],
+.rack-left-col {
+    display: none !important;
+    width: 0 !important;
+    visibility: hidden !important;
+}
+
+/* ============================================
+   CENTER THE RACK PROPERLY
+   ============================================ */
+
+body {
+    display: block !important;
+    background-color: #050505 !important;
+    background-image: none !important;
+}
+
+.master-rack-chassis,
+.rack-page {
+    margin: 0 auto !important;
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+}
+
+/* ============================================
+   FORCE INDUSTRIAL AMBER BUTTONS
+   Target every possible button class/element
+   ============================================ */
+
+button,
+a[class*="button"],
+a[class*="btn"],
+.book-now-button,
+.cta-service,
+.location-cta,
+.rack-cta-button,
+.ghost-hitbox,
+.rack-booking-hitbox,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+[class*="btn"],
+[class*="cta"] {
+    /* FORCE BLACK & AMBER VISUALS */
+    background-color: #050505 !important;
+    background-image: none !important;
+    background: #050505 !important;
+    color: #FF9F1C !important;
+    border: 1px solid #FF9F1C !important;
+    border-color: #FF9F1C !important;
+
+    /* FORCE SHAPE & TEXT */
+    border-radius: 2px !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    box-shadow: 0 0 10px rgba(255, 159, 28, 0.2) !important;
+    opacity: 1 !important;
+    
+    /* Ensure visibility */
+    visibility: visible !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    /* Remove any conflicting styles */
+    filter: none !important;
+}
+
+/* HOVER STATE — Inverse colors */
+button:hover,
+a[class*="button"]:hover,
+a[class*="btn"]:hover,
+.book-now-button:hover,
+.cta-service:hover,
+.location-cta:hover,
+.rack-cta-button:hover,
+.ghost-hitbox:hover,
+.rack-booking-hitbox:hover,
+[role="button"]:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+[class*="btn"]:hover,
+[class*="cta"]:hover {
+    background-color: #FF9F1C !important;
+    background: #FF9F1C !important;
+    color: #000 !important;
+    border-color: #FF9F1C !important;
+    box-shadow: 0 0 20px rgba(255, 159, 28, 0.8) !important;
+}
+
+/* ACTIVE STATE — Press effect */
+button:active,
+a[class*="button"]:active,
+a[class*="btn"]:active,
+.book-now-button:active,
+.cta-service:active,
+.location-cta:active,
+.rack-cta-button:active,
+.ghost-hitbox:active,
+.rack-booking-hitbox:active,
+[role="button"]:active,
+input[type="button"]:active,
+input[type="submit"]:active,
+[class*="btn"]:active,
+[class*="cta"]:active {
+    background-color: #050505 !important;
+    background: #050505 !important;
+    transform: scale(0.98) !important;
+    box-shadow: 0 0 15px rgba(255, 159, 28, 0.6) !important;
+}
+
+/* FOCUS STATE — Accessibility */
+button:focus,
+a[class*="button"]:focus,
+a[class*="btn"]:focus,
+.book-now-button:focus,
+.cta-service:focus,
+.location-cta:focus,
+.rack-cta-button:focus,
+.ghost-hitbox:focus,
+.rack-booking-hitbox:focus,
+[role="button"]:focus,
+input[type="button"]:focus,
+input[type="submit"]:focus,
+[class*="btn"]:focus,
+[class*="cta"]:focus {
+    outline: 2px solid #FF9F1C !important;
+    outline-offset: 2px !important;
+}
+
+/* ============================================
+   GHOST CHASSIS BUTTONS (Special handling)
+   The invisible hitboxes need amber glow on hover
+   ============================================ */
+
+[data-channel="2"] .rack-booking-hitbox,
+[data-channel="3"] .rack-booking-hitbox {
+    background: transparent !important;
+    color: transparent !important;
+    border: none !important;
+}
+
+[data-channel="2"] .rack-booking-hitbox:hover,
+[data-channel="3"] .rack-booking-hitbox:hover {
+    background: rgba(255, 159, 28, 0.15) !important;
+    box-shadow: 
+        0 0 20px rgba(255, 159, 28, 0.6) !important,
+        inset 0 0 12px rgba(255, 159, 28, 0.3) !important;
+}
+
+[data-channel="2"] .rack-booking-hitbox:active,
+[data-channel="3"] .rack-booking-hitbox:active {
+    background: rgba(255, 159, 28, 0.25) !important;
+    box-shadow: 
+        0 0 15px rgba(255, 159, 28, 0.5) !important,
+        inset 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ============================================
+   FINAL SAFETY NET
+   Remove any residual pale yellow/beige colors
+   ============================================ */
+
+[style*="border-left"] {
+    border-left: none !important;
+}
+
+[style*="#f5f5dc"],
+[style*="#fafad2"],
+[style*="#ffffcc"],
+[style*="beige"],
+[style*="pale"] {
+    border-color: transparent !important;
+    background-color: #050505 !important;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    * {
+        border-left: none !important;
+    }
+    
+    body {
+        background-color: #050505 !important;
+    }
+    
+    button,
+    [class*="button"],
+    [class*="btn"],
+    [class*="cta"] {
+        background-color: #050505 !important;
+        color: #FF9F1C !important;
+        border: 1px solid #FF9F1C !important;
+    }
+}
+
+/* ============================================
+   DEBUG VERIFICATION
+   Uncomment to see what this file is affecting
+   ============================================ */
+
+/* 
+body::before {
+    content: "NUCLEAR FIX ACTIVE";
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: red;
+    color: white;
+    padding: 10px;
+    z-index: 999999;
+    font-weight: bold;
+}
+*/

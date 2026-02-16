@@ -1,0 +1,1256 @@
+/* ============================================
+   CRS CLASSIC AESTHETIC - SATURDAY BEST LOOK
+   Restores: Simple header, clean sections, original colors
+   Keeps: MailChannels, WSC mode, all functionality
+   ============================================ */
+
+/* GLOBAL LAYOUT FIX - Prevent horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Ensure all sections center properly */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header, section, footer {
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* OVERRIDE RACK UI V2 - BACK TO CLEAN */
+body:not(.wsc-mode) {
+  /* Simpler colors - back to NASA terminal */
+  --rack-bg: #0D1912;
+  --panel-green: #1A251E;
+  --panel-green-light: #2D3A32;
+  --panel-green-dark: #0D1912;
+  --text-gold: #E89B3C;
+  --text-cream: #FFFFFF;
+  --led-green: #C8FF41;
+}
+
+/* SIMPLIFIED RACK UNITS - NO BRONZE EARS */
+.rack-unit {
+  position: relative;
+  margin: 0;
+  background: var(--panel-green);
+  border-top: 1px solid rgba(212, 160, 23, 0.2);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  box-shadow: none;
+  padding: 0;
+  min-height: auto;
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: center;
+}
+
+/* RACK UNIT CONTENT - CENTERED */
+.rack-unit-content {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  width: 100%;
+}
+
+/* RACK UNIT HEADER - CENTERED */
+.rack-unit-header {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 2rem 0 2rem;
+  width: 100%;
+}
+
+/* Remove bronze ears */
+.rack-unit::before,
+.rack-unit::after {
+  display: none;
+}
+
+/* Remove rack ear holes */
+.rack-unit {
+  background-image: none;
+  background-color: var(--panel-green);
+}
+
+/* SIMPLIFIED SCREWS - SMALL CORNER DOTS */
+.rack-screw {
+  display: none; /* Remove for cleaner look */
+}
+
+/* SECTION KNOBS - SIMPLE COLORED DOTS */
+.section-knob {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.75rem;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.section-knob-green {
+  background: var(--led-green);
+  color: var(--led-green);
+}
+
+.section-knob-yellow {
+  background: #F4D03F;
+  color: #F4D03F;
+}
+
+.section-knob-red {
+  background: #FF4444;
+  color: #FF4444;
+}
+
+/* SIMPLIFIED TITLES - NO LED */
+.rack-unit-title {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: rgba(245, 245, 245, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 1rem 0;
+  text-shadow: none;
+  padding-top: 0;
+}
+
+/* Remove LED from title */
+.rack-unit-title::before {
+  display: none;
+}
+
+/* SIMPLIFIED HEADER - BACK TO CLEAN */
+.rack-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--rack-bg);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 2rem 0.875rem 3rem; /* Left padding increased to 3rem (48px) - shift right */
+  min-height: auto;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* HEADER LEFT - BADGE + TASCAM LABEL + NAV */
+.rack-header-left {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem; /* Increased from 1.5rem for more breathing room */
+}
+
+/* HEADER RIGHT - BOOK NOW (right-aligned with slight inset) */
+.rack-header-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto; /* Force to far right */
+  margin-right: 1rem; /* Slight inset from right edge */
+}
+
+/* HEADER IMAGE SIZE CONSTRAINTS */
+.rack-header img,
+.rack-header-left img,
+.rack-logo-block img,
+.logo-hardware-panel,
+.crs-tascam-label {
+  max-height: 48px !important;
+  height: 48px !important;
+  width: auto !important;
+}
+
+/* CRS MAIN LOGO - CONTROLLED BY crs-precision-calibration.css */
+/* .crs-main-logo {
+  max-height: none !important;
+  height: auto !important;
+  max-width: 500px !important;
+  width: auto !important;
+  display: block;
+} */
+
+.logo-hardware-panel {
+  max-height: 42px !important;
+  height: 42px !important;
+}
+
+/* HEADER CENTER - TITLE */
+.rack-header-center {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.rack-logo-block {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.logo-svg {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 4px;
+  filter: none;
+}
+
+/* Remove traffic lights */
+.traffic-lights {
+  display: none;
+}
+
+/* COWLEY ROAD SIGN - FIXED TOP RIGHT */
+.crs-title-image {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  max-width: 220px;
+  height: auto;
+}
+
+/* TITLE ROAD SIGN - CONSTRAINED SIZE */
+/* (Styling handled in .crs-street-sign-overlay above) */
+
+/* SUBTITLE BAR - SIMPLER */
+.crs-subtitle-bar {
+  background: var(--panel-green);
+  border-top: 1px solid rgba(212, 160, 23, 0.1);
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  padding: 0.75rem 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgba(245, 245, 245, 0.65);
+  text-shadow: none;
+  box-shadow: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* METAL PLATES - SIMPLER */
+.metal-plate {
+  background: rgba(232, 155, 60, 0.1);
+  border: 1px solid rgba(232, 155, 60, 0.3);
+  border-radius: 4px;
+  box-shadow: none;
+  text-shadow: none;
+  color: var(--text-gold);
+  font-weight: 600;
+  padding: 6px 16px;
+  font-family: 'Archivo Black', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin: 0 6px;
+}
+
+/* NAVIGATION - CLEANER */
+.rack-nav-links {
+  display: flex;
+  gap: 2rem; /* Increased from 1.5rem for more spacing */
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem; /* Increased from 0.813rem */
+  font-weight: 400;
+}
+
+.rack-nav-links a {
+  color: rgba(245, 245, 245, 0.85);
+  text-decoration: none;
+  font-size: 1rem; /* Increased from 0.813rem */
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  transition: color 0.2s ease;
+  text-shadow: none;
+}
+
+.rack-nav-links a:hover {
+  color: var(--text-gold);
+  text-shadow: none;
+}
+
+/* SEPARATOR DOTS */
+.rack-nav-links .separator {
+  color: rgba(245, 245, 245, 0.3);
+  font-weight: 300;
+}
+
+/* CTA BUTTONS - CLEANER BRACKETS */
+.cta-button {
+  display: inline-block;
+  background: transparent;
+  color: var(--text-gold);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--text-gold);
+  border-radius: 4px;
+  text-shadow: none;
+  box-shadow: none;
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+
+.cta-button:hover {
+  background: rgba(232, 155, 60, 0.1);
+  border-color: var(--text-gold);
+  transform: none;
+  box-shadow: none;
+}
+
+/* HERO SECTION - CLEAN */
+.crs-hero {
+  background: var(--rack-bg);
+  padding: 0;
+  margin: 0;
+}
+
+.hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.hero-power-panel {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.95;
+}
+
+/* BOOK NOW DROPDOWN - FLASHING ORANGE */
+.book-dropdown-trigger {
+  background: transparent;
+  color: var(--text-gold);
+  border: 1px solid var(--text-gold);
+  padding: 0.75rem 1.5rem; /* Increased from 0.625rem 1.25rem */
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1.125rem; /* Increased from 0.9375rem */
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 0 10px rgba(232, 155, 60, 0.3);
+  font-family: 'JetBrains Mono', monospace;
+  /* Flashing orange animation */
+  animation: book-now-flash 3s ease-in-out infinite;
+}
+
+.book-dropdown-trigger:hover {
+  background: rgba(232, 155, 60, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(232, 155, 60, 0.5);
+  animation: none; /* Stop flashing on hover */
+}
+
+/* Flashing animation - subtle pulse */
+@keyframes book-now-flash {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(232, 155, 60, 0.2);
+    border-color: rgba(232, 155, 60, 0.5);
+    opacity: 0.9;
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(232, 155, 60, 0.4);
+    border-color: rgba(232, 155, 60, 0.8);
+    opacity: 1;
+  }
+}
+
+.book-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px; /* 8px * 1.25 */
+  background: var(--panel-green);
+  border: 1px solid rgba(232, 155, 60, 0.3);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  min-width: 250px; /* 200px * 1.25 */
+  z-index: 1000;
+}
+
+.book-dropdown-menu a {
+  display: block;
+  padding: 0.9375rem 1.25rem; /* 0.75rem * 1.25, 1rem * 1.25 */
+  color: rgba(245, 245, 245, 0.85);
+  text-decoration: none;
+  font-size: 0.9375rem; /* 0.75rem * 1.25 */
+  border-bottom: 1px solid rgba(232, 155, 60, 0.1);
+  transition: background 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.book-dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+.book-dropdown-menu a:hover {
+  background: rgba(232, 155, 60, 0.1);
+  color: var(--text-gold);
+}
+
+/* BODY TEXT - CLEANER */
+.rack-unit p,
+.rack-unit li {
+  color: rgba(245, 245, 245, 0.85);
+  font-size: 0.938rem;
+  line-height: 1.6;
+  text-shadow: none;
+  font-family: 'Inter', sans-serif;
+}
+
+/* FOOTER - CLEANER */
+footer {
+  background: var(--rack-bg);
+  border-top: 1px solid rgba(212, 160, 23, 0.2);
+  padding: 2rem;
+  color: rgba(245, 245, 245, 0.65);
+  font-size: 0.813rem;
+}
+
+.footer-section h3 {
+  color: var(--text-gold);
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+/* RESPONSIVE - KEEP CLEAN */
+@media (max-width: 768px) {
+  .rack-unit {
+    padding: 2rem 1.5rem;
+  }
+  
+  .rack-header {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .rack-header-center {
+    max-width: 100%;
+  }
+  
+  /* Title road sign: mobile safety */
+  .crs-title-image,
+  .rack-header-center .crs-title-image {
+    max-width: 80vw !important;
+    height: auto !important;
+  }
+  
+  /* CRS badge: reduce presence on mobile */
+  .logo-hardware-panel {
+    max-height: 48px;
+    width: auto;
+  }
+  
+  .crs-subtitle-bar {
+    font-size: 0.688rem;
+    padding: 0.625rem 1rem;
+  }
+}
+
+/* ============================================
+   MOBILE RESPONSIVE FIXES
+   ============================================ */
+
+/* Hamburger menu button */
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  color: #E89B3C;
+  font-size: 1.5rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 1001;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-menu-toggle:hover {
+  border-color: #E89B3C;
+  background: rgba(232, 155, 60, 0.1);
+}
+
+/* Mobile breakpoint: Hide desktop nav, show hamburger */
+@media (max-width: 767px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  /* Hide desktop navigation */
+  .rack-nav-links {
+    display: none !important;
+  }
+  
+  /* Reduce header logo sizes for mobile */
+  .logo-hardware-panel {
+    max-height: 36px !important;
+    height: 36px !important;
+  }
+  
+  /* Badge + wordmark scales down on mobile - CONTROLLED BY crs-precision-calibration.css */
+  /* .crs-main-logo {
+    max-width: 250px !important;
+    height: auto !important;
+  } */
+  
+  /* Adjust header padding */
+  .rack-header {
+    padding: 0.75rem 1rem;
+    gap: 1rem;
+  }
+  
+  /* Make rack-header-left wrap better */
+  .rack-header-left {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Ensure BOOK NOW button stays visible on mobile */
+  .rack-header-right {
+    margin-left: 0; /* Remove auto margin on mobile */
+    width: auto;
+  }
+  
+  /* Reduce button text size */
+  .cta-button,
+  .crs-button {
+    font-size: 0.75rem;
+    padding: 0.75rem 1.25rem;
+  }
+  
+  /* Better section spacing */
+  .rack-unit-content {
+    padding: 2rem 1rem;
+  }
+  
+  /* Optimize text sizing */
+  .rack-unit-title {
+    font-size: 0.875rem;
+  }
+  
+  /* Footer adjustments */
+  .crs-footer {
+    padding: 2rem 1rem;
+  }
+  
+  .footer-locations,
+  .footer-contact,
+  .footer-policy {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Tablet breakpoint: Keep some desktop features */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .rack-header {
+    padding: 0.875rem 1.5rem;
+  }
+  
+  .logo-hardware-panel {
+    max-height: 48px !important;
+    height: 48px !important;
+  }
+  
+  .crs-tascam-label {
+    height: 12px !important;
+  }
+}
+
+
+/* PEAK RED BUTTON - HIGH VOLTAGE TOGGLE */
+.cta-button-peak-red {
+  background: linear-gradient(180deg, #DC0000 0%, #B00000 100%);
+  border: 2px solid #FF3030;
+  color: #FFFFFF;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 12px rgba(220, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.cta-button-peak-red:hover {
+  background: linear-gradient(180deg, #FF0000 0%, #DC0000 100%);
+  border-color: #FF5050;
+  box-shadow: 0 0 20px rgba(220, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.cta-button-peak-red:active {
+  background: linear-gradient(180deg, #B00000 0%, #900000 100%);
+  box-shadow: 0 0 8px rgba(220, 0, 0, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
+}
+
+/* SIGNAL: ACTIVE GREEN DOT */
+.signal-active {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #00FF00;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+  animation: pulse-signal 2s ease-in-out infinite;
+}
+
+@keyframes pulse-signal {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(0, 255, 0, 0.6);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 12px rgba(0, 255, 0, 0.8);
+  }
+}
+
+/* FOOTER BANNER LOGO */
+.footer-logo-container {
+  text-align: center;
+  padding: 2rem 0 1.5rem 0;
+  border-bottom: 1px solid rgba(212, 160, 23, 0.2);
+  margin-bottom: 2rem;
+}
+
+.footer-banner-logo {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.footer-banner-logo:hover {
+  opacity: 1;
+}
+
+/* Mobile: smaller footer logo */
+@media (max-width: 767px) {
+  .footer-banner-logo {
+    max-width: 300px;
+  }
+  
+  .footer-logo-container {
+    padding: 1.5rem 0 1rem 0;
+  }
+}
+
+/* ================================
+   HEADER SPACING + LOGO SCALE FIX
+   ================================ */
+
+/* 1) Give the whole header breathing room */
+.rack-header {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+
+  /* stop edge-hugging */
+  padding-left: 32px !important;   /* tune 24–48 */
+  padding-right: 32px !important;
+
+  /* give the bar a bit of height */
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+/* 2) Left cluster: keep logo + nav readable */
+.rack-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 24px !important;            /* spacing between logo and nav */
+  min-width: 0 !important;
+}
+
+/* 3) Make the lockup bigger, but never distort - CONTROLLED BY crs-precision-calibration.css */
+/* .crs-main-logo {
+  height: 56px !important;
+  width: auto !important;
+  max-width: none !important;
+  display: block !important;
+  object-fit: contain !important;
+} */
+
+/* 4) Nav alignment and spacing */
+.rack-nav-links {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;            /* spacing around separators */
+  font-size: 1rem !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.rack-nav-links .separator {
+  opacity: .35 !important;
+}
+
+/* 5) Right cluster: pin hard-right with inset */
+.rack-header-right {
+  margin-left: auto !important;
+  margin-right: 16px !important;  /* Add right inset so it doesn't touch edge */
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* 6) Make Book Now feel less cramped */
+.book-dropdown-trigger {
+  padding: 10px 18px !important;
+}
+
+/* 7) Responsive: scale down safely */
+@media (max-width: 768px) {
+  .rack-header {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+  /* .crs-main-logo {
+    height: 46px !important;
+  } */
+  .rack-nav-links {
+    font-size: .95rem !important;
+  }
+}
+/* ================================================
+   CRS LAUNCH POLISH — P0/P1/P2 FIXES
+   ================================================
+   Drop-in CSS overrides to fix:
+   - P0.1: Header breathing room + logo scale
+   - P0.2: Page container alignment
+   - P0.3: CTA consistency
+   - P1.1: Vertical rhythm
+   - P1.2: Body copy readability
+   - P1.3: Nav separators
+   - P2.1: Desktop typography micro-scale
+   - P2.2: Heading grid lock
+   ================================================ */
+
+/* ================================
+   P0.1 — Header breathing room + logo scale
+   ================================ */
+.rack-header {
+  padding-left: 32px !important;   /* tune 24–40 */
+  padding-right: 32px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.rack-header-left {
+  gap: 24px !important;
+}
+
+/* .crs-main-logo {
+  height: 56px !important;
+  width: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+  max-width: none !important;
+} */
+
+/* ================================
+   P0.2 — Enforce consistent page grid
+   ================================ */
+main,
+.page,
+.container,
+.content-wrap {
+  max-width: 1200px !important;     /* tune 1120–1280 */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 32px !important;    /* keeps mobile sane */
+  padding-right: 32px !important;
+  box-sizing: border-box !important;
+}
+
+.rack-unit {
+  max-width: 1200px !important;
+  margin: 0 auto 28px auto !important;
+}
+
+/* ================================
+   P0.3 — Normalize CTA buttons
+   ================================ */
+button,
+.btn,
+a.btn,
+.rack-cta,
+.cta-button {
+  min-height: 42px !important;
+  padding: 10px 18px !important;
+  line-height: 1 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ================================
+   P1.1 — Standard panel rhythm
+   ================================ */
+.rack-unit,
+.service-panel,
+section {
+  padding: 28px 32px !important;
+}
+
+.rack-unit + .rack-unit,
+section + section {
+  margin-top: 22px !important;
+}
+
+/* ================================
+   P1.2 — Body copy readability
+   ================================ */
+p,
+.body-copy,
+.service-desc,
+.rack-unit-content p {
+  max-width: 62ch !important;
+  color: rgba(255, 255, 255, .78) !important;
+  line-height: 1.55 !important;
+}
+
+/* ================================
+   P1.3 — Separator discipline
+   ================================ */
+.rack-nav-links .separator {
+  opacity: .35 !important;
+  margin: 0 10px !important;
+}
+
+/* ================================
+   P2.1 — Desktop typography micro-scale
+   ================================ */
+@media (min-width: 1200px) {
+  html {
+    font-size: 15px !important; /* from 16px → 15px */
+  }
+}
+
+/* ================================
+   P2.2 — Headings grid lock
+   ================================ */
+h2,
+h3,
+.service-title,
+.rack-unit-title {
+  max-width: 70ch !important;
+}
+/* ==========================================================
+   CRS RACK STACK — Front Panel Devices (v2)
+   Each service section becomes a distinct rack-mounted unit
+   Build: 2026-01-20
+   ========================================================== */
+
+:root {
+  /* Chassis & Plate Colors */
+  --chassis-bg: #07140C;
+  --plate-bg: rgba(26, 31, 28, 0.85);
+  --plate-border: rgba(212, 160, 23, 0.25);
+  --plate-border-hover: rgba(212, 160, 23, 0.4);
+  
+  /* Text Hierarchy */
+  --text-primary: rgba(245, 245, 245, 0.92);
+  --text-secondary: rgba(245, 245, 245, 0.74);
+  --text-dim: rgba(245, 245, 245, 0.55);
+  
+  /* Device Accent Colors */
+  --signal-green: #39FF14;
+  --signal-amber: #D4A017;
+  --signal-orange: #FF8C00;
+  --signal-red: #C41E3A;
+  
+  /* Hardware Specs */
+  --device-radius: 6px;
+  --device-padding: 28px 32px;
+  --device-gap: 20px;
+  --fastener-size: 3px;
+}
+
+/* ==========================================================
+   RACK UNIT BASE — Every section becomes a device
+   ========================================================== */
+
+.rack-unit {
+  position: relative;
+  background: var(--plate-bg) !important;
+  border: 1px solid var(--plate-border) !important;
+  border-radius: var(--device-radius) !important;
+  padding: var(--device-padding) !important;
+  margin-bottom: var(--device-gap) !important;
+  overflow: visible !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Top Label Strip (engraved edge) */
+.rack-unit::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  top: 0 !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212, 160, 23, 0.3) 50%, 
+    transparent 100%) !important;
+}
+
+/* Corner Fasteners (screw holes) */
+.rack-unit {
+  background-image:
+    radial-gradient(circle at 14px 14px, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)),
+    radial-gradient(circle at calc(100% - 14px) 14px, rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)),
+    radial-gradient(circle at 14px calc(100% - 14px), rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)),
+    radial-gradient(circle at calc(100% - 14px) calc(100% - 14px), rgba(255,255,255,0.15) 0, rgba(255,255,255,0.15) var(--fastener-size), transparent calc(var(--fastener-size) + 1px)) !important;
+  background-repeat: no-repeat !important;
+  background-color: var(--plate-bg) !important;
+}
+
+/* ==========================================================
+   RACK UNIT HEADER — Faceplate Label Zone
+   ========================================================== */
+
+.rack-unit-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid rgba(212, 160, 23, 0.15) !important;
+}
+
+.rack-unit-led {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.led {
+  display: inline-block !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  box-shadow: 0 0 8px currentColor !important;
+}
+
+.led.green {
+  background: var(--signal-green) !important;
+  color: rgba(57, 255, 20, 0.6) !important;
+}
+
+.led.yellow {
+  background: var(--signal-amber) !important;
+  color: rgba(212, 160, 23, 0.6) !important;
+}
+
+.led.orange {
+  background: var(--signal-orange) !important;
+  color: rgba(255, 140, 0, 0.6) !important;
+}
+
+.led.red {
+  background: var(--signal-red) !important;
+  color: rgba(196, 30, 58, 0.6) !important;
+}
+
+/* Device Title (engraved label) */
+.rack-unit-title {
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: 1.125rem !important;
+  font-weight: 800 !important;
+  color: rgba(232, 155, 60, 0.95) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  margin: 0 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ==========================================================
+   RACK UNIT CONTENT — Spec Lines & Controls
+   ========================================================== */
+
+.rack-unit-content {
+  padding-left: 20px !important; /* Inset from left edge */
+}
+
+.rack-unit-content p {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.875rem !important;
+  line-height: 1.55 !important;
+  color: var(--text-secondary) !important;
+  max-width: 62ch !important;
+  margin-bottom: 12px !important;
+}
+
+.rack-unit-content p:last-of-type {
+  margin-bottom: 20px !important;
+}
+
+/* ==========================================================
+   DEVICE-SPECIFIC SIGNATURES
+   Per-service gear identity (add classes to sections)
+   ========================================================== */
+
+/* Device A: Band Rehearsals (Patch Bay) */
+.rack-unit.device-rehearsal {
+  border-left: 3px solid var(--signal-green) !important;
+}
+
+.rack-unit.device-rehearsal .rack-unit-title {
+  color: rgba(57, 255, 20, 0.85) !important;
+}
+
+/* Device B: Studio Sessions (Channel Strip) */
+.rack-unit.device-studio {
+  border-left: 3px solid var(--signal-amber) !important;
+}
+
+.rack-unit.device-studio .rack-unit-title::after {
+  content: "" !important;
+  display: block !important;
+  width: 60px !important;
+  height: 2px !important;
+  background: var(--signal-amber) !important;
+  margin-top: 6px !important;
+  box-shadow: 0 0 4px var(--signal-amber) !important;
+}
+
+/* Device C: AV Services (Power Conditioner) */
+.rack-unit.device-av {
+  border-left: 3px solid var(--signal-orange) !important;
+}
+
+.rack-unit.device-av .rack-unit-header {
+  border-bottom-color: rgba(255, 140, 0, 0.2) !important;
+}
+
+/* Device D: Workshop Café (Routing Matrix) */
+.rack-unit.device-cafe {
+  border-left: 3px solid var(--signal-amber) !important;
+}
+
+.rack-unit.device-cafe::before {
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212, 160, 23, 0.5) 50%, 
+    transparent 100%) !important;
+}
+
+/* Device E: Community Access (Utility Module) */
+.rack-unit.device-community {
+  border-left: 3px solid rgba(245, 245, 245, 0.3) !important;
+}
+
+.rack-unit.device-community .rack-unit-title {
+  color: rgba(245, 245, 245, 0.75) !important;
+}
+
+/* ==========================================================
+   BUTTON CONTROLS — Primary Device Actions
+   ========================================================== */
+
+.cta-button {
+  min-height: 42px !important;
+  padding: 11px 22px !important;
+  border-radius: 4px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-weight: 700 !important;
+  font-size: 0.813rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+/* Primary Button (Red Lit Control) */
+.cta-button-peak-red {
+  background: linear-gradient(180deg, #DC0000 0%, #B00000 100%) !important;
+  border: 2px solid #FF3030 !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    0 0 12px rgba(220, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.cta-button-peak-red:hover {
+  background: linear-gradient(180deg, #FF0000 0%, #DC0000 100%) !important;
+  border-color: #FF5050 !important;
+  box-shadow: 
+    0 0 20px rgba(220, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Utility Button (Amber/Orange) */
+.cta-button:not(.cta-button-peak-red) {
+  background: rgba(232, 155, 60, 0.08) !important;
+  border: 1px solid rgba(232, 155, 60, 0.5) !important;
+  color: rgba(232, 155, 60, 0.95) !important;
+}
+
+.cta-button:not(.cta-button-peak-red):hover {
+  background: rgba(232, 155, 60, 0.15) !important;
+  border-color: rgba(232, 155, 60, 0.8) !important;
+  color: rgba(232, 155, 60, 1) !important;
+}
+
+/* ==========================================================
+   MOBILE RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 768px) {
+  .rack-unit {
+    padding: 22px 18px !important;
+    margin-bottom: 16px !important;
+  }
+  
+  .rack-unit-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  
+  .rack-unit-title {
+    font-size: 1rem !important;
+  }
+  
+  .rack-unit-content {
+    padding-left: 0 !important;
+  }
+  
+  .rack-unit-content p {
+    font-size: 0.813rem !important;
+  }
+  
+  .cta-button {
+    font-size: 0.75rem !important;
+    padding: 10px 18px !important;
+  }
+}
+
+/* ==========================================================
+   RACK CONTAINER — Enforce consistent device spacing
+   ========================================================== */
+
+main,
+.page-content,
+.content-wrap {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 32px !important;
+}
+
+@media (max-width: 768px) {
+  main,
+  .page-content,
+  .content-wrap {
+    padding: 18px !important;
+  }
+}
+
+
+/* ==========================================================
+   CTA HIERARCHY - PRIMARY VS SECONDARY (Mobile UX Fix)
+   ========================================================== */
+
+/* Primary CTA - High visibility, solid background, larger size */
+.cta-button-primary {
+  background: rgba(232, 155, 60, 0.15) !important;
+  border: 2px solid rgba(232, 155, 60, 0.8) !important;
+  color: rgba(232, 155, 60, 1) !important;
+  font-size: 0.875rem !important;
+  font-weight: 700 !important;
+  padding: 12px 24px !important;
+  box-shadow: 0 0 12px rgba(232, 155, 60, 0.3) !important;
+}
+
+.cta-button-primary:hover {
+  background: rgba(232, 155, 60, 0.25) !important;
+  border-color: rgba(232, 155, 60, 1) !important;
+  box-shadow: 0 0 20px rgba(232, 155, 60, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Secondary CTA - Lower visibility, ghost button, smaller size */
+.cta-button-secondary {
+  background: transparent !important;
+  border: 1px solid rgba(232, 155, 60, 0.3) !important;
+  color: rgba(232, 155, 60, 0.7) !important;
+  font-size: 0.813rem !important;
+  font-weight: 600 !important;
+  padding: 10px 20px !important;
+  box-shadow: none !important;
+}
+
+.cta-button-secondary:hover {
+  background: rgba(232, 155, 60, 0.08) !important;
+  border-color: rgba(232, 155, 60, 0.5) !important;
+  color: rgba(232, 155, 60, 0.9) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Mobile: Ensure adequate tap targets for both */
+@media (max-width: 768px) {
+  .cta-button-primary,
+  .cta-button-secondary {
+    min-height: 48px !important;
+    padding: 14px 24px !important;
+  }
+  
+  .cta-button-primary {
+    font-size: 0.875rem !important;
+  }
+  
+  .cta-button-secondary {
+    font-size: 0.813rem !important;
+  }
+}

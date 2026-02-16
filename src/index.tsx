@@ -1,6 +1,35 @@
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { renderer } from './renderer'
+import { rackDemo } from './routes/rack-demo'
+import { ContactSection } from './components/ContactSection'
+import { Header } from './components/Header'
+import { Footer } from './components/Footer'
+import { BuildStatusBanner } from './components/BuildStatusBanner'
+import { HomePage } from './pages/Home'
+import { StudioPage } from './pages/Studio'
+import { AVServicesPage } from './pages/AVServices'
+import { AVRepairsPage } from './pages/AVRepairs'
+import { WorkshopCafePage } from './pages/WorkshopCafe'
+import { CricketRoad } from './pages/CricketRoad'
+import { Soundworks } from './pages/Soundworks'
+import { About } from './pages/About'
+import { Work } from './pages/Work'
+import { SignagePage } from './pages/Signage'
+import { SignageLoop } from './pages/SignageLoop'
+import { BookingConfirmed } from './pages/BookingConfirmed'
+import { RackPage } from './pages/Rack'
+import { RackTestPage } from './pages/RackTest'
+import { RackModular } from './pages/RackModular'
+import { RackModularEnhanced } from './pages/RackModularEnhanced'
+import { RackAccordion } from './pages/RackAccordion'
+import { Book } from './pages/Book'
+import { BookAccordion } from './pages/BookAccordion'
+import { RehearsalSpaces } from './pages/RehearsalSpaces'
+import { RecordingPage } from './pages/Recording'
+import { PodcastAVPage } from './pages/PodcastAV'
+import { ContactPage } from './pages/Contact'
+import { DigitalPulsePage } from './pages/DigitalPulse'
 
 const app = new Hono()
 
@@ -57,17 +86,28 @@ app.post('/api/contact', async (c) => {
     }
     
     // Build email payload for Resend
+    const serviceType = body.service || 'general'
+    const serviceLabel = {
+      'recording': 'Recording Session',
+      'pod-hire': 'Pod Hire',
+      'repairs': 'Equipment Repair',
+      'av': 'AV Services',
+      'venue': 'Venue Hire',
+      'general': 'General Enquiry'
+    }[serviceType] || 'General Enquiry'
+    
     const emailData = {
-      from: 'CRS Contact Form <noreply@cowleyroadstudios.com>',
-      to: ['info@cowleyroadstudios.com'],
-      subject: `[CRS CONTACT] ${body.subject || 'New Inquiry'}`,
+      from: 'CRS Contact Form <noreply@crsoxford.com>',
+      to: ['info@crsoxford.com'],
+      subject: `[CRS ${serviceType.toUpperCase()}] ${body.subject || serviceLabel}`,
       html: `
         <div style="font-family: 'JetBrains Mono', monospace; max-width: 600px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #00ff00; border: 2px solid #333;">
           <h2 style="color: #ff6b35; margin-top: 0;">NEW CONTACT FORM SUBMISSION</h2>
           <div style="border-left: 3px solid #ff6b35; padding-left: 15px; margin: 20px 0;">
+            <p><strong>Service Type:</strong> ${serviceLabel}</p>
             <p><strong>From:</strong> ${body.name || 'Not provided'}</p>
             <p><strong>Email:</strong> ${body.email || 'Not provided'}</p>
-            <p><strong>Subject:</strong> ${body.subject || 'Not provided'}</p>
+            <p><strong>Subject:</strong> ${body.subject || serviceLabel}</p>
           </div>
           <div style="background: #0a0a0a; padding: 15px; margin: 20px 0; border: 1px solid #333;">
             <p><strong>Message:</strong></p>
@@ -287,184 +327,90 @@ function extractBookingLink(description: string): string | null {
   return matches ? matches[0] : null
 }
 
+// RACK DEMO ROUTE (inline CSS, zero dependencies)
+app.route('/rack-demo', rackDemo)
+
 app.use(renderer)
-
-// SHARED COMPONENTS
-const Header = () => (
-  <>
-    <header class="rack-header">
-      {/* LEFT ZONE: CRS Logo + Tascam Label + Navigation */}
-      <div class="rack-header-left">
-        <div class="rack-logo-block">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/1024enhanced_crs_badge_dark%20fixed%20for%20web.png" 
-            alt="Cowley Road Studios"
-            class="logo-hardware-panel"
-            style="max-height: 48px !important; height: 48px !important; width: auto !important;"
-          />
-        </div>
-        
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v1%20.png" 
-          alt="Cowley Road Studios"
-          class="crs-tascam-label"
-        />
-        
-        <nav class="rack-nav-links">
-          <a href="/studio">Studio</a>
-          <span class="separator">|</span>
-          <a href="/workshop-cafe">Workshop Café</a>
-          <span class="separator">|</span>
-          <a href="/av-services">AV</a>
-          <span class="separator">|</span>
-          
-          {/* BOOK NOW DROPDOWN */}
-          <div style="position: relative;">
-            <button 
-              class="book-dropdown-trigger"
-              data-dropdown-trigger
-              aria-expanded="false"
-              aria-controls="book-dropdown-menu"
-            >
-              BOOK NOW
-            </button>
-            <div 
-              id="book-dropdown-menu"
-              class="book-dropdown-menu"
-              data-dropdown-menu
-              role="menu"
-              aria-hidden="true"
-            >
-              <a href="/rehearsal" role="menuitem">Band Rehearsals</a>
-              <a href="/contact" role="menuitem">Recording (Enquiry)</a>
-              <a href="/contact" role="menuitem">Pod Hire (Enquiry)</a>
-              <a href="/contact" role="menuitem">Repairs (Enquiry)</a>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </header>
-  </>
-)
-
-const Footer = () => (
-  <>
-    {/* MOBILE NAVIGATION (FIXED BOTTOM) */}
-    <nav class="mobile-nav mono">
-      <a href="/locations">LOCATIONS</a>
-      <a href="/book">BOOK</a>
-      <a href="/contact">CONTACT</a>
-    </nav>
-
-    <footer class="crs-footer mono">
-      {/* CRS Locations (Quiet List) */}
-      <div class="footer-locations">
-        <p class="footer-locations-header">CRS Locations</p>
-        <p class="footer-location-item">– Cowley Road, Oxford, OX4 1JE</p>
-        <p class="footer-location-item">– Cricket Road, Oxford</p>
-      </div>
-
-      {/* Contact */}
-      <div class="footer-contact">
-        <p>CONTACT: <a href="/contact">Use contact form</a></p>
-      </div>
-
-      {/* Build Phase Disclaimer */}
-      <div class="footer-policy">
-        <p class="footer-policy-header">BUILD PHASE</p>
-        <p class="footer-policy-text">
-          Cowley Road Studios is completing the final phase of the Cowley Road build. Band rehearsals and repairs are available now. Recording and production are available by enquiry during this phase.
-        </p>
-      </div>
-
-      {/* No Chaos Policy */}
-      <div class="footer-policy">
-        <p class="footer-policy-header">NO CHAOS POLICY</p>
-        <p class="footer-policy-text">
-          CRS operates under a strict no-chaos protocol. All systems are maintained to function reliably, predictably, and without drama. Equipment is tested, signal paths are documented, and technical decisions are made based on engineering reality—not hype.
-        </p>
-      </div>
-
-      {/* Footer Signature */}
-      <div class="footer-signature">
-        <p class="footer-credit">© 2026 CRS</p>
-        <p class="footer-credit mono">
-          POWERED BY <span style="color: var(--standby-gold); font-weight: 800;">0DR0</span> ENGINEERING
-        </p>
-      </div>
-    </footer>
-  </>
-)
 
 // REDIRECTS & MISSING PAGES
 app.get('/av', (c) => c.redirect('/av-services'))
 
-// BOOKING GATEWAY
+// UNIFIED BOOKING PAGE (Phase 2: Simplified 3-category booking)
 app.get('/book', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Book Your Session | Cowley Road Studios Oxford</title>
+        <meta name="description" content="Book rehearsal rooms, recording sessions, music lessons, equipment hire, and venue space. Choose your service and book instantly." />
+        <meta name="keywords" content="book studio oxford, recording session booking, rehearsal room booking, music lessons oxford, equipment hire oxford" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        
+        {/* Core CSS files */}
+        <link href="/static/crs-reset.css" rel="stylesheet" />
+        <link href="/static/crs-typography.css" rel="stylesheet" />
+        <link href="/static/crs-header.css" rel="stylesheet" />
+        <link href="/static/crs-mobile.css" rel="stylesheet" />
+        
+        {/* Accordion-specific CSS */}
+        <link href="/static/rack-accordion.css" rel="stylesheet" />
+      </head>
+      <body>
+        <BookAccordion />
+      </body>
+    </html>
+  )
+})
+
+// OLD BOOKING GATEWAY (kept for reference, can be removed later)
+app.get('/book-old', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
           <h1 class="section-title heading">CRS — Book</h1>
         </div>
 
-        {/* Recording & Production */}
+        {/* Square Booking Widget */}
         <div class="content-block">
-          <h3 class="content-heading heading">RECORDING & PRODUCTION</h3>
+          <h3 class="content-heading heading">BOOK NOW</h3>
           <div class="content-text">
-            <p>
-              Recording studio · Mixing rooms · Production rooms
+            <p class="mono" style="color: var(--standby-gold);">
+              Band Rehearsals (Cricket Road) · Recording Sessions · Pod Hire
+            </p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-cream); opacity: 0.8;">
+              Choose your service and time slot below. Cowley Road rehearsals coming soon.
             </p>
           </div>
+          
+          {/* Square Appointments Embed */}
+          <div class="square-appointments-embed" style="margin-top: 2rem; padding: 2rem; background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(212, 160, 23, 0.2); border-radius: 4px;">
+            <script src="https://square.site/appointments/buyer/widget/5f88zzreivvg8j/L9RPJZW999RE7.js"></script>
+          </div>
+          
           <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="https://app.squareup.com/appointments/book/5f88zzreivvg8j/L9RPJZW999RE7/start" target="_blank" rel="noopener noreferrer" class="crs-button mono">
-              [ BOOK A SESSION ]
+            <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX?src=embed" target="_blank" rel="noopener noreferrer" class="crs-button mono" style="font-size: 0.85rem; opacity: 0.7;">
+              OPEN IN NEW TAB
             </a>
           </div>
         </div>
 
-        {/* AV & Technical Services */}
-        <div class="content-block">
-          <h3 class="content-heading heading">AV & TECHNICAL SERVICES</h3>
+        {/* Service Enquiries */}
+        <div class="content-block" style="margin-top: 3rem;">
+          <h3 class="content-heading heading">ENQUIRIES</h3>
           <div class="content-text">
-            <p>
-              Live sound · AV installations · Technical support · Equipment repair
+            <p style="margin-bottom: 1.5rem;">
+              For AV services, venue hire, repairs, or custom projects:
             </p>
           </div>
-          <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="/contact?service=av" class="crs-button mono">
-              [ CONTACT ]
-            </a>
-          </div>
-        </div>
-
-        {/* Venue Hire */}
-        <div class="content-block">
-          <h3 class="content-heading heading">VENUE HIRE</h3>
-          <div class="content-text">
-            <p>
-              Workshop Café venue space
-            </p>
-          </div>
-          <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="/contact?service=venue" class="crs-button mono">
-              [ CONTACT ]
-            </a>
-          </div>
-        </div>
-
-        {/* Café Service */}
-        <div class="content-block">
-          <h3 class="content-heading heading">CAFÉ SERVICE</h3>
-          <div class="content-text">
-            <p>
-              Coffee · Refreshments
-            </p>
-          </div>
-          <div class="hero-cta" style="margin-top: 1.5rem;">
+          <div class="hero-cta">
             <a href="/contact" class="crs-button mono">
-              [ CONTACT ]
+              CONTACT FORM
             </a>
           </div>
         </div>
@@ -511,106 +457,7 @@ app.get('/book', (c) => {
 })
 
 // REHEARSAL SPACE BOOKING
-app.get('/rehearsal', (c) => {
-  return c.render(
-    <>
-      <Header />
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led green"></span>
-          </div>
-          <h2 class="rack-unit-title">REHEARSAL SPACE — CRICKET ROAD</h2>
-        </div>
-        
-        <div class="rack-unit-content" style="max-width: 800px; margin: 0 auto;">
-          {/* INTRO */}
-          <p style="font-size: 1rem; line-height: 1.7; color: rgba(245, 245, 245, 0.9); margin-bottom: 2rem;">
-            Fully equipped rehearsal room at Cricket Road. Secure, private space with PA system and backline. Book by the hour.
-          </p>
-
-          {/* PRICING TABLE */}
-          <div style="background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(212, 160, 23, 0.2); padding: 2rem; margin-bottom: 2rem;">
-            <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.125rem; color: #E89B3C; margin-bottom: 1.5rem; letter-spacing: 0.05em;">
-              PRICING
-            </h3>
-            
-            <div style="display: grid; gap: 1rem;">
-              <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #C8FF41;">
-                <div>
-                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">2 HOURS</div>
-                  <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£40</div>
-                </div>
-                <a href="https://square.link/u/WbJGOXN6" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
-                  BOOK NOW
-                </a>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #C8FF41;">
-                <div>
-                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">3 HOURS</div>
-                  <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£55</div>
-                </div>
-                <a href="https://square.link/u/w0KnUxwQ" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
-                  BOOK NOW
-                </a>
-              </div>
-
-              <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #C8FF41;">
-                <div>
-                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 600; color: #FFFFFF;">4 HOURS</div>
-                  <div style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); margin-top: 0.25rem;">£60</div>
-                </div>
-                <a href="https://square.link/u/RDFyPTNa" target="_blank" rel="noopener noreferrer" class="cta-button" style="margin: 0;">
-                  BOOK NOW
-                </a>
-              </div>
-            </div>
-
-            <p style="font-size: 0.813rem; color: rgba(245, 245, 245, 0.6); margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">
-              Payment in full at time of booking. Exact availability shown in booking calendar.
-            </p>
-          </div>
-
-          {/* WHAT'S INCLUDED */}
-          <div style="margin-bottom: 2rem;">
-            <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.125rem; color: #E89B3C; margin-bottom: 1rem; letter-spacing: 0.05em;">
-              WHAT'S INCLUDED
-            </h3>
-            <ul style="list-style: none; padding: 0; margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.938rem; line-height: 2; color: rgba(245, 245, 245, 0.85);">
-              <li style="padding-left: 1.5rem; position: relative;">
-                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
-                PA system
-              </li>
-              <li style="padding-left: 1.5rem; position: relative;">
-                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
-                Backline (amps, basic kit)
-              </li>
-              <li style="padding-left: 1.5rem; position: relative;">
-                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
-                Secure, private space
-              </li>
-              <li style="padding-left: 1.5rem; position: relative;">
-                <span style="position: absolute; left: 0; color: #C8FF41;">▸</span>
-                Up to 8 people
-              </li>
-            </ul>
-          </div>
-
-          {/* LOCATION */}
-          <div style="padding-top: 1.5rem; border-top: 1px solid rgba(245, 245, 245, 0.1);">
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
-              <strong style="color: #E89B3C;">Location:</strong> Cricket Road, Oxford<br />
-              <strong style="color: #E89B3C;">Availability:</strong> Evenings + weekends (see booking calendar)<br />
-              <strong style="color: #E89B3C;">Questions:</strong> <a href="/contact" style="color: #C8FF41; text-decoration: none;">All enquiries via contact form</a>
-            </p>
-          </div>
-        </div>
-      </section>
-      <Footer />
-    </>
-  )
-})
+// Removed old legacy /rehearsal route - using new RehearsalSpaces component below
 
 // VENUE BOOKING REDIRECT
 app.get('/book/venue', (c) => {
@@ -621,6 +468,7 @@ app.get('/book/venue', (c) => {
 app.get('/locations', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
@@ -645,6 +493,7 @@ app.get('/locations', (c) => {
 app.get('/crs-cowley-road', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
@@ -674,7 +523,8 @@ app.get('/crs-cowley-road', (c) => {
 
           {/* BOOKING CTA */}
           <div class="hero-cta">
-            <a href="/book" class="crs-button mono">[ BOOK CRS — COWLEY ROAD ]</a>
+            <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" target="_blank" rel="noopener noreferrer" class="crs-button mono">Book rehearsal — Cowley Road</a>
+            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65); margin-top: 0.75rem; text-align: center;">£45 / 2 hours · Rehearsal use only</p>
           </div>
 
           {/* ACCESS / HOURS */}
@@ -695,6 +545,7 @@ app.get('/crs-cowley-road', (c) => {
 app.get('/crs-cricket-road', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
@@ -721,7 +572,7 @@ app.get('/crs-cricket-road', (c) => {
 
           {/* BOOKING CTA */}
           <div class="hero-cta">
-            <a href="/book" class="crs-button mono">[ BOOK CRS — CRICKET ROAD ]</a>
+            <a href="/book" class="crs-button mono">BOOK CRS — CRICKET ROAD</a>
           </div>
 
           {/* ACCESS / HOURS */}
@@ -739,227 +590,101 @@ app.get('/crs-cricket-road', (c) => {
 })
 
 // HOME
+// ROOT: HARDWARE RACK CONSOLE (Hardware-first landing page)
 app.get('/', (c) => {
-  return c.render(
-    <>
-      <Header />
-
-      {/* STUDIO SESSIONS */}
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led yellow"></span>
-          </div>
-          <h2 class="rack-unit-title">STUDIO SESSIONS</h2>
-        </div>
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Recording Studio & Rehearsal Rooms Oxford | Cowley Road Studios</title>
+        <meta name="description" content="Independent recording studio, rehearsal rooms and engineer-led sessions in Oxford. Formerly Soundworks Oxford (1999–2024). Book rehearsal, recording, or creative workspace." />
+        <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
         
-        <div class="rack-unit-content">
-          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
-            Purpose-built recording and production environments designed for reliable, repeatable results. From vocal tracking to full-band production, we provide the technical certainty you need to focus on your performance.
-          </p>
-          <div style="text-align: center;">
-            <a href="/studio" class="cta-button">VIEW STUDIO RATES & SPECS</a>
-          </div>
-        </div>
-      </section>
-
-      {/* AV SERVICES */}
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led yellow"></span>
-          </div>
-          <h2 class="rack-unit-title">AV SERVICES & LIVE SOUND</h2>
-        </div>
+        {/* Core CSS files */}
+        <link href="/static/crs-reset.css" rel="stylesheet" />
+        <link href="/static/crs-typography.css" rel="stylesheet" />
+        <link href="/static/crs-header.css" rel="stylesheet" />
+        <link href="/static/crs-footer.css" rel="stylesheet" />
+        <link href="/static/crs-map-embed.css" rel="stylesheet" />
+        <link href="/static/crs-mobile.css" rel="stylesheet" />
         
-        <div class="rack-unit-content">
-          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
-            Engineer-led live sound, installations, and technical support for community venues, cultural events, and public gatherings. We provide the technical backbone for your event, so you can focus on your audience.
-          </p>
-          <div style="text-align: center;">
-            <a href="/av-services" class="cta-button">VIEW AV SERVICES</a>
-          </div>
-        </div>
-      </section>
-
-      {/* WORKSHOP CAFÉ */}
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led yellow"></span>
-          </div>
-          <h2 class="rack-unit-title">WORKSHOP CAFÉ</h2>
-        </div>
+        {/* Accordion-specific CSS */}
+        <link href="/static/rack-accordion.css" rel="stylesheet" />
+      </head>
+      <body>
+        <RackAccordion />
         
-        <div class="rack-unit-content">
-          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
-            The public-facing space of CRS — a café, workspace, and small venue supporting community events and creative activity in the heart of East Oxford. Available for private hire and public programming.
-          </p>
-          <div style="text-align: center;">
-            <a href="/workshop-cafe" class="cta-button">HIRE THE VENUE</a>
-          </div>
-        </div>
-      </section>
-
-      {/* PUBLIC ACCESS */}
-      <section class="rack-unit">
-        <div class="rack-unit-header">
-          <div class="rack-unit-led">
-            <span class="led orange"></span>
-          </div>
-          <h2 class="rack-unit-title">/// PUBLIC ACCESS & COMMUNITY</h2>
-        </div>
-        
-        <div class="rack-unit-content">
-          <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
-            CRS exists to make professional-grade recording and AV infrastructure available to Oxford's grassroots scene. We offer subsidized rates, supported sessions, and training workshops for community groups, emerging artists, and non-profit organizations.
-          </p>
-          <div style="text-align: center;">
-            <a href="/contact" class="cta-button">GET IN TOUCH</a>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </>
+        {/* Structured data for SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Cowley Road Studios",
+            "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
+            "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "118 Cowley Road",
+              "addressLocality": "Oxford",
+              "postalCode": "OX4 1JE",
+              "addressCountry": "GB"
+            },
+            "telephone": "+441865722027",
+            "email": "info@crsoxford.com",
+            "url": "https://cowley-road-studios.pages.dev",
+            "priceRange": "££",
+            "areaServed": "Oxford",
+            "sameAs": [
+              "https://instagram.com/cowleyroadstudios.ox"
+            ]
+          })}
+        </script>
+      </body>
+    </html>
   )
 })
 
-// STUDIO
+// HOME PAGE: Redirect to root (kept for legacy compatibility)
+app.get('/home', (c) => c.redirect('/'))
+
+// RECORDING / STUDIO
 app.get('/studio', (c) => {
-  return c.render(
-    <>
-      <Header />
-
-      <section class="crs-section section-dark">
-        {/* UNIT HEADER */}
-        <header class="unit-header" data-unit="studio">
-          <div class="unit-header__top">
-            <div class="unit-header__label">
-              <span class="unit-header__tag">UNIT</span>
-              <span class="unit-header__title">STUDIO</span>
-            </div>
-            <div class="unit-header__stamp">CRS-UNIT-STUDIO</div>
-          </div>
-
-          <p class="unit-header__lede">
-            Recording and production environments designed for reliable, repeatable results.
-          </p>
-
-          <div class="unit-spec">
-            <div class="unit-spec__row"><span class="unit-spec__key">STATE</span><span class="unit-spec__val" data-state="active">ACTIVE</span></div>
-            <div class="unit-spec__row"><span class="unit-spec__key">ACCESS</span><span class="unit-spec__val">118 COWLEY ROAD / OXFORD</span></div>
-          </div>
-
-          <div class="unit-controls">
-            <a class="unit-btn unit-btn--primary" href="/book">[ BOOK SESSION ]</a>
-            <a class="unit-btn unit-btn--secondary" href="/contact?service=studio">[ CONTACT ]</a>
-          </div>
-        </header>
-
-        {/* MODULE 1 — CAPABILITIES */}
-        <div class="content-block" style="margin-top: 2rem;">
-          <h3 class="content-heading mono">WHAT WE DO</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              Recording and production work is handled using hybrid analogue and digital systems maintained to consistent operating standards.
-            </p>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;">→ Multitrack recording</li>
-              <li style="margin-bottom: 0.75rem;">→ Overdubbing and layering</li>
-              <li style="margin-bottom: 0.75rem;">→ Mixing and production workflows</li>
-              <li style="margin-bottom: 0.75rem;">→ Calibrated monitoring</li>
-              <li style="margin-bottom: 0.75rem;">→ Engineer-maintained systems</li>
-            </ul>
-            <p style="margin-top: 1.5rem;">
-              Sessions are available by appointment. Recording and production work is scoped per project.
-            </p>
-          </div>
-        </div>
-
-        {/* MODULE 2 — TECHNICAL ENVIRONMENT */}
-        <div class="content-block">
-          <h3 class="content-heading mono">TECHNICAL ENVIRONMENT</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              All rooms and monitoring systems are designed to work consistently—not just sound good on day one.
-            </p>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;">→ 5 isolated recording rooms</li>
-              <li style="margin-bottom: 0.75rem;">→ Dante networked audio system</li>
-              <li style="margin-bottom: 0.75rem;">→ Kii Three + BXT monitoring</li>
-              <li style="margin-bottom: 0.75rem;">→ Sphere DLX modeling microphones</li>
-              <li style="margin-bottom: 0.75rem;">→ Practical acoustics and ergonomics</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* MODULE 3 — LOCATION ROUTING */}
-        <div class="content-block">
-          <h3 class="content-heading mono">LOCATION ROUTING</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              Studio sessions and production work are conducted at 118 Cowley Road. Rehearsal bookings are automatically routed to Cricket Road.
-            </p>
-            <div style="background: rgba(232, 155, 60, 0.1); border: 2px solid rgba(232, 155, 60, 0.3); padding: 1.5rem; margin-bottom: 1rem;">
-              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--crs-gold); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
-                118 COWLEY ROAD
-              </p>
-              <ul style="list-style: none; padding: 0; font-size: 0.9375rem;">
-                <li style="margin-bottom: 0.5rem;">→ Recording sessions</li>
-                <li style="margin-bottom: 0.5rem;">→ Mixing & production</li>
-                <li style="margin-bottom: 0.5rem;">→ Podcasting & spoken word</li>
-                <li style="margin-bottom: 0.5rem;">→ Booth dry hire</li>
-              </ul>
-            </div>
-            
-            <div style="background: rgba(127, 255, 0, 0.05); border: 2px solid rgba(127, 255, 0, 0.2); padding: 1.5rem;">
-              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--crs-green); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
-                CRICKET ROAD
-              </p>
-              <ul style="list-style: none; padding: 0; font-size: 0.9375rem;">
-                <li style="margin-bottom: 0.5rem;">→ Band rehearsals</li>
-                <li style="margin-bottom: 0.5rem;">→ High-decibel sessions</li>
-                <li style="margin-bottom: 0.5rem;">→ Equipment storage</li>
-              </ul>
-              <p style="margin-top: 1rem; font-size: 0.875rem; opacity: 0.8;">
-                Rehearsal bookings are automatically routed to Cricket Road. Access protocol sent via confirmation.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* MODULE 4 — PRICING CONTEXT */}
-        <div class="content-block">
-          <h3 class="content-heading mono">PRICING CONTEXT</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              Recording and production work typically falls in the <strong>£400–£700 per day</strong> range, depending on scope and session type.
-            </p>
-            <p style="font-size: 0.9375rem; opacity: 0.85;">
-              Final pricing is confirmed by enquiry.
-            </p>
-          </div>
-        </div>
-
-        {/* INTAKE VALVE (bottom of page) */}
-        <div class="content-block" style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: 10px;">
-          <p style="margin-bottom: 1rem;">
-            Recording and production work is scoped per project. Use the contact form to outline requirements, timelines, and deliverables.
-          </p>
-          <a href="/contact?service=studio" class="crs-button mono">[ CONTACT ]</a>
-        </div>
-      </section>
-
-      <Footer />
-    </>
-  )
+  return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recording Studio Oxford | Engineer-Led Sessions | Cowley Road Studios</title>
+    <meta name="description" content="Professional recording studio in Oxford. Engineer-led sessions from £30/hr at Cricket Road, £35/hr at Cowley Road. Independent studio infrastructure since 1999.">
+    <meta name="keywords" content="recording studio oxford, music recording oxford, engineer led recording oxford, professional studio oxford, cowley road recording">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="/static/crs-reset.css" rel="stylesheet">
+    <link href="/static/crs-typography.css" rel="stylesheet">
+    <link href="/static/crs-header.css" rel="stylesheet">
+    <link href="/static/crs-mobile.css" rel="stylesheet">
+    <link href="/static/rack-accordion.css" rel="stylesheet">
+</head>
+<body>
+    ${<RecordingPage />}
+</body>
+</html>`)
 })
 
-// INFRASTRUCTURE SNAPSHOT (SINGULAR STRUCTURAL CENTRE OF GRAVITY)
+// Add redirect for /recording
+app.get('/recording', (c) => c.redirect('/studio'))
+// INFRASTRUCTURE SNAPSHOTT (SINGULAR STRUCTURAL CENTRE OF GRAVITY)
 app.get('/studio/infrastructure', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
 
       <section class="crs-section section-dark" style="padding-top: 2rem; padding-bottom: 4rem;">
@@ -1080,6 +805,7 @@ app.get('/studio/infrastructure', (c) => {
 app.get('/book/studio', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1120,7 +846,7 @@ app.get('/book/studio', (c) => {
               <textarea id="notes" name="notes" class="form-textarea" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT BOOKING REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT BOOKING REQUEST</button>
           </form>
           
           <p class="form-helper-text">Thanks — we'll confirm availability and next steps shortly.</p>
@@ -1135,6 +861,7 @@ app.get('/book/studio', (c) => {
 app.get('/book/rehearsal', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1170,6 +897,7 @@ app.get('/book/rehearsal', (c) => {
 app.get('/book/rehearsal/cowley-road', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1210,7 +938,7 @@ app.get('/book/rehearsal/cowley-road', (c) => {
               <textarea id="needs" name="needs" class="form-textarea" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT BOOKING REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT BOOKING REQUEST</button>
           </form>
         </div>
       </section>
@@ -1223,6 +951,7 @@ app.get('/book/rehearsal/cowley-road', (c) => {
 app.get('/book/rehearsal/cricket-road', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1266,7 +995,7 @@ app.get('/book/rehearsal/cricket-road', (c) => {
               <textarea id="needs" name="needs" class="form-textarea" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT BOOKING REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT BOOKING REQUEST</button>
           </form>
         </div>
       </section>
@@ -1279,6 +1008,7 @@ app.get('/book/rehearsal/cricket-road', (c) => {
 app.get('/book/lessons', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1320,7 +1050,7 @@ app.get('/book/lessons', (c) => {
               <textarea id="goals" name="goals" class="form-textarea" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT ENQUIRY ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT ENQUIRY</button>
           </form>
         </div>
       </section>
@@ -1333,6 +1063,7 @@ app.get('/book/lessons', (c) => {
 app.get('/book/mixdown', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1366,7 +1097,7 @@ app.get('/book/mixdown', (c) => {
             
             <p class="form-helper-text">We'll review and confirm timing before starting work.</p>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT REQUEST</button>
           </form>
         </div>
       </section>
@@ -1379,6 +1110,7 @@ app.get('/book/mixdown', (c) => {
 app.get('/book/tape', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1420,7 +1152,7 @@ app.get('/book/tape', (c) => {
               <textarea id="notes" name="notes" class="form-textarea" rows="4"></textarea>
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT REQUEST</button>
           </form>
         </div>
       </section>
@@ -1433,6 +1165,7 @@ app.get('/book/tape', (c) => {
 app.get('/book/hire', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1469,7 +1202,7 @@ app.get('/book/hire', (c) => {
               <input type="text" id="location" name="location" required class="form-input" />
             </div>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT ENQUIRY ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT ENQUIRY</button>
           </form>
         </div>
       </section>
@@ -1482,6 +1215,7 @@ app.get('/book/hire', (c) => {
 app.get('/repairs/status', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1521,7 +1255,7 @@ app.get('/repairs/status', (c) => {
               <input type="text" id="equipment_type" name="equipment_type" class="form-input" />
             </div>
             
-            <button type="submit" class="crs-button mono">[ NOTIFY ME ]</button>
+            <button type="submit" class="crs-button mono">NOTIFY ME</button>
           </form>
           
           <p class="form-helper-text">Thanks — we'll let you know when repairs reopen.</p>
@@ -1536,6 +1270,7 @@ app.get('/repairs/status', (c) => {
 app.get('/book/repairs', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -1577,7 +1312,7 @@ app.get('/book/repairs', (c) => {
             
             <p class="form-helper-text">Diagnosis first. Quote follows.</p>
             
-            <button type="submit" class="crs-button mono">[ SUBMIT REPAIR REQUEST ]</button>
+            <button type="submit" class="crs-button mono">SUBMIT REPAIR REQUEST</button>
           </form>
         </div>
       </section>
@@ -1586,606 +1321,100 @@ app.get('/book/repairs', (c) => {
   )
 })
 
-// AV SERVICES
+// PODCAST & AV SERVICES
 app.get('/av-services', (c) => {
-  return c.render(
-    <>
-      <Header />
-
-      <section class="crs-section section-dark">
-        {/* UNIT HEADER */}
-        <header class="unit-header" data-unit="av">
-          <div class="unit-header__top">
-            <div class="unit-header__label">
-              <span class="unit-header__tag">UNIT</span>
-              <span class="unit-header__title">AV SERVICES</span>
-            </div>
-            <div class="unit-header__stamp">CRS-UNIT-AV</div>
-          </div>
-
-          <p class="unit-header__lede">
-            Engineer-led live sound and technical support for venues and public events.
-          </p>
-
-          <div class="unit-spec">
-            <div class="unit-spec__row"><span class="unit-spec__key">STATE</span><span class="unit-spec__val" data-state="available">AVAILABLE</span></div>
-            <div class="unit-spec__row"><span class="unit-spec__key">DEPLOYMENT</span><span class="unit-spec__val">MOBILE</span></div>
-          </div>
-
-          <div class="unit-controls">
-            <a class="unit-btn unit-btn--primary" href="/contact?service=av">[ REQUEST AV QUOTE ]</a>
-            <a class="unit-btn unit-btn--secondary" href="/contact">[ CONTACT ]</a>
-          </div>
-        </header>
-
-        {/* MODULE 1 — WHAT WE DO */}
-        <div class="content-block" style="margin-top: 2rem;">
-          <h3 class="content-heading mono">WHAT WE DO</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              CRS provides technical management and AV support for external venues.
-            </p>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;">→ Live sound for talks, gigs, launches, and community events</li>
-              <li style="margin-bottom: 0.75rem;">→ Temporary and permanent AV installs</li>
-              <li style="margin-bottom: 0.75rem;">→ Hybrid and streamed events</li>
-              <li style="margin-bottom: 0.75rem;">→ On-site engineers and technical support</li>
-            </ul>
-            <p style="margin-top: 1.5rem;">
-              Every job is handled in-house by people who do this for real.
-            </p>
-          </div>
-        </div>
-
-        {/* MODULE 2 — HOW IT WORKS */}
-        <div class="content-block">
-          <h3 class="content-heading mono">HOW IT WORKS</h3>
-          <div class="content-text">
-            <ol style="padding-left: 1.5rem;">
-              <li style="margin-bottom: 0.75rem;">You tell us what's happening</li>
-              <li style="margin-bottom: 0.75rem;">We assess the space and requirements</li>
-              <li style="margin-bottom: 0.75rem;">We handle the technical side</li>
-              <li style="margin-bottom: 0.75rem;">The event runs smoothly</li>
-            </ol>
-            <p style="margin-top: 1.5rem; font-style: italic;">
-              You focus on the room. We handle the signal.
-            </p>
-          </div>
-        </div>
-
-        {/* MODULE 3 — CAPABILITY */}
-        <div class="content-block">
-          <h3 class="content-heading mono">CAPABILITY</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              CRS AV systems are designed for live pressure and calm under failure conditions.
-            </p>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;">→ Built for live pressure</li>
-              <li style="margin-bottom: 0.75rem;">→ Engineered signal paths</li>
-              <li style="margin-bottom: 0.75rem;">→ Calm under failure conditions</li>
-              <li style="margin-bottom: 0.75rem;">→ Human-led, not automated</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* MODULE 4 — TECHNICAL OPERATIONS */}
-        <div class="content-block">
-          <h3 class="content-heading mono">TECHNICAL OPERATIONS</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              CRS provides ongoing technical management and AV support for external venues.
-            </p>
-            <p style="margin-bottom: 0.5rem; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">
-              Current supported sites:
-            </p>
-            <ul style="list-style: none; padding: 0; font-size: 0.875rem; color: rgba(245, 245, 245, 0.6);">
-              <li style="margin-bottom: 0.25rem;">– Bossaphonik</li>
-              <li style="margin-bottom: 0.25rem;">– The King's Centre</li>
-              <li style="margin-bottom: 0.25rem;">– Cowley Workers' Club</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* MODULE 5 — PRICING CONTEXT */}
-        <div class="content-block">
-          <h3 class="content-heading mono">PRICING CONTEXT</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              AV services are quoted per project. Typical jobs range from <strong>£250–£1,500</strong> depending on scale and equipment requirements.
-            </p>
-            <p style="font-size: 0.9375rem; opacity: 0.85;">
-              Use the contact form to outline your event and production needs for a quote.
-            </p>
-          </div>
-        </div>
-
-        {/* INTAKE VALVE (bottom of page) */}
-        <div class="content-block" style="margin-top: 2rem; padding: 1.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: 10px;">
-          <p style="margin-bottom: 1rem;">
-            AV services are quoted based on scope, venue, and technical requirements. Use the contact form to outline your event.
-          </p>
-          <a href="/contact?service=av" class="crs-button mono">[ REQUEST AV QUOTE ]</a>
-        </div>
-
-        {/* BRIDGE TO REPAIRS */}
-        <div class="content-block">
-          <p class="section-intro">
-            Behind every clean live setup is a deep technical bench.
-          </p>
-          <div class="hero-cta" style="margin-top: 1.5rem;">
-            <a href="/av-services/repairs" class="crs-button mono">[ REPAIRS & TECHNICAL BENCH ]</a>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </>
-  )
+  return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Studio & AV Services Oxford | Cowley Road Studios</title>
+    <meta name="description" content="Professional podcast studio hire and AV services in Oxford. £30/hr engineer-led recording, live sound installation, equipment repairs. Cricket Road & Cowley Road.">
+    <meta name="keywords" content="podcast studio oxford, podcast recording oxford, av services oxford, live sound oxford, sound engineer oxford, equipment repair oxford">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="/static/crs-reset.css" rel="stylesheet">
+    <link href="/static/crs-typography.css" rel="stylesheet">
+    <link href="/static/crs-header.css" rel="stylesheet">
+    <link href="/static/crs-mobile.css" rel="stylesheet">
+    <link href="/static/rack-accordion.css" rel="stylesheet">
+</head>
+<body>
+    ${<PodcastAVPage />}
+</body>
+</html>`)
 })
 
-// REPAIRS
-app.get('/av-services/repairs', (c) => {
-  return c.render(
-    <>
-      <Header />
+// Add redirect for podcast
+app.get('/podcast', (c) => c.redirect('/av-services'))
 
-      <section class="crs-section section-dark">
-        <div class="section-header">
-          <h1 class="section-title heading">CRS — Repairs</h1>
-          
-          {/* STATUS NOTE */}
-          <div class="repairs-status-banner" style="margin-top: 1.5rem;">
-            <span class="mono">
-              ⚠️ Repairs currently paused · 
-              <a href="/repairs/status" style="color: var(--mustard); text-decoration: underline; margin-left: 0.5rem;">
-                View status
-              </a>
-            </span>
-          </div>
-        </div>
-
-        {/* OVERVIEW */}
-        <div class="content-block">
-          <h3 class="content-heading mono">OVERVIEW</h3>
-          <div class="content-text">
-            <p>
-              Repairs and system fixes are handled in-house by our technical bench.
-            </p>
-            <p style="margin-top: 1rem; font-style: italic;">
-              Led by <strong>ODRO</strong>, our in-house engineer responsible for repairs and deep technical problem-solving.
-            </p>
-          </div>
-        </div>
-
-        {/* WHAT WE REPAIR */}
-        <div class="content-block">
-          <h3 class="content-heading mono">WHAT WE REPAIR</h3>
-          <div class="content-text">
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;">→ Mixers and interfaces</li>
-              <li style="margin-bottom: 0.75rem;">→ Amplifiers and speakers</li>
-              <li style="margin-bottom: 0.75rem;">→ Cabling and connectors</li>
-              <li style="margin-bottom: 0.75rem;">→ Power and signal faults</li>
-            </ul>
-            <p style="margin-top: 1.5rem;">
-              If it's part of a signal chain, we'll assess it honestly.
-            </p>
-          </div>
-          
-          {/* Hardware Presence: Repair Bench */}
-          <div class="hardware-image" style="margin-top: 2rem;">
-            <img 
-              src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/CRS-Buttons%20ready%20for%20web/crs-control-panel-studios.png"
-              alt="CRS repair bench"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        {/* THE PROCESS */}
-        <div class="content-block">
-          <h3 class="content-heading mono">THE PROCESS</h3>
-          <div class="content-text">
-            <ol style="padding-left: 1.5rem;">
-              <li style="margin-bottom: 0.75rem;">Diagnose</li>
-              <li style="margin-bottom: 0.75rem;">Repair</li>
-              <li style="margin-bottom: 0.75rem;">Test</li>
-              <li style="margin-bottom: 0.75rem;">Return</li>
-            </ol>
-            <p style="margin-top: 1.5rem;">
-              No cosmetic fixes. No guesswork.
-            </p>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div class="hero-cta">
-          <a href="/contact?enquiry=repairs" class="crs-button mono">
-            [ START REPAIR ENQUIRY ]
-          </a>
-        </div>
-      </section>
-
-      <Footer />
-    </>
-  )
-})
+// REPAIRS (now part of main AV page, keep old route for SEO)
+app.get('/av-services/repairs', (c) => c.redirect('/av-services'))
 
 // WORKSHOP CAFÉ (VENUE)
 app.get('/workshop-cafe', (c) => {
   return c.render(
-    <>
-      {/* Apply WSC mode class to body */}
-      <script dangerouslySetInnerHTML={{__html: `document.body.classList.add('wsc-mode');`}} />
-      
-      <Header />
-
-      <section class="crs-section section-dark">
-        {/* UNIT HEADER */}
-        <header class="unit-header" data-unit="cafe">
-          <div class="unit-header__top">
-            <div class="unit-header__label">
-              <span class="unit-header__tag">UNIT</span>
-              <span class="unit-header__title">WORKSHOP CAFÉ</span>
-            </div>
-            <div class="unit-header__stamp">CRS-UNIT-CAFE</div>
-          </div>
-
-          <p class="unit-header__lede">
-            Day workspace and small-format venue with basic PA on-site.
-          </p>
-
-          <div class="unit-spec">
-            <div class="unit-spec__row"><span class="unit-spec__key">STATE</span><span class="unit-spec__val" data-state="scheduled">SCHEDULED</span></div>
-            <div class="unit-spec__row"><span class="unit-spec__key">CAPACITY</span><span class="unit-spec__val">60</span></div>
-            <div class="unit-spec__row"><span class="unit-spec__key">PA</span><span class="unit-spec__val">BASIC ON-SITE</span></div>
-            <div class="unit-spec__row"><span class="unit-spec__key">ACCESS</span><span class="unit-spec__val">118 COWLEY ROAD / OXFORD</span></div>
-          </div>
-
-          <div class="unit-controls">
-            <a class="unit-btn unit-btn--primary" href="/book">[ BOOK THE SPACE ]</a>
-            <a class="unit-btn unit-btn--secondary" href="/contact?service=venue">[ CONTACT ]</a>
-          </div>
-        </header>
-
-        {/* MODULE 1 — CAPABILITY */}
-        <div class="content-block" style="margin-top: 2rem;">
-          <h3 class="content-heading mono">CAPABILITY</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1rem;">
-              Bookable public-facing venue within CRS for small events and private hire.
-            </p>
-            <ul style="list-style: none; padding: 0;">
-              <li style="margin-bottom: 0.75rem;">→ Listening sessions</li>
-              <li style="margin-bottom: 0.75rem;">→ Film screenings</li>
-              <li style="margin-bottom: 0.75rem;">→ Workshops & classes</li>
-              <li style="margin-bottom: 0.75rem;">→ Talks & discussions</li>
-              <li style="margin-bottom: 0.75rem;">→ Private bookings</li>
-            </ul>
-            <p style="margin-top: 1rem; font-size: 0.9375rem;">
-              Flexible layout: seated or standing configuration as required.
-            </p>
-          </div>
-        </div>
-
-        {/* MODULE 2 — RESOURCE ALLOCATION RATES */}
-        <div class="content-block">
-          <h3 class="content-heading mono">RESOURCE ALLOCATION RATES</h3>
-          <div class="content-text">
-            <p style="margin-bottom: 1.5rem;">
-              118 Cowley Road — Multi-use infrastructure
-            </p>
-            
-            {/* FULL VENUE HIRE */}
-            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem; margin-bottom: 1rem;">
-              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
-                <h4 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">FULL VENUE HIRE</h4>
-                <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£50 per hour</span>
-              </div>
-              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
-                Capacity: 40–60 people · Includes PA system & projection
-              </p>
-            </div>
-
-            {/* MEETING TABLE */}
-            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem; margin-bottom: 1rem;">
-              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
-                <h4 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">MEETING TABLE</h4>
-                <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£25 per half-day</span>
-              </div>
-              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
-                Workspace with high-speed connectivity
-              </p>
-            </div>
-
-            {/* COMMUNITY EVENT */}
-            <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
-              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
-                <h4 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">COMMUNITY EVENT</h4>
-                <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£30 (subsidized)</span>
-              </div>
-              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
-                For grassroots/non-profit cultural activity
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* MODULE 3 — ACCESS POLICY */}
-        <div class="content-block">
-          <h3 class="content-heading mono">ACCESS POLICY</h3>
-          <div class="content-text">
-            <p>
-              Priority allocation granted to local grassroots initiatives. All commercial hire directly funds the CRS Creative Infrastructure.
-            </p>
-          </div>
-        </div>
-
-        {/* MODULE 4 — OPERATIONAL NOTES */}
-        <div class="content-block">
-          <h3 class="content-heading mono">OPERATIONAL NOTES</h3>
-          <div class="content-text">
-            <p>
-              Workshop Café is not currently open for daily café service. The space is available by enquiry for private or community use during the build phase.
-            </p>
-          </div>
-        </div>
-
-        {/* INTAKE VALVE */}
-        <div class="content-block" style="padding: 1.5rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: 10px;">
-          <p style="margin-bottom: 1rem;">
-            Private events, workshops, and custom setups are handled via the contact form.
-          </p>
-          <a href="/contact?service=venue" class="crs-button mono">[ CONTACT ]</a>
-        </div>
-      </section>
-
-        {/* CAFÉ SIGNAGE HERO - Above the fold */}
-        <section class="crs-section cafe-heartbeat" style="padding: 0; max-width: 1400px; margin: 0 auto;">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/Workshop_Cafe_CTA_Primary.png" 
-            alt="Workshop Café — 118 Cowley Road"
-            style="width: 100%; height: auto; display: block;"
-            loading="eager"
-          />
-        </section>
-
-        {/* EVENT LOG - Live feed */}
-        <section class="crs-section section-dark">
-          <div class="section-header">
-            <h2 class="section-title heading">[ EVENT_LOG ]</h2>
-            <p class="section-intro" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem;">118 COWLEY ROAD — PUBLIC SCHEDULE</p>
-          </div>
-
-          <div id="workshop-cafe-events" style="margin-top: 2rem;">
-            <p style="font-size: 0.875rem; font-style: italic; color: rgba(245, 245, 245, 0.7);">Loading events...</p>
-          </div>
-          
-          <script dangerouslySetInnerHTML={{__html: `
-            fetch('/events.json')
-              .then(res => res.json())
-              .then(data => {
-                const container = document.getElementById('workshop-cafe-events');
-                if (!container) return;
-                
-                if (!data.events || data.events.length === 0) {
-                  container.innerHTML = '<div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(127, 255, 0, 0.2); padding: 1.5rem; text-align: center;"><p style="font-family: \'JetBrains Mono\', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">[ STATUS: NO_ACTIVE_ENTRIES ]</p><p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">No events scheduled this week — <a href="/contact?service=venue" style="color: var(--mustard); text-decoration: none; font-weight: 700;">inquire for space allocation</a></p></div>';
-                  return;
-                }
-                
-                const eventsToShow = data.events.slice(0, 5);
-                
-                container.innerHTML = eventsToShow.map(event => {
-                  const date = new Date(event.start);
-                  const dateStr = date.toLocaleDateString('en-GB', { 
-                    weekday: 'short', 
-                    day: 'numeric', 
-                    month: 'short'
-                  });
-                  const timeStr = event.start.includes('T') ? date.toLocaleTimeString('en-GB', {
-                    hour: '2-digit',
-                    minute: '2-digit'
-                  }) : '';
-                  
-                  return \`
-                    <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.25rem; margin-bottom: 1.25rem;">
-                      <h4 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.03em;">\${event.title}</h4>
-                      <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.6); margin-bottom: 0.5rem;">\${dateStr}\${timeStr ? ' · ' + timeStr : ''}</p>
-                      <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">\${event.description.substring(0, 120)}\${event.description.length > 120 ? '...' : ''}</p>
-                    </div>
-                  \`;
-                }).join('');
-              })
-              .catch(err => {
-                const container = document.getElementById('workshop-cafe-events');
-                if (container) {
-                  container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">Unable to load events.</p>';
-                }
-              });
-          `}} />
-        </section>
-
-        {/* RESOURCE ALLOCATION RATES */}
-        <section class="crs-section cafe-heartbeat">
-          <div class="section-header">
-            <h2 class="section-title cafe-title">RESOURCE ALLOCATION RATES</h2>
-            <p class="section-intro cafe-intro">
-              118 Cowley Road — Multi-use infrastructure
-            </p>
-          </div>
-
-          <div style="max-width: 900px; margin: 0 auto;">
-            {/* Rate Card Grid */}
-            <div style="display: grid; gap: 1.5rem; margin-bottom: 2rem;">
-              
-              {/* Full Venue Hire */}
-              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
-                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
-                  <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">FULL VENUE HIRE</h3>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£50 per hour</span>
-                </div>
-                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
-                  Capacity: 40–60 people · Includes PA system & projection
-                </p>
-              </div>
-
-              {/* Meeting Table */}
-              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
-                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
-                  <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">MEETING TABLE</h3>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£25 per half-day</span>
-                </div>
-                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
-                  Workspace with high-speed connectivity
-                </p>
-              </div>
-
-              {/* Community Event */}
-              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
-                <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
-                  <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">COMMUNITY EVENT</h3>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£30 (subsidized)</span>
-                </div>
-                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
-                  For grassroots/non-profit cultural activity
-                </p>
-              </div>
-            </div>
-
-            {/* Access Policy */}
-            <div style="background: rgba(216, 162, 0, 0.1); border: 1px solid var(--mustard); padding: 1.5rem; text-align: center;">
-              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
-                [ ACCESS POLICY ]
-              </p>
-              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9); margin: 0;">
-                Priority allocation granted to local grassroots initiatives. All commercial hire directly funds the CRS Creative Infrastructure.
-              </p>
-            </div>
-
-            {/* Booking CTA */}
-            <div style="margin-top: 2rem; text-align: center;">
-              <a href="/book?service=venue" class="crs-button mono">[ BOOK SPACE ]</a>
-            </div>
-          </div>
-        </section>
-
-        {/* INFRASTRUCTURE ALLOCATION - Modular Use Cases */}
-        <section class="crs-section cafe-heartbeat">
-          <div class="section-header">
-            <h2 class="section-title cafe-title">[ INFRASTRUCTURE_ALLOCATION ]</h2>
-            <p class="section-intro cafe-intro" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Modular Space Protocol</p>
-          </div>
-
-          <div style="max-width: 700px; margin: 0 auto;">
-            <div style="display: grid; gap: 1rem; margin-bottom: 2rem;">
-              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green); padding: 1.25rem;">
-                <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MODULE_01 // OPEN WORKSPACE</p>
-                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">Drop-in desk space with high-speed connectivity. No booking required.</p>
-              </div>
-              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.25rem;">
-                <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MODULE_02 // COMMUNITY EVENTS</p>
-                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">Talks, screenings, workshops, open mics. Subsidized rates for grassroots/non-profit.</p>
-              </div>
-              <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green); padding: 1.25rem;">
-                <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MODULE_03 // PRIVATE HIRE</p>
-                <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">Small-scale meetings, rehearsals, or private sessions. PA system & projection available.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* REFRESHMENT PROTOCOL - Coffee/Tea Menu */}
-        <section class="crs-section section-dark">
-          <div class="section-header">
-            <h2 class="section-title heading">[ REFRESHMENT_PROTOCOL ]</h2>
-            <p class="section-intro" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem;">UE Coffee System — Oxford Roasted</p>
-          </div>
-
-          <div style="max-width: 800px; margin: 0 auto;">
-            {/* Coffee Specs */}
-            <div style="margin-bottom: 3rem;">
-              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 1.5rem;">COFFEE ALLOCATION</h3>
-              <div style="display: grid; gap: 1rem;">
-                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">ESPRESSO // SINGLE</span>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">ESPRESSO // DOUBLE</span>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.00</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">FLAT_WHITE</span>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.50</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">CAPPUCCINO</span>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.50</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">LATTE</span>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.50</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">AMERICANO</span>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.00</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Tea Specs */}
-            <div style="margin-bottom: 3rem;">
-              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 1.5rem;">TEA ALLOCATION</h3>
-              <div style="display: grid; gap: 1rem;">
-                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">ENGLISH_BREAKFAST</span>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">EARL_GREY</span>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">GREEN_TEA</span>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">PEPPERMINT</span>
-                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Protocol Note */}
-            <div style="background: rgba(127, 255, 0, 0.05); border: 1px solid rgba(127, 255, 0, 0.2); padding: 1.5rem; text-align: center;">
-              <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">[ MILK_OPTIONS ]</p>
-              <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9); margin: 0;">Oat · Soy · Dairy — No additional charge</p>
-            </div>
-          </div>
-        </section>
-
-        {/* CRS ROUTING PANEL - Authority handoff */}
-        <section class="crs-section section-dark">
-          <div style="max-width: 700px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
-            <p style="font-size: 1rem; line-height: 1.7; color: rgba(245, 245, 245, 0.9); margin-bottom: 1.5rem;">
-              Workshop Café operates as the public-facing space of CRS.
-            </p>
-            <p style="font-size: 0.9375rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 2rem;">
-              For venue hire, technical support, or bookings:
-            </p>
-            <a href="/book" class="crs-button mono">[ VIEW CRS SERVICES ]</a>
-          </div>
-        </section>
-
-        <Footer />
-    </>
+      <WorkshopCafePage />,
+    {
+      title: 'Workshop Café Oxford | Community Space & Venue Hire',
+      description: 'Café, workspace, and small venue in East Oxford. Available for private hire and public programming. Part of Cowley Road Studios.',
+      keywords: 'cafe oxford, workshop cafe oxford, venue hire oxford, community space oxford, east oxford cafe'
+    }
   )
 })
+
+// ============================================================================
+// CRICKET ROAD STUDIO PAGE
+// ============================================================================
+app.get('/cricket-road', (c) => {
+  return c.render(
+    <>
+      <BuildStatusBanner />
+      <Header />
+      <CricketRoad />
+      <Footer />
+    </>,
+    {
+      title: 'Cricket Road Studio Oxford | Rehearsal Space & Live Capture',
+      description: 'Fully operational rehearsal and live capture facility in Oxford. 6m × 4m live room with backline, PA, and drum kit. Bookable now.',
+      keywords: 'rehearsal space oxford, band rehearsal oxford, live room oxford, cricket road studio, recording oxford'
+    }
+  )
+})
+
+// ============================================================================
+// SOUNDWORKS LEGACY PAGE
+// ============================================================================
+app.get('/soundworks', (c) => {
+  return c.render(
+    <>
+      <BuildStatusBanner />
+      <Header />
+      <Soundworks />
+      <Footer />
+    </>,
+    {
+      title: 'Soundworks Oxford is now Cowley Road Studios | Recording Studio Oxford',
+      description: 'Soundworks Oxford (1999–2024) is now Cowley Road Studios. Same commitment to professional recording, rehearsal, and AV services in Oxford.',
+      keywords: 'soundworks oxford, cowley road studios, recording studio oxford, soundworks oxford history, oxford recording studio'
+    }
+  )
+})
+
+// ============================================================================
+// ABOUT PAGE
+// ============================================================================
+// ============================================================================
+// WORK PAGE
+// ============================================================================
 
 app.get('/cafe', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
 
       {/* CAFÉ HERO - Full-width Nettle Green */}
@@ -2285,15 +1514,19 @@ app.get('/cafe', (c) => {
         </div>
 
         <div class="hero-cta" style="margin-top: 2rem;">
-          <a href="/contact?service=venue" class="crs-button mono">[ CONTACT ]</a>
+          <a href="/contact?service=venue" class="crs-button mono">CONTACT</a>
         </div>
       </section>
 
       <Footer />
-    </>
+    </>,
+    {
+      title: 'Contact Cowley Road Studios | Recording Studio Oxford',
+      description: 'Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Located in East Oxford. Email: info@crsoxford.com',
+      keywords: 'contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford'
+    }
   )
 })
-
 // VENUE REDIRECT (removed - not ready for public launch)
 app.get("/venue", (c) => c.redirect("/contact?service=venue"))
 
@@ -2301,711 +1534,473 @@ app.get("/venue", (c) => c.redirect("/contact?service=venue"))
 app.get('/about', (c) => {
   return c.render(
     <>
+      <BuildStatusBanner />
       <Header />
-
-      <section class="crs-section section-dark">
-        <div class="section-header">
-          <h1 class="section-title heading">CRS — About</h1>
-        </div>
-
-        {/* OVERVIEW */}
-        <div class="content-block">
-          <div class="content-text">
-            <p>
-              Cowley Road Studios exists to provide reliable, engineer-led creative infrastructure on Cowley Road.
-            </p>
-            <p style="margin-top: 1.5rem;">
-              Built because something was missing — dependable spaces that prioritise systems, people, and practical outcomes over hype.
-            </p>
-            <p style="margin-top: 1.5rem;">
-              The studio, AV services, and Workshop Café work together as a connected system: infrastructure at the core, public life at the front.
-            </p>
-          </div>
-        </div>
-      </section>
-
+      <About />
       <Footer />
-    </>
+    </>,
+    {
+      title: 'About Cowley Road Studios | Recording Studio Oxford',
+      description: 'Learn about CRS: purpose-built recording studio and AV infrastructure in Oxford. No-chaos policy, engineer-maintained systems, community-focused.',
+      keywords: 'about crs, cowley road studios oxford, recording studio oxford history, music studio oxford'
+    }
+  )
+})
+// WORK
+app.get('/work', (c) => {
+  return c.render(
+    <>
+      <BuildStatusBanner />
+      <Header />
+      <Work />
+      <Footer />
+    </>,
+    {
+      title: 'Work & Portfolio | Cowley Road Studios Oxford',
+      description: 'View completed projects and work from Cowley Road Studios. Recording sessions, AV deployments, and community projects in Oxford.',
+      keywords: 'crs portfolio, recording studio work oxford, music production oxford, studio projects'
+    }
+  )
+})
+// CONTACT
+app.get('/contact', (c) => {
+  return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Cowley Road Studios | Recording Studio Oxford</title>
+    <meta name="description" content="Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Two Oxford locations. Direct booking routes. Email: info@crsoxford.com">
+    <meta name="keywords" content="contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="/static/crs-reset.css" rel="stylesheet">
+    <link href="/static/crs-typography.css" rel="stylesheet">
+    <link href="/static/crs-header.css" rel="stylesheet">
+    <link href="/static/crs-mobile.css" rel="stylesheet">
+    <link href="/static/rack-accordion.css" rel="stylesheet">
+</head>
+<body>
+    ${<ContactPage />}
+</body>
+</html>`)
+})
+
+// BOOKING CONFIRMED PAGE
+// Post-Square redirect: Static confirmation page
+app.get('/booking-confirmed', (c) => {
+  return c.render(
+    <>
+      <BuildStatusBanner />
+      <Header />
+      <BookingConfirmed />
+      <Footer />
+    </>,
+    {
+      title: 'Booking Confirmed | Cowley Road Studios',
+      description: 'Your booking at Cowley Road Studios is confirmed. Check your email for booking details and access information.',
+      keywords: 'booking confirmed, cowley road studios booking, studio booking confirmation'
+    }
   )
 })
 
-// CONTACT
-app.get('/contact', (c) => {
+// RACK CONSOLE — REASON DAW-STYLE INTERFACE
+// Testbed for rack UI: Video backgrounds, QR codes, LED status
+app.get('/rack', (c) => {
   return c.render(
     <>
       <Header />
-
-      <section class="crs-section section-dark">
-        <div class="section-header">
-          <h1 class="section-title heading">CRS — Contact</h1>
-          <p class="section-intro">
-            For general enquiries only.
-          </p>
-        </div>
-
-        {/* CONTACT FORM */}
-        <div class="booking-form-container">
-          <h3 class="content-heading mono">SEND A MESSAGE</h3>
-          
-          <form class="booking-form" method="post" action="/api/contact">
-            <div class="form-group">
-              <label for="name" class="form-label mono">Name *</label>
-              <input type="text" id="name" name="name" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label mono">Email *</label>
-              <input type="email" id="email" name="email" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="message" class="form-label mono">Message *</label>
-              <textarea id="message" name="message" required class="form-textarea" rows="6"></textarea>
-            </div>
-            
-            <button type="submit" class="crs-button mono">[ SEND MESSAGE ]</button>
-          </form>
-          
-          <p class="form-helper-text">Message received. Enquiries are processed during operating hours.</p>
-        </div>
-
-        {/* CONTACT METHODS */}
-        <div class="content-block" style="margin-top: 3rem;">
-          <h3 class="content-heading mono">DIRECT CONTACT</h3>
-          <div class="content-text mono">
-            <p><strong>NOTE:</strong> All enquiries are handled via the contact form above.</p>
-            <p style="margin-top: 1rem;"><strong>ADDRESS:</strong> 118 Cowley Road, Oxford, OX4 1JE</p>
-          </div>
-        </div>
-      </section>
-
+      <RackPage />
       <Footer />
-    </>
+    </>,
+    {
+      title: 'CRS Studio Network | Cowley Road Studios',
+      description: 'CRS Studio Network: Signal routing, booking surface, system status. Hardware-inspired interface.',
+      keywords: 'studio network, booking, cowley road studios, signal routing'
+    }
   )
 })
 
-// =============================================================================
-// SIGNAGE SYSTEM ROUTES
-// =============================================================================
-
-// /signals/status.json - Core system status for signage
-app.get('/signals/status.json', (c) => {
-  const zones = {
-    cafe: { state: 'standby', status: 'OPENING SOON' },
-    studio: { state: 'standby', status: 'BOOKABLE' },
-    rehearsals: { state: 'live', status: 'BOOKABLE' },
-    av: { state: 'standby', status: 'ENQUIRY' }
-  };
-  
-  return c.json({
-    status: 'BUILD PHASE — OPERATIONAL BY ENQUIRY',
-    zones: zones,
-    updated: new Date().toISOString()
-  })
+// RACK TEST — STRUCTURAL ASSEMBLY SANDBOX
+// Isolated test route for 19-inch rack interface development
+app.get('/rack-test', (c) => {
+  return c.render(
+    <RackTestPage />,
+    {
+      title: 'CRS Rack Test | Structural Assembly',
+      description: 'Test environment for 19-inch equipment rack interface',
+      keywords: 'rack test, studio equipment, structural assembly'
+    }
+  )
 })
 
-// /signals/services.json - Service states for signage "NOW ACTIVE" block
-app.get('/signals/services.json', (c) => {
-  return c.json({
-    services: [
-      {
-        id: 'rehearsals',
-        label: 'Rehearsals',
-        state: 'live',
-        status: 'BOOKABLE',
-        color: '#008F00'
-      },
-      {
-        id: 'av-services',
-        label: 'AV Services',
-        state: 'standby',
-        status: 'ENQUIRY',
-        color: '#d4a017'
-      },
-      {
-        id: 'studio',
-        label: 'Studio Sessions',
-        state: 'standby',
-        status: 'ENQUIRY',
-        color: '#d4a017'
-      }
-    ],
-    updated: new Date().toISOString()
-  })
+// RACK VARIANTS — HARDWARE REALISM WITH VISUAL HIERARCHY
+// Enhanced modular rack with command/rack/passive variants
+// Mission: Bring the rack to life (tactile, styled, variant-aware)
+app.get('/rack-variants', (c) => {
+  return c.render(
+    <>
+      <link href="/static/rack-variants-hardware.css" rel="stylesheet" />
+      <RackModularEnhanced />
+      <script src="/static/rack-dropdown.js" defer></script>
+    </>,
+    {
+      title: 'CRS Rack Variants | Hardware Realism',
+      description: 'Modular rack interface with visual variants - command, rack, and passive. Hardware-inspired design with tactile interactions.',
+      keywords: 'rack modules, hardware ui, studio equipment, variant system'
+    }
+  )
 })
 
-// /signals/schedule.json - Upcoming events for signage "COMING UP" block
-app.get('/signals/schedule.json', (c) => {
-  // Currently empty - will be populated when events are scheduled
-  return c.json({
-    upcoming: [],
-    updated: new Date().toISOString()
-  })
+// RACK ACCORDION — Hardware Rack with Expandable Modules
+// Click any module to expand it, others stay collapsed
+// Pure hardware aesthetic with LED indicators
+app.get('/rack-accordion', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Recording Studio & Rehearsal Rooms Oxford | Cowley Road Studios</title>
+        <meta name="description" content="Independent recording studio, rehearsal rooms and engineer-led sessions in Oxford. Formerly Soundworks Oxford (1999–2024). Book rehearsal, recording, or creative workspace." />
+        <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        
+        {/* Core CSS files from homepage */}
+        <link href="/static/crs-reset.css" rel="stylesheet" />
+        <link href="/static/crs-typography.css" rel="stylesheet" />
+        <link href="/static/crs-header.css" rel="stylesheet" />
+        <link href="/static/crs-footer.css" rel="stylesheet" />
+        <link href="/static/crs-map-embed.css" rel="stylesheet" />
+        <link href="/static/crs-mobile.css" rel="stylesheet" />
+        
+        {/* Accordion-specific CSS */}
+        <link href="/static/rack-accordion.css" rel="stylesheet" />
+      </head>
+      <body>
+        <RackAccordion />
+        
+        {/* Structured data for SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Cowley Road Studios",
+            "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
+            "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "118 Cowley Road",
+              "addressLocality": "Oxford",
+              "postalCode": "OX4 1JE",
+              "addressCountry": "GB"
+            },
+            "telephone": "+441865722027",
+            "email": "info@crsoxford.com",
+            "url": "https://cowley-road-studios.pages.dev",
+            "priceRange": "££",
+            "areaServed": "Oxford",
+            "sameAs": [
+              "https://instagram.com/cowleyroadstudios.ox"
+            ]
+          })}
+        </script>
+      </body>
+    </html>
+  );
 })
 
-// /signage - Xibo Digital Signage Display
+// PHOTO GALLERY - View all location photos
+app.get('/photos', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CRS Location Photos</title>
+        <style>{`
+          body {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0a0a0a;
+            color: #fff;
+            padding: 2rem;
+            margin: 0;
+          }
+          h1 {
+            color: #00ff88;
+            text-align: center;
+          }
+          .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+          }
+          .photo-card {
+            background: #1a1a1a;
+            border: 2px solid rgba(153,204,153,0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            transition: transform 0.2s;
+          }
+          .photo-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(153,204,153,0.6);
+          }
+          .photo-card h3 {
+            color: #00ff88;
+            margin-top: 0;
+            font-size: 18px;
+          }
+          .photo-card img {
+            width: 100%;
+            border-radius: 4px;
+            border: 1px solid rgba(255,255,255,0.1);
+          }
+          .photo-info {
+            margin-top: 0.5rem;
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+          }
+          @media (max-width: 768px) {
+            .gallery {
+              grid-template-columns: 1fr;
+            }
+          }
+        `}</style>
+      </head>
+      <body>
+        <h1>📸 CRS Location Photos Available</h1>
+        
+        <div class="gallery">
+          <div class="photo-card">
+            <h3>🎸 Cowley Rehearsal</h3>
+            <img src="/static/machined-assets/cowley-rehearsal-optimized.webp" alt="Cowley Rehearsal" />
+            <div class="photo-info">cowley-rehearsal-optimized.webp (56KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>🎸 Cricket Rehearsal</h3>
+            <img src="/static/machined-assets/cricket-rehearsal-optimized.webp" alt="Cricket Rehearsal" />
+            <div class="photo-info">cricket-rehearsal-optimized.webp (29KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>🎛️ Cowley Control Room (Pods)</h3>
+            <img src="/static/machined-assets/cowley-pods-rack.webp" alt="Cowley Control Room" />
+            <div class="photo-info">cowley-pods-rack.webp (114KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>🎛️ Cricket Control Room</h3>
+            <img src="/static/machined-assets/cricket-control-room-optimized.webp" alt="Cricket Control Room" />
+            <div class="photo-info">cricket-control-room-optimized.webp (29KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>☕ Workshop Café</h3>
+            <img src="/static/machined-assets/workshop-cafe-optimized.webp" alt="Workshop Café" />
+            <div class="photo-info">workshop-cafe-optimized.webp (169KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>📞 Contact/Patchbay</h3>
+            <img src="/static/machined-assets/contact-patchbay-rack.webp" alt="Contact Patchbay" />
+            <div class="photo-info">contact-patchbay-rack.webp (74KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>🎸 Cricket Rehearsal (Alt - Magenta)</h3>
+            <img src="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp" alt="Cricket Rehearsal Magenta" />
+            <div class="photo-info">cricket-rehearsal-magenta-optimized.webp (52KB)</div>
+          </div>
+          
+          <div class="photo-card">
+            <h3>🎛️ Master Bus</h3>
+            <img src="/static/machined-assets/master-bus-ch7-optimized.webp" alt="Master Bus" />
+            <div class="photo-info">master-bus-ch7-optimized.webp (134KB)</div>
+          </div>
+        </div>
+      </body>
+    </html>
+  );
+})
+
+// RACK MODULAR — PHASE 4: HARDWARE CHANNEL SELECTOR SYSTEM
+// Single expandable rack with hardware aesthetics (console metaphor)
+// CONSOLE INTERFACE — Hardware Control Surface (No Global Layout)
+// Pure console UI with zero website chrome
+// Uses c.html() to bypass global layout and theme CSS
+app.get('/rack-modular', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <title>CRS Rack Console | Cowley Road Studios</title>
+        <meta name="description" content="Hardware-style console interface for Cowley Road Studios. Professional recording studios and rehearsal spaces in Oxford." />
+        
+        {/* Minimal fonts for console UI */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        
+        {/* ONLY Console CSS - Final Art Direction Pass */}
+        <link href="/static/rack-console-final.css" rel="stylesheet" />
+        
+        {/* Minimal reset for console */}
+        <style>{`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          body {
+            font-family: 'JetBrains Mono', 'Space Mono', monospace;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+          }
+        `}</style>
+      </head>
+      <body>
+        <RackModular />
+        <script src="/static/rack-channel-system.js" defer></script>
+        <script src="/static/booking-wizard.js" defer></script>
+      </body>
+    </html>
+  )
+})
+
+// DIGITAL PULSE — FUNDERS LANDING PAGE
+// Professional grassroots infrastructure pitch for funding partners
+app.get('/digital-pulse', (c) => {
+  return c.render(
+    <DigitalPulsePage />,
+    {
+      title: 'Digital Pulse | Grassroots Infrastructure Funding',
+      description: 'Cowley Road Studios is the hardware running Oxford\'s creative software. Partner with us to repair the infrastructure that keeps culture alive.',
+      keywords: 'digital pulse, grassroots funding, arts infrastructure, community technology, oxford'
+    }
+  )
+})
+
+// SIGNAGE TERMINAL — DIGITAL BROADCAST MODE (55" Street Display)
+// Headless route: No global header/footer, SEO excluded
+// SIGNAGE TERMINAL — DIGITAL BROADCAST MODE (55" Street Display)
+// Full-screen rack module display for street-level presence
 app.get('/signage', (c) => {
   return c.html(
-    <html lang="en">
+    <html>
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CRS — Digital Pulse</title>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>CRS Signage Broadcast</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
-        <style>{`
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-          
-          body {
-            font-family: 'JetBrains Mono', monospace;
-            background: #0D1912;
-            color: #e5e5e5;
-            overflow: hidden;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            letter-spacing: -0.01em;
-            line-height: 1.6;
-          }
-          
-          /* SIGNAGE CONTAINER - Full screen 16:9 */
-          .signage-surface {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            padding: 2.5rem;
-            gap: 1.5rem;
-          }
-          
-          /* HEADER - Static status line */
-          .signage-header {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            margin-bottom: 1.5rem;
-          }
-          
-          .crs-badge {
-            height: 60px;
-            width: auto;
-            max-width: 180px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-          }
-          
-          .crs-badge img {
-            height: 100%;
-            width: auto;
-            max-width: 100%;
-            object-fit: contain;
-          }
-          
-          .status-line {
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            color: #ffffff;
-            text-transform: uppercase;
-            line-height: 1.1;
-          }
-          
-          .status-line-primary {
-            font-size: 1.6rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            display: block;
-            margin-bottom: 0.5rem;
-          }
-          
-          .status-line-secondary {
-            font-size: 1rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            display: block;
-            color: #c0c0c0;
-          }
-          
-          /* PRIMARY BLOCK - Now Active */
-          .signage-block {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-          }
-          
-          .block-label {
-            font-size: 1.4rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            color: #ffffff;
-            text-transform: uppercase;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #3a3a3a;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-          }
-          
-          .service-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-          }
-          
-          .service-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.2rem;
-            font-weight: 400;
-            padding: 0.35rem 0;
-            color: #e5e5e5;
-          }
-          
-          .state-bar {
-            width: 8px;
-            height: 32px;
-            flex-shrink: 0;
-          }
-          
-          .state-bar.live {
-            background: #C8FF41;
-          }
-          
-          .state-bar.standby {
-            background: #E89B3C;
-          }
-          
-          .state-bar.offline {
-            background: #FF4444;
-          }
-          
-          .service-label {
-            flex: 1;
-            color: #ffffff;
-          }
-          
-          .service-status {
-            font-weight: 700;
-            letter-spacing: 0.05em;
-          }
-          
-          .service-status.live {
-            color: #C8FF41;
-          }
-          
-          .service-status.standby {
-            color: #E89B3C;
-          }
-          
-          .service-status.offline {
-            color: #FF4444;
-          }
-          
-          /* FOOTER - Graphite base with gold accent */
-          .signage-footer {
-            background: #1A251E;
-            padding: 1.5rem 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 2px solid #E89B3C;
-            margin: 0 -2.5rem -2.5rem -2.5rem;
-          }
-          
-          .footer-instruction {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
-            letter-spacing: 0.05em;
-          }
-          
-          .footer-url {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: 0.05em;
-          }
-          
-          .footer-qr {
-            width: 100px;
-            height: 100px;
-            flex-shrink: 0;
-            margin-left: 2rem;
-            border: 2px solid #3a3a3a;
-            padding: 0.3rem;
-            background-color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          
-          .footer-qr img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-          }
-          
-          /* FADE ANIMATION (soft only) */
-          @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-          }
-          
-          .service-item {
-            animation: fadeIn 0.5s ease-in;
-          }
-          
-          /* RESPONSIVE ADJUSTMENTS for different screen sizes */
-          @media (max-width: 1280px) {
-            .signage-surface {
-              padding: 2rem;
-              gap: 1.25rem;
-            }
-            
-            .crs-badge {
-              height: 60px;
-            }
-            
-            .status-line-primary {
-              font-size: 1.1rem;
-            }
-            
-            .status-line-secondary {
-              font-size: 0.85rem;
-            }
-            
-            .service-item {
-              font-size: 1.1rem;
-            }
-            
-            .block-label {
-              font-size: 1.2rem;
-            }
-          }
-        `}</style>
-        <script dangerouslySetInnerHTML={{__html: `
-          // Poll /signals/*.json every 60 seconds and update display
-          let currentServices = [];
-          let currentSchedule = [];
-          
-          async function updateSignage() {
-            try {
-              // Fetch status data
-              const statusRes = await fetch('/signals/status.json');
-              const statusData = await statusRes.json();
-              
-              // Fetch services data
-              const servicesRes = await fetch('/signals/services.json');
-              const servicesData = await servicesRes.json();
-              
-              // Fetch schedule data
-              const scheduleRes = await fetch('/signals/schedule.json');
-              const scheduleData = await scheduleRes.json();
-              
-              // Update status line (two-line format)
-              const statusText = document.getElementById('status-text');
-              const statusParts = statusData.status.split('—').map(s => s.trim());
-              if (statusParts.length === 2) {
-                statusText.innerHTML = '<span class="status-line-primary">COWLEY ROAD STUDIOS</span><span class="status-line-secondary">SYSTEM STATUS DISPLAY</span>';
-              } else {
-                statusText.innerHTML = '<span class="status-line-primary">COWLEY ROAD STUDIOS</span><span class="status-line-secondary">SYSTEM STATUS DISPLAY</span>';
-              }
-              
-              // Update services list
-              const servicesList = document.getElementById('services-list');
-              servicesList.innerHTML = '';
-              
-              servicesData.services.forEach(service => {
-                const item = document.createElement('div');
-                item.className = 'service-item';
-                
-                const stateBar = document.createElement('div');
-                stateBar.className = 'state-bar ' + service.state;
-                
-                const label = document.createElement('div');
-                label.className = 'service-label';
-                label.textContent = service.label;
-                
-                const status = document.createElement('div');
-                status.className = 'service-status ' + service.state;
-                status.textContent = service.status;
-                
-                item.appendChild(stateBar);
-                item.appendChild(label);
-                item.appendChild(status);
-                servicesList.appendChild(item);
-              });
-              
-              // Update schedule (if data exists)
-              const scheduleBlock = document.getElementById('schedule-block');
-              if (scheduleData.upcoming && scheduleData.upcoming.length > 0) {
-                scheduleBlock.style.display = 'block';
-                const scheduleList = document.getElementById('schedule-list');
-                scheduleList.innerHTML = '';
-                
-                scheduleData.upcoming.forEach(event => {
-                  const item = document.createElement('div');
-                  item.className = 'secondary-item';
-                  
-                  const stateBar = document.createElement('div');
-                  stateBar.className = 'state-bar live';
-                  
-                  const text = document.createElement('div');
-                  text.textContent = event.label + ' — ' + event.time;
-                  
-                  item.appendChild(stateBar);
-                  item.appendChild(text);
-                  scheduleList.appendChild(item);
-                });
-              } else {
-                scheduleBlock.style.display = 'none';
-              }
-              
-            } catch (error) {
-              console.error('Failed to update signage:', error);
-            }
-          }
-          
-          // Initial load
-          updateSignage();
-          
-          // Refresh every 60 seconds
-          setInterval(updateSignage, 60000);
-        `}}></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
+        <link href="/static/crs-signage.css" rel="stylesheet" />
       </head>
       <body>
-        <div class="signage-surface">
-          {/* HEADER */}
-          <div class="signage-header">
-            <div class="crs-badge">
-              <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs_badge_dark%20fixed%20for%20web.webp" alt="CRS Badge" />
-            </div>
-            <div class="status-line" id="status-text">
-              <span class="status-line-primary">CRS — SYSTEM STATUS</span>
-              <span class="status-line-secondary">BUILD PHASE · OPERATIONAL BY ENQUIRY</span>
-            </div>
-          </div>
-
-          {/* NOW ACTIVE */}
-          <div class="signage-block">
-            <div class="block-label">NOW ACTIVE</div>
-            <div id="services-list" class="service-list">
-              <div class="service-item">
-                <div class="state-bar live"></div>
-                <div class="service-label">Rehearsals</div>
-                <div class="service-status live">BOOKABLE</div>
-              </div>
-              <div class="service-item">
-                <div class="state-bar standby"></div>
-                <div class="service-label">Studio Sessions</div>
-                <div class="service-status standby">ENQUIRY</div>
-              </div>
-              <div class="service-item">
-                <div class="state-bar standby"></div>
-                <div class="service-label">Workshop Café</div>
-                <div class="service-status standby">PRIVATE HIRE</div>
-              </div>
-            </div>
-          </div>
-
-          {/* FOOTER */}
-          <div class="signage-footer">
-            <div class="footer-instruction">FOR DETAILS & BOOKINGS</div>
-            <div class="footer-url">cowleyroadstudios.com</div>
-            <div class="footer-qr">
-              <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/QRcode_c2%20(1).jpg" alt="QR Code" />
-            </div>
-          </div>
-        </div>
+        <SignagePage />
       </body>
     </html>
   )
 })
 
-// /signage/fallback - SYSTEM SAFE PLATE (static, no API calls)
-app.get('/signage/fallback', (c) => {
+// SIGNAGE LOOP — BROADCAST ENGINE (Yodeck Kiosk Mode)
+// Auto-cycling slideshow of all Elite Signage Components
+// 10-second intervals with fade transitions and burn-in protection
+app.get('/signage-loop', (c) => {
+  return c.html(
+    <html>
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>CRS Signage Loop | Broadcast Mode</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link href="/static/crs-ghost-chassis.css" rel="stylesheet" />
+        <style>{`
+          body { 
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden; 
+            background: #000;
+          }
+        `}</style>
+      </head>
+      <body>
+        <SignageLoop />
+      </body>
+    </html>
+  )
+})
+
+// REHEARSAL SPACES PAGE
+app.get('/rehearsal', (c) => {
   return c.html(
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CRS — System Safe</title>
+        <title>Rehearsal Rooms Oxford | Cowley Road Studios</title>
+        <meta name="description" content="Professional rehearsal rooms in Oxford. Cowley Road live room. 2 hrs £40. Independent access. Book online." />
+        <meta name="keywords" content="rehearsal space oxford, band rehearsal oxford, music rehearsal oxford, practice room oxford" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
-        <style>{`
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-          
-          body {
-            font-family: 'JetBrains Mono', monospace;
-            background: #0D1912;
-            color: #e5e5e5;
-            overflow: hidden;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          
-          .fallback-container {
-            text-align: center;
-            max-width: 600px;
-          }
-          
-          .crs-badge {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-          }
-          
-          .crs-badge img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-          }
-          
-          .status-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: #ffffff;
-            margin-bottom: 1rem;
-          }
-          
-          .status-subtitle {
-            font-size: 1.5rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: #00B400;
-            margin-bottom: 0.5rem;
-          }
-          
-          .status-message {
-            font-size: 1.2rem;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-            color: #c0c0c0;
-          }
-        `}</style>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        
+        {/* Core CSS files */}
+        <link href="/static/crs-reset.css" rel="stylesheet" />
+        <link href="/static/crs-typography.css" rel="stylesheet" />
+        <link href="/static/crs-header.css" rel="stylesheet" />
+        <link href="/static/crs-mobile.css" rel="stylesheet" />
+        
+        {/* Accordion-specific CSS */}
+        <link href="/static/rack-accordion.css" rel="stylesheet" />
       </head>
       <body>
-        <div class="fallback-container">
-          <div class="crs-badge">
-            <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs_badge_dark%20fixed%20for%20web.webp" alt="CRS Badge" />
-          </div>
-          <div class="status-title">COWLEY ROAD STUDIOS</div>
-          <div class="status-subtitle">SYSTEM LIVE</div>
-          <div class="status-message">Updating shortly</div>
-        </div>
+        <RehearsalSpaces />
       </body>
     </html>
   )
 })
 
-// /signage/build - BUILD STATUS PLATE (static)
-app.get('/signage/build', (c) => {
-  return c.html(
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>CRS — Build In Progress</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
-        <style>{`
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-          }
-          
-          body {
-            font-family: 'JetBrains Mono', monospace;
-            background: #0D1912;
-            color: #e5e5e5;
-            overflow: hidden;
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          
-          .build-container {
-            text-align: center;
-            max-width: 700px;
-          }
-          
-          .crs-badge {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-          }
-          
-          .crs-badge img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-          }
-          
-          .status-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: #ffffff;
-            margin-bottom: 1rem;
-          }
-          
-          .status-subtitle {
-            font-size: 1.8rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: #FFA000;
-            margin-bottom: 0.5rem;
-          }
-          
-          .status-message {
-            font-size: 1.2rem;
-            font-weight: 400;
-            letter-spacing: 0.02em;
-            color: #c0c0c0;
-          }
-        `}</style>
-      </head>
-      <body>
-        <div class="build-container">
-          <div class="crs-badge">
-            <img src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs_badge_dark%20fixed%20for%20web.webp" alt="CRS Badge" />
-          </div>
-          <div class="status-title">COWLEY ROAD STUDIOS</div>
-          <div class="status-subtitle">BUILD IN PROGRESS</div>
-          <div class="status-message">Systems online shortly</div>
-        </div>
-      </body>
-    </html>
-  )
-})
+// ===================================================================
+// LEGACY ROUTE CLEANUP - Redirect old pages to accordion design
+// ===================================================================
+
+// Old service pages → Homepage accordion
+app.get('/studio-old', (c) => c.redirect('/'))
+app.get('/workshop-cafe-old', (c) => c.redirect('/'))
+app.get('/cricket-road', (c) => c.redirect('/'))
+app.get('/crs-cowley-road', (c) => c.redirect('/'))
+app.get('/crs-cricket-road', (c) => c.redirect('/'))
+app.get('/locations', (c) => c.redirect('/'))
+// '/rehearsal' now shows dedicated RehearsalSpaces page
+
+// Old booking pages → New /book accordion
+app.get('/book/studio-old', (c) => c.redirect('/book'))
+app.get('/book/rehearsal-old', (c) => c.redirect('/book'))
+app.get('/book/rehearsal/cowley-road', (c) => c.redirect('/book'))
+app.get('/book/rehearsal/cricket-road', (c) => c.redirect('/book'))
+app.get('/book/lessons-old', (c) => c.redirect('/book'))
+app.get('/book/mixdown', (c) => c.redirect('/book'))
+app.get('/book/tape', (c) => c.redirect('/book'))
+app.get('/book/hire', (c) => c.redirect('/book'))
+app.get('/book/repairs', (c) => c.redirect('/book'))
+app.get('/book-old', (c) => c.redirect('/book'))
 
 export default app
