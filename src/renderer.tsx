@@ -137,6 +137,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* 13. MAP EMBED: Google Maps integration for local SEO */}
         <link href="/static/crs-map-embed.css" rel="stylesheet" />
+        
+        {/* 14. LAYOUT FIX: Brute force override for dead space and orange borders */}
+        <link href="/static/crs-layout-fix.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}

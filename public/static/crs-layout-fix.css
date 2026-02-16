@@ -1,0 +1,47 @@
+/* --- BRUTE FORCE LAYOUT FIX --- */
+/* Kill dead space, orange borders, and extend metal texture */
+
+/* --- 1. KILL DEAD SPACE (Top & Sides) --- */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: #1a1a1a !important; /* Dark Grey background for side gutters */
+}
+
+/* --- 2. FULL METAL JACKET (Global Texture) --- */
+/* Apply texture to the body so it covers 100% of the screen, not just the center */
+body {
+    background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
+    background-repeat: repeat !important;
+    background-attachment: fixed !important; /* Parallax effect: rack moves, metal stays */
+}
+
+/* --- 3. KILL THE ORANGE BORDER --- */
+/* Target every possible container to ensure that border dies */
+.master-rack-chassis, 
+.rack-header-container,
+.rack-left-rail, 
+.rack-right-rail,
+div {
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    outline: none !important;
+}
+
+/* --- 4. CENTER THE RACK --- */
+.master-rack-chassis {
+    margin: 0 auto !important; /* Center the unit */
+    max-width: 1100px !important;
+    box-shadow: 0 0 50px 10px rgba(0,0,0,0.9) !important; /* Heavy shadow to lift it off the metal background */
+    background: transparent !important; /* Let body texture show through */
+}
+
+/* --- 5. HEADER IMAGE FLUSH TOP --- */
+.rack-header-img {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+}
