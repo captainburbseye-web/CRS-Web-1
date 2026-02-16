@@ -814,27 +814,15 @@ header {
 }
 
 /* === COLOR STATES: HOVER (SUBTLE ACTIVATION) === */
-/* === COLOR STATES: HOVER (SUBTLE ACTIVATION) === */
 
-/* Studio - VU Green (hover: subtle) */
-.nav-button.nav-studio:hover {
-  color: rgba(245, 245, 245, 0.9) !important;
-  background-color: rgba(57, 255, 20, 0.1) !important;
-  border-color: rgba(57, 255, 20, 0.3) !important;
-}
-
-/* Workshop Café - Warm Amber (hover: subtle) */
-.nav-button.nav-cafe:hover {
-  color: rgba(245, 245, 245, 0.9) !important;
-  background-color: rgba(212, 160, 23, 0.1) !important;
-  border-color: rgba(212, 160, 23, 0.3) !important;
-}
-
-/* AV - Red (hover: subtle) */
+/* All nav buttons: neutral hover (no color coding) */
+.nav-button:hover,
+.nav-button.nav-studio:hover,
+.nav-button.nav-cafe:hover,
 .nav-button.nav-av:hover {
   color: rgba(245, 245, 245, 0.9) !important;
-  background-color: rgba(196, 30, 58, 0.1) !important;
-  border-color: rgba(196, 30, 58, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(245, 245, 245, 0.3) !important;
 }
 
 /* === RESPONSIVE: MAINTAIN COMPRESSION === */
