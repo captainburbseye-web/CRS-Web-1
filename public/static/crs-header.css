@@ -84,6 +84,19 @@ header.rack-header {
   gap: var(--space-sm); /* 8px between links - tighter for rack aesthetic */
   max-width: 600px; /* Constrain width to fit rack unit aesthetic */
   margin: 0 auto; /* Center within grid area */
+  
+  /* R2 Metal Texture */
+  background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-color: transparent !important;
+  
+  /* Metal texture depth */
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
 }
 
 .rack-header-nav a {

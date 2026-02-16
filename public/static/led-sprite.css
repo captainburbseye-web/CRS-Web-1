@@ -8,19 +8,21 @@
 .status-led,
 .rack-led,
 .system-led,
-.button-led {
-  /* Remove old circular background */
+.button-led,
+.rack-led[data-color],
+.rack-accordion-module[data-led-color] .rack-led {
+  /* Reset Shape */
+  width: 20px !important;  /* Slightly larger for visibility */
+  height: 20px !important;
+  border-radius: 0 !important; /* The image is round, the container is square */
+  border: none !important;
+  box-shadow: none !important;
   background-color: transparent !important;
-  border-radius: 0 !important;
   
-  /* Apply LED sprite image */
+  /* R2 LED Sprite Source */
   background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(1).png') !important;
-  background-size: 300% 100% !important; /* 3 LEDs in a row, show only one */
+  background-size: 300% 100% !important; /* 3 Bulbs wide */
   background-repeat: no-repeat !important;
-  
-  /* Set consistent LED dimensions */
-  width: 16px !important;
-  height: 16px !important;
   display: inline-block !important;
   vertical-align: middle !important;
 }
@@ -28,16 +30,20 @@
 /* Green LED - show first LED in sprite (leftmost) */
 .status-led.green,
 .rack-led[data-color="green"],
+.rack-accordion-module[data-led-color="green"] .rack-led,
 .system-led,
 .button-led {
   background-position: 0% 0 !important;
+  filter: drop-shadow(0 0 5px rgba(0, 255, 0, 0.6)) !important; /* Add Glow */
 }
 
 /* Amber LED - show middle LED in sprite */
 .status-led.amber,
 .rack-led[data-color="amber"],
+.rack-accordion-module[data-led-color="amber"] .rack-led,
 .rack-led[data-color="orange"] {
   background-position: 50% 0 !important;
+  filter: drop-shadow(0 0 5px rgba(255, 165, 0, 0.6)) !important; /* Add Glow */
 }
 
 /* Red LED - show last LED in sprite (rightmost) */
@@ -45,11 +51,13 @@
 .status-led.offline,
 .rack-led[data-color="red"] {
   background-position: 100% 0 !important;
+  filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.6)) !important; /* Add Glow */
 }
 
 /* Standby state (use amber) */
 .status-led.standby {
   background-position: 50% 0 !important;
+  filter: drop-shadow(0 0 5px rgba(255, 165, 0, 0.6)) !important;
 }
 
 /* Animation for active LEDs (optional pulse effect) */
