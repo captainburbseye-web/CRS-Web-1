@@ -24,9 +24,9 @@ export const RackAccordion = () => {
       {/* NAVIGATION BAR */}
       <header class="rack-header">
         <nav class="rack-header-nav">
-          <a href="/studio">RECORDING</a>
+          <a href="#services">RECORDING</a>
           <span class="separator">|</span>
-          <a href="/rehearsal">REHEARSAL</a>
+          <a href="#services">REHEARSAL</a>
           <span class="separator">|</span>
           <a href="/about">ABOUT</a>
           <span class="separator">|</span>
@@ -34,7 +34,7 @@ export const RackAccordion = () => {
         </nav>
         
         <div class="rack-header-cta">
-          <a href="/book" class="book-now-button">BOOK SESSION</a>
+          <a href="#services" class="book-now-button">BOOK SESSION</a>
         </div>
       </header>
       
@@ -103,7 +103,7 @@ export const RackAccordion = () => {
         </ul>
         
         <div class="service-cta">
-          <a href="/av-services" class="cta-service">BOOK PODCAST SESSION</a>
+          <a href="/contact" class="cta-service">BOOK PODCAST SESSION</a>
         </div>
       </div>
 
@@ -259,8 +259,7 @@ export const RackAccordion = () => {
       </div>
 
       <nav class="mobile-nav mono">
-        <a href="/studio">STUDIO</a>
-        <a href="/book">BOOK</a>
+        <a href="#services">SERVICES</a>
         <a href="/contact">CONTACT</a>
       </nav>
 
