@@ -32,7 +32,9 @@ header.rack-header {
   background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png');
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: #000000; /* Fallback */
+  background-position: center;
+  background-color: #1a1a1a; /* Lighter fallback for better contrast */
+  filter: brightness(1.2) contrast(1.1); /* Enhance visibility */
   
   /* Bevel edges for depth */
   border-top: 1px solid #3d3d3d; /* Highlight bevel */
