@@ -34,14 +34,17 @@ body {
     max-width: 1100px !important;
     margin: 0 auto !important;
     
-    /* The "Rack Edge" Simulation (Thick dark borders to look like mounting rails) */
-    border-left: 12px solid #111 !important;
-    border-right: 12px solid #111 !important;
-    border-top: none !important;
-    border-bottom: none !important;
+    /* Remove borders - use box-shadow instead for "Rack Ears" */
+    border: none !important;
     
-    /* The Shadow (Lifts the rack off the black background) */
-    box-shadow: 0 0 80px rgba(0, 0, 0, 1.0) !important;
+    /* The "Rack Ears" via Spread Shadow + Depth Shadow */
+    /* First shadow = 15px spread = thick black mounting rails */
+    /* Second shadow = depth/glow to lift rack off black background */
+    box-shadow: 
+        0 0 0 15px #0a0a0a,
+        0 0 80px 20px rgba(0,0,0,0.9) !important;
+    
+    overflow: visible !important;
 }
 
 /* --- 5. HEADER IMAGE FLUSH TOP --- */
@@ -61,4 +64,48 @@ body {
 .master-rack-chassis span {
     color: #e0e0e0 !important; /* Ensure text pops against the dark metal */
     text-shadow: 0 1px 2px rgba(0,0,0,0.8); /* subtle depth */
+}
+
+/* --- 7. Z-INDEX ELEVATION (Keep buttons & links above metal texture) --- */
+a, 
+button, 
+.book-now-button, 
+.rack-cta-button, 
+input, 
+select,
+.nav-button {
+    position: relative !important;
+    z-index: 1000 !important;
+}
+
+/* --- 8. NAVIGATION BAR LAYERING --- */
+.rack-header-nav {
+    position: relative !important;
+    z-index: 900 !important;
+}
+
+/* --- 9. BUTTON STYLING (High contrast for visibility) --- */
+.book-now-button,
+.rack-cta-button,
+button[type="submit"] {
+    background: #000 !important;
+    border: 2px solid #FF9F1C !important;
+    color: #FF9F1C !important;
+    font-weight: 700 !important;
+    text-shadow: 0 0 8px rgba(255, 159, 28, 0.6) !important;
+    box-shadow: 
+        0 0 12px rgba(255, 159, 28, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    cursor: pointer !important;
+}
+
+.book-now-button:hover,
+.rack-cta-button:hover,
+button[type="submit"]:hover {
+    background: #1a1a1a !important;
+    border-color: #FFB84D !important;
+    color: #FFB84D !important;
+    box-shadow: 
+        0 0 20px rgba(255, 184, 77, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
 }
