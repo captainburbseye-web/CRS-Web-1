@@ -85,14 +85,14 @@ export const simplifiedServices: SimplifiedService[] = [
         location: 'COWLEY ROAD',
         price: '£45 (2hrs) | £60 (3hrs) | £65 (4hrs)',
         description: 'Engineer not included. Full backline, PA system, monitoring, max 4 members.',
-        url: 'https://square.link/u/UQidDzE0',
+        url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services',
         features: ['Engineer not included', 'Full backline', 'PA system', 'Max 4 members']
       },
       {
         location: 'CRICKET ROAD',
         price: '£40 (2hrs) | £55 (3hrs) | £60 (4hrs)',
         description: 'Engineer not included. 6m × 4m live room with Yamaha CLP piano, drum kit, backline, vocal mics.',
-        url: 'https://square.link/u/WPqRFIGW',
+        url: 'https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services',
         features: ['Engineer not included', 'Yamaha CLP piano', 'Drum kit', 'Vocal mics']
       }
     ]

@@ -86,8 +86,8 @@ export const RackAccordion = () => {
         </div>
         
         <div class="service-cta">
-          <a href="https://square.link/u/UQidDzE0" class="cta-service">BOOK COWLEY ROAD REHEARSAL</a>
-          <a href="https://square.link/u/WPqRFIGW" class="cta-service">BOOK CRICKET ROAD REHEARSAL</a>
+          <a href="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services" class="cta-service">BOOK COWLEY ROAD REHEARSAL</a>
+          <a href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" class="cta-service">BOOK CRICKET ROAD REHEARSAL</a>
         </div>
       </div>
 
