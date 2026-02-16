@@ -9,10 +9,28 @@ html, body {
     height: 100% !important;
 }
 
-/* --- 2. THE VOID (Pitch Black Background) --- */
+/* --- 2. THE VOID (Subtle Metal Texture Background) --- */
 body {
-    background-color: #050505 !important; /* Pitch black void */
-    background-image: none !important; /* Remove global metal texture */
+    background-color: #050505 !important; /* Pitch black base */
+    /* Add subtle metal texture to the void (faded way back) */
+    background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
+    background-repeat: repeat !important;
+    background-size: 500px auto !important;
+    background-attachment: fixed !important;
+    /* Overlay heavy black so texture is barely visible */
+    position: relative !important;
+}
+
+body::before {
+    content: "" !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0,0,0,0.85) !important; /* 85% black overlay */
+    pointer-events: none !important;
+    z-index: -1 !important;
 }
 
 /* --- 3. KILL THE ORANGE BORDER --- */

@@ -68,22 +68,25 @@ body, html,
     margin: 0 auto !important;
     max-width: 1100px !important;
     
-    /* CENTER-DARK VIGNETTE + METAL TEXTURE (layered) */
-    /* background-size: 105% ensures we crop out any edge watermarks */
+    /* UPDATED GRADIENT: Lighter center (0.6 instead of 0.9) to reveal metal grain */
+    /* Edges nearly pure metal (5% dark), center dark grey metal (60% dark) */
     background-image: 
         linear-gradient(
             90deg, 
-            rgba(0,0,0,0.1) 0%,   /* Metal visible on edges */
-            rgba(0,0,0,0.9) 20%,  /* Fade to dark for text */
-            rgba(0,0,0,0.9) 80%,  /* Stay dark in center */
-            rgba(0,0,0,0.1) 100%  /* Metal visible on edges */
+            rgba(0,0,0,0.05) 0%,   /* Edges: 95% Pure Metal */
+            rgba(0,0,0,0.6) 15%,   /* Center: Dark Grey Metal (was Pitch Black) */
+            rgba(0,0,0,0.6) 85%,   /* Center: Dark Grey Metal */
+            rgba(0,0,0,0.05) 100%  /* Edges: 95% Pure Metal */
         ),
         url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
-    background-blend-mode: multiply !important;
+    background-blend-mode: multiply !important; /* Blends shadow into grain */
     background-size: 105% 105% !important; /* Zoom to crop watermarks */
     background-position: center center !important;
     background-repeat: no-repeat, repeat-y !important;
     color: #e0e0e0 !important;
+    
+    /* Ensure text pops against the lighter metal */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.9) !important;
 }
 
 /* LEFT EAR (Graphic with bolts - cropped to hide logo) */
