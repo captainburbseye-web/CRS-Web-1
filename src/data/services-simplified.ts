@@ -47,7 +47,7 @@ export const simplifiedServices: SimplifiedService[] = [
         location: 'CRICKET ROAD',
         price: '£30/hr (2hr min)',
         description: 'Treated recording space. Ideal for acoustic, vocals, production work. Engineer included.',
-        url: 'https://square.link/u/bCOHXtdl',
+        url: '/contact?ref=cricket-recording',
         features: ['Engineer included', 'Acoustic sessions', 'Vocal recording', 'Production work']
       }
     ]
@@ -60,8 +60,15 @@ export const simplifiedServices: SimplifiedService[] = [
     icon: '🎚️',
     description: 'For producers and engineers who run their own sessions. Induction required.',
     variant: 'rack',
-    ledColor: 'amber',
+    ledColor: 'green',
     locations: [
+      {
+        location: 'CRICKET ROAD',
+        price: '£30/hr (2hr min)',
+        description: 'Dry hire only. No engineer included. Self-operated recording space.',
+        url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
+        features: ['No engineer included', 'Dry hire only', 'Self-operated', 'Available now']
+      },
       {
         location: 'COWLEY ROAD — CONTROL ROOM',
         price: 'Coming online',

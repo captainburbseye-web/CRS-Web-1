@@ -46,16 +46,15 @@ export const RackAccordion = () => {
         </div>
       </div>
 
-      {/* SECTION 1 — RECORDING */}
+      {/* SECTION 1 — CONTROL ROOM DRY HIRE */}
       <div class="service-block recording-block">
-        <h2>Recording Services</h2>
-        <p class="service-intro">With Engineer — £35/hr (2-hour minimum)</p>
-        <p class="service-intro">Cricket Road available now. Cowley Road Control Room coming online very soon.</p>
-        <p class="service-summary">All recording sessions include engineer support. Dry hire is available for the Control Room only.</p>
+        <h2>Control Room (Dry Hire)</h2>
+        <p class="service-intro">Self-operated recording space. No engineer included.</p>
+        <p class="service-intro">Cricket Road available now. Cowley Road Control Room coming online soon.</p>
         
         <div class="service-cta">
-          <a href="https://square.link/u/bCOHXtdl" class="cta-service">BOOK CRICKET ROAD RECORDING</a>
-          <a href="/contact?ref=cowley-recording" class="cta-service secondary">ENQUIRE: COWLEY ROAD CONTROL ROOM</a>
+          <a href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services" class="cta-service">BOOK CRICKET ROAD CONTROL ROOM</a>
+          <a href="/contact?ref=cowley-control-room" class="cta-service secondary">ENQUIRE: COWLEY ROAD CONTROL ROOM</a>
         </div>
       </div>
 
