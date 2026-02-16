@@ -27,62 +27,43 @@ export interface SimplifiedService {
 }
 
 export const simplifiedServices: SimplifiedService[] = [
-  // 1. RECORDING (WITH ENGINEER)
+  // 1. STUDIO (Consolidated: Recording + Podcast/AV + Control Room)
   {
-    id: 'recording',
-    title: 'CH-01 RECORDING',
+    id: 'studio',
+    title: 'CH-01 STUDIO',
     icon: '',
-    description: 'Multi-room recording system.\nCommissioning in final phase.\n\nAdvance bookings accepted.\nTechnical spec available on request.',
+    description: 'Multi-room recording system. Engineer-led sessions and dry hire available.\n\nMusic production, spoken word, broadcast content, AV recording.\n\nAdvance bookings accepted.',
     variant: 'rack',
     ledColor: 'green',
     locations: [
       {
-        location: 'COWLEY ROAD',
-        price: '£35/hr (2hr min)',
-        description: 'Live room + large vocal booth. Professional signal chain. Engineer included.',
-        url: '/contact',
-        features: ['Engineer included', 'Live room', 'Vocal booth', 'Professional signal chain']
-      },
-      {
-        location: 'CRICKET ROAD',
-        price: '£30/hr (2hr min)',
-        description: 'Treated recording space. Ideal for acoustic, vocals, production work. Engineer included.',
-        url: '/contact?ref=cricket-recording',
-        features: ['Engineer included', 'Acoustic sessions', 'Vocal recording', 'Production work']
-      }
-    ]
-  },
-
-  // 2. CONTROL ROOM (DRY HIRE)
-  {
-    id: 'control-room',
-    title: 'CH-02 CONTROL ROOM',
-    icon: '',
-    description: 'For producers and engineers who run their own sessions. Induction required.',
-    variant: 'rack',
-    ledColor: 'green',
-    locations: [
-      {
-        location: 'CRICKET ROAD',
+        location: 'CRICKET ROAD — CONTROL ROOM',
         price: '£30/hr (2hr min)',
         description: 'Dry hire only. No engineer included. Self-operated recording space.',
         url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
-        features: ['No engineer included', 'Dry hire only', 'Self-operated', 'Available now']
+        features: ['Dry hire', 'Self-operated', 'Available now', 'Book direct']
       },
       {
-        location: 'COWLEY ROAD — CONTROL ROOM',
-        price: 'Coming online',
-        description: 'Dry hire only. No engineer included. Professional monitoring and hybrid workflow.',
+        location: 'COWLEY ROAD',
+        price: '£35/hr (2hr min)',
+        description: 'Live room + vocal booth. Professional signal chain. Engineer included. Music, podcast, AV.',
         url: '/contact',
-        features: ['No engineer included', 'Induction required', 'Hybrid workflow', 'Coming online']
+        features: ['Engineer included', 'Live room', 'Vocal booth', 'Podcast/AV']
+      },
+      {
+        location: 'CRICKET ROAD — RECORDING',
+        price: '£30/hr (2hr min)',
+        description: 'Treated recording space. Acoustic, vocals, production work. Engineer included.',
+        url: '/contact?ref=cricket-recording',
+        features: ['Engineer included', 'Acoustic sessions', 'Vocal recording', 'Production']
       }
     ]
   },
 
-  // 3. BAND REHEARSALS
+  // 2. REHEARSALS
   {
     id: 'rehearsal',
-    title: 'CH-03 REHEARSAL',
+    title: 'CH-02 REHEARSAL',
     icon: '',
     description: 'Rehearsal rooms at Cowley Road (HQ) and Cricket Road (Node).\nBackline, PA, monitoring calibrated.\n\nSelect duration. Lock slot. Confirm.',
     variant: 'rack',
@@ -105,34 +86,22 @@ export const simplifiedServices: SimplifiedService[] = [
     ]
   },
 
-  // 4. PODCAST & AV RECORDING
+  // 3. TECHNICAL
   {
-    id: 'podcast',
-    title: 'CH-04 BROADCAST',
-    icon: '',
-    description: 'Spoken word. Interviews. Broadcast content.\nEngineer-assisted recording available.\n\n£30–£35/hr depending on location.',
-    variant: 'rack',
-    ledColor: 'green',
-    url: '/contact',
-    ctaText: 'BOOK PODCAST SESSION',
-  },
-
-  // 5. REPAIRS & TECHNICAL SERVICES
-  {
-    id: 'repairs',
-    title: 'CH-05 TECHNICAL',
+    id: 'technical',
+    title: 'CH-03 TECHNICAL',
     icon: '',
     description: 'Live sound support.\nSystem installs.\nDiagnostics-led equipment repair.\n\nSubmit fault report or event brief.',
     variant: 'rack',
     ledColor: 'green',
     url: '/contact',
-    ctaText: 'BOOK REPAIR',
+    ctaText: 'BOOK TECHNICAL SERVICE',
   },
 
-  // 6. WORKSHOP CAFÉ VENUE HIRE
+  // 4. VENUE
   {
-    id: 'cafe',
-    title: 'CH-06 VENUE',
+    id: 'venue',
+    title: 'CH-04 VENUE',
     icon: '',
     description: 'Front-of-house venue interface.\nPrivate hire and community programming.\n\nOperational hours published via system updates.',
     variant: 'passive',
@@ -146,18 +115,6 @@ export const simplifiedServices: SimplifiedService[] = [
         features: ['Professional PA', 'Stage lighting', 'Up to 60 capacity', 'Flexible layout']
       }
     ]
-  },
-
-  // 7. CONTACT
-  {
-    id: 'contact',
-    title: 'CH-07 CONTACT',
-    icon: '',
-    description: 'All bookings are direct. General enquiries, technical support, and booking assistance.',
-    variant: 'passive',
-    ledColor: 'green',
-    url: '/contact',
-    ctaText: 'GET IN TOUCH',
   },
 ];
 
