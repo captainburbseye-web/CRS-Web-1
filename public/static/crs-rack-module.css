@@ -551,7 +551,7 @@
   z-index: 1000;
   padding: 1rem;
   background: rgba(10, 10, 10, 0.9);
-  border: 2px solid var(--sage-green, #88aa88);
+  border: 2px solid var(--sage-green, #404040);
   border-radius: 6px;
   box-shadow: 
     0 4px 12px rgba(0,0,0,0.6),
@@ -567,7 +567,7 @@
   background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 100%);
   border: 1px solid #444;
   border-radius: 4px;
-  color: var(--sage-green, #88aa88);
+  color: var(--sage-green, #B5A642);
   font-family: 'Courier New', monospace;
   font-size: 0.875rem;
   font-weight: 600;
@@ -579,7 +579,7 @@
 
 .rack-nav-button:hover {
   background: linear-gradient(90deg, #2a2a2a 0%, #3a3a3a 100%);
-  border-color: var(--sage-green, #88aa88);
+  border-color: var(--sage-green, #404040);
   box-shadow: 0 0 8px rgba(136, 170, 136, 0.3);
   transform: translateX(-2px);
 }

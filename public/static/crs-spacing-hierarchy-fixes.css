@@ -38,7 +38,7 @@
 /* Add subtitle/meta line support */
 .rack-subtitle {
   font-size: 0.85rem;
-  color: var(--wcag-sage-green, #99cc99);
+  color: var(--wcag-sage-green, #B5A642);
   letter-spacing: 0.08em;
   font-weight: 400;
   margin-top: -0.5rem;

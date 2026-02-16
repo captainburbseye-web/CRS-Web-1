@@ -70,7 +70,7 @@
 }
 
 .testimonial-card:hover {
-  border-color: var(--wcag-sage-green, #99cc99);
+  border-color: var(--wcag-sage-green, #404040);
   box-shadow: 
     0 0 10px rgba(153, 204, 153, 0.2),
     inset 0 0 20px rgba(153, 204, 153, 0.05);
@@ -83,7 +83,7 @@
   top: 0.5rem;
   left: 0.5rem;
   font-size: 4rem;
-  color: var(--wcag-sage-green, #99cc99);
+  color: var(--wcag-sage-green, #B5A642);
   opacity: 0.2;
   line-height: 1;
   font-family: Georgia, serif;
@@ -117,7 +117,7 @@
 }
 
 .author-title {
-  color: var(--wcag-sage-green, #99cc99);
+  color: var(--wcag-sage-green, #B5A642);
   font-size: 13px;
 }
 
@@ -141,7 +141,7 @@
   font-family: 'Courier New', monospace;
   font-size: 12px;
   letter-spacing: 0.1em;
-  color: var(--wcag-sage-green, #99cc99);
+  color: var(--wcag-sage-green, #B5A642);
   margin: 0;
   font-weight: 600;
 }

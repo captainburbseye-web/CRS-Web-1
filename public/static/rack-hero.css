@@ -39,7 +39,7 @@
   font-family: 'Courier New', monospace;
   font-size: 3rem;
   font-weight: 700;
-  color: var(--wcag-sage-green, #99cc99);
+  color: var(--wcag-sage-green, #B5A642);
   letter-spacing: 0.1em;
   text-shadow: 0 0 20px rgba(153, 204, 153, 0.5);
   line-height: 1.1;
@@ -134,7 +134,7 @@
 
 .trust-icon {
   font-size: 18px;
-  color: var(--wcag-sage-green, #99cc99);
+  color: var(--wcag-sage-green, #B5A642);
 }
 
 /* Mini Rack Visual */
@@ -214,14 +214,14 @@
   font-family: 'Courier New', monospace;
   font-size: 14px;
   font-weight: 700;
-  color: var(--wcag-sage-green, #99cc99);
+  color: var(--wcag-sage-green, #B5A642);
   text-decoration: none;
   letter-spacing: 0.08em;
   transition: all 0.3s ease;
 }
 
 .mini-rack-view-all:hover {
-  border-color: var(--wcag-sage-green, #99cc99);
+  border-color: var(--wcag-sage-green, #404040);
   box-shadow: 0 0 16px rgba(153, 204, 153, 0.3);
   transform: translateY(-2px);
 }
@@ -249,7 +249,7 @@
 
 .scroll-arrow {
   font-size: 24px;
-  color: var(--wcag-sage-green, #99cc99);
+  color: var(--wcag-sage-green, #B5A642);
 }
 
 @keyframes bounce {

@@ -344,7 +344,7 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 1rem;
-  color: var(--wcag-sage-green, #99cc99);
+  color: var(--wcag-sage-green, #B5A642);
   transition: transform 0.3s ease;
 }
 
