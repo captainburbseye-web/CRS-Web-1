@@ -24,10 +24,22 @@ body {
 
 /* --- 4. THE CHASSIS (Metal Rack Unit) --- */
 .master-rack-chassis {
-    /* Keep the Metal Texture ONLY here */
-    background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
-    background-repeat: repeat-y !important;
-    background-size: 100% auto !important;
+    /* LAYERED BACKGROUND: Dark center for text, light edges for metal texture */
+    /* LAYER 1: Gradient vignette (dark center, transparent edges) */
+    /* LAYER 2: Metal texture (underneath) */
+    background-image: 
+        linear-gradient(
+            90deg, 
+            rgba(0,0,0,0.2) 0%,   /* Left Edge: Shows more metal texture */
+            rgba(0,0,0,0.9) 20%,  /* Start Dark Zone for text readability */
+            rgba(0,0,0,0.9) 80%,  /* End Dark Zone */
+            rgba(0,0,0,0.2) 100%  /* Right Edge: Shows more metal texture */
+        ),
+        url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
+    
+    background-repeat: no-repeat, repeat-y !important;
+    background-size: 100% 100%, 100% auto !important;
+    background-blend-mode: normal !important;
     background-color: #1a1a1a !important;
     
     /* Define the edges */
@@ -43,6 +55,9 @@ body {
     
     /* Depth shadow only */
     box-shadow: 0 0 50px rgba(0,0,0,0.8) !important;
+    
+    /* Ensure text remains legible */
+    color: #e0e0e0 !important;
 }
 
 /* --- 4a. LEFT RACK EAR (Graphic with bolts) --- */
