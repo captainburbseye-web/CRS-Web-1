@@ -2,25 +2,28 @@
 /* INDUSTRIAL POLISH: Final High-Fidelity Layer */
 /* ============================================= */
 
-/* --- 0. SCORCHED EARTH: KILL THE YELLOW BORDER --- */
-/* Nuke all left/right borders on main containers */
+/* --- 0. SCORCHED EARTH: NUKE THE YELLOW BORDER --- */
+/* Reset borders on main containers */
 
-body, 
+body, html, 
 .master-rack-chassis, 
 .rack-header-container, 
 .rack-header, 
 .rack-accordion-viewport {
     border-left: none !important;
     border-right: none !important;
+    border: none !important;
+    margin-left: auto !important; /* Force centering */
+    margin-right: auto !important;
 }
 
-/* Hide specific rail elements if they exist */
+/* Hide specific rail divs if the AI added them */
 .rack-left-rail, 
 .rack-right-rail, 
 .rack-rail {
     display: none !important;
     width: 0 !important;
-    height: 0 !important;
+    opacity: 0 !important;
     visibility: hidden !important;
 }
 
@@ -30,13 +33,13 @@ body,
 .cta-service, 
 .location-cta, 
 .rack-cta-button {
-    background-color: #000 !important; /* Solid Black */
-    border: 1px solid #FF9F1C !important; /* Amber Border */
-    color: #FF9F1C !important; /* Amber Text */
+    background-color: #050505 !important; /* Pitch Black */
+    border: 1px solid #FF9F1C !important; /* Neon Amber */
+    color: #FF9F1C !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 1px !important;
-    box-shadow: 0 0 5px rgba(255, 159, 28, 0.3) !important; /* Subtle Glow */
+    box-shadow: 0 0 5px rgba(255, 159, 28, 0.2) !important;
     transition: all 0.2s ease !important;
     text-align: center !important;
     display: inline-block !important;
@@ -50,23 +53,23 @@ body,
 .rack-cta-button:hover {
     background-color: #FF9F1C !important;
     color: #000 !important; /* Invert on hover */
-    box-shadow: 0 0 20px rgba(255, 159, 28, 0.6) !important;
+    box-shadow: 0 0 15px rgba(255, 159, 28, 0.6) !important;
     transform: translateY(-1px) !important; /* Subtle lift */
 }
 
-/* --- 2. GRAPHIC RACK EARS & CENTER-DARK VIGNETTE --- */
-/* Attach bolt-texture strips to sides and apply readability gradient */
+/* --- 2. RACK EARS & BACKGROUND (No Watermarks) --- */
+/* Apply textures with ZOOM/CROP to hide Gemini logos */
 
 .master-rack-chassis {
     position: relative !important;
     overflow: visible !important; /* Let ears hang out */
-    border: none !important; /* Remove ALL borders */
     
     /* Reset margins and sizing */
-    margin: 20px auto !important;
+    margin: 0 auto !important;
     max-width: 1100px !important;
     
     /* CENTER-DARK VIGNETTE + METAL TEXTURE (layered) */
+    /* background-size: 105% ensures we crop out any edge watermarks */
     background-image: 
         linear-gradient(
             90deg, 
@@ -77,12 +80,13 @@ body,
         ),
         url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
     background-blend-mode: multiply !important;
-    background-size: 100% 100%, 100% auto !important;
+    background-size: 105% 105% !important; /* Zoom to crop watermarks */
+    background-position: center center !important;
     background-repeat: no-repeat, repeat-y !important;
     color: #e0e0e0 !important;
 }
 
-/* LEFT EAR (Graphic with bolts) */
+/* LEFT EAR (Graphic with bolts - cropped to hide logo) */
 .master-rack-chassis::before {
     content: "" !important;
     position: absolute !important;
@@ -91,12 +95,13 @@ body,
     left: -38px !important;
     width: 38px !important;
     background: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb.png') no-repeat !important;
-    background-size: 100% 100% !important;
+    background-size: 150% 100% !important; /* Zoom width to crop logo */
+    background-position: top left !important; /* Anchor top-left */
     z-index: 10 !important;
     pointer-events: none !important;
 }
 
-/* RIGHT EAR (Flipped graphic) */
+/* RIGHT EAR (Flipped graphic - cropped to hide logo) */
 .master-rack-chassis::after {
     content: "" !important;
     position: absolute !important;
@@ -105,7 +110,8 @@ body,
     right: -38px !important;
     width: 38px !important;
     background: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb.png') no-repeat !important;
-    background-size: 100% 100% !important;
+    background-size: 150% 100% !important; /* Zoom width to crop logo */
+    background-position: top right !important; /* Anchor top-right */
     transform: scaleX(-1) !important; /* Mirror horizontally */
     z-index: 10 !important;
     pointer-events: none !important;
