@@ -263,14 +263,6 @@ export const RackAccordion = () => {
         <a href="/contact">CONTACT</a>
       </nav>
 
-      <div class="rack-footer-container">
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20BOTTOM.png" 
-          alt="Cowley Road Studios Footer Rack" 
-          class="rack-footer-img"
-        />
-      </div>
-
       <footer class="site-footer">
         <div class="terminal-status-footer">
           
