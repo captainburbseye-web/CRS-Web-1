@@ -22,7 +22,7 @@ h2{font-size:1.75rem}
 .led{width:8px;height:8px;border-radius:50%;background:#39FF14;box-shadow:0 0 8px #39FF14}
 
 /* CRITICAL NEON GLOW */
-:root{--neon-orange:#FF8833;--neon-green:#39FF14;--glow-md:12px;--glow-transition:0.4s ease-out}
+:root{--neon-orange:#FF8833;--neon-green:#E89B3C;--glow-md:12px;--glow-transition:0.4s ease-out}
 .rack-module[data-channel="1"],.rack-module[data-channel="2"]{border-color:rgba(255,136,51,0.3)}
 .rack-module[data-channel="1"]:hover,.rack-module[data-channel="2"]:hover{border-color:#FF8833;box-shadow:0 0 12px rgba(255,136,51,0.3)}
 

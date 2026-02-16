@@ -11,7 +11,7 @@
   --wcag-text-primary: #ffffff;  /* Pure white for max contrast */
   --wcag-text-secondary: #cccccc;  /* Light gray, 4.5:1+ on dark */
   --wcag-focus-outline: #00ffff;  /* Cyan focus indicator */
-  --wcag-sage-green: #99cc99;  /* Brighter sage for text */
+  --wcag-sage-green: #E89B3C;  /* Mustard - matches CRS brand */
   --wcag-mustard: #ffcc66;  /* Brighter mustard for accents */
 }
 
