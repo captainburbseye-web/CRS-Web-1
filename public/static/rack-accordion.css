@@ -6,7 +6,7 @@
  */
 
 :root {
-  --hardware-green: #00ff88;
+  --hardware-green: #B5A642; /* Brass - was #00ff88 */
   --hardware-amber: #ff9f1c;
   --hardware-red: #ff4444;
   --metal-dark: #0a0a0a;
