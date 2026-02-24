@@ -100,7 +100,6 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         </noscript>
 
         {/* CONSOLIDATED CSS: Base, Rack System, Components */}
-        <link href="/static/wood-background.css" rel="stylesheet" />
         <link href="/static/crs-consolidated-base.css" rel="stylesheet" />
         <link href="/static/crs-consolidated-rack.css" rel="stylesheet" />
         <link href="/static/crs-consolidated-components.css" rel="stylesheet" />
