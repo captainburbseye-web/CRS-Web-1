@@ -76,6 +76,13 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700&family=Archivo+Black&display=swap" rel="stylesheet" />
         
         {/* ============================================
+             CRITICAL RACK IMAGES — PRELOAD FOR INSTANT LOAD
+             Above-the-fold: Header + Welcome rack
+             ============================================ */}
+        <link rel="preload" as="image" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/rack%201%20CRS%20Header.png" />
+        <link rel="preload" as="image" href="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/0%20-%20crs%20welcoem%20rack%20-%20canon%20booking%20link%20to%20rack.png" />
+        
+        {/* ============================================
              CONSOLIDATED CSS — LEAN & FAST
              3 strategic files replace 78 legacy files
              ============================================ */}
@@ -134,6 +141,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
             <path d="M18 15l-6-6-6 6" />
           </svg>
         </button>
+        
+        {/* Rack Image Loader - HIGH PRIORITY - Load ASAP for lazy loading */}
+        <script src="/static/rack-image-loader.js"></script>
         
         {/* Performance Monitor - Critical CSS tracking (Phase 3B) */}
         <script src="/static/performance-monitor.js" defer></script>
