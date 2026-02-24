@@ -111,43 +111,7 @@ export const RackAccordion = () => {
         </picture>
       </div>
 
-      {/* COWLEY ROAD SERVICES RACK */}
-      <div class="rack-module-graphic" id="cowley-services" data-section="cowley-services">
-        <picture>
-          <source 
-            type="image/webp" 
-            srcset="/static/rack-images/cowley-services-1920w.webp 1920w, /static/rack-images/cowley-services-1280w.webp 1280w, /static/rack-images/cowley-services-640w.webp 640w"
-            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
-          />
-          <img 
-            src="/static/rack-images/cowley-services.webp"
-            alt="Cowley Road Services - Recording, Rehearsal, Control Room, AV Hire" 
-            class="rack-module-img"
-            width="1920"
-            height="auto"
-            loading="lazy"
-          />
-        </picture>
-      </div>
 
-      {/* CRICKET ROAD SERVICES RACK */}
-      <div class="rack-module-graphic" id="cricket-services" data-section="cricket-services">
-        <picture>
-          <source 
-            type="image/webp" 
-            srcset="/static/rack-images/cricket-services-1920w.webp 1920w, /static/rack-images/cricket-services-1280w.webp 1280w, /static/rack-images/cricket-services-640w.webp 640w"
-            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
-          />
-          <img 
-            src="/static/rack-images/cricket-services.webp"
-            alt="Cricket Road Services - Recording, Rehearsal, Control Room" 
-            class="rack-module-img"
-            width="1920"
-            height="auto"
-            loading="lazy"
-          />
-        </picture>
-      </div>
 
       {/* RECORDING SERVICES DOUBLE RACK - Simple clickable panels */}
       <div class="rack-module-graphic recording-services-container" id="recording-services" data-section="recording">
