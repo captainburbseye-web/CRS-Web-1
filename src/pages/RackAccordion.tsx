@@ -244,25 +244,8 @@ export const RackAccordion = () => {
         </div>
       </div>
 
-      {/* CONTROL ROOM HIRE RACK - with interactive booking buttons */}
+      {/* CONTROL ROOM BOOKING BUTTONS ONLY */}
       <div class="rack-module-graphic control-room-module" id="control-room" data-section="control-room">
-        {/* Main visual rack panel */}
-        <picture>
-          <source 
-            type="image/webp" 
-            srcset="/static/rack-images/control-room-1920w.webp 1920w, /static/rack-images/control-room-1280w.webp 1280w, /static/rack-images/control-room-640w.webp 640w"
-            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
-          />
-          <img 
-            src="/static/rack-images/control-room.webp"
-            alt="Control Room Hire - VU meters, rotary controls, spectrum analyzer" 
-            class="rack-module-img"
-            width="1920"
-            height="auto"
-            loading="lazy"
-          />
-        </picture>
-        
         {/* Interactive booking buttons rack panel */}
         <div class="control-room-buttons-rack">
           <picture>
