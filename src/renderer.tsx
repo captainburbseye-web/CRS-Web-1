@@ -102,6 +102,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* Rack Module Visual Graphics */}
         <link href="/static/rack-modules-visual.css" rel="stylesheet" />
+        
+        {/* Sticky Rack Navigation */}
+        <link href="/static/rack-nav-sticky.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}
@@ -136,6 +139,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <script src="/static/app.js" defer></script>
         {/* Rack dropdown behavior - Deferred */}
         <script src="/static/rack-dropdown.js" defer></script>
+        {/* Sticky rack navigation - Deferred */}
+        <script src="/static/rack-nav-sticky.js" defer></script>
         {/* Back to top functionality - Deferred */}
         <script src="/static/back-to-top.js" defer></script>
       </body>

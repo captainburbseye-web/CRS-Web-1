@@ -47,7 +47,7 @@ export const RackAccordion = () => {
       </div>
 
       {/* SECTION 1 — CONTROL ROOM DRY HIRE */}
-      <div class="rack-module-graphic">
+      <div class="rack-module-graphic" id="control-room" data-section="control-room">
         <a href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services" target="_blank" rel="noopener noreferrer">
           <img 
             src="https://www.genspark.ai/api/files/s/w37SpaXR" 
@@ -58,7 +58,7 @@ export const RackAccordion = () => {
       </div>
 
       {/* SECTION 2 — REHEARSAL: Cricket Road Purple Module */}
-      <div class="rack-module-graphic">
+      <div class="rack-module-graphic" id="rehearsal" data-section="rehearsal">
         <a href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" target="_blank" rel="noopener noreferrer">
           <img 
             src="https://www.genspark.ai/api/files/s/cWStH6bA" 
@@ -85,7 +85,7 @@ export const RackAccordion = () => {
       </div>
 
       {/* SECTION 3 — LIVE SERVICES: PA / AV / Technical */}
-      <div class="rack-module-graphic">
+      <div class="rack-module-graphic" id="live-services" data-section="live-services">
         <a href="/contact" class="rack-module-link">
           <img 
             src="https://www.genspark.ai/api/files/s/XRsgWrce" 
@@ -96,7 +96,7 @@ export const RackAccordion = () => {
       </div>
       
       {/* SECTION 3B — PODCAST & AV */}
-      <div class="service-block podcast-block">
+      <div class="service-block podcast-block" id="podcast" data-section="podcast">
         <h2>Podcast & AV Suite</h2>
         <p class="service-intro">Spoken word, interviews, broadcast content.</p>
         
