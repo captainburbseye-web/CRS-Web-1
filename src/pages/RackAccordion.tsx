@@ -12,38 +12,7 @@ export const RackAccordion = () => {
       {/* Skip to content link for accessibility */}
       <a href="#main-content" class="skip-to-content">Skip to main content</a>
       
-      {/* CRS HEADER RACK - Top navigation */}
-      <div class="rack-module-graphic crs-header-container" id="crs-header">
-        <picture>
-          <source 
-            type="image/webp" 
-            srcset="/static/rack-images/crs-header-1920w.webp 1920w, /static/rack-images/crs-header-1280w.webp 1280w, /static/rack-images/crs-header-640w.webp 640w"
-            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
-          />
-          <img 
-            src="/static/rack-images/crs-header.webp"
-            alt="Cowley Road Studios - Navigation Header" 
-            class="rack-module-img"
-            width="1920"
-            height="auto"
-            loading="eager"
-            fetchpriority="high"
-          />
-        </picture>
-        
-        {/* Clickable hotspot for COWLEY ROAD STUDIOS text only */}
-        <div class="crs-header-hotspots">
-          <a 
-            href="/"
-            class="crs-header-logo-hotspot"
-            aria-label="Cowley Road Studios - Return to home"
-          >
-            <span class="sr-only">Cowley Road Studios Home</span>
-          </a>
-        </div>
-      </div>
-      
-      {/* WELCOME RACK */}
+      {/* WELCOME RACK - Primary navigation (moved to top) */}
       <div class="rack-module-graphic welcome-rack-container" id="main-content" role="main">
         <picture>
           <source 
@@ -113,6 +82,35 @@ export const RackAccordion = () => {
         </div>
       </div>
 
+      {/* CRS HEADER RACK - Branding banner (moved after Welcome Rack) */}
+      <div class="rack-module-graphic crs-header-container" id="crs-header">
+        <picture>
+          <source 
+            type="image/webp" 
+            srcset="/static/rack-images/crs-header-1920w.webp 1920w, /static/rack-images/crs-header-1280w.webp 1280w, /static/rack-images/crs-header-640w.webp 640w"
+            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+          />
+          <img 
+            src="/static/rack-images/crs-header.webp"
+            alt="Cowley Road Studios - Branding Header" 
+            class="rack-module-img"
+            width="1920"
+            height="auto"
+            loading="eager"
+          />
+        </picture>
+        
+        {/* Clickable hotspot for COWLEY ROAD STUDIOS text */}
+        <div class="crs-header-hotspots">
+          <a 
+            href="/"
+            class="crs-header-logo-hotspot"
+            aria-label="Cowley Road Studios - Return to home"
+          >
+            <span class="sr-only">Cowley Road Studios Home</span>
+          </a>
+        </div>
+      </div>
 
 
       {/* RECORDING SERVICES TITLE RACK */}

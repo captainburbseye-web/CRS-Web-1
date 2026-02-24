@@ -77,10 +77,11 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* ============================================
              CRITICAL RACK IMAGES — PRELOAD FOR INSTANT LOAD
-             Above-the-fold: Header + Welcome rack (WebP optimized)
+             Above-the-fold: Welcome rack + Header (WebP optimized)
+             Order matches page layout (Welcome first, Header second)
              ============================================ */}
-        <link rel="preload" as="image" href="/static/rack-images/header-1920w.webp" type="image/webp" />
         <link rel="preload" as="image" href="/static/rack-images/welcome-rack-1920w.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/static/rack-images/header-1920w.webp" type="image/webp" />
         
         {/* ============================================
              CONSOLIDATED CSS — LEAN & FAST
