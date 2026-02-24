@@ -443,3 +443,71 @@
     padding: var(--spacing-lg);
   }
 }
+
+/* ============================================
+   STUDIO FLIGHT CASE AESTHETIC
+   Safe visual overlay - preserves all hotspots
+   Added: 2026-02-24
+   ============================================ */
+
+/* 1. Sets the moody studio lighting behind the rack */
+body {
+  background-color: #0a0a0c !important;
+  background-image: radial-gradient(circle at center top, #24242a 0%, #0a0a0c 80%) !important;
+  background-attachment: fixed !important;
+}
+
+/* 2. Enhances your EXISTING chassis wrapper */
+.master-rack-chassis {
+  position: relative;
+  background-color: #050505; /* Pitch black behind the units */
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.9), 
+    0 0 0 2px #1a1a1c;
+  /* Creates space on the sides for the metal rails to sit without crushing your images */
+  padding-left: 20px !important; 
+  padding-right: 20px !important;
+}
+
+/* 3. Generates the metal rails directly onto the sides of the chassis */
+.master-rack-chassis::before,
+.master-rack-chassis::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px; /* Matches the padding above */
+  
+  /* Layer 1: Rack holes (repeating dark dots)
+     Layer 2: Gunmetal brushed gradient */
+  background-image: 
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 10px,
+      #030303 10px,
+      #030303 18px,
+      transparent 18px,
+      transparent 45px
+    ),
+    linear-gradient(90deg, #1f1f22 0%, #38383e 50%, #1f1f22 100%);
+  
+  border-left: 1px solid #4a4a52;
+  border-right: 1px solid #000;
+  z-index: 10;
+  
+  /* CRITICAL SAFETY: This ensures the rails act like ghosts. 
+     Your mouse will click right through them, keeping all your Square booking hotspots perfectly active. */
+  pointer-events: none; 
+}
+
+/* Lock rails to the far left and right */
+.master-rack-chassis::before { left: 0; }
+.master-rack-chassis::after { right: 0; }
+
+/* 4. Adds a tiny 2px physical gap between your existing image modules */
+.rack-module-graphic {
+  position: relative;
+  z-index: 5;
+  margin-bottom: 2px !important;
+}
