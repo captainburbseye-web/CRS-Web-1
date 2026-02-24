@@ -59,8 +59,9 @@
     0 0 20px rgba(255, 215, 0, 0.15);
 }
 
-/* Active state - press feedback */
-.recording-panel:active {
+/* Active state - press feedback with JS class */
+.recording-panel:active,
+.recording-panel.button-pressed {
   background: rgba(255, 215, 0, 0.08);
   transform: scale(0.995);
   box-shadow: 

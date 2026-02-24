@@ -50,8 +50,9 @@
     inset 0 0 40px rgba(255, 255, 255, 0.08);
 }
 
-/* Enhanced active/press effect */
-.booking-hotspot:active {
+/* Enhanced active/press effect with JS class */
+.booking-hotspot:active,
+.booking-hotspot.button-pressed {
   transform: scale(0.98) translateY(0);
   background: rgba(255, 255, 255, 0.12);
   box-shadow: 

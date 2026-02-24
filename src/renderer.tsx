@@ -173,6 +173,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <script src="/static/control-room-buttons.js" defer></script>
         {/* Recording Services interactive buttons - Deferred */}
         <script src="/static/recording-services-buttons.js" defer></script>
+        {/* Enhanced rack interactions (smooth scroll, sounds, analytics) - Deferred */}
+        <script src="/static/rack-enhancements.js" defer></script>
       </body>
     </html>
   )

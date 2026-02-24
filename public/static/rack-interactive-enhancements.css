@@ -23,9 +23,10 @@
   filter: brightness(1.05) contrast(1.05);
 }
 
-/* Press feedback */
-.rack-module-graphic a:active {
-  transform: translateY(0);
+/* Press feedback - with .button-pressed class from JS */
+.rack-module-graphic a:active,
+.rack-module-graphic a.button-pressed {
+  transform: translateY(0) scale(0.98);
   box-shadow: 
     0 2px 15px rgba(255, 215, 0, 0.15),
     inset 0 0 30px rgba(255, 215, 0, 0.03);
