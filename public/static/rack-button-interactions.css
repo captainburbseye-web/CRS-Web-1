@@ -1,0 +1,284 @@
+/**
+ * Rack Button Interactions - Fallout Vault‑Tec Style
+ * Pressed animations, audio feedback, responsive layout
+ * Zero‑garish, maximum feedback
+ */
+
+/* ================================================
+   PRESSED STATE - TACTILE MECHANICAL FEEDBACK
+   ================================================ */
+
+/* Recording Services Panels */
+.recording-cowley-panel:active,
+.recording-cricket-panel:active {
+  transform: scale(0.99);
+  box-shadow: 
+    inset 0 3px 15px rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(255, 179, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  transition: all 0.05s ease-out;
+}
+
+/* Rehearsal Panels */
+.rehearsal-cowley-panel:active,
+.rehearsal-cricket-panel:active {
+  transform: scale(0.99);
+  box-shadow: 
+    inset 0 3px 15px rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(255, 179, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  transition: all 0.05s ease-out;
+}
+
+/* Welcome Rack Buttons */
+.welcome-button:active {
+  transform: translateY(2px);
+  box-shadow: 
+    inset 0 2px 10px rgba(0, 0, 0, 0.6),
+    inset 0 0 15px rgba(255, 179, 0, 0.1);
+  background: rgba(0, 0, 0, 0.15);
+  transition: all 0.05s ease-out;
+}
+
+/* Control Room Booking Buttons */
+.booking-hotspot:active,
+.booking-button:active {
+  transform: scale(0.98) translateY(2px);
+  box-shadow: 
+    inset 0 3px 12px rgba(0, 0, 0, 0.7),
+    inset 0 0 20px rgba(255, 179, 0, 0.15);
+  background: rgba(0, 0, 0, 0.25);
+  transition: all 0.05s ease-out;
+}
+
+/* Header Logo Hotspot */
+.crs-header-logo-hotspot:active {
+  transform: scale(0.98);
+  box-shadow: 
+    inset 0 2px 8px rgba(0, 0, 0, 0.5),
+    inset 0 0 15px rgba(255, 179, 0, 0.08);
+  background: rgba(0, 0, 0, 0.15);
+  transition: all 0.05s ease-out;
+}
+
+/* ================================================
+   KEYBOARD ACCESSIBILITY - FOCUS OUTLINES
+   ================================================ */
+
+/* Clean, mechanical focus state */
+.recording-cowley-panel:focus-visible,
+.recording-cricket-panel:focus-visible,
+.rehearsal-cowley-panel:focus-visible,
+.rehearsal-cricket-panel:focus-visible,
+.welcome-button:focus-visible,
+.booking-hotspot:focus-visible,
+.booking-button:focus-visible,
+.crs-header-logo-hotspot:focus-visible {
+  outline: 2px solid #d4a017;
+  outline-offset: 3px;
+  box-shadow: 
+    0 0 0 4px rgba(212, 160, 23, 0.15),
+    0 0 8px rgba(212, 160, 23, 0.3);
+}
+
+/* Remove default browser outline */
+.recording-cowley-panel:focus,
+.recording-cricket-panel:focus,
+.rehearsal-cowley-panel:focus,
+.rehearsal-cricket-panel:focus,
+.welcome-button:focus,
+.booking-hotspot:focus,
+.booking-button:focus,
+.crs-header-logo-hotspot:focus {
+  outline: none;
+}
+
+/* ================================================
+   RESPONSIVE LAYOUT - MOBILE & TABLET
+   ================================================ */
+
+@media (max-width: 768px) {
+  /* Stack button containers vertically */
+  .recording-hotspots-overlay,
+  .rehearsal-hotspots-overlay,
+  .control-room-hotspots {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  /* Increase button width on mobile */
+  .recording-cowley-panel,
+  .recording-cricket-panel,
+  .rehearsal-cowley-panel,
+  .rehearsal-cricket-panel,
+  .booking-hotspot,
+  .booking-button {
+    width: 85%;
+    max-width: 400px;
+    min-height: 80px;
+    margin: 0 auto;
+  }
+  
+  /* Welcome rack buttons */
+  .welcome-rack-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+  }
+  
+  .welcome-button {
+    width: 80%;
+    max-width: 300px;
+    font-size: 1rem;
+    padding: 12px 16px;
+  }
+  
+  /* Reduce title rack font sizes */
+  .recording-title-rack,
+  .rehearsal-title-rack {
+    font-size: 1.5rem;
+  }
+  
+  /* Better touch targets */
+  .recording-cowley-panel,
+  .recording-cricket-panel,
+  .rehearsal-cowley-panel,
+  .rehearsal-cricket-panel,
+  .booking-hotspot,
+  .booking-button,
+  .welcome-button {
+    min-height: 48px; /* WCAG minimum */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(212, 160, 23, 0.1);
+  }
+}
+
+@media (max-width: 640px) {
+  /* Further adjustments for small phones */
+  .recording-cowley-panel,
+  .recording-cricket-panel,
+  .rehearsal-cowley-panel,
+  .rehearsal-cricket-panel,
+  .booking-hotspot,
+  .booking-button {
+    width: 90%;
+    min-height: 60px;
+    font-size: 0.95rem;
+  }
+  
+  .welcome-button {
+    width: 85%;
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+  
+  /* Title font scaling */
+  .recording-title-rack,
+  .rehearsal-title-rack {
+    font-size: 1.2rem;
+  }
+}
+
+/* ================================================
+   ACCESSIBILITY - REDUCED MOTION
+   ================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .recording-cowley-panel,
+  .recording-cricket-panel,
+  .rehearsal-cowley-panel,
+  .rehearsal-cricket-panel,
+  .welcome-button,
+  .booking-hotspot,
+  .booking-button,
+  .crs-header-logo-hotspot {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  .recording-cowley-panel:active,
+  .recording-cricket-panel:active,
+  .rehearsal-cowley-panel:active,
+  .rehearsal-cricket-panel:active,
+  .welcome-button:active,
+  .booking-hotspot:active,
+  .booking-button:active,
+  .crs-header-logo-hotspot:active {
+    transform: none;
+  }
+}
+
+/* ================================================
+   HIGH CONTRAST MODE
+   ================================================ */
+
+@media (prefers-contrast: high) {
+  .recording-cowley-panel:focus-visible,
+  .recording-cricket-panel:focus-visible,
+  .rehearsal-cowley-panel:focus-visible,
+  .rehearsal-cricket-panel:focus-visible,
+  .welcome-button:focus-visible,
+  .booking-hotspot:focus-visible,
+  .booking-button:focus-visible,
+  .crs-header-logo-hotspot:focus-visible {
+    outline-width: 3px;
+    outline-color: #ffcc00;
+    box-shadow: 0 0 0 5px rgba(255, 204, 0, 0.3);
+  }
+  
+  .recording-cowley-panel:active,
+  .recording-cricket-panel:active,
+  .rehearsal-cowley-panel:active,
+  .rehearsal-cricket-panel:active,
+  .booking-hotspot:active,
+  .booking-button:active {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 2px solid #ffcc00;
+  }
+}
+
+/* ================================================
+   TOOLTIP ENHANCEMENTS
+   ================================================ */
+
+/* Tooltips appear on focus for keyboard users */
+.recording-cowley-panel:focus-visible::after,
+.recording-cricket-panel:focus-visible::after,
+.rehearsal-cowley-panel:focus-visible::after,
+.rehearsal-cricket-panel:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+/* ================================================
+   LOADING STATE (for Square widget)
+   ================================================ */
+
+.booking-loading {
+  pointer-events: none;
+  opacity: 0.6;
+  position: relative;
+}
+
+.booking-loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(212, 160, 23, 0.2);
+  border-top-color: #d4a017;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

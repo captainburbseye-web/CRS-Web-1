@@ -140,6 +140,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* Interactive Enhancements - Hover effects and accessibility */}
         <link href="/static/rack-interactive-enhancements.css" rel="stylesheet" />
+        
+        {/* Button Interactions - Pressed state, focus, responsive layout */}
+        <link href="/static/rack-button-interactions.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}
@@ -190,6 +193,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <script src="/static/recording-services-buttons.js" defer></script>
         {/* Enhanced rack interactions (smooth scroll, sounds, analytics) - Deferred */}
         <script src="/static/rack-enhancements.js" defer></script>
+        {/* Audio feedback for button clicks - Vault-Tec style - Deferred */}
+        <script src="/static/rack-audio-feedback.js" defer></script>
       </body>
     </html>
   )

@@ -1730,9 +1730,15 @@ app.get('/rack-accordion', (c) => {
         
         {/* Accordion-specific CSS */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />
+        
+        {/* Interactive enhancements */}
+        <link href="/static/rack-button-interactions.css" rel="stylesheet" />
       </head>
       <body>
         <RackAccordion />
+        
+        {/* Audio feedback system */}
+        <script src="/static/rack-audio-feedback.js" defer></script>
         
         {/* Structured data for SEO */}
         <script type="application/ld+json">
