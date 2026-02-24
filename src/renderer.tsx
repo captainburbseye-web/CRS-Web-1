@@ -135,6 +135,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* Rehearsal Combi Rack Interactive Panels */}
         <link href="/static/rehearsal-combi-hotspots.css" rel="stylesheet" />
         
+        {/* Title Rack Orange Glow Effect */}
+        <link href="/static/title-rack-glow.css" rel="stylesheet" />
+        
         {/* Interactive Enhancements - Hover effects and accessibility */}
         <link href="/static/rack-interactive-enhancements.css" rel="stylesheet" />
       </head>

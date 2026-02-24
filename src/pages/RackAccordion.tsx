@@ -115,6 +115,25 @@ export const RackAccordion = () => {
 
 
 
+      {/* RECORDING SERVICES TITLE RACK */}
+      <div class="rack-module-graphic title-rack-container" data-section="recording-title">
+        <picture>
+          <source 
+            type="image/webp" 
+            srcset="/static/rack-images/recording-title-rack-1920w.webp 1920w, /static/rack-images/recording-title-rack-1280w.webp 1280w, /static/rack-images/recording-title-rack-640w.webp 640w"
+            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+          />
+          <img 
+            src="/static/rack-images/recording-title-rack.webp"
+            alt="Recording Services Title" 
+            class="rack-module-img title-rack-img"
+            width="1920"
+            height="auto"
+            loading="lazy"
+          />
+        </picture>
+      </div>
+
       {/* RECORDING SERVICES DOUBLE RACK - Simple clickable panels */}
       <div class="rack-module-graphic recording-services-container" id="recording-services" data-section="recording">
         {/* Main visual rack panel */}
@@ -160,6 +179,25 @@ export const RackAccordion = () => {
           >
           </a>
         </div>
+      </div>
+
+      {/* REHEARSAL SERVICES TITLE RACK */}
+      <div class="rack-module-graphic title-rack-container" data-section="rehearsal-title">
+        <picture>
+          <source 
+            type="image/webp" 
+            srcset="/static/rack-images/rehearsal-title-rack-1920w.webp 1920w, /static/rack-images/rehearsal-title-rack-1280w.webp 1280w, /static/rack-images/rehearsal-title-rack-640w.webp 640w"
+            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+          />
+          <img 
+            src="/static/rack-images/rehearsal-title-rack.webp"
+            alt="Rehearsal Services Title" 
+            class="rack-module-img title-rack-img"
+            width="1920"
+            height="auto"
+            loading="lazy"
+          />
+        </picture>
       </div>
 
       {/* REHEARSAL COMBI RACK - Cowley + Cricket combined */}
