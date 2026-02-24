@@ -1,0 +1,92 @@
+/* GOOGLE MAPS EMBED - WEB-TO-MAP SOLDER */
+
+.map-embed-container {
+  width: 100%;
+  margin: 2rem auto;
+  background: #0a0a0a;
+  padding: 3rem 2rem;
+  border-top: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+}
+
+.map-embed-header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.map-embed-title {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 1.5rem;
+  color: #e3b04b;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.map-embed-subtitle {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  color: #999;
+  letter-spacing: 0.05em;
+}
+
+.map-embed-container iframe {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  border: 2px solid #333;
+}
+
+/* NAP SECTION STYLING */
+.nap-section {
+  border: 3px solid #e3b04b;
+  padding: 1.5rem;
+  background: rgba(227, 176, 75, 0.05);
+  box-shadow: 0 0 20px rgba(227, 176, 75, 0.2);
+  margin-bottom: 2rem;
+}
+
+.nap-section .terminal-status-label {
+  color: #e3b04b;
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-shadow: 0 0 8px rgba(227, 176, 75, 0.4);
+}
+
+.nap-address,
+.nap-phone,
+.nap-email {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #f4f4f4;
+}
+
+.nap-phone a,
+.nap-email a {
+  color: #B5A642;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nap-phone a:hover,
+.nap-email a:hover {
+  color: #e3b04b;
+  text-shadow: 0 0 8px rgba(227, 176, 75, 0.6);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .map-embed-container {
+    padding: 2rem 1rem;
+  }
+
+  .map-embed-container iframe {
+    height: 300px;
+  }
+
+  .nap-section {
+    padding: 1rem;
+  }
+}

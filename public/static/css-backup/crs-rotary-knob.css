@@ -1,0 +1,301 @@
+/* ====================================================================
+   ROTARY KNOB COMPONENT — PHYSICS-DRIVEN INTERACTIVE CONTROL
+   Strike 2: High-Torque Rotary Knobs with GSAP Physics
+   ==================================================================== */
+
+.rotary-knob-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  user-select: none;
+}
+
+.knob-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-gold);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.rotary-knob {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 30% 30%, #3a3a3a 0%, #1a1a1a 60%, #0a0a0a 100%);
+  border: 3px solid #2a2a2a;
+  position: relative;
+  cursor: grab;
+  transition: 
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  outline: none;
+  
+  /* Default subtle glow */
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.05),
+    0 0 8px rgba(57, 255, 20, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.rotary-knob:hover {
+  border-color: #3a3a3a;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.08),
+    0 0 12px rgba(57, 255, 20, 0.3),
+    0 0 24px rgba(57, 255, 20, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.7);
+  cursor: grab;
+}
+
+.rotary-knob:active {
+  cursor: grabbing;
+  transform: scale(0.98);
+  box-shadow:
+    inset 0 3px 6px rgba(0, 0, 0, 0.9),
+    inset 0 -1px 4px rgba(255, 255, 255, 0.03),
+    0 0 16px rgba(57, 255, 20, 0.4),
+    0 0 32px rgba(57, 255, 20, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.rotary-knob:focus {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 4px;
+}
+
+/* Knob Indicator Line (shows current position) */
+.knob-indicator {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 22px;
+  background: linear-gradient(180deg, var(--neon-orange) 0%, rgba(255, 136, 51, 0.5) 100%);
+  border-radius: 2px;
+  box-shadow: 
+    0 0 4px var(--neon-orange),
+    0 0 8px rgba(255, 136, 51, 0.5);
+  pointer-events: none;
+}
+
+/* Center Hub (visual detail) */
+.knob-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 40% 40%, #4a4a4a 0%, #2a2a2a 60%, #1a1a1a 100%);
+  border: 1px solid #1a1a1a;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.1),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+/* Value Display */
+.knob-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--text-cream);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 4px rgba(244, 232, 208, 0.3);
+}
+
+/* ============================================================
+   CHANNEL-SPECIFIC GLOW COLORS
+   Each knob inherits its channel's neon signature
+   ============================================================ */
+
+/* Channel 1 & 2: Orange (Rehearsals) */
+.rotary-knob.channel-1,
+.rotary-knob.channel-2 {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.05),
+    0 0 8px rgba(255, 136, 51, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.rotary-knob.channel-1:hover,
+.rotary-knob.channel-2:hover {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.08),
+    0 0 12px rgba(255, 136, 51, 0.4),
+    0 0 24px rgba(255, 136, 51, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.rotary-knob.channel-1 .knob-indicator,
+.rotary-knob.channel-2 .knob-indicator {
+  background: linear-gradient(180deg, var(--neon-orange) 0%, rgba(255, 136, 51, 0.5) 100%);
+  box-shadow: 0 0 4px var(--neon-orange), 0 0 8px rgba(255, 136, 51, 0.5);
+}
+
+/* Channel 3: Magenta (Control Room) */
+.rotary-knob.channel-3 {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.05),
+    0 0 8px rgba(255, 0, 217, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.rotary-knob.channel-3:hover {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.08),
+    0 0 12px rgba(255, 0, 217, 0.4),
+    0 0 24px rgba(255, 0, 217, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.rotary-knob.channel-3 .knob-indicator {
+  background: linear-gradient(180deg, var(--neon-magenta) 0%, rgba(255, 0, 217, 0.5) 100%);
+  box-shadow: 0 0 4px var(--neon-magenta), 0 0 8px rgba(255, 0, 217, 0.5);
+}
+
+/* Channel 4: Cyan (Workshop Café) */
+.rotary-knob.channel-4 {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.05),
+    0 0 8px rgba(0, 217, 255, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.rotary-knob.channel-4:hover {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.08),
+    0 0 12px rgba(0, 217, 255, 0.4),
+    0 0 24px rgba(0, 217, 255, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.rotary-knob.channel-4 .knob-indicator {
+  background: linear-gradient(180deg, var(--neon-cyan) 0%, rgba(0, 217, 255, 0.5) 100%);
+  box-shadow: 0 0 4px var(--neon-cyan), 0 0 8px rgba(0, 217, 255, 0.5);
+}
+
+/* Channel 5: Amber (AV Services) */
+.rotary-knob.channel-5 {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.05),
+    0 0 8px rgba(255, 182, 39, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.rotary-knob.channel-5:hover {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.08),
+    0 0 12px rgba(255, 182, 39, 0.4),
+    0 0 24px rgba(255, 182, 39, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.rotary-knob.channel-5 .knob-indicator {
+  background: linear-gradient(180deg, var(--neon-amber) 0%, rgba(255, 182, 39, 0.5) 100%);
+  box-shadow: 0 0 4px var(--neon-amber), 0 0 8px rgba(255, 182, 39, 0.5);
+}
+
+/* Channel 6: White (Contact) */
+.rotary-knob.channel-6 {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.05),
+    0 0 8px rgba(244, 244, 244, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.rotary-knob.channel-6:hover {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.08),
+    0 0 12px rgba(244, 244, 244, 0.4),
+    0 0 24px rgba(244, 244, 244, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.rotary-knob.channel-6 .knob-indicator {
+  background: linear-gradient(180deg, var(--neon-white) 0%, rgba(244, 244, 244, 0.5) 100%);
+  box-shadow: 0 0 4px var(--neon-white), 0 0 8px rgba(244, 244, 244, 0.5);
+}
+
+/* Channel 7: Green (System Status) */
+.rotary-knob.channel-7 {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.05),
+    0 0 8px rgba(57, 255, 20, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.rotary-knob.channel-7:hover {
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.8),
+    inset 0 -2px 6px rgba(255, 255, 255, 0.08),
+    0 0 12px rgba(57, 255, 20, 0.4),
+    0 0 24px rgba(57, 255, 20, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.7);
+}
+
+.rotary-knob.channel-7 .knob-indicator {
+  background: linear-gradient(180deg, var(--neon-green) 0%, rgba(57, 255, 20, 0.5) 100%);
+  box-shadow: 0 0 4px var(--neon-green), 0 0 8px rgba(57, 255, 20, 0.5);
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .rotary-knob {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .knob-indicator {
+    height: 18px;
+  }
+  
+  .knob-center {
+    width: 15px;
+    height: 15px;
+  }
+  
+  .knob-label {
+    font-size: 0.7rem;
+  }
+  
+  .knob-value {
+    font-size: 0.8125rem;
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY — REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .rotary-knob {
+    transition: none;
+  }
+}

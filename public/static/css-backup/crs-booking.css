@@ -1,0 +1,253 @@
+/* ====================================================================
+   UNIFIED BOOKING PAGE - CLEAN CARD-BASED LAYOUT
+   ==================================================================== */
+
+.booking-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+  padding: 2rem;
+}
+
+/* Header Section */
+.booking-header {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.booking-title {
+  font-family: 'Courier New', monospace;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--sage-green, #B5A642);
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(136, 170, 136, 0.3);
+}
+
+.booking-description {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  color: rgba(224, 224, 224, 0.9);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+}
+
+/* Type Selector Buttons */
+.booking-type-selector {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.type-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 100%);
+  border: 2px solid var(--sage-green, #404040);
+  border-radius: 6px;
+  color: var(--sage-green, #B5A642);
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.type-button:hover {
+  background: linear-gradient(90deg, #2a2a2a 0%, #3a3a3a 100%);
+  box-shadow: 0 0 20px rgba(136, 170, 136, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Booking Options Grid */
+.booking-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+/* Booking Card */
+.booking-card {
+  background: 
+    linear-gradient(135deg, rgba(136, 170, 136, 0.05) 0%, rgba(136, 170, 136, 0.02) 100%),
+    #0a0a0a;
+  border: 3px solid rgba(136, 170, 136, 0.3);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 20px rgba(136, 170, 136, 0.05);
+  transition: all 0.3s ease;
+}
+
+.booking-card:hover {
+  border-color: var(--sage-green, #B5A642);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(136, 170, 136, 0.2),
+    inset 0 0 30px rgba(136, 170, 136, 0.08);
+  transform: translateY(-4px);
+}
+
+/* Card Header */
+.booking-card-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(136, 170, 136, 0.2);
+  padding-bottom: 1rem;
+}
+
+.booking-card-title {
+  font-family: 'Courier New', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--sage-green, #B5A642);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.booking-card-location {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: var(--mustard, #e3b04b);
+  background: rgba(227, 176, 75, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+/* Price */
+.booking-card-price {
+  font-family: 'Courier New', monospace;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--mustard, #e3b04b);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 10px rgba(227, 176, 75, 0.3);
+}
+
+/* Features List */
+.booking-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.booking-card-features li {
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  color: rgba(224, 224, 224, 0.9);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  letter-spacing: 0.02em;
+}
+
+.booking-card-features li:last-child {
+  border-bottom: none;
+}
+
+/* Book Now Button */
+.booking-card-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  background: var(--mustard, #e3b04b);
+  border: none;
+  border-radius: 6px;
+  color: #0a0a0a;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(227, 176, 75, 0.3);
+}
+
+.booking-card-button:hover {
+  background: #f5c05c;
+  box-shadow: 0 0 20px rgba(227, 176, 75, 0.6);
+  transform: translateY(-2px);
+}
+
+.booking-card-button:active {
+  transform: translateY(0);
+}
+
+/* Footer */
+.booking-footer {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.back-to-rack {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: 2px solid rgba(136, 170, 136, 0.3);
+  border-radius: 6px;
+  color: var(--sage-green, #B5A642);
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+
+.back-to-rack:hover {
+  border-color: var(--sage-green, #B5A642);
+  background: rgba(136, 170, 136, 0.1);
+  box-shadow: 0 0 12px rgba(136, 170, 136, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .booking-page {
+    padding: 1rem;
+  }
+  
+  .booking-title {
+    font-size: 1.8rem;
+  }
+  
+  .booking-description {
+    font-size: 1rem;
+  }
+  
+  .booking-options-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .type-button {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .booking-card {
+    padding: 1.5rem;
+  }
+  
+  .booking-card-title {
+    font-size: 1.2rem;
+  }
+  
+  .booking-card-price {
+    font-size: 1.5rem;
+  }
+}
+
+/* ====================================================================
+   END UNIFIED BOOKING PAGE
+   ==================================================================== */

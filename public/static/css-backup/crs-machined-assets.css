@@ -1,0 +1,274 @@
+/* ====================================================================
+   CRS MACHINED ASSET LAYER v1.0 — THE 202nd LAW IN ACTION
+   
+   "The Protective Pane — reflection creates trust."
+   
+   PURPOSE: Replace 404 video crisis with static machined PBR assets
+            paired with a live CSS layer to simulate active hardware
+            WITHOUT the 8-second load time penalty.
+   
+   LAYERS:
+   1. Base Machined Asset  → Static high-fidelity image
+   2. Machined Window      → SVG reflection & depth
+   3. Neon Pulse Rail      → Live active channel signal
+   
+   PERFORMANCE TARGET: LCP 8.12s → <1.5s
+   ==================================================================== */
+
+:root {
+  /* Machined Asset URLs */
+  --asset-cowley-road: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/machined-assets/1.jpg');
+  --asset-cricket-road: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/machined-assets/2.jpg');
+  --asset-control-room: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/machined-assets/7.jpg');
+  --asset-workshop-cafe: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/machined-assets/10.jpg');
+  --asset-av-services: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/machined-assets/11.jpg');
+  --asset-contact: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/machined-assets/23.jpg');
+  --asset-system-status: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/machined-assets/12.jpg');
+  
+  /* Glass Pane Properties */
+  --glass-glare: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+  --glass-grain-opacity: 0.15;
+  
+  /* Organic Texture for Workshop Café (Nature Distilled) */
+  --organic-grain-opacity: 0.25;
+  --organic-base-freq: 0.45;
+}
+
+/* ====================================================================
+   LAYER 1: BASE MACHINED ASSET
+   Static image replacement for video elements
+   ==================================================================== */
+
+.rack-window-container {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background: #0d0d0d;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+/* Hide videos, show machined assets */
+.module-video {
+  display: none; /* Disable videos entirely */
+}
+
+.rack-asset-base {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Channel-specific background images */
+[data-channel="1"] .rack-asset-base {
+  background-image: var(--asset-cowley-road);
+}
+
+[data-channel="2"] .rack-asset-base {
+  background-image: var(--asset-cricket-road);
+}
+
+[data-channel="3"] .rack-asset-base {
+  background-image: var(--asset-control-room);
+}
+
+[data-channel="4"] .rack-asset-base {
+  background-image: var(--asset-workshop-cafe);
+}
+
+[data-channel="5"] .rack-asset-base {
+  background-image: var(--asset-av-services);
+}
+
+[data-channel="6"] .rack-asset-base {
+  background-image: var(--asset-contact);
+}
+
+[data-channel="7"] .rack-asset-base {
+  background-image: var(--asset-system-status);
+}
+
+/* ====================================================================
+   LAYER 2: MACHINED WINDOW (Glass Pane or Organic Texture)
+   SVG-driven glass overlay for depth without load penalties
+   ==================================================================== */
+
+.rack-glass-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.6;
+  mix-blend-mode: screen;
+  transition: opacity var(--glow-transition);
+}
+
+/* Standard glass glare for all channels except CH4 */
+.rack-glass-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--glass-glare);
+  opacity: var(--glass-grain-opacity);
+  z-index: 1;
+}
+
+/* Top-edge bezel reflection */
+.rack-glass-overlay::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+  z-index: 2;
+}
+
+/* Hover amplification */
+.rack-module:hover .rack-glass-overlay {
+  opacity: 0.8;
+}
+
+/* ====================================================================
+   LAYER 2B: ORGANIC GRAIN FOR WORKSHOP CAFÉ (Nature Distilled)
+   Replace glass with linen/wood texture for CH4
+   ==================================================================== */
+
+[data-channel="4"] .rack-glass-overlay::before {
+  background: none;
+  filter: url(#organic-grain-filter);
+  opacity: var(--organic-grain-opacity);
+}
+
+/* Organic Grain SVG Filter (embedded inline in HTML) */
+/* 
+<svg style="display: none;">
+  <defs>
+    <filter id="organic-grain-filter" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.45" numOctaves="4" seed="5" />
+      <feColorMatrix type="saturate" values="0.3" />
+      <feBlend mode="multiply" in2="SourceGraphic" />
+    </filter>
+  </defs>
+</svg>
+*/
+
+/* ====================================================================
+   LAYER 3: NEON PULSE RAIL (Live Active Signal)
+   Active channel indicator via border and box-shadow
+   ==================================================================== */
+
+.rack-signal-pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  box-shadow: none;
+  z-index: 3;
+  pointer-events: none;
+  transition: border-color var(--glow-transition), box-shadow var(--glow-transition);
+}
+
+/* Active Channel States */
+[data-channel="1"].channel-active-orange .rack-signal-pulse,
+[data-channel="2"].channel-active-orange .rack-signal-pulse {
+  border-color: var(--neon-orange);
+  box-shadow: 
+    0 0 var(--glow-sm) var(--neon-orange),
+    0 0 var(--glow-md) rgba(255, 136, 51, 0.6),
+    inset 0 0 var(--glow-sm) rgba(255, 136, 51, 0.3);
+}
+
+[data-channel="3"].channel-active-magenta .rack-signal-pulse {
+  border-color: var(--neon-magenta);
+  box-shadow: 
+    0 0 var(--glow-sm) var(--neon-magenta),
+    0 0 var(--glow-md) rgba(255, 0, 217, 0.6),
+    inset 0 0 var(--glow-sm) rgba(255, 0, 217, 0.3);
+}
+
+[data-channel="4"].channel-active-cyan .rack-signal-pulse {
+  border-color: var(--clay); /* Nature Distilled override */
+  box-shadow: 
+    0 0 var(--glow-sm) var(--amber-glow),
+    0 0 var(--glow-md) rgba(210, 180, 140, 0.6),
+    inset 0 0 var(--glow-sm) rgba(210, 180, 140, 0.3);
+}
+
+[data-channel="5"].channel-active-amber .rack-signal-pulse {
+  border-color: var(--neon-amber);
+  box-shadow: 
+    0 0 var(--glow-sm) var(--neon-amber),
+    0 0 var(--glow-md) rgba(255, 182, 39, 0.6),
+    inset 0 0 var(--glow-sm) rgba(255, 182, 39, 0.3);
+}
+
+[data-channel="6"].channel-active-white .rack-signal-pulse {
+  border-color: var(--neon-white);
+  box-shadow: 
+    0 0 var(--glow-sm) var(--neon-white),
+    0 0 var(--glow-md) rgba(244, 244, 244, 0.6),
+    inset 0 0 var(--glow-sm) rgba(244, 244, 244, 0.3);
+}
+
+[data-channel="7"].channel-active-green .rack-signal-pulse {
+  border-color: var(--neon-green);
+  box-shadow: 
+    0 0 var(--glow-sm) var(--neon-green),
+    0 0 var(--glow-md) rgba(57, 255, 20, 0.6),
+    inset 0 0 var(--glow-sm) rgba(57, 255, 20, 0.3);
+}
+
+/* ====================================================================
+   RESPONSIVE ADJUSTMENTS
+   ==================================================================== */
+
+@media (max-width: 768px) {
+  .rack-window-container {
+    height: 120px;
+  }
+  
+  .rack-glass-overlay {
+    opacity: 0.5;
+  }
+  
+  .rack-signal-pulse {
+    border-width: 1px;
+  }
+}
+
+/* ====================================================================
+   ACCESSIBILITY: REDUCED MOTION
+   ==================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .rack-glass-overlay,
+  .rack-signal-pulse {
+    transition: none;
+  }
+}
+
+/* ====================================================================
+   PERFORMANCE NOTES:
+   - Asset Size Target: <50KB per image (JPEG 80% quality)
+   - LCP Target: <1.5s (down from 8.12s)
+   - Eliminates 7x 404 errors from R2 video bucket
+   - SVG filter: <1KB embedded inline
+   - Zero runtime JS required for glass overlay
+   ==================================================================== */

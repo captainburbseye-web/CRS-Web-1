@@ -1,0 +1,2333 @@
+/* =========================================================
+   CRS HEADER — THREE-ZONE GRID
+   Purpose: Institutional header with clear hierarchy
+   Layout: Logo (left) | Nav (middle) | Action (right)
+   Load: After spacing scale, before other header CSS
+   ========================================================= */
+
+/* ==========================================
+   DESKTOP: Three-Zone Grid
+   ========================================== */
+
+header.rack-header {
+  /* 1. The Sticky Logic */
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  
+  /* 2. The Locking Point */
+  /* Stop scrolling when you hit the very top of the screen */
+  top: 0;
+  
+  /* 3. The Stack Order */
+  z-index: 9999; /* Must be higher than all page content */
+  
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* left | middle | right */
+  grid-template-areas: "logo nav cta";
+  align-items: center;
+  gap: var(--space-xl); /* 32px between zones */
+  padding: var(--space-md) var(--space-xl); /* TIGHTENED: 16px vertical (was 24px), 32px horizontal */
+  
+  /* 4. Metal Texture Background (R2 Asset) */
+  background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(2).png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #2a2a2a; /* Lighter fallback */
+  filter: brightness(1.5) contrast(1.3) saturate(0.9); /* MUCH more visible */
+  
+  /* Bevel edges for depth */
+  border-top: 1px solid #3d3d3d; /* Highlight bevel */
+  border-bottom: 1px solid #000; /* Shadow bevel */
+  
+  /* 5. The Shadow */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================
+   ZONE 1: CRS Badge (Authority — Left)
+   96px x 96px (increased by 50% for industrial presence)
+   ========================================== */
+
+.rack-header-logo {
+  grid-area: logo;
+  display: flex;
+  align-items: center;
+}
+
+/* UPDATE: Increase size by 50% for more presence */
+.header-crs-badge {
+  width: 96px;  /* Changed from 64px */
+  height: 96px; /* Changed from 64px */
+  flex-shrink: 0;
+  flex-grow: 0;
+  display: block;
+  /* Ensure it's vertically centered in the nav bar */
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+/* Remove old logo sizing rules (no longer needed) */
+.rack-header-logo .crs-main-logo {
+  display: none; /* Hidden - replaced by badge */
+}
+
+/* ==========================================
+   ZONE 2: Navigation (Middle)
+   ========================================== */
+
+.rack-header-nav {
+  grid-area: nav;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm); /* 8px between links - tighter for rack aesthetic */
+  max-width: 600px; /* Constrain width to fit rack unit aesthetic */
+  margin: 0 auto; /* Center within grid area */
+  
+  /* R2 Metal Texture */
+  background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-color: transparent !important;
+  
+  /* Metal texture depth */
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
+}
+
+.rack-header-nav a {
+  /* Match BOOK SESSION button styling */
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem; /* Match book button size */
+  font-weight: 700; /* Match book button weight */
+  letter-spacing: 0.1em; /* Match book button spacing */
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  
+  /* Button appearance - match BOOK SESSION dimensions */
+  color: #1a1a1a;
+  background: #E89B3C; /* Mustard - same as BOOK SESSION */
+  border: 2px solid #E89B3C;
+  border-radius: 4px;
+  padding: 0.75rem 2rem; /* Match BOOK SESSION exactly */
+  
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  vertical-align: middle;
+  margin: 0;
+  
+  /* Effects */
+  transition: all 0.2s ease;
+}
+
+.rack-header-nav a:hover {
+  background: transparent;
+  color: #E89B3C;
+  border-color: #E89B3C;
+}
+
+.rack-header-nav .separator {
+  color: rgba(232, 155, 60, 0.4); /* Mustard color to match buttons */
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  vertical-align: middle;
+  margin: 0 0.5rem; /* Add spacing between buttons */
+  padding: 0;
+}
+
+/* ==========================================
+   ZONE 3: Book Now (Action — Right)
+   ========================================== */
+
+.rack-header-cta {
+  grid-area: cta;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.rack-header-cta .book-dropdown-trigger {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.05em;
+  border: 2px solid #FF4500;
+  background: transparent;
+  color: #FF4500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.rack-header-cta .book-dropdown-trigger:hover {
+  background: #FF4500;
+  color: #000;
+}
+
+/* ==========================================
+   MOBILE: Collapse to Single Column
+   Hide mobile menu toggle on desktop
+   ========================================== */
+
+.mobile-menu-toggle {
+  display: none; /* Hidden on desktop */
+}
+
+@media (max-width: 768px) {
+  header.rack-header {
+    /* Reinforce sticky positioning for mobile */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    
+    grid-template-columns: auto 1fr auto; /* Badge | Nav | Toggle */
+    grid-template-areas: 
+      "logo nav toggle";
+    gap: var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    
+    /* Ensure solid background for sticky header */
+    background-color: #1a1a1a;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.8);
+  }
+  
+  .mobile-menu-toggle {
+    display: block;
+    grid-area: toggle;
+    background: transparent;
+    border: 1px solid rgba(212, 160, 23, 0.3);
+    color: #E89B3C;
+    padding: 8px 12px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .rack-header-logo {
+    grid-area: logo;
+  }
+  
+  .header-crs-badge {
+    /* Keep mobile slightly smaller so it doesn't crowd the burger menu */
+    width: 72px; 
+    height: 72px;
+  }
+  
+  .rack-header-nav {
+    grid-area: nav;
+    justify-content: flex-start; /* Left-align on mobile */
+    gap: 12px; /* Increased spacing for better tap separation */
+  }
+  
+  .rack-header-nav a {
+    font-size: 16px; /* Increased for better mobile readability and tap targets */
+    padding: 12px 8px; /* Add padding to create 44px minimum tap height */
+    min-height: 44px; /* Apple HIG minimum tap target */
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .rack-header-nav .separator {
+    font-size: 14px; /* Slightly smaller than links */
+    padding: 0 4px; /* Minimal padding for separators */
+  }
+  
+  .rack-header-cta {
+    display: none; /* Hide Book Now on mobile - use hamburger menu */
+  }
+}
+
+/* ==========================================
+   ANTI-DRIFT: Lock Sizes
+   Prevent other CSS from interfering
+   ========================================== */
+
+header.rack-header * {
+  box-sizing: border-box;
+}
+
+header.rack-header .rack-header-logo,
+header.rack-header .rack-header-nav,
+header.rack-header .rack-header-cta {
+  flex-shrink: 0; /* Never collapse */
+}
+
+/* ==========================================
+   CRS Logo Home Link (Clickable Logo)
+   ========================================== */
+
+/* Make the CRS logo link invisible but functional */
+.crs-home-link {
+  text-decoration: none;      /* No underline */
+  border: none;               /* No border */
+  display: inline-block;      /* Keeps layout tight */
+  cursor: pointer;            /* Shows the 'hand' icon on hover */
+  color: inherit;             /* Keeps your original text color */
+}
+
+/* Optional: Add a subtle hover effect for tactile feel */
+.crs-home-link:hover .crs-logo {
+  opacity: 0.9;
+  transform: scale(0.98);     /* Slight 'press' effect like a button */
+  transition: all 0.1s ease;
+}
+
+/* Also apply hover effect to the badge if present */
+.crs-home-link:hover .header-crs-badge {
+  opacity: 0.9;
+  transform: scale(0.98);
+  transition: all 0.1s ease;
+}
+/* =========================================================
+   CRS MASTER RACK HEADER
+   Purpose: 1U rack unit immediately below sticky navigation
+   Asset: Master Rack Header.png from Cloudflare R2
+   Load: After header CSS
+   ========================================================= */
+
+/* ==========================================
+   CONTAINER: Rack Unit Below Sticky Nav
+   ========================================== */
+
+.rack-header-container {
+  /* Sits at the very top - spans full width */
+  width: 100%;
+  background: transparent; /* Transparent PNG - no background needed */
+  overflow: hidden; /* Clean edges */
+  line-height: 0; /* Removes ghost spacing below image */
+  position: relative;
+  z-index: 100; /* Below sticky nav (nav is z-index 1000) */
+}
+
+/* ==========================================
+   IMAGE: Full-Width Desktop Rack Unit
+   ========================================== */
+
+.rack-header-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: crisp-edges; /* Sharp rendering for technical asset */
+}
+
+/* ==========================================
+   STICKY NAV: Top Rail Shadow Effect
+   Nav bar sticks to top when Master Rack scrolls away
+   ========================================== */
+
+/* No additional styles needed - handled in crs-header-three-zone.css */
+
+/* ==========================================
+   MOBILE: Center-Crop to Keep Text Readable
+   DO NOT shrink - keep fixed height and center
+   ========================================== */
+
+@media (max-width: 768px) {
+  .rack-header-container {
+    height: 80px; /* Fixed readable height */
+    overflow: hidden; /* Crop sides */
+  }
+  
+  .rack-header-img {
+    width: auto; /* Let it be wider than screen */
+    height: 80px; /* Match container height */
+    
+    /* Center the "COWLEY ROAD STUDIOS" plate */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Ensure minimum width to keep text readable */
+    min-width: 100%; /* Don't let it be narrower than screen */
+  }
+}
+
+/* ==========================================
+   TABLET: Intermediate Responsive Step
+   ========================================== */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .rack-header-container {
+    height: 100px; /* Slightly taller for tablets */
+  }
+  
+  .rack-header-img {
+    height: 100px;
+  }
+}
+
+/* ==========================================
+   ANTI-DRIFT: Lock the Physics
+   ========================================== */
+
+.rack-header-container * {
+  box-sizing: border-box;
+}
+
+/* Remove any inherited margins that could break alignment */
+.rack-header-container img {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+/**
+ * CRS HEADER LOGO IMPLEMENTATION
+ * 
+ * Purpose: Add brand logo to header with responsive behavior
+ * Desktop: Full lockup (badge + wordmark)
+ * Mobile: Square badge only
+ */
+
+/* === HEADER STRUCTURE UPDATE === */
+.crs-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.5rem; /* Increased from 1.25rem */
+  align-items: center;
+  padding: 2rem 3rem; /* Increased horizontal padding from 2rem */
+  background: #1a1a1a;
+  border: 2px solid #3a3a3a;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  position: relative; /* Required for absolute badge positioning */
+}
+
+/* Logo spans both rows on desktop */
+.header-logo {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.header-logo:hover {
+  opacity: 0.85;
+}
+
+/* Nav primary moves to column 2, row 1 */
+.crs-nav-primary {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  font-size: 0.875rem; /* Reduced: quieter than BOOK NOW */
+  color: rgba(245, 245, 245, 0.7); /* Lower contrast: secondary priority */
+}
+
+/* Nav action (BOOK NOW) moves to column 2, row 2 */
+.crs-nav-action {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* === LOGO IMAGE SIZING === */
+
+/* Desktop: Show full lockup */
+.header-logo-desktop {
+  display: block;
+  height: 64px; /* Reduced from 75px: less dominant */
+  width: auto;
+  object-fit: contain;
+  opacity: 0.95; /* Slightly subdued */
+}
+
+/* Mobile: Hide by default */
+.header-logo-mobile {
+  display: none;
+  height: 62.5px; /* 50px * 1.25 */
+  width: auto;
+  object-fit: contain;
+}
+
+/* === TABLET ADJUSTMENTS (768px - 1023px) === */
+@media (max-width: 1023px) {
+  .header-logo-desktop {
+    height: 62.5px; /* 50px * 1.25 */
+  }
+  
+  .crs-header {
+    padding: 1.09375rem 1.5625rem; /* 0.875rem * 1.25, 1.25rem * 1.25 */
+  }
+  
+  .crs-nav-primary {
+    font-size: 1rem;
+  }
+}
+
+/* === MOBILE LAYOUT (<768px) === */
+@media (max-width: 767px) {
+  .crs-header {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    gap: 0.625rem; /* 0.5rem * 1.25 */
+    padding: 0.9375rem 1.25rem; /* 0.75rem * 1.25, 1rem * 1.25 */
+  }
+  
+  /* Logo: Show badge only */
+  .header-logo {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .header-logo-desktop {
+    display: none;
+  }
+  
+  .header-logo-mobile {
+    display: block;
+    height: 60px; /* 48px * 1.25 */
+  }
+  
+  /* Nav primary: hamburger + BOOK NOW on same row */
+  .crs-nav-primary {
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: flex-end;
+    font-size: 1rem;
+  }
+  
+  /* Hide nav links on mobile (hamburger handles them) */
+  .crs-nav-primary .header-services {
+    display: none;
+  }
+  
+  /* Move BOOK NOW to nav-primary on mobile */
+  .crs-nav-action {
+    display: none;
+  }
+  
+  /* Show BOOK NOW in mobile overlay instead */
+  .mobile-nav-overlay .book-now-panel {
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+}
+
+/* === EXTRA SMALL MOBILE (<480px) === */
+@media (max-width: 480px) {
+  .header-logo-mobile {
+    height: 52.5px; /* 42px * 1.25 */
+  }
+  
+  .crs-header {
+    padding: 0.78125rem 0.9375rem; /* 0.625rem * 1.25, 0.75rem * 1.25 */
+  }
+}
+
+/* === DESKTOP LARGE (>1440px) === */
+@media (min-width: 1440px) {
+  .header-logo-desktop {
+    height: 87.5px; /* 70px * 1.25 */
+  }
+  
+  .crs-header {
+    padding: 1.5625rem 2.5rem; /* 1.25rem * 1.25, 2rem * 1.25 */
+  }
+  
+  .crs-nav-primary {
+    font-size: 1.25rem;
+  }
+}
+
+/* === CRS BADGE STAMP (TOP-RIGHT) === */
+.crs-badge-stamp {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60px; /* Square badge needs more height */
+  width: auto;
+  opacity: 0.9; /* Slightly more visible for the new design */
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Mobile: reduce badge size */
+@media (max-width: 767px) {
+  .crs-badge-stamp {
+    height: 48px;
+    right: 15px;
+  }
+}
+
+/* Tablet: slightly smaller */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .crs-badge-stamp {
+    height: 54px;
+  }
+}
+/**
+ * CRS HEADER CHASSIS LOCK
+ * 
+ * Final production header specification.
+ * This file MUST load LAST to override all prior header CSS.
+ * 
+ * Three-zone architecture:
+ * - ZONE A: The Rack Ear (absolute left, 72px stamp)
+ * - ZONE B: Console Labels (margin-left: 110px to clear stamp)
+ * - ZONE C: Transport Control (BOOK NOW with industrial pulse)
+ */
+
+/* === HEADER CHASSIS LOCK === */
+header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 90px !important; /* Fixed height for consistent baseline */
+  background: #0E0E0E !important; /* Deep Black Chassis */
+  border-bottom: 2px solid rgba(201, 162, 39, 0.2) !important; /* Subtle Gold Rail */
+  padding: 0 !important; /* Remove padding - use absolute positioning */
+}
+
+/* Override any conflicting header classes */
+.crs-header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 999 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  height: 90px !important;
+  background: #0E0E0E !important;
+  border-bottom: 2px solid rgba(201, 162, 39, 0.2) !important;
+  padding: 0 !important;
+  border-radius: 0 !important; /* Kill any border-radius */
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+}
+
+/* === ZONE A: THE RACK EAR === */
+.crs-stamp,
+.crs-rack-badge {
+  position: absolute !important;
+  left: 20px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  height: 72px !important; /* Scale discipline */
+  width: auto !important;
+  z-index: 10 !important;
+  pointer-events: none !important; /* Physical plate logic */
+  opacity: 0.95 !important;
+  filter: none !important;
+  box-shadow: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* === ZONE B: CONSOLE LABELS === */
+.nav-group,
+.crs-header-nav-row,
+.crs-header-left {
+  margin-left: 110px !important; /* Clears the 72px stamp */
+  display: flex !important;
+  gap: 1.5rem !important;
+  align-items: center !important;
+}
+
+/* Navigation items - engraved console labels */
+.header-services,
+.crs-nav-primary {
+  display: flex !important;
+  gap: 1.5rem !important;
+  align-items: center !important;
+}
+
+.nav-item {
+  font-family: 'JetBrains Mono', monospace !important;
+  text-transform: uppercase !important;
+  color: #d1d1d1 !important;
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.05em !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.nav-item:hover {
+  color: #C9A227 !important; /* Subtle gold on hover */
+}
+
+.separator {
+  color: #666 !important;
+  font-size: 0.75rem !important;
+  user-select: none !important;
+}
+
+/* === ZONE C: TRANSPORT CONTROL === */
+.book-now-btn,
+.book-now-trigger {
+  margin-right: 20px !important;
+  background: #C9A227 !important; /* Signal Yellow */
+  color: #0E0E0E !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.1em !important;
+  padding: 0.75rem 1.5rem !important;
+  border: none !important;
+  border-radius: 3px !important;
+  cursor: pointer !important;
+  animation: industrial-pulse 1.5s infinite !important; /* Only this signals action */
+  transition: transform 0.1s ease, box-shadow 0.2s ease !important;
+}
+
+.book-now-btn:hover,
+.book-now-trigger:hover {
+  transform: scale(1.02) !important;
+  box-shadow: 0 0 15px rgba(201, 162, 39, 0.5) !important;
+}
+
+/* Right container alignment */
+.crs-header-right {
+  margin-left: auto !important; /* Push to far right */
+}
+
+/* === INDUSTRIAL PULSE ANIMATION === */
+@keyframes industrial-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(201, 162, 39, 0.3);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(201, 162, 39, 0.6);
+    opacity: 0.95;
+  }
+}
+
+/* === MOBILE OVERRIDES === */
+@media (max-width: 767px) {
+  header,
+  .crs-header {
+    height: 70px !important; /* Smaller on mobile */
+  }
+  
+  .crs-stamp,
+  .crs-rack-badge {
+    display: none !important; /* Hide stamp on mobile */
+  }
+  
+  .nav-group,
+  .crs-header-nav-row,
+  .crs-header-left {
+    margin-left: 15px !important; /* No stamp offset needed */
+  }
+  
+  .book-now-btn,
+  .book-now-trigger {
+    margin-right: 15px !important;
+    padding: 0.6rem 1rem !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* === TABLET OVERRIDES === */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .crs-stamp,
+  .crs-rack-badge {
+    height: 64px !important; /* Slightly smaller on tablet */
+    left: 15px !important;
+  }
+  
+  .nav-group,
+  .crs-header-nav-row,
+  .crs-header-left {
+    margin-left: 95px !important; /* Adjusted for smaller stamp */
+  }
+}
+/**
+ * CRS NAV BUTTON REFINEMENT
+ * Purpose: Remove Fisher-Price energy; add broadcast console authority
+ * Target: Header nav buttons (Studio, Workshop Café, AV)
+ * NOT applied to: BOOK NOW (different class, keeps pulse)
+ * 
+ * Key Changes:
+ * - Height: 44-48px → 30-34px
+ * - Padding: 14-18px vertical → 6-8px vertical
+ * - Border: Thick glow → 1px idle / intensify on hover
+ * - Font: Over-scaled → compressed with letter-spacing
+ * - Color: Full neon → muted idle / bright active
+ */
+
+/* === CORE NAV BUTTON REFINEMENT === */
+
+.nav-button {
+  /* Reduced size for secondary priority */
+  font-size: 0.75rem !important;
+  letter-spacing: 0.1em !important;
+  padding: 6px 14px !important;
+  height: 32px !important;
+  
+  /* Quiet border - no emphasis */
+  border: 1px solid rgba(245, 245, 245, 0.2) !important;
+  border-radius: 3px !important;
+  background: transparent !important;
+  
+  /* Typography - subdued */
+  text-transform: uppercase !important;
+  font-weight: 500 !important; /* Lighter weight */
+  line-height: 1 !important;
+  color: rgba(245, 245, 245, 0.6) !important; /* Lower contrast */
+  
+  /* Clean transitions */
+  transition: 
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease !important;
+  
+  /* Remove text-shadow: no depth needed in idle state */
+}
+
+/* === COLOR STATES: IDLE (NEUTRAL - NO COLOR) === */
+
+/* All nav buttons idle: neutral, quiet */
+.nav-button.nav-studio,
+.nav-button.nav-cafe,
+.nav-button.nav-av {
+  /* Inherit base neutral color from .nav-button */
+}
+
+/* === COLOR STATES: HOVER (SUBTLE ACTIVATION) === */
+
+/* All nav buttons: neutral hover (no color coding) */
+.nav-button:hover,
+.nav-button.nav-studio:hover,
+.nav-button.nav-cafe:hover,
+.nav-button.nav-av:hover {
+  color: rgba(245, 245, 245, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(245, 245, 245, 0.3) !important;
+}
+
+/* === RESPONSIVE: MAINTAIN COMPRESSION === */
+
+/* Tablet: keep tight proportions - scaled 25% */
+@media (max-width: 768px) {
+  .nav-button {
+    font-size: 0.875rem !important;   /* 0.70rem * 1.25 */
+    padding: 6.25px 15px !important;  /* 5px * 1.25, 12px * 1.25 */
+    height: 37.5px !important;        /* 30px * 1.25 */
+  }
+}
+
+/* Mobile: hide Workshop Café, keep tight on remaining buttons - scaled 25% */
+@media (max-width: 640px) {
+  .nav-button {
+    font-size: 0.85rem !important;    /* 0.68rem * 1.25 */
+    padding: 6.25px 12.5px !important; /* 5px * 1.25, 10px * 1.25 */
+    height: 35px !important;          /* 28px * 1.25 */
+  }
+}
+
+/* === 55" TERMINAL: MAINTAIN AUTHORITY AT SCALE === */
+
+@media (min-width: 1920px) {
+  .nav-button {
+    font-size: 0.9375rem !important;  /* 0.75rem * 1.25 */
+    padding: 8.75px 20px !important;  /* 7px * 1.25, 16px * 1.25 */
+    height: 42.5px !important;        /* 34px * 1.25 */
+  }
+}
+
+/* === ENSURE BOOK NOW STAYS SEPARATE === */
+
+/* Book Now button should NOT inherit these styles */
+/* It has its own pulse animation and treatment */
+.book-now,
+.nav-book-now,
+button[class*="book"] {
+  /* Explicitly exclude from nav-button refinement */
+  /* Book Now keeps its own CSS from crs-industrial-pulse.css */
+}
+
+/* === FOOTER CONTACT LINK (IF PRESENT) === */
+
+/* If Contact appears in footer, it should NOT get nav-button treatment */
+footer .nav-button {
+  all: revert !important;
+}
+/**
+ * CRS NAV CORRECTION PASS
+ * Purpose: Restore hardware rack discipline (Reason DAW reference)
+ * Target: Header rack container + nav buttons
+ * 
+ * Corrections:
+ * - Single rack containment (one parent border)
+ * - Idle buttons: neutral, no glow
+ * - Hover: soft glow only
+ * - Active: solid backlight, no animation
+ * - Remove stomp icon
+ * - Clean alignment
+ */
+
+/* === SINGLE RACK CONTAINMENT === */
+
+.crs-header {
+  /* Single rack frame (parent draws border) */
+  background: #1a1a1a;
+  border: 2px solid #3a3a3a;
+  border-radius: 4px;
+  padding: 12px 20px;
+  
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  
+  /* Match section width below */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Remove individual borders from children */
+.header-left,
+.header-center-action,
+.header-services {
+  border: none !important;
+}
+
+/* === NAV BUTTON CORRECTION === */
+
+.nav-button {
+  /* Size (keep compressed) */
+  font-size: 0.72rem !important;
+  letter-spacing: 0.12em !important;
+  padding: 6px 14px !important;
+  height: 32px !important;
+  
+  /* Idle state: neutral, no glow, no color */
+  color: #c0c0c0 !important;              /* neutral off-white */
+  background: transparent !important;
+  border: 1px solid #4a4a4a !important;   /* neutral border */
+  border-radius: 3px !important;
+  
+  /* NO box-shadow on idle */
+  box-shadow: none !important;
+  
+  /* Typography */
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  text-shadow: none !important;           /* remove depth effect */
+  
+  /* Smooth transitions */
+  transition: 
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease !important;
+}
+
+/* === HOVER STATE: SOFT GLOW === */
+
+.nav-button:hover {
+  color: #ffffff !important;
+  border-color: #6a6a6a !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2) !important;  /* soft white glow */
+  background: rgba(255, 255, 255, 0.05) !important;          /* subtle backlight */
+}
+
+/* === ACTIVE STATE: SOLID BACKLIGHT === */
+
+/* Active = current page (using .active class or [aria-current]) */
+
+.nav-button.active,
+.nav-button[aria-current="page"] {
+  /* No animation, no pulsing */
+  animation: none !important;
+}
+
+/* Studio active */
+.nav-button.nav-studio.active,
+.nav-button.nav-studio[aria-current="page"] {
+  background-color: #2d8a1f !important;  /* solid green backlight */
+  color: #ffffff !important;
+  border-color: #2d8a1f !important;
+  box-shadow: none !important;           /* no glow when active */
+}
+
+/* Workshop Café active */
+.nav-button.nav-cafe.active,
+.nav-button.nav-cafe[aria-current="page"] {
+  background-color: #b8860b !important;  /* solid amber backlight */
+  color: #0b0b0b !important;
+  border-color: #b8860b !important;
+  box-shadow: none !important;
+}
+
+/* AV active */
+.nav-button.nav-av.active,
+.nav-button.nav-av[aria-current="page"] {
+  background-color: #8b1a1a !important;  /* solid red backlight */
+  color: #ffffff !important;
+  border-color: #8b1a1a !important;
+  box-shadow: none !important;
+}
+
+/* Active buttons should NOT change on hover */
+.nav-button.active:hover,
+.nav-button[aria-current="page"]:hover {
+  /* Keep active state on hover */
+  box-shadow: none !important;
+}
+
+/* === REMOVE STOMP ICON === */
+
+.header-logo-badge {
+  display: none !important;
+}
+
+.header-logo-link {
+  display: none !important;
+}
+
+/* === VISUAL ALIGNMENT === */
+
+.header-services {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.separator {
+  color: #4a4a4a;
+  font-size: 0.875rem;
+  opacity: 0.5;
+}
+
+/* === RESPONSIVE === */
+
+@media (max-width: 768px) {
+  .crs-header {
+    padding: 10px 16px;
+    gap: 1rem;
+  }
+  
+  .nav-button {
+    font-size: 0.70rem !important;
+    padding: 5px 12px !important;
+    height: 30px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-button {
+    font-size: 0.68rem !important;
+    padding: 5px 10px !important;
+    height: 28px !important;
+  }
+}
+
+/* === ENSURE BOOK NOW STAYS SEPARATE === */
+
+.book-now-trigger,
+.book-now-panel {
+  /* Book Now keeps its own pulse styles */
+  /* Not affected by nav correction */
+}
+/* ================================
+   BOOK NOW — CONTROL SPEC (LOCKED)
+   Hardware-grade control, not marketing CTA
+   ================================ */
+
+/* ROLE: This is a control, not a call-to-action.
+   It must feel like a transport button, power switch, labeled hardware control.
+   No persuasion. No excitement. Just availability. */
+
+/* BOOK NOW — Primary Control */
+.book-now,
+.book-dropdown-trigger {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* SIZE (HARD LOCK) */
+  width: 150px;
+  height: 32px;
+  min-width: 120px; /* Absolute floor */
+
+  /* COLOUR SYSTEM — Default (Standby) */
+  background: #111;
+  color: #EAEAEA;
+  border: 1px solid #2A2A2A;
+
+  /* TYPOGRAPHY (ISOLATED DOMAIN) */
+  font-family: "JetBrains Mono", monospace !important;
+  font-size: 0.875rem !important; /* 14px - IMMUTABLE */
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+
+  /* FORM & PROPORTION */
+  border-radius: 0 !important; /* Perfect rectangle, no rounding */
+
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Hover / Focus (Armed, Not Excited) */
+.book-now:hover,
+.book-now:focus-visible,
+.book-dropdown-trigger:hover,
+.book-dropdown-trigger:focus-visible {
+  border-color: #00B400 !important; /* Signal Green */
+  outline: none !important;
+  
+  /* DO NOT: change background, animate, glow, pulse
+     Border shift only. Like a console arming state. */
+}
+
+/* Active (Engaged) */
+.book-now:active,
+.book-dropdown-trigger:active {
+  background: #111 !important;
+  border-color: #00B400 !important;
+  
+  /* No press animation. No compression. Real hardware does not bounce. */
+}
+
+/* STATUS INDICATOR (Signal Dot) */
+.book-now::after,
+.book-dropdown-trigger::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #00B400;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  /* Reads as: booking system online. Not decoration. Status. */
+}
+
+/* ================================
+   USAGE RULES (CRITICAL)
+   ================================ */
+
+/* ALLOWED:
+   - Header
+   - Booking panels
+   - Rack units
+   - Footer booking access
+
+   FORBIDDEN:
+   - Inside body paragraphs
+   - Large hero CTAs
+   - Animated contexts
+   - Color variants
+   - Rounded versions
+   - Marketing copy near it
+
+   RULE: If it starts "feeling exciting", it's wrong. */
+
+/* ================================
+   MENTAL MODEL
+   ================================ */
+
+/* Wordmark      = System identity
+   BOOK NOW      = System access
+   Signal dot    = Availability
+   Border change = Armed state
+
+   This is INDUSTRIAL UI, not conversion UI. */
+
+/* ================================
+   SACRED RULE
+   ================================ */
+
+/* Once deployed, DO NOT ITERATE this control.
+   You don't redesign power switches.
+   
+   This control:
+   - Matches CRS wordmark visually and philosophically
+   - Will NEVER collapse with typography changes
+   - Will age well
+   - Reinforces CRS as an INSTITUTION, not a startup */
+/* ============================================================================
+   CRS POSITIONING FIXES - COMPLETE OVERRIDE
+   ============================================================================
+   
+   ISSUES FIXED:
+   1. Hero logo cropped (only showing COWLEY ROAD, missing STUDIOS)
+   2. Hero logo not properly centered
+   3. Hero panel not matching section widths
+   4. Rack rails alignment with hero
+   5. Section spacing inconsistencies
+   
+   INSTRUCTIONS:
+   1. Add this file to your project: /public/static/crs-positioning-fixes.css
+   2. Link it AFTER clean.css in your HTML:
+      <link rel="stylesheet" href="/static/clean.css">
+      <link rel="stylesheet" href="/static/crs-positioning-fixes.css">
+   3. Clear browser cache and test
+   
+   ============================================================================ */
+
+
+/* ============================================================================
+   1. HERO SECTION - FULL LOGO VISIBILITY
+   ============================================================================ */
+
+/* Hero section container */
+.hero-section {
+  position: relative;
+  width: 100%;
+  padding: 60px 0 80px 0; /* Top padding for header clearance, bottom for spacing */
+  margin-top: 0;
+  background: var(--crs-background, #0A1A0F);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px; /* Ensure enough vertical space */
+}
+
+/* Hero logo container - NO HEIGHT RESTRICTIONS */
+.hero-logo-container {
+  position: relative;
+  width: 100%;
+  max-width: var(--crs-chassis-width, 1200px);
+  height: auto !important; /* CRITICAL: Remove any fixed height */
+  min-height: unset !important;
+  overflow: visible !important; /* Don't crop anything */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 48px; /* Match rack rail spacing */
+  margin: 0 auto;
+}
+
+/* Hero logo image - FULL ASPECT RATIO */
+.hero-logo,
+.hero-section img,
+img[alt*="Cowley Road Studios"],
+img[alt*="Rack Mounted Control Panel"] {
+  width: 100% !important;
+  max-width: 1200px !important;
+  height: auto !important; /* CRITICAL: Maintain aspect ratio */
+  object-fit: contain !important; /* Don't crop */
+  display: block !important;
+  margin: 0 auto !important;
+}
+
+/* Remove any wrapper constraints */
+.hero-content,
+.hero-wrapper {
+  width: 100%;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+
+/* ============================================================================
+   2. RACK RAILS ALIGNMENT
+   ============================================================================ */
+
+/* Ensure rack rails don't interfere with hero */
+.rack-rail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.rack-rail.left {
+  left: 0;
+}
+
+.rack-rail.right {
+  right: 0;
+}
+
+/* Hero should be above rack rails visually but not overlap */
+.hero-section {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ============================================================================
+   3. SECTION CONTAINER CONSISTENCY
+   ============================================================================ */
+
+/* All main sections should match hero width */
+.crs-section,
+section,
+.section-container,
+.container {
+  max-width: var(--crs-chassis-width, 1200px);
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 48px; /* Match rack rail + gap */
+  padding-right: 48px; /* Match rack rail + gap */
+}
+
+/* Section spacing */
+.crs-section {
+  margin-bottom: 40px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+/* Rack module styling consistency */
+.rack-module,
+.crs-section {
+  position: relative;
+  background: linear-gradient(180deg, #1E1E1E 0%, #141414 100%);
+  border: 2px solid #333;
+  border-radius: 4px;
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 4px 8px rgba(0,0,0,0.6);
+}
+
+
+/* ============================================================================
+   4. HEADER FIXES (IF OVERLAPPING HERO)
+   ============================================================================ */
+
+/* Fixed header shouldn't cover hero */
+header,
+.site-header,
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 26, 15, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+/* Push body content below fixed header */
+body {
+  padding-top: 80px; /* Adjust based on your actual header height */
+}
+
+/* Alternatively, if header is not fixed: */
+.site-header {
+  position: relative;
+  margin-bottom: 0;
+}
+
+.hero-section {
+  margin-top: 0; /* No extra space if header is relative */
+}
+
+
+/* ============================================================================
+   5. RESPONSIVE MOBILE ADJUSTMENTS
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  /* Hero adjustments for mobile */
+  .hero-section {
+    padding: 40px 0 60px 0;
+    min-height: 400px;
+  }
+  
+  .hero-logo-container {
+    padding: 0 24px; /* Smaller side padding */
+  }
+  
+  .hero-logo {
+    max-width: 100% !important;
+  }
+  
+  /* Hide rack rails on mobile */
+  .rack-rail {
+    display: none;
+  }
+  
+  /* Adjust section padding */
+  .crs-section {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-bottom: 32px;
+  }
+  
+  /* Adjust body padding if header is smaller on mobile */
+  body {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 30px 0 40px 0;
+    min-height: 300px;
+  }
+  
+  .hero-logo-container {
+    padding: 0 16px;
+  }
+}
+
+
+/* ============================================================================
+   6. RACK EARS POSITIONING
+   ============================================================================ */
+
+/* Rack ears on sections */
+.crs-section::before,
+.crs-section::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 85%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, #4A4A4A 0%, #2A2A2A 50%, #1A1A1A 100%);
+  border: 1px solid #555;
+  box-shadow: 
+    inset -2px 0 4px rgba(0,0,0,0.5),
+    2px 0 4px rgba(0,0,0,0.3);
+  z-index: 3;
+}
+
+.crs-section::before {
+  left: -12px;
+  border-right: none;
+}
+
+.crs-section::after {
+  right: -12px;
+  border-left: none;
+}
+
+/* Mounting screws on rack ears */
+.crs-section::before::after,
+.crs-section::after::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #666 0%, #333 70%, #222 100%);
+  border: 1px solid #444;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.8);
+}
+
+
+/* ============================================================================
+   7. DEBUG HELPERS (REMOVE AFTER TESTING)
+   ============================================================================ */
+
+/* Uncomment these to visualize boundaries during debugging */
+
+/*
+.hero-section {
+  outline: 3px solid red !important;
+}
+
+.hero-logo-container {
+  outline: 3px solid blue !important;
+}
+
+.hero-logo {
+  outline: 3px solid green !important;
+}
+
+.crs-section {
+  outline: 2px dashed yellow !important;
+}
+*/
+
+
+/* ============================================================================
+   8. CRITICAL OVERRIDES (NUCLEAR OPTION)
+   ============================================================================ */
+
+/* If hero logo is STILL cropped, use these nuclear overrides */
+
+.hero-logo-container * {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Remove any inline styles that might be forcing dimensions */
+.hero-logo[style*="height"],
+.hero-logo-container[style*="height"] {
+  height: auto !important;
+}
+
+/* Ensure no parent container is constraining */
+.hero-section > * {
+  height: auto !important;
+}
+
+
+/* ============================================================================
+   9. ADDITIONAL COMMON FIXES
+   ============================================================================ */
+
+/* Fix for logo aspect ratio if using background-image instead of <img> */
+.hero-logo-bg {
+  background-image: url('https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/crs-logo-controlpanel-dark-v1%20.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio - adjust based on your actual logo ratio */
+  height: 0;
+}
+
+/* Typography consistency */
+.hero-section h1,
+.hero-section .hero-title {
+  margin: 20px 0 0 0;
+  text-align: center;
+  font-family: var(--font-chassis, 'JetBrains Mono', monospace);
+}
+
+
+/* ============================================================================
+   10. FOOTER / BOTTOM SPACING
+   ============================================================================ */
+
+/* Ensure last section has proper bottom spacing */
+.crs-section:last-of-type {
+  margin-bottom: 80px;
+}
+
+footer {
+  margin-top: 60px;
+}
+
+
+/* ============================================================================
+   END OF FIXES
+   ============================================================================ */
+/* ============================================================================
+   CRS PROPORTION FIXES + FALLOUT BUTTON STYLING
+   All layout improvements + neon button effects
+   Date: January 12, 2026
+   ============================================================================ */
+
+
+/* ============================================================================
+   PHASE 1: HIGH IMPACT FIXES
+   ============================================================================ */
+
+/* FIX 1: Increase hero section top padding */
+.crs-hero {
+  padding-top: 4rem !important;
+  padding-bottom: 3rem !important;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .crs-hero {
+    padding-top: 3rem !important;
+    padding-bottom: 2rem !important;
+    min-height: 50vh;
+  }
+}
+
+/* FIX 2: Increase CONTENT heading font-size (NOT header titles) */
+.content-section h2,
+.crs-section .section-title,
+.rack-unit .section-title,
+main .heading {
+  font-size: clamp(1.75rem, 4vw, 2.25rem) !important;
+  margin-bottom: 1.5rem !important;
+}
+
+/* Header and navigation titles should stay compact */
+header .section-title,
+header .heading,
+.rack-header .section-title,
+.rack-header .heading {
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 0 !important;
+}
+
+h3 {
+  font-size: clamp(1.35rem, 3vw, 1.75rem) !important;
+  margin-bottom: 1rem !important;
+}
+
+/* FIX 3: Increase content card internal padding */
+.crs-section,
+.section-dark,
+.cafe-heartbeat,
+.content-card,
+.section-card {
+  padding: 3rem 2.5rem !important;
+}
+
+@media (max-width: 1024px) {
+  .crs-section,
+  .section-dark,
+  .cafe-heartbeat,
+  .content-card,
+  .section-card {
+    padding: 2.5rem 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .crs-section,
+  .section-dark,
+  .cafe-heartbeat,
+  .content-card,
+  .section-card {
+    padding: 2rem 1.5rem !important;
+  }
+}
+
+/* FIX 4: Increase body text line-height */
+p,
+body,
+.section-intro,
+.section-description {
+  line-height: 1.7 !important;
+}
+
+/* FIX 5: Standardize section vertical spacing */
+section,
+.crs-section,
+.content-section {
+  margin-bottom: 5rem !important;
+}
+
+@media (max-width: 768px) {
+  section,
+  .crs-section,
+  .content-section {
+    margin-bottom: 3rem !important;
+  }
+}
+
+
+/* ============================================================================
+   PHASE 2: VISUAL RHYTHM
+   ============================================================================ */
+
+/* FIX 6: Increase spacing between section heading and content */
+.section-header {
+  margin-bottom: 2rem !important;
+}
+
+.section-title {
+  margin-bottom: 1.5rem !important;
+}
+
+.section-intro {
+  margin-bottom: 2rem !important;
+}
+
+/* FIX 7: Add max-width to content for readability */
+.section-intro,
+.section-description,
+.content-text p {
+  max-width: 65ch;
+}
+
+
+/* ============================================================================
+   PHASE 3: POLISH
+   ============================================================================ */
+
+/* FIX 8: Add more spacing to footer terminal columns */
+.footer-columns,
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem !important;
+  column-gap: 3rem !important;
+}
+
+@media (max-width: 1024px) {
+  .footer-columns,
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-columns,
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem !important;
+  }
+}
+
+
+/* ============================================================================
+   FALLOUT PRE-WAR NEON BUTTONS (ALL CTA BUTTONS)
+   ============================================================================ */
+
+/* Base button styling - Fallout pre-war aesthetic */
+.crs-button,
+.hero-cta a,
+.cta-button,
+button[class*="button"],
+a[class*="button"] {
+  /* Fallout warm orange/amber neon */
+  background: rgba(0, 0, 0, 0.7) !important;
+  border: 2px solid rgba(255, 140, 0, 0.5) !important;
+  border-radius: 4px !important;
+  color: #FF8C00 !important;
+  
+  /* Typography - Art Deco monospace */
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+  font-size: 0.875rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  text-decoration: none !important;
+  
+  /* Spacing - larger touch targets */
+  padding: 1rem 2rem !important;
+  min-height: 48px !important;
+  
+  /* Visual effects */
+  backdrop-filter: blur(4px) !important;
+  box-shadow: 
+    inset 0 0 20px rgba(255, 140, 0, 0.1),
+    0 0 20px rgba(255, 140, 0, 0.3),
+    0 4px 8px rgba(0, 0, 0, 0.4) !important;
+  
+  /* Neon glow text shadow */
+  text-shadow: 
+    0 0 4px rgba(255, 140, 0, 0.5),
+    0 0 8px rgba(255, 140, 0, 0.5),
+    0 0 12px rgba(255, 140, 0, 0.8),
+    0 0 20px rgba(255, 100, 0, 0.6),
+    2px 2px 0px rgba(0, 0, 0, 0.5) !important;
+  
+  /* Animation */
+  animation: fallout-button-flicker 4s ease-in-out infinite !important;
+  transition: all 0.15s ease !important;
+  
+  /* Display */
+  display: inline-block !important;
+  cursor: pointer !important;
+}
+
+/* Hover state - brighter glow */
+.crs-button:hover,
+.hero-cta a:hover,
+.cta-button:hover,
+button[class*="button"]:hover,
+a[class*="button"]:hover {
+  background: rgba(255, 140, 0, 0.15) !important;
+  border-color: rgba(255, 140, 0, 0.7) !important;
+  color: #FFA500 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 
+    inset 0 0 30px rgba(255, 140, 0, 0.2),
+    0 0 35px rgba(255, 140, 0, 0.6),
+    0 6px 16px rgba(0, 0, 0, 0.5) !important;
+  text-shadow: 
+    0 0 6px rgba(255, 140, 0, 0.7),
+    0 0 12px rgba(255, 140, 0, 0.7),
+    0 0 18px rgba(255, 140, 0, 0.9),
+    0 0 25px rgba(255, 100, 0, 0.8),
+    2px 2px 0px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Active/pressed state */
+.crs-button:active,
+.hero-cta a:active,
+.cta-button:active,
+button[class*="button"]:active,
+a[class*="button"]:active {
+  transform: translateY(0) !important;
+  box-shadow: 
+    inset 0 0 25px rgba(255, 140, 0, 0.3),
+    0 0 20px rgba(255, 140, 0, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Fallout electrical flicker animation */
+@keyframes fallout-button-flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 
+      0 0 4px rgba(255, 140, 0, 0.5),
+      0 0 8px rgba(255, 140, 0, 0.5),
+      0 0 12px rgba(255, 140, 0, 0.8),
+      0 0 20px rgba(255, 100, 0, 0.6),
+      0 0 30px rgba(255, 100, 0, 0.4),
+      2px 2px 0px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    filter: brightness(1.1);
+  }
+  
+  20%, 24%, 55% {  
+    text-shadow: 
+      0 0 2px rgba(255, 140, 0, 0.3),
+      0 0 4px rgba(255, 140, 0, 0.3),
+      0 0 8px rgba(255, 140, 0, 0.5),
+      2px 2px 0px rgba(0, 0, 0, 0.3);
+    opacity: 0.85;
+    filter: brightness(0.95);
+  }
+}
+
+/* Mobile button adjustments */
+@media (max-width: 768px) {
+  .crs-button,
+  .hero-cta a,
+  .cta-button,
+  button[class*="button"],
+  a[class*="button"] {
+    padding: 0.875rem 1.5rem !important;
+    font-size: 0.8rem !important;
+    min-height: 44px !important;
+  }
+}
+
+
+/* ============================================================================
+   BUTTON CONTAINER CENTERING
+   ============================================================================ */
+
+.hero-cta,
+.cta-container,
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+
+/* ============================================================================
+   ENSURE BUTTONS DON'T CONFLICT WITH EXISTING STYLES
+   ============================================================================ */
+
+/* Override any conflicting mono class */
+.mono.crs-button,
+a.crs-button.mono {
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Ensure button text doesn't wrap */
+.crs-button,
+.hero-cta a {
+  white-space: nowrap;
+}
+
+
+/* ============================================================================
+   END OF PROPORTION FIXES + FALLOUT BUTTONS
+   ============================================================================ */
+/**
+ * CRS CONTAINMENT & MOUNTING FIX
+ * 
+ * Fixes:
+ * 1. Hard-separate Header and Hero (z-index stack + margin)
+ * 2. Full-bleed HERO console - edge-to-edge, rack-mounted concept
+ * 3. Kill accidental overlay bars (pseudo-element artifacts)
+ * 
+ * NOTE: Header stamp (crs-rack-badge) is already correctly sized at 72px via hardware-discipline-final.css
+ */
+
+/* === FIX 1: HARD-SEPARATE HEADER AND HERO === */
+
+/* Header: Separate rack with z-index dominance */
+.crs-header {
+  position: relative !important;
+  z-index: 100 !important;
+  background: #0E0E0E !important; /* Match existing deep black */
+}
+
+/* Hero: Below header, full-bleed rack mount */
+.crs-hero {
+  position: relative !important;
+  z-index: 1 !important;
+  margin-top: 0 !important;
+  padding: 0 !important; /* Remove all padding for edge-to-edge */
+  
+  /* Keep existing background */
+  background: #0D1912 !important;
+  
+  /* Remove border - full bleed */
+  border: none !important;
+  border-bottom: none !important;
+}
+
+.crs-hero::before,
+.crs-hero::after {
+  display: none !important; /* Kill accidental overlay bars */
+}
+
+/* === FIX 2: FULL-BLEED HERO CONSOLE (RACK-MOUNTED CONCEPT) === */
+
+/* Hero container: Full-width, edge-to-edge */
+.hero-container {
+  max-width: var(--crs-chassis-width, 1200px) !important; /* Match content sections */
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important; /* No padding - edge-to-edge */
+  display: block !important;
+}
+
+/* Hero console: Big, full-width, rack-mounted */
+.hero-power-panel {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important; /* Full container width */
+  height: auto !important;
+  object-fit: contain !important;
+  
+  /* Remove any constraints - let it be BIG */
+  max-height: none !important;
+  min-height: auto !important;
+  
+  /* Drop shadow for depth */
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6)) !important;
+  
+  /* Edge-to-edge alignment */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Responsive: Maintain edge-to-edge across all sizes */
+@media (max-width: 1440px) {
+  .hero-container {
+    max-width: 1200px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hero-container {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    max-width: 100% !important;
+  }
+  
+  .hero-power-panel {
+    /* Still full-width on mobile */
+    width: 100% !important;
+  }
+}
+
+/* === FIX 3: CLEAN STACKING === */
+
+/* Ensure all sections have proper stacking context */
+.crs-section {
+  position: relative;
+  z-index: 2;
+}
+
+/* Main content area */
+main {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================
+   NAVIGATION BAR WITH BOOK NOW BUTTON
+   ======================================== */
+
+.nav-bar-with-button {
+  width: 100%;
+  background: #1a1a1a;
+  border-bottom: 2px solid #2a2a2a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  min-height: 60px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: color 0.2s ease;
+  padding: 0.5rem 1rem;
+}
+
+.nav-links a:hover {
+  color: #E89B3C; /* Mustard */
+}
+
+.book-now-container {
+  display: flex;
+  align-items: center;
+}
+
+.book-now-button {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  background: #E89B3C; /* Mustard */
+  border: 2px solid #E89B3C;
+  padding: 0.75rem 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+}
+
+.book-now-button:hover {
+  background: transparent;
+  color: #E89B3C;
+  border-color: #E89B3C;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .nav-bar-with-button {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .book-now-container {
+    width: 100%;
+  }
+  
+  .book-now-button {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* ==========================================
+   MASTER RACK HEADER
+   Banner Image over Dark Nav Bar Layout
+   ======================================== */
+
+/* Container: Vertical Stack */
+.master-rack-header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================
+   TOP: MASTER RACK BANNER IMAGE
+   ======================================== */
+
+.master-rack-banner {
+  width: 100%;
+  line-height: 0; /* Remove ghost spacing */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.master-rack-banner a {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.master-rack-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  image-rendering: crisp-edges;
+}
+
+/* ==========================================
+   BOTTOM: DARK NAVIGATION BAR
+   ======================================== */
+
+.dark-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  background: #081408; /* Dark Nettle Green/Black */
+  padding: 1rem 2rem;
+  margin: 0;
+  border: 0;
+  min-height: 60px;
+}
+
+/* Navigation Links - Centered */
+.nav-links-centered {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links-centered a {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s ease;
+}
+
+.nav-links-centered a:hover {
+  color: #FF9F1C; /* Amber */
+}
+
+/* ==========================================
+   AMBER NEON BUTTON - Far Right
+   ======================================== */
+
+.amber-neon-button {
+  position: absolute;
+  right: 2rem;
+  
+  /* Amber Neon Style */
+  background: transparent;
+  border: 1px solid #FF9F1C; /* Amber */
+  color: #FF9F1C;
+  
+  /* Typography */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  
+  /* Spacing */
+  padding: 8px 24px;
+  
+  /* Glow Effect */
+  text-shadow: 0px 0px 8px rgba(255, 159, 28, 0.6);
+  box-shadow: 0px 0px 12px rgba(255, 159, 28, 0.3);
+  
+  /* Animation */
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.amber-neon-button:hover {
+  background: rgba(255, 159, 28, 0.1);
+  border-color: #FFB84D;
+  color: #FFB84D;
+  text-shadow: 0px 0px 12px rgba(255, 159, 28, 0.8);
+  box-shadow: 0px 0px 20px rgba(255, 159, 28, 0.5);
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .dark-nav-bar {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .nav-links-centered {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .nav-links-centered a {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem 1rem;
+  }
+  
+  .amber-neon-button {
+    position: static;
+    width: 100%;
+    text-align: center;
+  }
+}
+/**
+ * MASTER RACK CHASSIS
+ * The single container that defines the width of the entire site.
+ * Header, Nav, Accordion, Footer - all children inherit this width.
+ */
+
+.master-rack-chassis {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  background: var(--metal-dark, #0a0a0a);
+}
+
+/* CRITICAL: All direct children must be 100% of chassis width */
+.master-rack-chassis > * {
+  width: 100%;
+  max-width: none; /* Remove any child max-width constraints */
+}
+
+/* Header Image: Full width of chassis */
+.master-rack-chassis .rack-header-container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.master-rack-chassis .rack-header-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: crisp-edges;
+}
+
+/* Nav Bar: Full width of chassis, looks like metal strip bolted under header */
+.master-rack-chassis .rack-header {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+/* Accordion Stack: Full width of chassis */
+.master-rack-chassis .rack-accordion-viewport {
+  width: 100%;
+  max-width: none;
+}
+
+/* Footer: Full width of chassis */
+.master-rack-chassis footer {
+  width: 100%;
+  max-width: none;
+}
+
+/* Mobile: Reduce chassis width and remove shadow for cleaner look */
+@media (max-width: 768px) {
+  .master-rack-chassis {
+    max-width: 100%;
+    box-shadow: none;
+  }
+}
+/**
+ * LED SPRITE IMPLEMENTATION
+ * R2 Asset: LED sprite with Green, Amber, Red in horizontal row
+ * Uses background-position to show the correct LED color
+ */
+
+/* Base LED sprite styling - applies to all LED indicators */
+.status-led,
+.rack-led,
+.system-led,
+.button-led {
+  /* Remove old circular background */
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  
+  /* Apply LED sprite image */
+  background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(1).png') !important;
+  background-size: 300% 100% !important; /* 3 LEDs in a row, show only one */
+  background-repeat: no-repeat !important;
+  
+  /* Set consistent LED dimensions */
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+
+/* Green LED - show first LED in sprite (leftmost) */
+.status-led.green,
+.rack-led[data-color="green"],
+.system-led,
+.button-led {
+  background-position: 0% 0 !important;
+}
+
+/* Amber LED - show middle LED in sprite */
+.status-led.amber,
+.rack-led[data-color="amber"],
+.rack-led[data-color="orange"] {
+  background-position: 50% 0 !important;
+}
+
+/* Red LED - show last LED in sprite (rightmost) */
+.status-led.red,
+.status-led.offline,
+.rack-led[data-color="red"] {
+  background-position: 100% 0 !important;
+}
+
+/* Standby state (use amber) */
+.status-led.standby {
+  background-position: 50% 0 !important;
+}
+
+/* Animation for active LEDs (optional pulse effect) */
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.rack-accordion-module[open] .rack-led {
+  animation: led-pulse 2s ease-in-out infinite;
+}

@@ -1,0 +1,252 @@
+/**
+ * BOOKING WIZARD STYLES
+ * 
+ * Progressive disclosure UI for BOOK NOW channel
+ * Clean, hardware-inspired step indicators and option cards
+ */
+
+/* Back Button */
+.wizard-back-button {
+  background: transparent;
+  border: none;
+  color: var(--text-label);
+  font-family: var(--font-tech);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wizard-back-button:hover {
+  color: var(--led-active-green);
+}
+
+.wizard-back-button:focus-visible {
+  outline: 2px solid var(--led-active-green);
+  outline-offset: 4px;
+}
+
+/* Step Indicator */
+.wizard-step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+
+.wizard-step-indicator .step {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-inactive);
+  font-family: var(--font-tech);
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.wizard-step-indicator .step.active {
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.2) 0%, rgba(0, 255, 136, 0.1) 100%);
+  border-color: var(--led-active-green);
+  color: var(--led-active-green);
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.3);
+}
+
+.wizard-step-indicator .step.completed {
+  background: rgba(0, 255, 136, 0.15);
+  border-color: rgba(0, 255, 136, 0.5);
+  color: var(--led-active-green);
+}
+
+.wizard-step-indicator .step.completed::after {
+  content: '✓';
+  font-size: 16px;
+}
+
+.wizard-step-indicator .step-divider {
+  width: 40px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Wizard Title & Description */
+.wizard-title {
+  font-family: var(--font-tech);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-active);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.wizard-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-label);
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Option Cards */
+.wizard-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.wizard-option-card {
+  background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+  border: 2px solid rgba(153, 204, 153, 0.15);
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.wizard-option-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(0, 255, 136, 0) 0%, 
+    rgba(0, 255, 136, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.wizard-option-card:hover {
+  border-color: rgba(0, 255, 136, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 255, 136, 0.15);
+  transform: translateY(-2px);
+}
+
+.wizard-option-card:hover::before {
+  opacity: 1;
+}
+
+.wizard-option-card:focus-visible {
+  outline: 3px solid var(--led-active-green);
+  outline-offset: 4px;
+}
+
+.option-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.option-title {
+  font-family: var(--font-tech);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-active);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.option-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-label);
+  margin-bottom: 1rem;
+  min-height: 48px; /* Consistent height */
+}
+
+.option-price {
+  font-family: var(--font-tech);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--led-active-green);
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(153, 204, 153, 0.1);
+}
+
+/* Summary Box */
+.wizard-summary {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(153, 204, 153, 0.15);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(153, 204, 153, 0.05);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-label {
+  font-family: var(--font-tech);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-inactive);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-active);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .wizard-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .wizard-step-indicator {
+    gap: 8px;
+  }
+  
+  .wizard-step-indicator .step {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .wizard-step-indicator .step-divider {
+    width: 24px;
+  }
+  
+  .wizard-option-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .option-description {
+    min-height: auto;
+  }
+}

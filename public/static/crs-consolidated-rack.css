@@ -1,0 +1,445 @@
+/**
+ * CRS CONSOLIDATED RACK SYSTEM
+ * Master rack chassis, accordion modules, LED indicators
+ * Replaces: master-rack-chassis.css, crs-rack-ui.css, crs-ghost-chassis.css, rack-accordion.css
+ */
+
+/* ============================================
+   MASTER RACK CHASSIS
+   ============================================ */
+
+.master-rack-chassis {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--crs-black);
+  color: var(--crs-text);
+  min-height: 100vh;
+}
+
+/* ============================================
+   RACK HEADER
+   ============================================ */
+
+.rack-header-container {
+  position: relative;
+  width: 100%;
+}
+
+.rack-header-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.rack-header {
+  background: var(--crs-black);
+  border-bottom: 2px solid var(--crs-border);
+  padding: var(--spacing-md) var(--spacing-xl);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rack-header-nav {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.rack-header-nav a {
+  color: var(--crs-text);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color var(--transition-fast);
+}
+
+.rack-header-nav a:hover {
+  color: var(--amber);
+}
+
+.rack-header-nav .separator {
+  color: var(--crs-border);
+  user-select: none;
+}
+
+.rack-header-cta {
+  margin-left: auto;
+}
+
+/* ============================================
+   STUDIO INTRO
+   ============================================ */
+
+.studio-intro {
+  text-align: center;
+  padding: var(--spacing-xxl) var(--spacing-md);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tagline {
+  font-size: 1.125rem;
+  color: var(--crs-text-dim);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   SERVICE BLOCKS
+   ============================================ */
+
+.service-block {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--crs-border);
+  border-radius: 8px;
+  padding: var(--spacing-xl);
+  margin: var(--spacing-lg) var(--spacing-md);
+  transition: border-color var(--transition-normal);
+}
+
+.service-block:hover {
+  border-color: var(--amber);
+}
+
+.service-block h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--brass);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.service-intro {
+  color: var(--crs-text-dim);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+}
+
+.feature-list,
+.philosophy-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-lg) 0;
+}
+
+.feature-list li,
+.philosophy-list li {
+  padding: var(--spacing-sm) 0;
+  padding-left: var(--spacing-lg);
+  position: relative;
+  color: var(--crs-text-dim);
+}
+
+.feature-list li::before,
+.philosophy-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--neon-green);
+  font-weight: bold;
+}
+
+/* ============================================
+   LOCATION CARDS
+   ============================================ */
+
+.location-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+}
+
+.location-card {
+  background: rgba(13, 13, 13, 0.8);
+  border: 1px solid var(--crs-border);
+  border-radius: 6px;
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+}
+
+.location-card:hover {
+  border-color: var(--amber);
+  transform: translateY(-2px);
+}
+
+.location-card h3 {
+  color: var(--brass);
+  margin-bottom: var(--spacing-md);
+  font-size: 1.125rem;
+}
+
+.pricing-simple {
+  margin: var(--spacing-md) 0;
+}
+
+.price-row {
+  padding: var(--spacing-sm) 0;
+  color: var(--crs-text);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+.price-note {
+  color: var(--crs-text-dim);
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-top: var(--spacing-sm);
+}
+
+/* ============================================
+   RACK ACCORDION
+   ============================================ */
+
+.rack-accordion-container {
+  margin: var(--spacing-xl) var(--spacing-md);
+}
+
+.rack-accordion-module {
+  background: var(--crs-dark);
+  border: 1px solid var(--crs-border);
+  border-radius: 6px;
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.rack-accordion-module[open] {
+  border-color: var(--amber);
+}
+
+.rack-accordion-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  user-select: none;
+  background: var(--crs-dark);
+  transition: background var(--transition-fast);
+  list-style: none;
+}
+
+.rack-accordion-header::-webkit-details-marker {
+  display: none;
+}
+
+.rack-accordion-header:hover {
+  background: var(--crs-metal);
+}
+
+.rack-title {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  color: var(--brass);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rack-chevron {
+  color: var(--amber);
+  font-size: 1.5rem;
+  transition: transform var(--transition-normal);
+}
+
+.rack-accordion-module[open] .rack-chevron {
+  transform: rotate(90deg);
+}
+
+.rack-accordion-content {
+  padding: 0 var(--spacing-lg) var(--spacing-lg);
+}
+
+.rack-content-inner {
+  padding: var(--spacing-lg);
+  background: rgba(10, 10, 10, 0.5);
+  border-radius: 4px;
+}
+
+.rack-description {
+  color: var(--crs-text-dim);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+  white-space: pre-line;
+}
+
+.location-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+/* ============================================
+   LED INDICATORS
+   ============================================ */
+
+.rack-led,
+.system-led,
+.status-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.rack-led[data-color="green"],
+.system-led,
+.status-led.green {
+  background: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green);
+}
+
+.rack-led[data-color="amber"],
+.status-led.amber {
+  background: var(--signal-amber);
+  box-shadow: 0 0 8px var(--signal-amber);
+}
+
+.rack-led[data-color="orange"],
+.status-led.orange {
+  background: var(--signal-orange);
+  box-shadow: 0 0 8px var(--signal-orange);
+}
+
+/* LED Pulse Animation */
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.rack-led,
+.system-led,
+.status-led {
+  animation: led-pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   STATUS STRIPS
+   ============================================ */
+
+.system-status-strip {
+  background: var(--crs-dark);
+  border-top: 1px solid var(--crs-border);
+  padding: var(--spacing-md);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--crs-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.system-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  padding: var(--spacing-md);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--crs-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.system-badge-logo {
+  height: 24px;
+  width: auto;
+}
+
+.status-strip {
+  background: var(--crs-dark);
+  border-top: 1px solid var(--crs-border);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+}
+
+.status-header {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--brass);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-md);
+}
+
+.status-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--crs-text-dim);
+}
+
+/* ============================================
+   RACK ORIENTATION TEXT
+   ============================================ */
+
+.rack-orientation {
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--crs-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.rack-human-line {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--crs-text-dim);
+  font-style: italic;
+  padding: var(--spacing-md);
+  opacity: 0.8;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .rack-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .rack-header-nav {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .location-pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-block {
+    margin: var(--spacing-md);
+    padding: var(--spacing-lg);
+  }
+}

@@ -76,73 +76,29 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700&family=Archivo+Black&display=swap" rel="stylesheet" />
         
         {/* ============================================
-             NON-CRITICAL CSS — DEFERRED FOR PERFORMANCE
-             Loaded after first paint using preload + onload trick
+             CONSOLIDATED CSS — LEAN & FAST
+             3 strategic files replace 78 legacy files
              ============================================ */}
         
-        {/* Preload critical CSS files for second paint */}
-        <link rel="preload" href="/static/master-rack-chassis.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="preload" href="/static/crs-reset.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="preload" href="/static/crs-typography.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="preload" href="/static/crs-spacing.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="preload" href="/static/crs-rack-ui.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="preload" href="/static/crs-header.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="preload" href="/static/crs-neon-system.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="preload" href="/static/crs-rotary-knob.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        
-        {/* Defer footer and mobile CSS (below-the-fold) */}
-        <link rel="preload" href="/static/crs-footer.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="preload" href="/static/crs-mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="preload" href="/static/crs-map-embed.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+        {/* Preload consolidated CSS for optimal performance */}
+        <link rel="preload" href="/static/crs-consolidated-base.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+        <link rel="preload" href="/static/crs-consolidated-rack.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+        <link rel="preload" href="/static/crs-consolidated-components.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         
         {/* Fallback for browsers without JS */}
         <noscript>
-          <link href="/static/master-rack-chassis.css" rel="stylesheet" />
-          <link href="/static/crs-reset.css" rel="stylesheet" />
-          <link href="/static/crs-typography.css" rel="stylesheet" />
-          <link href="/static/crs-spacing.css" rel="stylesheet" />
-          <link href="/static/crs-rack-ui.css" rel="stylesheet" />
-          <link href="/static/crs-header.css" rel="stylesheet" />
-          <link href="/static/master-rack-header.css" rel="stylesheet" />
-          <link href="/static/crs-footer.css" rel="stylesheet" />
-          <link href="/static/crs-mobile.css" rel="stylesheet" />
-          <link href="/static/crs-neon-system.css" rel="stylesheet" />
-          <link href="/static/crs-rotary-knob.css" rel="stylesheet" />
-          <link href="/static/crs-map-embed.css" rel="stylesheet" />
+          <link href="/static/crs-consolidated-base.css" rel="stylesheet" />
+          <link href="/static/crs-consolidated-rack.css" rel="stylesheet" />
+          <link href="/static/crs-consolidated-components.css" rel="stylesheet" />
         </noscript>
 
-        {/* MASTER RACK HEADER: Banner image over dark nav bar with amber neon button */}
-        <link href="/static/master-rack-header.css" rel="stylesheet" />
+        {/* CONSOLIDATED CSS: Base, Rack System, Components */}
+        <link href="/static/crs-consolidated-base.css" rel="stylesheet" />
+        <link href="/static/crs-consolidated-rack.css" rel="stylesheet" />
+        <link href="/static/crs-consolidated-components.css" rel="stylesheet" />
         
-        {/* 7. MOBILE: Mobile overrides, hamburger menu, responsive */}
-        <link href="/static/crs-mobile.css" rel="stylesheet" />
-        
-        {/* 8. NEON SYSTEM: Triple-layer glow, LED pulse, kinetic typography (Phase 2A) */}
-        <link href="/static/crs-neon-system.css" rel="stylesheet" />
-        
-        {/* 9. ROTARY KNOBS: Physics-driven interactive controls (Phase 2B - Strike 2) */}
-        <link href="/static/crs-rotary-knob.css" rel="stylesheet" />
-        
-        {/* 9b. ROTARY KNOBS v2: Physics simulation with torque & inertia (Strike 9) */}
-        <link href="/static/crs-rotary-knob-v2.css" rel="stylesheet" />
-        
-        {/* 10. MACHINED ASSETS: Glass Pane architecture with static PBR assets (Phase 3B - Strike 6) */}
-        <link href="/static/crs-machined-assets.css" rel="stylesheet" />
-        
-        {/* 11. SVG WAVEFORMS: Living signal presence for visual feedback (Phase 3C - Strike 8) */}
-        <link href="/static/crs-waveform.css" rel="stylesheet" />
-        
-        {/* 12. GHOST CHASSIS: 4-layer recessed-depth stack for CH2 (The 238th Law) */}
-        <link href="/static/crs-ghost-chassis.css" rel="stylesheet" />
-        
-        {/* 13. MAP EMBED: Google Maps integration for local SEO */}
-        <link href="/static/crs-map-embed.css" rel="stylesheet" />
-        
-        {/* 14. LAYOUT FIX: Brute force override for dead space and orange borders */}
-        <link href="/static/crs-layout-fix.css" rel="stylesheet" />
-        
-        {/* 15. INDUSTRIAL POLISH: Final high-fidelity layer (amber buttons, rack ears, vignette) */}
-        <link href="/static/crs-industrial-polish.css" rel="stylesheet" />
+        {/* Legacy accordion styles (temporary - integrated in next phase) */}
+        <link href="/static/rack-accordion.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}

@@ -1,0 +1,273 @@
+/* ====================================================================
+   ACCESSIBILITY FIXES - WCAG 2.1 AA COMPLIANCE
+   Addressing color contrast, focus indicators, keyboard navigation
+   ==================================================================== */
+
+:root {
+  /* WCAG-Compliant Colors (4.5:1 contrast on dark backgrounds) */
+  --wcag-led-green: #00ff88;  /* Brighter green for 4.5:1 on #0a0a0a */
+  --wcag-led-amber: #ffcc33;  /* Brighter amber for visibility */
+  --wcag-led-red: #ff6666;    /* Softer red, still accessible */
+  --wcag-text-primary: #ffffff;  /* Pure white for max contrast */
+  --wcag-text-secondary: #cccccc;  /* Light gray, 4.5:1+ on dark */
+  --wcag-focus-outline: #00ffff;  /* Cyan focus indicator */
+  --wcag-sage-green: #B5A642;  /* Brass panel - NO green in text */
+  --wcag-mustard: #ffcc66;  /* Brighter mustard for accents */
+}
+
+/* ====================================================================
+   COLOR CONTRAST FIXES
+   ==================================================================== */
+
+/* LED Indicators - Enhanced brightness */
+.led-indicator {
+  background: var(--wcag-led-green);
+  box-shadow: 
+    0 0 6px var(--wcag-led-green),
+    0 0 12px var(--wcag-led-green),
+    inset 0 0 3px rgba(255,255,255,0.6);
+}
+
+.led-amber {
+  background: var(--wcag-led-amber);
+  box-shadow: 
+    0 0 6px var(--wcag-led-amber),
+    0 0 12px var(--wcag-led-amber),
+    inset 0 0 3px rgba(255,255,255,0.6);
+}
+
+.led-red {
+  background: var(--wcag-led-red);
+  box-shadow: 
+    0 0 6px var(--wcag-led-red),
+    0 0 12px var(--wcag-led-red),
+    inset 0 0 3px rgba(255,255,255,0.6);
+}
+
+/* Title text - Pure white for maximum contrast */
+.rack-title {
+  color: var(--wcag-text-primary);
+  text-shadow: 
+    0 0 10px rgba(0, 255, 136, 0.8),
+    0 0 3px rgba(0, 255, 136, 1);
+}
+
+/* Description text - Light gray for readability */
+.rack-description {
+  color: var(--wcag-text-secondary) !important;
+  font-size: 16px !important;  /* Minimum 16px for accessibility */
+  line-height: 1.6 !important;  /* Improved readability */
+}
+
+/* Buttons - High contrast */
+.rack-button {
+  color: #000000 !important;  /* Black text on bright background */
+  background: var(--wcag-mustard) !important;
+  border: 2px solid var(--wcag-mustard) !important;
+  font-weight: 700 !important;
+  min-height: 44px !important;  /* Touch target size */
+  min-width: 44px !important;
+  font-size: 16px !important;
+}
+
+.rack-button:hover {
+  background: var(--wcag-sage-green) !important;
+  border-color: var(--wcag-sage-green) !important;
+  color: #000000 !important;
+}
+
+/* Dropdown items - High contrast */
+.rack-dropdown-item {
+  color: var(--wcag-text-primary) !important;
+  background: #1a1a1a !important;
+  font-size: 16px !important;
+  min-height: 44px !important;
+}
+
+.rack-dropdown-item:hover {
+  background: #2a2a2a !important;
+  color: var(--wcag-mustard) !important;
+}
+
+/* Navigation - High contrast */
+.rack-nav-button {
+  color: var(--wcag-text-primary) !important;
+  background: rgba(26, 26, 26, 0.95) !important;
+  border: 1px solid var(--wcag-sage-green) !important;
+  min-height: 44px !important;
+  min-width: 44px !important;
+}
+
+.rack-nav-button:hover {
+  background: var(--wcag-sage-green) !important;
+  color: #000000 !important;
+}
+
+/* ====================================================================
+   KEYBOARD NAVIGATION & FOCUS INDICATORS
+   ==================================================================== */
+
+/* Skip navigation link (accessible keyboard shortcut) */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--wcag-mustard);
+  color: #000000;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  z-index: 10000;
+  border-radius: 0 0 8px 0;
+  transition: top 0.2s ease;
+}
+
+.skip-to-content:focus {
+  top: 0;
+  outline: 3px solid var(--wcag-focus-outline);
+  outline-offset: 2px;
+}
+
+/* Universal focus indicator - visible on all interactive elements */
+*:focus-visible {
+  outline: 3px solid var(--wcag-focus-outline) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px rgba(0, 255, 255, 0.3) !important;
+  transition: outline 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Button focus states */
+.rack-button:focus-visible,
+.rack-dropdown-trigger:focus-visible,
+.rack-nav-button:focus-visible {
+  outline: 3px solid var(--wcag-focus-outline) !important;
+  outline-offset: 3px !important;
+  box-shadow: 
+    0 0 0 6px rgba(0, 255, 255, 0.3),
+    0 0 20px rgba(0, 255, 255, 0.5) !important;
+}
+
+/* Link focus states */
+a:focus-visible {
+  outline: 3px solid var(--wcag-focus-outline) !important;
+  outline-offset: 3px !important;
+  text-decoration: underline !important;
+}
+
+/* Dropdown menu focus */
+.rack-dropdown-item:focus-visible {
+  background: #333333 !important;
+  color: var(--wcag-mustard) !important;
+  outline: 2px solid var(--wcag-focus-outline) !important;
+  outline-offset: -2px !important;
+}
+
+/* ====================================================================
+   SCREEN READER SUPPORT
+   ==================================================================== */
+
+/* Visually hidden but accessible to screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip when screen reader focused */
+.sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ====================================================================
+   TOUCH TARGET SIZES (Mobile Accessibility)
+   ==================================================================== */
+
+/* Ensure all interactive elements meet 44x44px minimum */
+@media (max-width: 768px) {
+  .rack-button,
+  .rack-dropdown-trigger,
+  .rack-nav-button,
+  .rack-dropdown-item {
+    min-height: 48px !important;  /* Extra 4px for mobile thumb comfort */
+    min-width: 48px !important;
+    padding: 12px 20px !important;
+  }
+}
+
+/* ====================================================================
+   REDUCED MOTION SUPPORT (Respect user preferences)
+   ==================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ====================================================================
+   HIGH CONTRAST MODE SUPPORT
+   ==================================================================== */
+
+@media (prefers-contrast: high) {
+  .rack-title {
+    color: #ffffff !important;
+    text-shadow: none !important;
+  }
+  
+  .rack-description {
+    color: #ffffff !important;
+  }
+  
+  .rack-button {
+    border-width: 3px !important;
+  }
+  
+  .led-indicator {
+    box-shadow: 0 0 0 2px #ffffff !important;
+  }
+}
+
+/* ====================================================================
+   ARIA LIVE REGIONS (Dynamic content announcements)
+   ==================================================================== */
+
+[aria-live="polite"],
+[aria-live="assertive"] {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Ensure status messages are visible when active */
+[aria-live].active {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  background: var(--wcag-mustard);
+  color: #000000;
+  padding: 12px 20px;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
