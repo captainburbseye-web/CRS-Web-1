@@ -233,7 +233,7 @@ export const RackAccordion = () => {
           {/* Clickable hotspot overlays for booking buttons */}
           <div class="button-hotspots">
             <a 
-              href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
+              href="https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX"
               target="_blank"
               rel="noopener noreferrer"
               class="booking-hotspot booking-hotspot-cowley"
@@ -243,7 +243,7 @@ export const RackAccordion = () => {
               <span class="sr-only">Book Cowley Road</span>
             </a>
             <a 
-              href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
+              href="https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX"
               target="_blank"
               rel="noopener noreferrer"
               class="booking-hotspot booking-hotspot-cricket"
