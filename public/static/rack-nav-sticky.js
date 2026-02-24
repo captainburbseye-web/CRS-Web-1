@@ -23,23 +23,27 @@
         <div class="rack-nav-inner">
           <div class="rack-nav-logo">CRS RACK</div>
           <div class="rack-nav-sections" role="navigation">
-            <a href="#control-room" class="rack-nav-item" data-section="control-room">
+            <a href="#cowley-services" class="rack-nav-item" data-section="cowley-services">
               <span class="rack-nav-led" aria-hidden="true"></span>
-              <span>CTRL</span>
+              <span>COWLEY</span>
+            </a>
+            <a href="#cricket-services" class="rack-nav-item" data-section="cricket-services">
+              <span class="rack-nav-led" aria-hidden="true"></span>
+              <span>CRICKET</span>
             </a>
             <a href="#rehearsal" class="rack-nav-item" data-section="rehearsal">
               <span class="rack-nav-led" aria-hidden="true"></span>
               <span>REH</span>
             </a>
-            <a href="#live-services" class="rack-nav-item" data-section="live-services">
+            <a href="#control-room" class="rack-nav-item" data-section="control-room">
               <span class="rack-nav-led" aria-hidden="true"></span>
-              <span>LIVE</span>
+              <span>CTRL</span>
             </a>
-            <a href="#podcast" class="rack-nav-item" data-section="podcast">
+            <a href="#workshop-cafe" class="rack-nav-item" data-section="cafe">
               <span class="rack-nav-led" aria-hidden="true"></span>
-              <span>POD</span>
+              <span>CAFÉ</span>
             </a>
-            <a href="#contact" class="rack-nav-item" data-section="contact">
+            <a href="/contact" class="rack-nav-item" data-section="contact">
               <span class="rack-nav-led" aria-hidden="true"></span>
               <span>CONTACT</span>
             </a>
@@ -118,10 +122,11 @@
     // Fallback: find section by content keywords
     function findSectionByContent(sectionId) {
       const keywords = {
+        'cowley-services': ['cowley', 'cowley road services', 'recording'],
+        'cricket-services': ['cricket', 'cricket road services'],
+        'rehearsal': ['rehearsal', 'band', 'live room'],
         'control-room': ['control room', 'dry hire', 'monitoring'],
-        'rehearsal': ['rehearsal', 'band', 'cricket'],
-        'live-services': ['live', 'services', 'pa hire', 'speaker'],
-        'podcast': ['podcast', 'av suite'],
+        'cafe': ['workshop', 'café', 'cafe', 'coffee'],
         'contact': ['contact', 'enquir']
       };
 
