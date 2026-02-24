@@ -120,11 +120,20 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="/static/control-room-buttons.css" rel="stylesheet" />
         <link href="/static/control-room-hotspots.css" rel="stylesheet" />
         
+        {/* CRS Header Rack Interactive Hotspots */}
+        <link href="/static/crs-header-hotspots.css" rel="stylesheet" />
+        
+        {/* Welcome Rack Interactive Buttons */}
+        <link href="/static/welcome-rack-hotspots.css" rel="stylesheet" />
+        
         {/* Header Rack Interactive Buttons */}
         <link href="/static/header-rack-buttons.css" rel="stylesheet" />
         
         {/* Recording Services Interactive Buttons */}
         <link href="/static/recording-services-hotspots.css" rel="stylesheet" />
+        
+        {/* Rehearsal Combi Rack Interactive Panels */}
+        <link href="/static/rehearsal-combi-hotspots.css" rel="stylesheet" />
         
         {/* Interactive Enhancements - Hover effects and accessibility */}
         <link href="/static/rack-interactive-enhancements.css" rel="stylesheet" />

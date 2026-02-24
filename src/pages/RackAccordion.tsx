@@ -12,8 +12,39 @@ export const RackAccordion = () => {
       {/* Skip to content link for accessibility */}
       <a href="#main-content" class="skip-to-content">Skip to main content</a>
       
+      {/* CRS HEADER RACK - Top navigation */}
+      <div class="rack-module-graphic crs-header-container" id="crs-header">
+        <picture>
+          <source 
+            type="image/webp" 
+            srcset="/static/rack-images/crs-header-1920w.webp 1920w, /static/rack-images/crs-header-1280w.webp 1280w, /static/rack-images/crs-header-640w.webp 640w"
+            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+          />
+          <img 
+            src="/static/rack-images/crs-header.webp"
+            alt="Cowley Road Studios - Navigation Header" 
+            class="rack-module-img"
+            width="1920"
+            height="auto"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </picture>
+        
+        {/* Clickable hotspot for COWLEY ROAD STUDIOS text only */}
+        <div class="crs-header-hotspots">
+          <a 
+            href="/"
+            class="crs-header-logo-hotspot"
+            aria-label="Cowley Road Studios - Return to home"
+          >
+            <span class="sr-only">Cowley Road Studios Home</span>
+          </a>
+        </div>
+      </div>
+      
       {/* WELCOME RACK */}
-      <div class="rack-module-graphic" id="main-content" role="main">
+      <div class="rack-module-graphic welcome-rack-container" id="main-content" role="main">
         <picture>
           <source 
             type="image/webp" 
@@ -22,7 +53,7 @@ export const RackAccordion = () => {
           />
           <img 
             src="/static/rack-images/welcome-rack.webp"
-            alt="CRS Welcome Rack - Main booking interface" 
+            alt="CRS Welcome Rack - Main navigation and booking" 
             class="rack-module-img"
             width="1920"
             height="auto"
@@ -30,6 +61,56 @@ export const RackAccordion = () => {
             fetchpriority="high"
           />
         </picture>
+        
+        {/* Clickable hotspots for dropdown navigation + BOOK NOW */}
+        <div class="welcome-hotspots">
+          {/* HOME button */}
+          <a 
+            href="/"
+            class="welcome-button welcome-button-home"
+            aria-label="Home - Return to homepage"
+          >
+            <span class="sr-only">Home</span>
+          </a>
+          
+          {/* ABOUT button */}
+          <a 
+            href="/about"
+            class="welcome-button welcome-button-about"
+            aria-label="About - Learn about Cowley Road Studios"
+          >
+            <span class="sr-only">About</span>
+          </a>
+          
+          {/* WORKSHOP CAFE button */}
+          <a 
+            href="/contact?ref=workshop-cafe"
+            class="welcome-button welcome-button-cafe"
+            aria-label="Workshop Café - Coffee, repairs, and coworking space"
+          >
+            <span class="sr-only">Workshop Café</span>
+          </a>
+          
+          {/* CONTACT button */}
+          <a 
+            href="/contact"
+            class="welcome-button welcome-button-contact"
+            aria-label="Contact - Get in touch with us"
+          >
+            <span class="sr-only">Contact</span>
+          </a>
+          
+          {/* BOOK NOW button (right side) */}
+          <a 
+            href="https://app.squareup.com/appointments/buyer/widget/g3in5i1879joft/L1MAM4DDPHKXX"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="welcome-button welcome-button-booknow"
+            aria-label="Book Now - View all services and book online"
+          >
+            <span class="sr-only">Book Now</span>
+          </a>
+        </div>
       </div>
 
 
@@ -81,58 +162,48 @@ export const RackAccordion = () => {
         </div>
       </div>
 
-      {/* COWLEY ROAD REHEARSAL RACK */}
-      <div class="rack-module-graphic" id="cowley-rehearsal" data-section="rehearsal">
-        <a 
-          href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          aria-label="Book Cowley Road Rehearsal - £45 for 2 hours, £60 for 3 hours, £65 for 4 hours. Max 4 members."
-        >
-          <picture>
-            <source 
-              type="image/webp" 
-              srcset="/static/rack-images/cowley-rehearsal-1920w.webp 1920w, /static/rack-images/cowley-rehearsal-1280w.webp 1280w, /static/rack-images/cowley-rehearsal-640w.webp 640w"
-              sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
-            />
-            <img 
-              src="/static/rack-images/cowley-rehearsal.webp"
-              alt="Cowley Road Rehearsal - 2hrs £45, 3hrs £60, 4hrs £65" 
-              class="rack-module-img"
-              width="1920"
-              height="auto"
-              loading="lazy"
-            />
-          </picture>
-          <span class="rack-tooltip" aria-hidden="true">Click to book Cowley Road Rehearsal →</span>
-        </a>
-      </div>
+      {/* REHEARSAL COMBI RACK - Cowley + Cricket combined */}
+      <div class="rack-module-graphic rehearsal-combi-container" id="rehearsal-combi" data-section="rehearsal">
+        <picture>
+          <source 
+            type="image/webp" 
+            srcset="/static/rack-images/rehearsal-combi-1920w.webp 1920w, /static/rack-images/rehearsal-combi-1280w.webp 1280w, /static/rack-images/rehearsal-combi-640w.webp 640w"
+            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+          />
+          <img 
+            src="/static/rack-images/rehearsal-combi.webp"
+            alt="Rehearsal Rooms - Cowley Road & Cricket Road" 
+            class="rack-module-img"
+            width="1920"
+            height="auto"
+            loading="lazy"
+          />
+        </picture>
+        
+        {/* Clickable hotspots for Cowley and Cricket rehearsal */}
+        <div class="rehearsal-hotspots">
+          {/* COWLEY ROAD REHEARSAL (Top Half) */}
+          <a 
+            href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rehearsal-panel rehearsal-cowley-panel"
+            data-location="cowley"
+            aria-label="Book Cowley Road Rehearsal - £45 for 2 hours, £60 for 3 hours, £65 for 4 hours. Max 4 members."
+          >
+          </a>
 
-      {/* CRICKET ROAD REHEARSAL RACK */}
-      <div class="rack-module-graphic" id="cricket-rehearsal" data-section="rehearsal">
-        <a 
-          href="https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          aria-label="Book Cricket Road Rehearsal - Fully equipped live room with drums, backline, and PA system."
-        >
-          <picture>
-            <source 
-              type="image/webp" 
-              srcset="/static/rack-images/cricket-rehearsal-1920w.webp 1920w, /static/rack-images/cricket-rehearsal-1280w.webp 1280w, /static/rack-images/cricket-rehearsal-640w.webp 640w"
-              sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
-            />
-            <img 
-              src="/static/rack-images/cricket-rehearsal.webp"
-              alt="Cricket Road Rehearsal - Warning sign style panel with drummer" 
-              class="rack-module-img"
-              width="1920"
-              height="auto"
-              loading="lazy"
-            />
-          </picture>
-          <span class="rack-tooltip" aria-hidden="true">Click to book Cricket Road Rehearsal →</span>
-        </a>
+          {/* CRICKET ROAD REHEARSAL (Bottom Half) */}
+          <a 
+            href="https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rehearsal-panel rehearsal-cricket-panel"
+            data-location="cricket"
+            aria-label="Book Cricket Road Rehearsal - Fully equipped live room with drums, backline, and PA system."
+          >
+          </a>
+        </div>
       </div>
 
       {/* CONTROL ROOM HIRE RACK - with interactive booking buttons */}

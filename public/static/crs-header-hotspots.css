@@ -1,0 +1,86 @@
+/* 
+ * CRS HEADER RACK - Clickable COWLEY ROAD STUDIOS text only
+ */
+
+.crs-header-container {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.crs-header-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* COWLEY ROAD STUDIOS text area - center of the rack */
+.crs-header-logo-hotspot {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  
+  /* Position over the COWLEY ROAD STUDIOS text */
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35%;
+  height: 25%;
+  
+  /* Invisible by default */
+  background: transparent;
+  border: none;
+  
+  /* Smooth transitions */
+  transition: 
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Subtle hover feedback */
+.crs-header-logo-hotspot:hover {
+  background: rgba(255, 215, 0, 0.05);
+  box-shadow: 
+    inset 0 0 30px rgba(255, 215, 0, 0.1),
+    0 0 20px rgba(255, 215, 0, 0.15);
+}
+
+/* Press feedback */
+.crs-header-logo-hotspot:active {
+  background: rgba(255, 215, 0, 0.08);
+  box-shadow: 
+    inset 0 0 40px rgba(255, 215, 0, 0.15);
+}
+
+/* Focus state for keyboard navigation */
+.crs-header-logo-hotspot:focus-visible {
+  outline: 3px solid rgba(255, 204, 0, 0.7);
+  outline-offset: -3px;
+  background: rgba(255, 215, 0, 0.06);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .crs-header-logo-hotspot {
+    width: 50%;
+    height: 30%;
+    min-height: 60px;
+  }
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
