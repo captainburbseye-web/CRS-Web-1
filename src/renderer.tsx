@@ -120,6 +120,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link href="/static/control-room-buttons.css" rel="stylesheet" />
         <link href="/static/control-room-hotspots.css" rel="stylesheet" />
         
+        {/* Header Rack Interactive Buttons */}
+        <link href="/static/header-rack-buttons.css" rel="stylesheet" />
+        
         {/* Recording Services Interactive Buttons */}
         <link href="/static/recording-services-hotspots.css" rel="stylesheet" />
         
