@@ -119,6 +119,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* Control Room Interactive Buttons */}
         <link href="/static/control-room-buttons.css" rel="stylesheet" />
         <link href="/static/control-room-hotspots.css" rel="stylesheet" />
+        
+        {/* Recording Services Interactive Buttons */}
+        <link href="/static/recording-services-hotspots.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}
@@ -162,6 +165,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <script src="/static/back-to-top.js" defer></script>
         {/* Control Room interactive buttons - Deferred */}
         <script src="/static/control-room-buttons.js" defer></script>
+        {/* Recording Services interactive buttons - Deferred */}
+        <script src="/static/recording-services-buttons.js" defer></script>
       </body>
     </html>
   )

@@ -1,0 +1,282 @@
+/* 
+ * RECORDING SERVICES DOUBLE RACK - Interactive Booking Hotspots
+ * Cowley Road Studios - Industrial Hardware Aesthetic
+ * 6 clickable booking buttons across two rack panels
+ */
+
+/* Container positioning */
+.recording-services-container {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.recording-rack-visual {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.recording-hotspots-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow clicks to pass through container */
+}
+
+/* Hotspot base styles - industrial button aesthetic */
+.recording-hotspot {
+  position: absolute;
+  pointer-events: auto; /* Enable clicks on individual hotspots */
+  cursor: pointer;
+  
+  /* Industrial button styling */
+  background: linear-gradient(135deg, rgba(255, 204, 0, 0.15), rgba(212, 162, 0, 0.15));
+  border: 2px solid rgba(255, 204, 0, 0.4);
+  border-radius: 6px;
+  
+  /* Glow effect */
+  box-shadow: 
+    0 0 10px rgba(255, 204, 0, 0.3),
+    inset 0 1px 3px rgba(255, 255, 255, 0.2),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.3);
+  
+  /* Smooth transitions */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Accessibility */
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  
+  /* Text styling (hidden by default, shown on hover) */
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* LED Indicators */
+.led-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.led-amber {
+  background: #ffcc00;
+  box-shadow: 
+    0 0 8px #ffcc00,
+    0 0 15px rgba(255, 204, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.led-green {
+  background: #00ff00;
+  box-shadow: 
+    0 0 8px #00ff00,
+    0 0 15px rgba(0, 255, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.led-blue {
+  background: #00ccff;
+  box-shadow: 
+    0 0 8px #00ccff,
+    0 0 15px rgba(0, 204, 255, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Button labels (hidden on small screens) */
+.button-label {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover effects - lift and glow */
+.recording-hotspot:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.6),
+    0 6px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 3px rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 215, 0, 0.8);
+  background: linear-gradient(135deg, rgba(255, 211, 51, 0.25), rgba(230, 184, 0, 0.25));
+}
+
+.recording-hotspot:hover .button-label {
+  opacity: 1;
+}
+
+/* Active/press effect */
+.recording-hotspot:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, rgba(230, 184, 0, 0.3), rgba(212, 162, 0, 0.3));
+}
+
+/* Focus state for keyboard navigation */
+.recording-hotspot:focus-visible {
+  outline: 3px solid #ffcc00;
+  outline-offset: 4px;
+  box-shadow: 
+    0 0 25px rgba(255, 215, 0, 0.8),
+    0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* HOTSPOT POSITIONING - Cowley Road (Top Rack) */
+.recording-cowley-mix {
+  top: 18%;
+  left: 15%;
+  width: 20%;
+  height: 8%;
+}
+
+.recording-cowley-tracking {
+  top: 18%;
+  left: 40%;
+  width: 20%;
+  height: 8%;
+}
+
+.recording-cowley-preprod {
+  top: 18%;
+  left: 65%;
+  width: 20%;
+  height: 8%;
+}
+
+/* HOTSPOT POSITIONING - Cricket Road (Bottom Rack) */
+.recording-cricket-mix {
+  top: 68%;
+  left: 15%;
+  width: 20%;
+  height: 8%;
+}
+
+.recording-cricket-tracking {
+  top: 68%;
+  left: 40%;
+  width: 20%;
+  height: 8%;
+}
+
+.recording-cricket-preprod {
+  top: 68%;
+  left: 65%;
+  width: 20%;
+  height: 8%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1280px) {
+  .recording-hotspot {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+  
+  .led-indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .recording-hotspot {
+    padding: 12px 16px;
+    font-size: 0.8rem;
+    border-width: 1.5px;
+  }
+  
+  .led-indicator {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* Always show labels on mobile */
+  .button-label {
+    opacity: 1;
+    font-size: 0.7rem;
+  }
+  
+  /* Increase touch targets */
+  .recording-cowley-mix,
+  .recording-cowley-tracking,
+  .recording-cowley-preprod,
+  .recording-cricket-mix,
+  .recording-cricket-tracking,
+  .recording-cricket-preprod {
+    height: 10%;
+    min-height: 60px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Extra small screens - vertical layout consideration */
+  .recording-hotspot {
+    padding: 14px 12px;
+    font-size: 0.75rem;
+  }
+  
+  .button-label {
+    font-size: 0.65rem;
+    line-height: 1.2;
+  }
+  
+  .led-indicator {
+    width: 8px;
+    height: 8px;
+  }
+  
+  /* Ensure minimum 60px touch targets */
+  .recording-cowley-mix,
+  .recording-cowley-tracking,
+  .recording-cowley-preprod,
+  .recording-cricket-mix,
+  .recording-cricket-tracking,
+  .recording-cricket-preprod {
+    min-height: 70px;
+    height: 12%;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .recording-hotspot {
+    transition: none;
+  }
+  
+  .recording-hotspot:hover {
+    transform: none;
+  }
+  
+  .recording-hotspot:active {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .recording-hotspot {
+    border-width: 3px;
+    background: rgba(255, 255, 0, 0.3);
+  }
+  
+  .recording-hotspot:hover {
+    background: rgba(255, 255, 0, 0.5);
+  }
+}
