@@ -1,7 +1,7 @@
 /* 
- * RECORDING SERVICES DOUBLE RACK - Interactive Booking Hotspots
- * Cowley Road Studios - Industrial Hardware Aesthetic
- * 6 clickable booking buttons across two rack panels
+ * RECORDING SERVICES DOUBLE RACK - Simple Clickable Panels
+ * Cowley Road Studios - Clean Hardware Aesthetic
+ * 2 clickable panel areas (top = Cowley, bottom = Cricket)
  */
 
 /* Container positioning */
@@ -25,186 +25,62 @@
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Allow clicks to pass through container */
+  pointer-events: none;
 }
 
-/* Hotspot base styles - INVISIBLE OVERLAY - hardware only */
-.recording-hotspot {
+/* Simple panel hotspots - INVISIBLE by default */
+.recording-panel {
   position: absolute;
-  pointer-events: auto; /* Enable clicks on individual hotspots */
+  pointer-events: auto;
   cursor: pointer;
   
-  /* INVISIBLE - No visual styling at all */
+  /* INVISIBLE - No visual styling */
   background: transparent;
   border: none;
-  border-radius: 0;
-  
-  /* No glow effect by default */
-  box-shadow: none;
   
   /* Smooth transitions */
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background 0.2s ease;
   
   /* Accessibility */
   outline: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 0;
-  
-  /* Text styling - ALWAYS HIDDEN */
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-  font-size: 0;
-  font-weight: 700;
-  color: transparent;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
-/* LED Indicators - HIDDEN */
-.led-indicator {
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  display: none; /* Completely hidden */
-  flex-shrink: 0;
+/* Very subtle hover feedback (optional) */
+.recording-panel:hover {
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.led-amber,
-.led-green,
-.led-blue {
-  display: none; /* All LEDs hidden */
-}
-
-/* Button labels - ALWAYS HIDDEN */
-.button-label {
-  display: none !important;
-  opacity: 0;
-  font-size: 0;
-  visibility: hidden;
-}
-
-/* Hover effects - MINIMAL - only slight opacity change */
-.recording-hotspot:hover {
-  transform: none;
-  box-shadow: none;
-  border: none;
-  background: rgba(255, 255, 255, 0.05); /* Very subtle hover feedback */
-}
-
-.recording-hotspot:hover .button-label {
-  display: none !important; /* Keep hidden on hover */
-}
-
-/* Active/press effect - MINIMAL */
-.recording-hotspot:active {
-  transform: none;
-  box-shadow: none;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Focus state for keyboard navigation - subtle outline only */
-.recording-hotspot:focus-visible {
-  outline: 2px solid rgba(255, 204, 0, 0.5);
-  outline-offset: 2px;
-  box-shadow: none;
+.recording-panel:active {
   background: rgba(255, 255, 255, 0.05);
 }
 
-/* HOTSPOT POSITIONING - Cowley Road (Top Rack) */
-.recording-cowley-mix {
-  top: 18%;
-  left: 15%;
-  width: 20%;
-  height: 8%;
+/* Focus state for keyboard navigation */
+.recording-panel:focus-visible {
+  outline: 2px solid rgba(255, 204, 0, 0.5);
+  outline-offset: -2px;
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.recording-cowley-tracking {
-  top: 18%;
-  left: 40%;
-  width: 20%;
-  height: 8%;
+/* PANEL POSITIONING */
+
+/* Cowley Road (Top Half) */
+.recording-cowley-panel {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
 }
 
-.recording-cowley-preprod {
-  top: 18%;
-  left: 65%;
-  width: 20%;
-  height: 8%;
+/* Cricket Road (Bottom Half) */
+.recording-cricket-panel {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
 }
 
-/* HOTSPOT POSITIONING - Cricket Road (Bottom Rack) */
-.recording-cricket-mix {
-  top: 68%;
-  left: 15%;
-  width: 20%;
-  height: 8%;
-}
-
-.recording-cricket-tracking {
-  top: 68%;
-  left: 40%;
-  width: 20%;
-  height: 8%;
-}
-
-.recording-cricket-preprod {
-  top: 68%;
-  left: 65%;
-  width: 20%;
-  height: 8%;
-}
-
-/* Responsive adjustments - KEEP INVISIBLE */
-@media (max-width: 1280px) {
-  .recording-hotspot {
-    padding: 0;
-    font-size: 0;
-    background: transparent;
-    border: none;
-  }
-  
-  .led-indicator {
-    display: none;
-  }
-  
-  .button-label {
-    display: none !important;
-  }
-}
-
+/* Mobile viewport optimization */
 @media (max-width: 768px) {
-  .recording-hotspot {
-    padding: 0;
-    font-size: 0;
-    border: none;
-    background: transparent;
-  }
-  
-  .led-indicator {
-    display: none;
-  }
-  
-  /* NEVER show labels on mobile */
-  .button-label {
-    display: none !important;
-    opacity: 0;
-    font-size: 0;
-  }
-  
-  /* Increase touch targets but keep invisible */
-  .recording-cowley-mix,
-  .recording-cowley-tracking,
-  .recording-cowley-preprod,
-  .recording-cricket-mix,
-  .recording-cricket-tracking,
-  .recording-cricket-preprod {
-    height: 10%;
-    min-height: 60px;
-  }
-  
-  /* Mobile viewport - ensure full width */
   .recording-services-container {
     width: 100vw;
     max-width: 100%;
@@ -222,36 +98,15 @@
     height: auto;
     display: block;
   }
+  
+  /* Ensure panels are big enough for touch */
+  .recording-cowley-panel,
+  .recording-cricket-panel {
+    min-height: 80px;
+  }
 }
 
 @media (max-width: 640px) {
-  /* Extra small screens - keep everything invisible */
-  .recording-hotspot {
-    padding: 0;
-    font-size: 0;
-    background: transparent;
-    border: none;
-  }
-  
-  .button-label {
-    display: none !important;
-  }
-  
-  .led-indicator {
-    display: none;
-  }
-  
-  /* Ensure minimum 60px touch targets but invisible */
-  .recording-cowley-mix,
-  .recording-cowley-tracking,
-  .recording-cowley-preprod,
-  .recording-cricket-mix,
-  .recording-cricket-tracking,
-  .recording-cricket-preprod {
-    min-height: 70px;
-    height: 12%;
-  }
-  
   /* Lock mobile viewport */
   .recording-services-container {
     width: 100vw;
@@ -260,31 +115,28 @@
     padding: 0;
     overflow-x: hidden;
   }
+  
+  /* Ensure good touch targets on small screens */
+  .recording-cowley-panel,
+  .recording-cricket-panel {
+    min-height: 100px;
+  }
 }
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .recording-hotspot {
+  .recording-panel {
     transition: none;
-  }
-  
-  .recording-hotspot:hover {
-    transform: none;
-  }
-  
-  .recording-hotspot:active {
-    transform: none;
   }
 }
 
 /* High contrast mode */
 @media (prefers-contrast: high) {
-  .recording-hotspot {
-    border-width: 3px;
-    background: rgba(255, 255, 0, 0.3);
+  .recording-panel:hover {
+    background: rgba(255, 255, 0, 0.1);
   }
   
-  .recording-hotspot:hover {
-    background: rgba(255, 255, 0, 0.5);
+  .recording-panel:focus-visible {
+    outline: 3px solid #ffcc00;
   }
 }

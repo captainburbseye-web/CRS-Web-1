@@ -92,7 +92,7 @@ export const RackAccordion = () => {
         </picture>
       </div>
 
-      {/* RECORDING SERVICES DOUBLE RACK - Interactive booking buttons */}
+      {/* RECORDING SERVICES DOUBLE RACK - Simple clickable panels */}
       <div class="rack-module-graphic recording-services-container" id="recording-services" data-section="recording">
         {/* Main visual rack panel */}
         <div class="recording-rack-visual">
@@ -104,7 +104,7 @@ export const RackAccordion = () => {
             />
             <img 
               src="/static/rack-images/recording-services.webp"
-              alt="Recording Services - Cowley Road & Cricket Road - Mix & Master, Tracking, Pre-Production" 
+              alt="Recording Services - Cowley Road & Cricket Road Studios" 
               class="rack-module-img"
               width="1920"
               height="auto"
@@ -113,86 +113,28 @@ export const RackAccordion = () => {
           </picture>
         </div>
 
-        {/* Interactive booking hotspots overlay */}
+        {/* Simple 2-panel clickable overlay */}
         <div class="recording-hotspots-overlay">
-          {/* COWLEY ROAD BUTTONS (Top Rack) */}
+          {/* COWLEY ROAD RECORDING (Top Half) */}
           <a 
-            href="https://book.squareup.com/appointments/h1iwdauc2g9tnr/location/L1MAM4DDPHKXX/services"
+            href="https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX"
             target="_blank"
             rel="noopener noreferrer"
-            class="recording-hotspot recording-cowley-mix"
+            class="recording-panel recording-cowley-panel"
             data-location="cowley"
-            data-service="mix-master"
-            aria-label="Book Cowley Road Mix & Master - Professional mixing and mastering services"
+            aria-label="Book Cowley Road Recording - Professional recording, mixing, mastering, and production services"
           >
-            <span class="led-indicator led-amber"></span>
-            <span class="button-label">BOOK MIX & MASTER</span>
           </a>
 
+          {/* CRICKET ROAD RECORDING (Bottom Half) */}
           <a 
-            href="https://book.squareup.com/appointments/gxdwzzgr9q5cjq/location/L1MAM4DDPHKXX/services"
+            href="https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX"
             target="_blank"
             rel="noopener noreferrer"
-            class="recording-hotspot recording-cowley-tracking"
-            data-location="cowley"
-            data-service="tracking"
-            aria-label="Book Cowley Road Tracking - Full tracking and recording sessions"
-          >
-            <span class="led-indicator led-green"></span>
-            <span class="button-label">BOOK TRACKING</span>
-          </a>
-
-          <a 
-            href="https://book.squareup.com/appointments/5b9qp63qk5lbkb/location/L1MAM4DDPHKXX/services"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="recording-hotspot recording-cowley-preprod"
-            data-location="cowley"
-            data-service="pre-production"
-            aria-label="Book Cowley Road Pre-Production - Song development and arrangement"
-          >
-            <span class="led-indicator led-blue"></span>
-            <span class="button-label">BOOK PRE-PRODUCTION</span>
-          </a>
-
-          {/* CRICKET ROAD BUTTONS (Bottom Rack) */}
-          <a 
-            href="https://book.squareup.com/appointments/h1iwdauc2g9tnr/location/L1MAM4DDPHKXX/services"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="recording-hotspot recording-cricket-mix"
+            class="recording-panel recording-cricket-panel"
             data-location="cricket"
-            data-service="mix-master"
-            aria-label="Book Cricket Road Mix & Master - Professional mixing and mastering services"
+            aria-label="Book Cricket Road Recording - Professional recording, mixing, mastering, and production services"
           >
-            <span class="led-indicator led-amber"></span>
-            <span class="button-label">BOOK MIX & MASTER</span>
-          </a>
-
-          <a 
-            href="https://book.squareup.com/appointments/gxdwzzgr9q5cjq/location/L1MAM4DDPHKXX/services"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="recording-hotspot recording-cricket-tracking"
-            data-location="cricket"
-            data-service="tracking"
-            aria-label="Book Cricket Road Tracking - Full tracking and recording sessions"
-          >
-            <span class="led-indicator led-green"></span>
-            <span class="button-label">BOOK TRACKING</span>
-          </a>
-
-          <a 
-            href="https://book.squareup.com/appointments/5b9qp63qk5lbkb/location/L1MAM4DDPHKXX/services"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="recording-hotspot recording-cricket-preprod"
-            data-location="cricket"
-            data-service="pre-production"
-            aria-label="Book Cricket Road Pre-Production - Song development and arrangement"
-          >
-            <span class="led-indicator led-blue"></span>
-            <span class="button-label">BOOK PRE-PRODUCTION</span>
           </a>
         </div>
       </div>

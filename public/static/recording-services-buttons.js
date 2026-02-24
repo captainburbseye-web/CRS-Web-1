@@ -1,7 +1,7 @@
 /**
- * RECORDING SERVICES DOUBLE RACK - Interactive Button System
+ * RECORDING SERVICES DOUBLE RACK - Simple Panel System
  * Cowley Road Studios
- * Handles click sounds, animations, and analytics
+ * Handles click tracking and analytics for 2 recording panels
  */
 
 (function() {
@@ -9,59 +9,49 @@
 
   // Wait for DOM ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initRecordingButtons);
+    document.addEventListener('DOMContentLoaded', initRecordingPanels);
   } else {
-    initRecordingButtons();
+    initRecordingPanels();
   }
 
-  function initRecordingButtons() {
-    const hotspots = document.querySelectorAll('.recording-hotspot');
+  function initRecordingPanels() {
+    const panels = document.querySelectorAll('.recording-panel');
     
-    if (hotspots.length === 0) {
-      console.log('⚡ Recording Services: No hotspots found on this page');
+    if (panels.length === 0) {
+      console.log('⚡ Recording Services: No panels found on this page');
       return;
     }
 
-    console.log(`⚡ Recording Services: Initializing ${hotspots.length} booking buttons`);
+    console.log(`⚡ Recording Services: Initializing ${panels.length} booking panels`);
 
     // Add click handlers
-    hotspots.forEach(hotspot => {
-      // Click sound (optional - can add later)
-      hotspot.addEventListener('click', handleButtonClick);
-      
-      // Keyboard support
-      hotspot.addEventListener('keydown', handleKeyboardActivation);
+    panels.forEach(panel => {
+      panel.addEventListener('click', handlePanelClick);
+      panel.addEventListener('keydown', handleKeyboardActivation);
       
       // Touch feedback for mobile
-      hotspot.addEventListener('touchstart', handleTouchStart, { passive: true });
-      hotspot.addEventListener('touchend', handleTouchEnd, { passive: true });
+      panel.addEventListener('touchstart', handleTouchStart, { passive: true });
+      panel.addEventListener('touchend', handleTouchEnd, { passive: true });
     });
 
-    console.log('✅ Recording Services: All booking buttons initialized');
+    console.log('✅ Recording Services: All booking panels initialized');
   }
 
-  function handleButtonClick(event) {
-    const button = event.currentTarget;
-    const location = button.dataset.location;
-    const service = button.dataset.service;
-    const href = button.getAttribute('href');
+  function handlePanelClick(event) {
+    const panel = event.currentTarget;
+    const location = panel.dataset.location;
+    const href = panel.getAttribute('href');
 
-    console.log(`📞 Booking clicked: ${location} - ${service}`);
-    
-    // Visual feedback
-    addClickAnimation(button);
+    console.log(`📞 Recording booking clicked: ${location}`);
     
     // Analytics tracking (if available)
     if (typeof gtag === 'function') {
       gtag('event', 'recording_booking_click', {
         'event_category': 'booking',
-        'event_label': `${location}_${service}`,
+        'event_label': `${location}_recording`,
         'value': location === 'cowley' ? 1 : 2
       });
     }
-    
-    // Optional: Play click sound
-    // playClickSound();
     
     // Optional: Haptic feedback on mobile
     if ('vibrate' in navigator) {
@@ -78,54 +68,21 @@
   }
 
   function handleTouchStart(event) {
-    const button = event.currentTarget;
-    button.style.opacity = '0.9';
+    const panel = event.currentTarget;
+    panel.style.opacity = '0.95';
   }
 
   function handleTouchEnd(event) {
-    const button = event.currentTarget;
+    const panel = event.currentTarget;
     setTimeout(() => {
-      button.style.opacity = '';
+      panel.style.opacity = '';
     }, 200);
-  }
-
-  function addClickAnimation(button) {
-    button.classList.add('button-clicked');
-    setTimeout(() => {
-      button.classList.remove('button-clicked');
-    }, 300);
-  }
-
-  // Optional: Click sound function (uncomment if you add audio file)
-  /*
-  let clickSound = null;
-  
-  function playClickSound() {
-    if (!clickSound) {
-      clickSound = new Audio('/static/sounds/button-click.mp3');
-      clickSound.volume = 0.3;
-    }
-    
-    // Clone and play to allow overlapping sounds
-    const sound = clickSound.cloneNode();
-    sound.play().catch(err => {
-      console.log('Could not play sound:', err);
-    });
-  }
-  */
-
-  // Service availability checking (future enhancement)
-  function checkServiceAvailability(location, service) {
-    // This would connect to Square API to show real-time availability
-    console.log(`Checking availability for ${location} - ${service}`);
-    // Implementation would go here
   }
 
   // Export for external use if needed
   if (typeof window !== 'undefined') {
-    window.RecordingServicesButtons = {
-      init: initRecordingButtons,
-      checkAvailability: checkServiceAvailability
+    window.RecordingServicesPanels = {
+      init: initRecordingPanels
     };
   }
 })();
