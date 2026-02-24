@@ -233,7 +233,7 @@ export const RackAccordion = () => {
           {/* Clickable hotspot overlays for booking buttons */}
           <div class="button-hotspots">
             <a 
-              href="https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX"
+              href="https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX"
               target="_blank"
               rel="noopener noreferrer"
               class="booking-hotspot booking-hotspot-cowley"
