@@ -142,7 +142,7 @@ export const RackAccordion = () => {
       {/* COWLEY ROAD REHEARSAL RACK */}
       <div class="rack-module-graphic" id="cowley-rehearsal" data-section="rehearsal">
         <a 
-          href="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services" 
+          href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" 
           target="_blank" 
           rel="noopener noreferrer"
           aria-label="Book Cowley Road Rehearsal - £45 for 2 hours, £60 for 3 hours, £65 for 4 hours. Max 4 members."
@@ -169,7 +169,7 @@ export const RackAccordion = () => {
       {/* CRICKET ROAD REHEARSAL RACK */}
       <div class="rack-module-graphic" id="cricket-rehearsal" data-section="rehearsal">
         <a 
-          href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" 
+          href="https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX" 
           target="_blank" 
           rel="noopener noreferrer"
           aria-label="Book Cricket Road Rehearsal - Fully equipped live room with drums, backline, and PA system."
