@@ -122,6 +122,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* Recording Services Interactive Buttons */}
         <link href="/static/recording-services-hotspots.css" rel="stylesheet" />
+        
+        {/* Interactive Enhancements - Hover effects and accessibility */}
+        <link href="/static/rack-interactive-enhancements.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}
