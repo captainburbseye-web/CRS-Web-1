@@ -1376,36 +1376,40 @@ app.get('/book/repairs', (c) => {
 
 // PODCAST & AV SERVICES
 app.get('/av-services', (c) => {
-  return c.html(`<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podcast Studio & AV Services Oxford | Cowley Road Studios</title>
-    <meta name="description" content="Professional podcast studio hire and AV services in Oxford. £30/hr engineer-led recording, live sound installation, equipment repairs. Cricket Road & Cowley Road.">
-    <meta name="keywords" content="podcast studio oxford, podcast recording oxford, av services oxford, live sound oxford, sound engineer oxford, equipment repair oxford">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <link href="/static/crs-reset.css" rel="stylesheet">
-    <link href="/static/crs-typography.css" rel="stylesheet">
-    <link href="/static/crs-header.css" rel="stylesheet">
-    <link href="/static/crs-mobile.css" rel="stylesheet">
-    <link href="/static/rack-accordion.css" rel="stylesheet">
-</head>
-<body>
-    ${<PodcastAVPage />}
-</body>
-</html>`)
+  return c.render(
+    <>
+      <AVServicesPage />
+      <link href="/static/rack-accordion.css" rel="stylesheet" />
+    </>,
+    {
+      title: 'AV Services Oxford | Live Sound & Technical Support | Cowley Road Studios',
+      description: 'Professional AV services in Oxford. Live sound, installations, hybrid events, and technical support. Engineer-led. Field-tested. Zero compromises.',
+      keywords: 'av services oxford, live sound oxford, sound engineer oxford, event technical support oxford, av installation oxford',
+      canonicalUrl: 'https://cowleyroadstudios.com/av-services',
+      ogUrl: 'https://cowleyroadstudios.com/av-services'
+    }
+  )
 })
 
 // Add redirect for podcast
 app.get('/podcast', (c) => c.redirect('/av-services'))
 
-// REPAIRS (now part of main AV page, keep old route for SEO)
-app.get('/av-services/repairs', (c) => c.redirect('/av-services'))
+// REPAIRS
+app.get('/av-services/repairs', (c) => {
+  return c.render(
+    <>
+      <AVRepairsPage />
+      <link href="/static/rack-accordion.css" rel="stylesheet" />
+    </>,
+    {
+      title: 'Equipment Repairs Oxford | Diagnostics & Technical Bench | Cowley Road Studios',
+      description: 'In-house equipment repair bench. Mixers, amplifiers, speakers, and signal chain repairs. Diagnosis-led repair work by ODRO Engineering.',
+      keywords: 'equipment repair oxford, audio repair oxford, mixer repair oxford, amplifier repair oxford, speaker repair oxford',
+      canonicalUrl: 'https://cowleyroadstudios.com/av-services/repairs',
+      ogUrl: 'https://cowleyroadstudios.com/av-services/repairs'
+    }
+  )
+})
 
 // WORKSHOP CAFÉ (VENUE)
 app.get('/workshop-cafe', (c) => {
