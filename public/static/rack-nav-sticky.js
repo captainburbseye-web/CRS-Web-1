@@ -17,38 +17,25 @@
       return;
     }
 
-    // Create sticky nav HTML
+    // Create sticky nav HTML - Simplified: HOME, WORKSHOP CAFÉ, CONTACT
     const navHTML = `
-      <nav class="rack-nav-sticky" id="rack-nav-sticky" aria-label="Section navigation">
+      <nav class="rack-nav-sticky" id="rack-nav-sticky" aria-label="Quick navigation">
         <div class="rack-nav-inner">
           <div class="rack-nav-logo">CRS RACK</div>
           <div class="rack-nav-sections" role="navigation">
-            <a href="#cowley-services" class="rack-nav-item" data-section="cowley-services">
+            <a href="#top" class="rack-nav-item rack-nav-home" data-section="home">
               <span class="rack-nav-led" aria-hidden="true"></span>
-              <span>COWLEY</span>
-            </a>
-            <a href="#cricket-services" class="rack-nav-item" data-section="cricket-services">
-              <span class="rack-nav-led" aria-hidden="true"></span>
-              <span>CRICKET</span>
-            </a>
-            <a href="#rehearsal" class="rack-nav-item" data-section="rehearsal">
-              <span class="rack-nav-led" aria-hidden="true"></span>
-              <span>REH</span>
-            </a>
-            <a href="#control-room" class="rack-nav-item" data-section="control-room">
-              <span class="rack-nav-led" aria-hidden="true"></span>
-              <span>CTRL</span>
+              <span>HOME</span>
             </a>
             <a href="#workshop-cafe" class="rack-nav-item" data-section="cafe">
               <span class="rack-nav-led" aria-hidden="true"></span>
-              <span>CAFÉ</span>
+              <span>WORKSHOP CAFÉ</span>
             </a>
             <a href="/contact" class="rack-nav-item" data-section="contact">
               <span class="rack-nav-led" aria-hidden="true"></span>
               <span>CONTACT</span>
             </a>
           </div>
-          <a href="#services" class="rack-nav-cta">BOOK NOW</a>
         </div>
         <div class="rack-nav-progress" aria-hidden="true"></div>
       </nav>
@@ -119,19 +106,16 @@
       }
     }
 
-    // Fallback: find section by content keywords
+    // Fallback: find section by content keywords (simplified)
     function findSectionByContent(sectionId) {
       const keywords = {
-        'cowley-services': ['cowley', 'cowley road services', 'recording'],
-        'cricket-services': ['cricket', 'cricket road services'],
-        'rehearsal': ['rehearsal', 'band', 'live room'],
-        'control-room': ['control room', 'dry hire', 'monitoring'],
-        'cafe': ['workshop', 'café', 'cafe', 'coffee'],
-        'contact': ['contact', 'enquir']
+        'home': ['welcome', 'crs', 'cowley road studios'],
+        'cafe': ['workshop', 'café', 'cafe', 'coffee', 'coworking'],
+        'contact': ['contact', 'enquir', 'get in touch']
       };
 
       const searchTerms = keywords[sectionId] || [];
-      const blocks = document.querySelectorAll('.service-block, .rack-module-graphic');
+      const blocks = document.querySelectorAll('.service-block, .rack-module-graphic, .welcome-rack-container');
       
       for (let block of blocks) {
         const text = block.textContent.toLowerCase();
@@ -157,7 +141,20 @@
     // Smooth scroll for nav links
     navItems.forEach(item => {
       item.addEventListener('click', function(e) {
+        // Allow CONTACT link to navigate normally (external page)
+        if (this.getAttribute('href') === '/contact') {
+          return; // Don't prevent default, let it navigate
+        }
+        
         e.preventDefault();
+        
+        // HOME button - scroll to top
+        if (this.classList.contains('rack-nav-home')) {
+          window.scrollTo({top: 0, behavior: 'smooth'});
+          return;
+        }
+        
+        // Other section links
         const targetId = this.getAttribute('data-section');
         const target = document.getElementById(targetId) || findSectionByContent(targetId);
         
