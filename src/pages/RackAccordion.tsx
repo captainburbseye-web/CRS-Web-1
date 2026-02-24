@@ -10,6 +10,9 @@ import { simplifiedServices } from '../data/services-simplified';
 export const RackAccordion = () => {
   return (
     <div class="master-rack-chassis">
+      {/* Skip to content link for accessibility */}
+      <a href="#main-content" class="skip-to-content">Skip to main content</a>
+      
       {/* HEADER: Cowley Road Studios Banner Rack Module */}
       <div class="rack-header-container">
         <a href="/" aria-label="Home">
@@ -39,7 +42,7 @@ export const RackAccordion = () => {
       </header>
       
       {/* STUDIO INTRODUCTION */}
-      <div class="studio-intro">
+      <div class="studio-intro" id="main-content" role="main">
         <p class="tagline">Independent creative infrastructure in the heart of Cowley Road, Oxford.</p>
         <div class="hero-ctas">
           <a href="#services" class="cta-secondary">VIEW SERVICES</a>
@@ -48,23 +51,35 @@ export const RackAccordion = () => {
 
       {/* SECTION 1 — CONTROL ROOM DRY HIRE */}
       <div class="rack-module-graphic" id="control-room" data-section="control-room">
-        <a href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services" target="_blank" rel="noopener noreferrer">
+        <a 
+          href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          aria-label="Book Control Room Hire - Professional monitoring environment for producers and engineers. Cricket Road location available now."
+        >
           <img 
             src="https://www.genspark.ai/api/files/s/w37SpaXR" 
-            alt="Control Room Hire - Professional monitoring environment" 
+            alt="Control Room Hire - Professional monitoring environment with VU meters, rotary controls, and spectrum analyzer" 
             class="rack-module-img"
           />
+          <span class="rack-tooltip" aria-hidden="true">Click to book Control Room →</span>
         </a>
       </div>
 
       {/* SECTION 2 — REHEARSAL: Cricket Road Purple Module */}
       <div class="rack-module-graphic" id="rehearsal" data-section="rehearsal">
-        <a href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" target="_blank" rel="noopener noreferrer">
+        <a 
+          href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          aria-label="Book Cricket Road rehearsal space - Fully equipped live room with drums, backline, and PA system. 2-4 hour sessions available."
+        >
           <img 
             src="https://www.genspark.ai/api/files/s/cWStH6bA" 
-            alt="Cricket Studios Rehearsal Booking" 
+            alt="Cricket Studios Rehearsal Booking - Warning sign style panel with drummer illustration" 
             class="rack-module-img"
           />
+          <span class="rack-tooltip" aria-hidden="true">Click to book Cricket Road rehearsal →</span>
         </a>
       </div>
       
@@ -86,12 +101,17 @@ export const RackAccordion = () => {
 
       {/* SECTION 3 — LIVE SERVICES: PA / AV / Technical */}
       <div class="rack-module-graphic" id="live-services" data-section="live-services">
-        <a href="/contact" class="rack-module-link">
+        <a 
+          href="/contact" 
+          class="rack-module-link"
+          aria-label="Enquire about Live Services - PA hire, DJ rigs, lighting, and event support. Professional audio visual equipment and technical services."
+        >
           <img 
             src="https://www.genspark.ai/api/files/s/XRsgWrce" 
-            alt="Live Services - PA Hire, AV, Event Support" 
+            alt="Live Services - Speaker stack illustration with PA Hire, DJ Rigs, Lighting, and Event Support options" 
             class="rack-module-img"
           />
+          <span class="rack-tooltip" aria-hidden="true">Click to enquire about live services →</span>
         </a>
       </div>
       

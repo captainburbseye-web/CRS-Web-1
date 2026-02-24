@@ -105,6 +105,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* Sticky Rack Navigation */}
         <link href="/static/rack-nav-sticky.css" rel="stylesheet" />
+        
+        {/* Rack Module Enhancements (hover, tooltips, accessibility) */}
+        <link href="/static/rack-enhancements.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}
