@@ -10,11 +10,11 @@ import { simplifiedServices } from '../data/services-simplified';
 export const RackAccordion = () => {
   return (
     <div class="master-rack-chassis">
-      {/* HEADER: Master Rack Unit Only - No Navigation */}
+      {/* HEADER: Cowley Road Studios Banner Rack Module */}
       <div class="rack-header-container">
         <a href="/" aria-label="Home">
           <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png" 
+            src="https://www.genspark.ai/api/files/s/witLVbsh" 
             alt="Cowley Road Studios Master Rack" 
             class="rack-header-img"
           />
@@ -47,50 +47,55 @@ export const RackAccordion = () => {
       </div>
 
       {/* SECTION 1 — CONTROL ROOM DRY HIRE */}
-      <div class="service-block recording-block">
-        <h2>Control Room (Dry Hire)</h2>
-        <p class="service-intro">Self-operated recording space. No engineer included.</p>
-        <p class="service-intro">Cricket Road available now. Cowley Road Control Room coming online soon.</p>
-        
-        <div class="service-cta">
-          <a href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services" class="cta-service">BOOK CRICKET ROAD CONTROL ROOM</a>
-          <a href="/contact?ref=cowley-control-room" class="cta-service secondary">ENQUIRE: COWLEY ROAD CONTROL ROOM</a>
-        </div>
+      <div class="rack-module-graphic">
+        <a href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services" target="_blank" rel="noopener noreferrer">
+          <img 
+            src="https://www.genspark.ai/api/files/s/w37SpaXR" 
+            alt="Control Room Hire - Professional monitoring environment" 
+            class="rack-module-img"
+          />
+        </a>
       </div>
 
-      {/* SECTION 2 — REHEARSAL */}
+      {/* SECTION 2 — REHEARSAL: Cricket Road Purple Module */}
+      <div class="rack-module-graphic">
+        <a href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" target="_blank" rel="noopener noreferrer">
+          <img 
+            src="https://www.genspark.ai/api/files/s/cWStH6bA" 
+            alt="Cricket Studios Rehearsal Booking" 
+            class="rack-module-img"
+          />
+        </a>
+      </div>
+      
+      {/* SECTION 2B — REHEARSAL: Cowley Road (text block with pricing) */}
       <div class="service-block rehearsal-block">
-        <h2>Band Rehearsals</h2>
-        <p class="service-intro">Fully treated live rooms. PA included.</p>
+        <h2>Cowley Road Rehearsal</h2>
+        <p class="service-intro">Main facility. Fully treated live room. PA included. Max 4 members.</p>
         
-        <div class="location-pricing-grid">
-          <div class="location-card">
-            <h3>Cowley Road</h3>
-            <div class="pricing-simple">
-              <div class="price-row">2 hours — £45</div>
-              <div class="price-row">3 hours — £60</div>
-              <div class="price-row">4 hours — £65</div>
-            </div>
-            <p class="price-note">Max 4 members</p>
-          </div>
-          
-          <div class="location-card">
-            <h3>Cricket Road</h3>
-            <div class="pricing-simple">
-              <div class="price-row">2 hours — £40</div>
-              <div class="price-row">3 hours — £55</div>
-              <div class="price-row">4 hours — £60</div>
-            </div>
-          </div>
+        <div class="pricing-simple">
+          <div class="price-row">2 hours — £45</div>
+          <div class="price-row">3 hours — £60</div>
+          <div class="price-row">4 hours — £65</div>
         </div>
         
         <div class="service-cta">
           <a href="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services" class="cta-service">BOOK COWLEY ROAD REHEARSAL</a>
-          <a href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" class="cta-service">BOOK CRICKET ROAD REHEARSAL</a>
         </div>
       </div>
 
-      {/* SECTION 3 — PODCAST & AV */}
+      {/* SECTION 3 — LIVE SERVICES: PA / AV / Technical */}
+      <div class="rack-module-graphic">
+        <a href="/contact" class="rack-module-link">
+          <img 
+            src="https://www.genspark.ai/api/files/s/XRsgWrce" 
+            alt="Live Services - PA Hire, AV, Event Support" 
+            class="rack-module-img"
+          />
+        </a>
+      </div>
+      
+      {/* SECTION 3B — PODCAST & AV */}
       <div class="service-block podcast-block">
         <h2>Podcast & AV Suite</h2>
         <p class="service-intro">Spoken word, interviews, broadcast content.</p>

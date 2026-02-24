@@ -99,6 +99,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* Legacy accordion styles (temporary - integrated in next phase) */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />
+        
+        {/* Rack Module Visual Graphics */}
+        <link href="/static/rack-modules-visual.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}

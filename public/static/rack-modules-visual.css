@@ -1,0 +1,64 @@
+/**
+ * RACK MODULE VISUAL GRAPHICS
+ * Full-width clickable rack panel images
+ */
+
+.rack-module-graphic {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+
+.rack-module-graphic a,
+.rack-module-link {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.rack-module-graphic a:hover,
+.rack-module-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.rack-module-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* Spacing between rack modules */
+.rack-module-graphic + .service-block {
+  margin-top: 0;
+}
+
+.service-block + .rack-module-graphic {
+  margin-top: var(--spacing-lg);
+}
+
+.rack-module-graphic + .rack-module-graphic {
+  margin-top: 0;
+}
+
+/* Ensure header rack sits flush */
+.rack-header-container {
+  margin: 0;
+  padding: 0;
+}
+
+.rack-header-container + .rack-header {
+  margin-top: 0;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .rack-module-graphic a:active {
+    transform: scale(0.98);
+  }
+}
