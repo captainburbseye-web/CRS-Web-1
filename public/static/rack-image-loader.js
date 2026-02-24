@@ -145,6 +145,7 @@
 
   /**
    * Initialize lazy loading for rack images
+   * Updated to work with <picture> elements and responsive srcset
    */
   function initLazyLoading() {
     // Find all rack module containers
@@ -167,45 +168,53 @@
       if (!img) return;
       
       // Preload critical above-the-fold images immediately
+      // These are already preloaded via <link rel="preload"> in <head>
       if (index < CONFIG.preloadCount) {
-        const src = img.src;
-        img.dataset.src = src;
         img.dataset.priority = 'high';
-        
-        // Load immediately without lazy loading
-        loadImage(img, src)
-          .then(() => {
-            img.style.opacity = '1';
-          })
-          .catch(err => console.error('Critical image load error:', err));
-        
+        img.style.opacity = '1';
         return;
       }
       
-      // For other images, set up lazy loading
-      const src = img.src;
-      img.dataset.src = src;
+      // For lazy-loaded images, the browser will handle responsive loading
+      // via the <picture> element and srcset attributes
+      // We just need to observe and add visual feedback
       
       // Make image container relative for positioning
       if (getComputedStyle(module).position === 'static') {
         module.style.position = 'relative';
       }
       
-      // Add placeholder
+      // Add placeholder (will be removed when image loads)
       const placeholder = createPlaceholder(img);
       module.appendChild(placeholder);
       
-      // Clear src to prevent immediate load
-      img.removeAttribute('src');
+      // Set initial opacity
       img.style.opacity = '0';
       
-      // Observe for lazy loading
+      // Listen for when image loads
+      if (img.complete) {
+        // Already loaded
+        fadeInImage(img, placeholder);
+      } else {
+        img.addEventListener('load', () => {
+          fadeInImage(img, placeholder);
+        });
+        
+        img.addEventListener('error', () => {
+          console.error('Image load error:', img.src);
+          if (placeholder) {
+            placeholder.innerHTML = '<div class="load-error">⚠ LOAD ERROR</div>';
+          }
+        });
+      }
+      
+      // Observe for intersection
       observer.observe(module);
     });
     
     console.log(`🎯 Rack Image Loader initialized: ${rackModules.length} modules`);
-    console.log(`⚡ Preloading ${CONFIG.preloadCount} critical images`);
-    console.log(`🔄 Lazy loading ${rackModules.length - CONFIG.preloadCount} deferred images`);
+    console.log(`⚡ ${CONFIG.preloadCount} critical images (preloaded via <link>)`);
+    console.log(`🔄 ${rackModules.length - CONFIG.preloadCount} lazy-loaded with responsive srcset`);
   }
 
   /**

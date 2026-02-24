@@ -15,39 +15,81 @@ export const RackAccordion = () => {
       {/* WEB BANNER */}
       <div class="rack-header-container">
         <a href="/" aria-label="Cowley Road Studios Home">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/rack%201%20CRS%20Header.png" 
-            alt="Cowley Road Studios Header Banner" 
-            class="rack-header-img"
-          />
+          <picture>
+            <source 
+              type="image/webp" 
+              srcset="/static/rack-images/header-1920w.webp 1920w, /static/rack-images/header-1280w.webp 1280w, /static/rack-images/header-640w.webp 640w"
+              sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+            />
+            <img 
+              src="/static/rack-images/header.webp"
+              alt="Cowley Road Studios Header Banner" 
+              class="rack-header-img"
+              width="1920"
+              height="auto"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </picture>
         </a>
       </div>
       
       {/* WELCOME RACK */}
       <div class="rack-module-graphic" id="main-content" role="main">
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/0%20-%20crs%20welcoem%20rack%20-%20canon%20booking%20link%20to%20rack.png" 
-          alt="CRS Welcome Rack - Main booking interface" 
-          class="rack-module-img"
-        />
+        <picture>
+          <source 
+            type="image/webp" 
+            srcset="/static/rack-images/welcome-rack-1920w.webp 1920w, /static/rack-images/welcome-rack-1280w.webp 1280w, /static/rack-images/welcome-rack-640w.webp 640w"
+            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+          />
+          <img 
+            src="/static/rack-images/welcome-rack.webp"
+            alt="CRS Welcome Rack - Main booking interface" 
+            class="rack-module-img"
+            width="1920"
+            height="auto"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </picture>
       </div>
 
       {/* COWLEY ROAD SERVICES RACK */}
       <div class="rack-module-graphic" id="cowley-services" data-section="cowley-services">
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/1%20-%20Cowley%20services.png" 
-          alt="Cowley Road Services - Recording, Rehearsal, Control Room, AV Hire" 
-          class="rack-module-img"
-        />
+        <picture>
+          <source 
+            type="image/webp" 
+            srcset="/static/rack-images/cowley-services-1920w.webp 1920w, /static/rack-images/cowley-services-1280w.webp 1280w, /static/rack-images/cowley-services-640w.webp 640w"
+            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+          />
+          <img 
+            src="/static/rack-images/cowley-services.webp"
+            alt="Cowley Road Services - Recording, Rehearsal, Control Room, AV Hire" 
+            class="rack-module-img"
+            width="1920"
+            height="auto"
+            loading="lazy"
+          />
+        </picture>
       </div>
 
       {/* CRICKET ROAD SERVICES RACK */}
       <div class="rack-module-graphic" id="cricket-services" data-section="cricket-services">
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/2%20-%20cricket%20services%20rack.png" 
-          alt="Cricket Road Services - Recording, Rehearsal, Control Room" 
-          class="rack-module-img"
-        />
+        <picture>
+          <source 
+            type="image/webp" 
+            srcset="/static/rack-images/cricket-services-1920w.webp 1920w, /static/rack-images/cricket-services-1280w.webp 1280w, /static/rack-images/cricket-services-640w.webp 640w"
+            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+          />
+          <img 
+            src="/static/rack-images/cricket-services.webp"
+            alt="Cricket Road Services - Recording, Rehearsal, Control Room" 
+            class="rack-module-img"
+            width="1920"
+            height="auto"
+            loading="lazy"
+          />
+        </picture>
       </div>
 
       {/* COWLEY ROAD REHEARSAL RACK */}
@@ -58,11 +100,21 @@ export const RackAccordion = () => {
           rel="noopener noreferrer"
           aria-label="Book Cowley Road Rehearsal - £45 for 2 hours, £60 for 3 hours, £65 for 4 hours. Max 4 members."
         >
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/3%20cowley%20rd%20rehearsal%20room%20rack.png" 
-            alt="Cowley Road Rehearsal - 2hrs £45, 3hrs £60, 4hrs £65" 
-            class="rack-module-img"
-          />
+          <picture>
+            <source 
+              type="image/webp" 
+              srcset="/static/rack-images/cowley-rehearsal-1920w.webp 1920w, /static/rack-images/cowley-rehearsal-1280w.webp 1280w, /static/rack-images/cowley-rehearsal-640w.webp 640w"
+              sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+            />
+            <img 
+              src="/static/rack-images/cowley-rehearsal.webp"
+              alt="Cowley Road Rehearsal - 2hrs £45, 3hrs £60, 4hrs £65" 
+              class="rack-module-img"
+              width="1920"
+              height="auto"
+              loading="lazy"
+            />
+          </picture>
           <span class="rack-tooltip" aria-hidden="true">Click to book Cowley Road Rehearsal →</span>
         </a>
       </div>
@@ -75,11 +127,21 @@ export const RackAccordion = () => {
           rel="noopener noreferrer"
           aria-label="Book Cricket Road Rehearsal - Fully equipped live room with drums, backline, and PA system."
         >
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/4%20crticket%20rd%20rehearsal%20rack.png" 
-            alt="Cricket Road Rehearsal - Warning sign style panel with drummer" 
-            class="rack-module-img"
-          />
+          <picture>
+            <source 
+              type="image/webp" 
+              srcset="/static/rack-images/cricket-rehearsal-1920w.webp 1920w, /static/rack-images/cricket-rehearsal-1280w.webp 1280w, /static/rack-images/cricket-rehearsal-640w.webp 640w"
+              sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+            />
+            <img 
+              src="/static/rack-images/cricket-rehearsal.webp"
+              alt="Cricket Road Rehearsal - Warning sign style panel with drummer" 
+              class="rack-module-img"
+              width="1920"
+              height="auto"
+              loading="lazy"
+            />
+          </picture>
           <span class="rack-tooltip" aria-hidden="true">Click to book Cricket Road Rehearsal →</span>
         </a>
       </div>
@@ -92,11 +154,21 @@ export const RackAccordion = () => {
           rel="noopener noreferrer"
           aria-label="Book Control Room Hire - Professional monitoring environment. Available at both Cowley Road and Cricket Road."
         >
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/control%20room%20hire%20rack.png" 
-            alt="Control Room Hire - VU meters, rotary controls, spectrum analyzer" 
-            class="rack-module-img"
-          />
+          <picture>
+            <source 
+              type="image/webp" 
+              srcset="/static/rack-images/control-room-1920w.webp 1920w, /static/rack-images/control-room-1280w.webp 1280w, /static/rack-images/control-room-640w.webp 640w"
+              sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+            />
+            <img 
+              src="/static/rack-images/control-room.webp"
+              alt="Control Room Hire - VU meters, rotary controls, spectrum analyzer" 
+              class="rack-module-img"
+              width="1920"
+              height="auto"
+              loading="lazy"
+            />
+          </picture>
           <span class="rack-tooltip" aria-hidden="true">Click to book Control Room →</span>
         </a>
       </div>
@@ -107,11 +179,21 @@ export const RackAccordion = () => {
           href="/contact" 
           aria-label="Workshop Café - Coffee, repairs, musical curios, and coworking spaces"
         >
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/9%20wscafe%20rack.png" 
-            alt="Workshop Café - VU meters, pressure gauges, spectrum analyzer" 
-            class="rack-module-img"
-          />
+          <picture>
+            <source 
+              type="image/webp" 
+              srcset="/static/rack-images/workshop-cafe-1920w.webp 1920w, /static/rack-images/workshop-cafe-1280w.webp 1280w, /static/rack-images/workshop-cafe-640w.webp 640w"
+              sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+            />
+            <img 
+              src="/static/rack-images/workshop-cafe.webp"
+              alt="Workshop Café - VU meters, pressure gauges, spectrum analyzer" 
+              class="rack-module-img"
+              width="1920"
+              height="auto"
+              loading="lazy"
+            />
+          </picture>
           <span class="rack-tooltip" aria-hidden="true">Click for Workshop Café info →</span>
         </a>
       </div>
