@@ -1,10 +1,9 @@
 import { simplifiedServices } from '../data/services-simplified';
 
 /**
- * Rack Accordion: Service-First Approach
- * Simplified structure: 9 main services instead of 13 modules
- * Services with multiple locations show expandable location cards
- * Hardware aesthetic with LED indicators
+ * Pure Rack Module Interface
+ * Hardware panels only - no text blocks
+ * Full visual immersion with studio equipment graphics
  */
 
 export const RackAccordion = () => {
@@ -13,299 +12,140 @@ export const RackAccordion = () => {
       {/* Skip to content link for accessibility */}
       <a href="#main-content" class="skip-to-content">Skip to main content</a>
       
-      {/* HEADER: Cowley Road Studios Banner Rack Module */}
+      {/* WEB BANNER */}
       <div class="rack-header-container">
-        <a href="/" aria-label="Home">
+        <a href="/" aria-label="Cowley Road Studios Home">
           <img 
-            src="https://www.genspark.ai/api/files/s/witLVbsh" 
-            alt="Cowley Road Studios Master Rack" 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/rack%201%20CRS%20Header.png" 
+            alt="Cowley Road Studios Header Banner" 
             class="rack-header-img"
           />
         </a>
       </div>
       
-      {/* NAVIGATION BAR */}
-      <header class="rack-header">
-        <nav class="rack-header-nav">
-          <a href="#services">RECORDING</a>
-          <span class="separator">|</span>
-          <a href="#services">REHEARSAL</a>
-          <span class="separator">|</span>
-          <a href="/about">ABOUT</a>
-          <span class="separator">|</span>
-          <a href="/contact">CONTACT</a>
-        </nav>
-        
-        <div class="rack-header-cta">
-          <a href="#services" class="book-now-button">BOOK SESSION</a>
-        </div>
-      </header>
-      
-      {/* STUDIO INTRODUCTION */}
-      <div class="studio-intro" id="main-content" role="main">
-        <p class="tagline">Independent creative infrastructure in the heart of Cowley Road, Oxford.</p>
-        <div class="hero-ctas">
-          <a href="#services" class="cta-secondary">VIEW SERVICES</a>
-        </div>
+      {/* WELCOME RACK */}
+      <div class="rack-module-graphic" id="main-content" role="main">
+        <img 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/0%20-%20crs%20welcoem%20rack%20-%20canon%20booking%20link%20to%20rack.png" 
+          alt="CRS Welcome Rack - Main booking interface" 
+          class="rack-module-img"
+        />
       </div>
 
-      {/* SECTION 1 — CONTROL ROOM DRY HIRE */}
+      {/* COWLEY ROAD SERVICES RACK */}
+      <div class="rack-module-graphic" id="cowley-services" data-section="cowley-services">
+        <img 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/1%20-%20Cowley%20services.png" 
+          alt="Cowley Road Services - Recording, Rehearsal, Control Room, AV Hire" 
+          class="rack-module-img"
+        />
+      </div>
+
+      {/* CRICKET ROAD SERVICES RACK */}
+      <div class="rack-module-graphic" id="cricket-services" data-section="cricket-services">
+        <img 
+          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/2%20-%20cricket%20services%20rack.png" 
+          alt="Cricket Road Services - Recording, Rehearsal, Control Room" 
+          class="rack-module-img"
+        />
+      </div>
+
+      {/* COWLEY ROAD REHEARSAL RACK */}
+      <div class="rack-module-graphic" id="cowley-rehearsal" data-section="rehearsal">
+        <a 
+          href="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          aria-label="Book Cowley Road Rehearsal - £45 for 2 hours, £60 for 3 hours, £65 for 4 hours. Max 4 members."
+        >
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/3%20cowley%20rd%20rehearsal%20room%20rack.png" 
+            alt="Cowley Road Rehearsal - 2hrs £45, 3hrs £60, 4hrs £65" 
+            class="rack-module-img"
+          />
+          <span class="rack-tooltip" aria-hidden="true">Click to book Cowley Road Rehearsal →</span>
+        </a>
+      </div>
+
+      {/* CRICKET ROAD REHEARSAL RACK */}
+      <div class="rack-module-graphic" id="cricket-rehearsal" data-section="rehearsal">
+        <a 
+          href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          aria-label="Book Cricket Road Rehearsal - Fully equipped live room with drums, backline, and PA system."
+        >
+          <img 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/4%20crticket%20rd%20rehearsal%20rack.png" 
+            alt="Cricket Road Rehearsal - Warning sign style panel with drummer" 
+            class="rack-module-img"
+          />
+          <span class="rack-tooltip" aria-hidden="true">Click to book Cricket Road Rehearsal →</span>
+        </a>
+      </div>
+
+      {/* CONTROL ROOM HIRE RACK */}
       <div class="rack-module-graphic" id="control-room" data-section="control-room">
         <a 
           href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services" 
           target="_blank" 
           rel="noopener noreferrer"
-          aria-label="Book Control Room Hire - Professional monitoring environment for producers and engineers. Cricket Road location available now."
+          aria-label="Book Control Room Hire - Professional monitoring environment. Available at both Cowley Road and Cricket Road."
         >
           <img 
-            src="https://www.genspark.ai/api/files/s/w37SpaXR" 
-            alt="Control Room Hire - Professional monitoring environment with VU meters, rotary controls, and spectrum analyzer" 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/control%20room%20hire%20rack.png" 
+            alt="Control Room Hire - VU meters, rotary controls, spectrum analyzer" 
             class="rack-module-img"
           />
           <span class="rack-tooltip" aria-hidden="true">Click to book Control Room →</span>
         </a>
       </div>
 
-      {/* SECTION 2 — REHEARSAL: Cricket Road Purple Module */}
-      <div class="rack-module-graphic" id="rehearsal" data-section="rehearsal">
-        <a 
-          href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          aria-label="Book Cricket Road rehearsal space - Fully equipped live room with drums, backline, and PA system. 2-4 hour sessions available."
-        >
-          <img 
-            src="https://www.genspark.ai/api/files/s/cWStH6bA" 
-            alt="Cricket Studios Rehearsal Booking - Warning sign style panel with drummer illustration" 
-            class="rack-module-img"
-          />
-          <span class="rack-tooltip" aria-hidden="true">Click to book Cricket Road rehearsal →</span>
-        </a>
-      </div>
-      
-      {/* SECTION 2B — REHEARSAL: Cowley Road (text block with pricing) */}
-      <div class="service-block rehearsal-block">
-        <h2>Cowley Road Rehearsal</h2>
-        <p class="service-intro">Main facility. Fully treated live room. PA included. Max 4 members.</p>
-        
-        <div class="pricing-simple">
-          <div class="price-row">2 hours — £45</div>
-          <div class="price-row">3 hours — £60</div>
-          <div class="price-row">4 hours — £65</div>
-        </div>
-        
-        <div class="service-cta">
-          <a href="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services" class="cta-service">BOOK COWLEY ROAD REHEARSAL</a>
-        </div>
-      </div>
-
-      {/* SECTION 3 — LIVE SERVICES: PA / AV / Technical */}
-      <div class="rack-module-graphic" id="live-services" data-section="live-services">
+      {/* WORKSHOP CAFE RACK */}
+      <div class="rack-module-graphic" id="workshop-cafe" data-section="cafe">
         <a 
           href="/contact" 
-          class="rack-module-link"
-          aria-label="Enquire about Live Services - PA hire, DJ rigs, lighting, and event support. Professional audio visual equipment and technical services."
+          aria-label="Workshop Café - Coffee, repairs, musical curios, and coworking spaces"
         >
           <img 
-            src="https://www.genspark.ai/api/files/s/XRsgWrce" 
-            alt="Live Services - Speaker stack illustration with PA Hire, DJ Rigs, Lighting, and Event Support options" 
+            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/rack%20ui%20v2/9%20wscafe%20rack.png" 
+            alt="Workshop Café - VU meters, pressure gauges, spectrum analyzer" 
             class="rack-module-img"
           />
-          <span class="rack-tooltip" aria-hidden="true">Click to enquire about live services →</span>
+          <span class="rack-tooltip" aria-hidden="true">Click for Workshop Café info →</span>
         </a>
       </div>
-      
-      {/* SECTION 3B — PODCAST & AV */}
-      <div class="service-block podcast-block" id="podcast" data-section="podcast">
-        <h2>Podcast & AV Suite</h2>
-        <p class="service-intro">Spoken word, interviews, broadcast content.</p>
-        
-        <ul class="feature-list">
-          <li>Engineer-assisted recording available</li>
-          <li>Professional signal chain</li>
-          <li>Clean delivery</li>
-        </ul>
-        
-        <div class="service-cta">
-          <a href="/contact" class="cta-service">BOOK PODCAST SESSION</a>
-        </div>
-      </div>
 
-      {/* SECTION 4 — REPAIRS */}
-      <div class="service-block repairs-block">
-        <h2>Audio & AV Repairs</h2>
-        
-        <div class="price-highlight-inline">
-          <span>Bench diagnostics — </span>
-          <span class="price">£60 flat rate</span>
-        </div>
-
-        <p class="service-intro">Vintage amps, mixers, signal issues. Professional fault tracing and restoration.</p>
-        
-        <div class="service-cta">
-          <a href="/contact" class="cta-service">BOOK REPAIR</a>
-        </div>
-      </div>
-
-      {/* SECTION 5 — ABOUT PREVIEW */}
-      <div class="service-block about-preview-block">
-        <h2>Built on Oxford Sound Since 1999</h2>
-        <p class="service-intro">Cowley Road Studios continues the Soundworks legacy founded in 1999.</p>
-        <p class="heritage-note">25+ years of independent infrastructure serving Oxford's creative community.</p>
-        
-        <ul class="philosophy-list">
-          <li>Boutique vintage equipment</li>
-          <li>Modern workflow</li>
-          <li>No institutional barriers</li>
-        </ul>
-        
-        <div class="service-cta">
-          <a href="/about" class="cta-service">READ OUR STORY</a>
-        </div>
-      </div>
-
-      {/* SERVICES ANCHOR */}
-      <div id="services" class="services-anchor">
-        <h2>Services</h2>
-        <p class="services-intro">Cowley Road Studios operates across two Oxford locations.</p>
-        <p class="services-intro-note">All pricing is transparent. All bookings are direct.</p>
-      </div>
-
-      {/* OPERATIONAL ORIENTATION STRIP */}
-      <div class="rack-orientation">
-        <p>CRS RACK INTERFACE</p>
-        <p>LIVE STATUS PANEL — SELECT MODULE TO ACCESS SERVICE</p>
-      </div>
-
-      {/* HUMAN SIGNAL LINE */}
-      <p class="rack-human-line">
-        Built and restored by working engineers on Cowley Road.
-      </p>
-
-      {/* MAIN ACCORDION RACK */}
-      <div class="rack-accordion-viewport">
-        <div class="system-badge">
-          <img src="/static/images/crs-badge-dark.webp" alt="CRS" class="system-badge-logo" />
-          <span class="system-led"></span>
-          CRS RACK SYSTEM — ONLINE
-        </div>
-        
-        <div class="rack-accordion-container">
-          {simplifiedServices.map((service) => (
-            <details 
-              key={service.id}
-              class={`rack-accordion-module rack-${service.variant}${service.id === 'rehearsal' ? ' primary' : ''}`}
-              data-variant={service.variant}
-              data-led-color={service.ledColor}
-            >
-              <summary class="rack-accordion-header">
-                <span class="rack-led" data-color={service.ledColor}></span>
-                {service.icon && <span class="rack-icon">{service.icon}</span>}
-                <span class="rack-title">{service.title}</span>
-                <span class="rack-chevron">›</span>
-              </summary>
-              
-              <div class="rack-accordion-content">
-                <div class="rack-content-inner">
-                  <p class="rack-description">{service.description}</p>
-                  
-                  {/* If service has multiple locations */}
-                  {service.locations && service.locations.length > 0 ? (
-                    <div class="location-options">
-                      {service.locations.map((location, i) => (
-                        <div key={i} class="location-card">
-                          <div class="location-card-header">
-                            <h4 class="location-name">{location.location}</h4>
-                            <span class="location-price">{location.price}</span>
-                          </div>
-                          <p class="location-description">{location.description}</p>
-                          
-                          {location.features && location.features.length > 0 && (
-                            <ul class="location-features">
-                              {location.features.map((feature, j) => (
-                                <li key={j}>
-                                  <span class="feature-bullet">✓</span>
-                                  {feature}
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-                          
-                          <a href={location.url} class="location-cta">
-                            <span class="button-led">●</span>
-                            BOOK {location.location}
-                          </a>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    /* Single action service */
-                    <a href={service.url} class="rack-cta-button">
-                      <span class="button-led">●</span>
-                      {service.ctaText || 'BOOK NOW'}
-                    </a>
-                  )}
-                </div>
-              </div>
-            </details>
-          ))}
-        </div>
-        
-        <div class="system-status-strip">
-          SYSTEM: ONLINE · {simplifiedServices.length} SERVICES · CRS v1.0
-        </div>
-      </div>
-
-      {/* SYSTEM STATUS STRIP - Bottom of page */}
-      <div class="status-strip">
-        <div class="status-header">SYSTEM STATUS</div>
-        <div class="status-items">
-          <div class="status-item">
-            <span class="status-led green"></span>
-            <span>Cowley Road Live Room — Operational</span>
-          </div>
-          <div class="status-item">
-            <span class="status-led green"></span>
-            <span>Cricket Road Studio — Operational</span>
-          </div>
-          <div class="status-item">
-            <span class="status-led amber"></span>
-            <span>Control Room — Coming Online</span>
-          </div>
-        </div>
-      </div>
-
-      {/* FOOTER: Map + Contact Info + Rack Bottom */}
+      {/* MAP EMBED */}
       <div class="map-embed-container">
         <div class="map-embed-header">
           <h3 class="map-embed-title">FIND US IN OXFORD</h3>
-          <p class="map-embed-subtitle">Cowley Road Studios / Workshop Cafe · 118 Cowley Road · OX41JE</p>
+          <p class="map-embed-subtitle">Cowley Road Studios / Workshop Cafe · 118 Cowley Road · OX4 1JE</p>
         </div>
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2470.123!2d-1.2384!3d51.7466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c6a42c8c7c3f%3A0x5c5e5e5e5e5e5e5e!2s118%20Cowley%20Road%2C%20Oxford%20OX4%201JE!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk"
-          width="100%"
-          height="400"
-          style="border:0; border-radius: 8px;"
-          allowfullscreen=""
-          loading="lazy"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2470.123!2d-1.2384!3d51.7466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c6a42c8c7c3f%3A0x5c5e5e5e5e5e5e5e!2s118%20Cowley%20Road%2C%20Oxford%20OX4%201JE!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk" 
+          width="100%" 
+          height="400" 
+          style="border:0; border-radius: 8px;" 
+          allowfullscreen="" 
+          loading="lazy" 
           referrerpolicy="no-referrer-when-downgrade"
           title="Cowley Road Studios Location Map"
         ></iframe>
       </div>
 
+      {/* MOBILE NAV */}
       <nav class="mobile-nav mono">
         <a href="#services">SERVICES</a>
         <a href="/contact">CONTACT</a>
       </nav>
 
-      {/* SYSTEM STATUS STRIP */}
+      {/* SYSTEM STATUS */}
       <div class="system-status-strip">
-        CRS SYSTEM STATUS: OPERATIONAL · 
-        LOCATION: 118 COWLEY ROAD — OXFORD · 
-        INFRASTRUCTURE: BUILD PHASE 92% COMPLETE
+        CRS SYSTEM STATUS: OPERATIONAL · LOCATION: 118 COWLEY ROAD — OXFORD · INFRASTRUCTURE: BUILD PHASE 92% COMPLETE
       </div>
 
-      {/* SEO FOOTER LINKS */}
+      {/* FOOTER LINKS */}
       <div class="rack-footer-links">
         <a href="/recording-studio-oxford" class="rack-footer-link">Recording Studio in Oxford</a>
         <a href="/rehearsal-rooms-oxford" class="rack-footer-link">Rehearsal Rooms in Oxford</a>
@@ -313,14 +153,18 @@ export const RackAccordion = () => {
         <a href="/venue-hire-oxford" class="rack-footer-link">Venue Hire in Cowley Road, Oxford</a>
       </div>
 
+      {/* FOOTER */}
       <footer class="site-footer">
         <div class="terminal-status-footer">
-          
           <div class="terminal-status-section nap-section">
             <div class="terminal-status-label">COWLEY ROAD STUDIOS</div>
-            <div class="terminal-status-line" style="font-weight: 600; margin-bottom: 0.5rem;">Independent Recording Studio & Rehearsal Rooms – Oxford</div>
+            <div class="terminal-status-line" style="font-weight: 600; margin-bottom: 0.5rem;">
+              Independent Recording Studio & Rehearsal Rooms – Oxford
+            </div>
             <div class="terminal-status-line nap-address">118 Cowley Road, Oxford</div>
-            <div class="terminal-status-line" style="margin-top: 0.75rem; opacity: 0.7;">Formerly Soundworks Oxford (1999–2024)</div>
+            <div class="terminal-status-line" style="margin-top: 0.75rem; opacity: 0.7;">
+              Formerly Soundworks Oxford (1999–2024)
+            </div>
             <div class="terminal-status-line nap-phone" style="margin-top: 0.75rem;">
               <a href="tel:+441865722027">+44 (0)1865 722027</a>
             </div>
@@ -328,7 +172,9 @@ export const RackAccordion = () => {
               <a href="mailto:info@crsoxford.com">info@crsoxford.com</a>
             </div>
             <div class="terminal-status-line" style="margin-top: 0.5rem;">
-              <a href="https://instagram.com/cowleyroadstudios.ox" target="_blank" rel="noopener">@cowleyroadstudios.ox</a>
+              <a href="https://instagram.com/cowleyroadstudios.ox" target="_blank" rel="noopener">
+                @cowleyroadstudios.ox
+              </a>
             </div>
           </div>
 
@@ -352,13 +198,19 @@ export const RackAccordion = () => {
               <a href="https://instagram.com/cowleyroadstudios.ox" target="_blank" rel="noopener">Instagram</a>
             </div>
             <div class="terminal-status-line">
-              <a href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE" target="_blank" rel="noopener">Google Maps</a>
+              <a href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE" target="_blank" rel="noopener">
+                Google Maps
+              </a>
             </div>
           </div>
 
           <div class="terminal-status-section terminal-truth-line">
-            <div class="terminal-status-line">Built by people restoring a working studio to Cowley Road, piece by piece.</div>
-            <div class="terminal-status-line">Continuing the Soundworks Oxford legacy (1999–2024).</div>
+            <div class="terminal-status-line">
+              Built by people restoring a working studio to Cowley Road, piece by piece.
+            </div>
+            <div class="terminal-status-line">
+              Continuing the Soundworks Oxford legacy (1999–2024).
+            </div>
           </div>
 
           <div class="terminal-status-section">
@@ -366,14 +218,21 @@ export const RackAccordion = () => {
             <div class="terminal-status-line">Independent Recording Studio – Oxford</div>
             <div class="terminal-status-line">Rehearsal Rooms – Cowley Road</div>
             <div class="terminal-status-line">Recording Sessions – Cricket Road</div>
-            <div class="terminal-status-line" style="margin-top: 0.5rem; opacity: 0.7;">Formerly Soundworks Oxford (1999–2024)</div>
+            <div class="terminal-status-line" style="margin-top: 0.5rem; opacity: 0.7;">
+              Formerly Soundworks Oxford (1999–2024)
+            </div>
           </div>
 
           <div class="terminal-status-section footer-branding">
-            <img src="/static/images/crs-control-panel-badge.jpg" alt="CRS Control Panel" class="footer-badge" />
-            <div class="terminal-status-line">© 2026 Cowley Road Studios / Workshop Cafe · POWERED BY 0DR0 ENGINEERING</div>
+            <img 
+              src="/static/images/crs-control-panel-badge.jpg" 
+              alt="CRS Control Panel" 
+              class="footer-badge"
+            />
+            <div class="terminal-status-line">
+              © 2026 Cowley Road Studios / Workshop Cafe · POWERED BY 0DR0 ENGINEERING
+            </div>
           </div>
-
         </div>
       </footer>
     </div>
