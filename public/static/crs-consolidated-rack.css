@@ -523,3 +523,82 @@ body {
   z-index: 5;
   margin-bottom: 2px !important;
 }
+
+/* ================================================
+   METALLIC TEXTURE OVERLAY
+   CSS-only noise pattern for tactile hardware feel
+   ================================================ */
+
+/* Subtle noise texture overlay on rack chassis */
+.master-rack-chassis::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.03;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    );
+  background-size: 4px 4px;
+  mix-blend-mode: overlay;
+}
+
+
+/* ================================================
+   METALLIC TEXTURE OVERLAY
+   CSS-only noise pattern for tactile hardware feel
+   Uses body::after to avoid conflict with rack rails
+   ================================================ */
+
+/* Subtle noise texture overlay across entire page */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998; /* Below sticky nav (9999) but above content */
+  opacity: 0.025;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.05) 2px,
+      rgba(255, 255, 255, 0.05) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.05) 2px,
+      rgba(255, 255, 255, 0.05) 3px
+    );
+  background-size: 3px 3px;
+  mix-blend-mode: overlay;
+}
+
+/* Disable texture on low-end/mobile devices with reduced motion */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  body::after {
+    display: none;
+  }
+}

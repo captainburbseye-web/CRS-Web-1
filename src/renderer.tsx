@@ -144,6 +144,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* Button Interactions - Pressed state, focus, responsive layout */}
         <link href="/static/rack-button-interactions.css" rel="stylesheet" />
+        
+        {/* Toggle Switches - Functional switches for future features */}
+        <link href="/static/toggle-switches.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}
@@ -198,6 +201,10 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <script src="/static/rack-audio-feedback.js" defer></script>
         {/* Simulated audio visualizer for Workshop Café - Ambient effect */}
         <script src="/static/audio-visualizer.js" defer></script>
+        {/* Toggle switches - State management and persistence */}
+        <script src="/static/toggle-switches.js" defer></script>
+        {/* Smooth page transitions - Fade effect with View Transitions API fallback */}
+        <script src="/static/page-transitions.js" defer></script>
       </body>
     </html>
   )
