@@ -196,6 +196,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <script src="/static/rack-enhancements.js" defer></script>
         {/* Audio feedback for button clicks - Vault-Tec style - Deferred */}
         <script src="/static/rack-audio-feedback.js" defer></script>
+        {/* Simulated audio visualizer for Workshop Café - Ambient effect */}
+        <script src="/static/audio-visualizer.js" defer></script>
       </body>
     </html>
   )

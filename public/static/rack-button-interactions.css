@@ -282,3 +282,64 @@
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
+
+/* ================================================
+   DYNAMIC BUTTON GLOW - BREATHING EFFECT
+   Subtle pulsating glow for "powered on" aesthetic
+   ================================================ */
+
+/* Breathing glow for all interactive buttons */
+.recording-cowley-panel,
+.recording-cricket-panel,
+.rehearsal-cowley-panel,
+.rehearsal-cricket-panel,
+.welcome-button,
+.booking-hotspot,
+.booking-button {
+  animation: button-breathing 4s ease-in-out infinite alternate;
+}
+
+/* Very subtle breathing animation - barely perceptible */
+@keyframes button-breathing {
+  0% {
+    box-shadow: 
+      0 0 2px rgba(212, 160, 23, 0.05),
+      inset 0 0 2px rgba(212, 160, 23, 0.02);
+  }
+  100% {
+    box-shadow: 
+      0 0 4px rgba(212, 160, 23, 0.08),
+      inset 0 0 4px rgba(212, 160, 23, 0.04);
+  }
+}
+
+/* Disable breathing during hover/active states */
+.recording-cowley-panel:hover,
+.recording-cricket-panel:hover,
+.rehearsal-cowley-panel:hover,
+.rehearsal-cricket-panel:hover,
+.welcome-button:hover,
+.booking-hotspot:hover,
+.booking-button:hover,
+.recording-cowley-panel:active,
+.recording-cricket-panel:active,
+.rehearsal-cowley-panel:active,
+.rehearsal-cricket-panel:active,
+.welcome-button:active,
+.booking-hotspot:active,
+.booking-button:active {
+  animation: none;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .recording-cowley-panel,
+  .recording-cricket-panel,
+  .rehearsal-cowley-panel,
+  .rehearsal-cricket-panel,
+  .welcome-button,
+  .booking-hotspot,
+  .booking-button {
+    animation: none !important;
+  }
+}
