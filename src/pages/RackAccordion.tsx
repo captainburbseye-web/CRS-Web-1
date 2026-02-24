@@ -212,8 +212,8 @@ export const RackAccordion = () => {
       {/* WORKSHOP CAFE RACK */}
       <div class="rack-module-graphic" id="workshop-cafe" data-section="cafe">
         <a 
-          href="/contact" 
-          aria-label="Workshop Café - Coffee, repairs, musical curios, and coworking spaces"
+          href="/contact?ref=workshop-cafe" 
+          aria-label="Workshop Café - Coffee, repairs, musical curios, and coworking spaces - Click to enquire"
         >
           <picture>
             <source 
