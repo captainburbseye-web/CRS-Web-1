@@ -146,31 +146,67 @@ export const RackAccordion = () => {
         </a>
       </div>
 
-      {/* CONTROL ROOM HIRE RACK */}
-      <div class="rack-module-graphic" id="control-room" data-section="control-room">
-        <a 
-          href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          aria-label="Book Control Room Hire - Professional monitoring environment. Available at both Cowley Road and Cricket Road."
-        >
+      {/* CONTROL ROOM HIRE RACK - with interactive booking buttons */}
+      <div class="rack-module-graphic control-room-module" id="control-room" data-section="control-room">
+        {/* Main visual rack panel */}
+        <picture>
+          <source 
+            type="image/webp" 
+            srcset="/static/rack-images/control-room-1920w.webp 1920w, /static/rack-images/control-room-1280w.webp 1280w, /static/rack-images/control-room-640w.webp 640w"
+            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
+          />
+          <img 
+            src="/static/rack-images/control-room.webp"
+            alt="Control Room Hire - VU meters, rotary controls, spectrum analyzer" 
+            class="rack-module-img"
+            width="1920"
+            height="auto"
+            loading="lazy"
+          />
+        </picture>
+        
+        {/* Interactive booking buttons rack panel */}
+        <div class="control-room-buttons-rack">
           <picture>
             <source 
               type="image/webp" 
-              srcset="/static/rack-images/control-room-1920w.webp 1920w, /static/rack-images/control-room-1280w.webp 1280w, /static/rack-images/control-room-640w.webp 640w"
+              srcset="/static/rack-images/control-room-buttons-1920w.webp 1920w, /static/rack-images/control-room-buttons-1280w.webp 1280w, /static/rack-images/control-room-buttons-640w.webp 640w"
               sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
             />
             <img 
-              src="/static/rack-images/control-room.webp"
-              alt="Control Room Hire - VU meters, rotary controls, spectrum analyzer" 
+              src="/static/rack-images/control-room-buttons.webp"
+              alt="Control Room Booking Buttons - Cowley Road and Cricket Road" 
               class="rack-module-img"
               width="1920"
               height="auto"
               loading="lazy"
             />
           </picture>
-          <span class="rack-tooltip" aria-hidden="true">Click to book Control Room →</span>
-        </a>
+          
+          {/* Clickable hotspot overlays for booking buttons */}
+          <div class="button-hotspots">
+            <a 
+              href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="booking-hotspot booking-hotspot-cowley"
+              data-location="cowley"
+              aria-label="Book Cowley Road Control Room - Professional monitoring environment"
+            >
+              <span class="sr-only">Book Cowley Road</span>
+            </a>
+            <a 
+              href="https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="booking-hotspot booking-hotspot-cricket"
+              data-location="cricket"
+              aria-label="Book Cricket Road Control Room - Professional monitoring environment"
+            >
+              <span class="sr-only">Book Cricket Road</span>
+            </a>
+          </div>
+        </div>
       </div>
 
       {/* WORKSHOP CAFE RACK */}

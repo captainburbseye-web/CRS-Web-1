@@ -1,0 +1,216 @@
+/**
+ * Control Room Buttons Rack - Interactive Hotspot Overlays
+ * Maps clickable areas onto the visual booking button rack
+ */
+
+/* Control room buttons rack container */
+.control-room-buttons-rack {
+  position: relative;
+  display: block;
+  margin-top: -4px; /* Seamless connection to top rack */
+}
+
+/* Hotspot overlay container */
+.button-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 20% 12%; /* Adjust based on actual button positions in image */
+}
+
+/* Individual booking hotspot */
+.booking-hotspot {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease-out;
+  border-radius: 8px;
+  
+  /* Visual feedback on hover */
+  background: transparent;
+}
+
+/* Hover effects */
+.booking-hotspot:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: scale(1.02);
+  box-shadow: 
+    0 0 20px rgba(255, 179, 0, 0.3),
+    inset 0 0 30px rgba(255, 255, 255, 0.05);
+}
+
+/* Active/press effect */
+.booking-hotspot:active {
+  transform: scale(0.98);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Cowley Road button (left) - amber glow */
+.booking-hotspot-cowley:hover {
+  box-shadow: 
+    0 0 30px rgba(255, 179, 0, 0.5),
+    inset 0 0 40px rgba(255, 179, 0, 0.1);
+}
+
+/* Cricket Road button (right) - green glow */
+.booking-hotspot-cricket:hover {
+  box-shadow: 
+    0 0 30px rgba(57, 255, 20, 0.5),
+    inset 0 0 40px rgba(57, 255, 20, 0.1);
+}
+
+/* Focus states for accessibility */
+.booking-hotspot:focus {
+  outline: 3px solid #FFB300;
+  outline-offset: 3px;
+  background: rgba(255, 179, 0, 0.1);
+}
+
+.booking-hotspot-cricket:focus {
+  outline-color: #39FF14;
+  background: rgba(57, 255, 20, 0.1);
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Tooltip on hover */
+.booking-hotspot::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(0, 0, 0, 0.9);
+  color: #FFB300;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.booking-hotspot-cricket::after {
+  color: #39FF14;
+}
+
+.booking-hotspot:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Arrow for tooltip */
+.booking-hotspot::before {
+  content: '';
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%) translateY(18px);
+  border: 6px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+  z-index: 100;
+}
+
+.booking-hotspot:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(8px);
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .button-hotspots {
+    padding: 18% 10%;
+    gap: 1rem;
+  }
+  
+  /* Hide tooltips on mobile (use native touch feedback) */
+  .booking-hotspot::after,
+  .booking-hotspot::before {
+    display: none;
+  }
+  
+  /* Larger touch targets on mobile */
+  .booking-hotspot {
+    min-height: 60px;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1280px) {
+  .button-hotspots {
+    padding: 19% 11%;
+  }
+}
+
+/* Touch feedback for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .booking-hotspot:active {
+    background: rgba(255, 255, 255, 0.15);
+    animation: pulse-press 0.3s ease-out;
+  }
+}
+
+@keyframes pulse-press {
+  0% {
+    transform: scale(0.98);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .booking-hotspot,
+  .booking-hotspot::after,
+  .booking-hotspot::before {
+    transition: none;
+    animation: none;
+  }
+  
+  .booking-hotspot:hover {
+    transform: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .booking-hotspot:hover {
+    background: rgba(255, 255, 255, 0.2);
+    outline: 2px solid currentColor;
+  }
+  
+  .booking-hotspot::after {
+    background: #000;
+    border: 2px solid currentColor;
+  }
+}
