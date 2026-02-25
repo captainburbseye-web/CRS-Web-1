@@ -22,6 +22,7 @@ import { SignageSignalEnhanced } from './pages/SignageSignalEnhanced'
 import { SignageEnhanced } from './pages/SignageEnhanced'
 import { SignageEnhancedV3 } from './pages/SignageEnhancedV3'
 import { SignageV4 } from './pages/SignageV4'
+import { SignageRewrite } from './pages/SignageRewrite'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
@@ -2077,6 +2078,32 @@ app.get('/signage-v4', (c) => {
       <body>
         <SignageV4 />
         <script src="/static/signage-v4.js"></script>
+      </body>
+    </html>
+  )
+})
+
+// SIGNAGE REWRITE — BRAND-COMPLIANT, CALM, STRUCTURED
+// 75-90s loop with 8 frames, persistent QR, no neon, slow mechanical motion
+app.get('/signage-rewrite', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>CRS Signage Rewrite | Brand-Compliant Display</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <style>{`
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          html, body { width: 100%; height: 100%; overflow: hidden; }
+          body { background: #0E0E0E; font-family: 'JetBrains Mono', monospace; }
+        `}</style>
+      </head>
+      <body>
+        <SignageRewrite />
       </body>
     </html>
   )
