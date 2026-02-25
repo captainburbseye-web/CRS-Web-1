@@ -227,8 +227,14 @@ export const SignageEnhanced = () => {
       {/* Load Enhanced Signage CSS */}
       <link href="/static/signage-enhanced.css" rel="stylesheet" />
       
+      {/* Load Additional Enhancements (VU meters, QR glow, focus states) */}
+      <link href="/static/signage-enhancements-v2.css" rel="stylesheet" />
+      
       {/* Load Carousel Engine */}
       <script src="/static/signage-carousel-enhanced.js" defer />
+      
+      {/* Load VU Meter Animations */}
+      <script src="/static/vu-meter-scroll-linked.js" defer />
       
       {/* Load QR Code Generator */}
       <script src="/static/signage-qr.js" defer />
