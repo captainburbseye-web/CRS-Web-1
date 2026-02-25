@@ -20,6 +20,7 @@ import { SignageLoop } from './pages/SignageLoop'
 import { SignageSignal } from './pages/SignageSignal'
 import { SignageSignalEnhanced } from './pages/SignageSignalEnhanced'
 import { SignageEnhanced } from './pages/SignageEnhanced'
+import { SignageEnhancedV3 } from './pages/SignageEnhancedV3'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
@@ -2036,15 +2037,28 @@ app.get('/signagesignal', (c) => {
   )
 })
 
-// ENHANCED SIGNAGE - Full carousel with accessibility, QR codes, and performance optimization
+// ENHANCED SIGNAGE V3 - Brand-Aligned 75-90s Loop (8 Frames)
+// Calm, structured, professional grassroots infrastructure
+// CRS brand palette only - No gradients, no neon, slow mechanical motion
 app.get('/signage-enhanced', (c) => {
-  return c.render(
-    <SignageEnhanced />,
-    {
-      title: 'CRS Enhanced Signage | Digital Display',
-      description: 'Enhanced digital signage with auto-rotating carousel, QR codes, and full accessibility',
-      canonicalUrl: 'https://cowleyroadstudios.com/signage-enhanced'
-    }
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>CRS Enhanced Signage | Brand-Aligned Display</title>
+        <link href="/static/signage-v3-enhanced.css" rel="stylesheet" />
+        <style>{`
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { overflow: hidden; background: #0E0E0E; font-family: 'JetBrains Mono', monospace; }
+        `}</style>
+      </head>
+      <body>
+        <SignageEnhancedV3 />
+        <script src="/static/signage-v3-enhanced.js"></script>
+      </body>
+    </html>
   )
 })
 

@@ -1,0 +1,362 @@
+/**
+ * CRS SIGNAGE ENHANCED V3 - BRAND-ALIGNED STYLES
+ * 
+ * Color Palette (MANDATORY):
+ * - Base: #0E0E0E, #23272B
+ * - Structural: #2E473B, #4F7942
+ * - Highlight: #C2A85A
+ * 
+ * Motion: Slow, mechanical, calm
+ * Typography: JetBrains Mono
+ * NO gradients, NO neon glow, NO excessive motion
+ */
+
+/* ========================================
+   GLOBAL CONTAINER
+   ======================================== */
+
+.signage-v3-container {
+  width: 100vw;
+  height: 100vh;
+  background: #0E0E0E;
+  overflow: hidden;
+  position: relative;
+  font-family: 'JetBrains Mono', monospace;
+  color: #E0E0E0;
+}
+
+/* ========================================
+   AMBIENT BACKGROUND LAYER (CONTINUOUS)
+   ======================================== */
+
+.signage-ambient-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.ambient-rack-drift {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    #23272B 0%,
+    #0E0E0E 50%,
+    #23272B 100%
+  );
+  animation: rack-drift 120s linear infinite;
+}
+
+@keyframes rack-drift {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50px); }
+}
+
+/* ========================================
+   CONTENT FRAMES
+   ======================================== */
+
+.signage-frames {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+.signage-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 2s ease-in-out; /* Soft fade */
+  background-size: cover;
+  background-position: center;
+}
+
+.signage-frame.active {
+  opacity: 1;
+}
+
+/* Frame Overlay */
+.frame-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(14, 14, 14, 0.75);
+  z-index: 1;
+}
+
+.frame-overlay.warm {
+  background: rgba(35, 39, 43, 0.7); /* Slightly warmer for café frame */
+}
+
+/* ========================================
+   PARALLAX LAYERS (MAX 3)
+   ======================================== */
+
+.parallax-layers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Slow, mechanical */
+}
+
+.parallax-layer.layer-1 {
+  background: radial-gradient(circle at 30% 40%, rgba(46, 71, 59, 0.1), transparent 60%);
+}
+
+.parallax-layer.layer-2 {
+  background: radial-gradient(circle at 70% 60%, rgba(79, 121, 66, 0.08), transparent 60%);
+}
+
+.parallax-layer.layer-3 {
+  background: radial-gradient(circle at 50% 50%, rgba(194, 168, 90, 0.05), transparent 60%);
+}
+
+/* ========================================
+   CONTENT PANEL
+   ======================================== */
+
+.frame-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 120px;
+  text-align: center;
+}
+
+/* CRS Badge (Persistent Top-Left) */
+.crs-badge-persistent {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  width: 100px;
+  height: 100px;
+  opacity: 0.9;
+  animation: badge-breathe 8s ease-in-out infinite;
+}
+
+@keyframes badge-breathe {
+  0%, 100% { opacity: 0.9; }
+  50% { opacity: 1; }
+}
+
+/* Main Content */
+.frame-main {
+  max-width: 900px;
+}
+
+.frame-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.frame-subtitle {
+  font-size: 1.5rem;
+  color: #C2A85A;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.frame-body {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: #B0B0B0;
+  white-space: pre-line; /* Preserve line breaks */
+}
+
+/* ========================================
+   VU METERS (STUDIO FRAME ONLY)
+   ======================================== */
+
+.vu-meters-minimal {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.vu-bar {
+  width: 12px;
+  height: 60px;
+  background: #2E473B;
+  animation: vu-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes vu-pulse {
+  0%, 100% { height: 40px; opacity: 0.6; }
+  50% { height: 80px; opacity: 1; }
+}
+
+/* ========================================
+   QR CODE (CTA FRAME ONLY)
+   ======================================== */
+
+.qr-container-persistent {
+  position: absolute;
+  bottom: 80px;
+  right: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.qr-code-box {
+  width: 160px;
+  height: 160px;
+  border: 3px solid #C2A85A;
+  background: rgba(14, 14, 14, 0.9);
+  padding: 15px;
+  animation: qr-subtle-pulse 4s ease-in-out infinite;
+}
+
+@keyframes qr-subtle-pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(194, 168, 90, 0.3); }
+  50% { box-shadow: 0 0 12px rgba(194, 168, 90, 0.5); }
+}
+
+.qr-label {
+  font-size: 0.9rem;
+  color: #C2A85A;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ========================================
+   PROGRESS BAR
+   ======================================== */
+
+.frame-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 20;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  animation: progress-advance var(--frame-duration, 8000ms) linear;
+}
+
+@keyframes progress-advance {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+/* ========================================
+   SYSTEM STATUS BAR (PERSISTENT)
+   ======================================== */
+
+.system-status-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: #23272B;
+  border-top: 2px solid #2E473B;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #808080;
+  z-index: 100;
+}
+
+.status-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.status-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4F7942;
+  box-shadow: 0 0 6px #4F7942;
+  animation: led-breathe 3s ease-in-out infinite;
+}
+
+@keyframes led-breathe {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.status-label {
+  color: #C2A85A;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+}
+
+/* ========================================
+   RESPONSIVE (1920x1080 OPTIMIZED)
+   ======================================== */
+
+@media (max-width: 1920px) and (max-height: 1080px) {
+  .frame-title {
+    font-size: 3rem;
+  }
+  
+  .frame-body {
+    font-size: 1.2rem;
+  }
+  
+  .frame-content {
+    padding: 60px 100px;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY & REDUCED MOTION
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .signage-frame,
+  .parallax-layer,
+  .ambient-rack-drift,
+  .crs-badge-persistent,
+  .qr-code-box,
+  .status-led,
+  .vu-bar {
+    animation: none !important;
+    transition: none !important;
+  }
+}
