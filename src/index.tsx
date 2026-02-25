@@ -21,6 +21,7 @@ import { SignageSignal } from './pages/SignageSignal'
 import { SignageSignalEnhanced } from './pages/SignageSignalEnhanced'
 import { SignageEnhanced } from './pages/SignageEnhanced'
 import { SignageEnhancedV3 } from './pages/SignageEnhancedV3'
+import { SignageV4 } from './pages/SignageV4'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
@@ -2057,6 +2058,25 @@ app.get('/signage-enhanced', (c) => {
       <body>
         <SignageEnhancedV3 />
         <script src="/static/signage-v3-enhanced.js"></script>
+      </body>
+    </html>
+  )
+})
+
+// SIGNAGE V4 — ON-BRAND, EYE-CATCHING, ALLURING
+app.get('/signage-v4', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>CRS Signage V4 | On-Brand Display</title>
+        <link href="/static/signage-v4.css" rel="stylesheet" />
+      </head>
+      <body>
+        <SignageV4 />
+        <script src="/static/signage-v4.js"></script>
       </body>
     </html>
   )
