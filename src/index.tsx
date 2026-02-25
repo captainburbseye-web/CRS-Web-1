@@ -2012,13 +2012,25 @@ app.get('/signage-loop', (c) => {
 // Optimized for 55" displays (1920×1080)
 // Full-screen carousel with QR codes and progress indicators
 app.get('/signagesignal', (c) => {
-  return c.render(
-    <SignageSignal />,
-    {
-      title: 'CRS Signage Signal | Digital Display Channel',
-      description: 'Digital signage carousel optimized for Yodeck displays',
-      canonicalUrl: 'https://cowleyroadstudios.com/signagesignal'
-    }
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>CRS Signage Signal | Digital Display Channel</title>
+        <link href="/static/signage-signal.css" rel="stylesheet" />
+        <style>{`
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { overflow: hidden; background: #000; }
+        `}</style>
+      </head>
+      <body>
+        <SignageSignal />
+        <script src="/static/signage-carousel.js"></script>
+        <script src="/static/signage-qr.js"></script>
+      </body>
+    </html>
   )
 })
 

@@ -44,43 +44,38 @@ const rackModules = [
 
 export const SignageSignal = () => {
   return (
-    <>
-      <div class="signage-signal-container">
-        <div class="signage-carousel" id="signageCarousel">
-          {rackModules.map((module, index) => (
-            <div class={`signage-slide ${index === 0 ? 'active' : ''}`} data-slide={index}>
-              <div class="signage-background" style={`background-image: url('${module.image}')`} role="img" aria-label={module.title} />
-              <div class="signage-overlay">
-                <div class="signage-category">{module.category}</div>
-                <h1 class="signage-title">{module.title}</h1>
-                <p class="signage-description">{module.description}</p>
-                <div class="signage-qr-container">
-                  <div class="signage-qr-code" data-url={module.qrUrl}></div>
-                  <p class="signage-qr-label">SCAN TO BOOK</p>
-                </div>
-                <div class="signage-logo">
-                  <span class="signage-logo-text">CRS</span>
-                  <span class="signage-logo-subtitle">COWLEY ROAD STUDIOS</span>
-                </div>
+    <div class="signage-signal-container">
+      <div class="signage-carousel" id="signageCarousel">
+        {rackModules.map((module, index) => (
+          <div class={`signage-slide ${index === 0 ? 'active' : ''}`} data-slide={index}>
+            <div class="signage-background" style={`background-image: url('${module.image}')`} role="img" aria-label={module.title} />
+            <div class="signage-overlay">
+              <div class="signage-category">{module.category}</div>
+              <h1 class="signage-title">{module.title}</h1>
+              <p class="signage-description">{module.description}</p>
+              <div class="signage-qr-container">
+                <div class="signage-qr-code" data-url={module.qrUrl}></div>
+                <p class="signage-qr-label">SCAN TO BOOK</p>
               </div>
-              <div class="signage-progress"><div class="signage-progress-bar"></div></div>
+              <div class="signage-logo">
+                <span class="signage-logo-text">CRS</span>
+                <span class="signage-logo-subtitle">COWLEY ROAD STUDIOS</span>
+              </div>
             </div>
-          ))}
-        </div>
-        <div class="signage-indicators">
-          {rackModules.map((_, index) => (
-            <button class={`signage-indicator ${index === 0 ? 'active' : ''}`} data-slide={index} aria-label={`Go to slide ${index + 1}`} />
-          ))}
-        </div>
-        <div class="signage-status-bar">
-          <div class="signage-status-item"><span class="signage-status-label">STATUS:</span><span class="signage-status-value live">LIVE</span></div>
-          <div class="signage-status-item"><span class="signage-status-label">LOCATION:</span><span class="signage-status-value">118 COWLEY ROAD, OXFORD</span></div>
-          <div class="signage-status-item"><span class="signage-status-label">BOOKINGS:</span><span class="signage-status-value">ONLINE & PHONE</span></div>
-        </div>
+            <div class="signage-progress"><div class="signage-progress-bar"></div></div>
+          </div>
+        ))}
       </div>
-      <link href="/static/signage-signal.css" rel="stylesheet" />
-      <script src="/static/signage-carousel.js"></script>
-      <script src="/static/signage-qr.js"></script>
-    </>
+      <div class="signage-indicators">
+        {rackModules.map((_, index) => (
+          <button class={`signage-indicator ${index === 0 ? 'active' : ''}`} data-slide={index} aria-label={`Go to slide ${index + 1}`} />
+        ))}
+      </div>
+      <div class="signage-status-bar">
+        <div class="signage-status-item"><span class="signage-status-label">STATUS:</span><span class="signage-status-value live">LIVE</span></div>
+        <div class="signage-status-item"><span class="signage-status-label">LOCATION:</span><span class="signage-status-value">118 COWLEY ROAD, OXFORD</span></div>
+        <div class="signage-status-item"><span class="signage-status-label">BOOKINGS:</span><span class="signage-status-value">ONLINE & PHONE</span></div>
+      </div>
+    </div>
   );
 };
