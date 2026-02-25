@@ -26,27 +26,19 @@ const frames = [
   {
     id: 'who-we-are',
     duration: 10000, // 10 seconds
-    title: 'WHO WE ARE',
-    body: `A creative grassroots infrastructure
-built for Oxford's musicians, engineers
-and independent artists.
-
-Recording. Rehearsal. Live sessions.
-Community space.`,
+    title: 'GRASSROOTS CREATIVE INFRASTRUCTURE',
+    body: `Recording · Rehearsal · Live Sessions
+Community Space for Oxford Musicians`,
     bgImage: '/static/rack-images/crs-header-1920w.webp',
     accent: '#4F7942'
   },
   {
     id: 'the-studio',
     duration: 11000, // 11 seconds
-    title: 'THE STUDIO',
-    body: `Professional Recording Rooms
-Acoustically Treated
-Engineer-Friendly Control Room
-
-Full-band tracking
-Solo artists
-Mixing & production`,
+    title: 'PROFESSIONAL RECORDING',
+    body: `Engineer-Friendly Control Room
+Full-Band Tracking
+Mixing & Production`,
     bgImage: '/static/rack-images/recording-services-1920w.webp',
     accent: '#C2A85A',
     showVU: true
@@ -54,13 +46,10 @@ Mixing & production`,
   {
     id: 'rehearsals',
     duration: 9000, // 9 seconds
-    title: 'REHEARSALS',
-    body: `Reliable Rehearsal Space
-Proper backline
-Clear signal paths
-
-Tighten your set.
-Then record it properly.`,
+    title: 'REHEARSAL SPACE',
+    body: `Proper Backline · Clear Signal Paths
+Tighten Your Set
+Then Record It`,
     bgImage: '/static/rack-images/rehearsal-combi-1920w.webp',
     accent: '#2E473B'
   },
@@ -81,11 +70,9 @@ to real performance.`,
     id: 'workshop-cafe',
     duration: 9000, // 9 seconds
     title: 'WORKSHOP CAFÉ',
-    body: `A front-of-house creative space
-for talks, events, collaborations
-and coffee between sessions.
-
-Warm. Open. Independent.`,
+    body: `Coffee · Repairs · Events
+Coworking · Collaborations
+Warm · Open · Independent`,
     bgImage: '/static/rack-images/workshop-cafe-1920w.webp',
     accent: '#C2A85A',
     warmTone: true
@@ -93,17 +80,12 @@ Warm. Open. Independent.`,
   {
     id: 'community',
     duration: 10000, // 10 seconds
-    title: 'COMMUNITY INFRASTRUCTURE',
-    body: `We're evolving a connected ecosystem:
+    title: 'EVOLVING ECOSYSTEM',
+    body: `Session Players · Engineers
+Student Bands · Local Artists
+Live Circuits
 
-• Session players
-• Engineers
-• Student bands
-• Local artists
-• Live circuits
-
-Built to support serious music
-at grassroots level.`,
+Serious Music · Grassroots Level`,
     bgImage: '/static/rack-images/crs-header-1920w.webp',
     accent: '#2E473B'
   },
@@ -111,9 +93,8 @@ at grassroots level.`,
     id: 'cta',
     duration: 9000, // 9 seconds
     title: 'BOOK NOW',
-    body: `Book Rehearsal
-Book Recording
-Scan for Rates & Availability
+    body: `Rehearsal · Recording
+Scan for Rates
 
 crsoxford.com`,
     bgImage: '/static/rack-images/welcome-rack-1920w.webp',
