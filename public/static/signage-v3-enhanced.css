@@ -75,12 +75,22 @@
   height: 100%;
   opacity: 0;
   transition: opacity 2s ease-in-out; /* Soft fade */
-  background-size: cover;
-  background-position: center;
 }
 
 .signage-frame.active {
   opacity: 1;
+}
+
+/* Background Image - object-fit: cover ensures seamless fill */
+.frame-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Seamlessly fills viewport, crops black bars */
+  object-position: center;
+  z-index: 0;
 }
 
 /* Frame Overlay - DARKER for street visibility */

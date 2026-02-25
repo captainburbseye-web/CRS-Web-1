@@ -118,8 +118,15 @@ export const SignageEnhancedV3 = () => {
             class={`signage-frame ${index === 0 ? 'active' : ''}`} 
             data-frame={index}
             data-duration={frame.duration}
-            style={`background-image: url('${frame.bgImage}')`}
           >
+            {/* Background Image (object-fit: cover for seamless fill) */}
+            <img 
+              src={frame.bgImage} 
+              alt="" 
+              class="frame-bg-image"
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+            
             {/* Background Overlay */}
             <div class={`frame-overlay ${frame.warmTone ? 'warm' : ''}`}></div>
 
