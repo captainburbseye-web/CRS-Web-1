@@ -101,39 +101,11 @@
 
   /**
    * Enhanced button press effects
+   * DISABLED: Causing yellow overlay stuck state
    */
   function initButtonEffects() {
-    const buttons = document.querySelectorAll(
-      '.header-button, .recording-panel, .booking-hotspot, .rack-module-graphic a'
-    );
-    
-    buttons.forEach(button => {
-      // Add press class on mousedown/touchstart
-      button.addEventListener('mousedown', () => {
-        button.classList.add('button-pressed');
-      });
-      
-      button.addEventListener('touchstart', () => {
-        button.classList.add('button-pressed');
-      }, { passive: true });
-      
-      // Remove press class on mouseup/touchend
-      const removePress = () => {
-        button.classList.remove('button-pressed');
-      };
-      
-      button.addEventListener('mouseup', removePress);
-      button.addEventListener('mouseleave', removePress);
-      button.addEventListener('touchend', removePress);
-      button.addEventListener('touchcancel', removePress);
-      
-      // Haptic feedback on mobile
-      button.addEventListener('touchstart', () => {
-        if ('vibrate' in navigator) {
-          navigator.vibrate(10); // Very brief haptic
-        }
-      }, { passive: true });
-    });
+    // Button press effects disabled to prevent stuck yellow overlays
+    return;
   }
 
   /**
