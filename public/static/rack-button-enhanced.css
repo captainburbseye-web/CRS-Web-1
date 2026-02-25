@@ -1,0 +1,201 @@
+/**
+ * Enhanced Button Design - Gold Gradient with Tactile Effects
+ * Awwwards-level interactivity with sound feedback
+ */
+
+/* Base Button Styles */
+.rack-button-enhanced,
+.booking-hotspot,
+.welcome-button,
+.crs-button {
+  background: linear-gradient(to bottom, #FFD700, #CC9900);
+  border: 2px solid #B38F00;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #000;
+  font-weight: bold;
+  font-family: 'JetBrains Mono', monospace;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.3), 
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+    0 0 0 0 rgba(255, 215, 0, 0);
+  transition: 
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.2s ease,
+    background 0.15s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover State - Lifted tactile effect */
+.rack-button-enhanced:hover,
+.booking-hotspot:hover,
+.welcome-button:hover,
+.crs-button:hover {
+  background: linear-gradient(to bottom, #FFE066, #D4A200);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 10px rgba(0, 0, 0, 0.4), 
+    inset 0 -2px 0 rgba(0, 0, 0, 0.1),
+    0 0 15px 2px rgba(255, 215, 0, 0.4);
+}
+
+/* Active/Pressed State - Depressed button effect */
+.rack-button-enhanced:active,
+.booking-hotspot:active,
+.welcome-button:active,
+.crs-button:active {
+  background: #D4A200;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 0 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(2px) scale(0.98);
+}
+
+/* Focus Outline for Keyboard Navigation */
+.rack-button-enhanced:focus-visible,
+.booking-hotspot:focus-visible,
+.welcome-button:focus-visible,
+.crs-button:focus-visible {
+  outline: 3px solid #FFB700;
+  outline-offset: 4px;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.3),
+    0 0 20px 4px rgba(255, 183, 0, 0.6);
+}
+
+/* Ripple Effect on Click */
+.rack-button-enhanced::after,
+.booking-hotspot::after,
+.welcome-button::after,
+.crs-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s, opacity 0.6s;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.rack-button-enhanced:active::after,
+.booking-hotspot:active::after,
+.welcome-button:active::after,
+.crs-button:active::after {
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+}
+
+/* Disabled State */
+.rack-button-enhanced:disabled,
+.booking-hotspot:disabled,
+.welcome-button:disabled,
+.crs-button:disabled {
+  background: #555;
+  border-color: #333;
+  color: #888;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Loading State with Spinner */
+.rack-button-enhanced.loading::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #000;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: button-spin 0.8s linear infinite;
+}
+
+@keyframes button-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Mobile Touch Optimization */
+@media (max-width: 768px) {
+  .rack-button-enhanced,
+  .booking-hotspot,
+  .welcome-button,
+  .crs-button {
+    min-height: 48px;
+    min-width: 48px;
+    font-size: 1rem;
+    padding: 14px 20px;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .rack-button-enhanced,
+  .booking-hotspot,
+  .welcome-button,
+  .crs-button {
+    border-width: 3px;
+    font-weight: 900;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .rack-button-enhanced,
+  .booking-hotspot,
+  .welcome-button,
+  .crs-button {
+    transition: none;
+    animation: none;
+  }
+  
+  .rack-button-enhanced::after,
+  .booking-hotspot::after,
+  .welcome-button::after,
+  .crs-button::after {
+    display: none;
+  }
+}
+
+/* Secondary Button Variant (Amber) */
+.rack-button-secondary {
+  background: linear-gradient(to bottom, #FFA500, #CC8400);
+  border-color: #996300;
+}
+
+.rack-button-secondary:hover {
+  background: linear-gradient(to bottom, #FFB733, #D48F00);
+}
+
+/* Danger Button Variant (Red) */
+.rack-button-danger {
+  background: linear-gradient(to bottom, #FF4444, #CC0000);
+  border-color: #990000;
+  color: #FFF;
+}
+
+.rack-button-danger:hover {
+  background: linear-gradient(to bottom, #FF6666, #DD0000);
+}
+
+/* Success Button Variant (Green) */
+.rack-button-success {
+  background: linear-gradient(to bottom, #7FFF00, #5CB300);
+  border-color: #4D9900;
+}
+
+.rack-button-success:hover {
+  background: linear-gradient(to bottom, #99FF33, #6DC400);
+}

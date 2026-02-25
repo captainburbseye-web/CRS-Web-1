@@ -1,0 +1,211 @@
+/**
+ * Rack Switch Styles
+ * Hardware-style toggle switches with ON/OFF states
+ */
+
+.rack-switch {
+  width: 50px;
+  height: 24px;
+  background: linear-gradient(to bottom, #1a1a1a, #0d0d0d);
+  border: 2px solid #333;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.rack-switch:hover {
+  border-color: #555;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 2px 6px rgba(0, 0, 0, 0.4),
+    0 0 10px rgba(127, 255, 0, 0.2);
+}
+
+.rack-switch:focus-visible {
+  outline: 2px solid #7FFF00;
+  outline-offset: 3px;
+}
+
+/* Toggle Knob */
+.toggle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), background 0.3s ease;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* OFF State (Red) */
+.rack-switch[data-state="off"] .toggle {
+  transform: translateX(0);
+  background: radial-gradient(circle at 30% 30%, #ff6666, #ff0000);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+    0 0 10px rgba(255, 0, 0, 0.6);
+}
+
+/* ON State (Green) */
+.rack-switch[data-state="on"] {
+  background: linear-gradient(to bottom, #1a3310, #0d1a08);
+  border-color: #2d5220;
+}
+
+.rack-switch[data-state="on"] .toggle {
+  transform: translateX(26px);
+  background: radial-gradient(circle at 30% 30%, #99ff99, #00ff00);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 0 15px rgba(0, 255, 0, 0.8);
+}
+
+/* Indicator Labels */
+.rack-switch::before,
+.rack-switch::after {
+  content: '';
+  position: absolute;
+  font-size: 0.6rem;
+  font-weight: bold;
+  font-family: 'JetBrains Mono', monospace;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.rack-switch::before {
+  content: 'OFF';
+  left: -35px;
+  color: #FF0000;
+}
+
+.rack-switch::after {
+  content: 'ON';
+  right: -30px;
+  color: #00FF00;
+}
+
+.rack-switch[data-state="off"]::before {
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+}
+
+.rack-switch[data-state="on"]::after {
+  opacity: 1;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
+}
+
+/* Switch with Label */
+.rack-switch-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+}
+
+.rack-switch-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: #E0E0E0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+/* Vertical Switch Orientation */
+.rack-switch.vertical {
+  width: 24px;
+  height: 50px;
+  border-radius: 12px;
+}
+
+.rack-switch.vertical .toggle {
+  transform: translateY(0);
+}
+
+.rack-switch.vertical[data-state="on"] .toggle {
+  transform: translateY(26px);
+}
+
+/* Disabled State */
+.rack-switch:disabled,
+.rack-switch.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Loading State */
+.rack-switch.loading .toggle {
+  animation: switch-pulse 1s ease-in-out infinite;
+}
+
+@keyframes switch-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Amber/Warning State */
+.rack-switch[data-state="warning"] .toggle {
+  background: radial-gradient(circle at 30% 30%, #ffcc66, #ff9900);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+    0 0 10px rgba(255, 153, 0, 0.6);
+}
+
+/* Mobile Touch Optimization */
+@media (max-width: 768px) {
+  .rack-switch {
+    width: 60px;
+    height: 30px;
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .toggle {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .rack-switch[data-state="on"] .toggle {
+    transform: translateX(32px);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .rack-switch,
+  .toggle {
+    transition: none;
+  }
+  
+  .rack-switch.loading .toggle {
+    animation: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .rack-switch {
+    border-width: 3px;
+  }
+  
+  .rack-switch[data-state="off"] .toggle {
+    background: #FF0000;
+  }
+  
+  .rack-switch[data-state="on"] .toggle {
+    background: #00FF00;
+  }
+}

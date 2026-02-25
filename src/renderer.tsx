@@ -145,6 +145,15 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* Button Interactions - Pressed state, focus, responsive layout */}
         <link href="/static/rack-button-interactions.css" rel="stylesheet" />
         
+        {/* Enhanced Button Design - Gold gradient with tactile effects */}
+        <link href="/static/rack-button-enhanced.css" rel="stylesheet" />
+        
+        {/* VU Meter Styles - Industrial-grade meters */}
+        <link href="/static/vu-meter-styles.css" rel="stylesheet" />
+        
+        {/* Interactive Switches - Hardware-style toggles */}
+        <link href="/static/rack-switches.css" rel="stylesheet" />
+        
         {/* Toggle Switches - Functional switches for future features */}
         <link href="/static/toggle-switches.css" rel="stylesheet" />
       </head>
@@ -205,6 +214,15 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <script src="/static/toggle-switches.js" defer></script>
         {/* Smooth page transitions - Fade effect with View Transitions API fallback */}
         <script src="/static/page-transitions.js" defer></script>
+        
+        {/* Enhanced Button Sound Effects - Awwwards-level interactivity */}
+        <script src="/static/rack-button-sounds.js" defer></script>
+        
+        {/* VU Meter Scroll Animation - Reactive meters */}
+        <script src="/static/vu-meter-animation.js" defer></script>
+        
+        {/* Interactive Rack Switches - Hardware-style toggles with state persistence */}
+        <script src="/static/rack-switches.js" defer></script>
       </body>
     </html>
   )
