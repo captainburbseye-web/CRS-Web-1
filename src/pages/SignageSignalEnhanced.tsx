@@ -49,12 +49,12 @@ const slides = [
   {
     id: 'workshop-cafe',
     title: 'WORKSHOP CAFÉ',
-    subtitle: '118 Cowley Road · Oxford',
-    description: 'Coffee · Repairs · Coworking · Venue Hire',
-    pricing: 'Opening Spring 2026',
-    image: '/static/rack-images/workshop-cafe-1920w.webp',
+    subtitle: 'The Billet Building · 118 Cowley Road',
+    description: 'Coffee • Repairs • Musical Curios • Work Spaces',
+    pricing: 'Opening Spring 2026 · Sell Your Art Here!',
+    image: '/static/workshop-cafe-assets/logo-3d-render-dark.jpg',
     qrUrl: 'https://cowleyroadstudios.com/workshop-cafe',
-    color: '#F59E0B',
+    color: '#E89B3C',
     channel: 'CH-04',
     category: 'CAFÉ'
   },
