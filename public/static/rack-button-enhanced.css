@@ -1,6 +1,12 @@
 /**
  * Enhanced Button Design - Gold Gradient with Tactile Effects
  * Awwwards-level interactivity with sound feedback
+ *
+ * NOTE: .booking-hotspot and .welcome-button are intentionally excluded from
+ * all selectors in this file. Those classes are transparent overlay hotspots
+ * that sit invisibly over rack imagery — they must never receive a background.
+ * Their styles are controlled exclusively by control-room-hotspots.css and
+ * welcome-rack-hotspots.css respectively.
  */
 
 /* Base Button Styles - BOOKING HOTSPOTS REMOVED (causes yellow blobs) */
