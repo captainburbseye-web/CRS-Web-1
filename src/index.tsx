@@ -23,6 +23,7 @@ import { SignageEnhanced } from './pages/SignageEnhanced'
 import { SignageEnhancedV3 } from './pages/SignageEnhancedV3'
 import { SignageV4 } from './pages/SignageV4'
 import { SignageRewrite } from './pages/SignageRewrite'
+import { SignageEnhancedV2 } from './pages/SignageEnhancedV2'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
@@ -2039,9 +2040,12 @@ app.get('/signagesignal', (c) => {
   )
 })
 
-// ENHANCED SIGNAGE V3 - Brand-Aligned 75-90s Loop (8 Frames)
-// Calm, structured, professional grassroots infrastructure
-// CRS brand palette only - No gradients, no neon, slow mechanical motion
+// SIGNAGE ENHANCED V2 — EXACT SPEC COMPLIANCE
+// Technical Delivery: 88-second seamless loop, fade-only transitions
+// Design Tokens: Chassis Black, Veg/Nettle Green, Billet Mustard
+// Motion Rules: Slow, mechanical, calm - no bounce/elastic/rotation
+// Day/Night Mode: Auto-detect or ?mode=day|night
+// Debug Mode: ?debug=1 shows frame name + countdown
 app.get('/signage-enhanced', (c) => {
   return c.html(
     <html lang="en">
@@ -2049,16 +2053,18 @@ app.get('/signage-enhanced', (c) => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="noindex, nofollow" />
-        <title>CRS Enhanced Signage | Brand-Aligned Display</title>
-        <link href="/static/signage-v3-enhanced.css" rel="stylesheet" />
+        <title>CRS Signage Enhanced | Professional Display System</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <style>{`
           * { margin: 0; padding: 0; box-sizing: border-box; }
-          body { overflow: hidden; background: #0E0E0E; font-family: 'JetBrains Mono', monospace; }
+          html, body { width: 100%; height: 100%; overflow: hidden; }
+          body { background: #0E0E0E; font-family: 'JetBrains Mono', monospace; }
         `}</style>
       </head>
       <body>
-        <SignageEnhancedV3 />
-        <script src="/static/signage-v3-enhanced.js"></script>
+        <SignageEnhancedV2 />
       </body>
     </html>
   )
