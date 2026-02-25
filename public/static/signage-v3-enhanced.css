@@ -145,7 +145,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 100px 80px 80px 80px;
+  padding: 100px 80px 150px 80px; /* Added bottom padding: 80px → 150px */
   text-align: center;
 }
 
@@ -172,29 +172,31 @@
 }
 
 .frame-title {
-  font-size: 5.5rem;
+  font-size: 7rem;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 30px;
-  line-height: 1;
-  text-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+  line-height: 0.95;
+  text-shadow: 0 0 60px rgba(0, 0, 0, 0.9), 0 4px 20px rgba(0, 0, 0, 0.8);
 }
 
 .frame-subtitle {
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #C2A85A;
-  margin-bottom: 40px;
-  font-weight: 600;
+  margin-bottom: 50px;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 .frame-body {
-  font-size: 1.8rem;
-  line-height: 1.6;
-  color: #D0D0D0;
+  font-size: 2.2rem;
+  line-height: 1.5;
+  color: #E5E5E5;
   white-space: pre-line;
-  font-weight: 500;
-  max-width: 900px;
+  font-weight: 600;
+  max-width: 1000px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
 
 /* ========================================
@@ -292,13 +294,13 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: 60px; /* Increased: 50px → 60px */
   background: #23272B;
-  border-top: 2px solid #2E473B;
+  border-top: 3px solid #2E473B; /* Thicker: 2px → 3px */
   display: flex;
   justify-content: space-around;
   align-items: center;
-  font-size: 0.85rem;
+  font-size: 1rem; /* Increased: 0.85rem → 1rem */
   color: #808080;
   z-index: 100;
 }
@@ -310,11 +312,11 @@
 }
 
 .status-led {
-  width: 8px;
-  height: 8px;
+  width: 10px; /* Increased: 8px → 10px */
+  height: 10px;
   border-radius: 50%;
   background: #4F7942;
-  box-shadow: 0 0 6px #4F7942;
+  box-shadow: 0 0 8px #4F7942; /* Increased: 6px → 8px */
   animation: led-breathe 3s ease-in-out infinite;
 }
 
@@ -326,8 +328,53 @@
 .status-label {
   color: #C2A85A;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 400;
+  letter-spacing: 0.12em; /* Increased: 0.1em → 0.12em */
+  font-weight: 600; /* Increased: 400 → 600 */
+}
+
+.status-value {
+  color: #E5E5E5; /* Brighter: no existing value → #E5E5E5 */
+  font-weight: 600;
+}
+
+/* ========================================
+   CONTACT INFO STRIP (ABOVE STATUS BAR)
+   ======================================== */
+
+.contact-info-strip {
+  position: fixed;
+  bottom: 60px; /* Sits above status bar */
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: rgba(14, 14, 14, 0.95);
+  border-top: 2px solid #2E473B;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem; /* Large, readable */
+  color: #C2A85A;
+  z-index: 99;
+  padding: 0 60px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.contact-icon {
+  width: 28px;
+  height: 28px;
+  fill: #C2A85A;
+}
+
+.contact-value {
+  color: #E5E5E5;
+  font-weight: 500;
 }
 
 /* ========================================
