@@ -12,21 +12,20 @@ interface SpecSheetProps {
 }
 
 export const RackSpecSheet = ({ title, specs, description, className = '' }: SpecSheetProps) => {
+  // Build spec lines
+  const specLines = specs.map(spec => 
+    `│ [${spec.label.padEnd(13, ' ')}] ${spec.value.padEnd(26, ' ')} │`
+  ).join('\n');
+  
   return (
     <div class={`rack-spec-sheet ${className}`}>
-      <pre class="spec-content">
-{`┌─────────────────────────────────────────────┐
+      <pre class="spec-content">{`┌─────────────────────────────────────────────┐
 │ ${title.padEnd(43, ' ')} │
-├─────────────────────────────────────────────┤`}
-{specs.map(spec => 
-`│ ${`[${spec.label}]`.padEnd(15, ' ')} ${spec.value.padEnd(28, ' ')} │`
-).join('\n')}
-{`├─────────────────────────────────────────────┤
-│ ${description.match(/.{1,43}/g)?.map((line, i) => 
-  i === 0 ? line.padEnd(43, ' ') : `│ ${line.padEnd(43, ' ')}`
-).join(' │\n') || description.padEnd(43, ' ')} │
-└─────────────────────────────────────────────┘`}
-      </pre>
+├─────────────────────────────────────────────┤
+${specLines}
+├─────────────────────────────────────────────┤
+│ ${description.substring(0, 43).padEnd(43, ' ')} │
+└─────────────────────────────────────────────┘`}</pre>
     </div>
   );
 };
@@ -43,7 +42,7 @@ export const serviceSpecs = {
       { label: 'STANDARD', value: 'ODRO Engineering Protocol' },
       { label: 'POLICY', value: 'No Chaos — see /about' }
     ],
-    description: 'Professional recording with experienced engineer. Analog & digital hybrid workflow. Mixing, tracking, overdubs, vocal sessions.'
+    description: 'Professional recording with experienced engineer. Analog & digital hybrid workflow.'
   },
   
   cricketRecording: {
@@ -56,7 +55,7 @@ export const serviceSpecs = {
       { label: 'STANDARD', value: 'ODRO Engineering Protocol' },
       { label: 'SPECIALTY', value: 'Vocals, overdubs, podcasts' }
     ],
-    description: 'Intimate recording space. Perfect for solo artists, voice work, and focused sessions. Same engineering standard, tighter workflow.'
+    description: 'Intimate recording space. Perfect for solo artists, voice work.'
   },
   
   cowleyRehearsal: {
@@ -69,7 +68,7 @@ export const serviceSpecs = {
       { label: 'PRICING', value: '£45 (2h) · £60 (3h) · £65 (4h)' },
       { label: 'ACCESS', value: 'Load-in at ground level' }
     ],
-    description: 'Full-size rehearsal room with professional backline and PA. Drum kit, bass/guitar amps, mics, monitors. Book online via Square.'
+    description: 'Full-size rehearsal room with professional backline and PA.'
   },
   
   cricketRehearsal: {
@@ -82,7 +81,7 @@ export const serviceSpecs = {
       { label: 'PRICING', value: '£45 (2h) · £60 (3h) · £65 (4h)' },
       { label: 'ACCESS', value: 'Compact load-in' }
     ],
-    description: 'Tighter rehearsal space for focused work. Same gear standard, smaller footprint. Book online via Square.'
+    description: 'Tighter rehearsal space for focused work. Same gear standard.'
   },
   
   controlRoom: {
@@ -95,7 +94,7 @@ export const serviceSpecs = {
       { label: 'STANDARD', value: 'ODRO-spec monitoring & signal' },
       { label: 'SUPPORT', value: 'Tech support available' }
     ],
-    description: 'For producers and engineers who want the room without our engineer. Full access to control environment. Contact for pricing.'
+    description: 'For producers and engineers who want the room without our engineer.'
   },
   
   workshopCafe: {
@@ -106,8 +105,8 @@ export const serviceSpecs = {
       { label: 'COFFEE', value: 'Specialty roast available' },
       { label: 'REPAIRS', value: 'Guitar setup, soldering, mods' },
       { label: 'WORKSPACE', value: 'Desk hire by the day' },
-      { label: 'CAPACITY', value: '25 seated / 60 standing (events)' }
+      { label: 'CAPACITY', value: '25 seated / 60 standing' }
     ],
-    description: 'Coffee, workbenches, musical curios. Bring your laptop or your broken amp. Available for private hire. Contact for bookings.'
+    description: 'Coffee, workbenches, musical curios. Bring your laptop or your broken amp.'
   }
 };

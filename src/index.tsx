@@ -691,11 +691,11 @@ app.get('/', (c) => {
     </>,
     {
       title: 'Cowley Road Studios | Recording Studio & Rehearsal Rooms Oxford',
-      description: 'Recording studio, rehearsal rooms, AV services and venue hire in Oxford. Professional infrastructure on Cowley Road. Book sessions online.',
-      keywords: 'recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford',
+      description: 'Professional recording studio with engineer, rehearsal rooms (£45-£65), control room hire, and Workshop Café. Two locations on Cowley Road and Cricket Road, Oxford. Book online.',
+      keywords: 'recording studio oxford, rehearsal rooms oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music studio oxford, band rehearsal oxford, workshop cafe oxford',
       canonicalUrl: 'https://cowleyroadstudios.com/',
       ogTitle: 'Cowley Road Studios | Recording Studio & Rehearsal Rooms Oxford',
-      ogDescription: 'Recording studio, rehearsal rooms, AV services and venue hire in Oxford. Professional infrastructure on Cowley Road.',
+      ogDescription: 'Professional recording studio with engineer, rehearsal rooms (£45-£65), control room hire, and Workshop Café in Oxford.',
       ogUrl: 'https://cowleyroadstudios.com/'
     }
   )
@@ -1416,9 +1416,13 @@ app.get('/workshop-cafe', (c) => {
   return c.render(
       <WorkshopCafePage />,
     {
-      title: 'Workshop Café Oxford | Community Space & Venue Hire',
-      description: 'Café, workspace, and small venue in East Oxford. Available for private hire and public programming. Part of Cowley Road Studios.',
-      keywords: 'cafe oxford, workshop cafe oxford, venue hire oxford, community space oxford, east oxford cafe'
+      title: 'Workshop Café Oxford | Coffee, Workspace & Venue Hire | 118 Cowley Road',
+      description: 'Specialty coffee, coworking space, guitar repairs, and venue hire (25-60 capacity) in East Oxford. Full venue £25/hr, meeting table £25/half-day. Part of Cowley Road Studios at 118 Cowley Road.',
+      keywords: 'workshop cafe oxford, cafe cowley road, coworking oxford, venue hire oxford, coffee oxford, guitar repairs oxford, community space oxford, east oxford cafe',
+      canonicalUrl: 'https://cowleyroadstudios.com/workshop-cafe',
+      ogTitle: 'Workshop Café Oxford | Coffee, Workspace & Venue Hire',
+      ogDescription: 'Specialty coffee, coworking space, and venue hire (25-60 capacity) in East Oxford. Part of Cowley Road Studios.',
+      ogUrl: 'https://cowleyroadstudios.com/workshop-cafe'
     }
   )
 })

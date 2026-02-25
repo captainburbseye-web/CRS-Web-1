@@ -1,4 +1,5 @@
 import { simplifiedServices } from '../data/services-simplified';
+import { RackSpecSheet, serviceSpecs } from '../components/RackSpecSheet';
 
 /**
  * Pure Rack Module Interface
@@ -53,7 +54,7 @@ export const RackAccordion = () => {
           
           {/* WORKSHOP CAFE button */}
           <a 
-            href="/contact?ref=workshop-cafe"
+            href="/workshop-cafe"
             class="welcome-button welcome-button-cafe"
             aria-label="Workshop Café - Coffee, repairs, and coworking space"
           >
@@ -361,8 +362,8 @@ export const RackAccordion = () => {
       {/* WORKSHOP CAFE RACK */}
       <div class="rack-module-graphic" id="workshop-cafe" data-section="cafe">
         <a 
-          href="/contact?ref=workshop-cafe" 
-          aria-label="Workshop Café - Coffee, repairs, musical curios, and coworking spaces - Click to enquire"
+          href="/workshop-cafe" 
+          aria-label="Workshop Café - Coffee, repairs, musical curios, and coworking spaces - Learn more"
         >
           <picture>
             <source 
