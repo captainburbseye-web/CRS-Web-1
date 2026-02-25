@@ -204,3 +204,18 @@ a:hover {
     display: none;
   }
 }
+
+/* BRUTE FORCE: Kill all yellow overlays */
+.welcome-button:hover, 
+.welcome-button:active,
+.welcome-button:focus,
+.welcome-button.button-pressed,
+.booking-hotspot:hover,
+.booking-hotspot:active, 
+.booking-hotspot:focus,
+.booking-hotspot.button-pressed { 
+  box-shadow: none !important; 
+  outline: none !important; 
+  filter: none !important;
+  background: transparent !important;
+}

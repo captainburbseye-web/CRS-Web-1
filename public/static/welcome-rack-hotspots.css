@@ -93,14 +93,11 @@
   transform: translateY(0) scale(0.98);
 }
 
-/* Focus state for keyboard navigation */
+/* Focus state for keyboard navigation - DISABLED */
 .welcome-button:focus-visible {
-  outline: 3px solid rgba(255, 204, 0, 0.7);
-  outline-offset: -3px;
-  background: rgba(255, 215, 0, 0.06);
-  box-shadow: 
-    inset 0 0 30px rgba(255, 215, 0, 0.12),
-    0 0 25px rgba(255, 215, 0, 0.2);
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: -2px;
+  background: transparent;
 }
 
 /* Mobile adjustments */
@@ -168,14 +165,14 @@
   }
 }
 
-/* High contrast mode */
+/* High contrast mode - DISABLED */
 @media (prefers-contrast: high) {
   .welcome-button:hover {
-    background: rgba(255, 255, 0, 0.1);
+    background: transparent;
   }
   
   .welcome-button:focus-visible {
-    outline: 3px solid #ffcc00;
+    outline: 2px solid rgba(255, 255, 255, 0.8);
   }
 }
 
