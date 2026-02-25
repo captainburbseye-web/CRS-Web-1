@@ -142,6 +142,31 @@ export const SignageEnhanced = () => {
               {/* Content Overlay */}
               <div class="signage-slide-overlay">
                 
+                {/* CRS Branding Badge (Top Left) */}
+                <div class="crs-branding-badge">
+                  <img 
+                    src="/static/images/crs-badge-dark.webp" 
+                    alt="Cowley Road Studios Logo" 
+                    loading="eager"
+                    width="180"
+                    height="auto"
+                  />
+                </div>
+                
+                {/* CRS Channel Label (Top Right) */}
+                <div class="signage-channel-label">
+                  {module.channel} — {module.category}
+                </div>
+                
+                {/* CRS Wordmark Watermark (Center) */}
+                <div class="crs-wordmark-overlay" aria-hidden="true">
+                  <img 
+                    src="/static/images/crs-wordmark-hero.webp" 
+                    alt="" 
+                    loading="lazy"
+                  />
+                </div>
+                
                 {/* Top Section: Channel + LED */}
                 <div class="signage-header">
                   <div class="channel-badge" style={`border-color: ${module.colorHex};`}>
@@ -149,8 +174,7 @@ export const SignageEnhanced = () => {
                     <span class="category-label">{module.category}</span>
                   </div>
                   <div 
-                    class="led-indicator pulse"
-                    style={`background: radial-gradient(circle, ${module.colorHex} 60%, rgba(0,0,0,0.8) 100%); box-shadow: 0 0 12px ${module.colorHex}, 0 0 24px ${module.colorHex};`}
+                    class={`led-indicator pulse led-${module.color === 'green' ? 'green' : module.color === 'amber' ? 'amber' : 'orange'}`}
                     aria-label="Status: Online"
                   ></div>
                 </div>
@@ -207,19 +231,24 @@ export const SignageEnhanced = () => {
           ))}
         </div>
         
-        {/* Status Bar */}
-        <div class="signage-status-bar" role="status" aria-live="polite">
-          <div class="status-item">
-            <span class="status-label">STATUS:</span>
-            <span class="status-value live">LIVE</span>
+        {/* CRS System Status Bar (Enhanced Branding) */}
+        <div class="crs-system-status-bar" role="status" aria-live="polite">
+          <div class="crs-status-item">
+            <div class="crs-status-led led-green"></div>
+            <span class="crs-status-label">MODE:</span>
+            <span class="status-value">LIVE</span>
           </div>
-          <div class="status-item">
-            <span class="status-label">LOCATION:</span>
-            <span class="status-value">118 COWLEY ROAD, OXFORD</span>
+          <div class="crs-status-item">
+            <span class="crs-status-label">LOCATION:</span>
+            <span class="status-value">118 COWLEY ROAD · OXFORD OX4 1JE</span>
           </div>
-          <div class="status-item">
-            <span class="status-label">BOOKINGS:</span>
-            <span class="status-value">ONLINE & PHONE</span>
+          <div class="crs-status-item">
+            <span class="crs-status-label">BOOKINGS:</span>
+            <span class="status-value">ONLINE · PHONE · WALK-IN</span>
+          </div>
+          <div class="crs-status-item">
+            <span class="crs-status-label">SYSTEM:</span>
+            <span class="status-value">CRS-WEB-1 v2.0</span>
           </div>
         </div>
       </div>
