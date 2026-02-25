@@ -17,6 +17,7 @@ import { About } from './pages/About'
 import { Work } from './pages/Work'
 import { SignagePage } from './pages/Signage'
 import { SignageLoop } from './pages/SignageLoop'
+import { SignageSignal } from './pages/SignageSignal'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
@@ -2004,6 +2005,20 @@ app.get('/signage-loop', (c) => {
         <SignageLoop />
       </body>
     </html>
+  )
+})
+
+// SIGNAGE SIGNAL - Digital Signage Channel for Yodeck
+// Optimized for 55" displays (1920×1080)
+// Full-screen carousel with QR codes and progress indicators
+app.get('/signagesignal', (c) => {
+  return c.render(
+    <SignageSignal />,
+    {
+      title: 'CRS Signage Signal | Digital Display Channel',
+      description: 'Digital signage carousel optimized for Yodeck displays',
+      canonicalUrl: 'https://cowleyroadstudios.com/signagesignal'
+    }
   )
 })
 
