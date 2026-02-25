@@ -179,6 +179,41 @@ export const RackAccordion = () => {
         </div>
       </div>
 
+      {/* RECORDING SERVICES SPEC SHEETS */}
+      <div class="rack-spec-sheet spec-recording">
+        <pre class="spec-content">{`┌─────────────────────────────────────────────┐
+│ CH-01A :: COWLEY ROAD RECORDING             │
+├─────────────────────────────────────────────┤
+│ [CAPACITY]      1-5 musicians + engineer    │
+│ [ROOM TYPE]     Control + live isolation    │
+│ [ENGINEER]      Included in all sessions    │
+│ [SESSION]       Half-day / full-day blocks  │
+│ [STANDARD]      ODRO Engineering Protocol   │
+│ [POLICY]        No Chaos — see /about       │
+├─────────────────────────────────────────────┤
+│ Professional recording with experienced     │
+│ engineer. Analog & digital hybrid workflow. │
+│ Mixing, tracking, overdubs, vocal sessions. │
+└─────────────────────────────────────────────┘`}</pre>
+      </div>
+
+      <div class="rack-spec-sheet spec-recording">
+        <pre class="spec-content">{`┌─────────────────────────────────────────────┐
+│ CH-01B :: CRICKET ROAD RECORDING            │
+├─────────────────────────────────────────────┤
+│ [CAPACITY]      1-4 musicians + engineer    │
+│ [ROOM TYPE]     Compact control + booth     │
+│ [ENGINEER]      Included in all sessions    │
+│ [SESSION]       Half-day / full-day blocks  │
+│ [STANDARD]      ODRO Engineering Protocol   │
+│ [SPECIALTY]     Vocals, overdubs, podcasts  │
+├─────────────────────────────────────────────┤
+│ Intimate recording space. Perfect for solo  │
+│ artists, voice work, and focused sessions.  │
+│ Same engineering standard, tighter workflow.│
+└─────────────────────────────────────────────┘`}</pre>
+      </div>
+
       {/* REHEARSAL SERVICES TITLE RACK */}
       <div class="rack-module-graphic title-rack-container" data-section="rehearsal-title">
         <picture>
@@ -240,6 +275,41 @@ export const RackAccordion = () => {
           >
           </a>
         </div>
+      </div>
+
+      {/* REHEARSAL SERVICES SPEC SHEETS */}
+      <div class="rack-spec-sheet spec-rehearsal">
+        <pre class="spec-content">{`┌─────────────────────────────────────────────┐
+│ CH-02A :: COWLEY ROAD REHEARSAL             │
+├─────────────────────────────────────────────┤
+│ [CAPACITY]      4-6 piece band              │
+│ [EQUIPMENT]     Backline provided           │
+│ [PA SYSTEM]     Full monitoring available   │
+│ [DURATION]      2hr / 3hr / 4hr blocks      │
+│ [PRICING]       £45 (2h) · £60 (3h) · £65 (4h)│
+│ [ACCESS]        Load-in at ground level     │
+├─────────────────────────────────────────────┤
+│ Full-size rehearsal room with professional  │
+│ backline and PA. Drum kit, bass/guitar amps,│
+│ mics, monitors. Book online via Square.     │
+└─────────────────────────────────────────────┘`}</pre>
+      </div>
+
+      <div class="rack-spec-sheet spec-rehearsal">
+        <pre class="spec-content">{`┌─────────────────────────────────────────────┐
+│ CH-02B :: CRICKET ROAD REHEARSAL            │
+├─────────────────────────────────────────────┤
+│ [CAPACITY]      3-5 piece band              │
+│ [EQUIPMENT]     Backline provided           │
+│ [PA SYSTEM]     Monitoring available        │
+│ [DURATION]      2hr / 3hr / 4hr blocks      │
+│ [PRICING]       £45 (2h) · £60 (3h) · £65 (4h)│
+│ [ACCESS]        Compact load-in             │
+├─────────────────────────────────────────────┤
+│ Tighter rehearsal space for focused work.   │
+│ Same gear standard, smaller footprint.      │
+│ Book online via Square.                     │
+└─────────────────────────────────────────────┘`}</pre>
       </div>
 
       {/* CONTROL ROOM BOOKING BUTTONS ONLY */}
@@ -313,6 +383,42 @@ export const RackAccordion = () => {
         </a>
       </div>
 
+      {/* CONTROL ROOM SPEC SHEET */}
+      <div class="rack-spec-sheet spec-technical">
+        <pre class="spec-content">{`┌─────────────────────────────────────────────┐
+│ CH-03 :: CONTROL ROOM (ENGINEER-FREE)       │
+├─────────────────────────────────────────────┤
+│ [MODE]          Self-operated / BYO engineer│
+│ [EQUIPMENT]     Full control room access    │
+│ [USE CASES]     Mixing, mastering, editing  │
+│ [SESSION]       Hourly or day rate          │
+│ [STANDARD]      ODRO-spec monitoring & signal│
+│ [SUPPORT]       Tech support available      │
+├─────────────────────────────────────────────┤
+│ For producers and engineers who want the    │
+│ room without our engineer. Full access to   │
+│ control environment. Contact for pricing.   │
+└─────────────────────────────────────────────┘`}</pre>
+      </div>
+
+      {/* WORKSHOP CAFÉ SPEC SHEET */}
+      <div class="rack-spec-sheet spec-cafe">
+        <pre class="spec-content">{`┌─────────────────────────────────────────────┐
+│ CH-04 :: WORKSHOP CAFÉ & COWORKING          │
+├─────────────────────────────────────────────┤
+│ [MODE]          Café · Repairs · Workspace  │
+│ [HOURS]         TUE-SAT 10:00-18:00         │
+│ [COFFEE]        Specialty roast available   │
+│ [REPAIRS]       Guitar setup, soldering, mods│
+│ [WORKSPACE]     Desk hire by the day        │
+│ [CAPACITY]      25 seated / 60 standing (events)│
+├─────────────────────────────────────────────┤
+│ Coffee, workbenches, musical curios. Bring  │
+│ your laptop or your broken amp. Available   │
+│ for private hire. Contact for bookings.     │
+└─────────────────────────────────────────────┘`}</pre>
+      </div>
+
       {/* MAP EMBED */}
       <div class="map-embed-container">
         <div class="map-embed-header">
@@ -339,7 +445,7 @@ export const RackAccordion = () => {
 
       {/* SYSTEM STATUS */}
       <div class="system-status-strip">
-        CRS SYSTEM STATUS: OPERATIONAL · LOCATION: 118 COWLEY ROAD — OXFORD · INFRASTRUCTURE: BUILD PHASE 92% COMPLETE
+        CRS SYSTEM STATUS: OPERATIONAL · BOOKINGS OPEN · 118 COWLEY ROAD, OXFORD OX4 1JE
       </div>
 
       {/* FOOTER LINKS */}
