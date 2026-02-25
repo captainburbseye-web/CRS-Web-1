@@ -6,7 +6,6 @@
 /* Base Button Styles */
 .rack-button-enhanced,
 .booking-hotspot,
-.welcome-button,
 .crs-button {
   background: linear-gradient(to bottom, #FFD700, #CC9900);
   border: 2px solid #B38F00;
@@ -33,7 +32,6 @@
 /* Hover State - Lifted tactile effect */
 .rack-button-enhanced:hover,
 .booking-hotspot:hover,
-.welcome-button:hover,
 .crs-button:hover {
   background: linear-gradient(to bottom, #FFE066, #D4A200);
   transform: translateY(-2px);
@@ -46,7 +44,6 @@
 /* Active/Pressed State - Depressed button effect */
 .rack-button-enhanced:active,
 .booking-hotspot:active,
-.welcome-button:active,
 .crs-button:active {
   background: #D4A200;
   box-shadow: 
@@ -58,7 +55,6 @@
 /* Focus Outline for Keyboard Navigation */
 .rack-button-enhanced:focus-visible,
 .booking-hotspot:focus-visible,
-.welcome-button:focus-visible,
 .crs-button:focus-visible {
   outline: 3px solid #FFB700;
   outline-offset: 4px;
@@ -70,7 +66,6 @@
 /* Ripple Effect on Click */
 .rack-button-enhanced::after,
 .booking-hotspot::after,
-.welcome-button::after,
 .crs-button::after {
   content: '';
   position: absolute;
@@ -88,7 +83,6 @@
 
 .rack-button-enhanced:active::after,
 .booking-hotspot:active::after,
-.welcome-button:active::after,
 .crs-button:active::after {
   width: 300px;
   height: 300px;
@@ -98,7 +92,6 @@
 /* Disabled State */
 .rack-button-enhanced:disabled,
 .booking-hotspot:disabled,
-.welcome-button:disabled,
 .crs-button:disabled {
   background: #555;
   border-color: #333;
@@ -131,7 +124,6 @@
 @media (max-width: 768px) {
   .rack-button-enhanced,
   .booking-hotspot,
-  .welcome-button,
   .crs-button {
     min-height: 48px;
     min-width: 48px;
@@ -144,7 +136,6 @@
 @media (prefers-contrast: high) {
   .rack-button-enhanced,
   .booking-hotspot,
-  .welcome-button,
   .crs-button {
     border-width: 3px;
     font-weight: 900;
@@ -155,7 +146,6 @@
 @media (prefers-reduced-motion: reduce) {
   .rack-button-enhanced,
   .booking-hotspot,
-  .welcome-button,
   .crs-button {
     transition: none;
     animation: none;
@@ -163,7 +153,6 @@
   
   .rack-button-enhanced::after,
   .booking-hotspot::after,
-  .welcome-button::after,
   .crs-button::after {
     display: none;
   }
