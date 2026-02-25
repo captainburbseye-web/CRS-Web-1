@@ -79,23 +79,18 @@
   height: 12%;
 }
 
-/* Hover effects - minimal glow */
+/* Hover effects - DISABLED to prevent yellow overlays */
 .welcome-button:hover {
-  background: rgba(255, 215, 0, 0.02);
-  box-shadow: 
-    inset 0 0 20px rgba(255, 215, 0, 0.03),
-    0 0 10px rgba(255, 215, 0, 0.05);
+  background: transparent;
   transform: translateY(-1px);
+  cursor: pointer;
 }
 
-/* Press feedback */
+/* Press feedback - DISABLED */
 .welcome-button:active,
 .welcome-button.button-pressed {
-  background: rgba(255, 215, 0, 0.08);
+  background: transparent;
   transform: translateY(0) scale(0.98);
-  box-shadow: 
-    inset 0 0 40px rgba(255, 215, 0, 0.15),
-    0 0 10px rgba(255, 215, 0, 0.1);
 }
 
 /* Focus state for keyboard navigation */
