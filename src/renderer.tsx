@@ -147,9 +147,6 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* Toggle Switches - Functional switches for future features */}
         <link href="/static/toggle-switches.css" rel="stylesheet" />
-        
-        {/* Spec Sheets - Console-style service information */}
-        <link href="/static/rack-spec-sheets.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}
