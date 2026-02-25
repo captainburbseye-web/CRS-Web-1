@@ -186,9 +186,6 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* Rack Image Loader - HIGH PRIORITY - Load ASAP for lazy loading */}
         <script src="/static/rack-image-loader.js"></script>
         
-        {/* Debug Hotspots - Visual debugging tool (?debug=hotspots) */}
-        <script src="/static/debug-hotspots.js"></script>
-        
         {/* Performance Monitor - Critical CSS tracking (Phase 3B) */}
         <script src="/static/performance-monitor.js" defer></script>
         
