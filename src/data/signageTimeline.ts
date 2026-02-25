@@ -1,11 +1,12 @@
 /**
  * CRS SIGNAGE TIMELINE — Frame Sequence Controller
  * 
- * Total Loop: 88 seconds (within 80-100s spec)
+ * Total Loop: 96 seconds (8s infrastructure + 88s original)
  * Transitions: Fade only (2s crossfade)
  * Motion: Slow, mechanical, calm
  * 
- * Frame order matches exact running order from spec.
+ * Frame 0: OX4 Creative Infrastructure (NEW)
+ * Frames 1-8: Original brand-compliant loop
  */
 
 export interface SignageFrame {
@@ -19,6 +20,16 @@ export interface SignageFrame {
   vuMeter?: boolean;     // VU animation flag
   qrCode?: boolean;      // QR code visible flag
   background: string;    // Asset path
+  infrastructure?: boolean;  // Infrastructure frame flag
+  sequence?: Array<{         // Text sequence for infrastructure
+    text: string;
+    delay: number;
+    duration: number;
+    fontSize?: string;
+    fontWeight?: number;
+    opacity?: number;
+    position?: string;
+  }>;
 }
 
 /**
@@ -51,10 +62,49 @@ export const DESIGN_TOKENS = {
 /**
  * Signage Frame Timeline
  * 
- * Total: 88 seconds (7 + 12 + 12 + 10 + 10 + 12 + 15 + 10)
+ * Total: 96 seconds (8 + 7 + 12 + 12 + 10 + 10 + 12 + 15 + 10)
  * Seamless loop: end state matches start state
  */
 export const SIGNAGE_TIMELINE: SignageFrame[] = [
+  // Frame 0 — OX4 Creative Infrastructure (8s) [NEW]
+  {
+    id: 'infrastructure',
+    duration: 8000,
+    title: '', // Handled by sequence
+    body: '',  // Handled by sequence
+    color: DESIGN_TOKENS.textPrimary,
+    warm: false,
+    background: '#000000', // Pure black (not #0E0E0E)
+    infrastructure: true,
+    sequence: [
+      {
+        text: "Oxford's music scene",
+        delay: 0,
+        duration: 2000,
+        fontSize: '2.5rem',
+        fontWeight: 300,
+        opacity: 1,
+      },
+      {
+        text: "We build the rooms",
+        delay: 2000,
+        duration: 2000,
+        fontSize: '2.5rem',
+        fontWeight: 300,
+        opacity: 1,
+      },
+      {
+        text: "OX4\nCreative Infrastructure",
+        delay: 4000,
+        duration: 2000,
+        fontSize: '1rem',
+        fontWeight: 300,
+        opacity: 0.7,
+        position: 'lower-third',
+      },
+    ],
+  },
+  
   // Frame 1 — Establishment (7s)
   {
     id: 'establishment',
@@ -160,7 +210,7 @@ export const SIGNAGE_TIMELINE: SignageFrame[] = [
 export const TOTAL_LOOP_DURATION = SIGNAGE_TIMELINE.reduce(
   (sum, frame) => sum + frame.duration,
   0
-); // 88,000ms = 88 seconds
+); // 96,000ms = 96 seconds (8s infrastructure + 88s original)
 
 /**
  * Day/Night Mode Tokens

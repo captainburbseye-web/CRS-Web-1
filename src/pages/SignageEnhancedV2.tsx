@@ -4,7 +4,7 @@
  * 
  * Technical Requirements:
  * - Full viewport (100vw × 100vh, no scrollbars)
- * - 88-second seamless loop (8 frames)
+ * - 96-second seamless loop (9 frames: 8s infrastructure + 88s original)
  * - Fade transitions only (2s)
  * - Works in Chrome kiosk, Yodeck, normal browsers
  * 
@@ -19,6 +19,11 @@
  * - Slow, mechanical, calm
  * - No bounce, elastic, rotation
  * - Allowed: ambient drift, VU meters, LED pulse, text fade
+ * 
+ * Frame 0 (NEW): OX4 Creative Infrastructure
+ * - Pure black background (#000000)
+ * - Sequenced text: "Oxford's music scene" → "We build the rooms" → "OX4 Creative Infrastructure"
+ * - No animation first 3s, ambient drift after 6s
  */
 
 import { SIGNAGE_TIMELINE, DESIGN_TOKENS } from '../data/signageTimeline';
@@ -37,32 +42,41 @@ export const SignageEnhancedV2 = () => {
             class={`signage-frame ${index === 0 ? 'active' : ''}`}
             data-frame-id={frame.id}
             data-duration={frame.duration}
-            style={`background-image: url('${frame.background}')`}
+            style={frame.infrastructure ? `background: ${frame.background}` : `background-image: url('${frame.background}')`}
           >
-            {/* Overlay (Cool/Warm) */}
-            <div class={`frame-overlay ${frame.warm ? 'warm' : 'cool'}`}></div>
-            
-            {/* Depth Layer (Cable Schematic / Waveform Outlines) */}
-            <div class="depth-layer"></div>
+            {/* Skip overlays and depth layers for infrastructure frame */}
+            {!frame.infrastructure && (
+              <>
+                {/* Overlay (Cool/Warm) */}
+                <div class={`frame-overlay ${frame.warm ? 'warm' : 'cool'}`}></div>
+                
+                {/* Depth Layer (Cable Schematic / Waveform Outlines) */}
+                <div class="depth-layer"></div>
+              </>
+            )}
             
             {/* Content */}
             <div class="frame-content">
               
-              {/* CRS Logo Watermark (Bottom-Left) */}
-              <div class="crs-logo-watermark" aria-hidden="true"></div>
+              {/* CRS Logo Watermark (Bottom-Left) - Not on infrastructure frame */}
+              {!frame.infrastructure && (
+                <div class="crs-logo-watermark" aria-hidden="true"></div>
+              )}
               
-              {/* Main Content */}
-              <div class="frame-main">
-                <h1 class="frame-title" style={`color: ${frame.color}`}>
-                  {frame.title}
-                </h1>
-                
-                {frame.subtitle && (
-                  <h2 class="frame-subtitle">{frame.subtitle}</h2>
-                )}
-                
-                <p class="frame-body">{frame.body}</p>
-              </div>
+              {/* Main Content - Infrastructure frame handled by JS, regular frames use title/subtitle/body */}
+              {!frame.infrastructure && (
+                <div class="frame-main">
+                  <h1 class="frame-title" style={`color: ${frame.color}`}>
+                    {frame.title}
+                  </h1>
+                  
+                  {frame.subtitle && (
+                    <h2 class="frame-subtitle">{frame.subtitle}</h2>
+                  )}
+                  
+                  <p class="frame-body">{frame.body}</p>
+                </div>
+              )}
               
               {/* VU Meter (Frame 3 only) */}
               {frame.vuMeter && (

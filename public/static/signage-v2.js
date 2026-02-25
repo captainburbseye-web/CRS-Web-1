@@ -2,14 +2,15 @@
  * CRS SIGNAGE V2 — Timeline Controller
  * 
  * Requirements:
- * - 88-second seamless loop
+ * - 96-second seamless loop (8s infrastructure + 88s original)
  * - Fade transitions only (2s)
  * - No scrollbars, no hover dependencies
  * - Works in Chrome kiosk, Yodeck, normal browsers
- * - QR code on Frame 8 only (or persistent from Frame 2)
- * - VU meter animation on Frame 3
+ * - QR code on Frame 9 only (Frame 8 in old numbering)
+ * - VU meter animation on Frame 4 (Frame 3 in old numbering)
  * - Debug mode: ?debug=1 shows frame name + countdown
  * - Day/Night mode: auto-detect or ?mode=day|night
+ * - Frame 0: OX4 Creative Infrastructure with sequenced text
  */
 
 (function() {
@@ -122,22 +123,20 @@
       }
     });
 
-    // Show/hide QR code (Frame 8 only, or from Frame 2 onward)
+    // Handle infrastructure frame (Frame 0) with text sequence
+    if (index === 0 && frame.dataset.frameId === 'infrastructure') {
+      animateInfrastructureFrame(frame);
+    }
+
+    // Show/hide QR code (Frame 9 only = Frame 8 in old numbering)
     const qrContainer = document.querySelector('.qr-container');
     if (qrContainer) {
-      // Option A: Frame 8 only
-      if (index === 7) { // Frame 8 (0-indexed)
+      // Frame 9 is the last frame (index 8 with infrastructure frame)
+      if (index === 8) { // Frame 9 (0-indexed)
         qrContainer.classList.add('visible');
       } else {
         qrContainer.classList.remove('visible');
       }
-      
-      // Option B: Persistent from Frame 2 onward (uncomment to enable)
-      // if (index >= 1) {
-      //   qrContainer.classList.add('visible');
-      // } else {
-      //   qrContainer.classList.remove('visible');
-      // }
     }
 
     // Update debug overlay
@@ -180,6 +179,62 @@
         }, updateSpeed);
       });
     });
+  }
+
+  // Animate infrastructure frame text sequence
+  function animateInfrastructureFrame(frame) {
+    // Text sequence defined in SIGNAGE_TIMELINE
+    const sequence = [
+      {
+        text: "Oxford's music scene",
+        delay: 0,
+        duration: 2000,
+      },
+      {
+        text: "We build the rooms",
+        delay: 2000,
+        duration: 2000,
+      },
+      {
+        text: "OX4\nCreative Infrastructure",
+        delay: 4000,
+        duration: 2000,
+        className: 'lower-third',
+      }
+    ];
+
+    const contentDiv = frame.querySelector('.frame-content');
+    if (!contentDiv) return;
+
+    // Clear existing content
+    contentDiv.innerHTML = '';
+
+    // Create text elements for each sequence item
+    sequence.forEach((item, i) => {
+      const textElement = document.createElement('div');
+      textElement.className = `infrastructure-text ${item.className || ''}`;
+      textElement.style.opacity = '0';
+      textElement.textContent = item.text;
+      contentDiv.appendChild(textElement);
+
+      // Fade in at specified delay
+      setTimeout(() => {
+        textElement.style.transition = 'opacity 1s ease-in-out';
+        textElement.style.opacity = '1';
+      }, item.delay);
+
+      // Fade out before next (except last)
+      if (i < sequence.length - 1) {
+        setTimeout(() => {
+          textElement.style.opacity = '0';
+        }, item.delay + item.duration - 500);
+      }
+    });
+
+    // Start ambient drift after 6 seconds
+    setTimeout(() => {
+      frame.classList.add('drift');
+    }, 6000);
   }
 
   // Create debug overlay

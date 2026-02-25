@@ -19,6 +19,11 @@
  * - Slow speed, linear or ease-in-out only
  * - No bounce, elastic, overshoot, rotation
  * - Allowed: ambient drift, VU meters, LED pulse, text fade
+ * 
+ * Frame 0: OX4 Creative Infrastructure (NEW)
+ * - Pure black background (#000000)
+ * - Sequenced text (0-2s, 2-4s, 4-6s)
+ * - Ambient drift starts at 6s
  */
 
 /* ============================================
@@ -479,6 +484,62 @@ html, body {
   .vu-bar {
     transition: none;
   }
+}
+
+/* ============================================
+   INFRASTRUCTURE FRAME (Frame 0)
+   ============================================ */
+
+/* Pure black background for infrastructure frame */
+.signage-frame[data-frame-id="infrastructure"] {
+  background: #000000 !important; /* Pure black, not #0E0E0E */
+}
+
+/* Infrastructure text styling */
+.infrastructure-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: #E5E5E5;
+  line-height: 1.6;
+  white-space: pre-line;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  max-width: 90%;
+}
+
+/* Lower third positioning for "OX4 Creative Infrastructure" */
+.infrastructure-text.lower-third {
+  top: auto;
+  bottom: 15%;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+/* Ambient drift animation (starts at 6s) */
+.signage-frame[data-frame-id="infrastructure"].drift {
+  animation: infrastructure-drift 120s ease-in-out infinite;
+}
+
+@keyframes infrastructure-drift {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(1px, -1px); }
+  50% { transform: translate(-1px, 1px); }
+  75% { transform: translate(1px, 1px); }
+}
+
+/* Hide all UI elements on infrastructure frame */
+.signage-frame[data-frame-id="infrastructure"] .frame-overlay,
+.signage-frame[data-frame-id="infrastructure"] .depth-layer,
+.signage-frame[data-frame-id="infrastructure"] .crs-logo-watermark,
+.signage-frame[data-frame-id="infrastructure"] .vu-meter {
+  display: none;
 }
 
 /* ============================================
