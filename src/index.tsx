@@ -18,6 +18,7 @@ import { Work } from './pages/Work'
 import { SignagePage } from './pages/Signage'
 import { SignageLoop } from './pages/SignageLoop'
 import { SignageSignal } from './pages/SignageSignal'
+import { SignageSignalEnhanced } from './pages/SignageSignalEnhanced'
 import { SignageEnhanced } from './pages/SignageEnhanced'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
@@ -2011,7 +2012,8 @@ app.get('/signage-loop', (c) => {
 
 // SIGNAGE SIGNAL - Digital Signage Channel for Yodeck
 // Optimized for 55" displays (1920×1080)
-// Full-screen carousel with QR codes and progress indicators
+// Three display modes: Ambient (E), Audio-Reactive (A), Parallax (B)
+// Press 'M' to cycle modes, 'P' to pause
 app.get('/signagesignal', (c) => {
   return c.html(
     <html lang="en">
@@ -2019,17 +2021,16 @@ app.get('/signagesignal', (c) => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="noindex, nofollow" />
-        <title>CRS Signage Signal | Digital Display Channel</title>
-        <link href="/static/signage-signal.css" rel="stylesheet" />
+        <title>CRS Signage Signal | Multi-Mode Digital Display</title>
+        <link href="/static/signage-signal-enhanced.css" rel="stylesheet" />
         <style>{`
           * { margin: 0; padding: 0; box-sizing: border-box; }
-          body { overflow: hidden; background: #000; }
+          body { overflow: hidden; background: #000; font-family: 'JetBrains Mono', 'Space Mono', monospace; }
         `}</style>
       </head>
       <body>
-        <SignageSignal />
-        <script src="/static/signage-carousel.js"></script>
-        <script src="/static/signage-qr.js"></script>
+        <SignageSignalEnhanced />
+        <script src="/static/signage-signal-enhanced.js"></script>
       </body>
     </html>
   )
