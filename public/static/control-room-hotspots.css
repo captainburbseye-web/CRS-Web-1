@@ -97,56 +97,29 @@
   border-width: 0;
 }
 
-/* Tooltip on hover */
+/* Tooltip on hover - DISABLED to prevent yellow blobs */
 .booking-hotspot::after {
-  content: attr(aria-label);
-  position: absolute;
-  bottom: 110%;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  background: rgba(0, 0, 0, 0.9);
-  color: #FFB300;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease-out;
-  z-index: 100;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  display: none; /* Fully disabled */
 }
 
+/* Cricket tooltip disabled */
 .booking-hotspot-cricket::after {
-  color: #39FF14;
+  display: none;
 }
 
+/* Tooltip hover disabled */
 .booking-hotspot:hover::after {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  display: none;
 }
 
-/* Arrow for tooltip */
+/* Arrow for tooltip - DISABLED */
 .booking-hotspot::before {
-  content: '';
-  position: absolute;
-  bottom: 110%;
-  left: 50%;
-  transform: translateX(-50%) translateY(18px);
-  border: 6px solid transparent;
-  border-top-color: rgba(0, 0, 0, 0.9);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease-out;
-  z-index: 100;
+  display: none;
 }
 
+/* Tooltip arrow hover disabled */
 .booking-hotspot:hover::before {
-  opacity: 1;
-  transform: translateX(-50%) translateY(8px);
+  display: none;
 }
 
 /* Mobile optimization */
