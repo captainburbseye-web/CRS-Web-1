@@ -71,17 +71,17 @@ const rackModules = [
   },
   {
     title: 'WORKSHOP CAFÉ',
-    subtitle: '118 Cowley Road · Oxford',
-    description: 'Coffee · Repairs · Coworking · Venue Hire',
-    pricing: 'Opening Spring 2026',
-    image: '/static/machined-assets/workshop-cafe-optimized.webp',
-    imageAlt: 'Workshop Café - Creative community space',
+    subtitle: 'The Billet Building · 118 Cowley Road',
+    description: 'Coffee • Repairs • Musical Curios • Work Spaces',
+    pricing: 'Opening Spring 2026 · Sell Your Art Here!',
+    image: '/static/workshop-cafe-assets/logo-3d-render-dark.jpg',
+    imageAlt: 'Workshop Café - Coffee, repairs, musical curios, and creative workspaces',
     qrUrl: 'https://cowleyroadstudios.com/workshop-cafe',
     qrLabel: 'LEARN MORE',
     category: 'CAFÉ',
     channel: 'CH-04',
     color: 'amber',
-    colorHex: '#F59E0B'
+    colorHex: '#E89B3C'
   }
 ];
 
