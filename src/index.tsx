@@ -18,6 +18,7 @@ import { Work } from './pages/Work'
 import { SignagePage } from './pages/Signage'
 import { SignageLoop } from './pages/SignageLoop'
 import { SignageSignal } from './pages/SignageSignal'
+import { SignageEnhanced } from './pages/SignageEnhanced'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
@@ -2031,6 +2032,18 @@ app.get('/signagesignal', (c) => {
         <script src="/static/signage-qr.js"></script>
       </body>
     </html>
+  )
+})
+
+// ENHANCED SIGNAGE - Full carousel with accessibility, QR codes, and performance optimization
+app.get('/signage-enhanced', (c) => {
+  return c.render(
+    <SignageEnhanced />,
+    {
+      title: 'CRS Enhanced Signage | Digital Display',
+      description: 'Enhanced digital signage with auto-rotating carousel, QR codes, and full accessibility',
+      canonicalUrl: 'https://cowleyroadstudios.com/signage-enhanced'
+    }
   )
 })
 
