@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "active": [],
+  "archived": [],
+  "counters": {
+    "rehearsal_10_slots": {
+      "name": "Rehearsal Room - 10% Off (First 10 Bookings)",
+      "remaining": 10,
+      "total": 10,
+      "discount": 0.10,
+      "expiresAt": "2026-03-31T23:59:59Z",
+      "applyTo": ["rehearsal.cowleyRoad", "rehearsal.cricketRoad"]
+    },
+    "recording_first_session": {
+      "name": "Recording - First Session Discount",
+      "remaining": 5,
+      "total": 5,
+      "discount": 0.15,
+      "expiresAt": "2026-03-15T23:59:59Z",
+      "applyTo": ["recording.engineerLed"]
+    }
+  },
+  "rules": {
+    "displayWhenRemaining": 5,
+    "hideWhenExpired": true,
+    "urgencyThreshold": 3
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "version": "1.0.0",
+  "routes": {
+    "ambient": "/signage-enhanced",
+    "parallax": "/signagesignal",
+    "audioReactive": "/signage-enhanced?mode=audio"
+  },
+  "schedule": {
+    "monday-thursday": {
+      "07:00-11:00": "ambient",
+      "11:00-16:00": "parallax",
+      "16:00-22:30": "ambient",
+      "22:30-07:00": "ambient-night"
+    },
+    "friday-saturday": {
+      "07:00-12:00": "ambient",
+      "12:00-18:00": "parallax",
+      "18:00-23:30": "ambient",
+      "23:30-07:00": "ambient-night"
+    },
+    "sunday": {
+      "09:00-18:00": "ambient",
+      "18:00-22:00": "parallax",
+      "22:00-09:00": "ambient-night"
+    }
+  },
+  "audioReactiveInterludes": [
+    { "time": "13:00", "duration": 10 },
+    { "time": "17:00", "duration": 10 },
+    { "time": "20:00", "duration": 10 }
+  ],
+  "dayNightModes": {
+    "day": {
+      "start": "07:00",
+      "end": "18:00",
+      "textBrightness": 1.15,
+      "ledIntensity": 1.0,
+      "qrBorder": "2px"
+    },
+    "dusk": {
+      "start": "18:00",
+      "end": "22:30",
+      "textBrightness": 1.0,
+      "ledIntensity": 0.8,
+      "warmthBoost": 1.1
+    },
+    "night": {
+      "start": "22:30",
+      "end": "07:00",
+      "textBrightness": 0.85,
+      "ledIntensity": 0.6,
+      "overlays": "minimal"
+    }
+  },
+  "microRefresh": {
+    "enabled": true,
+    "intervalMinutes": 15
+  },
+  "healthCheck": {
+    "enabled": true,
+    "intervalMinutes": 5,
+    "endpoint": "/api/health"
+  }
+}

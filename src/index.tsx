@@ -71,6 +71,100 @@ app.get('/manifest.json', (c) => {
   })
 })
 
+// ============================================
+// API ROUTES - Signage Automation System
+// ============================================
+
+// Health check endpoint (every 5 minutes)
+app.get('/api/health', async (c) => {
+  try {
+    const { healthCheck } = await import('./services/signageScheduler');
+    const health = healthCheck();
+    
+    return c.json(health, health.status === 'healthy' ? 200 : 500);
+  } catch (error) {
+    return c.json({
+      status: 'error',
+      timestamp: new Date().toISOString(),
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }, 500);
+  }
+})
+
+// Get current signage schedule
+app.get('/api/signage/schedule', async (c) => {
+  try {
+    const { getScheduleResult } = await import('./services/signageScheduler');
+    const schedule = getScheduleResult();
+    
+    return c.json(schedule);
+  } catch (error) {
+    return c.json({
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }, 500);
+  }
+})
+
+// Get pricing data
+app.get('/api/pricing', async (c) => {
+  try {
+    const { getPricing } = await import('./services/signageScheduler');
+    const pricing = getPricing();
+    
+    return c.json(pricing);
+  } catch (error) {
+    return c.json({
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }, 500);
+  }
+})
+
+// Get events data
+app.get('/api/events', async (c) => {
+  try {
+    const { getEvents } = await import('./services/signageScheduler');
+    const events = getEvents();
+    
+    return c.json(events);
+  } catch (error) {
+    return c.json({
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }, 500);
+  }
+})
+
+// Get offers data
+app.get('/api/offers', async (c) => {
+  try {
+    const { getOffers } = await import('./services/signageScheduler');
+    const offers = getOffers();
+    
+    return c.json(offers);
+  } catch (error) {
+    return c.json({
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }, 500);
+  }
+})
+
+// QR code redirect with logging (/q shortlink)
+app.get('/q', async (c) => {
+  try {
+    const { getScheduleResult } = await import('./services/signageScheduler');
+    const schedule = getScheduleResult();
+    
+    // TODO: Log scan to KV/analytics
+    // await c.env.KV.put(`scan:${Date.now()}`, JSON.stringify({...}))
+    
+    // Determine destination based on time/scene
+    const destination = 'https://cowleyroadstudios.com/book'; // Default
+    
+    return c.redirect(destination, 302);
+  } catch (error) {
+    return c.redirect('https://cowleyroadstudios.com', 302);
+  }
+})
+
 // SITEMAP.XML - SEO sitemap for search engines
 app.get('/sitemap.xml', (c) => {
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
