@@ -1,0 +1,336 @@
+/**
+ * ODRO Repair Panel - Interactive Button Hotspots
+ * Three buttons mapped to the orange/green indicators on the panel
+ */
+
+/* Container for ODRO repair rack */
+.odro-repair-container {
+  position: relative;
+  display: block;
+}
+
+/* Hotspots overlay container */
+.odro-repair-hotspots {
+  position: absolute;
+  bottom: 18%; /* Position at the yellow tape labels */
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2%;
+  padding: 0 12%;
+  z-index: 10;
+}
+
+/* Base button style - transparent hotspot over indicators */
+.odro-repair-button {
+  position: relative;
+  display: block;
+  height: 80px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 8px;
+  
+  /* Subtle hover feedback */
+  transition: 
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+/* Hover effect - very subtle glow matching indicator */
+.odro-repair-button:hover {
+  background: rgba(255, 140, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Active/pressed state */
+.odro-repair-button:active {
+  transform: translateY(0);
+  background: rgba(255, 140, 0, 0.1);
+}
+
+/* Focus state for keyboard navigation */
+.odro-repair-button:focus-visible {
+  outline: 3px solid rgba(255, 140, 0, 0.8);
+  outline-offset: 4px;
+  background: rgba(255, 140, 0, 0.08);
+}
+
+/* Terms button (left - orange) */
+.odro-button-terms:hover {
+  background: rgba(255, 100, 0, 0.06);
+}
+
+/* Book button (middle - orange) */
+.odro-button-book:hover {
+  background: rgba(255, 140, 0, 0.06);
+}
+
+/* Contact button (right - green) */
+.odro-button-contact:hover {
+  background: rgba(0, 255, 0, 0.04);
+  box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.08);
+}
+
+.odro-button-contact:focus-visible {
+  outline-color: rgba(0, 255, 0, 0.8);
+}
+
+/* Screen reader text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================
+   ODRO TERMS MODAL
+   ============================================ */
+
+.odro-terms-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.odro-terms-modal[aria-hidden="false"] {
+  display: flex;
+}
+
+/* Dark overlay */
+.odro-terms-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+/* Modal content panel */
+.odro-terms-content {
+  position: relative;
+  max-width: 700px;
+  max-height: 85vh;
+  background: #1a1a1a;
+  border: 3px solid #ff8c00;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(255, 140, 0, 0.3);
+  animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Modal header */
+.odro-terms-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(to bottom, #2a2a2a, #1a1a1a);
+  border-bottom: 2px solid #ff8c00;
+}
+
+.odro-terms-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff8c00;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+
+.odro-terms-close {
+  background: transparent;
+  border: 2px solid #ff8c00;
+  color: #ff8c00;
+  font-size: 2rem;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.odro-terms-close:hover {
+  background: #ff8c00;
+  color: #000;
+  transform: rotate(90deg);
+}
+
+/* Modal body */
+.odro-terms-body {
+  padding: 2rem;
+  max-height: 60vh;
+  overflow-y: auto;
+  color: #e5e5e5;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.odro-terms-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 140, 0, 0.2);
+}
+
+.odro-terms-section:last-child {
+  border-bottom: none;
+}
+
+.odro-terms-section h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ff8c00;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.odro-terms-section p {
+  margin-bottom: 0.5rem;
+  color: #d0d0d0;
+}
+
+.odro-terms-section p strong {
+  color: #ff8c00;
+}
+
+/* Modal footer */
+.odro-terms-footer {
+  padding: 1.5rem 2rem;
+  background: linear-gradient(to top, #2a2a2a, #1a1a1a);
+  border-top: 2px solid #ff8c00;
+  text-align: center;
+}
+
+.odro-terms-cta {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(to bottom, #ff8c00, #cc7000);
+  color: #000;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid #b35f00;
+  border-radius: 6px;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.4),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.odro-terms-cta:hover {
+  background: linear-gradient(to bottom, #ffa500, #d47800);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 15px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 140, 0, 0.4);
+}
+
+.odro-terms-cta:active {
+  transform: translateY(0);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .odro-repair-hotspots {
+    bottom: 15%;
+    padding: 0 8%;
+    gap: 3%;
+  }
+  
+  .odro-repair-button {
+    height: 60px;
+    min-height: 44px; /* WCAG minimum touch target */
+  }
+  
+  .odro-terms-content {
+    max-width: 95%;
+    max-height: 95vh;
+    margin: 1rem;
+  }
+  
+  .odro-terms-header {
+    padding: 1rem 1.5rem;
+  }
+  
+  .odro-terms-title {
+    font-size: 1.2rem;
+  }
+  
+  .odro-terms-body {
+    padding: 1.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .odro-terms-footer {
+    padding: 1rem 1.5rem;
+  }
+  
+  .odro-terms-cta {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1280px) {
+  .odro-repair-hotspots {
+    bottom: 17%;
+    padding: 0 10%;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .odro-repair-button,
+  .odro-terms-content,
+  .odro-terms-cta {
+    transition: none;
+    animation: none;
+  }
+  
+  .odro-terms-close:hover {
+    transform: none;
+  }
+}

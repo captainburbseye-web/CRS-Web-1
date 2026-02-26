@@ -789,6 +789,8 @@ app.get('/', (c) => {
       </script>
       
       <link href="/static/rack-accordion.css" rel="stylesheet" />
+      <link href="/static/odro-repair-hotspots.css" rel="stylesheet" />
+      <script src="/static/odro-repair-buttons.js" defer></script>
     </>,
     {
       title: 'Cowley Road Studios | Recording Studio & Rehearsal Rooms Oxford',

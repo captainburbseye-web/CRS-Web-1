@@ -268,22 +268,93 @@ export const RackAccordion = () => {
       </div>
 
       {/* ODRO REPAIR RACK - AV & Instrument Repair */}
-      <div class="rack-module-graphic" id="odro-repair" data-section="repairs">
-        <a 
-          href="/av-services/repairs" 
-          aria-label="ODRO Engineering - AV & Instrument Repair Services"
-        >
-          <img 
-            src="/static/rack-images/odro-repair-panel.jpg"
-            alt="ODRO - AV & Instrument Repair" 
-            class="rack-module-img"
-            width="1920"
-            height="auto"
-            loading="lazy"
-            style="object-fit: cover; width: 100%; height: auto;"
-          />
-          <span class="rack-tooltip" aria-hidden="true">Click for repair services →</span>
-        </a>
+      <div class="rack-module-graphic odro-repair-container" id="odro-repair" data-section="repairs">
+        <img 
+          src="/static/rack-images/odro-repair-panel.jpg"
+          alt="ODRO - AV & Instrument Repair" 
+          class="rack-module-img"
+          width="1920"
+          height="auto"
+          loading="lazy"
+          style="object-fit: cover; width: 100%; height: auto;"
+        />
+        
+        {/* Interactive button hotspots */}
+        <div class="odro-repair-hotspots">
+          {/* Terms Button (Left - Orange indicator) */}
+          <button 
+            class="odro-repair-button odro-button-terms"
+            data-button="terms"
+            aria-label="View repair terms and conditions"
+          >
+            <span class="sr-only">Terms & Conditions</span>
+          </button>
+          
+          {/* Book Repair Button (Middle - Orange indicator) */}
+          <a 
+            href="/contact?service=repairs"
+            class="odro-repair-button odro-button-book"
+            data-button="book"
+            aria-label="Book a repair service"
+          >
+            <span class="sr-only">Book Repair</span>
+          </a>
+          
+          {/* Contact Button (Right - Green indicator) */}
+          <a 
+            href="/contact"
+            class="odro-repair-button odro-button-contact"
+            data-button="contact"
+            aria-label="Contact us about repairs"
+          >
+            <span class="sr-only">Contact</span>
+          </a>
+        </div>
+      </div>
+      
+      {/* ODRO Repair Terms Modal */}
+      <div id="odro-terms-modal" class="odro-terms-modal" aria-hidden="true" role="dialog" aria-labelledby="odro-terms-title">
+        <div class="odro-terms-overlay"></div>
+        <div class="odro-terms-content">
+          <div class="odro-terms-header">
+            <h2 id="odro-terms-title" class="odro-terms-title">ODRO REPAIR TERMS</h2>
+            <button class="odro-terms-close" aria-label="Close terms modal">×</button>
+          </div>
+          <div class="odro-terms-body">
+            <div class="odro-terms-section">
+              <h3>Minimum Spend</h3>
+              <p>£60 minimum charge applies to all repair services.</p>
+            </div>
+            
+            <div class="odro-terms-section">
+              <h3>Pricing Structure</h3>
+              <p><strong>Diagnosis fee</strong> + Parts + Labour</p>
+              <p>Full quote provided after diagnosis before work begins.</p>
+            </div>
+            
+            <div class="odro-terms-section">
+              <h3>Accepted Items</h3>
+              <p><strong>✓ Musical instruments</strong> (guitars, basses, keyboards, etc.)</p>
+              <p><strong>✓ Amplifiers & PA equipment</strong></p>
+              <p><strong>✓ Audio interfaces & studio gear</strong></p>
+              <p><strong>✗ No household items</strong> (TVs, radios, domestic appliances)</p>
+            </div>
+            
+            <div class="odro-terms-section">
+              <h3>Turnaround Time</h3>
+              <p>Turnaround is dependent on current queue and other studio services.</p>
+              <p>Estimated completion time provided with quote.</p>
+            </div>
+            
+            <div class="odro-terms-section">
+              <h3>Book Your Repair</h3>
+              <p>Contact us via the form or call to discuss your repair needs.</p>
+            </div>
+          </div>
+          <div class="odro-terms-footer">
+            <a href="/contact?service=repairs" class="odro-terms-cta">BOOK REPAIR</a>
+          </div>
+        </div>
       </div>
 
       {/* WORKSHOP CAFE RACK */}
