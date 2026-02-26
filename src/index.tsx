@@ -171,45 +171,63 @@ app.get('/sitemap.xml', (c) => {
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cowleyroadstudios.com/</loc>
-    <lastmod>2026-02-16</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-02-25</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://cowleyroadstudios.com/about</loc>
+    <lastmod>2026-02-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://cowleyroadstudios.com/recording-studio-oxford</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://cowleyroadstudios.com/rehearsal-rooms-oxford</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://cowleyroadstudios.com/av-services-oxford</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-02-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cowleyroadstudios.com/av-services/repairs</loc>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cowleyroadstudios.com/venue-hire-oxford</loc>
-    <lastmod>2026-02-16</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cowleyroadstudios.com/rack</loc>
-    <lastmod>2026-02-16</lastmod>
+    <loc>https://cowleyroadstudios.com/workshop-cafe</loc>
+    <lastmod>2026-02-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cowleyroadstudios.com/contact</loc>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cowleyroadstudios.com/contact</loc>
-    <lastmod>2026-02-16</lastmod>
+    <loc>https://cowleyroadstudios.com/rack</loc>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>`
   
@@ -762,29 +780,95 @@ app.get('/', (c) => {
     <>
       <RackAccordion />
       
-      {/* Structured data for SEO */}
+      {/* Structured data for SEO - Enhanced LocalBusiness Schema */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "LocalBusiness",
+          "@type": ["LocalBusiness", "MusicVenue", "Organization"],
           "name": "Cowley Road Studios",
+          "alternateName": ["CRS", "Formerly Soundworks Oxford"],
           "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
           "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
+          "logo": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "118 Cowley Road",
             "addressLocality": "Oxford",
+            "addressRegion": "Oxfordshire",
             "postalCode": "OX4 1JE",
             "addressCountry": "GB"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "51.7466",
+            "longitude": "-1.2384"
           },
           "telephone": "+441865722027",
           "email": "info@crsoxford.com",
           "url": "https://cowleyroadstudios.com",
           "priceRange": "££",
-          "areaServed": "Oxford",
+          "areaServed": {
+            "@type": "City",
+            "name": "Oxford",
+            "containedInPlace": {
+              "@type": "Country",
+              "name": "United Kingdom"
+            }
+          },
           "sameAs": [
-            "https://instagram.com/cowleyroadstudios.ox"
-          ]
+            "https://instagram.com/cowleyroadstudios.ox",
+            "https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Studio Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Recording Studio Sessions",
+                  "description": "Professional recording, mixing, and mastering services"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Rehearsal Room Hire",
+                  "description": "Fully equipped rehearsal spaces",
+                  "offers": {
+                    "@type": "AggregateOffer",
+                    "lowPrice": "45",
+                    "highPrice": "65",
+                    "priceCurrency": "GBP"
+                  }
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Equipment Repair",
+                  "description": "AV and instrument repair services by ODRO Engineering"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Workshop Café",
+                  "description": "Coffee, coworking, and creative space"
+                }
+              }
+            ]
+          },
+          "founder": {
+            "@type": "Organization",
+            "name": "ODRO Engineering"
+          },
+          "foundingDate": "2024",
+          "slogan": "No Chaos Policy – Professional recording and rehearsal in Oxford"
         })}
       </script>
       

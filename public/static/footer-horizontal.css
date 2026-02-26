@@ -34,12 +34,12 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem; /* 12px */
   line-height: 1.5;
-  color: rgba(245, 245, 245, 0.7);
+  color: rgba(245, 245, 245, 0.85); /* Improved contrast for WCAG AA */
   margin-bottom: 0.25rem;
 }
 
 .terminal-status-line a {
-  color: rgba(245, 245, 245, 0.85);
+  color: rgba(245, 245, 245, 0.95); /* Even higher contrast for links */
   text-decoration: none;
   transition: color 0.2s ease;
 }
