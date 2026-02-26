@@ -3,18 +3,21 @@
  * Hover animations, pulse effects, ARIA labels, tooltips
  */
 
-/* Enhanced hover effects for rack modules */
+/* Enhanced hover effects for rack modules - DISABLED GLOBAL EFFECTS */
+/* Only specific hotspots/buttons should animate, not entire racks */
 .rack-module-graphic {
   position: relative;
-  transition: all 0.3s ease;
+  /* transition removed - no whole-rack animation */
 }
 
-.rack-module-graphic:hover {
+/* Disabled: entire rack lift on hover */
+/* .rack-module-graphic:hover {
   transform: translateY(-4px);
   filter: brightness(1.05);
-}
+} */
 
-.rack-module-graphic::before {
+/* Disabled: orange gradient overlay on entire rack */
+/* .rack-module-graphic::before {
   content: '';
   position: absolute;
   top: 0;
@@ -26,11 +29,11 @@
   transition: opacity 0.3s ease;
   pointer-events: none;
   z-index: 1;
-}
+} */
 
-.rack-module-graphic:hover::before {
+/* .rack-module-graphic:hover::before {
   opacity: 1;
-}
+} */
 
 /* Glowing border on focus (keyboard navigation) */
 .rack-module-graphic a:focus {
