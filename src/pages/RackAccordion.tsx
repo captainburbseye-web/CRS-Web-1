@@ -113,44 +113,19 @@ export const RackAccordion = () => {
         </div>
       </div>
 
-      {/* RECORDING SERVICES TITLE RACK */}
-      <div class="rack-module-graphic title-rack-container" data-section="recording-title">
-        <picture>
-          <source 
-            type="image/webp" 
-            srcset="/static/rack-images/recording-title-rack-1920w.webp 1920w, /static/rack-images/recording-title-rack-1280w.webp 1280w, /static/rack-images/recording-title-rack-640w.webp 640w"
-            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
-          />
+      {/* RECORDING SERVICES DOUBLE RACK - Cowley (Green) + Cricket (Purple) Split Panel */}
+      <div class="rack-module-graphic recording-services-container" id="recording-services" data-section="recording">
+        {/* Main visual rack panel - NEW green/purple split design */}
+        <div class="recording-rack-visual">
           <img 
-            src="/static/rack-images/recording-title-rack.webp"
-            alt="Recording Services Title" 
-            class="rack-module-img title-rack-img"
+            src="/static/rack-images/recording-services-new.jpg"
+            alt="Recording Services - Cowley Road (Green) & Cricket Road (Purple) Studios" 
+            class="rack-module-img"
             width="1920"
             height="auto"
             loading="lazy"
+            style="object-fit: cover; width: 100%; height: auto;"
           />
-        </picture>
-      </div>
-
-      {/* RECORDING SERVICES DOUBLE RACK - Simple clickable panels */}
-      <div class="rack-module-graphic recording-services-container" id="recording-services" data-section="recording">
-        {/* Main visual rack panel */}
-        <div class="recording-rack-visual">
-          <picture>
-            <source 
-              type="image/webp" 
-              srcset="/static/rack-images/recording-services-1920w.webp 1920w, /static/rack-images/recording-services-1280w.webp 1280w, /static/rack-images/recording-services-640w.webp 640w"
-              sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
-            />
-            <img 
-              src="/static/rack-images/recording-services.webp"
-              alt="Recording Services - Cowley Road & Cricket Road Studios" 
-              class="rack-module-img"
-              width="1920"
-              height="auto"
-              loading="lazy"
-            />
-          </picture>
         </div>
 
         {/* Simple 2-panel clickable overlay */}
@@ -290,6 +265,25 @@ export const RackAccordion = () => {
             </a>
           </div>
         </div>
+      </div>
+
+      {/* ODRO REPAIR RACK - AV & Instrument Repair */}
+      <div class="rack-module-graphic" id="odro-repair" data-section="repairs">
+        <a 
+          href="/av-services/repairs" 
+          aria-label="ODRO Engineering - AV & Instrument Repair Services"
+        >
+          <img 
+            src="/static/rack-images/odro-repair-panel.jpg"
+            alt="ODRO - AV & Instrument Repair" 
+            class="rack-module-img"
+            width="1920"
+            height="auto"
+            loading="lazy"
+            style="object-fit: cover; width: 100%; height: auto;"
+          />
+          <span class="rack-tooltip" aria-hidden="true">Click for repair services →</span>
+        </a>
       </div>
 
       {/* WORKSHOP CAFE RACK */}
