@@ -45,22 +45,16 @@ export const RackAccordion = () => {
 
       {/* WELCOME RACK - Primary navigation */}
       <div class="rack-module-graphic welcome-rack-container" id="main-content" role="main">
-        <picture>
-          <source 
-            type="image/webp" 
-            srcset="/static/rack-images/welcome-rack-1920w.webp 1920w, /static/rack-images/welcome-rack-1280w.webp 1280w, /static/rack-images/welcome-rack-640w.webp 640w"
-            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
-          />
-          <img 
-            src="/static/rack-images/welcome-rack.webp"
-            alt="CRS Welcome Rack - Main navigation and booking" 
-            class="rack-module-img"
-            width="1920"
-            height="auto"
-            loading="eager"
-            fetchpriority="high"
-          />
-        </picture>
+        <img 
+          src="/static/rack-images/welcome-rack-updated.jpg"
+          alt="CRS Welcome Rack - Main navigation and booking with wood frame" 
+          class="rack-module-img"
+          width="1024"
+          height="400"
+          loading="eager"
+          fetchpriority="high"
+          style="object-fit: cover; width: 100%; height: auto;"
+        />
         
         {/* Clickable hotspots for dropdown navigation + BOOK NOW */}
         <div class="welcome-hotspots">
@@ -159,11 +153,11 @@ export const RackAccordion = () => {
       {/* REHEARSAL SERVICES RACK - Cowley + Cricket combined */}
       <div class="rack-module-graphic rehearsal-services-container" id="rehearsal-services" data-section="rehearsal">
         <img 
-          src="/static/rack-images/rehearsal-services-new.jpg"
-          alt="Rehearsal Services - Cowley Road (Green) & Cricket Road (Purple)" 
+          src="/static/rack-images/rehearsal-services-updated.jpg"
+          alt="Rehearsal Services - Cowley Road (Green) & Cricket Road (Purple) with wood frame" 
           class="rack-module-img"
-          width="1920"
-          height="auto"
+          width="1024"
+          height="362"
           loading="lazy"
           style="object-fit: cover; width: 100%; height: auto;"
         />
