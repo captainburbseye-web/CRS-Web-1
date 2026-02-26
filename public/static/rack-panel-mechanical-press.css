@@ -1,0 +1,237 @@
+/**
+ * MECHANICAL PRESS BUTTONS - Industrial Hardware Aesthetic
+ * Steel panel buttons with physical press feedback
+ * CRS Color Palette: Nettle Green, Mustard, Charcoal Black
+ */
+
+/* ============================================
+   RECORDING PANELS - Mechanical Press Feel
+   ============================================ */
+
+.recording-panel {
+  position: relative;
+  cursor: pointer;
+  
+  /* Subtle inset glow - like a backlit panel section */
+  background: transparent;
+  
+  /* The "sitting proud" effect - panel is mounted on the rack */
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.3),      /* inner shadow for depth */
+    0 4px 0 rgba(0, 0, 0, 0.4),              /* hard base shadow (the rack behind) */
+    0 6px 12px rgba(0, 0, 0, 0.5);           /* soft ambient shadow */
+  
+  transition:
+    transform 0.08s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.08s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.15s ease;
+}
+
+/* Hover: tension + slight glow, like a finger resting on it */
+.recording-panel:hover {
+  background: rgba(194, 168, 90, 0.03); /* Subtle mustard glow */
+  box-shadow:
+    inset 0 0 35px rgba(194, 168, 90, 0.08),
+    0 4px 0 rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Active (pressed): the panel physically moves DOWN into the rack */
+.recording-panel:active {
+  transform: translateY(3px); /* moves toward the rack chassis */
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.6),      /* pressed-in shadow */
+    0 1px 0 rgba(0, 0, 0, 0.4),              /* almost flush with rack */
+    0 2px 4px rgba(0, 0, 0, 0.4);
+  background: rgba(194, 168, 90, 0.05); /* Slightly brighter on press */
+}
+
+/* Focus ring for keyboard navigation - industrial mustard */
+.recording-panel:focus-visible {
+  outline: none;
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.3),
+    0 0 0 2px #c2a85a,                       /* CRS Mustard focus ring */
+    0 4px 0 rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(194, 168, 90, 0.4);
+}
+
+/* Cowley panel (green accent) */
+.recording-cowley-panel:hover {
+  background: rgba(79, 121, 66, 0.04); /* Subtle nettle green glow */
+  box-shadow:
+    inset 0 0 35px rgba(79, 121, 66, 0.1),
+    0 4px 0 rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.recording-cowley-panel:active {
+  background: rgba(79, 121, 66, 0.06);
+}
+
+/* Cricket panel (purple accent) */
+.recording-cricket-panel:hover {
+  background: rgba(150, 100, 180, 0.04); /* Subtle purple glow */
+  box-shadow:
+    inset 0 0 35px rgba(150, 100, 180, 0.1),
+    0 4px 0 rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.recording-cricket-panel:active {
+  background: rgba(150, 100, 180, 0.06);
+}
+
+/* ============================================
+   REHEARSAL PANELS - Mechanical Press Feel
+   ============================================ */
+
+.rehearsal-panel {
+  position: relative;
+  cursor: pointer;
+  
+  /* Subtle inset glow - like a backlit panel section */
+  background: transparent;
+  
+  /* The "sitting proud" effect - panel is mounted on the rack */
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.3),      /* inner shadow for depth */
+    0 4px 0 rgba(0, 0, 0, 0.4),              /* hard base shadow (the rack behind) */
+    0 6px 12px rgba(0, 0, 0, 0.5);           /* soft ambient shadow */
+  
+  transition:
+    transform 0.08s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.08s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.15s ease;
+}
+
+/* Hover: tension + slight glow, like a finger resting on it */
+.rehearsal-panel:hover {
+  background: rgba(194, 168, 90, 0.03); /* Subtle mustard glow */
+  box-shadow:
+    inset 0 0 35px rgba(194, 168, 90, 0.08),
+    0 4px 0 rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Active (pressed): the panel physically moves DOWN into the rack */
+.rehearsal-panel:active {
+  transform: translateY(3px); /* moves toward the rack chassis */
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.6),      /* pressed-in shadow */
+    0 1px 0 rgba(0, 0, 0, 0.4),              /* almost flush with rack */
+    0 2px 4px rgba(0, 0, 0, 0.4);
+  background: rgba(194, 168, 90, 0.05); /* Slightly brighter on press */
+}
+
+/* Focus ring for keyboard navigation - industrial mustard */
+.rehearsal-panel:focus-visible {
+  outline: none;
+  box-shadow:
+    inset 0 0 30px rgba(0, 0, 0, 0.3),
+    0 0 0 2px #c2a85a,                       /* CRS Mustard focus ring */
+    0 4px 0 rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(194, 168, 90, 0.4);
+}
+
+/* Cowley panel (green accent) */
+.rehearsal-cowley-panel:hover {
+  background: rgba(79, 121, 66, 0.04); /* Subtle nettle green glow */
+  box-shadow:
+    inset 0 0 35px rgba(79, 121, 66, 0.1),
+    0 4px 0 rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.rehearsal-cowley-panel:active {
+  background: rgba(79, 121, 66, 0.06);
+}
+
+/* Cricket panel (purple/yellow warning sign accent) */
+.rehearsal-cricket-panel:hover {
+  background: rgba(212, 160, 23, 0.04); /* Subtle warning yellow glow */
+  box-shadow:
+    inset 0 0 35px rgba(212, 160, 23, 0.1),
+    0 4px 0 rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.rehearsal-cricket-panel:active {
+  background: rgba(212, 160, 23, 0.06);
+}
+
+/* ============================================
+   OPTIONAL: Highlight Strip (Beveled Edge)
+   ============================================ */
+
+.recording-panel::after,
+.rehearsal-panel::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  opacity: 0.6;
+  pointer-events: none;
+  transition: opacity 0.08s ease;
+}
+
+.recording-panel:active::after,
+.rehearsal-panel:active::after {
+  opacity: 0; /* Highlight disappears when pressed */
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .recording-panel,
+  .rehearsal-panel {
+    transition: none;
+  }
+  
+  .recording-panel:active,
+  .rehearsal-panel:active {
+    transform: none; /* Disable physical movement for reduced motion */
+  }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  .recording-panel:focus-visible,
+  .rehearsal-panel:focus-visible {
+    outline: 3px solid #c2a85a;
+    outline-offset: 2px;
+  }
+}
+
+/* ============================================
+   MOBILE TOUCH OPTIMIZATION
+   ============================================ */
+
+@media (max-width: 768px) {
+  .recording-panel,
+  .rehearsal-panel {
+    /* Slightly less aggressive press on mobile */
+    box-shadow:
+      inset 0 0 20px rgba(0, 0, 0, 0.3),
+      0 3px 0 rgba(0, 0, 0, 0.4),
+      0 5px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .recording-panel:active,
+  .rehearsal-panel:active {
+    transform: translateY(2px); /* Smaller press distance on mobile */
+  }
+}

@@ -790,6 +790,7 @@ app.get('/', (c) => {
       
       <link href="/static/rack-accordion.css" rel="stylesheet" />
       <link href="/static/odro-repair-hotspots.css" rel="stylesheet" />
+      <link href="/static/rack-panel-mechanical-press.css" rel="stylesheet" />
       <script src="/static/odro-repair-buttons.js" defer></script>
     </>,
     {
