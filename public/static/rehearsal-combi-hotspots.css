@@ -5,7 +5,8 @@
  */
 
 /* Container positioning */
-.rehearsal-combi-container {
+.rehearsal-combi-container,
+.rehearsal-services-container {
   position: relative;
   width: 100%;
   max-width: 1920px;

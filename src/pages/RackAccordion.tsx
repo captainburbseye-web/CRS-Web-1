@@ -156,42 +156,17 @@ export const RackAccordion = () => {
 
 
 
-      {/* REHEARSAL SERVICES TITLE RACK */}
-      <div class="rack-module-graphic title-rack-container" data-section="rehearsal-title">
-        <picture>
-          <source 
-            type="image/webp" 
-            srcset="/static/rack-images/rehearsal-title-rack-1920w.webp 1920w, /static/rack-images/rehearsal-title-rack-1280w.webp 1280w, /static/rack-images/rehearsal-title-rack-640w.webp 640w"
-            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
-          />
-          <img 
-            src="/static/rack-images/rehearsal-title-rack.webp"
-            alt="Rehearsal Services Title" 
-            class="rack-module-img title-rack-img"
-            width="1920"
-            height="auto"
-            loading="lazy"
-          />
-        </picture>
-      </div>
-
-      {/* REHEARSAL COMBI RACK - Cowley + Cricket combined */}
-      <div class="rack-module-graphic rehearsal-combi-container" id="rehearsal-combi" data-section="rehearsal">
-        <picture>
-          <source 
-            type="image/webp" 
-            srcset="/static/rack-images/rehearsal-combi-1920w.webp 1920w, /static/rack-images/rehearsal-combi-1280w.webp 1280w, /static/rack-images/rehearsal-combi-640w.webp 640w"
-            sizes="(max-width: 640px) 640px, (max-width: 1280px) 1280px, 1920px"
-          />
-          <img 
-            src="/static/rack-images/rehearsal-combi.webp"
-            alt="Rehearsal Rooms - Cowley Road & Cricket Road" 
-            class="rack-module-img"
-            width="1920"
-            height="auto"
-            loading="lazy"
-          />
-        </picture>
+      {/* REHEARSAL SERVICES RACK - Cowley + Cricket combined */}
+      <div class="rack-module-graphic rehearsal-services-container" id="rehearsal-services" data-section="rehearsal">
+        <img 
+          src="/static/rack-images/rehearsal-services-new.jpg"
+          alt="Rehearsal Services - Cowley Road (Green) & Cricket Road (Purple)" 
+          class="rack-module-img"
+          width="1920"
+          height="auto"
+          loading="lazy"
+          style="object-fit: cover; width: 100%; height: auto;"
+        />
         
         {/* Clickable hotspots for Cowley and Cricket rehearsal */}
         <div class="rehearsal-hotspots">
