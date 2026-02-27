@@ -22,6 +22,7 @@ import { SignageSignalEnhanced } from './pages/SignageSignalEnhanced'
 import { SignageEnhanced } from './pages/SignageEnhanced'
 import { SignageEnhancedV3 } from './pages/SignageEnhancedV3'
 import { SignageV4 } from './pages/SignageV4'
+import { SignageV5 } from './pages/SignageV5'
 import { SignageRewrite } from './pages/SignageRewrite'
 import { SignageEnhancedV2 } from './pages/SignageEnhancedV2'
 import { BookingConfirmed } from './pages/BookingConfirmed'
@@ -2265,6 +2266,37 @@ app.get('/signage-v4', (c) => {
       <body>
         <SignageV4 />
         <script src="/static/signage-v4.js"></script>
+      </body>
+    </html>
+  )
+})
+
+// SIGNAGE V5 — RESEARCH-BACKED IMPLEMENTATION (Feb 2026)
+// ✅ 50% ambient content (4/8 frames)
+// ✅ 3×5 text rule compliance
+// ✅ Real QR codes on all actionable frames
+// ✅ Rotating station ID overlay (email, websites, Instagram)
+// ✅ 72s loop (8-10s per frame, optimal attention window)
+// ✅ 7:1 contrast ratio (WCAG AAA)
+// ✅ Workshop Café "Opening Soon" badge
+app.get('/signage-v5', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>CRS Signage V5 | Research-Backed Display</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="/static/signage-v5.css" rel="stylesheet" />
+        {/* QRCode.js library for real QR codes */}
+        <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" defer></script>
+      </head>
+      <body>
+        <SignageV5 />
+        <script src="/static/signage-v5.js" defer></script>
       </body>
     </html>
   )
