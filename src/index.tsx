@@ -539,6 +539,7 @@ app.get('/book', (c) => {
         <link href="/static/crs-typography.css" rel="stylesheet" />
         <link href="/static/crs-header.css" rel="stylesheet" />
         <link href="/static/crs-mobile.css" rel="stylesheet" />
+        <link href="/static/crs-mobile-optimized.css" rel="stylesheet" />
         
         {/* Accordion-specific CSS */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />
@@ -1920,6 +1921,7 @@ app.get('/rack-accordion', (c) => {
         <link href="/static/crs-footer.css" rel="stylesheet" />
         <link href="/static/crs-map-embed.css" rel="stylesheet" />
         <link href="/static/crs-mobile.css" rel="stylesheet" />
+        <link href="/static/crs-mobile-optimized.css" rel="stylesheet" />
         
         {/* Accordion-specific CSS */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />
@@ -2209,6 +2211,7 @@ app.get('/signagesignal', (c) => {
         <meta name="robots" content="noindex, nofollow" />
         <title>CRS Signage Signal | Multi-Mode Digital Display</title>
         <link href="/static/signage-signal-enhanced.css" rel="stylesheet" />
+        <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
         <style>{`
           * { margin: 0; padding: 0; box-sizing: border-box; }
           body { overflow: hidden; background: #000; font-family: 'JetBrains Mono', 'Space Mono', monospace; }
@@ -2239,6 +2242,7 @@ app.get('/signage-enhanced', (c) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
         <style>{`
           * { margin: 0; padding: 0; box-sizing: border-box; }
           html, body { width: 100%; height: 100%; overflow: hidden; }
@@ -2262,6 +2266,7 @@ app.get('/signage-v4', (c) => {
         <meta name="robots" content="noindex, nofollow" />
         <title>CRS Signage V4 | On-Brand Display</title>
         <link href="/static/signage-v4.css" rel="stylesheet" />
+        <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
       </head>
       <body>
         <SignageV4 />
@@ -2291,6 +2296,7 @@ app.get('/signage-v5', (c) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link href="/static/signage-v5.css" rel="stylesheet" />
+        <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
         {/* QRCode.js library for real QR codes */}
         <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" defer></script>
       </head>
@@ -2315,6 +2321,7 @@ app.get('/signage-rewrite', (c) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
         <style>{`
           * { margin: 0; padding: 0; box-sizing: border-box; }
           html, body { width: 100%; height: 100%; overflow: hidden; }
@@ -2347,6 +2354,7 @@ app.get('/rehearsal', (c) => {
         <link href="/static/crs-typography.css" rel="stylesheet" />
         <link href="/static/crs-header.css" rel="stylesheet" />
         <link href="/static/crs-mobile.css" rel="stylesheet" />
+        <link href="/static/crs-mobile-optimized.css" rel="stylesheet" />
         
         {/* Accordion-specific CSS */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />
