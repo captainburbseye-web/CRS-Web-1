@@ -2296,10 +2296,11 @@ app.get('/signage-v5', (c) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link href="/static/signage-v5.css" rel="stylesheet" />
-        <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
         <style>{`
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          html, body { width: 100%; height: 100%; overflow: hidden; background: #0a0a0a; }
+          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
+          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0a0a0a !important; }
+          body { display: block !important; }
+          .signage-v5-container { width: 100vw !important; height: 100vh !important; margin: 0 !important; padding: 0 !important; }
         `}</style>
       </head>
       <body>
