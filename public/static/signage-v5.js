@@ -4,7 +4,6 @@
  * Handles:
  * ✅ Frame transitions (8-10s intervals, 72s total loop)
  * ✅ Station ID rotation (8s intervals, 40s full cycle)
- * ✅ Real QR code generation using qrcode.js
  * ✅ Progress bar animation sync
  * ✅ Reduced motion support
  * 
@@ -43,9 +42,6 @@
       return;
     }
 
-    // Generate QR codes for all frames with QR data
-    generateQRCodes();
-
     // Start frame transitions
     startFrameLoop();
 
@@ -56,40 +52,6 @@
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
     console.log(`[SignageV5] Ready: ${frames.length} frames, ${stationBadges.length} station IDs`);
-  }
-
-  /**
-   * Generate real QR codes using qrcode.js library
-   */
-  function generateQRCodes() {
-    frames.forEach(frame => {
-      const qrContainer = frame.querySelector('.qr-code-real');
-      if (qrContainer) {
-        const url = qrContainer.getAttribute('data-url');
-        if (url) {
-          try {
-            // Using qrcode.js library (loaded via CDN in HTML)
-            // If qrcode.js is not loaded, show placeholder
-            if (typeof QRCode !== 'undefined') {
-              new QRCode(qrContainer, {
-                text: url,
-                width: 116,
-                height: 116,
-                colorDark: '#0E0E0E',
-                colorLight: '#ffffff',
-                correctLevel: QRCode.CorrectLevel.M
-              });
-              console.log(`[SignageV5] QR code generated for: ${url}`);
-            } else {
-              console.warn('[SignageV5] QRCode library not loaded, showing placeholder');
-              qrContainer.innerHTML = '<div style="width:100%;height:100%;background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:#333;text-align:center;padding:8px;">QR Code<br/>Loading...</div>';
-            }
-          } catch (error) {
-            console.error(`[SignageV5] QR generation failed for ${url}:`, error);
-          }
-        }
-      }
-    });
   }
 
   /**

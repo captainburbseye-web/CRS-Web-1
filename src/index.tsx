@@ -2297,8 +2297,6 @@ app.get('/signage-v5', (c) => {
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link href="/static/signage-v5.css" rel="stylesheet" />
         <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
-        {/* QRCode.js library for real QR codes */}
-        <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" defer></script>
       </head>
       <body>
         <SignageV5 />

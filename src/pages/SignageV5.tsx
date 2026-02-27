@@ -43,8 +43,6 @@ const frames = [
 Full tracking · Mixing`,
     bgImage: '/static/rack-images/recording-services-new.jpg',
     accent: '#4F7942',
-    qrCode: 'https://crsoxford.com/recording-studio-oxford',
-    qrLabel: 'Book sessions',
     showVU: true
   },
 
@@ -57,9 +55,7 @@ Full tracking · Mixing`,
     body: `£45-£65 per session
 Cowley Road · Cricket Road`,
     bgImage: '/static/rack-images/rehearsal-services-updated.jpg',
-    accent: '#2E473B',
-    qrCode: 'https://crsoxford.com/rehearsal-rooms-oxford',
-    qrLabel: 'Book rooms'
+    accent: '#2E473B'
   },
 
   // AMBIENT FRAME 2 - Ecosystem Identity
@@ -85,8 +81,6 @@ Cowley Road · Cricket Road`,
 Venue hire available now`,
     bgImage: '/static/rack-images/workshop-cafe-1920w.webp',
     accent: '#C2A85A',
-    qrCode: 'https://crsoxford.com/venue-hire-oxford',
-    qrLabel: 'Enquire now',
     warmTone: true,
     badge: 'OPENING SOON'
   },
@@ -113,9 +107,7 @@ Venue hire available now`,
     body: `ODRO Engineering
 £60 minimum · Studio gear`,
     bgImage: '/static/rack-images/odro-repair-panel.jpg',
-    accent: '#C2A85A',
-    qrCode: 'https://crsoxford.com/av-services/repairs',
-    qrLabel: 'Repair info'
+    accent: '#C2A85A'
   },
 
   // AMBIENT FRAME 4 - Call to Action (Ambient treatment)
@@ -128,8 +120,6 @@ Venue hire available now`,
     body: null, // Clean CTA
     bgImage: '/static/rack-images/welcome-rack-updated.jpg',
     accent: '#C2A85A',
-    qrCode: 'https://crsoxford.com',
-    qrLabel: 'Visit site',
     showStationID: true
   }
 ];
@@ -218,14 +208,6 @@ export const SignageV5 = () => {
                   <div class="vu-bar" style="animation-delay: 0.4s"></div>
                   <div class="vu-bar" style="animation-delay: 0.6s"></div>
                   <div class="vu-bar" style="animation-delay: 0.8s"></div>
-                </div>
-              )}
-
-              {/* QR Code (Operational frames with QR) */}
-              {frame.qrCode && (
-                <div class="qr-container-signage">
-                  <div class="qr-code-real" data-url={frame.qrCode} id={`qr-${frame.id}`}></div>
-                  <p class="qr-label">{frame.qrLabel}</p>
                 </div>
               )}
             </div>
