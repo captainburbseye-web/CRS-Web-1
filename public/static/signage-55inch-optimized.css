@@ -484,26 +484,26 @@
      COMMERCIAL DISPLAY SPECIFIC FIXES
      ========================================================== */
   
-  /* Prevent overscan crop (common on commercial panels) */
+  /* Full edge-to-edge display (no safe zones - user wants full screen) */
   .signage-v5-container,
   .signage-v4-container,
   .signage-enhanced-v3-container {
-    padding: 40px !important; /* 2% safe zone */
+    padding: 0 !important;
     box-sizing: border-box !important;
   }
   
-  /* Ensure critical content within safe zone */
+  /* Content fills entire screen */
   .frame-content {
-    max-width: calc(1920px - 160px) !important; /* Account for padding */
-    max-height: calc(1080px - 160px) !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
   }
   
-  /* Status bar always visible (never crops) */
+  /* Status bar at true bottom edge */
   .system-status-bar {
-    bottom: 20px !important;
-    left: 20px !important;
-    right: 20px !important;
-    width: calc(100% - 40px) !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
   }
 
   /* ==========================================================
