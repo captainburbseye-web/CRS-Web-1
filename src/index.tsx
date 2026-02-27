@@ -2297,6 +2297,10 @@ app.get('/signage-v5', (c) => {
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link href="/static/signage-v5.css" rel="stylesheet" />
         <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
+        <style>{`
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          html, body { width: 100%; height: 100%; overflow: hidden; background: #0a0a0a; }
+        `}</style>
       </head>
       <body>
         <SignageV5 />
