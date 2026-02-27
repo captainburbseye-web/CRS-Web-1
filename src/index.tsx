@@ -2466,4 +2466,37 @@ app.get('/venue-hire-oxford', (c) => {
   )
 })
 
+// SIGNAGE SCHEDULER — TIME-OF-DAY DYNAMIC FEED
+// Automatically serves different signage channels based on the time of day
+// Night mode: 23:00-07:00 → /signagesignal (calm, burn-in protection)
+// Day mode:   07:00-17:00 → /signage-enhanced (professional infrastructure)
+// Evening:    17:00-23:00 → /signage-v4 (engaging VU meters & clock)
+app.get('/signage-scheduled', (c) => {
+  // Get current UK time (BST/GMT aware)
+  const now = new Date()
+  const ukTime = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Europe/London',
+    hour: 'numeric',
+    hour12: false
+  }).format(now)
+  const currentHour = parseInt(ukTime)
+
+  // Determine which signage mode to serve
+  let targetRoute = '/signage-enhanced' // Default: day mode
+  
+  if (currentHour >= 23 || currentHour < 7) {
+    // Night mode: 23:00-07:00
+    targetRoute = '/signagesignal'
+  } else if (currentHour >= 17 && currentHour < 23) {
+    // Evening mode: 17:00-23:00
+    targetRoute = '/signage-v4'
+  } else {
+    // Day mode: 07:00-17:00
+    targetRoute = '/signage-enhanced'
+  }
+
+  // Redirect to the appropriate signage channel
+  return c.redirect(targetRoute)
+})
+
 export default app
