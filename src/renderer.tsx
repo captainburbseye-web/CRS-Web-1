@@ -170,6 +170,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* ODRO Repair Rack Interactive Buttons */}
         <link href="/static/odro-repair-hotspots.css" rel="stylesheet" />
         
+        {/* Rack UI Cleanup - Restore hardware aesthetic */}
+        <link href="/static/rack-ui-cleanup.css" rel="stylesheet" />
+        
         {/* Disable Whole-Rack Flash on Click - Localize interactions */}
         <link href="/static/disable-rack-flash.css" rel="stylesheet" />
       </head>

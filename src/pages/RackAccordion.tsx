@@ -102,9 +102,7 @@ export const RackAccordion = () => {
           
           {/* BOOK NOW button (right side) */}
           <a 
-            href="https://app.squareup.com/appointments/buyer/widget/g3in5i1879joft/L1MAM4DDPHKXX"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="https://cowleyroadstudios.com/book"
             class="welcome-button welcome-button-booknow"
             aria-label="Book Now - View all services and book online"
           >
