@@ -398,13 +398,98 @@
   }
 
   // ========================================
+  // REMOTE CONTROL (BROADCAST CHANNEL)
+  // ========================================
+  
+  function setupRemoteControl() {
+    console.log('[SignageSignal] Setting up remote control...');
+    
+    // BroadcastChannel for cross-window communication
+    const channel = new BroadcastChannel('crs-signage-control');
+    
+    channel.addEventListener('message', (event) => {
+      const msg = event.data;
+      
+      if (msg.type !== 'SIGNAGE_COMMAND') return;
+      
+      console.log('[SignageSignal] Received command:', msg.command, msg.data);
+      
+      switch (msg.command) {
+        case 'switchMode':
+          if (msg.data && msg.data.mode) {
+            switchMode(msg.data.mode);
+            sendStatus(channel);
+          }
+          break;
+        
+        case 'togglePause':
+          togglePause();
+          sendStatus(channel);
+          break;
+        
+        case 'nextSlide':
+          nextSlide();
+          sendStatus(channel);
+          break;
+        
+        case 'prevSlide':
+          prevSlide();
+          sendStatus(channel);
+          break;
+        
+        case 'requestStatus':
+        case 'ping':
+          sendStatus(channel);
+          break;
+      }
+    });
+    
+    // Also listen to localStorage for fallback
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'crs-signage-command' && e.newValue) {
+        try {
+          const msg = JSON.parse(e.newValue);
+          // Re-post to channel to trigger handler
+          channel.postMessage(msg);
+        } catch (err) {
+          console.error('[SignageSignal] Failed to parse command:', err);
+        }
+      }
+    });
+    
+    // Send initial status
+    setTimeout(() => {
+      sendStatus(channel);
+    }, 1000);
+    
+    console.log('[SignageSignal] Remote control ready');
+  }
+  
+  function sendStatus(channel) {
+    const status = {
+      type: 'SIGNAGE_STATUS',
+      mode: currentMode,
+      slide: currentSlide,
+      paused: isPaused,
+      timestamp: Date.now()
+    };
+    
+    channel.postMessage(status);
+    console.log('[SignageSignal] Sent status:', status);
+  }
+
+  // ========================================
   // START
   // ========================================
   
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', () => {
+      init();
+      setupRemoteControl();
+    });
   } else {
     init();
+    setupRemoteControl();
   }
 
 })();

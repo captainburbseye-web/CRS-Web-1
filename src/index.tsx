@@ -2510,4 +2510,12 @@ app.get('/signage-scheduled', (c) => {
   return c.redirect(targetRoute)
 })
 
+// SIGNAGE CONTROL PANEL — REMOTE CONTROL INTERFACE
+// Opens in separate window to control signage displays remotely
+// Features: mode switching, playback controls, route selection
+app.get('/signage-control', async (c) => {
+  const html = await Bun.file('public/static/signage-control-panel.html').text()
+  return c.html(html)
+})
+
 export default app
