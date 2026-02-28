@@ -34,7 +34,10 @@
 /* Base button style - transparent hotspot over indicators */
 .odro-repair-button {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 80px;
   background: transparent;
   border: none;
@@ -46,6 +49,39 @@
   transition: 
     background 0.2s ease,
     transform 0.15s ease;
+}
+
+/* Visible button labels */
+.odro-button-label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 0.375rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 140, 0, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+/* Hover effect on label */
+.odro-repair-button:hover .odro-button-label {
+  background: rgba(255, 140, 0, 0.15);
+  border-color: rgba(255, 140, 0, 0.8);
+  color: #ff8c00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+}
+
+/* Active state */
+.odro-repair-button:active .odro-button-label {
+  transform: translateY(0);
+  background: rgba(255, 140, 0, 0.25);
 }
 
 /* Hover effect - very subtle glow matching indicator */
@@ -81,6 +117,17 @@
 .odro-button-contact:hover {
   background: rgba(0, 255, 0, 0.04);
   box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.08);
+}
+
+.odro-button-contact .odro-button-label {
+  border-color: rgba(0, 255, 0, 0.5);
+}
+
+.odro-button-contact:hover .odro-button-label {
+  border-color: rgba(0, 255, 0, 0.8);
+  color: #00ff00;
+  background: rgba(0, 255, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
 }
 
 .odro-button-contact:focus-visible {
@@ -291,6 +338,11 @@
   .odro-repair-button {
     height: 60px;
     min-height: 44px; /* WCAG minimum touch target */
+  }
+  
+  .odro-button-label {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
   }
   
   .odro-terms-content {

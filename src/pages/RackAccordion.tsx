@@ -280,7 +280,7 @@ export const RackAccordion = () => {
             data-button="terms"
             aria-label="View repair terms and conditions"
           >
-            <span class="sr-only">Terms & Conditions</span>
+            <span class="odro-button-label">Terms</span>
           </button>
           
           {/* Book Repair Button (Middle - Orange indicator) */}
@@ -290,7 +290,7 @@ export const RackAccordion = () => {
             data-button="book"
             aria-label="Book a repair service"
           >
-            <span class="sr-only">Book Repair</span>
+            <span class="odro-button-label">Book Repair</span>
           </a>
           
           {/* Contact Button (Right - Green indicator) */}
@@ -300,7 +300,7 @@ export const RackAccordion = () => {
             data-button="contact"
             aria-label="Contact us about repairs"
           >
-            <span class="sr-only">Contact</span>
+            <span class="odro-button-label">Contact</span>
           </a>
         </div>
       </div>
