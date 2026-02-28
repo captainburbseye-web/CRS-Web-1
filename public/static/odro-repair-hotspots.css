@@ -7,8 +7,9 @@
 .odro-repair-container {
   position: relative;
   display: block;
-  max-height: 400px; /* Match height of other rack panels */
+  max-height: 380px; /* Prevent overlap with racks below */
   overflow: hidden;
+  margin-bottom: 0; /* Ensure no extra spacing */
 }
 
 .odro-repair-container img {
@@ -18,10 +19,10 @@
   object-position: center;
 }
 
-/* Hotspots overlay container */
+/* Hotspots overlay container - positioned at indicator lights */
 .odro-repair-hotspots {
   position: absolute;
-  bottom: 18%; /* Position at the yellow tape labels */
+  bottom: 35%; /* Position directly on the indicator lights */
   left: 0;
   right: 0;
   display: grid;
@@ -31,24 +32,23 @@
   z-index: 10;
 }
 
-/* Base button style - transparent hotspot over indicators */
+/* Base button style - localized to just the button area */
 .odro-repair-button {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end; /* Align label to bottom of button area */
   height: 80px;
   background: transparent;
   border: none;
   cursor: pointer;
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 6px;
+  padding-bottom: 8px; /* Space label from bottom */
   
-  /* Subtle hover feedback */
-  transition: 
-    background 0.2s ease,
-    transform 0.15s ease;
+  /* Localized feedback - no whole-rack highlighting */
+  transition: none; /* Remove transitions that affect whole area */
 }
 
 /* Visible button labels */
@@ -84,39 +84,37 @@
   background: rgba(255, 140, 0, 0.25);
 }
 
-/* Hover effect - very subtle glow matching indicator */
+/* Hover effect - ONLY on label, not whole button area */
 .odro-repair-button:hover {
-  background: rgba(255, 140, 0, 0.05);
-  transform: translateY(-2px);
+  background: transparent; /* No background on whole button */
 }
 
-/* Active/pressed state */
+/* Active/pressed state - ONLY affects label */
 .odro-repair-button:active {
-  transform: translateY(0);
-  background: rgba(255, 140, 0, 0.1);
+  background: transparent; /* No background flash on click */
 }
 
-/* Focus state for keyboard navigation */
+/* Focus state for keyboard navigation - outline only */
 .odro-repair-button:focus-visible {
-  outline: 3px solid rgba(255, 140, 0, 0.8);
-  outline-offset: 4px;
-  background: rgba(255, 140, 0, 0.08);
+  outline: 2px solid rgba(255, 140, 0, 0.8);
+  outline-offset: 2px;
+  background: transparent; /* No background fill */
 }
 
-/* Terms button (left - orange) */
+/* Terms button (left - orange) - NO button background */
 .odro-button-terms:hover {
-  background: rgba(255, 100, 0, 0.06);
+  background: transparent;
 }
 
-/* Book button (middle - orange) */
+/* Book button (middle - orange) - NO button background */
 .odro-button-book:hover {
-  background: rgba(255, 140, 0, 0.06);
+  background: transparent;
 }
 
-/* Contact button (right - green) */
+/* Contact button (right - green) - NO button background */
 .odro-button-contact:hover {
-  background: rgba(0, 255, 0, 0.04);
-  box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.08);
+  background: transparent;
+  box-shadow: none;
 }
 
 .odro-button-contact .odro-button-label {
@@ -132,6 +130,14 @@
 
 .odro-button-contact:focus-visible {
   outline-color: rgba(0, 255, 0, 0.8);
+  background: transparent;
+}
+
+/* Ensure active states don't add backgrounds */
+.odro-button-terms:active,
+.odro-button-book:active,
+.odro-button-contact:active {
+  background: transparent !important;
 }
 
 /* Screen reader text */
@@ -329,8 +335,12 @@
 
 /* Mobile responsive */
 @media (max-width: 768px) {
+  .odro-repair-container {
+    max-height: 320px; /* Smaller on mobile to prevent overlap */
+  }
+  
   .odro-repair-hotspots {
-    bottom: 15%;
+    bottom: 32%; /* Adjust for mobile layout */
     padding: 0 8%;
     gap: 3%;
   }
@@ -376,8 +386,12 @@
 
 /* Tablet adjustments */
 @media (min-width: 769px) and (max-width: 1280px) {
+  .odro-repair-container {
+    max-height: 360px;
+  }
+  
   .odro-repair-hotspots {
-    bottom: 17%;
+    bottom: 34%;
     padding: 0 10%;
   }
 }

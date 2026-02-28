@@ -166,6 +166,12 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
              - Font sizes (16px minimum)
              ============================================ */}
         <link href="/static/crs-mobile-critical-fixes.css" rel="stylesheet" />
+        
+        {/* ODRO Repair Rack Interactive Buttons */}
+        <link href="/static/odro-repair-hotspots.css" rel="stylesheet" />
+        
+        {/* Disable Whole-Rack Flash on Click - Localize interactions */}
+        <link href="/static/disable-rack-flash.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}
