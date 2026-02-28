@@ -45,16 +45,22 @@ export const RackAccordion = () => {
 
       {/* WELCOME RACK - Primary navigation */}
       <div class="rack-module-graphic welcome-rack-container" id="main-content" role="main">
-        <img 
-          src="/static/rack-images/welcome-rack-updated.jpg"
-          alt="CRS Welcome Rack - Main navigation and booking with wood frame" 
-          class="rack-module-img"
-          width="1024"
-          height="400"
-          loading="eager"
-          fetchpriority="high"
-          style="object-fit: cover; width: 100%; height: auto;"
-        />
+        <picture>
+          <source 
+            srcset="/static/rack-images/welcome-rack-updated.webp" 
+            type="image/webp"
+          />
+          <img 
+            src="/static/rack-images/welcome-rack-updated.jpg"
+            alt="CRS Welcome Rack - Main navigation and booking with wood frame" 
+            class="rack-module-img"
+            width="1024"
+            height="400"
+            loading="eager"
+            fetchpriority="high"
+            style="object-fit: cover; width: 100%; height: auto;"
+          />
+        </picture>
         
         {/* Clickable hotspots for dropdown navigation + BOOK NOW */}
         <div class="welcome-hotspots">
@@ -111,15 +117,21 @@ export const RackAccordion = () => {
       <div class="rack-module-graphic recording-services-container" id="recording-services" data-section="recording">
         {/* Main visual rack panel - NEW green/purple split design */}
         <div class="recording-rack-visual">
-          <img 
-            src="/static/rack-images/recording-services-new.jpg"
-            alt="Recording Services - Cowley Road (Green) & Cricket Road (Purple) Studios" 
-            class="rack-module-img"
-            width="1920"
-            height="auto"
-            loading="lazy"
-            style="object-fit: cover; width: 100%; height: auto;"
-          />
+          <picture>
+            <source 
+              srcset="/static/rack-images/recording-services-new.webp" 
+              type="image/webp"
+            />
+            <img 
+              src="/static/rack-images/recording-services-new.jpg"
+              alt="Recording Services - Cowley Road (Green) & Cricket Road (Purple) Studios" 
+              class="rack-module-img"
+              width="1920"
+              height="auto"
+              loading="lazy"
+              style="object-fit: cover; width: 100%; height: auto;"
+            />
+          </picture>
         </div>
 
         {/* Simple 2-panel clickable overlay */}
@@ -152,15 +164,21 @@ export const RackAccordion = () => {
 
       {/* REHEARSAL SERVICES RACK - Cowley + Cricket combined */}
       <div class="rack-module-graphic rehearsal-services-container" id="rehearsal-services" data-section="rehearsal">
-        <img 
-          src="/static/rack-images/rehearsal-services-updated.jpg"
-          alt="Rehearsal Services - Cowley Road (Green) & Cricket Road (Purple) with wood frame" 
-          class="rack-module-img"
-          width="1024"
-          height="362"
-          loading="lazy"
-          style="object-fit: cover; width: 100%; height: auto;"
-        />
+        <picture>
+          <source 
+            srcset="/static/rack-images/rehearsal-services-updated.webp" 
+            type="image/webp"
+          />
+          <img 
+            src="/static/rack-images/rehearsal-services-updated.jpg"
+            alt="Rehearsal Services - Cowley Road (Green) & Cricket Road (Purple) with wood frame" 
+            class="rack-module-img"
+            width="1024"
+            height="362"
+            loading="lazy"
+            style="object-fit: cover; width: 100%; height: auto;"
+          />
+        </picture>
         
         {/* Clickable hotspots for Cowley and Cricket rehearsal */}
         <div class="rehearsal-hotspots">
@@ -238,15 +256,21 @@ export const RackAccordion = () => {
 
       {/* ODRO REPAIR RACK - AV & Instrument Repair */}
       <div class="rack-module-graphic odro-repair-container" id="odro-repair" data-section="repairs">
-        <img 
-          src="/static/rack-images/odro-repair-panel.jpg"
-          alt="ODRO - AV & Instrument Repair" 
-          class="rack-module-img"
-          width="1920"
-          height="auto"
-          loading="lazy"
-          style="object-fit: cover; width: 100%; height: auto;"
-        />
+        <picture>
+          <source 
+            srcset="/static/rack-images/odro-repair-panel.webp" 
+            type="image/webp"
+          />
+          <img 
+            src="/static/rack-images/odro-repair-panel.jpg"
+            alt="ODRO - AV & Instrument Repair" 
+            class="rack-module-img"
+            width="1920"
+            height="auto"
+            loading="lazy"
+            style="object-fit: cover; width: 100%; height: auto;"
+          />
+        </picture>
         
         {/* Interactive button hotspots */}
         <div class="odro-repair-hotspots">

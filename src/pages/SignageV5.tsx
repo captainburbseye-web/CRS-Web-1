@@ -36,7 +36,7 @@ const frames = [
     title: 'COWLEY ROAD STUDIOS',
     subtitle: 'Oxford',
     body: null, // Pure ambient - no dense text
-    bgImage: '/static/rack-images/welcome-rack-updated.jpg',
+    bgImage: '/static/rack-images/welcome-rack-updated.webp',
     accent: '#C2A85A',
     showStationID: true
   },
@@ -49,7 +49,7 @@ const frames = [
     title: 'RECORDING STUDIO',
     body: `Cowley Road · Cricket Road
 Full tracking · Mixing`,
-    bgImage: '/static/rack-images/recording-services-new.jpg',
+    bgImage: '/static/rack-images/recording-services-new.webp',
     accent: '#4F7942',
     showVU: true
   },
@@ -62,7 +62,7 @@ Full tracking · Mixing`,
     title: 'REHEARSAL ROOMS',
     body: `£45-£65 per session
 Cowley Road · Cricket Road`,
-    bgImage: '/static/rack-images/rehearsal-services-updated.jpg',
+    bgImage: '/static/rack-images/rehearsal-services-updated.webp',
     accent: '#2E473B'
   },
 
@@ -101,7 +101,7 @@ Venue hire available now`,
     title: 'LIVE SESSIONS',
     subtitle: 'Filmed · Recorded · Shared',
     body: null, // Pure ambient
-    bgImage: '/static/rack-images/rehearsal-services-updated.jpg',
+    bgImage: '/static/rack-images/rehearsal-services-updated.webp',
     accent: '#4F7942',
     showStationID: true
   },
@@ -114,7 +114,7 @@ Venue hire available now`,
     title: 'EQUIPMENT REPAIRS',
     body: `ODRO Engineering
 £60 minimum · Studio gear`,
-    bgImage: '/static/rack-images/odro-repair-panel.jpg',
+    bgImage: '/static/rack-images/odro-repair-panel.webp',
     accent: '#C2A85A'
   },
 
@@ -126,7 +126,7 @@ Venue hire available now`,
     title: 'BOOK NOW',
     subtitle: 'crsoxford.com',
     body: null, // Clean CTA
-    bgImage: '/static/rack-images/welcome-rack-updated.jpg',
+    bgImage: '/static/rack-images/welcome-rack-updated.webp',
     accent: '#C2A85A',
     showStationID: true
   }
