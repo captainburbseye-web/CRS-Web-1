@@ -51,7 +51,8 @@ const frames = [
 Full tracking · Mixing`,
     bgImage: '/static/rack-images/recording-services-new.webp',
     accent: '#4F7942',
-    showVU: true
+    showVU: true,
+    showStationID: true
   },
 
   // OPERATIONAL FRAME 2 - Rehearsal Services
@@ -63,7 +64,8 @@ Full tracking · Mixing`,
     body: `£45-£65 per session
 Cowley Road · Cricket Road`,
     bgImage: '/static/rack-images/rehearsal-services-updated.webp',
-    accent: '#2E473B'
+    accent: '#2E473B',
+    showStationID: true
   },
 
   // AMBIENT FRAME 2 - Ecosystem Identity
@@ -88,12 +90,13 @@ Cowley Road · Cricket Road`,
     subtitle: 'Front Space',
     body: `Opening March 2026
 Coffee · Co-Working · Events`,
-    footer: 'Recording Studios → Through the Café',
+    footer: 'Studios Behind → Visit crsoxford.com',
     bgImage: '/static/rack-images/workshop-cafe-1920w.webp',
     accent: '#C2A85A',
     warmTone: true,
     badge: 'OPENING SOON',
-    showDepthIndicator: true
+    showDepthIndicator: true,
+    showStationID: true
   },
 
   // INFORMATIONAL FRAME - Studio Location (Behind Café)
@@ -101,13 +104,14 @@ Coffee · Co-Working · Events`,
     id: 'studio-location',
     duration: 10000, // 10 seconds
     type: 'informational',
-    title: 'STUDIOS BEHIND',
-    subtitle: 'Through the Workshop Café',
-    body: `Recording · Rehearsal · Repairs
-Walk through to access`,
+    title: 'RECORDING STUDIOS',
+    subtitle: 'Behind the Café Space',
+    body: `Book Online Now
+crsoxford.com · 01865 722027`,
     bgImage: '/static/rack-images/recording-services-new.webp',
     accent: '#4F7942',
-    showDepthIndicator: true
+    showDepthIndicator: false,
+    showStationID: true
   },
 
   // AMBIENT FRAME 3 - Live Showcase
@@ -132,7 +136,8 @@ Walk through to access`,
     body: `ODRO Engineering
 £60 minimum · Studio gear`,
     bgImage: '/static/rack-images/odro-repair-panel.webp',
-    accent: '#C2A85A'
+    accent: '#C2A85A',
+    showStationID: true
   },
 
   // AMBIENT FRAME 4 - Call to Action (Ambient treatment)
