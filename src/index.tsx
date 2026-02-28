@@ -2211,10 +2211,10 @@ app.get('/signagesignal', (c) => {
         <meta name="robots" content="noindex, nofollow" />
         <title>CRS Signage Signal | Multi-Mode Digital Display</title>
         <link href="/static/signage-signal-enhanced.css" rel="stylesheet" />
-        <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
         <style>{`
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          body { overflow: hidden; background: #000; font-family: 'JetBrains Mono', 'Space Mono', monospace; }
+          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
+          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #000 !important; }
+          body { display: block !important; font-family: 'JetBrains Mono', 'Space Mono', monospace; }
         `}</style>
       </head>
       <body>
@@ -2242,11 +2242,10 @@ app.get('/signage-enhanced', (c) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
         <style>{`
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          html, body { width: 100%; height: 100%; overflow: hidden; }
-          body { background: #0E0E0E; font-family: 'JetBrains Mono', monospace; }
+          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
+          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0E0E0E !important; }
+          body { display: block !important; font-family: 'JetBrains Mono', monospace; }
         `}</style>
       </head>
       <body>
@@ -2266,7 +2265,12 @@ app.get('/signage-v4', (c) => {
         <meta name="robots" content="noindex, nofollow" />
         <title>CRS Signage V4 | On-Brand Display</title>
         <link href="/static/signage-v4.css" rel="stylesheet" />
-        <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
+        <style>{`
+          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
+          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0a0a0a !important; }
+          body { display: block !important; }
+          .signage-v4-container { width: 100vw !important; height: 100vh !important; margin: 0 !important; padding: 0 !important; }
+        `}</style>
       </head>
       <body>
         <SignageV4 />
@@ -2324,11 +2328,10 @@ app.get('/signage-rewrite', (c) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="/static/signage-55inch-optimized.css" rel="stylesheet" />
         <style>{`
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          html, body { width: 100%; height: 100%; overflow: hidden; }
-          body { background: #0E0E0E; font-family: 'JetBrains Mono', monospace; }
+          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
+          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0E0E0E !important; }
+          body { display: block !important; font-family: 'JetBrains Mono', monospace; }
         `}</style>
       </head>
       <body>
