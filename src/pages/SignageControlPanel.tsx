@@ -1,0 +1,464 @@
+export function SignageControlPanel() {
+  return (
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CRS Signage Control Panel</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <style>{`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+
+          :root {
+            --crs-black: #0A1A0F;
+            --brass: #D4AF37;
+            --amber: #FF9F1C;
+            --green: #4F7942;
+            --signal-green: #39FF14;
+            --bg-dark: #0E0E0E;
+            --border-color: rgba(212, 175, 55, 0.3);
+          }
+
+          body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-dark);
+            color: #E5E5E5;
+            padding: 20px;
+            min-height: 100vh;
+          }
+
+          .control-panel {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(10, 26, 15, 0.9);
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+          }
+
+          h1 {
+            font-size: 1.5rem;
+            color: var(--brass);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+
+          .subtitle {
+            font-size: 0.85rem;
+            color: rgba(229, 229, 229, 0.6);
+            margin-bottom: 24px;
+          }
+
+          .section {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+          }
+
+          .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+          }
+
+          .section-title {
+            font-size: 0.9rem;
+            color: var(--amber);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+          }
+
+          .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+          }
+
+          .control-btn {
+            padding: 12px 16px;
+            background: rgba(79, 121, 66, 0.15);
+            border: 1px solid var(--green);
+            border-radius: 6px;
+            color: #E5E5E5;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+
+          .control-btn:hover {
+            background: rgba(79, 121, 66, 0.3);
+            border-color: var(--signal-green);
+            transform: translateX(4px);
+          }
+
+          .control-btn:active {
+            transform: translateX(2px);
+          }
+
+          .control-btn.active {
+            background: rgba(57, 255, 20, 0.2);
+            border-color: var(--signal-green);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+          }
+
+          .control-btn.active::after {
+            content: '●';
+            color: var(--signal-green);
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+          }
+
+          @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+          }
+
+          .control-btn .icon {
+            margin-right: 8px;
+            font-style: normal;
+          }
+
+          .status {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--brass);
+            border-radius: 6px;
+            padding: 12px;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+
+          .status-label {
+            color: var(--brass);
+            font-weight: 600;
+          }
+
+          .status-value {
+            color: var(--signal-green);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+
+          .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+          }
+
+          .connection-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--signal-green);
+            animation: pulse 2s infinite;
+          }
+
+          .connection-dot.disconnected {
+            background: #CC2200;
+          }
+
+          .keyboard-shortcuts {
+            font-size: 0.75rem;
+            color: rgba(229, 229, 229, 0.5);
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+          }
+
+          .keyboard-shortcuts kbd {
+            display: inline-block;
+            padding: 2px 6px;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--brass);
+            border-radius: 3px;
+            font-family: inherit;
+            font-size: 0.8em;
+            margin: 0 2px;
+          }
+
+          .route-select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(14, 14, 14, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: #E5E5E5;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 8px;
+          }
+
+          .route-select:focus {
+            outline: none;
+            border-color: var(--signal-green);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+          }
+        `}</style>
+      </head>
+      <body>
+        <div class="control-panel">
+          <h1>⚡ Signage Control</h1>
+          <p class="subtitle">Remote control for CRS digital signage displays</p>
+
+          {/* Mode Selector */}
+          <div class="section">
+            <div class="section-title">Display Mode</div>
+            <div class="button-group">
+              <button class="control-btn mode-btn active" data-mode="ambient">
+                <span><span class="icon">🌙</span> Ambient Mode</span>
+              </button>
+              <button class="control-btn mode-btn" data-mode="audio">
+                <span><span class="icon">🎵</span> Audio-Reactive</span>
+              </button>
+              <button class="control-btn mode-btn" data-mode="parallax">
+                <span><span class="icon">✨</span> Parallax</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Route Selector */}
+          <div class="section">
+            <div class="section-title">Signage Route</div>
+            <select class="route-select" id="routeSelect">
+              <option value="/signagesignal">Signage Signal (Multi-Mode)</option>
+              <option value="/signage-v5">Signage V5 (Research-Backed)</option>
+              <option value="/signage-v4">Signage V4 (On-Brand)</option>
+              <option value="/signage-enhanced">Signage Enhanced</option>
+              <option value="/signage-scheduled">Signage Scheduled (Time-Based)</option>
+            </select>
+            <button class="control-btn" id="openDisplayBtn" style="margin-top: 12px;">
+              <span><span class="icon">🖥️</span> Open Display Window</span>
+            </button>
+          </div>
+
+          {/* Playback Controls */}
+          <div class="section">
+            <div class="section-title">Playback</div>
+            <div class="button-group">
+              <button class="control-btn" id="pauseBtn">
+                <span><span class="icon">⏸️</span> Pause / Resume</span>
+              </button>
+              <button class="control-btn" id="prevBtn">
+                <span><span class="icon">⏮️</span> Previous Slide</span>
+              </button>
+              <button class="control-btn" id="nextBtn">
+                <span><span class="icon">⏭️</span> Next Slide</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Status Display */}
+          <div class="status">
+            <span class="status-label">Current Mode:</span>
+            <span class="status-value" id="currentModeDisplay">AMBIENT</span>
+          </div>
+
+          {/* Connection Status */}
+          <div class="connection-status">
+            <div class="connection-dot" id="connectionDot"></div>
+            <span id="connectionText">Connected to signage display</span>
+          </div>
+
+          {/* Keyboard Shortcuts */}
+          <div class="keyboard-shortcuts">
+            <strong>Keyboard shortcuts on display:</strong><br />
+            <kbd>M</kbd> Cycle modes · 
+            <kbd>P</kbd> Pause/Resume · 
+            <kbd>←</kbd> Previous · 
+            <kbd>→</kbd> Next
+          </div>
+        </div>
+
+        <script dangerouslySetInnerHTML={{__html: `
+          // ========================================
+          // BROADCAST CHANNEL FOR CROSS-WINDOW COMMUNICATION
+          // ========================================
+          
+          const channel = new BroadcastChannel('crs-signage-control');
+          let displayWindow = null;
+          
+          // ========================================
+          // MODE CONTROL
+          // ========================================
+          
+          const modeButtons = document.querySelectorAll('.mode-btn');
+          const currentModeDisplay = document.getElementById('currentModeDisplay');
+          
+          modeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+              const mode = btn.dataset.mode;
+              
+              // Update UI
+              modeButtons.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              currentModeDisplay.textContent = mode.toUpperCase();
+              
+              // Send command to display
+              sendCommand('switchMode', { mode });
+              
+              console.log('[Control Panel] Switched to ' + mode + ' mode');
+            });
+          });
+          
+          // ========================================
+          // PLAYBACK CONTROL
+          // ========================================
+          
+          document.getElementById('pauseBtn').addEventListener('click', () => {
+            sendCommand('togglePause');
+            console.log('[Control Panel] Toggle pause');
+          });
+          
+          document.getElementById('prevBtn').addEventListener('click', () => {
+            sendCommand('prevSlide');
+            console.log('[Control Panel] Previous slide');
+          });
+          
+          document.getElementById('nextBtn').addEventListener('click', () => {
+            sendCommand('nextSlide');
+            console.log('[Control Panel] Next slide');
+          });
+          
+          // ========================================
+          // ROUTE & DISPLAY CONTROL
+          // ========================================
+          
+          document.getElementById('openDisplayBtn').addEventListener('click', () => {
+            const route = document.getElementById('routeSelect').value;
+            const baseUrl = window.location.origin;
+            const displayUrl = baseUrl + route;
+            
+            // Open in new window (fullscreen)
+            displayWindow = window.open(
+              displayUrl,
+              'CRS_Signage_Display',
+              'width=1920,height=1080,fullscreen=yes'
+            );
+            
+            console.log('[Control Panel] Opened display: ' + displayUrl);
+            
+            // Update connection status
+            updateConnectionStatus(true);
+          });
+          
+          // ========================================
+          // COMMUNICATION
+          // ========================================
+          
+          function sendCommand(command, data) {
+            data = data || {};
+            const message = {
+              type: 'SIGNAGE_COMMAND',
+              command: command,
+              data: data,
+              timestamp: Date.now()
+            };
+            
+            // Send via BroadcastChannel
+            channel.postMessage(message);
+            
+            // Also store in localStorage as fallback
+            localStorage.setItem('crs-signage-command', JSON.stringify(message));
+            
+            console.log('[Control Panel] Sent command:', message);
+          }
+          
+          // Listen for responses from display
+          channel.addEventListener('message', (event) => {
+            const msg = event.data;
+            
+            if (msg.type === 'SIGNAGE_STATUS') {
+              console.log('[Control Panel] Received status:', msg);
+              
+              // Update UI based on display status
+              if (msg.mode) {
+                currentModeDisplay.textContent = msg.mode.toUpperCase();
+                
+                // Update active button
+                modeButtons.forEach(btn => {
+                  btn.classList.toggle('active', btn.dataset.mode === msg.mode);
+                });
+              }
+              
+              updateConnectionStatus(true);
+            }
+          });
+          
+          // ========================================
+          // CONNECTION STATUS
+          // ========================================
+          
+          function updateConnectionStatus(connected) {
+            const dot = document.getElementById('connectionDot');
+            const text = document.getElementById('connectionText');
+            
+            if (connected) {
+              dot.classList.remove('disconnected');
+              text.textContent = 'Connected to signage display';
+            } else {
+              dot.classList.add('disconnected');
+              text.textContent = 'Display not responding';
+            }
+          }
+          
+          // Ping display every 2 seconds
+          setInterval(() => {
+            sendCommand('ping');
+          }, 2000);
+          
+          // Check for display responses
+          let lastResponseTime = Date.now();
+          
+          channel.addEventListener('message', (event) => {
+            if (event.data.type === 'SIGNAGE_STATUS' || event.data.type === 'SIGNAGE_PONG') {
+              lastResponseTime = Date.now();
+              updateConnectionStatus(true);
+            }
+          });
+          
+          // Connection timeout check
+          setInterval(() => {
+            const timeSinceResponse = Date.now() - lastResponseTime;
+            if (timeSinceResponse > 5000) {
+              updateConnectionStatus(false);
+            }
+          }, 1000);
+          
+          // ========================================
+          // INIT
+          // ========================================
+          
+          console.log('[Control Panel] Ready');
+          
+          // Initial status check
+          setTimeout(() => {
+            sendCommand('requestStatus');
+          }, 500);
+        `}} />
+      </body>
+    </html>
+  );
+}

@@ -8,6 +8,7 @@ import { Footer } from './components/Footer'
 import { BuildStatusBanner } from './components/BuildStatusBanner'
 import { HomePage } from './pages/Home'
 import { StudioPage } from './pages/Studio'
+import { SignageControlPanel } from './pages/SignageControlPanel'
 import { AVServicesPage } from './pages/AVServices'
 import { AVRepairsPage } from './pages/AVRepairs'
 import { WorkshopCafePage } from './pages/WorkshopCafe'
@@ -2513,9 +2514,8 @@ app.get('/signage-scheduled', (c) => {
 // SIGNAGE CONTROL PANEL — REMOTE CONTROL INTERFACE
 // Opens in separate window to control signage displays remotely
 // Features: mode switching, playback controls, route selection
-app.get('/signage-control', async (c) => {
-  const html = await Bun.file('public/static/signage-control-panel.html').text()
-  return c.html(html)
+app.get('/signage-control', (c) => {
+  return c.html(<SignageControlPanel />)
 })
 
 export default app
