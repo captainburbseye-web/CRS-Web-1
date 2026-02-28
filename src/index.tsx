@@ -540,6 +540,7 @@ app.get('/book', (c) => {
         <link href="/static/crs-header.css" rel="stylesheet" />
         <link href="/static/crs-mobile.css" rel="stylesheet" />
         <link href="/static/crs-mobile-optimized.css" rel="stylesheet" />
+        <link href="/static/crs-mobile-critical-fixes.css" rel="stylesheet" />
         
         {/* Accordion-specific CSS */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />
@@ -1922,6 +1923,7 @@ app.get('/rack-accordion', (c) => {
         <link href="/static/crs-map-embed.css" rel="stylesheet" />
         <link href="/static/crs-mobile.css" rel="stylesheet" />
         <link href="/static/crs-mobile-optimized.css" rel="stylesheet" />
+        <link href="/static/crs-mobile-critical-fixes.css" rel="stylesheet" />
         
         {/* Accordion-specific CSS */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />
@@ -2361,6 +2363,7 @@ app.get('/rehearsal', (c) => {
         <link href="/static/crs-header.css" rel="stylesheet" />
         <link href="/static/crs-mobile.css" rel="stylesheet" />
         <link href="/static/crs-mobile-optimized.css" rel="stylesheet" />
+        <link href="/static/crs-mobile-critical-fixes.css" rel="stylesheet" />
         
         {/* Accordion-specific CSS */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />

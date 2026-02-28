@@ -156,6 +156,16 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* Toggle Switches - Functional switches for future features */}
         <link href="/static/toggle-switches.css" rel="stylesheet" />
+        
+        {/* ============================================
+             MOBILE OPTIMIZATION - P1 CRITICAL FIXES
+             Addresses critical mobile UX issues from Feb 2026 audit:
+             - Layout reflow (100% width, no horizontal scroll)
+             - Mobile navigation (show mobile nav, hide desktop)
+             - Touch targets (44px minimum)
+             - Font sizes (16px minimum)
+             ============================================ */}
+        <link href="/static/crs-mobile-critical-fixes.css" rel="stylesheet" />
       </head>
       <body>
         {/* Organic Grain SVG Filter for Workshop Café (Nature Distilled) */}
