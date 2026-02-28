@@ -2213,6 +2213,7 @@ app.get('/signagesignal', (c) => {
         <meta name="robots" content="noindex, nofollow" />
         <title>CRS Signage Signal | Multi-Mode Digital Display</title>
         <link href="/static/signage-signal-enhanced.css" rel="stylesheet" />
+        <link href="/static/signage-fullscreen-fix.css" rel="stylesheet" />
         <style>{`
           * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
           html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #000 !important; }
@@ -2244,6 +2245,7 @@ app.get('/signage-enhanced', (c) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="/static/signage-fullscreen-fix.css" rel="stylesheet" />
         <style>{`
           * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
           html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0E0E0E !important; }
@@ -2267,6 +2269,7 @@ app.get('/signage-v4', (c) => {
         <meta name="robots" content="noindex, nofollow" />
         <title>CRS Signage V4 | On-Brand Display</title>
         <link href="/static/signage-v4.css" rel="stylesheet" />
+        <link href="/static/signage-fullscreen-fix.css" rel="stylesheet" />
         <style>{`
           * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
           html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0a0a0a !important; }
@@ -2302,6 +2305,7 @@ app.get('/signage-v5', (c) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <link href="/static/signage-v5.css" rel="stylesheet" />
+        <link href="/static/signage-fullscreen-fix.css" rel="stylesheet" />
         <style>{`
           * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
           html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0a0a0a !important; }
@@ -2330,6 +2334,7 @@ app.get('/signage-rewrite', (c) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="/static/signage-fullscreen-fix.css" rel="stylesheet" />
         <style>{`
           * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
           html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0E0E0E !important; }
