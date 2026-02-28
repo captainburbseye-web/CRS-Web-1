@@ -79,18 +79,35 @@ Cowley Road · Cricket Road`,
     showStationID: true
   },
 
-  // OPERATIONAL FRAME 3 - Workshop Café (Opening Soon)
+  // OPERATIONAL FRAME 3 - Workshop Café (Opening Soon) + Studio Location
   {
     id: 'workshop-cafe',
-    duration: 10000, // 10 seconds
+    duration: 12000, // 12 seconds (extra time for spatial info)
     type: 'operational',
     title: 'WORKSHOP CAFÉ',
-    body: `Opening Soon
-Venue hire available now`,
+    subtitle: 'Front Space',
+    body: `Opening March 2026
+Coffee · Co-Working · Events`,
+    footer: 'Recording Studios → Through the Café',
     bgImage: '/static/rack-images/workshop-cafe-1920w.webp',
     accent: '#C2A85A',
     warmTone: true,
-    badge: 'OPENING SOON'
+    badge: 'OPENING SOON',
+    showDepthIndicator: true
+  },
+
+  // INFORMATIONAL FRAME - Studio Location (Behind Café)
+  {
+    id: 'studio-location',
+    duration: 10000, // 10 seconds
+    type: 'informational',
+    title: 'STUDIOS BEHIND',
+    subtitle: 'Through the Workshop Café',
+    body: `Recording · Rehearsal · Repairs
+Walk through to access`,
+    bgImage: '/static/rack-images/recording-services-new.webp',
+    accent: '#4F7942',
+    showDepthIndicator: true
   },
 
   // AMBIENT FRAME 3 - Live Showcase
@@ -218,6 +235,16 @@ export const SignageV5 = () => {
                 )}
                 {frame.body && (
                   <p class="frame-body">{frame.body}</p>
+                )}
+                {frame.footer && (
+                  <div class="frame-footer">
+                    {frame.showDepthIndicator && (
+                      <svg class="depth-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M12 4L12 18M12 18L6 12M12 18L18 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    )}
+                    <p class="footer-text">{frame.footer}</p>
+                  </div>
                 )}
               </div>
 
