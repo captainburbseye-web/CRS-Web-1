@@ -228,7 +228,7 @@ html, body {
 }
 
 .signage-title {
-  font-size: 5rem;
+  font-size: 9rem; /* Was 5rem, now 9rem - 1.8x larger for window visibility */
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -0.02em;
@@ -248,21 +248,21 @@ html, body {
 }
 
 .signage-subtitle {
-  font-size: 1.5rem;
+  font-size: 3.5rem; /* Was 1.5rem, now 3.5rem - 2.3x larger */
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 1.5rem;
   letter-spacing: 0.05em;
 }
 
 .signage-description {
-  font-size: 1.25rem;
+  font-size: 2.5rem; /* Was 1.25rem, now 2.5rem - 2x larger */
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 1rem;
   line-height: 1.6;
 }
 
 .signage-pricing {
-  font-size: 2rem;
+  font-size: 4rem; /* Was 2rem, now 4rem - 2x larger */
   font-weight: 700;
   letter-spacing: 0.05em;
   margin-top: 1.5rem;

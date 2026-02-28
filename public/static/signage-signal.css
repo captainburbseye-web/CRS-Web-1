@@ -82,8 +82,8 @@ html.signage-mode body {
   background: rgba(127, 255, 0, 0.2);
   border: 2px solid #7FFF00;
   color: #7FFF00;
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 2rem; /* Was 1rem, now 2rem - 2x larger */
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 20px;
@@ -92,7 +92,7 @@ html.signage-mode body {
 
 /* Title */
 .signage-title {
-  font-size: 4.5rem;
+  font-size: 9rem; /* Was 4.5rem, now 9rem - 2x larger for window displays */
   font-weight: 900;
   color: #FFD700;
   text-transform: uppercase;
@@ -106,8 +106,9 @@ html.signage-mode body {
 
 /* Description */
 .signage-description {
-  font-size: 2rem;
-  color: #E0E0E0;
+  font-size: 4rem; /* Was 2rem, now 4rem - 2x larger */
+  color: rgba(245, 245, 245, 0.95);
+  font-weight: 600;
   margin: 0 0 40px 0;
   max-width: 900px;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);

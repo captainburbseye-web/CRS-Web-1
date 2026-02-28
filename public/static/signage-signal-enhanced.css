@@ -220,7 +220,7 @@
 }
 
 .ambient-title {
-  font-size: 4rem;
+  font-size: 8rem; /* Was 4rem, now 8rem - 2x larger for window */
   font-weight: bold;
   margin-bottom: 20px;
   line-height: 1.1;
@@ -235,20 +235,20 @@
 }
 
 .ambient-subtitle {
-  font-size: 1.5rem;
+  font-size: 3.5rem; /* Was 1.5rem, now 3.5rem - 2.3x larger */
   color: #ccc;
   margin-bottom: 10px;
 }
 
 .ambient-description {
-  font-size: 1.2rem;
+  font-size: 2.5rem; /* Was 1.2rem, now 2.5rem - 2x larger */
   color: #aaa;
   margin-bottom: 20px;
   max-width: 800px;
 }
 
 .ambient-pricing {
-  font-size: 1.8rem;
+  font-size: 3.6rem; /* Was 1.8rem, now 3.6rem - 2x larger */
   font-weight: bold;
   text-shadow: 0 0 30px currentColor;
 }
