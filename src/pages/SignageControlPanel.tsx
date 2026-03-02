@@ -243,11 +243,17 @@ export function SignageControlPanel() {
           <div class="section">
             <div class="section-title">Signage Route</div>
             <select class="route-select" id="routeSelect">
-              <option value="/signagesignal">Signage Signal (Multi-Mode)</option>
-              <option value="/signage-v5">Signage V5 (Research-Backed)</option>
-              <option value="/signage-v4">Signage V4 (On-Brand)</option>
-              <option value="/signage-enhanced">Signage Enhanced</option>
-              <option value="/signage-scheduled">Signage Scheduled (Time-Based)</option>
+              <optgroup label="🎯 Primary Displays">
+                <option value="/signage-v5" selected>⭐ V5 - Day/Night Mode (Primary Window)</option>
+                <option value="/signage-street">🎵 Street - Truck/Mostro (Peak Hours)</option>
+              </optgroup>
+              <optgroup label="📺 Alternative Displays">
+                <option value="/signage-v4">🎛️ V4 - Vintage Broadcast (VU Meters)</option>
+                <option value="/signage-v3-enhanced">⚙️ V3 Enhanced - Mechanical Rack</option>
+                <option value="/signage-enhanced">✨ Enhanced - Gallery Style</option>
+                <option value="/signagesignal">📡 Signal - Multi-Mode</option>
+                <option value="/signage-v2">📋 V2 - Classic Display</option>
+              </optgroup>
             </select>
             <button class="control-btn" id="openDisplayBtn" style="margin-top: 12px;">
               <span><span class="icon">🖥️</span> Open Display Window</span>
@@ -289,6 +295,18 @@ export function SignageControlPanel() {
             <kbd>P</kbd> Pause/Resume · 
             <kbd>←</kbd> Previous · 
             <kbd>→</kbd> Next
+          </div>
+
+          {/* Mode Info */}
+          <div class="keyboard-shortcuts" style="margin-top: 12px;">
+            <strong>📺 Mode Guide:</strong><br />
+            <strong style="color: var(--brass);">V5</strong> = Primary window (day/night auto-switch, 84s loop)<br />
+            <strong style="color: var(--brass);">Street</strong> = Truck/Mostro audience (peak hours, 90s loop)<br />
+            <strong style="color: var(--amber);">V4</strong> = VU meters + QR codes (vintage broadcast, 72s)<br />
+            <strong style="color: var(--amber);">V3</strong> = Mechanical rack aesthetic (10rem titles, 72s)<br />
+            <strong style="color: var(--amber);">Enhanced</strong> = Gallery-style ambient (9rem titles, 90s)<br />
+            <strong style="color: var(--amber);">Signal</strong> = Multi-mode broadcast (badge system, 80s)<br />
+            <strong style="color: var(--amber);">V2</strong> = Classic display (bold titles, 60s loop)
           </div>
         </div>
 
