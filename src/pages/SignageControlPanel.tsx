@@ -249,10 +249,8 @@ export function SignageControlPanel() {
               </optgroup>
               <optgroup label="📺 Alternative Displays">
                 <option value="/signage-v4">🎛️ V4 - Vintage Broadcast (VU Meters)</option>
-                <option value="/signage-v3-enhanced">⚙️ V3 Enhanced - Mechanical Rack</option>
                 <option value="/signage-enhanced">✨ Enhanced - Gallery Style</option>
                 <option value="/signagesignal">📡 Signal - Multi-Mode</option>
-                <option value="/signage-v2">📋 V2 - Classic Display</option>
               </optgroup>
             </select>
             <button class="control-btn" id="openDisplayBtn" style="margin-top: 12px;">
