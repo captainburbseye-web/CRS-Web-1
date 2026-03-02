@@ -22,7 +22,7 @@
 /* Hotspots overlay container - positioned at indicator lights */
 .odro-repair-hotspots {
   position: absolute;
-  bottom: 35%; /* Position directly on the indicator lights */
+  bottom: 20%; /* Adjusted to align with indicator lights in visible area */
   left: 0;
   right: 0;
   display: grid;
