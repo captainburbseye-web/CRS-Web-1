@@ -1,0 +1,430 @@
+/**
+ * CRS SIGNAGE STREET - MINIMALIST STYLING
+ * 
+ * Design Principles (Research-Backed):
+ * - Deep black base (#0A0A0A)
+ * - Off-white text (#F5F5F5)
+ * - Mustard accent (#D4AF37)
+ * - Nettle green accent (#4F7942)
+ * - NO neons, NO orange, NO teal
+ * - Massive negative space
+ * - Slow fades (1.5-2s)
+ * - Long holds (6-12s)
+ * - Minimal movement
+ * 
+ * Typography:
+ * - Large, sans-serif, bold headlines
+ * - Minimal lines (1-3 max)
+ * - Ample whitespace
+ * 
+ * Target: Music-savvy, creative, scene-aware audience
+ * References: Jamini Paris, DUMBO Brooklyn, Bloomingdale's Manhattan
+ */
+
+/* ===================================
+   FULL-SCREEN RESET
+   =================================== */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  background: #0A0A0A !important;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  color: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===================================
+   CONTAINER
+   =================================== */
+.signage-street-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: #0A0A0A;
+}
+
+/* ===================================
+   FRAMES
+   =================================== */
+.signage-frames {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.signage-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 2s ease-in-out; /* Slow fade - 2 seconds */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.signage-frame.active {
+  opacity: 1;
+  z-index: 10;
+}
+
+/* Background - mostly black, minimal texture */
+.frame-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0A0A0A;
+  z-index: 1;
+}
+
+/* ===================================
+   CONTENT LAYOUT
+   =================================== */
+.frame-content {
+  position: relative;
+  z-index: 20;
+  text-align: center;
+  max-width: 90%;
+  padding: 0 5%;
+}
+
+.frame-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ===================================
+   TYPOGRAPHY - MASSIVE & MINIMAL
+   =================================== */
+.frame-title {
+  font-size: clamp(5rem, 10vw, 12rem); /* 80px - 192px */
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: pre-line;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.8);
+  animation: title-fade-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes title-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Underline (civic frames) */
+.frame-underline {
+  width: 120px;
+  height: 4px;
+  margin: 1.5rem 0;
+  animation: underline-expand 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+@keyframes underline-expand {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 120px;
+    opacity: 1;
+  }
+}
+
+.frame-subtitle {
+  font-size: clamp(2.5rem, 5vw, 5rem); /* 40px - 80px */
+  font-weight: 600;
+  color: #F5F5F5;
+  opacity: 0.9;
+  margin: 0;
+  letter-spacing: 0.05em;
+  animation: subtitle-fade-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+@keyframes subtitle-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
+
+.frame-body {
+  font-size: clamp(1.5rem, 3vw, 3rem); /* 24px - 48px */
+  font-weight: 500;
+  color: #F5F5F5;
+  opacity: 0.8;
+  margin: 0;
+  white-space: pre-line;
+  letter-spacing: 0.02em;
+  animation: body-fade-in 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+@keyframes body-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   BADGE (Pre-Opening)
+   =================================== */
+.frame-badge {
+  position: absolute;
+  top: 4rem;
+  right: 4rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  opacity: 0;
+  animation: badge-fade-in 1s ease 1s both;
+}
+
+@keyframes badge-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateX(0);
+  }
+}
+
+/* ===================================
+   SUBTLE ARROW (Spatial Cue)
+   =================================== */
+.frame-arrow {
+  position: absolute;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(3rem, 5vw, 5rem); /* 48px - 80px */
+  height: clamp(3rem, 5vw, 5rem);
+  opacity: 0;
+  animation: arrow-pulse 2.5s ease-in-out 1s infinite;
+}
+
+@keyframes arrow-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+/* ===================================
+   QR CODE (Minimal, Side)
+   =================================== */
+.frame-qr-minimal {
+  position: absolute;
+  bottom: 4rem;
+  right: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  opacity: 0;
+  animation: qr-fade-in 1.5s ease 1.2s both;
+}
+
+.frame-qr-minimal svg {
+  width: 180px;
+  height: 180px;
+  opacity: 0.9;
+}
+
+.qr-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+@keyframes qr-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===================================
+   PROGRESS BAR (Very Subtle)
+   =================================== */
+.frame-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  z-index: 50;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  animation: progress-fill 10s linear forwards;
+}
+
+@keyframes progress-fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* ===================================
+   STATION ID (Subtle, Bottom-Right)
+   =================================== */
+.station-id-minimal {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  opacity: 0.6;
+}
+
+.station-badge {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.station-badge.active {
+  display: flex;
+  animation: badge-appear 0.8s ease both;
+}
+
+@keyframes badge-appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+}
+
+.icon {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.station-value {
+  opacity: 0.9;
+}
+
+/* ===================================
+   RESPONSIVE (Mobile/Tablet)
+   =================================== */
+@media (max-width: 768px) {
+  .frame-title {
+    font-size: clamp(3rem, 8vw, 8rem);
+  }
+  
+  .frame-subtitle {
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+  }
+  
+  .frame-body {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+  }
+  
+  .frame-badge {
+    top: 2rem;
+    right: 2rem;
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+  
+  .frame-qr-minimal {
+    bottom: 2rem;
+    right: 2rem;
+  }
+  
+  .frame-qr-minimal svg {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .qr-label {
+    font-size: 0.75rem;
+  }
+  
+  .station-id-minimal {
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ===================================
+   REDUCED MOTION SUPPORT
+   =================================== */
+@media (prefers-reduced-motion: reduce) {
+  .signage-frame,
+  .frame-title,
+  .frame-subtitle,
+  .frame-body,
+  .frame-badge,
+  .frame-arrow,
+  .frame-qr-minimal,
+  .station-badge {
+    animation-duration: 0.3s;
+  }
+  
+  .frame-arrow {
+    animation: none;
+    opacity: 0.5;
+  }
+}

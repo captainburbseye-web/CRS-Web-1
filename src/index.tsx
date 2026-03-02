@@ -24,6 +24,7 @@ import { SignageEnhanced } from './pages/SignageEnhanced'
 import { SignageEnhancedV3 } from './pages/SignageEnhancedV3'
 import { SignageV4 } from './pages/SignageV4'
 import { SignageV5 } from './pages/SignageV5'
+import { SignageStreet } from './pages/SignageStreet'
 import { SignageRewrite } from './pages/SignageRewrite'
 import { SignageEnhancedV2 } from './pages/SignageEnhancedV2'
 import { BookingConfirmed } from './pages/BookingConfirmed'
@@ -2317,6 +2318,36 @@ app.get('/signage-v5', (c) => {
       <body>
         <SignageV5 />
         <script src="/static/signage-v5.js" defer></script>
+      </body>
+    </html>
+  )
+})
+
+// CRS SIGNAGE STREET - TRUCK/MOSTRO AUDIENCE OPTIMIZED
+// Route: /signage-street
+// Target: Music-savvy patrons at Truck Record Store & Mostro Coffee House
+// Design: Minimalist, curiosity-driven, scene-appropriate
+// Research: Jamini Paris, DUMBO Brooklyn, Bloomingdale's Manhattan
+// Peak Hours: Weekdays 15:00-18:30, Weekends 11:00-16:00
+app.get('/signage-street', (c) => {
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>CRS Signage Street | Minimalist Display</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <link href="/static/signage-street.css" rel="stylesheet" />
+        <style>{`
+          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
+          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0A0A0A !important; }
+        `}</style>
+      </head>
+      <body>
+        <SignageStreet />
       </body>
     </html>
   )
