@@ -50,12 +50,36 @@
 
 /* Ensure sufficient color contrast */
 :root {
-  --text-primary: #f5f5f5;
-  --text-secondary: #d4d4d4;
-  --bg-primary: #0a0a0a;
+  /* NIGHT MODE (default - 19:00-07:00) */
+  --text-primary: #0a0a0a; /* Dark text for day mode */
+  --text-secondary: #1a1a1a;
+  --bg-primary: #f5f5f5; /* Light background for day mode */
   --accent-gold: #C2A85A;
   --accent-green: #4F7942;
   --accent-teal: #2E473B;
+  --accent-mustard: #D4AF37;
+  --accent-yellow: #FFD700;
+  --accent-lime: #7FFF00;
+  
+  /* Day mode light backgrounds */
+  --day-bg-crs: #f5f5f5; /* White/light gray for CRS */
+  --day-bg-cricket: #FFE55C; /* Light yellow for Cricket */
+  --day-bg-workshop: #F5E6C8; /* Light mustard for Workshop Café */
+  --day-bg-rehearsal: #E8F5E8; /* Light green for Rehearsal */
+}
+
+/* DAY MODE (07:00-19:00) - Applied via JS class */
+body.day-mode {
+  --text-primary: #0a0a0a;
+  --text-secondary: #1a1a1a;
+  --bg-primary: #f5f5f5;
+}
+
+/* NIGHT MODE (19:00-07:00) - Default */
+body.night-mode {
+  --text-primary: #f5f5f5;
+  --text-secondary: #d4d4d4;
+  --bg-primary: #0a0a0a;
 }
 
 /* Screen reader only content */
@@ -81,7 +105,7 @@ html, body {
   width: 100vw !important;
   height: 100vh !important;
   overflow: hidden !important;
-  background: #0a0a0a !important;
+  background: var(--bg-primary) !important;
 }
 
 body {
@@ -98,9 +122,9 @@ body {
   height: 100vh;
   position: relative;
   overflow: hidden;
-  background: #0a0a0a;
+  background: var(--bg-primary);
   font-family: 'JetBrains Mono', monospace;
-  color: #f5f5f5;
+  color: var(--text-primary);
   flex: 1;
 }
 
@@ -189,6 +213,11 @@ body {
   filter: brightness(0.4) contrast(1.1);
 }
 
+/* Day mode: brighter background images */
+body.day-mode .frame-bg-image {
+  filter: brightness(0.85) contrast(1.05) saturate(0.9);
+}
+
 /* ======================
    OVERLAYS (Ambient vs Operational)
    ====================== */
@@ -206,6 +235,15 @@ body {
   z-index: 2;
 }
 
+/* DAY MODE: Light overlays based on brand */
+body.day-mode .frame-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(245,245,245,0.92) 0%,
+    rgba(255,255,255,0.95) 100%
+  );
+}
+
 /* Ambient frames get darker overlay (for minimal text) */
 .signage-frame.frame-ambient .frame-overlay {
   background: linear-gradient(
@@ -215,11 +253,29 @@ body {
   );
 }
 
+/* Day mode ambient: lighter */
+body.day-mode .signage-frame.frame-ambient .frame-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.88) 0%,
+    rgba(245,245,245,0.92) 100%
+  );
+}
+
 .frame-overlay.warm {
   background: linear-gradient(
     135deg,
     rgba(46,35,28,0.75) 0%,
     rgba(60,48,38,0.85) 100%
+  );
+}
+
+/* Day mode warm: mustard/yellow tint for Workshop Café */
+body.day-mode .frame-overlay.warm {
+  background: linear-gradient(
+    135deg,
+    rgba(255,229,92,0.90) 0%,
+    rgba(245,230,200,0.94) 100%
   );
 }
 
@@ -346,20 +402,32 @@ body {
 .frame-subtitle {
   font-size: clamp(3rem, 6vw, 5rem); /* LARGE: 48px - 80px readable from street */
   font-weight: 600;
-  color: rgba(245,245,245,0.95);
+  color: var(--text-primary);
+  opacity: 0.95;
   margin: 0 0 2rem 0;
   letter-spacing: 0.08em;
-  text-shadow: 0 3px 15px rgba(0,0,0,0.8);
+  text-shadow: 0 3px 15px rgba(0,0,0,0.5);
+}
+
+/* Day mode: darker shadow for light backgrounds */
+body.day-mode .frame-subtitle {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .frame-body {
   font-size: clamp(2rem, 4vw, 3.5rem); /* READABLE: 32px - 56px minimum for distance */
   line-height: 1.5;
-  color: rgba(245,245,245,0.95); /* High contrast */
+  color: var(--text-primary);
+  opacity: 0.95;
   margin: 0;
   white-space: pre-line;
   font-weight: 500;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+
+/* Day mode: lighter shadow */
+body.day-mode .frame-body {
+  text-shadow: 0 1px 4px rgba(0,0,0,0.12);
 }
 
 /* Frame Footer (Spatial Context) */

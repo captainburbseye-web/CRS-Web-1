@@ -6,6 +6,7 @@
  * ✅ Station ID rotation (8s intervals, 40s full cycle)
  * ✅ Progress bar animation sync
  * ✅ Reduced motion support
+ * ✅ Day/Night mode (07:00-19:00 = day, 19:00-07:00 = night)
  * 
  * Research references: Screenfeed 2025, Frontiers VR 2025
  */
@@ -16,7 +17,10 @@
   // Configuration
   const CONFIG = {
     STATION_ID_INTERVAL: 8000, // 8 seconds per station ID
-    PREFERS_REDUCED_MOTION: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    PREFERS_REDUCED_MOTION: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    DAY_START_HOUR: 7,  // 07:00
+    DAY_END_HOUR: 19,   // 19:00 (7pm)
+    TIMEZONE: 'Europe/London' // UK timezone for Oxford
   };
 
   // State
@@ -24,12 +28,54 @@
   let currentStationIndex = 0;
   let frameTransitionTimer = null;
   let stationRotationTimer = null;
+  let dayNightCheckInterval = null;
 
   // Elements
   const framesContainer = document.getElementById('signageFrames');
   const stationIDOverlay = document.getElementById('stationIDOverlay');
   const frames = framesContainer ? Array.from(framesContainer.querySelectorAll('.signage-frame')) : [];
   const stationBadges = stationIDOverlay ? Array.from(stationIDOverlay.querySelectorAll('.station-id-badge')) : [];
+
+  /**
+   * Check if current time is day mode (07:00-19:00 UK time)
+   */
+  function isDayMode() {
+    const now = new Date();
+    const ukTime = new Date(now.toLocaleString('en-US', { timeZone: CONFIG.TIMEZONE }));
+    const hour = ukTime.getHours();
+    const isDayTime = hour >= CONFIG.DAY_START_HOUR && hour < CONFIG.DAY_END_HOUR;
+    
+    console.log(`[SignageV5] Time check: ${hour}:${ukTime.getMinutes()} UK - Mode: ${isDayTime ? 'DAY' : 'NIGHT'}`);
+    return isDayTime;
+  }
+
+  /**
+   * Apply day/night mode class to body
+   */
+  function updateDayNightMode() {
+    const isDay = isDayMode();
+    
+    if (isDay) {
+      document.body.classList.add('day-mode');
+      document.body.classList.remove('night-mode');
+      console.log('[SignageV5] ☀️ DAY MODE activated (light backgrounds)');
+    } else {
+      document.body.classList.add('night-mode');
+      document.body.classList.remove('day-mode');
+      console.log('[SignageV5] 🌙 NIGHT MODE activated (dark backgrounds)');
+    }
+  }
+
+  /**
+   * Start checking day/night mode every minute
+   */
+  function startDayNightModeCheck() {
+    // Check immediately
+    updateDayNightMode();
+    
+    // Check every minute
+    dayNightCheckInterval = setInterval(updateDayNightMode, 60000);
+  }
 
   /**
    * Initialize signage controller
@@ -41,6 +87,9 @@
       console.error('[SignageV5] No frames found!');
       return;
     }
+
+    // Start day/night mode detection
+    startDayNightModeCheck();
 
     // Start frame transitions
     startFrameLoop();
