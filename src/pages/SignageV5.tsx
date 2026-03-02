@@ -9,7 +9,7 @@
  * ✅ 8-12 second frame duration (optimal attention window)
  * ✅ 72-second total loop (within 30-90s research window)
  * ✅ High contrast (7:1+ WCAG AAA)
- * ✅ Workshop Café marked "Opening Soon" (venue hire only until March)
+ * ✅ Workshop Café marked "Opening Soon" (venue hire only until April)
  * ✅ ARIA labels and semantic HTML for accessibility
  * ✅ Keyboard navigation support
  * 
@@ -88,7 +88,7 @@ Cowley Road · Cricket Road`,
     type: 'operational',
     title: 'WORKSHOP CAFÉ',
     subtitle: 'Front Space',
-    body: `Opening March 2026
+    body: `Opening April 2026
 Coffee · Co-Working · Events`,
     footer: 'Studios Behind → Visit crsoxford.com',
     bgImage: '/static/rack-images/workshop-cafe-1920w.webp',

@@ -14,7 +14,7 @@
 
 **Challenge:**  
 Window signage wasn't communicating the spatial relationship between:
-- **Workshop Café** (front space, opening March 2026)
+- **Workshop Café** (front space, opening April 2026)
 - **CRS Studios** (behind the café, operational now)
 
 Customers might not realize they can walk through the café to access the recording studios.
@@ -28,7 +28,7 @@ Added **two-frame sequence** with visual and textual indicators showing the spat
 ### **Frame 1: Workshop Café (Front Space)**
 - **Title:** "WORKSHOP CAFÉ"
 - **Subtitle:** "Front Space" ← NEW
-- **Body:** "Opening March 2026 / Coffee · Co-Working · Events"
+- **Body:** "Opening April 2026 / Coffee · Co-Working · Events"
 - **Footer:** "Recording Studios → Through the Café" ← NEW with animated arrow
 - **Duration:** 12 seconds (extended from 10s for readability)
 
@@ -143,7 +143,7 @@ Frame 9: (System status bar persistent)
 
 ### Scenario 1: Café Customer
 1. **Sees:** "WORKSHOP CAFÉ - Front Space"
-2. **Reads:** "Opening March 2026"
+2. **Reads:** "Opening April 2026"
 3. **Notices:** Footer arrow + "Recording Studios → Through the Café"
 4. **Understands:** "The studios are behind this café space"
 
@@ -292,7 +292,7 @@ Frame 9: (System status bar persistent)
 - [ ] "YOU ARE HERE" marker on café frame
 
 ### Phase 3: Opening Timeline
-- [ ] Countdown to March 2026 opening
+- [ ] Countdown to April 2026 opening
 - [ ] "X DAYS UNTIL OPENING" dynamic badge
 - [ ] Social media launch announcements
 

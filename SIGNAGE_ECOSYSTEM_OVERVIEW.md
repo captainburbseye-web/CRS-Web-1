@@ -128,7 +128,7 @@ Accents:     #C2A85A (brass), #4F7942 (green), #2E473B (dark green)
 ## 🔍 CONTENT STRATEGIES
 
 ### **V5 - Spatial Context**
-Frame 4 (12s): "WORKSHOP CAFÉ - Front Space - Opening March 2026"  
+Frame 4 (12s): "WORKSHOP CAFÉ - Front Space - Opening April 2026"  
 Frame 5 (10s): "RECORDING STUDIOS - Behind the Café Space - Book Online Now"  
 → Educates viewers on building layout
 
