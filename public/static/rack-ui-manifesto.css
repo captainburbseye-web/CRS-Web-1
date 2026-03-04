@@ -1,0 +1,576 @@
+/**
+ * RACK UI MANIFESTO - "LAWS OF THE RACK UI"
+ * Zero-Drift Hardware Aesthetic - SSL/Neve Hybrid Console
+ * Applied: 2026-03-04
+ * 
+ * DESIGN PHILOSOPHY:
+ * - Pixel-perfect hardware alignment
+ * - SSL G-Series + Neve/Cricket hybrid
+ * - Zero vertical gaps between rack units
+ * - Percentage-based positioning (no pixel drift on scale)
+ * - Authentic studio console tactile feel
+ */
+
+/* ============================================
+   LAW 1: ZERO-DRIFT STRUCTURAL FOUNDATION
+   ============================================ */
+
+/* Master Chassis - Symmetric 25px Rack Ears */
+.master-rack-chassis {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 25px; /* Symmetric rack ears left/right */
+  
+  /* Dark charcoal metal texture */
+  background: 
+    linear-gradient(
+      135deg,
+      #2d2d2d 0%,
+      #3a3a3a 50%,
+      #2d2d2d 100%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.01) 0px,
+      transparent 1px,
+      transparent 2px
+    );
+  background-blend-mode: normal;
+  
+  position: relative;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Rack Ears - Dark Grey Metal with Screw Graphics */
+.master-rack-chassis::before,
+.master-rack-chassis::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 25px;
+  
+  /* Dark grey charcoal metal */
+  background: 
+    linear-gradient(
+      90deg,
+      #2a2a2a 0%,
+      #353535 50%,
+      #2a2a2a 100%
+    );
+  
+  /* Metal depth */
+  box-shadow: 
+    inset -2px 0 4px rgba(0, 0, 0, 0.6),
+    inset 1px 0 2px rgba(255, 255, 255, 0.05),
+    0 0 8px rgba(0, 0, 0, 0.3);
+  
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  z-index: 5;
+}
+
+.master-rack-chassis::before {
+  left: 0;
+}
+
+.master-rack-chassis::after {
+  right: 0;
+}
+
+/* Hex-Head Screw Graphics on Corners */
+.master-rack-chassis::before::after,
+.master-rack-chassis::after::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: 
+    radial-gradient(
+      circle,
+      #1a1a1a 0%,
+      #2a2a2a 30%,
+      #3a3a3a 70%,
+      #1a1a1a 100%
+    );
+  border-radius: 50%;
+  box-shadow: 
+    inset 0 1px 2px rgba(0, 0, 0, 0.8),
+    0 1px 1px rgba(255, 255, 255, 0.1);
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ============================================
+   LAW 2: GAP ELIMINATION (Zero-Pixel Spacing)
+   ============================================ */
+
+/* Universal Rack Unit Container */
+.rack-unit-container,
+.rack-module-graphic {
+  position: relative;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  display: block;
+  line-height: 0; /* Critical: Eliminates inline gap */
+  font-size: 0; /* Backup: Forces zero text spacing */
+}
+
+/* Universal Rack Unit Image */
+.rack-unit-img,
+.rack-module-img {
+  display: block !important; /* Forces block-level rendering */
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  vertical-align: bottom; /* Prevents baseline gap */
+  line-height: 0;
+}
+
+/* Picture Elements (WebP sources) */
+.rack-module-graphic picture,
+.rack-unit-container picture {
+  display: block;
+  line-height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Force Zero Spacing on All Rack Modules */
+.rack-module-graphic + .rack-module-graphic {
+  margin-top: 0 !important;
+}
+
+/* ============================================
+   LAW 3: PERCENTAGE-BASED HOTSPOT POSITIONING
+   ============================================ */
+
+/* Base Hotspot System - Relative to Parent */
+.rack-hotspots,
+.welcome-hotspots,
+.odro-repair-hotspots,
+.recording-hotspots-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Individual Hotspot Elements - Percentage Coordinates */
+.rack-hotspot,
+.welcome-button,
+.odro-repair-button,
+.recording-panel {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  text-decoration: none;
+  
+  /* Use % for X/Y positioning (no pixel drift) */
+  /* Example: top: 50%; left: 25%; */
+}
+
+/* ============================================
+   LAW 4: SSL/NEVE CONTROL ROOM MODULE
+   ============================================ */
+
+/* Split Module Container */
+.control-room-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 50/50 split */
+  gap: 0;
+  position: relative;
+  width: 100%;
+}
+
+/* Left Side - SSL G-Series (Computer Beige) */
+.ssl-section {
+  background: linear-gradient(135deg, #e8e5dc 0%, #d4d0c8 100%);
+  padding: 1.5rem;
+  position: relative;
+}
+
+/* SSL Square Buttons */
+.ssl-button {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+  border: 2px solid #333;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  /* Tactile depth */
+  box-shadow: 
+    inset 2px 2px 4px rgba(0, 0, 0, 0.3),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.6),
+    2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+/* SSL Active State - Yellow Internal Glow */
+.ssl-button-active,
+.ssl-button:hover {
+  background: #fff9c4 !important;
+  box-shadow: 
+    0 0 15px 2px rgba(255, 249, 196, 0.8),
+    inset 0 0 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Right Side - Neve/Cricket (Oxford Blue) */
+.neve-section {
+  background: 
+    linear-gradient(135deg, #2c3e50 0%, #34495e 100%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 0px,
+      transparent 2px
+    );
+  background-blend-mode: normal;
+  padding: 1.5rem;
+  position: relative;
+}
+
+/* Neve/Cricket Toggle Switches */
+.neve-toggle {
+  width: 20px;
+  height: 40px;
+  background: linear-gradient(135deg, #c0c0c0 0%, #909090 100%);
+  border: 2px solid #333;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.4),
+    2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Neve Marconi-Style Winged Knobs */
+.neve-knob {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #d0d0d0 0%, #a0a0a0 100%);
+  border: 3px solid #333;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 
+    inset 0 2px 6px rgba(0, 0, 0, 0.4),
+    0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Scribble Strip - White Masking Tape (Neve Side) */
+.scribble-strip {
+  background: #fdfdfd;
+  color: #333;
+  padding: 4px 8px;
+  font-family: 'Shadows Into Light', cursive, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  transform: rotate(-0.5deg); /* Hand-applied look */
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-radius: 1px;
+  display: inline-block;
+  margin: 4px 0;
+}
+
+/* ============================================
+   LAW 5: ODRO REPAIRS MODULE - HARDWARE INTEGRATION
+   ============================================ */
+
+/* ODRO Container - Relative Positioning */
+.odro-repair-container {
+  position: relative;
+  display: block;
+  max-height: 380px;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+/* ODRO Buttons - Physical Hardware Look */
+.odro-repair-button {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  
+  /* Button dimensions */
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  
+  /* SSL Grey Base */
+  background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+  border: 2px solid #333;
+  border-radius: 3px;
+  
+  /* Recessed Look - Dark Inset Border */
+  box-shadow: 
+    inset 3px 3px 6px rgba(0, 0, 0, 0.5), /* Deep recess */
+    inset -2px -2px 4px rgba(255, 255, 255, 0.6), /* Highlight */
+    2px 2px 0px rgba(0, 0, 0, 0.8), /* Outer depth */
+    0 0 2px rgba(0, 0, 0, 0.4); /* Subtle outline */
+  
+  cursor: pointer;
+  pointer-events: auto;
+  transition: all 0.15s ease;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 2px;
+}
+
+/* Dymo-Tape Labels - Directly Beneath Buttons */
+.odro-button-label {
+  background: #111; /* Black Dymo tape */
+  color: #fff;
+  padding: 3px 6px;
+  margin-top: 4px;
+  
+  /* Monospaced technical font */
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  /* Sharp tape edges */
+  border-radius: 1px;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* ============================================
+   LAW 6: CRITICAL CONTENT & LINK FIXES
+   ============================================ */
+
+/* Workshop Café - Corrected Messaging */
+.workshop-cafe-description {
+  background: rgba(212, 175, 55, 0.1);
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.workshop-cafe-description p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: rgba(245, 245, 245, 0.9);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.workshop-cafe-description strong {
+  color: #D4AF37;
+  font-weight: 700;
+}
+
+/* Booking Link Redirection - Force Correct URL */
+.welcome-button-booknow,
+a[href*="squareup"],
+a[href*="square.site"] {
+  /* Override all old booking links */
+}
+
+.welcome-button-booknow {
+  /* Ensure correct href in HTML */
+}
+
+/* ============================================
+   LAW 7: RESPONSIVE SCALING (Zero-Drift)
+   ============================================ */
+
+/* Desktop (≥1281px) */
+@media (min-width: 1281px) {
+  .master-rack-chassis {
+    padding: 0 25px;
+  }
+  
+  .master-rack-chassis::before,
+  .master-rack-chassis::after {
+    width: 25px;
+  }
+  
+  .ssl-button,
+  .odro-repair-button {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* Tablet (769px – 1280px) */
+@media (min-width: 769px) and (max-width: 1280px) {
+  .master-rack-chassis {
+    padding: 0 20px;
+  }
+  
+  .master-rack-chassis::before,
+  .master-rack-chassis::after {
+    width: 20px;
+  }
+  
+  .ssl-button,
+  .odro-repair-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .odro-button-label {
+    font-size: 8px;
+    padding: 2px 5px;
+  }
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+  .master-rack-chassis {
+    padding: 0 15px;
+  }
+  
+  .master-rack-chassis::before,
+  .master-rack-chassis::after {
+    width: 15px;
+  }
+  
+  .ssl-button,
+  .odro-repair-button {
+    width: 48px; /* Larger touch target */
+    height: 48px;
+  }
+  
+  .odro-button-label,
+  .scribble-strip {
+    font-size: 8px;
+    padding: 2px 4px;
+  }
+  
+  /* Stack split modules on mobile */
+  .control-room-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   LAW 8: ACCESSIBILITY (WCAG AAA)
+   ============================================ */
+
+/* Focus States */
+.ssl-button:focus-visible,
+.neve-toggle:focus-visible,
+.odro-repair-button:focus-visible {
+  outline: 2px solid #fff587; /* SSL yellow focus */
+  outline-offset: 4px;
+}
+
+/* Keyboard Navigation */
+.ssl-button:focus,
+.neve-toggle:focus,
+.odro-repair-button:focus {
+  z-index: 100; /* Ensure focused element is on top */
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .ssl-button,
+  .neve-toggle,
+  .neve-knob,
+  .odro-repair-button {
+    transition: none;
+  }
+  
+  .ssl-button:hover,
+  .odro-repair-button:hover {
+    transform: translate(-50%, -50%); /* No lift animation */
+  }
+}
+
+/* ============================================
+   LAW 9: GLOBAL OVERWRITE (Force Zero-Drift)
+   ============================================ */
+
+/* Apply to ALL rack modules to prevent drift */
+.rack-unit-container,
+.rack-module-graphic,
+.crs-header-container,
+.welcome-rack-container,
+.recording-services-container,
+.rehearsal-services-container,
+.workshop-cafe-container,
+.odro-repair-container {
+  position: relative !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: block !important;
+  line-height: 0 !important;
+  font-size: 0 !important;
+}
+
+/* Force Block Display on ALL Images */
+img.rack-module-img,
+img.rack-unit-img,
+.rack-module-graphic img,
+.rack-unit-container img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  vertical-align: bottom !important;
+  line-height: 0 !important;
+}
+
+/* SSL Glow Effect - Universal Class */
+.ssl-button-active,
+.ssl-glow {
+  background: #fff9c4 !important;
+  box-shadow: 
+    0 0 15px 2px rgba(255, 249, 196, 0.8),
+    inset 0 0 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ============================================
+   LAW 10: HARDWARE SCREW DETAILS
+   ============================================ */
+
+/* Decorative Hex-Head Screws on Rack Ears */
+.master-rack-chassis::before,
+.master-rack-chassis::after {
+  background-image: 
+    /* Top screw */
+    radial-gradient(
+      circle at 50% 15px,
+      transparent 3px,
+      #1a1a1a 3px,
+      #2a2a2a 4px,
+      #3a3a3a 6px,
+      transparent 6px
+    ),
+    /* Bottom screw */
+    radial-gradient(
+      circle at 50% calc(100% - 15px),
+      transparent 3px,
+      #1a1a1a 3px,
+      #2a2a2a 4px,
+      #3a3a3a 6px,
+      transparent 6px
+    ),
+    /* Base metal texture */
+    linear-gradient(90deg, #2a2a2a 0%, #353535 50%, #2a2a2a 100%);
+}
+
+/* ============================================
+   END OF MANIFESTO
+   ============================================ */

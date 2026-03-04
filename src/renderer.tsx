@@ -173,6 +173,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* Rack UI Cleanup - Restore hardware aesthetic */}
         <link href="/static/rack-ui-cleanup.css" rel="stylesheet" />
         
+        {/* Rack UI Manifesto - Zero-Drift Laws (SSL/Neve Hybrid) */}
+        <link href="/static/rack-ui-manifesto.css" rel="stylesheet" />
+        
         {/* Disable Whole-Rack Flash on Click - Localize interactions */}
         <link href="/static/disable-rack-flash.css" rel="stylesheet" />
       </head>
