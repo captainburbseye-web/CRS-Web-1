@@ -31,6 +31,13 @@ export const WorkshopCafePage = () => (
         Bookable public-facing venue within CRS for small events and private hire.
       </p>
       
+      {/* FOOD POP-UP INFO */}
+      <div style="background: rgba(212, 175, 55, 0.1); border: 2px solid rgba(212, 175, 55, 0.5); padding: 1rem; margin-bottom: 1.5rem;">
+        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9); line-height: 1.6;">
+          <strong style="color: #D4AF37;">Coffee & Collaboration.</strong> No kitchen on-site, but we host regular food pop-ups featuring various members of our creative network and our legendary Cowley Road neighbours.
+        </p>
+      </div>
+      
       <div class="wsc-capacity-spec">
         <div class="wsc-capacity-item">
           Capacity: <strong>25 seated</strong>
