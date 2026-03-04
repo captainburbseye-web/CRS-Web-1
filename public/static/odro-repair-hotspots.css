@@ -1,65 +1,90 @@
 /**
- * ODRO Repair Panel - Interactive Button Hotspots
- * Three buttons mapped to the orange/green indicators on the panel
+ * ODRO REPAIR PANEL - HARDWARE-INTEGRATED BUTTON SYSTEM
+ * Buttons positioned using absolute coordinates to match physical rack graphic
+ * Applied: 2026-03-02
  */
 
-/* Container for ODRO repair rack */
+/* ============================================
+   1. ESTABLISH HARDWARE COORDINATE SYSTEM
+   ============================================ */
+
+/* Container is the anchor - ensures buttons stay pinned to graphic */
 .odro-repair-container {
-  position: relative;
+  position: relative; /* Critical: Establishes coordinate system */
   display: block;
-  max-height: 380px; /* Prevent overlap with racks below */
+  max-height: 380px; /* Desktop viewport */
   overflow: hidden;
-  margin-bottom: 0; /* Ensure no extra spacing */
+  margin-bottom: 0;
 }
 
+/* Background image must be block-level to prevent scaling gaps */
 .odro-repair-container img {
+  display: block; /* Prevents inline gap */
   width: 100%;
   height: auto;
   object-fit: cover;
   object-position: center;
 }
 
-/* Hotspots overlay container - positioned at indicator lights */
+/* ============================================
+   2. PRECISION BUTTON PLACEMENT (Absolute Positioning)
+   ============================================ */
+
+/* Hotspots container - NO GRID, use absolute positioning */
 .odro-repair-hotspots {
   position: absolute;
-  bottom: 20%; /* Adjusted to align with indicator lights in visible area */
+  top: 0;
   left: 0;
   right: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2%;
-  padding: 0 12%;
+  bottom: 0;
   z-index: 10;
+  pointer-events: none; /* Allow clicks only on buttons */
 }
 
-/* Base button style - localized to just the button area */
+/* Base button style - hardware switch aesthetic */
 .odro-repair-button {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end; /* Align label to bottom of button area */
-  height: 80px;
-  background: transparent;
+  position: absolute;
+  transform: translate(-50%, -50%); /* Centers button on its coordinate */
+  background: transparent; /* Allows rack graphic to show through */
   border: none;
   cursor: pointer;
   text-decoration: none;
-  border-radius: 6px;
-  padding-bottom: 8px; /* Space label from bottom */
-  
-  /* Localized feedback - no whole-rack highlighting */
-  transition: none; /* Remove transitions that affect whole area */
+  pointer-events: auto; /* Re-enable clicks on buttons */
+  transition: none; /* No animation on button container */
 }
 
-/* Visible button labels */
+/* Button coordinate mapping - adjust % to match your graphic's indicator lights */
+.odro-button-terms {
+  top: 75%; /* Vertical position of left indicator light */
+  left: 25%; /* Horizontal position of left indicator light */
+}
+
+.odro-button-book {
+  top: 75%; /* Vertical position of middle indicator light */
+  left: 50%; /* Horizontal position of middle indicator light */
+}
+
+.odro-button-contact {
+  top: 75%; /* Vertical position of right indicator light */
+  left: 75%; /* Horizontal position of right indicator light */
+}
+
+/* ============================================
+   3. VISUAL INTEGRATION (Printed/Stamped Labels)
+   ============================================ */
+
 .odro-button-label {
   display: block;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'JetBrains Mono', monospace; /* Technical mono font */
   font-size: 0.75rem;
   font-weight: 700;
   color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  text-transform: uppercase; /* Technical labeling style */
+  letter-spacing: 1px; /* Wider spacing for "stamped" look */
+  opacity: 0.9; /* Slightly subdued for integration */
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5); /* Stamped/etched effect */
+  
+  /* Label box styling */
   background: rgba(0, 0, 0, 0.8);
   padding: 0.375rem 0.75rem;
   border-radius: 4px;
@@ -67,56 +92,65 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   pointer-events: none;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-/* Hover effect on label */
+/* Hover effect - subtle glow like lit indicator */
 .odro-repair-button:hover .odro-button-label {
   background: rgba(255, 140, 0, 0.15);
   border-color: rgba(255, 140, 0, 0.8);
   color: #ff8c00;
+  opacity: 1;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
+  box-shadow: 
+    0 4px 12px rgba(255, 140, 0, 0.3),
+    0 0 20px rgba(255, 140, 0, 0.2); /* Indicator glow */
+  text-shadow: 
+    1px 1px 0px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(255, 140, 0, 0.4); /* Lit effect */
 }
 
-/* Active state */
+/* Active state - pressed switch */
 .odro-repair-button:active .odro-button-label {
   transform: translateY(0);
   background: rgba(255, 140, 0, 0.25);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.5),
+    0 0 15px rgba(255, 140, 0, 0.3);
 }
 
-/* Hover effect - ONLY on label, not whole button area */
-.odro-repair-button:hover {
-  background: transparent; /* No background on whole button */
-}
-
-/* Active/pressed state - ONLY affects label */
-.odro-repair-button:active {
-  background: transparent; /* No background flash on click */
-}
-
-/* Focus state for keyboard navigation - outline only */
+/* Focus state for keyboard navigation */
 .odro-repair-button:focus-visible {
   outline: 2px solid rgba(255, 140, 0, 0.8);
-  outline-offset: 2px;
-  background: transparent; /* No background fill */
+  outline-offset: 4px;
+  border-radius: 50%;
 }
 
-/* Terms button (left - orange) - NO button background */
-.odro-button-terms:hover {
-  background: transparent;
+/* ============================================
+   4. BUTTON-SPECIFIC STYLING
+   ============================================ */
+
+/* Terms button (left - orange indicator) */
+.odro-button-terms .odro-button-label {
+  border-color: rgba(255, 140, 0, 0.5);
 }
 
-/* Book button (middle - orange) - NO button background */
-.odro-button-book:hover {
-  background: transparent;
+.odro-button-terms:hover .odro-button-label {
+  border-color: rgba(255, 140, 0, 0.8);
+  color: #ff8c00;
 }
 
-/* Contact button (right - green) - NO button background */
-.odro-button-contact:hover {
-  background: transparent;
-  box-shadow: none;
+/* Book Repair button (middle - orange indicator) */
+.odro-button-book .odro-button-label {
+  border-color: rgba(255, 140, 0, 0.5);
 }
 
+.odro-button-book:hover .odro-button-label {
+  border-color: rgba(255, 140, 0, 0.8);
+  color: #ff8c00;
+}
+
+/* Contact button (right - green indicator) */
 .odro-button-contact .odro-button-label {
   border-color: rgba(0, 255, 0, 0.5);
 }
@@ -125,36 +159,69 @@
   border-color: rgba(0, 255, 0, 0.8);
   color: #00ff00;
   background: rgba(0, 255, 0, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
+  box-shadow: 
+    0 4px 12px rgba(0, 255, 0, 0.3),
+    0 0 20px rgba(0, 255, 0, 0.2);
+  text-shadow: 
+    1px 1px 0px rgba(0, 0, 0, 0.5),
+    0 0 8px rgba(0, 255, 0, 0.4);
 }
 
 .odro-button-contact:focus-visible {
   outline-color: rgba(0, 255, 0, 0.8);
-  background: transparent;
-}
-
-/* Ensure active states don't add backgrounds */
-.odro-button-terms:active,
-.odro-button-book:active,
-.odro-button-contact:active {
-  background: transparent !important;
-}
-
-/* Screen reader text */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
 }
 
 /* ============================================
-   ODRO TERMS MODAL
+   5. RESPONSIVE COORDINATE ADJUSTMENTS
+   ============================================ */
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1280px) {
+  .odro-repair-container {
+    max-height: 360px;
+  }
+  
+  /* Buttons may need slight vertical adjustment for tablet */
+  .odro-button-terms,
+  .odro-button-book,
+  .odro-button-contact {
+    top: 73%; /* Adjust if indicator lights shift */
+  }
+  
+  .odro-button-label {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .odro-repair-container {
+    max-height: 320px;
+  }
+  
+  /* Buttons may need vertical adjustment for mobile crop */
+  .odro-button-terms,
+  .odro-button-book,
+  .odro-button-contact {
+    top: 70%; /* Adjust if indicator lights shift with crop */
+  }
+  
+  .odro-button-label {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Ensure touch targets are large enough (WCAG) */
+  .odro-repair-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* ============================================
+   6. ODRO TERMS MODAL (Maintained from original)
    ============================================ */
 
 .odro-terms-modal {
@@ -173,7 +240,6 @@
   display: flex;
 }
 
-/* Dark overlay */
 .odro-terms-overlay {
   position: absolute;
   top: 0;
@@ -184,7 +250,6 @@
   backdrop-filter: blur(4px);
 }
 
-/* Modal content panel */
 .odro-terms-content {
   position: relative;
   max-width: 700px;
@@ -210,7 +275,6 @@
   }
 }
 
-/* Modal header */
 .odro-terms-header {
   display: flex;
   align-items: center;
@@ -253,7 +317,6 @@
   transform: rotate(90deg);
 }
 
-/* Modal body */
 .odro-terms-body {
   padding: 2rem;
   max-height: 60vh;
@@ -292,7 +355,6 @@
   color: #ff8c00;
 }
 
-/* Modal footer */
 .odro-terms-footer {
   padding: 1.5rem 2rem;
   background: linear-gradient(to top, #2a2a2a, #1a1a1a);
@@ -329,78 +391,19 @@
 
 .odro-terms-cta:active {
   transform: translateY(0);
-  box-shadow: 
-    inset 0 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .odro-repair-container {
-    max-height: 320px; /* Smaller on mobile to prevent overlap */
-  }
-  
-  .odro-repair-hotspots {
-    bottom: 32%; /* Adjust for mobile layout */
-    padding: 0 8%;
-    gap: 3%;
-  }
-  
-  .odro-repair-button {
-    height: 60px;
-    min-height: 44px; /* WCAG minimum touch target */
-  }
-  
-  .odro-button-label {
-    font-size: 0.65rem;
-    padding: 0.25rem 0.5rem;
-  }
-  
-  .odro-terms-content {
-    max-width: 95%;
-    max-height: 95vh;
-    margin: 1rem;
-  }
-  
-  .odro-terms-header {
-    padding: 1rem 1.5rem;
-  }
-  
-  .odro-terms-title {
-    font-size: 1.2rem;
-  }
-  
-  .odro-terms-body {
-    padding: 1.5rem;
-    font-size: 0.875rem;
-  }
-  
-  .odro-terms-footer {
-    padding: 1rem 1.5rem;
-  }
-  
-  .odro-terms-cta {
-    width: 100%;
-    padding: 0.875rem 1.5rem;
-  }
-}
+/* ============================================
+   7. ACCESSIBILITY & REDUCED MOTION
+   ============================================ */
 
-/* Tablet adjustments */
-@media (min-width: 769px) and (max-width: 1280px) {
-  .odro-repair-container {
-    max-height: 360px;
-  }
-  
-  .odro-repair-hotspots {
-    bottom: 34%;
-    padding: 0 10%;
-  }
-}
-
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
   .odro-repair-button,
+  .odro-button-label,
   .odro-terms-content,
-  .odro-terms-cta {
+  .odro-terms-cta,
+  .odro-terms-close {
     transition: none;
     animation: none;
   }
@@ -408,4 +411,45 @@
   .odro-terms-close:hover {
     transform: none;
   }
+  
+  .odro-repair-button:hover .odro-button-label {
+    transform: none;
+  }
 }
+
+/* Screen reader text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ============================================
+   COORDINATE CALIBRATION GUIDE
+   ============================================ 
+   
+   To adjust button positions to match your rack graphic:
+   
+   1. Open the page in browser DevTools
+   2. Use Element Inspector to hover over indicator lights
+   3. Note the X/Y coordinates relative to container
+   4. Calculate percentages:
+      - left % = (X coordinate / container width) × 100
+      - top % = (Y coordinate / container height) × 100
+   5. Update .odro-button-terms, .odro-button-book, .odro-button-contact
+   
+   Current settings:
+   - Terms (left):   top: 75%, left: 25%
+   - Book (middle):  top: 75%, left: 50%
+   - Contact (right): top: 75%, left: 75%
+   
+   These work for a typical 3-button layout with lights at bottom 25%
+   Adjust as needed for your specific graphic.
+   
+   ============================================ */
