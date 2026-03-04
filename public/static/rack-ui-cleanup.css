@@ -1,32 +1,30 @@
 /**
- * RACK UI CLEANUP & HARDWARE AESTHETIC RESTORATION
- * Fixes: chassis alignment, unit spacing, ODRO labels, rack sides
- * Date: Feb 28, 2026
+ * RACK UI CLEANUP - Restore Hardware Aesthetic
+ * Fixes: Left rack side, unit spacing, symmetry, button alignment
+ * Applied: 2026-03-02
  */
 
 /* ============================================
-   1. RESTORE RACK CHASSIS WITH SYMMETRICAL SIDES
-   Creates visual rack "ears" on both left and right
+   1. RESTORE LEFT RACK SIDE & CHASSIS ALIGNMENT
    ============================================ */
 
 .master-rack-chassis {
-  position: relative;
-  max-width: 1200px; /* Standardized width */
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px; /* Space for rack sides */
+  padding: 0 40px; /* Space for rack rails/ears on both sides */
   background: linear-gradient(
-    90deg,
-    #1a1a1a 0%,
-    #2a2a2a 5%,
-    transparent 5%,
-    transparent 95%,
-    #2a2a2a 95%,
+    90deg, 
+    #1a1a1a 0%, 
+    #2a2a2a 5%, 
+    transparent 5%, 
+    transparent 95%, 
+    #2a2a2a 95%, 
     #1a1a1a 100%
   );
-  min-height: 100vh;
+  position: relative;
 }
 
-/* Rack side rails (left and right "ears") */
+/* Symmetric rack rails (left and right) */
 .master-rack-chassis::before,
 .master-rack-chassis::after {
   content: '';
@@ -34,140 +32,76 @@
   top: 0;
   bottom: 0;
   width: 40px;
-  background: linear-gradient(
-    to right,
-    #1a1a1a 0%,
-    #2a2a2a 30%,
-    #3a3a3a 50%,
-    #2a2a2a 70%,
-    #1a1a1a 100%
-  );
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      #2a2a2a 0px,
+      #2a2a2a 20px,
+      #1a1a1a 20px,
+      #1a1a1a 22px
+    );
   box-shadow: 
-    inset 2px 0 4px rgba(0, 0, 0, 0.5),
-    inset -2px 0 4px rgba(255, 255, 255, 0.05);
-  z-index: 10;
-  pointer-events: none;
+    inset -2px 0 4px rgba(0, 0, 0, 0.5),
+    inset 2px 0 4px rgba(255, 255, 255, 0.05);
 }
 
 .master-rack-chassis::before {
-  left: 0;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  left: 0; /* Left rack rail */
 }
 
 .master-rack-chassis::after {
-  right: 0;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Rack mounting holes pattern (decorative detail) */
-.master-rack-chassis::before {
-  background-image: 
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 44px,
-      rgba(0, 0, 0, 0.3) 44px,
-      rgba(0, 0, 0, 0.3) 46px,
-      transparent 46px,
-      transparent 66px,
-      rgba(0, 0, 0, 0.3) 66px,
-      rgba(0, 0, 0, 0.3) 68px
-    ),
-    linear-gradient(
-      to right,
-      #1a1a1a 0%,
-      #2a2a2a 30%,
-      #3a3a3a 50%,
-      #2a2a2a 70%,
-      #1a1a1a 100%
-    );
+  right: 0; /* Right rack rail */
 }
 
 /* ============================================
-   2. STANDARDIZE UNIT SPACING - ZERO GAPS
-   Eliminates all vertical spacing between rack modules
+   2. STANDARDIZE UNIT SPACING (Remove Gaps)
    ============================================ */
 
 .rack-module-graphic {
-  margin: 0 !important;
   margin-bottom: 0 !important;
-  padding: 0;
+  margin-top: 0 !important;
   display: block;
-  line-height: 0; /* Critical: eliminates small gap beneath images */
-  position: relative;
+  line-height: 0; /* Eliminates small gap beneath images */
+  overflow: hidden;
 }
 
-.rack-module-img,
-.rack-module-graphic img {
+.rack-module-img {
   display: block;
   width: 100%;
   height: auto;
   margin: 0;
   padding: 0;
-  line-height: 0;
-  vertical-align: bottom; /* Prevents inline spacing */
+  vertical-align: bottom; /* Prevents inline image gap */
 }
 
-/* Ensure all rack containers have no spacing */
-.crs-header-container,
-.welcome-rack-container,
-.recording-services-container,
-.rehearsal-services-container,
-.control-room-module,
-.odro-repair-container,
-.workshop-cafe-container {
-  margin: 0 !important;
-  padding: 0;
-  display: block;
-  line-height: 0;
-}
-
-/* Remove any inherited spacing from picture elements */
+/* Remove any extra spacing from picture elements */
 .rack-module-graphic picture {
   display: block;
+  line-height: 0;
   margin: 0;
   padding: 0;
-  line-height: 0;
 }
 
 /* ============================================
    3. FIX ODRO REPAIR BUTTON LABELS
-   Precise alignment using flexbox
    ============================================ */
 
-.odro-repair-hotspots {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding: 0 15%; /* Centered placement */
-  position: absolute;
-  bottom: 35%;
-  left: 0;
-  right: 0;
-  z-index: 10;
-}
-
 .odro-repair-button {
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 8px 5px; /* Adjust based on button graphic size */
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: none; /* No background transitions */
+  padding: 5px;
+  position: relative;
 }
 
 .odro-button-label {
-  font-family: 'JetBrains Mono', monospace; /* Match studio aesthetic */
-  font-size: 0.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 1px;
   font-weight: 700;
+  font-size: 0.75rem;
   color: #ffffff;
   text-transform: uppercase;
-  letter-spacing: 1px;
   background: rgba(0, 0, 0, 0.8);
   padding: 0.375rem 0.75rem;
   border-radius: 4px;
@@ -178,35 +112,70 @@
   white-space: nowrap;
 }
 
-/* Hover effect on label only (not button background) */
-.odro-repair-button:hover .odro-button-label {
-  background: rgba(255, 140, 0, 0.15);
-  border-color: rgba(255, 140, 0, 0.8);
-  color: #ff8c00;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
-}
-
-/* Green accent for contact button */
-.odro-button-contact .odro-button-label {
-  border-color: rgba(0, 255, 0, 0.5);
-}
-
-.odro-button-contact:hover .odro-button-label {
-  border-color: rgba(0, 255, 0, 0.8);
-  color: #00ff00;
-  background: rgba(0, 255, 0, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
+/* Improved hotspot grid alignment */
+.odro-repair-hotspots {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 0 15%;
+  position: absolute;
+  bottom: 20%;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
 /* ============================================
-   4. RESPONSIVE ADJUSTMENTS
-   Maintain hardware aesthetic on all devices
+   4. WELCOME RACK BUTTON ALIGNMENT
    ============================================ */
 
-@media (max-width: 1280px) {
+.welcome-hotspots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 0 12%;
+}
+
+.welcome-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.welcome-button-label {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* ============================================
+   5. RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
   .master-rack-chassis {
-    max-width: 100%;
+    padding: 0 20px; /* Narrower rails on mobile */
+  }
+  
+  .master-rack-chassis::before,
+  .master-rack-chassis::after {
+    width: 20px;
+  }
+  
+  .odro-repair-hotspots {
+    padding: 0 10%;
+    gap: 8px;
+  }
+  
+  .odro-button-label {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1280px) {
+  .master-rack-chassis {
     padding: 0 30px;
   }
   
@@ -216,69 +185,87 @@
   }
 }
 
-@media (max-width: 768px) {
-  .master-rack-chassis {
-    padding: 0 20px;
-  }
-  
-  .master-rack-chassis::before,
-  .master-rack-chassis::after {
-    width: 20px;
-  }
-  
-  .odro-repair-hotspots {
-    padding: 0 8%;
-    gap: 6px;
-  }
-  
-  .odro-button-label {
-    font-size: 0.65rem;
-    padding: 0.25rem 0.5rem;
-    letter-spacing: 0.5px;
-  }
+/* ============================================
+   6. HARDWARE AESTHETIC ENHANCEMENTS
+   ============================================ */
+
+/* Add subtle texture to rack rails */
+.master-rack-chassis::before,
+.master-rack-chassis::after {
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      #2a2a2a 0px,
+      #2a2a2a 20px,
+      #1a1a1a 20px,
+      #1a1a1a 22px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+  background-blend-mode: normal;
+}
+
+/* Rack screw holes (decorative) */
+.rack-module-graphic::before,
+.rack-module-graphic::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #000 40%, #333 100%);
+  border-radius: 50%;
+  z-index: 5;
+  box-shadow: 
+    inset 0 1px 2px rgba(0, 0, 0, 0.8),
+    0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.rack-module-graphic::before {
+  left: 10px;
+}
+
+.rack-module-graphic::after {
+  right: 10px;
+}
+
+/* Prevent screw holes on ODRO (has its own design) */
+.odro-repair-container::before,
+.odro-repair-container::after {
+  display: none;
 }
 
 /* ============================================
-   5. ACCESSIBILITY & KEYBOARD NAVIGATION
+   7. ACCESSIBILITY & FOCUS STATES
    ============================================ */
 
-.odro-repair-button:focus-visible {
+.odro-repair-button:focus-visible,
+.welcome-button:focus-visible {
   outline: 2px solid rgba(255, 140, 0, 0.8);
   outline-offset: 2px;
-  background: transparent; /* No background fill */
 }
 
-.odro-button-contact:focus-visible {
-  outline-color: rgba(0, 255, 0, 0.8);
+.odro-repair-button:hover .odro-button-label {
+  background: rgba(255, 140, 0, 0.15);
+  border-color: rgba(255, 140, 0, 0.8);
+  color: #ff8c00;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.3);
 }
 
-/* ============================================
-   6. PERFORMANCE OPTIMIZATIONS
-   ============================================ */
-
-/* GPU acceleration for smooth transforms */
-.odro-button-label {
-  will-change: transform;
-  backface-visibility: hidden;
+/* Contact button (green) */
+.odro-button-contact .odro-button-label {
+  border-color: rgba(0, 255, 0, 0.5);
 }
 
-/* Prevent layout shift during image load */
-.rack-module-graphic {
-  contain: layout;
-}
-
-/* ============================================
-   7. REDUCED MOTION SUPPORT
-   ============================================ */
-
-@media (prefers-reduced-motion: reduce) {
-  .odro-button-label,
-  .odro-repair-button {
-    transition: none;
-    animation: none;
-  }
-  
-  .odro-repair-button:hover .odro-button-label {
-    transform: none;
-  }
+.odro-button-contact:hover .odro-button-label {
+  border-color: rgba(0, 255, 0, 0.8);
+  color: #00ff00;
+  background: rgba(0, 255, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
 }
