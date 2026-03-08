@@ -1,0 +1,515 @@
+/**
+ * RACK PERCENTAGE-BASED POSITIONING SYSTEM
+ * Applied: 2026-03-08
+ * 
+ * RULES:
+ * 1. ALL hotspots use percentages (%) relative to parent .rack-module-graphic
+ * 2. NO fixed pixel values for positioning
+ * 3. Coordinates derived from actual 1920px source images
+ * 4. Background: transparent (clickable ghost zones)
+ */
+
+/* ============================================
+   WELCOME RACK - Navigation Buttons
+   Source: /static/rack-images/welcome-rack-updated.webp (1920px width)
+   ============================================ */
+
+.welcome-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.welcome-button {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent !important;
+  border: none !important;
+  transition: background 0.2s ease;
+}
+
+.welcome-button:hover {
+  background: rgba(255, 255, 0, 0.1) !important;
+}
+
+/* HOME button - Far left wooden button */
+.welcome-button-home {
+  top: 40%;
+  left: 7.5%;
+  width: 14%;
+  height: 22%;
+}
+
+/* ABOUT button - Second from left */
+.welcome-button-about {
+  top: 40%;
+  left: 24%;
+  width: 14%;
+  height: 22%;
+}
+
+/* WORKSHOP CAFÉ button - Center */
+.welcome-button-cafe {
+  top: 40%;
+  left: 40.5%;
+  width: 14%;
+  height: 22%;
+}
+
+/* CONTACT button - Second from right */
+.welcome-button-contact {
+  top: 40%;
+  left: 57%;
+  width: 14%;
+  height: 22%;
+}
+
+/* BOOK NOW button - Far right (larger button) */
+.welcome-button-booknow {
+  top: 40%;
+  left: 74%;
+  width: 18%;
+  height: 22%;
+}
+
+/* ============================================
+   RECORDING SERVICES - Split Panel (Cowley / Cricket)
+   Source: /static/rack-images/recording-services-new.webp
+   Top 50% = Cowley (Green), Bottom 50% = Cricket (Purple)
+   ============================================ */
+
+.recording-hotspots-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.recording-panel {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent !important;
+  transition: all 0.3s ease;
+}
+
+/* Cowley Road Recording - TOP HALF */
+.recording-cowley-panel {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  z-index: 10;
+}
+
+.recording-cowley-panel:hover {
+  background: rgba(76, 175, 80, 0.12) !important; /* Green tint */
+  box-shadow: inset 0 0 20px rgba(76, 175, 80, 0.3);
+  border-top: 3px solid rgba(76, 175, 80, 0.8);
+}
+
+/* Cricket Road Recording - BOTTOM HALF */
+.recording-cricket-panel {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  z-index: 10;
+}
+
+.recording-cricket-panel:hover {
+  background: rgba(156, 39, 176, 0.12) !important; /* Purple tint */
+  box-shadow: inset 0 0 20px rgba(156, 39, 176, 0.3);
+  border-bottom: 3px solid rgba(156, 39, 176, 0.8);
+}
+
+/* Location labels on hover */
+.recording-cowley-panel::after {
+  content: 'COWLEY ROAD';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(76, 175, 80, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 
+    0 0 15px rgba(76, 175, 80, 1),
+    2px 2px 8px rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.85);
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  border: 2px solid rgba(76, 175, 80, 0.6);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.recording-cowley-panel:hover::after {
+  opacity: 1;
+}
+
+.recording-cricket-panel::after {
+  content: 'CRICKET ROAD';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(156, 39, 176, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 
+    0 0 15px rgba(156, 39, 176, 1),
+    2px 2px 8px rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.85);
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  border: 2px solid rgba(156, 39, 176, 0.6);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.recording-cricket-panel:hover::after {
+  opacity: 1;
+}
+
+/* ============================================
+   REHEARSAL SERVICES - Split Panel (Cowley / Cricket)
+   Source: /static/rack-images/rehearsal-services-updated.webp
+   Top 50% = Cowley, Bottom 50% = Cricket
+   ============================================ */
+
+.rehearsal-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.rehearsal-panel {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent !important;
+  transition: all 0.3s ease;
+}
+
+/* Cowley Road Rehearsal - TOP HALF */
+.rehearsal-cowley-panel {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  z-index: 10;
+}
+
+.rehearsal-cowley-panel:hover {
+  background: rgba(76, 175, 80, 0.12) !important;
+  box-shadow: inset 0 0 20px rgba(76, 175, 80, 0.3);
+  border-top: 3px solid rgba(76, 175, 80, 0.8);
+}
+
+/* Cricket Road Rehearsal - BOTTOM HALF */
+.rehearsal-cricket-panel {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  z-index: 10;
+}
+
+.rehearsal-cricket-panel:hover {
+  background: rgba(156, 39, 176, 0.12) !important;
+  box-shadow: inset 0 0 20px rgba(156, 39, 176, 0.3);
+  border-bottom: 3px solid rgba(156, 39, 176, 0.8);
+}
+
+/* Location labels on hover */
+.rehearsal-cowley-panel::after {
+  content: 'COWLEY ROAD';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(76, 175, 80, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 
+    0 0 15px rgba(76, 175, 80, 1),
+    2px 2px 8px rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.85);
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  border: 2px solid rgba(76, 175, 80, 0.6);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.rehearsal-cowley-panel:hover::after {
+  opacity: 1;
+}
+
+.rehearsal-cricket-panel::after {
+  content: 'CRICKET ROAD';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(156, 39, 176, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 
+    0 0 15px rgba(156, 39, 176, 1),
+    2px 2px 8px rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.85);
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  border: 2px solid rgba(156, 39, 176, 0.6);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.rehearsal-cricket-panel:hover::after {
+  opacity: 1;
+}
+
+/* ============================================
+   CONTROL ROOM - SSL/Neve Split Buttons
+   Source: /static/rack-images/control-room-buttons.webp
+   Coordinates derived from 1920px width image
+   ============================================ */
+
+.button-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.booking-hotspot {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent !important;
+  transition: all 0.2s ease;
+}
+
+.booking-hotspot:hover {
+  background: rgba(255, 215, 0, 0.1) !important;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Cowley Road Control Room - LEFT BUTTON */
+.booking-hotspot-cowley {
+  top: 42.5%;
+  left: 15.8%;
+  width: 12%;
+  height: 15%;
+}
+
+/* Cricket Road Control Room - RIGHT BUTTON */
+.booking-hotspot-cricket {
+  top: 42.5%;
+  left: 72.2%;
+  width: 12%;
+  height: 15%;
+}
+
+/* ============================================
+   ODRO REPAIR PANEL - Indicator Light Hotspots
+   Source: /static/rack-images/odro-repair-panel.webp
+   Click zones = circular indicator lights
+   ============================================ */
+
+.odro-repair-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.odro-repair-button {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  
+  /* Circular click area matching indicator light */
+  width: 3.5%;      /* Percentage of rack width */
+  height: auto;
+  aspect-ratio: 1;  /* Keep it circular */
+  border-radius: 50%;
+  
+  /* Invisible clickable zone */
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  
+  /* Center the click zone on the light */
+  transform: translate(-50%, -50%);
+  
+  /* Flex container for label positioning */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  
+  transition: background 0.2s ease;
+}
+
+.odro-repair-button:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* TERMS button - Left orange indicator light */
+.odro-button-terms {
+  top: 46%;
+  left: 25%;
+}
+
+/* BOOK REPAIR button - Center orange indicator light */
+.odro-button-book {
+  top: 46%;
+  left: 50%;
+}
+
+/* CONTACT button - Right green indicator light */
+.odro-button-contact {
+  top: 46%;
+  left: 75%;
+}
+
+/* Labels positioned below lights on yellow strips */
+.odro-button-label {
+  position: absolute;
+  
+  /* Position below the circular button */
+  top: 100%;
+  margin-top: 0.8rem; /* Small gap between light and label */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* Label styling */
+  width: max-content;
+  min-width: 5rem;
+  padding: 0.25rem 0.5rem;
+  
+  /* Black text on transparent (yellow strip shows through) */
+  background: transparent !important;
+  color: #000000 !important;
+  
+  /* Typography */
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+  font-size: 0.625rem !important; /* 10px */
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.03em !important;
+  text-align: center !important;
+  line-height: 1.2 !important;
+  
+  /* Remove default styling */
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  
+  /* Ensure it doesn't block clicks */
+  pointer-events: none !important;
+  white-space: nowrap !important;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Slightly adjust click areas on mobile/tablet */
+  .welcome-button {
+    height: 18%;
+  }
+  
+  .odro-repair-button {
+    width: 5%; /* Larger touch target on mobile */
+  }
+  
+  .odro-button-label {
+    font-size: 0.5rem; /* 8px on mobile */
+  }
+  
+  /* Location labels smaller on mobile */
+  .recording-cowley-panel::after,
+  .recording-cricket-panel::after,
+  .rehearsal-cowley-panel::after,
+  .rehearsal-cricket-panel::after {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* ============================================
+   DEBUG MODE (OPTIONAL)
+   Uncomment to visualize all clickable zones
+   ============================================ */
+
+/*
+.welcome-button,
+.recording-panel,
+.rehearsal-panel,
+.booking-hotspot,
+.odro-repair-button {
+  outline: 2px dashed rgba(255, 255, 0, 0.6) !important;
+  background: rgba(255, 255, 0, 0.1) !important;
+}
+
+.welcome-button::before,
+.recording-panel::before,
+.rehearsal-panel::before,
+.booking-hotspot::before,
+.odro-repair-button::before {
+  content: attr(class);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: yellow;
+  padding: 2px 4px;
+  font-size: 8px;
+  white-space: nowrap;
+  z-index: 1000;
+}
+*/

@@ -102,7 +102,7 @@ export const RackAccordion = () => {
           
           {/* BOOK NOW button (right side) */}
           <a 
-            href="https://cowleyroadstudios.com/book"
+            href="/book"
             class="welcome-button welcome-button-booknow"
             aria-label="Book Now - View all services and book online"
           >
@@ -136,9 +136,7 @@ export const RackAccordion = () => {
         <div class="recording-hotspots-overlay">
           {/* COWLEY ROAD RECORDING (Top Half) */}
           <a 
-            href="https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/book?service=recording&location=cowley"
             class="recording-panel recording-cowley-panel"
             data-location="cowley"
             aria-label="Book Cowley Road Recording - Professional recording, mixing, mastering, and production services"
@@ -147,9 +145,7 @@ export const RackAccordion = () => {
 
           {/* CRICKET ROAD RECORDING (Bottom Half) */}
           <a 
-            href="https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/book?service=recording&location=cricket"
             class="recording-panel recording-cricket-panel"
             data-location="cricket"
             aria-label="Book Cricket Road Recording - Professional recording, mixing, mastering, and production services"
@@ -182,9 +178,7 @@ export const RackAccordion = () => {
         <div class="rehearsal-hotspots">
           {/* COWLEY ROAD REHEARSAL (Top Half) */}
           <a 
-            href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/book?service=rehearsal&location=cowley"
             class="rehearsal-panel rehearsal-cowley-panel"
             data-location="cowley"
             aria-label="Book Cowley Road Rehearsal - £45 for 2 hours, £60 for 3 hours, £65 for 4 hours. Max 4 members."
@@ -193,9 +187,7 @@ export const RackAccordion = () => {
 
           {/* CRICKET ROAD REHEARSAL (Bottom Half) */}
           <a 
-            href="https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/book?service=rehearsal&location=cricket"
             class="rehearsal-panel rehearsal-cricket-panel"
             data-location="cricket"
             aria-label="Book Cricket Road Rehearsal - Fully equipped live room with drums, backline, and PA system."
@@ -229,9 +221,7 @@ export const RackAccordion = () => {
           {/* Clickable hotspot overlays for booking buttons */}
           <div class="button-hotspots">
             <a 
-              href="https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/book?service=control-room&location=cowley"
               class="booking-hotspot booking-hotspot-cowley"
               data-location="cowley"
               aria-label="Book Cowley Road Control Room - Professional monitoring environment"
@@ -239,9 +229,7 @@ export const RackAccordion = () => {
               <span class="sr-only">Book Cowley Road</span>
             </a>
             <a 
-              href="https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/book?service=control-room&location=cricket"
               class="booking-hotspot booking-hotspot-cricket"
               data-location="cricket"
               aria-label="Book Cricket Road Control Room - Professional monitoring environment"

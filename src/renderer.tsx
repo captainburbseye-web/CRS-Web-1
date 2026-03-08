@@ -179,6 +179,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* EMERGENCY FIXES - Drift corrections, button alignment, ODRO cutoff */}
         <link href="/static/rack-emergency-fixes.css" rel="stylesheet" />
         
+        {/* PERCENTAGE-BASED POSITIONING SYSTEM - All hotspots use % (no px) */}
+        <link href="/static/rack-percentage-positioning.css" rel="stylesheet" />
+        
         {/* Disable Whole-Rack Flash on Click - Localize interactions */}
         <link href="/static/disable-rack-flash.css" rel="stylesheet" />
       </head>

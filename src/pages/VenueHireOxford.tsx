@@ -46,7 +46,7 @@ export const VenueHireOxford = () => {
         <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
           <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative; color: #E0E0E0;">
             <span style="position: absolute; left: 0; color: #B5A642;">→</span>
-            PA system with basic monitoring (Bose 802 tops, Martin Audio IC300 subs)
+            PA system with basic monitoring (Bose 802 tops, passive subs)
           </li>
           <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative; color: #E0E0E0;">
             <span style="position: absolute; left: 0; color: #B5A642;">→</span>
@@ -54,7 +54,7 @@ export const VenueHireOxford = () => {
           </li>
           <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative; color: #E0E0E0;">
             <span style="position: absolute; left: 0; color: #B5A642;">→</span>
-            Kitchen access (subject to café operations)
+            Food pop-ups from Cowley Road neighbours (no on-site kitchen)
           </li>
           <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative; color: #E0E0E0;">
             <span style="position: absolute; left: 0; color: #B5A642;">→</span>
