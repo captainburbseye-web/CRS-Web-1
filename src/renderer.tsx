@@ -176,6 +176,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* Rack UI Manifesto - Zero-Drift Laws (SSL/Neve Hybrid) */}
         <link href="/static/rack-ui-manifesto.css" rel="stylesheet" />
         
+        {/* EMERGENCY FIXES - Drift corrections, button alignment, ODRO cutoff */}
+        <link href="/static/rack-emergency-fixes.css" rel="stylesheet" />
+        
         {/* Disable Whole-Rack Flash on Click - Localize interactions */}
         <link href="/static/disable-rack-flash.css" rel="stylesheet" />
       </head>

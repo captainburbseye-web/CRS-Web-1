@@ -1,0 +1,409 @@
+/**
+ * EMERGENCY FIX - RACK UI DRIFT CORRECTIONS
+ * Applied: 2026-03-04
+ * 
+ * FIXES:
+ * 1. Remove unwanted grey/black backgrounds
+ * 2. Fix ODRO cutoff (remove max-height constraint)
+ * 3. Align ALL button/hover points to actual graphic elements
+ * 4. Ensure wooden frames show consistently
+ * 5. Add title distinction for Recording vs Rehearsal
+ */
+
+/* ============================================
+   FIX 1: REMOVE UNWANTED BACKGROUNDS
+   ============================================ */
+
+/* Force transparent backgrounds on all rack containers */
+.master-rack-chassis,
+.rack-module-graphic,
+.rack-unit-container,
+.crs-header-container,
+.welcome-rack-container,
+.recording-services-container,
+.rehearsal-services-container,
+.control-room-module,
+.odro-repair-container,
+.workshop-cafe-container {
+  background: none !important;
+  background-color: transparent !important;
+}
+
+/* Remove any grey/black padding or margins creating visual gaps */
+body {
+  background: #0a0a0a !important; /* Pure black background */
+}
+
+.master-rack-chassis {
+  background: transparent !important; /* Remove center panel grey */
+  padding: 0 25px; /* Keep rack ears only */
+}
+
+/* ============================================
+   FIX 2: ODRO CUTOFF - REMOVE HEIGHT CONSTRAINT
+   ============================================ */
+
+.odro-repair-container {
+  position: relative;
+  display: block;
+  max-height: none !important; /* REMOVE cutoff */
+  overflow: visible !important; /* Show full image */
+  margin-bottom: 0;
+}
+
+.odro-repair-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain !important; /* Don't crop */
+  object-position: center;
+}
+
+/* Move buttons UP to match visible indicator lights */
+.odro-button-terms {
+  top: 60% !important; /* Move up from 75% */
+  left: 25%;
+}
+
+.odro-button-book {
+  top: 60% !important; /* Move up from 75% */
+  left: 50%;
+}
+
+.odro-button-contact {
+  top: 60% !important; /* Move up from 75% */
+  left: 75%;
+}
+
+/* ============================================
+   FIX 3: WELCOME RACK BUTTONS - ALIGN TO GRAPHIC
+   ============================================ */
+
+.welcome-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.welcome-button {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  
+  /* Visible button area for debugging */
+  background: rgba(255, 0, 0, 0) !important; /* Transparent but clickable */
+  border: 2px solid rgba(255, 255, 0, 0) !important; /* Hidden debug border */
+  transition: background 0.2s, border 0.2s;
+}
+
+/* Show button areas on hover for debugging */
+.welcome-button:hover {
+  background: rgba(255, 255, 0, 0.1) !important;
+  border: 2px solid rgba(255, 255, 0, 0.3) !important;
+}
+
+/* CORRECTED COORDINATES - Align with actual wood frame buttons */
+.welcome-button-home {
+  top: 40%;
+  left: 8%;
+  width: 15%;
+  height: 20%;
+}
+
+.welcome-button-about {
+  top: 40%;
+  left: 25%;
+  width: 15%;
+  height: 20%;
+}
+
+.welcome-button-cafe {
+  top: 40%;
+  left: 42%;
+  width: 15%;
+  height: 20%;
+}
+
+.welcome-button-contact {
+  top: 40%;
+  left: 59%;
+  width: 15%;
+  height: 20%;
+}
+
+.welcome-button-booknow {
+  top: 40%;
+  left: 76%;
+  width: 18%;
+  height: 20%;
+}
+
+/* ============================================
+   FIX 4: RECORDING SERVICES - SPLIT PANELS
+   ============================================ */
+
+.recording-hotspots-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.recording-panel {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: rgba(0, 255, 0, 0) !important; /* Transparent */
+  transition: background 0.2s;
+}
+
+.recording-panel:hover {
+  background: rgba(0, 255, 0, 0.1) !important; /* Subtle green hover */
+}
+
+/* CORRECTED: Top panel = Cowley (Green), Bottom panel = Cricket (Purple) */
+.recording-cowley-panel {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%; /* Top half */
+}
+
+.recording-cricket-panel {
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Bottom half */
+}
+
+/* ============================================
+   FIX 5: REHEARSAL SERVICES - SPLIT PANELS
+   ============================================ */
+
+.rehearsal-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.rehearsal-panel {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: rgba(0, 0, 255, 0) !important; /* Transparent */
+  transition: background 0.2s;
+}
+
+.rehearsal-panel:hover {
+  background: rgba(0, 0, 255, 0.1) !important; /* Subtle blue hover */
+}
+
+/* CORRECTED: Top = Cowley, Bottom = Cricket */
+.rehearsal-cowley-panel {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+}
+
+.rehearsal-cricket-panel {
+  top: 50%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* ============================================
+   FIX 6: CONTROL ROOM BUTTONS
+   ============================================ */
+
+.button-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.booking-hotspot {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: rgba(255, 140, 0, 0) !important;
+  transition: background 0.2s;
+}
+
+.booking-hotspot:hover {
+  background: rgba(255, 140, 0, 0.1) !important;
+}
+
+/* CORRECTED: Align with button graphics */
+.booking-hotspot-cowley {
+  top: 35%;
+  left: 15%;
+  width: 30%;
+  height: 30%;
+}
+
+.booking-hotspot-cricket {
+  top: 35%;
+  left: 55%;
+  width: 30%;
+  height: 30%;
+}
+
+/* ============================================
+   FIX 7: ADD WOODEN FRAME TO ALL RACKS
+   ============================================ */
+
+/* Wooden frame border around rack images */
+.welcome-rack-container img,
+.rehearsal-services-container img,
+.workshop-cafe-container img {
+  /* These already have wooden frames in the image */
+  border: none !important;
+}
+
+.recording-services-container img,
+.control-room-module img,
+.odro-repair-container img {
+  /* Add CSS wooden frame border */
+  border: 12px solid transparent;
+  border-image: linear-gradient(
+    135deg,
+    #4e342e 0%,
+    #3e2723 25%,
+    #2d1b16 50%,
+    #3e2723 75%,
+    #4e342e 100%
+  ) 12;
+  border-image-repeat: stretch;
+}
+
+/* ============================================
+   FIX 8: ADD TITLE DISTINCTION
+   ============================================ */
+
+/* Add title overlay to Recording rack */
+.recording-services-container::before {
+  content: 'RECORDING';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  
+  font-family: 'Archivo Black', 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #D4AF37;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    0 0 10px rgba(212, 175, 55, 0.8),
+    2px 2px 4px rgba(0, 0, 0, 0.9);
+  
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* Add title overlay to Rehearsal rack */
+.rehearsal-services-container::before {
+  content: 'REHEARSAL';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  
+  font-family: 'Archivo Black', 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #4F7942;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    0 0 10px rgba(79, 121, 66, 0.8),
+    2px 2px 4px rgba(0, 0, 0, 0.9);
+  
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem 2rem;
+  border-radius: 4px;
+  border: 2px solid rgba(79, 121, 66, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+/* ============================================
+   FIX 9: ZERO-DRIFT SPACING ENFORCEMENT
+   ============================================ */
+
+/* Force zero gaps between all rack modules */
+.rack-module-graphic + .rack-module-graphic {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure no extra space from rack ears */
+.master-rack-chassis::before,
+.master-rack-chassis::after {
+  /* Keep 25px rack ears but ensure no extra spacing */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ============================================
+   FIX 10: MOBILE RESPONSIVE CORRECTIONS
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Adjust button positions for mobile */
+  .odro-button-terms,
+  .odro-button-book,
+  .odro-button-contact {
+    top: 55% !important; /* Move up more on mobile */
+  }
+  
+  /* Smaller title overlays on mobile */
+  .recording-services-container::before,
+  .rehearsal-services-container::before {
+    font-size: 1.25rem;
+    padding: 0.35rem 1.5rem;
+  }
+  
+  /* Adjust welcome buttons for mobile */
+  .welcome-button {
+    width: 18% !important;
+    height: 15% !important;
+  }
+}
+
+/* ============================================
+   FIX 11: DEBUG MODE (OPTIONAL - COMMENT OUT FOR PRODUCTION)
+   ============================================ */
+
+/* Uncomment to see all clickable areas */
+/*
+.welcome-button,
+.recording-panel,
+.rehearsal-panel,
+.booking-hotspot,
+.odro-repair-button {
+  outline: 2px dashed rgba(255, 255, 0, 0.5) !important;
+}
+*/
