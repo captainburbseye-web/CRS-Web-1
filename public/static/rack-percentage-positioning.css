@@ -309,165 +309,154 @@
 /* ============================================
    ODRO REPAIR PANEL - Indicator Light Hotspots
    Source: /static/rack-images/odro-repair-panel.webp
-   Click zones = circular indicator lights
+   Three circular hotspots mapped over hardware buttons
    ============================================ */
 
+/* ============================================
+   ODRO REPAIR PANEL - THREE CIRCULAR HOTSPOTS
+   ============================================ */
+
+/* Container for ODRO hotspots - positioned absolutely */
 .odro-repair-hotspots {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 10;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 50 !important;
+  pointer-events: none !important;
 }
 
-.odro-repair-button {
-  position: absolute;
-  pointer-events: auto;
-  cursor: pointer;
-  
-  /* Circular click area matching indicator light */
-  width: 3.5%;      /* Percentage of rack width */
-  height: auto;
-  aspect-ratio: 1;  /* Keep it circular */
-  border-radius: 50%;
-  
-  /* Invisible clickable zone */
+/* Base circular hotspot styling */
+.odro-hotspot {
+  position: absolute !important;
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  top: 50% !important;
   background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  
-  /* Center the click zone on the light */
-  transform: translate(-50%, -50%);
-  
-  /* Flex container for label positioning */
+  border: 2px solid transparent !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 50 !important;
   display: flex !important;
-  flex-direction: column !important;
   align-items: center !important;
-  justify-content: flex-start !important;
-  
-  transition: background 0.2s ease;
+  justify-content: center !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
 }
 
-.odro-repair-button:hover {
-  background: rgba(255, 255, 255, 0.08) !important;
+/* Position each hotspot */
+.odro-hotspot-left {
+  left: 20% !important;
 }
 
-/* TERMS button - Left orange indicator light */
-.odro-button-terms {
-  top: 46%;
-  left: 25%;
+.odro-hotspot-center {
+  left: 50% !important;
 }
 
-/* BOOK REPAIR button - Center orange indicator light */
-.odro-button-book {
-  top: 46%;
-  left: 50%;
+.odro-hotspot-right {
+  left: 80% !important;
 }
 
-/* CONTACT button - Right green indicator light */
-.odro-button-contact {
-  top: 46%;
-  left: 75%;
+/* Hover effects */
+.odro-hotspot:hover {
+  box-shadow: 0 0 20px rgba(255, 149, 0, 0.8) !important; /* Orange glow */
+  border-color: rgba(255, 149, 0, 0.4) !important;
 }
 
-/* Labels positioned below lights on yellow strips */
-.odro-button-label {
-  position: absolute;
-  
-  /* Position below the circular button */
-  top: 100%;
-  margin-top: 0.8rem; /* Small gap between light and label */
-  left: 50%;
-  transform: translateX(-50%);
-  
-  /* Label styling */
-  width: max-content;
-  min-width: 5rem;
-  padding: 0.25rem 0.5rem;
-  
-  /* Black text on transparent (yellow strip shows through) */
-  background: transparent !important;
-  color: #000000 !important;
-  
-  /* Typography */
+/* Tooltip labels via data-label attribute */
+.odro-hotspot::after {
+  content: attr(data-label) !important;
+  position: absolute !important;
+  top: calc(100% + 15px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
   font-family: 'JetBrains Mono', 'Courier New', monospace !important;
-  font-size: 0.625rem !important; /* 10px */
+  font-size: 0.7rem !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.03em !important;
-  text-align: center !important;
-  line-height: 1.2 !important;
-  
-  /* Remove default styling */
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  
-  /* Ensure it doesn't block clicks */
-  pointer-events: none !important;
+  letter-spacing: 1px !important;
+  color: #D4AF37 !important;
+  background: rgba(0, 0, 0, 0.85) !important;
+  padding: 6px 12px !important;
+  border-radius: 4px !important;
   white-space: nowrap !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease !important;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.5) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.odro-hotspot:hover::after {
+  opacity: 1 !important;
 }
 
 /* ============================================
-   RESPONSIVE ADJUSTMENTS
+   WORKSHOP CAFÉ "BOOK NOW" HOTSPOT
    ============================================ */
 
-@media (max-width: 768px) {
-  /* Slightly adjust click areas on mobile/tablet */
-  .welcome-button {
-    height: 18%;
-  }
-  
-  .odro-repair-button {
-    width: 5%; /* Larger touch target on mobile */
-  }
-  
-  .odro-button-label {
-    font-size: 0.5rem; /* 8px on mobile */
-  }
-  
-  /* Location labels smaller on mobile */
-  .recording-cowley-panel::after,
-  .recording-cricket-panel::after,
-  .rehearsal-cowley-panel::after,
-  .rehearsal-cricket-panel::after {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-  }
+/* Ensure parent container is relative */
+.workshop-cafe-container {
+  position: relative !important;
 }
 
-/* ============================================
-   DEBUG MODE (OPTIONAL)
-   Uncomment to visualize all clickable zones
-   ============================================ */
-
-/*
-.welcome-button,
-.recording-panel,
-.rehearsal-panel,
-.booking-hotspot,
-.odro-repair-button {
-  outline: 2px dashed rgba(255, 255, 0, 0.6) !important;
-  background: rgba(255, 255, 0, 0.1) !important;
+/* Book Now hotspot overlay */
+.cafe-book-now-hotspot {
+  position: absolute !important;
+  top: 85% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 200px !important;
+  height: 60px !important;
+  z-index: 50 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  pointer-events: auto !important;
+  transition: all 0.2s ease !important;
 }
 
-.welcome-button::before,
-.recording-panel::before,
-.rehearsal-panel::before,
-.booking-hotspot::before,
-.odro-repair-button::before {
-  content: attr(class);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: yellow;
-  padding: 2px 4px;
-  font-size: 8px;
-  white-space: nowrap;
-  z-index: 1000;
+.cafe-book-now-hotspot:hover {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.8) !important; /* Gold glow */
+  border-color: rgba(212, 175, 55, 0.4) !important;
+  background: rgba(212, 175, 55, 0.05) !important;
 }
-*/
+
+/* Tooltip for Workshop Café hotspot */
+.cafe-book-now-hotspot::after {
+  content: "BOOK NOW – Coffee • Co-working • Local Food Pop-ups" !important;
+  position: absolute !important;
+  top: calc(100% + 15px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  color: #D4AF37 !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease !important;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.5) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.cafe-book-now-hotspot:hover::after {
+  opacity: 1 !important;
+}
+

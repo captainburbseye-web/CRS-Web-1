@@ -264,35 +264,40 @@ export const RackAccordion = () => {
           />
         </picture>
         
-        {/* Interactive button hotspots */}
+        {/* Interactive circular hotspots overlay */}
         <div class="odro-repair-hotspots">
-          {/* Terms Button (Left - Orange indicator) */}
-          <button 
-            class="odro-repair-button odro-button-terms"
-            data-button="terms"
-            aria-label="View repair terms and conditions"
-          >
-            <span class="odro-button-label">Terms</span>
-          </button>
-          
-          {/* Book Repair Button (Middle - Orange indicator) */}
+          {/* Left Button (Terms) */}
           <a 
-            href="/contact?service=repairs"
-            class="odro-repair-button odro-button-book"
-            data-button="book"
-            aria-label="Book a repair service"
+            href="#odro-terms"
+            class="odro-hotspot odro-hotspot-left"
+            data-button="terms"
+            data-label="TERMS"
+            aria-label="View repair terms and conditions"
+            onclick="document.getElementById('odro-terms-modal').style.display='flex'; return false;"
           >
-            <span class="odro-button-label">Book Repair</span>
+            <span class="sr-only">View Terms</span>
           </a>
           
-          {/* Contact Button (Right - Green indicator) */}
+          {/* Center Button (Book Repair) */}
+          <a 
+            href="/contact?service=repairs"
+            class="odro-hotspot odro-hotspot-center"
+            data-button="book"
+            data-label="BOOK REPAIR"
+            aria-label="Book a repair service"
+          >
+            <span class="sr-only">Book Repair</span>
+          </a>
+          
+          {/* Right Button (Contact) */}
           <a 
             href="/contact"
-            class="odro-repair-button odro-button-contact"
+            class="odro-hotspot odro-hotspot-right"
             data-button="contact"
+            data-label="CONTACT"
             aria-label="Contact us about repairs"
           >
-            <span class="odro-button-label">Contact</span>
+            <span class="sr-only">Contact</span>
           </a>
         </div>
       </div>
@@ -343,7 +348,7 @@ export const RackAccordion = () => {
       </div>
 
       {/* WORKSHOP CAFE RACK */}
-      <div class="rack-module-graphic" id="workshop-cafe" data-section="cafe">
+      <div class="rack-module-graphic workshop-cafe-container" id="workshop-cafe" data-section="cafe">
         <a 
           href="/workshop-cafe" 
           aria-label="Workshop Café - Coffee, repairs, musical curios, and coworking spaces - Learn more"
@@ -364,6 +369,16 @@ export const RackAccordion = () => {
             />
           </picture>
           <span class="rack-tooltip" aria-hidden="true">Click for Workshop Café info →</span>
+        </a>
+        
+        {/* Book Now Hotspot Overlay */}
+        <a 
+          href="https://crsoxford.com/book"
+          class="cafe-book-now-hotspot"
+          data-label="BOOK NOW"
+          aria-label="Book Now - Coffee, co-working, and local food pop-ups"
+        >
+          <span class="sr-only">Book Now</span>
         </a>
       </div>
 
