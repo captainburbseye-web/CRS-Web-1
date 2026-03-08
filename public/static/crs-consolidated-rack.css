@@ -5,17 +5,46 @@
  */
 
 /* ============================================
-   MASTER RACK CHASSIS
+   GLOBAL RACK RESET - ZERO-DRIFT FOUNDATION
+   Applied: 2026-03-08
+   Eliminates ALL spacing/alignment issues
    ============================================ */
 
 .master-rack-chassis {
+    display: flex !important;
+    flex-direction: column !important;
+    line-height: 0 !important; /* Eliminates the 'descender' gap below images */
+    font-size: 0 !important;
+    background-color: #111 !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.rack-module-graphic {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    position: relative !important; /* Anchor for the light-up links */
+}
+
+.rack-module-img {
+    display: block !important; /* Forces the image to behave like a physical block */
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* ============================================
+   LEGACY MASTER RACK CHASSIS (OVERRIDDEN ABOVE)
+   ============================================ */
+
+/*.master-rack-chassis {
   position: relative;
   max-width: 1100px;
   margin: 0 auto;
   background: var(--crs-black);
   color: var(--crs-text);
   min-height: 100vh;
-}
+}*/
 
 /* ============================================
    RACK HEADER
@@ -448,6 +477,7 @@
    STUDIO FLIGHT CASE AESTHETIC
    Safe visual overlay - preserves all hotspots
    Added: 2026-02-24
+   Updated: 2026-03-08 - Respects global reset
    ============================================ */
 
 /* 1. Sets the moody studio lighting behind the rack */
@@ -469,10 +499,11 @@ body {
   }
 }
 
-/* 2. Enhances your EXISTING chassis wrapper */
+/* 2. Enhances your EXISTING chassis wrapper - NOW RESPECTS GLOBAL RESET */
+/* NOTE: Global reset at top of file controls flex layout, line-height, font-size */
 .master-rack-chassis {
   position: relative;
-  background-color: #050505; /* Pitch black behind the units */
+  /* background-color controlled by global reset (#111) */
   box-shadow: 
     0 20px 50px rgba(0,0,0,0.9), 
     0 0 0 2px #1a1a1c;
@@ -517,12 +548,13 @@ body {
 .master-rack-chassis::before { left: 0; }
 .master-rack-chassis::after { right: 0; }
 
-/* 4. Adds a tiny 2px physical gap between your existing image modules */
-.rack-module-graphic {
+/* 4. Rack module spacing - CONTROLLED BY GLOBAL RESET */
+/* NOTE: Global reset sets margin:0, padding:0, position:relative */
+/* .rack-module-graphic {
   position: relative;
   z-index: 5;
   margin-bottom: 2px !important;
-}
+} */
 
 /* ================================================
    METALLIC TEXTURE OVERLAY
