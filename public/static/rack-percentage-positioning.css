@@ -83,35 +83,40 @@
    Top 50% = Cowley (Green), Bottom 50% = Cricket (Purple)
    ============================================ */
 
-/* 1. Force the Overlay to Stack the Links */
+/* 1. Force the Overlay to Stack the Links 50/50 */
 .recording-hotspots-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   display: flex !important;
-  flex-direction: column !important; /* Stacks Cowley on top, Cricket on bottom */
-  z-index: 10;
+  flex-direction: column !important; /* Stacks Cowley (top 50%) and Cricket (bottom 50%) */
+  z-index: 10 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important; /* Container is ghost, children are clickable */
 }
 
-/* 2. Make each link take exactly half the rack */
+/* 2. Lock Each Link to Exactly Half the Rack */
 .recording-panel {
   flex: 1 !important; /* Forces exactly 50% height */
   width: 100% !important;
-  display: flex !important; /* Centers the generated text inside the link */
+  display: flex !important;
   align-items: center !important;
-  justify-content: center !important;
+  justify-content: center !important; /* Mathematically centers the text horizontally */
   position: relative !important;
-  pointer-events: auto;
-  cursor: pointer;
+  text-decoration: none !important;
+  pointer-events: auto !important; /* Links are clickable */
+  cursor: pointer !important;
   background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
   transition: all 0.3s ease;
 }
 
-/* Remove old absolute positioning - flex handles it now */
+/* Remove old positioning rules - flex handles everything */
 .recording-cowley-panel {
-  /* flex:1 handles positioning - no top/left/height needed */
   z-index: 10;
 }
 
@@ -122,7 +127,6 @@
 }
 
 .recording-cricket-panel {
-  /* flex:1 handles positioning - no top/left/height needed */
   z-index: 10;
 }
 
@@ -132,20 +136,21 @@
   border-bottom: 3px solid rgba(156, 39, 176, 0.8);
 }
 
-/* 3. Fix the Messy, Right-Drifting Text - Lock Dead-Center */
+/* 3. Tidy the Messy, Right-Drifting Text */
 .recording-cowley-panel::before {
-  content: 'COWLEY ROAD';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Mathematically locks it dead-center */
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: rgba(76, 175, 80, 0.95);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  text-align: center;
+  content: 'COWLEY ROAD' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; /* Force-locks the text dead-center */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: rgba(76, 175, 80, 0.95) !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  width: 100% !important;
   text-shadow: 
     0 0 15px rgba(76, 175, 80, 1),
     2px 2px 8px rgba(0, 0, 0, 0.95);
@@ -154,30 +159,30 @@
   border-radius: 6px;
   border: 2px solid rgba(76, 175, 80, 0.6);
   backdrop-filter: blur(6px);
-  width: auto;
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none; /* Prevents the text from blocking the click */
+  pointer-events: none !important; /* Prevents the text from blocking the click */
 }
 
 .recording-cowley-panel:hover::before {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 .recording-cricket-panel::before {
-  content: 'CRICKET ROAD';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Mathematically locks it dead-center */
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: rgba(156, 39, 176, 0.95);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  text-align: center;
+  content: 'CRICKET ROAD' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; /* Force-locks the text dead-center */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: rgba(156, 39, 176, 0.95) !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  width: 100% !important;
   text-shadow: 
     0 0 15px rgba(156, 39, 176, 1),
     2px 2px 8px rgba(0, 0, 0, 0.95);
@@ -186,15 +191,14 @@
   border-radius: 6px;
   border: 2px solid rgba(156, 39, 176, 0.6);
   backdrop-filter: blur(6px);
-  width: auto;
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none; /* Prevents the text from blocking the click */
+  pointer-events: none !important; /* Prevents the text from blocking the click */
 }
 
 .recording-cricket-panel:hover::before {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 /* ============================================
@@ -203,35 +207,40 @@
    Top 50% = Cowley, Bottom 50% = Cricket
    ============================================ */
 
-/* 1. Force the Overlay to Stack the Links */
+/* 1. Force the Overlay to Stack the Links 50/50 */
 .rehearsal-hotspots {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   display: flex !important;
-  flex-direction: column !important; /* Stacks Cowley on top, Cricket on bottom */
-  z-index: 10;
+  flex-direction: column !important; /* Stacks Cowley (top 50%) and Cricket (bottom 50%) */
+  z-index: 10 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important; /* Container is ghost, children are clickable */
 }
 
-/* 2. Make each link take exactly half the rack */
+/* 2. Lock Each Link to Exactly Half the Rack */
 .rehearsal-panel {
   flex: 1 !important; /* Forces exactly 50% height */
   width: 100% !important;
-  display: flex !important; /* Centers the generated text inside the link */
+  display: flex !important;
   align-items: center !important;
-  justify-content: center !important;
+  justify-content: center !important; /* Mathematically centers the text horizontally */
   position: relative !important;
-  pointer-events: auto;
-  cursor: pointer;
+  text-decoration: none !important;
+  pointer-events: auto !important; /* Links are clickable */
+  cursor: pointer !important;
   background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
   transition: all 0.3s ease;
 }
 
-/* Remove old absolute positioning - flex handles it now */
+/* Remove old positioning rules - flex handles everything */
 .rehearsal-cowley-panel {
-  /* flex:1 handles positioning - no top/left/height needed */
   z-index: 10;
 }
 
@@ -242,7 +251,6 @@
 }
 
 .rehearsal-cricket-panel {
-  /* flex:1 handles positioning - no top/left/height needed */
   z-index: 10;
 }
 
@@ -252,20 +260,21 @@
   border-bottom: 3px solid rgba(156, 39, 176, 0.8);
 }
 
-/* 3. Fix the Messy, Right-Drifting Text - Lock Dead-Center */
+/* 3. Tidy the Messy, Right-Drifting Text */
 .rehearsal-cowley-panel::before {
-  content: 'COWLEY ROAD';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Mathematically locks it dead-center */
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: rgba(76, 175, 80, 0.95);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  text-align: center;
+  content: 'COWLEY ROAD' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; /* Force-locks the text dead-center */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: rgba(76, 175, 80, 0.95) !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  width: 100% !important;
   text-shadow: 
     0 0 15px rgba(76, 175, 80, 1),
     2px 2px 8px rgba(0, 0, 0, 0.95);
@@ -274,30 +283,30 @@
   border-radius: 6px;
   border: 2px solid rgba(76, 175, 80, 0.6);
   backdrop-filter: blur(6px);
-  width: auto;
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none; /* Prevents the text from blocking the click */
+  pointer-events: none !important; /* Prevents the text from blocking the click */
 }
 
 .rehearsal-cowley-panel:hover::before {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 .rehearsal-cricket-panel::before {
-  content: 'CRICKET ROAD';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Mathematically locks it dead-center */
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: rgba(156, 39, 176, 0.95);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  text-align: center;
+  content: 'CRICKET ROAD' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; /* Force-locks the text dead-center */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: rgba(156, 39, 176, 0.95) !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  width: 100% !important;
   text-shadow: 
     0 0 15px rgba(156, 39, 176, 1),
     2px 2px 8px rgba(0, 0, 0, 0.95);
@@ -306,15 +315,14 @@
   border-radius: 6px;
   border: 2px solid rgba(156, 39, 176, 0.6);
   backdrop-filter: blur(6px);
-  width: auto;
   white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none; /* Prevents the text from blocking the click */
+  pointer-events: none !important; /* Prevents the text from blocking the click */
 }
 
 .rehearsal-cricket-panel:hover::before {
-  opacity: 1;
+  opacity: 1 !important;
 }
 
 /* ============================================
