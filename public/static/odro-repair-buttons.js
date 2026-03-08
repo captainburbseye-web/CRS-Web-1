@@ -13,7 +13,8 @@
   }
   
   function initODRORepair() {
-    const termsButton = document.querySelector('.odro-button-terms');
+    // Support both old class selector and new data-attribute selector
+    const termsButton = document.querySelector('[data-action="open-modal"][data-target="odro-terms-modal"], .odro-button-terms, .odro-hotspot-left');
     const modal = document.getElementById('odro-terms-modal');
     const closeButton = document.querySelector('.odro-terms-close');
     const overlay = document.querySelector('.odro-terms-overlay');

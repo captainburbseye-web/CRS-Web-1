@@ -272,8 +272,9 @@ export const RackAccordion = () => {
             class="odro-hotspot odro-hotspot-left"
             data-button="terms"
             data-label="TERMS"
+            data-action="open-modal"
+            data-target="odro-terms-modal"
             aria-label="View repair terms and conditions"
-            onclick="document.getElementById('odro-terms-modal').style.display='flex'; return false;"
           >
             <span class="sr-only">View Terms</span>
           </a>

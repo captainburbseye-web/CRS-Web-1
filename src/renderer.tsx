@@ -18,8 +18,11 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* Canonical URL */}
         <link rel="canonical" href={canonicalUrl || baseUrl} />
         
-        {/* Google Search Console Verification - REPLACE WITH ACTUAL CODE */}
-        <meta name="google-site-verification" content="ADD_VERIFICATION_CODE_HERE" />
+        {/* Google Search Console Verification */}
+        {/* TODO: User must add their actual Google Search Console verification code here */}
+        {/* Get your code from: https://search.google.com/search-console */}
+        {/* Format: <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> */}
+        <meta name="google-site-verification" content="PENDING_USER_VERIFICATION_CODE" />
         
         {/* Open Graph (social sharing) */}
         <meta property="og:type" content="website" />
@@ -86,20 +89,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* ============================================
              CONSOLIDATED CSS — LEAN & FAST
              3 strategic files replace 78 legacy files
+             Removed duplicate preload/noscript tags for performance
              ============================================ */}
         
-        {/* Preload consolidated CSS for optimal performance */}
-        <link rel="preload" href="/static/crs-consolidated-base.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="preload" href="/static/crs-consolidated-rack.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        <link rel="preload" href="/static/crs-consolidated-components.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-        
-        {/* Fallback for browsers without JS */}
-        <noscript>
-          <link href="/static/crs-consolidated-base.css" rel="stylesheet" />
-          <link href="/static/crs-consolidated-rack.css" rel="stylesheet" />
-          <link href="/static/crs-consolidated-components.css" rel="stylesheet" />
-        </noscript>
-
         {/* CONSOLIDATED CSS: Base, Rack System, Components */}
         <link href="/static/crs-consolidated-base.css" rel="stylesheet" />
         <link href="/static/crs-consolidated-rack.css" rel="stylesheet" />
