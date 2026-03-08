@@ -139,6 +139,7 @@ export const RackAccordion = () => {
             href="/book?service=recording&location=cowley"
             class="recording-panel recording-cowley-panel"
             data-location="cowley"
+            data-label="COWLEY ROAD"
             aria-label="Book Cowley Road Recording - Professional recording, mixing, mastering, and production services"
           >
           </a>
@@ -148,6 +149,7 @@ export const RackAccordion = () => {
             href="/book?service=recording&location=cricket"
             class="recording-panel recording-cricket-panel"
             data-location="cricket"
+            data-label="CRICKET ROAD"
             aria-label="Book Cricket Road Recording - Professional recording, mixing, mastering, and production services"
           >
           </a>
@@ -181,6 +183,7 @@ export const RackAccordion = () => {
             href="/book?service=rehearsal&location=cowley"
             class="rehearsal-panel rehearsal-cowley-panel"
             data-location="cowley"
+            data-label="COWLEY ROAD"
             aria-label="Book Cowley Road Rehearsal - £45 for 2 hours, £60 for 3 hours, £65 for 4 hours. Max 4 members."
           >
           </a>
@@ -190,6 +193,7 @@ export const RackAccordion = () => {
             href="/book?service=rehearsal&location=cricket"
             class="rehearsal-panel rehearsal-cricket-panel"
             data-location="cricket"
+            data-label="CRICKET ROAD"
             aria-label="Book Cricket Road Rehearsal - Fully equipped live room with drums, backline, and PA system."
           >
           </a>
@@ -224,6 +228,7 @@ export const RackAccordion = () => {
               href="/book?service=control-room&location=cowley"
               class="booking-hotspot booking-hotspot-cowley"
               data-location="cowley"
+              data-label="COWLEY ROAD"
               aria-label="Book Cowley Road Control Room - Professional monitoring environment"
             >
               <span class="sr-only">Book Cowley Road</span>
@@ -232,6 +237,7 @@ export const RackAccordion = () => {
               href="/book?service=control-room&location=cricket"
               class="booking-hotspot booking-hotspot-cricket"
               data-location="cricket"
+              data-label="CRICKET ROAD"
               aria-label="Book Cricket Road Control Room - Professional monitoring environment"
             >
               <span class="sr-only">Book Cricket Road</span>

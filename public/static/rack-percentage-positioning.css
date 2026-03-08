@@ -80,363 +80,226 @@
 /* ============================================
    RECORDING SERVICES - Split Panel (Cowley / Cricket)
    Source: /static/rack-images/recording-services-new.webp
-   Top 50% = Cowley (Green), Bottom 50% = Cricket (Purple)
+   Circular hotspots pinned directly over left/right buttons
    ============================================ */
 
-/* 1. Force the Overlay to Stack the Links 50/50 */
+/* 1. Reset the parent container to hold the absolute links */
 .recording-hotspots-overlay {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  display: flex !important;
-  flex-direction: column !important; /* Stacks Cowley (top 50%) and Cricket (bottom 50%) */
+  display: block !important; /* Remove flexbox entirely */
   z-index: 10 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  pointer-events: none !important; /* Container is ghost, children are clickable */
+  pointer-events: none !important;
 }
 
-/* 2. Lock Each Link to Exactly Half the Rack */
+/* 2. Base style for the targeted circular button hotspots */
 .recording-panel {
-  flex: 1 !important; /* Forces exactly 50% height */
-  width: 100% !important;
+  position: absolute !important;
+  width: 60px !important; /* Adjust based on graphic button size */
+  height: 60px !important;
+  border-radius: 50% !important; /* Makes the clickable area perfectly round */
+  transform: translate(-50%, -50%) !important; /* Centers the hotspot precisely on the coordinate */
   display: flex !important;
   align-items: center !important;
-  justify-content: center !important; /* Mathematically centers the text horizontally */
-  position: relative !important;
+  justify-content: center !important;
   text-decoration: none !important;
-  pointer-events: auto !important; /* Links are clickable */
-  cursor: pointer !important;
   background: transparent !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  transition: all 0.3s ease;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  transition: box-shadow 0.2s ease;
 }
 
-/* Remove old positioning rules - flex handles everything */
+/* 3. Left Button (Cowley Road) */
 .recording-cowley-panel {
-  z-index: 10;
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 25% !important; /* Places it on the left side */
 }
 
 .recording-cowley-panel:hover {
-  background: rgba(76, 175, 80, 0.12) !important; /* Green tint */
-  box-shadow: inset 0 0 20px rgba(76, 175, 80, 0.3);
-  border-top: 3px solid rgba(76, 175, 80, 0.8);
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.6) !important; /* Green glow on hover */
 }
 
+/* 4. Right Button (Cricket Road) */
 .recording-cricket-panel {
-  z-index: 10;
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 75% !important; /* Places it on the right side */
 }
 
 .recording-cricket-panel:hover {
-  background: rgba(156, 39, 176, 0.12) !important; /* Purple tint */
-  box-shadow: inset 0 0 20px rgba(156, 39, 176, 0.3);
-  border-bottom: 3px solid rgba(156, 39, 176, 0.8);
+  box-shadow: 0 0 15px rgba(156, 39, 176, 0.6) !important; /* Purple glow on hover */
 }
 
-/* 3. Tidy the Messy, Right-Drifting Text */
-.recording-cowley-panel::before {
-  content: 'COWLEY ROAD' !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important; /* Force-locks the text dead-center */
+/* 5. Tooltip Label (Instead of messy drifting text) */
+.recording-panel::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -30px; /* Positions text below the button */
   font-family: 'JetBrains Mono', monospace !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  color: rgba(76, 175, 80, 0.95) !important;
-  letter-spacing: 2px !important;
-  text-transform: uppercase !important;
-  text-align: center !important;
-  width: 100% !important;
-  text-shadow: 
-    0 0 15px rgba(76, 175, 80, 1),
-    2px 2px 8px rgba(0, 0, 0, 0.95);
-  background: rgba(0, 0, 0, 0.85);
-  padding: 1rem 2rem;
-  border-radius: 6px;
-  border: 2px solid rgba(76, 175, 80, 0.6);
-  backdrop-filter: blur(6px);
-  white-space: nowrap;
+  font-size: 0.9rem !important;
+  letter-spacing: 1px !important;
+  color: #fff !important;
+  text-shadow: 1px 1px 2px #000;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none !important; /* Prevents the text from blocking the click */
-}
-
-.recording-cowley-panel:hover::before {
-  opacity: 1 !important;
-}
-
-.recording-cricket-panel::before {
-  content: 'CRICKET ROAD' !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important; /* Force-locks the text dead-center */
-  font-family: 'JetBrains Mono', monospace !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  color: rgba(156, 39, 176, 0.95) !important;
-  letter-spacing: 2px !important;
-  text-transform: uppercase !important;
-  text-align: center !important;
-  width: 100% !important;
-  text-shadow: 
-    0 0 15px rgba(156, 39, 176, 1),
-    2px 2px 8px rgba(0, 0, 0, 0.95);
-  background: rgba(0, 0, 0, 0.85);
-  padding: 1rem 2rem;
-  border-radius: 6px;
-  border: 2px solid rgba(156, 39, 176, 0.6);
-  backdrop-filter: blur(6px);
+  transition: opacity 0.2s;
   white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none !important; /* Prevents the text from blocking the click */
+  pointer-events: none;
 }
 
-.recording-cricket-panel:hover::before {
-  opacity: 1 !important;
+.recording-panel:hover::after {
+  opacity: 1; /* Shows label only when hovering the button */
 }
 
 /* ============================================
    REHEARSAL SERVICES - Split Panel (Cowley / Cricket)
    Source: /static/rack-images/rehearsal-services-updated.webp
-   Top 50% = Cowley, Bottom 50% = Cricket
+   Circular hotspots pinned directly over left/right buttons
    ============================================ */
 
-/* 1. Force the Overlay to Stack the Links 50/50 */
+/* 1. Reset the parent container to hold the absolute links */
 .rehearsal-hotspots {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  display: flex !important;
-  flex-direction: column !important; /* Stacks Cowley (top 50%) and Cricket (bottom 50%) */
+  display: block !important; /* Remove flexbox entirely */
   z-index: 10 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  pointer-events: none !important; /* Container is ghost, children are clickable */
+  pointer-events: none !important;
 }
 
-/* 2. Lock Each Link to Exactly Half the Rack */
+/* 2. Base style for the targeted circular button hotspots */
 .rehearsal-panel {
-  flex: 1 !important; /* Forces exactly 50% height */
-  width: 100% !important;
+  position: absolute !important;
+  width: 60px !important; /* Adjust based on graphic button size */
+  height: 60px !important;
+  border-radius: 50% !important; /* Makes the clickable area perfectly round */
+  transform: translate(-50%, -50%) !important; /* Centers the hotspot precisely on the coordinate */
   display: flex !important;
   align-items: center !important;
-  justify-content: center !important; /* Mathematically centers the text horizontally */
-  position: relative !important;
+  justify-content: center !important;
   text-decoration: none !important;
-  pointer-events: auto !important; /* Links are clickable */
-  cursor: pointer !important;
   background: transparent !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  transition: all 0.3s ease;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  transition: box-shadow 0.2s ease;
 }
 
-/* Remove old positioning rules - flex handles everything */
+/* 3. Left Button (Cowley Road) */
 .rehearsal-cowley-panel {
-  z-index: 10;
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 25% !important; /* Places it on the left side */
 }
 
 .rehearsal-cowley-panel:hover {
-  background: rgba(76, 175, 80, 0.12) !important;
-  box-shadow: inset 0 0 20px rgba(76, 175, 80, 0.3);
-  border-top: 3px solid rgba(76, 175, 80, 0.8);
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.6) !important; /* Green glow on hover */
 }
 
+/* 4. Right Button (Cricket Road) */
 .rehearsal-cricket-panel {
-  z-index: 10;
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 75% !important; /* Places it on the right side */
 }
 
 .rehearsal-cricket-panel:hover {
-  background: rgba(156, 39, 176, 0.12) !important;
-  box-shadow: inset 0 0 20px rgba(156, 39, 176, 0.3);
-  border-bottom: 3px solid rgba(156, 39, 176, 0.8);
+  box-shadow: 0 0 15px rgba(156, 39, 176, 0.6) !important; /* Purple glow on hover */
 }
 
-/* 3. Tidy the Messy, Right-Drifting Text */
-.rehearsal-cowley-panel::before {
-  content: 'COWLEY ROAD' !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important; /* Force-locks the text dead-center */
+/* 5. Tooltip Label (Instead of messy drifting text) */
+.rehearsal-panel::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -30px; /* Positions text below the button */
   font-family: 'JetBrains Mono', monospace !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  color: rgba(76, 175, 80, 0.95) !important;
-  letter-spacing: 2px !important;
-  text-transform: uppercase !important;
-  text-align: center !important;
-  width: 100% !important;
-  text-shadow: 
-    0 0 15px rgba(76, 175, 80, 1),
-    2px 2px 8px rgba(0, 0, 0, 0.95);
-  background: rgba(0, 0, 0, 0.85);
-  padding: 1rem 2rem;
-  border-radius: 6px;
-  border: 2px solid rgba(76, 175, 80, 0.6);
-  backdrop-filter: blur(6px);
-  white-space: nowrap;
+  font-size: 0.9rem !important;
+  letter-spacing: 1px !important;
+  color: #fff !important;
+  text-shadow: 1px 1px 2px #000;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none !important; /* Prevents the text from blocking the click */
-}
-
-.rehearsal-cowley-panel:hover::before {
-  opacity: 1 !important;
-}
-
-.rehearsal-cricket-panel::before {
-  content: 'CRICKET ROAD' !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important; /* Force-locks the text dead-center */
-  font-family: 'JetBrains Mono', monospace !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  color: rgba(156, 39, 176, 0.95) !important;
-  letter-spacing: 2px !important;
-  text-transform: uppercase !important;
-  text-align: center !important;
-  width: 100% !important;
-  text-shadow: 
-    0 0 15px rgba(156, 39, 176, 1),
-    2px 2px 8px rgba(0, 0, 0, 0.95);
-  background: rgba(0, 0, 0, 0.85);
-  padding: 1rem 2rem;
-  border-radius: 6px;
-  border: 2px solid rgba(156, 39, 176, 0.6);
-  backdrop-filter: blur(6px);
+  transition: opacity 0.2s;
   white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none !important; /* Prevents the text from blocking the click */
+  pointer-events: none;
 }
 
-.rehearsal-cricket-panel:hover::before {
-  opacity: 1 !important;
+.rehearsal-panel:hover::after {
+  opacity: 1; /* Shows label only when hovering the button */
 }
 
 /* ============================================
    CONTROL ROOM - SSL/Neve Split Buttons
    Source: /static/rack-images/control-room-buttons.webp
-   Coordinates derived from 1920px width image
+   Circular hotspots pinned directly over left/right buttons
    ============================================ */
 
-/* 1. Force the Overlay to Contain the Links Perfectly */
+/* 1. Reset the parent container to hold the absolute links */
 .button-hotspots {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  display: flex !important;
-  flex-direction: row !important; /* SSL/Neve links are split left/right */
+  display: block !important; /* Remove flexbox entirely */
   z-index: 10 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  pointer-events: none !important; /* Container is ghost, children are clickable */
+  pointer-events: none !important;
 }
 
-/* 2. Lock the Link(s) into the Grid */
+/* 2. Base style for the targeted circular button hotspots */
 .booking-hotspot {
-  flex: 1 !important; /* Divides the space equally if there are multiple links */
-  width: 100% !important;
-  height: 100% !important;
+  position: absolute !important;
+  width: 60px !important; /* Adjust based on graphic button size */
+  height: 60px !important;
+  border-radius: 50% !important; /* Makes the clickable area perfectly round */
+  transform: translate(-50%, -50%) !important; /* Centers the hotspot precisely on the coordinate */
   display: flex !important;
   align-items: center !important;
-  justify-content: center !important; /* Mathematically centers text */
-  position: relative !important;
+  justify-content: center !important;
   text-decoration: none !important;
-  pointer-events: auto !important; /* Links are clickable */
-  cursor: pointer !important;
   background: transparent !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  transition: all 0.2s ease;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  transition: box-shadow 0.2s ease;
 }
 
-.booking-hotspot:hover {
-  background: rgba(255, 215, 0, 0.1) !important;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-}
-
-/* Remove old percentage positioning - flex handles it */
+/* 3. Left Button (Cowley Road) */
 .booking-hotspot-cowley {
-  /* Left half handled by flex:1 */
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 25% !important; /* Places it on the left side */
 }
 
+.booking-hotspot-cowley:hover {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.6) !important; /* Gold glow on hover */
+}
+
+/* 4. Right Button (Cricket Road) */
 .booking-hotspot-cricket {
-  /* Right half handled by flex:1 */
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 75% !important; /* Places it on the right side */
 }
 
-/* 3. Lock the Text Dead-Center */
-.booking-hotspot-cowley::before {
-  content: 'COWLEY ROAD' !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important; /* Force-locks the text dead-center over the graphic */
+.booking-hotspot-cricket:hover {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.6) !important; /* Gold glow on hover */
+}
+
+/* 5. Tooltip Label (Instead of messy drifting text) */
+.booking-hotspot::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -30px; /* Positions text below the button */
   font-family: 'JetBrains Mono', monospace !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  color: rgba(212, 175, 55, 0.95) !important; /* Gold/brass for SSL aesthetic */
-  letter-spacing: 2px !important;
-  text-transform: uppercase !important;
-  text-align: center !important;
-  width: 100% !important;
-  text-shadow: 
-    0 0 15px rgba(212, 175, 55, 1),
-    2px 2px 8px rgba(0, 0, 0, 0.95);
-  background: rgba(0, 0, 0, 0.85);
-  padding: 1rem 2rem;
-  border-radius: 6px;
-  border: 2px solid rgba(212, 175, 55, 0.6);
-  backdrop-filter: blur(6px);
-  white-space: nowrap;
+  font-size: 0.9rem !important;
+  letter-spacing: 1px !important;
+  color: #fff !important;
+  text-shadow: 1px 1px 2px #000;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none !important;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
-.booking-hotspot-cowley:hover::before {
-  opacity: 1 !important;
-}
-
-.booking-hotspot-cricket::before {
-  content: 'CRICKET ROAD' !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50()) !important; /* Force-locks the text dead-center over the graphic */
-  font-family: 'JetBrains Mono', monospace !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  color: rgba(212, 175, 55, 0.95) !important; /* Gold/brass for SSL aesthetic */
-  letter-spacing: 2px !important;
-  text-transform: uppercase !important;
-  text-align: center !important;
-  width: 100% !important;
-  text-shadow: 
-    0 0 15px rgba(212, 175, 55, 1),
-    2px 2px 8px rgba(0, 0, 0, 0.95);
-  background: rgba(0, 0, 0, 0.85);
-  padding: 1rem 2rem;
-  border-radius: 6px;
-  border: 2px solid rgba(212, 175, 55, 0.6);
-  backdrop-filter: blur(6px);
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none !important;
+.booking-hotspot:hover::after {
+  opacity: 1; /* Shows label only when hovering the button */
 }
 
 .booking-hotspot-cricket:hover::before {
