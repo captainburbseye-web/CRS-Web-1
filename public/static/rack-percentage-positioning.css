@@ -331,21 +331,36 @@
    Coordinates derived from 1920px width image
    ============================================ */
 
+/* 1. Force the Overlay to Contain the Links Perfectly */
 .button-hotspots {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 10;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: row !important; /* SSL/Neve links are split left/right */
+  z-index: 10 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important; /* Container is ghost, children are clickable */
 }
 
+/* 2. Lock the Link(s) into the Grid */
 .booking-hotspot {
-  position: absolute;
-  pointer-events: auto;
-  cursor: pointer;
+  flex: 1 !important; /* Divides the space equally if there are multiple links */
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important; /* Mathematically centers text */
+  position: relative !important;
+  text-decoration: none !important;
+  pointer-events: auto !important; /* Links are clickable */
+  cursor: pointer !important;
   background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
   transition: all 0.2s ease;
 }
 
@@ -354,20 +369,78 @@
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
-/* Cowley Road Control Room - LEFT BUTTON */
+/* Remove old percentage positioning - flex handles it */
 .booking-hotspot-cowley {
-  top: 42.5%;
-  left: 15.8%;
-  width: 12%;
-  height: 15%;
+  /* Left half handled by flex:1 */
 }
 
-/* Cricket Road Control Room - RIGHT BUTTON */
 .booking-hotspot-cricket {
-  top: 42.5%;
-  left: 72.2%;
-  width: 12%;
-  height: 15%;
+  /* Right half handled by flex:1 */
+}
+
+/* 3. Lock the Text Dead-Center */
+.booking-hotspot-cowley::before {
+  content: 'COWLEY ROAD' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important; /* Force-locks the text dead-center over the graphic */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: rgba(212, 175, 55, 0.95) !important; /* Gold/brass for SSL aesthetic */
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  width: 100% !important;
+  text-shadow: 
+    0 0 15px rgba(212, 175, 55, 1),
+    2px 2px 8px rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.85);
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  border: 2px solid rgba(212, 175, 55, 0.6);
+  backdrop-filter: blur(6px);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none !important;
+}
+
+.booking-hotspot-cowley:hover::before {
+  opacity: 1 !important;
+}
+
+.booking-hotspot-cricket::before {
+  content: 'CRICKET ROAD' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50()) !important; /* Force-locks the text dead-center over the graphic */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1.2rem !important;
+  font-weight: 700 !important;
+  color: rgba(212, 175, 55, 0.95) !important; /* Gold/brass for SSL aesthetic */
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  width: 100% !important;
+  text-shadow: 
+    0 0 15px rgba(212, 175, 55, 1),
+    2px 2px 8px rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.85);
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  border: 2px solid rgba(212, 175, 55, 0.6);
+  backdrop-filter: blur(6px);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none !important;
+}
+
+.booking-hotspot-cricket:hover::before {
+  opacity: 1 !important;
 }
 
 /* ============================================
