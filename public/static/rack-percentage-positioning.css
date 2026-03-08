@@ -83,30 +83,35 @@
    Top 50% = Cowley (Green), Bottom 50% = Cricket (Purple)
    ============================================ */
 
+/* 1. Force the Overlay to Stack the Links */
 .recording-hotspots-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  display: flex !important;
+  flex-direction: column !important; /* Stacks Cowley on top, Cricket on bottom */
   z-index: 10;
 }
 
+/* 2. Make each link take exactly half the rack */
 .recording-panel {
-  position: absolute;
+  flex: 1 !important; /* Forces exactly 50% height */
+  width: 100% !important;
+  display: flex !important; /* Centers the generated text inside the link */
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
   pointer-events: auto;
   cursor: pointer;
   background: transparent !important;
   transition: all 0.3s ease;
 }
 
-/* Cowley Road Recording - TOP HALF */
+/* Remove old absolute positioning - flex handles it now */
 .recording-cowley-panel {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
+  /* flex:1 handles positioning - no top/left/height needed */
   z-index: 10;
 }
 
@@ -116,12 +121,8 @@
   border-top: 3px solid rgba(76, 175, 80, 0.8);
 }
 
-/* Cricket Road Recording - BOTTOM HALF */
 .recording-cricket-panel {
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 50%;
+  /* flex:1 handles positioning - no top/left/height needed */
   z-index: 10;
 }
 
@@ -131,19 +132,20 @@
   border-bottom: 3px solid rgba(156, 39, 176, 0.8);
 }
 
-/* Location labels on hover */
-.recording-cowley-panel::after {
+/* 3. Fix the Messy, Right-Drifting Text - Lock Dead-Center */
+.recording-cowley-panel::before {
   content: 'COWLEY ROAD';
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* Mathematically locks it dead-center */
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: rgba(76, 175, 80, 0.95);
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  text-align: center;
   text-shadow: 
     0 0 15px rgba(76, 175, 80, 1),
     2px 2px 8px rgba(0, 0, 0, 0.95);
@@ -152,27 +154,30 @@
   border-radius: 6px;
   border: 2px solid rgba(76, 175, 80, 0.6);
   backdrop-filter: blur(6px);
+  width: auto;
+  white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none;
+  pointer-events: none; /* Prevents the text from blocking the click */
 }
 
-.recording-cowley-panel:hover::after {
+.recording-cowley-panel:hover::before {
   opacity: 1;
 }
 
-.recording-cricket-panel::after {
+.recording-cricket-panel::before {
   content: 'CRICKET ROAD';
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* Mathematically locks it dead-center */
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: rgba(156, 39, 176, 0.95);
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  text-align: center;
   text-shadow: 
     0 0 15px rgba(156, 39, 176, 1),
     2px 2px 8px rgba(0, 0, 0, 0.95);
@@ -181,12 +186,14 @@
   border-radius: 6px;
   border: 2px solid rgba(156, 39, 176, 0.6);
   backdrop-filter: blur(6px);
+  width: auto;
+  white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none;
+  pointer-events: none; /* Prevents the text from blocking the click */
 }
 
-.recording-cricket-panel:hover::after {
+.recording-cricket-panel:hover::before {
   opacity: 1;
 }
 
@@ -196,30 +203,35 @@
    Top 50% = Cowley, Bottom 50% = Cricket
    ============================================ */
 
+/* 1. Force the Overlay to Stack the Links */
 .rehearsal-hotspots {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  display: flex !important;
+  flex-direction: column !important; /* Stacks Cowley on top, Cricket on bottom */
   z-index: 10;
 }
 
+/* 2. Make each link take exactly half the rack */
 .rehearsal-panel {
-  position: absolute;
+  flex: 1 !important; /* Forces exactly 50% height */
+  width: 100% !important;
+  display: flex !important; /* Centers the generated text inside the link */
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
   pointer-events: auto;
   cursor: pointer;
   background: transparent !important;
   transition: all 0.3s ease;
 }
 
-/* Cowley Road Rehearsal - TOP HALF */
+/* Remove old absolute positioning - flex handles it now */
 .rehearsal-cowley-panel {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
+  /* flex:1 handles positioning - no top/left/height needed */
   z-index: 10;
 }
 
@@ -229,12 +241,8 @@
   border-top: 3px solid rgba(76, 175, 80, 0.8);
 }
 
-/* Cricket Road Rehearsal - BOTTOM HALF */
 .rehearsal-cricket-panel {
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 50%;
+  /* flex:1 handles positioning - no top/left/height needed */
   z-index: 10;
 }
 
@@ -244,19 +252,20 @@
   border-bottom: 3px solid rgba(156, 39, 176, 0.8);
 }
 
-/* Location labels on hover */
-.rehearsal-cowley-panel::after {
+/* 3. Fix the Messy, Right-Drifting Text - Lock Dead-Center */
+.rehearsal-cowley-panel::before {
   content: 'COWLEY ROAD';
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* Mathematically locks it dead-center */
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: rgba(76, 175, 80, 0.95);
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  text-align: center;
   text-shadow: 
     0 0 15px rgba(76, 175, 80, 1),
     2px 2px 8px rgba(0, 0, 0, 0.95);
@@ -265,27 +274,30 @@
   border-radius: 6px;
   border: 2px solid rgba(76, 175, 80, 0.6);
   backdrop-filter: blur(6px);
+  width: auto;
+  white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none;
+  pointer-events: none; /* Prevents the text from blocking the click */
 }
 
-.rehearsal-cowley-panel:hover::after {
+.rehearsal-cowley-panel:hover::before {
   opacity: 1;
 }
 
-.rehearsal-cricket-panel::after {
+.rehearsal-cricket-panel::before {
   content: 'CRICKET ROAD';
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* Mathematically locks it dead-center */
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: rgba(156, 39, 176, 0.95);
   text-transform: uppercase;
   letter-spacing: 0.15em;
+  text-align: center;
   text-shadow: 
     0 0 15px rgba(156, 39, 176, 1),
     2px 2px 8px rgba(0, 0, 0, 0.95);
@@ -294,12 +306,14 @@
   border-radius: 6px;
   border: 2px solid rgba(156, 39, 176, 0.6);
   backdrop-filter: blur(6px);
+  width: auto;
+  white-space: nowrap;
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none;
+  pointer-events: none; /* Prevents the text from blocking the click */
 }
 
-.rehearsal-cricket-panel:hover::after {
+.rehearsal-cricket-panel:hover::before {
   opacity: 1;
 }
 
