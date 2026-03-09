@@ -20,6 +20,7 @@ import { SignageLoop } from './pages/SignageLoop'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
+import StudioRackDemo from './pages/StudioRackDemo'
 import { RackModular } from './pages/RackModular'
 import { RackModularEnhanced } from './pages/RackModularEnhanced'
 import { RackAccordion } from './pages/RackAccordion'
@@ -1633,6 +1634,19 @@ app.get('/rack-test', (c) => {
       title: 'CRS Rack Test | Structural Assembly',
       description: 'Test environment for 19-inch equipment rack interface',
       keywords: 'rack test, studio equipment, structural assembly'
+    }
+  )
+})
+
+// STUDIO RACK DEMO — HARDWARE PHYSICS INTERACTION
+// Production-ready booking interface with skeuomorphic physics
+app.get('/studio-rack-demo', (c) => {
+  return c.render(
+    <StudioRackDemo />,
+    {
+      title: 'Studio Services | Cowley Road Studios',
+      description: 'Book recording, rehearsal, and control room sessions with hardware-inspired interface',
+      keywords: 'studio booking, recording sessions, rehearsal rooms, cowley road studios'
     }
   )
 })
