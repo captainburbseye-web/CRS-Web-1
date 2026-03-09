@@ -7,6 +7,10 @@
 (function() {
   'use strict';
 
+  // Module-level variables (hoisted to prevent initialization errors)
+  let clickSound = null;
+  let soundEnabled = false;
+
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
@@ -66,9 +70,6 @@
    * Click sound effects (lightweight, optional)
    * Only loads if user interacts
    */
-  let clickSound = null;
-  let soundEnabled = false;
-  
   function initClickSounds() {
     // Check if user wants sound (localStorage)
     soundEnabled = localStorage.getItem('crs-sound-enabled') === 'true';

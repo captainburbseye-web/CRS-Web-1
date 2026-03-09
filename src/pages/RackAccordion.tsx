@@ -142,6 +142,7 @@ export const RackAccordion = () => {
             href="https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX"
             style="pointer-events: bounding-box; cursor: pointer;"
             aria-label="Book Cowley Road Recording - Professional recording, mixing, mastering, and production services"
+            data-cfemail="false"
           >
             <rect 
               x="0" 
@@ -158,6 +159,7 @@ export const RackAccordion = () => {
             href="https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX"
             style="pointer-events: bounding-box; cursor: pointer;"
             aria-label="Book Cricket Road Recording - Professional recording, mixing, mastering, and production services"
+            data-cfemail="false"
           >
             <rect 
               x="512" 
@@ -203,6 +205,7 @@ export const RackAccordion = () => {
             href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
             style="pointer-events: bounding-box; cursor: pointer;"
             aria-label="Book Cowley Road Rehearsal - £45 for 2 hours, £60 for 3 hours, £65 for 4 hours. Max 4 members."
+            data-cfemail="false"
           >
             <rect 
               x="0" 
@@ -219,6 +222,7 @@ export const RackAccordion = () => {
             href="https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX"
             style="pointer-events: bounding-box; cursor: pointer;"
             aria-label="Book Cricket Road Rehearsal - Fully equipped live room with drums, backline, and PA system."
+            data-cfemail="false"
           >
             <rect 
               x="512" 
