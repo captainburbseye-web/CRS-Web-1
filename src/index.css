@@ -17,3 +17,16 @@ body {
 .technical-mono {
   font-family: 'Technical Mono', monospace;
 }
+
+/* Hardware Physics Animations */
+@keyframes vuHit {
+  0% { transform: rotate(-40deg); }
+  60% { transform: rotate(22deg); }
+  100% { transform: rotate(15deg); }
+}
+
+@keyframes rackIdle {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.02); }
+  100% { filter: brightness(1); }
+}

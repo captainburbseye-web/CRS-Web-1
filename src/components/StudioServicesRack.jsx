@@ -50,15 +50,31 @@ const BrandBadge = ({ kind, className = "" }) => {
   return null;
 };
 
-const LedIndicator = ({ variant, active = false }) => {
+const LedIndicator = ({ variant, active = false, hovered = false }) => {
   const styles = {
-    crs: active ? "bg-green-400 shadow-[0_0_8px_2px_rgba(74,222,128,0.7)]" : "bg-green-950 shadow-inner",
-    cricket: active ? "bg-yellow-300 shadow-[0_0_8px_2px_rgba(253,224,71,0.7)]" : "bg-yellow-900 shadow-inner",
-    odro: active ? "bg-orange-400 shadow-[0_0_8px_2px_rgba(251,146,60,0.7)]" : "bg-orange-950 shadow-inner",
-    neutral: active ? "bg-slate-300 shadow-[0_0_8px_2px_rgba(203,213,225,0.5)]" : "bg-slate-800 shadow-inner",
+    crs: active 
+      ? "bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.9)] scale-110" 
+      : hovered 
+      ? "bg-green-600 shadow-[0_0_4px_rgba(74,222,128,0.4)]" 
+      : "bg-green-950 opacity-60",
+    cricket: active 
+      ? "bg-yellow-300 shadow-[0_0_10px_rgba(253,224,71,0.9)] scale-110" 
+      : hovered 
+      ? "bg-yellow-500 shadow-[0_0_4px_rgba(253,224,71,0.4)]" 
+      : "bg-yellow-900 opacity-60",
+    odro: active 
+      ? "bg-orange-400 shadow-[0_0_10px_rgba(251,146,60,0.9)] scale-110" 
+      : hovered 
+      ? "bg-orange-600 shadow-[0_0_4px_rgba(251,146,60,0.4)]" 
+      : "bg-orange-950 opacity-60",
+    neutral: active 
+      ? "bg-slate-300 shadow-[0_0_10px_rgba(203,213,225,0.7)] scale-110" 
+      : hovered 
+      ? "bg-slate-500 shadow-[0_0_4px_rgba(203,213,225,0.4)]" 
+      : "bg-slate-800 opacity-60",
   };
   return (
-    <div aria-hidden="true" className={`w-3 h-3 shrink-0 rounded-full border border-black/80 transition-all duration-150 ${styles[variant]}`} />
+    <div aria-hidden="true" className={`w-3 h-3 shrink-0 rounded-full border border-black/80 transition-all duration-300 ${styles[variant]}`} style={{ outline: '1px solid rgba(255,255,255,0.05)', outlineOffset: '2px' }} />
   );
 };
 
@@ -88,7 +104,7 @@ const VuMeter = ({ label = "VU" }) => (
           <path d="M 72 26 A 35 35 0 0 1 85 45" fill="none" stroke="#dc2626" strokeWidth="2" />
         </svg>
 
-        <div className="absolute bottom-[-4px] left-1/2 w-[1.5px] h-[110%] bg-[#111] origin-bottom -translate-x-1/2 -rotate-[40deg] group-hover:rotate-[15deg] group-active:rotate-[40deg] transition-transform duration-700 group-hover:duration-75 ease-out shadow-[-2px_0_2px_rgba(0,0,0,0.2)] z-10">
+        <div className="absolute bottom-[-4px] left-1/2 w-[1.5px] h-[110%] bg-[#111] origin-bottom -translate-x-1/2 -rotate-[40deg] group-hover:animate-[vuHit_220ms_ease-out] group-hover:rotate-[15deg] transition-transform duration-700 ease-out shadow-[-2px_0_2px_rgba(0,0,0,0.2)] z-10">
           <div className="w-full h-1/3 bg-red-600" />
         </div>
         <div className="absolute bottom-[-6px] left-1/2 w-4 h-4 bg-gradient-to-b from-[#333] to-[#111] rounded-full border border-black -translate-x-1/2 z-20 shadow-md" />
@@ -124,8 +140,8 @@ const HardwareButton = ({ variant, serviceName, locationName, href, onClick, ext
       px-2 py-3 sm:px-6 sm:py-5
       border border-black/80 ring-1 ring-black/40
       shadow-[inset_0_2px_4px_rgba(255,255,255,0.14),0_4px_6px_rgba(0,0,0,0.6)]
-      active:translate-y-[2px] active:shadow-[inset_0_6px_10px_rgba(0,0,0,0.8)]
-      transition-all duration-100 cursor-pointer
+      active:translate-y-[1px] active:shadow-[inset_0_6px_10px_rgba(0,0,0,0.85)]
+      transition-all duration-75 ease-[cubic-bezier(0.2,0.8,0.4,1)] cursor-pointer
       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111]
       ${variantStyles[variant]}
     `,
@@ -153,7 +169,7 @@ const HardwareButton = ({ variant, serviceName, locationName, href, onClick, ext
           )}
         </div>
       </div>
-      <LedIndicator variant={variant} active={activeLed} />
+      <LedIndicator variant={variant} active={activeLed} hovered={hovered} />
     </>
   );
 
