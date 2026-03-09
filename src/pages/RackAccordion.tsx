@@ -111,55 +111,70 @@ export const RackAccordion = () => {
         </div>
       </div>
 
-      {/* RECORDING SERVICES DOUBLE RACK - Cowley (Green) + Cricket (Purple) Split Panel */}
-      <div class="rack-module-graphic recording-services-container" id="recording-services" data-section="recording">
-        {/* Main visual rack panel - NEW green/purple split design */}
-        <div class="recording-rack-visual">
-          <picture>
-            <source 
-              srcset="/static/rack-images/recording-services-new.webp" 
-              type="image/webp"
-            />
-            <img 
-              src="/static/rack-images/recording-services-new.jpg"
-              alt="Recording Services - Cowley Road (Green) & Cricket Road (Purple) Studios" 
-              class="rack-module-img"
-              width="1920"
-              height="auto"
-              loading="lazy"
-              style="object-fit: cover; width: 100%; height: auto;"
-            />
-          </picture>
-        </div>
+      {/* RECORDING SERVICES RACK - Cowley (Green LEFT) + Cricket (Purple RIGHT) LEFT/RIGHT Split */}
+      <div class="rack-module-graphic recording-services-container" id="recording-services" data-section="recording" style="position: relative; font-size: 0; line-height: 0;">
+        {/* Main visual rack panel */}
+        <picture>
+          <source 
+            srcset="/static/rack-images/recording-services-new.webp" 
+            type="image/webp"
+          />
+          <img 
+            src="/static/rack-images/recording-services-new.jpg"
+            alt="Recording Services - Cowley Road (Green) & Cricket Road (Purple) Studios" 
+            class="rack-module-img"
+            width="1024"
+            height="327"
+            loading="lazy"
+            style="display: block; width: 100%; height: auto; margin: 0; padding: 0;"
+          />
+        </picture>
 
-        {/* Simple 2-panel clickable overlay */}
-        <div class="recording-hotspots-overlay">
-          {/* COWLEY ROAD RECORDING (Top Half) */}
+        {/* SVG Interaction Map - LEFT/RIGHT split locked to image coordinates */}
+        <svg 
+          viewBox="0 0 1024 327" 
+          preserveAspectRatio="xMidYMid meet"
+          style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none;"
+          aria-hidden="true"
+        >
+          {/* LEFT HALF = Cowley Road (Green) - 0 to 512 */}
           <a 
-            href="/book?service=recording&location=cowley"
-            class="recording-panel recording-cowley-panel"
-            data-location="cowley"
-            data-label="COWLEY ROAD"
+            href="https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX"
+            style="pointer-events: bounding-box; cursor: pointer;"
             aria-label="Book Cowley Road Recording - Professional recording, mixing, mastering, and production services"
           >
+            <rect 
+              x="0" 
+              y="0" 
+              width="512" 
+              height="327" 
+              fill="transparent"
+              class="recording-hotspot recording-hotspot-cowley"
+            />
           </a>
 
-          {/* CRICKET ROAD RECORDING (Bottom Half) */}
+          {/* RIGHT HALF = Cricket Road (Purple) - 512 to 1024 */}
           <a 
-            href="/book?service=recording&location=cricket"
-            class="recording-panel recording-cricket-panel"
-            data-location="cricket"
-            data-label="CRICKET ROAD"
+            href="https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX"
+            style="pointer-events: bounding-box; cursor: pointer;"
             aria-label="Book Cricket Road Recording - Professional recording, mixing, mastering, and production services"
           >
+            <rect 
+              x="512" 
+              y="0" 
+              width="512" 
+              height="327" 
+              fill="transparent"
+              class="recording-hotspot recording-hotspot-cricket"
+            />
           </a>
-        </div>
+        </svg>
       </div>
 
 
 
-      {/* REHEARSAL SERVICES RACK - Cowley + Cricket combined */}
-      <div class="rack-module-graphic rehearsal-services-container" id="rehearsal-services" data-section="rehearsal">
+      {/* REHEARSAL SERVICES RACK - Cowley (Green LEFT) + Cricket (Purple RIGHT) LEFT/RIGHT Split */}
+      <div class="rack-module-graphic rehearsal-services-container" id="rehearsal-services" data-section="rehearsal" style="position: relative; font-size: 0; line-height: 0;">
         <picture>
           <source 
             srcset="/static/rack-images/rehearsal-services-updated.webp" 
@@ -172,32 +187,49 @@ export const RackAccordion = () => {
             width="1024"
             height="362"
             loading="lazy"
-            style="object-fit: cover; width: 100%; height: auto;"
+            style="display: block; width: 100%; height: auto; margin: 0; padding: 0;"
           />
         </picture>
         
-        {/* Clickable hotspots for Cowley and Cricket rehearsal */}
-        <div class="rehearsal-hotspots">
-          {/* COWLEY ROAD REHEARSAL (Top Half) */}
+        {/* SVG Interaction Map - LEFT/RIGHT split locked to image coordinates */}
+        <svg 
+          viewBox="0 0 1024 362" 
+          preserveAspectRatio="xMidYMid meet"
+          style="position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none;"
+          aria-hidden="true"
+        >
+          {/* LEFT HALF = Cowley Road (Green) - 0 to 512 */}
           <a 
-            href="/book?service=rehearsal&location=cowley"
-            class="rehearsal-panel rehearsal-cowley-panel"
-            data-location="cowley"
-            data-label="COWLEY ROAD"
+            href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
+            style="pointer-events: bounding-box; cursor: pointer;"
             aria-label="Book Cowley Road Rehearsal - £45 for 2 hours, £60 for 3 hours, £65 for 4 hours. Max 4 members."
           >
+            <rect 
+              x="0" 
+              y="0" 
+              width="512" 
+              height="362" 
+              fill="transparent"
+              class="rehearsal-hotspot rehearsal-hotspot-cowley"
+            />
           </a>
 
-          {/* CRICKET ROAD REHEARSAL (Bottom Half) */}
+          {/* RIGHT HALF = Cricket Road (Purple) - 512 to 1024 */}
           <a 
-            href="/book?service=rehearsal&location=cricket"
-            class="rehearsal-panel rehearsal-cricket-panel"
-            data-location="cricket"
-            data-label="CRICKET ROAD"
+            href="https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX"
+            style="pointer-events: bounding-box; cursor: pointer;"
             aria-label="Book Cricket Road Rehearsal - Fully equipped live room with drums, backline, and PA system."
           >
+            <rect 
+              x="512" 
+              y="0" 
+              width="512" 
+              height="362" 
+              fill="transparent"
+              class="rehearsal-hotspot rehearsal-hotspot-cricket"
+            />
           </a>
-        </div>
+        </svg>
       </div>
 
 
@@ -225,7 +257,7 @@ export const RackAccordion = () => {
           {/* Clickable hotspot overlays for booking buttons */}
           <div class="button-hotspots">
             <a 
-              href="/book?service=control-room&location=cowley"
+              href="https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX"
               class="booking-hotspot booking-hotspot-cowley"
               data-location="cowley"
               data-label="COWLEY ROAD"
@@ -234,7 +266,7 @@ export const RackAccordion = () => {
               <span class="sr-only">Book Cowley Road</span>
             </a>
             <a 
-              href="/book?service=control-room&location=cricket"
+              href="https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX"
               class="booking-hotspot booking-hotspot-cricket"
               data-location="cricket"
               data-label="CRICKET ROAD"

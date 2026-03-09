@@ -174,6 +174,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* PERCENTAGE-BASED POSITIONING SYSTEM - All hotspots use % (no px) */}
         <link href="/static/rack-percentage-positioning.css" rel="stylesheet" />
         
+        {/* SVG INTERACTION MAPS - Coordinate-locked hotspot system */}
+        <link href="/static/rack-svg-hotspots.css" rel="stylesheet" />
+        
         {/* Disable Whole-Rack Flash on Click - Localize interactions */}
         <link href="/static/disable-rack-flash.css" rel="stylesheet" />
       </head>
