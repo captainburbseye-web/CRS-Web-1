@@ -4,9 +4,9 @@ import { hydrateRoot } from "react-dom/client"
 import StudioServicesRack from "../components/StudioServicesRack"
 import "../tailwind.css"
 
-const el = document.getElementById("studio-rack-root")
+const container = document.getElementById("studio-rack-root")
 
 // Hydrate server-rendered markup
-if (el) {
-  hydrateRoot(el, <StudioServicesRack />)
+if (container) {
+  hydrateRoot(container, React.createElement(StudioServicesRack))
 }
