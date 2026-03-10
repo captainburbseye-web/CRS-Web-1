@@ -1038,3 +1038,130 @@
 .srd-badge-svg { width: 100%; height: 100%; padding: 0.125rem; }
 .srd-badge-svg--cricket { width: 100%; height: 100%; padding: 0.25rem; transform: rotate(-45deg); }
 .srd-badge-text { font-size: 8px; font-weight: 900; color: #fff; letter-spacing: -0.05em; }
+
+/* ============================================
+   ANALOG INSTABILITY & MANUFACTURING EVIDENCE
+   ============================================ */
+
+/* Asymmetric VU Drift - Electrical Idle State */
+.srd-vu--left .srd-vu-needle {
+  animation: vuIdleLeft 6.2s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+.srd-vu--right .srd-vu-needle {
+  animation: vuIdleRight 5.7s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+@keyframes vuIdleLeft {
+  0% { transform: translateX(-50%) rotate(-38deg); }
+  50% { transform: translateX(-50%) rotate(-9deg); }
+  100% { transform: translateX(-50%) rotate(-38deg); }
+}
+
+@keyframes vuIdleRight {
+  0% { transform: translateX(-50%) rotate(-36deg); }
+  50% { transform: translateX(-50%) rotate(-12deg); }
+  100% { transform: translateX(-50%) rotate(-36deg); }
+}
+
+/* Engineering Micro-Labels (Silk-Screened Hardware Text) */
+.srd-micro-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 6px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(138, 148, 121, 0.5);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.9);
+  pointer-events: none;
+}
+@media (min-width: 640px) { 
+  .srd-micro-label { font-size: 7px; } 
+}
+
+/* ============================================
+   COMMUNICATIONS BUS (Contact Form Module)
+   ============================================ */
+.srd-comms-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(0,0,0,0.8);
+  border-radius: 3px;
+  box-shadow: inset 0 4px 8px rgba(0,0,0,0.6);
+  margin-top: 1rem;
+}
+
+.srd-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.srd-input-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #8a9479;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.8);
+}
+
+.srd-input-bay {
+  background: #050505;
+  border: 1px solid #000;
+  border-radius: 2px;
+  padding: 0.875rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  color: #FF9F1C;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.9), 0 1px 0 rgba(255,255,255,0.05);
+  width: 100%;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.srd-input-bay:focus {
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.9), 0 0 8px rgba(255,159,28,0.2);
+  border-color: #FF9F1C;
+}
+
+.srd-input-bay::placeholder {
+  color: rgba(255,159,28,0.3);
+}
+
+textarea.srd-input-bay {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.srd-submit-btn {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  background: linear-gradient(180deg, #dcae1d 0%, #a68110 100%);
+  border: 2px solid #000;
+  border-radius: 3px;
+  padding: 0.75rem 2rem;
+  font-family: var(--font-sans, sans-serif);
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.6), inset 0 2px 4px rgba(255,255,255,0.4);
+  transition: all 0.1s ease;
+}
+
+.srd-submit-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.6), inset 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.srd-submit-btn:hover {
+  background: linear-gradient(180deg, #e6b825 0%, #b08c18 100%);
+}

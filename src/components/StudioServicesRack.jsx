@@ -119,6 +119,7 @@ const MasterFaceplate = () => (
         <div className="srd-meta-row">
           <div className="srd-faceplate-model">CRS-CONSOLE-01</div>
           <div className="srd-faceplate-routing">Audio • Rehearsal • Control</div>
+          <div className="srd-micro-label">FIRMWARE: CAPTAIN BURBSEYE / TEST PASS: N0RLAND0B00M</div>
         </div>
       </div>
     </div>
@@ -141,14 +142,14 @@ const StatusPlacard = () => (
           <span className="srd-lcd-bullet-cricket">●</span>
           <span>CRICKET = RIGHT CHANNEL</span>
         </div>
-        <div className="srd-lcd-footer">SIGNAL ROUTING • BOOKING BUS</div>
+        <div className="srd-lcd-footer">DEEPEND PROTOCOL ACTIVE // NO CHAOS MODE</div>
       </div>
     </div>
   </section>
 );
 
-const VuMeter = ({ label = "VU" }) => (
-  <div className="srd-vu" aria-hidden="true">
+const VuMeter = ({ label = "VU", channel }) => (
+  <div className={`srd-vu ${channel ? `srd-vu--${channel}` : ''}`} aria-hidden="true">
     <div className="srd-vu-body">
       <div className="srd-vu-face">
         <div className="srd-vu-glow" />
@@ -254,8 +255,8 @@ const RackModule = ({ title, subtitle, theme = "standard", meters = true, childr
         </div>
         {meters && (
           <div className="srd-meters">
-            <VuMeter label="L" />
-            <VuMeter label="R" />
+            <VuMeter label="L" channel="left" />
+            <VuMeter label="R" channel="right" />
           </div>
         )}
       </div>
@@ -368,6 +369,7 @@ export default function StudioServicesRack() {
         </RackModule>
 
         <RackModule title="ODRO Electronics Repair" subtitle="AV & Instrument Servicing" theme="dark" meters={false}>
+          <div className="srd-micro-label">DESTA-GEN3 SERVICE LOOP</div>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="neutral" 
@@ -394,6 +396,7 @@ export default function StudioServicesRack() {
         </RackModule>
 
         <RackModule title="Workshop Café" subtitle="Coffee & Co-Working" theme="dark" meters={false}>
+          <div className="srd-micro-label">BREWFORCE BUS ONLINE</div>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
@@ -405,6 +408,46 @@ export default function StudioServicesRack() {
               ariaLabel="Book a table at the Workshop Café"
             />
           </ServiceButtonGroup>
+        </RackModule>
+
+        <RackModule title="Communications Bus" subtitle="Venue Hire & Custom Enquiries" theme="dark" meters={false}>
+          <form className="srd-comms-form" action="/contact" method="post">
+            <div className="srd-input-group">
+              <label htmlFor="comms-name" className="srd-input-label">Name</label>
+              <input
+                id="comms-name"
+                name="name"
+                type="text"
+                className="srd-input-bay"
+                placeholder="Full Name"
+                required
+              />
+            </div>
+            <div className="srd-input-group">
+              <label htmlFor="comms-email" className="srd-input-label">Email</label>
+              <input
+                id="comms-email"
+                name="email"
+                type="email"
+                className="srd-input-bay"
+                placeholder="your.email@domain.com"
+                required
+              />
+            </div>
+            <div className="srd-input-group">
+              <label htmlFor="comms-message" className="srd-input-label">Message</label>
+              <textarea
+                id="comms-message"
+                name="message"
+                className="srd-input-bay"
+                placeholder="Describe your booking requirements or technical query..."
+                required
+              />
+            </div>
+            <button type="submit" className="srd-submit-btn">
+              Transmit
+            </button>
+          </form>
         </RackModule>
 
       </RackChassis>
