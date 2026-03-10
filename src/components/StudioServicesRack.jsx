@@ -83,26 +83,20 @@ const SignalStripe = () => (
 );
 
 const CRSBlockLogo = () => (
-  <div className="flex items-stretch border-[2px] border-black rounded-[2px] shadow-[0_4px_6px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.4)] overflow-hidden shrink-0" aria-label="CRS Logo">
+  <div className="srd-logo-plate" aria-label="CRS Logo">
     
     {/* Left Block: CR (Cream/White) */}
-    <div className="relative flex flex-col items-center justify-center bg-[#f2efe4] px-2 sm:px-3 py-1 sm:py-1.5 border-r-[2px] border-black">
-      <span 
-        className="font-sans font-black text-black text-lg sm:text-2xl leading-none tracking-tighter" 
-        style={{ transform: 'scaleY(1.15)' }}
-      >
+    <div className="srd-logo-block-left">
+      <span className="srd-logo-text">
         CR
       </span>
       {/* Green Underline */}
-      <div className="absolute bottom-1 w-[60%] h-[3px] sm:h-[4px] bg-[#3a7d28]"></div>
+      <div className="srd-logo-underline"></div>
     </div>
 
     {/* Right Block: S (Mustard Yellow) */}
-    <div className="flex items-center justify-center bg-[#dcae1d] px-2.5 sm:px-4 py-1 sm:py-1.5 shadow-[inset_2px_0_4px_rgba(255,255,255,0.1)]">
-      <span 
-        className="font-sans font-black text-black text-lg sm:text-2xl leading-none" 
-        style={{ transform: 'scaleY(1.15)' }}
-      >
+    <div className="srd-logo-block-right">
+      <span className="srd-logo-text">
         S
       </span>
     </div>
@@ -111,7 +105,7 @@ const CRSBlockLogo = () => (
 );
 
 const MasterFaceplate = () => (
-  <div className="relative px-4 sm:px-8 py-3 sm:py-4 bg-gradient-to-b from-[#2a3428] to-[#1c2318] border-b-2 border-black shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+  <div className="srd-master-faceplate">
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-3 sm:gap-4">
         <CRSBlockLogo />
@@ -150,8 +144,8 @@ const MasterFaceplate = () => (
 );
 
 const StatusPlacard = () => (
-  <div className="relative px-4 sm:px-8 py-4 sm:py-5 bg-gradient-to-b from-[#13160f] to-[#0b0d09] border-b-2 border-black">
-    <div className="relative p-3 sm:p-4 bg-black/70 rounded border border-black/90 shadow-[inset_0_3px_8px_rgba(0,0,0,0.95)]">
+  <div className="srd-status-module">
+    <div className="srd-lcd-screen">
       <div className="font-mono text-[9px] sm:text-[10px] leading-relaxed tracking-wide space-y-1.5">
         <div className="font-bold uppercase" style={{ color: '#7a9c68', textShadow: "0 0 6px rgba(122,156,104,0.5)" }}>
           SELECT SERVICE MODULE
