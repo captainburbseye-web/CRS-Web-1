@@ -1665,7 +1665,9 @@ app.get('/rack-test', (c) => {
 
 // STUDIO RACK DEMO — REACT ISLAND
 app.get('/studio-rack-demo', (c) => {
-  const assetPath = getClientAsset('rack-entry')
+  const manifestEntry = CLIENT_MANIFEST['src/client/rack-entry.tsx']
+  const jsAsset = `/static/${manifestEntry.file}`
+  const cssAsset = manifestEntry.css ? `/static/${manifestEntry.css[0]}` : null
   
   // Server-render the React component
   const rackHtml = renderToString(createElement(StudioServicesRack))
@@ -1684,9 +1686,8 @@ app.get('/studio-rack-demo', (c) => {
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   
-  <!-- Core styles -->
-  <link href="/static/crs-consolidated-base.css" rel="stylesheet" />
-  <link href="/static/crs-consolidated-rack.css" rel="stylesheet" />
+  <!-- Tailwind CSS for React component -->
+  ${cssAsset ? `<link href="${cssAsset}" rel="stylesheet" />` : ''}
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1697,7 +1698,7 @@ app.get('/studio-rack-demo', (c) => {
   <div id="studio-rack-root">${rackHtml}</div>
   
   <!-- React Island Entry -->
-  <script type="module" src="${assetPath}" defer></script>
+  <script type="module" src="${jsAsset}" defer></script>
   
   <!-- ODRO Modal Trigger -->
   <script>
