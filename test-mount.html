@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test</title>
+</head>
+<body>
+  <div id="studio-rack-root"></div>
+  <script type="module">
+    const el = document.getElementById("studio-rack-root");
+    if (el) {
+      el.innerHTML = "<p>Mount point found!</p>";
+      console.log("SUCCESS: Mount point exists");
+    } else {
+      console.error("FAIL: Mount point not found");
+    }
+  </script>
+</body>
+</html>

@@ -1661,8 +1661,16 @@ app.get('/rack-test', (c) => {
 })
 
 // STUDIO RACK DEMO — REACT ISLAND
-app.get('/studio-rack-demo', (c) => {
+app.get('/studio-rack-demo', async (c) => {
   const assetPath = getClientAsset('rack-entry')
+  
+  // Import React SSR and component
+  const { renderToString } = await import('react-dom/server')
+  const { createElement } = await import('react')
+  const StudioServicesRack = (await import('./components/StudioServicesRack')).default
+  
+  // Server-render the React component
+  const rackHtml = renderToString(createElement(StudioServicesRack))
   
   return c.html(
     `<!DOCTYPE html>
@@ -1688,7 +1696,7 @@ app.get('/studio-rack-demo', (c) => {
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div id="studio-rack-root"></div>
+  <div id="studio-rack-root">${rackHtml}</div>
   
   <!-- React Island Entry -->
   <script type="module" src="${assetPath}" defer></script>
