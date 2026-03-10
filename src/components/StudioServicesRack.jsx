@@ -17,7 +17,7 @@ const BrandBadge = ({ kind, className = "" }) => {
   if (kind === "crs") {
     return (
       <div aria-hidden="true" className={`srd-badge srd-badge--crs ${className}`}>
-        <svg viewBox="0 0 24 24" className="w-full h-full p-0.5">
+        <svg viewBox="0 0 24 24" className="srd-badge-svg">
           <path d="M4 4 L12 2 L20 4 L20 12 L12 22 L4 12 Z" fill="none" stroke="white" strokeWidth="1.5" strokeLinejoin="bevel"/>
           <circle cx="12" cy="12" r="3" fill="white"/>
         </svg>
@@ -27,7 +27,7 @@ const BrandBadge = ({ kind, className = "" }) => {
   if (kind === "cricket") {
     return (
       <div aria-hidden="true" className={`srd-badge srd-badge--cricket ${className}`}>
-        <svg viewBox="0 0 24 24" className="-rotate-45 w-full h-full p-1">
+        <svg viewBox="0 0 24 24" className="srd-badge-svg srd-badge-svg--cricket">
           <rect x="6" y="6" width="12" height="12" fill="none" stroke="black" strokeWidth="2" rx="1"/>
           <circle cx="12" cy="12" r="3" fill="black"/>
         </svg>
@@ -37,14 +37,14 @@ const BrandBadge = ({ kind, className = "" }) => {
   if (kind === "odro") {
     return (
       <div aria-hidden="true" className={`srd-badge srd-badge--odro ${className}`}>
-        <span className="text-[8px] font-black text-white tracking-tighter">AV</span>
+        <span className="srd-badge-text">AV</span>
       </div>
     );
   }
   if (kind === "cafe") {
     return (
       <div aria-hidden="true" className={`srd-badge srd-badge--cafe ${className}`}>
-        <span className="text-[8px] font-black text-black tracking-tighter">W/C</span>
+        <span className="srd-badge-text">W/C</span>
       </div>
     );
   }
@@ -75,10 +75,10 @@ const EngravedLabel = ({ children, id, className = "", style = {} }) => (
 // ==========================================
 
 const SignalStripe = () => (
-  <div className="flex gap-[3px] items-center" aria-hidden="true">
-    <div className="w-[3px] h-[3px] bg-[#dc2626] shadow-[inset_0_1px_0_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.2)]" />
-    <div className="w-[3px] h-[3px] bg-[#d4a017] shadow-[inset_0_1px_0_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.2)]" />
-    <div className="w-[3px] h-[3px] bg-[#2d3e2f] shadow-[inset_0_1px_0_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.2)]" />
+  <div className="srd-signal-group" aria-hidden="true">
+    <div className="srd-signal-dot srd-signal-dot--red" />
+    <div className="srd-signal-dot srd-signal-dot--yellow" />
+    <div className="srd-signal-dot srd-signal-dot--green" />
   </div>
 );
 
@@ -105,70 +105,46 @@ const CRSBlockLogo = () => (
 );
 
 const MasterFaceplate = () => (
-  <div className="srd-master-faceplate">
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-3 sm:gap-4">
+  <header className="srd-master-faceplate">
+    <div className="srd-faceplate-header">
+      <div className="srd-faceplate-title-group">
         <CRSBlockLogo />
-        <div className="flex flex-col gap-1">
-          <h1 
-            className="text-[10px] sm:text-xs font-mono font-black tracking-[0.18em] uppercase"
-            style={{ 
-              color: '#8a9479',
-              textShadow: "0 1px 0 rgba(255,255,255,0.08), 0 -1px 0 rgba(0,0,0,0.9)",
-              letterSpacing: "0.18em"
-            }}
-          >
-            COWLEY ROAD STUDIOS
-          </h1>
-          <div className="text-[7px] sm:text-[8px] font-mono tracking-widest uppercase" style={{ color: '#5a6350' }}>
-            OXFORD GRASSROOTS CREATIVE INFRASTRUCTURE
-          </div>
+        <SignalStripe />
+        <div className="srd-faceplate-text-stack">
+          <h1 className="srd-faceplate-title">COWLEY ROAD STUDIOS</h1>
+          <p className="srd-faceplate-subtitle">OXFORD GRASSROOTS CREATIVE INFRASTRUCTURE</p>
         </div>
       </div>
-      <div className="flex flex-col items-end gap-1">
-        <div className="flex items-center gap-2">
-          <SignalStripe />
-          <div 
-            className="text-[8px] sm:text-[9px] font-mono font-bold tracking-wider uppercase"
-            style={{ color: '#6a7360', textShadow: "0 1px 0 rgba(0,0,0,0.8)" }}
-          >
-            CRS-CONSOLE-01
-          </div>
-        </div>
-        <div className="text-[6px] sm:text-[7px] font-mono tracking-wider uppercase" style={{ color: '#4a5340' }}>
-          Audio • Rehearsal • Control
+      <div className="srd-faceplate-meta">
+        <div className="srd-meta-row">
+          <div className="srd-faceplate-model">CRS-CONSOLE-01</div>
+          <div className="srd-faceplate-routing">Audio • Rehearsal • Control</div>
         </div>
       </div>
     </div>
-  </div>
+  </header>
 );
 
 const StatusPlacard = () => (
-  <div className="srd-status-module">
+  <section className="srd-status-module">
     <div className="srd-lcd-screen">
-      <div className="font-mono text-[9px] sm:text-[10px] leading-relaxed tracking-wide space-y-1.5">
-        {/* NEW OPERATION DESCRIPTION */}
-        <div style={{ color: '#8a9479', opacity: 0.9, marginBottom: '0.5rem' }}>
-          <span style={{ color: '#d4a017' }}>&gt; SYS.INFO:</span> MULTIFACETED CREATIVE HUB. VINTAGE AUDIO RECORDING, REHEARSAL, ELECTRONIC REPAIRS & WORKSPACE.
+      <div className="srd-lcd-content">
+        <div className="srd-lcd-sysinfo">
+          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> MULTIFACETED CREATIVE HUB. VINTAGE AUDIO RECORDING, REHEARSAL, ELECTRONIC REPAIRS &amp; WORKSPACE.
         </div>
-        
-        <div className="font-bold uppercase" style={{ color: '#7a9c68', textShadow: "0 0 6px rgba(122,156,104,0.5)" }}>
-          SELECT SERVICE MODULE
-        </div>
-        <div className="flex items-center gap-2" style={{ color: '#6a7860' }}>
-          <span style={{ color: '#7a9c68' }}>●</span>
+        <div className="srd-lcd-header">SELECT SERVICE MODULE</div>
+        <div className="srd-lcd-row">
+          <span className="srd-lcd-bullet-crs">●</span>
           <span>CRS = LEFT CHANNEL</span>
         </div>
-        <div className="flex items-center gap-2" style={{ color: '#6a7860' }}>
-          <span style={{ color: '#d4a017' }}>●</span>
+        <div className="srd-lcd-row">
+          <span className="srd-lcd-bullet-cricket">●</span>
           <span>CRICKET = RIGHT CHANNEL</span>
         </div>
-        <div className="text-[7px] sm:text-[8px] mt-2 pt-2 border-t" style={{ color: '#4a5340', borderColor: 'rgba(70,83,65,0.3)' }}>
-          SIGNAL ROUTING • BOOKING BUS
-        </div>
+        <div className="srd-lcd-footer">SIGNAL ROUTING • BOOKING BUS</div>
       </div>
     </div>
-  </div>
+  </section>
 );
 
 const VuMeter = ({ label = "VU" }) => (
