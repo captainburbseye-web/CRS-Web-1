@@ -7,4 +7,4 @@ export const CLIENT_MANIFEST = {
     "src": "src/client/rack-entry.tsx",
     "isEntry": true
   }
-}
+} as const

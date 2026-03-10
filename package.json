@@ -3,8 +3,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --mode client && vite build --mode server",
-    "build:critical": "node scripts/extract-critical-css.js && vite build --mode client && vite build --mode server",
+    "build": "node scripts/build.mjs",
+    "build:critical": "node scripts/extract-critical-css.js && node scripts/build.mjs",
     "preview": "wrangler pages dev",
     "deploy": "npm run build && wrangler pages deploy dist --project-name crs-web-1",
     "deploy:optimized": "npm run build:critical && wrangler pages deploy dist --project-name crs-web-1",
