@@ -73,6 +73,74 @@ const EngravedLabel = ({ children, id, className = "" }) => (
   </h2>
 );
 
+// ==========================================
+// 2. IDENTITY MODULES — MANUFACTURER PLATE
+// ==========================================
+
+const SignalStripe = () => (
+  <div className="flex gap-[2px] items-center" aria-hidden="true">
+    <div className="w-1 h-3 bg-green-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]" />
+    <div className="w-1 h-3 bg-yellow-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]" />
+    <div className="w-1 h-3 bg-red-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]" />
+  </div>
+);
+
+const MasterFaceplate = () => (
+  <div className="relative px-4 sm:px-8 py-3 sm:py-4 bg-gradient-to-b from-[#1a1e24] to-[#0f1115] border-b border-black/90">
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-3 sm:gap-4">
+        <BrandBadge kind="crs" className="w-5 h-5 sm:w-6 sm:h-6" />
+        <div className="flex flex-col gap-0.5">
+          <h1 
+            className="text-[10px] sm:text-xs font-mono font-black tracking-[0.2em] text-gray-500 uppercase"
+            style={{ 
+              textShadow: "0 1px 0 rgba(255,255,255,0.08), 0 -1px 0 rgba(0,0,0,0.9)",
+              letterSpacing: "0.2em"
+            }}
+          >
+            COWLEY ROAD STUDIOS
+          </h1>
+          <div className="text-[7px] sm:text-[8px] font-mono tracking-widest text-gray-600 uppercase">
+            Oxford • Studio Services Rack
+          </div>
+        </div>
+      </div>
+      <div className="flex items-center gap-2 sm:gap-3">
+        <SignalStripe />
+        <div 
+          className="text-[8px] sm:text-[9px] font-mono font-bold tracking-wider text-gray-600 uppercase"
+          style={{ textShadow: "0 1px 0 rgba(0,0,0,0.8)" }}
+        >
+          CRS-CONSOLE-01
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const StatusPlacard = () => (
+  <div className="relative px-4 sm:px-8 py-4 sm:py-5 bg-gradient-to-b from-[#0a0a0a] to-[#050505] border-b-2 border-black">
+    <div className="relative p-3 sm:p-4 bg-black/60 rounded border border-black/80 shadow-[inset_0_2px_6px_rgba(0,0,0,0.9)]">
+      <div className="font-mono text-[9px] sm:text-[10px] leading-relaxed tracking-wide space-y-1.5">
+        <div className="text-green-400/90 font-bold uppercase" style={{ textShadow: "0 0 4px rgba(74,222,128,0.4)" }}>
+          SELECT SERVICE MODULE
+        </div>
+        <div className="text-gray-500 flex items-center gap-2">
+          <span className="text-green-400">●</span>
+          <span>CRS = LEFT CHANNEL</span>
+        </div>
+        <div className="text-gray-500 flex items-center gap-2">
+          <span className="text-yellow-400">●</span>
+          <span>CRICKET = RIGHT CHANNEL</span>
+        </div>
+        <div className="text-gray-600 text-[8px] sm:text-[9px] mt-2 pt-2 border-t border-gray-800/50">
+          ENGAGE BOOKING CIRCUIT
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const VuMeter = ({ label = "VU" }) => (
   <div className="relative flex flex-col items-center" aria-hidden="true">
     <div className="w-20 h-14 sm:w-24 sm:h-16 bg-gradient-to-b from-[#222] to-[#111] p-[3px] rounded border border-black shadow-[0_4px_6px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.2)]">
@@ -235,6 +303,9 @@ export default function StudioServicesRack() {
   return (
     <main className="min-h-screen bg-[#111] py-8 sm:py-12 px-0 sm:px-6">
       <RackChassis>
+        
+        <MasterFaceplate />
+        <StatusPlacard />
         
         <RackModule title="Recording" subtitle="Studio Session Booking" meters={true}>
           <ServiceButtonGroup>
