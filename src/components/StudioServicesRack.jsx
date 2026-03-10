@@ -121,7 +121,7 @@ const MasterFaceplate = () => (
             COWLEY ROAD STUDIOS
           </h1>
           <div className="text-[7px] sm:text-[8px] font-mono tracking-widest uppercase" style={{ color: '#5a6350' }}>
-            Oxford • Studio Services Rack
+            OXFORD GRASSROOTS CREATIVE INFRASTRUCTURE
           </div>
         </div>
       </div>
@@ -147,6 +147,11 @@ const StatusPlacard = () => (
   <div className="srd-status-module">
     <div className="srd-lcd-screen">
       <div className="font-mono text-[9px] sm:text-[10px] leading-relaxed tracking-wide space-y-1.5">
+        {/* NEW OPERATION DESCRIPTION */}
+        <div style={{ color: '#8a9479', opacity: 0.9, marginBottom: '0.5rem' }}>
+          <span style={{ color: '#d4a017' }}>&gt; SYS.INFO:</span> MULTIFACETED CREATIVE HUB. VINTAGE AUDIO RECORDING, REHEARSAL, ELECTRONIC REPAIRS & WORKSPACE.
+        </div>
+        
         <div className="font-bold uppercase" style={{ color: '#7a9c68', textShadow: "0 0 6px rgba(122,156,104,0.5)" }}>
           SELECT SERVICE MODULE
         </div>
