@@ -30,8 +30,31 @@ import { RecordingPage } from './pages/Recording'
 import { PodcastAVPage } from './pages/PodcastAV'
 import { ContactPage } from './pages/Contact'
 import { DigitalPulsePage } from './pages/DigitalPulse'
+import { CLIENT_MANIFEST } from './client-manifest'
 
 const app = new Hono()
+
+// Asset resolver: returns client asset path
+// In dev: source file path for Vite HMR
+// In prod: hashed bundle path from manifest
+function getClientAsset(entryName: string): string {
+  // In dev mode, use source path for Vite HMR
+  if (import.meta.env.DEV) {
+    return `/src/client/${entryName}.tsx`
+  }
+  
+  // In production, resolve from embedded manifest
+  const manifestKey = `src/client/${entryName}.tsx`
+  const entry = CLIENT_MANIFEST[manifestKey as keyof typeof CLIENT_MANIFEST]
+  
+  if (entry?.file) {
+    return `/static/${entry.file}`
+  }
+  
+  // Fallback (should never happen)
+  console.error(`Asset not found in manifest: ${manifestKey}`)
+  return `/static/${entryName}.js`
+}
 
 // Serve static files
 app.use('/static/*', serveStatic({ root: './' }))
@@ -1639,10 +1662,12 @@ app.get('/rack-test', (c) => {
 
 // STUDIO RACK DEMO — REACT ISLAND
 app.get('/studio-rack-demo', (c) => {
+  const assetPath = getClientAsset('rack-entry')
+  
   return c.render(
     <>
       <div id="studio-rack-root"></div>
-      <script type="module" src="/static/rack-entry.js" defer></script>
+      <script type="module" src={assetPath} defer></script>
       <script dangerouslySetInnerHTML={{
         __html: `
           window.addEventListener('OPEN_ODRO_MODAL', () => {

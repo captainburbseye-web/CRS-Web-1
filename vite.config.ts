@@ -12,14 +12,10 @@ export default defineConfig(({ mode }) => {
       build: {
         outDir: 'dist/static',
         emptyOutDir: false,
+        manifest: true,
         rollupOptions: {
           input: {
             'rack-entry': resolve(__dirname, 'src/client/rack-entry.tsx')
-          },
-          output: {
-            entryFileNames: '[name].js',
-            chunkFileNames: '[name]-[hash].js',
-            assetFileNames: '[name]-[hash][extname]'
           }
         }
       }
