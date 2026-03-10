@@ -1686,6 +1686,9 @@ app.get('/studio-rack-demo', (c) => {
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   
+  <!-- Hardware Physics CSS -->
+  <link href="/static/studio-rack-demo.css" rel="stylesheet" />
+  
   <!-- Tailwind CSS for React component -->
   ${cssAsset ? `<link href="${cssAsset}" rel="stylesheet" />` : ''}
   
