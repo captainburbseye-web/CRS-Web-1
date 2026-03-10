@@ -1,0 +1,238 @@
+/* 
+ * RECORDING SERVICES DOUBLE RACK - Simple Clickable Panels
+ * Cowley Road Studios - Clean Hardware Aesthetic
+ * 2 clickable panel areas (top = Cowley, bottom = Cricket)
+ */
+
+/* Container positioning */
+.recording-services-container {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.recording-rack-visual {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.recording-hotspots-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Simple panel hotspots - Enhanced interactivity */
+.recording-panel {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  
+  /* INVISIBLE by default */
+  background: transparent;
+  border: none;
+  
+  /* Smooth transitions for all states */
+  transition: 
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Accessibility */
+  outline: none;
+  
+  /* Add tooltip positioning context */
+  position: absolute;
+}
+
+/* Minimal hover feedback - barely visible glow */
+.recording-panel:hover {
+  background: rgba(255, 215, 0, 0.02);
+  box-shadow: 
+    inset 0 0 20px rgba(255, 215, 0, 0.03),
+    0 0 10px rgba(255, 215, 0, 0.05);
+}
+
+/* Active state - press feedback with JS class */
+.recording-panel:active,
+.recording-panel.button-pressed {
+  background: rgba(255, 215, 0, 0.08);
+  transform: scale(0.995);
+  box-shadow: 
+    inset 0 0 40px rgba(255, 215, 0, 0.15),
+    0 0 10px rgba(255, 215, 0, 0.1);
+}
+
+/* Enhanced focus state for keyboard navigation */
+.recording-panel:focus-visible {
+  outline: 3px solid rgba(255, 204, 0, 0.7);
+  outline-offset: -3px;
+  background: rgba(255, 215, 0, 0.06);
+  box-shadow: 
+    inset 0 0 30px rgba(255, 215, 0, 0.12),
+    0 0 25px rgba(255, 215, 0, 0.2);
+}
+
+/* CSS-only tooltips */
+.recording-panel::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  
+  /* Styling */
+  background: rgba(10, 26, 15, 0.95);
+  color: #ffd700;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  
+  /* Border glow */
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 215, 0, 0.2);
+  
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  
+  /* Smooth transition */
+  transition: 
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.3s;
+}
+
+/* Show tooltip on hover */
+.recording-panel:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Tooltip arrow */
+.recording-panel::before {
+  content: '';
+  position: absolute;
+  bottom: calc(10% - 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  
+  /* Triangle shape */
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(10, 26, 15, 0.95);
+  
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  
+  /* Smooth transition */
+  transition: 
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.3s;
+}
+
+/* Show tooltip arrow on hover */
+.recording-panel:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* PANEL POSITIONING */
+
+/* Cowley Road (Top Half) */
+.recording-cowley-panel {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+}
+
+/* Cricket Road (Bottom Half) */
+.recording-cricket-panel {
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+}
+
+/* Mobile viewport optimization */
+@media (max-width: 768px) {
+  .recording-services-container {
+    width: 100vw;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .recording-rack-visual {
+    width: 100%;
+    display: block;
+  }
+  
+  .recording-rack-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Ensure panels are big enough for touch */
+  .recording-cowley-panel,
+  .recording-cricket-panel {
+    min-height: 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Lock mobile viewport */
+  .recording-services-container {
+    width: 100vw;
+    max-width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure good touch targets on small screens */
+  .recording-cowley-panel,
+  .recording-cricket-panel {
+    min-height: 100px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .recording-panel {
+    transition: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .recording-panel:hover {
+    background: rgba(255, 255, 0, 0.1);
+  }
+  
+  .recording-panel:focus-visible {
+    outline: 3px solid #ffcc00;
+  }
+}

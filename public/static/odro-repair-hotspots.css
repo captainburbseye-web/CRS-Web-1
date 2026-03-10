@@ -1,0 +1,433 @@
+/**
+ * ODRO REPAIR PANEL - SSL/CRICKET HYBRID VINTAGE CONSOLE AESTHETIC
+ * Half SSL G-Series (square buttons, off-white), half Cricket/Neve (chunky industrial)
+ * Applied: 2026-03-04
+ * 
+ * DESIGN REFERENCES:
+ * - SSL G-Series: Square radio buttons, soft yellow/green glow when active
+ * - Cricket/Neve: Military-grade toggles, engraved labels, tactile depth
+ * - Scribble strip: Black tape labels with white mono text
+ */
+
+/* ============================================
+   1. ESTABLISH HARDWARE COORDINATE SYSTEM
+   ============================================ */
+
+.odro-repair-container {
+  position: relative;
+  display: block;
+  max-height: 380px;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.odro-repair-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ============================================
+   2. SSL/CRICKET BUTTON SYSTEM - PRECISION PLACEMENT
+   ============================================ */
+
+.odro-repair-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Base button style - SSL Square "Radio" Button Aesthetic */
+.odro-repair-button {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  
+  /* SSL Square Button Dimensions */
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  
+  /* SSL Grey/Off-White Base */
+  background: linear-gradient(135deg, #e8e8e8 0%, #d0d0d0 100%);
+  
+  /* SSL Button Border */
+  border: 2px solid #333;
+  border-radius: 3px; /* Slight round for vintage SSL feel */
+  
+  /* Tactile Depth - Recessed Housing + Raised Cap */
+  box-shadow: 
+    /* Outer housing (recessed into panel) */
+    inset 2px 2px 4px rgba(0, 0, 0, 0.4),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.6),
+    /* Button cap depth */
+    2px 2px 0px rgba(0, 0, 0, 0.8),
+    -1px -1px 1px rgba(255, 255, 255, 0.4);
+  
+  cursor: pointer;
+  text-decoration: none;
+  pointer-events: auto;
+  transition: all 0.15s ease;
+  
+  /* Center the scribble strip label */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 2px;
+}
+
+/* Button coordinate mapping */
+.odro-button-terms {
+  top: 75%;
+  left: 25%;
+}
+
+.odro-button-book {
+  top: 75%;
+  left: 50%;
+}
+
+.odro-button-contact {
+  top: 75%;
+  left: 75%;
+}
+
+/* ============================================
+   3. SSL "SELECTED" GLOW - HOVER STATE
+   ============================================ */
+
+.odro-repair-button:hover {
+  /* Classic SSL yellow/amber glow when selected */
+  background: linear-gradient(135deg, #fff9e0 0%, #fff587 100%);
+  
+  /* Soft internal glow */
+  box-shadow: 
+    inset 2px 2px 4px rgba(0, 0, 0, 0.3),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.8),
+    0 0 12px rgba(255, 245, 135, 0.8),
+    2px 2px 0px rgba(0, 0, 0, 0.6);
+  
+  /* Slight lift on hover */
+  transform: translate(-50%, -52%);
+}
+
+/* Contact button - Cricket/Neve green LED glow */
+.odro-button-contact:hover {
+  background: linear-gradient(135deg, #e0ffe0 0%, #87ff87 100%);
+  box-shadow: 
+    inset 2px 2px 4px rgba(0, 0, 0, 0.3),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.8),
+    0 0 12px rgba(135, 255, 135, 0.8),
+    2px 2px 0px rgba(0, 0, 0, 0.6);
+}
+
+/* ============================================
+   4. SCRIBBLE STRIP LABELS (Dymo-Tape / Engraved Style)
+   ============================================ */
+
+.odro-button-label {
+  /* Dymo-tape black label */
+  background: #111;
+  color: #fff;
+  
+  /* Compact label dimensions */
+  padding: 3px 6px;
+  margin-top: 4px;
+  
+  /* Mono font for technical labeling */
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  /* Hand-applied label effect */
+  transform: rotate(-0.8deg);
+  
+  /* Subtle depth */
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  /* Sharp edges like tape */
+  border-radius: 1px;
+  
+  white-space: nowrap;
+  pointer-events: none;
+  transition: none; /* Labels don't animate */
+}
+
+/* Hover state - labels stay static but button glows through */
+.odro-repair-button:hover .odro-button-label {
+  /* Label stays black but gets subtle edge highlight */
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 6px rgba(255, 245, 135, 0.4);
+}
+
+.odro-button-contact:hover .odro-button-label {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 0 6px rgba(135, 255, 135, 0.4);
+}
+
+/* ============================================
+   5. ACTIVE/PRESSED STATE (Tactile Feedback)
+   ============================================ */
+
+.odro-repair-button:active {
+  /* Button depresses into panel */
+  transform: translate(-50%, -50%) scale(0.95);
+  box-shadow: 
+    inset 3px 3px 6px rgba(0, 0, 0, 0.5),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================
+   6. FOCUS STATE (Keyboard Navigation / WCAG)
+   ============================================ */
+
+.odro-repair-button:focus-visible {
+  outline: 2px solid #fff587; /* SSL yellow focus ring */
+  outline-offset: 4px;
+}
+
+.odro-button-contact:focus-visible {
+  outline: 2px solid #87ff87; /* Cricket green focus ring */
+}
+
+/* ============================================
+   7. RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+/* Tablet: Slightly smaller buttons */
+@media (min-width: 769px) and (max-width: 1280px) {
+  .odro-repair-container {
+    max-height: 360px;
+  }
+  
+  .odro-repair-button {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+  }
+  
+  .odro-button-label {
+    font-size: 8px;
+    padding: 2px 5px;
+  }
+  
+  .odro-button-terms {
+    top: 74%;
+    left: 25%;
+  }
+  
+  .odro-button-book {
+    top: 74%;
+    left: 50%;
+  }
+  
+  .odro-button-contact {
+    top: 74%;
+    left: 75%;
+  }
+}
+
+/* Mobile: Compact buttons with larger touch targets */
+@media (max-width: 768px) {
+  .odro-repair-container {
+    max-height: 320px;
+  }
+  
+  .odro-repair-button {
+    width: 48px; /* Larger touch target */
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+  }
+  
+  .odro-button-label {
+    font-size: 8px;
+    padding: 2px 4px;
+  }
+  
+  .odro-button-terms {
+    top: 72%;
+    left: 25%;
+  }
+  
+  .odro-button-book {
+    top: 72%;
+    left: 50%;
+  }
+  
+  .odro-button-contact {
+    top: 72%;
+    left: 75%;
+  }
+}
+
+/* ============================================
+   8. ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .odro-repair-button {
+    transition: none;
+  }
+  
+  .odro-repair-button:hover {
+    transform: translate(-50%, -50%); /* No lift animation */
+  }
+  
+  .odro-repair-button:active {
+    transform: translate(-50%, -50%); /* No press animation */
+  }
+}
+
+/* ============================================
+   9. ODRO MODAL (TERMS OVERLAY)
+   ============================================ */
+
+.odro-terms-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.odro-terms-modal[aria-hidden="false"] {
+  display: flex;
+}
+
+.odro-modal-content {
+  background: #1a1a1a;
+  border: 2px solid #ff8c00;
+  border-radius: 4px;
+  max-width: 700px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 0;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+}
+
+.odro-modal-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(255, 140, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.odro-modal-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ff8c00;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.odro-modal-close {
+  background: transparent;
+  border: 1px solid rgba(255, 140, 0, 0.5);
+  color: #ff8c00;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.odro-modal-close:hover {
+  background: rgba(255, 140, 0, 0.15);
+  border-color: #ff8c00;
+}
+
+.odro-modal-body {
+  padding: 1.5rem;
+  color: rgba(245, 245, 245, 0.9);
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.odro-modal-footer {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 140, 0, 0.3);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.odro-modal-cta {
+  background: #ff8c00;
+  color: #1a1a1a;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.odro-modal-cta:hover {
+  background: #ffa933;
+  box-shadow: 0 4px 12px rgba(255, 140, 0, 0.4);
+}
+
+/* Mobile modal adjustments */
+@media (max-width: 768px) {
+  .odro-modal-content {
+    max-width: 95%;
+    max-height: 90vh;
+  }
+  
+  .odro-modal-header,
+  .odro-modal-body,
+  .odro-modal-footer {
+    padding: 1rem;
+  }
+  
+  .odro-modal-title {
+    font-size: 1rem;
+  }
+  
+  .odro-modal-cta {
+    width: 100%;
+  }
+}
+
+/* Reduced motion for modal */
+@media (prefers-reduced-motion: reduce) {
+  .odro-modal-content {
+    animation: none;
+  }
+  
+  .odro-modal-close,
+  .odro-modal-cta {
+    transition: none;
+  }
+}

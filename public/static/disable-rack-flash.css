@@ -1,0 +1,82 @@
+/**
+ * DISABLE WHOLE-RACK FLASH ON CLICK
+ * Ensures only individual buttons light up, not entire rack panels
+ */
+
+/* Prevent Control Room rack from flashing on click */
+.control-room-hire,
+.control-room-module,
+.rack-module[data-type="control"],
+.rack-module-graphic {
+  pointer-events: none; /* Let clicks pass through to hotspots only */
+}
+
+/* Re-enable pointer events only on actual interactive elements */
+.booking-hotspot,
+.booking-button,
+.odro-repair-button,
+.recording-panel,
+.rehearsal-panel,
+.overlay-link,
+.welcome-button,
+.rack-hotspot,
+a[class*="hotspot"],
+a[class*="panel"],
+button[class*="button"] {
+  pointer-events: auto !important;
+}
+
+/* Disable all active state backgrounds on rack containers */
+.rack-module:active,
+.rack-module-graphic:active,
+.control-room-hire:active,
+.control-room-module:active,
+.odro-repair-container:active {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Ensure booking hotspots don't create whole-area flashes */
+.booking-hotspot:active,
+.booking-hotspot.button-pressed {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Remove any inherited flash effects from parent containers */
+.rack-module:has(.booking-hotspot:active),
+.rack-module:has(.odro-repair-button:active),
+.rack-module-graphic:has(a:active) {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+}
+
+/* Only allow specific button areas to show visual feedback */
+.booking-hotspot::before,
+.booking-hotspot::after,
+.odro-repair-button::before,
+.odro-repair-button::after {
+  pointer-events: none; /* Decorative elements shouldn't capture clicks */
+}
+
+/* Ensure images don't capture pointer events */
+.rack-module img,
+.rack-module-graphic img,
+.odro-repair-container img {
+  pointer-events: none !important;
+  user-select: none;
+}
+
+/* High-specificity override for any lingering flash effects */
+body .rack-module:active,
+body .rack-module-graphic:active,
+body .control-room-hire:active {
+  background: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+  animation: none !important;
+}

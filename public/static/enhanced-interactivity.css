@@ -1,0 +1,209 @@
+/**
+ * Enhanced Button Feedback & Interactivity
+ * Tactile press animations, keyboard accessibility, and focus states
+ */
+
+/* ============================================
+   1. CLICK FEEDBACK - PRESSED STATE
+   ============================================ */
+
+/* All clickable elements get tactile feedback */
+a.recording-panel,
+a.rehearsal-panel,
+a.booking-hotspot,
+a.welcome-button,
+a.crs-header-logo-hotspot,
+button,
+.crs-button,
+.book-button {
+  transition: 
+    transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active/pressed state - simulates physical button press */
+a.recording-panel:active,
+a.rehearsal-panel:active,
+a.booking-hotspot:active,
+a.welcome-button:active,
+a.crs-header-logo-hotspot:active,
+button:active,
+.crs-button:active,
+.book-button:active {
+  transform: scale(0.97) translateY(1px);
+  box-shadow: 
+    inset 0 2px 8px rgba(0, 0, 0, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   2. KEYBOARD ACCESSIBILITY - FOCUS STATES
+   ============================================ */
+
+/* Enhanced focus for keyboard navigation */
+a.recording-panel:focus-visible,
+a.rehearsal-panel:focus-visible,
+a.booking-hotspot:focus-visible,
+a.welcome-button:focus-visible,
+a.crs-header-logo-hotspot:focus-visible,
+button:focus-visible,
+.crs-button:focus-visible,
+.book-button:focus-visible {
+  outline: 3px solid #ffd700;
+  outline-offset: 3px;
+  box-shadow: 
+    0 0 0 6px rgba(255, 215, 0, 0.2),
+    inset 0 0 20px rgba(255, 215, 0, 0.1);
+  /* Ensure visibility without being garish */
+  z-index: 10;
+  position: relative;
+}
+
+/* Remove default outline, rely on custom focus-visible */
+a.recording-panel:focus,
+a.rehearsal-panel:focus,
+a.booking-hotspot:focus,
+a.welcome-button:focus,
+a.crs-header-logo-hotspot:focus,
+button:focus,
+.crs-button:focus,
+.book-button:focus {
+  outline: none;
+}
+
+/* ============================================
+   3. FORM INPUTS - ACCESSIBILITY
+   ============================================ */
+
+/* Ensure form inputs are keyboard accessible */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #ffd700;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.15);
+}
+
+/* ============================================
+   4. SKIP TO CONTENT - KEYBOARD NAVIGATION
+   ============================================ */
+
+/* Make skip-to-content link visible on focus */
+.skip-to-content:focus {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.95);
+  color: #ffd700;
+  padding: 12px 24px;
+  border: 2px solid #ffd700;
+  border-radius: 4px;
+  z-index: 99999;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+}
+
+/* ============================================
+   5. TOUCH DEVICE OPTIMIZATION
+   ============================================ */
+
+/* Larger touch targets on mobile */
+@media (max-width: 768px) {
+  a.recording-panel,
+  a.rehearsal-panel,
+  a.booking-hotspot {
+    /* Ensure minimum 44x44px touch target (iOS guidelines) */
+    min-height: 60px;
+  }
+  
+  button,
+  .crs-button,
+  .book-button {
+    min-height: 48px;
+    padding: 12px 24px;
+  }
+  
+  /* Reduce press animation on touch (can feel sluggish) */
+  a.recording-panel:active,
+  a.rehearsal-panel:active,
+  a.booking-hotspot:active,
+  button:active,
+  .crs-button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ============================================
+   6. LOADING STATE - VISUAL FEEDBACK
+   ============================================ */
+
+/* Add loading state for buttons that trigger actions */
+button.loading,
+.crs-button.loading,
+.book-button.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+button.loading::after,
+.crs-button.loading::after,
+.book-button.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-top-color: #ffd700;
+  border-radius: 50%;
+  animation: button-spinner 0.8s linear infinite;
+}
+
+@keyframes button-spinner {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   7. DISABLED STATE - CLEAR INDICATION
+   ============================================ */
+
+button:disabled,
+.crs-button:disabled,
+.book-button:disabled,
+button[disabled],
+.crs-button[disabled],
+.book-button[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+  filter: grayscale(100%);
+}
+
+/* ============================================
+   8. REDUCED MOTION SUPPORT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  a.recording-panel,
+  a.rehearsal-panel,
+  a.booking-hotspot,
+  a.welcome-button,
+  button,
+  .crs-button,
+  .book-button {
+    transition: none;
+  }
+  
+  button.loading::after,
+  .crs-button.loading::after,
+  .book-button.loading::after {
+    animation: none;
+    border-top-color: #ffd700;
+    border-right-color: #ffd700;
+  }
+}

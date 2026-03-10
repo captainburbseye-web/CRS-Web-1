@@ -1,0 +1,140 @@
+/* ============================================= */
+/* INDUSTRIAL POLISH: Final High-Fidelity Layer */
+/* ============================================= */
+
+/* --- 0. SCORCHED EARTH: NUKE THE YELLOW BORDER --- */
+/* Reset borders on main containers */
+
+body, html, 
+.master-rack-chassis, 
+.rack-header-container, 
+.rack-header, 
+.rack-accordion-viewport {
+    border-left: none !important;
+    border-right: none !important;
+    border: none !important;
+    margin-left: auto !important; /* Force centering */
+    margin-right: auto !important;
+}
+
+/* Hide specific rail divs if the AI added them */
+.rack-left-rail, 
+.rack-right-rail, 
+.rack-rail {
+    display: none !important;
+    width: 0 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* --- 1. FORCE INDUSTRIAL AMBER BUTTONS --- */
+/* Nuclear override to kill any pale yellow styles */
+
+.book-now-button,
+.cta-service,
+.location-cta,
+.rack-cta-button,
+button {
+    /* 1. Kill the Pale Yellow */
+    background-color: #050505 !important; /* Pitch Black */
+    background-image: none !important;
+    background: #050505 !important;
+    
+    /* 2. Apply Neon Amber */
+    border: 1px solid #FF9F1C !important;
+    color: #FF9F1C !important;
+    
+    /* 3. Text Styling */
+    font-family: 'Courier New', Courier, monospace !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    
+    /* 4. Glow & Shadow */
+    box-shadow: 0 0 5px rgba(255, 159, 28, 0.3) !important;
+    text-shadow: 0 0 2px rgba(255, 159, 28, 0.5) !important;
+    
+    /* 5. Sizing */
+    padding: 10px 20px !important;
+    border-radius: 2px !important;
+    
+    /* 6. Kill any transitions that might preserve old colors */
+    transition: all 0.2s ease !important;
+}
+
+/* --- HOVER STATE --- */
+.book-now-button:hover,
+.cta-service:hover,
+.location-cta:hover,
+.rack-cta-button:hover,
+button:hover {
+    background-color: #FF9F1C !important; /* Amber Background */
+    background: #FF9F1C !important;
+    color: #000000 !important; /* Black Text */
+    box-shadow: 0 0 20px rgba(255, 159, 28, 0.8) !important; /* Intense Glow */
+    text-shadow: none !important;
+    cursor: pointer !important;
+}
+
+/* --- 2. RACK EARS & BACKGROUND (No Watermarks) --- */
+/* Apply textures with ZOOM/CROP to hide Gemini logos */
+
+.master-rack-chassis {
+    position: relative !important;
+    overflow: visible !important; /* Let ears hang out */
+    
+    /* Reset margins and sizing */
+    margin: 0 auto !important;
+    max-width: 1100px !important;
+    
+    /* UPDATED GRADIENT: Lighter center (0.6 instead of 0.9) to reveal metal grain */
+    /* Edges nearly pure metal (5% dark), center dark grey metal (60% dark) */
+    background-image: 
+        linear-gradient(
+            90deg, 
+            rgba(0,0,0,0.05) 0%,   /* Edges: 95% Pure Metal */
+            rgba(0,0,0,0.6) 15%,   /* Center: Dark Grey Metal (was Pitch Black) */
+            rgba(0,0,0,0.6) 85%,   /* Center: Dark Grey Metal */
+            rgba(0,0,0,0.05) 100%  /* Edges: 95% Pure Metal */
+        ),
+        url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png') !important;
+    background-blend-mode: multiply !important; /* Blends shadow into grain */
+    background-size: 105% 105% !important; /* Zoom to crop watermarks */
+    background-position: center center !important;
+    background-repeat: no-repeat, repeat-y !important;
+    color: #e0e0e0 !important;
+    
+    /* Ensure text pops against the lighter metal */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.9) !important;
+}
+
+/* LEFT EAR (Graphic with bolts - cropped to hide logo) */
+.master-rack-chassis::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: -38px !important;
+    width: 38px !important;
+    background: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb.png') no-repeat !important;
+    background-size: 150% 100% !important; /* Zoom width to crop logo */
+    background-position: top left !important; /* Anchor top-left */
+    z-index: 10 !important;
+    pointer-events: none !important;
+}
+
+/* RIGHT EAR (Flipped graphic - cropped to hide logo) */
+.master-rack-chassis::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: -38px !important;
+    width: 38px !important;
+    background: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb.png') no-repeat !important;
+    background-size: 150% 100% !important; /* Zoom width to crop logo */
+    background-position: top right !important; /* Anchor top-right */
+    transform: scaleX(-1) !important; /* Mirror horizontally */
+    z-index: 10 !important;
+    pointer-events: none !important;
+}

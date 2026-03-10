@@ -1,0 +1,72 @@
+/**
+ * CRS SVG Interaction Map Hotspots
+ * Coordinate-locked hotspot system using SVG overlays
+ * Date: 2026-03-08
+ */
+
+/* ============================================
+   RECORDING RACK - LEFT/RIGHT SPLIT
+   ============================================ */
+
+.recording-hotspot {
+  transition: fill 0.2s ease;
+}
+
+.recording-hotspot:hover {
+  fill: rgba(255, 255, 255, 0.05) !important;
+}
+
+.recording-hotspot-cowley:hover {
+  fill: rgba(76, 175, 80, 0.1) !important; /* Green tint for Cowley */
+}
+
+.recording-hotspot-cricket:hover {
+  fill: rgba(156, 39, 176, 0.1) !important; /* Purple tint for Cricket */
+}
+
+/* ============================================
+   REHEARSAL RACK - LEFT/RIGHT SPLIT
+   ============================================ */
+
+.rehearsal-hotspot {
+  transition: fill 0.2s ease;
+}
+
+.rehearsal-hotspot:hover {
+  fill: rgba(255, 255, 255, 0.05) !important;
+}
+
+.rehearsal-hotspot-cowley:hover {
+  fill: rgba(76, 175, 80, 0.1) !important; /* Green tint for Cowley */
+}
+
+.rehearsal-hotspot-cricket:hover {
+  fill: rgba(156, 39, 176, 0.1) !important; /* Purple tint for Cricket */
+}
+
+/* ============================================
+   GLOBAL SVG HOTSPOT CURSOR
+   ============================================ */
+
+svg a {
+  cursor: pointer;
+}
+
+svg a:focus {
+  outline: 2px solid #D4AF37;
+  outline-offset: 4px;
+}
+
+/* ============================================
+   DEBUG MODE (Optional)
+   Uncomment to visualize hotspot zones
+   ============================================ */
+
+/*
+.recording-hotspot,
+.rehearsal-hotspot {
+  fill: rgba(255, 0, 0, 0.2) !important;
+  stroke: red !important;
+  stroke-width: 2 !important;
+}
+*/

@@ -1,0 +1,269 @@
+/**
+ * SIGNAGE FULL-SCREEN FIX
+ * Universal fix for all signage displays
+ * Removes ALL constraints that prevent true edge-to-edge display
+ * 
+ * Apply to: V4, Enhanced, Signal, Rewrite, Loop, V5
+ * Issue: Various CSS files add padding/max-width that create black borders
+ * Solution: Override with !important to force 100vw x 100vh
+ */
+
+/* ==========================================================
+   CRITICAL: FULL-SCREEN RESET
+   ========================================================== */
+
+/* Force full viewport on html and body */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* All elements use border-box */
+* {
+  box-sizing: border-box !important;
+}
+
+/* ==========================================================
+   SIGNAGE CONTAINERS - 100% WIDTH/HEIGHT
+   ========================================================== */
+
+/* All signage container classes */
+.signage-v4-container,
+.signage-v5-container,
+.signage-enhanced-container,
+.signage-enhanced-v3-container,
+.signage-signal-container,
+.signage-rewrite-container,
+.signage-loop-container,
+.signage-container {
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* ==========================================================
+   CONTENT AREAS - REMOVE MAX-WIDTH CONSTRAINTS
+   ========================================================== */
+
+/* Frame containers */
+.frame,
+.frame-content,
+.frame-panel,
+.signage-frame {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Hero sections - no padding constraints */
+.frame-hero,
+.hero-section,
+.content-hero {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 40px 60px 20px !important; /* Comfortable spacing, not constrained */
+}
+
+/* Body text - remove max-width */
+.frame-body,
+.content-body,
+.signage-text {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Split content sections */
+.frame-split-content,
+.split-panel,
+.content-split {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 40px !important;
+}
+
+/* ==========================================================
+   IMAGES - FULL-WIDTH
+   ========================================================== */
+
+/* Background images */
+.frame-bg-image,
+.background-image,
+.signage-background {
+  width: 100vw !important;
+  height: 100vh !important;
+  object-fit: cover !important;
+  max-width: none !important;
+  max-height: none !important;
+}
+
+/* ==========================================================
+   STATUS BAR - BOTTOM EDGE
+   ========================================================== */
+
+/* Status bar at true bottom */
+.system-status-bar,
+.status-bar,
+.signage-footer {
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  padding: 0 40px !important;
+}
+
+/* ==========================================================
+   VU METERS & CONTROLS - PROPER POSITIONING
+   ========================================================== */
+
+/* VU meter panels */
+.vu-panel,
+.vu-meters,
+.meter-panel {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Control panels */
+.control-panel,
+.controls,
+.button-panel {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* ==========================================================
+   RASTA STRIPE - TOP EDGE
+   ========================================================== */
+
+.rasta-stripe {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+}
+
+/* ==========================================================
+   CRS BADGE - POSITIONED CORRECTLY
+   ========================================================== */
+
+.crs-badge,
+.crs-badge-persistent {
+  position: absolute !important;
+  /* Keep positioning from individual CSS files */
+}
+
+/* ==========================================================
+   STATION ID - POSITIONED CORRECTLY
+   ========================================================== */
+
+.station-id-overlay,
+.station-id-badge {
+  position: fixed !important;
+  /* Keep positioning from individual CSS files */
+}
+
+/* ==========================================================
+   OVERLAYS - FULL-WIDTH
+   ========================================================== */
+
+.frame-overlay,
+.content-overlay,
+.signage-overlay {
+  width: 100vw !important;
+  height: 100vh !important;
+  top: 0 !important;
+  left: 0 !important;
+}
+
+/* ==========================================================
+   MOBILE/TABLET - MAINTAIN FULL-SCREEN
+   ========================================================== */
+
+@media (max-width: 1280px) {
+  .frame-hero {
+    padding: 60px 40px 20px !important;
+  }
+  
+  .frame-split-content {
+    padding: 40px 30px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .frame-hero {
+    padding: 40px 30px 20px !important;
+  }
+  
+  .frame-split-content {
+    padding: 30px 20px !important;
+  }
+  
+  .status-bar,
+  .system-status-bar {
+    padding: 0 20px !important;
+  }
+}
+
+/* ==========================================================
+   SPECIFIC FIX FOR COMMON ISSUES
+   ========================================================== */
+
+/* Remove any nested max-widths */
+.container,
+.wrapper,
+.inner,
+.content-wrapper {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Ensure scanlines and effects cover full screen */
+.scanlines,
+.grain,
+.noise,
+.filter {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+/* Progress bars at bottom */
+.progress-bar,
+.frame-progress {
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+}
+
+/* QR codes - don't let them cause overflow */
+.qr-container,
+.qr-code {
+  max-width: 100% !important;
+}
+
+/* ==========================================================
+   DEBUG: HIGHLIGHT ISSUES (REMOVE IN PRODUCTION)
+   ========================================================== */
+
+/* Uncomment to debug layout issues:
+body * {
+  outline: 1px solid rgba(255, 0, 0, 0.2) !important;
+}
+*/
+
+/* ==========================================================
+   REDUCED MOTION
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

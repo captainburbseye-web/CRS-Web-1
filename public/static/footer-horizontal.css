@@ -1,0 +1,120 @@
+/**
+ * HORIZONTAL FOOTER LAYOUT
+ * Spreads footer content across rack width to reduce vertical space
+ */
+
+.terminal-status-footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.terminal-status-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.terminal-status-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.688rem; /* 11px */
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #E89B3C; /* Mustard */
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(232, 155, 60, 0.2);
+  padding-bottom: 0.25rem;
+}
+
+.terminal-status-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.5;
+  color: rgba(245, 245, 245, 0.85); /* Improved contrast for WCAG AA */
+  margin-bottom: 0.25rem;
+}
+
+.terminal-status-line a {
+  color: rgba(245, 245, 245, 0.95); /* Even higher contrast for links */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.terminal-status-line a:hover {
+  color: #E89B3C;
+}
+
+/* NAP Section (Name, Address, Phone) - make it prominent */
+.nap-section {
+  grid-column: span 2;
+}
+
+.nap-section .terminal-status-line {
+  font-size: 0.813rem; /* 13px - slightly larger */
+}
+
+/* Truth line - full width */
+.terminal-truth-line {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(232, 155, 60, 0.2);
+  border-bottom: 1px solid rgba(232, 155, 60, 0.2);
+  margin: 1rem 0;
+}
+
+.terminal-truth-line .terminal-status-line {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Footer branding - full width, centered */
+.footer-branding {
+  grid-column: 1 / -1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.footer-badge {
+  max-width: 100px;
+  height: auto;
+  opacity: 0.9;
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+  .terminal-status-footer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+  
+  .nap-section {
+    grid-column: span 1;
+  }
+  
+  .terminal-truth-line,
+  .footer-branding {
+    grid-column: 1;
+  }
+  
+  .terminal-status-label {
+    font-size: 0.75rem;
+  }
+  
+  .terminal-status-line {
+    font-size: 0.813rem;
+  }
+  
+  .footer-badge {
+    max-width: 80px;
+  }
+}

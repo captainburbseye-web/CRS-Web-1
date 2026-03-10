@@ -1,0 +1,82 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-25",
+  "currency": "GBP",
+  "services": {
+    "rehearsal": {
+      "cowleyRoad": {
+        "name": "Cowley Road Rehearsal Room",
+        "location": "118 Cowley Road, Oxford",
+        "rates": {
+          "2hours": 45,
+          "3hours": 60,
+          "4hours": 65
+        },
+        "features": [
+          "Professional backline",
+          "Clear signal paths",
+          "Acoustically treated"
+        ]
+      },
+      "cricketRoad": {
+        "name": "Cricket Road Studio",
+        "location": "Cricket Road (10 min walk)",
+        "rates": {
+          "2hours": 40,
+          "3hours": 55,
+          "4hours": 60
+        },
+        "features": [
+          "Yamaha CLP piano",
+          "Full drum kit",
+          "Live room"
+        ]
+      }
+    },
+    "recording": {
+      "engineerLed": {
+        "name": "Recording Services",
+        "location": "Cowley Road HQ",
+        "rates": {
+          "perHour": 35,
+          "minimum": 70
+        },
+        "minimumHours": 2,
+        "features": [
+          "Engineer-led sessions",
+          "Multi-room tracking",
+          "Professional monitoring"
+        ]
+      },
+      "controlRoom": {
+        "name": "Control Room Hire",
+        "location": "Cricket Road (self-operated)",
+        "rates": {
+          "perHour": 30,
+          "minimum": 60
+        },
+        "minimumHours": 2,
+        "features": [
+          "Professional mixing environment",
+          "Dry hire",
+          "Self-operated"
+        ]
+      }
+    },
+    "workshopCafe": {
+      "name": "Workshop Café",
+      "location": "118 Cowley Road (The Billet Building)",
+      "status": "Opening Spring 2026",
+      "features": [
+        "Coffee",
+        "Repairs",
+        "Musical curios",
+        "Coworking spaces",
+        "Event venue"
+      ]
+    }
+  },
+  "offers": {
+    "current": []
+  }
+}

@@ -1,0 +1,70 @@
+/**
+ * MASTER RACK CHASSIS
+ * The single container that defines the width of the entire site.
+ * Header, Nav, Accordion, Footer - all children inherit this width.
+ */
+
+.master-rack-chassis {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+  
+  /* Full metal jacket - brushed metal texture */
+  background-image: url('https://pub-cf83109acdfe4a0fbecf1fb8fc73f559.r2.dev/brushed%20metal%20for%20web%20background/Gemini_Generated_Image_isebidisebidiseb%20(3).png');
+  background-repeat: repeat;
+  background-size: cover;
+  background-color: #1a1a1a;
+  
+  /* Ensure text is readable on dark metal */
+  color: #e0e0e0;
+}
+
+/* CRITICAL: All direct children must be 100% of chassis width */
+.master-rack-chassis > * {
+  width: 100%;
+  max-width: none; /* Remove any child max-width constraints */
+}
+
+/* Header Image: Full width of chassis */
+.master-rack-chassis .rack-header-container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.master-rack-chassis .rack-header-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  image-rendering: crisp-edges;
+}
+
+/* Nav Bar: Full width of chassis, looks like metal strip bolted under header */
+.master-rack-chassis .rack-header {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+/* Accordion Stack: Full width of chassis */
+.master-rack-chassis .rack-accordion-viewport {
+  width: 100%;
+  max-width: none;
+}
+
+/* Footer: Full width of chassis */
+.master-rack-chassis footer {
+  width: 100%;
+  max-width: none;
+}
+
+/* Mobile: Reduce chassis width and remove shadow for cleaner look */
+@media (max-width: 768px) {
+  .master-rack-chassis {
+    max-width: 100%;
+    box-shadow: none;
+  }
+}

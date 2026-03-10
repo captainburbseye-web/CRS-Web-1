@@ -1,0 +1,62 @@
+/**
+ * Title Rack Orange Glow Effect - Vault-Tec Style
+ * Subtle glow on text letters only, not entire rack
+ * Fallout-inspired: warm orange on dark hardware
+ */
+
+/* Title rack container */
+.title-rack-container {
+  position: relative;
+  max-width: 1920px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Title rack image - minimal processing, subtle text glow only */
+.title-rack-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Very subtle text-focused glow - Vault-Tec style */
+  filter: 
+    drop-shadow(0 0 3px rgba(255, 140, 0, 0.3))
+    drop-shadow(0 0 6px rgba(255, 140, 0, 0.2))
+    contrast(1.02)
+    brightness(1.02);
+  transition: filter 0.3s ease;
+}
+
+/* Subtle glow enhancement on hover - letters brighten slightly */
+.title-rack-container:hover .title-rack-img {
+  filter: 
+    drop-shadow(0 0 4px rgba(255, 140, 0, 0.4))
+    drop-shadow(0 0 8px rgba(255, 140, 0, 0.3))
+    contrast(1.03)
+    brightness(1.03);
+}
+
+/* Mobile: even more subtle */
+@media (max-width: 768px) {
+  .title-rack-img {
+    filter: 
+      drop-shadow(0 0 2px rgba(255, 140, 0, 0.25))
+      drop-shadow(0 0 4px rgba(255, 140, 0, 0.15))
+      contrast(1.01)
+      brightness(1.01);
+  }
+  
+  .title-rack-container:hover .title-rack-img {
+    filter: 
+      drop-shadow(0 0 3px rgba(255, 140, 0, 0.3))
+      drop-shadow(0 0 6px rgba(255, 140, 0, 0.2))
+      contrast(1.02)
+      brightness(1.02);
+  }
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .title-rack-img {
+    transition: none;
+  }
+}

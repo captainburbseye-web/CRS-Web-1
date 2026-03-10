@@ -1,0 +1,179 @@
+/**
+ * HEADER RACK - Precise Button Hotspots
+ * Cowley Road Studios
+ * Individual clickable buttons only - not entire rack
+ */
+
+/* Header rack container */
+.header-rack-interactive {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+/* Button hotspots overlay */
+.header-button-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Individual header button base */
+.header-button {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: 
+    background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+/* Hover effects - subtle glow matching button color */
+.header-button:hover {
+  background: rgba(255, 204, 0, 0.08);
+  box-shadow: 
+    inset 0 0 20px rgba(255, 204, 0, 0.15),
+    0 0 15px rgba(255, 204, 0, 0.2);
+  transform: scale(1.02);
+}
+
+/* Active/press effect with JS class */
+.header-button:active,
+.header-button.button-pressed {
+  transform: scale(0.98);
+  background: rgba(255, 204, 0, 0.12);
+  box-shadow: inset 0 0 15px rgba(255, 204, 0, 0.2);
+}
+
+/* Focus state for keyboard navigation */
+.header-button:focus-visible {
+  outline: 3px solid rgba(255, 204, 0, 0.8);
+  outline-offset: 2px;
+  background: rgba(255, 204, 0, 0.1);
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.3);
+}
+
+/* === TOP RACK BUTTONS === */
+
+/* WELCOME button (top left) */
+.header-welcome-btn {
+  top: 13%;
+  left: 15%;
+  width: 18%;
+  height: 16%;
+}
+
+/* BOOK NOW button (top center-right) */
+.header-booknow-btn {
+  top: 13%;
+  left: 37%;
+  width: 18%;
+  height: 16%;
+}
+
+/* === BOTTOM RACK BUTTONS === */
+
+/* RECORDING button (bottom left) */
+.header-recording-btn {
+  top: 63%;
+  left: 14%;
+  width: 17%;
+  height: 18%;
+}
+
+/* REHEARSAL button (bottom center-left) */
+.header-rehearsal-btn {
+  top: 63%;
+  left: 35%;
+  width: 17%;
+  height: 18%;
+}
+
+/* CONTROL ROOM button (bottom center-right) */
+.header-control-btn {
+  top: 63%;
+  left: 56%;
+  width: 17%;
+  height: 18%;
+}
+
+/* AV HIRE button (bottom right) */
+.header-av-btn {
+  top: 63%;
+  left: 77%;
+  width: 17%;
+  height: 18%;
+}
+
+/* Green glow for REHEARSAL button (green in image) */
+.header-rehearsal-btn:hover {
+  background: rgba(57, 255, 20, 0.08);
+  box-shadow: 
+    inset 0 0 20px rgba(57, 255, 20, 0.15),
+    0 0 15px rgba(57, 255, 20, 0.2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  /* Slightly larger touch targets on mobile */
+  .header-welcome-btn,
+  .header-booknow-btn {
+    height: 18%;
+  }
+  
+  .header-recording-btn,
+  .header-rehearsal-btn,
+  .header-control-btn,
+  .header-av-btn {
+    height: 20%;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Even larger touch targets on small screens */
+  .header-welcome-btn,
+  .header-booknow-btn {
+    height: 20%;
+    min-height: 50px;
+  }
+  
+  .header-recording-btn,
+  .header-rehearsal-btn,
+  .header-control-btn,
+  .header-av-btn {
+    height: 22%;
+    min-height: 60px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .header-button {
+    transition: none;
+  }
+  
+  .header-button:hover,
+  .header-button:active {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .header-button:hover {
+    outline: 3px solid #ffd700;
+    background: rgba(255, 215, 0, 0.2);
+  }
+  
+  .header-button:focus-visible {
+    outline: 5px solid #ffd700;
+  }
+}

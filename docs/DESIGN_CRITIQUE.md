@@ -228,7 +228,7 @@ But design reality: ALL CAPS everywhere = shouting, hard to read, reduces hierar
 **Problem:** Users don't know if it's imminent or distant future.
 
 **Fix:**
-- If you know: "Opening March 2026"
+- If you know: "Opening April 2026"
 - If uncertain: "Opening Q2 2026" or "Join Waitlist for Launch Updates"
 - Add email signup for café launch notifications
 

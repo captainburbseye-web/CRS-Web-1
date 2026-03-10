@@ -1,0 +1,156 @@
+/**
+ * RACK INTERACTIVE ENHANCEMENTS
+ * Cowley Road Studios
+ * Subtle hover effects and accessibility improvements for all rack modules
+ */
+
+/* Enhanced rack module links (rehearsal rooms, etc.) */
+.rack-module-graphic a {
+  position: relative;
+  display: block;
+  transition: 
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Subtle hover lift and glow */
+.rack-module-graphic a:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 30px rgba(255, 215, 0, 0.2),
+    inset 0 0 40px rgba(255, 215, 0, 0.05);
+  filter: brightness(1.05) contrast(1.05);
+}
+
+/* Press feedback - with .button-pressed class from JS */
+.rack-module-graphic a:active,
+.rack-module-graphic a.button-pressed {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 
+    0 2px 15px rgba(255, 215, 0, 0.15),
+    inset 0 0 30px rgba(255, 215, 0, 0.03);
+  filter: brightness(1.02);
+}
+
+/* Enhanced focus state for keyboard navigation */
+.rack-module-graphic a:focus-visible {
+  outline: 4px solid rgba(255, 204, 0, 0.8);
+  outline-offset: 4px;
+  box-shadow: 
+    0 0 35px rgba(255, 215, 0, 0.4),
+    inset 0 0 40px rgba(255, 215, 0, 0.08);
+  filter: brightness(1.08);
+}
+
+/* Enhanced tooltips for rack links */
+.rack-tooltip {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  
+  /* Styling */
+  background: rgba(10, 26, 15, 0.95);
+  color: #ffd700;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  
+  /* Border glow */
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 215, 0, 0.2);
+  
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  
+  /* Smooth transition */
+  transition: 
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.3s;
+}
+
+/* Show tooltip on hover */
+.rack-module-graphic a:hover .rack-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Mobile: Always show tooltips, smaller size */
+@media (max-width: 768px) {
+  .rack-tooltip {
+    opacity: 0.9;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    font-size: 0.75rem;
+    padding: 8px 16px;
+  }
+  
+  .rack-module-graphic a:hover .rack-tooltip {
+    opacity: 1;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .rack-module-graphic a,
+  .rack-tooltip {
+    transition: none;
+  }
+  
+  .rack-module-graphic a:hover {
+    transform: none;
+  }
+  
+  .rack-module-graphic a:active {
+    transform: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .rack-module-graphic a:hover {
+    outline: 3px solid #ffd700;
+    outline-offset: 2px;
+  }
+  
+  .rack-module-graphic a:focus-visible {
+    outline: 5px solid #ffd700;
+  }
+  
+  .rack-tooltip {
+    background: #000;
+    border: 3px solid #ffd700;
+  }
+}
+
+/* Pulse animation for keyboard focus (accessibility) */
+@keyframes focus-pulse {
+  0%, 100% {
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.6);
+  }
+}
+
+.rack-module-graphic a:focus-visible {
+  animation: focus-pulse 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rack-module-graphic a:focus-visible {
+    animation: none;
+  }
+}

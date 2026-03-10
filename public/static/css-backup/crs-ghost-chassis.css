@@ -1,0 +1,909 @@
+/**
+ * CRS GHOST CHASSIS — CH1, CH2, CH3 & CH8
+ * The 238th Law: "Real hardware has depth."
+ * 
+ * 4-Layer Recessed-Depth Stack:
+ * Layer 1: Reactive SVG Signal (behind)
+ * Layer 2: Transparent Machined Plate (chassis)
+ * Layer 3: Interactive Glass Overlay
+ * Layer 4: Invisible Hitbox Navigation
+ */
+
+/* ============================================
+   LAYER 0: GHOST CHASSIS CONTAINER
+   ============================================ */
+[data-channel="1"] .rack-module,
+[data-channel="2"] .rack-module,
+[data-channel="3"] .rack-module,
+[data-channel="8"] .rack-module {
+  position: relative;
+  isolation: isolate; /* Create stacking context */
+}
+
+[data-channel="1"] .rack-window-container,
+[data-channel="2"] .rack-window-container,
+[data-channel="3"] .rack-window-container,
+[data-channel="8"] .rack-window-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+}
+
+/* ============================================
+   LAYER 1: REACTIVE SVG SIGNAL (BACK-PLANE)
+   Waveform lives BEHIND the transparent chassis
+   ============================================ */
+[data-channel="1"] .waveform-svg {
+  position: absolute;
+  top: 24%; /* Monitor window position */
+  left: 42.1%;
+  width: 50%; /* Monitor cutout width */
+  height: 40%; /* Monitor cutout height */
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px #FFDB58) 
+          drop-shadow(0 0 16px #FFDB58)
+          drop-shadow(0 0 24px rgba(255, 219, 88, 0.3));
+}
+
+[data-channel="2"] .waveform-svg {
+  position: absolute;
+  top: 24%; /* Monitor window position */
+  left: 42.1%;
+  width: 50%; /* Monitor cutout width */
+  height: 40%; /* Monitor cutout height */
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px var(--neon-cyan)) 
+          drop-shadow(0 0 16px var(--neon-cyan))
+          drop-shadow(0 0 24px rgba(0, 255, 255, 0.3));
+}
+
+[data-channel="3"] .waveform-svg {
+  position: absolute;
+  top: 24%;
+  left: 42.1%;
+  width: 50%;
+  height: 40%;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px #FFD700) 
+          drop-shadow(0 0 16px #FFD700)
+          drop-shadow(0 0 24px rgba(255, 215, 0, 0.3));
+}
+
+[data-channel="8"] .waveform-svg {
+  position: absolute;
+  top: 24%;
+  left: 42.1%;
+  width: 50%;
+  height: 40%;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px #FF006E) 
+          drop-shadow(0 0 16px #FF6B35)
+          drop-shadow(0 0 24px rgba(255, 0, 110, 0.4));
+}
+
+[data-channel="4"] .waveform-svg {
+  position: absolute;
+  top: 24%;
+  left: 42.1%;
+  width: 50%;
+  height: 40%;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px #D4A574) 
+          drop-shadow(0 0 16px #FFB627)
+          drop-shadow(0 0 24px rgba(212, 165, 116, 0.3));
+}
+
+[data-channel="6"] .waveform-svg {
+  position: absolute;
+  top: 24%;
+  left: 42.1%;
+  width: 50%;
+  height: 40%;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px #FF8C00) 
+          drop-shadow(0 0 16px #FFA500)
+          drop-shadow(0 0 24px rgba(255, 140, 0, 0.3));
+}
+
+[data-channel="7"] .waveform-svg {
+  position: absolute;
+  top: 24%;
+  left: 42.1%;
+  width: 50%;
+  height: 40%;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px #2CFF05) 
+          drop-shadow(0 0 16px #00FF41)
+          drop-shadow(0 0 24px rgba(44, 255, 5, 0.4));
+}
+
+/* Continuous Waveform Flow Animation */
+[data-channel="1"] .waveform-path,
+[data-channel="2"] .waveform-path,
+[data-channel="3"] .waveform-path,
+[data-channel="4"] .waveform-path,
+[data-channel="6"] .waveform-path,
+[data-channel="7"] .waveform-path,
+[data-channel="8"] .waveform-path {
+  stroke-width: 0.8;
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: pulse-wave 3s linear infinite, heartbeat-pulse 1.2s ease-in-out infinite;
+  transition: stroke-width 0.3s ease-out;
+}
+
+/* CH1: Warm Analog Pulse */
+[data-channel="1"] .waveform-path {
+  stroke: #FFDB58 !important;
+  animation: pulse-wave 3.5s linear infinite, analog-throb 2s ease-in-out infinite !important;
+}
+
+[data-channel="1"]:hover .waveform-path {
+  stroke-width: 1.5;
+  animation: pulse-wave 2.5s linear infinite, analog-throb 1.5s ease-in-out infinite;
+}
+
+/* CH8: Magenta Live Jam (Guitar Cricket) */
+[data-channel="8"] .waveform-path {
+  stroke: #FF006E !important;
+  animation: pulse-wave 2.8s linear infinite, live-jam-throb 1.5s ease-in-out infinite !important;
+}
+
+[data-channel="8"]:hover .waveform-path {
+  stroke-width: 1.6;
+  animation: pulse-wave 2s linear infinite, live-jam-throb 1s ease-in-out infinite;
+}
+
+/* CH4: Amber Nature Pulse (Workshop Café) */
+[data-channel="4"] .waveform-path {
+  stroke: #D4A574 !important;
+  animation: pulse-wave 3.2s linear infinite, analog-throb 1.8s ease-in-out infinite !important;
+}
+
+[data-channel="4"]:hover .waveform-path {
+  stroke-width: 1.4;
+  animation: pulse-wave 2.4s linear infinite, analog-throb 1.3s ease-in-out infinite;
+}
+
+/* CH3: Caution Yellow Industrial (Cowley Pods - Isolation Units) */
+[data-channel="3"] .waveform-path {
+  stroke: #FFD700 !important;
+  animation: pulse-wave 3s linear infinite, industrial-throb 1.6s ease-in-out infinite !important;
+}
+
+[data-channel="3"]:hover .waveform-path {
+  stroke-width: 1.5;
+  animation: pulse-wave 2.2s linear infinite, industrial-throb 1.2s ease-in-out infinite;
+}
+
+/* CH6: Warm Amber Comms (Contact & Location Patch Bay) */
+[data-channel="6"] .waveform-path {
+  stroke: #FF8C00 !important;
+  animation: pulse-wave 3.5s linear infinite, comms-pulse 2s ease-in-out infinite !important;
+}
+
+[data-channel="6"]:hover .waveform-path {
+  stroke-width: 1.3;
+  animation: pulse-wave 2.8s linear infinite, comms-pulse 1.5s ease-in-out infinite;
+}
+
+/* CH7: System Green (Master Bus) */
+[data-channel="7"] .waveform-path {
+  stroke: #2CFF05 !important;
+  animation: pulse-wave 3s linear infinite, system-pulse 1.8s ease-in-out infinite !important;
+}
+
+[data-channel="7"]:hover .waveform-path {
+  stroke-width: 1.4;
+  animation: pulse-wave 2.3s linear infinite, system-pulse 1.3s ease-in-out infinite;
+}
+
+[data-channel="2"]:hover .waveform-path {
+  stroke-width: 1.5;
+  animation: pulse-wave 2s linear infinite, heartbeat-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse-wave {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes heartbeat-pulse {
+  0%, 100% { 
+    stroke-width: 0.8; 
+    opacity: 1;
+  }
+  20% { 
+    stroke-width: 1.4; 
+    opacity: 0.9;
+  }
+  25% { 
+    stroke-width: 0.8; 
+    opacity: 1;
+  }
+  35% { 
+    stroke-width: 1.6; 
+    opacity: 0.85;
+  }
+  45% { 
+    stroke-width: 0.8; 
+    opacity: 1;
+  }
+}
+
+@keyframes analog-throb {
+  0%, 100% { 
+    stroke-width: 0.8; 
+    opacity: 0.95;
+  }
+  50% { 
+    stroke-width: 1.2; 
+    opacity: 1;
+  }
+}
+
+@keyframes live-jam-throb {
+  0%, 100% { 
+    stroke-width: 0.9; 
+    opacity: 1;
+  }
+  30% { 
+    stroke-width: 1.5; 
+    opacity: 0.95;
+  }
+  60% { 
+    stroke-width: 0.9; 
+    opacity: 1;
+  }
+}
+
+@keyframes industrial-throb {
+  0%, 100% { 
+    stroke-width: 0.8; 
+    opacity: 0.98;
+  }
+  40% { 
+    stroke-width: 1.3; 
+    opacity: 1;
+  }
+  70% { 
+    stroke-width: 0.85; 
+    opacity: 0.95;
+  }
+}
+
+@keyframes comms-pulse {
+  0%, 100% { 
+    stroke-width: 0.7; 
+    opacity: 0.9;
+  }
+  50% { 
+    stroke-width: 1.1; 
+    opacity: 1;
+  }
+}
+
+@keyframes system-pulse {
+  0%, 100% { 
+    stroke-width: 0.9; 
+    opacity: 1;
+  }
+  40% { 
+    stroke-width: 1.3; 
+    opacity: 0.95;
+  }
+  70% { 
+    stroke-width: 1.0; 
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   LAYER 2: TRANSPARENT MACHINED PLATE (CHASSIS)
+   The physical faceplate with depth
+   ============================================ */
+[data-channel="1"] .rack-ghost-chassis,
+[data-channel="2"] .rack-ghost-chassis,
+[data-channel="3"] .rack-ghost-chassis,
+[data-channel="8"] .rack-ghost-chassis {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: 
+    drop-shadow(0 12px 24px rgba(0, 0, 0, 0.9))
+    drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+  transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Tactile Feedback: Hardware "Powers Up" */
+[data-channel="1"]:hover .rack-ghost-chassis,
+[data-channel="2"]:hover .rack-ghost-chassis,
+[data-channel="3"]:hover .rack-ghost-chassis,
+[data-channel="8"]:hover .rack-ghost-chassis {
+  filter: 
+    drop-shadow(0 12px 24px rgba(0, 0, 0, 0.9)) 
+    drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6))
+    brightness(1.15)
+    contrast(1.05);
+  transform: scale(1.01);
+}
+
+/* Ambient Glow Around Chassis */
+[data-channel="2"] .rack-window-container {
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.12),
+    inset 0 1px 3px rgba(255, 255, 255, 0.08);
+}
+
+[data-channel="3"] .rack-window-container {
+  box-shadow: 
+    0 0 20px rgba(255, 0, 217, 0.12),
+    inset 0 1px 3px rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================
+   LAYER 3: INTERACTIVE GLASS OVERLAY
+   Frosted glassmorphism restricted to monitor window
+   ============================================ */
+[data-channel="2"] .rack-glass-monitor,
+[data-channel="3"] .rack-glass-monitor {
+  position: absolute;
+  top: 24%;
+  left: 42.1%;
+  width: 50%;
+  height: 40%;
+  z-index: 3;
+  pointer-events: none;
+  backdrop-filter: blur(1.5px);
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 3px
+    );
+  opacity: 0.7;
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.1);
+  transition: backdrop-filter 0.3s ease-out;
+}
+
+[data-channel="2"]:hover .rack-glass-monitor,
+[data-channel="3"]:hover .rack-glass-monitor {
+  backdrop-filter: blur(2px);
+  opacity: 0.8;
+}
+
+/* ============================================
+   LAYER 4: INVISIBLE HITBOX NAVIGATION
+   "BOOK NOW" button with tactile press physics
+   ============================================ */
+[data-channel="2"] .rack-booking-hitbox,
+[data-channel="3"] .rack-booking-hitbox {
+  position: absolute;
+  top: 34%;
+  right: 8%;
+  width: 20%;
+  height: 12%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: transparent;
+  background: transparent;
+  border-radius: 4px;
+  transition: 
+    background 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-channel="2"] .rack-booking-hitbox:hover {
+  background: rgba(0, 255, 255, 0.12);
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 12px rgba(0, 255, 255, 0.4),
+    inset 0 0 8px rgba(0, 255, 255, 0.2);
+}
+
+[data-channel="3"] .rack-booking-hitbox:hover {
+  background: rgba(255, 0, 217, 0.12);
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 12px rgba(255, 0, 217, 0.4),
+    inset 0 0 8px rgba(255, 0, 217, 0.2);
+}
+
+/* Tactile Press Effect */
+[data-channel="2"] .rack-booking-hitbox:active {
+  transform: scale(0.98) translateY(2px);
+  background: rgba(0, 255, 255, 0.18);
+  box-shadow: 
+    0 0 8px rgba(0, 255, 255, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-channel="3"] .rack-booking-hitbox:active {
+  transform: scale(0.98) translateY(2px);
+  background: rgba(255, 0, 217, 0.18);
+  box-shadow: 
+    0 0 8px rgba(255, 0, 217, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+[data-channel="2"] .rack-booking-hitbox:focus {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 2px;
+}
+
+[data-channel="3"] .rack-booking-hitbox:focus {
+  outline: 2px solid var(--neon-magenta);
+  outline-offset: 2px;
+}
+
+/* Screen Reader Label */
+[data-channel="2"] .rack-booking-hitbox::after,
+[data-channel="3"] .rack-booking-hitbox::after {
+  content: attr(aria-label);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  [data-channel="2"] .waveform-path,
+  [data-channel="3"] .waveform-path {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  [data-channel="2"] .rack-ghost-chassis,
+  [data-channel="3"] .rack-ghost-chassis {
+    transition: filter 0.1s ease-out !important;
+    transform: none !important;
+  }
+  
+  [data-channel="2"] .module-title,
+  [data-channel="3"] .module-title {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   TYPOGRAPHY ENHANCEMENTS
+   Kinetic neon glow for module titles
+   ============================================ */
+[data-channel="2"] .module-title,
+[data-channel="3"] .module-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    0 0 8px currentColor,
+    0 0 16px currentColor,
+    0 0 24px rgba(255, 255, 255, 0.3);
+  animation: subtle-flicker 3s ease-in-out infinite;
+}
+
+@keyframes subtle-flicker {
+  0%, 100% { 
+    opacity: 1;
+    text-shadow: 
+      0 0 8px currentColor,
+      0 0 16px currentColor,
+      0 0 24px rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    opacity: 0.95;
+    text-shadow: 
+      0 0 6px currentColor,
+      0 0 12px currentColor,
+      0 0 20px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* ============================================
+   MOBILE OPTIMIZATIONS
+   ============================================ */
+@media (max-width: 768px) {
+  [data-channel="2"] .rack-booking-hitbox,
+  [data-channel="3"] .rack-booking-hitbox {
+    width: 30%;
+    height: 15%;
+    top: 32%;
+    right: 6%;
+  }
+  
+  [data-channel="2"] .waveform-svg,
+  [data-channel="3"] .waveform-svg {
+    filter: drop-shadow(0 0 6px var(--neon-cyan));
+  }
+  
+  [data-channel="3"] .waveform-svg {
+    filter: drop-shadow(0 0 6px var(--neon-magenta));
+  }
+  
+  [data-channel="2"] .rack-ghost-chassis,
+  [data-channel="3"] .rack-ghost-chassis {
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.8));
+  }
+}
+
+/* ============================================
+   VIRTUAL RACK INTERFACE ARCHITECTURE
+   "The image IS the UI" — Remove all external text/buttons
+   ============================================ */
+
+/* THE RACK FRAME — Physical rack rails and depth */
+.rack-page.virtual-interface {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #0a0a0a;
+  border-left: 16px solid #1a1a1a; /* Left rail */
+  border-right: 16px solid #1a1a1a; /* Right rail */
+  box-shadow: 
+    inset 12px 0 24px rgba(0, 0, 0, 0.9),
+    inset -12px 0 24px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(0, 0, 0, 0.6);
+  position: relative;
+  padding: 0;
+}
+
+/* Rack rail texture */
+.rack-page.virtual-interface::before,
+.rack-page.virtual-interface::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    #1a1a1a 0%, 
+    #2a2a2a 10%, 
+    #1a1a1a 50%, 
+    #0a0a0a 90%, 
+    #000 100%);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.rack-page.virtual-interface::before {
+  left: 0;
+  top: 0;
+}
+
+.rack-page.virtual-interface::after {
+  right: 0;
+  top: 0;
+  background: linear-gradient(-90deg, 
+    #1a1a1a 0%, 
+    #2a2a2a 10%, 
+    #1a1a1a 50%, 
+    #0a0a0a 90%, 
+    #000 100%);
+}
+
+/* Hide external UI chrome (module headers, text blocks, external buttons) */
+.rack-module.virtual-interface .module-header {
+  display: none !important;
+}
+
+.rack-module.virtual-interface .channel-description {
+  display: none !important;
+}
+
+.rack-module.virtual-interface .patch-point {
+  display: none !important;
+}
+
+/* Hide parent module chrome */
+.rack-page.virtual-interface .rack-module.parent .module-header {
+  display: none !important;
+}
+
+.rack-page.virtual-interface .rack-module.parent .module-body {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.rack-page.virtual-interface .sub-racks {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* Hide modules without virtual interface */
+.rack-page.virtual-interface .rack-module:not(.virtual-interface) {
+  display: none !important;
+}
+
+/* Zero-gap vertical stacking — continuous rack */
+.rack-page.virtual-interface {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  background: #000;
+}
+
+.rack-page.virtual-interface .rack-module {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  line-height: 0; /* Kill ghost space under images */
+}
+
+.rack-page.virtual-interface .rack-module.parent {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Full-width rack faceplates — zero gaps */
+.rack-page.virtual-interface .rack-window-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  line-height: 0;
+  display: block;
+}
+
+.rack-page.virtual-interface .rack-ghost-chassis {
+  width: 100%;
+  display: block;
+  line-height: 0;
+}
+
+/* Ghost hitbox system — invisible buttons overlaid on rack controls */
+.ghost-hitbox {
+  position: absolute;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  border-radius: 50%; /* Default circular for buttons */
+  
+  /* === DEBUG MODE: RED CALIBRATION === */
+  /* Uncomment these lines to see hitbox boundaries for alignment */
+  /* background: rgba(255, 0, 0, 0.4) !important; */
+  /* outline: 2px solid yellow !important; */
+  /* === END DEBUG MODE === */
+  
+  /* Accessibility */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover — Subtle glow on the painted control */
+.ghost-hitbox:hover {
+  backdrop-filter: brightness(1.3) saturate(1.2);
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.4),
+    inset 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Active — Physical button press feeling */
+.ghost-hitbox:active {
+  transform: scale(0.95);
+  backdrop-filter: brightness(0.8);
+  box-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.2),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.ghost-hitbox:focus {
+  outline: 3px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 6px;
+}
+
+/* Tooltip system for hidden text */
+.ghost-hitbox::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(0, 0, 0, 0.95);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: 'Space Mono', monospace;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ghost-hitbox:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* LED pulse for active hitboxes */
+.ghost-hitbox.active::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: var(--neon-green);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--neon-green);
+  animation: led-pulse 2s ease-in-out infinite;
+}
+
+@keyframes led-pulse {
+  0%, 100% { 
+    opacity: 1;
+    box-shadow: 0 0 12px var(--neon-green);
+  }
+  50% { 
+    opacity: 0.5;
+    box-shadow: 0 0 24px var(--neon-green);
+  }
+}
+
+/* Disabled Ghost Hitbox (Standby Pods) */
+.ghost-hitbox-disabled {
+  position: absolute;
+  z-index: 10;
+  opacity: 0.6;
+  cursor: not-allowed;
+  transition: opacity 0.3s ease-out;
+}
+
+.ghost-hitbox-disabled:hover {
+  opacity: 0.8;
+}
+
+.ghost-hitbox-disabled::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px dashed rgba(255, 215, 0, 0.3);
+  border-radius: inherit;
+  background: rgba(255, 215, 0, 0.05);
+  pointer-events: none;
+}
+
+/* Debug mode — enable to visualize hitbox grid */
+.rack-page.debug-hitboxes .ghost-hitbox {
+  outline: 2px dashed rgba(255, 0, 0, 0.8);
+  background: rgba(255, 0, 0, 0.1);
+}
+
+/* Accessibility: Screen reader only text for context */
+.sr-context {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ============================================
+   CH7: Master Bus Power Switch & LED
+   ============================================ */
+.power-switch {
+  background: radial-gradient(circle, #2CFF05, #00FF41);
+  box-shadow: 0 0 24px #2CFF05, 0 0 48px rgba(44, 255, 5, 0.4);
+}
+
+@keyframes ledPulse {
+  0%, 100% { 
+    opacity: 1;
+    box-shadow: 0 0 24px #2CFF05;
+  }
+  50% { 
+    opacity: 0.8;
+    box-shadow: 0 0 48px #2CFF05, 0 0 72px rgba(44, 255, 5, 0.6);
+  }
+}
+
+.animate-ledPulse {
+  animation: ledPulse 2s ease-in-out infinite;
+}
+
+/* VU Meter Needle */
+.vu-meter-needle {
+  transform-origin: 32px 40px;
+}
+
+/* Kinetic Typography */
+.kinetic-title {
+  text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+}
+
+.oxford-flicker {
+  animation: oxford-flicker 3s ease-in-out infinite;
+}
+
+@keyframes oxford-flicker {
+  0%, 100% { 
+    opacity: 1;
+    text-shadow: 0 0 20px currentColor;
+  }
+  45%, 55% { 
+    opacity: 0.95;
+    text-shadow: 0 0 30px currentColor, 0 0 50px currentColor;
+  }
+}
+
+/* Animate Pulse Slow (for rear ambience) */
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { 
+    opacity: 0.3;
+  }
+  50% { 
+    opacity: 0.5;
+  }
+}
+
+/* ============================================
+   SIGNAGE LOOP: KIOSK MODE UTILITIES
+   ============================================ */
+
+/* Hide Cursor for Kiosk Mode */
+.cursor-none {
+  cursor: none;
+}
+
+/* Pixel Shift: Moves entire screen 1px every minute to prevent burn-in */
+@keyframes pixelShift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(1px, 0); }
+  50% { transform: translate(1px, 1px); }
+  75% { transform: translate(0, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.animate-pixelShift {
+  animation: pixelShift 60s infinite linear;
+}
+
+/* Progress Bar Loader */
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.animate-progress {
+  animation: progress linear forwards;
+}

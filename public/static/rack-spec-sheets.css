@@ -1,0 +1,94 @@
+/* ═══════════════════════════════════════════════════════════════════
+   RACK SPEC SHEETS
+   Console-style service information panels
+   ═══════════════════════════════════════════════════════════════════ */
+
+.rack-spec-sheet {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  color: #d4d4d8;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.rack-spec-sheet pre {
+  margin: 0;
+  white-space: pre;
+  overflow-x: auto;
+  color: #2d8a1f; /* CRS green */
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Spec sheet variants by service */
+.spec-recording {
+  border-color: rgba(212, 160, 23, 0.4); /* Amber for recording */
+}
+
+.spec-rehearsal {
+  border-color: rgba(45, 138, 31, 0.4); /* Green for rehearsal */
+}
+
+.spec-technical {
+  border-color: rgba(138, 43, 226, 0.4); /* Purple for technical */
+}
+
+.spec-cafe {
+  border-color: rgba(106, 168, 79, 0.4); /* Sage green for café */
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .rack-spec-sheet {
+    font-size: 0.7rem;
+    padding: 1rem;
+    margin: 1rem;
+    max-width: 100%;
+  }
+  
+  .rack-spec-sheet pre {
+    font-size: 0.65rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .rack-spec-sheet {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .rack-spec-sheet {
+    border-color: #d4a017;
+    background: #000;
+  }
+  
+  .rack-spec-sheet pre {
+    color: #00ff00;
+  }
+}
+
+/* Print styles */
+@media print {
+  .rack-spec-sheet {
+    background: white;
+    color: black;
+    border: 2px solid black;
+    page-break-inside: avoid;
+  }
+  
+  .rack-spec-sheet pre {
+    color: black;
+  }
+}

@@ -43,12 +43,13 @@ export const RecordingPage = () => {
 
           <div class="locations-pricing">
             <div class="location-price-card">
-              <h3>Cowley Road (Main Facility)</h3>
+              <h3>Cowley Road — Recording Services</h3>
               <div class="price-display">
                 <span class="price-value">£35</span>
                 <span class="price-unit">per hour</span>
               </div>
               <p class="price-note">Minimum 2 hours</p>
+              <p class="price-note" style="margin-top: 0.5rem;">Podcast enquiries — contact form</p>
             </div>
 
             <div class="location-price-card">

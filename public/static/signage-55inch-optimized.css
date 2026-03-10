@@ -1,0 +1,566 @@
+/**
+ * CRS SIGNAGE 55" 16:9 OPTIMIZATION - Feb 2026
+ * 
+ * Target: 55" Commercial Displays
+ * Resolution: 1920×1080 (Full HD)
+ * Aspect Ratio: 16:9
+ * Viewing Distance: 3-6 feet (close-mid range)
+ * 
+ * Optimizations:
+ * ✅ Typography scaled for 1920×1080
+ * ✅ Layouts optimized for 16:9
+ * ✅ Burn-in protection (subtle motion, no static elements)
+ * ✅ High contrast for visibility
+ * ✅ QR codes sized for scanning distance (3-6ft)
+ * ✅ Station ID placement optimized
+ * ✅ Frame timing calibrated for 55" viewing
+ * 
+ * Apply to: SignageV5, SignageV4, SignageEnhancedV3, SignageSignalEnhanced
+ */
+
+/* ==========================================================
+   55" DISPLAY FOUNDATION
+   ========================================================== */
+
+@media (min-width: 1920px) {
+  
+  /* Root sizing for 1920×1080 */
+  html {
+    font-size: 20px !important; /* Base size for 55" */
+  }
+  
+  /* Container fills 16:9 perfectly */
+  .signage-v5-container,
+  .signage-v4-container,
+  .signage-enhanced-v3-container,
+  .signage-container {
+    width: 1920px !important;
+    height: 1080px !important;
+    max-width: 1920px !important;
+    max-height: 1080px !important;
+    overflow: hidden !important;
+  }
+  
+  /* Anti-burn-in: subtle constant motion */
+  .signage-frames {
+    animation: subtle-drift 120s ease-in-out infinite !important;
+  }
+  
+  @keyframes subtle-drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-2px, -1px) scale(1.001); }
+    50% { transform: translate(2px, 1px) scale(1); }
+    75% { transform: translate(-1px, 2px) scale(1.001); }
+  }
+
+  /* ==========================================================
+     TYPOGRAPHY FOR 55" 1920×1080
+     ========================================================== */
+  
+  /* Frame titles - highly visible from 3-6ft */
+  .frame-title,
+  .signage-title,
+  h1 {
+    font-size: 5rem !important; /* 100px at 20px base */
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+    font-weight: 700 !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Frame subtitles */
+  .frame-subtitle,
+  .signage-subtitle {
+    font-size: 3rem !important; /* 60px */
+    line-height: 1.2 !important;
+    letter-spacing: 0.02em !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Body text */
+  .frame-body,
+  .signage-body,
+  p {
+    font-size: 2rem !important; /* 40px */
+    line-height: 1.5 !important;
+    letter-spacing: 0.01em !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Small text / labels */
+  .qr-label,
+  .station-value,
+  .status-label,
+  small {
+    font-size: 1.25rem !important; /* 25px */
+    letter-spacing: 0.05em !important;
+  }
+  
+  /* System status bar */
+  .system-status-bar {
+    height: 4rem !important; /* 80px */
+    font-size: 1rem !important; /* 20px */
+    padding: 0 3rem !important;
+  }
+  
+  .status-led {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  /* ==========================================================
+     LAYOUT OPTIMIZATION FOR 16:9
+     ========================================================== */
+  
+  /* Content panel - centered with breathing room */
+  .frame-content {
+    padding: 6rem 8rem !important;
+    max-width: 1600px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* CRS Badge - top-left, larger */
+  .crs-badge-persistent {
+    top: 3rem !important;
+    left: 3rem !important;
+    width: 120px !important;
+    height: 120px !important;
+  }
+  
+  /* Opening Soon Badge - top-right, larger */
+  .status-badge {
+    top: 3rem !important;
+    right: 3rem !important;
+    font-size: 1.25rem !important; /* 25px */
+    padding: 1rem 2rem !important;
+    border-width: 3px !important;
+  }
+
+  /* ==========================================================
+     QR CODES - Optimized for 3-6ft scanning distance
+     ========================================================== */
+  
+  /* QR container - bottom-right, larger for easy scanning */
+  .qr-container-signage,
+  .qr-container-persistent {
+    bottom: 10rem !important; /* Above status bar */
+    right: 6rem !important;
+    gap: 1.5rem !important;
+  }
+  
+  /* QR code size - scannable from 3-6 feet */
+  .qr-code-real,
+  .qr-code-box {
+    width: 220px !important;
+    height: 220px !important;
+    padding: 20px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  .qr-code-real canvas,
+  .qr-code-box svg {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  
+  /* QR label */
+  .qr-label {
+    font-size: 1.5rem !important; /* 30px */
+    font-weight: 700 !important;
+  }
+
+  /* ==========================================================
+     STATION ID OVERLAY - Bottom-left, highly visible
+     ========================================================== */
+  
+  .station-id-overlay {
+    bottom: 6rem !important; /* Above status bar */
+    left: 3rem !important;
+    width: 600px !important;
+  }
+  
+  .station-id-badge {
+    padding: 1.5rem 2rem !important;
+    border-width: 3px !important;
+    border-radius: 12px !important;
+    gap: 1.5rem !important;
+  }
+  
+  .station-icon {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .station-value {
+    font-size: 1.75rem !important; /* 35px */
+    font-weight: 600 !important;
+  }
+
+  /* ==========================================================
+     VU METERS - Larger, more visible
+     ========================================================== */
+  
+  .vu-meters-minimal {
+    bottom: 12rem !important;
+    gap: 1rem !important;
+    height: 100px !important;
+  }
+  
+  .vu-bar {
+    width: 16px !important;
+    border-radius: 4px !important;
+  }
+
+  /* ==========================================================
+     PROGRESS BAR - Thicker for visibility
+     ========================================================== */
+  
+  .frame-progress {
+    height: 8px !important;
+  }
+  
+  .progress-fill {
+    height: 100% !important;
+  }
+
+  /* ==========================================================
+     BACKGROUND IMAGES - Optimized for 1920×1080
+     ========================================================== */
+  
+  .frame-bg-image {
+    width: 1920px !important;
+    height: 1080px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+  
+  /* Overlay adjustments */
+  .frame-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(14,14,14,0.75) 0%,
+      rgba(35,39,43,0.85) 100%
+    ) !important;
+  }
+  
+  .frame-overlay.ambient-dark {
+    background: linear-gradient(
+      135deg,
+      rgba(14,14,14,0.88) 0%,
+      rgba(35,39,43,0.92) 100%
+    ) !important;
+  }
+
+  /* ==========================================================
+     PARALLAX LAYERS - Smoother motion on 55"
+     ========================================================== */
+  
+  .parallax-layer {
+    animation-duration: 40s !important;
+  }
+  
+  @keyframes parallaxFloat1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-30px, -15px); }
+  }
+  
+  @keyframes parallaxFloat2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(25px, -20px); }
+  }
+
+  /* ==========================================================
+     BURN-IN PROTECTION - Specific elements
+     ========================================================== */
+  
+  /* Persistent elements get subtle motion */
+  .crs-badge-persistent {
+    animation: badge-drift 90s ease-in-out infinite !important;
+  }
+  
+  @keyframes badge-drift {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-3px, 2px); }
+    50% { transform: translate(2px, -2px); }
+    75% { transform: translate(-2px, -3px); }
+  }
+  
+  /* Status bar subtle shift */
+  .system-status-bar {
+    animation: status-bar-drift 150s ease-in-out infinite !important;
+  }
+  
+  @keyframes status-bar-drift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+  
+  /* LED pulse slower on 55" */
+  .status-led,
+  .led {
+    animation-duration: 3s !important;
+  }
+
+  /* ==========================================================
+     CONTRAST BOOST FOR 55" COMMERCIAL DISPLAYS
+     ========================================================== */
+  
+  /* Ensure AAA contrast on commercial panels */
+  .frame-title {
+    text-shadow: 0 3px 18px rgba(0,0,0,0.8) !important;
+  }
+  
+  .frame-subtitle {
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7) !important;
+  }
+  
+  .frame-body {
+    text-shadow: 0 1px 8px rgba(0,0,0,0.7) !important;
+    color: #e5e5e5 !important; /* Slightly brighter for commercial panels */
+  }
+  
+  /* Station ID higher contrast */
+  .station-id-badge {
+    background: rgba(14,14,14,0.95) !important;
+    border-color: #E89B3C !important;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.7) !important;
+  }
+  
+  .station-value {
+    color: #ffffff !important;
+  }
+
+  /* ==========================================================
+     SIGNAGE V5 SPECIFIC - 55" Adjustments
+     ========================================================== */
+  
+  /* Ambient grain slightly more visible */
+  .ambient-grain {
+    opacity: 0.6 !important;
+  }
+  
+  /* Ambient drift more pronounced */
+  .ambient-rack-drift {
+    animation-duration: 80s !important;
+  }
+  
+  @keyframes ambientDrift {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.01); }
+  }
+
+  /* ==========================================================
+     SIGNAGE V4 SPECIFIC - 55" Adjustments
+     ========================================================== */
+  
+  /* VU meters in V4 */
+  .vu-meter-container {
+    bottom: 12rem !important;
+    gap: 1.5rem !important;
+  }
+  
+  .vu-meter-bar {
+    width: 18px !important;
+    height: 120px !important;
+  }
+  
+  /* Rasta stripe more visible */
+  .rasta-stripe {
+    height: 12px !important;
+  }
+  
+  /* Clock display larger */
+  .live-clock {
+    font-size: 2rem !important;
+    padding: 1rem 2rem !important;
+  }
+
+  /* ==========================================================
+     SIGNAGE SIGNAL ENHANCED - 55" Adjustments
+     ========================================================== */
+  
+  /* Frame indicators */
+  .frame-indicator-dots {
+    bottom: 5rem !important;
+    gap: 1rem !important;
+  }
+  
+  .frame-dot {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  
+  /* Scan lines more subtle on 55" */
+  .crt-scanlines {
+    opacity: 0.03 !important;
+  }
+
+  /* ==========================================================
+     SPECIFIC COMPONENT SIZING
+     ========================================================== */
+  
+  /* Workshop Café frame - warm amber treatment */
+  .frame-overlay.warm {
+    background: linear-gradient(
+      135deg,
+      rgba(46,35,28,0.80) 0%,
+      rgba(60,48,38,0.88) 100%
+    ) !important;
+  }
+  
+  /* Recording frame - VU prominence */
+  .frame-content .vu-meters-minimal {
+    scale: 1.2 !important;
+  }
+  
+  /* Rehearsal frame - pricing clarity */
+  .signage-frame[data-frame="2"] .frame-body {
+    font-size: 2.5rem !important;
+    font-weight: 600 !important;
+  }
+  
+  /* CTA frame - maximum visibility */
+  .signage-frame[data-frame="7"] .frame-title {
+    font-size: 6rem !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  /* ==========================================================
+     TIMING ADJUSTMENTS FOR 55"
+     ========================================================== */
+  
+  /* Frame transitions - slower for 55" viewing */
+  .signage-frame {
+    transition: opacity 2s ease-in-out !important;
+  }
+  
+  /* Progress bar animation - smoother */
+  .progress-fill {
+    animation-timing-function: linear !important;
+  }
+  
+  /* Station ID rotation - slower */
+  .station-id-badge {
+    transition: opacity 1s ease, transform 1s ease !important;
+  }
+
+  /* ==========================================================
+     ACCESSIBILITY FOR PUBLIC DISPLAYS
+     ========================================================== */
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .frame-title {
+      color: #ffffff !important;
+    }
+    
+    .frame-body {
+      color: #f5f5f5 !important;
+    }
+    
+    .station-id-badge {
+      border-width: 4px !important;
+      border-color: #ffffff !important;
+    }
+  }
+  
+  /* Reduced motion support - keep animations but slower */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 120s !important;
+      transition-duration: 1s !important;
+    }
+    
+    .parallax-layer,
+    .ambient-rack-drift,
+    .badge-drift {
+      animation: none !important;
+    }
+  }
+
+  /* ==========================================================
+     COMMERCIAL DISPLAY SPECIFIC FIXES
+     ========================================================== */
+  
+  /* Full edge-to-edge display (no safe zones - user wants full screen) */
+  .signage-v5-container,
+  .signage-v4-container,
+  .signage-enhanced-v3-container {
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Content fills entire screen */
+  .frame-content {
+    max-width: 100% !important;
+    max-height: 100% !important;
+  }
+  
+  /* Status bar at true bottom edge */
+  .system-status-bar {
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+  }
+
+  /* ==========================================================
+     MULTI-DISPLAY SYNC (for video wall installations)
+     ========================================================== */
+  
+  /* Consistent animation timing for video walls */
+  .signage-frames,
+  .station-id-overlay,
+  .system-status-bar {
+    will-change: transform !important;
+    transform: translateZ(0) !important;
+  }
+  
+  /* Frame sync class (add to container) */
+  .signage-container.sync-mode {
+    animation-play-state: running !important;
+    animation-iteration-count: infinite !important;
+  }
+
+} /* End 55" 1920×1080 optimization */
+
+/* ==========================================================
+   4K DISPLAY SUPPORT (Optional - 3840×2160)
+   ========================================================== */
+
+@media (min-width: 3840px) {
+  
+  /* Scale everything 2x for 4K */
+  html {
+    font-size: 40px !important;
+  }
+  
+  .signage-v5-container,
+  .signage-v4-container,
+  .signage-enhanced-v3-container {
+    width: 3840px !important;
+    height: 2160px !important;
+  }
+  
+  /* QR codes larger for 4K */
+  .qr-code-real,
+  .qr-code-box {
+    width: 440px !important;
+    height: 440px !important;
+  }
+  
+  /* Status bar */
+  .system-status-bar {
+    height: 8rem !important;
+    font-size: 2rem !important;
+  }
+  
+  /* CRS Badge */
+  .crs-badge-persistent {
+    width: 240px !important;
+    height: 240px !important;
+  }
+  
+}

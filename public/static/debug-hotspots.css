@@ -1,0 +1,166 @@
+/**
+ * VISUAL DEBUG MODE FOR HOTSPOT POSITIONING
+ * Add ?debug=hotspots to URL to enable visual overlays
+ * Shows exact clickable areas with colored boxes and labels
+ */
+
+/* Enable debug mode via URL parameter or add .debug-hotspots class to body */
+body[data-debug="hotspots"] .crs-header-logo-hotspot,
+body[data-debug="hotspots"] .welcome-button,
+body[data-debug="hotspots"] .recording-panel,
+body[data-debug="hotspots"] .rehearsal-panel,
+body[data-debug="hotspots"] .booking-hotspot,
+.debug-hotspots .crs-header-logo-hotspot,
+.debug-hotspots .welcome-button,
+.debug-hotspots .recording-panel,
+.debug-hotspots .rehearsal-panel,
+.debug-hotspots .booking-hotspot {
+  /* Show exact boundaries with semi-transparent overlay */
+  background: rgba(255, 0, 0, 0.2) !important;
+  border: 2px solid #ff0000 !important;
+  outline: 2px dashed #ffff00 !important;
+  outline-offset: -4px;
+  
+  /* Add label showing what this hotspot is */
+  position: relative;
+}
+
+/* Add labels to show hotspot names */
+body[data-debug="hotspots"] .crs-header-logo-hotspot::before,
+.debug-hotspots .crs-header-logo-hotspot::before {
+  content: "CRS LOGO";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: #00ff00;
+  padding: 4px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border: 1px solid #00ff00;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+body[data-debug="hotspots"] .welcome-button-home::before,
+.debug-hotspots .welcome-button-home::before {
+  content: "HOME";
+}
+
+body[data-debug="hotspots"] .welcome-button-about::before,
+.debug-hotspots .welcome-button-about::before {
+  content: "ABOUT";
+}
+
+body[data-debug="hotspots"] .welcome-button-cafe::before,
+.debug-hotspots .welcome-button-cafe::before {
+  content: "CAFÉ";
+}
+
+body[data-debug="hotspots"] .welcome-button-contact::before,
+.debug-hotspots .welcome-button-contact::before {
+  content: "CONTACT";
+}
+
+body[data-debug="hotspots"] .welcome-button-booknow::before,
+.debug-hotspots .welcome-button-booknow::before {
+  content: "BOOK NOW";
+}
+
+body[data-debug="hotspots"] .recording-cowley-panel::before,
+.debug-hotspots .recording-cowley-panel::before {
+  content: "COWLEY RECORDING";
+}
+
+body[data-debug="hotspots"] .recording-cricket-panel::before,
+.debug-hotspots .recording-cricket-panel::before {
+  content: "CRICKET RECORDING";
+}
+
+body[data-debug="hotspots"] .rehearsal-cowley-panel::before,
+.debug-hotspots .rehearsal-cowley-panel::before {
+  content: "COWLEY REHEARSAL";
+}
+
+body[data-debug="hotspots"] .rehearsal-cricket-panel::before,
+.debug-hotspots .rehearsal-cricket-panel::before {
+  content: "CRICKET REHEARSAL";
+}
+
+body[data-debug="hotspots"] .booking-hotspot-cowley::before,
+.debug-hotspots .booking-hotspot-cowley::before {
+  content: "COWLEY CONTROL";
+}
+
+body[data-debug="hotspots"] .booking-hotspot-cricket::before,
+.debug-hotspots .booking-hotspot-cricket::before {
+  content: "CRICKET CONTROL";
+}
+
+/* Show all button labels */
+body[data-debug="hotspots"] .welcome-button::before,
+body[data-debug="hotspots"] .recording-panel::before,
+body[data-debug="hotspots"] .rehearsal-panel::before,
+body[data-debug="hotspots"] .booking-hotspot::before,
+.debug-hotspots .welcome-button::before,
+.debug-hotspots .recording-panel::before,
+.debug-hotspots .rehearsal-panel::before,
+.debug-hotspots .booking-hotspot::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.9);
+  color: #00ff00;
+  padding: 4px 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border: 1px solid #00ff00;
+  pointer-events: none;
+  z-index: 9999;
+  white-space: nowrap;
+}
+
+/* Debug info panel */
+body[data-debug="hotspots"]::after,
+.debug-hotspots::after {
+  content: "🔍 DEBUG MODE ACTIVE - Hotspot boundaries visible";
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.95);
+  color: #00ff00;
+  padding: 12px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  border: 2px solid #00ff00;
+  border-radius: 4px;
+  z-index: 99999;
+  box-shadow: 0 4px 12px rgba(0, 255, 0, 0.3);
+}
+
+/* Console instruction */
+body[data-debug="hotspots"]::before,
+.debug-hotspots::before {
+  content: "💡 To disable: Remove ?debug=hotspots from URL or run: document.body.removeAttribute('data-debug')";
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.95);
+  color: #ffff00;
+  padding: 12px 20px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  border: 2px solid #ffff00;
+  border-radius: 4px;
+  z-index: 99999;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(255, 255, 0, 0.3);
+}

@@ -1,0 +1,176 @@
+/**
+ * VU Meter Styling
+ * Industrial-grade VU meters with realistic needle animation
+ */
+
+.vu-meter {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle at 50% 50%, #2a2a2a, #1a1a1a);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 
+    inset 0 0 20px rgba(0, 0, 0, 0.8),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1),
+    0 4px 10px rgba(0, 0, 0, 0.4);
+  border: 3px solid #333;
+  overflow: hidden;
+}
+
+/* VU Meter Face Markings */
+.vu-meter::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  transform: translate(-50%, -50%);
+  background: 
+    linear-gradient(90deg, transparent 49%, rgba(255, 255, 255, 0.1) 49%, rgba(255, 255, 255, 0.1) 51%, transparent 51%),
+    linear-gradient(0deg, transparent 49%, rgba(255, 255, 255, 0.1) 49%, rgba(255, 255, 255, 0.1) 51%, transparent 51%);
+  pointer-events: none;
+}
+
+/* VU Meter Scale Markings */
+.vu-meter::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  bottom: 10%;
+  border-radius: 50%;
+  border: 1px solid rgba(127, 255, 0, 0.3);
+  box-shadow: 0 0 10px rgba(127, 255, 0, 0.2);
+  pointer-events: none;
+}
+
+/* VU Meter Needle */
+.vu-meter-needle {
+  width: 3px;
+  height: 50%;
+  background: linear-gradient(to top, #ff0000, #ff6666);
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%) rotate(-45deg);
+  transition: transform 0.1s ease-out;
+  border-radius: 2px 2px 0 0;
+  box-shadow: 
+    0 0 8px rgba(255, 0, 0, 0.6),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+/* Needle Tip Glow */
+.vu-meter-needle::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: #ff0000;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px #ff0000, 0 0 20px rgba(255, 0, 0, 0.4);
+}
+
+/* Center Pivot Point */
+.vu-meter-needle::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: #444;
+  border: 2px solid #666;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Glass Cover Effect */
+.vu-meter-glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    transparent 50%, 
+    rgba(0, 0, 0, 0.2) 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Responsive Sizing */
+@media (max-width: 768px) {
+  .vu-meter {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .vu-meter-needle {
+    width: 2px;
+  }
+}
+
+/* Animation for needle movement */
+@keyframes needle-bounce {
+  0%, 100% { transform: translateX(-50%) rotate(var(--rotation, -45deg)); }
+  50% { transform: translateX(-50%) rotate(calc(var(--rotation, -45deg) + 2deg)); }
+}
+
+.vu-meter-needle.animated {
+  animation: needle-bounce 2s ease-in-out infinite;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .vu-meter-needle {
+    transition: none;
+  }
+  
+  .vu-meter-needle.animated {
+    animation: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .vu-meter {
+    border-width: 4px;
+    border-color: #FFF;
+  }
+  
+  .vu-meter-needle {
+    background: #FF0000;
+    width: 4px;
+  }
+}
+
+/* VU Meter Container Layout */
+.vu-meter-container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+}
+
+.vu-meter-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #7FFF00;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 8px rgba(127, 255, 0, 0.6);
+}

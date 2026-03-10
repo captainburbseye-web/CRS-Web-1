@@ -1,0 +1,462 @@
+/**
+ * RACK PERCENTAGE-BASED POSITIONING SYSTEM
+ * Applied: 2026-03-08
+ * 
+ * RULES:
+ * 1. ALL hotspots use percentages (%) relative to parent .rack-module-graphic
+ * 2. NO fixed pixel values for positioning
+ * 3. Coordinates derived from actual 1920px source images
+ * 4. Background: transparent (clickable ghost zones)
+ */
+
+/* ============================================
+   WELCOME RACK - Navigation Buttons
+   Source: /static/rack-images/welcome-rack-updated.webp (1920px width)
+   ============================================ */
+
+.welcome-hotspots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.welcome-button {
+  position: absolute;
+  pointer-events: auto;
+  cursor: pointer;
+  background: transparent !important;
+  border: none !important;
+  transition: background 0.2s ease;
+}
+
+.welcome-button:hover {
+  background: rgba(255, 255, 0, 0.1) !important;
+}
+
+/* HOME button - Far left wooden button */
+.welcome-button-home {
+  top: 40%;
+  left: 7.5%;
+  width: 14%;
+  height: 22%;
+}
+
+/* ABOUT button - Second from left */
+.welcome-button-about {
+  top: 40%;
+  left: 24%;
+  width: 14%;
+  height: 22%;
+}
+
+/* WORKSHOP CAFÉ button - Center */
+.welcome-button-cafe {
+  top: 40%;
+  left: 40.5%;
+  width: 14%;
+  height: 22%;
+}
+
+/* CONTACT button - Second from right */
+.welcome-button-contact {
+  top: 40%;
+  left: 57%;
+  width: 14%;
+  height: 22%;
+}
+
+/* BOOK NOW button - Far right (larger button) */
+.welcome-button-booknow {
+  top: 40%;
+  left: 74%;
+  width: 18%;
+  height: 22%;
+}
+
+/* ============================================
+   RECORDING SERVICES - Split Panel (Cowley / Cricket)
+   Source: /static/rack-images/recording-services-new.webp
+   Circular hotspots pinned directly over left/right buttons
+   ============================================ */
+
+/* 1. Reset the parent container to hold the absolute links */
+.recording-hotspots-overlay {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important; /* Remove flexbox entirely */
+  z-index: 10 !important;
+  pointer-events: none !important;
+}
+
+/* 2. Base style for the targeted circular button hotspots */
+.recording-panel {
+  position: absolute !important;
+  width: 60px !important; /* Adjust based on graphic button size */
+  height: 60px !important;
+  border-radius: 50% !important; /* Makes the clickable area perfectly round */
+  transform: translate(-50%, -50%) !important; /* Centers the hotspot precisely on the coordinate */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  transition: box-shadow 0.2s ease;
+}
+
+/* 3. Left Button (Cowley Road) */
+.recording-cowley-panel {
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 25% !important; /* Places it on the left side */
+}
+
+.recording-cowley-panel:hover {
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.6) !important; /* Green glow on hover */
+}
+
+/* 4. Right Button (Cricket Road) */
+.recording-cricket-panel {
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 75% !important; /* Places it on the right side */
+}
+
+.recording-cricket-panel:hover {
+  box-shadow: 0 0 15px rgba(156, 39, 176, 0.6) !important; /* Purple glow on hover */
+}
+
+/* 5. Tooltip Label (Instead of messy drifting text) */
+.recording-panel::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -30px; /* Positions text below the button */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 1px !important;
+  color: #fff !important;
+  text-shadow: 1px 1px 2px #000;
+  opacity: 0;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.recording-panel:hover::after {
+  opacity: 1; /* Shows label only when hovering the button */
+}
+
+/* ============================================
+   REHEARSAL SERVICES - Split Panel (Cowley / Cricket)
+   Source: /static/rack-images/rehearsal-services-updated.webp
+   Circular hotspots pinned directly over left/right buttons
+   ============================================ */
+
+/* 1. Reset the parent container to hold the absolute links */
+.rehearsal-hotspots {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important; /* Remove flexbox entirely */
+  z-index: 10 !important;
+  pointer-events: none !important;
+}
+
+/* 2. Base style for the targeted circular button hotspots */
+.rehearsal-panel {
+  position: absolute !important;
+  width: 60px !important; /* Adjust based on graphic button size */
+  height: 60px !important;
+  border-radius: 50% !important; /* Makes the clickable area perfectly round */
+  transform: translate(-50%, -50%) !important; /* Centers the hotspot precisely on the coordinate */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  transition: box-shadow 0.2s ease;
+}
+
+/* 3. Left Button (Cowley Road) */
+.rehearsal-cowley-panel {
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 25% !important; /* Places it on the left side */
+}
+
+.rehearsal-cowley-panel:hover {
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.6) !important; /* Green glow on hover */
+}
+
+/* 4. Right Button (Cricket Road) */
+.rehearsal-cricket-panel {
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 75% !important; /* Places it on the right side */
+}
+
+.rehearsal-cricket-panel:hover {
+  box-shadow: 0 0 15px rgba(156, 39, 176, 0.6) !important; /* Purple glow on hover */
+}
+
+/* 5. Tooltip Label (Instead of messy drifting text) */
+.rehearsal-panel::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -30px; /* Positions text below the button */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 1px !important;
+  color: #fff !important;
+  text-shadow: 1px 1px 2px #000;
+  opacity: 0;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.rehearsal-panel:hover::after {
+  opacity: 1; /* Shows label only when hovering the button */
+}
+
+/* ============================================
+   CONTROL ROOM - SSL/Neve Split Buttons
+   Source: /static/rack-images/control-room-buttons.webp
+   Circular hotspots pinned directly over left/right buttons
+   ============================================ */
+
+/* 1. Reset the parent container to hold the absolute links */
+.button-hotspots {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important; /* Remove flexbox entirely */
+  z-index: 10 !important;
+  pointer-events: none !important;
+}
+
+/* 2. Base style for the targeted circular button hotspots */
+.booking-hotspot {
+  position: absolute !important;
+  width: 60px !important; /* Adjust based on graphic button size */
+  height: 60px !important;
+  border-radius: 50% !important; /* Makes the clickable area perfectly round */
+  transform: translate(-50%, -50%) !important; /* Centers the hotspot precisely on the coordinate */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  transition: box-shadow 0.2s ease;
+}
+
+/* 3. Left Button (Cowley Road) */
+.booking-hotspot-cowley {
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 25% !important; /* Places it on the left side */
+}
+
+.booking-hotspot-cowley:hover {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.6) !important; /* Gold glow on hover */
+}
+
+/* 4. Right Button (Cricket Road) */
+.booking-hotspot-cricket {
+  top: 50% !important; /* Adjust vertical center to match graphic */
+  left: 75% !important; /* Places it on the right side */
+}
+
+.booking-hotspot-cricket:hover {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.6) !important; /* Gold glow on hover */
+}
+
+/* 5. Tooltip Label (Instead of messy drifting text) */
+.booking-hotspot::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -30px; /* Positions text below the button */
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.9rem !important;
+  letter-spacing: 1px !important;
+  color: #fff !important;
+  text-shadow: 1px 1px 2px #000;
+  opacity: 0;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.booking-hotspot:hover::after {
+  opacity: 1; /* Shows label only when hovering the button */
+}
+
+.booking-hotspot-cricket:hover::before {
+  opacity: 1 !important;
+}
+
+/* ============================================
+   ODRO REPAIR PANEL - Indicator Light Hotspots
+   Source: /static/rack-images/odro-repair-panel.webp
+   Three circular hotspots mapped over hardware buttons
+   ============================================ */
+
+/* ============================================
+   ODRO REPAIR PANEL - THREE CIRCULAR HOTSPOTS
+   ============================================ */
+
+/* Container for ODRO hotspots - positioned absolutely */
+.odro-repair-hotspots {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 50 !important;
+  pointer-events: none !important;
+}
+
+/* Base circular hotspot styling */
+.odro-hotspot {
+  position: absolute !important;
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  top: 50% !important;
+  background: transparent !important;
+  border: 2px solid transparent !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 50 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Position each hotspot */
+.odro-hotspot-left {
+  left: 20% !important;
+}
+
+.odro-hotspot-center {
+  left: 50% !important;
+}
+
+.odro-hotspot-right {
+  left: 80% !important;
+}
+
+/* Hover effects */
+.odro-hotspot:hover {
+  box-shadow: 0 0 20px rgba(255, 149, 0, 0.8) !important; /* Orange glow */
+  border-color: rgba(255, 149, 0, 0.4) !important;
+}
+
+/* Tooltip labels via data-label attribute */
+.odro-hotspot::after {
+  content: attr(data-label) !important;
+  position: absolute !important;
+  top: calc(100% + 15px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+  font-size: 0.7rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  color: #D4AF37 !important;
+  background: rgba(0, 0, 0, 0.85) !important;
+  padding: 6px 12px !important;
+  border-radius: 4px !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease !important;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.5) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.odro-hotspot:hover::after {
+  opacity: 1 !important;
+}
+
+/* ============================================
+   WORKSHOP CAFÉ "BOOK NOW" HOTSPOT
+   ============================================ */
+
+/* Ensure parent container is relative */
+.workshop-cafe-container {
+  position: relative !important;
+}
+
+/* Book Now hotspot overlay */
+.cafe-book-now-hotspot {
+  position: absolute !important;
+  top: 85% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 200px !important;
+  height: 60px !important;
+  z-index: 50 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  border: 2px solid transparent !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  pointer-events: auto !important;
+  transition: all 0.2s ease !important;
+}
+
+.cafe-book-now-hotspot:hover {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.8) !important; /* Gold glow */
+  border-color: rgba(212, 175, 55, 0.4) !important;
+  background: rgba(212, 175, 55, 0.05) !important;
+}
+
+/* Tooltip for Workshop Café hotspot */
+.cafe-book-now-hotspot::after {
+  content: "BOOK NOW – Coffee • Co-working • Local Food Pop-ups" !important;
+  position: absolute !important;
+  top: calc(100% + 15px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  color: #D4AF37 !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.2s ease !important;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.5) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.cafe-book-now-hotspot:hover::after {
+  opacity: 1 !important;
+}
+

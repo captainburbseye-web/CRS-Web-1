@@ -1,0 +1,636 @@
+/**
+ * CRS CONSOLIDATED RACK SYSTEM
+ * Master rack chassis, accordion modules, LED indicators
+ * Replaces: master-rack-chassis.css, crs-rack-ui.css, crs-ghost-chassis.css, rack-accordion.css
+ */
+
+/* ============================================
+   GLOBAL RACK RESET - ZERO-DRIFT FOUNDATION
+   Applied: 2026-03-08
+   Eliminates ALL spacing/alignment issues
+   ============================================ */
+
+.master-rack-chassis {
+    display: flex !important;
+    flex-direction: column !important;
+    line-height: 0 !important; /* Eliminates the 'descender' gap below images */
+    font-size: 0 !important;
+    background-color: #111 !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.rack-module-graphic {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    position: relative !important; /* Anchor for the light-up links */
+}
+
+.rack-module-img {
+    display: block !important; /* Forces the image to behave like a physical block */
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* ============================================
+   LEGACY MASTER RACK CHASSIS (OVERRIDDEN ABOVE)
+   ============================================ */
+
+/*.master-rack-chassis {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--crs-black);
+  color: var(--crs-text);
+  min-height: 100vh;
+}*/
+
+/* ============================================
+   RACK HEADER
+   ============================================ */
+
+.rack-header-container {
+  position: relative;
+  width: 100%;
+}
+
+.rack-header-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.rack-header {
+  background: var(--crs-black);
+  border-bottom: 2px solid var(--crs-border);
+  padding: var(--spacing-md) var(--spacing-xl);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rack-header-nav {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.rack-header-nav a {
+  color: var(--crs-text);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color var(--transition-fast);
+}
+
+.rack-header-nav a:hover {
+  color: var(--amber);
+}
+
+.rack-header-nav .separator {
+  color: var(--crs-border);
+  user-select: none;
+}
+
+.rack-header-cta {
+  margin-left: auto;
+}
+
+/* ============================================
+   STUDIO INTRO
+   ============================================ */
+
+.studio-intro {
+  text-align: center;
+  padding: var(--spacing-xxl) var(--spacing-md);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tagline {
+  font-size: 1.125rem;
+  color: var(--crs-text-dim);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   SERVICE BLOCKS
+   ============================================ */
+
+.service-block {
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid var(--crs-border);
+  border-radius: 8px;
+  padding: var(--spacing-xl);
+  margin: var(--spacing-lg) var(--spacing-md);
+  transition: border-color var(--transition-normal);
+}
+
+.service-block:hover {
+  border-color: var(--amber);
+}
+
+.service-block h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--brass);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.service-intro {
+  color: var(--crs-text-dim);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+}
+
+.feature-list,
+.philosophy-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-lg) 0;
+}
+
+.feature-list li,
+.philosophy-list li {
+  padding: var(--spacing-sm) 0;
+  padding-left: var(--spacing-lg);
+  position: relative;
+  color: var(--crs-text-dim);
+}
+
+.feature-list li::before,
+.philosophy-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--neon-green);
+  font-weight: bold;
+}
+
+/* ============================================
+   LOCATION CARDS
+   ============================================ */
+
+.location-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+}
+
+.location-card {
+  background: rgba(13, 13, 13, 0.8);
+  border: 1px solid var(--crs-border);
+  border-radius: 6px;
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+}
+
+.location-card:hover {
+  border-color: var(--amber);
+  transform: translateY(-2px);
+}
+
+.location-card h3 {
+  color: var(--brass);
+  margin-bottom: var(--spacing-md);
+  font-size: 1.125rem;
+}
+
+.pricing-simple {
+  margin: var(--spacing-md) 0;
+}
+
+.price-row {
+  padding: var(--spacing-sm) 0;
+  color: var(--crs-text);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+.price-note {
+  color: var(--crs-text-dim);
+  font-size: 0.875rem;
+  font-style: italic;
+  margin-top: var(--spacing-sm);
+}
+
+/* ============================================
+   RACK ACCORDION
+   ============================================ */
+
+.rack-accordion-container {
+  margin: var(--spacing-xl) var(--spacing-md);
+}
+
+.rack-accordion-module {
+  background: var(--crs-dark);
+  border: 1px solid var(--crs-border);
+  border-radius: 6px;
+  margin-bottom: var(--spacing-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.rack-accordion-module[open] {
+  border-color: var(--amber);
+}
+
+.rack-accordion-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  user-select: none;
+  background: var(--crs-dark);
+  transition: background var(--transition-fast);
+  list-style: none;
+}
+
+.rack-accordion-header::-webkit-details-marker {
+  display: none;
+}
+
+.rack-accordion-header:hover {
+  background: var(--crs-metal);
+}
+
+.rack-title {
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  color: var(--brass);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rack-chevron {
+  color: var(--amber);
+  font-size: 1.5rem;
+  transition: transform var(--transition-normal);
+}
+
+.rack-accordion-module[open] .rack-chevron {
+  transform: rotate(90deg);
+}
+
+.rack-accordion-content {
+  padding: 0 var(--spacing-lg) var(--spacing-lg);
+}
+
+.rack-content-inner {
+  padding: var(--spacing-lg);
+  background: rgba(10, 10, 10, 0.5);
+  border-radius: 4px;
+}
+
+.rack-description {
+  color: var(--crs-text-dim);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+  white-space: pre-line;
+}
+
+.location-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-lg);
+}
+
+/* ============================================
+   LED INDICATORS
+   ============================================ */
+
+.rack-led,
+.system-led,
+.status-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.rack-led[data-color="green"],
+.system-led,
+.status-led.green {
+  background: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green);
+}
+
+.rack-led[data-color="amber"],
+.status-led.amber {
+  background: var(--signal-amber);
+  box-shadow: 0 0 8px var(--signal-amber);
+}
+
+.rack-led[data-color="orange"],
+.status-led.orange {
+  background: var(--signal-orange);
+  box-shadow: 0 0 8px var(--signal-orange);
+}
+
+/* LED Pulse Animation */
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.rack-led,
+.system-led,
+.status-led {
+  animation: led-pulse 2s ease-in-out infinite;
+}
+
+/* ============================================
+   STATUS STRIPS
+   ============================================ */
+
+.system-status-strip {
+  background: var(--crs-dark);
+  border-top: 1px solid var(--crs-border);
+  padding: var(--spacing-md);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--crs-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.system-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  padding: var(--spacing-md);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--crs-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.system-badge-logo {
+  height: 24px;
+  width: auto;
+}
+
+.status-strip {
+  background: var(--crs-dark);
+  border-top: 1px solid var(--crs-border);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+}
+
+.status-header {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--brass);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--spacing-md);
+}
+
+.status-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--crs-text-dim);
+}
+
+/* ============================================
+   RACK ORIENTATION TEXT
+   ============================================ */
+
+.rack-orientation {
+  text-align: center;
+  padding: var(--spacing-lg) var(--spacing-md);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--crs-text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+.rack-human-line {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--crs-text-dim);
+  font-style: italic;
+  padding: var(--spacing-md);
+  opacity: 0.8;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .rack-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .rack-header-nav {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .location-pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-block {
+    margin: var(--spacing-md);
+    padding: var(--spacing-lg);
+  }
+}
+
+/* ============================================
+   STUDIO FLIGHT CASE AESTHETIC
+   Safe visual overlay - preserves all hotspots
+   Added: 2026-02-24
+   Updated: 2026-03-08 - Respects global reset
+   ============================================ */
+
+/* 1. Sets the moody studio lighting behind the rack */
+body {
+  background-color: #0a0a0c !important;
+  background-image: radial-gradient(circle at center top, #24242a 0%, #0a0a0c 80%) !important;
+  background-attachment: fixed !important;
+  /* Subtle pulsating glow animation - very minimal */
+  animation: studio-ambient-glow 8s ease-in-out infinite alternate;
+}
+
+/* Subtle ambient glow keyframes - barely perceptible breathing effect */
+@keyframes studio-ambient-glow {
+  0% {
+    background-image: radial-gradient(circle at center top, #24242a 0%, #0a0a0c 80%);
+  }
+  100% {
+    background-image: radial-gradient(circle at center top, #2a2a30 0%, #0d0d0f 80%);
+  }
+}
+
+/* 2. Enhances your EXISTING chassis wrapper - NOW RESPECTS GLOBAL RESET */
+/* NOTE: Global reset at top of file controls flex layout, line-height, font-size */
+.master-rack-chassis {
+  position: relative;
+  /* background-color controlled by global reset (#111) */
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.9), 
+    0 0 0 2px #1a1a1c;
+  /* Creates space on the sides for the metal rails to sit without crushing your images */
+  padding-left: 20px !important; 
+  padding-right: 20px !important;
+}
+
+/* 3. Generates the metal rails directly onto the sides of the chassis */
+.master-rack-chassis::before,
+.master-rack-chassis::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20px; /* Matches the padding above */
+  
+  /* Layer 1: Rack holes (repeating dark dots)
+     Layer 2: Gunmetal brushed gradient */
+  background-image: 
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 10px,
+      #030303 10px,
+      #030303 18px,
+      transparent 18px,
+      transparent 45px
+    ),
+    linear-gradient(90deg, #1f1f22 0%, #38383e 50%, #1f1f22 100%);
+  
+  border-left: 1px solid #4a4a52;
+  border-right: 1px solid #000;
+  z-index: 10;
+  
+  /* CRITICAL SAFETY: This ensures the rails act like ghosts. 
+     Your mouse will click right through them, keeping all your Square booking hotspots perfectly active. */
+  pointer-events: none; 
+}
+
+/* Lock rails to the far left and right */
+.master-rack-chassis::before { left: 0; }
+.master-rack-chassis::after { right: 0; }
+
+/* 4. Rack module spacing - CONTROLLED BY GLOBAL RESET */
+/* NOTE: Global reset sets margin:0, padding:0, position:relative */
+/* .rack-module-graphic {
+  position: relative;
+  z-index: 5;
+  margin-bottom: 2px !important;
+} */
+
+/* ================================================
+   METALLIC TEXTURE OVERLAY
+   CSS-only noise pattern for tactile hardware feel
+   ================================================ */
+
+/* Subtle noise texture overlay on rack chassis */
+.master-rack-chassis::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.03;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 2px,
+      rgba(255, 255, 255, 0.03) 4px
+    );
+  background-size: 4px 4px;
+  mix-blend-mode: overlay;
+}
+
+
+/* ================================================
+   METALLIC TEXTURE OVERLAY
+   CSS-only noise pattern for tactile hardware feel
+   Uses body::after to avoid conflict with rack rails
+   ================================================ */
+
+/* Subtle noise texture overlay across entire page */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998; /* Below sticky nav (9999) but above content */
+  opacity: 0.025;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.05) 2px,
+      rgba(255, 255, 255, 0.05) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.05) 2px,
+      rgba(255, 255, 255, 0.05) 3px
+    );
+  background-size: 3px 3px;
+  mix-blend-mode: overlay;
+}
+
+/* Disable texture on low-end/mobile devices with reduced motion */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  body::after {
+    display: none;
+  }
+}

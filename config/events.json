@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-25T00:00:00Z",
+  "events": [
+    {
+      "id": "example-1",
+      "title": "Live Session Recording",
+      "date": "2026-03-15",
+      "time": "19:00",
+      "location": "Cowley Road HQ",
+      "type": "showcase",
+      "description": "Filmed live session with local artists",
+      "bookingUrl": "https://cowleyroadstudios.com/events"
+    }
+  ],
+  "thisWeek": {
+    "highlight": "New rehearsal slots available",
+    "events": []
+  },
+  "thisMonth": {
+    "highlight": "Spring 2026: Workshop Café opening soon",
+    "topEvents": []
+  },
+  "feedUrl": "https://example.com/events.ics",
+  "refreshIntervalHours": 6
+}

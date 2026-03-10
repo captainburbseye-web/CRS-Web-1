@@ -1,0 +1,338 @@
+/**
+ * Control Room Hire Interactive Buttons
+ * Industrial rack-style booking interface
+ */
+
+/* Main control room rack container */
+.control-room-rack {
+  background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 50%, #1a1a1a 100%);
+  border: 3px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  margin: 2rem 0;
+  position: relative;
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Brushed metal texture overlay */
+.control-room-rack::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.02) 2px,
+      rgba(255, 255, 255, 0.02) 3px
+    );
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+/* Rack ears (mounting holes) */
+.control-room-rack::after {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  left: 0.5rem;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #0a0a0a 30%, #1a1a1a 70%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 3px rgba(0, 0, 0, 0.8),
+    inset 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* Header section */
+.control-room-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #2a2a2a;
+  position: relative;
+}
+
+.control-room-title {
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 -1px 0 rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+/* LED indicators section */
+.control-room-leds {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+}
+
+.led-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.led-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.led {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 
+    0 0 0 2px #2a2a2a,
+    0 0 0 4px #1a1a1a,
+    inset 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* LED colors */
+.led-amber {
+  background: radial-gradient(circle at 30% 30%, #FFB300, #FF8C00);
+  box-shadow: 
+    0 0 0 2px #2a2a2a,
+    0 0 0 4px #1a1a1a,
+    0 0 12px rgba(255, 179, 0, 0.6),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: led-pulse-amber 2s ease-in-out infinite;
+}
+
+.led-green {
+  background: radial-gradient(circle at 30% 30%, #39FF14, #00CC00);
+  box-shadow: 
+    0 0 0 2px #2a2a2a,
+    0 0 0 4px #1a1a1a,
+    0 0 12px rgba(57, 255, 20, 0.6),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: led-pulse-green 2s ease-in-out infinite;
+}
+
+/* LED pulse animations */
+@keyframes led-pulse-amber {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 2px #2a2a2a,
+      0 0 0 4px #1a1a1a,
+      0 0 12px rgba(255, 179, 0, 0.6),
+      inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 2px #2a2a2a,
+      0 0 0 4px #1a1a1a,
+      0 0 16px rgba(255, 179, 0, 0.9),
+      inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes led-pulse-green {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 2px #2a2a2a,
+      0 0 0 4px #1a1a1a,
+      0 0 12px rgba(57, 255, 20, 0.6),
+      inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 2px #2a2a2a,
+      0 0 0 4px #1a1a1a,
+      0 0 16px rgba(57, 255, 20, 0.9),
+      inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Booking buttons section */
+.control-room-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #2a2a2a;
+}
+
+/* Base button style */
+.booking-button {
+  position: relative;
+  padding: 1.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+}
+
+/* Button bezel frame */
+.booking-button::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: 8px;
+  padding: 3px;
+  z-index: -1;
+}
+
+/* Cowley Road button (Amber) */
+.booking-button-cowley {
+  background: linear-gradient(to bottom, #FFD700, #FFA500);
+  color: #000;
+  box-shadow: 
+    0 6px 0 #B38F00,
+    0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+.booking-button-cowley::before {
+  background: linear-gradient(135deg, #FFE44D 0%, #FFA500 50%, #B38F00 100%);
+}
+
+.booking-button-cowley:hover {
+  background: linear-gradient(to bottom, #FFE44D, #FFB700);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 0 #B38F00,
+    0 12px 16px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(255, 215, 0, 0.4);
+}
+
+.booking-button-cowley:active {
+  transform: translateY(3px);
+  box-shadow: 
+    0 3px 0 #B38F00,
+    0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Cricket Road button (Green) */
+.booking-button-cricket {
+  background: linear-gradient(to bottom, #39FF14, #00CC00);
+  color: #000;
+  box-shadow: 
+    0 6px 0 #008800,
+    0 8px 12px rgba(0, 0, 0, 0.4);
+}
+
+.booking-button-cricket::before {
+  background: linear-gradient(135deg, #5FFF3A 0%, #00CC00 50%, #008800 100%);
+}
+
+.booking-button-cricket:hover {
+  background: linear-gradient(to bottom, #5FFF3A, #00DD00);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 0 #008800,
+    0 12px 16px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(57, 255, 20, 0.4);
+}
+
+.booking-button-cricket:active {
+  transform: translateY(3px);
+  box-shadow: 
+    0 3px 0 #008800,
+    0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Button text */
+.button-text-main {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.button-text-sub {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+/* Accessibility - Focus states */
+.booking-button:focus {
+  outline: 3px solid #FFB300;
+  outline-offset: 3px;
+}
+
+.booking-button-cricket:focus {
+  outline-color: #39FF14;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .control-room-buttons {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .booking-button {
+    padding: 1.25rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .control-room-title {
+    font-size: 1.25rem;
+  }
+  
+  .control-room-leds {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .led-amber,
+  .led-green {
+    animation: none;
+  }
+  
+  .booking-button {
+    transition: none;
+  }
+}
+
+/* Loading state */
+.booking-button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.booking-button[disabled]::after {
+  content: 'LOADING...';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.6);
+}

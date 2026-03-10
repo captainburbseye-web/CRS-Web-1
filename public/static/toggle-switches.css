@@ -1,0 +1,169 @@
+/**
+ * Functional Toggle Switches - Vault-Tec Style
+ * CSS + vanilla JS implementation
+ * For future feature toggles or settings
+ */
+
+/* ================================================
+   TOGGLE SWITCH STYLES
+   ================================================ */
+
+.toggle-switch {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 25px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Hidden checkbox input */
+.toggle-switch input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Switch track */
+.toggle-switch-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #2a2a2a;
+  border: 2px solid #1a1a1a;
+  border-radius: 25px;
+  transition: background 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Switch knob */
+.toggle-switch-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 19px;
+  height: 19px;
+  background: linear-gradient(135deg, #4a4a4a 0%, #2a2a2a 100%);
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+/* ON state */
+.toggle-switch input:checked + .toggle-switch-track {
+  background: #2d8a1f;  /* Green (studio active) */
+  border-color: #39FF14;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 8px rgba(57, 255, 20, 0.3);
+}
+
+.toggle-switch input:checked ~ .toggle-switch-knob {
+  transform: translateX(25px);
+  background: linear-gradient(135deg, #5aff33 0%, #39FF14 100%);
+  box-shadow: 
+    0 2px 6px rgba(57, 255, 20, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Focus state for accessibility */
+.toggle-switch input:focus-visible + .toggle-switch-track {
+  outline: 2px solid #d4a017;
+  outline-offset: 3px;
+}
+
+/* Hover state */
+.toggle-switch:hover .toggle-switch-track {
+  border-color: #3a3a3a;
+}
+
+.toggle-switch:hover input:checked + .toggle-switch-track {
+  border-color: #4aff24;
+}
+
+/* Active/pressed state */
+.toggle-switch:active .toggle-switch-knob {
+  width: 22px;
+}
+
+/* Disabled state */
+.toggle-switch input:disabled + .toggle-switch-track {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .toggle-switch-track,
+  .toggle-switch-knob {
+    transition: none !important;
+  }
+}
+
+/* ================================================
+   TOGGLE SWITCH VARIANTS
+   ================================================ */
+
+/* Amber variant (for warnings/caution) */
+.toggle-switch.variant-amber input:checked + .toggle-switch-track {
+  background: #b8860b;
+  border-color: #d4a017;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 8px rgba(212, 160, 23, 0.3);
+}
+
+.toggle-switch.variant-amber input:checked ~ .toggle-switch-knob {
+  background: linear-gradient(135deg, #f4c430 0%, #d4a017 100%);
+  box-shadow: 
+    0 2px 6px rgba(212, 160, 23, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Red variant (for alerts/danger) */
+.toggle-switch.variant-red input:checked + .toggle-switch-track {
+  background: #8b0000;
+  border-color: #ff4444;
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 8px rgba(255, 68, 68, 0.3);
+}
+
+.toggle-switch.variant-red input:checked ~ .toggle-switch-knob {
+  background: linear-gradient(135deg, #ff6666 0%, #ff4444 100%);
+  box-shadow: 
+    0 2px 6px rgba(255, 68, 68, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* ================================================
+   TOGGLE SWITCH WITH LABEL
+   ================================================ */
+
+.toggle-switch-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--crs-text-dim, #888);
+}
+
+.toggle-switch-label {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.toggle-switch input:checked ~ .toggle-switch-label {
+  color: var(--crs-text, #f4f4f4);
+}
+
+.toggle-switch-container:hover .toggle-switch-label {
+  color: var(--crs-text, #f4f4f4);
+}

@@ -1,0 +1,178 @@
+{
+  "header": {
+    "priority": "high",
+    "srcset": "/static/rack-images/header-1920w.webp 1920w, /static/rack-images/header-1280w.webp 1280w, /static/rack-images/header-640w.webp 640w",
+    "fallback": "/static/rack-images/header.webp",
+    "variants": [
+      {
+        "width": 1920,
+        "src": "/static/rack-images/header-1920w.webp",
+        "size": "78.24"
+      },
+      {
+        "width": 1280,
+        "src": "/static/rack-images/header-1280w.webp",
+        "size": "39.97"
+      },
+      {
+        "width": 640,
+        "src": "/static/rack-images/header-640w.webp",
+        "size": "14.91"
+      }
+    ]
+  },
+  "welcome-rack": {
+    "priority": "high",
+    "srcset": "/static/rack-images/welcome-rack-1920w.webp 1920w, /static/rack-images/welcome-rack-1280w.webp 1280w, /static/rack-images/welcome-rack-640w.webp 640w",
+    "fallback": "/static/rack-images/welcome-rack.webp",
+    "variants": [
+      {
+        "width": 1920,
+        "src": "/static/rack-images/welcome-rack-1920w.webp",
+        "size": "117.48"
+      },
+      {
+        "width": 1280,
+        "src": "/static/rack-images/welcome-rack-1280w.webp",
+        "size": "63.55"
+      },
+      {
+        "width": 640,
+        "src": "/static/rack-images/welcome-rack-640w.webp",
+        "size": "19.74"
+      }
+    ]
+  },
+  "cowley-services": {
+    "priority": "medium",
+    "srcset": "/static/rack-images/cowley-services-1920w.webp 1920w, /static/rack-images/cowley-services-1280w.webp 1280w, /static/rack-images/cowley-services-640w.webp 640w",
+    "fallback": "/static/rack-images/cowley-services.webp",
+    "variants": [
+      {
+        "width": 1920,
+        "src": "/static/rack-images/cowley-services-1920w.webp",
+        "size": "80.46"
+      },
+      {
+        "width": 1280,
+        "src": "/static/rack-images/cowley-services-1280w.webp",
+        "size": "47.85"
+      },
+      {
+        "width": 640,
+        "src": "/static/rack-images/cowley-services-640w.webp",
+        "size": "17.71"
+      }
+    ]
+  },
+  "cricket-services": {
+    "priority": "medium",
+    "srcset": "/static/rack-images/cricket-services-1920w.webp 1920w, /static/rack-images/cricket-services-1280w.webp 1280w, /static/rack-images/cricket-services-640w.webp 640w",
+    "fallback": "/static/rack-images/cricket-services.webp",
+    "variants": [
+      {
+        "width": 1920,
+        "src": "/static/rack-images/cricket-services-1920w.webp",
+        "size": "77.79"
+      },
+      {
+        "width": 1280,
+        "src": "/static/rack-images/cricket-services-1280w.webp",
+        "size": "45.24"
+      },
+      {
+        "width": 640,
+        "src": "/static/rack-images/cricket-services-640w.webp",
+        "size": "15.97"
+      }
+    ]
+  },
+  "cowley-rehearsal": {
+    "priority": "low",
+    "srcset": "/static/rack-images/cowley-rehearsal-1920w.webp 1920w, /static/rack-images/cowley-rehearsal-1280w.webp 1280w, /static/rack-images/cowley-rehearsal-640w.webp 640w",
+    "fallback": "/static/rack-images/cowley-rehearsal.webp",
+    "variants": [
+      {
+        "width": 1920,
+        "src": "/static/rack-images/cowley-rehearsal-1920w.webp",
+        "size": "64.77"
+      },
+      {
+        "width": 1280,
+        "src": "/static/rack-images/cowley-rehearsal-1280w.webp",
+        "size": "42.27"
+      },
+      {
+        "width": 640,
+        "src": "/static/rack-images/cowley-rehearsal-640w.webp",
+        "size": "17.27"
+      }
+    ]
+  },
+  "cricket-rehearsal": {
+    "priority": "low",
+    "srcset": "/static/rack-images/cricket-rehearsal-1920w.webp 1920w, /static/rack-images/cricket-rehearsal-1280w.webp 1280w, /static/rack-images/cricket-rehearsal-640w.webp 640w",
+    "fallback": "/static/rack-images/cricket-rehearsal.webp",
+    "variants": [
+      {
+        "width": 1920,
+        "src": "/static/rack-images/cricket-rehearsal-1920w.webp",
+        "size": "182.62"
+      },
+      {
+        "width": 1280,
+        "src": "/static/rack-images/cricket-rehearsal-1280w.webp",
+        "size": "98.38"
+      },
+      {
+        "width": 640,
+        "src": "/static/rack-images/cricket-rehearsal-640w.webp",
+        "size": "30.33"
+      }
+    ]
+  },
+  "control-room": {
+    "priority": "low",
+    "srcset": "/static/rack-images/control-room-1920w.webp 1920w, /static/rack-images/control-room-1280w.webp 1280w, /static/rack-images/control-room-640w.webp 640w",
+    "fallback": "/static/rack-images/control-room.webp",
+    "variants": [
+      {
+        "width": 1920,
+        "src": "/static/rack-images/control-room-1920w.webp",
+        "size": "220.88"
+      },
+      {
+        "width": 1280,
+        "src": "/static/rack-images/control-room-1280w.webp",
+        "size": "150.37"
+      },
+      {
+        "width": 640,
+        "src": "/static/rack-images/control-room-640w.webp",
+        "size": "40.60"
+      }
+    ]
+  },
+  "workshop-cafe": {
+    "priority": "low",
+    "srcset": "/static/rack-images/workshop-cafe-1920w.webp 1920w, /static/rack-images/workshop-cafe-1280w.webp 1280w, /static/rack-images/workshop-cafe-640w.webp 640w",
+    "fallback": "/static/rack-images/workshop-cafe.webp",
+    "variants": [
+      {
+        "width": 1920,
+        "src": "/static/rack-images/workshop-cafe-1920w.webp",
+        "size": "129.86"
+      },
+      {
+        "width": 1280,
+        "src": "/static/rack-images/workshop-cafe-1280w.webp",
+        "size": "74.24"
+      },
+      {
+        "width": 640,
+        "src": "/static/rack-images/workshop-cafe-640w.webp",
+        "size": "28.04"
+      }
+    ]
+  }
+}

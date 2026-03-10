@@ -41,7 +41,11 @@ export const WorkshopCafe = () => (
         width: 20%;
         height: 40%;
       "
+<<<<<<< HEAD
       aria-label="Visit Workshop Café · Specialty Coffee · Co-Working · Open to Public"
+=======
+      aria-label="Visit Workshop Café · Coffee & Coworking · Featuring local food pop-ups from our Cowley Road neighbours"
+>>>>>>> origin/main
       title="CH4: CAFÉ CONTROL - Visit Now"
     />
 

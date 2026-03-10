@@ -27,63 +27,51 @@ export interface SimplifiedService {
 }
 
 export const simplifiedServices: SimplifiedService[] = [
-  // 1. RECORDING (WITH ENGINEER)
+  // 1. STUDIO (Consolidated: Recording + Podcast/AV + Control Room)
   {
-    id: 'recording',
-    title: 'RECORDING (WITH ENGINEER)',
-    icon: '🎛️',
-    description: 'Engineer-led sessions for artists who want guidance, technical precision, and delivery-ready results.',
+    id: 'studio',
+    title: 'CH-01 STUDIO',
+    icon: '',
+    description: 'Multi-room recording system. Engineer-led sessions and dry hire available.\n\nMusic production, spoken word, broadcast content, AV recording.\n\nAdvance bookings accepted.',
     variant: 'rack',
     ledColor: 'green',
     locations: [
+      {
+        location: 'CRICKET ROAD — CONTROL ROOM',
+        price: '£30/hr (2hr min)',
+        description: 'Dry hire only. No engineer included. Self-operated recording space.',
+        url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
+        features: ['Dry hire', 'Self-operated', 'Available now', 'Book direct']
+      },
       {
         location: 'COWLEY ROAD',
         price: '£35/hr (2hr min)',
-        description: 'Live room + large vocal booth. Professional signal chain. Engineer included.',
-        url: '/studio',
-        features: ['Engineer included', 'Live room', 'Vocal booth', 'Professional signal chain']
+        description: 'Live room + vocal booth. Professional signal chain. Engineer included. Music, podcast, AV.',
+        url: '/contact',
+        features: ['Engineer included', 'Live room', 'Vocal booth', 'Podcast/AV']
       },
       {
-        location: 'CRICKET ROAD',
+        location: 'CRICKET ROAD — RECORDING',
         price: '£30/hr (2hr min)',
-        description: 'Treated recording space. Ideal for acoustic, vocals, production work. Engineer included.',
-        url: 'https://book.squareup.com/appointments/42x52tys6ettug/location/L1MAM4DDPHKXX/services',
-        features: ['Engineer included', 'Acoustic sessions', 'Vocal recording', 'Production work']
+        description: 'Treated recording space. Acoustic, vocals, production work. Engineer included.',
+        url: '/contact?ref=cricket-recording',
+        features: ['Engineer included', 'Acoustic sessions', 'Vocal recording', 'Production']
       }
     ]
   },
 
-  // 2. CONTROL ROOM (DRY HIRE)
-  {
-    id: 'control-room',
-    title: 'CONTROL ROOM (DRY HIRE)',
-    icon: '🎚️',
-    description: 'For producers and engineers who run their own sessions. Induction required.',
-    variant: 'rack',
-    ledColor: 'amber',
-    locations: [
-      {
-        location: 'COWLEY ROAD — CONTROL ROOM',
-        price: 'Coming online',
-        description: 'Dry hire only. No engineer included. Professional monitoring and hybrid workflow.',
-        url: '/contact',
-        features: ['No engineer included', 'Induction required', 'Hybrid workflow', 'Coming online']
-      }
-    ]
-  },
-
-  // 3. BAND REHEARSALS
+  // 2. REHEARSALS
   {
     id: 'rehearsal',
-    title: 'BAND REHEARSALS',
-    icon: '🎸',
-    description: 'Available at Cowley Road and Cricket Road. Large treated room. Drum kit available. Backline options.',
+    title: 'CH-02 REHEARSAL',
+    icon: '',
+    description: 'Rehearsal rooms at Cowley Road (HQ) and Cricket Road (Node).\nBackline, PA, monitoring calibrated.\n\nSelect duration. Lock slot. Confirm.',
     variant: 'rack',
     ledColor: 'green',
     locations: [
       {
         location: 'COWLEY ROAD',
-        price: '£40 (2hrs) | £55 (3hrs) | £60 (4hrs)',
+        price: '£45 (2hrs) | £60 (3hrs) | £65 (4hrs)',
         description: 'Engineer not included. Full backline, PA system, monitoring, max 4 members.',
         url: 'https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services',
         features: ['Engineer not included', 'Full backline', 'PA system', 'Max 4 members']
@@ -98,36 +86,24 @@ export const simplifiedServices: SimplifiedService[] = [
     ]
   },
 
-  // 4. PODCAST & AV RECORDING
+  // 3. TECHNICAL
   {
-    id: 'podcast',
-    title: 'PODCAST & AV RECORDING',
-    icon: '🎙️',
-    description: 'Spoken word, interviews, streamed content. Engineer-assisted sessions available. £30–£35/hr depending on location.',
-    variant: 'rack',
-    ledColor: 'green',
-    url: '/av-services',
-    ctaText: 'BOOK PODCAST SESSION',
-  },
-
-  // 5. REPAIRS & TECHNICAL SERVICES
-  {
-    id: 'repairs',
-    title: 'REPAIRS & TECHNICAL SERVICES',
-    icon: '🔧',
-    description: 'Bench diagnostics — £60 flat rate. Amp servicing, signal faults, mixer repairs, AV troubleshooting. Work carried out by ODRO Engineering.',
+    id: 'technical',
+    title: 'CH-03 TECHNICAL',
+    icon: '',
+    description: 'Live sound support.\nSystem installs.\nDiagnostics-led equipment repair.\n\nSubmit fault report or event brief.',
     variant: 'rack',
     ledColor: 'green',
     url: '/contact',
-    ctaText: 'BOOK REPAIR',
+    ctaText: 'BOOK TECHNICAL SERVICE',
   },
 
-  // 6. WORKSHOP CAFÉ VENUE HIRE
+  // 4. VENUE
   {
-    id: 'cafe',
-    title: 'WORKSHOP CAFÉ VENUE HIRE',
-    icon: '☕',
-    description: 'Creative events, listening sessions, small gatherings. Flexible layout. Independent environment.',
+    id: 'venue',
+    title: 'CH-04 VENUE',
+    icon: '',
+    description: 'Front-of-house venue interface.\nPrivate hire and community programming.\n\nOperational hours published via system updates.',
     variant: 'passive',
     ledColor: 'green',
     locations: [
@@ -139,18 +115,6 @@ export const simplifiedServices: SimplifiedService[] = [
         features: ['Professional PA', 'Stage lighting', 'Up to 60 capacity', 'Flexible layout']
       }
     ]
-  },
-
-  // 7. CONTACT
-  {
-    id: 'contact',
-    title: 'CONTACT & ENQUIRIES',
-    icon: '📞',
-    description: 'All bookings are direct. General enquiries, technical support, and booking assistance.',
-    variant: 'passive',
-    ledColor: 'green',
-    url: '/contact',
-    ctaText: 'GET IN TOUCH',
   },
 ];
 

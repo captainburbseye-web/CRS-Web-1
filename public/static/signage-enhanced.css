@@ -1,0 +1,797 @@
+/**
+ * ENHANCED SIGNAGE STYLES
+ * Optimized for 55" Yodeck displays (1920×1080, 16:9)
+ * WCAG 2.1 AA Compliant
+ * GPU-accelerated animations
+ * Performance: Target LCP < 1.5s
+ */
+
+/* ============================================
+   BASE SETUP & RESETS
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+  color: #f4f4f4;
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+
+.signage-enhanced-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  overflow: hidden;
+  /* CRS Industrial Variables */
+  --crs-black: #0a0a0a;
+  --crs-dark: #0d0d0d;
+  --crs-metal: #1a1a1a;
+  --crs-border: #2a2a2a;
+  --crs-text: #f4f4f4;
+  --crs-text-dim: #d0d0d0;
+  --amber: #FF9F1C;
+  --amber-glow: rgba(255, 159, 28, 0.6);
+  --brass: #d4af37;
+  --neon-green: #39FF14;
+  --signal-green: #39FF14;
+  --signal-amber: #FFAA00;
+  --signal-orange: #FF8833;
+}
+
+/* ============================================
+   CAROUSEL WRAPPER & SLIDES
+   ============================================ */
+
+.signage-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.signage-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.2s ease-in-out, visibility 0s 1.2s;
+  will-change: opacity;
+}
+
+.signage-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1.2s ease-in-out, visibility 0s 0s;
+  z-index: 10;
+}
+
+/* ============================================
+   BACKGROUND LAYER (Rack Image)
+   ============================================ */
+
+.signage-slide-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.signage-slide-background picture,
+.signage-slide-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.rack-asset {
+  filter: brightness(0.7) contrast(1.1) saturate(1.2);
+  transition: transform 0.7s ease;
+}
+
+.signage-slide.active .rack-asset {
+  transform: scale(1.02);
+}
+
+/* ============================================
+   SVG WAVEFORM ANIMATION
+   ============================================ */
+
+.signage-waveform {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 30%;
+  opacity: 0.3;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.signage-pulse {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-waveform 3s ease-in-out infinite;
+}
+
+@keyframes draw-waveform {
+  0%, 100% {
+    stroke-dashoffset: 1000;
+    opacity: 0.2;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 0.6;
+  }
+}
+
+/* ============================================
+   CONTENT OVERLAY
+   ============================================ */
+
+.signage-slide-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 30%,
+    rgba(0, 0, 0, 0.4) 70%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+}
+
+/* ============================================
+   HEADER SECTION (Channel Badge + LED)
+   ============================================ */
+
+.signage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.channel-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(8px);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+}
+
+.channel-label {
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.category-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+}
+
+.led-indicator {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  animation: pulse-led 2s ease-in-out infinite;
+}
+
+@keyframes pulse-led {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* ============================================
+   CONTENT SECTION (Title + Info)
+   ============================================ */
+
+.signage-content {
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.signage-title {
+  font-size: 9rem; /* Was 5rem, now 9rem - 1.8x larger for window visibility */
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  animation: title-glow 3s ease-in-out infinite;
+  /* WCAG AA Contrast: White on dark meets 7:1+ */
+}
+
+@keyframes title-glow {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+.signage-subtitle {
+  font-size: 3.5rem; /* Was 1.5rem, now 3.5rem - 2.3x larger */
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.signage-description {
+  font-size: 2.5rem; /* Was 1.25rem, now 2.5rem - 2x larger */
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.signage-pricing {
+  font-size: 4rem; /* Was 2rem, now 4rem - 2x larger */
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-top: 1.5rem;
+}
+
+/* ============================================
+   QR CODE SECTION
+   ============================================ */
+
+.signage-qr-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.qr-code {
+  width: 180px;
+  height: 180px;
+  background: #fff;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* ============================================
+   CRS BADGE
+   ============================================ */
+
+.crs-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.crs-logo-text {
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.crs-logo-subtitle {
+  font-size: 0.875rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+
+.signage-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 20;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  animation: progress-fill 8s linear forwards;
+}
+
+@keyframes progress-fill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.signage-slide.active .progress-bar {
+  animation: progress-fill 8s linear forwards;
+}
+
+/* ============================================
+   SLIDE INDICATORS
+   ============================================ */
+
+.signage-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 30;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.indicator:hover,
+.indicator:focus-visible {
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(1.2);
+}
+
+.indicator:focus-visible {
+  outline: 2px solid #FFB700;
+  outline-offset: 4px;
+}
+
+.indicator.active {
+  background: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   STATUS BAR
+   ============================================ */
+
+.signage-status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 40;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+.status-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.status-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}
+
+.status-value {
+  color: #fff;
+}
+
+.status-value.live {
+  color: #39FF14;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY: FOCUS STATES
+   ============================================ */
+
+*:focus-visible {
+  outline: 3px solid #FFB700;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   ACCESSIBILITY: REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .signage-pulse,
+  .led-indicator,
+  .progress-bar {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   NIGHT MODE (10pm-6am)
+   ============================================ */
+
+.night-mode .signage-enhanced-container {
+  filter: brightness(0.7);
+}
+
+.night-mode .rack-asset {
+  filter: brightness(0.5) contrast(1.2);
+}
+
+/* ============================================
+   RESPONSIVE: TABLET & BELOW (≤768px)
+   ============================================ */
+
+@media (max-width: 768px) {
+  .signage-slide-overlay {
+    padding: 2rem;
+  }
+  
+  .signage-title {
+    font-size: 3rem;
+  }
+  
+  .signage-subtitle {
+    font-size: 1rem;
+  }
+  
+  .signage-description {
+    font-size: 1rem;
+  }
+  
+  .signage-pricing {
+    font-size: 1.5rem;
+  }
+  
+  .qr-code {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .crs-logo-text {
+    font-size: 2.5rem;
+  }
+  
+  .signage-qr-section {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+}
+
+/* ============================================
+   PERFORMANCE: GPU ACCELERATION
+   ============================================ */
+
+.signage-slide,
+.rack-asset,
+.signage-waveform,
+.progress-bar {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* ============================================
+   ACCESSIBILITY: HIGH CONTRAST MODE
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  .signage-title,
+  .signage-subtitle,
+  .signage-description {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  }
+  
+  .channel-badge,
+  .qr-container {
+    border: 3px solid #fff;
+  }
+}
+
+/* ============================================
+   CRS BRANDING ENHANCEMENTS
+   ============================================ */
+
+/* CRS Logo/Badge Positioning */
+.crs-branding-badge {
+  position: absolute;
+  top: 3rem;
+  left: 3rem;
+  z-index: 100;
+  opacity: 0.95;
+  transition: opacity 0.4s ease;
+}
+
+.crs-branding-badge img {
+  max-width: 180px;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
+}
+
+/* CRS Wordmark in Signage */
+.crs-wordmark-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.crs-wordmark-overlay img {
+  max-width: 800px;
+  height: auto;
+}
+
+/* Override title colors with CRS amber/brass */
+.signage-title {
+  color: var(--amber);
+  text-shadow: 
+    0 0 20px var(--amber-glow),
+    0 0 40px var(--amber-glow),
+    0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.signage-subtitle {
+  color: var(--brass);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* CRS Channel Labels */
+.signage-channel-label {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--signal-green);
+  background: var(--crs-dark);
+  padding: 0.5rem 1.25rem;
+  border: 2px solid var(--signal-green);
+  border-radius: 4px;
+  box-shadow: 
+    0 0 12px rgba(57, 255, 20, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* LED Indicator Colors (CRS Style) */
+.led-green {
+  background: var(--signal-green);
+  box-shadow: 
+    0 0 12px var(--signal-green),
+    0 0 24px var(--signal-green),
+    inset 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.led-amber {
+  background: var(--signal-amber);
+  box-shadow: 
+    0 0 12px var(--signal-amber),
+    0 0 24px var(--signal-amber),
+    inset 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.led-orange {
+  background: var(--signal-orange);
+  box-shadow: 
+    0 0 12px var(--signal-orange),
+    0 0 24px var(--signal-orange),
+    inset 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+/* CRS System Status Footer */
+.crs-system-status-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--crs-black);
+  border-top: 2px solid var(--crs-border);
+  padding: 1rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--crs-text-dim);
+  letter-spacing: 0.05em;
+  z-index: 150;
+}
+
+.crs-status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.crs-status-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--signal-green);
+  box-shadow: 0 0 8px var(--signal-green);
+  animation: pulse-led 2s ease-in-out infinite;
+}
+
+.crs-status-label {
+  font-weight: 700;
+  color: var(--brass);
+  text-transform: uppercase;
+}
+
+/* Progress Bar CRS Styling */
+.progress-bar {
+  background: var(--signal-amber);
+  box-shadow: 0 0 8px var(--amber-glow);
+}
+
+/* QR Container CRS Branding */
+.qr-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--crs-black);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--amber);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+/* Pricing with CRS Amber Highlight */
+.signage-pricing {
+  color: var(--amber);
+  text-shadow: 
+    0 0 16px var(--amber-glow),
+    0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* SVG Waveform CRS Colors */
+.signage-waveform path {
+  stroke: var(--signal-green);
+  filter: drop-shadow(0 0 8px var(--signal-green));
+}
+
+/* Night Mode Adjustments */
+.night-mode .signage-title {
+  color: var(--brass);
+  text-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+}
+
+.night-mode .crs-branding-badge {
+  opacity: 0.7;
+}
+
+/* Mobile Responsive Branding */
+@media (max-width: 768px) {
+  .crs-branding-badge {
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+  
+  .crs-branding-badge img {
+    max-width: 120px;
+  }
+  
+  .signage-channel-label {
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+  }
+  
+  .crs-system-status-bar {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .crs-wordmark-overlay img {
+    max-width: 400px;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .signage-title {
+    color: #FFFFFF;
+    text-shadow: none;
+  }
+  
+  .signage-subtitle,
+  .crs-status-label {
+    color: #FFFFFF;
+  }
+  
+  .crs-branding-badge,
+  .crs-wordmark-overlay {
+    opacity: 1;
+  }
+}
+

@@ -67,6 +67,21 @@ body {
     0 4px 8px rgba(0, 0, 0, 0.5);
   padding: 1rem 2rem; /* REDUCED from 2rem 5rem */
   min-height: 80px; /* REDUCED from 120px */
+  
+  /* ODRO Panel Texture + Rack Ear Holes */
+  background-image: 
+    url('/static/panel-textures/odro-panel.jpg'),
+    /* Left ear holes */
+    radial-gradient(circle at 2rem 2rem, rgba(0, 0, 0, 0.5) 6px, transparent 6px),
+    radial-gradient(circle at 2rem calc(100% - 2rem), rgba(0, 0, 0, 0.5) 6px, transparent 6px),
+    /* Right ear holes */
+    radial-gradient(circle at calc(100% - 2rem) 2rem, rgba(0, 0, 0, 0.5) 6px, transparent 6px),
+    radial-gradient(circle at calc(100% - 2rem) calc(100% - 2rem), rgba(0, 0, 0, 0.5) 6px, transparent 6px);
+  background-repeat: no-repeat;
+  background-size: cover, auto, auto, auto, auto;
+  background-position: center, 0 0, 0 0, 0 0, 0 0;
+  background-blend-mode: multiply, normal, normal, normal, normal;
+  background-color: var(--panel-green);
 }
 
 /* Bronze Rack Ears (left and right) */
@@ -87,6 +102,7 @@ body {
   box-shadow: 
     inset -2px 0 4px rgba(0, 0, 0, 0.3),
     inset 2px 0 4px rgba(255, 255, 255, 0.1);
+  z-index: 1; /* Ensure ears stay on top of panel texture */
 }
 
 .rack-unit::before {
@@ -99,17 +115,9 @@ body {
   border-left: 1px solid var(--bronze-shadow);
 }
 
-/* Rack Ear Holes (pseudo-elements on ears) */
-.rack-unit {
-  background-image: 
-    /* Left ear holes */
-    radial-gradient(circle at 2rem 2rem, rgba(0, 0, 0, 0.5) 6px, transparent 6px),
-    radial-gradient(circle at 2rem calc(100% - 2rem), rgba(0, 0, 0, 0.5) 6px, transparent 6px),
-    /* Right ear holes */
-    radial-gradient(circle at calc(100% - 2rem) 2rem, rgba(0, 0, 0, 0.5) 6px, transparent 6px),
-    radial-gradient(circle at calc(100% - 2rem) calc(100% - 2rem), rgba(0, 0, 0, 0.5) 6px, transparent 6px);
-  background-repeat: no-repeat;
-  background-color: var(--panel-green);
+/* Higher ODRO panel visibility for special units */
+.rack-unit.device-status {
+  background-blend-mode: overlay, normal, normal, normal, normal;
 }
 
 /* ==== CORNER SCREWS (3D EFFECT) ==== */
@@ -630,7 +638,7 @@ footer {
 
 .led.green {
   background: #39FF14;
-  color: #39FF14;
+  color: #B5A642;
 }
 
 .led.yellow,
