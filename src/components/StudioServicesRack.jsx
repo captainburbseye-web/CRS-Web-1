@@ -63,11 +63,11 @@ const LedIndicator = ({ variant, active = false }) => {
   );
 };
 
-const EngravedLabel = ({ children, id, className = "" }) => (
+const EngravedLabel = ({ children, id, className = "", style = {} }) => (
   <h2 
     id={id} 
-    className={`font-sans font-black tracking-widest text-gray-400 uppercase ${className}`}
-    style={{ textShadow: "0 1px 1px rgba(255,255,255,0.1), 0 -1px 1px rgba(0,0,0,0.8)" }}
+    className={`font-sans font-black tracking-widest uppercase ${className}`}
+    style={{ textShadow: "0 1px 1px rgba(255,255,255,0.1), 0 -1px 1px rgba(0,0,0,0.8)", ...style }}
   >
     {children}
   </h2>
@@ -78,40 +78,69 @@ const EngravedLabel = ({ children, id, className = "" }) => (
 // ==========================================
 
 const SignalStripe = () => (
-  <div className="flex gap-[2px] items-center" aria-hidden="true">
-    <div className="w-1 h-3 bg-green-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]" />
-    <div className="w-1 h-3 bg-yellow-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]" />
-    <div className="w-1 h-3 bg-red-500 shadow-[inset_0_1px_0_rgba(255,255,255,0.3)]" />
+  <div className="flex gap-[3px] items-center" aria-hidden="true">
+    <div className="w-[3px] h-[3px] bg-[#dc2626] shadow-[inset_0_1px_0_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.2)]" />
+    <div className="w-[3px] h-[3px] bg-[#d4a017] shadow-[inset_0_1px_0_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.2)]" />
+    <div className="w-[3px] h-[3px] bg-[#2d3e2f] shadow-[inset_0_1px_0_rgba(0,0,0,0.6),0_1px_0_rgba(255,255,255,0.2)]" />
+  </div>
+);
+
+const CRSBlockLogo = () => (
+  <div className="flex items-center gap-[2px]" aria-hidden="true">
+    <div 
+      className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center font-black text-[8px] sm:text-[10px] border border-black/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
+      style={{ backgroundColor: '#faf9f6', color: '#1a1a1a', textShadow: '0 1px 0 rgba(255,255,255,0.5)' }}
+    >
+      C
+    </div>
+    <div 
+      className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center font-black text-[8px] sm:text-[10px] border border-black/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
+      style={{ backgroundColor: '#d4a017', color: '#1a1a1a', textShadow: '0 1px 0 rgba(255,255,255,0.3)' }}
+    >
+      R
+    </div>
+    <div 
+      className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center font-black text-[8px] sm:text-[10px] border border-black/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
+      style={{ backgroundColor: '#8b2e2e', color: '#faf9f6', textShadow: '0 -1px 0 rgba(0,0,0,0.5)' }}
+    >
+      S
+    </div>
   </div>
 );
 
 const MasterFaceplate = () => (
-  <div className="relative px-4 sm:px-8 py-3 sm:py-4 bg-gradient-to-b from-[#1a1e24] to-[#0f1115] border-b border-black/90">
+  <div className="relative px-4 sm:px-8 py-3 sm:py-4 bg-gradient-to-b from-[#2a3428] to-[#1c2318] border-b-2 border-black shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-3 sm:gap-4">
-        <BrandBadge kind="crs" className="w-5 h-5 sm:w-6 sm:h-6" />
-        <div className="flex flex-col gap-0.5">
+        <CRSBlockLogo />
+        <div className="flex flex-col gap-1">
           <h1 
-            className="text-[10px] sm:text-xs font-mono font-black tracking-[0.2em] text-gray-500 uppercase"
+            className="text-[10px] sm:text-xs font-mono font-black tracking-[0.18em] uppercase"
             style={{ 
+              color: '#8a9479',
               textShadow: "0 1px 0 rgba(255,255,255,0.08), 0 -1px 0 rgba(0,0,0,0.9)",
-              letterSpacing: "0.2em"
+              letterSpacing: "0.18em"
             }}
           >
             COWLEY ROAD STUDIOS
           </h1>
-          <div className="text-[7px] sm:text-[8px] font-mono tracking-widest text-gray-600 uppercase">
+          <div className="text-[7px] sm:text-[8px] font-mono tracking-widest uppercase" style={{ color: '#5a6350' }}>
             Oxford • Studio Services Rack
           </div>
         </div>
       </div>
-      <div className="flex items-center gap-2 sm:gap-3">
-        <SignalStripe />
-        <div 
-          className="text-[8px] sm:text-[9px] font-mono font-bold tracking-wider text-gray-600 uppercase"
-          style={{ textShadow: "0 1px 0 rgba(0,0,0,0.8)" }}
-        >
-          CRS-CONSOLE-01
+      <div className="flex flex-col items-end gap-1">
+        <div className="flex items-center gap-2">
+          <SignalStripe />
+          <div 
+            className="text-[8px] sm:text-[9px] font-mono font-bold tracking-wider uppercase"
+            style={{ color: '#6a7360', textShadow: "0 1px 0 rgba(0,0,0,0.8)" }}
+          >
+            CRS-CONSOLE-01
+          </div>
+        </div>
+        <div className="text-[6px] sm:text-[7px] font-mono tracking-wider uppercase" style={{ color: '#4a5340' }}>
+          Audio • Rehearsal • Control
         </div>
       </div>
     </div>
@@ -119,22 +148,22 @@ const MasterFaceplate = () => (
 );
 
 const StatusPlacard = () => (
-  <div className="relative px-4 sm:px-8 py-4 sm:py-5 bg-gradient-to-b from-[#0a0a0a] to-[#050505] border-b-2 border-black">
-    <div className="relative p-3 sm:p-4 bg-black/60 rounded border border-black/80 shadow-[inset_0_2px_6px_rgba(0,0,0,0.9)]">
+  <div className="relative px-4 sm:px-8 py-4 sm:py-5 bg-gradient-to-b from-[#13160f] to-[#0b0d09] border-b-2 border-black">
+    <div className="relative p-3 sm:p-4 bg-black/70 rounded border border-black/90 shadow-[inset_0_3px_8px_rgba(0,0,0,0.95)]">
       <div className="font-mono text-[9px] sm:text-[10px] leading-relaxed tracking-wide space-y-1.5">
-        <div className="text-green-400/90 font-bold uppercase" style={{ textShadow: "0 0 4px rgba(74,222,128,0.4)" }}>
+        <div className="font-bold uppercase" style={{ color: '#7a9c68', textShadow: "0 0 6px rgba(122,156,104,0.5)" }}>
           SELECT SERVICE MODULE
         </div>
-        <div className="text-gray-500 flex items-center gap-2">
-          <span className="text-green-400">●</span>
+        <div className="flex items-center gap-2" style={{ color: '#6a7860' }}>
+          <span style={{ color: '#7a9c68' }}>●</span>
           <span>CRS = LEFT CHANNEL</span>
         </div>
-        <div className="text-gray-500 flex items-center gap-2">
-          <span className="text-yellow-400">●</span>
+        <div className="flex items-center gap-2" style={{ color: '#6a7860' }}>
+          <span style={{ color: '#d4a017' }}>●</span>
           <span>CRICKET = RIGHT CHANNEL</span>
         </div>
-        <div className="text-gray-600 text-[8px] sm:text-[9px] mt-2 pt-2 border-t border-gray-800/50">
-          ENGAGE BOOKING CIRCUIT
+        <div className="text-[7px] sm:text-[8px] mt-2 pt-2 border-t" style={{ color: '#4a5340', borderColor: 'rgba(70,83,65,0.3)' }}>
+          SIGNAL ROUTING • BOOKING BUS
         </div>
       </div>
     </div>
@@ -180,9 +209,9 @@ const HardwareButton = ({ variant, serviceName, locationName, href, onClick, ext
   const Element = isLink ? "a" : "button";
 
   const variantStyles = {
-    crs: "bg-gradient-to-b from-green-700 to-green-900 text-gray-100 hover:from-green-600 hover:to-green-800",
-    cricket: "bg-gradient-to-b from-purple-700 to-purple-900 text-yellow-300 hover:from-purple-600 hover:to-purple-800",
-    neutral: "bg-gradient-to-b from-gray-600 to-gray-800 text-gray-200 hover:from-gray-500 hover:to-gray-700",
+    crs: "bg-gradient-to-b from-[#4a6d3c] to-[#2d4228] text-[#d8e6cc] hover:from-[#557a46] hover:to-[#385230]",
+    cricket: "bg-gradient-to-b from-[#6b4a8e] to-[#4a3062] text-[#f5e6a0] hover:from-[#7a5aa0] hover:to-[#573870]",
+    neutral: "bg-gradient-to-b from-[#4a5340] to-[#2a3020] text-[#c8d0b8] hover:from-[#5a6350] hover:to-[#3a4030]",
   };
 
   const activeLed = ledMode === "always-on" ? true : ledMode === "hover-on" ? hovered || pressed : false;
@@ -249,15 +278,21 @@ const ServiceButtonGroup = ({ children }) => (
 
 const RackModule = ({ title, subtitle, theme = "standard", meters = true, children }) => {
   const labelId = `module-${title.replace(/\s+/g, "-").toLowerCase()}`;
+  
+  const themeStyles = {
+    standard: "bg-gradient-to-b from-[#465341] to-[#2f3a28] shadow-[inset_0_2px_0_rgba(255,255,255,0.08),inset_0_-4px_8px_rgba(0,0,0,0.85)]",
+    dark: "bg-gradient-to-b from-[#1c2018] to-[#13160f] shadow-[inset_0_2px_0_rgba(255,255,255,0.04),inset_0_-4px_8px_rgba(0,0,0,0.90)]"
+  };
+  
   return (
     <section 
-      className={`group relative border-b-[3px] border-black/90 p-4 sm:p-8 flex flex-col gap-4 sm:gap-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] ${theme === "dark" ? "bg-gradient-to-b from-[#222] to-[#111]" : "bg-gradient-to-b from-gray-700 to-gray-900"}`}
+      className={`group relative border-b-[3px] border-black/95 p-4 sm:p-8 flex flex-col gap-4 sm:gap-5 ${themeStyles[theme]}`}
       aria-labelledby={labelId}
     >
       <div className="flex justify-between items-end px-2">
         <div className="min-w-0 pr-2">
-          <EngravedLabel id={labelId} className="text-base sm:text-xl truncate">{title}</EngravedLabel>
-          {subtitle && <p className="text-[10px] sm:text-xs font-mono text-gray-500 uppercase tracking-widest mt-1 truncate">{subtitle}</p>}
+          <EngravedLabel id={labelId} className="text-base sm:text-xl truncate" style={{ color: theme === "dark" ? "#5a6350" : "#8a9479" }}>{title}</EngravedLabel>
+          {subtitle && <p className="text-[10px] sm:text-xs font-mono uppercase tracking-widest mt-1 truncate" style={{ color: theme === "dark" ? "#3a4330" : "#5a6350" }}>{subtitle}</p>}
         </div>
         {meters && (
           <div className="flex gap-2 sm:gap-4 items-end pb-1 shrink-0">
