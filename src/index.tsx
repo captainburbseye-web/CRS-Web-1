@@ -1664,24 +1664,44 @@ app.get('/rack-test', (c) => {
 app.get('/studio-rack-demo', (c) => {
   const assetPath = getClientAsset('rack-entry')
   
-  return c.render(
-    <>
-      <div id="studio-rack-root"></div>
-      <script type="module" src={assetPath} defer></script>
-      <script>
-        {`
-          window.addEventListener('OPEN_ODRO_MODAL', () => {
-            const modal = document.getElementById('odro-terms-modal');
-            if (modal) modal.classList.remove('hidden');
-          });
-        `}
-      </script>
-    </>,
-    {
-      title: 'Studio Services | Cowley Road Studios',
-      description: 'Book recording, rehearsal, and control room sessions',
-      keywords: 'studio booking, recording sessions, rehearsal rooms'
-    }
+  return c.html(
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Services | Cowley Road Studios</title>
+  <meta name="description" content="Book recording, rehearsal, and control room sessions" />
+  <meta name="keywords" content="studio booking, recording sessions, rehearsal rooms" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Core styles -->
+  <link href="/static/crs-consolidated-base.css" rel="stylesheet" />
+  <link href="/static/crs-consolidated-rack.css" rel="stylesheet" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="studio-rack-root"></div>
+  
+  <!-- React Island Entry -->
+  <script type="module" src="${assetPath}" defer></script>
+  
+  <!-- ODRO Modal Trigger -->
+  <script>
+    window.addEventListener('OPEN_ODRO_MODAL', function() {
+      var modal = document.getElementById('odro-terms-modal');
+      if (modal) modal.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>`
   )
 })
 
