@@ -1668,14 +1668,14 @@ app.get('/studio-rack-demo', (c) => {
     <>
       <div id="studio-rack-root"></div>
       <script type="module" src={assetPath} defer></script>
-      <script dangerouslySetInnerHTML={{
-        __html: `
+      <script>
+        {`
           window.addEventListener('OPEN_ODRO_MODAL', () => {
             const modal = document.getElementById('odro-terms-modal');
             if (modal) modal.classList.remove('hidden');
           });
-        `
-      }} />
+        `}
+      </script>
     </>,
     {
       title: 'Studio Services | Cowley Road Studios',
