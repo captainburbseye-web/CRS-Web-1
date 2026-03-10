@@ -31,6 +31,9 @@ import { PodcastAVPage } from './pages/PodcastAV'
 import { ContactPage } from './pages/Contact'
 import { DigitalPulsePage } from './pages/DigitalPulse'
 import { CLIENT_MANIFEST } from './client-manifest'
+import { createElement } from 'react'
+import { renderToString } from 'react-dom/server'
+import StudioServicesRack from './components/StudioServicesRack'
 
 const app = new Hono()
 
@@ -1661,13 +1664,8 @@ app.get('/rack-test', (c) => {
 })
 
 // STUDIO RACK DEMO — REACT ISLAND
-app.get('/studio-rack-demo', async (c) => {
+app.get('/studio-rack-demo', (c) => {
   const assetPath = getClientAsset('rack-entry')
-  
-  // Import React SSR and component
-  const { renderToString } = await import('react-dom/server')
-  const { createElement } = await import('react')
-  const StudioServicesRack = (await import('./components/StudioServicesRack')).default
   
   // Server-render the React component
   const rackHtml = renderToString(createElement(StudioServicesRack))
