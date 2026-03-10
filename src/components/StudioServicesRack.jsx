@@ -86,25 +86,30 @@ const SignalStripe = () => (
 );
 
 const CRSBlockLogo = () => (
-  <div className="flex items-center gap-[2px]" aria-hidden="true">
-    <div 
-      className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center font-black text-[8px] sm:text-[10px] border border-black/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
-      style={{ backgroundColor: '#faf9f6', color: '#1a1a1a', textShadow: '0 1px 0 rgba(255,255,255,0.5)' }}
-    >
-      C
+  <div className="flex items-stretch border-[2px] border-black rounded-[2px] shadow-[0_4px_6px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.4)] overflow-hidden shrink-0" aria-label="CRS Logo">
+    
+    {/* Left Block: CR (Cream/White) */}
+    <div className="relative flex flex-col items-center justify-center bg-[#f2efe4] px-2 sm:px-3 py-1 sm:py-1.5 border-r-[2px] border-black">
+      <span 
+        className="font-sans font-black text-black text-lg sm:text-2xl leading-none tracking-tighter" 
+        style={{ transform: 'scaleY(1.15)' }}
+      >
+        CR
+      </span>
+      {/* Green Underline */}
+      <div className="absolute bottom-1 w-[60%] h-[3px] sm:h-[4px] bg-[#3a7d28]"></div>
     </div>
-    <div 
-      className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center font-black text-[8px] sm:text-[10px] border border-black/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
-      style={{ backgroundColor: '#d4a017', color: '#1a1a1a', textShadow: '0 1px 0 rgba(255,255,255,0.3)' }}
-    >
-      R
+
+    {/* Right Block: S (Mustard Yellow) */}
+    <div className="flex items-center justify-center bg-[#dcae1d] px-2.5 sm:px-4 py-1 sm:py-1.5 shadow-[inset_2px_0_4px_rgba(255,255,255,0.1)]">
+      <span 
+        className="font-sans font-black text-black text-lg sm:text-2xl leading-none" 
+        style={{ transform: 'scaleY(1.15)' }}
+      >
+        S
+      </span>
     </div>
-    <div 
-      className="w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center font-black text-[8px] sm:text-[10px] border border-black/60 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)]"
-      style={{ backgroundColor: '#8b2e2e', color: '#faf9f6', textShadow: '0 -1px 0 rgba(0,0,0,0.5)' }}
-    >
-      S
-    </div>
+
   </div>
 );
 
