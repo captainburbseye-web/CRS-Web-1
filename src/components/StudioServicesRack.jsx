@@ -1,331 +1,363 @@
 import React, { useState } from 'react';
 
 // ==========================================
-// HARDWARE RACK INTERFACE
-// Flat orthographic 2U rack unit design
+// 1. HARDWARE PRIMITIVES & MICRO-BRANDING
 // ==========================================
 
-const RackBolt = () => (
-  <div className="w-3 h-3 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 border border-gray-900 shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),0_2px_3px_rgba(0,0,0,0.8)]" aria-hidden="true">
-    <div className="w-full h-full rounded-full flex items-center justify-center">
-      <div className="w-1 h-1 bg-gray-900 rounded-full" />
-    </div>
-  </div>
+const HexBolt = ({ className = "w-4 h-4 sm:w-5 sm:h-5" }) => (
+  <svg viewBox="0 0 100 100" className={`drop-shadow-md ${className}`} aria-hidden="true">
+    <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" fill="#444" stroke="#111" strokeWidth="4"/>
+    <circle cx="50" cy="50" r="25" fill="#222" />
+    <circle cx="50" cy="50" r="15" fill="#111" />
+  </svg>
 );
 
-const PatchSocket = () => (
-  <div className="w-4 h-4 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border-2 border-black shadow-[inset_0_2px_4px_rgba(0,0,0,0.9)]" aria-hidden="true">
-    <div className="w-full h-full rounded-full border border-gray-600" />
-  </div>
-);
+const BrandBadge = ({ kind, className = "" }) => {
+  if (kind === "crs") {
+    return (
+      <div aria-hidden="true" className={`w-6 h-6 shrink-0 rounded-sm border border-black/70 bg-gradient-to-b from-green-600 to-green-800 shadow-[inset_0_1px_2px_rgba(255,255,255,0.3)] flex items-center justify-center ${className}`}>
+        <svg viewBox="0 0 24 24" className="w-full h-full p-0.5">
+          <path d="M4 4 L12 2 L20 4 L20 12 L12 22 L4 12 Z" fill="none" stroke="white" strokeWidth="1.5" strokeLinejoin="bevel"/>
+          <circle cx="12" cy="12" r="3" fill="white"/>
+        </svg>
+      </div>
+    );
+  }
+  if (kind === "cricket") {
+    return (
+      <div aria-hidden="true" className={`w-6 h-6 shrink-0 rotate-45 rounded-[2px] border border-black/70 bg-gradient-to-b from-yellow-400 to-yellow-600 shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] flex items-center justify-center ${className}`}>
+        <svg viewBox="0 0 24 24" className="-rotate-45 w-full h-full p-1">
+          <rect x="6" y="6" width="12" height="12" fill="none" stroke="black" strokeWidth="2" rx="1"/>
+          <circle cx="12" cy="12" r="3" fill="black"/>
+        </svg>
+      </div>
+    );
+  }
+  if (kind === "odro") {
+    return (
+      <div aria-hidden="true" className={`w-6 h-6 shrink-0 rounded-sm border border-black/70 bg-gradient-to-b from-orange-500 to-orange-700 shadow-[inset_0_1px_2px_rgba(255,255,255,0.3)] flex items-center justify-center ${className}`}>
+        <span className="text-[8px] font-black text-white tracking-tighter">AV</span>
+      </div>
+    );
+  }
+  if (kind === "cafe") {
+    return (
+      <div aria-hidden="true" className={`w-6 h-6 shrink-0 rounded-full border border-black/70 bg-gradient-to-b from-[#d4af37] to-[#997a00] shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)] flex items-center justify-center ${className}`}>
+        <span className="text-[8px] font-black text-black tracking-tighter">W/C</span>
+      </div>
+    );
+  }
+  return null;
+};
 
-const LedIndicator = ({ active = false, color = "green" }) => {
-  const colors = {
-    green: active ? "bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.9)]" : "bg-green-900/40",
-    red: active ? "bg-red-400 shadow-[0_0_8px_rgba(239,68,68,0.9)]" : "bg-red-900/40",
-    yellow: active ? "bg-yellow-400 shadow-[0_0_8px_rgba(250,204,21,0.9)]" : "bg-yellow-900/40"
+const LedIndicator = ({ variant, active = false, hovered = false }) => {
+  const styles = {
+    crs: active 
+      ? "bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.9)] scale-110" 
+      : hovered 
+      ? "bg-green-600 shadow-[0_0_4px_rgba(74,222,128,0.4)]" 
+      : "bg-green-950 opacity-60",
+    cricket: active 
+      ? "bg-yellow-300 shadow-[0_0_10px_rgba(253,224,71,0.9)] scale-110" 
+      : hovered 
+      ? "bg-yellow-500 shadow-[0_0_4px_rgba(253,224,71,0.4)]" 
+      : "bg-yellow-900 opacity-60",
+    odro: active 
+      ? "bg-orange-400 shadow-[0_0_10px_rgba(251,146,60,0.9)] scale-110" 
+      : hovered 
+      ? "bg-orange-600 shadow-[0_0_4px_rgba(251,146,60,0.4)]" 
+      : "bg-orange-950 opacity-60",
+    neutral: active 
+      ? "bg-slate-300 shadow-[0_0_10px_rgba(203,213,225,0.7)] scale-110" 
+      : hovered 
+      ? "bg-slate-500 shadow-[0_0_4px_rgba(203,213,225,0.4)]" 
+      : "bg-slate-800 opacity-60",
   };
-  
   return (
-    <div className={`w-2 h-2 rounded-full border border-black ${colors[color]} transition-all duration-200`} aria-hidden="true" />
+    <div aria-hidden="true" className={`w-3 h-3 shrink-0 rounded-full border border-black/80 transition-all duration-300 ${styles[variant]}`} style={{ outline: '1px solid rgba(255,255,255,0.05)', outlineOffset: '2px' }} />
   );
 };
 
-const VuMeterNeedle = ({ active = false }) => (
-  <div className="relative w-16 h-12 bg-black rounded border border-gray-800" aria-hidden="true">
-    <div className="absolute inset-[2px] bg-[#1a1a1a] rounded-sm">
-      {/* Scale markings */}
-      <svg viewBox="0 0 60 40" className="absolute inset-0 w-full h-full">
-        <path d="M 10 35 Q 30 15 50 35" fill="none" stroke="#333" strokeWidth="0.5" />
-        <line x1="15" y1="32" x2="15" y2="28" stroke="#333" strokeWidth="0.5" />
-        <line x1="22" y1="27" x2="22" y2="24" stroke="#333" strokeWidth="0.5" />
-        <line x1="30" y1="24" x2="30" y2="20" stroke="#555" strokeWidth="1" />
-        <line x1="38" y1="27" x2="38" y2="24" stroke="#a00" strokeWidth="0.5" />
-        <line x1="45" y1="32" x2="45" y2="28" stroke="#a00" strokeWidth="1" />
-      </svg>
-      {/* Needle */}
-      <div 
-        className={`absolute bottom-0 left-1/2 w-[1px] h-10 bg-red-600 origin-bottom transition-transform duration-300 ${active ? 'rotate-[25deg]' : '-rotate-[35deg]'}`}
-        style={{ transformOrigin: '50% 100%' }}
-      />
-      <div className="absolute bottom-0 left-1/2 w-2 h-2 bg-gray-800 rounded-full -translate-x-1/2 border border-gray-900" />
+const EngravedLabel = ({ children, id, className = "" }) => (
+  <h2
+    id={id}
+    className={`font-sans font-black tracking-widest text-gray-400 uppercase ${className}`}
+    style={{ textShadow: "0 1px 1px rgba(255,255,255,0.1), 0 -1px 1px rgba(0,0,0,0.8)" }}
+  >
+    {children}
+  </h2>
+);
+
+const VuMeter = ({ label = "VU" }) => (
+  <div className="relative flex flex-col items-center" aria-hidden="true">
+    <div className="w-20 h-14 sm:w-24 sm:h-16 bg-gradient-to-b from-[#222] to-[#111] p-[3px] rounded border border-black shadow-[0_4px_6px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.2)]">
+      <div className="relative w-full h-full bg-[#fcf9e3] rounded-sm overflow-hidden shadow-[inset_0_3px_8px_rgba(0,0,0,0.6)]">
+        {/* Idle pulse when not hovered */}
+        <div className="absolute inset-0 bg-yellow-400/5 animate-[pulse_4s_ease-in-out_infinite] group-hover:bg-yellow-500/20 transition-colors duration-500" />
+
+        <svg viewBox="0 0 100 50" className="absolute top-1 left-0 w-full h-full opacity-70">
+          <path d="M 15 45 A 35 35 0 0 1 85 45" fill="none" stroke="#222" strokeWidth="0.5" />
+          <line x1="22" y1="32" x2="24" y2="35" stroke="#222" strokeWidth="1" />
+          <line x1="35" y1="20" x2="36" y2="24" stroke="#222" strokeWidth="1" />
+          <line x1="50" y1="15" x2="50" y2="20" stroke="#222" strokeWidth="1.5" />
+          <line x1="65" y1="20" x2="64" y2="24" stroke="#222" strokeWidth="1" />
+          <line x1="78" y1="32" x2="76" y2="35" stroke="#dc2626" strokeWidth="1.5" />
+          <path d="M 72 26 A 35 35 0 0 1 85 45" fill="none" stroke="#dc2626" strokeWidth="2" />
+        </svg>
+
+        <div className="absolute bottom-[-4px] left-1/2 w-[1.5px] h-[110%] bg-[#111] origin-bottom -translate-x-1/2 -rotate-[40deg] group-hover:animate-[vuHit_220ms_ease-out] group-hover:rotate-[15deg] transition-transform duration-700 ease-out shadow-[-2px_0_2px_rgba(0,0,0,0.2)] z-10">
+          <div className="w-full h-1/3 bg-red-600" />
+        </div>
+        <div className="absolute bottom-[-6px] left-1/2 w-4 h-4 bg-gradient-to-b from-[#333] to-[#111] rounded-full border border-black -translate-x-1/2 z-20 shadow-md" />
+        <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[7px] sm:text-[8px] font-sans font-black text-black/50 tracking-widest">{label}</span>
+        <div className="absolute top-0 left-0 w-full h-[45%] bg-gradient-to-b from-white/30 to-transparent rounded-t-sm pointer-events-none z-30" />
+      </div>
     </div>
   </div>
 );
 
-const EngravedLabel = ({ children }) => (
-  <div 
-    className="text-[8px] font-mono font-bold text-gray-500 uppercase tracking-wider"
-    style={{ textShadow: "0 1px 0 rgba(0,0,0,0.8), 0 -1px 0 rgba(255,255,255,0.1)" }}
-  >
+// ==========================================
+// 2. CORE ARCHITECTURE COMPONENTS
+// ==========================================
+
+const HardwareButton = ({ variant, serviceName, locationName, href, onClick, external = false, ariaLabel, icon, ledMode = "hover-on" }) => {
+  const [hovered, setHovered] = useState(false);
+  const [pressed, setPressed] = useState(false);
+
+  const isLink = Boolean(href);
+  const Element = isLink ? "a" : "button";
+
+  const variantStyles = {
+    crs: "bg-gradient-to-b from-green-700 to-green-900 text-gray-100 hover:from-green-600 hover:to-green-800",
+    cricket: "bg-gradient-to-b from-purple-700 to-purple-900 text-yellow-300 hover:from-purple-600 hover:to-purple-800",
+    neutral: "bg-gradient-to-b from-gray-600 to-gray-800 text-gray-200 hover:from-gray-500 hover:to-gray-700",
+  };
+
+  const activeLed = ledMode === "always-on" ? true : ledMode === "hover-on" ? hovered || pressed : false;
+
+  const sharedProps = {
+    className: `
+      relative w-full sm:flex-1 flex items-center justify-between gap-2 sm:gap-3
+      px-2 py-3 sm:px-6 sm:py-5
+      border border-black/80 ring-1 ring-black/40
+      shadow-[inset_0_2px_4px_rgba(255,255,255,0.14),0_4px_6px_rgba(0,0,0,0.6)]
+      active:translate-y-[1px] active:shadow-[inset_0_6px_10px_rgba(0,0,0,0.85)]
+      transition-all duration-75 ease-[cubic-bezier(0.2,0.8,0.4,1)] cursor-pointer
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111]
+      ${variantStyles[variant]}
+    `,
+    "aria-label": ariaLabel,
+    onMouseEnter: () => setHovered(true),
+    onMouseLeave: () => { setHovered(false); setPressed(false); },
+    onMouseDown: () => setPressed(true),
+    onMouseUp: () => setPressed(false),
+    onFocus: () => setHovered(true),
+    onBlur: () => { setHovered(false); setPressed(false); },
+  };
+
+  const content = (
+    <>
+      <div className="flex items-center gap-1.5 sm:gap-3 min-w-0">
+        {icon && <BrandBadge kind={icon} />}
+        <div className="flex flex-col min-w-0 text-left">
+          <span className="font-mono font-bold tracking-wide sm:tracking-widest uppercase text-xs sm:text-base leading-tight drop-shadow-md truncate">
+            {serviceName}
+          </span>
+          {locationName && (
+            <span className="font-mono text-[9px] sm:text-xs uppercase tracking-wide sm:tracking-[0.2em] opacity-80 truncate">
+              {locationName}
+            </span>
+          )}
+        </div>
+      </div>
+      <LedIndicator variant={variant} active={activeLed} hovered={hovered} />
+    </>
+  );
+
+  if (isLink) {
+    return (
+      <Element {...sharedProps} href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
+        {content}
+      </Element>
+    );
+  }
+
+  return (
+    <Element {...sharedProps} type="button" onClick={onClick}>
+      {content}
+    </Element>
+  );
+};
+
+const ServiceButtonGroup = ({ children }) => (
+  <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 w-full p-3 sm:p-4 bg-black/40 rounded border border-black/60 shadow-[inset_0_4px_8px_rgba(0,0,0,0.8)]">
     {children}
   </div>
 );
 
-const MechanicalButton = ({ label, sublabel, active, hovered, onPress, onRelease, onHover, onLeave, href, external }) => {
-  const [pressed, setPressed] = useState(false);
-  
-  const handleMouseDown = () => {
-    setPressed(true);
-    onPress?.();
-  };
-  
-  const handleMouseUp = () => {
-    setPressed(false);
-    onRelease?.();
-  };
-
-  const content = (
-    <div 
-      className={`
-        relative min-w-[140px] h-12 
-        bg-gradient-to-b from-gray-700 to-gray-900 
-        border border-black 
-        shadow-[0_4px_0_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.2)]
-        ${pressed ? 'translate-y-[2px] shadow-[0_2px_0_rgba(0,0,0,0.8),inset_0_3px_6px_rgba(0,0,0,0.9)]' : ''}
-        transition-all duration-75
-        cursor-pointer
-      `}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
-      onMouseEnter={onHover}
-      onMouseLeave={() => { onLeave?.(); setPressed(false); }}
+const RackModule = ({ title, subtitle, theme = "standard", meters = true, children }) => {
+  const labelId = `module-${title.replace(/\s+/g, "-").toLowerCase()}`;
+  return (
+    <section
+      className={`group relative border-b-[3px] border-black/90 p-4 sm:p-8 flex flex-col gap-4 sm:gap-5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] ${theme === "dark" ? "bg-gradient-to-b from-[#222] to-[#111]" : "bg-gradient-to-b from-gray-700 to-gray-900"}`}
+      aria-labelledby={labelId}
     >
-      {/* Button face */}
-      <div className="absolute inset-0.5 bg-gradient-to-b from-gray-600 to-gray-800 flex flex-col items-center justify-center gap-0.5 px-2">
-        <EngravedLabel>{label}</EngravedLabel>
-        {sublabel && (
-          <div className="text-[6px] font-mono text-gray-600 uppercase tracking-wide">
-            {sublabel}
+      <div className="flex justify-between items-end px-2">
+        <div className="min-w-0 pr-2">
+          <EngravedLabel id={labelId} className="text-base sm:text-xl truncate">{title}</EngravedLabel>
+          {subtitle && <p className="text-[10px] sm:text-xs font-mono text-gray-500 uppercase tracking-widest mt-1 truncate">{subtitle}</p>}
+        </div>
+        {meters && (
+          <div className="flex gap-2 sm:gap-4 items-end pb-1 shrink-0">
+            <VuMeter label="L" />
+            <VuMeter label="R" />
           </div>
         )}
       </div>
-      
-      {/* LED indicator */}
-      <div className="absolute top-1 right-1">
-        <LedIndicator active={active || hovered} color="green" />
-      </div>
-    </div>
-  );
-
-  if (href) {
-    return (
-      <a 
-        href={href}
-        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        className="inline-block"
-      >
-        {content}
-      </a>
-    );
-  }
-
-  return <button type="button">{content}</button>;
-};
-
-const RackPanel = ({ title, children, unit = "2U" }) => {
-  const [hovered, setHovered] = useState(false);
-  
-  return (
-    <div 
-      className="relative bg-gradient-to-b from-gray-800 to-gray-900 border-y border-black shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] group"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {/* Rack ear left */}
-      <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-700 to-gray-800 border-r border-black flex flex-col justify-between items-center py-2">
-        <RackBolt />
-        <RackBolt />
-      </div>
-      
-      {/* Panel content */}
-      <div className="ml-12 mr-12 px-6 py-4 flex items-center gap-6">
-        {/* Title section */}
-        <div className="flex flex-col gap-2 min-w-[120px]">
-          <div className="flex items-center gap-2">
-            <EngravedLabel>{title}</EngravedLabel>
-            <div className="text-[6px] font-mono text-gray-600">{unit}</div>
-          </div>
-          <div className="flex gap-2">
-            <PatchSocket />
-            <PatchSocket />
-          </div>
-        </div>
-        
-        {/* Button array */}
-        <div className="flex-1 flex flex-wrap gap-3">
-          {children}
-        </div>
-        
-        {/* VU meters */}
-        <div className="flex gap-2 shrink-0">
-          <VuMeterNeedle active={hovered} />
-        </div>
-      </div>
-      
-      {/* Rack ear right */}
-      <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-gray-700 to-gray-800 border-l border-black flex flex-col justify-between items-center py-2">
-        <RackBolt />
-        <RackBolt />
-      </div>
-    </div>
+      {children}
+    </section>
   );
 };
+
+const RackChassis = ({ children }) => (
+  <div className="max-w-5xl mx-auto bg-black p-0.5 sm:p-1 flex shadow-[0_20px_50px_rgba(0,0,0,0.5)] rounded-sm overflow-hidden">
+    <div className="w-3 sm:w-10 bg-gradient-to-r from-gray-900 to-gray-700 border-r border-black flex flex-col justify-between py-4 sm:py-6 px-[1px] sm:px-1 items-center shadow-inner z-10" aria-hidden="true">
+      {[...Array(6)].map((_, i) => <HexBolt key={`m-l-${i}`} className="sm:hidden w-2 h-2" />)}
+      {[...Array(12)].map((_, i) => <HexBolt key={`d-l-${i}`} className="hidden sm:block w-4 h-4 sm:w-5 sm:h-5" />)}
+    </div>
+
+    <div className="flex-1 flex flex-col gap-0 bg-[#1a1a1a] min-w-0">
+      {children}
+    </div>
+
+    <div className="w-3 sm:w-10 bg-gradient-to-l from-gray-900 to-gray-700 border-l border-black flex flex-col justify-between py-4 sm:py-6 px-[1px] sm:px-1 items-center shadow-inner z-10" aria-hidden="true">
+      {[...Array(6)].map((_, i) => <HexBolt key={`m-r-${i}`} className="sm:hidden w-2 h-2" />)}
+      {[...Array(12)].map((_, i) => <HexBolt key={`d-r-${i}`} className="hidden sm:block w-4 h-4 sm:w-5 sm:h-5" />)}
+    </div>
+  </div>
+);
+
+// ==========================================
+// 3. MAIN PAGE ASSEMBLY
+// ==========================================
 
 export default function StudioServicesRack() {
-  const [activeButton, setActiveButton] = useState(null);
-  const [hoveredButton, setHoveredButton] = useState(null);
-
   const handleOpenTermsModal = () => {
     window.dispatchEvent(new CustomEvent('OPEN_ODRO_MODAL'));
   };
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] py-12 px-6">
-      <div className="max-w-6xl mx-auto">
-        {/* Rack chassis */}
-        <div className="bg-black p-1 shadow-[0_20px_60px_rgba(0,0,0,0.8)] border border-gray-900">
-          
-          {/* Recording Panel */}
-          <RackPanel title="RECORDING" unit="2U">
-            <MechanicalButton
-              label="CRS STUDIO"
-              sublabel="Cowley Road"
-              active={activeButton === 'crs-recording'}
-              hovered={hoveredButton === 'crs-recording'}
-              onPress={() => setActiveButton('crs-recording')}
-              onRelease={() => setActiveButton(null)}
-              onHover={() => setHoveredButton('crs-recording')}
-              onLeave={() => setHoveredButton(null)}
+    <main className="min-h-screen bg-[#111] py-8 sm:py-12 px-0 sm:px-6">
+      <RackChassis>
+        <RackModule title="Recording" subtitle="Studio Session Booking" meters={true}>
+          <ServiceButtonGroup>
+            <HardwareButton
+              variant="crs"
+              icon="crs"
+              serviceName="Recording"
+              locationName="Cowley Road"
               href="https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX"
               external={true}
+              ariaLabel="Book CRS Recording Session at Cowley Road"
             />
-            <MechanicalButton
-              label="CRICKET STUDIO"
-              sublabel="Cricket Road"
-              active={activeButton === 'cricket-recording'}
-              hovered={hoveredButton === 'cricket-recording'}
-              onPress={() => setActiveButton('cricket-recording')}
-              onRelease={() => setActiveButton(null)}
-              onHover={() => setHoveredButton('cricket-recording')}
-              onLeave={() => setHoveredButton(null)}
+            <HardwareButton
+              variant="cricket"
+              icon="cricket"
+              serviceName="Recording"
+              locationName="Cricket Road"
               href="https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX"
               external={true}
+              ariaLabel="Book Cricket Recording Session at Cricket Road"
             />
-          </RackPanel>
+          </ServiceButtonGroup>
+        </RackModule>
 
-          {/* Rehearsal Panel */}
-          <RackPanel title="REHEARSAL" unit="2U">
-            <MechanicalButton
-              label="CRS ROOMS"
-              sublabel="Cowley Road"
-              active={activeButton === 'crs-rehearsal'}
-              hovered={hoveredButton === 'crs-rehearsal'}
-              onPress={() => setActiveButton('crs-rehearsal')}
-              onRelease={() => setActiveButton(null)}
-              onHover={() => setHoveredButton('crs-rehearsal')}
-              onLeave={() => setHoveredButton(null)}
+        <RackModule title="Rehearsal" subtitle="Band Practice Rooms" meters={false}>
+          <ServiceButtonGroup>
+            <HardwareButton
+              variant="crs"
+              icon="crs"
+              serviceName="Rehearsal"
+              locationName="Cowley Road"
               href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
               external={true}
+              ariaLabel="Book CRS Rehearsal Room at Cowley Road"
             />
-            <MechanicalButton
-              label="CRICKET ROOMS"
-              sublabel="Cricket Road"
-              active={activeButton === 'cricket-rehearsal'}
-              hovered={hoveredButton === 'cricket-rehearsal'}
-              onPress={() => setActiveButton('cricket-rehearsal')}
-              onRelease={() => setActiveButton(null)}
-              onHover={() => setHoveredButton('cricket-rehearsal')}
-              onLeave={() => setHoveredButton(null)}
+            <HardwareButton
+              variant="cricket"
+              icon="cricket"
+              serviceName="Rehearsal"
+              locationName="Cricket Road"
               href="https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX"
               external={true}
+              ariaLabel="Book Cricket Rehearsal Room at Cricket Road"
             />
-          </RackPanel>
+          </ServiceButtonGroup>
+        </RackModule>
 
-          {/* Control Room Panel */}
-          <RackPanel title="CONTROL ROOM" unit="2U">
-            <MechanicalButton
-              label="CRS HYBRID"
-              sublabel="Cowley Road"
-              active={activeButton === 'crs-control'}
-              hovered={hoveredButton === 'crs-control'}
-              onPress={() => setActiveButton('crs-control')}
-              onRelease={() => setActiveButton(null)}
-              onHover={() => setHoveredButton('crs-control')}
-              onLeave={() => setHoveredButton(null)}
+        <RackModule title="Control Room" subtitle="Hybrid Studio Hire" meters={true}>
+          <ServiceButtonGroup>
+            <HardwareButton
+              variant="crs"
+              icon="crs"
+              serviceName="Control Room"
+              locationName="Cowley Road"
               href="https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX"
               external={true}
+              ariaLabel="Book CRS Control Room Hire at Cowley Road"
             />
-            <MechanicalButton
-              label="CRICKET HYBRID"
-              sublabel="Cricket Road"
-              active={activeButton === 'cricket-control'}
-              hovered={hoveredButton === 'cricket-control'}
-              onPress={() => setActiveButton('cricket-control')}
-              onRelease={() => setActiveButton(null)}
-              onHover={() => setHoveredButton('cricket-control')}
-              onLeave={() => setHoveredButton(null)}
+            <HardwareButton
+              variant="cricket"
+              icon="cricket"
+              serviceName="Control Room"
+              locationName="Cricket Road"
               href="https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX"
               external={true}
+              ariaLabel="Book Cricket Control Room Hire at Cricket Road"
             />
-          </RackPanel>
+          </ServiceButtonGroup>
+        </RackModule>
 
-          {/* ODRO Panel */}
-          <RackPanel title="ODRO REPAIR" unit="1U">
-            <MechanicalButton
-              label="TERMS"
-              sublabel="T&C"
-              active={activeButton === 'odro-terms'}
-              hovered={hoveredButton === 'odro-terms'}
-              onPress={() => { setActiveButton('odro-terms'); handleOpenTermsModal(); }}
-              onRelease={() => setActiveButton(null)}
-              onHover={() => setHoveredButton('odro-terms')}
-              onLeave={() => setHoveredButton(null)}
+        <RackModule title="ODRO Electronics Repair" subtitle="AV & Instrument Servicing" theme="dark" meters={false}>
+          <ServiceButtonGroup>
+            <HardwareButton
+              variant="neutral"
+              icon="odro"
+              serviceName="Terms"
+              onClick={handleOpenTermsModal}
+              ariaLabel="View ODRO repair terms and conditions"
             />
-            <MechanicalButton
-              label="REQUEST"
-              sublabel="Repair Form"
-              active={activeButton === 'odro-request'}
-              hovered={hoveredButton === 'odro-request'}
-              onPress={() => setActiveButton('odro-request')}
-              onRelease={() => setActiveButton(null)}
-              onHover={() => setHoveredButton('odro-request')}
-              onLeave={() => setHoveredButton(null)}
+            <HardwareButton
+              variant="neutral"
+              serviceName="Repair Request"
               href="/contact?service=repairs"
               external={false}
+              ariaLabel="Submit an electronics repair request to ODRO"
             />
-            <MechanicalButton
-              label="CONTACT"
-              sublabel="Info"
-              active={activeButton === 'odro-contact'}
-              hovered={hoveredButton === 'odro-contact'}
-              onPress={() => setActiveButton('odro-contact')}
-              onRelease={() => setActiveButton(null)}
-              onHover={() => setHoveredButton('odro-contact')}
-              onLeave={() => setHoveredButton(null)}
+            <HardwareButton
+              variant="neutral"
+              serviceName="Contact"
               href="/contact"
               external={false}
+              ariaLabel="Contact ODRO repairs"
             />
-          </RackPanel>
+          </ServiceButtonGroup>
+        </RackModule>
 
-          {/* Workshop Café Panel */}
-          <RackPanel title="WORKSHOP CAFE" unit="1U">
-            <MechanicalButton
-              label="BOOK CAFE"
-              sublabel="Coffee & Co-Work"
-              active={activeButton === 'cafe'}
-              hovered={hoveredButton === 'cafe'}
-              onPress={() => setActiveButton('cafe')}
-              onRelease={() => setActiveButton(null)}
-              onHover={() => setHoveredButton('cafe')}
-              onLeave={() => setHoveredButton(null)}
+        <RackModule title="Workshop Café" subtitle="Coffee & Co-Working" theme="dark" meters={false}>
+          <ServiceButtonGroup>
+            <HardwareButton
+              variant="crs"
+              icon="cafe"
+              serviceName="Book Café"
+              locationName="Workshop Café"
               href="https://crsoxford.com/book"
               external={true}
+              ariaLabel="Book a table at the Workshop Café"
             />
-          </RackPanel>
-
-        </div>
-      </div>
+          </ServiceButtonGroup>
+        </RackModule>
+      </RackChassis>
     </main>
   );
 }
