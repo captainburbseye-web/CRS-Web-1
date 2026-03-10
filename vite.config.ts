@@ -1,34 +1,18 @@
-import build from '@hono/vite-build/cloudflare-pages'
-import devServer from '@hono/vite-dev-server'
-import adapter from '@hono/vite-dev-server/cloudflare'
-import { defineConfig } from 'vite'
+import { defineConfig } from "vite"
+import react from "@vitejs/plugin-react"
+import devServer from "@hono/vite-dev-server"
+import build from "@hono/vite-build/cloudflare-pages"
 
-export default defineConfig(({ command }) => ({
+export default defineConfig({
   plugins: [
+    react(),
     build({
-      entry: 'src/index.tsx',
-      outputDir: './dist',
+      entry: "src/index.tsx",
+      output: "./dist",
       emptyOutDir: false
     }),
     devServer({
-      adapter,
-      entry: 'src/index.tsx'
+      entry: "src/index.tsx"
     })
-  ],
-  css: {
-    postcss: './postcss.config.js'
-  },
-  build: {
-    cssCodeSplit: false,
-    rollupOptions: {
-      output: {
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name === 'style.css') {
-            return 'static/[name][extname]'
-          }
-          return 'assets/[name]-[hash][extname]'
-        }
-      }
-    }
-  }
-}))
+  ]
+})

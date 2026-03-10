@@ -8,7 +8,6 @@ import { Footer } from './components/Footer'
 import { BuildStatusBanner } from './components/BuildStatusBanner'
 import { HomePage } from './pages/Home'
 import { StudioPage } from './pages/Studio'
-import { SignageControlPanel } from './pages/SignageControlPanel'
 import { AVServicesPage } from './pages/AVServices'
 import { AVRepairsPage } from './pages/AVRepairs'
 import { WorkshopCafePage } from './pages/WorkshopCafe'
@@ -18,15 +17,6 @@ import { About } from './pages/About'
 import { Work } from './pages/Work'
 import { SignagePage } from './pages/Signage'
 import { SignageLoop } from './pages/SignageLoop'
-import { SignageSignal } from './pages/SignageSignal'
-import { SignageSignalEnhanced } from './pages/SignageSignalEnhanced'
-import { SignageEnhanced } from './pages/SignageEnhanced'
-import { SignageEnhancedV3 } from './pages/SignageEnhancedV3'
-import { SignageV4 } from './pages/SignageV4'
-import { SignageV5 } from './pages/SignageV5'
-import { SignageStreet } from './pages/SignageStreet'
-import { SignageRewrite } from './pages/SignageRewrite'
-import { SignageEnhancedV2 } from './pages/SignageEnhancedV2'
 import { BookingConfirmed } from './pages/BookingConfirmed'
 import { RackPage } from './pages/Rack'
 import { RackTestPage } from './pages/RackTest'
@@ -71,183 +61,6 @@ app.get('/manifest.json', (c) => {
         "type": "image/png"
       }
     ]
-  })
-})
-
-// ============================================
-// API ROUTES - Signage Automation System
-// ============================================
-
-// Health check endpoint (every 5 minutes)
-app.get('/api/health', async (c) => {
-  try {
-    const { healthCheck } = await import('./services/signageScheduler');
-    const health = healthCheck();
-    
-    return c.json(health, health.status === 'healthy' ? 200 : 500);
-  } catch (error) {
-    return c.json({
-      status: 'error',
-      timestamp: new Date().toISOString(),
-      error: error instanceof Error ? error.message : 'Unknown error'
-    }, 500);
-  }
-})
-
-// Get current signage schedule
-app.get('/api/signage/schedule', async (c) => {
-  try {
-    const { getScheduleResult } = await import('./services/signageScheduler');
-    const schedule = getScheduleResult();
-    
-    return c.json(schedule);
-  } catch (error) {
-    return c.json({
-      error: error instanceof Error ? error.message : 'Unknown error'
-    }, 500);
-  }
-})
-
-// Get pricing data
-app.get('/api/pricing', async (c) => {
-  try {
-    const { getPricing } = await import('./services/signageScheduler');
-    const pricing = getPricing();
-    
-    return c.json(pricing);
-  } catch (error) {
-    return c.json({
-      error: error instanceof Error ? error.message : 'Unknown error'
-    }, 500);
-  }
-})
-
-// Get events data
-app.get('/api/events', async (c) => {
-  try {
-    const { getEvents } = await import('./services/signageScheduler');
-    const events = getEvents();
-    
-    return c.json(events);
-  } catch (error) {
-    return c.json({
-      error: error instanceof Error ? error.message : 'Unknown error'
-    }, 500);
-  }
-})
-
-// Get offers data
-app.get('/api/offers', async (c) => {
-  try {
-    const { getOffers } = await import('./services/signageScheduler');
-    const offers = getOffers();
-    
-    return c.json(offers);
-  } catch (error) {
-    return c.json({
-      error: error instanceof Error ? error.message : 'Unknown error'
-    }, 500);
-  }
-})
-
-// QR code redirect with logging (/q shortlink)
-app.get('/q', async (c) => {
-  try {
-    const { getScheduleResult } = await import('./services/signageScheduler');
-    const schedule = getScheduleResult();
-    
-    // TODO: Log scan to KV/analytics
-    // await c.env.KV.put(`scan:${Date.now()}`, JSON.stringify({...}))
-    
-    // Determine destination based on time/scene
-    const destination = 'https://cowleyroadstudios.com/book'; // Default
-    
-    return c.redirect(destination, 302);
-  } catch (error) {
-    return c.redirect('https://cowleyroadstudios.com', 302);
-  }
-})
-
-// SITEMAP.XML - SEO sitemap for search engines
-app.get('/sitemap.xml', (c) => {
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://cowleyroadstudios.com/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://cowleyroadstudios.com/about</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cowleyroadstudios.com/recording-studio-oxford</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cowleyroadstudios.com/rehearsal-rooms-oxford</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cowleyroadstudios.com/av-services-oxford</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cowleyroadstudios.com/av-services/repairs</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cowleyroadstudios.com/venue-hire-oxford</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cowleyroadstudios.com/workshop-cafe</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cowleyroadstudios.com/contact</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cowleyroadstudios.com/rack</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-</urlset>`
-  
-  return c.text(sitemap, 200, {
-    'Content-Type': 'application/xml; charset=utf-8'
-  })
-})
-
-// ROBOTS.TXT - Crawler directives
-app.get('/robots.txt', (c) => {
-  const robots = `User-agent: *
-Allow: /
-
-Sitemap: https://cowleyroadstudios.com/sitemap.xml`
-  
-  return c.text(robots, 200, {
-    'Content-Type': 'text/plain; charset=utf-8'
   })
 })
 
@@ -541,8 +354,6 @@ app.get('/book', (c) => {
         <link href="/static/crs-typography.css" rel="stylesheet" />
         <link href="/static/crs-header.css" rel="stylesheet" />
         <link href="/static/crs-mobile.css" rel="stylesheet" />
-        <link href="/static/crs-mobile-optimized.css" rel="stylesheet" />
-        <link href="/static/crs-mobile-critical-fixes.css" rel="stylesheet" />
         
         {/* Accordion-specific CSS */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />
@@ -781,116 +592,59 @@ app.get('/crs-cricket-road', (c) => {
 // HOME
 // ROOT: HARDWARE RACK CONSOLE (Hardware-first landing page)
 app.get('/', (c) => {
-  return c.render(
-    <>
-      <RackAccordion />
-      
-      {/* Structured data for SEO - Enhanced LocalBusiness Schema */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": ["LocalBusiness", "MusicVenue", "Organization"],
-          "name": "Cowley Road Studios",
-          "alternateName": ["CRS", "Formerly Soundworks Oxford"],
-          "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
-          "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
-          "logo": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "118 Cowley Road",
-            "addressLocality": "Oxford",
-            "addressRegion": "Oxfordshire",
-            "postalCode": "OX4 1JE",
-            "addressCountry": "GB"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "51.7466",
-            "longitude": "-1.2384"
-          },
-          "telephone": "+441865722027",
-          "email": "info@crsoxford.com",
-          "url": "https://cowleyroadstudios.com",
-          "priceRange": "££",
-          "areaServed": {
-            "@type": "City",
-            "name": "Oxford",
-            "containedInPlace": {
-              "@type": "Country",
-              "name": "United Kingdom"
-            }
-          },
-          "sameAs": [
-            "https://instagram.com/cowleyroadstudios.ox",
-            "https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE"
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Studio Services",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Recording Studio Sessions",
-                  "description": "Professional recording, mixing, and mastering services"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Rehearsal Room Hire",
-                  "description": "Fully equipped rehearsal spaces",
-                  "offers": {
-                    "@type": "AggregateOffer",
-                    "lowPrice": "45",
-                    "highPrice": "65",
-                    "priceCurrency": "GBP"
-                  }
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Equipment Repair",
-                  "description": "AV and instrument repair services by ODRO Engineering"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Workshop Café",
-                  "description": "Coffee, coworking, and creative space"
-                }
-              }
+  return c.html(
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Recording Studio & Rehearsal Rooms Oxford | Cowley Road Studios</title>
+        <meta name="description" content="Independent recording studio, rehearsal rooms and engineer-led sessions in Oxford. Formerly Soundworks Oxford (1999–2024). Book rehearsal, recording, or creative workspace." />
+        <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        
+        {/* Core CSS files */}
+        <link href="/static/crs-reset.css" rel="stylesheet" />
+        <link href="/static/crs-typography.css" rel="stylesheet" />
+        <link href="/static/crs-header.css" rel="stylesheet" />
+        <link href="/static/crs-footer.css" rel="stylesheet" />
+        <link href="/static/crs-map-embed.css" rel="stylesheet" />
+        <link href="/static/crs-mobile.css" rel="stylesheet" />
+        
+        {/* Accordion-specific CSS */}
+        <link href="/static/rack-accordion.css" rel="stylesheet" />
+      </head>
+      <body>
+        <RackAccordion />
+        
+        {/* Structured data for SEO */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Cowley Road Studios",
+            "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
+            "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "118 Cowley Road",
+              "addressLocality": "Oxford",
+              "postalCode": "OX4 1JE",
+              "addressCountry": "GB"
+            },
+            "telephone": "+441865722027",
+            "email": "info@crsoxford.com",
+            "url": "https://cowley-road-studios.pages.dev",
+            "priceRange": "££",
+            "areaServed": "Oxford",
+            "sameAs": [
+              "https://instagram.com/cowleyroadstudios.ox"
             ]
-          },
-          "founder": {
-            "@type": "Organization",
-            "name": "ODRO Engineering"
-          },
-          "foundingDate": "2024",
-          "slogan": "No Chaos Policy – Professional recording and rehearsal in Oxford"
-        })}
-      </script>
-      
-      <link href="/static/rack-accordion.css" rel="stylesheet" />
-      <link href="/static/odro-repair-hotspots.css" rel="stylesheet" />
-      <link href="/static/rack-panel-mechanical-press.css" rel="stylesheet" />
-      <script src="/static/odro-repair-buttons.js" defer></script>
-    </>,
-    {
-      title: 'Cowley Road Studios | Recording Studio & Rehearsal Rooms Oxford',
-      description: 'Professional recording studio with engineer, rehearsal rooms (£45-£65), control room hire, and Workshop Café. Two locations on Cowley Road and Cricket Road, Oxford. Book online.',
-      keywords: 'recording studio oxford, rehearsal rooms oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music studio oxford, band rehearsal oxford, workshop cafe oxford',
-      canonicalUrl: 'https://cowleyroadstudios.com/',
-      ogTitle: 'Cowley Road Studios | Recording Studio & Rehearsal Rooms Oxford',
-      ogDescription: 'Professional recording studio with engineer, rehearsal rooms (£45-£65), control room hire, and Workshop Café in Oxford.',
-      ogUrl: 'https://cowleyroadstudios.com/'
-    }
+          })}
+        </script>
+      </body>
+    </html>
   )
 })
 
@@ -1007,7 +761,7 @@ app.get('/studio/infrastructure', (c) => {
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; font-size: 0.875rem; line-height: 1.6;">
             <div>
               <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">WORKSHOP CAFÉ STAGE</p>
-              <p style="opacity: 0.85;">Tiny Desk format · 3× camera positions · Belden 12G-SDI + Cat6A F/UTP · Bose 802 tops + passive subs</p>
+              <p style="opacity: 0.85;">Tiny Desk format · 3× camera positions · Belden 12G-SDI + Cat6A F/UTP · Bose 802 tops + Martin Audio IC300 subs</p>
             </div>
             <div>
               <p class="mono" style="font-weight: 700; margin-bottom: 0.5rem; font-size: 0.8125rem;">SHARED VIDEO INFRASTRUCTURE</p>
@@ -1569,53 +1323,45 @@ app.get('/book/repairs', (c) => {
 
 // PODCAST & AV SERVICES
 app.get('/av-services', (c) => {
-  return c.render(
-    <>
-      <AVServicesPage />
-      <link href="/static/rack-accordion.css" rel="stylesheet" />
-    </>,
-    {
-      title: 'AV Services Oxford | Live Sound & Technical Support | Cowley Road Studios',
-      description: 'Professional AV services in Oxford. Live sound, installations, hybrid events, and technical support. Engineer-led. Field-tested. Zero compromises.',
-      keywords: 'av services oxford, live sound oxford, sound engineer oxford, event technical support oxford, av installation oxford',
-      canonicalUrl: 'https://cowleyroadstudios.com/av-services',
-      ogUrl: 'https://cowleyroadstudios.com/av-services'
-    }
-  )
+  return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Studio & AV Services Oxford | Cowley Road Studios</title>
+    <meta name="description" content="Professional podcast studio hire and AV services in Oxford. £30/hr engineer-led recording, live sound installation, equipment repairs. Cricket Road & Cowley Road.">
+    <meta name="keywords" content="podcast studio oxford, podcast recording oxford, av services oxford, live sound oxford, sound engineer oxford, equipment repair oxford">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="/static/crs-reset.css" rel="stylesheet">
+    <link href="/static/crs-typography.css" rel="stylesheet">
+    <link href="/static/crs-header.css" rel="stylesheet">
+    <link href="/static/crs-mobile.css" rel="stylesheet">
+    <link href="/static/rack-accordion.css" rel="stylesheet">
+</head>
+<body>
+    ${<PodcastAVPage />}
+</body>
+</html>`)
 })
 
 // Add redirect for podcast
 app.get('/podcast', (c) => c.redirect('/av-services'))
 
-// REPAIRS
-app.get('/av-services/repairs', (c) => {
-  return c.render(
-    <>
-      <AVRepairsPage />
-      <link href="/static/rack-accordion.css" rel="stylesheet" />
-    </>,
-    {
-      title: 'Equipment Repairs Oxford | Diagnostics & Technical Bench | Cowley Road Studios',
-      description: 'In-house equipment repair bench. Mixers, amplifiers, speakers, and signal chain repairs. Diagnosis-led repair work by ODRO Engineering.',
-      keywords: 'equipment repair oxford, audio repair oxford, mixer repair oxford, amplifier repair oxford, speaker repair oxford',
-      canonicalUrl: 'https://cowleyroadstudios.com/av-services/repairs',
-      ogUrl: 'https://cowleyroadstudios.com/av-services/repairs'
-    }
-  )
-})
+// REPAIRS (now part of main AV page, keep old route for SEO)
+app.get('/av-services/repairs', (c) => c.redirect('/av-services'))
 
 // WORKSHOP CAFÉ (VENUE)
 app.get('/workshop-cafe', (c) => {
   return c.render(
       <WorkshopCafePage />,
     {
-      title: 'Workshop Café Oxford | Coffee, Workspace & Venue Hire | 118 Cowley Road',
-      description: 'Specialty coffee, coworking space, guitar repairs, and venue hire (25-60 capacity) in East Oxford. Full venue £25/hr, meeting table £25/half-day. Part of Cowley Road Studios at 118 Cowley Road.',
-      keywords: 'workshop cafe oxford, cafe cowley road, coworking oxford, venue hire oxford, coffee oxford, guitar repairs oxford, community space oxford, east oxford cafe',
-      canonicalUrl: 'https://cowleyroadstudios.com/workshop-cafe',
-      ogTitle: 'Workshop Café Oxford | Coffee, Workspace & Venue Hire',
-      ogDescription: 'Specialty coffee, coworking space, and venue hire (25-60 capacity) in East Oxford. Part of Cowley Road Studios.',
-      ogUrl: 'https://cowleyroadstudios.com/workshop-cafe'
+      title: 'Workshop Café Oxford | Community Space & Venue Hire',
+      description: 'Café, workspace, and small venue in East Oxford. Available for private hire and public programming. Part of Cowley Road Studios.',
+      keywords: 'cafe oxford, workshop cafe oxford, venue hire oxford, community space oxford, east oxford cafe'
     }
   )
 })
@@ -1818,19 +1564,29 @@ app.get('/work', (c) => {
 })
 // CONTACT
 app.get('/contact', (c) => {
-  return c.render(
-    <>
-      <ContactPage />
-      <link href="/static/rack-accordion.css" rel="stylesheet" />
-    </>,
-    {
-      title: 'Contact Cowley Road Studios | Recording Studio Oxford',
-      description: 'Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Two Oxford locations. Direct booking routes. Email: info@crsoxford.com',
-      keywords: 'contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford',
-      canonicalUrl: 'https://cowleyroadstudios.com/contact',
-      ogUrl: 'https://cowleyroadstudios.com/contact'
-    }
-  )
+  return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Cowley Road Studios | Recording Studio Oxford</title>
+    <meta name="description" content="Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Two Oxford locations. Direct booking routes. Email: info@crsoxford.com">
+    <meta name="keywords" content="contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link href="/static/crs-reset.css" rel="stylesheet">
+    <link href="/static/crs-typography.css" rel="stylesheet">
+    <link href="/static/crs-header.css" rel="stylesheet">
+    <link href="/static/crs-mobile.css" rel="stylesheet">
+    <link href="/static/rack-accordion.css" rel="stylesheet">
+</head>
+<body>
+    ${<ContactPage />}
+</body>
+</html>`)
 })
 
 // BOOKING CONFIRMED PAGE
@@ -1861,11 +1617,9 @@ app.get('/rack', (c) => {
       <Footer />
     </>,
     {
-      title: 'Service Status & Booking | Cowley Road Studios',
-      description: 'Live service status, booking interface and studio infrastructure overview for Cowley Road Studios recording and rehearsal facilities.',
-      keywords: 'studio network, booking, cowley road studios, signal routing',
-      canonicalUrl: 'https://cowleyroadstudios.com/rack',
-      ogUrl: 'https://cowleyroadstudios.com/rack'
+      title: 'CRS Studio Network | Cowley Road Studios',
+      description: 'CRS Studio Network: Signal routing, booking surface, system status. Hardware-inspired interface.',
+      keywords: 'studio network, booking, cowley road studios, signal routing'
     }
   )
 })
@@ -1879,6 +1633,29 @@ app.get('/rack-test', (c) => {
       title: 'CRS Rack Test | Structural Assembly',
       description: 'Test environment for 19-inch equipment rack interface',
       keywords: 'rack test, studio equipment, structural assembly'
+    }
+  )
+})
+
+// STUDIO RACK DEMO — REACT ISLAND
+app.get('/studio-rack-demo', (c) => {
+  return c.render(
+    <>
+      <div id="studio-rack-root"></div>
+      <script type="module" src="/src/client/rack-entry.tsx" defer></script>
+      <script dangerouslySetInnerHTML={{
+        __html: `
+          window.addEventListener('OPEN_ODRO_MODAL', () => {
+            const modal = document.getElementById('odro-terms-modal');
+            if (modal) modal.classList.remove('hidden');
+          });
+        `
+      }} />
+    </>,
+    {
+      title: 'Studio Services | Cowley Road Studios',
+      description: 'Book recording, rehearsal, and control room sessions',
+      keywords: 'studio booking, recording sessions, rehearsal rooms'
     }
   )
 })
@@ -1924,20 +1701,12 @@ app.get('/rack-accordion', (c) => {
         <link href="/static/crs-footer.css" rel="stylesheet" />
         <link href="/static/crs-map-embed.css" rel="stylesheet" />
         <link href="/static/crs-mobile.css" rel="stylesheet" />
-        <link href="/static/crs-mobile-optimized.css" rel="stylesheet" />
-        <link href="/static/crs-mobile-critical-fixes.css" rel="stylesheet" />
         
         {/* Accordion-specific CSS */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />
-        
-        {/* Interactive enhancements */}
-        <link href="/static/rack-button-interactions.css" rel="stylesheet" />
       </head>
       <body>
         <RackAccordion />
-        
-        {/* Audio feedback system */}
-        <script src="/static/rack-audio-feedback.js" defer></script>
         
         {/* Structured data for SEO */}
         <script type="application/ld+json">
@@ -1956,7 +1725,7 @@ app.get('/rack-accordion', (c) => {
             },
             "telephone": "+441865722027",
             "email": "info@crsoxford.com",
-            "url": "https://cowleyroadstudios.com",
+            "url": "https://cowley-road-studios.pages.dev",
             "priceRange": "££",
             "areaServed": "Oxford",
             "sameAs": [
@@ -2202,184 +1971,6 @@ app.get('/signage-loop', (c) => {
   )
 })
 
-// SIGNAGE SIGNAL - Digital Signage Channel for Yodeck
-// Optimized for 55" displays (1920×1080)
-// Three display modes: Ambient (E), Audio-Reactive (A), Parallax (B)
-// Press 'M' to cycle modes, 'P' to pause
-app.get('/signagesignal', (c) => {
-  return c.html(
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="noindex, nofollow" />
-        <title>CRS Signage Signal | Multi-Mode Digital Display</title>
-        <link href="/static/signage-signal-enhanced.css" rel="stylesheet" />
-        <link href="/static/signage-fullscreen-fix.css" rel="stylesheet" />
-        <style>{`
-          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
-          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #000 !important; }
-          body { display: block !important; font-family: 'JetBrains Mono', 'Space Mono', monospace; }
-        `}</style>
-      </head>
-      <body>
-        <SignageSignalEnhanced />
-        <script src="/static/signage-signal-enhanced.js"></script>
-      </body>
-    </html>
-  )
-})
-
-// SIGNAGE ENHANCED V2 — EXACT SPEC COMPLIANCE
-// Technical Delivery: 88-second seamless loop, fade-only transitions
-// Design Tokens: Chassis Black, Veg/Nettle Green, Billet Mustard
-// Motion Rules: Slow, mechanical, calm - no bounce/elastic/rotation
-// Day/Night Mode: Auto-detect or ?mode=day|night
-// Debug Mode: ?debug=1 shows frame name + countdown
-app.get('/signage-enhanced', (c) => {
-  return c.html(
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="noindex, nofollow" />
-        <title>CRS Signage Enhanced | Professional Display System</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="/static/signage-fullscreen-fix.css" rel="stylesheet" />
-        <style>{`
-          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
-          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0E0E0E !important; }
-          body { display: block !important; font-family: 'JetBrains Mono', monospace; }
-        `}</style>
-      </head>
-      <body>
-        <SignageEnhancedV2 />
-      </body>
-    </html>
-  )
-})
-
-// SIGNAGE V4 — ON-BRAND, EYE-CATCHING, ALLURING
-app.get('/signage-v4', (c) => {
-  return c.html(
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="noindex, nofollow" />
-        <title>CRS Signage V4 | On-Brand Display</title>
-        <link href="/static/signage-v4.css" rel="stylesheet" />
-        <link href="/static/signage-fullscreen-fix.css" rel="stylesheet" />
-        <style>{`
-          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
-          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0a0a0a !important; }
-          body { display: block !important; }
-          .signage-v4-container { width: 100vw !important; height: 100vh !important; margin: 0 !important; padding: 0 !important; }
-        `}</style>
-      </head>
-      <body>
-        <SignageV4 />
-        <script src="/static/signage-v4.js"></script>
-      </body>
-    </html>
-  )
-})
-
-// SIGNAGE V5 — RESEARCH-BACKED IMPLEMENTATION (Feb 2026)
-// ✅ 50% ambient content (4/8 frames)
-// ✅ 3×5 text rule compliance
-// ✅ Real QR codes on all actionable frames
-// ✅ Rotating station ID overlay (email, websites, Instagram)
-// ✅ 72s loop (8-10s per frame, optimal attention window)
-// ✅ 7:1 contrast ratio (WCAG AAA)
-// ✅ Workshop Café "Opening Soon" badge
-app.get('/signage-v5', (c) => {
-  return c.html(
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="noindex, nofollow" />
-        <title>CRS Signage V5 | Research-Backed Display</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="/static/signage-v5.css" rel="stylesheet" />
-        <link href="/static/signage-fullscreen-fix.css" rel="stylesheet" />
-        <style>{`
-          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
-          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0a0a0a !important; }
-          body { display: block !important; }
-          .signage-v5-container { width: 100vw !important; height: 100vh !important; margin: 0 !important; padding: 0 !important; }
-        `}</style>
-      </head>
-      <body>
-        <SignageV5 />
-        <script src="/static/signage-v5.js" defer></script>
-      </body>
-    </html>
-  )
-})
-
-// CRS SIGNAGE STREET - TRUCK/MOSTRO AUDIENCE OPTIMIZED
-// Route: /signage-street
-// Target: Music-savvy patrons at Truck Record Store & Mostro Coffee House
-// Design: Minimalist, curiosity-driven, scene-appropriate
-// Research: Jamini Paris, DUMBO Brooklyn, Bloomingdale's Manhattan
-// Peak Hours: Weekdays 15:00-18:30, Weekends 11:00-16:00
-app.get('/signage-street', (c) => {
-  return c.html(
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="noindex, nofollow" />
-        <title>CRS Signage Street | Minimalist Display</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-        <link href="/static/signage-street.css" rel="stylesheet" />
-        <style>{`
-          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
-          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0A0A0A !important; }
-        `}</style>
-      </head>
-      <body>
-        <SignageStreet />
-      </body>
-    </html>
-  )
-})
-
-// SIGNAGE REWRITE — BRAND-COMPLIANT, CALM, STRUCTURED
-// 75-90s loop with 8 frames, persistent QR, no neon, slow mechanical motion
-app.get('/signage-rewrite', (c) => {
-  return c.html(
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="noindex, nofollow" />
-        <title>CRS Signage Rewrite | Brand-Compliant Display</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="/static/signage-fullscreen-fix.css" rel="stylesheet" />
-        <style>{`
-          * { margin: 0 !important; padding: 0 !important; box-sizing: border-box !important; }
-          html, body { width: 100vw !important; height: 100vh !important; overflow: hidden !important; background: #0E0E0E !important; }
-          body { display: block !important; font-family: 'JetBrains Mono', monospace; }
-        `}</style>
-      </head>
-      <body>
-        <SignageRewrite />
-      </body>
-    </html>
-  )
-})
-
 // REHEARSAL SPACES PAGE
 app.get('/rehearsal', (c) => {
   return c.html(
@@ -2399,8 +1990,6 @@ app.get('/rehearsal', (c) => {
         <link href="/static/crs-typography.css" rel="stylesheet" />
         <link href="/static/crs-header.css" rel="stylesheet" />
         <link href="/static/crs-mobile.css" rel="stylesheet" />
-        <link href="/static/crs-mobile-optimized.css" rel="stylesheet" />
-        <link href="/static/crs-mobile-critical-fixes.css" rel="stylesheet" />
         
         {/* Accordion-specific CSS */}
         <link href="/static/rack-accordion.css" rel="stylesheet" />
@@ -2436,117 +2025,5 @@ app.get('/book/tape', (c) => c.redirect('/book'))
 app.get('/book/hire', (c) => c.redirect('/book'))
 app.get('/book/repairs', (c) => c.redirect('/book'))
 app.get('/book-old', (c) => c.redirect('/book'))
-
-// ===================================================================
-// SEO LANDING PAGES (PHASE 4)
-// ===================================================================
-import { RecordingStudioOxford } from './pages/RecordingStudioOxford.tsx'
-import { RehearsalRoomsOxford } from './pages/RehearsalRoomsOxford.tsx'
-import { AVServicesOxford } from './pages/AVServicesOxford.tsx'
-import { VenueHireOxford } from './pages/VenueHireOxford.tsx'
-
-// RECORDING STUDIO OXFORD
-app.get('/recording-studio-oxford', (c) => {
-  return c.render(
-    <RecordingStudioOxford />,
-    {
-      title: 'Recording Studio in Oxford | Cowley Road Studios',
-      description: 'Professional recording studio in Oxford for music, podcast and broadcast. Engineer-assisted sessions at Cowley Road and Cricket Road.',
-      keywords: 'recording studio oxford, music recording oxford, engineer led recording oxford, professional studio oxford, cowley road recording',
-      canonicalUrl: 'https://cowleyroadstudios.com/recording-studio-oxford',
-      ogUrl: 'https://cowleyroadstudios.com/recording-studio-oxford',
-      ogTitle: 'Recording Studio in Oxford | Cowley Road Studios',
-      ogDescription: 'Professional recording studio in Oxford for music, podcast and broadcast. Engineer-assisted sessions at Cowley Road and Cricket Road.'
-    }
-  )
-})
-
-// REHEARSAL ROOMS OXFORD
-app.get('/rehearsal-rooms-oxford', (c) => {
-  return c.render(
-    <RehearsalRoomsOxford />,
-    {
-      title: 'Rehearsal Rooms in Oxford | Cowley Road Studios',
-      description: 'Operational rehearsal rooms in Oxford with backline, PA and calibrated monitoring. Book Cowley Road or Cricket Road sessions online.',
-      keywords: 'rehearsal rooms oxford, band rehearsal oxford, practice space oxford, music rehearsal oxford, cowley road rehearsal',
-      canonicalUrl: 'https://cowleyroadstudios.com/rehearsal-rooms-oxford',
-      ogUrl: 'https://cowleyroadstudios.com/rehearsal-rooms-oxford',
-      ogTitle: 'Rehearsal Rooms in Oxford | Cowley Road Studios',
-      ogDescription: 'Operational rehearsal rooms in Oxford with backline, PA and calibrated monitoring. Book Cowley Road or Cricket Road sessions online.'
-    }
-  )
-})
-
-// AV SERVICES OXFORD
-app.get('/av-services-oxford', (c) => {
-  return c.render(
-    <AVServicesOxford />,
-    {
-      title: 'Live Sound & AV Services in Oxford | Cowley Road Studios',
-      description: 'Live sound hire, system installs and equipment repair in Oxford. Professional technical support for venues and events.',
-      keywords: 'av services oxford, live sound oxford, sound engineer oxford, equipment repair oxford, system installation oxford',
-      canonicalUrl: 'https://cowleyroadstudios.com/av-services-oxford',
-      ogUrl: 'https://cowleyroadstudios.com/av-services-oxford',
-      ogTitle: 'Live Sound & AV Services in Oxford | Cowley Road Studios',
-      ogDescription: 'Live sound hire, system installs and equipment repair in Oxford. Professional technical support for venues and events.'
-    }
-  )
-})
-
-// VENUE HIRE OXFORD
-app.get('/venue-hire-oxford', (c) => {
-  return c.render(
-    <VenueHireOxford />,
-    {
-      title: 'Venue Hire in Cowley Road, Oxford | Workshop Café',
-      description: 'Creative venue hire in Cowley Road, Oxford. Capacity up to 60 standing with PA support. Private events and community programming.',
-      keywords: 'venue hire oxford, workshop cafe oxford, event space oxford, cowley road venue, private hire oxford',
-      canonicalUrl: 'https://cowleyroadstudios.com/venue-hire-oxford',
-      ogUrl: 'https://cowleyroadstudios.com/venue-hire-oxford',
-      ogTitle: 'Venue Hire in Cowley Road, Oxford | Workshop Café',
-      ogDescription: 'Creative venue hire in Cowley Road, Oxford. Capacity up to 60 standing with PA support. Private events and community programming.'
-    }
-  )
-})
-
-// SIGNAGE SCHEDULER — TIME-OF-DAY DYNAMIC FEED
-// Automatically serves different signage channels based on the time of day
-// Night mode: 23:00-07:00 → /signagesignal (calm, burn-in protection)
-// Day mode:   07:00-17:00 → /signage-enhanced (professional infrastructure)
-// Evening:    17:00-23:00 → /signage-v4 (engaging VU meters & clock)
-app.get('/signage-scheduled', (c) => {
-  // Get current UK time (BST/GMT aware)
-  const now = new Date()
-  const ukTime = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'Europe/London',
-    hour: 'numeric',
-    hour12: false
-  }).format(now)
-  const currentHour = parseInt(ukTime)
-
-  // Determine which signage mode to serve
-  let targetRoute = '/signage-enhanced' // Default: day mode
-  
-  if (currentHour >= 23 || currentHour < 7) {
-    // Night mode: 23:00-07:00
-    targetRoute = '/signagesignal'
-  } else if (currentHour >= 17 && currentHour < 23) {
-    // Evening mode: 17:00-23:00
-    targetRoute = '/signage-v4'
-  } else {
-    // Day mode: 07:00-17:00
-    targetRoute = '/signage-enhanced'
-  }
-
-  // Redirect to the appropriate signage channel
-  return c.redirect(targetRoute)
-})
-
-// SIGNAGE CONTROL PANEL — REMOTE CONTROL INTERFACE
-// Opens in separate window to control signage displays remotely
-// Features: mode switching, playback controls, route selection
-app.get('/signage-control', (c) => {
-  return c.html(<SignageControlPanel />)
-})
 
 export default app
