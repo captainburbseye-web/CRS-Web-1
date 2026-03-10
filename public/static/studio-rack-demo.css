@@ -30,15 +30,16 @@
   max-width: 68rem;
   margin: 0 auto;
   display: flex;
-  background: #0d0d0d;
+  /* ENHANCED: Darker blacks for realism */
+  background: #080808;
   border-radius: 4px;
   /* Multi-layer shadow: ambient + contact + outer glow */
   box-shadow:
     0 0 0 1px #000,
-    0 0 0 3px #2a2a2a,
-    0 2px 4px rgba(0,0,0,0.9),
-    0 8px 24px rgba(0,0,0,0.8),
-    0 32px 64px rgba(0,0,0,0.6),
+    0 0 0 3px #1a1a1a,
+    0 2px 4px rgba(0,0,0,0.95),
+    0 8px 24px rgba(0,0,0,0.90),
+    0 32px 64px rgba(0,0,0,0.75),
     inset 0 1px 0 rgba(255,255,255,0.06);
   overflow: hidden;
 }
@@ -100,9 +101,25 @@
   width: 8px;
   height: 8px;
   flex-shrink: 0;
+  /* ENHANCED: Real depth for bolts */
   filter:
-    drop-shadow(0 1px 0 rgba(255,255,255,0.12))
-    drop-shadow(0 2px 3px rgba(0,0,0,0.9));
+    drop-shadow(0 1px 0 rgba(255,255,255,0.10))
+    drop-shadow(0 2px 4px rgba(0,0,0,0.95));
+}
+
+/* ENHANCED: Bolt color adjustments for realism */
+.srd-bolt polygon {
+  fill: #3e3e3e;
+  stroke: #0d0d0d;
+  stroke-width: 4;
+}
+
+.srd-bolt circle:first-of-type {
+  fill: #1f1f1f;
+}
+
+.srd-bolt circle:last-of-type {
+  fill: #0a0a0a;
 }
 
 @media (min-width: 640px) {
@@ -146,12 +163,37 @@
       #252c37 40%,
       #1e2530 100%
     );
-  /* Rack unit separator */
-  border-top: 1px solid rgba(255,255,255,0.07);
-  border-bottom: 2px solid #000;
+  /* ENHANCED: Stronger rack unit separator seams */
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 3px solid #000;
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.08),
-    inset 0 -1px 0 rgba(0,0,0,0.5);
+    /* Stronger top highlight */
+    inset 0 2px 0 rgba(255,255,255,0.10),
+    /* Deeper bottom recess */
+    inset 0 -4px 8px rgba(0,0,0,0.85),
+    /* Contact shadow between modules */
+    0 3px 6px rgba(0,0,0,0.9);
+  /* Performance optimization */
+  contain: layout paint;
+}
+
+/* REALISM TRICK #2: Brushed metal grain overlay */
+.srd-module::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: soft-light;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.05) 0,
+      rgba(255,255,255,0.02) 1px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0) 3px
+    );
+  z-index: 1;
 }
 
 /* First module: no top border (chassis handles it) */
@@ -388,14 +430,17 @@
   flex-direction: column;
   gap: 0.625rem;
   width: 100%;
-  padding: 0.875rem;
+  /* ENHANCED: Dead zone / recessed bay treatment */
+  padding: 14px;
   background:
-    linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 100%);
+    linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
   border-radius: 4px;
-  border: 1px solid rgba(0,0,0,0.8);
+  border: 1px solid rgba(0,0,0,0.85);
+  /* ENHANCED: Deeper inset shadow for mounted feel */
   box-shadow:
-    inset 0 3px 10px rgba(0,0,0,0.9),
-    inset 0 1px 2px rgba(0,0,0,0.6),
+    inset 0 4px 12px rgba(0,0,0,0.92),
+    inset 0 2px 4px rgba(0,0,0,0.75),
+    inset 0 1px 0 rgba(255,255,255,0.05),
     0 1px 0 rgba(255,255,255,0.04);
 }
 
@@ -403,7 +448,7 @@
   .srd-btn-group {
     flex-direction: row;
     gap: 1.25rem;
-    padding: 1.125rem 1.25rem;
+    padding: 16px 18px;
   }
 }
 
@@ -564,23 +609,24 @@
 .srd-btn-service {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-weight: 800;
-  letter-spacing: 0.1em;
+  /* ENHANCED: Tighter hardware typography */
+  letter-spacing: 0.14em;
+  line-height: 1.05;
   text-transform: uppercase;
   font-size: 0.8rem;
-  line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  /* Embossed text effect */
+  /* ENHANCED: Stronger embossed text effect */
   text-shadow:
-    0 1px 0 rgba(255,255,255,0.15),
-    0 -1px 0 rgba(0,0,0,0.4);
+    0 1px 1px rgba(255,255,255,0.15),
+    0 -1px 1px rgba(0,0,0,0.75);
 }
 
 @media (min-width: 640px) {
   .srd-btn-service {
-    font-size: 1rem;
-    letter-spacing: 0.12em;
+    font-size: 0.95rem;
+    letter-spacing: 0.14em;
   }
 }
 
@@ -663,10 +709,16 @@
   border-radius: 50%;
   border: 1px solid rgba(0,0,0,0.9);
   transition: background 0.12s ease, box-shadow 0.12s ease;
-  /* Lens highlight */
+  /* ENHANCED: Proper jewel lens with specular highlight */
   box-shadow:
-    inset 0 1px 1px rgba(255,255,255,0.2),
+    /* Inner depth recess */
+    inset 0 -1px 2px rgba(0,0,0,0.8),
+    /* Specular highlight on jewel surface */
+    inset -1px -1px 2px rgba(255,255,255,0.12),
+    /* Contact shadow */
     0 1px 2px rgba(0,0,0,0.6);
+  /* Performance optimization */
+  contain: layout paint;
 }
 
 @media (min-width: 640px) {
@@ -676,38 +728,59 @@
   }
 }
 
-/* Off states — dark jewel */
+/* ENHANCED: Off states — dark jewel with inner specular */
 .srd-led--crs-off {
-  background: radial-gradient(circle at 40% 35%, #0a3d1a, #041208);
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.18), rgba(0,0,0,0) 35%),
+    radial-gradient(circle at 40% 35%, #0a3d1a, #041208);
 }
 .srd-led--cricket-off {
-  background: radial-gradient(circle at 40% 35%, #3b0764, #1a0030);
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.18), rgba(0,0,0,0) 35%),
+    radial-gradient(circle at 40% 35%, #3b0764, #1a0030);
 }
 .srd-led--neutral-off {
-  background: radial-gradient(circle at 40% 35%, #1e293b, #0a1020);
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.18), rgba(0,0,0,0) 35%),
+    radial-gradient(circle at 40% 35%, #1e293b, #0a1020);
 }
 
-/* On states — glowing jewel */
+/* ENHANCED: On states — glowing jewel with two-ring halo */
 .srd-led--crs-on {
-  background: radial-gradient(circle at 35% 30%, #a7f3c0, #22c55e 60%, #16a34a);
+  background: radial-gradient(circle at 35% 30%, #e0ffe8, #a7f3c0 30%, #22c55e 60%, #16a34a);
   box-shadow:
-    0 0 6px 2px rgba(74, 222, 128, 0.8),
-    0 0 14px 4px rgba(74, 222, 128, 0.4),
-    inset 0 1px 1px rgba(255,255,255,0.5);
+    /* Tight inner glow */
+    0 0 4px 1px rgba(74, 222, 128, 0.85),
+    /* Wide outer halo */
+    0 0 14px 4px rgba(74, 222, 128, 0.35),
+    /* Inner jewel depth */
+    inset 0 -1px 2px rgba(0,0,0,0.45),
+    /* Specular highlight */
+    inset -1px -1px 2px rgba(255,255,255,0.35);
 }
 .srd-led--cricket-on {
-  background: radial-gradient(circle at 35% 30%, #fef9c3, #fde047 60%, #ca8a04);
+  background: radial-gradient(circle at 35% 30%, #fffef0, #fef9c3 30%, #fde047 60%, #ca8a04);
   box-shadow:
-    0 0 6px 2px rgba(253, 224, 71, 0.8),
-    0 0 14px 4px rgba(253, 224, 71, 0.4),
-    inset 0 1px 1px rgba(255,255,255,0.5);
+    /* Tight inner glow */
+    0 0 4px 1px rgba(253, 224, 71, 0.85),
+    /* Wide outer halo */
+    0 0 14px 4px rgba(253, 224, 71, 0.35),
+    /* Inner jewel depth */
+    inset 0 -1px 2px rgba(0,0,0,0.45),
+    /* Specular highlight */
+    inset -1px -1px 2px rgba(255,255,255,0.35);
 }
 .srd-led--neutral-on {
-  background: radial-gradient(circle at 35% 30%, #f1f5f9, #94a3b8 60%, #64748b);
+  background: radial-gradient(circle at 35% 30%, #ffffff, #f1f5f9 30%, #94a3b8 60%, #64748b);
   box-shadow:
-    0 0 6px 2px rgba(203, 213, 225, 0.7),
-    0 0 12px 3px rgba(203, 213, 225, 0.3),
-    inset 0 1px 1px rgba(255,255,255,0.5);
+    /* Tight inner glow */
+    0 0 4px 1px rgba(203, 213, 225, 0.75),
+    /* Wide outer halo */
+    0 0 12px 3px rgba(203, 213, 225, 0.30),
+    /* Inner jewel depth */
+    inset 0 -1px 2px rgba(0,0,0,0.45),
+    /* Specular highlight */
+    inset -1px -1px 2px rgba(255,255,255,0.35);
 }
 
 /* ============================================
