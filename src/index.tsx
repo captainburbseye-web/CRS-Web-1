@@ -1637,6 +1637,29 @@ app.get('/rack-test', (c) => {
   )
 })
 
+// STUDIO RACK DEMO — REACT ISLAND
+app.get('/studio-rack-demo', (c) => {
+  return c.render(
+    <>
+      <div id="studio-rack-root"></div>
+      <script type="module" src="/src/client/rack-entry.tsx" defer></script>
+      <script dangerouslySetInnerHTML={{
+        __html: `
+          window.addEventListener('OPEN_ODRO_MODAL', () => {
+            const modal = document.getElementById('odro-terms-modal');
+            if (modal) modal.classList.remove('hidden');
+          });
+        `
+      }} />
+    </>,
+    {
+      title: 'Studio Services | Cowley Road Studios',
+      description: 'Book recording, rehearsal, and control room sessions',
+      keywords: 'studio booking, recording sessions, rehearsal rooms'
+    }
+  )
+})
+
 // RACK VARIANTS — HARDWARE REALISM WITH VISUAL HIERARCHY
 // Enhanced modular rack with command/rack/passive variants
 // Mission: Bring the rack to life (tactile, styled, variant-aware)
