@@ -1642,7 +1642,7 @@ app.get('/studio-rack-demo', (c) => {
   return c.render(
     <>
       <div id="studio-rack-root"></div>
-      <script type="module" src="/src/client/rack-entry.tsx" defer></script>
+      <script type="module" src="/static/rack-entry.js" defer></script>
       <script dangerouslySetInnerHTML={{
         __html: `
           window.addEventListener('OPEN_ODRO_MODAL', () => {
