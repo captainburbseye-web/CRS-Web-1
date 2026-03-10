@@ -1,3 +1,4 @@
+/** @jsxImportSource react */
 import React from "react"
 import { hydrateRoot } from "react-dom/client"
 import StudioServicesRack from "../components/StudioServicesRack"
