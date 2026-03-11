@@ -634,8 +634,8 @@ app.get('/', (c) => {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recording Studio & Rehearsal Rooms Oxford | Cowley Road Studios</title>
-  <meta name="description" content="Independent recording studio, rehearsal rooms and engineer-led sessions in Oxford. Formerly Soundworks Oxford (1999–2024). Book rehearsal, recording, or creative workspace." />
+  <title>Recording Studio & Rehearsal Rooms in Oxford | Cowley Road Studios</title>
+  <meta name="description" content="Cowley Road Studios provides recording, rehearsal, workshop café space and venue tech from 118 Cowley Road in Oxford." />
   <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
   
   <!-- Favicon -->
@@ -671,27 +671,211 @@ app.get('/', (c) => {
   <script type="application/ld+json">
     ${JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": "MusicStudio",
       "name": "Cowley Road Studios",
-      "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
-      "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
+      "description": "Recording studio and rehearsal spaces supporting the Oxford music scene.",
+      "url": "https://cowleyroadstudios.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "118 Cowley Road",
         "addressLocality": "Oxford",
         "postalCode": "OX4 1JE",
-        "addressCountry": "GB"
+        "addressCountry": "UK"
       },
-      "telephone": "+441865722027",
-      "email": "info@crsoxford.com",
-      "url": "https://cowleyroadstudios.com",
-      "priceRange": "££",
       "areaServed": "Oxford",
-      "sameAs": [
-        "https://instagram.com/cowleyroadstudios.ox"
-      ]
+      "telephone": "+441865722027",
+      "email": "info@crsoxford.com"
     })}
   </script>
+</body>
+</html>`
+  )
+})
+
+// ==========================================
+// SEO LANDING PAGES — Phase 2
+// ==========================================
+
+// PAGE 1: Recording Studio Oxford
+app.get('/recording-studio-oxford', (c) => {
+  return c.html(
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recording Studio in Oxford | Cowley Road Studios</title>
+  <meta name="description" content="Independent recording studio based at 118 Cowley Road in Oxford supporting bands, musicians and producers." />
+  <link rel="stylesheet" href="/static/crs-reset.css" />
+  <link rel="stylesheet" href="/static/crs-typography.css" />
+  <style>
+    body { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; }
+    h1 { font-size: 2rem; margin-bottom: 1rem; }
+    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
+    .cta-button { display: inline-block; padding: 1rem 2rem; background: #7a9c68; color: white; text-decoration: none; margin: 1rem 0; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Recording Studio in Oxford</h1>
+  
+  <h2>Overview</h2>
+  <p>Cowley Road Studios is an independent recording studio based at 118 Cowley Road in Oxford. The studio supports bands, musicians and producers working across the Oxford music scene.</p>
+  
+  <h2>Studio Environment</h2>
+  <p>The studio provides a treated control room suitable for band recording, production work, and recording sessions. The facility is designed to support independent musicians and producers in Oxford.</p>
+  
+  <h2>Location</h2>
+  <p>Located on Cowley Road in central Oxford, the studio is accessible to musicians across Oxfordshire and the surrounding areas.</p>
+  
+  <h2>Booking</h2>
+  <a href="/" class="cta-button">BOOK A RECORDING SESSION</a>
+  
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+    <p><strong>Cowley Road Studios</strong><br/>
+    118 Cowley Road<br/>
+    Oxford OX4 1JE<br/>
+    United Kingdom</p>
+    <p><a href="/">Home</a> | <a href="/rehearsal-rooms-oxford">Rehearsal Rooms</a> | <a href="/cricket-road-rehearsal">Cricket Road</a></p>
+  </footer>
+</body>
+</html>`
+  )
+})
+
+// PAGE 2: Rehearsal Rooms Oxford
+app.get('/rehearsal-rooms-oxford', (c) => {
+  return c.html(
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rehearsal Rooms in Oxford | Cowley Road Studios</title>
+  <meta name="description" content="Band rehearsal rooms and production rehearsal space managed by Cowley Road Studios in Oxford." />
+  <link rel="stylesheet" href="/static/crs-reset.css" />
+  <link rel="stylesheet" href="/static/crs-typography.css" />
+  <style>
+    body { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; }
+    h1 { font-size: 2rem; margin-bottom: 1rem; }
+    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
+    .cta-button { display: inline-block; padding: 1rem 2rem; background: #7a9c68; color: white; text-decoration: none; margin: 1rem 0; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Rehearsal Rooms in Oxford</h1>
+  
+  <h2>Overview</h2>
+  <p>Cowley Road Studios manages rehearsal spaces supporting band rehearsals and production rehearsals for local musicians across Oxford.</p>
+  
+  <h2>Rehearsal Spaces</h2>
+  <p>The rehearsal rooms serve bands and musicians requiring space for practice, production rehearsals, and creative development. Facilities are managed to support the Oxford independent music scene.</p>
+  
+  <h2>Cricket Road Rehearsal Space</h2>
+  <p>Cowley Road Studios operates a rehearsal facility at Cricket Road in Oxford, providing dedicated rehearsal space for bands and production groups.</p>
+  
+  <h2>Booking</h2>
+  <a href="/" class="cta-button">BOOK REHEARSAL</a>
+  
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+    <p><strong>Cowley Road Studios</strong><br/>
+    118 Cowley Road<br/>
+    Oxford OX4 1JE<br/>
+    United Kingdom</p>
+    <p><a href="/">Home</a> | <a href="/recording-studio-oxford">Recording Studio</a> | <a href="/cricket-road-rehearsal">Cricket Road</a></p>
+  </footer>
+</body>
+</html>`
+  )
+})
+
+// PAGE 3: Cricket Road Rehearsal
+app.get('/cricket-road-rehearsal', (c) => {
+  return c.html(
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cricket Road Rehearsal Space | Oxford</title>
+  <meta name="description" content="Rehearsal space at Cricket Road managed by Cowley Road Studios in Oxford." />
+  <link rel="stylesheet" href="/static/crs-reset.css" />
+  <link rel="stylesheet" href="/static/crs-typography.css" />
+  <style>
+    body { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; }
+    h1 { font-size: 2rem; margin-bottom: 1rem; }
+    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
+    .cta-button { display: inline-block; padding: 1rem 2rem; background: #7a9c68; color: white; text-decoration: none; margin: 1rem 0; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Cricket Road Rehearsal Space</h1>
+  
+  <h2>Overview</h2>
+  <p>The Cricket Road rehearsal space is managed by Cowley Road Studios and provides dedicated rehearsal facilities for bands within Oxford.</p>
+  
+  <h2>Location</h2>
+  <p>Located at Cricket Road in Oxford, the space serves as a rehearsal facility for musicians and production groups working in the local area.</p>
+  
+  <h2>Booking</h2>
+  <a href="/" class="cta-button">BOOK REHEARSAL</a>
+  
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+    <p><strong>Cowley Road Studios</strong><br/>
+    118 Cowley Road<br/>
+    Oxford OX4 1JE<br/>
+    United Kingdom</p>
+    <p><a href="/">Home</a> | <a href="/recording-studio-oxford">Recording Studio</a> | <a href="/rehearsal-rooms-oxford">Rehearsal Rooms</a></p>
+  </footer>
+</body>
+</html>`
+  )
+})
+
+// PAGE 4: Music Studio Oxford
+app.get('/music-studio-oxford', (c) => {
+  return c.html(
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music Studio in Oxford | Cowley Road Studios</title>
+  <meta name="description" content="Recording studio and rehearsal facilities at Cowley Road Studios in Oxford." />
+  <link rel="stylesheet" href="/static/crs-reset.css" />
+  <link rel="stylesheet" href="/static/crs-typography.css" />
+  <style>
+    body { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; }
+    h1 { font-size: 2rem; margin-bottom: 1rem; }
+    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
+    .cta-button { display: inline-block; padding: 1rem 2rem; background: #7a9c68; color: white; text-decoration: none; margin: 1rem 0; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Music Studio in Oxford</h1>
+  
+  <h2>Overview</h2>
+  <p>Cowley Road Studios provides recording, rehearsal, and production facilities for musicians based in and around Oxford.</p>
+  
+  <h2>Services</h2>
+  <p>The studio supports recording sessions, band rehearsals, and production work as part of the grassroots infrastructure serving Oxford's independent music scene.</p>
+  
+  <h2>Facilities</h2>
+  <ul>
+    <li><a href="/recording-studio-oxford">Recording Studio</a> — Recording sessions and production work</li>
+    <li><a href="/rehearsal-rooms-oxford">Rehearsal Rooms</a> — Band rehearsals and practice space</li>
+    <li><a href="/cricket-road-rehearsal">Cricket Road</a> — Dedicated rehearsal facility</li>
+  </ul>
+  
+  <h2>Get Started</h2>
+  <a href="/" class="cta-button">EXPLORE SERVICES</a>
+  
+  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #ddd;">
+    <p><strong>Cowley Road Studios</strong><br/>
+    118 Cowley Road<br/>
+    Oxford OX4 1JE<br/>
+    United Kingdom</p>
+    <p><a href="/">Home</a> | <a href="/recording-studio-oxford">Recording</a> | <a href="/rehearsal-rooms-oxford">Rehearsal</a></p>
+  </footer>
 </body>
 </html>`
   )
