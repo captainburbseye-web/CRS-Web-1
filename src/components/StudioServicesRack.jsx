@@ -27,9 +27,21 @@ const BrandBadge = ({ kind, className = "" }) => {
   if (kind === "cricket") {
     return (
       <div aria-hidden="true" className={`srd-badge srd-badge--cricket ${className}`}>
-        <svg viewBox="0 0 24 24" className="srd-badge-svg srd-badge-svg--cricket">
-          <rect x="6" y="6" width="12" height="12" fill="none" stroke="black" strokeWidth="2" rx="1"/>
-          <circle cx="12" cy="12" r="3" fill="black"/>
+        <svg viewBox="0 0 24 24" style={{ transform: 'rotate(-45deg)', width: '90%', height: '90%' }}>
+          {/* Cricket Head and Mandibles */}
+          <path 
+            d="M12 7c-1.5 0-3 1-3 3s1 2 1 4c0 2 1 3 2 3s2-1 2-3c0-2 1-2 1-4s-1.5-3-3-3z" 
+            fill="black" 
+          />
+          {/* High-fidelity Antennae */}
+          <path 
+            d="M9 8L6 4M15 8l3-4" 
+            stroke="black" 
+            strokeWidth="1.2" 
+            strokeLinecap="round" 
+          />
+          {/* Segmented Body Detail */}
+          <line x1="10" y1="12" x2="14" y2="12" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
         </svg>
       </div>
     );
@@ -85,6 +97,32 @@ const SignalStripe = () => (
 const CRSBlockLogo = () => (
   <div className="srd-logo-plate" aria-label="CRS Logo">
     
+    {/* Steel Bolts - Rack Mount Hardware */}
+    <svg className="srd-logo-bolt srd-logo-bolt--tl" viewBox="0 0 8 8" aria-hidden="true">
+      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
+      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
+      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
+      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
+    </svg>
+    <svg className="srd-logo-bolt srd-logo-bolt--tr" viewBox="0 0 8 8" aria-hidden="true">
+      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
+      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
+      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
+      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
+    </svg>
+    <svg className="srd-logo-bolt srd-logo-bolt--bl" viewBox="0 0 8 8" aria-hidden="true">
+      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
+      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
+      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
+      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
+    </svg>
+    <svg className="srd-logo-bolt srd-logo-bolt--br" viewBox="0 0 8 8" aria-hidden="true">
+      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
+      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
+      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
+      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
+    </svg>
+    
     {/* Left Block: CR (Cream/White) */}
     <div className="srd-logo-block-left">
       <span className="srd-logo-text">
@@ -107,19 +145,26 @@ const CRSBlockLogo = () => (
 const MasterFaceplate = () => (
   <header className="srd-master-faceplate">
     <div className="srd-faceplate-header">
-      <div className="srd-faceplate-title-group">
-        <CRSBlockLogo />
-        <SignalStripe />
-        <div className="srd-faceplate-text-stack">
-          <h1 className="srd-faceplate-title">COWLEY ROAD STUDIOS</h1>
-          <p className="srd-faceplate-subtitle">OXFORD GRASSROOTS CREATIVE INFRASTRUCTURE</p>
-        </div>
+      {/* Physical Location Strip */}
+      <div className="srd-location-strip">
+        118 COWLEY ROAD • OXFORD • OX4 1JE • UNITED KINGDOM
       </div>
-      <div className="srd-faceplate-meta">
-        <div className="srd-meta-row">
-          <div className="srd-faceplate-model">CRS-CONSOLE-01</div>
-          <div className="srd-faceplate-routing">Audio • Rehearsal • Control</div>
-          <div className="srd-micro-label">FIRMWARE: CAPTAIN BURBSEYE / TEST PASS: N0RLAND0B00M</div>
+      
+      <div className="srd-faceplate-main">
+        <div className="srd-faceplate-title-group">
+          <CRSBlockLogo />
+          <SignalStripe />
+          <div className="srd-faceplate-text-stack">
+            <h1 className="srd-faceplate-title">COWLEY ROAD STUDIOS</h1>
+            <p className="srd-faceplate-subtitle">OXFORD GRASSROOTS CREATIVE INFRASTRUCTURE</p>
+          </div>
+        </div>
+        <div className="srd-faceplate-meta">
+          <div className="srd-meta-row">
+            <div className="srd-faceplate-model">CRS-CONSOLE-01</div>
+            <div className="srd-faceplate-routing">Audio • Rehearsal • Control</div>
+            <div className="srd-micro-label">FIRMWARE: CAPTAIN BURBSEYE / TEST PASS: N0RLAND0B00M</div>
+          </div>
         </div>
       </div>
     </div>
@@ -131,7 +176,7 @@ const StatusPlacard = () => (
     <div className="srd-lcd-screen">
       <div className="srd-lcd-content">
         <div className="srd-lcd-sysinfo">
-          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> MULTIFACETED CREATIVE HUB. VINTAGE AUDIO RECORDING, REHEARSAL, ELECTRONIC REPAIRS &amp; WORKSPACE.
+          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> CRS INFRASTRUCTURE ACTIVE // RECORDING @ 118 COWLEY RD // REHEARSAL @ CRICKET RD // WORKSHOP CAFÉ OPEN // VENUE TECH ON-CALL
         </div>
         <div className="srd-lcd-header">SELECT SERVICE MODULE</div>
         <div className="srd-lcd-row">
@@ -146,6 +191,15 @@ const StatusPlacard = () => (
       </div>
     </div>
   </section>
+);
+
+// Top Mounting Rail — Site Header
+const TopRail = () => (
+  <div className="srd-top-rail">
+    <div className="srd-home-indicator">HOME</div>
+    <div className="srd-rail-address">118 COWLEY ROAD | OXFORD | OX4 1JE</div>
+    <div className="srd-rail-meta">EST. 2012 | OXFORD UK</div>
+  </div>
 );
 
 const VuMeter = ({ label = "VU", channel }) => (
@@ -294,12 +348,21 @@ export default function StudioServicesRack() {
 
   return (
     <main className="srd-page">
+      <TopRail />
+      
+      {/* Hero Preamble - Infrastructure Authority */}
+      <header className="srd-hero-preamble">
+        <h1 className="srd-hero-title">Recording Studio &amp; Rehearsal Rooms in Oxford</h1>
+        <p className="srd-hero-services">Cowley Road Studios | Recording • Rehearsal • Workshop Café • Venue Tech</p>
+        <p className="srd-hero-mantra">Grassroots infrastructure for the Oxford music scene.</p>
+      </header>
+      
       <RackChassis>
         
         <MasterFaceplate />
         <StatusPlacard />
         
-        <RackModule title="Recording" subtitle="Studio Session Booking" meters={true}>
+        <RackModule title="Recording" subtitle="Cowley Road • 118 Cowley Rd • Main Studio & Control Room" meters={true}>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
@@ -322,7 +385,13 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="Rehearsal" subtitle="Band Practice Rooms" meters={false}>
+        <RackModule title="Rehearsal" subtitle="Cricket Road • Rehearsal & Production Space Management" meters={false}>
+          {/* Cricket Subsystem Indicator */}
+          <div className="srd-subsystem-badge">
+            <BrandBadge kind="cricket" className="srd-subsystem-badge-icon" />
+            <span className="srd-subsystem-label">CRICKET ROAD SUBSYSTEM</span>
+          </div>
+          
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
@@ -345,7 +414,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="Control Room" subtitle="Hybrid Studio Hire" meters={true}>
+        <RackModule title="Control Room" subtitle="Hybrid Studio Hire • Multi-Track Recording & Production" meters={true}>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
@@ -368,7 +437,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="ODRO Electronics Repair" subtitle="AV & Instrument Servicing" theme="dark" meters={false}>
+        <RackModule title="ODRO Electronics" subtitle="AV & Instrument Servicing • Oxford Venue Tech Support" theme="dark" meters={false}>
           <div className="srd-micro-label">DESTA-GEN3 SERVICE LOOP</div>
           <ServiceButtonGroup>
             <HardwareButton 
@@ -451,6 +520,11 @@ export default function StudioServicesRack() {
         </RackModule>
 
       </RackChassis>
+      
+      {/* Bottom Trust Rail */}
+      <footer className="srd-trust-rail">
+        118 Cowley Road, Oxford OX4 1JE, United Kingdom
+      </footer>
     </main>
   );
 }
