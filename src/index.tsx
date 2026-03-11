@@ -635,8 +635,8 @@ app.get('/', (c) => {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Recording Studio & Rehearsal Rooms in Oxford | Cowley Road Studios</title>
-  <meta name="description" content="Cowley Road Studios provides recording, rehearsal, workshop café space and venue tech from 118 Cowley Road in Oxford." />
-  <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
+  <meta name="description" content="Independent recording studio and rehearsal rooms at 118 Cowley Road, Oxford. Professional tracking, mixing, and band practice spaces for the Oxford music scene." />
+  <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, band rehearsal oxford, music production oxford, 118 cowley road, cricket road rehearsal" />
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />

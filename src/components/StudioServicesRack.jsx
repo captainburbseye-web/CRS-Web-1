@@ -342,6 +342,7 @@ const IdentityPlate = () => (
   <section className="srd-unit-0" aria-label="Unit Identification">
     <div className="srd-unit-0-left">
       <span className="srd-unit-id">UNIT ID: 118-CR</span>
+      <span className="srd-unit-microlabel">BREWFORCE BUS // DEEPEND PROTOCOL ACTIVE</span>
     </div>
     <div className="srd-unit-0-center">
       <h1 className="srd-unit-h1">RECORDING STUDIO &amp; REHEARSAL ROOMS IN OXFORD</h1>
@@ -534,8 +535,32 @@ export default function StudioServicesRack() {
       
       {/* Bottom Trust Rail */}
       <footer className="srd-trust-rail">
-        118 Cowley Road, Oxford OX4 1JE, United Kingdom
+        118 Cowley Road, Oxford OX4 1JE, United Kingdom · DESTA-GEN3 // NO CHAOS MODE // INSPECTED: N0RLAND0B00M
       </footer>
+      
+      {/* Technical Manual SEO Footer */}
+      <section className="tech-manual-footer">
+        <div className="manual-header">DOCUMENTATION // REF: 118-CR-OX4</div>
+        
+        <h2>Recording Studio & Rehearsal Rooms in Oxford</h2>
+        <p>
+          Cowley Road Studios (CRS) provides the <strong>grassroots infrastructure</strong> for the Oxford music scene. 
+          Located at <strong>118 Cowley Road</strong>, our facility offers professional <strong>recording sessions</strong>, 
+          vocal tracking, and analog-hybrid mixing. 
+        </p>
+
+        <p>
+          Our network extends to managed <strong>rehearsal rooms at Cricket Road</strong>, providing acoustically treated 
+          spaces for band practice, pre-production, and creative development. The <strong>Workshop Café</strong> serves 
+          as our on-site creative hub and community venue for the OX4 area.
+        </p>
+
+        <div className="manual-specs">
+          <span>LOCATION: 118 COWLEY ROAD, OXFORD, OX4 1JE</span>
+          <span>NETWORK: CRICKET ROAD / WORKSHOP CAFÉ</span>
+          <span>ESTABLISHED: 2012</span>
+        </div>
+      </section>
     </main>
   );
 }
