@@ -150,7 +150,7 @@ const StatusPlacard = () => (
     <div className="srd-lcd-screen">
       <div className="srd-lcd-content">
         <div className="srd-lcd-sysinfo">
-          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> COWLEY ROAD STUDIOS // RECORDING • REHEARSAL • REPAIRS • OXFORD UK
+          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> CRS INFRASTRUCTURE ACTIVE // RECORDING @ 118 COWLEY RD // REHEARSAL @ CRICKET RD // WORKSHOP CAFÉ OPEN // VENUE TECH ON-CALL
         </div>
         <div className="srd-lcd-header">SELECT SERVICE MODULE</div>
         <div className="srd-lcd-row">
@@ -323,12 +323,20 @@ export default function StudioServicesRack() {
   return (
     <main className="srd-page">
       <TopRail />
+      
+      {/* Hero Preamble - Infrastructure Authority */}
+      <header className="srd-hero-preamble">
+        <h1 className="srd-hero-title">Cowley Road Studios</h1>
+        <p className="srd-hero-services">Recording • Rehearsal • Workshop Café • Venue Tech</p>
+        <p className="srd-hero-mantra">Grassroots infrastructure for the Oxford music scene.</p>
+      </header>
+      
       <RackChassis>
         
         <MasterFaceplate />
         <StatusPlacard />
         
-        <RackModule title="Recording" subtitle="Studio Session Booking" meters={true}>
+        <RackModule title="Recording" subtitle="Cowley Road • 118 Cowley Rd • Main Studio & Control Room" meters={true}>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
@@ -351,7 +359,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="Rehearsal" subtitle="Band Practice Rooms" meters={false}>
+        <RackModule title="Rehearsal" subtitle="Cricket Road • Rehearsal & Production Space Management" meters={false}>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
@@ -374,7 +382,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="Control Room" subtitle="Hybrid Studio Hire" meters={true}>
+        <RackModule title="Control Room" subtitle="Hybrid Studio Hire • Multi-Track Recording & Production" meters={true}>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
@@ -397,7 +405,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="ODRO Electronics Repair" subtitle="AV & Instrument Servicing" theme="dark" meters={false}>
+        <RackModule title="ODRO Electronics" subtitle="AV & Instrument Servicing • Oxford Venue Tech Support" theme="dark" meters={false}>
           <div className="srd-micro-label">DESTA-GEN3 SERVICE LOOP</div>
           <ServiceButtonGroup>
             <HardwareButton 
@@ -480,6 +488,11 @@ export default function StudioServicesRack() {
         </RackModule>
 
       </RackChassis>
+      
+      {/* Bottom Trust Rail */}
+      <footer className="srd-trust-rail">
+        Trusted by Oxford bands, producers & independent venues since 2012.
+      </footer>
     </main>
   );
 }
