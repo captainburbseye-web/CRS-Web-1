@@ -337,6 +337,21 @@ const RackChassis = ({ children }) => (
   </div>
 );
 
+// UNIT 0: Identity Plate (SEO Integration)
+const IdentityPlate = () => (
+  <section className="srd-unit-0" aria-label="Unit Identification">
+    <div className="srd-unit-0-left">
+      <span className="srd-unit-id">UNIT ID: 118-CR</span>
+    </div>
+    <div className="srd-unit-0-center">
+      <h1 className="srd-unit-h1">RECORDING STUDIO &amp; REHEARSAL ROOMS IN OXFORD</h1>
+    </div>
+    <div className="srd-unit-0-right">
+      <span className="srd-unit-status">SYSTEM STATUS: GRASSROOTS INFRASTRUCTURE</span>
+    </div>
+  </section>
+);
+
 // ==========================================
 // 3. MAIN PAGE ASSEMBLY
 // ==========================================
@@ -350,14 +365,10 @@ export default function StudioServicesRack() {
     <main className="srd-page">
       <TopRail />
       
-      {/* Hero Preamble - Infrastructure Authority */}
-      <header className="srd-hero-preamble">
-        <h1 className="srd-hero-title">Recording Studio &amp; Rehearsal Rooms in Oxford</h1>
-        <p className="srd-hero-services">Cowley Road Studios | Recording • Rehearsal • Workshop Café • Venue Tech</p>
-        <p className="srd-hero-mantra">Grassroots infrastructure for the Oxford music scene.</p>
-      </header>
-      
       <RackChassis>
+        
+        {/* UNIT 0: Identity Plate (Replaces floating header) */}
+        <IdentityPlate />
         
         <MasterFaceplate />
         <StatusPlacard />
