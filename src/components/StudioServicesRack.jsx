@@ -107,19 +107,26 @@ const CRSBlockLogo = () => (
 const MasterFaceplate = () => (
   <header className="srd-master-faceplate">
     <div className="srd-faceplate-header">
-      <div className="srd-faceplate-title-group">
-        <CRSBlockLogo />
-        <SignalStripe />
-        <div className="srd-faceplate-text-stack">
-          <h1 className="srd-faceplate-title">COWLEY ROAD STUDIOS</h1>
-          <p className="srd-faceplate-subtitle">OXFORD GRASSROOTS CREATIVE INFRASTRUCTURE</p>
-        </div>
+      {/* Physical Location Strip */}
+      <div className="srd-location-strip">
+        120 COWLEY ROAD • OXFORD • OX4 1JE • UNITED KINGDOM
       </div>
-      <div className="srd-faceplate-meta">
-        <div className="srd-meta-row">
-          <div className="srd-faceplate-model">CRS-CONSOLE-01</div>
-          <div className="srd-faceplate-routing">Audio • Rehearsal • Control</div>
-          <div className="srd-micro-label">FIRMWARE: CAPTAIN BURBSEYE / TEST PASS: N0RLAND0B00M</div>
+      
+      <div className="srd-faceplate-main">
+        <div className="srd-faceplate-title-group">
+          <CRSBlockLogo />
+          <SignalStripe />
+          <div className="srd-faceplate-text-stack">
+            <h1 className="srd-faceplate-title">COWLEY ROAD STUDIOS</h1>
+            <p className="srd-faceplate-subtitle">OXFORD GRASSROOTS CREATIVE INFRASTRUCTURE</p>
+          </div>
+        </div>
+        <div className="srd-faceplate-meta">
+          <div className="srd-meta-row">
+            <div className="srd-faceplate-model">CRS-CONSOLE-01</div>
+            <div className="srd-faceplate-routing">Audio • Rehearsal • Control</div>
+            <div className="srd-micro-label">FIRMWARE: CAPTAIN BURBSEYE / TEST PASS: N0RLAND0B00M</div>
+          </div>
         </div>
       </div>
     </div>
