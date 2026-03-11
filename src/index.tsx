@@ -362,15 +362,17 @@ app.use(renderer)
 app.get('/av', (c) => c.redirect('/av-services'))
 
 // UNIFIED BOOKING PAGE (Phase 2: Simplified 3-category booking)
-app.get('/book', (c) => {
+// BOOK: Redirect to homepage (Rack is now primary booking interface)
+app.get('/book', (c) => c.redirect('/'))
+
+// LEGACY BOOKING PAGE (Archive)
+app.get('/book-legacy', (c) => {
   return c.html(
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Book Your Session | Cowley Road Studios Oxford</title>
-        <meta name="description" content="Book rehearsal rooms, recording sessions, music lessons, equipment hire, and venue space. Choose your service and book instantly." />
-        <meta name="keywords" content="book studio oxford, recording session booking, rehearsal room booking, music lessons oxford, equipment hire oxford" />
+        <title>Legacy Booking | Cowley Road Studios</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
@@ -617,15 +619,95 @@ app.get('/crs-cricket-road', (c) => {
 
 // HOME
 // ROOT: HARDWARE RACK CONSOLE (Hardware-first landing page)
+// HOMEPAGE: Studio Services Rack (Promoted from /studio-rack-demo)
 app.get('/', (c) => {
+  const manifestEntry = CLIENT_MANIFEST['src/client/rack-entry.tsx']
+  const jsAsset = `/static/${manifestEntry.file}`
+  const cssAsset = manifestEntry.css ? `/static/${manifestEntry.css[0]}` : null
+  
+  // Server-render the React component
+  const rackHtml = renderToString(createElement(StudioServicesRack))
+  
+  return c.html(
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recording Studio & Rehearsal Rooms Oxford | Cowley Road Studios</title>
+  <meta name="description" content="Independent recording studio, rehearsal rooms and engineer-led sessions in Oxford. Formerly Soundworks Oxford (1999–2024). Book rehearsal, recording, or creative workspace." />
+  <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Hardware Physics CSS -->
+  <link href="/static/studio-rack-demo.css" rel="stylesheet" />
+  
+  <!-- Tailwind CSS for React component -->
+  ${cssAsset ? `<link href="${cssAsset}" rel="stylesheet" />` : ''}
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div id="studio-rack-root">${rackHtml}</div>
+  
+  <!-- React Island Entry -->
+  <script type="module" src="${jsAsset}" defer></script>
+  
+  <!-- ODRO Modal Trigger -->
+  <script>
+    window.addEventListener('OPEN_ODRO_MODAL', function() {
+      var modal = document.getElementById('odro-terms-modal');
+      if (modal) modal.classList.remove('hidden');
+    });
+  </script>
+  
+  <!-- Structured data for SEO -->
+  <script type="application/ld+json">
+    ${JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Cowley Road Studios",
+      "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
+      "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "118 Cowley Road",
+        "addressLocality": "Oxford",
+        "postalCode": "OX4 1JE",
+        "addressCountry": "GB"
+      },
+      "telephone": "+441865722027",
+      "email": "info@crsoxford.com",
+      "url": "https://cowleyroadstudios.com",
+      "priceRange": "££",
+      "areaServed": "Oxford",
+      "sameAs": [
+        "https://instagram.com/cowleyroadstudios.ox"
+      ]
+    })}
+  </script>
+</body>
+</html>`
+  )
+})
+
+// LEGACY HOMEPAGE REDIRECT
+app.get('/home', (c) => c.redirect('/')
+
+// LEGACY ACCORDION (Kept for archive access)
+app.get('/rack-accordion-legacy', (c) => {
   return c.html(
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Recording Studio & Rehearsal Rooms Oxford | Cowley Road Studios</title>
-        <meta name="description" content="Independent recording studio, rehearsal rooms and engineer-led sessions in Oxford. Formerly Soundworks Oxford (1999–2024). Book rehearsal, recording, or creative workspace." />
-        <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
+        <title>Legacy Accordion | Cowley Road Studios</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
