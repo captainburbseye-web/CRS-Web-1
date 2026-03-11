@@ -634,13 +634,13 @@ app.get('/', (c) => {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recording Studio & Rehearsal Rooms in Oxford | Cowley Road Studios</title>
-  <meta name="description" content="Independent recording studio and rehearsal rooms at 118 Cowley Road, Oxford. Professional tracking, mixing, and band practice spaces for the Oxford music scene." />
+  <title>CRS - Oxford - Recording, Rehearsal & Workshop Infrastructure</title>
+  <meta name="description" content="Grassroots infrastructure for the Oxford music scene. Recording studio at 118 Cowley Road, rehearsal rooms at Cricket Road, and Workshop Café." />
   <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, band rehearsal oxford, music production oxford, 118 cowley road, cricket road rehearsal" />
   
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/static/crs-logo.png" />
+  <link rel="apple-touch-icon" href="/static/crs-logo.png" />
   
   <!-- Hardware Physics CSS -->
   <link href="/static/studio-rack-demo.css" rel="stylesheet" />

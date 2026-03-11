@@ -27,22 +27,7 @@ const BrandBadge = ({ kind, className = "" }) => {
   if (kind === "cricket") {
     return (
       <div aria-hidden="true" className={`srd-badge srd-badge--cricket ${className}`}>
-        <svg viewBox="0 0 24 24" className="cricket-badge-svg">
-          {/* Cricket Head and Mandibles */}
-          <path 
-            d="M12 7c-1.5 0-3 1-3 3s1 2 1 4c0 2 1 3 2 3s2-1 2-3c0-2 1-2 1-4s-1.5-3-3-3z" 
-            fill="black" 
-          />
-          {/* High-fidelity Antennae */}
-          <path 
-            d="M9 8L6 4M15 8l3-4" 
-            stroke="black" 
-            strokeWidth="1.2" 
-            strokeLinecap="round" 
-          />
-          {/* Segmented Body Detail */}
-          <line x1="10" y1="12" x2="14" y2="12" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
-        </svg>
+        <img src="/static/cricket-logo.png" alt="Cricket" className="cricket-badge-img" />
       </div>
     );
   }
@@ -96,53 +81,7 @@ const SignalStripe = () => (
 
 const CRSBlockLogo = () => (
   <div className="srd-logo-plate" aria-label="CRS Logo">
-    
-    {/* Steel Bolts - Rack Mount Hardware */}
-    <svg className="srd-logo-bolt srd-logo-bolt--tl" viewBox="0 0 8 8" aria-hidden="true">
-      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
-      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
-      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
-      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
-    </svg>
-    <svg className="srd-logo-bolt srd-logo-bolt--tr" viewBox="0 0 8 8" aria-hidden="true">
-      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
-      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
-      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
-      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
-    </svg>
-    <svg className="srd-logo-bolt srd-logo-bolt--bl" viewBox="0 0 8 8" aria-hidden="true">
-      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
-      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
-      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
-      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
-    </svg>
-    <svg className="srd-logo-bolt srd-logo-bolt--br" viewBox="0 0 8 8" aria-hidden="true">
-      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
-      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
-      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
-      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
-    </svg>
-    
-    {/* Mounting Rivets - Left & Right */}
-    <div className="srd-logo-rivet srd-logo-rivet--left" aria-hidden="true"></div>
-    <div className="srd-logo-rivet srd-logo-rivet--right" aria-hidden="true"></div>
-    
-    {/* Left Block: CR (Light Silver/Aluminum) */}
-    <div className="srd-logo-block-left">
-      <span className="srd-logo-text">
-        CR
-      </span>
-      {/* Green Underline */}
-      <div className="srd-logo-underline"></div>
-    </div>
-
-    {/* Right Block: S (Mustard Yellow) */}
-    <div className="srd-logo-block-right">
-      <span className="srd-logo-text">
-        S
-      </span>
-    </div>
-
+    <img src="/static/crs-logo.png" alt="CRS" className="crs-logo-img" />
   </div>
 );
 
@@ -546,7 +485,7 @@ export default function StudioServicesRack() {
       <section className="tech-manual-footer">
         <div className="manual-header">DOCUMENTATION // REF: 118-CR-OX4</div>
         
-        <h2>Recording Studio & Rehearsal Rooms in Oxford</h2>
+        <h2>Grassroots Infrastructure for the Oxford Music Scene</h2>
         <p>
           Cowley Road Studios (CRS) provides the <strong>grassroots infrastructure</strong> for the Oxford music scene. 
           Located at <strong>118 Cowley Road</strong>, our facility offers professional <strong>recording sessions</strong>, 
