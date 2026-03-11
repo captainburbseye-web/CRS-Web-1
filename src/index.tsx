@@ -698,7 +698,7 @@ app.get('/', (c) => {
 })
 
 // LEGACY HOMEPAGE REDIRECT
-app.get('/home', (c) => c.redirect('/')
+app.get('/home', (c) => c.redirect('/'))
 
 // LEGACY ACCORDION (Kept for archive access)
 app.get('/rack-accordion-legacy', (c) => {
@@ -755,9 +755,6 @@ app.get('/rack-accordion-legacy', (c) => {
     </html>
   )
 })
-
-// HOME PAGE: Redirect to root (kept for legacy compatibility)
-app.get('/home', (c) => c.redirect('/'))
 
 // RECORDING / STUDIO
 app.get('/studio', (c) => {
