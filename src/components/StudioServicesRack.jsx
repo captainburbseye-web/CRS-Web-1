@@ -485,7 +485,7 @@ export default function StudioServicesRack() {
       <section className="tech-manual-footer">
         <div className="manual-header">DOCUMENTATION // REF: 118-CR-OX4</div>
         
-        <h2>Grassroots Infrastructure for the Oxford Music Scene</h2>
+        <h2>Recording Studio & Rehearsal Rooms in Oxford</h2>
         <p>
           Cowley Road Studios (CRS) provides the <strong>grassroots infrastructure</strong> for the Oxford music scene. 
           Located at <strong>118 Cowley Road</strong>, our facility offers professional <strong>recording sessions</strong>, 

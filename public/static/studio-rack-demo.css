@@ -1361,6 +1361,12 @@ textarea.srd-input-bay {
   z-index: 2;
 }
 
+.srd-unit-0-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
 .srd-unit-id,
 .srd-unit-status {
   font-family: var(--font-mono, monospace);
