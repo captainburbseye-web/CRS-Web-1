@@ -643,7 +643,7 @@ app.get('/', (c) => {
   <link rel="apple-touch-icon" href="/static/crs-logo.png" />
   
   <!-- Hardware Physics CSS -->
-  <link href="/static/studio-rack-demo.css" rel="stylesheet" />
+  <link href="/static/studio-rack-demo.css?v=0.4.3" rel="stylesheet" />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -1947,7 +1947,7 @@ app.get('/studio-rack-demo', (c) => {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   
   <!-- Hardware Physics CSS -->
-  <link href="/static/studio-rack-demo.css" rel="stylesheet" />
+  <link href="/static/studio-rack-demo.css?v=0.4.3" rel="stylesheet" />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
