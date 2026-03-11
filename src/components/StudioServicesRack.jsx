@@ -341,12 +341,6 @@ export default function StudioServicesRack() {
         </RackModule>
 
         <RackModule title="Rehearsal" subtitle="Cricket Road • OX4 3DJ • Managed Production" meters={false}>
-          {/* Cricket Subsystem Indicator */}
-          <div className="srd-subsystem-badge">
-            <BrandBadge kind="cricket" className="srd-subsystem-badge-icon" />
-            <span className="srd-subsystem-label">CRICKET ROAD SUBSYSTEM</span>
-          </div>
-          
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 

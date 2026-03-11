@@ -2,7 +2,7 @@
 // This file is generated during the build process
 export const CLIENT_MANIFEST = {
   "src/client/rack-entry.tsx": {
-    "file": "assets/rack-entry-DQGHpRKS.js",
+    "file": "assets/rack-entry-BtwaFg7v.js",
     "name": "rack-entry",
     "src": "src/client/rack-entry.tsx",
     "isEntry": true,
