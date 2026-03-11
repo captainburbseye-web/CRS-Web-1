@@ -121,7 +121,7 @@ const MasterFaceplate = () => (
     <div className="srd-faceplate-header">
       {/* Physical Location Strip */}
       <div className="srd-location-strip">
-        120 COWLEY ROAD • OXFORD • OX4 1JE • UNITED KINGDOM
+        118 COWLEY ROAD • OXFORD • OX4 1JE • UNITED KINGDOM
       </div>
       
       <div className="srd-faceplate-main">
@@ -171,7 +171,7 @@ const StatusPlacard = () => (
 const TopRail = () => (
   <div className="srd-top-rail">
     <div className="srd-home-indicator">HOME</div>
-    <div className="srd-rail-address">120 COWLEY ROAD | OXFORD | OX4 1JE</div>
+    <div className="srd-rail-address">118 COWLEY ROAD | OXFORD | OX4 1JE</div>
     <div className="srd-rail-meta">EST. 2012 | OXFORD UK</div>
   </div>
 );
