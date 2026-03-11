@@ -123,7 +123,11 @@ const CRSBlockLogo = () => (
       <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
     </svg>
     
-    {/* Left Block: CR (Cream/White) */}
+    {/* Mounting Rivets - Left & Right */}
+    <div className="srd-logo-rivet srd-logo-rivet--left" aria-hidden="true"></div>
+    <div className="srd-logo-rivet srd-logo-rivet--right" aria-hidden="true"></div>
+    
+    {/* Left Block: CR (Light Silver/Aluminum) */}
     <div className="srd-logo-block-left">
       <span className="srd-logo-text">
         CR
@@ -176,7 +180,7 @@ const StatusPlacard = () => (
     <div className="srd-lcd-screen">
       <div className="srd-lcd-content">
         <div className="srd-lcd-sysinfo">
-          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> CRS INFRASTRUCTURE ACTIVE // RECORDING @ 118 COWLEY RD // REHEARSAL @ CRICKET RD // WORKSHOP CAFÉ OPEN // VENUE TECH ON-CALL
+          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> CRS INFRASTRUCTURE ACTIVE // RECORDING @ 118 COWLEY RD // REHEARSAL @ CRICKET ROAD (OX4 3JP) // WORKSHOP CAFÉ OPENING APRIL 2026 // VENUE TECH ON-CALL
         </div>
         <div className="srd-lcd-header">SELECT SERVICE MODULE</div>
         <div className="srd-lcd-row">
@@ -397,7 +401,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="Rehearsal" subtitle="Cricket Road • Rehearsal & Production Space Management" meters={false}>
+        <RackModule title="Rehearsal" subtitle="Cricket Road • OX4 3JP • Managed Production" meters={false}>
           {/* Cricket Subsystem Indicator */}
           <div className="srd-subsystem-badge">
             <BrandBadge kind="cricket" className="srd-subsystem-badge-icon" />

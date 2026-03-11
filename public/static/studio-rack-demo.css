@@ -953,9 +953,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #f2efe4;
+  /* Light Silver/Aluminum */
+  background: linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 100%);
   padding: 0.25rem 0.5rem;
   border-right: 2px solid #000;
+  /* 3D Material Depth */
+  border-top: 1.5px solid rgba(255,255,255,0.9);
+  border-right: 1.5px solid rgba(0,0,0,0.3);
+  box-shadow: 3px 3px 6px rgba(0,0,0,0.6);
 }
 @media (min-width: 640px) { .srd-logo-block-left { padding: 0.375rem 0.75rem; } }
 
@@ -963,9 +968,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #dcae1d;
+  /* Mustard Yellow */
+  background: linear-gradient(135deg, #dcae1d 0%, #b8931a 100%);
   padding: 0.25rem 0.625rem;
-  box-shadow: inset 2px 0 4px rgba(255,255,255,0.1);
+  /* 3D Material Depth */
+  border-top: 1.5px solid rgba(255,255,255,0.6);
+  border-right: 1.5px solid rgba(0,0,0,0.3);
+  box-shadow: 3px 3px 6px rgba(0,0,0,0.6), inset 2px 0 4px rgba(255,255,255,0.1);
 }
 @media (min-width: 640px) { .srd-logo-block-right { padding: 0.375rem 1rem; } }
 
@@ -1556,5 +1565,99 @@ textarea.srd-input-bay {
   
   .manual-specs span {
     font-size: 9px;
+  }
+}
+
+/* Mounting Rivets - Industrial Hardware */
+.srd-logo-rivet {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #2a2a2a 0%, #1a1a1a 70%, #0a0a0a 100%);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.2);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.srd-logo-rivet--left { left: -2px; }
+.srd-logo-rivet--right { right: -2px; }
+
+/* Acrylic Protection Plane - Unified Reflection Layer */
+.srd-chassis::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 35%,
+    rgba(255,255,255,0.06) 40%,
+    rgba(255,255,255,0.12) 42%,
+    rgba(255,255,255,0.03) 45%,
+    transparent 50%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ============================================
+   HERO PREAMBLE — Industrial Grade Legibility
+   ============================================ */
+.srd-hero-preamble {
+  max-width: 68rem;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.srd-hero-title {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  /* Vintage Cream/Off-White - High Contrast Ink */
+  color: #FCF5E5;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+  /* Stamped Ink Effect */
+  text-shadow: 0 1px 0 rgba(0,0,0,0.8);
+}
+
+.srd-hero-services {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.95rem;
+  font-weight: 500;
+  /* Mustard Yellow - Functional Visibility */
+  color: #FFD700;
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.05em;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.8);
+}
+
+.srd-hero-mantra {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgba(252, 245, 229, 0.8);
+  margin: 0;
+  line-height: 1.5;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.7);
+}
+
+@media (min-width: 640px) {
+  .srd-hero-preamble {
+    margin-bottom: 3rem;
+  }
+  
+  .srd-hero-title {
+    font-size: 3rem;
+  }
+  
+  .srd-hero-services {
+    font-size: 1.1rem;
+  }
+  
+  .srd-hero-mantra {
+    font-size: 1.25rem;
   }
 }
