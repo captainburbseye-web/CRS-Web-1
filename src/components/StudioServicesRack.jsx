@@ -27,7 +27,7 @@ const BrandBadge = ({ kind, className = "" }) => {
   if (kind === "cricket") {
     return (
       <div aria-hidden="true" className={`srd-badge srd-badge--cricket ${className}`}>
-        <svg viewBox="0 0 24 24" style={{ transform: 'rotate(-45deg)', width: '90%', height: '90%' }}>
+        <svg viewBox="0 0 24 24" className="cricket-badge-svg">
           {/* Cricket Head and Mandibles */}
           <path 
             d="M12 7c-1.5 0-3 1-3 3s1 2 1 4c0 2 1 3 2 3s2-1 2-3c0-2 1-2 1-4s-1.5-3-3-3z" 
@@ -180,7 +180,7 @@ const StatusPlacard = () => (
     <div className="srd-lcd-screen">
       <div className="srd-lcd-content">
         <div className="srd-lcd-sysinfo">
-          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> CRS INFRASTRUCTURE ACTIVE // RECORDING @ 118 COWLEY RD // REHEARSAL @ CRICKET ROAD (OX4 3JP) // WORKSHOP CAFÉ OPENING APRIL 2026 // VENUE TECH ON-CALL
+          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> CRS INFRASTRUCTURE ACTIVE // RECORDING @ 118 COWLEY RD // REHEARSAL @ CRICKET ROAD (OX4 3DJ) // WORKSHOP CAFÉ OPENING APRIL 2026 // VENUE TECH ON-CALL
         </div>
         <div className="srd-lcd-header">SELECT SERVICE MODULE</div>
         <div className="srd-lcd-row">
@@ -401,7 +401,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="Rehearsal" subtitle="Cricket Road • OX4 3JP • Managed Production" meters={false}>
+        <RackModule title="Rehearsal" subtitle="Cricket Road • OX4 3DJ • Managed Production" meters={false}>
           {/* Cricket Subsystem Indicator */}
           <div className="srd-subsystem-badge">
             <BrandBadge kind="cricket" className="srd-subsystem-badge-icon" />

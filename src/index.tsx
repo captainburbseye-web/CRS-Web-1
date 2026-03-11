@@ -645,9 +645,6 @@ app.get('/', (c) => {
   <!-- Hardware Physics CSS -->
   <link href="/static/studio-rack-demo.css" rel="stylesheet" />
   
-  <!-- Tailwind CSS for React component -->
-  ${cssAsset ? `<link href="${cssAsset}" rel="stylesheet" />` : ''}
-  
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1951,9 +1948,6 @@ app.get('/studio-rack-demo', (c) => {
   
   <!-- Hardware Physics CSS -->
   <link href="/static/studio-rack-demo.css" rel="stylesheet" />
-  
-  <!-- Tailwind CSS for React component -->
-  ${cssAsset ? `<link href="${cssAsset}" rel="stylesheet" />` : ''}
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
