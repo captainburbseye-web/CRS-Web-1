@@ -1261,7 +1261,7 @@ textarea.srd-input-bay {
    ============================================ */
 .srd-top-rail {
   height: 32px;
-  background: linear-gradient(180deg, #2a2d28 0%, #1a1d18 100%);
+  background: linear-gradient(180deg, #1A1C16 0%, #0d0e0c 100%);
   border-bottom: 2px solid #000;
   display: flex;
   align-items: center;
@@ -1829,3 +1829,49 @@ textarea.srd-input-bay {
   }
 }
 
+
+/* === BRAND COLOR DNA (LOCKED) === */
+
+/* Unit 1 (RECORDING): Nettle Green #2d3e2f */
+.srd-module--nettle {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.08) 0px,
+      rgba(255,255,255,0.03) 1.5px,
+      transparent 8px
+    ),
+    linear-gradient(
+      180deg,
+      #3d4f3a 0%,
+      #2d3e2f 40%,
+      #1e2821 100%
+    );
+  border-top: 1.5px solid rgba(255,255,255,0.12);
+}
+
+/* Unit 2 (REHEARSAL): Deep Purple */
+.srd-module--purple {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.08) 0px,
+      rgba(255,255,255,0.03) 1.5px,
+      transparent 8px
+    ),
+    linear-gradient(
+      180deg,
+      #4a3d5a 0%,
+      #3a2d4a 40%,
+      #2a1d3a 100%
+    );
+  border-top: 1.5px solid rgba(255,255,255,0.12);
+}
+
+/* Mustard technical labels (status indicators, sub-labels) */
+.srd-module-subtitle,
+.srd-unit-status,
+.srd-lcd-highlight,
+.srd-subsystem-label {
+  color: #FFD700 !important;
+}

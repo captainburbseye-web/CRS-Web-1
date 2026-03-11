@@ -238,7 +238,11 @@ const ServiceButtonGroup = ({ children }) => (
 
 const RackModule = ({ title, subtitle, theme = "standard", meters = true, children }) => {
   const labelId = `module-${title.replace(/\s+/g, "-").toLowerCase()}`;
-  const moduleClass = theme === "dark" ? "srd-module srd-module--dark" : "srd-module";
+  
+  let moduleClass = "srd-module";
+  if (theme === "dark") moduleClass += " srd-module--dark";
+  if (theme === "nettle") moduleClass += " srd-module--nettle";
+  if (theme === "purple") moduleClass += " srd-module--purple";
   
   return (
     <section 
@@ -317,7 +321,7 @@ export default function StudioServicesRack() {
         <MasterFaceplate />
         <StatusPlacard />
         
-        <RackModule title="Recording" subtitle="Cowley Road • 118 Cowley Rd • Main Studio & Control Room" meters={true}>
+        <RackModule title="Recording" subtitle="Cowley Road • 118 Cowley Rd • Main Studio & Control Room" theme="nettle" meters={true}>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
@@ -340,7 +344,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="Rehearsal" subtitle="Cricket Road • OX4 3DJ • Managed Production" meters={false}>
+        <RackModule title="Rehearsal" subtitle="Cricket Road • OX4 3DJ • Managed Production" theme="purple" meters={false}>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
