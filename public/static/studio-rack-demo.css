@@ -59,7 +59,7 @@
       rgba(255,255,255,0) 50%
     );
   mix-blend-mode: screen;
-  opacity: 0.5;
+  opacity: 0.55;
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
@@ -693,10 +693,10 @@
    BRAND BADGE — inset icon pill
    ============================================ */
 .srd-badge {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1rem;
+  height: 1rem;
   flex-shrink: 0;
-  border-radius: 3px;
+  border-radius: 2px;
   border: 1px solid rgba(0,0,0,0.7);
   display: flex;
   align-items: center;
@@ -712,9 +712,9 @@
 
 @media (min-width: 640px) {
   .srd-badge {
-    width: 2.25rem;
-    height: 2.25rem;
-    font-size: 0.6rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    font-size: 0.5rem;
   }
 }
 
@@ -929,9 +929,9 @@
     inset 0 -1px 1px rgba(0,0,0,0.3);
   overflow: visible;
   flex-shrink: 0;
-  transform: scale(1.2);
-  /* Metallic depth */
-  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6)) contrast(1.1);
+  transform: scale(0.72);
+  /* Metallic depth - Maker Plate Size */
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7)) contrast(1.15);
 }
 
 /* Steel Mounting Bolts */

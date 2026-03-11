@@ -419,7 +419,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="Workshop Café" subtitle="Coffee & Co-Working" theme="dark" meters={false}>
+        <RackModule title="Workshop Café" subtitle="118 Cowley Road • Hub & Venue // Opening April 2026" theme="dark" meters={false}>
           <div className="srd-micro-label">BREWFORCE BUS ONLINE</div>
           <ServiceButtonGroup>
             <HardwareButton 
