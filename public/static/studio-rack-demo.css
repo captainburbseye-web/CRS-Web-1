@@ -1181,3 +1181,54 @@ textarea.srd-input-bay {
 .srd-submit-btn:hover {
   background: linear-gradient(180deg, #e6b825 0%, #b08c18 100%);
 }
+
+/* ============================================
+   TOP MOUNTING RAIL (Site Header)
+   ============================================ */
+.srd-top-rail {
+  height: 32px;
+  background: linear-gradient(180deg, #2a2d28 0%, #1a1d18 100%);
+  border-bottom: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  max-width: 68rem;
+  margin: 0 auto 1rem auto;
+  border-radius: 4px 4px 0 0;
+}
+
+.srd-home-indicator {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #dcae1d;
+  text-shadow: 0 0 5px rgba(220, 174, 29, 0.5);
+  border: 1px solid #dcae1d;
+  padding: 2px 6px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  background: rgba(220, 174, 29, 0.05);
+}
+
+.srd-rail-address {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(138, 148, 121, 0.7);
+}
+
+.srd-rail-meta {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(138, 148, 121, 0.5);
+}
+
+@media (min-width: 640px) {
+  .srd-rail-address { font-size: 10px; }
+  .srd-rail-meta { font-size: 10px; }
+}
