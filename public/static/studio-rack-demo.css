@@ -1728,6 +1728,8 @@ textarea.srd-input-bay {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  /* Safety Yellow #FFD700 color overlay - Mustard Mus branding */
+  filter: brightness(0) saturate(100%) invert(82%) sepia(69%) saturate(1500%) hue-rotate(359deg) brightness(103%) contrast(103%);
 }
 
 /* ============================================
