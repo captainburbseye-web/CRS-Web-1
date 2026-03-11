@@ -150,7 +150,7 @@ const StatusPlacard = () => (
     <div className="srd-lcd-screen">
       <div className="srd-lcd-content">
         <div className="srd-lcd-sysinfo">
-          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> MULTIFACETED CREATIVE HUB. VINTAGE AUDIO RECORDING, REHEARSAL, ELECTRONIC REPAIRS &amp; WORKSPACE.
+          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> COWLEY ROAD STUDIOS // RECORDING • REHEARSAL • REPAIRS • OXFORD UK
         </div>
         <div className="srd-lcd-header">SELECT SERVICE MODULE</div>
         <div className="srd-lcd-row">

@@ -9,46 +9,10 @@
    PAGE SHELL
    ============================================ */
 .srd-page {
-  position: relative;
   min-height: 100vh;
-  background-color: #050505;
+  background: radial-gradient(circle at 50% 30%, #1a1d18 0%, #050505 100%);
   padding: 2rem 0.5rem;
   box-sizing: border-box;
-  overflow-x: hidden;
-}
-
-/* Blurred photographic vignette of the actual control room */
-.srd-page::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://pub-fda1251e3de643c688a7044c2691b5f2.r2.dev/cb8c095a-b9cb-4b12-8e33-c296cdda261c.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(30px) brightness(0.25) saturate(0.7);
-  transform: scale(1.1);
-  z-index: -1;
-}
-
-/* Ambient hardware glow overlay */
-.srd-page::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(70, 83, 65, 0.2) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-  z-index: -1;
 }
 
 @media (min-width: 640px) {
