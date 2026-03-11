@@ -872,15 +872,31 @@
 @media (min-width: 640px) { .srd-master-faceplate { padding: 1rem 2rem; } }
 
 .srd-logo-plate {
+  position: relative;
   display: flex;
   align-items: stretch;
   border: 2px solid #000;
   border-radius: 2px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.4);
-  overflow: hidden;
+  overflow: visible;
   flex-shrink: 0;
   transform: scale(1.2);
+  /* Metallic depth */
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.6)) contrast(1.1);
 }
+
+/* Steel Mounting Bolts */
+.srd-logo-bolt {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+}
+
+.srd-logo-bolt--tl { top: -6px; left: -6px; }
+.srd-logo-bolt--tr { top: -6px; right: -6px; }
+.srd-logo-bolt--bl { bottom: -6px; left: -6px; }
+.srd-logo-bolt--br { bottom: -6px; right: -6px; }
 
 .srd-logo-block-left {
   position: relative;
@@ -1306,5 +1322,47 @@ textarea.srd-input-bay {
   .srd-trust-rail {
     font-size: 10px;
     padding: 1.5rem;
+  }
+}
+
+/* ============================================
+   SUBSYSTEM BADGES — Distributed System Hierarchy
+   ============================================ */
+.srd-subsystem-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 2px;
+}
+
+.srd-subsystem-badge-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .srd-subsystem-badge-icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.srd-subsystem-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(138, 148, 121, 0.7);
+}
+
+@media (min-width: 640px) {
+  .srd-subsystem-label {
+    font-size: 10px;
   }
 }

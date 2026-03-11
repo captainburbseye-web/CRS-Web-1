@@ -97,6 +97,32 @@ const SignalStripe = () => (
 const CRSBlockLogo = () => (
   <div className="srd-logo-plate" aria-label="CRS Logo">
     
+    {/* Steel Bolts - Rack Mount Hardware */}
+    <svg className="srd-logo-bolt srd-logo-bolt--tl" viewBox="0 0 8 8" aria-hidden="true">
+      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
+      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
+      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
+      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
+    </svg>
+    <svg className="srd-logo-bolt srd-logo-bolt--tr" viewBox="0 0 8 8" aria-hidden="true">
+      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
+      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
+      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
+      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
+    </svg>
+    <svg className="srd-logo-bolt srd-logo-bolt--bl" viewBox="0 0 8 8" aria-hidden="true">
+      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
+      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
+      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
+      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
+    </svg>
+    <svg className="srd-logo-bolt srd-logo-bolt--br" viewBox="0 0 8 8" aria-hidden="true">
+      <circle cx="4" cy="4" r="3" fill="#1a1a1a" />
+      <circle cx="4" cy="4" r="2" fill="#2a2a2a" />
+      <line x1="2" y1="4" x2="6" y2="4" stroke="#0a0a0a" strokeWidth="0.5" />
+      <line x1="4" y1="2" x2="4" y2="6" stroke="#0a0a0a" strokeWidth="0.5" />
+    </svg>
+    
     {/* Left Block: CR (Cream/White) */}
     <div className="srd-logo-block-left">
       <span className="srd-logo-text">
@@ -360,6 +386,12 @@ export default function StudioServicesRack() {
         </RackModule>
 
         <RackModule title="Rehearsal" subtitle="Cricket Road • Rehearsal & Production Space Management" meters={false}>
+          {/* Cricket Subsystem Indicator */}
+          <div className="srd-subsystem-badge">
+            <BrandBadge kind="cricket" className="srd-subsystem-badge-icon" />
+            <span className="srd-subsystem-label">CRICKET ROAD SUBSYSTEM</span>
+          </div>
+          
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
