@@ -326,8 +326,8 @@ export default function StudioServicesRack() {
       
       {/* Hero Preamble - Infrastructure Authority */}
       <header className="srd-hero-preamble">
-        <h1 className="srd-hero-title">Cowley Road Studios</h1>
-        <p className="srd-hero-services">Recording • Rehearsal • Workshop Café • Venue Tech</p>
+        <h1 className="srd-hero-title">Recording Studio &amp; Rehearsal Rooms in Oxford</h1>
+        <p className="srd-hero-services">Cowley Road Studios | Recording • Rehearsal • Workshop Café • Venue Tech</p>
         <p className="srd-hero-mantra">Grassroots infrastructure for the Oxford music scene.</p>
       </header>
       
@@ -491,7 +491,7 @@ export default function StudioServicesRack() {
       
       {/* Bottom Trust Rail */}
       <footer className="srd-trust-rail">
-        Trusted by Oxford bands, producers & independent venues since 2012.
+        118 Cowley Road, Oxford OX4 1JE, United Kingdom
       </footer>
     </main>
   );
