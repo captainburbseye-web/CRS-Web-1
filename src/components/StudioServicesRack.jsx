@@ -443,6 +443,8 @@ export default function StudioServicesRack() {
 
         <RackModule title="Workshop Café" subtitle="118 Cowley Road • Hub & Venue // Opening April 2026" theme="dark" meters={false}>
           <div className="srd-micro-label">BREWFORCE BUS ONLINE</div>
+          
+          {/* Venue Hire */}
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
@@ -455,6 +457,25 @@ export default function StudioServicesRack() {
               ariaLabel="Book a table at the Workshop Café"
             />
           </ServiceButtonGroup>
+
+          {/* Technical Add-ons */}
+          <div className="srd-pricing-details">
+            <div className="srd-pricing-label">TECHNICAL ADD-ONS</div>
+            <div className="srd-pricing-row">
+              <span className="srd-pricing-item">PA System + Engineer (Bose)</span>
+              <span className="srd-pricing-value">£120</span>
+            </div>
+            <div className="srd-pricing-note">Includes PA, vocal mics, stands, monitoring • Full event coverage</div>
+          </div>
+
+          {/* Education Discount Badge */}
+          <div className="srd-discount-badge">
+            <span className="srd-discount-icon">🎓</span>
+            <span className="srd-discount-text">EDUCATION DISCOUNT: 10% OFF VENUE HIRE</span>
+          </div>
+
+          {/* Capacity & Licensing */}
+          <div className="srd-micro-label">CAPACITY: ~25 SEATED | ~45-60 STANDING • ALCOHOL: TENS AVAILABLE</div>
         </RackModule>
 
         <RackModule title="Communications Bus" subtitle="Venue Hire & Custom Enquiries" theme="dark" meters={false}>

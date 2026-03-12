@@ -2570,3 +2570,91 @@ main,
   }
 }
 
+
+/* ========================================
+   WORKSHOP CAFÉ PRICING EXPANSION
+   Hardware-style pricing details
+   ======================================== */
+
+.srd-pricing-details {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(122,156,104,0.2);
+  border-radius: 2px;
+}
+
+.srd-pricing-label {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #FFD700; /* Safety Yellow */
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.srd-pricing-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(122,156,104,0.15);
+}
+
+.srd-pricing-item {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 13px;
+  font-weight: 600;
+  color: #c8d1b8;
+}
+
+.srd-pricing-value {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 15px;
+  font-weight: 900;
+  color: #FFD700; /* Safety Yellow */
+  letter-spacing: 0.05em;
+}
+
+.srd-pricing-note {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 9px;
+  color: #7a9c68;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+/* Education Discount Badge */
+.srd-discount-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(135deg, rgba(255,215,0,0.15) 0%, rgba(255,215,0,0.05) 100%);
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 3px;
+}
+
+.srd-discount-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.srd-discount-text {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #FFD700;
+  text-transform: uppercase;
+}
+
+@media (min-width: 640px) {
+  .srd-pricing-item { font-size: 14px; }
+  .srd-pricing-value { font-size: 16px; }
+  .srd-pricing-note { font-size: 10px; }
+  .srd-discount-text { font-size: 11px; }
+}
+
