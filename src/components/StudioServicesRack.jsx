@@ -372,7 +372,7 @@ export default function StudioServicesRack() {
               icon="crs"
               serviceName="Rehearsal" 
               locationName="Cowley Road"
-              pricing="From £40 / 2hrs"
+              pricing="£45/2h • £55/3h • £60/4h • £65/5h"
               href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" 
               external={true}
               ariaLabel="Book CRS Rehearsal Room at Cowley Road"
@@ -382,7 +382,7 @@ export default function StudioServicesRack() {
               icon="cricket"
               serviceName="Rehearsal"
               locationName="Cricket Road"
-              pricing="From £40 / 2hrs" 
+              pricing="£40/2h • £50/3h • £55/4h • £60/5h"
               href="https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX" 
               external={true}
               ariaLabel="Book Cricket Rehearsal Room at Cricket Road"
@@ -396,8 +396,9 @@ export default function StudioServicesRack() {
               variant="crs" 
               icon="crs"
               serviceName="Control Room"
-              locationName="Cowley Road" 
-              href="https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX" 
+              locationName="Cowley Road"
+              pricing="£20/1h • £35/2h • £55/3h • £60/4h"
+              href="https://book.squareup.com/appointments/chctncmi4mg3qr/location/L1MAM4DDPHKXX/services/TPMAPWW2ZXDD2VAPX5HMAMDJ" 
               external={true}
               ariaLabel="Book CRS Control Room Hire at Cowley Road"
             />
@@ -406,7 +407,7 @@ export default function StudioServicesRack() {
               icon="cricket"
               serviceName="Control Room"
               locationName="Cricket Road"
-              pricing="£40 / hour" 
+              pricing="£40/5h • £70/10h"
               href="https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX" 
               external={true}
               ariaLabel="Book Cricket Control Room Hire at Cricket Road"
