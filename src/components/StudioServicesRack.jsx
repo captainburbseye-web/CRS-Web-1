@@ -72,16 +72,27 @@ const EngravedLabel = ({ children, id, className = "", style = {} }) => (
 // ==========================================
 
 const SignalStripe = () => (
-  <div className="srd-signal-group" aria-hidden="true">
-    <div className="srd-signal-dot srd-signal-dot--red" />
-    <div className="srd-signal-dot srd-signal-dot--yellow" />
-    <div className="srd-signal-dot srd-signal-dot--green" />
+  <div className="srd-signal-group" aria-hidden="true" role="status" aria-label="System Status Indicators">
+    <div className="srd-signal-bulb srd-signal-bulb--green" title="System Available">
+      <div className="srd-bulb-glow"></div>
+    </div>
+    <div className="srd-signal-bulb srd-signal-bulb--gold" title="Workspace Active">
+      <div className="srd-bulb-glow"></div>
+    </div>
+    <div className="srd-signal-bulb srd-signal-bulb--red" title="Recording Live">
+      <div className="srd-bulb-glow"></div>
+    </div>
   </div>
 );
 
 const CRSBlockLogo = () => (
   <div className="srd-logo-plate" aria-label="CRS Logo">
-    <img src="/static/crs-logo.png" alt="CRS" className="crs-logo-img" />
+    <div className="srd-logo-text">CR | S</div>
+    <div className="srd-signal-strip" aria-hidden="true">
+      <div className="srd-signal-bar srd-signal-bar--green"></div>
+      <div className="srd-signal-bar srd-signal-bar--gold"></div>
+      <div className="srd-signal-bar srd-signal-bar--red"></div>
+    </div>
   </div>
 );
 
@@ -354,7 +365,8 @@ export default function StudioServicesRack() {
               variant="cricket" 
               icon="cricket"
               serviceName="Recording"
-              locationName="Cricket Road" 
+              locationName="Cricket Road"
+              pricing="£45 / hour" 
               href="https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX" 
               external={true}
               ariaLabel="Book Cricket Recording Session at Cricket Road"
@@ -378,7 +390,8 @@ export default function StudioServicesRack() {
               variant="cricket" 
               icon="cricket"
               serviceName="Rehearsal"
-              locationName="Cricket Road" 
+              locationName="Cricket Road"
+              pricing="From £40 / 2hrs" 
               href="https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX" 
               external={true}
               ariaLabel="Book Cricket Rehearsal Room at Cricket Road"
@@ -401,7 +414,8 @@ export default function StudioServicesRack() {
               variant="cricket" 
               icon="cricket"
               serviceName="Control Room"
-              locationName="Cricket Road" 
+              locationName="Cricket Road"
+              pricing="£40 / hour" 
               href="https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX" 
               external={true}
               ariaLabel="Book Cricket Control Room Hire at Cricket Road"

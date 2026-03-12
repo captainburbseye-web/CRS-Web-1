@@ -918,7 +918,10 @@
 .srd-logo-plate {
   position: relative;
   display: flex;
-  align-items: stretch;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
   border: 2px solid #000;
   border-radius: 2px;
   /* Brushed aluminum plate */
@@ -932,6 +935,66 @@
   transform: scale(0.72);
   /* Metallic depth - Maker Plate Size */
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7)) contrast(1.15);
+}
+
+/* Engraved Logo Text */
+.srd-logo-text {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: #1a1a1a;
+  text-shadow: 
+    0 1px 0 rgba(255,255,255,0.6),
+    0 -1px 2px rgba(0,0,0,0.8);
+  margin-bottom: 0.25rem;
+}
+
+/* Signal Level Strip */
+.srd-signal-strip {
+  display: flex;
+  gap: 1px;
+  width: 100%;
+  height: 6px;
+  background: #1a1a1a;
+  border-radius: 1px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.9);
+}
+
+.srd-signal-bar {
+  flex: 1;
+  position: relative;
+  transition: opacity 0.2s ease;
+}
+
+.srd-signal-bar--green {
+  background: linear-gradient(90deg, #16a34a 0%, #22c55e 100%);
+  flex: 3; /* 60% */
+}
+
+.srd-signal-bar--gold {
+  background: linear-gradient(90deg, #FFD700 0%, #EBC03F 100%);
+  flex: 1.25; /* 25% */
+  animation: signal-jitter 0.8s ease-in-out infinite;
+}
+
+.srd-signal-bar--red {
+  background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+  flex: 0.75; /* 15% */
+  animation: signal-flicker 1.2s ease-in-out infinite;
+}
+
+@keyframes signal-jitter {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+@keyframes signal-flicker {
+  0%, 100% { opacity: 0.7; }
+  25% { opacity: 0.9; }
+  50% { opacity: 0.75; }
+  75% { opacity: 0.95; }
 }
 
 /* Steel Mounting Bolts */
@@ -1088,14 +1151,83 @@
 @media (min-width: 640px) { .srd-faceplate-routing { font-size: 7px; } }
 
 /* Signal Stripe */
-.srd-signal-group { display: flex; align-items: center; gap: 3px; }
-.srd-signal-dot {
-  width: 3px; height: 3px;
-  box-shadow: inset 0 1px 0 rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.2);
+.srd-signal-group { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px;
+  padding: 0.5rem;
 }
-.srd-signal-dot--red { background-color: #dc2626; }
-.srd-signal-dot--yellow { background-color: #d4a017; }
-.srd-signal-dot--green { background-color: #2d3e2f; }
+
+/* Glass-Bulb Push-Button Indicators */
+.srd-signal-bulb {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.8);
+  box-shadow: 
+    inset 0 1px 2px rgba(255,255,255,0.3),
+    inset 0 -1px 1px rgba(0,0,0,0.5),
+    0 2px 4px rgba(0,0,0,0.6);
+  transition: all 0.3s ease;
+}
+
+.srd-bulb-glow {
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+/* GREEN: System Available (Pulse) */
+.srd-signal-bulb--green {
+  background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a);
+}
+
+.srd-signal-bulb--green .srd-bulb-glow {
+  background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.6), transparent);
+  animation: bulb-pulse 2s ease-in-out infinite;
+}
+
+/* GOLD: Workspace Active (Glow) */
+.srd-signal-bulb--gold {
+  background: radial-gradient(circle at 30% 30%, #FFD700, #EBC03F);
+}
+
+.srd-signal-bulb--gold .srd-bulb-glow {
+  background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.7), transparent);
+  animation: bulb-glow 1.5s ease-in-out infinite;
+}
+
+/* RED: Recording Live (Heavy Bloom) */
+.srd-signal-bulb--red {
+  background: radial-gradient(circle at 30% 30%, #ef4444, #dc2626);
+  box-shadow: 
+    inset 0 1px 2px rgba(255,255,255,0.3),
+    inset 0 -1px 1px rgba(0,0,0,0.5),
+    0 0 8px rgba(220,38,38,0.8),
+    0 0 16px rgba(220,38,38,0.4);
+}
+
+.srd-signal-bulb--red .srd-bulb-glow {
+  background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.8), transparent);
+  animation: bulb-bloom 0.6s ease-in-out infinite;
+}
+
+@keyframes bulb-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes bulb-glow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes bulb-bloom {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
 
 /* LCD Interior */
 .srd-lcd-content {
