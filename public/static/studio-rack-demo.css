@@ -1908,3 +1908,77 @@ textarea.srd-input-bay {
     letter-spacing: 0.18em;
   }
 }
+
+/* ============================================
+   ENTRY ACTION CTA - Emergency Start Button
+   ============================================ */
+
+.srd-entry-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.srd-emergency-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000;
+  background: linear-gradient(180deg, #FFD700 0%, #EBC03F 50%, #D9A82E 100%);
+  border: 2px solid #000;
+  border-radius: 4px;
+  box-shadow:
+    0 4px 8px rgba(0,0,0,0.7),
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    inset 0 -2px 0 rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.1s ease;
+}
+
+.srd-emergency-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow:
+    0 6px 12px rgba(0,0,0,0.8),
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    inset 0 -2px 0 rgba(0,0,0,0.3);
+}
+
+.srd-emergency-btn:active {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.9),
+    inset 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.srd-emergency-label {
+  flex: 1;
+}
+
+.srd-emergency-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@media (max-width: 768px) {
+  .srd-emergency-btn {
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+  }
+}

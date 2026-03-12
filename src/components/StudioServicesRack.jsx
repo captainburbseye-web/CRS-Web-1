@@ -119,9 +119,9 @@ const StatusPlacard = () => (
     <div className="srd-lcd-screen">
       <div className="srd-lcd-content">
         <div className="srd-lcd-sysinfo">
-          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> CRS INFRASTRUCTURE ACTIVE // RECORDING @ 118 COWLEY RD // REHEARSAL @ CRICKET ROAD (OX4 3DJ) // WORKSHOP CAFÉ OPENING APRIL 2026 // VENUE TECH ON-CALL
+          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> CRS CREATIVE INFRASTRUCTURE ONLINE // MODULES: RECORDING • REHEARSAL • WORKSPACE • CAFÉ • VENUE TECH // ALL SYSTEMS OPERATIONAL
         </div>
-        <div className="srd-lcd-header">SELECT SERVICE MODULE</div>
+        <div className="srd-lcd-header">SELECT MODULE // CREATIVE OPERATING SYSTEM</div>
         <div className="srd-lcd-row">
           <span className="srd-lcd-bullet-crs">●</span>
           <span>CRS = LEFT CHANNEL</span>
@@ -133,6 +133,16 @@ const StatusPlacard = () => (
         <div className="srd-lcd-footer">DEEPEND PROTOCOL ACTIVE // NO CHAOS MODE</div>
       </div>
     </div>
+  </section>
+);
+
+// Entry Action CTA — Emergency Start Button
+const EntryActionCTA = () => (
+  <section className="srd-entry-action">
+    <a href="#modules" className="srd-emergency-btn">
+      <span className="srd-emergency-label">EXPLORE THE SYSTEM</span>
+      <span className="srd-emergency-icon">▶</span>
+    </a>
   </section>
 );
 
@@ -297,7 +307,7 @@ const IdentityPlate = () => (
       <span className="srd-unit-microlabel">BREWFORCE BUS // DEEPEND PROTOCOL ACTIVE</span>
     </div>
     <div className="srd-unit-0-center">
-      <h1 className="srd-unit-h1">RECORDING STUDIO &amp; REHEARSAL ROOMS IN OXFORD</h1>
+      <h1 className="srd-unit-h1">REHEARSE • RECORD • WORK • MEET • CREATE</h1>
     </div>
     <div className="srd-unit-0-right">
       <span className="srd-unit-status">SYSTEM STATUS: GRASSROOTS INFRASTRUCTURE</span>
@@ -325,7 +335,9 @@ export default function StudioServicesRack() {
         
         <MasterFaceplate />
         <StatusPlacard />
+        <EntryActionCTA />
         
+        <div id="modules">
         <RackModule title="Recording" subtitle="Cowley Road • 118 Cowley Rd • Main Studio & Control Room" theme="nettle" meters={true}>
           <ServiceButtonGroup>
             <HardwareButton 
@@ -479,6 +491,7 @@ export default function StudioServicesRack() {
             </button>
           </form>
         </RackModule>
+        </div>
 
       </RackChassis>
       
