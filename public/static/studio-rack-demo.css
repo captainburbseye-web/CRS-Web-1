@@ -2153,3 +2153,339 @@ textarea.srd-input-bay {
     padding: 0.875rem 1.5rem;
   }
 }
+
+/* =========================================================
+   CRS / CRICKET — FINAL BRAND RE-SATURATION LOCK
+   Machinist's Manual v0.7.5 Compliance Enhancement
+   ========================================================= */
+
+:root {
+  /* CRS / Cowley */
+  --crs-nettle-0: #2d3e2f;
+  --crs-nettle-1: #243226;
+  --crs-nettle-2: #1c261d;
+  --crs-nettle-3: #121913;
+
+  /* Hardware neutrals */
+  --crs-black: #000000;
+  --crs-gunmetal-0: #2a2c27;
+  --crs-gunmetal-1: #1a1c16;
+  --crs-gunmetal-2: #0d0f0c;
+
+  /* Brand signal colours */
+  --crs-mustard: #ffd700;
+  --crs-mustard-deep: #b38600;
+  --crs-red: #dc2626;
+  --crs-red-deep: #8f1d1d;
+  --crs-green-sig: #16a34a;
+
+  /* Cricket */
+  --crs-cricket-0: #4f3b68;
+  --crs-cricket-1: #3a2d4a;
+  --crs-cricket-2: #241a31;
+
+  /* Labels */
+  --crs-label: #b7c2a7;
+  --crs-label-dim: #89937c;
+  --crs-micro: rgba(183, 194, 167, 0.45);
+}
+
+/* ---------------------------------------------------------
+   1. KILL THE WHITE BORDER / OUTER FRAME
+   --------------------------------------------------------- */
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--crs-black) !important;
+}
+
+body,
+main,
+.main,
+.page,
+.page-shell,
+.srd-page,
+.srd-page-shell,
+.srd-demo-page,
+.srd-wrapper,
+.srd-outer {
+  background: var(--crs-black) !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.srd-chassis {
+  border: 0 !important;
+  outline: 0 !important;
+  background:
+    linear-gradient(180deg, #040504 0%, #080907 100%) !important;
+  box-shadow:
+    0 72px 130px rgba(0,0,0,0.9),
+    0 26px 72px rgba(0,0,0,0.68),
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    inset 0 -12px 24px rgba(0,0,0,0.76) !important;
+}
+
+/* soften the acrylic edge so it never reads as a white frame */
+.srd-chassis::before {
+  border-top: 1px solid rgba(255,255,255,0.05) !important;
+  border-left: 1px solid rgba(255,255,255,0.015) !important;
+  border-right: 1px solid rgba(0,0,0,0.22) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.42) !important;
+}
+
+/* ---------------------------------------------------------
+   2. CHASSIS RAILS — GUNMETAL, NOT BLUE
+   --------------------------------------------------------- */
+
+.srd-rail,
+.srd-chassis-rail,
+.srd-rack-rail,
+.srd-ear {
+  background:
+    linear-gradient(
+      90deg,
+      #050605 0%,
+      #0b0d0b 10%,
+      var(--crs-gunmetal-1) 24%,
+      var(--crs-gunmetal-0) 42%,
+      #181b17 66%,
+      #0b0d0b 86%,
+      #040504 100%
+    ) !important;
+  box-shadow:
+    inset 1px 0 0 rgba(255,255,255,0.04),
+    inset -1px 0 0 rgba(0,0,0,0.8),
+    inset 0 14px 18px rgba(255,255,255,0.02),
+    inset 0 -20px 28px rgba(0,0,0,0.6) !important;
+}
+
+/* ---------------------------------------------------------
+   3. PANEL BALANCE — LESS MONOCHROME GREEN
+   --------------------------------------------------------- */
+
+.srd-module,
+.srd-module--nettle {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.075) 0px, rgba(255,255,255,0.012) 3px, transparent 10px),
+    linear-gradient(
+      180deg,
+      var(--crs-nettle-0) 0%,
+      var(--crs-nettle-1) 26%,
+      var(--crs-nettle-2) 62%,
+      var(--crs-nettle-3) 100%
+    ) !important;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(0,0,0,0.88);
+}
+
+.srd-module--dark {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.035) 0px, transparent 5px),
+    linear-gradient(180deg, #1a1d17 0%, #11140f 60%, #090b08 100%) !important;
+}
+
+/* Cricket right channel must stay visibly purple */
+.srd-module--purple {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.10) 0px, rgba(255,255,255,0.0) 7px),
+    linear-gradient(
+      180deg,
+      var(--crs-cricket-0) 0%,
+      var(--crs-cricket-1) 56%,
+      var(--crs-cricket-2) 100%
+    ) !important;
+}
+
+.srd-btn--cricket {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08) 0px, transparent 2px),
+    linear-gradient(
+      180deg,
+      var(--crs-cricket-0) 0%,
+      var(--crs-cricket-1) 56%,
+      var(--crs-cricket-2) 100%
+    ) !important;
+  color: #f6e57c !important;
+}
+
+/* ---------------------------------------------------------
+   4. MUSTARD INJECTION — CTA / HEADERS / SELECT STATES
+   --------------------------------------------------------- */
+
+.srd-emergency-btn {
+  background:
+    linear-gradient(180deg, #ffe67a 0%, var(--crs-mustard) 50%, #caa400 100%) !important;
+  color: #101010 !important;
+  font-weight: 900 !important;
+  border: 1px solid rgba(0,0,0,0.88) !important;
+  text-shadow: none !important;
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.4),
+    inset 0 -2px 4px rgba(0,0,0,0.28),
+    0 4px 0 var(--crs-mustard-deep),
+    0 8px 14px rgba(0,0,0,0.46) !important;
+}
+
+.srd-lcd-header {
+  color: var(--crs-mustard) !important;
+  text-shadow: 0 0 8px rgba(255,215,0,0.6) !important;
+}
+
+/* ---------------------------------------------------------
+   5. SIGNAL RED — PEAK / WARNINGS / DEEPEND
+   --------------------------------------------------------- */
+
+.srd-signal-bulb--red .srd-bulb-glow {
+  background:
+    radial-gradient(circle at 30% 30%, #ff8f8f 0%, #ff5a5a 25%, var(--crs-red) 65%, var(--crs-red-deep) 100%) !important;
+  box-shadow:
+    0 0 5px rgba(220,38,38,0.88),
+    0 0 16px rgba(220,38,38,0.28) !important;
+}
+
+.srd-lcd-footer {
+  color: var(--crs-red) !important;
+  text-shadow:
+    0 0 8px rgba(220,38,38,0.18),
+    0 -1px 0 rgba(0,0,0,0.6) !important;
+  border-top-color: rgba(220,38,38,0.3) !important;
+}
+
+/* ---------------------------------------------------------
+   6. SIGNAL GREEN — ACTIVE / ONLINE
+   --------------------------------------------------------- */
+
+.srd-signal-bulb--green .srd-bulb-glow {
+  background:
+    radial-gradient(circle at 30% 30%, #7cffae 0%, #4dff8f 28%, var(--crs-green-sig) 68%, #0f6a2f 100%) !important;
+  box-shadow:
+    0 0 5px rgba(22,163,74,0.88),
+    0 0 14px rgba(22,163,74,0.26) !important;
+}
+
+/* ---------------------------------------------------------
+   7. CRICKET BADGE / LOGO VISIBILITY
+   --------------------------------------------------------- */
+
+.srd-badge--cricket {
+  background:
+    linear-gradient(180deg, var(--crs-cricket-0), var(--crs-cricket-1)) !important;
+  border-color: rgba(0,0,0,0.9) !important;
+}
+
+.cricket-badge-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  filter:
+    brightness(0) saturate(100%) invert(82%) sepia(69%) saturate(1500%) 
+    hue-rotate(359deg) brightness(103%) contrast(103%)
+    drop-shadow(0 1px 0 rgba(255,255,255,0.08))
+    drop-shadow(0 2px 3px rgba(0,0,0,0.45)) !important;
+}
+
+@media (max-width: 767px) {
+  .srd-badge--cricket,
+  .cricket-badge-img {
+    overflow: visible !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   8. PRICE VISIBILITY — FACEPLATE, NOT BODY COPY
+   --------------------------------------------------------- */
+
+.srd-btn-pricing {
+  font-weight: 900 !important;
+  letter-spacing: 0.18em !important;
+  color: var(--crs-mustard) !important;
+  text-shadow:
+    0 0 6px rgba(255,215,0,0.4),
+    0 1px 1px rgba(0,0,0,0.78) !important;
+}
+
+/* ---------------------------------------------------------
+   9. MASTER FACEPLATE / STATUS DENSITY
+   --------------------------------------------------------- */
+
+.srd-master-faceplate {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.01) 3px, transparent 8px),
+    linear-gradient(90deg, #1a2018 0%, #2b3527 22%, #1d241b 52%, #141814 100%) !important;
+}
+
+.srd-faceplate-title {
+  color: #c8d1b8 !important;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.18),
+    0 -1px 0 rgba(0,0,0,0.95) !important;
+}
+
+.srd-lcd-screen {
+  background:
+    linear-gradient(180deg, #010201 0%, #050705 100%) !important;
+  border: 1px solid rgba(0,0,0,0.9) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.03),
+    inset 0 0 36px rgba(8,30,8,0.58),
+    0 7px 14px rgba(0,0,0,0.42) !important;
+}
+
+.srd-lcd-content,
+.srd-lcd-sysinfo,
+.srd-lcd-row {
+  color: #9cc06e !important;
+}
+
+/* ---------------------------------------------------------
+   10. MICRO-LABELS / SIGNAL TICKER
+   --------------------------------------------------------- */
+
+.srd-unit-h1 {
+  color: var(--crs-mustard) !important;
+  text-shadow:
+    0 0 8px rgba(255,215,0,0.8),
+    0 0 16px rgba(255,215,0,0.4),
+    0 0 24px rgba(255,215,0,0.2) !important;
+}
+
+.srd-micro-label,
+.srd-unit-microlabel {
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--crs-label-dim);
+  text-shadow:
+    0 0 4px rgba(183,194,167,0.18),
+    0 -1px 0 rgba(0,0,0,0.55);
+}
+
+/* ---------------------------------------------------------
+   11. MOBILE EDGE CLEANUP
+   --------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  html,
+  body,
+  .srd-page,
+  .srd-page-shell,
+  .srd-demo-page,
+  .srd-wrapper,
+  main {
+    background: #000 !important;
+  }
+
+  .srd-chassis {
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+}
+
+/* ========================================================= */
