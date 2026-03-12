@@ -1128,15 +1128,22 @@ html, body {
 /* Faceplate Typography */
 .srd-faceplate-title {
   font-family: var(--font-mono, monospace);
-  font-size: 1.5rem;
-  font-weight: 900;
-  letter-spacing: 0.18em;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #8a9479;
+  color: var(--crs-label);
   text-shadow: 0 1px 0 rgba(255,255,255,0.08), 0 -1px 0 rgba(0,0,0,0.9);
   margin: 0;
+  line-height: 1.1;
+  text-align: left;
 }
-@media (min-width: 640px) { .srd-faceplate-title { font-size: 2rem; } }
+@media (min-width: 640px) { 
+  .srd-faceplate-title { 
+    font-size: 1.5rem;
+    line-height: 1.15;
+  } 
+}
 
 .srd-faceplate-subtitle {
   font-family: var(--font-mono, monospace);

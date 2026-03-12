@@ -104,13 +104,17 @@ const MasterFaceplate = () => (
         118 COWLEY ROAD • OXFORD • OX4 1JE • UNITED KINGDOM
       </div>
       
+      {/* TASK 1: Horizontal Hardware Layout - [ CR|S ] -> [ LEDs ] -> [ 3-Line Title ] */}
       <div className="srd-faceplate-main">
         <div className="srd-faceplate-title-group">
           <CRSBlockLogo />
           <SignalStripe />
           <div className="srd-faceplate-text-stack">
-            <h1 className="srd-faceplate-title">COWLEY ROAD STUDIOS</h1>
-            <p className="srd-faceplate-subtitle">OXFORD GRASSROOTS CREATIVE INFRASTRUCTURE</p>
+            <h1 className="srd-faceplate-title">
+              COWLEY<br />
+              ROAD<br />
+              STUDIOS
+            </h1>
           </div>
         </div>
         <div className="srd-faceplate-meta">
@@ -310,19 +314,10 @@ const RackChassis = ({ children }) => (
   </div>
 );
 
-// UNIT 0: Identity Plate (SEO Integration)
+// UNIT 0: Identity Plate (SEO Integration) - TICKER REMOVED PER TASK 1
 const IdentityPlate = () => (
-  <section className="srd-unit-0" aria-label="Unit Identification">
-    <div className="srd-unit-0-left">
-      <span className="srd-unit-id">UNIT ID: 118-CR</span>
-      <span className="srd-unit-microlabel">BREWFORCE BUS // DEEPEND PROTOCOL ACTIVE</span>
-    </div>
-    <div className="srd-unit-0-center">
-      <h1 className="srd-unit-h1">REHEARSE • RECORD • WORK • MEET • CREATE</h1>
-    </div>
-    <div className="srd-unit-0-right">
-      <span className="srd-unit-status">SYSTEM STATUS: GRASSROOTS INFRASTRUCTURE</span>
-    </div>
+  <section className="srd-unit-0" aria-label="Unit Identification" style={{ display: 'none' }}>
+    {/* Yellow LED ticker removed - off-brand per Task 1 */}
   </section>
 );
 
