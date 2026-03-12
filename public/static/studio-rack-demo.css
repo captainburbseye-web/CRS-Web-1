@@ -1547,13 +1547,32 @@ textarea.srd-input-bay {
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(242, 239, 228, 0.95);
+  /* FALLOUT LED STATUS TICKER - Safety Yellow #FFD700 */
+  color: #FFD700;
   margin: 0;
   text-align: center;
-  /* Silk-screened ink effect */
+  position: relative;
+  /* High-intensity glow for industrial readout */
   text-shadow: 
-    0 1px 0 rgba(0,0,0,0.9),
-    0 -1px 0 rgba(255,255,255,0.1);
+    0 0 8px rgba(255,215,0,0.8),
+    0 0 16px rgba(255,215,0,0.4),
+    0 0 24px rgba(255,215,0,0.2);
+}
+
+/* CRT Scanline Effect (optional enhancement) */
+.srd-unit-0-center::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(0,0,0,0.1) 1px,
+    rgba(0,0,0,0.1) 2px
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 @media (min-width: 640px) {
