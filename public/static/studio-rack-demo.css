@@ -1779,6 +1779,16 @@ textarea.srd-input-bay {
     transform: scale(1.2);
   }
   
+  /* RAIL SQUEEZE - Maximize Text Space on Mobile */
+  .srd-rail {
+    width: 4px !important;
+    padding: 0.5rem 0;
+  }
+  
+  .srd-rail-bolt {
+    display: none;
+  }
+  
   .crs-logo-img {
     max-width: 100px;
   }
@@ -1876,4 +1886,25 @@ textarea.srd-input-bay {
 .srd-lcd-highlight,
 .srd-subsystem-label {
   color: #FFD700 !important;
+}
+
+/* Pricing label - Canonical operations data */
+.srd-btn-pricing {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #FFD700;
+  margin-top: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 640px) {
+  .srd-btn-pricing {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+  }
 }

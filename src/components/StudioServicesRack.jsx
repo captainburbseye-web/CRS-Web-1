@@ -176,7 +176,7 @@ const VuMeter = ({ label = "VU", channel }) => (
 // 2. CORE ARCHITECTURE COMPONENTS
 // ==========================================
 
-const HardwareButton = ({ variant, serviceName, locationName, href, onClick, external = false, ariaLabel, icon, ledMode = "hover-on" }) => {
+const HardwareButton = ({ variant, serviceName, locationName, pricing, href, onClick, external = false, ariaLabel, icon, ledMode = "hover-on" }) => {
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
 
@@ -207,6 +207,11 @@ const HardwareButton = ({ variant, serviceName, locationName, href, onClick, ext
           {locationName && (
             <span className="srd-btn-location">
               {locationName}
+            </span>
+          )}
+          {pricing && (
+            <span className="srd-btn-pricing">
+              {pricing}
             </span>
           )}
         </div>
@@ -328,6 +333,7 @@ export default function StudioServicesRack() {
               icon="crs"
               serviceName="Recording" 
               locationName="Cowley Road"
+              pricing="£45 / hour"
               href="https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX" 
               external={true}
               ariaLabel="Book CRS Recording Session at Cowley Road"
@@ -351,6 +357,7 @@ export default function StudioServicesRack() {
               icon="crs"
               serviceName="Rehearsal" 
               locationName="Cowley Road"
+              pricing="From £40 / 2hrs"
               href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" 
               external={true}
               ariaLabel="Book CRS Rehearsal Room at Cowley Road"
@@ -425,6 +432,7 @@ export default function StudioServicesRack() {
               icon="cafe"
               serviceName="Book Café" 
               locationName="Workshop Café"
+              pricing="Venue Hire: £150 (5h) | £40/hr"
               href="https://crsoxford.com/book" 
               external={true}
               ariaLabel="Book a table at the Workshop Café"
