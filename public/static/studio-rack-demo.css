@@ -2496,3 +2496,77 @@ main,
 }
 
 /* ========================================================= */
+
+/* ========================================
+   CRITICAL ASSET OVERRIDE: UK STREET SIGN BADGE
+   ======================================== */
+
+.crs-master-plate {
+  /* Classic UK Street Sign Rectangle */
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  
+  /* Wooden Cut-Out Street Sign */
+  background: #eadecd; /* Off-white / Pale Wood Tone */
+  border: 2px solid #1a1a1a; /* Inset Street Sign Border */
+  border-radius: 4px;
+  padding: 8px 16px;
+  
+  /* Physical Hardware Mounting */
+  box-shadow: 
+    0 2px 4px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+  
+  flex-shrink: 0;
+}
+
+.crs-street-sign-line1,
+.crs-street-sign-line2 {
+  /* Road Sign Typography: Heavy Condensed Sans */
+  font-family: 'Impact', 'Arial Black', 'Helvetica', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: #1a1a1a; /* Charred Black */
+  line-height: 1;
+  text-align: left;
+}
+
+.crs-street-sign-line1 {
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.crs-street-sign-line2 {
+  font-size: 12px;
+}
+
+@media (min-width: 640px) {
+  .crs-street-sign-line1 { font-size: 18px; }
+  .crs-street-sign-line2 { font-size: 16px; }
+}
+
+@media (min-width: 1024px) {
+  .crs-street-sign-line1 { font-size: 22px; }
+  .crs-street-sign-line2 { font-size: 18px; }
+}
+
+/* Signal LEDs mounted below Street Sign */
+.srd-faceplate-title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .srd-faceplate-title-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+

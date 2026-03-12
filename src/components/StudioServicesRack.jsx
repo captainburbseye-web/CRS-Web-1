@@ -85,14 +85,10 @@ const SignalStripe = () => (
   </div>
 );
 
-const CRSBlockLogo = () => (
-  <div className="srd-logo-plate" aria-label="CRS Logo">
-    <div className="srd-logo-text">CR | S</div>
-    <div className="srd-signal-strip" aria-hidden="true">
-      <div className="srd-signal-bar srd-signal-bar--green"></div>
-      <div className="srd-signal-bar srd-signal-bar--gold"></div>
-      <div className="srd-signal-bar srd-signal-bar--red"></div>
-    </div>
+const CRSStreetSign = () => (
+  <div className="crs-master-plate" aria-label="Cowley Road Studios Street Sign">
+    <div className="crs-street-sign-line1">COWLEY ROAD</div>
+    <div className="crs-street-sign-line2">STUDIOS</div>
   </div>
 );
 
@@ -104,10 +100,10 @@ const MasterFaceplate = () => (
         118 COWLEY ROAD • OXFORD • OX4 1JE • UNITED KINGDOM
       </div>
       
-      {/* TASK 1: Horizontal Hardware Layout - [ CR|S ] -> [ LEDs ] -> [ 3-Line Title ] */}
+      {/* CRITICAL OVERRIDE: UK Street Sign Badge + Signal LEDs */}
       <div className="srd-faceplate-main">
         <div className="srd-faceplate-title-group">
-          <CRSBlockLogo />
+          <CRSStreetSign />
           <SignalStripe />
           <div className="srd-faceplate-text-stack">
             <h1 className="srd-faceplate-title">
