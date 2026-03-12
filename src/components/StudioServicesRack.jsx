@@ -340,7 +340,7 @@ export default function StudioServicesRack() {
         <EntryActionCTA />
         
         <div id="modules">
-        <RackModule title="Recording" subtitle="Cowley Road • 118 Cowley Rd • Main Studio & Control Room" theme="nettle" meters={true}>
+        <RackModule title="Recording" subtitle="Cowley Road • 118 Cowley Rd • Main Studio & Control Room" theme="dark" meters={true}>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
@@ -365,7 +365,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="Rehearsal" subtitle="Cricket Road • OX4 3DJ • Managed Production" theme="purple" meters={false}>
+        <RackModule title="Rehearsal" subtitle="Cricket Road • OX4 3DJ • Managed Production" theme="dark" meters={false}>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
@@ -390,7 +390,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="Control Room" subtitle="Hybrid Studio Hire • Multi-Track Recording & Production" meters={true}>
+        <RackModule title="Control Room" subtitle="Hybrid Studio Hire • Multi-Track Recording & Production" theme="dark" meters={true}>
           <ServiceButtonGroup>
             <HardwareButton 
               variant="crs" 
