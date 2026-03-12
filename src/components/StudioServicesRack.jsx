@@ -347,7 +347,7 @@ export default function StudioServicesRack() {
               icon="crs"
               serviceName="Recording" 
               locationName="Cowley Road"
-              pricing="£45 / hour"
+              pricing="£35/h • £100/3h • £125/4h"
               href="https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX" 
               external={true}
               ariaLabel="Book CRS Recording Session at Cowley Road"
@@ -357,7 +357,7 @@ export default function StudioServicesRack() {
               icon="cricket"
               serviceName="Recording"
               locationName="Cricket Road"
-              pricing="£45 / hour" 
+              pricing="£60/2h • £85/3h • £110/4h"
               href="https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX" 
               external={true}
               ariaLabel="Book Cricket Recording Session at Cricket Road"
