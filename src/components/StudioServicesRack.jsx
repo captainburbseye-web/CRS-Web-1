@@ -139,6 +139,9 @@ const StatusPlacard = () => (
 // Top Mounting Rail — Site Header
 const TopRail = () => (
   <div className="srd-top-rail">
+    <div className="srd-rail-logo">
+      <img src="/static/crs-logo.png" alt="CRS" className="srd-rail-logo-img" />
+    </div>
     <div className="srd-home-indicator">HOME</div>
     <div className="srd-rail-address">118 COWLEY ROAD | OXFORD | OX4 1JE</div>
     <div className="srd-rail-meta">EST. 2012 | OXFORD UK</div>

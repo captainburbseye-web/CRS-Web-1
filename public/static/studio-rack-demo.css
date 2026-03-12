@@ -1265,7 +1265,7 @@ textarea.srd-input-bay {
   border-bottom: 2px solid #000;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
   padding: 0 1rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.5);
   max-width: 68rem;
@@ -1284,6 +1284,20 @@ textarea.srd-input-bay {
   border-radius: 2px;
   text-transform: uppercase;
   background: rgba(220, 174, 29, 0.05);
+}
+
+/* CRS Logo in top rail */
+.srd-rail-logo {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+  padding-right: 1rem;
+}
+
+.srd-rail-logo-img {
+  height: 24px;
+  width: auto;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
 }
 
 .srd-rail-address {
