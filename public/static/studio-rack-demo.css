@@ -6,18 +6,24 @@
  */
 
 /* ============================================
-   PAGE SHELL
+   PAGE SHELL — ZERO WHITE BORDER
    ============================================ */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #000000;
+}
+
 .srd-page {
   min-height: 100vh;
-  background: radial-gradient(circle at 50% 30%, #1a1d18 0%, #050505 100%);
-  padding: 2rem 0.5rem;
+  background: radial-gradient(circle at 50% 30%, #1a1d18 0%, #000000 100%);
+  padding: 0;
   box-sizing: border-box;
 }
 
 @media (min-width: 640px) {
   .srd-page {
-    padding: 3rem 2rem;
+    padding: 0;
   }
 }
 
@@ -25,22 +31,33 @@
    RACK CHASSIS — brushed aluminium enclosure
    ============================================ */
 .srd-chassis {
-  max-width: 68rem;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   display: flex;
-  /* ENHANCED: Darker blacks for realism */
-  background: #080808;
-  border-radius: 4px;
-  /* Multi-layer shadow: ambient + contact + outer glow */
+  /* GUNMETAL RAILS EXTEND TO VIEWPORT EDGE */
+  background: #1A1C16;
+  border-radius: 0;
+  /* Multi-layer shadow: edge fade to black */
   box-shadow:
-    0 0 0 1px #000,
-    0 0 0 3px #1a1a1a,
-    0 2px 4px rgba(0,0,0,0.95),
-    0 8px 24px rgba(0,0,0,0.90),
-    0 32px 64px rgba(0,0,0,0.75),
+    inset 0 0 80px rgba(0,0,0,0.8),
     inset 0 1px 0 rgba(255,255,255,0.06);
   overflow: hidden;
   position: relative;
+}
+
+@media (min-width: 1088px) {
+  .srd-chassis {
+    max-width: 68rem;
+    margin: 2rem auto;
+    border-radius: 4px;
+    box-shadow:
+      0 0 0 1px #000,
+      0 0 0 3px #1a1a1a,
+      0 2px 4px rgba(0,0,0,0.95),
+      0 8px 24px rgba(0,0,0,0.90),
+      0 32px 64px rgba(0,0,0,0.75),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+  }
 }
 
 /* Unit 0-4 Protective Guard (Acrylic Faceplate) */
@@ -1243,7 +1260,7 @@
 
 .srd-lcd-sysinfo { color: #8a9479; opacity: 0.9; margin-bottom: 0.5rem; }
 .srd-lcd-highlight { color: #d4a017; }
-.srd-lcd-header { font-weight: bold; text-transform: uppercase; color: #7a9c68; text-shadow: 0 0 6px rgba(122,156,104,0.5); }
+.srd-lcd-header { font-weight: bold; text-transform: uppercase; color: #FFD700; text-shadow: 0 0 8px rgba(255,215,0,0.6); }
 .srd-lcd-row { display: flex; align-items: center; gap: 0.5rem; color: #6a7860; }
 .srd-lcd-bullet-crs { color: #7a9c68; }
 .srd-lcd-bullet-cricket { color: #dcae1d; }
@@ -1251,8 +1268,10 @@
   font-size: 7px;
   margin-top: 0.5rem;
   padding-top: 0.5rem;
-  border-top: 1px solid rgba(70,83,65,0.3);
-  color: #4a5340;
+  border-top: 1px solid rgba(220,38,38,0.3);
+  color: #dc2626;
+  text-shadow: 0 0 4px rgba(220,38,38,0.4);
+  font-weight: 600;
 }
 @media (min-width: 640px) { .srd-lcd-footer { font-size: 8px; } }
 
@@ -2023,21 +2042,22 @@ textarea.srd-input-bay {
 /* Pricing label - Canonical operations data */
 .srd-btn-pricing {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   color: #FFD700;
   margin-top: 3px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-shadow: 0 0 4px rgba(255,215,0,0.4);
 }
 
 @media (min-width: 640px) {
   .srd-btn-pricing {
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
   }
 }
 
