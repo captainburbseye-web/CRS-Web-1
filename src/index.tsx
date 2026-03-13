@@ -2230,28 +2230,7 @@ app.get('/digital-pulse', (c) => {
 })
 
 // SIGNAGE TERMINAL — DIGITAL BROADCAST MODE (55" Street Display)
-// Headless route: No global header/footer, SEO excluded
-// SIGNAGE TERMINAL — DIGITAL BROADCAST MODE (55" Street Display)
-// Full-screen rack module display for street-level presence
-app.get('/signage', (c) => {
-  return c.html(
-    <html>
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="noindex, nofollow" />
-        <title>CRS Signage Broadcast</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
-        <link href="/static/crs-signage.css" rel="stylesheet" />
-      </head>
-      <body>
-        <SignagePage />
-      </body>
-    </html>
-  )
-})
+// Managed by routes/signage.tsx (already registered at line 359)
 
 // SIGNAGE LOOP — BROADCAST ENGINE (Yodeck Kiosk Mode)
 // Auto-cycling slideshow of all Elite Signage Components
