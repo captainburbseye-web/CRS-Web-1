@@ -3029,3 +3029,233 @@ main,
   z-index: 2;
 }
 
+
+/* ========================================
+   BRANDED HARDWARE BADGES
+   CRS Logo Badge + Cricket Warning Sign
+   ======================================== */
+
+/* CRS Badge - Bolted Metal Nameplate */
+.crs-badge {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 140px;
+  height: 110px;
+  padding: 12px;
+  border: 3px solid #1a1a1a;
+  border-radius: 4px;
+  background: 
+    /* Brushed metal texture */
+    linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255,255,255,0.08) 48%, 
+      rgba(255,255,255,0.12) 50%, 
+      rgba(255,255,255,0.08) 52%, 
+      transparent 100%
+    ),
+    /* Silver gradient */
+    linear-gradient(180deg, 
+      #d8d8d8 0%, 
+      #b5b5b5 40%, 
+      #a0a0a0 60%, 
+      #8a8a8a 100%
+    );
+  box-shadow:
+    /* Deep inset for bolted appearance */
+    inset 0 3px 8px rgba(0,0,0,0.7),
+    inset 0 -2px 4px rgba(255,255,255,0.4),
+    /* Outer shadow */
+    0 6px 12px rgba(0,0,0,0.9),
+    0 2px 4px rgba(0,0,0,1);
+}
+
+/* Corner bolts on CRS badge */
+.crs-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    /* Top-left bolt */
+    radial-gradient(circle at 8px 8px, 
+      #0a0a0a 0px, 
+      #1a1a1a 1.5px, 
+      #333 3px, 
+      #555 4px, 
+      transparent 5px),
+    /* Top-right bolt */
+    radial-gradient(circle at calc(100% - 8px) 8px, 
+      #0a0a0a 0px, 
+      #1a1a1a 1.5px, 
+      #333 3px, 
+      #555 4px, 
+      transparent 5px),
+    /* Bottom-left bolt */
+    radial-gradient(circle at 8px calc(100% - 8px), 
+      #0a0a0a 0px, 
+      #1a1a1a 1.5px, 
+      #333 3px, 
+      #555 4px, 
+      transparent 5px),
+    /* Bottom-right bolt */
+    radial-gradient(circle at calc(100% - 8px) calc(100% - 8px), 
+      #0a0a0a 0px, 
+      #1a1a1a 1.5px, 
+      #333 3px, 
+      #555 4px, 
+      transparent 5px);
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* CRS Text */
+.crs-badge-text {
+  font-family: 'Arial Black', Impact, 'Helvetica Condensed', sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #000000;
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 4px;
+  text-shadow:
+    /* Engraved effect */
+    0 1px 0 rgba(255,255,255,0.8),
+    0 -1px 0 rgba(0,0,0,0.5);
+  /* Split background: silver left / gold right */
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    transparent 48%, 
+    #d4af37 50%, 
+    #f4d03f 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Signal bars below CRS text */
+.crs-badge-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.crs-badge-bar {
+  height: 8px;
+  width: 100%;
+  border-radius: 1px;
+  box-shadow:
+    inset 0 2px 3px rgba(0,0,0,0.9),
+    inset 0 -1px 1px rgba(255,255,255,0.3);
+}
+
+.crs-badge-bar--green {
+  background: linear-gradient(180deg, 
+    #2d5016 0%, 
+    #3d6b1f 50%, 
+    #2d5016 100%
+  );
+}
+
+.crs-badge-bar--red {
+  background: linear-gradient(180deg, 
+    #7f1d1d 0%, 
+    #991b1b 50%, 
+    #7f1d1d 100%
+  );
+}
+
+/* Cricket Badge - Diamond Warning Sign */
+.cricket-badge-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+}
+
+.srd-badge--cricket {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  padding: 8px;
+  border: 3px solid #1a1a1a;
+  border-radius: 4px;
+  background: 
+    /* Caution yellow gradient */
+    linear-gradient(135deg, 
+      #fcd34d 0%, 
+      #fbbf24 25%, 
+      #f59e0b 50%, 
+      #d97706 75%, 
+      #b45309 100%
+    );
+  transform: rotate(45deg);
+  box-shadow:
+    /* Deep inset */
+    inset 0 3px 6px rgba(0,0,0,0.5),
+    inset 0 -2px 4px rgba(255,255,255,0.4),
+    /* Outer shadow */
+    0 6px 12px rgba(0,0,0,0.9);
+}
+
+/* Corner bolts on cricket diamond */
+.srd-badge--cricket::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 6px 6px, #0a0a0a 0px, #333 2px, transparent 3px),
+    radial-gradient(circle at calc(100% - 6px) 6px, #0a0a0a 0px, #333 2px, transparent 3px),
+    radial-gradient(circle at 6px calc(100% - 6px), #0a0a0a 0px, #333 2px, transparent 3px),
+    radial-gradient(circle at calc(100% - 6px) calc(100% - 6px), #0a0a0a 0px, #333 2px, transparent 3px);
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* Cricket icon image (counter-rotated to stay upright) */
+.cricket-badge-img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  transform: rotate(-45deg);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+}
+
+/* Hover states for badges */
+.crs-master-plate-link:hover .crs-badge {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 3px 8px rgba(0,0,0,0.7),
+    inset 0 -2px 4px rgba(255,255,255,0.4),
+    0 8px 16px rgba(0,0,0,0.95),
+    0 4px 8px rgba(0,0,0,1);
+}
+
+.crs-master-plate-link:active .crs-badge {
+  transform: translateY(0);
+}
+
+/* Responsive scaling */
+@media (max-width: 640px) {
+  .crs-badge {
+    width: 100px;
+    height: 80px;
+    padding: 8px;
+  }
+  
+  .crs-badge-text {
+    font-size: 36px;
+  }
+  
+  .crs-badge-bar {
+    height: 6px;
+  }
+}
+

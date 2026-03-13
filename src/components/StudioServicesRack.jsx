@@ -87,9 +87,12 @@ const SignalStripe = () => (
 
 const CRSStreetSign = () => (
   <a href="/" className="crs-master-plate-link" aria-label="Return to Cowley Road Studios Home">
-    <div className="crs-master-plate" aria-label="Cowley Road Studios Street Sign">
-      <div className="crs-street-sign-line1">COWLEY ROAD</div>
-      <div className="crs-street-sign-line2">STUDIOS</div>
+    <div className="crs-badge" aria-label="Cowley Road Studios Badge">
+      <div className="crs-badge-text">CRS</div>
+      <div className="crs-badge-bars">
+        <div className="crs-badge-bar crs-badge-bar--green"></div>
+        <div className="crs-badge-bar crs-badge-bar--red"></div>
+      </div>
     </div>
   </a>
 );
