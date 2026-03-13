@@ -108,13 +108,6 @@ const MasterFaceplate = () => (
           <CRSStreetSign />
           <SignalStripe />
         </div>
-        <div className="srd-faceplate-meta">
-          <div className="srd-meta-row">
-            <div className="srd-faceplate-model">CRS-CONSOLE-01</div>
-            <div className="srd-faceplate-routing">Audio • Rehearsal • Control</div>
-            <div className="srd-micro-label">FIRMWARE: CAPTAIN BURBSEYE / TEST PASS: N0RLAND0B00M</div>
-          </div>
-        </div>
       </div>
     </div>
   </header>
@@ -517,7 +510,9 @@ export default function StudioServicesRack() {
       
       {/* Bottom Trust Rail */}
       <footer className="srd-trust-rail">
-        118 Cowley Road, Oxford OX4 1JE, United Kingdom · DESTA-GEN3 // NO CHAOS MODE // INSPECTED: N0RLAND0B00M
+        <div className="srd-faceplate-model">CRS-CONSOLE-01</div>
+        <div className="srd-faceplate-routing">Audio • Rehearsal • Control</div>
+        <div className="srd-micro-label">FIRMWARE: CAPTAIN BURBSEYE / TEST PASS: N0RLAND0B00M</div>
       </footer>
       
       {/* Technical Manual SEO Footer */}
