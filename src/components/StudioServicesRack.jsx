@@ -155,8 +155,6 @@ const EntryActionCTA = () => (
 // Top Mounting Rail — Site Header
 const TopRail = () => (
   <div className="srd-top-rail">
-    <div className="srd-home-indicator">HOME</div>
-    <div className="srd-rail-address">118 COWLEY ROAD | OXFORD | OX4 1JE</div>
     <div className="srd-rail-meta">EST. 2012 | OXFORD UK</div>
   </div>
 );
