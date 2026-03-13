@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, initial-scale=1.0" />
+  <title>CRS Signage | 55" Display Mode</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html, body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #000;
+      cursor: none;
+    }
+    
+    iframe {
+      width: 1920px;
+      height: 1080px;
+      border: none;
+      overflow: hidden;
+    }
+    
+    #signage-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      animation: burn-in-protection 120s ease-in-out infinite;
+    }
+    
+    @keyframes burn-in-protection {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(2px, 1px); }
+      50% { transform: translate(-1px, -2px); }
+      75% { transform: translate(-2px, 1px); }
+    }
+  </style>
+</head>
+<body>
+  <div id="signage-overlay"></div>
+  <iframe id="signage-iframe" src="/"></iframe>
+  
+  <script>
+    (function() {
+      'use strict';
+      
+      const CYCLE_INTERVAL = 12000; // 12 seconds
+      const iframe = document.getElementById('signage-iframe');
+      
+      iframe.addEventListener('load', function() {
+        setTimeout(() => {
+          try {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const modules = iframeDoc.querySelectorAll('.srd-module');
+            const scrollContainer = iframeDoc.querySelector('.srd-chassis') || iframeDoc.documentElement;
+            
+            if (!modules.length) {
+              console.error('No modules found');
+              return;
+            }
+            
+            console.log(`Signage: Found ${modules.length} modules`);
+            
+            let currentIndex = 0;
+            
+            function cycleModule() {
+              // Remove active class
+              modules.forEach(m => m.classList.remove('signage-active'));
+              
+              // Add to current
+              const currentModule = modules[currentIndex];
+              if (currentModule) {
+                currentModule.classList.add('signage-active');
+                
+                // Scroll centered
+                const moduleTop = currentModule.offsetTop;
+                const moduleHeight = currentModule.offsetHeight;
+                const viewportHeight = 1080;
+                const scrollTo = moduleTop - (viewportHeight / 2) + (moduleHeight / 2);
+                
+                scrollContainer.scrollTo({
+                  top: Math.max(0, scrollTo),
+                  behavior: 'smooth'
+                });
+                
+                console.log(`Module ${currentIndex + 1}/${modules.length}`);
+              }
+              
+              currentIndex = (currentIndex + 1) % modules.length;
+            }
+            
+            // Start
+            cycleModule();
+            setInterval(cycleModule, CYCLE_INTERVAL);
+            
+            // ESC to exit
+            document.addEventListener('keydown', (e) => {
+              if (e.key === 'Escape') {
+                window.location.href = '/';
+              }
+            });
+            
+          } catch (e) {
+            console.error('Signage error:', e);
+          }
+        }, 3000);
+      });
+      
+    })();
+  </script>
+</body>
+</html>
