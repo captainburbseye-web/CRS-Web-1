@@ -2675,3 +2675,194 @@ main,
   transform: translateY(0);
 }
 
+
+/* ========================================
+   HARDWARE REALISM OVERHAUL
+   Matching physical reference images
+   ======================================== */
+
+/* Bolted corner screws on modules */
+.srd-module::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  pointer-events: none;
+  background-image:
+    /* Top-left screw */
+    radial-gradient(circle at 0% 0%, 
+      #1a1a1a 0px, #333 2px, #555 3px, transparent 4px),
+    /* Top-right screw */
+    radial-gradient(circle at 100% 0%, 
+      #1a1a1a 0px, #333 2px, #555 3px, transparent 4px),
+    /* Bottom-left screw */
+    radial-gradient(circle at 0% 100%, 
+      #1a1a1a 0px, #333 2px, #555 3px, transparent 4px),
+    /* Bottom-right screw */
+    radial-gradient(circle at 100% 100%, 
+      #1a1a1a 0px, #333 2px, #555 3px, transparent 4px);
+  background-size: 8px 8px;
+  background-position: top left, top right, bottom left, bottom right;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+}
+
+/* Heavier panel shadows */
+.srd-module {
+  box-shadow:
+    /* Inset top bevel */
+    inset 0 2px 0 rgba(255,255,255,0.12),
+    /* Inset bottom recess */
+    inset 0 -6px 12px rgba(0,0,0,0.9),
+    /* Contact shadow */
+    0 4px 8px rgba(0,0,0,0.95),
+    /* Outer glow for separation */
+    0 0 1px rgba(0,0,0,1);
+}
+
+/* Darker module backgrounds (weathered metal) */
+.srd-module--dark {
+  background:
+    /* Subtle scratches */
+    linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba(255,255,255,0.01) 45%,
+      transparent 55%,
+      rgba(0,0,0,0.03) 100%
+    ),
+    /* Base metal */
+    linear-gradient(
+      180deg,
+      #1e2019 0%,
+      #11140f 50%,
+      #0a0c08 100%
+    );
+}
+
+/* Cricket purple with weathering */
+.srd-module--purple {
+  background:
+    /* Rust spots */
+    radial-gradient(circle at 20% 30%, rgba(139,69,19,0.08) 0%, transparent 15%),
+    radial-gradient(circle at 80% 70%, rgba(139,69,19,0.06) 0%, transparent 20%),
+    /* Base purple */
+    linear-gradient(
+      180deg,
+      #4f3b68 0%,
+      #3d2d52 40%,
+      #241a31 100%
+    );
+}
+
+/* Nettle green with grime */
+.srd-module--nettle {
+  background:
+    /* Oil stains */
+    radial-gradient(circle at 15% 60%, rgba(0,0,0,0.15) 0%, transparent 25%),
+    radial-gradient(circle at 85% 25%, rgba(0,0,0,0.12) 0%, transparent 30%),
+    /* Base green */
+    linear-gradient(
+      180deg,
+      #465341 0%,
+      #2d3e2f 40%,
+      #1a2419 100%
+    );
+}
+
+/* Backlit button glow (stronger) */
+.srd-btn {
+  box-shadow:
+    /* Inset button recess */
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    inset 0 -1px 2px rgba(255,255,255,0.1),
+    /* Outer button shadow */
+    0 4px 8px rgba(0,0,0,0.9),
+    /* Backlight glow */
+    0 0 20px rgba(255,215,0,0.2);
+}
+
+.srd-btn:hover {
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    inset 0 -1px 2px rgba(255,255,255,0.15),
+    0 4px 8px rgba(0,0,0,0.9),
+    /* Stronger glow on hover */
+    0 0 30px rgba(255,215,0,0.4),
+    0 0 60px rgba(255,215,0,0.2);
+}
+
+/* Metal nameplate bolts */
+.crs-master-plate {
+  box-shadow:
+    /* Deep inset */
+    inset 0 3px 6px rgba(0,0,0,0.6),
+    inset 0 -2px 4px rgba(255,255,255,0.3),
+    /* Outer shadow */
+    0 4px 8px rgba(0,0,0,0.8);
+  
+  /* Corner bolts */
+  background-image:
+    radial-gradient(circle at 8px 8px, #333 0px, #555 1px, transparent 2px),
+    radial-gradient(circle at calc(100% - 8px) 8px, #333 0px, #555 1px, transparent 2px),
+    radial-gradient(circle at 8px calc(100% - 8px), #333 0px, #555 1px, transparent 2px),
+    radial-gradient(circle at calc(100% - 8px) calc(100% - 8px), #333 0px, #555 1px, transparent 2px);
+  background-color: #eadecd;
+  background-repeat: no-repeat;
+}
+
+/* VU meter glass reflection */
+.srd-vu-face::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(255,255,255,0.3) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(255,255,255,0.1) 100%
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* LED indicator depth */
+.srd-signal-bulb {
+  box-shadow:
+    /* Inset glass */
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    inset 0 -1px 2px rgba(255,255,255,0.2),
+    /* Outer bezel */
+    0 2px 4px rgba(0,0,0,0.9);
+}
+
+/* Chassis rail rivets */
+.srd-chassis-rail::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      #444 0px,
+      #444 2px,
+      transparent 2px,
+      transparent 40px
+    );
+  transform: translateY(-50%);
+  opacity: 0.4;
+}
+
+/* Pricing label backlight */
+.srd-btn-pricing {
+  text-shadow:
+    0 0 8px rgba(255,215,0,0.8),
+    0 0 16px rgba(255,215,0,0.5),
+    0 0 24px rgba(255,215,0,0.3),
+    /* Sharp edges */
+    0 1px 0 rgba(0,0,0,0.9);
+}
+
