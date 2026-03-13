@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { renderer } from './renderer'
 import { rackDemo } from './routes/rack-demo'
+import { signage } from './routes/signage'
 import { ContactSection } from './components/ContactSection'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
@@ -355,6 +356,7 @@ function extractBookingLink(description: string): string | null {
 
 // RACK DEMO ROUTE (inline CSS, zero dependencies)
 app.route('/rack-demo', rackDemo)
+app.route('/signage', signage)
 
 app.use(renderer)
 
