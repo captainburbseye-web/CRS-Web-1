@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, initial-scale=1.0" />
+  <title>CRS Signage | 55" Display</title>
+  <meta name="robots" content="noindex, nofollow" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <!-- Rack CSS -->
+  <link href="/static/studio-rack-demo.css" rel="stylesheet" />
+  
+  <style>
+    /* SIGNAGE KIOSK MODE */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html, body {
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      background: #000;
+      cursor: none !important;
+    }
+    
+    /* Hide all interactive elements */
+    a, button, input, textarea, form {
+      pointer-events: none !important;
+      cursor: none !important;
+    }
+    
+    /* Allow home link only */
+    .crs-master-plate-link {
+      pointer-events: auto !important;
+    }
+    
+    /* Smooth scrolling container */
+    .srd-chassis {
+      scroll-behavior: smooth;
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: 1080px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    
+    .srd-chassis::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* Active module glow */
+    .srd-module {
+      transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+    }
+    
+    .srd-module.signage-active {
+      opacity: 1;
+      transform: scale(1.01);
+      filter: brightness(1.08);
+      position: relative;
+      z-index: 10;
+    }
+    
+    /* Burn-in protection */
+    body {
+      animation: burn-in-drift 120s ease-in-out infinite;
+    }
+    
+    @keyframes burn-in-drift {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(2px, 1px); }
+      50% { transform: translate(-1px, -2px); }
+      75% { transform: translate(-2px, 1px); }
+    }
+  </style>
+</head>
+<body>
+  <div id="signage-root"></div>
+  
+  <script>
+    // Load the rack HTML via fetch
+    fetch('/')
+      .then(response => response.text())
+      .then(html => {
+        // Extract the rack content
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const rackContent = doc.querySelector('.srd-page');
+        
+        if (rackContent) {
+          document.getElementById('signage-root').appendChild(rackContent);
+          
+          // Start auto-cycle after content loads
+          setTimeout(initSignageCycle, 2000);
+        } else {
+          console.error('Rack content not found');
+        }
+      })
+      .catch(err => console.error('Failed to load rack:', err));
+    
+    function initSignageCycle() {
+      const modules = document.querySelectorAll('.srd-module');
+      const chassis = document.querySelector('.srd-chassis');
+      
+      if (!modules.length) {
+        console.error('No modules found for cycling');
+        return;
+      }
+      
+      console.log(`SIGNAGE: Found ${modules.length} modules - Starting auto-cycle`);
+      
+      let currentIndex = 0;
+      
+      function cycleToModule() {
+        // Remove active from all
+        modules.forEach(m => m.classList.remove('signage-active'));
+        
+        // Get current module
+        const currentModule = modules[currentIndex];
+        
+        if (currentModule) {
+          // Add active class
+          currentModule.classList.add('signage-active');
+          
+          // Calculate scroll position (centered)
+          const moduleTop = currentModule.offsetTop;
+          const moduleHeight = currentModule.offsetHeight;
+          const viewportHeight = 1080;
+          const scrollTop = Math.max(0, moduleTop - (viewportHeight / 2) + (moduleHeight / 2));
+          
+          // Smooth scroll
+          if (chassis) {
+            chassis.scrollTo({
+              top: scrollTop,
+              behavior: 'smooth'
+            });
+          }
+          
+          console.log(`CYCLE → Module ${currentIndex + 1}/${modules.length}: ${currentModule.getAttribute('aria-labelledby')}`);
+        }
+        
+        // Next module (loop)
+        currentIndex = (currentIndex + 1) % modules.length;
+      }
+      
+      // Start immediately
+      cycleToModule();
+      
+      // Cycle every 12 seconds
+      setInterval(cycleToModule, 12000);
+      
+      // Emergency exit (ESC key)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          window.location.href = '/';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
