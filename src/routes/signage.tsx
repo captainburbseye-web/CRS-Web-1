@@ -1,5 +1,6 @@
 import { Hono } from 'hono'
 import { renderToString } from 'react-dom/server'
+import React from 'react'
 import StudioServicesRack from '../components/StudioServicesRack'
 
 const signage = new Hono()
@@ -10,7 +11,13 @@ signage.get('/', (c) => {
   const cssAsset = manifestEntry?.css?.[0] ? `/static/${manifestEntry.css[0]}` : null
   
   // Server-render the rack for instant display
-  const rackHtml = renderToString(<StudioServicesRack />)
+  let rackHtml = ''
+  try {
+    rackHtml = renderToString(React.createElement(StudioServicesRack))
+  } catch (error) {
+    console.error('SSR Error:', error)
+    rackHtml = '<div class="error">Loading...</div>'
+  }
   
   return c.html(
     `<!DOCTYPE html>
