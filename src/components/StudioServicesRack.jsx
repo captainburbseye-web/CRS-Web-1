@@ -16,18 +16,19 @@ const HexBolt = ({ className = "" }) => (
 const BrandBadge = ({ kind, className = "" }) => {
   if (kind === "crs") {
     return (
-      <div aria-hidden="true" className={`srd-badge srd-badge--crs ${className}`}>
-        <svg viewBox="0 0 24 24" className="srd-badge-svg">
-          <path d="M4 4 L12 2 L20 4 L20 12 L12 22 L4 12 Z" fill="none" stroke="white" strokeWidth="1.5" strokeLinejoin="bevel"/>
-          <circle cx="12" cy="12" r="3" fill="white"/>
-        </svg>
+      <div aria-hidden="true" className={`crs-badge-mini ${className}`}>
+        <div className="crs-badge-mini-text">CRS</div>
+        <div className="crs-badge-mini-bars">
+          <div className="crs-badge-mini-bar crs-badge-mini-bar--green"></div>
+          <div className="crs-badge-mini-bar crs-badge-mini-bar--red"></div>
+        </div>
       </div>
     );
   }
   if (kind === "cricket") {
     return (
-      <div aria-hidden="true" className={`srd-badge srd-badge--cricket ${className}`}>
-        <img src="/static/cricket-logo.png" alt="Cricket" className="cricket-badge-img" />
+      <div aria-hidden="true" className={`cricket-badge-mini ${className}`}>
+        <img src="/static/cricket-logo.png" alt="Cricket" className="cricket-badge-mini-img" />
       </div>
     );
   }
@@ -516,6 +517,21 @@ export default function StudioServicesRack() {
         <div className="srd-faceplate-model">CRS-CONSOLE-01</div>
         <div className="srd-faceplate-routing">Audio • Rehearsal • Control</div>
         <div className="srd-micro-label">FIRMWARE: CAPTAIN BURBSEYE / TEST PASS: N0RLAND0B00M</div>
+        
+        {/* Brand Lockup */}
+        <div className="srd-footer-badges">
+          <div className="crs-badge-mini">
+            <div className="crs-badge-mini-text">CRS</div>
+            <div className="crs-badge-mini-bars">
+              <div className="crs-badge-mini-bar crs-badge-mini-bar--green"></div>
+              <div className="crs-badge-mini-bar crs-badge-mini-bar--red"></div>
+            </div>
+          </div>
+          <div className="cricket-badge-mini">
+            <img src="/static/cricket-logo.png" alt="Cricket" className="cricket-badge-mini-img" />
+          </div>
+        </div>
+        <div className="srd-footer-tagline">GRASSROOTS INFRASTRUCTURE FOR OXFORD MUSIC</div>
       </footer>
       
       {/* Technical Manual SEO Footer */}

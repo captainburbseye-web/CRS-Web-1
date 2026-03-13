@@ -3259,3 +3259,297 @@ main,
   }
 }
 
+
+/* ========================================
+   PHASE 1+2: BADGE PROLIFERATION + COLOR BRANDING
+   Brand visibility upgrade
+   ======================================== */
+
+/* SCALE UP HEADER CRS BADGE (140px → 200px) */
+.crs-badge {
+  width: 200px !important;
+  height: 150px !important;
+  padding: 16px !important;
+}
+
+.crs-badge-text {
+  font-size: 64px !important;
+  margin-bottom: 8px !important;
+}
+
+.crs-badge-bar {
+  height: 10px !important;
+  gap: 6px !important;
+}
+
+/* MINI BADGE FOR BUTTONS (60×50px) */
+.crs-badge-mini {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 60px;
+  height: 50px;
+  padding: 6px;
+  border: 2px solid #1a1a1a;
+  border-radius: 3px;
+  background: 
+    /* Brushed metal texture */
+    linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255,255,255,0.08) 48%, 
+      rgba(255,255,255,0.12) 50%, 
+      rgba(255,255,255,0.08) 52%, 
+      transparent 100%
+    ),
+    /* Silver gradient */
+    linear-gradient(180deg, 
+      #d8d8d8 0%, 
+      #b5b5b5 40%, 
+      #a0a0a0 60%, 
+      #8a8a8a 100%
+    );
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.6),
+    inset 0 -1px 2px rgba(255,255,255,0.3),
+    0 3px 6px rgba(0,0,0,0.8);
+}
+
+/* Mini badge corner bolts */
+.crs-badge-mini::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 4px 4px, #0a0a0a 0px, #333 1px, transparent 2px),
+    radial-gradient(circle at calc(100% - 4px) 4px, #0a0a0a 0px, #333 1px, transparent 2px),
+    radial-gradient(circle at 4px calc(100% - 4px), #0a0a0a 0px, #333 1px, transparent 2px),
+    radial-gradient(circle at calc(100% - 4px) calc(100% - 4px), #0a0a0a 0px, #333 1px, transparent 2px);
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* Mini badge text */
+.crs-badge-mini-text {
+  font-family: 'Arial Black', Impact, 'Helvetica Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: #000000;
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 2px;
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.8),
+    0 -1px 0 rgba(0,0,0,0.5);
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    transparent 48%, 
+    #d4af37 50%, 
+    #f4d03f 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Mini badge bars */
+.crs-badge-mini-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.crs-badge-mini-bar {
+  height: 4px;
+  width: 100%;
+  border-radius: 1px;
+  box-shadow:
+    inset 0 1px 2px rgba(0,0,0,0.9),
+    inset 0 -1px 1px rgba(255,255,255,0.2);
+}
+
+.crs-badge-mini-bar--green {
+  background: linear-gradient(180deg, 
+    #2d5016 0%, 
+    #3d6b1f 50%, 
+    #2d5016 100%
+  );
+}
+
+.crs-badge-mini-bar--red {
+  background: linear-gradient(180deg, 
+    #7f1d1d 0%, 
+    #991b1b 50%, 
+    #7f1d1d 100%
+  );
+}
+
+/* CRICKET MINI BADGE (45px diamond) */
+.cricket-badge-mini {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  padding: 4px;
+  border: 2px solid #1a1a1a;
+  border-radius: 3px;
+  background: 
+    linear-gradient(135deg, 
+      #fcd34d 0%, 
+      #fbbf24 25%, 
+      #f59e0b 50%, 
+      #d97706 75%, 
+      #b45309 100%
+    );
+  transform: rotate(45deg);
+  box-shadow:
+    inset 0 2px 3px rgba(0,0,0,0.5),
+    inset 0 -1px 2px rgba(255,255,255,0.4),
+    0 3px 6px rgba(0,0,0,0.8);
+}
+
+.cricket-badge-mini::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 3px 3px, #0a0a0a 0px, #333 1px, transparent 1.5px),
+    radial-gradient(circle at calc(100% - 3px) 3px, #0a0a0a 0px, #333 1px, transparent 1.5px),
+    radial-gradient(circle at 3px calc(100% - 3px), #0a0a0a 0px, #333 1px, transparent 1.5px),
+    radial-gradient(circle at calc(100% - 3px) calc(100% - 3px), #0a0a0a 0px, #333 1px, transparent 1.5px);
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.cricket-badge-mini-img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  transform: rotate(-45deg);
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8));
+}
+
+/* PHASE 2: GOLD/YELLOW PRICING GLOW */
+
+/* Cowley pricing - Gold glow */
+.srd-btn--crs .srd-btn-pricing {
+  color: #FFD700 !important;
+  font-weight: 700 !important;
+  text-shadow:
+    0 0 8px rgba(255,215,0,0.8),
+    0 0 16px rgba(255,215,0,0.5),
+    0 0 24px rgba(255,215,0,0.3),
+    0 1px 0 rgba(0,0,0,0.9) !important;
+}
+
+/* Cricket pricing - Yellow glow */
+.srd-btn--cricket .srd-btn-pricing {
+  color: #fbbf24 !important;
+  font-weight: 700 !important;
+  text-shadow:
+    0 0 8px rgba(251,191,36,0.8),
+    0 0 16px rgba(251,191,36,0.5),
+    0 0 24px rgba(251,191,36,0.3),
+    0 1px 0 rgba(0,0,0,0.9) !important;
+}
+
+/* PHASE 2: SUBTLE MODULE HEADER TINTS */
+
+/* Cowley modules (nettle green tint) */
+.srd-module[aria-labelledby="module-recording"],
+.srd-module[aria-labelledby="module-workshop-café"] {
+  background: 
+    /* Nettle tint at top */
+    linear-gradient(180deg,
+      rgba(138,154,121,0.06) 0%,
+      rgba(138,154,121,0.03) 15%,
+      transparent 30%
+    ),
+    /* Base dark gradient */
+    linear-gradient(180deg,
+      #1e2019 0%,
+      #11140f 50%,
+      #0a0c08 100%
+    ) !important;
+}
+
+/* Cricket modules (purple tint) */
+.srd-module[aria-labelledby="module-rehearsal"],
+.srd-module[aria-labelledby="module-control-room"] {
+  background: 
+    /* Purple tint at top */
+    linear-gradient(180deg,
+      rgba(124,45,176,0.06) 0%,
+      rgba(124,45,176,0.03) 15%,
+      transparent 30%
+    ),
+    /* Base dark gradient */
+    linear-gradient(180deg,
+      #1e2019 0%,
+      #11140f 50%,
+      #0a0c08 100%
+    ) !important;
+}
+
+/* FOOTER BRAND LOCKUP */
+.srd-footer-badges {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+  margin-top: 16px;
+  border-top: 1px solid rgba(138,154,121,0.2);
+}
+
+.srd-footer-tagline {
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #7a9c68;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 12px;
+  opacity: 0.7;
+}
+
+/* Responsive: scale badges on mobile */
+@media (max-width: 640px) {
+  .crs-badge {
+    width: 140px !important;
+    height: 105px !important;
+    padding: 10px !important;
+  }
+  
+  .crs-badge-text {
+    font-size: 44px !important;
+  }
+  
+  .crs-badge-bar {
+    height: 7px !important;
+  }
+  
+  .crs-badge-mini {
+    width: 48px;
+    height: 40px;
+    padding: 4px;
+  }
+  
+  .crs-badge-mini-text {
+    font-size: 16px;
+  }
+  
+  .crs-badge-mini-bar {
+    height: 3px;
+  }
+  
+  .cricket-badge-mini {
+    width: 36px;
+    height: 36px;
+  }
+}
+
