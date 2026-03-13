@@ -2658,3 +2658,20 @@ main,
   .srd-discount-text { font-size: 11px; }
 }
 
+
+/* Street Sign Home Link */
+.crs-master-plate-link {
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.crs-master-plate-link:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.crs-master-plate-link:active {
+  transform: translateY(0);
+}
+

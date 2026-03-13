@@ -86,10 +86,12 @@ const SignalStripe = () => (
 );
 
 const CRSStreetSign = () => (
-  <div className="crs-master-plate" aria-label="Cowley Road Studios Street Sign">
-    <div className="crs-street-sign-line1">COWLEY ROAD</div>
-    <div className="crs-street-sign-line2">STUDIOS</div>
-  </div>
+  <a href="/" className="crs-master-plate-link" aria-label="Return to Cowley Road Studios Home">
+    <div className="crs-master-plate" aria-label="Cowley Road Studios Street Sign">
+      <div className="crs-street-sign-line1">COWLEY ROAD</div>
+      <div className="crs-street-sign-line2">STUDIOS</div>
+    </div>
+  </a>
 );
 
 const MasterFaceplate = () => (
@@ -100,18 +102,11 @@ const MasterFaceplate = () => (
         118 COWLEY ROAD • OXFORD • OX4 1JE • UNITED KINGDOM
       </div>
       
-      {/* CRITICAL OVERRIDE: UK Street Sign Badge + Signal LEDs */}
+      {/* Street Sign + Signal LEDs */}
       <div className="srd-faceplate-main">
         <div className="srd-faceplate-title-group">
           <CRSStreetSign />
           <SignalStripe />
-          <div className="srd-faceplate-text-stack">
-            <h1 className="srd-faceplate-title">
-              COWLEY<br />
-              ROAD<br />
-              STUDIOS
-            </h1>
-          </div>
         </div>
         <div className="srd-faceplate-meta">
           <div className="srd-meta-row">
