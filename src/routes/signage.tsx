@@ -6,9 +6,9 @@ import StudioServicesRack from '../components/StudioServicesRack'
 const signage = new Hono()
 
 signage.get('/', (c) => {
-  const manifestEntry = c.get('manifest')?.['src/client/rack-entry.tsx']
-  const jsAsset = manifestEntry?.file ? `/static/${manifestEntry.file}` : '/static/assets/rack-entry.js'
-  const cssAsset = manifestEntry?.css?.[0] ? `/static/${manifestEntry.css[0]}` : null
+  // Hardcoded asset paths from latest build
+  const jsAsset = '/static/assets/rack-entry-BVqDyIRK.js'
+  const cssAsset = '/static/assets/rack-entry-D8EnfBQ5.css'
   
   // Server-render the rack for instant display
   let rackHtml = ''
