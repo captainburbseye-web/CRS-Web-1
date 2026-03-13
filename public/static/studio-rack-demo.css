@@ -2866,3 +2866,166 @@ main,
     0 1px 0 rgba(0,0,0,0.9);
 }
 
+
+/* ========================================
+   CRITICAL HARDWARE FIXES
+   Enhanced realism matching physical refs
+   ======================================== */
+
+/* FIX 1: Larger corner screws with Phillips detail (8px → 14px) */
+.srd-module::after {
+  background-size: 14px 14px !important;
+  background-image:
+    /* Top-left Phillips screw */
+    radial-gradient(circle at 0% 0%, 
+      #0a0a0a 0px,
+      #222 2px,
+      #444 4px,
+      #666 6px,
+      transparent 7px),
+    linear-gradient(90deg at 0% 0%, transparent 45%, #000 47%, #000 53%, transparent 55%),
+    linear-gradient(180deg at 0% 0%, transparent 45%, #000 47%, #000 53%, transparent 55%),
+    /* Top-right Phillips screw */
+    radial-gradient(circle at 100% 0%, 
+      #0a0a0a 0px,
+      #222 2px,
+      #444 4px,
+      #666 6px,
+      transparent 7px),
+    linear-gradient(90deg at 100% 0%, transparent 45%, #000 47%, #000 53%, transparent 55%),
+    linear-gradient(180deg at 100% 0%, transparent 45%, #000 47%, #000 53%, transparent 55%),
+    /* Bottom-left Phillips screw */
+    radial-gradient(circle at 0% 100%, 
+      #0a0a0a 0px,
+      #222 2px,
+      #444 4px,
+      #666 6px,
+      transparent 7px),
+    linear-gradient(90deg at 0% 100%, transparent 45%, #000 47%, #000 53%, transparent 55%),
+    linear-gradient(180deg at 0% 100%, transparent 45%, #000 47%, #000 53%, transparent 55%),
+    /* Bottom-right Phillips screw */
+    radial-gradient(circle at 100% 100%, 
+      #0a0a0a 0px,
+      #222 2px,
+      #444 4px,
+      #666 6px,
+      transparent 7px),
+    linear-gradient(90deg at 100% 100%, transparent 45%, #000 47%, #000 53%, transparent 55%),
+    linear-gradient(180deg at 100% 100%, transparent 45%, #000 47%, #000 53%, transparent 55%) !important;
+  opacity: 0.85 !important;
+}
+
+/* FIX 2: Visible rust patches (random brown spots) */
+.srd-module::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    /* Rust patch top-left */
+    radial-gradient(ellipse at 12% 15%, 
+      rgba(139,69,19,0.25) 0%, 
+      rgba(139,69,19,0.15) 20%, 
+      transparent 40%),
+    /* Rust patch top-right */
+    radial-gradient(ellipse at 88% 22%, 
+      rgba(101,67,33,0.2) 0%, 
+      rgba(101,67,33,0.1) 25%, 
+      transparent 45%),
+    /* Rust patch bottom-left */
+    radial-gradient(ellipse at 18% 85%, 
+      rgba(139,69,19,0.3) 0%, 
+      rgba(139,69,19,0.12) 18%, 
+      transparent 35%),
+    /* Rust streak middle-right */
+    radial-gradient(ellipse at 92% 58%, 
+      rgba(101,67,33,0.18) 0%, 
+      rgba(101,67,33,0.08) 30%, 
+      transparent 50%),
+    /* Scattered small rust spots */
+    radial-gradient(circle at 45% 70%, rgba(139,69,19,0.15) 0%, transparent 8%),
+    radial-gradient(circle at 65% 35%, rgba(101,67,33,0.12) 0%, transparent 6%),
+    radial-gradient(circle at 30% 50%, rgba(139,69,19,0.1) 0%, transparent 5%);
+  opacity: 0.7;
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+
+/* FIX 3: Stronger backlit button glow (12px → 24px spread) */
+.srd-btn {
+  box-shadow:
+    /* Inset button recess */
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    inset 0 -1px 2px rgba(255,255,255,0.1),
+    /* Outer button shadow */
+    0 4px 8px rgba(0,0,0,0.9),
+    /* Backlight glow - MUCH STRONGER */
+    0 0 24px rgba(255,215,0,0.4),
+    0 0 48px rgba(255,215,0,0.2) !important;
+}
+
+.srd-btn:hover {
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    inset 0 -1px 2px rgba(255,255,255,0.15),
+    0 4px 8px rgba(0,0,0,0.9),
+    /* Hover glow - INTENSE */
+    0 0 32px rgba(255,215,0,0.6),
+    0 0 64px rgba(255,215,0,0.4),
+    0 0 96px rgba(255,215,0,0.2) !important;
+}
+
+/* Purple button glow variant */
+.srd-btn--cricket {
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    inset 0 -1px 2px rgba(255,255,255,0.1),
+    0 4px 8px rgba(0,0,0,0.9),
+    0 0 24px rgba(124,45,176,0.4),
+    0 0 48px rgba(124,45,176,0.2) !important;
+}
+
+.srd-btn--cricket:hover {
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    inset 0 -1px 2px rgba(255,255,255,0.15),
+    0 4px 8px rgba(0,0,0,0.9),
+    0 0 32px rgba(124,45,176,0.6),
+    0 0 64px rgba(124,45,176,0.4),
+    0 0 96px rgba(124,45,176,0.2) !important;
+}
+
+/* Green button glow variant */
+.srd-btn--crs {
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    inset 0 -1px 2px rgba(255,255,255,0.1),
+    0 4px 8px rgba(0,0,0,0.9),
+    0 0 24px rgba(26,107,58,0.5),
+    0 0 48px rgba(26,107,58,0.3) !important;
+}
+
+.srd-btn--crs:hover {
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    inset 0 -1px 2px rgba(255,255,255,0.15),
+    0 4px 8px rgba(0,0,0,0.9),
+    0 0 32px rgba(26,107,58,0.7),
+    0 0 64px rgba(26,107,58,0.5),
+    0 0 96px rgba(26,107,58,0.3) !important;
+}
+
+/* FIX 4: Ensure street sign uses Impact/Arial Black Condensed */
+.crs-street-sign-line1,
+.crs-street-sign-line2 {
+  font-family: Impact, 'Arial Black', 'Arial Narrow', 'Helvetica Condensed', sans-serif !important;
+  font-weight: 900 !important;
+  font-stretch: condensed !important;
+}
+
+/* Ensure content stays above rust layer */
+.srd-module > * {
+  position: relative;
+  z-index: 2;
+}
+
