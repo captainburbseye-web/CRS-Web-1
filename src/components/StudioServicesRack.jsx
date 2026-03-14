@@ -256,12 +256,12 @@ export default function StudioServicesRack() {
     <main className="srd-page">
       <TopRail />
       
-      <RackChassis>
+      <div className="srd-rack-chassis">
         <IdentityPlate />
         <MasterFaceplate />
         <StatusPlacard />
         <SignalChainModule />
-      </RackChassis>
+      </div>
       
       {/* Technical Manual SEO Footer */}
       <section className="tech-manual-footer">
