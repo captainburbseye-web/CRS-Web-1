@@ -7,7 +7,7 @@ const signage = new Hono()
 
 signage.get('/', (c) => {
   // Hardcoded asset paths from latest build
-  const jsAsset = '/static/assets/rack-entry-BVqDyIRK.js'
+  const jsAsset = '/static/assets/rack-entry-CMbk_jFy.js'
   const cssAsset = '/static/assets/rack-entry-D8EnfBQ5.css'
   
   // Server-render the rack for instant display

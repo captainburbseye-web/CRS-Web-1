@@ -3553,3 +3553,220 @@ main,
   }
 }
 
+
+/* ============================================
+   DESTINATION SOUND SYSTEM SIGNAL CHAIN
+   Inspired by UK sound system culture
+   ============================================ */
+
+/* SIGNAL STRENGTH SPEAKERS (Traffic Light System) */
+.srd-signal-speakers {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.srd-speaker-cone {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  position: relative;
+  background: #2a2a2a;
+  border: 3px solid #1a1a1a;
+  box-shadow: 
+    inset 0 2px 8px rgba(0,0,0,0.9),
+    0 2px 4px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+/* Halftone dot pattern (authentic screen-print aesthetic) */
+.srd-speaker-cone::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  background-image: radial-gradient(circle, currentColor 35%, transparent 35%);
+  background-size: 6px 6px;
+  opacity: 1;
+}
+
+/* Signal strength colors */
+.srd-speaker-cone--green {
+  color: #a3d977; /* Lime green - Low signal */
+}
+
+.srd-speaker-cone--yellow {
+  color: #ffd500; /* Bright yellow - Mid signal */
+}
+
+.srd-speaker-cone--orange {
+  color: #ff6347; /* Coral orange - High signal */
+}
+
+/* Glow effect for active signal */
+.srd-speaker-cone--active::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: currentColor;
+  filter: blur(12px);
+  opacity: 0.4;
+  z-index: -1;
+  animation: signal-pulse 2s ease-in-out infinite;
+}
+
+@keyframes signal-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+/* DESTINATION SOUND "D" LOGO BADGE */
+.srd-destination-badge {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff5522 0%, #ff3300 100%);
+  border: 3px solid #1a1a1a;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 
+    inset 0 -2px 0 rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    0 4px 8px rgba(0,0,0,0.5);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 32px;
+  font-weight: 900;
+  color: #000;
+  text-shadow: 
+    0 1px 0 rgba(255,255,255,0.3),
+    0 -1px 0 rgba(0,0,0,0.5);
+}
+
+/* Mesh texture overlay */
+.srd-destination-badge::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 1px,
+      rgba(0,0,0,0.05) 1px,
+      rgba(0,0,0,0.05) 2px
+    );
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* SUB-BASS MODULE INDICATOR */
+.srd-sub-indicator {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 40px;
+  padding: 0 0.5rem;
+  background: rgba(0,0,0,0.5);
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.srd-sub-bar {
+  width: 8px;
+  background: linear-gradient(to top, #ff5522 0%, #ff3300 100%);
+  border-radius: 2px 2px 0 0;
+  transition: height 0.15s ease;
+  box-shadow: 0 0 8px rgba(255,85,34,0.6);
+}
+
+.srd-sub-bar:nth-child(1) { height: 20%; animation: sub-bounce 0.6s ease-in-out infinite; }
+.srd-sub-bar:nth-child(2) { height: 45%; animation: sub-bounce 0.6s 0.1s ease-in-out infinite; }
+.srd-sub-bar:nth-child(3) { height: 70%; animation: sub-bounce 0.6s 0.2s ease-in-out infinite; }
+.srd-sub-bar:nth-child(4) { height: 90%; animation: sub-bounce 0.6s 0.3s ease-in-out infinite; }
+.srd-sub-bar:nth-child(5) { height: 60%; animation: sub-bounce 0.6s 0.4s ease-in-out infinite; }
+.srd-sub-bar:nth-child(6) { height: 35%; animation: sub-bounce 0.6s 0.5s ease-in-out infinite; }
+
+@keyframes sub-bounce {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.85); }
+}
+
+/* HORN TWEETER ACCENT */
+.srd-horn-accent {
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 24px solid #ffd500;
+  position: relative;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.srd-horn-accent::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: -12px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 18px solid #1a1a1a;
+}
+
+/* STACKED MODULE VISUAL SEPARATOR */
+.srd-module--sound-system {
+  position: relative;
+  border-top: 2px solid rgba(255,85,34,0.3);
+  border-bottom: 2px solid rgba(0,0,0,0.5);
+  background: 
+    linear-gradient(to bottom, 
+      rgba(42,42,42,0.95) 0%, 
+      rgba(26,26,26,0.95) 100%
+    );
+}
+
+.srd-module--sound-system::before {
+  content: "SIGNAL CHAIN";
+  position: absolute;
+  top: -10px;
+  left: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #ff5522;
+  background: #000;
+  padding: 2px 8px;
+  border-radius: 2px;
+  border: 1px solid #ff5522;
+  text-transform: uppercase;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 640px) {
+  .srd-speaker-cone {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .srd-speaker-cone::before {
+    background-size: 5px 5px;
+  }
+  
+  .srd-destination-badge {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+  
+  .srd-sub-indicator {
+    height: 32px;
+  }
+}
+

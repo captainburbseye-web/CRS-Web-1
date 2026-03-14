@@ -139,6 +139,49 @@ const StatusPlacard = () => (
   </section>
 );
 
+// Sound System Signal Chain — Destination Sound Inspired
+const SignalChainModule = () => (
+  <section className="srd-module srd-module--sound-system" style={{ marginTop: '2rem', padding: '2rem 1.5rem' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}>
+      
+      {/* Signal Strength Speakers (Traffic Light System) */}
+      <div className="srd-signal-speakers">
+        <div className="srd-speaker-cone srd-speaker-cone--green" title="Low Signal"></div>
+        <div className="srd-speaker-cone srd-speaker-cone--yellow srd-speaker-cone--active" title="Mid Signal"></div>
+        <div className="srd-speaker-cone srd-speaker-cone--orange" title="High Signal"></div>
+      </div>
+
+      {/* Destination "D" Badge */}
+      <div className="srd-destination-badge" title="Destination Sound System">
+        D
+      </div>
+
+      {/* Sub-Bass Indicator */}
+      <div className="srd-sub-indicator" title="Sub-Bass Activity">
+        <div className="srd-sub-bar"></div>
+        <div className="srd-sub-bar"></div>
+        <div className="srd-sub-bar"></div>
+        <div className="srd-sub-bar"></div>
+        <div className="srd-sub-bar"></div>
+        <div className="srd-sub-bar"></div>
+      </div>
+
+      {/* Info Label */}
+      <div style={{
+        fontFamily: 'JetBrains Mono, monospace',
+        fontSize: '10px',
+        fontWeight: 700,
+        letterSpacing: '0.08em',
+        color: '#ff5522',
+        textTransform: 'uppercase',
+        textAlign: 'center'
+      }}>
+        Sound System Culture • UK Tradition
+      </div>
+    </div>
+  </section>
+);
+
 // Entry Action CTA — Emergency Start Button
 const EntryActionCTA = () => (
   <section className="srd-entry-action">
@@ -327,6 +370,7 @@ export default function StudioServicesRack() {
         
         <MasterFaceplate />
         <StatusPlacard />
+        <SignalChainModule />
         <EntryActionCTA />
         
         <div id="modules">
