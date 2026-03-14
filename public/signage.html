@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1920, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>CRS Signage — Cowley Road Studios</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,11 +28,12 @@
     overflow: hidden;
     pointer-events: none; 
     color: #fff;
-    width: 1920px;
-    height: 1080px;
+    width: 100vw;
+    height: 100vh;
   }
 
   #scroll-container {
+    width: 100vw;
     height: 100vh;
     overflow-y: auto;
     scroll-behavior: smooth;
@@ -52,14 +53,14 @@
     background: 
       radial-gradient(circle at 50% 0%, rgba(26,28,22,0.4) 0%, transparent 50%),
       linear-gradient(180deg, #040504 0%, #000000 100%);
-    padding: 20px;
+    padding: 1.5vh 2vw;
   }
 
   .srd-module {
     background: linear-gradient(135deg, var(--crs-gunmetal) 0%, rgba(26,28,22,0.9) 100%);
     border: 1px solid rgba(255,255,255,0.08);
     border-bottom: 3px solid #000;
-    padding: 32px 40px;
+    padding: 3vh 3vw;
     position: relative;
     border-radius: 3px;
     box-shadow: 
@@ -80,7 +81,7 @@
     background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 0px, rgba(0,0,0,0.01) 2px, transparent 2px, transparent 4px);
     border: 5px solid #3d2817;
     border-radius: 10px;
-    padding: 18px 36px;
+    padding: 1.5vh 3vw;
     color: #3d2817;
     font-family: Impact, 'Arial Black', sans-serif;
     line-height: 0.9; 
@@ -89,8 +90,8 @@
       inset 0 0 15px rgba(61, 40, 23, 0.2),
       0 6px 20px rgba(0,0,0,0.7);
     text-shadow: 0.5px 0.5px 0px rgba(255, 255, 255, 0.35);
-    margin-bottom: 24px;
-    min-width: 400px;
+    margin-bottom: 2vh;
+    min-width: clamp(280px, 25vw, 400px);
     animation: badge-glow 4s ease-in-out infinite;
   }
   
@@ -101,7 +102,7 @@
   
   .crs-street-sign-line1,
   .crs-street-sign-line2 { 
-    font-size: 42px; 
+    font-size: clamp(28px, 3.5vw, 42px); 
     letter-spacing: 0.02em; 
     line-height: 1;
     font-weight: 900;
@@ -113,8 +114,8 @@
 
   h2 { 
     color: #fff; 
-    margin: 0 0 8px 0; 
-    font-size: 2.5rem; 
+    margin: 0 0 1vh 0; 
+    font-size: clamp(1.8rem, 3vw, 2.5rem); 
     letter-spacing: 0.12em; 
     text-transform: uppercase;
     font-weight: 900;
@@ -123,16 +124,16 @@
   
   .srd-module-subtitle { 
     color: var(--crs-mustard); 
-    margin: 0 0 24px 0; 
-    font-size: 1.1rem;
+    margin: 0 0 2vh 0; 
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
     letter-spacing: 0.05em;
     font-weight: 400;
   }
 
   .srd-signal-group { 
     display: flex; 
-    gap: 20px; 
-    margin-top: 16px;
+    gap: 1.5vw; 
+    margin-top: 1.5vh;
     animation: signals-pulse 3s ease-in-out infinite;
   }
   
@@ -142,8 +143,8 @@
   }
   
   .srd-signal-bulb { 
-    width: 36px; 
-    height: 36px; 
+    width: clamp(28px, 2.5vw, 36px); 
+    height: clamp(28px, 2.5vw, 36px); 
     border-radius: 50%; 
     border: 3px solid #111; 
     box-shadow: 0 4px 12px rgba(0,0,0,0.9);
@@ -187,13 +188,13 @@
 
   .srd-btn-group { 
     display: flex; 
-    gap: 24px; 
-    margin-top: 20px;
+    gap: 2vw; 
+    margin-top: 2vh;
   }
   
   .srd-btn {
     flex: 1; 
-    padding: 28px 32px; 
+    padding: 2.5vh 2vw; 
     border: 2px solid rgba(0,0,0,0.8); 
     border-radius: 4px;
     display: flex; 
@@ -216,9 +217,9 @@
   }
   
   .btn-title { 
-    font-size: 1.8rem; 
+    font-size: clamp(1.2rem, 2vw, 1.8rem); 
     font-weight: 700; 
-    margin-bottom: 12px; 
+    margin-bottom: 1vh; 
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
@@ -226,22 +227,22 @@
   .btn-price { 
     color: var(--crs-mustard); 
     font-weight: 700; 
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 1.5vw, 1.4rem);
     text-shadow: 0 2px 4px rgba(0,0,0,0.6);
   }
   
   .btn-tiers { 
-    font-size: 1rem; 
-    margin-top: 8px; 
+    font-size: clamp(0.8rem, 1.2vw, 1rem); 
+    margin-top: 0.8vh; 
     opacity: 0.9;
     letter-spacing: 0.02em;
   }
 
   .silk-screen {
     position: absolute; 
-    bottom: 20px; 
-    right: 28px;
-    font-size: 48px; 
+    bottom: 2vh; 
+    right: 2vw;
+    font-size: clamp(32px, 3.5vw, 48px); 
     font-weight: 900; 
     letter-spacing: 0.2em;
     color: rgba(255,255,255,0.04);
@@ -250,8 +251,8 @@
   }
   
   .tagline {
-    margin-top: 24px;
-    font-size: 1.2rem;
+    margin-top: 2vh;
+    font-size: clamp(0.9rem, 1.3vw, 1.2rem);
     font-weight: 700;
     letter-spacing: 0.15em;
     text-transform: uppercase;
@@ -264,7 +265,7 @@
   <div id="scroll-container">
     <div class="srd-chassis">
       
-      <section class="srd-module" style="background: linear-gradient(135deg, #0a0b09 0%, #000000 100%); text-align: center; padding: 48px 40px;">
+      <section class="srd-module" style="background: linear-gradient(135deg, #0a0b09 0%, #000000 100%); text-align: center; padding: 4vh 3vw;">
         <div class="crs-master-plate">
           <div class="crs-street-sign-line1">COWLEY ROAD</div>
           <div class="crs-street-sign-line2">STUDIOS</div>
@@ -275,7 +276,7 @@
             <div class="srd-signal-bulb srd-signal-bulb--gold"></div>
             <div class="srd-signal-bulb srd-signal-bulb--red"></div>
           </div>
-          <h2 style="margin-top: 32px; color: var(--crs-mustard); font-size: 2.2rem;">DESTA-GEN3 // GUARDIANS OF THE SIGNAL</h2>
+          <h2 style="margin-top: 3vh; color: var(--crs-mustard); font-size: clamp(1.5rem, 2.5vw, 2.2rem);">DESTA-GEN3 // GUARDIANS OF THE SIGNAL</h2>
           <div class="tagline">Grassroots Infrastructure for Oxford Music</div>
         </div>
       </section>
