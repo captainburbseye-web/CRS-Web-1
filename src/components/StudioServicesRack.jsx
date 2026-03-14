@@ -151,9 +151,9 @@ const SignalChainModule = () => (
         <div className="srd-speaker-cone srd-speaker-cone--orange" title="High Signal"></div>
       </div>
 
-      {/* Destination "D" Badge */}
-      <div className="srd-destination-badge" title="Destination Sound System">
-        D
+      {/* CRS Badge */}
+      <div className="srd-destination-badge" title="CRS Sound System">
+        CRS
       </div>
 
       {/* Sub-Bass Indicator */}
@@ -449,7 +449,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="ODRO Electronics" subtitle="AV & Instrument Servicing • Oxford Venue Tech Support" theme="dark" meters={false}>
+        <RackModule title="ODRO Engineering" subtitle="AV & Instrument Servicing • Oxford Venue Tech Support" theme="dark" meters={false}>
           <div className="srd-micro-label">DESTA-GEN3 SERVICE LOOP</div>
           <ServiceButtonGroup>
             <HardwareButton 

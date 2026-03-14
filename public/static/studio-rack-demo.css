@@ -3619,9 +3619,9 @@ main,
   50% { opacity: 0.6; transform: scale(1.05); }
 }
 
-/* DESTINATION SOUND "D" LOGO BADGE */
+/* DESTINATION SOUND "CRS" LOGO BADGE */
 .srd-destination-badge {
-  width: 60px;
+  width: 80px; /* Increased from 60px to fit "CRS" */
   height: 60px;
   background: linear-gradient(135deg, #ff5522 0%, #ff3300 100%);
   border: 3px solid #1a1a1a;
@@ -3635,7 +3635,7 @@ main,
     inset 0 1px 0 rgba(255,255,255,0.2),
     0 4px 8px rgba(0,0,0,0.5);
   font-family: 'JetBrains Mono', monospace;
-  font-size: 32px;
+  font-size: 20px; /* Reduced from 32px to fit "CRS" */
   font-weight: 900;
   color: #000;
   text-shadow: 
@@ -3756,9 +3756,9 @@ main,
   }
   
   .srd-destination-badge {
-    width: 48px;
+    width: 64px; /* Increased from 48px for "CRS" */
     height: 48px;
-    font-size: 24px;
+    font-size: 16px; /* Reduced from 24px for "CRS" */
   }
   
   .srd-sub-indicator {
