@@ -88,12 +88,9 @@ const SignalStripe = () => (
 
 const CRSStreetSign = () => (
   <a href="/" className="crs-master-plate-link" aria-label="Return to Cowley Road Studios Home">
-    <div className="crs-badge" aria-label="Cowley Road Studios Badge">
-      <div className="crs-badge-text">CRS</div>
-      <div className="crs-badge-bars">
-        <div className="crs-badge-bar crs-badge-bar--green"></div>
-        <div className="crs-badge-bar crs-badge-bar--red"></div>
-      </div>
+    <div className="crs-master-plate">
+      <div className="crs-street-sign-line1">COWLEY ROAD</div>
+      <div className="crs-street-sign-line2">STUDIOS</div>
     </div>
   </a>
 );
@@ -122,7 +119,7 @@ const StatusPlacard = () => (
     <div className="srd-lcd-screen">
       <div className="srd-lcd-content">
         <div className="srd-lcd-sysinfo">
-          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> CRS CREATIVE INFRASTRUCTURE ONLINE // MODULES: RECORDING • REHEARSAL • WORKSPACE • CAFÉ • VENUE TECH // ALL SYSTEMS OPERATIONAL
+          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> DESTA-GEN3 ONLINE // GUARDIANS OF THE SIGNAL // PRESERVING OXFORD'S SOUND SYSTEM HERITAGE
         </div>
         <div className="srd-lcd-header">SELECT MODULE // CREATIVE OPERATING SYSTEM</div>
         <div className="srd-lcd-row">
@@ -133,7 +130,7 @@ const StatusPlacard = () => (
           <span className="srd-lcd-bullet-cricket">●</span>
           <span>CRICKET = RIGHT CHANNEL</span>
         </div>
-        <div className="srd-lcd-footer">DEEPEND PROTOCOL ACTIVE // NO CHAOS MODE</div>
+        <div className="srd-lcd-footer">118 COWLEY ROAD, OXFORD OX4 1JE • GUARDIANS OF THE SIGNAL • DESTA-GEN3 PRESERVATION // NO CHAOS MODE</div>
       </div>
     </div>
   </section>
@@ -449,7 +446,7 @@ export default function StudioServicesRack() {
           </ServiceButtonGroup>
         </RackModule>
 
-        <RackModule title="ODRO Engineering" subtitle="AV & Instrument Servicing • Oxford Venue Tech Support" theme="dark" meters={false}>
+        <RackModule title="ODRO Engineering" subtitle="AV SERVICING & REPAIRS • PROTECTING THE SIGNAL CHAIN" theme="dark" meters={false}>
           <div className="srd-micro-label">DESTA-GEN3 SERVICE LOOP</div>
           <ServiceButtonGroup>
             <HardwareButton 

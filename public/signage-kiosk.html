@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRS Signage // TRUE KIOSK MODE</title>
+<style>
+  :root {
+    --crs-mustard: #ffd700;
+    --crs-gunmetal: #1a1c16;
+  }
+  
+  html, body {
+    margin: 0; padding: 0; width: 100vw; height: 100vh;
+    background: #000; overflow: hidden;
+    font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+    cursor: none; /* Hide cursor for TV display */
+    color: #fff;
+  }
+
+  /* Full Bleed Cinematic Backgrounds */
+  .bg-layer {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    filter: brightness(0.65) contrast(1.2); /* Moody hardware look */
+    opacity: 0; transition: opacity 2s ease-in-out; /* Smooth crossfade */
+    z-index: 1;
+  }
+  .bg-layer.active { opacity: 1; }
+
+  /* Hardware CRT Scanlines */
+  .scanlines {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.4) 50%);
+    background-size: 100% 6px;
+    z-index: 10; pointer-events: none;
+  }
+
+  /* Inner Screen Shadow */
+  .vignette {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    box-shadow: inset 0 0 150px rgba(0,0,0,0.9);
+    z-index: 11; pointer-events: none;
+  }
+
+  /* Wooden Master Badge */
+  .master-badge {
+    position: absolute; top: 60px; left: 60px; z-index: 20;
+    background-color: #f2dcb3; 
+    background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 4px);
+    border: 3px solid #3b2314; 
+    border-radius: 6px;
+    padding: 15px 25px;
+    color: #3b2314; 
+    font-family: Impact, sans-serif;
+    line-height: 1; text-align: center;
+    box-shadow: inset 0 0 10px rgba(59, 35, 20, 0.2), 0 4px 6px rgba(0,0,0,0.8);
+    text-shadow: 0.5px 0.5px 0px rgba(255, 255, 255, 0.4);
+  }
+  
+  .badge-line1, .badge-line2 { 
+    font-size: 32px; letter-spacing: -1px; margin: 0;
+  }
+
+  /* Data Overlay UI */
+  .overlay-container {
+    position: absolute; bottom: 60px; left: 60px; z-index: 20;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .status-box {
+    background: rgba(26, 28, 22, 0.85);
+    border: 2px solid #333;
+    border-left: 6px solid var(--crs-mustard);
+    padding: 20px 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    display: inline-block;
+  }
+
+  h1 { margin: 0; color: #fff; font-size: 3.5rem; letter-spacing: 0.05em; text-transform: uppercase; }
+  .subtitle { margin: 10px 0 0 0; color: var(--crs-mustard); font-size: 1.8rem; font-weight: bold; }
+  
+  /* Blinking LCD Cursor */
+  .cursor {
+    display: inline-block; width: 20px; height: 30px; background: var(--crs-mustard);
+    vertical-align: middle; margin-left: 10px; animation: blink 1s infinite;
+  }
+
+  @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+  /* Top Right Node Status */
+  .node-status {
+    position: absolute; top: 50px; right: 50px; z-index: 20;
+    color: #fff; font-size: 1.5rem; text-align: right;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+  }
+  .node-status span { color: var(--crs-mustard); }
+
+</style>
+</head>
+<body>
+
+  <div id="bg-1" class="bg-layer active" style="background-image: url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2070');"></div>
+  <div id="bg-2" class="bg-layer" style="background-image: url('https://images.unsplash.com/photo-1621619856624-42fd193a0661?q=80&w=2058');"></div>
+
+  <div class="scanlines"></div>
+  <div class="vignette"></div>
+
+  <!-- Wooden Master Badge -->
+  <div class="master-badge">
+    <div class="badge-line1">COWLEY ROAD</div>
+    <div class="badge-line2">STUDIOS</div>
+  </div>
+
+  <div class="node-status">
+    <div>NODE: <span>118 COWLEY RD</span></div>
+    <div>SYS: <span>DESTA-GEN3 ONLINE</span></div>
+  </div>
+
+  <div class="overlay-container">
+    <div class="status-box">
+      <h1 id="dynamic-title">GUARDIANS OF THE SIGNAL<span class="cursor"></span></h1>
+      <p id="dynamic-subtitle" class="subtitle">PRESERVING OXFORD'S SOUND SYSTEM HERITAGE</p>
+    </div>
+  </div>
+
+  <script>
+    const images = [
+      "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2070",
+      "https://images.unsplash.com/photo-1621619856624-42fd193a0661?q=80&w=2058",
+      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=2070",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070"
+    ];
+
+    const displayData = [
+      { title: "GUARDIANS OF THE SIGNAL", sub: "PRESERVING OXFORD'S SOUND SYSTEM HERITAGE" },
+      { title: "DESTA-GEN3 ONLINE", sub: "PROTECTING THE SIGNAL CHAIN" },
+      { title: "COWLEY RECORDING", sub: "FROM £35/HR • MULTI-TRACK SESSIONS" },
+      { title: "REHEARSAL SPACES", sub: "FROM £40/2HR • CRICKET & COWLEY RD" },
+      { title: "CONTROL ROOM HIRE", sub: "FROM £20/HR • HYBRID STUDIO ACCESS" },
+      { title: "WORKSHOP CAFÉ", sub: "VENUE HIRE £150/5HR • OPENING APRIL 2026" }
+    ];
+
+    let currentImgIndex = 0;
+    let currentTextIndex = 0;
+    const bg1 = document.getElementById('bg-1');
+    const bg2 = document.getElementById('bg-2');
+    const titleEl = document.getElementById('dynamic-title');
+    const subtitleEl = document.getElementById('dynamic-subtitle');
+
+    bg1.style.backgroundImage = `url('${images[0]}')`;
+
+    function cycleDisplay() {
+      // Cycle Text
+      currentTextIndex = (currentTextIndex + 1) % displayData.length;
+      titleEl.innerHTML = displayData[currentTextIndex].title + '<span class="cursor"></span>';
+      subtitleEl.innerText = displayData[currentTextIndex].sub;
+
+      // Crossfade Images
+      currentImgIndex = (currentImgIndex + 1) % images.length;
+      
+      if (bg1.classList.contains('active')) {
+        bg2.style.backgroundImage = `url('${images[currentImgIndex]}')`;
+        bg2.classList.add('active');
+        bg1.classList.remove('active');
+      } else {
+        bg1.style.backgroundImage = `url('${images[currentImgIndex]}')`;
+        bg1.classList.add('active');
+        bg2.classList.remove('active');
+      }
+    }
+
+    // Change display every 8 seconds
+    setInterval(cycleDisplay, 8000);
+  </script>
+</body>
+</html>
