@@ -2504,16 +2504,17 @@ main,
 
 .crs-master-plate {
   display: inline-block;
-  background-color: #f2dcb3; /* Light birch wood */
-  background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 4px); /* Grain */
-  border: 3px solid #3b2314; /* Burned edge */
+  /* Street sign colors: white top half, yellow bottom half */
+  background: linear-gradient(to bottom, white 0%, white 50%, #ffd700 50%, #ffd700 100%);
+  border: 3px solid #000; /* Black border like road signs */
   border-radius: 6px;
   padding: 10px 15px;
-  color: #3b2314; /* Burned text */
-  font-family: Impact, sans-serif;
+  color: #000; /* Black text */
+  font-family: 'Arial Black', Arial, sans-serif; /* Road sign font */
+  font-weight: 900;
   line-height: 1; text-align: center;
-  box-shadow: inset 0 0 10px rgba(59, 35, 20, 0.2), 0 4px 6px rgba(0,0,0,0.8);
-  text-shadow: 0.5px 0.5px 0px rgba(255, 255, 255, 0.4); /* Engraved depth illusion */
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.1), 0 4px 6px rgba(0,0,0,0.8);
+  text-shadow: none; /* Remove wood texture effects */
   margin-bottom: 20px;
 }
 
