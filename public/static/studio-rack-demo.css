@@ -2498,60 +2498,45 @@ main,
 /* ========================================================= */
 
 /* ========================================
-   CRITICAL ASSET OVERRIDE: UK STREET SIGN BADGE
+   LASER ENGRAVED WOODEN MASTER BADGE
+   Matches physical wooden tokens
    ======================================== */
 
 .crs-master-plate {
-  /* Classic UK Street Sign Rectangle */
-  position: relative;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  
-  /* Wooden Cut-Out Street Sign */
-  background: #eadecd; /* Off-white / Pale Wood Tone */
-  border: 2px solid #1a1a1a; /* Inset Street Sign Border */
-  border-radius: 4px;
-  padding: 8px 16px;
-  
-  /* Physical Hardware Mounting */
-  box-shadow: 
-    0 2px 4px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.3);
-  
-  flex-shrink: 0;
+  display: inline-block;
+  background-color: #f2dcb3; /* Light birch wood */
+  background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 4px);
+  border: 3px solid #3b2314; /* Burned wood edge */
+  border-radius: 6px;
+  padding: 10px 15px;
+  color: #3b2314; /* Burned text color */
+  font-family: Impact, sans-serif;
+  line-height: 1; 
+  text-align: center;
+  box-shadow: inset 0 0 10px rgba(59, 35, 20, 0.2), 0 4px 6px rgba(0,0,0,0.8);
+  text-shadow: 0.5px 0.5px 0px rgba(255, 255, 255, 0.4); /* Engraved depth illusion */
+  margin-bottom: 20px;
 }
 
 .crs-street-sign-line1,
 .crs-street-sign-line2 {
-  /* Road Sign Typography: Heavy Condensed Sans */
-  font-family: 'Impact', 'Arial Black', 'Helvetica', sans-serif;
-  font-weight: 900;
+  font-size: 32px; 
+  letter-spacing: -1px;
+  color: #3b2314;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
-  color: #1a1a1a; /* Charred Black */
+  font-family: Impact, sans-serif;
+  font-weight: 900;
   line-height: 1;
-  text-align: left;
-}
-
-.crs-street-sign-line1 {
-  font-size: 14px;
-  margin-bottom: 2px;
-}
-
-.crs-street-sign-line2 {
-  font-size: 12px;
 }
 
 @media (min-width: 640px) {
-  .crs-street-sign-line1 { font-size: 18px; }
-  .crs-street-sign-line2 { font-size: 16px; }
+  .crs-street-sign-line1 { font-size: 32px; }
+  .crs-street-sign-line2 { font-size: 32px; }
 }
 
 @media (min-width: 1024px) {
-  .crs-street-sign-line1 { font-size: 22px; }
-  .crs-street-sign-line2 { font-size: 18px; }
+  .crs-street-sign-line1 { font-size: 32px; }
+  .crs-street-sign-line2 { font-size: 32px; }
 }
 
 /* Signal LEDs mounted below Street Sign */

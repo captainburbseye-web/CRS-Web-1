@@ -1,164 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=1920, initial-scale=1.0" />
-  <title>CRS Signage | 55" Display</title>
-  <meta name="robots" content="noindex, nofollow" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRS Signage // DESTA-GEN3</title>
+<style>
+  :root {
+    --crs-black: #000000;
+    --crs-gunmetal: #1a1c16;
+    --crs-nettle: #2d3e2f;
+    --crs-cricket: #3a2d4a;
+    --crs-mustard: #ffd700;
+    --crs-red: #dc2626;
+    --crs-green: #16a34a;
+    --crs-gold: #fbbf24;
+  }
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  html, body {
+    margin: 0; padding: 0; background: var(--crs-black);
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    pointer-events: none; 
+    color: #fff;
+  }
+
+  .srd-chassis {
+    width: 100vw;
+    display: flex; flex-direction: column; gap: 4px;
+    background: linear-gradient(180deg, #040504 0%, #080907 100%);
+    padding: 10px; box-sizing: border-box;
+  }
+
+  .srd-module {
+    background: var(--crs-gunmetal);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 2px solid #000;
+    padding: 24px; position: relative;
+    border-radius: 2px;
+  }
+
+  h2 { color: #fff; margin: 0 0 5px 0; font-size: 2rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .srd-module-subtitle { color: var(--crs-mustard); margin: 0 0 20px 0; font-size: 1rem; }
+
+  /* LASER ENGRAVED WOODEN MASTER PLATE */
+  .crs-master-plate {
+    display: inline-block;
+    background-color: #f2dcb3; 
+    background-image: repeating-linear-gradient(45deg, rgba(0,0,0,0.02) 0px, rgba(0,0,0,0.02) 2px, transparent 2px, transparent 4px);
+    border: 3px solid #3b2314; 
+    border-radius: 6px;
+    padding: 10px 15px;
+    color: #3b2314; 
+    font-family: Impact, sans-serif;
+    line-height: 1; 
+    text-align: center;
+    box-shadow: inset 0 0 10px rgba(59, 35, 20, 0.2), 0 4px 6px rgba(0,0,0,0.8);
+    text-shadow: 0.5px 0.5px 0px rgba(255, 255, 255, 0.4); 
+    margin-bottom: 20px;
+  }
+  .crs-street-sign-line1 { font-size: 32px; letter-spacing: -1px; }
+  .crs-street-sign-line2 { font-size: 32px; letter-spacing: -1px; }
+
+  .srd-signal-group { display: flex; gap: 15px; margin-top: 10px; }
+  .srd-signal-bulb { width: 30px; height: 30px; border-radius: 50%; border: 3px solid #111; box-shadow: 0 4px 10px rgba(0,0,0,0.9); }
+  .srd-signal-bulb--green { background: radial-gradient(circle at 30% 30%, #7cffae, var(--crs-green)); box-shadow: 0 0 15px rgba(22,163,74,0.6); }
+  .srd-signal-bulb--gold { background: radial-gradient(circle at 30% 30%, #ffe866, var(--crs-gold)); box-shadow: 0 0 15px rgba(251,191,36,0.6); }
+  .srd-signal-bulb--red { background: radial-gradient(circle at 30% 30%, #ff8f8f, var(--crs-red)); box-shadow: 0 0 15px rgba(220,38,38,0.6); }
+
+  .srd-btn-group { display: flex; gap: 20px; }
+  .srd-btn {
+    flex: 1; padding: 20px; border: 2px solid #000; border-radius: 4px;
+    display: flex; flex-direction: column; justify-content: center;
+    box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), 0 5px 15px rgba(0,0,0,0.8);
+  }
+  .srd-btn--crs { background: var(--crs-nettle); }
+  .srd-btn--cricket { background: var(--crs-cricket); }
   
-  <!-- Rack CSS -->
-  <link href="/static/studio-rack-demo.css" rel="stylesheet" />
-  
-  <style>
-    /* SIGNAGE KIOSK MODE */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    html, body {
-      width: 1920px;
-      height: 1080px;
-      overflow: hidden;
-      background: #000;
-      cursor: none !important;
-    }
-    
-    /* Hide all interactive elements */
-    a, button, input, textarea, form {
-      pointer-events: none !important;
-      cursor: none !important;
-    }
-    
-    /* Allow home link only */
-    .crs-master-plate-link {
-      pointer-events: auto !important;
-    }
-    
-    /* Smooth scrolling container */
-    .srd-chassis {
-      scroll-behavior: smooth;
-      overflow-y: auto;
-      overflow-x: hidden;
-      height: 1080px;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    
-    .srd-chassis::-webkit-scrollbar {
-      display: none;
-    }
-    
-    /* Active module glow */
-    .srd-module {
-      transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
-    }
-    
-    .srd-module.signage-active {
-      opacity: 1;
-      transform: scale(1.01);
-      filter: brightness(1.08);
-      position: relative;
-      z-index: 10;
-    }
-    
-    /* Burn-in protection */
-    body {
-      animation: burn-in-drift 120s ease-in-out infinite;
-    }
-    
-    @keyframes burn-in-drift {
-      0%, 100% { transform: translate(0, 0); }
-      25% { transform: translate(2px, 1px); }
-      50% { transform: translate(-1px, -2px); }
-      75% { transform: translate(-2px, 1px); }
-    }
-  </style>
+  .btn-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 10px; text-transform: uppercase; }
+  .btn-price { color: var(--crs-mustard); font-weight: bold; font-size: 1.2rem; }
+  .btn-tiers { font-size: 0.9rem; margin-top: 5px; opacity: 0.8; }
+
+  .silk-screen {
+    position: absolute; bottom: 15px; right: 20px;
+    font-size: 36px; font-weight: 900; letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.05); text-shadow: 0 -1px 1px rgba(0,0,0,0.9);
+  }
+
+  #scroll-container {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+</style>
 </head>
 <body>
-  <div id="signage-root"></div>
-  
-  <script>
-    // Load the rack HTML via fetch
-    fetch('/')
-      .then(response => response.text())
-      .then(html => {
-        // Extract the rack content
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const rackContent = doc.querySelector('.srd-page');
-        
-        if (rackContent) {
-          document.getElementById('signage-root').appendChild(rackContent);
-          
-          // Start auto-cycle after content loads
-          setTimeout(initSignageCycle, 2000);
-        } else {
-          console.error('Rack content not found');
-        }
-      })
-      .catch(err => console.error('Failed to load rack:', err));
-    
-    function initSignageCycle() {
-      const modules = document.querySelectorAll('.srd-module');
-      const chassis = document.querySelector('.srd-chassis');
+  <div id="scroll-container">
+    <div class="srd-chassis">
       
-      if (!modules.length) {
-        console.error('No modules found for cycling');
+      <section class="srd-module" style="background: #111;">
+        <div class="crs-master-plate">
+          <div class="crs-street-sign-line1">COWLEY ROAD</div>
+          <div class="crs-street-sign-line2">STUDIOS</div>
+        </div>
+        <div class="srd-signal-group">
+          <div class="srd-signal-bulb srd-signal-bulb--green"></div>
+          <div class="srd-signal-bulb srd-signal-bulb--gold"></div>
+          <div class="srd-signal-bulb srd-signal-bulb--red"></div>
+        </div>
+        <h2 style="margin-top: 20px; color: var(--crs-mustard);">DESTA-GEN3 // GUARDIANS OF THE SIGNAL</h2>
+      </section>
+
+      <section class="srd-module">
+        <h2>Recording</h2>
+        <p class="srd-module-subtitle">MULTI-TRACK TRACKING & PRODUCTION • DUAL NODE ROUTING</p>
+        <div class="srd-btn-group">
+          <div class="srd-btn srd-btn--crs">
+            <div class="btn-title">Cowley Recording</div>
+            <div class="btn-price">FROM £35 / HR</div>
+            <div class="btn-tiers">1HR: £35 | 3HR: £100 | 4HR: £125</div>
+          </div>
+        </div>
+        <div class="silk-screen">CR | S</div>
+      </section>
+
+      <section class="srd-module">
+        <h2>Rehearsal</h2>
+        <p class="srd-module-subtitle">FULLY EQUIPPED REHEARSAL SPACES • TOUR PREP & WRITING</p>
+        <div class="srd-btn-group">
+          <div class="srd-btn srd-btn--crs">
+            <div class="btn-title">Cowley Rehearsal</div>
+            <div class="btn-price">FROM £45 / 2HR</div>
+            <div class="btn-tiers">2HR: £45 | 3HR: £55 | 4HR: £60 | 5HR: £65</div>
+          </div>
+          <div class="srd-btn srd-btn--cricket">
+            <div class="btn-title">Cricket Rehearsal</div>
+            <div class="btn-price">FROM £40 / 2HR</div>
+            <div class="btn-tiers">2HR: £40 | 3HR: £50 | 4HR: £55 | 5HR: £60</div>
+          </div>
+        </div>
+        <div class="silk-screen">CR | S</div>
+      </section>
+
+      <section class="srd-module">
+        <h2>Control Room</h2>
+        <p class="srd-module-subtitle">ACOUSTICALLY TREATED MONITORING • DRY HIRE (NO ENGINEER)</p>
+        <div class="srd-btn-group">
+          <div class="srd-btn srd-btn--crs">
+            <div class="btn-title">Cowley Control Room</div>
+            <div class="btn-price">FROM £20 / 1HR</div>
+            <div class="btn-tiers">1HR: £20 | 2HR: £35 | 3HR: £55 | 4HR: £60</div>
+          </div>
+          <div class="srd-btn srd-btn--cricket">
+            <div class="btn-title">Cricket Control Room</div>
+            <div class="btn-price">FROM £40 / 5HR</div>
+            <div class="btn-tiers">5HR: £40 | 10HR: £70</div>
+          </div>
+        </div>
+        <div class="silk-screen">CR | S</div>
+      </section>
+      
+      <section class="srd-module">
+        <h2>Workshop Café</h2>
+        <p class="srd-module-subtitle">118 COWLEY ROAD • HUB & VENUE // OPENING APRIL 2026</p>
+        <div class="srd-btn-group">
+          <div class="srd-btn srd-btn--crs" style="background: #2b3a20;">
+            <div class="btn-title">Venue Hire</div>
+            <div class="btn-price">£150 / 5HR BLOCK OR £40 / HR</div>
+            <div class="btn-tiers">10% EDU DISCOUNT (HIRE ONLY) • PA/ENGINEER: £120 FLAT</div>
+          </div>
+        </div>
+        <div class="silk-screen">CR | S</div>
+      </section>
+
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('scroll-container');
+    let scrollDirection = 1;
+    let scrollSpeed = 1.5;
+
+    function autoScroll() {
+      container.scrollTop += scrollSpeed * scrollDirection;
+      if (container.scrollTop + container.clientHeight >= container.scrollHeight - 1) {
+        scrollDirection = -1;
+        setTimeout(autoScroll, 3000);
         return;
       }
-      
-      console.log(`SIGNAGE: Found ${modules.length} modules - Starting auto-cycle`);
-      
-      let currentIndex = 0;
-      
-      function cycleToModule() {
-        // Remove active from all
-        modules.forEach(m => m.classList.remove('signage-active'));
-        
-        // Get current module
-        const currentModule = modules[currentIndex];
-        
-        if (currentModule) {
-          // Add active class
-          currentModule.classList.add('signage-active');
-          
-          // Calculate scroll position (centered)
-          const moduleTop = currentModule.offsetTop;
-          const moduleHeight = currentModule.offsetHeight;
-          const viewportHeight = 1080;
-          const scrollTop = Math.max(0, moduleTop - (viewportHeight / 2) + (moduleHeight / 2));
-          
-          // Smooth scroll
-          if (chassis) {
-            chassis.scrollTo({
-              top: scrollTop,
-              behavior: 'smooth'
-            });
-          }
-          
-          console.log(`CYCLE → Module ${currentIndex + 1}/${modules.length}: ${currentModule.getAttribute('aria-labelledby')}`);
-        }
-        
-        // Next module (loop)
-        currentIndex = (currentIndex + 1) % modules.length;
+      if (container.scrollTop <= 0 && scrollDirection === -1) {
+        scrollDirection = 1;
+        setTimeout(autoScroll, 3000);
+        return;
       }
-      
-      // Start immediately
-      cycleToModule();
-      
-      // Cycle every 12 seconds
-      setInterval(cycleToModule, 12000);
-      
-      // Emergency exit (ESC key)
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          window.location.href = '/';
-        }
-      });
+      requestAnimationFrame(autoScroll);
     }
+    setTimeout(autoScroll, 3000);
   </script>
 </body>
 </html>
