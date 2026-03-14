@@ -2516,6 +2516,19 @@ main,
   box-shadow: inset 0 0 10px rgba(59, 35, 20, 0.2), 0 4px 6px rgba(0,0,0,0.8);
   text-shadow: 0.5px 0.5px 0px rgba(255, 255, 255, 0.4); /* Engraved depth illusion */
   margin-bottom: 20px;
+  position: relative;
+}
+
+/* Subtle musical note icon (burned into wood) */
+.crs-master-plate::before {
+  content: "♪";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 18px;
+  color: #3b2314;
+  opacity: 0.4;
+  font-weight: normal;
 }
 
 .crs-street-sign-line1,
