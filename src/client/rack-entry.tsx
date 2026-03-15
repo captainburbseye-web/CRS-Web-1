@@ -3,6 +3,7 @@ import React from "react"
 import { hydrateRoot } from "react-dom/client"
 import StudioServicesRack from "../components/StudioServicesRack"
 import "../tailwind.css"
+import "../../public/static/studio-rack-demo.css"
 
 const container = document.getElementById("studio-rack-root")
 
