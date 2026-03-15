@@ -119,9 +119,9 @@ const StatusPlacard = () => (
     <div className="srd-lcd-screen">
       <div className="srd-lcd-content">
         <div className="srd-lcd-sysinfo">
-          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> DESTA-GEN3 ONLINE // GUARDIANS OF THE SIGNAL // PRESERVING OXFORD'S SOUND SYSTEM HERITAGE
+          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> DESTA*NATION ONLINE // GUARDIANS OF THE SIGNAL // PRESERVING OXFORD'S SOUND SYSTEM HERITAGE
         </div>
-        <div className="srd-lcd-header">SELECT MODULE // CREATIVE OPERATING SYSTEM</div>
+        <div className="srd-lcd-header">SIGNAL ROUTING // CHANNEL STRIP</div>
         <div className="srd-lcd-row">
           <span className="srd-lcd-bullet-crs">●</span>
           <span>CRS = LEFT CHANNEL</span>
@@ -130,7 +130,7 @@ const StatusPlacard = () => (
           <span className="srd-lcd-bullet-cricket">●</span>
           <span>CRICKET = RIGHT CHANNEL</span>
         </div>
-        <div className="srd-lcd-footer">118 COWLEY ROAD, OXFORD OX4 1JE • GUARDIANS OF THE SIGNAL • DESTA-GEN3 PRESERVATION // NO CHAOS MODE</div>
+        <div className="srd-lcd-footer">118 COWLEY ROAD, OXFORD OX4 1JE • GUARDIANS OF THE SIGNAL • DESTA*NATION PRESERVATION // NO CHAOS MODE</div>
       </div>
     </div>
   </section>
@@ -279,7 +279,7 @@ const CommunicationsBus = () => (
 const EntryActionCTA = () => (
   <section className="srd-entry-action">
     <a href="#modules" className="srd-emergency-btn">
-      <span className="srd-emergency-label">EXPLORE THE SYSTEM</span>
+      <span className="srd-emergency-label">SIGNAL ROUTING</span>
       <span className="srd-emergency-icon">▶</span>
     </a>
   </section>
