@@ -109,6 +109,11 @@ const MasterFaceplate = () => (
           <CRSStreetSign />
           <SignalStripe />
         </div>
+        
+        {/* Hardware Etching - Authentication Mark */}
+        <div className="srd-hardware-etching">
+          De*G3n3
+        </div>
       </div>
     </div>
   </header>
