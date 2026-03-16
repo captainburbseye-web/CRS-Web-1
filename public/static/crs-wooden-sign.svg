@@ -1,57 +1,73 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 140">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 160" width="480" height="160">
   <defs>
-    <!-- Wood grain texture -->
-    <pattern id="woodGrain" patternUnits="userSpaceOnUse" width="200" height="200">
-      <rect width="200" height="200" fill="#f5f0e1"/>
-      <!-- Subtle grain lines -->
-      <line x1="0" y1="20" x2="200" y2="22" stroke="#e8e0c8" stroke-width="1" opacity="0.5"/>
-      <line x1="0" y1="45" x2="200" y2="43" stroke="#ebe3cc" stroke-width="0.5" opacity="0.4"/>
-      <line x1="0" y1="78" x2="200" y2="80" stroke="#e5ddc5" stroke-width="1" opacity="0.3"/>
-      <line x1="0" y1="105" x2="200" y2="103" stroke="#e8e0c8" stroke-width="0.5" opacity="0.4"/>
-      <line x1="0" y1="140" x2="200" y2="142" stroke="#ebe3cc" stroke-width="1" opacity="0.3"/>
-      <line x1="0" y1="170" x2="200" y2="168" stroke="#e5ddc5" stroke-width="0.5" opacity="0.5"/>
+    <!-- Cream wood base pattern -->
+    <linearGradient id="woodBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#faf6eb"/>
+      <stop offset="50%" style="stop-color:#f5f0e1"/>
+      <stop offset="100%" style="stop-color:#ede7d6"/>
+    </linearGradient>
+    
+    <!-- Subtle wood grain lines -->
+    <pattern id="woodGrain" patternUnits="userSpaceOnUse" width="480" height="160">
+      <rect width="480" height="160" fill="url(#woodBase)"/>
+      <!-- Horizontal grain lines -->
+      <line x1="0" y1="12" x2="480" y2="14" stroke="#e5dfc8" stroke-width="1.5" opacity="0.4"/>
+      <line x1="0" y1="35" x2="480" y2="33" stroke="#ebe5d0" stroke-width="1" opacity="0.3"/>
+      <line x1="0" y1="58" x2="480" y2="60" stroke="#e8e2cc" stroke-width="1" opacity="0.35"/>
+      <line x1="0" y1="82" x2="480" y2="80" stroke="#ebe5d0" stroke-width="0.8" opacity="0.3"/>
+      <line x1="0" y1="105" x2="480" y2="107" stroke="#e5dfc8" stroke-width="1.2" opacity="0.4"/>
+      <line x1="0" y1="128" x2="480" y2="126" stroke="#e8e2cc" stroke-width="1" opacity="0.3"/>
+      <line x1="0" y1="148" x2="480" y2="150" stroke="#ebe5d0" stroke-width="0.8" opacity="0.35"/>
     </pattern>
     
-    <!-- Burnt edge effect for text -->
-    <filter id="burnt" x="-5%" y="-5%" width="110%" height="110%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
+    <!-- Laser burnt edge effect -->
+    <filter id="laserBurn" x="-2%" y="-2%" width="104%" height="104%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.8" result="blur"/>
       <feOffset in="blur" dx="0.5" dy="0.5" result="shadow"/>
+      <feColorMatrix in="shadow" type="matrix" values="0 0 0 0 0.15  0 0 0 0 0.1  0 0 0 0 0.05  0 0 0 0.3 0" result="brownShadow"/>
       <feMerge>
-        <feMergeNode in="shadow"/>
+        <feMergeNode in="brownShadow"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    
+    <!-- Outer shadow for depth -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.25"/>
+    </filter>
   </defs>
   
-  <!-- Outer shadow -->
-  <rect x="4" y="4" width="392" height="132" rx="8" ry="8" fill="rgba(0,0,0,0.2)"/>
-  
-  <!-- Main wooden background -->
-  <rect x="0" y="0" width="392" height="132" rx="6" ry="6" fill="url(#woodGrain)"/>
-  
-  <!-- Border - like a routed edge -->
-  <rect x="6" y="6" width="380" height="120" rx="4" ry="4" fill="none" stroke="#1a1a1a" stroke-width="3"/>
-  
-  <!-- Inner border line -->
-  <rect x="12" y="12" width="368" height="108" rx="2" ry="2" fill="none" stroke="#2a2a2a" stroke-width="1" opacity="0.6"/>
+  <!-- Main sign body -->
+  <g filter="url(#dropShadow)">
+    <!-- Wooden background -->
+    <rect x="0" y="0" width="480" height="160" rx="8" ry="8" fill="url(#woodGrain)"/>
+    
+    <!-- Routed border - outer -->
+    <rect x="8" y="8" width="464" height="144" rx="4" ry="4" 
+          fill="none" stroke="#1a1815" stroke-width="4"/>
+    
+    <!-- Routed border - inner detail -->
+    <rect x="14" y="14" width="452" height="132" rx="2" ry="2" 
+          fill="none" stroke="#2a2520" stroke-width="1.5" opacity="0.5"/>
+  </g>
   
   <!-- Text: COWLEY ROAD -->
-  <text x="196" y="58" 
-        font-family="Arial Black, Arial, sans-serif" 
-        font-size="42" 
+  <text x="240" y="68" 
+        font-family="Impact, Arial Black, Helvetica, sans-serif" 
+        font-size="48" 
         font-weight="900"
         text-anchor="middle" 
-        fill="#1a1a1a"
-        filter="url(#burnt)"
-        letter-spacing="2">COWLEY ROAD</text>
+        fill="#1a1815"
+        filter="url(#laserBurn)"
+        letter-spacing="3">COWLEY ROAD</text>
   
   <!-- Text: STUDIOS -->
-  <text x="196" y="105" 
-        font-family="Arial Black, Arial, sans-serif" 
-        font-size="42" 
+  <text x="240" y="125" 
+        font-family="Impact, Arial Black, Helvetica, sans-serif" 
+        font-size="48" 
         font-weight="900"
         text-anchor="middle" 
-        fill="#1a1a1a"
-        filter="url(#burnt)"
-        letter-spacing="4">STUDIOS</text>
+        fill="#1a1815"
+        filter="url(#laserBurn)"
+        letter-spacing="6">STUDIOS</text>
 </svg>
