@@ -283,7 +283,7 @@ signage.get('/', (c) => {
     <!-- SLIDE 1: CRS Welcome -->
     <div class="slide slide-crs active" data-duration="10000">
       <div class="slide-content">
-        <img src="/static/crs-wooden-sign.png" alt="Cowley Road Studios" class="brand-logo large" />
+        <img src="/static/crs-wooden-sign.svg" alt="Cowley Road Studios" class="brand-logo large" />
         <h1 class="slide-title">RECORDING STUDIO & REHEARSAL ROOMS</h1>
         <p class="slide-subtitle">Oxford's Grassroots Music Infrastructure</p>
         <div class="features-list">
@@ -356,7 +356,7 @@ signage.get('/', (c) => {
     <!-- SLIDE 6: Contact / CTA -->
     <div class="slide slide-crs" data-duration="8000">
       <div class="slide-content">
-        <img src="/static/crs-wooden-sign.png" alt="Cowley Road Studios" class="brand-logo" />
+        <img src="/static/crs-wooden-sign.svg" alt="Cowley Road Studios" class="brand-logo" />
         <h1 class="slide-title">BOOK NOW</h1>
         <p class="slide-subtitle">crsoxford.com · 01865 722027</p>
         <p class="slide-body">

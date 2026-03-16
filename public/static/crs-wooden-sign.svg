@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 140">
+  <defs>
+    <!-- Wood grain texture -->
+    <pattern id="woodGrain" patternUnits="userSpaceOnUse" width="200" height="200">
+      <rect width="200" height="200" fill="#f5f0e1"/>
+      <!-- Subtle grain lines -->
+      <line x1="0" y1="20" x2="200" y2="22" stroke="#e8e0c8" stroke-width="1" opacity="0.5"/>
+      <line x1="0" y1="45" x2="200" y2="43" stroke="#ebe3cc" stroke-width="0.5" opacity="0.4"/>
+      <line x1="0" y1="78" x2="200" y2="80" stroke="#e5ddc5" stroke-width="1" opacity="0.3"/>
+      <line x1="0" y1="105" x2="200" y2="103" stroke="#e8e0c8" stroke-width="0.5" opacity="0.4"/>
+      <line x1="0" y1="140" x2="200" y2="142" stroke="#ebe3cc" stroke-width="1" opacity="0.3"/>
+      <line x1="0" y1="170" x2="200" y2="168" stroke="#e5ddc5" stroke-width="0.5" opacity="0.5"/>
+    </pattern>
+    
+    <!-- Burnt edge effect for text -->
+    <filter id="burnt" x="-5%" y="-5%" width="110%" height="110%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="0.5" result="blur"/>
+      <feOffset in="blur" dx="0.5" dy="0.5" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Outer shadow -->
+  <rect x="4" y="4" width="392" height="132" rx="8" ry="8" fill="rgba(0,0,0,0.2)"/>
+  
+  <!-- Main wooden background -->
+  <rect x="0" y="0" width="392" height="132" rx="6" ry="6" fill="url(#woodGrain)"/>
+  
+  <!-- Border - like a routed edge -->
+  <rect x="6" y="6" width="380" height="120" rx="4" ry="4" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+  
+  <!-- Inner border line -->
+  <rect x="12" y="12" width="368" height="108" rx="2" ry="2" fill="none" stroke="#2a2a2a" stroke-width="1" opacity="0.6"/>
+  
+  <!-- Text: COWLEY ROAD -->
+  <text x="196" y="58" 
+        font-family="Arial Black, Arial, sans-serif" 
+        font-size="42" 
+        font-weight="900"
+        text-anchor="middle" 
+        fill="#1a1a1a"
+        filter="url(#burnt)"
+        letter-spacing="2">COWLEY ROAD</text>
+  
+  <!-- Text: STUDIOS -->
+  <text x="196" y="105" 
+        font-family="Arial Black, Arial, sans-serif" 
+        font-size="42" 
+        font-weight="900"
+        text-anchor="middle" 
+        fill="#1a1a1a"
+        filter="url(#burnt)"
+        letter-spacing="4">STUDIOS</text>
+</svg>
