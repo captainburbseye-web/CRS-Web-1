@@ -4786,3 +4786,269 @@ main,
     display: none;
   }
 }
+
+/* ============================================
+   RACK PHYSICS UPGRADE - Making Hardware Feel Real
+   Modern CSS compositing for physical depth
+   ============================================ */
+
+/* --------------------------------------------
+   1. PHYSICAL DEPTH FOR LOGOS & SIGNAGE
+   Dual-layer drop-shadow maps PNG contours
+   like overhead studio lighting on 3D objects
+   -------------------------------------------- */
+.srd-wooden-sign-img, 
+.crs-logo-img, 
+.cricket-badge-img {
+  filter: drop-shadow(0px 4px 3px rgba(0, 0, 0, 0.7)) 
+          drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.9));
+}
+
+/* Extra depth for the wooden sign - it's thicker */
+.srd-wooden-sign-img {
+  filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.75)) 
+          drop-shadow(0px 2px 1px rgba(0, 0, 0, 0.95))
+          drop-shadow(0px 8px 6px rgba(0, 0, 0, 0.3));
+}
+
+/* Badge images inside buttons */
+.srd-badge img,
+.srd-badge--cricket img {
+  filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.6)) 
+          drop-shadow(0px 1px 0px rgba(0, 0, 0, 0.8));
+}
+
+/* --------------------------------------------
+   2. GLASS LENS OVER LCD SCREEN
+   Acrylic/glass effect with backdrop-filter
+   -------------------------------------------- */
+.srd-lcd-screen {
+  position: relative;
+  overflow: hidden;
+}
+
+.srd-lcd-screen::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  backdrop-filter: blur(0.5px) brightness(1.05);
+  -webkit-backdrop-filter: blur(0.5px) brightness(1.05);
+  background: linear-gradient(
+    135deg, 
+    rgba(255,255,255,0.12) 0%, 
+    transparent 35%,
+    transparent 65%,
+    rgba(255,255,255,0.04) 100%
+  );
+  border-radius: inherit;
+  z-index: 10;
+}
+
+/* Subtle scan lines for CRT effect */
+.srd-lcd-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  z-index: 5;
+}
+
+/* --------------------------------------------
+   3. SCROLL-DRIVEN FADER ANIMATION
+   Faders push up as user scrolls into view
+   -------------------------------------------- */
+@supports (animation-timeline: view()) {
+  .wc-fader-handle {
+    animation: pushFader linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 50%;
+  }
+  
+  @keyframes pushFader {
+    from { 
+      bottom: 5%; 
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 1px 2px rgba(0,0,0,0.4);
+    }
+    to { 
+      bottom: var(--fader-target, 70%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 2px 4px rgba(0,0,0,0.6);
+    }
+  }
+  
+  /* Stagger the faders with different targets */
+  .wc-fader:nth-child(1) .wc-fader-handle { --fader-target: 80%; }
+  .wc-fader:nth-child(2) .wc-fader-handle { --fader-target: 65%; }
+  .wc-fader:nth-child(3) .wc-fader-handle { --fader-target: 90%; }
+  .wc-fader:nth-child(4) .wc-fader-handle { --fader-target: 55%; }
+  .wc-fader:nth-child(5) .wc-fader-handle { --fader-target: 70%; }
+  .wc-fader:nth-child(6) .wc-fader-handle { --fader-target: 45%; }
+  
+  /* Animate the fader levels too */
+  .wc-fader-level {
+    animation: fillLevel linear both;
+    animation-timeline: view();
+    animation-range: entry 10% cover 50%;
+  }
+  
+  @keyframes fillLevel {
+    from { height: 10%; }
+    to { height: var(--level-target, 70%); }
+  }
+  
+  .wc-fader:nth-child(1) .wc-fader-level { --level-target: 85%; }
+  .wc-fader:nth-child(2) .wc-fader-level { --level-target: 70%; }
+  .wc-fader:nth-child(3) .wc-fader-level { --level-target: 95%; }
+  .wc-fader:nth-child(4) .wc-fader-level { --level-target: 60%; }
+  .wc-fader:nth-child(5) .wc-fader-level { --level-target: 75%; }
+  .wc-fader:nth-child(6) .wc-fader-level { --level-target: 50%; }
+}
+
+/* --------------------------------------------
+   4. DYNAMIC LED SPILL WITH BRAND COLORS
+   color-mix() bleeds glow into chassis
+   -------------------------------------------- */
+
+/* Signal dots - traffic lights */
+.srd-signal-dot--red {
+  background: radial-gradient(circle at 30% 30%, #ff6b6b 0%, #dc2626 60%, #991b1b 100%);
+  box-shadow: 
+    0 0 8px 2px color-mix(in srgb, #dc2626 60%, transparent),
+    0 0 16px 4px color-mix(in srgb, #dc2626 30%, transparent),
+    inset 0 -2px 4px rgba(0,0,0,0.3);
+}
+
+.srd-signal-dot--yellow {
+  background: radial-gradient(circle at 30% 30%, #fde047 0%, #eab308 60%, #a16207 100%);
+  box-shadow: 
+    0 0 8px 2px color-mix(in srgb, #eab308 60%, transparent),
+    0 0 16px 4px color-mix(in srgb, #eab308 30%, transparent),
+    inset 0 -2px 4px rgba(0,0,0,0.3);
+}
+
+.srd-signal-dot--green {
+  background: radial-gradient(circle at 30% 30%, #86efac 0%, #22c55e 60%, #166534 100%);
+  box-shadow: 
+    0 0 8px 2px color-mix(in srgb, #22c55e 60%, transparent),
+    0 0 16px 4px color-mix(in srgb, #22c55e 30%, transparent),
+    inset 0 -2px 4px rgba(0,0,0,0.3);
+}
+
+/* Workshop Cafe fader LEDs */
+.wc-fader-led--on {
+  background: radial-gradient(circle at 30% 30%, #86efac 0%, #59c23c 70%, #2d6a1e 100%);
+  box-shadow: 
+    0 0 6px 1px color-mix(in srgb, #59c23c 70%, transparent),
+    0 0 12px 2px color-mix(in srgb, #59c23c 40%, transparent);
+}
+
+.wc-fader-led--on.wc-fader-led--red {
+  background: radial-gradient(circle at 30% 30%, #fca5a5 0%, #dc2626 70%, #7f1d1d 100%);
+  box-shadow: 
+    0 0 6px 1px color-mix(in srgb, #dc2626 70%, transparent),
+    0 0 12px 2px color-mix(in srgb, #dc2626 40%, transparent);
+}
+
+/* VU meter needle glow when "hot" */
+.srd-vu-needle-tip {
+  box-shadow: 
+    0 0 4px 1px color-mix(in srgb, #dc2626 50%, transparent);
+}
+
+/* Power LED on industrial panel */
+.av-spec-led-light {
+  background: radial-gradient(circle at 30% 30%, #86efac 0%, #22c55e 50%, #166534 100%);
+  box-shadow: 
+    0 0 8px 2px color-mix(in srgb, #22c55e 70%, transparent),
+    0 0 16px 4px color-mix(in srgb, #22c55e 40%, transparent);
+}
+
+/* LCD text glow - phosphor green */
+.srd-lcd-highlight {
+  text-shadow: 
+    0 0 4px color-mix(in srgb, #4ade80 80%, transparent),
+    0 0 8px color-mix(in srgb, #22c55e 50%, transparent);
+}
+
+/* CRS button LED when hovered - simulate "on" state */
+.srd-btn--crs:hover .srd-led--crs-off {
+  background: radial-gradient(circle at 30% 30%, #86efac 0%, #59c23c 70%);
+  box-shadow: 
+    0 0 6px 2px color-mix(in srgb, #59c23c 70%, transparent),
+    0 0 12px 3px color-mix(in srgb, #59c23c 40%, transparent);
+}
+
+.srd-btn--cricket:hover .srd-led--cricket-off {
+  background: radial-gradient(circle at 30% 30%, #d8b4fe 0%, #a855f7 70%);
+  box-shadow: 
+    0 0 6px 2px color-mix(in srgb, #a855f7 70%, transparent),
+    0 0 12px 3px color-mix(in srgb, #a855f7 40%, transparent);
+}
+
+/* Fallback for browsers without color-mix support */
+@supports not (color: color-mix(in srgb, red, blue)) {
+  .srd-signal-dot--green, .wc-fader-led--on {
+    box-shadow: 0 0 8px 2px rgba(89, 194, 60, 0.7), 0 0 16px 4px rgba(89, 194, 60, 0.3);
+  }
+  .srd-signal-dot--red, .wc-fader-led--on.wc-fader-led--red {
+    box-shadow: 0 0 8px 2px rgba(220, 38, 38, 0.7), 0 0 16px 4px rgba(220, 38, 38, 0.3);
+  }
+  .srd-signal-dot--yellow {
+    box-shadow: 0 0 8px 2px rgba(234, 179, 8, 0.7), 0 0 16px 4px rgba(234, 179, 8, 0.3);
+  }
+}
+
+/* --------------------------------------------
+   5. EXTRA PHYSICAL TOUCHES
+   -------------------------------------------- */
+
+/* Brushed metal reflection on module headers */
+.srd-module-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.15) 20%,
+    rgba(255,255,255,0.25) 50%,
+    rgba(255,255,255,0.15) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Chassis edge lighting */
+.srd-chassis {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    inset 0 -1px 0 rgba(0,0,0,0.8),
+    inset 1px 0 0 rgba(255,255,255,0.03),
+    inset -1px 0 0 rgba(255,255,255,0.03),
+    0 0 40px rgba(0,0,0,0.8);
+}
+
+/* Button press feedback - physical depression */
+.srd-btn:active {
+  transform: translateY(2px);
+  box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.4),
+    0 1px 2px rgba(0,0,0,0.3);
+}
+
+.av-ind-btn:active {
+  transform: translateY(2px);
+  box-shadow: 
+    inset 0 3px 6px rgba(0,0,0,0.5),
+    0 0 0 rgba(0,0,0,0);
+}
