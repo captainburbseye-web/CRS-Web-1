@@ -306,35 +306,61 @@ const ControlRoomModule = () => (
 );
 
 // ==========================================
-// 10. ODRO MODULE
+// 10. CRS AV SUPPORT MODULE
 // ==========================================
 
-const OdroModule = () => (
-  <section className="srd-module srd-module--dark" aria-labelledby="module-odro-electronics">
+const CrsAvSupportModule = () => (
+  <section className="srd-module srd-module--nettle" aria-labelledby="module-crs-av">
     <div className="srd-module-header">
       <div className="srd-module-title-group">
-        <h2 id="module-odro-electronics" className="srd-module-title">ODRO Electronics</h2>
-        <p className="srd-module-subtitle">AV & Instrument Servicing • Oxford Venue Tech Support</p>
+        <h2 id="module-crs-av" className="srd-module-title">CRS AV Support</h2>
+        <p className="srd-module-subtitle">Event & Venue Tech Support • Equipment Hire</p>
+      </div>
+    </div>
+    <div className="srd-micro-label">LIVE EVENT SERVICES</div>
+    <div className="srd-btn-group">
+      <ServiceButton
+        variant="crs"
+        service="Tech Support"
+        location="Events & Venues"
+        href="/contact?service=av-support"
+        badge={<CrsBadge />}
+      />
+      <ServiceButton
+        variant="crs"
+        service="Equipment Hire"
+        location="PA / Backline"
+        href="/contact?service=hire"
+        badge={<CrsBadge />}
+      />
+    </div>
+  </section>
+);
+
+// ==========================================
+// 10b. ODRO ENGINEERING MODULE
+// ==========================================
+
+const OdroEngineeringModule = () => (
+  <section className="srd-module srd-module--dark" aria-labelledby="module-odro-engineering">
+    <div className="srd-module-header">
+      <div className="srd-module-title-group">
+        <h2 id="module-odro-engineering" className="srd-module-title">ODRO Engineering</h2>
+        <p className="srd-module-subtitle">AV & Instrument Repairs • Workshop Services</p>
       </div>
     </div>
     <div className="srd-micro-label">DESTA-GEN3 SERVICE LOOP</div>
     <div className="srd-btn-group">
       <ServiceButton
         variant="neutral"
-        service="Terms"
-        badge={<OdroBadge />}
-        type="button"
-        onClick={() => window.dispatchEvent(new CustomEvent('OPEN_ODRO_MODAL'))}
-      />
-      <ServiceButton
-        variant="neutral"
         service="Repair Request"
         href="/contact?service=repairs"
+        badge={<OdroBadge />}
       />
       <ServiceButton
         variant="neutral"
-        service="Contact"
-        href="/contact"
+        service="Get Quote"
+        href="/contact?service=repair-quote"
       />
     </div>
   </section>
@@ -452,7 +478,8 @@ export default function StudioServicesRack() {
           <ControlRoomModule />
           
           {/* Support Services */}
-          <OdroModule />
+          <CrsAvSupportModule />
+          <OdroEngineeringModule />
           <WorkshopCafeModule />
           <CommunicationsBusModule />
         </div>
