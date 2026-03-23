@@ -31,3 +31,4 @@ logs/
 *.zip
 deploy.sh
 .aider*
+core
