@@ -3779,3 +3779,311 @@ main,
   }
 }
 
+
+/* ============================================
+   WORKSHOP CAFÉ MODULE - Vintage Mixer Style
+   ============================================ */
+.srd-module--workshop {
+  --wc-green: #5a7a4a;
+  --wc-green-light: #7a9a6a;
+  --wc-green-dark: #3a5a3a;
+  --wc-mustard: #d4a84a;
+  --wc-mustard-light: #e8c870;
+  --wc-mustard-dark: #8a6a2a;
+  --wc-frame: #3a3a3a;
+  --wc-frame-light: #5a5a5a;
+  
+  position: relative;
+  background: 
+    linear-gradient(135deg, var(--wc-green-light) 0%, var(--wc-green) 30%, var(--wc-green-dark) 100%);
+  border: 8px solid var(--wc-frame);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.15),
+    inset 0 -2px 4px rgba(0,0,0,0.3),
+    0 8px 24px rgba(0,0,0,0.5);
+  overflow: visible;
+}
+
+/* Corner screws */
+.wc-corner-screw {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at 30% 30%, #888 0%, #555 50%, #333 100%);
+  border-radius: 50%;
+  border: 1px solid #222;
+  box-shadow: 
+    inset 0 1px 2px rgba(255,255,255,0.3),
+    0 2px 4px rgba(0,0,0,0.5);
+  z-index: 10;
+}
+.wc-corner-screw::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 2px;
+  background: linear-gradient(90deg, #222 0%, #444 50%, #222 100%);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.wc-corner-screw--tl { top: 8px; left: 8px; }
+.wc-corner-screw--tr { top: 8px; right: 8px; }
+.wc-corner-screw--bl { bottom: 8px; left: 8px; }
+.wc-corner-screw--br { bottom: 8px; right: 8px; }
+
+/* VU Meters Row */
+.wc-vu-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 15px;
+}
+.wc-vu-row .srd-vu {
+  transform: scale(0.85);
+}
+
+/* Title Panel - Mustard */
+.wc-title-panel {
+  background: linear-gradient(180deg, var(--wc-mustard-light) 0%, var(--wc-mustard) 50%, var(--wc-mustard-dark) 100%);
+  padding: 20px 30px;
+  margin: 10px 0;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,0.3),
+    inset 0 -2px 4px rgba(0,0,0,0.2),
+    0 4px 8px rgba(0,0,0,0.3);
+}
+
+.wc-title {
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #2a3a2a;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+  margin: 0 0 8px 0;
+  letter-spacing: 0.05em;
+}
+
+.wc-tagline {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: #3a4a3a;
+  letter-spacing: 0.15em;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Mixer Controls Row */
+.wc-controls-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 15px;
+  background: linear-gradient(180deg, #3a4a3a 0%, #2a3a2a 100%);
+  border-radius: 4px;
+  margin: 10px 0;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Knobs */
+.wc-knobs-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 180px;
+}
+
+.wc-knob {
+  width: 28px;
+  height: 28px;
+}
+.wc-knob--lg {
+  width: 36px;
+  height: 36px;
+}
+
+.wc-knob-body {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, #4a5a4a 0%, #2a3a2a 60%, #1a2a1a 100%);
+  border-radius: 50%;
+  border: 2px solid #1a1a1a;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.5),
+    inset 0 1px 2px rgba(255,255,255,0.1);
+  position: relative;
+}
+
+.wc-knob-indicator {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: 2px;
+  height: 8px;
+  background: #aaa;
+  transform: translateX(-50%) rotate(-45deg);
+  transform-origin: bottom center;
+  border-radius: 1px;
+}
+
+/* Faders */
+.wc-faders-section {
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+}
+
+.wc-fader {
+  display: flex;
+  gap: 3px;
+  align-items: flex-end;
+}
+
+.wc-fader-track {
+  width: 8px;
+  height: 80px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%);
+  border-radius: 2px;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.wc-fader-level {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(180deg, #dc2626 0%, #f87171 20%, #4ade80 40%, #22c55e 100%);
+  border-radius: 0 0 2px 2px;
+}
+
+.wc-fader-handle {
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  height: 12px;
+  background: linear-gradient(180deg, #666 0%, #444 50%, #333 100%);
+  border: 1px solid #222;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.wc-fader-leds {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.wc-fader-led {
+  width: 4px;
+  height: 6px;
+  background: #1a2a1a;
+  border-radius: 1px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.wc-fader-led--on {
+  background: #22c55e;
+  box-shadow: 0 0 4px #22c55e;
+}
+
+.wc-fader-led--red.wc-fader-led--on {
+  background: #dc2626;
+  box-shadow: 0 0 4px #dc2626;
+}
+
+/* Spectrum Analyzer */
+.wc-spectrum {
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  height: 80px;
+  padding: 8px;
+  background: #0a0a0a;
+  border-radius: 4px;
+  border: 2px solid #2a2a2a;
+}
+
+.wc-spectrum-bar {
+  width: 8px;
+  background: linear-gradient(180deg, 
+    #dc2626 0%, 
+    #f97316 15%, 
+    #eab308 30%, 
+    #22c55e 60%, 
+    #3b82f6 100%
+  );
+  border-radius: 1px;
+  box-shadow: 0 0 4px rgba(34, 197, 94, 0.3);
+  transition: height 0.1s ease;
+}
+
+/* Book Button */
+.wc-cta-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.wc-book-btn {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #d4a84a;
+  background: linear-gradient(180deg, #1a2a1a 0%, #0a1a0a 100%);
+  padding: 12px 30px;
+  border: 2px solid #4a5a4a;
+  border-radius: 4px;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.1),
+    0 4px 8px rgba(0,0,0,0.4);
+  transition: all 0.15s ease;
+}
+
+.wc-book-btn:hover {
+  background: linear-gradient(180deg, #2a3a2a 0%, #1a2a1a 100%);
+  color: #e8c870;
+  border-color: #6a7a6a;
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.15),
+    0 6px 12px rgba(0,0,0,0.5),
+    0 0 20px rgba(212, 168, 74, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .wc-title {
+    font-size: 1.5rem;
+  }
+  .wc-tagline {
+    font-size: 0.65rem;
+  }
+  .wc-controls-row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .wc-knobs-section {
+    max-width: 140px;
+  }
+  .wc-fader-track {
+    height: 60px;
+  }
+  .wc-spectrum {
+    height: 60px;
+  }
+  .wc-spectrum-bar {
+    width: 5px;
+  }
+  .wc-book-btn {
+    font-size: 0.8rem;
+    padding: 10px 20px;
+  }
+}

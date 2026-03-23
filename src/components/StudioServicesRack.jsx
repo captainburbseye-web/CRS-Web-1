@@ -367,26 +367,92 @@ const OdroEngineeringModule = () => (
 );
 
 // ==========================================
-// 11. WORKSHOP CAFÉ MODULE
+// 11. WORKSHOP CAFÉ MODULE - Vintage Mixer Style
 // ==========================================
 
+const MixerKnob = ({ size = "md" }) => (
+  <div className={`wc-knob wc-knob--${size}`} aria-hidden="true">
+    <div className="wc-knob-body">
+      <div className="wc-knob-indicator"></div>
+    </div>
+  </div>
+);
+
+const MixerFader = ({ level = 70 }) => (
+  <div className="wc-fader" aria-hidden="true">
+    <div className="wc-fader-track">
+      <div className="wc-fader-level" style={{ height: `${level}%` }}></div>
+      <div className="wc-fader-handle" style={{ bottom: `${level - 5}%` }}></div>
+    </div>
+    <div className="wc-fader-leds">
+      {[...Array(8)].map((_, i) => (
+        <div key={i} className={`wc-fader-led ${i < Math.floor(level / 12.5) ? 'wc-fader-led--on' : ''} ${i >= 6 ? 'wc-fader-led--red' : ''}`}></div>
+      ))}
+    </div>
+  </div>
+);
+
+const SpectrumBar = ({ height }) => (
+  <div className="wc-spectrum-bar" style={{ height: `${height}%` }} aria-hidden="true"></div>
+);
+
 const WorkshopCafeModule = () => (
-  <section className="srd-module srd-module--dark" aria-labelledby="module-workshop-cafe">
-    <div className="srd-module-header">
-      <div className="srd-module-title-group">
-        <h2 id="module-workshop-cafe" className="srd-module-title">Workshop Café</h2>
-        <p className="srd-module-subtitle">118 Cowley Road • Hub & Venue // Opening April 2026</p>
+  <section className="srd-module srd-module--workshop" aria-labelledby="module-workshop-cafe">
+    {/* Brushed metal corner screws */}
+    <div className="wc-corner-screw wc-corner-screw--tl" aria-hidden="true"></div>
+    <div className="wc-corner-screw wc-corner-screw--tr" aria-hidden="true"></div>
+    <div className="wc-corner-screw wc-corner-screw--bl" aria-hidden="true"></div>
+    <div className="wc-corner-screw wc-corner-screw--br" aria-hidden="true"></div>
+    
+    {/* VU Meters Row */}
+    <div className="wc-vu-row">
+      <VuMeter label="L" />
+      <VuMeter label="R" />
+    </div>
+    
+    {/* Main Title Panel - Mustard background */}
+    <div className="wc-title-panel">
+      <h2 id="module-workshop-cafe" className="wc-title">THE WORKSHOP CAFE</h2>
+      <p className="wc-tagline">COFFEE ◆ REPAIRS ◆ MUSICAL CURIOS ◆ WORK SPACES</p>
+    </div>
+    
+    {/* Mixer Controls Row */}
+    <div className="wc-controls-row">
+      {/* Knobs */}
+      <div className="wc-knobs-section">
+        {[...Array(10)].map((_, i) => (
+          <MixerKnob key={i} size={i < 2 ? "lg" : "md"} />
+        ))}
+      </div>
+      
+      {/* Faders */}
+      <div className="wc-faders-section">
+        <MixerFader level={85} />
+        <MixerFader level={70} />
+        <MixerFader level={95} />
+        <MixerFader level={60} />
+        <MixerFader level={75} />
+        <MixerFader level={50} />
+      </div>
+      
+      {/* Spectrum Analyzer */}
+      <div className="wc-spectrum">
+        {[45, 65, 80, 55, 70, 90, 75, 60, 85, 50, 70, 80, 65, 55, 40].map((h, i) => (
+          <SpectrumBar key={i} height={h} />
+        ))}
       </div>
     </div>
-    <div className="srd-micro-label">BREWFORCE BUS ONLINE</div>
-    <div className="srd-btn-group">
-      <ServiceButton
-        variant="crs"
-        service="Book Café"
-        location="Workshop Café"
-        href={SQUARE_URLS.WORKSHOP_CAFE}
-        badge={<CafeBadge />}
-      />
+    
+    {/* CTA Button */}
+    <div className="wc-cta-row">
+      <a 
+        href={SQUARE_URLS.WORKSHOP_CAFE} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="wc-book-btn"
+      >
+        [ BOOK WORKSPACE / CAFE HIRE ]
+      </a>
     </div>
   </section>
 );
