@@ -83,6 +83,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
              Above-the-fold: Welcome rack + Header (WebP optimized)
              Order matches page layout (Welcome first, Header second)
              ============================================ */}
+        <link rel="preload" as="image" href="/static/crs-logo.png" />
+        <link rel="preload" as="image" href="/static/cricket-logo.png" />
+        <link rel="preload" as="image" href="/static/crs-wooden-sign.png" />
         
         {/* ============================================
              CONSOLIDATED CSS — LEAN & FAST

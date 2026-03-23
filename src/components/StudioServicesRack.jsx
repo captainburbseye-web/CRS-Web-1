@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import React, { useState } from 'react';
+import React from 'react';
 
 // ==========================================
 // STUDIO SERVICES RACK - Restored to uploaded HTML version
@@ -234,6 +234,7 @@ const RecordingModule = () => (
       <div className="srd-module-title-group">
         <h2 id="module-recording" className="srd-module-title">Recording</h2>
         <p className="srd-module-subtitle">Cowley Road • 118 Cowley Rd • Main Studio & Control Room</p>
+        <div className="srd-pricing">FROM £35/HR</div>
       </div>
       <VuMeterPair />
     </div>
@@ -262,6 +263,7 @@ const RehearsalModule = () => (
       <div className="srd-module-title-group">
         <h2 id="module-rehearsal" className="srd-module-title">Rehearsal</h2>
         <p className="srd-module-subtitle">Cricket Road • OX4 3DJ • Managed Production</p>
+        <div className="srd-pricing">COWLEY £45/2HR • CRICKET £40/2HR</div>
       </div>
     </div>
     <div className="srd-btn-group">
@@ -284,11 +286,12 @@ const RehearsalModule = () => (
 );
 
 const ControlRoomModule = () => (
-  <section className="srd-module" aria-labelledby="module-control-room">
+  <section className="srd-module srd-module--nettle" aria-labelledby="module-control-room">
     <div className="srd-module-header">
       <div className="srd-module-title-group">
         <h2 id="module-control-room" className="srd-module-title">Control Room</h2>
         <p className="srd-module-subtitle">Hybrid Studio Hire • Multi-Track Recording & Production</p>
+        <div className="srd-pricing">COWLEY £20/HR • CRICKET £40/5HR</div>
       </div>
       <VuMeterPair />
     </div>
@@ -321,6 +324,7 @@ const CrsAvSupportModule = () => (
       <div className="srd-module-title-group">
         <h2 id="module-crs-av" className="srd-module-title">CRS AV Support</h2>
         <p className="srd-module-subtitle">Event & Venue Tech Support • Equipment Hire</p>
+        <div className="srd-pricing">QUOTES ON REQUEST</div>
       </div>
     </div>
     <div className="srd-micro-label">LIVE EVENT SERVICES</div>
@@ -353,6 +357,7 @@ const OdroEngineeringModule = () => (
       <div className="srd-module-title-group">
         <h2 id="module-odro-engineering" className="srd-module-title">ODRO Engineering</h2>
         <p className="srd-module-subtitle">AV & Instrument Repairs • Workshop Services</p>
+        <div className="srd-pricing">FROM £60 BENCH FEE</div>
       </div>
     </div>
     <div className="srd-micro-label">DESTA-GEN3 SERVICE LOOP</div>
@@ -420,6 +425,8 @@ const WorkshopCafeModule = () => (
     <div className="wc-title-panel">
       <h2 id="module-workshop-cafe" className="wc-title">THE WORKSHOP CAFE</h2>
       <p className="wc-tagline">COFFEE ◆ REPAIRS ◆ MUSICAL CURIOS ◆ WORK SPACES</p>
+      <div className="wc-opening-badge">OPENING APRIL 2026</div>
+      <div className="wc-pricing">VENUE HIRE FROM £150/5HR</div>
     </div>
     
     {/* Mixer Controls Row */}
@@ -499,7 +506,15 @@ const CommunicationsBusModule = () => (
 
 const TrustRail = () => (
   <footer className="srd-trust-rail">
-    118 Cowley Road, Oxford OX4 1JE, United Kingdom · DESTA-GEN3 // NO CHAOS MODE // INSPECTED: N0RLAND0B00M
+    <div className="srd-trust-content">
+      <span>118 Cowley Road, Oxford OX4 1JE, United Kingdom</span>
+      <a href="tel:+441865722027" className="srd-phone-link">01865 722027</a>
+      <a href="mailto:info@crsoxford.com" className="srd-email-link">info@crsoxford.com</a>
+    </div>
+    <div className="srd-social-links">
+      <a href="https://instagram.com/cowleyroadstudios" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+      <a href="https://facebook.com/cowleyroadstudios" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
+    </div>
   </footer>
 );
 
@@ -532,8 +547,6 @@ const TechManualFooter = () => (
 export default function StudioServicesRack() {
   return (
     <main className="srd-page">
-      <link rel="preload" as="image" href="/static/crs-logo.png" />
-      <link rel="preload" as="image" href="/static/cricket-logo.png" />
       
       <TopRail />
       

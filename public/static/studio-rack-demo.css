@@ -4115,3 +4115,123 @@ main,
     max-width: 120px;
   }
 }
+
+/* ============================================
+   PRICING BADGES
+   ============================================ */
+.srd-pricing {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffd700;
+  letter-spacing: 0.1em;
+  margin-top: 6px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+/* ============================================
+   TRUST RAIL FOOTER - Enhanced
+   ============================================ */
+.srd-trust-rail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+  border-top: 1px solid #333;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.srd-trust-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+}
+
+.srd-phone-link,
+.srd-email-link {
+  color: #ffd700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.srd-phone-link:hover,
+.srd-email-link:hover {
+  color: #fff;
+}
+
+.srd-social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.srd-social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: #2a2a2a;
+  color: #888;
+  text-decoration: none;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.srd-social-links a:hover {
+  background: #3a3a3a;
+  color: #ffd700;
+}
+
+/* ============================================
+   WORKSHOP CAFE - Opening Badge & Pricing
+   ============================================ */
+.wc-opening-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 4px 12px;
+  border-radius: 3px;
+  margin-top: 10px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.wc-pricing {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #2a3a2a;
+  letter-spacing: 0.1em;
+  margin-top: 8px;
+}
+
+/* ============================================
+   RESPONSIVE FOOTER
+   ============================================ */
+@media (max-width: 640px) {
+  .srd-trust-rail {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .srd-trust-content {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .srd-pricing {
+    font-size: 0.65rem;
+  }
+}
