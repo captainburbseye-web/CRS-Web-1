@@ -315,19 +315,58 @@ const ControlRoomModule = () => (
 );
 
 // ==========================================
-// 10. CRS AV SUPPORT MODULE
+// 10. CRS AV SUPPORT MODULE - Vintage Rack Equipment Style
 // ==========================================
 
 const CrsAvSupportModule = () => (
-  <section className="srd-module srd-module--nettle" aria-labelledby="module-crs-av">
-    <div className="srd-module-header">
-      <div className="srd-module-title-group">
-        <h2 id="module-crs-av" className="srd-module-title">CRS AV Support</h2>
-        <p className="srd-module-subtitle">Event & Venue Tech Support • Equipment Hire</p>
-        <div className="srd-pricing">QUOTES ON REQUEST</div>
+  <section className="srd-module srd-module--av-rack" aria-labelledby="module-crs-av">
+    {/* Corner rack mount holes */}
+    <div className="av-rack-hole av-rack-hole--tl" aria-hidden="true"></div>
+    <div className="av-rack-hole av-rack-hole--tr" aria-hidden="true"></div>
+    <div className="av-rack-hole av-rack-hole--bl" aria-hidden="true"></div>
+    <div className="av-rack-hole av-rack-hole--br" aria-hidden="true"></div>
+    
+    {/* Main Vintage Label Panel - Polaroid/Land style */}
+    <div className="av-vintage-panel">
+      {/* Left Logo Block */}
+      <div className="av-logo-block">
+        <span className="av-logo-main">CRS</span>
+        <span className="av-logo-sub">AV</span>
+      </div>
+      
+      {/* Rainbow Stripes - Iconic */}
+      <div className="av-rainbow-stripes">
+        <div className="av-rainbow av-rainbow--red"></div>
+        <div className="av-rainbow av-rainbow--orange"></div>
+        <div className="av-rainbow av-rainbow--yellow"></div>
+        <div className="av-rainbow av-rainbow--green"></div>
+        <div className="av-rainbow av-rainbow--blue"></div>
+      </div>
+      
+      {/* Service Title */}
+      <div className="av-service-block">
+        <h2 id="module-crs-av" className="av-service-title">LIVE SERVICES</h2>
+        <p className="av-service-sub">PRODUCTION • PA SYSTEMS • EVENTS</p>
       </div>
     </div>
-    <div className="srd-micro-label">LIVE EVENT SERVICES</div>
+    
+    {/* Tech Specifications Bar */}
+    <div className="av-spec-bar">
+      <div className="av-spec-item">
+        <span className="av-spec-label">MODEL</span>
+        <span className="av-spec-value">LIVE-AV-02</span>
+      </div>
+      <div className="av-spec-led" aria-hidden="true">
+        <span className="av-spec-led-label">PWR</span>
+        <div className="av-spec-led-light"></div>
+      </div>
+      <div className="av-spec-item">
+        <span className="av-spec-label">SERIAL</span>
+        <span className="av-spec-value">CRS-OX4-93</span>
+      </div>
+    </div>
+    
+    {/* Action Buttons */}
     <div className="srd-btn-group">
       <ServiceButton
         variant="crs"

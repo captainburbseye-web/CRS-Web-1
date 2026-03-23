@@ -4235,3 +4235,468 @@ main,
     font-size: 0.65rem;
   }
 }
+
+/* ============================================
+   CRS AV SUPPORT - Rack-Mounted Equipment Style
+   ============================================ */
+.srd-module--av-rack {
+  position: relative;
+  background: linear-gradient(180deg, 
+    #4a4a4a 0%, 
+    #3a3a3a 10%, 
+    #2a2a2a 50%, 
+    #3a3a3a 90%, 
+    #4a4a4a 100%
+  );
+  border: 4px solid #1a1a1a;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    inset 0 -1px 0 rgba(0,0,0,0.3),
+    0 4px 12px rgba(0,0,0,0.5);
+  overflow: visible;
+}
+
+/* Corner Screws */
+.av-screw {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 35% 35%, #777 0%, #444 50%, #222 100%);
+  border-radius: 50%;
+  border: 1px solid #111;
+  box-shadow: 
+    inset 0 1px 2px rgba(255,255,255,0.2),
+    0 1px 3px rgba(0,0,0,0.5);
+  z-index: 5;
+}
+.av-screw::before {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-weight: bold;
+  color: #333;
+  line-height: 1;
+}
+.av-screw--tl { top: 6px; left: 6px; }
+.av-screw--tr { top: 6px; right: 6px; }
+.av-screw--bl { bottom: 6px; left: 6px; }
+.av-screw--br { bottom: 6px; right: 6px; }
+
+/* Status LED */
+.av-status-led {
+  position: absolute;
+  top: 12px;
+  right: 30px;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle at 30% 30%, #ffaa00 0%, #ff8800 50%, #cc5500 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 8px rgba(255, 136, 0, 0.8),
+    0 0 16px rgba(255, 136, 0, 0.4);
+  animation: av-led-pulse 2s ease-in-out infinite;
+}
+
+@keyframes av-led-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(255, 136, 0, 0.8), 0 0 16px rgba(255, 136, 0, 0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 4px rgba(255, 136, 0, 0.6), 0 0 8px rgba(255, 136, 0, 0.3); }
+}
+
+/* Main Label Panel */
+.av-label-panel {
+  background: linear-gradient(135deg, #e8e4dc 0%, #d8d4cc 50%, #c8c4bc 100%);
+  border-radius: 4px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Logo Section */
+.av-logo-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.av-logo-text {
+  font-family: 'Arial Black', 'Helvetica', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff 0%, #d4a84a 50%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(1px 1px 0 #1a1a1a);
+}
+
+/* Colored Stripes */
+.av-stripes {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 10px 0;
+}
+
+.av-stripe {
+  height: 8px;
+  border-radius: 1px;
+}
+
+.av-stripe--red {
+  background: linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #dc2626 100%);
+}
+
+.av-stripe--yellow {
+  background: linear-gradient(90deg, #d4a84a 0%, #fbbf24 50%, #d4a84a 100%);
+}
+
+.av-stripe--green {
+  background: linear-gradient(90deg, #16a34a 0%, #22c55e 50%, #16a34a 100%);
+}
+
+/* Tagline */
+.av-tagline {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #2a2a2a;
+  letter-spacing: 0.08em;
+  margin: 8px 0 0 0;
+}
+
+/* Bottom Info Bar */
+.av-info-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  margin-bottom: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: #888;
+  letter-spacing: 0.1em;
+}
+
+.av-model {
+  color: #aaa;
+}
+
+.av-indicator {
+  flex: 1;
+  height: 4px;
+  margin: 0 15px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    #dc2626 20%, 
+    #dc2626 80%, 
+    transparent 100%
+  );
+  border-radius: 2px;
+}
+
+.av-serial {
+  background: #f0f0f0;
+  color: #1a1a1a;
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .av-logo-text {
+    font-size: 1.8rem;
+  }
+  .av-tagline {
+    font-size: 0.7rem;
+  }
+  .av-stripe {
+    height: 6px;
+  }
+}
+
+/* ============================================
+   CRS AV SUPPORT - VINTAGE RACK EQUIPMENT (Polaroid Style)
+   Complete redesign matching iconic vintage audio gear
+   ============================================ */
+
+/* Main Module - Brushed aluminum rack unit */
+.srd-module--av-rack {
+  position: relative;
+  background: linear-gradient(180deg, 
+    #f5f3f0 0%, 
+    #ebe8e3 5%,
+    #e5e2dd 50%,
+    #dfdcd7 95%,
+    #d9d6d1 100%
+  );
+  border: 3px solid #2a2a2a;
+  border-radius: 2px;
+  padding: 16px 20px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    inset 0 -1px 0 rgba(0,0,0,0.1),
+    0 4px 12px rgba(0,0,0,0.4),
+    0 1px 3px rgba(0,0,0,0.2);
+  overflow: visible;
+}
+
+/* Rack Mount Holes - Authentic */
+.av-rack-hole {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  border: 2px solid #333;
+  box-shadow: 
+    inset 0 2px 4px rgba(0,0,0,0.8),
+    0 1px 0 rgba(255,255,255,0.2);
+  z-index: 5;
+}
+.av-rack-hole::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, #555 0%, #222 100%);
+  border-radius: 50%;
+}
+.av-rack-hole--tl { top: 8px; left: 8px; }
+.av-rack-hole--tr { top: 8px; right: 8px; }
+.av-rack-hole--bl { bottom: 8px; left: 8px; }
+.av-rack-hole--br { bottom: 8px; right: 8px; }
+
+/* Vintage Label Panel - Main visual */
+.av-vintage-panel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, 
+    #f8f6f2 0%, 
+    #f0ede7 50%,
+    #e8e5df 100%
+  );
+  border-radius: 4px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.9),
+    inset 0 -1px 2px rgba(0,0,0,0.05),
+    0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Logo Block - Bold CRS branding */
+.av-logo-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 16px;
+  border-right: 2px solid #d0ccc4;
+}
+
+.av-logo-main {
+  font-family: 'Archivo Black', 'Arial Black', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.av-logo-sub {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #666;
+  letter-spacing: 0.15em;
+  margin-top: 2px;
+}
+
+/* Rainbow Stripes - Iconic vintage look */
+.av-rainbow-stripes {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 60px;
+  flex-shrink: 0;
+}
+
+.av-rainbow {
+  height: 6px;
+  border-radius: 1px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+.av-rainbow--red {
+  background: linear-gradient(90deg, #c22a2a 0%, #dc3545 50%, #c22a2a 100%);
+}
+
+.av-rainbow--orange {
+  background: linear-gradient(90deg, #d97706 0%, #f59e0b 50%, #d97706 100%);
+}
+
+.av-rainbow--yellow {
+  background: linear-gradient(90deg, #ca8a04 0%, #eab308 50%, #ca8a04 100%);
+}
+
+.av-rainbow--green {
+  background: linear-gradient(90deg, #16a34a 0%, #22c55e 50%, #16a34a 100%);
+}
+
+.av-rainbow--blue {
+  background: linear-gradient(90deg, #2563eb 0%, #3b82f6 50%, #2563eb 100%);
+}
+
+/* Service Title Block */
+.av-service-block {
+  flex: 1;
+  text-align: left;
+}
+
+.av-service-title {
+  font-family: 'Archivo Black', 'Arial Black', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #1a1a1a;
+  letter-spacing: 0.05em;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.av-service-sub {
+  font-family: 'Arial', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #555;
+  letter-spacing: 0.12em;
+  margin: 4px 0 0 0;
+}
+
+/* Technical Specifications Bar */
+.av-spec-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #333 0%, #222 100%);
+  border-radius: 3px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 2px 4px rgba(0,0,0,0.3);
+}
+
+.av-spec-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.av-spec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 400;
+  color: #888;
+  letter-spacing: 0.1em;
+}
+
+.av-spec-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #d4a84a;
+  letter-spacing: 0.05em;
+}
+
+/* Power LED Indicator */
+.av-spec-led {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.av-spec-led-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: #888;
+  letter-spacing: 0.1em;
+}
+
+.av-spec-led-light {
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 30% 30%, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 6px rgba(74, 222, 128, 0.8),
+    0 0 12px rgba(74, 222, 128, 0.4);
+  animation: av-pwr-pulse 3s ease-in-out infinite;
+}
+
+@keyframes av-pwr-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px rgba(74, 222, 128, 0.8), 0 0 12px rgba(74, 222, 128, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 4px rgba(74, 222, 128, 0.6), 0 0 8px rgba(74, 222, 128, 0.3); }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 640px) {
+  .av-vintage-panel {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  
+  .av-logo-block {
+    flex-direction: row;
+    gap: 8px;
+    border-right: none;
+    border-bottom: 2px solid #d0ccc4;
+    padding-right: 0;
+    padding-bottom: 10px;
+  }
+  
+  .av-logo-main {
+    font-size: 1.6rem;
+  }
+  
+  .av-rainbow-stripes {
+    flex-direction: row;
+    width: auto;
+    gap: 4px;
+  }
+  
+  .av-rainbow {
+    width: 40px;
+    height: 5px;
+  }
+  
+  .av-service-block {
+    text-align: center;
+  }
+  
+  .av-service-title {
+    font-size: 1.1rem;
+  }
+  
+  .av-spec-bar {
+    padding: 6px 10px;
+  }
+  
+  .av-spec-value {
+    font-size: 0.6rem;
+  }
+}
