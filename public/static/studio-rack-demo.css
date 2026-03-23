@@ -4518,3 +4518,271 @@ main,
     font-size: 0.6rem;
   }
 }
+
+/* ============================================
+   CRS AV SUPPORT - INDUSTRIAL PA RACK STYLE
+   Dark metal panel with speaker stack graphic
+   ============================================ */
+
+.srd-module.srd-module--av-industrial {
+  position: relative;
+  background: 
+    /* Scratched metal texture */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0px,
+      rgba(255,255,255,0.02) 1px,
+      transparent 2px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      rgba(0,0,0,0.1) 1px,
+      transparent 2px,
+      transparent 15px
+    ),
+    /* Base metal gradient */
+    linear-gradient(180deg, 
+      #3a3a3a 0%, 
+      #2a2a2a 20%,
+      #1f1f1f 50%,
+      #2a2a2a 80%,
+      #333 100%
+    ) !important;
+  border: 4px solid #1a1a1a;
+  border-radius: 4px;
+  padding: 20px 24px;
+  min-height: 320px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    inset 0 -2px 4px rgba(0,0,0,0.5),
+    0 4px 12px rgba(0,0,0,0.6) !important;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.srd-module.srd-module--av-industrial::before {
+  display: none !important;
+}
+
+/* Corner Screws - Industrial hex bolts */
+.av-ind-screw {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle at 35% 35%, #666 0%, #444 40%, #222 100%);
+  border-radius: 50%;
+  border: 2px solid #111;
+  box-shadow: 
+    inset 0 2px 3px rgba(255,255,255,0.15),
+    inset 0 -1px 2px rgba(0,0,0,0.5),
+    0 2px 4px rgba(0,0,0,0.6);
+  z-index: 5;
+}
+.av-ind-screw::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #555 0%, #222 100%);
+  border-radius: 50%;
+}
+.av-ind-screw::after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-weight: bold;
+  color: #333;
+  line-height: 1;
+}
+
+.av-ind-screw--tl { top: 10px; left: 10px; }
+.av-ind-screw--tr { top: 10px; right: 10px; }
+.av-ind-screw--bl { bottom: 10px; left: 10px; }
+.av-ind-screw--br { bottom: 10px; right: 10px; }
+.av-ind-screw--ml { top: 50%; left: 10px; transform: translateY(-50%); }
+.av-ind-screw--mr { top: 50%; right: 10px; transform: translateY(-50%); }
+
+/* Title Plate - Embossed metal */
+.av-ind-title-plate {
+  background: linear-gradient(180deg, #4a4a4a 0%, #3a3a3a 50%, #2a2a2a 100%);
+  border: 2px solid #222;
+  border-radius: 4px;
+  padding: 8px 32px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    inset 0 -1px 2px rgba(0,0,0,0.3),
+    0 2px 4px rgba(0,0,0,0.4);
+}
+
+.av-ind-title {
+  font-family: 'Archivo Black', 'Arial Black', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #888;
+  letter-spacing: 0.15em;
+  margin: 0;
+  text-shadow: 
+    0 -1px 0 #111,
+    0 1px 0 rgba(255,255,255,0.1);
+}
+
+/* PA Speaker Stack Graphic */
+.av-ind-graphic {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 280px;
+}
+
+.av-pa-stack {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Toggle Switches */
+.av-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.av-toggle-base {
+  width: 20px;
+  height: 32px;
+  background: linear-gradient(180deg, #555 0%, #333 50%, #444 100%);
+  border: 2px solid #222;
+  border-radius: 10px;
+  position: relative;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 2px 4px rgba(0,0,0,0.5);
+}
+
+.av-toggle-lever {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 16px;
+  background: linear-gradient(180deg, #888 0%, #666 50%, #555 100%);
+  border-radius: 3px;
+  border: 1px solid #333;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    0 1px 2px rgba(0,0,0,0.4);
+}
+
+.av-toggle-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: #888;
+  letter-spacing: 0.05em;
+}
+
+/* Action Buttons - Industrial style */
+.av-ind-controls {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  padding-top: 8px;
+}
+
+.av-ind-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 10px 24px;
+  border: 2px solid #111;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    inset 0 -2px 4px rgba(0,0,0,0.2),
+    0 3px 6px rgba(0,0,0,0.4);
+}
+
+.av-ind-btn:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.3),
+    inset 0 -2px 4px rgba(0,0,0,0.2),
+    0 4px 8px rgba(0,0,0,0.5);
+}
+
+.av-ind-btn:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.3),
+    0 1px 2px rgba(0,0,0,0.4);
+}
+
+.av-ind-btn--orange {
+  background: linear-gradient(180deg, #e8a030 0%, #d4882a 50%, #c07020 100%);
+  color: #1a1a1a;
+}
+
+.av-ind-btn--orange:hover {
+  background: linear-gradient(180deg, #f0b040 0%, #e09030 50%, #d08028 100%);
+}
+
+.av-ind-btn--green {
+  background: linear-gradient(180deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+  color: #1a1a1a;
+}
+
+.av-ind-btn--green:hover {
+  background: linear-gradient(180deg, #5aee90 0%, #32d56e 50%, #26b35a 100%);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .srd-module.srd-module--av-industrial {
+    min-height: 280px;
+    padding: 16px 20px;
+  }
+  
+  .av-ind-title {
+    font-size: 1.1rem;
+  }
+  
+  .av-ind-graphic {
+    max-width: 220px;
+  }
+  
+  .av-ind-controls {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .av-ind-btn {
+    font-size: 0.75rem;
+    padding: 8px 16px;
+  }
+  
+  .av-toggle {
+    display: none;
+  }
+}

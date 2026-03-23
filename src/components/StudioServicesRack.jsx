@@ -315,73 +315,102 @@ const ControlRoomModule = () => (
 );
 
 // ==========================================
-// 10. CRS AV SUPPORT MODULE - Vintage Rack Equipment Style
+// 10. CRS AV SUPPORT MODULE - Industrial PA Rack Style
 // ==========================================
 
+const PaSpeakerStack = () => (
+  <svg className="av-pa-stack" viewBox="0 0 200 160" aria-hidden="true">
+    {/* Left speaker cone */}
+    <g className="av-speaker-cone av-speaker-cone--left">
+      <ellipse cx="30" cy="80" rx="28" ry="35" fill="none" stroke="#c9a227" strokeWidth="1.5"/>
+      <ellipse cx="30" cy="80" rx="20" ry="25" fill="none" stroke="#c9a227" strokeWidth="1"/>
+      <ellipse cx="30" cy="80" rx="12" ry="15" fill="none" stroke="#c9a227" strokeWidth="1"/>
+      <ellipse cx="30" cy="80" rx="5" ry="6" fill="#c9a227"/>
+      {/* Wireframe lines */}
+      <line x1="2" y1="80" x2="58" y2="80" stroke="#c9a227" strokeWidth="0.5" opacity="0.6"/>
+      <line x1="30" y1="45" x2="30" y2="115" stroke="#c9a227" strokeWidth="0.5" opacity="0.6"/>
+    </g>
+    
+    {/* Center PA stack - 6 cabinets */}
+    <g className="av-pa-cabinets">
+      {/* Top row */}
+      <rect x="65" y="15" width="30" height="35" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
+      <rect x="100" y="15" width="30" height="35" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
+      {/* Horn detail */}
+      <path d="M70 22 L90 22 L95 45 L65 45 Z" fill="#e8c496" stroke="#1a1a1a" strokeWidth="1"/>
+      <path d="M105 22 L125 22 L130 45 L100 45 Z" fill="#e8c496" stroke="#1a1a1a" strokeWidth="1"/>
+      
+      {/* Middle row */}
+      <rect x="65" y="55" width="30" height="35" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
+      <rect x="100" y="55" width="30" height="35" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
+      <circle cx="80" cy="72" r="10" fill="#1a1a1a" stroke="#c9a227" strokeWidth="1"/>
+      <circle cx="80" cy="72" r="4" fill="#c9a227"/>
+      <circle cx="115" cy="72" r="10" fill="#1a1a1a" stroke="#c9a227" strokeWidth="1"/>
+      <circle cx="115" cy="72" r="4" fill="#c9a227"/>
+      
+      {/* Bottom row */}
+      <rect x="65" y="95" width="30" height="40" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
+      <rect x="100" y="95" width="30" height="40" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
+      <circle cx="80" cy="115" r="12" fill="#1a1a1a" stroke="#c9a227" strokeWidth="1"/>
+      <circle cx="80" cy="115" r="5" fill="#c9a227"/>
+      <circle cx="115" cy="115" r="12" fill="#1a1a1a" stroke="#c9a227" strokeWidth="1"/>
+      <circle cx="115" cy="115" r="5" fill="#c9a227"/>
+    </g>
+    
+    {/* Right speaker cone */}
+    <g className="av-speaker-cone av-speaker-cone--right">
+      <ellipse cx="170" cy="80" rx="28" ry="35" fill="none" stroke="#c9a227" strokeWidth="1.5"/>
+      <ellipse cx="170" cy="80" rx="20" ry="25" fill="none" stroke="#c9a227" strokeWidth="1"/>
+      <ellipse cx="170" cy="80" rx="12" ry="15" fill="none" stroke="#c9a227" strokeWidth="1"/>
+      <ellipse cx="170" cy="80" rx="5" ry="6" fill="#c9a227"/>
+      <line x1="142" y1="80" x2="198" y2="80" stroke="#c9a227" strokeWidth="0.5" opacity="0.6"/>
+      <line x1="170" y1="45" x2="170" y2="115" stroke="#c9a227" strokeWidth="0.5" opacity="0.6"/>
+    </g>
+  </svg>
+);
+
+const ToggleSwitch = ({ label }) => (
+  <div className="av-toggle" aria-hidden="true">
+    <div className="av-toggle-base">
+      <div className="av-toggle-lever"></div>
+    </div>
+    <span className="av-toggle-label">{label}</span>
+  </div>
+);
+
 const CrsAvSupportModule = () => (
-  <section className="srd-module srd-module--av-rack" aria-labelledby="module-crs-av">
-    {/* Corner rack mount holes */}
-    <div className="av-rack-hole av-rack-hole--tl" aria-hidden="true"></div>
-    <div className="av-rack-hole av-rack-hole--tr" aria-hidden="true"></div>
-    <div className="av-rack-hole av-rack-hole--bl" aria-hidden="true"></div>
-    <div className="av-rack-hole av-rack-hole--br" aria-hidden="true"></div>
+  <section className="srd-module srd-module--av-industrial" aria-labelledby="module-crs-av">
+    {/* Corner screws */}
+    <div className="av-ind-screw av-ind-screw--tl" aria-hidden="true"></div>
+    <div className="av-ind-screw av-ind-screw--tr" aria-hidden="true"></div>
+    <div className="av-ind-screw av-ind-screw--bl" aria-hidden="true"></div>
+    <div className="av-ind-screw av-ind-screw--br" aria-hidden="true"></div>
+    <div className="av-ind-screw av-ind-screw--ml" aria-hidden="true"></div>
+    <div className="av-ind-screw av-ind-screw--mr" aria-hidden="true"></div>
     
-    {/* Main Vintage Label Panel - Polaroid/Land style */}
-    <div className="av-vintage-panel">
-      {/* Left Logo Block */}
-      <div className="av-logo-block">
-        <span className="av-logo-main">CRS</span>
-        <span className="av-logo-sub">AV</span>
-      </div>
-      
-      {/* Rainbow Stripes - Iconic */}
-      <div className="av-rainbow-stripes">
-        <div className="av-rainbow av-rainbow--red"></div>
-        <div className="av-rainbow av-rainbow--orange"></div>
-        <div className="av-rainbow av-rainbow--yellow"></div>
-        <div className="av-rainbow av-rainbow--green"></div>
-        <div className="av-rainbow av-rainbow--blue"></div>
-      </div>
-      
-      {/* Service Title */}
-      <div className="av-service-block">
-        <h2 id="module-crs-av" className="av-service-title">LIVE SERVICES</h2>
-        <p className="av-service-sub">PRODUCTION • PA SYSTEMS • EVENTS</p>
-      </div>
+    {/* Title plate */}
+    <div className="av-ind-title-plate">
+      <h2 id="module-crs-av" className="av-ind-title">LIVE SERVICES</h2>
     </div>
     
-    {/* Tech Specifications Bar */}
-    <div className="av-spec-bar">
-      <div className="av-spec-item">
-        <span className="av-spec-label">MODEL</span>
-        <span className="av-spec-value">LIVE-AV-02</span>
-      </div>
-      <div className="av-spec-led" aria-hidden="true">
-        <span className="av-spec-led-label">PWR</span>
-        <div className="av-spec-led-light"></div>
-      </div>
-      <div className="av-spec-item">
-        <span className="av-spec-label">SERIAL</span>
-        <span className="av-spec-value">CRS-OX4-93</span>
-      </div>
+    {/* PA Speaker Stack Illustration */}
+    <div className="av-ind-graphic">
+      <PaSpeakerStack />
     </div>
     
-    {/* Action Buttons */}
-    <div className="srd-btn-group">
-      <ServiceButton
-        variant="crs"
-        service="Tech Support"
-        location="Events & Venues"
-        href="/contact?service=av-support"
-        badge={<CrsBadge />}
-      />
-      <ServiceButton
-        variant="crs"
-        service="Equipment Hire"
-        location="PA / Backline"
-        href="/contact?service=hire"
-        badge={<CrsBadge />}
-      />
+    {/* Controls Row */}
+    <div className="av-ind-controls">
+      <ToggleSwitch label="POWER" />
+      
+      <a href="/contact?service=av-support" className="av-ind-btn av-ind-btn--orange">
+        ENQUIRE
+      </a>
+      
+      <a href="/contact?service=hire" className="av-ind-btn av-ind-btn--green">
+        BOOK
+      </a>
+      
+      <ToggleSwitch label="SYSTEM" />
     </div>
   </section>
 );
