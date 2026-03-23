@@ -4243,7 +4243,8 @@ main,
    ============================================ */
 
 /* Main Module - Brushed aluminum rack unit */
-.srd-module--av-rack {
+/* Using .srd-module.srd-module--av-rack for higher specificity to override base .srd-module */
+.srd-module.srd-module--av-rack {
   position: relative;
   background: linear-gradient(180deg, 
     #f5f3f0 0%, 
@@ -4251,7 +4252,7 @@ main,
     #e5e2dd 50%,
     #dfdcd7 95%,
     #d9d6d1 100%
-  );
+  ) !important;
   border: 3px solid #2a2a2a;
   border-radius: 2px;
   padding: 16px 20px;
@@ -4259,8 +4260,13 @@ main,
     inset 0 1px 0 rgba(255,255,255,0.8),
     inset 0 -1px 0 rgba(0,0,0,0.1),
     0 4px 12px rgba(0,0,0,0.4),
-    0 1px 3px rgba(0,0,0,0.2);
+    0 1px 3px rgba(0,0,0,0.2) !important;
   overflow: visible;
+}
+
+/* Override the ::before pseudo-element that adds grain texture */
+.srd-module.srd-module--av-rack::before {
+  display: none !important;
 }
 
 /* Rack Mount Holes - Authentic */
