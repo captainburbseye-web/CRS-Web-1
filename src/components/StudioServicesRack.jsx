@@ -176,7 +176,13 @@ const MasterFaceplate = () => (
             <div className="srd-signal-dot srd-signal-dot--green"></div>
           </div>
           <div className="srd-faceplate-text-stack">
-            <h1 className="srd-faceplate-title">COWLEY ROAD STUDIOS</h1>
+            <h1 className="srd-faceplate-title">
+              <img 
+                src="/static/crs-wooden-sign.png" 
+                alt="Cowley Road Studios" 
+                className="srd-wooden-sign-img"
+              />
+            </h1>
             <p className="srd-faceplate-subtitle">OXFORD GRASSROOTS CREATIVE INFRASTRUCTURE</p>
           </div>
         </div>
