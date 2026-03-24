@@ -41,8 +41,25 @@ const RackRail = ({ side = "left" }) => {
 };
 
 // ==========================================
-// 2. VU METER
+// 2. VU METER (Componentized with <use> for cleaner DOM)
 // ==========================================
+
+// Hidden SVG defs - rendered once at top of page
+const VuMeterDefs = () => (
+  <svg style={{ display: 'none' }} aria-hidden="true">
+    <defs>
+      <g id="vu-scale-graphic">
+        <path d="M 15 45 A 35 35 0 0 1 85 45" fill="none" stroke="#222" strokeWidth="0.5" />
+        <line x1="22" y1="32" x2="24" y2="35" stroke="#222" strokeWidth="1" />
+        <line x1="35" y1="20" x2="36" y2="24" stroke="#222" strokeWidth="1" />
+        <line x1="50" y1="15" x2="50" y2="20" stroke="#222" strokeWidth="1.5" />
+        <line x1="65" y1="20" x2="64" y2="24" stroke="#222" strokeWidth="1" />
+        <line x1="78" y1="32" x2="76" y2="35" stroke="#dc2626" strokeWidth="1.5" />
+        <path d="M 72 26 A 35 35 0 0 1 85 45" fill="none" stroke="#dc2626" strokeWidth="2" />
+      </g>
+    </defs>
+  </svg>
+);
 
 const VuMeter = ({ label = "L" }) => (
   <div className={`srd-vu srd-vu--${label.toLowerCase()}`} aria-hidden="true">
@@ -50,13 +67,7 @@ const VuMeter = ({ label = "L" }) => (
       <div className="srd-vu-face">
         <div className="srd-vu-glow"></div>
         <svg viewBox="0 0 100 50" className="srd-vu-scale">
-          <path d="M 15 45 A 35 35 0 0 1 85 45" fill="none" stroke="#222" strokeWidth="0.5" />
-          <line x1="22" y1="32" x2="24" y2="35" stroke="#222" strokeWidth="1" />
-          <line x1="35" y1="20" x2="36" y2="24" stroke="#222" strokeWidth="1" />
-          <line x1="50" y1="15" x2="50" y2="20" stroke="#222" strokeWidth="1.5" />
-          <line x1="65" y1="20" x2="64" y2="24" stroke="#222" strokeWidth="1" />
-          <line x1="78" y1="32" x2="76" y2="35" stroke="#dc2626" strokeWidth="1.5" />
-          <path d="M 72 26 A 35 35 0 0 1 85 45" fill="none" stroke="#dc2626" strokeWidth="2" />
+          <use href="#vu-scale-graphic" />
         </svg>
         <div className="srd-vu-needle">
           <div className="srd-vu-needle-tip"></div>
@@ -258,7 +269,7 @@ const RecordingModule = () => (
 );
 
 const RehearsalModule = () => (
-  <section className="srd-module srd-module--purple" aria-labelledby="module-rehearsal">
+  <section className="srd-module srd-module--mustard" aria-labelledby="module-rehearsal">
     <div className="srd-module-header">
       <div className="srd-module-title-group">
         <h2 id="module-rehearsal" className="srd-module-title">Rehearsal</h2>
@@ -615,6 +626,8 @@ const TechManualFooter = () => (
 export default function StudioServicesRack() {
   return (
     <main className="srd-page">
+      {/* Hidden SVG defs for VU meters - rendered once */}
+      <VuMeterDefs />
       
       <TopRail />
       
@@ -625,7 +638,7 @@ export default function StudioServicesRack() {
           <MasterFaceplate />
           <StatusModule />
           
-          {/* Service Modules - Green/Purple dual-channel buttons */}
+          {/* Service Modules - Green/Mustard dual-channel buttons */}
           <RecordingModule />
           <RehearsalModule />
           <ControlRoomModule />

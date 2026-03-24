@@ -5250,3 +5250,62 @@ main,
     0px 2px 3px rgba(0, 0, 0, 0.3),
     inset 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+/* ============================================
+   PALETTE FIX: Purple → Mustard
+   Brand-compliant deep ochre tone
+   ============================================ */
+
+/* Mustard module chassis - replaces purple */
+.srd-module--mustard {
+  background: 
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.04) 0px,
+      rgba(255,255,255,0.01) 2px,
+      transparent 8px
+    ),
+    linear-gradient(
+      180deg,
+      #3d3520 0%,
+      #2b2414 40%,
+      #1a1609 100%
+    ) !important;
+  border-top: 1px solid #4a3e23 !important;
+}
+
+/* Cricket button - mustard instead of purple */
+.srd-btn--cricket {
+  background: linear-gradient(180deg, #5c4d1f 0%, #3d3314 50%, #2b2410 100%) !important;
+  border-color: #6b5a24 !important;
+}
+
+.srd-btn--cricket:hover {
+  background: linear-gradient(180deg, #6b5a24 0%, #4a3e1a 50%, #3d3314 100%) !important;
+  border-color: #8c7322 !important;
+}
+
+/* Cricket badge - muted mustard */
+.srd-badge--cricket {
+  background: linear-gradient(135deg, #4a3e1a 0%, #3d3314 100%) !important;
+  border-color: #6b5a24 !important;
+}
+
+/* Cricket LED - burns mustard/gold instead of purple */
+.srd-led--cricket-off {
+  background: radial-gradient(circle at 30% 30%, #4a3e1a 0%, #2b2410 100%);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.srd-led--cricket-on,
+.srd-btn--cricket:hover .srd-led--cricket-off {
+  background: radial-gradient(circle at 30% 30%, #fde047 0%, #c9a227 60%, #8c7322 100%) !important;
+  box-shadow: 
+    0 0 8px 2px color-mix(in srgb, #c9a227 70%, transparent),
+    0 0 14px 4px color-mix(in srgb, #c9a227 40%, transparent) !important;
+}
+
+/* LCD bullet for Cricket channel - mustard */
+.srd-lcd-bullet-cricket {
+  color: #c9a227 !important;
+}

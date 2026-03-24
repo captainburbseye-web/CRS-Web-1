@@ -10,7 +10,7 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title || 'Cowley Road Studios | Recording Studio & Rehearsal Rooms Oxford'}</title>
-        <meta name="description" content={description || 'Recording studio, rehearsal rooms, AV services and venue hire in Oxford. Professional infrastructure on Cowley Road. Book sessions online.'} />
+        <meta name="description" content={description || 'Cowley Road Studios. Grassroots infrastructure for the Oxford music scene. Recording at 118 Cowley Rd, Rehearsal at Cricket Rd, Workshop Café, plus ODRO Engineering AV repairs and CRS Live Services equipment hire.'} />
         <meta name="keywords" content={keywords || 'recording studio oxford, rehearsal rooms oxford, live sound oxford, av services oxford, venue hire oxford'} />
         <meta name="author" content="Cowley Road Studios" />
         <meta name="copyright" content="© 2026 Cowley Road Studios. Continuing the Soundworks Oxford legacy (1999–2024)." />
@@ -27,7 +27,7 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         {/* Open Graph (social sharing) */}
         <meta property="og:type" content="website" />
         <meta property="og:title" content={ogTitle || title || 'Cowley Road Studios | Recording Studio & Rehearsal Rooms Oxford'} />
-        <meta property="og:description" content={ogDescription || description || 'Recording studio, rehearsal rooms, AV services and venue hire in Oxford. Professional infrastructure on Cowley Road.'} />
+        <meta property="og:description" content={ogDescription || description || 'Cowley Road Studios. Grassroots infrastructure for the Oxford music scene. Recording, Rehearsal, Workshop Café, ODRO Engineering AV repairs, and CRS Live Services.'} />
         <meta property="og:image" content={ogImage || defaultImage} />
         <meta property="og:url" content={ogUrl || canonicalUrl || baseUrl} />
         
