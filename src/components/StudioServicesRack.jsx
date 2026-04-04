@@ -200,7 +200,7 @@ const MasterFaceplate = () => (
           </div>
           <div className="srd-faceplate-text-stack">
             <h2 className="srd-faceplate-title">
-              <img src="/static/crs-wooden-sign.png" alt="Cowley Road Studios" className="srd-wooden-sign-img" />
+              <img src="/static/crs-wooden-sign-upscaled.png" alt="Cowley Road Studios" className="srd-wooden-sign-img" />
             </h2>
             <p className="srd-faceplate-subtitle">Grassroots infrastructure for the Oxford music scene.</p>
           </div>
