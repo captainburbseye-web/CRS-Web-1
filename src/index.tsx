@@ -94,39 +94,65 @@ app.get('/manifest.json', (c) => {
 // API ENDPOINTS
 // Contact form endpoint - sends email via Cloudflare MailChannels
 app.post('/api/contact', async (c) => {
+  const contentType = c.req.header('content-type') || ''
+  const isFormSubmission = contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')
+
   try {
-    const body = await c.req.json()
+    const rawBody = isFormSubmission
+      ? Object.fromEntries((await c.req.formData()).entries())
+      : await c.req.json()
+
+    const body = Object.fromEntries(
+      Object.entries(rawBody).map(([key, value]) => [key, typeof value === 'string' ? value.trim() : value])
+    ) as Record<string, string>
+
     console.log('[API] Contact form submission:', body)
-    
-    // Get client IP from Cloudflare header
+
     const clientIP = c.req.header('cf-connecting-ip') || 'Unknown'
-    
-    // Get Resend API key from environment
     const resendApiKey = c.env?.RESEND_API_KEY
-    
+
     if (!resendApiKey || resendApiKey === 're_placeholder_add_real_key_after_signup') {
       console.error('[Resend] API key not configured')
-      return c.json({ 
-        success: false, 
+      if (isFormSubmission) {
+        return c.redirect('/contact?status=error', 303)
+      }
+      return c.json({
+        success: false,
         error: 'Email service not configured. Please try again later.'
       }, 500)
     }
-    
-    // Build email payload for Resend
-    const serviceType = body.service || 'general'
+
+    const serviceAliases: Record<string, string> = {
+      recording: 'recording',
+      technical: 'av',
+      av: 'av',
+      repairs: 'repairs',
+      repair: 'repairs',
+      venue: 'venue',
+      'pod-hire': 'pod-hire',
+      general: 'general'
+    }
+
+    const serviceType = serviceAliases[(body.service || body.enquiry_type || 'general').toLowerCase()] || 'general'
     const serviceLabel = {
-      'recording': 'Recording Session',
+      recording: 'Recording Session',
       'pod-hire': 'Pod Hire',
-      'repairs': 'Equipment Repair',
-      'av': 'AV Services',
-      'venue': 'Venue Hire',
-      'general': 'General Enquiry'
+      repairs: 'Equipment Repair',
+      av: 'AV Services',
+      venue: 'Venue Hire',
+      general: 'General Enquiry'
     }[serviceType] || 'General Enquiry'
-    
+
+    const subject = body.subject || serviceLabel
+    const message = body.message || 'No message provided'
+    const phoneLine = body.phone
+      ? `<p><strong>Phone:</strong> ${body.phone}</p>`
+      : ''
+
     const emailData = {
       from: 'CRS Contact Form <noreply@crsoxford.com>',
       to: ['info@crsoxford.com'],
-      subject: `[CRS ${serviceType.toUpperCase()}] ${body.subject || serviceLabel}`,
+      subject: `[CRS ${serviceType.toUpperCase()}] ${subject}`,
       html: `
         <div style="font-family: 'JetBrains Mono', monospace; max-width: 600px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #00ff00; border: 2px solid #333;">
           <h2 style="color: #ff6b35; margin-top: 0;">NEW CONTACT FORM SUBMISSION</h2>
@@ -134,11 +160,12 @@ app.post('/api/contact', async (c) => {
             <p><strong>Service Type:</strong> ${serviceLabel}</p>
             <p><strong>From:</strong> ${body.name || 'Not provided'}</p>
             <p><strong>Email:</strong> ${body.email || 'Not provided'}</p>
-            <p><strong>Subject:</strong> ${body.subject || serviceLabel}</p>
+            ${phoneLine}
+            <p><strong>Subject:</strong> ${subject}</p>
           </div>
           <div style="background: #0a0a0a; padding: 15px; margin: 20px 0; border: 1px solid #333;">
             <p><strong>Message:</strong></p>
-            <p style="white-space: pre-wrap;">${body.message || 'No message provided'}</p>
+            <p style="white-space: pre-wrap;">${message}</p>
           </div>
           <div style="font-size: 0.85em; color: #666; margin-top: 20px; padding-top: 15px; border-top: 1px solid #333;">
             <p><strong>Submitted:</strong> ${new Date().toISOString()}</p>
@@ -148,8 +175,7 @@ app.post('/api/contact', async (c) => {
       `,
       reply_to: body.email || undefined
     }
-    
-    // Send email via Resend
+
     const mailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -158,27 +184,37 @@ app.post('/api/contact', async (c) => {
       },
       body: JSON.stringify(emailData)
     })
-    
+
     if (!mailResponse.ok) {
       const errorText = await mailResponse.text()
       console.error('[Resend] Failed to send email:', errorText)
-      return c.json({ 
-        success: false, 
+      if (isFormSubmission) {
+        return c.redirect(`/contact?status=error&service=${encodeURIComponent(serviceType)}`, 303)
+      }
+      return c.json({
+        success: false,
         error: 'Failed to send email. Please try again later.'
       }, 500)
     }
-    
+
     const responseData = await mailResponse.json()
     console.log('[Resend] Email sent successfully:', responseData)
-    
-    return c.json({ 
-      success: true, 
-      message: '[ SIGNAL RECEIVED ] Inquiry logged to CRS Administrative Queue. A technical representative will respond within 24 operational hours.' 
+
+    if (isFormSubmission) {
+      return c.redirect(`/contact?status=sent&service=${encodeURIComponent(serviceType)}`, 303)
+    }
+
+    return c.json({
+      success: true,
+      message: '[ SIGNAL RECEIVED ] Inquiry logged to CRS Administrative Queue. A technical representative will respond within 24 operational hours.'
     }, 200)
   } catch (error) {
     console.error('[API] Contact form error:', error)
-    return c.json({ 
-      success: false, 
+    if (isFormSubmission) {
+      return c.redirect('/contact?status=error', 303)
+    }
+    return c.json({
+      success: false,
       error: 'Internal server error. Please try again later.'
     }, 500)
   }
@@ -365,7 +401,7 @@ app.get('/av', (c) => c.redirect('/av-services'))
 
 // UNIFIED BOOKING PAGE (Phase 2: Simplified 3-category booking)
 // BOOK: Redirect to homepage (Rack is now primary booking interface)
-app.get('/book', (c) => c.redirect('/'))
+app.get('/book', (c) => c.redirect('/#recording-services', 301))
 
 // LEGACY BOOKING PAGE (Archive)
 app.get('/book-legacy', (c) => {
@@ -636,16 +672,17 @@ app.get('/', (c) => {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CRS | Oxford Recording, Rehearsal & Workshop Café</title>
-  <meta name="description" content="Cowley Road Studios. Grassroots infrastructure for the Oxford music scene. Recording at 118 Cowley Rd, Rehearsal at Cricket Rd, and the Workshop Café." />
-  <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, band rehearsal oxford, music production oxford, 118 cowley road, cricket road rehearsal" />
+  <title>Recording Studio & Rehearsal Rooms in Oxford | Cowley Road Studios</title>
+  <meta name="description" content="Cowley Road Studios at 118 Cowley Road, Oxford OX4 1JE, United Kingdom. Grassroots infrastructure for the Oxford music scene. Recording, rehearsal, Workshop Café enquiries, and ODRO Electronics support." />
+  <meta name="keywords" content="recording studio oxford, rehearsal rooms oxford, music studio cowley road, cowley road studios, 118 cowley road oxford, workshop cafe oxford, odro electronics" />
+  <link rel="canonical" href="https://cowleyroadstudios.com/" />
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/crs-logo.png" />
   <link rel="apple-touch-icon" href="/crs-logo.png" />
   
   <!-- Hardware Physics CSS -->
-  <link href="/static/studio-rack-demo.css?v=0.4.3" rel="stylesheet" />
+  <link href="/static/studio-rack-demo.css?v=0.5.0" rel="stylesheet" />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -672,18 +709,21 @@ app.get('/', (c) => {
       "@context": "https://schema.org",
       "@type": "MusicStudio",
       "name": "Cowley Road Studios",
-      "description": "Recording studio and rehearsal spaces supporting the Oxford music scene.",
+      "description": "Grassroots infrastructure for the Oxford music scene.",
       "url": "https://cowleyroadstudios.com",
+      "telephone": "+441865722027",
+      "email": "info@crsoxford.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "118 Cowley Road",
         "addressLocality": "Oxford",
         "postalCode": "OX4 1JE",
-        "addressCountry": "UK"
+        "addressCountry": "United Kingdom"
       },
-      "areaServed": "Oxford",
-      "telephone": "+441865722027",
-      "email": "info@crsoxford.com"
+      "hasMap": "https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE",
+      "sameAs": [
+        "https://instagram.com/cowleyroadstudios.ox"
+      ]
     })}
   </script>
 </body>
@@ -692,193 +732,191 @@ app.get('/', (c) => {
 })
 
 // ==========================================
-// SEO LANDING PAGES — Phase 2
+// SEO SUPPORT PAGES — PREVIEW BATCH 3
 // ==========================================
 
-// PAGE 1: Recording Studio Oxford
+const SUPPORT_PAGE_STYLE = `
+  :root {
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #070807;
+    color: #f3f0e7;
+  }
+  main {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 2.5rem 1rem 4rem;
+  }
+  .shell {
+    border: 1px solid rgba(201,162,39,0.24);
+    background: linear-gradient(180deg, rgba(29,33,27,0.96) 0%, rgba(9,10,9,0.96) 100%);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.05);
+    padding: 1.5rem;
+  }
+  .eyebrow,
+  .footer-links,
+  .back-link,
+  .cta-link {
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .eyebrow {
+    color: #d7c47a;
+    font-size: 0.78rem;
+  }
+  h1 {
+    margin: 0.5rem 0 0.75rem;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.05;
+  }
+  p, li {
+    line-height: 1.75;
+    color: rgba(243,240,231,0.88);
+  }
+  ul { padding-left: 1.2rem; }
+  li::marker { color: #d7c47a; }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .cta-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.9rem 1rem;
+    text-decoration: none;
+    color: #13140d;
+    background: linear-gradient(180deg, #d7c47a 0%, #b8952d 100%);
+    border: 1px solid rgba(201,162,39,0.75);
+  }
+  .cta-link--secondary {
+    color: #f3f0e7;
+    background: rgba(12,14,11,0.85);
+  }
+  .meta-block {
+    margin: 1.25rem 0;
+    padding: 1rem;
+    border-left: 3px solid #d7c47a;
+    background: rgba(0,0,0,0.22);
+  }
+  .footer {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    margin-top: 1rem;
+    font-size: 0.78rem;
+  }
+  a { color: #d7c47a; }
+  @media (max-width: 640px) {
+    .shell { padding: 1.15rem; }
+    .cta-row { flex-direction: column; }
+    .cta-link { width: 100%; }
+  }
+`
+
+const renderSupportPage = ({ title, description, h1, intro, body, slug }) => `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${title}</title>
+  <meta name="description" content="${description}" />
+  <link rel="canonical" href="https://cowleyroadstudios.com/${slug}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>${SUPPORT_PAGE_STYLE}</style>
+</head>
+<body>
+  <main>
+    <div class="shell">
+      <a href="/" class="back-link">← Back to home</a>
+      <div class="eyebrow">Cowley Road Studios</div>
+      <h1>${h1}</h1>
+      <p>${intro}</p>
+      <div class="meta-block">
+        <strong>Address:</strong> 118 Cowley Road, Oxford OX4 1JE, United Kingdom<br />
+        <strong>Tagline:</strong> Grassroots infrastructure for the Oxford music scene.
+      </div>
+      ${body}
+      <div class="cta-row">
+        <a href="/" class="cta-link">Back to home</a>
+        <a href="/contact" class="cta-link cta-link--secondary">Enquire</a>
+      </div>
+      <footer class="footer">
+        <div>118 Cowley Road, Oxford OX4 1JE, United Kingdom</div>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/recording-studio-oxford">Recording Studio Oxford</a>
+          <a href="/rehearsal-rooms-oxford">Rehearsal Rooms Oxford</a>
+          <a href="/music-studio-cowley-road">Music Studio Cowley Road</a>
+        </div>
+      </footer>
+    </div>
+  </main>
+</body>
+</html>`
+
 app.get('/recording-studio-oxford', (c) => {
-  return c.html(
-    `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Recording Studio in Oxford | Cowley Road Studios</title>
-  <meta name="description" content="Independent recording studio based at 118 Cowley Road in Oxford supporting bands, musicians and producers." />
-  <link rel="stylesheet" href="/static/crs-reset.css" />
-  <link rel="stylesheet" href="/static/crs-typography.css" />
-  <style>
-    body { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; }
-    h1 { font-size: 2rem; margin-bottom: 1rem; }
-    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
-    .cta-button { display: inline-block; padding: 1rem 2rem; background: #7a9c68; color: white; text-decoration: none; margin: 1rem 0; border-radius: 4px; }
-  </style>
-</head>
-<body>
-  <h1>Recording Studio in Oxford</h1>
-  
-  <h2>Overview</h2>
-  <p>Cowley Road Studios is an independent recording studio based at 118 Cowley Road in Oxford. The studio supports bands, musicians and producers working across the Oxford music scene.</p>
-  
-  <h2>Studio Environment</h2>
-  <p>The studio provides a treated control room suitable for band recording, production work, and recording sessions. The facility is designed to support independent musicians and producers in Oxford.</p>
-  
-  <h2>Location</h2>
-  <p>Located on Cowley Road in central Oxford, the studio is accessible to musicians across Oxfordshire and the surrounding areas.</p>
-  
-  <h2>Booking</h2>
-  <a href="/" class="cta-button">BOOK A RECORDING SESSION</a>
-  
-  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #ddd;">
-    <p><strong>Cowley Road Studios</strong><br/>
-    118 Cowley Road<br/>
-    Oxford OX4 1JE<br/>
-    United Kingdom</p>
-    <p><a href="/">Home</a> | <a href="/rehearsal-rooms-oxford">Rehearsal Rooms</a> | <a href="/cricket-road-rehearsal">Cricket Road</a></p>
-  </footer>
-</body>
-</html>`
-  )
+  return c.html(renderSupportPage({
+    slug: 'recording-studio-oxford',
+    title: 'Recording Studio Oxford | Cowley Road Studios',
+    description: 'Recording studio support at 118 Cowley Road, Oxford OX4 1JE, United Kingdom. Main studio and control room enquiries via Cowley Road Studios.',
+    h1: 'Recording Studio Oxford',
+    intro: 'Cowley Road Studios presents the main studio and control room at 118 Cowley Road, Oxford OX4 1JE, United Kingdom. The public position is straightforward: a serious recording base with enquiry-led support and no invented extras.',
+    body: `
+      <p>The recording offer is anchored to the Cowley Road site and presented as the main studio and control room. Home-page copy now aligns with the address, canonical domain, and the core tagline without drifting into speculative venue language.</p>
+      <p>Current published studio specification includes SSL BiG SiX, TL Audio C1, Revox tape preamps, Tascam 388, Ghielmetti patchbay, one main live room and three isolation booths, Adam Audio and Yamaha NS-10M monitors, plus the currently surfaced microphone list of Neumann U87, AKG 414, Shure SM7B, and Shure SM58.</p>
+      <p>For recording enquiries, the site routes visitors cleanly back to home or into the contact path, keeping the Rack UI front and centre.</p>
+    `
+  }))
 })
 
-// PAGE 2: Rehearsal Rooms Oxford
 app.get('/rehearsal-rooms-oxford', (c) => {
-  return c.html(
-    `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rehearsal Rooms in Oxford | Cowley Road Studios</title>
-  <meta name="description" content="Band rehearsal rooms and production rehearsal space managed by Cowley Road Studios in Oxford." />
-  <link rel="stylesheet" href="/static/crs-reset.css" />
-  <link rel="stylesheet" href="/static/crs-typography.css" />
-  <style>
-    body { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; }
-    h1 { font-size: 2rem; margin-bottom: 1rem; }
-    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
-    .cta-button { display: inline-block; padding: 1rem 2rem; background: #7a9c68; color: white; text-decoration: none; margin: 1rem 0; border-radius: 4px; }
-  </style>
-</head>
-<body>
-  <h1>Rehearsal Rooms in Oxford</h1>
-  
-  <h2>Overview</h2>
-  <p>Cowley Road Studios manages rehearsal spaces supporting band rehearsals and production rehearsals for local musicians across Oxford.</p>
-  
-  <h2>Rehearsal Spaces</h2>
-  <p>The rehearsal rooms serve bands and musicians requiring space for practice, production rehearsals, and creative development. Facilities are managed to support the Oxford independent music scene.</p>
-  
-  <h2>Cricket Road Rehearsal Space</h2>
-  <p>Cowley Road Studios operates a rehearsal facility at Cricket Road in Oxford, providing dedicated rehearsal space for bands and production groups.</p>
-  
-  <h2>Booking</h2>
-  <a href="/" class="cta-button">BOOK REHEARSAL</a>
-  
-  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #ddd;">
-    <p><strong>Cowley Road Studios</strong><br/>
-    118 Cowley Road<br/>
-    Oxford OX4 1JE<br/>
-    United Kingdom</p>
-    <p><a href="/">Home</a> | <a href="/recording-studio-oxford">Recording Studio</a> | <a href="/cricket-road-rehearsal">Cricket Road</a></p>
-  </footer>
-</body>
-</html>`
-  )
+  return c.html(renderSupportPage({
+    slug: 'rehearsal-rooms-oxford',
+    title: 'Rehearsal Rooms Oxford | Cowley Road Studios',
+    description: 'Rehearsal rooms in Oxford with clearly defined Cowley Road studio-linked rehearsal and Cricket Road dedicated rehearsal booking paths.',
+    h1: 'Rehearsal Rooms Oxford',
+    intro: 'Cowley Road Studios now states rehearsal plainly: Cowley Road covers studio-linked rehearsal, while Cricket Road is the dedicated rehearsal space. The two are connected, but they are not merged.',
+    body: `
+      <p>The support copy keeps Cowley Road as the canonical business address at 118 Cowley Road, Oxford OX4 1JE, United Kingdom, while defining Cricket Road as the stable rehearsal base.</p>
+      <p>Internal linking routes users back to the homepage Rack UI, where the rehearsal selector now presents a fast choice between Cowley Road studio-linked rehearsal and Cricket Road dedicated rehearsal booking.</p>
+      <p>This page exists to support search visibility for rehearsal-related intent without replacing the main Rack-led homepage experience.</p>
+    `
+  }))
 })
 
-// PAGE 3: Cricket Road Rehearsal
-app.get('/cricket-road-rehearsal', (c) => {
-  return c.html(
-    `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cricket Road Rehearsal Space | Oxford</title>
-  <meta name="description" content="Rehearsal space at Cricket Road managed by Cowley Road Studios in Oxford." />
-  <link rel="stylesheet" href="/static/crs-reset.css" />
-  <link rel="stylesheet" href="/static/crs-typography.css" />
-  <style>
-    body { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; }
-    h1 { font-size: 2rem; margin-bottom: 1rem; }
-    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
-    .cta-button { display: inline-block; padding: 1rem 2rem; background: #7a9c68; color: white; text-decoration: none; margin: 1rem 0; border-radius: 4px; }
-  </style>
-</head>
-<body>
-  <h1>Cricket Road Rehearsal Space</h1>
-  
-  <h2>Overview</h2>
-  <p>The Cricket Road rehearsal space is managed by Cowley Road Studios and provides dedicated rehearsal facilities for bands within Oxford.</p>
-  
-  <h2>Location</h2>
-  <p>Located at Cricket Road in Oxford, the space serves as a rehearsal facility for musicians and production groups working in the local area.</p>
-  
-  <h2>Booking</h2>
-  <a href="/" class="cta-button">BOOK REHEARSAL</a>
-  
-  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #ddd;">
-    <p><strong>Cowley Road Studios</strong><br/>
-    118 Cowley Road<br/>
-    Oxford OX4 1JE<br/>
-    United Kingdom</p>
-    <p><a href="/">Home</a> | <a href="/recording-studio-oxford">Recording Studio</a> | <a href="/rehearsal-rooms-oxford">Rehearsal Rooms</a></p>
-  </footer>
-</body>
-</html>`
-  )
+app.get('/music-studio-cowley-road', (c) => {
+  return c.html(renderSupportPage({
+    slug: 'music-studio-cowley-road',
+    title: 'Music Studio Cowley Road | Cowley Road Studios',
+    description: 'Music studio support centred on 118 Cowley Road, Oxford OX4 1JE, United Kingdom, under the Cowley Road Studios domain.',
+    h1: 'Music Studio Cowley Road',
+    intro: 'This support page reinforces the location association between Cowley Road Studios and 118 Cowley Road, Oxford OX4 1JE, United Kingdom, using the canonical domain cowleyroadstudios.com throughout.',
+    body: `
+      <p>It sits alongside the recording and rehearsal support pages to create restrained internal linking from the homepage and footer without overloading the main user journey.</p>
+      <p>The language stays grounded: recording, rehearsal, Workshop Café enquiries, and ODRO Electronics support. No artist roster, no invented client list, and no unsupported operating claims.</p>
+      <p>The intended result is stronger location relevance around Cowley Road while keeping the Rack UI aesthetic intact on the main site.</p>
+    `
+  }))
 })
 
-// PAGE 4: Music Studio Oxford
-app.get('/music-studio-oxford', (c) => {
-  return c.html(
-    `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Music Studio in Oxford | Cowley Road Studios</title>
-  <meta name="description" content="Recording studio and rehearsal facilities at Cowley Road Studios in Oxford." />
-  <link rel="stylesheet" href="/static/crs-reset.css" />
-  <link rel="stylesheet" href="/static/crs-typography.css" />
-  <style>
-    body { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; line-height: 1.6; }
-    h1 { font-size: 2rem; margin-bottom: 1rem; }
-    h2 { font-size: 1.5rem; margin: 2rem 0 1rem; }
-    .cta-button { display: inline-block; padding: 1rem 2rem; background: #7a9c68; color: white; text-decoration: none; margin: 1rem 0; border-radius: 4px; }
-  </style>
-</head>
-<body>
-  <h1>Music Studio in Oxford</h1>
-  
-  <h2>Overview</h2>
-  <p>Cowley Road Studios provides recording, rehearsal, and production facilities for musicians based in and around Oxford.</p>
-  
-  <h2>Services</h2>
-  <p>The studio supports recording sessions, band rehearsals, and production work as part of the grassroots infrastructure serving Oxford's independent music scene.</p>
-  
-  <h2>Facilities</h2>
-  <ul>
-    <li><a href="/recording-studio-oxford">Recording Studio</a> — Recording sessions and production work</li>
-    <li><a href="/rehearsal-rooms-oxford">Rehearsal Rooms</a> — Band rehearsals and practice space</li>
-    <li><a href="/cricket-road-rehearsal">Cricket Road</a> — Dedicated rehearsal facility</li>
-  </ul>
-  
-  <h2>Get Started</h2>
-  <a href="/" class="cta-button">EXPLORE SERVICES</a>
-  
-  <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #ddd;">
-    <p><strong>Cowley Road Studios</strong><br/>
-    118 Cowley Road<br/>
-    Oxford OX4 1JE<br/>
-    United Kingdom</p>
-    <p><a href="/">Home</a> | <a href="/recording-studio-oxford">Recording</a> | <a href="/rehearsal-rooms-oxford">Rehearsal</a></p>
-  </footer>
-</body>
-</html>`
-  )
-})
+app.get('/music-studio-oxford', (c) => c.redirect('/music-studio-cowley-road', 301))
+app.get('/cricket-road-rehearsal', (c) => c.redirect('/rehearsal-rooms-oxford', 301))
 
 // LEGACY HOMEPAGE REDIRECT
 app.get('/home', (c) => c.redirect('/'))
@@ -926,7 +964,7 @@ app.get('/rack-accordion-legacy', (c) => {
             },
             "telephone": "+441865722027",
             "email": "info@crsoxford.com",
-            "url": "https://cowley-road-studios.pages.dev",
+            "url": "https://cowleyroadstudios.com",
             "priceRange": "££",
             "areaServed": "Oxford",
             "sameAs": [
@@ -1852,13 +1890,17 @@ app.get('/work', (c) => {
 })
 // CONTACT
 app.get('/contact', (c) => {
+  const service = String(c.req.query('service') || 'general').toLowerCase()
+  const statusParam = String(c.req.query('status') || '').toLowerCase()
+  const status = statusParam === 'sent' || statusParam === 'error' ? statusParam : null
+
   return c.html(`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Cowley Road Studios | Recording Studio Oxford</title>
-    <meta name="description" content="Get in touch about studio sessions, rehearsal space, AV services, or venue hire. Two Oxford locations. Direct booking routes. Email: info@crsoxford.com">
+    <meta name="description" content="Get in touch about studio sessions, rehearsal space, AV services, venue hire, or repairs. Two Oxford locations. Direct booking routes. Email: info@crsoxford.com">
     <meta name="keywords" content="contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1872,7 +1914,7 @@ app.get('/contact', (c) => {
     <link href="/static/rack-accordion.css" rel="stylesheet">
 </head>
 <body>
-    ${<ContactPage />}
+    ${<ContactPage initialService={service} status={status} />}
 </body>
 </html>`)
 })
@@ -1949,7 +1991,7 @@ app.get('/studio-rack-demo', (c) => {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   
   <!-- Hardware Physics CSS -->
-  <link href="/static/studio-rack-demo.css?v=0.4.3" rel="stylesheet" />
+  <link href="/static/studio-rack-demo.css?v=0.5.0" rel="stylesheet" />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -2039,7 +2081,7 @@ app.get('/rack-accordion', (c) => {
             },
             "telephone": "+441865722027",
             "email": "info@crsoxford.com",
-            "url": "https://cowley-road-studios.pages.dev",
+            "url": "https://cowleyroadstudios.com",
             "priceRange": "££",
             "areaServed": "Oxford",
             "sameAs": [
@@ -2301,22 +2343,26 @@ app.get('/rehearsal', (c) => {
 // Old service pages → Homepage accordion
 app.get('/studio-old', (c) => c.redirect('/'))
 app.get('/workshop-cafe-old', (c) => c.redirect('/'))
-app.get('/cricket-road', (c) => c.redirect('/'))
-app.get('/crs-cowley-road', (c) => c.redirect('/'))
-app.get('/crs-cricket-road', (c) => c.redirect('/'))
-app.get('/locations', (c) => c.redirect('/'))
+app.get('/cricket-road-old', (c) => c.redirect('/'))
+app.get('/crs-cowley-road-old', (c) => c.redirect('/'))
+app.get('/crs-cricket-road-old', (c) => c.redirect('/'))
+app.get('/locations-old', (c) => c.redirect('/'))
 // '/rehearsal' now shows dedicated RehearsalSpaces page
 
 // Old booking pages → New /book accordion
 app.get('/book/studio-old', (c) => c.redirect('/book'))
 app.get('/book/rehearsal-old', (c) => c.redirect('/book'))
-app.get('/book/rehearsal/cowley-road', (c) => c.redirect('/book'))
-app.get('/book/rehearsal/cricket-road', (c) => c.redirect('/book'))
+app.get('/book/rehearsal/cowley-road-old', (c) => c.redirect('/book'))
+app.get('/book/rehearsal/cricket-road-old', (c) => c.redirect('/book'))
 app.get('/book/lessons-old', (c) => c.redirect('/book'))
-app.get('/book/mixdown', (c) => c.redirect('/book'))
-app.get('/book/tape', (c) => c.redirect('/book'))
-app.get('/book/hire', (c) => c.redirect('/book'))
-app.get('/book/repairs', (c) => c.redirect('/book'))
+app.get('/book/mixdown-old', (c) => c.redirect('/book'))
+app.get('/book/tape-old', (c) => c.redirect('/book'))
+app.get('/book/hire-old', (c) => c.redirect('/book'))
+app.get('/book/repairs-old', (c) => c.redirect('/book'))
 app.get('/book-old', (c) => c.redirect('/book'))
+
+app.get('/terms', (c) => c.redirect('/policies/terms.html', 302))
+app.get('/privacy', (c) => c.redirect('/policies/privacy.html', 302))
+app.get('/cancellation', (c) => c.redirect('/policies/cancellation.html', 302))
 
 export default app

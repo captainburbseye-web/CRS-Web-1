@@ -3,7 +3,49 @@
  * No templates, no headers/footers - pure rack aesthetic
  */
 
-export const ContactPage = () => {
+interface ContactPageProps {
+  initialService?: string;
+  status?: 'sent' | 'error' | null;
+}
+
+const SERVICE_OPTIONS = [
+  { value: 'recording', label: 'Recording / Studio Session' },
+  { value: 'av', label: 'Venue Tech / AV Support' },
+  { value: 'repairs', label: 'Repairs / Diagnostics' },
+  { value: 'venue', label: 'Venue Hire / Workshop Café' },
+  { value: 'general', label: 'General Enquiry' },
+] as const;
+
+const getStatusMessage = (status?: 'sent' | 'error' | null) => {
+  if (status === 'sent') {
+    return {
+      title: '[ SIGNAL RECEIVED ]',
+      message: 'Inquiry logged to CRS administrative queue. A technical representative will respond within 24 operational hours.',
+      border: '1px solid rgba(57, 255, 20, 0.45)',
+      background: 'rgba(57, 255, 20, 0.08)',
+      color: 'var(--crs-green, #39FF14)'
+    };
+  }
+
+  if (status === 'error') {
+    return {
+      title: '[ SIGNAL FAULT ]',
+      message: 'The enquiry did not transmit cleanly. Please retry, or contact CRS directly by phone or email.',
+      border: '1px solid rgba(255, 111, 97, 0.45)',
+      background: 'rgba(255, 111, 97, 0.08)',
+      color: '#ff6f61'
+    };
+  }
+
+  return null;
+};
+
+export const ContactPage = ({ initialService = 'general', status = null }: ContactPageProps) => {
+  const statusMessage = getStatusMessage(status);
+  const selectedService = SERVICE_OPTIONS.some((option) => option.value === initialService)
+    ? initialService
+    : 'general';
+
   return (
     <div class="master-rack-chassis">
       {/* Skip to content for accessibility */}
@@ -46,12 +88,12 @@ export const ContactPage = () => {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.875rem;
             color: rgba(245,245,245,0.7);
-            max-width: 600px;
+            max-width: 680px;
             margin: 0 auto;
             line-height: 1.6;
           "
         >
-          For bookings, technical inquiries, venue hire, or general questions.
+          Use this communications bus for venue hire, repairs, AV support, and custom enquiries. For direct recording and rehearsal allocation, use the booking routes on the main rack.
         </p>
       </div>
 
@@ -81,21 +123,62 @@ export const ContactPage = () => {
           </h2>
           <div style="display: grid; gap: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245,245,245,0.85);">
             <div>
-              <span style="color: var(--mustard, #d4a017); font-weight: 700;">EMAIL:</span> 
+              <span style="color: var(--mustard, #d4a017); font-weight: 700;">EMAIL:</span>{' '}
               <a href="mailto:info@crsoxford.com" style="color: rgba(245,245,245,0.9); text-decoration: none;">info@crsoxford.com</a>
             </div>
             <div>
-              <span style="color: var(--mustard, #d4a017); font-weight: 700;">PHONE:</span> 
+              <span style="color: var(--mustard, #d4a017); font-weight: 700;">PHONE:</span>{' '}
               <a href="tel:+441865722027" style="color: rgba(245,245,245,0.9); text-decoration: none;">+44 (0)1865 722027</a>
             </div>
             <div>
-              <span style="color: var(--mustard, #d4a017); font-weight: 700;">ADDRESS:</span> 
-              <span>118 Cowley Road, Oxford OX4 1JE</span>
+              <span style="color: var(--mustard, #d4a017); font-weight: 700;">ADDRESS:</span>{' '}
+              <span>118 Cowley Road, Oxford OX4 1JE, United Kingdom</span>
             </div>
             <p style="margin-top: 0.5rem; font-size: 0.75rem; color: rgba(245,245,245,0.6); font-style: italic;">By appointment only</p>
           </div>
         </div>
       </div>
+
+      {/* STATUS RACK */}
+      {statusMessage && (
+        <div
+          class="rack-module-graphic"
+          style={`
+            background: ${statusMessage.background};
+            border-top: ${statusMessage.border};
+            border-bottom: ${statusMessage.border};
+            padding: 1.5rem 2rem;
+            margin: 0;
+          `}
+        >
+          <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+            <div
+              style={`
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.75rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: ${statusMessage.color};
+                margin-bottom: 0.75rem;
+              `}
+            >
+              {statusMessage.title}
+            </div>
+            <p
+              style="
+                margin: 0;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.875rem;
+                color: rgba(245,245,245,0.9);
+                line-height: 1.7;
+              "
+            >
+              {statusMessage.message}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* ENQUIRY FORM RACK */}
       <div 
@@ -132,7 +215,7 @@ export const ContactPage = () => {
             {/* Enquiry Type */}
             <div class="form-group">
               <label 
-                for="enquiry-type" 
+                for="service" 
                 style="
                   display: block;
                   font-family: 'JetBrains Mono', monospace;
@@ -147,8 +230,8 @@ export const ContactPage = () => {
                 Enquiry Type
               </label>
               <select 
-                id="enquiry-type" 
-                name="enquiry_type" 
+                id="service" 
+                name="service" 
                 required
                 style="
                   width: 100%;
@@ -160,10 +243,9 @@ export const ContactPage = () => {
                   font-size: 0.875rem;
                 "
               >
-                <option value="">Select...</option>
-                <option value="technical">Technical (Live Sound / Install / Repair)</option>
-                <option value="venue">Venue Hire</option>
-                <option value="general">General</option>
+                {SERVICE_OPTIONS.map((option) => (
+                  <option value={option.value} selected={option.value === selectedService}>{option.label}</option>
+                ))}
               </select>
             </div>
 
@@ -322,7 +404,7 @@ export const ContactPage = () => {
                 transition: all 0.2s ease;
               "
             >
-              SEND ENQUIRY
+              ENGAGE CIRCUIT
             </button>
           </form>
         </div>
@@ -354,7 +436,7 @@ export const ContactPage = () => {
             <div class="terminal-status-line" style="font-weight: 600; margin-bottom: 0.5rem;">
               Independent Recording Studio & Rehearsal Rooms – Oxford
             </div>
-            <div class="terminal-status-line">118 Cowley Road, Oxford</div>
+            <div class="terminal-status-line">118 Cowley Road, Oxford OX4 1JE, United Kingdom</div>
             <div class="terminal-status-line" style="margin-top: 0.75rem;">
               <a href="tel:+441865722027">+44 (0)1865 722027</a>
             </div>

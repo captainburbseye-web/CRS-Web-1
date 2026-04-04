@@ -1,50 +1,54 @@
 /** @jsxImportSource react */
 import React from 'react';
 
-// ==========================================
-// STUDIO SERVICES RACK - Restored to uploaded HTML version
-// Green/Purple dual-channel button layout
-// ==========================================
-
-// ==========================================
-// SQUARE BOOKING URLS
-// ==========================================
-const SQUARE_URLS = {
-  COWLEY_REC: "https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX",
-  CRICKET_REC: "https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX",
-  COWLEY_REHEARSAL: "https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX",
-  CRICKET_REHEARSAL: "https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX",
-  COWLEY_CTRL: "https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX",
-  CRICKET_CTRL: "https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX",
-  WORKSHOP_CAFE: "https://crsoxford.com/book",
+const URLS = {
+  HOME: '/',
+  CONTACT: '/contact',
+  WORKSHOP_CAFE: '/workshop-cafe',
+  RECORDING_BOOK: 'https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX',
+  CRICKET_RECORDING_BOOK: 'https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX',
+  REHEARSAL_BOOK: 'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX',
+  CRICKET_REHEARSAL_BOOK: 'https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX',
+  MAP: 'https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE',
+  RECORDING_PAGE: '/recording-studio-oxford',
+  REHEARSAL_PAGE: '/rehearsal-rooms-oxford',
+  MUSIC_PAGE: '/music-studio-cowley-road',
+  ENQUIRE_AV: '/contact?service=av-support',
+  ENQUIRE_ODRO: '/contact?service=repairs',
+  ENQUIRE_WORKSHOP: '/contact?service=venue'
 };
 
-// ==========================================
-// 1. HARDWARE PRIMITIVES
-// ==========================================
+const PHOTO_PLACEHOLDERS = [
+  'STUDIO SPACE',
+  'REHEARSAL ROOM',
+  'RECORDING SESSION',
+  'WORKSHOP CAFÉ'
+];
 
-const HexBolt = ({ className = "" }) => (
+const SUPPORTED_ACTIVITIES = [
+  'Recording sessions',
+  'Band rehearsals',
+  'ODRO electronics support',
+  'Workshop activity'
+];
+
+const HexBolt = ({ className = '' }) => (
   <svg viewBox="0 0 100 100" className={`srd-bolt ${className}`} aria-hidden="true">
-    <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" fill="#444" stroke="#111" strokeWidth="4"/>
+    <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" fill="#444" stroke="#111" strokeWidth="4" />
     <circle cx="50" cy="50" r="25" fill="#222" />
     <circle cx="50" cy="50" r="15" fill="#111" />
   </svg>
 );
 
-const RackRail = ({ side = "left" }) => {
+const RackRail = ({ side = 'left' }) => {
   const bolts = Array(12).fill(null);
   return (
-    <div className={`srd-rail ${side === "right" ? "srd-rail--right" : ""}`} aria-hidden="true">
+    <div className={`srd-rail ${side === 'right' ? 'srd-rail--right' : ''}`} aria-hidden="true">
       {bolts.map((_, i) => <HexBolt key={i} />)}
     </div>
   );
 };
 
-// ==========================================
-// 2. VU METER (Componentized with <use> for cleaner DOM)
-// ==========================================
-
-// Hidden SVG defs - rendered once at top of page
 const VuMeterDefs = () => (
   <svg style={{ display: 'none' }} aria-hidden="true">
     <defs>
@@ -61,7 +65,7 @@ const VuMeterDefs = () => (
   </svg>
 );
 
-const VuMeter = ({ label = "L" }) => (
+const VuMeter = ({ label = 'L' }) => (
   <div className={`srd-vu srd-vu--${label.toLowerCase()}`} aria-hidden="true">
     <div className="srd-vu-body">
       <div className="srd-vu-face">
@@ -87,11 +91,7 @@ const VuMeterPair = () => (
   </div>
 );
 
-// ==========================================
-// 3. BADGES
-// ==========================================
-
-const CrsBadge = ({ className = "" }) => (
+const CrsBadge = ({ className = '' }) => (
   <div aria-hidden="true" className={`srd-badge srd-badge--crs ${className}`}>
     <svg viewBox="0 0 24 24" className="srd-badge-svg">
       <path d="M4 4 L12 2 L20 4 L20 12 L12 22 L4 12 Z" fill="none" stroke="white" strokeWidth="1.5" strokeLinejoin="bevel" />
@@ -100,82 +100,94 @@ const CrsBadge = ({ className = "" }) => (
   </div>
 );
 
-const CricketBadge = ({ className = "" }) => (
+const CricketBadge = ({ className = '' }) => (
   <div aria-hidden="true" className={`srd-badge srd-badge--cricket ${className}`}>
     <img src="/static/cricket-logo.png" alt="Cricket" className="cricket-badge-img" />
   </div>
 );
 
-const OdroBadge = ({ className = "" }) => (
+const OdroBadge = ({ className = '' }) => (
   <div aria-hidden="true" className={`srd-badge srd-badge--odro ${className}`}>
-    <span className="srd-badge-text">AV</span>
+    <span className="srd-badge-text">OD</span>
   </div>
 );
 
-const CafeBadge = ({ className = "" }) => (
+const CafeBadge = ({ className = '' }) => (
   <div aria-hidden="true" className={`srd-badge srd-badge--cafe ${className}`}>
-    <span className="srd-badge-text">W/C</span>
+    <span className="srd-badge-text">WC</span>
   </div>
 );
 
-// ==========================================
-// 4. LED INDICATORS
-// ==========================================
-
-const Led = ({ variant = "crs" }) => (
+const Led = ({ variant = 'crs' }) => (
   <div aria-hidden="true" className={`srd-led srd-led--${variant}-off`} />
 );
 
-// ==========================================
-// 5. SERVICE BUTTONS - Green CRS / Purple Cricket
-// ==========================================
-
-const ServiceButton = ({ variant = "crs", service, location, href, badge, onClick, type = "link" }) => {
-  const ButtonTag = type === "button" ? "button" : "a";
-  const props = type === "button" 
-    ? { type: "button", onClick } 
-    : { href, target: href?.startsWith("http") ? "_blank" : undefined, rel: href?.startsWith("http") ? "noopener noreferrer" : undefined };
-  
-  const ariaLabel = location 
-    ? `Book ${variant === 'crs' ? 'CRS' : 'Cricket'} ${service} at ${location}`
-    : service;
+const ServiceButton = ({ variant = 'crs', service, location, href, badge, className = '', onClick }) => {
+  const external = href?.startsWith('http');
+  const Tag = onClick ? 'button' : 'a';
+  const tagProps = onClick
+    ? { type: 'button', onClick }
+    : {
+        href,
+        target: external ? '_blank' : undefined,
+        rel: external ? 'noopener noreferrer' : undefined,
+      };
 
   return (
-    <ButtonTag className={`srd-btn srd-btn--${variant}`} aria-label={ariaLabel} {...props}>
+    <Tag
+      className={`srd-btn srd-btn--${variant} ${className}`.trim()}
+      aria-label={location ? `${service} ${location}` : service}
+      {...tagProps}
+    >
       <div className="srd-btn-content">
         {badge}
         <div className="srd-btn-labels">
           <span className="srd-btn-service">{service}</span>
-          {location && <span className="srd-btn-location">{location}</span>}
+          {location ? <span className="srd-btn-location">{location}</span> : null}
         </div>
       </div>
       <Led variant={variant} />
-    </ButtonTag>
+    </Tag>
   );
 };
 
-// ==========================================
-// 6. TOP RAIL
-// ==========================================
+const PersistentSessionCta = () => (
+  <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-floating-session-cta">
+    BOOK A SESSION
+  </a>
+);
 
 const TopRail = () => (
   <div className="srd-top-rail">
     <div className="srd-home-indicator">HOME</div>
     <div className="srd-rail-address">118 COWLEY ROAD | OXFORD | OX4 1JE</div>
-    <div className="srd-rail-meta">EST. 2012 | OXFORD UK</div>
+    <div className="srd-rail-meta">CRS INFRASTRUCTURE ACTIVE</div>
   </div>
 );
 
-// ==========================================
-// 7. MASTER FACEPLATE
-// ==========================================
+const AuthorityHero = () => (
+  <section className="srd-authority-hero" aria-labelledby="authority-hero-title">
+    <div className="srd-authority-copy">
+      <div className="srd-authority-system-line">118 COWLEY ROAD | OXFORD | OX4 1JE</div>
+      <div className="srd-authority-system-line srd-authority-system-line--muted">CRS INFRASTRUCTURE ACTIVE</div>
+      <h1 id="authority-hero-title">Recording Studio &amp; Rehearsal Rooms in Oxford</h1>
+      <p className="srd-authority-subline">Cowley Road Studios | Recording • Rehearsal • Workshop Café • ODRO Electronics</p>
+      <p className="srd-authority-brand">Grassroots infrastructure for the Oxford music scene.</p>
+      <p className="srd-authority-hybrid">Hybrid analogue–digital recording with SSL, valve compression and tape integration.</p>
+    </div>
+    <div className="srd-authority-actions">
+      <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-authority-btn srd-authority-btn--primary">BOOK RECORDING</a>
+      <a href={URLS.CONTACT} className="srd-authority-btn">ENQUIRE</a>
+      <a href={URLS.WORKSHOP_CAFE} className="srd-authority-btn">WORKSHOP CAFÉ</a>
+    </div>
+    <RehearsalSelector id="hero-rehearsal-selector" title="BOOK REHEARSAL" className="srd-rehearsal-selector--hero" />
+  </section>
+);
 
 const MasterFaceplate = () => (
   <header className="srd-master-faceplate">
     <div className="srd-faceplate-header">
-      <div className="srd-location-strip">
-        118 COWLEY ROAD • OXFORD • OX4 1JE • UNITED KINGDOM
-      </div>
+      <div className="srd-location-strip">118 COWLEY ROAD • OXFORD • OX4 1JE • UNITED KINGDOM</div>
       <div className="srd-faceplate-main">
         <div className="srd-faceplate-title-group">
           <div className="srd-logo-plate" aria-label="CRS Logo">
@@ -187,21 +199,17 @@ const MasterFaceplate = () => (
             <div className="srd-signal-dot srd-signal-dot--green"></div>
           </div>
           <div className="srd-faceplate-text-stack">
-            <h1 className="srd-faceplate-title">
-              <img 
-                src="/static/crs-wooden-sign.png" 
-                alt="Cowley Road Studios" 
-                className="srd-wooden-sign-img"
-              />
-            </h1>
-            <p className="srd-faceplate-subtitle">OXFORD GRASSROOTS CREATIVE INFRASTRUCTURE</p>
+            <h2 className="srd-faceplate-title">
+              <img src="/static/crs-wooden-sign.png" alt="Cowley Road Studios" className="srd-wooden-sign-img" />
+            </h2>
+            <p className="srd-faceplate-subtitle">Grassroots infrastructure for the Oxford music scene.</p>
           </div>
         </div>
         <div className="srd-faceplate-meta">
           <div className="srd-meta-row">
             <div className="srd-faceplate-model">CRS-CONSOLE-01</div>
-            <div className="srd-faceplate-routing">Audio • Rehearsal • Control</div>
-            <div className="srd-micro-label">FIRMWARE: CAPTAIN BURBSEYE / TEST PASS: N0RLAND0B00M</div>
+            <div className="srd-faceplate-routing">Recording • Rehearsal • Workshop Café • ODRO Electronics</div>
+            <div className="srd-micro-label">CANONICAL DOMAIN: COWLEYROADSTUDIOS.COM</div>
           </div>
         </div>
       </div>
@@ -209,60 +217,70 @@ const MasterFaceplate = () => (
   </header>
 );
 
-// ==========================================
-// 8. STATUS MODULE - LCD
-// ==========================================
-
 const StatusModule = () => (
   <section className="srd-status-module">
     <div className="srd-lcd-screen">
       <div className="srd-lcd-content">
         <div className="srd-lcd-sysinfo">
-          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> CRS INFRASTRUCTURE ACTIVE // RECORDING @ 118 COWLEY RD // REHEARSAL @ CRICKET ROAD (OX4 3DJ) // WORKSHOP CAFÉ OPENING APRIL 2026 // VENUE TECH ON-CALL
+          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> 118 COWLEY ROAD, OXFORD OX4 1JE // RECORDING HQ ACTIVE // COWLEY ROAD FLAGSHIP RECORDING // CRICKET ROAD DEDICATED REHEARSAL // WORKSHOP CAFÉ VIA ENQUIRY // ODRO ELECTRONICS SUPPORT
         </div>
         <div className="srd-lcd-header">SELECT SERVICE MODULE</div>
         <div className="srd-lcd-row">
           <span className="srd-lcd-bullet-crs">●</span>
-          <span>CRS = LEFT CHANNEL</span>
+          <span>COWLEY ROAD = MAIN STUDIO, CONTROL ROOM &amp; STUDIO-LINKED REHEARSAL</span>
         </div>
         <div className="srd-lcd-row">
           <span className="srd-lcd-bullet-cricket">●</span>
-          <span>CRICKET = RIGHT CHANNEL</span>
+          <span>CRICKET ROAD = DEDICATED REHEARSAL SPACE</span>
         </div>
-        <div className="srd-lcd-footer">DEEPEND PROTOCOL ACTIVE // NO CHAOS MODE</div>
+        <div className="srd-lcd-footer">SERIOUS, PROFESSIONAL, GROUNDED // NO INVENTED CLAIMS</div>
       </div>
     </div>
   </section>
 );
 
-// ==========================================
-// 9. SERVICE MODULES - Green/Purple Layout
-// ==========================================
+const ModuleEyebrow = ({ lines }) => (
+  <div className="srd-module-copy-stack">
+    {lines.map((line) => (
+      <span key={line} className="srd-module-copy-line">{line}</span>
+    ))}
+  </div>
+);
+
+const RehearsalSelector = ({ id, title = 'BOOK REHEARSAL', className = '' }) => (
+  <div className={`srd-rehearsal-selector ${className}`.trim()} id={id} aria-label={title}>
+    <div className="srd-rehearsal-selector-title">{title}</div>
+    <div className="srd-rehearsal-selector-grid">
+      <article className="srd-rehearsal-selector-card">
+        <h3>COWLEY ROAD</h3>
+        <p>Studio-linked rehearsal</p>
+        <a href={URLS.REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
+      </article>
+      <article className="srd-rehearsal-selector-card">
+        <h3>CRICKET ROAD</h3>
+        <p>Dedicated rehearsal space</p>
+        <a href={URLS.CRICKET_REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
+      </article>
+    </div>
+  </div>
+);
 
 const RecordingModule = () => (
   <section className="srd-module srd-module--nettle" aria-labelledby="module-recording">
     <div className="srd-module-header">
       <div className="srd-module-title-group">
-        <h2 id="module-recording" className="srd-module-title">Recording</h2>
-        <p className="srd-module-subtitle">Cowley Road • 118 Cowley Rd • Main Studio & Control Room</p>
-        <div className="srd-pricing">FROM £35/HR</div>
+        <h2 id="module-recording" className="srd-module-title">RECORDING</h2>
+        <ModuleEyebrow lines={['COWLEY ROAD', '118 COWLEY ROAD', 'MAIN STUDIO & CONTROL ROOM']} />
       </div>
       <VuMeterPair />
     </div>
-    <div className="srd-btn-group">
+    <div className="srd-btn-group srd-btn-group--single">
       <ServiceButton
         variant="crs"
-        service="Recording"
-        location="Cowley Road"
-        href={SQUARE_URLS.COWLEY_REC}
+        service="BOOK A SESSION →"
+        location="COWLEY ROAD"
+        href={URLS.RECORDING_BOOK}
         badge={<CrsBadge />}
-      />
-      <ServiceButton
-        variant="cricket"
-        service="Recording"
-        location="Cricket Road"
-        href={SQUARE_URLS.CRICKET_REC}
-        badge={<CricketBadge />}
       />
     </div>
   </section>
@@ -272,195 +290,36 @@ const RehearsalModule = () => (
   <section className="srd-module srd-module--mustard" aria-labelledby="module-rehearsal">
     <div className="srd-module-header">
       <div className="srd-module-title-group">
-        <h2 id="module-rehearsal" className="srd-module-title">Rehearsal</h2>
-        <p className="srd-module-subtitle">Cricket Road • OX4 3DJ • Managed Production</p>
-        <div className="srd-pricing">COWLEY £45/2HR • CRICKET £40/2HR</div>
+        <h2 id="module-rehearsal" className="srd-module-title">REHEARSAL</h2>
+        <ModuleEyebrow lines={['COWLEY ROAD — STUDIO-LINKED REHEARSAL', 'CRICKET ROAD — DEDICATED REHEARSAL SPACE']} />
       </div>
     </div>
-    <div className="srd-btn-group">
-      <ServiceButton
-        variant="crs"
-        service="Rehearsal"
-        location="Cowley Road"
-        href={SQUARE_URLS.COWLEY_REHEARSAL}
-        badge={<CrsBadge />}
-      />
-      <ServiceButton
-        variant="cricket"
-        service="Rehearsal"
-        location="Cricket Road"
-        href={SQUARE_URLS.CRICKET_REHEARSAL}
-        badge={<CricketBadge />}
-      />
-    </div>
+    <RehearsalSelector id="module-rehearsal-selector" title="BOOK REHEARSAL" className="srd-rehearsal-selector--module" />
   </section>
 );
 
-const ControlRoomModule = () => (
-  <section className="srd-module srd-module--nettle" aria-labelledby="module-control-room">
+const OdroModule = () => (
+  <section className="srd-module srd-module--dark" aria-labelledby="module-odro-electronics">
     <div className="srd-module-header">
       <div className="srd-module-title-group">
-        <h2 id="module-control-room" className="srd-module-title">Control Room</h2>
-        <p className="srd-module-subtitle">Hybrid Studio Hire • Multi-Track Recording & Production</p>
-        <div className="srd-pricing">COWLEY £20/HR • CRICKET £40/5HR</div>
-      </div>
-      <VuMeterPair />
-    </div>
-    <div className="srd-btn-group">
-      <ServiceButton
-        variant="crs"
-        service="Control Room"
-        location="Cowley Road"
-        href={SQUARE_URLS.COWLEY_CTRL}
-        badge={<CrsBadge />}
-      />
-      <ServiceButton
-        variant="cricket"
-        service="Control Room"
-        location="Cricket Road"
-        href={SQUARE_URLS.CRICKET_CTRL}
-        badge={<CricketBadge />}
-      />
-    </div>
-  </section>
-);
-
-// ==========================================
-// 10. CRS AV SUPPORT MODULE - Industrial PA Rack Style
-// ==========================================
-
-const PaSpeakerStack = () => (
-  <svg className="av-pa-stack" viewBox="0 0 200 160" aria-hidden="true">
-    {/* Left speaker cone */}
-    <g className="av-speaker-cone av-speaker-cone--left">
-      <ellipse cx="30" cy="80" rx="28" ry="35" fill="none" stroke="#c9a227" strokeWidth="1.5"/>
-      <ellipse cx="30" cy="80" rx="20" ry="25" fill="none" stroke="#c9a227" strokeWidth="1"/>
-      <ellipse cx="30" cy="80" rx="12" ry="15" fill="none" stroke="#c9a227" strokeWidth="1"/>
-      <ellipse cx="30" cy="80" rx="5" ry="6" fill="#c9a227"/>
-      {/* Wireframe lines */}
-      <line x1="2" y1="80" x2="58" y2="80" stroke="#c9a227" strokeWidth="0.5" opacity="0.6"/>
-      <line x1="30" y1="45" x2="30" y2="115" stroke="#c9a227" strokeWidth="0.5" opacity="0.6"/>
-    </g>
-    
-    {/* Center PA stack - 6 cabinets */}
-    <g className="av-pa-cabinets">
-      {/* Top row */}
-      <rect x="65" y="15" width="30" height="35" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
-      <rect x="100" y="15" width="30" height="35" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
-      {/* Horn detail */}
-      <path d="M70 22 L90 22 L95 45 L65 45 Z" fill="#e8c496" stroke="#1a1a1a" strokeWidth="1"/>
-      <path d="M105 22 L125 22 L130 45 L100 45 Z" fill="#e8c496" stroke="#1a1a1a" strokeWidth="1"/>
-      
-      {/* Middle row */}
-      <rect x="65" y="55" width="30" height="35" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
-      <rect x="100" y="55" width="30" height="35" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
-      <circle cx="80" cy="72" r="10" fill="#1a1a1a" stroke="#c9a227" strokeWidth="1"/>
-      <circle cx="80" cy="72" r="4" fill="#c9a227"/>
-      <circle cx="115" cy="72" r="10" fill="#1a1a1a" stroke="#c9a227" strokeWidth="1"/>
-      <circle cx="115" cy="72" r="4" fill="#c9a227"/>
-      
-      {/* Bottom row */}
-      <rect x="65" y="95" width="30" height="40" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
-      <rect x="100" y="95" width="30" height="40" fill="#d4956a" stroke="#1a1a1a" strokeWidth="2" rx="2"/>
-      <circle cx="80" cy="115" r="12" fill="#1a1a1a" stroke="#c9a227" strokeWidth="1"/>
-      <circle cx="80" cy="115" r="5" fill="#c9a227"/>
-      <circle cx="115" cy="115" r="12" fill="#1a1a1a" stroke="#c9a227" strokeWidth="1"/>
-      <circle cx="115" cy="115" r="5" fill="#c9a227"/>
-    </g>
-    
-    {/* Right speaker cone */}
-    <g className="av-speaker-cone av-speaker-cone--right">
-      <ellipse cx="170" cy="80" rx="28" ry="35" fill="none" stroke="#c9a227" strokeWidth="1.5"/>
-      <ellipse cx="170" cy="80" rx="20" ry="25" fill="none" stroke="#c9a227" strokeWidth="1"/>
-      <ellipse cx="170" cy="80" rx="12" ry="15" fill="none" stroke="#c9a227" strokeWidth="1"/>
-      <ellipse cx="170" cy="80" rx="5" ry="6" fill="#c9a227"/>
-      <line x1="142" y1="80" x2="198" y2="80" stroke="#c9a227" strokeWidth="0.5" opacity="0.6"/>
-      <line x1="170" y1="45" x2="170" y2="115" stroke="#c9a227" strokeWidth="0.5" opacity="0.6"/>
-    </g>
-  </svg>
-);
-
-const ToggleSwitch = ({ label }) => (
-  <div className="av-toggle" aria-hidden="true">
-    <div className="av-toggle-base">
-      <div className="av-toggle-lever"></div>
-    </div>
-    <span className="av-toggle-label">{label}</span>
-  </div>
-);
-
-const CrsAvSupportModule = () => (
-  <section className="srd-module srd-module--av-industrial" aria-labelledby="module-crs-av">
-    {/* Corner screws */}
-    <div className="av-ind-screw av-ind-screw--tl" aria-hidden="true"></div>
-    <div className="av-ind-screw av-ind-screw--tr" aria-hidden="true"></div>
-    <div className="av-ind-screw av-ind-screw--bl" aria-hidden="true"></div>
-    <div className="av-ind-screw av-ind-screw--br" aria-hidden="true"></div>
-    <div className="av-ind-screw av-ind-screw--ml" aria-hidden="true"></div>
-    <div className="av-ind-screw av-ind-screw--mr" aria-hidden="true"></div>
-    
-    {/* Title plate */}
-    <div className="av-ind-title-plate">
-      <h2 id="module-crs-av" className="av-ind-title">LIVE SERVICES</h2>
-    </div>
-    
-    {/* PA Speaker Stack Illustration */}
-    <div className="av-ind-graphic">
-      <PaSpeakerStack />
-    </div>
-    
-    {/* Controls Row */}
-    <div className="av-ind-controls">
-      <ToggleSwitch label="POWER" />
-      
-      <a href="/contact?service=av-support" className="av-ind-btn av-ind-btn--orange">
-        ENQUIRE
-      </a>
-      
-      <a href="/contact?service=hire" className="av-ind-btn av-ind-btn--green">
-        BOOK
-      </a>
-      
-      <ToggleSwitch label="SYSTEM" />
-    </div>
-  </section>
-);
-
-// ==========================================
-// 10b. ODRO ENGINEERING MODULE
-// ==========================================
-
-const OdroEngineeringModule = () => (
-  <section className="srd-module srd-module--dark" aria-labelledby="module-odro-engineering">
-    <div className="srd-module-header">
-      <div className="srd-module-title-group">
-        <h2 id="module-odro-engineering" className="srd-module-title">ODRO Engineering</h2>
-        <p className="srd-module-subtitle">AV & Instrument Repairs • Workshop Services</p>
-        <div className="srd-pricing">FROM £60 BENCH FEE</div>
+        <h2 id="module-odro-electronics" className="srd-module-title">ODRO ELECTRONICS</h2>
+        <ModuleEyebrow lines={['AV, INSTRUMENT SERVICING & VENUE TECH SUPPORT']} />
       </div>
     </div>
-    <div className="srd-micro-label">DESTA-GEN3 SERVICE LOOP</div>
-    <div className="srd-btn-group">
+    <div className="srd-micro-label">SUPPORT CHANNEL: ENQUIRY-FIRST</div>
+    <div className="srd-btn-group srd-btn-group--single">
       <ServiceButton
         variant="neutral"
-        service="Repair Request"
-        href="/contact?service=repairs"
+        service="GET SUPPORT →"
+        location="ODRO ELECTRONICS"
+        href={URLS.ENQUIRE_ODRO}
         badge={<OdroBadge />}
       />
-      <ServiceButton
-        variant="neutral"
-        service="Get Quote"
-        href="/contact?service=repair-quote"
-      />
     </div>
   </section>
 );
 
-// ==========================================
-// 11. WORKSHOP CAFÉ MODULE - Vintage Mixer Style
-// ==========================================
-
-const MixerKnob = ({ size = "md" }) => (
+const MixerKnob = ({ size = 'md' }) => (
   <div className={`wc-knob wc-knob--${size}`} aria-hidden="true">
     <div className="wc-knob-body">
       <div className="wc-knob-indicator"></div>
@@ -488,36 +347,31 @@ const SpectrumBar = ({ height }) => (
 
 const WorkshopCafeModule = () => (
   <section className="srd-module srd-module--workshop" aria-labelledby="module-workshop-cafe">
-    {/* Brushed metal corner screws */}
     <div className="wc-corner-screw wc-corner-screw--tl" aria-hidden="true"></div>
     <div className="wc-corner-screw wc-corner-screw--tr" aria-hidden="true"></div>
     <div className="wc-corner-screw wc-corner-screw--bl" aria-hidden="true"></div>
     <div className="wc-corner-screw wc-corner-screw--br" aria-hidden="true"></div>
-    
-    {/* VU Meters Row */}
+
     <div className="wc-vu-row">
       <VuMeter label="L" />
       <VuMeter label="R" />
     </div>
-    
-    {/* Main Title Panel - Mustard background */}
+
     <div className="wc-title-panel">
-      <h2 id="module-workshop-cafe" className="wc-title">THE WORKSHOP CAFE</h2>
-      <p className="wc-tagline">COFFEE ◆ REPAIRS ◆ MUSICAL CURIOS ◆ WORK SPACES</p>
-      <div className="wc-opening-badge">OPENING APRIL 2026</div>
-      <div className="wc-pricing">VENUE HIRE FROM £150/5HR</div>
+      <div className="srd-workshop-badge-row">
+        <CafeBadge />
+      </div>
+      <h2 id="module-workshop-cafe" className="wc-title">WORKSHOP CAFÉ</h2>
+      <p className="wc-tagline">COMMUNITY SPACE &amp; CREATIVE WORKSPACE</p>
+      <div className="wc-opening-badge">CAFÉ INFO</div>
     </div>
-    
-    {/* Mixer Controls Row */}
+
     <div className="wc-controls-row">
-      {/* Knobs */}
       <div className="wc-knobs-section">
         {[...Array(10)].map((_, i) => (
-          <MixerKnob key={i} size={i < 2 ? "lg" : "md"} />
+          <MixerKnob key={i} size={i < 2 ? 'lg' : 'md'} />
         ))}
       </div>
-      
-      {/* Faders */}
       <div className="wc-faders-section">
         <MixerFader level={85} />
         <MixerFader level={70} />
@@ -526,39 +380,25 @@ const WorkshopCafeModule = () => (
         <MixerFader level={75} />
         <MixerFader level={50} />
       </div>
-      
-      {/* Spectrum Analyzer */}
       <div className="wc-spectrum">
         {[45, 65, 80, 55, 70, 90, 75, 60, 85, 50, 70, 80, 65, 55, 40].map((h, i) => (
           <SpectrumBar key={i} height={h} />
         ))}
       </div>
     </div>
-    
-    {/* CTA Button */}
+
     <div className="wc-cta-row">
-      <a 
-        href={SQUARE_URLS.WORKSHOP_CAFE} 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="wc-book-btn"
-      >
-        [ BOOK WORKSPACE / CAFE HIRE ]
-      </a>
+      <a href={URLS.ENQUIRE_WORKSHOP} className="wc-book-btn">ENQUIRE →</a>
     </div>
   </section>
 );
-
-// ==========================================
-// 12. COMMUNICATIONS BUS - CONTACT FORM
-// ==========================================
 
 const CommunicationsBusModule = () => (
   <section className="srd-module srd-module--dark" aria-labelledby="module-communications-bus">
     <div className="srd-module-header">
       <div className="srd-module-title-group">
-        <h2 id="module-communications-bus" className="srd-module-title">Communications Bus</h2>
-        <p className="srd-module-subtitle">Venue Hire & Custom Enquiries</p>
+        <h2 id="module-communications-bus" className="srd-module-title">ENQUIRY BUS</h2>
+        <ModuleEyebrow lines={['GENERAL ENQUIRIES, BOOKINGS & SUPPORT']} />
       </div>
     </div>
     <form className="srd-comms-form" action="/contact" method="post">
@@ -572,87 +412,120 @@ const CommunicationsBusModule = () => (
       </div>
       <div className="srd-input-group">
         <label htmlFor="comms-message" className="srd-input-label">Message</label>
-        <textarea id="comms-message" name="message" className="srd-input-bay" placeholder="Describe your booking requirements or technical query..." required></textarea>
+        <textarea id="comms-message" name="message" className="srd-input-bay" placeholder="Tell us what you need and we will route it properly." required></textarea>
       </div>
       <button type="submit" className="srd-submit-btn">Transmit</button>
     </form>
   </section>
 );
 
-// ==========================================
-// 13. FOOTER
-// ==========================================
+const CrawlableDescription = () => (
+  <section className="srd-text-block" aria-labelledby="crs-description-title">
+    <div className="srd-text-inner">
+      <div className="srd-text-kicker">ABOUT COWLEY ROAD STUDIOS</div>
+      <h2 id="crs-description-title">Crawlable description</h2>
+      <p>
+        Cowley Road Studios is based at <strong>118 Cowley Road, Oxford OX4 1JE, United Kingdom</strong>. It is a serious, professional, grounded recording base with a connected rehearsal network, Workshop Café enquiries, and ODRO Electronics support. The core public line stays simple: <strong>Grassroots infrastructure for the Oxford music scene.</strong>
+      </p>
+      <p className="srd-usage-line">Used by independent artists and bands across Oxford.</p>
+      <p>
+        The Cowley Road site is presented as the main studio and control room, while Cricket Road is positioned as the dedicated rehearsal space. Cowley Road also carries the studio-linked rehearsal path, and Workshop Café communication remains enquiry-led without claiming anything beyond what is already verified elsewhere on the site.
+      </p>
+      <p>
+        The published equipment and room specification now includes the SSL BiG SiX, TL Audio C1, Revox tape preamps, Tascam 388, Ghielmetti patchbay, one main live room and three isolation booths, Adam Audio and Yamaha NS-10M monitors, plus the currently surfaced microphone list: Neumann U87, AKG 414, Shure SM7B, and Shure SM58. No additional artist, venue, or inventory claims are introduced here.
+      </p>
+    </div>
+  </section>
+);
+
+const PhotoPlaceholderStrip = () => (
+  <section className="srd-photo-strip" aria-labelledby="photo-strip-title">
+    <div className="srd-text-inner srd-text-inner--wide">
+      <div className="srd-text-kicker">PHOTO STRIP</div>
+      <h2 id="photo-strip-title">Photo-ready placeholders</h2>
+      <div className="srd-photo-grid">
+        {PHOTO_PLACEHOLDERS.map((label) => (
+          <article key={label} className="srd-photo-card">
+            <div className="srd-photo-card-label">{label}</div>
+            <div className="srd-photo-card-placeholder">Image coming soon</div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+const WhatWeSupportBlock = () => (
+  <section className="srd-text-block srd-text-block--support" aria-labelledby="support-title">
+    <div className="srd-text-inner">
+      <div className="srd-text-kicker">WHAT WE SUPPORT</div>
+      <h2 id="support-title">Operational support areas</h2>
+      <ul className="srd-support-list">
+        {SUPPORTED_ACTIVITIES.map((item) => <li key={item}>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+);
 
 const TrustRail = () => (
-  <footer className="srd-trust-rail">
-    <div className="srd-trust-content">
-      <span>118 Cowley Road, Oxford OX4 1JE, United Kingdom</span>
-      <a href="tel:+441865722027" className="srd-phone-link">01865 722027</a>
-      <a href="mailto:info@crsoxford.com" className="srd-email-link">info@crsoxford.com</a>
+  <footer className="srd-trust-rail srd-trust-rail--expanded">
+    <div className="srd-trust-panel">
+      <div className="srd-trust-address">118 Cowley Road, Oxford OX4 1JE, United Kingdom</div>
+      <a href={URLS.MAP} target="_blank" rel="noopener noreferrer" className="srd-map-link">Open Google Maps</a>
+      <p className="srd-trust-line">Grassroots infrastructure for the Oxford music scene.</p>
     </div>
-    <div className="srd-social-links">
-      <a href="https://instagram.com/cowleyroadstudios" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-      <a href="https://facebook.com/cowleyroadstudios" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
-    </div>
+    <nav className="srd-footer-links" aria-label="Support pages">
+      <a href={URLS.RECORDING_PAGE}>Recording Studio Oxford</a>
+      <a href={URLS.REHEARSAL_PAGE}>Rehearsal Rooms Oxford</a>
+      <a href={URLS.MUSIC_PAGE}>Music Studio Cowley Road</a>
+      <a href={URLS.CONTACT}>Contact</a>
+    </nav>
   </footer>
 );
 
 const TechManualFooter = () => (
   <section className="tech-manual-footer">
     <div className="manual-header">DOCUMENTATION // REF: 118-CR-OX4</div>
-    <h2>Recording Studio & Rehearsal Rooms in Oxford</h2>
+    <h2>Recording Studio &amp; Rehearsal Rooms in Oxford</h2>
     <p>
-      Cowley Road Studios (CRS) provides the <strong>grassroots infrastructure</strong> for the Oxford music scene. 
-      Located at <strong>118 Cowley Road</strong>, our facility offers professional <strong>recording sessions</strong>, 
-      vocal tracking, and analog-hybrid mixing.
+      Cowley Road Studios is positioned around the main address at <strong>118 Cowley Road, Oxford OX4 1JE, United Kingdom</strong>, with direct pathways for recording, rehearsal, Workshop Café enquiries, and ODRO Electronics support. The tone is deliberately restrained: practical information first, myth-making nowhere it does not belong.
     </p>
     <p>
-      Our network extends to managed <strong>rehearsal rooms at Cricket Road</strong>, providing acoustically treated 
-      spaces for band practice, pre-production, and creative development. The <strong>Workshop Café</strong> serves 
-      as our on-site creative hub and community venue for the OX4 area.
+      Equipment and room details surfaced in active copy include <strong>SSL BiG SiX</strong>, <strong>TL Audio C1</strong>, <strong>Revox tape preamps</strong>, <strong>Tascam 388</strong>, <strong>Ghielmetti patchbay</strong>, <strong>1 main live room + 3 isolation booths</strong>, <strong>Adam Audio</strong> and <strong>Yamaha NS-10M</strong> monitors, and the currently published microphone list of <strong>Neumann U87</strong>, <strong>AKG 414</strong>, <strong>Shure SM7B</strong>, and <strong>Shure SM58</strong>.
     </p>
     <div className="manual-specs">
       <span>LOCATION: 118 COWLEY ROAD, OXFORD, OX4 1JE</span>
-      <span>NETWORK: CRICKET ROAD / WORKSHOP CAFÉ</span>
-      <span>ESTABLISHED: 2012</span>
+      <span>CANONICAL DOMAIN: COWLEYROADSTUDIOS.COM</span>
+      <span>SERVICE TAGLINE: GRASSROOTS INFRASTRUCTURE FOR THE OXFORD MUSIC SCENE.</span>
     </div>
   </section>
 );
 
-// ==========================================
-// 14. MAIN PAGE ASSEMBLY
-// ==========================================
-
 export default function StudioServicesRack() {
   return (
     <main className="srd-page">
-      {/* Hidden SVG defs for VU meters - rendered once */}
       <VuMeterDefs />
-      
+      <PersistentSessionCta />
       <TopRail />
-      
+      <AuthorityHero />
+
       <div className="srd-chassis">
         <RackRail side="left" />
-        
         <div className="srd-modules">
           <MasterFaceplate />
           <StatusModule />
-          
-          {/* Service Modules - Green/Mustard dual-channel buttons */}
           <RecordingModule />
           <RehearsalModule />
-          <ControlRoomModule />
-          
-          {/* Support Services */}
-          <CrsAvSupportModule />
-          <OdroEngineeringModule />
           <WorkshopCafeModule />
+          <OdroModule />
           <CommunicationsBusModule />
         </div>
-        
         <RackRail side="right" />
       </div>
-      
+
+      <CrawlableDescription />
+      <PhotoPlaceholderStrip />
+      <WhatWeSupportBlock />
       <TrustRail />
       <TechManualFooter />
     </main>

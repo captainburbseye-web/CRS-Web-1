@@ -19,9 +19,13 @@ export const Header = () => (
       <nav class="rack-header-nav">
         <a href="/studio">Studio</a>
         <span class="separator">|</span>
+        <a href="/work">Work</a>
+        <span class="separator">|</span>
         <a href="/workshop-cafe">Workshop Café</a>
         <span class="separator">|</span>
         <a href="/av-services">AV</a>
+        <span class="separator">|</span>
+        <a href="/soundworks">Soundworks</a>
         <span class="separator">|</span>
         <a href="/about">About</a>
         <span class="separator">|</span>
@@ -45,7 +49,7 @@ export const Header = () => (
           role="menu"
           aria-hidden="true"
         >
-          <a href="/book" role="menuitem"><span class="signal-active"></span>Studio & Rehearsal</a>
+          <a href="/#recording-services" role="menuitem"><span class="signal-active"></span>Studio & Rehearsal</a>
           <a href="/contact?service=av" role="menuitem">AV Services (Enquiry)</a>
           <a href="/contact?service=venue" role="menuitem">Venue Hire (Enquiry)</a>
           <a href="/contact?service=repairs" role="menuitem">Repairs (Enquiry)</a>

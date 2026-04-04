@@ -25,7 +25,7 @@ export const RackHero: FC = () => {
               <span class="cta-icon">🎛️</span>
               EXPLORE SERVICES
             </a>
-            <a href="/book" class="hero-cta-secondary">
+            <a href="/#recording-services" class="hero-cta-secondary">
               BOOK NOW
             </a>
           </div>
