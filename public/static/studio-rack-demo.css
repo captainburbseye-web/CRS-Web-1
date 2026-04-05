@@ -5927,3 +5927,271 @@ main,
     margin-right: 1rem;
   }
 }
+
+/* ==========================================================
+   SESSION ROUTER MODULE
+   ========================================================== */
+
+.srd-session-router {
+  background: linear-gradient(180deg, #1c2318 0%, #141a11 100%);
+  border-bottom: 1px solid #000;
+}
+
+/* Choice buttons row */
+.srd-router-choices {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 0.5rem;
+  flex-wrap: wrap;
+}
+
+.srd-router-btn {
+  flex: 1 1 auto;
+  min-width: 120px;
+  min-height: 48px;
+  padding: 0.7rem 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c5c0b0;
+  background: linear-gradient(180deg, #2a3428 0%, #1c2318 100%);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.srd-router-btn:hover {
+  color: #f4edd3;
+  border-color: rgba(215, 196, 122, 0.5);
+  background: linear-gradient(180deg, #32403e 0%, #1f2a1e 100%);
+}
+
+.srd-router-btn--active {
+  color: #15140d;
+  background: linear-gradient(180deg, #d7c47a 0%, #b8952d 100%);
+  border-color: #b8952d;
+  box-shadow: 0 0 0 2px rgba(215,196,122,0.3), inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -2px 0 rgba(0,0,0,0.2);
+}
+
+.srd-router-btn:focus-visible {
+  outline: 2px solid #d7c47a;
+  outline-offset: 2px;
+}
+
+/* Reveal panel */
+.srd-router-panel {
+  padding: 0.75rem 1rem 1rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  animation: routerPanelIn 0.15s ease;
+}
+
+@keyframes routerPanelIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.srd-router-panel-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(245,242,231,0.45);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.srd-router-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Router cards */
+.srd-router-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(180deg, #22291f 0%, #181d16 100%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 8px rgba(0,0,0,0.35);
+}
+
+.srd-router-card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.srd-router-card-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #e8e8e8;
+  margin: 0;
+}
+
+.srd-router-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(245,242,231,0.55);
+  margin: 0 0 0.5rem;
+}
+
+.srd-router-card-cta {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #15140d;
+  background: linear-gradient(180deg, #d7c47a 0%, #b8952d 100%);
+  border: 1px solid #b8952d;
+  border-radius: 3px;
+  transition: filter 0.12s, transform 0.1s;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+}
+
+.srd-router-card-cta:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.srd-router-card-cta:focus-visible {
+  outline: 2px solid #d7c47a;
+  outline-offset: 2px;
+}
+
+.srd-router-card-sign {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 4px;
+  opacity: 0.9;
+}
+
+/* ==========================================================
+   SUPPORT AREA (below chassis)
+   ========================================================== */
+
+.srd-support-area {
+  max-width: 68rem;
+  margin: 2rem auto 0;
+  padding: 0 1rem;
+}
+
+.srd-support-area-inner {
+  background: linear-gradient(180deg, #1e231b 0%, #161a14 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.srd-support-area-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(245,242,231,0.4);
+  text-transform: uppercase;
+  margin: 0 0 0.75rem;
+}
+
+.srd-support-area-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.srd-support-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.srd-support-item-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #c5c0b0;
+}
+
+.srd-support-item-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(245,242,231,0.45);
+}
+
+.srd-support-item-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #d7c47a;
+  text-decoration: none;
+  border: 1px solid rgba(215,196,122,0.4);
+  border-radius: 3px;
+  padding: 0.35rem 0.8rem;
+  transition: background 0.12s, color 0.12s;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.srd-support-item-link:hover {
+  background: rgba(215,196,122,0.12);
+  color: #f4edd3;
+}
+
+.srd-support-item-link:focus-visible {
+  outline: 2px solid #d7c47a;
+  outline-offset: 2px;
+}
+
+/* Mobile: stack router cards and choices */
+@media (max-width: 639px) {
+  .srd-router-choices {
+    flex-direction: column;
+  }
+
+  .srd-router-btn {
+    width: 100%;
+  }
+
+  .srd-router-panel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .srd-router-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .srd-router-card-sign {
+    width: 80px;
+  }
+
+  .srd-router-card-cta {
+    align-self: stretch;
+    justify-content: center;
+  }
+}

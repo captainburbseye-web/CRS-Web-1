@@ -1,5 +1,5 @@
 /** @jsxImportSource react */
-import React from 'react';
+import React, { useState } from 'react';
 
 const URLS = {
   HOME: '/',
@@ -151,11 +151,7 @@ const ServiceButton = ({ variant = 'crs', service, location, href, badge, classN
   );
 };
 
-const PersistentSessionCta = () => (
-  <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-floating-session-cta">
-    BOOK A SESSION
-  </a>
-);
+
 
 const TopRail = () => (
   <div className="srd-top-rail">
@@ -165,27 +161,17 @@ const TopRail = () => (
   </div>
 );
 
-const AuthorityHero = ({ rack = false }) => (
-  <section className={`srd-authority-hero ${rack ? 'srd-authority-hero--rack' : ''}`.trim()} aria-labelledby="authority-hero-title">
-    <div className={`srd-authority-copy ${rack ? 'srd-authority-copy--rack' : ''}`.trim()}>
-      {!rack ? (
-        <>
-          <div className="srd-authority-system-line">118 COWLEY ROAD | OXFORD | OX4 1JE</div>
-          <div className="srd-authority-system-line srd-authority-system-line--muted">CRS INFRASTRUCTURE ACTIVE</div>
-        </>
-      ) : null}
+const AuthorityHero = () => (
+  <section className="srd-authority-hero srd-authority-hero--rack" aria-labelledby="authority-hero-title">
+    <div className="srd-authority-copy srd-authority-copy--rack">
       <h1 id="authority-hero-title">RECORDING STUDIO — OXFORD</h1>
       <p className="srd-authority-subline">Hybrid analogue–digital recording</p>
       <p className="srd-authority-signal">SSL · Valve Compression · Tape Integration</p>
       <h2 className="srd-authority-tagline">Grassroots infrastructure for the Oxford music scene.</h2>
     </div>
     <div className="srd-authority-actions">
-      <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-authority-btn srd-authority-btn--primary">BOOK A SESSION</a>
-      <a href="#hero-rehearsal-selector" className="srd-authority-btn srd-authority-btn--secondary">BOOK REHEARSAL</a>
-      <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-authority-btn srd-authority-btn--secondary">BOOK RECORDING</a>
-      <a href={URLS.ENQUIRE_WORKSHOP} className="srd-authority-btn srd-authority-btn--tertiary">VENUE ENQUIRY</a>
+      <a href="#session-router" className="srd-authority-btn srd-authority-btn--primary">START YOUR SESSION →</a>
     </div>
-    <RehearsalSelector id="hero-rehearsal-selector" title="BOOK REHEARSAL" className="srd-rehearsal-selector--hero" />
   </section>
 );
 
@@ -241,45 +227,125 @@ const RehearsalSelector = ({ id, title = 'BOOK REHEARSAL', className = '' }) => 
   </div>
 );
 
-const RecordingModule = () => (
-  <section className="srd-module srd-module--nettle" aria-labelledby="module-recording">
-    <div className="srd-module-header">
-      <div className="srd-module-title-group">
-        <h2 id="module-recording" className="srd-module-title">RECORDING</h2>
-        <ModuleEyebrow lines={['MAIN STUDIO & CONTROL ROOM', 'RECORDING + STUDIO-LINKED REHEARSAL']} />
-      </div>
-      <VuMeterPair />
-    </div>
-    <div className="srd-btn-group">
-      <ServiceButton
-        variant="crs"
-        service="BOOK RECORDING →"
-        location="COWLEY ROAD"
-        href={URLS.RECORDING_BOOK}
-        badge={<CrsBadge />}
-      />
-      <ServiceButton
-        variant="crs"
-        service="BOOK REHEARSAL →"
-        location="COWLEY ROAD"
-        href={URLS.REHEARSAL_BOOK}
-        badge={<CrsBadge />}
-      />
-    </div>
-  </section>
-);
+const SESSION_PANELS = {
+  recording: {
+    label: 'WHERE?',
+    options: [
+      {
+        id: 'cowley-rec',
+        name: 'COWLEY ROAD',
+        desc: 'Main studio and control room',
+        cta: 'BOOK RECORDING',
+        href: null, // set from URLS below
+        urlKey: 'RECORDING_BOOK',
+        sign: '/static/crs-wooden-sign-upscaled.png',
+        signAlt: 'Cowley Road Studios',
+      },
+      {
+        id: 'cricket-rec',
+        name: 'CRICKET ROAD',
+        desc: 'Additional recording capability',
+        cta: 'BOOK RECORDING',
+        urlKey: 'CRICKET_RECORDING_BOOK',
+        sign: '/static/cricket-road-sign.png',
+        signAlt: 'Cricket Road',
+      },
+    ],
+  },
+  rehearsal: {
+    label: 'WHERE?',
+    options: [
+      {
+        id: 'cowley-reh',
+        name: 'COWLEY ROAD',
+        desc: 'Rehearse before recording',
+        cta: 'BOOK REHEARSAL',
+        urlKey: 'REHEARSAL_BOOK',
+        sign: '/static/crs-wooden-sign-upscaled.png',
+        signAlt: 'Cowley Road Studios',
+      },
+      {
+        id: 'cricket-reh',
+        name: 'CRICKET ROAD',
+        desc: 'Dedicated rehearsal space',
+        cta: 'BOOK REHEARSAL',
+        urlKey: 'CRICKET_REHEARSAL_BOOK',
+        sign: '/static/cricket-road-sign.png',
+        signAlt: 'Cricket Road',
+      },
+    ],
+  },
+  venue: {
+    label: null,
+    options: [
+      {
+        id: 'venue-wc',
+        name: 'WORKSHOP CAFÉ',
+        desc: 'Venue hire, events and café enquiries',
+        cta: 'VENUE ENQUIRY',
+        urlKey: 'ENQUIRE_WORKSHOP',
+        sign: null,
+      },
+    ],
+  },
+};
 
-const RehearsalModule = () => (
-  <section className="srd-module srd-module--mustard" aria-labelledby="module-rehearsal">
-    <div className="srd-module-header">
-      <div className="srd-module-title-group">
-        <h2 id="module-rehearsal" className="srd-module-title">REHEARSAL</h2>
-        <ModuleEyebrow lines={['COWLEY ROAD — REHEARSE → RECORD', 'CRICKET ROAD — DEDICATED REHEARSAL + RECORDING']} />
+const SessionRouter = () => {
+  const [active, setActive] = useState(null);
+  const panel = active ? SESSION_PANELS[active] : null;
+
+  return (
+    <section className="srd-module srd-session-router" id="session-router" aria-label="Session router">
+      <div className="srd-module-header">
+        <div className="srd-module-title-group">
+          <h2 className="srd-module-title">WHAT DO YOU NEED?</h2>
+        </div>
+        <VuMeterPair />
       </div>
-    </div>
-    <RehearsalSelector id="module-rehearsal-selector" title="BOOK REHEARSAL" className="srd-rehearsal-selector--module" />
-  </section>
-);
+
+      <div className="srd-router-choices" role="group" aria-label="Choose session type">
+        {[['recording', 'RECORDING'], ['rehearsal', 'REHEARSAL'], ['venue', 'VENUE / EVENT']].map(([key, label]) => (
+          <button
+            key={key}
+            className={`srd-router-btn ${active === key ? 'srd-router-btn--active' : ''}`.trim()}
+            onClick={() => setActive(active === key ? null : key)}
+            aria-pressed={active === key}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {panel && (
+        <div className="srd-router-panel" role="region" aria-label={`${active} options`}>
+          {panel.label && <div className="srd-router-panel-label">{panel.label}</div>}
+          <div className="srd-router-panel-grid">
+            {panel.options.map((opt) => (
+              <article key={opt.id} className="srd-router-card">
+                <div className="srd-router-card-body">
+                  <h3 className="srd-router-card-name">{opt.name}</h3>
+                  <p className="srd-router-card-desc">{opt.desc}</p>
+                  <a
+                    href={URLS[opt.urlKey]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="srd-router-card-cta"
+                    aria-label={`${opt.cta} at ${opt.name}`}
+                  >
+                    {opt.cta} →
+                  </a>
+                </div>
+                {opt.sign && (
+                  <img src={opt.sign} alt={opt.signAlt} className="srd-router-card-sign" aria-hidden="true" />
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+};
 
 const OdroModule = () => (
   <section className="srd-module srd-module--dark" aria-labelledby="module-odro-electronics">
@@ -371,7 +437,7 @@ const WorkshopCafeModule = () => (
     </div>
 
     <div className="wc-cta-row">
-      <a href={URLS.ENQUIRE_WORKSHOP} className="wc-book-btn">ENQUIRE →</a>
+      <a href={URLS.ENQUIRE_WORKSHOP} className="wc-book-btn">VENUE ENQUIRY →</a>
     </div>
   </section>
 );
@@ -490,27 +556,40 @@ const TechManualFooter = () => (
   </section>
 );
 
+const SupportArea = () => (
+  <section className="srd-support-area" aria-labelledby="support-area-title">
+    <div className="srd-support-area-inner">
+      <h2 id="support-area-title" className="srd-support-area-title">OTHER SUPPORT</h2>
+      <div className="srd-support-area-row">
+        <div className="srd-support-item">
+          <span className="srd-support-item-name">ODRO ELECTRONICS</span>
+          <span className="srd-support-item-desc">Repairs, technical support and venue tech</span>
+          <a href={URLS.ENQUIRE_ODRO} className="srd-support-item-link">GET SUPPORT →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 export default function StudioServicesRack() {
   return (
     <main className="srd-page">
       <VuMeterDefs />
-      <PersistentSessionCta />
       <TopRail />
 
       <div className="srd-chassis">
         <RackRail side="left" />
         <div className="srd-modules">
           <MasterFaceplate />
-          <AuthorityHero rack />
-          <RecordingModule />
-          <RehearsalModule />
+          <AuthorityHero />
+          <SessionRouter />
           <WorkshopCafeModule />
-          <OdroModule />
           <CommunicationsBusModule />
         </div>
         <RackRail side="right" />
       </div>
 
+      <SupportArea />
       <CrawlableDescription />
       <TechManualFooter />
       <PhotoPlaceholderStrip />
