@@ -223,15 +223,19 @@ const RehearsalSelector = ({ id, title = 'BOOK REHEARSAL', className = '' }) => 
     <div className="srd-rehearsal-selector-grid">
       <article className="srd-rehearsal-selector-card">
         <img src="/static/crs-wooden-sign-upscaled.png" alt="Cowley Road Studios" className="srd-selector-card-sign" />
-        <h3>COWLEY ROAD</h3>
-        <p>Rehearsal &amp; Recording</p>
-        <a href={URLS.REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
+        <div className="srd-selector-card-body">
+          <h3>COWLEY ROAD</h3>
+          <p>Rehearsal &amp; Recording</p>
+          <a href={URLS.REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
+        </div>
       </article>
       <article className="srd-rehearsal-selector-card srd-rehearsal-selector-card--cricket">
         <img src="/static/cricket-road-sign.png" alt="Cricket Road" className="srd-selector-card-sign" />
-        <h3>CRICKET ROAD</h3>
-        <p>Rehearsal &amp; Recording</p>
-        <a href={URLS.CRICKET_REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
+        <div className="srd-selector-card-body">
+          <h3>CRICKET ROAD</h3>
+          <p>Rehearsal &amp; Recording</p>
+          <a href={URLS.CRICKET_REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
+        </div>
       </article>
     </div>
   </div>

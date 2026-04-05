@@ -5607,15 +5607,24 @@ main,
   border: 1px solid rgba(215, 196, 122, 0.22);
   background: rgba(8, 10, 8, 0.9);
   padding: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
 }
 
 .srd-selector-card-sign {
   display: block;
-  max-width: 130px;
+  width: 72px;
+  flex-shrink: 0;
   height: auto;
-  margin-bottom: 0.65rem;
   border-radius: 2px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.srd-selector-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .srd-rehearsal-selector-card h3 {
