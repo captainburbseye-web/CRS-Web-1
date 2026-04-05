@@ -222,27 +222,7 @@ const MasterFaceplate = () => (
   </header>
 );
 
-const StatusModule = () => (
-  <section className="srd-status-module">
-    <div className="srd-lcd-screen">
-      <div className="srd-lcd-content">
-        <div className="srd-lcd-sysinfo">
-          <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> 118 COWLEY ROAD, OXFORD OX4 1JE // RECORDING HQ ACTIVE // COWLEY ROAD FLAGSHIP RECORDING // CRICKET ROAD DEDICATED REHEARSAL // WORKSHOP CAFÉ VIA ENQUIRY // ODRO ELECTRONICS SUPPORT
-        </div>
-        <div className="srd-lcd-header">SELECT MODULE</div>
-        <div className="srd-lcd-row">
-          <span className="srd-lcd-bullet-crs">●</span>
-          <span>RECORDING ONLINE // COWLEY ROAD MAIN STUDIO &amp; CONTROL ROOM</span>
-        </div>
-        <div className="srd-lcd-row">
-          <span className="srd-lcd-bullet-cricket">●</span>
-          <span>REHEARSAL AVAILABLE // CRICKET ROAD DEDICATED ROOM</span>
-        </div>
-        <div className="srd-lcd-footer">SERIOUS, PROFESSIONAL, GROUNDED // NO INVENTED CLAIMS</div>
-      </div>
-    </div>
-  </section>
-);
+
 
 const ModuleEyebrow = ({ lines }) => (
   <div className="srd-module-copy-stack">
@@ -524,7 +504,6 @@ export default function StudioServicesRack() {
         <div className="srd-modules">
           <MasterFaceplate />
           <AuthorityHero rack />
-          <StatusModule />
           <RecordingModule />
           <RehearsalModule />
           <WorkshopCafeModule />
