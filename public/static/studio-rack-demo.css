@@ -5620,6 +5620,8 @@ main,
 
 .srd-rehearsal-selector-card p {
   margin: 0.45rem 0 0;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 0.82rem;
   color: rgba(246, 242, 231, 0.76);
   line-height: 1.55;
 }

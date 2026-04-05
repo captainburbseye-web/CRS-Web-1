@@ -226,12 +226,12 @@ const RehearsalSelector = ({ id, title = 'BOOK REHEARSAL', className = '' }) => 
     <div className="srd-rehearsal-selector-grid">
       <article className="srd-rehearsal-selector-card">
         <h3>COWLEY ROAD</h3>
-        <p>Rehearsal + Recording</p>
+        <p>Rehearsal &amp; Recording</p>
         <a href={URLS.REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
       </article>
       <article className="srd-rehearsal-selector-card">
         <h3>CRICKET ROAD</h3>
-        <p>Rehearsal only</p>
+        <p>Rehearsal &amp; Recording</p>
         <a href={URLS.CRICKET_REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
       </article>
     </div>
