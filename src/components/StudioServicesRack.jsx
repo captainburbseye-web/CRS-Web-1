@@ -25,10 +25,10 @@ const PHOTO_PLACEHOLDERS = [
   'WORKSHOP CAFÉ'
 ];
 
-const SUPPORTED_ACTIVITIES = [
+const ACTIVE_USE_ITEMS = [
   'Recording sessions',
-  'Band rehearsals',
-  'ODRO electronics support',
+  'Band rehearsal',
+  'Technical support',
   'Workshop activity'
 ];
 
@@ -165,20 +165,25 @@ const TopRail = () => (
   </div>
 );
 
-const AuthorityHero = () => (
-  <section className="srd-authority-hero" aria-labelledby="authority-hero-title">
-    <div className="srd-authority-copy">
-      <div className="srd-authority-system-line">118 COWLEY ROAD | OXFORD | OX4 1JE</div>
-      <div className="srd-authority-system-line srd-authority-system-line--muted">CRS INFRASTRUCTURE ACTIVE</div>
-      <h1 id="authority-hero-title">Recording Studio &amp; Rehearsal Rooms in Oxford</h1>
-      <p className="srd-authority-subline">Cowley Road Studios | Recording • Rehearsal • Workshop Café • ODRO Electronics</p>
-      <p className="srd-authority-brand">Grassroots infrastructure for the Oxford music scene.</p>
-      <p className="srd-authority-hybrid">Hybrid analogue–digital recording with SSL, valve compression and tape integration.</p>
+const AuthorityHero = ({ rack = false }) => (
+  <section className={`srd-authority-hero ${rack ? 'srd-authority-hero--rack' : ''}`.trim()} aria-labelledby="authority-hero-title">
+    <div className={`srd-authority-copy ${rack ? 'srd-authority-copy--rack' : ''}`.trim()}>
+      {!rack ? (
+        <>
+          <div className="srd-authority-system-line">118 COWLEY ROAD | OXFORD | OX4 1JE</div>
+          <div className="srd-authority-system-line srd-authority-system-line--muted">CRS INFRASTRUCTURE ACTIVE</div>
+        </>
+      ) : null}
+      <h1 id="authority-hero-title">RECORDING STUDIO — OXFORD</h1>
+      <p className="srd-authority-subline">Hybrid analogue–digital recording</p>
+      <p className="srd-authority-signal">SSL • Valve compression • Tape integration</p>
+      <h2 className="srd-authority-tagline">Grassroots infrastructure for the Oxford music scene.</h2>
     </div>
     <div className="srd-authority-actions">
-      <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-authority-btn srd-authority-btn--primary">BOOK RECORDING</a>
+      <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-authority-btn srd-authority-btn--primary">BOOK A SESSION</a>
+      <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-authority-btn">BOOK RECORDING</a>
+      <a href="#hero-rehearsal-selector" className="srd-authority-btn">BOOK REHEARSAL</a>
       <a href={URLS.CONTACT} className="srd-authority-btn">ENQUIRE</a>
-      <a href={URLS.WORKSHOP_CAFE} className="srd-authority-btn">WORKSHOP CAFÉ</a>
     </div>
     <RehearsalSelector id="hero-rehearsal-selector" title="BOOK REHEARSAL" className="srd-rehearsal-selector--hero" />
   </section>
@@ -224,14 +229,14 @@ const StatusModule = () => (
         <div className="srd-lcd-sysinfo">
           <span className="srd-lcd-highlight">&gt; SYS.INFO:</span> 118 COWLEY ROAD, OXFORD OX4 1JE // RECORDING HQ ACTIVE // COWLEY ROAD FLAGSHIP RECORDING // CRICKET ROAD DEDICATED REHEARSAL // WORKSHOP CAFÉ VIA ENQUIRY // ODRO ELECTRONICS SUPPORT
         </div>
-        <div className="srd-lcd-header">SELECT SERVICE MODULE</div>
+        <div className="srd-lcd-header">SELECT MODULE</div>
         <div className="srd-lcd-row">
           <span className="srd-lcd-bullet-crs">●</span>
-          <span>COWLEY ROAD = MAIN STUDIO, CONTROL ROOM &amp; STUDIO-LINKED REHEARSAL</span>
+          <span>RECORDING ONLINE // COWLEY ROAD MAIN STUDIO &amp; CONTROL ROOM</span>
         </div>
         <div className="srd-lcd-row">
           <span className="srd-lcd-bullet-cricket">●</span>
-          <span>CRICKET ROAD = DEDICATED REHEARSAL SPACE</span>
+          <span>REHEARSAL AVAILABLE // CRICKET ROAD DEDICATED ROOM</span>
         </div>
         <div className="srd-lcd-footer">SERIOUS, PROFESSIONAL, GROUNDED // NO INVENTED CLAIMS</div>
       </div>
@@ -253,12 +258,12 @@ const RehearsalSelector = ({ id, title = 'BOOK REHEARSAL', className = '' }) => 
     <div className="srd-rehearsal-selector-grid">
       <article className="srd-rehearsal-selector-card">
         <h3>COWLEY ROAD</h3>
-        <p>Studio-linked rehearsal</p>
+        <p>Rehearse → Record</p>
         <a href={URLS.REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
       </article>
       <article className="srd-rehearsal-selector-card">
         <h3>CRICKET ROAD</h3>
-        <p>Dedicated rehearsal space</p>
+        <p>Rehearsal only</p>
         <a href={URLS.CRICKET_REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
       </article>
     </div>
@@ -291,7 +296,7 @@ const RehearsalModule = () => (
     <div className="srd-module-header">
       <div className="srd-module-title-group">
         <h2 id="module-rehearsal" className="srd-module-title">REHEARSAL</h2>
-        <ModuleEyebrow lines={['COWLEY ROAD — STUDIO-LINKED REHEARSAL', 'CRICKET ROAD — DEDICATED REHEARSAL SPACE']} />
+        <ModuleEyebrow lines={['COWLEY ROAD — REHEARSE → RECORD', 'CRICKET ROAD — REHEARSAL ONLY']} />
       </div>
     </div>
     <RehearsalSelector id="module-rehearsal-selector" title="BOOK REHEARSAL" className="srd-rehearsal-selector--module" />
@@ -422,18 +427,16 @@ const CommunicationsBusModule = () => (
 const CrawlableDescription = () => (
   <section className="srd-text-block" aria-labelledby="crs-description-title">
     <div className="srd-text-inner">
-      <div className="srd-text-kicker">ABOUT COWLEY ROAD STUDIOS</div>
-      <h2 id="crs-description-title">Crawlable description</h2>
-      <p>
-        Cowley Road Studios is based at <strong>118 Cowley Road, Oxford OX4 1JE, United Kingdom</strong>. It is a serious, professional, grounded recording base with a connected rehearsal network, Workshop Café enquiries, and ODRO Electronics support. The core public line stays simple: <strong>Grassroots infrastructure for the Oxford music scene.</strong>
-      </p>
-      <p className="srd-usage-line">Used by independent artists and bands across Oxford.</p>
-      <p>
-        The Cowley Road site is presented as the main studio and control room, while Cricket Road is positioned as the dedicated rehearsal space. Cowley Road also carries the studio-linked rehearsal path, and Workshop Café communication remains enquiry-led without claiming anything beyond what is already verified elsewhere on the site.
-      </p>
-      <p>
-        The published equipment and room specification now includes the SSL BiG SiX, TL Audio C1, Revox tape preamps, Tascam 388, Ghielmetti patchbay, one main live room and three isolation booths, Adam Audio and Yamaha NS-10M monitors, plus the currently surfaced microphone list: Neumann U87, AKG 414, Shure SM7B, and Shure SM58. No additional artist, venue, or inventory claims are introduced here.
-      </p>
+      <h2 id="crs-description-title">SYSTEM OVERVIEW</h2>
+      <div className="srd-system-stack">
+        <p>118 Cowley Road, Oxford OX4 1JE</p>
+        <p>Main studio and control room</p>
+        <p>Hybrid analogue–digital signal path</p>
+        <p>Recording → Cowley Road</p>
+        <p>Rehearsal → Cricket Road</p>
+        <p>Workshop Café → Enquiry</p>
+        <p>ODRO electronics → Support</p>
+      </div>
     </div>
   </section>
 );
@@ -441,8 +444,7 @@ const CrawlableDescription = () => (
 const PhotoPlaceholderStrip = () => (
   <section className="srd-photo-strip" aria-labelledby="photo-strip-title">
     <div className="srd-text-inner srd-text-inner--wide">
-      <div className="srd-text-kicker">PHOTO STRIP</div>
-      <h2 id="photo-strip-title">Photo-ready placeholders</h2>
+      <h2 id="photo-strip-title">PHOTO STRIP</h2>
       <div className="srd-photo-grid">
         {PHOTO_PLACEHOLDERS.map((label) => (
           <article key={label} className="srd-photo-card">
@@ -458,10 +460,9 @@ const PhotoPlaceholderStrip = () => (
 const WhatWeSupportBlock = () => (
   <section className="srd-text-block srd-text-block--support" aria-labelledby="support-title">
     <div className="srd-text-inner">
-      <div className="srd-text-kicker">WHAT WE SUPPORT</div>
-      <h2 id="support-title">Operational support areas</h2>
-      <ul className="srd-support-list">
-        {SUPPORTED_ACTIVITIES.map((item) => <li key={item}>{item}</li>)}
+      <h2 id="support-title">ACTIVE USE</h2>
+      <ul className="srd-support-list srd-support-list--plain">
+        {ACTIVE_USE_ITEMS.map((item) => <li key={item}>{item}</li>)}
       </ul>
     </div>
   </section>
@@ -484,19 +485,29 @@ const TrustRail = () => (
 );
 
 const TechManualFooter = () => (
-  <section className="tech-manual-footer">
-    <div className="manual-header">DOCUMENTATION // REF: 118-CR-OX4</div>
-    <h2>Recording Studio &amp; Rehearsal Rooms in Oxford</h2>
-    <p>
-      Cowley Road Studios is positioned around the main address at <strong>118 Cowley Road, Oxford OX4 1JE, United Kingdom</strong>, with direct pathways for recording, rehearsal, Workshop Café enquiries, and ODRO Electronics support. The tone is deliberately restrained: practical information first, myth-making nowhere it does not belong.
-    </p>
-    <p>
-      Equipment and room details surfaced in active copy include <strong>SSL BiG SiX</strong>, <strong>TL Audio C1</strong>, <strong>Revox tape preamps</strong>, <strong>Tascam 388</strong>, <strong>Ghielmetti patchbay</strong>, <strong>1 main live room + 3 isolation booths</strong>, <strong>Adam Audio</strong> and <strong>Yamaha NS-10M</strong> monitors, and the currently published microphone list of <strong>Neumann U87</strong>, <strong>AKG 414</strong>, <strong>Shure SM7B</strong>, and <strong>Shure SM58</strong>.
-    </p>
-    <div className="manual-specs">
-      <span>LOCATION: 118 COWLEY ROAD, OXFORD, OX4 1JE</span>
-      <span>CANONICAL DOMAIN: COWLEYROADSTUDIOS.COM</span>
-      <span>SERVICE TAGLINE: GRASSROOTS INFRASTRUCTURE FOR THE OXFORD MUSIC SCENE.</span>
+  <section className="srd-text-block" aria-labelledby="system-specification-title">
+    <div className="srd-text-inner">
+      <h2 id="system-specification-title">SYSTEM SPECIFICATION</h2>
+      <div className="srd-system-stack srd-system-stack--spec">
+        <p>SSL BiG SiX</p>
+        <p>TL Audio C1</p>
+        <p>Revox tape preamps</p>
+        <p>Tascam 388</p>
+        <p>Ghielmetti patch matrix</p>
+        <div className="srd-system-group">
+          <p>1 × live room</p>
+          <p>3 × isolation booths</p>
+        </div>
+        <div className="srd-system-group">
+          <p className="srd-system-label">Monitoring:</p>
+          <p>Adam Audio</p>
+          <p>Yamaha NS-10M</p>
+        </div>
+        <div className="srd-system-group">
+          <p className="srd-system-label">Microphones:</p>
+          <p>U87 • C414 • SM7B • SM58</p>
+        </div>
+      </div>
     </div>
   </section>
 );
@@ -507,12 +518,12 @@ export default function StudioServicesRack() {
       <VuMeterDefs />
       <PersistentSessionCta />
       <TopRail />
-      <AuthorityHero />
 
       <div className="srd-chassis">
         <RackRail side="left" />
         <div className="srd-modules">
           <MasterFaceplate />
+          <AuthorityHero rack />
           <StatusModule />
           <RecordingModule />
           <RehearsalModule />
@@ -524,10 +535,10 @@ export default function StudioServicesRack() {
       </div>
 
       <CrawlableDescription />
+      <TechManualFooter />
       <PhotoPlaceholderStrip />
       <WhatWeSupportBlock />
       <TrustRail />
-      <TechManualFooter />
     </main>
   );
 }

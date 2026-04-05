@@ -771,8 +771,12 @@ const SUPPORT_PAGE_STYLE = `
   }
   h1 {
     margin: 0.5rem 0 0.75rem;
+    font-family: 'JetBrains Mono', 'Space Mono', monospace;
     font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
     line-height: 1.05;
+    text-transform: uppercase;
   }
   p, li {
     line-height: 1.75;
@@ -780,6 +784,33 @@ const SUPPORT_PAGE_STYLE = `
   }
   ul { padding-left: 1.2rem; }
   li::marker { color: #d7c47a; }
+  .support-body {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.25rem;
+  }
+  .support-body p,
+  .support-body li {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.98rem;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    line-height: 1.65;
+  }
+  .support-body .support-label {
+    color: #d7c47a;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .support-list-plain {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
   .cta-row {
     display: flex;
     flex-wrap: wrap;
@@ -796,16 +827,6 @@ const SUPPORT_PAGE_STYLE = `
     color: #13140d;
     background: linear-gradient(180deg, #d7c47a 0%, #b8952d 100%);
     border: 1px solid rgba(201,162,39,0.75);
-  }
-  .cta-link--secondary {
-    color: #f3f0e7;
-    background: rgba(12,14,11,0.85);
-  }
-  .meta-block {
-    margin: 1.25rem 0;
-    padding: 1rem;
-    border-left: 3px solid #d7c47a;
-    background: rgba(0,0,0,0.22);
   }
   .footer {
     margin-top: 2rem;
@@ -827,7 +848,7 @@ const SUPPORT_PAGE_STYLE = `
   }
 `
 
-const renderSupportPage = ({ title, description, h1, intro, body, slug }) => `<!DOCTYPE html>
+const renderSupportPage = ({ title, description, h1, body, slug, ctaLabel, ctaHref }) => `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -837,24 +858,20 @@ const renderSupportPage = ({ title, description, h1, intro, body, slug }) => `<!
   <link rel="canonical" href="https://cowleyroadstudios.com/${slug}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>${SUPPORT_PAGE_STYLE}</style>
 </head>
 <body>
   <main>
     <div class="shell">
-      <a href="/" class="back-link">← Back to home</a>
+      <a href="/" class="back-link">← RETURN</a>
       <div class="eyebrow">Cowley Road Studios</div>
       <h1>${h1}</h1>
-      <p>${intro}</p>
-      <div class="meta-block">
-        <strong>Address:</strong> 118 Cowley Road, Oxford OX4 1JE, United Kingdom<br />
-        <strong>Tagline:</strong> Grassroots infrastructure for the Oxford music scene.
+      <div class="support-body">
+        ${body}
       </div>
-      ${body}
       <div class="cta-row">
-        <a href="/" class="cta-link">Back to home</a>
-        <a href="/contact" class="cta-link cta-link--secondary">Enquire</a>
+        <a href="${ctaHref}" class="cta-link">${ctaLabel}</a>
       </div>
       <footer class="footer">
         <div>118 Cowley Road, Oxford OX4 1JE, United Kingdom</div>
@@ -873,45 +890,64 @@ const renderSupportPage = ({ title, description, h1, intro, body, slug }) => `<!
 app.get('/recording-studio-oxford', (c) => {
   return c.html(renderSupportPage({
     slug: 'recording-studio-oxford',
-    title: 'Recording Studio Oxford | Cowley Road Studios',
-    description: 'Recording studio support at 118 Cowley Road, Oxford OX4 1JE, United Kingdom. Main studio and control room enquiries via Cowley Road Studios.',
-    h1: 'Recording Studio Oxford',
-    intro: 'Cowley Road Studios presents the main studio and control room at 118 Cowley Road, Oxford OX4 1JE, United Kingdom. The public position is straightforward: a serious recording base with enquiry-led support and no invented extras.',
+    title: 'Recording Studio — Oxford | Cowley Road Studios',
+    description: 'Recording Studio — Oxford. 118 Cowley Road. Main recording facility with hybrid analogue–digital workflow and SSL, valve, and tape signal path.',
+    h1: 'Recording Studio — Oxford',
     body: `
-      <p>The recording offer is anchored to the Cowley Road site and presented as the main studio and control room. Home-page copy now aligns with the address, canonical domain, and the core tagline without drifting into speculative venue language.</p>
-      <p>Current published studio specification includes SSL BiG SiX, TL Audio C1, Revox tape preamps, Tascam 388, Ghielmetti patchbay, one main live room and three isolation booths, Adam Audio and Yamaha NS-10M monitors, plus the currently surfaced microphone list of Neumann U87, AKG 414, Shure SM7B, and Shure SM58.</p>
-      <p>For recording enquiries, the site routes visitors cleanly back to home or into the contact path, keeping the Rack UI front and centre.</p>
-    `
+      <p>118 Cowley Road, Oxford</p>
+      <p>Main recording facility.</p>
+      <p>Hybrid analogue–digital workflow.</p>
+      <ul class="support-list-plain">
+        <li>Tracking</li>
+        <li>Overdubs</li>
+        <li>Mixing</li>
+      </ul>
+      <p><span class="support-label">Signal path:</span></p>
+      <p>SSL • Valve • Tape</p>
+      <p>Used by independent artists across Oxford.</p>
+    `,
+    ctaLabel: 'BOOK RECORDING →',
+    ctaHref: 'https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX'
   }))
 })
 
 app.get('/rehearsal-rooms-oxford', (c) => {
   return c.html(renderSupportPage({
     slug: 'rehearsal-rooms-oxford',
-    title: 'Rehearsal Rooms Oxford | Cowley Road Studios',
-    description: 'Rehearsal rooms in Oxford with clearly defined Cowley Road studio-linked rehearsal and Cricket Road dedicated rehearsal booking paths.',
-    h1: 'Rehearsal Rooms Oxford',
-    intro: 'Cowley Road Studios now states rehearsal plainly: Cowley Road covers studio-linked rehearsal, while Cricket Road is the dedicated rehearsal space. The two are connected, but they are not merged.',
+    title: 'Rehearsal Rooms — Oxford | Cowley Road Studios',
+    description: 'Rehearsal Rooms — Oxford. Two locations. Cowley Road for studio-linked rehearsal. Cricket Road for rehearsal only.',
+    h1: 'Rehearsal Rooms — Oxford',
     body: `
-      <p>The support copy keeps Cowley Road as the canonical business address at 118 Cowley Road, Oxford OX4 1JE, United Kingdom, while defining Cricket Road as the stable rehearsal base.</p>
-      <p>Internal linking routes users back to the homepage Rack UI, where the rehearsal selector now presents a fast choice between Cowley Road studio-linked rehearsal and Cricket Road dedicated rehearsal booking.</p>
-      <p>This page exists to support search visibility for rehearsal-related intent without replacing the main Rack-led homepage experience.</p>
-    `
+      <p>Two locations</p>
+      <p><span class="support-label">Cowley Road</span></p>
+      <p>Studio-linked rehearsal</p>
+      <p><span class="support-label">Cricket Road</span></p>
+      <p>Dedicated rehearsal space</p>
+      <p><span class="support-label">Choose based on use:</span></p>
+      <p>Rehearse → Record (Cowley)</p>
+      <p>Rehearsal only (Cricket)</p>
+    `,
+    ctaLabel: 'BOOK REHEARSAL →',
+    ctaHref: 'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX'
   }))
 })
 
 app.get('/music-studio-cowley-road', (c) => {
   return c.html(renderSupportPage({
     slug: 'music-studio-cowley-road',
-    title: 'Music Studio Cowley Road | Cowley Road Studios',
-    description: 'Music studio support centred on 118 Cowley Road, Oxford OX4 1JE, United Kingdom, under the Cowley Road Studios domain.',
-    h1: 'Music Studio Cowley Road',
-    intro: 'This support page reinforces the location association between Cowley Road Studios and 118 Cowley Road, Oxford OX4 1JE, United Kingdom, using the canonical domain cowleyroadstudios.com throughout.',
+    title: 'Music Studio — Cowley Road | Cowley Road Studios',
+    description: 'Music Studio — Cowley Road. 118 Cowley Road, Oxford OX4 1JE. Flagship CRS location for recording, control room, and studio-linked rehearsal.',
+    h1: 'Music Studio — Cowley Road',
     body: `
-      <p>It sits alongside the recording and rehearsal support pages to create restrained internal linking from the homepage and footer without overloading the main user journey.</p>
-      <p>The language stays grounded: recording, rehearsal, Workshop Café enquiries, and ODRO Electronics support. No artist roster, no invented client list, and no unsupported operating claims.</p>
-      <p>The intended result is stronger location relevance around Cowley Road while keeping the Rack UI aesthetic intact on the main site.</p>
-    `
+      <p>118 Cowley Road, Oxford OX4 1JE</p>
+      <p>Flagship CRS location</p>
+      <p>Recording</p>
+      <p>Control room</p>
+      <p>Studio-linked rehearsal</p>
+      <p>Part of Oxford’s independent music infrastructure.</p>
+    `,
+    ctaLabel: 'BOOK RECORDING →',
+    ctaHref: 'https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX'
   }))
 })
 
