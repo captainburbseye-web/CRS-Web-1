@@ -925,12 +925,74 @@ html, body {
    ============================================ */
 .srd-master-faceplate {
   position: relative;
-  padding: 0.75rem 1rem;
+  padding: 0.65rem 1rem;
   background: linear-gradient(180deg, #2a3428 0%, #1c2318 100%);
   border-bottom: 2px solid #000;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
 }
-@media (min-width: 640px) { .srd-master-faceplate { padding: 1rem 2rem; } }
+@media (min-width: 640px) { .srd-master-faceplate { padding: 0.8rem 2rem; } }
+
+/* Faceplate inner layout — single horizontal bar */
+.srd-faceplate-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* LEFT: icon + name stack — single vertical grid line */
+.srd-faceplate-left {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-shrink: 0;
+}
+
+.srd-faceplate-name-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.srd-faceplate-name {
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c8d1b8;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.08), 0 -1px 0 rgba(0,0,0,0.9);
+  line-height: 1;
+}
+@media (min-width: 640px) { .srd-faceplate-name { font-size: 1rem; } }
+
+.srd-faceplate-tagline-text {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(138, 148, 121, 0.8);
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+@media (min-width: 640px) { .srd-faceplate-tagline-text { font-size: 0.76rem; } }
+
+/* RIGHT: wooden sign as secondary badge */
+.srd-faceplate-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.srd-wooden-sign-badge {
+  max-width: 108px;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+  opacity: 0.9;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2);
+}
+@media (min-width: 640px) { .srd-wooden-sign-badge { max-width: 120px; } }
+@media (max-width: 480px) { .srd-wooden-sign-badge { display: none; } }
 
 .srd-logo-plate {
   position: relative;
@@ -1101,29 +1163,14 @@ html, body {
    ============================================ */
 
 /* Faceplate Layout */
+/* legacy faceplate layout rules — replaced by srd-faceplate-inner system */
 .srd-faceplate-header { display: flex; flex-direction: column; gap: 0.5rem; }
-
-/* Physical Location Strip */
-.srd-location-strip {
-  font-family: var(--font-mono, monospace);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(138, 148, 121, 0.7);
-  text-align: center;
-  padding: 0.375rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  margin-bottom: 0.5rem;
-}
-@media (min-width: 640px) { .srd-location-strip { font-size: 11px; } }
-
 .srd-faceplate-main { display: flex; align-items: center; justify-content: space-between; }
 .srd-faceplate-title-group { display: flex; align-items: center; gap: 0.75rem; }
-@media (min-width: 640px) { .srd-faceplate-title-group { gap: 1rem; } }
 .srd-faceplate-text-stack { display: flex; flex-direction: column; gap: 0.25rem; }
-.srd-faceplate-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; }
-.srd-meta-row { display: flex; align-items: center; gap: 0.5rem; }
+.srd-faceplate-meta { display: none; }
+.srd-meta-row { display: none; }
+.srd-location-strip { display: none; }
 
 /* Faceplate Typography */
 .srd-faceplate-title {
@@ -4100,33 +4147,8 @@ main,
   }
 }
 
-/* ============================================
-   WOODEN SIGN IMAGE - Replaces text title
-   ============================================ */
-.srd-wooden-sign-img {
-  max-width: 180px;
-  height: auto;
-  display: inline-block;
-  vertical-align: middle;
-  border-radius: 3px;
-  box-shadow:
-    0 1px 4px rgba(0,0,0,0.3),
-    0 2px 8px rgba(0,0,0,0.15);
-}
-
-/* Keep title container inline like original text */
-.srd-faceplate-title {
-  display: inline-flex;
-  align-items: center;
-  margin: 0;
-  line-height: 1;
-}
-
-@media (max-width: 640px) {
-  .srd-wooden-sign-img {
-    max-width: 120px;
-  }
-}
+/* wooden sign — legacy img class, unused; badge class handles it now */
+.srd-wooden-sign-img { display: none; }
 
 /* ============================================
    PRICING BADGES
@@ -5366,7 +5388,7 @@ main,
 .srd-authority-hero--rack {
   max-width: none;
   margin: 0;
-  padding: 1.1rem 1rem 1.2rem;
+  padding: 0.9rem 1rem 1rem;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.01) 3px, transparent 8px),
     linear-gradient(180deg, #20271d 0%, #121711 100%);
@@ -5410,13 +5432,14 @@ main,
 }
 
 .srd-authority-hero h1 {
-  margin: 0.9rem 0 0.55rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: clamp(2rem, 4vw, 3.4rem);
-  font-weight: 700;
+  margin: 0.9rem 0 0.45rem;
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  font-size: clamp(1.7rem, 3.6vw, 3rem);
+  font-weight: 500;
   line-height: 1.05;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  color: #e8e8e8;
 }
 
 .srd-authority-hero--rack h1 {
@@ -5431,30 +5454,33 @@ main,
 
 .srd-authority-subline {
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  color: rgba(246, 242, 231, 0.9);
-  line-height: 1.5;
+  font-size: 0.92rem;
+  color: rgba(246, 242, 231, 0.82);
+  line-height: 1.4;
   letter-spacing: 0.01em;
-  font-weight: 500;
+  font-weight: 400;
   text-transform: none;
+  margin-top: 0.3rem;
 }
 
 .srd-authority-signal {
-  margin: 0.38rem 0 0;
+  margin: 0.25rem 0 0;
   max-width: 54rem;
-  color: #d7c47a;
-  line-height: 1.5;
-  font-family: 'JetBrains Mono', monospace;
-  letter-spacing: 0.08em;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.88rem;
+  color: rgba(215, 196, 122, 0.85);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
   text-transform: none;
 }
 
 .srd-authority-tagline {
-  margin-top: 0.65rem;
+  margin-top: 0.55rem;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: clamp(1.02rem, 1.8vw, 1.32rem);
+  font-size: 0.92rem;
   line-height: 1.4;
-  color: #f6f2e7;
-  font-weight: 500;
+  color: rgba(246, 242, 231, 0.7);
+  font-weight: 400;
   letter-spacing: 0.01em;
   text-transform: none;
 }
@@ -5462,12 +5488,12 @@ main,
 .srd-authority-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 0.9rem;
+  gap: 0.65rem;
+  margin-top: 1rem;
 }
 
 .srd-authority-hero--rack .srd-authority-actions {
-  margin-top: 0.85rem;
+  margin-top: 1rem;
 }
 
 .srd-authority-btn {

@@ -191,32 +191,20 @@ const AuthorityHero = ({ rack = false }) => (
 
 const MasterFaceplate = () => (
   <header className="srd-master-faceplate">
-    <div className="srd-faceplate-header">
-      <div className="srd-location-strip">118 COWLEY ROAD • OXFORD • OX4 1JE • UNITED KINGDOM</div>
-      <div className="srd-faceplate-main">
-        <div className="srd-faceplate-title-group">
-          <div className="srd-logo-plate" aria-label="CRS Logo">
-            <img src="/static/crs-logo.png" alt="CRS" className="crs-logo-img" />
-          </div>
-          <div className="srd-signal-group" aria-hidden="true">
-            <div className="srd-signal-dot srd-signal-dot--red"></div>
-            <div className="srd-signal-dot srd-signal-dot--yellow"></div>
-            <div className="srd-signal-dot srd-signal-dot--green"></div>
-          </div>
-          <div className="srd-faceplate-text-stack">
-            <h2 className="srd-faceplate-title">
-              <img src="/static/crs-wooden-sign-upscaled.png" alt="Cowley Road Studios" className="srd-wooden-sign-img" />
-            </h2>
-
-          </div>
+    <div className="srd-faceplate-inner">
+      {/* LEFT: CRS icon (primary identity) + name stack */}
+      <div className="srd-faceplate-left">
+        <div className="srd-logo-plate" aria-label="CRS Logo">
+          <img src="/static/crs-logo.png" alt="CRS" className="crs-logo-img" />
         </div>
-        <div className="srd-faceplate-meta">
-          <div className="srd-meta-row">
-            <div className="srd-faceplate-model">CRS-CONSOLE-01</div>
-            <div className="srd-faceplate-routing">Recording • Rehearsal • Workshop Café • ODRO Electronics</div>
-            <div className="srd-micro-label">CANONICAL DOMAIN: COWLEYROADSTUDIOS.COM</div>
-          </div>
+        <div className="srd-faceplate-name-stack">
+          <span className="srd-faceplate-name">COWLEY ROAD STUDIOS</span>
+          <span className="srd-faceplate-tagline-text">Grassroots infrastructure for the Oxford music scene.</span>
         </div>
+      </div>
+      {/* RIGHT: wooden sign as secondary badge */}
+      <div className="srd-faceplate-right" aria-hidden="true">
+        <img src="/static/crs-wooden-sign-upscaled.png" alt="" className="srd-wooden-sign-badge" />
       </div>
     </div>
   </header>
