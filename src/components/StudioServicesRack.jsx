@@ -160,7 +160,7 @@ const PersistentSessionCta = () => (
 const TopRail = () => (
   <div className="srd-top-rail">
     <div className="srd-home-indicator">HOME</div>
-    <div className="srd-rail-address">118 COWLEY ROAD | OXFORD | OX4 1JE</div>
+    <div className="srd-rail-address">CRS / COWLEY ROAD — OXFORD OX4 1JE</div>
     <div className="srd-rail-meta">CRS INFRASTRUCTURE ACTIVE</div>
   </div>
 );
@@ -176,14 +176,14 @@ const AuthorityHero = ({ rack = false }) => (
       ) : null}
       <h1 id="authority-hero-title">RECORDING STUDIO — OXFORD</h1>
       <p className="srd-authority-subline">Hybrid analogue–digital recording</p>
-      <p className="srd-authority-signal">SSL • Valve compression • Tape integration</p>
+      <p className="srd-authority-signal">SSL · Valve Compression · Tape Integration</p>
       <h2 className="srd-authority-tagline">Grassroots infrastructure for the Oxford music scene.</h2>
     </div>
     <div className="srd-authority-actions">
       <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-authority-btn srd-authority-btn--primary">BOOK A SESSION</a>
-      <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-authority-btn">BOOK RECORDING</a>
-      <a href="#hero-rehearsal-selector" className="srd-authority-btn">BOOK REHEARSAL</a>
-      <a href={URLS.CONTACT} className="srd-authority-btn">ENQUIRE</a>
+      <a href="#hero-rehearsal-selector" className="srd-authority-btn srd-authority-btn--secondary">BOOK REHEARSAL</a>
+      <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-authority-btn srd-authority-btn--secondary">BOOK RECORDING</a>
+      <a href={URLS.CONTACT} className="srd-authority-btn srd-authority-btn--tertiary">ENQUIRE</a>
     </div>
     <RehearsalSelector id="hero-rehearsal-selector" title="BOOK REHEARSAL" className="srd-rehearsal-selector--hero" />
   </section>
@@ -207,7 +207,7 @@ const MasterFaceplate = () => (
             <h2 className="srd-faceplate-title">
               <img src="/static/crs-wooden-sign-upscaled.png" alt="Cowley Road Studios" className="srd-wooden-sign-img" />
             </h2>
-            <p className="srd-faceplate-subtitle">Grassroots infrastructure for the Oxford music scene.</p>
+
           </div>
         </div>
         <div className="srd-faceplate-meta">
@@ -238,7 +238,7 @@ const RehearsalSelector = ({ id, title = 'BOOK REHEARSAL', className = '' }) => 
     <div className="srd-rehearsal-selector-grid">
       <article className="srd-rehearsal-selector-card">
         <h3>COWLEY ROAD</h3>
-        <p>Rehearse → Record</p>
+        <p>Rehearsal + Recording</p>
         <a href={URLS.REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
       </article>
       <article className="srd-rehearsal-selector-card">
