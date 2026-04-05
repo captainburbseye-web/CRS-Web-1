@@ -5609,12 +5609,13 @@ main,
   padding: 0.85rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.85rem;
 }
 
 .srd-selector-card-sign {
   display: block;
-  width: 72px;
+  width: 144px;
   flex-shrink: 0;
   height: auto;
   border-radius: 2px;
@@ -5625,6 +5626,7 @@ main,
   display: flex;
   flex-direction: column;
   gap: 0;
+  flex: 1;
 }
 
 .srd-rehearsal-selector-card h3 {
