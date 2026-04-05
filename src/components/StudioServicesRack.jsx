@@ -183,7 +183,7 @@ const AuthorityHero = ({ rack = false }) => (
       <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-authority-btn srd-authority-btn--primary">BOOK A SESSION</a>
       <a href="#hero-rehearsal-selector" className="srd-authority-btn srd-authority-btn--secondary">BOOK REHEARSAL</a>
       <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-authority-btn srd-authority-btn--secondary">BOOK RECORDING</a>
-      <a href={URLS.CONTACT} className="srd-authority-btn srd-authority-btn--tertiary">ENQUIRE</a>
+      <a href={URLS.ENQUIRE_WORKSHOP} className="srd-authority-btn srd-authority-btn--tertiary">VENUE ENQUIRY</a>
     </div>
     <RehearsalSelector id="hero-rehearsal-selector" title="BOOK REHEARSAL" className="srd-rehearsal-selector--hero" />
   </section>
@@ -224,16 +224,16 @@ const RehearsalSelector = ({ id, title = 'BOOK REHEARSAL', className = '' }) => 
       <article className="srd-rehearsal-selector-card">
         <div className="srd-selector-card-body">
           <h3>COWLEY ROAD</h3>
-          <p>Rehearsal &amp; Recording</p>
-          <a href={URLS.REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
+          <p>Rehearse before recording</p>
+          <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
         </div>
         <img src="/static/crs-wooden-sign-upscaled.png" alt="Cowley Road Studios" className="srd-selector-card-sign" />
       </article>
       <article className="srd-rehearsal-selector-card srd-rehearsal-selector-card--cricket">
         <div className="srd-selector-card-body">
           <h3>CRICKET ROAD</h3>
-          <p>Rehearsal &amp; Recording</p>
-          <a href={URLS.CRICKET_REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
+          <p>Dedicated rehearsal space</p>
+          <a href={URLS.CRICKET_RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
         </div>
         <img src="/static/cricket-road-sign.png" alt="Cricket Road" className="srd-selector-card-sign" />
       </article>
@@ -246,16 +246,23 @@ const RecordingModule = () => (
     <div className="srd-module-header">
       <div className="srd-module-title-group">
         <h2 id="module-recording" className="srd-module-title">RECORDING</h2>
-        <ModuleEyebrow lines={['COWLEY ROAD', '118 COWLEY ROAD', 'MAIN STUDIO & CONTROL ROOM']} />
+        <ModuleEyebrow lines={['MAIN STUDIO & CONTROL ROOM', 'RECORDING + STUDIO-LINKED REHEARSAL']} />
       </div>
       <VuMeterPair />
     </div>
-    <div className="srd-btn-group srd-btn-group--single">
+    <div className="srd-btn-group">
       <ServiceButton
         variant="crs"
-        service="BOOK A SESSION →"
+        service="BOOK RECORDING →"
         location="COWLEY ROAD"
         href={URLS.RECORDING_BOOK}
+        badge={<CrsBadge />}
+      />
+      <ServiceButton
+        variant="crs"
+        service="BOOK REHEARSAL →"
+        location="COWLEY ROAD"
+        href={URLS.REHEARSAL_BOOK}
         badge={<CrsBadge />}
       />
     </div>
@@ -267,7 +274,7 @@ const RehearsalModule = () => (
     <div className="srd-module-header">
       <div className="srd-module-title-group">
         <h2 id="module-rehearsal" className="srd-module-title">REHEARSAL</h2>
-        <ModuleEyebrow lines={['COWLEY ROAD — REHEARSE → RECORD', 'CRICKET ROAD — REHEARSAL ONLY']} />
+        <ModuleEyebrow lines={['COWLEY ROAD — REHEARSE → RECORD', 'CRICKET ROAD — DEDICATED REHEARSAL + RECORDING']} />
       </div>
     </div>
     <RehearsalSelector id="module-rehearsal-selector" title="BOOK REHEARSAL" className="srd-rehearsal-selector--module" />
