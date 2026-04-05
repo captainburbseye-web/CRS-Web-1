@@ -95,22 +95,22 @@ export const Work = () => {
         </div>
       </div>
 
-      {/* TESTIMONIALS */}
+      {/* RECENT ACTIVITY */}
       <div className="content-block">
-        <h3 className="content-heading heading">Testimonials</h3>
+        <h3 className="content-heading heading">Recent Activity</h3>
         <div className="content-text">
           <div style={{ background: 'rgba(0,0,0,0.3)', borderLeft: '3px solid var(--text-gold)', padding: '1rem', marginBottom: '1rem' }}>
-            <p style={{ fontSize: '0.875rem', fontStyle: 'italic' }}>
-              "Professional setup, no delays. We got straight to work."
+            <p style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>
+              Recording sessions, rehearsals, venue planning, and technical call-outs continue while the wider Cowley Road build phase progresses.
             </p>
-            <p style={{ fontSize: '0.75rem', opacity: 0.6, marginTop: '0.5rem' }}>— Recording client</p>
+            <p style={{ fontSize: '0.75rem', opacity: 0.6 }}>Published case studies and session photography are being prepared for release.</p>
           </div>
           
           <div style={{ background: 'rgba(0,0,0,0.3)', borderLeft: '3px solid var(--text-gold)', padding: '1rem' }}>
-            <p style={{ fontSize: '0.875rem', fontStyle: 'italic' }}>
-              "Clear communication and reliable delivery."
+            <p style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>
+              Need proof of fit for a project, event, or booking? Use the contact route and we can point you to the right part of the system.
             </p>
-            <p style={{ fontSize: '0.75rem', opacity: 0.6, marginTop: '0.5rem' }}>— Event organiser</p>
+            <p style={{ fontSize: '0.75rem', opacity: 0.6 }}>No invented artist names. No puff. Just the live infrastructure and the work it supports.</p>
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@ export const Work = () => {
         <h3 className="content-heading heading">Work With Us</h3>
         <div className="content-text">
           <ul style={{ listStyle: 'disc', marginLeft: '1.5rem', lineHeight: 1.8 }}>
-            <li><strong>Recording & rehearsal</strong> — <a href="/book" style={{ color: 'var(--text-gold)', textDecoration: 'underline' }}>book studio time</a></li>
+            <li><strong>Recording & rehearsal</strong> — <a href="/#recording-services" style={{ color: 'var(--text-gold)', textDecoration: 'underline' }}>book studio time</a></li>
             <li><strong>AV services</strong> — <a href="/contact?service=av" style={{ color: 'var(--text-gold)', textDecoration: 'underline' }}>request a quote</a></li>
             <li><strong>Community access</strong> — <a href="/contact" style={{ color: 'var(--text-gold)', textDecoration: 'underline' }}>enquire about supported sessions</a></li>
           </ul>

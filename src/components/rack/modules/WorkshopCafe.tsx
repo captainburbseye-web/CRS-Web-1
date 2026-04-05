@@ -33,7 +33,7 @@ export const WorkshopCafe = () => (
 
     {/* INTERACTION HITBOX: CAFÉ CONTROL Switch (Center) */}
     <a 
-      href="/cafe" 
+      href="/workshop-cafe" 
       class="absolute z-40 cursor-pointer"
       style="
         left: 40%;
@@ -41,11 +41,7 @@ export const WorkshopCafe = () => (
         width: 20%;
         height: 40%;
       "
-<<<<<<< HEAD
-      aria-label="Visit Workshop Café · Specialty Coffee · Co-Working · Open to Public"
-=======
-      aria-label="Visit Workshop Café · Coffee & Coworking · Featuring local food pop-ups from our Cowley Road neighbours"
->>>>>>> origin/main
+      aria-label="Visit Workshop Café · Community space, coffee, and venue information"
       title="CH4: CAFÉ CONTROL - Visit Now"
     />
 

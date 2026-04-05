@@ -42,7 +42,7 @@ export const RackModularEnhanced: FC = () => {
             </p>
             <div class="rack-button-group">
               <span class="booking-instruction">[ SELECT SERVICE TYPE ]</span>
-              <a href="/book" class="rack-button">CHOOSE SERVICE</a>
+              <a href="/#recording-services" class="rack-button">CHOOSE SERVICE</a>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@ export const RackModularEnhanced: FC = () => {
                 </div>
                 <h2 class="rack-title">COWLEY REHEARSAL</h2>
                 <p class="rack-description">
-                  Professional rehearsal space at Cowley Road HQ. Full backline, PA system, and monitoring available. £15/hr.
+                  Professional rehearsal space at Cowley Road. Full backline, PA system, and monitoring available. Book online with the live booking link.
                 </p>
                 <div class="rack-button-group">
                   <span class="booking-instruction">[ HOURLY BOOKING AVAILABLE ]</span>
@@ -80,7 +80,7 @@ export const RackModularEnhanced: FC = () => {
                 </div>
                 <h2 class="rack-title">CRICKET REHEARSAL</h2>
                 <p class="rack-description">
-                  Rehearsal room at Cricket Road location. Drum kit, amps, and PA included. £12/hr.
+                  Rehearsal room at Cricket Road. Drum kit, amps, and PA included. Book online with the current Square checkout.
                 </p>
                 <div class="rack-button-group">
                   <span class="booking-instruction">[ HOURLY BOOKING AVAILABLE ]</span>
@@ -107,25 +107,25 @@ export const RackModularEnhanced: FC = () => {
             </p>
             <div class="rack-button-group">
               <span class="booking-instruction">[ STUDIO SESSION BOOKING ]</span>
-              <a href="/book/studio" class="rack-button">BOOK SESSION</a>
+              <a href="/#recording-services" class="rack-button">BOOK SESSION</a>
             </div>
           </div>
         </div>
 
-        {/* Row 5: Music Lessons (Rack) */}
+        {/* Row 5: Workshop Café & Venue (Rack) */}
         <div class="rack-rack" data-variant="rack" data-row="6">
           <div class="rack-module">
             <div class="rack-label-strip">
               <span class="led-indicator led-amber"></span>
-              <span class="rack-label">MUSIC LESSONS & WORKSHOPS</span>
+              <span class="rack-label">WORKSHOP CAFÉ & VENUE</span>
             </div>
-            <h2 class="rack-title">MUSIC LESSONS & WORKSHOPS</h2>
+            <h2 class="rack-title">WORKSHOP CAFÉ & VENUE</h2>
             <p class="rack-description">
-              One-on-one music lessons and group workshops. Guitar, drums, production, mixing, and more.
+              Public-facing community space at 118 Cowley Road. Private hire and venue enquiries are handled directly.
             </p>
             <div class="rack-button-group">
-              <span class="booking-instruction">[ LESSON SCHEDULING ]</span>
-              <a href="/book/lessons" class="rack-button">SCHEDULE LESSON</a>
+              <span class="booking-instruction">[ VENUE ENQUIRY ]</span>
+              <a href="/contact?service=venue" class="rack-button">ENQUIRE NOW</a>
             </div>
           </div>
         </div>

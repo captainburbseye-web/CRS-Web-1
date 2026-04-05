@@ -55,7 +55,7 @@ export const WorkshopCafePage = () => (
         <div class="wsc-use-case-label">private bookings</div>
       </div>
       
-      <a href="/book" class="cta-button">BOOK WORKSHOP CAFÉ</a>
+      <a href="/contact?service=venue" class="cta-button">BOOK WORKSHOP CAFÉ</a>
     </section>
 
     {/* CAFÉ SIGNAGE HERO - Above the fold */}
@@ -182,7 +182,7 @@ export const WorkshopCafePage = () => (
 
         {/* Booking CTA */}
         <div style="margin-top: 2rem; text-align: center;">
-          <a href="/book?service=venue" class="crs-button mono">BOOK SPACE</a>
+          <a href="/contact?service=venue" class="crs-button mono">BOOK SPACE</a>
         </div>
       </div>
     </section>
@@ -291,7 +291,7 @@ export const WorkshopCafePage = () => (
         <p style="font-size: 0.9375rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 2rem;">
           For venue hire, technical support, or bookings:
         </p>
-        <a href="/book" class="crs-button mono">VIEW CRS SERVICES</a>
+        <a href="/#recording-services" class="crs-button mono">VIEW CRS SERVICES</a>
       </div>
     </section>
 

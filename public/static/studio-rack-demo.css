@@ -925,12 +925,74 @@ html, body {
    ============================================ */
 .srd-master-faceplate {
   position: relative;
-  padding: 0.75rem 1rem;
+  padding: 0.65rem 1rem;
   background: linear-gradient(180deg, #2a3428 0%, #1c2318 100%);
   border-bottom: 2px solid #000;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
 }
-@media (min-width: 640px) { .srd-master-faceplate { padding: 1rem 2rem; } }
+@media (min-width: 640px) { .srd-master-faceplate { padding: 0.8rem 2rem; } }
+
+/* Faceplate inner layout — single horizontal bar */
+.srd-faceplate-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* LEFT: icon + name stack — single vertical grid line */
+.srd-faceplate-left {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-shrink: 0;
+}
+
+.srd-faceplate-name-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+
+.srd-faceplate-name {
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c8d1b8;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.08), 0 -1px 0 rgba(0,0,0,0.9);
+  line-height: 1;
+}
+@media (min-width: 640px) { .srd-faceplate-name { font-size: 1rem; } }
+
+.srd-faceplate-tagline-text {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(138, 148, 121, 0.8);
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+@media (min-width: 640px) { .srd-faceplate-tagline-text { font-size: 0.76rem; } }
+
+/* RIGHT: wooden sign as secondary badge */
+.srd-faceplate-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.srd-wooden-sign-badge {
+  max-width: 108px;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+  opacity: 0.9;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.2);
+}
+@media (min-width: 640px) { .srd-wooden-sign-badge { max-width: 120px; } }
+@media (max-width: 480px) { .srd-wooden-sign-badge { display: none; } }
 
 .srd-logo-plate {
   position: relative;
@@ -1101,29 +1163,14 @@ html, body {
    ============================================ */
 
 /* Faceplate Layout */
+/* legacy faceplate layout rules — replaced by srd-faceplate-inner system */
 .srd-faceplate-header { display: flex; flex-direction: column; gap: 0.5rem; }
-
-/* Physical Location Strip */
-.srd-location-strip {
-  font-family: var(--font-mono, monospace);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(138, 148, 121, 0.7);
-  text-align: center;
-  padding: 0.375rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  margin-bottom: 0.5rem;
-}
-@media (min-width: 640px) { .srd-location-strip { font-size: 11px; } }
-
 .srd-faceplate-main { display: flex; align-items: center; justify-content: space-between; }
 .srd-faceplate-title-group { display: flex; align-items: center; gap: 0.75rem; }
-@media (min-width: 640px) { .srd-faceplate-title-group { gap: 1rem; } }
 .srd-faceplate-text-stack { display: flex; flex-direction: column; gap: 0.25rem; }
-.srd-faceplate-meta { display: flex; flex-direction: column; align-items: flex-end; gap: 0.25rem; }
-.srd-meta-row { display: flex; align-items: center; gap: 0.5rem; }
+.srd-faceplate-meta { display: none; }
+.srd-meta-row { display: none; }
+.srd-location-strip { display: none; }
 
 /* Faceplate Typography */
 .srd-faceplate-title {
@@ -1288,8 +1335,20 @@ html, body {
 }
 @media (min-width: 640px) { .srd-lcd-content { font-size: 13px; } }
 
-.srd-lcd-sysinfo { color: #8a9479; opacity: 0.9; margin-bottom: 0.5rem; }
-.srd-lcd-highlight { color: #d4a017; }
+.srd-lcd-sysinfo {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.92em;
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.015em;
+  color: #8a9479;
+  opacity: 0.92;
+  margin-bottom: 0.5rem;
+}
+.srd-lcd-highlight {
+  font-family: 'JetBrains Mono', monospace;
+  color: #d4a017;
+}
 .srd-lcd-header { font-weight: bold; text-transform: uppercase; color: #FFD700; text-shadow: 0 0 8px rgba(255,215,0,0.6); }
 .srd-lcd-row { display: flex; align-items: center; gap: 0.5rem; color: #6a7860; }
 .srd-lcd-bullet-crs { color: #7a9c68; }
@@ -4088,33 +4147,8 @@ main,
   }
 }
 
-/* ============================================
-   WOODEN SIGN IMAGE - Replaces text title
-   ============================================ */
-.srd-wooden-sign-img {
-  max-width: 180px;
-  height: auto;
-  display: inline-block;
-  vertical-align: middle;
-  border-radius: 3px;
-  box-shadow:
-    0 1px 4px rgba(0,0,0,0.3),
-    0 2px 8px rgba(0,0,0,0.15);
-}
-
-/* Keep title container inline like original text */
-.srd-faceplate-title {
-  display: inline-flex;
-  align-items: center;
-  margin: 0;
-  line-height: 1;
-}
-
-@media (max-width: 640px) {
-  .srd-wooden-sign-img {
-    max-width: 120px;
-  }
-}
+/* wooden sign — legacy img class, unused; badge class handles it now */
+.srd-wooden-sign-img { display: none; }
 
 /* ============================================
    PRICING BADGES
@@ -5308,4 +5342,856 @@ main,
 /* LCD bullet for Cricket channel - mustard */
 .srd-lcd-bullet-cricket {
   color: #c9a227 !important;
+}
+
+
+
+/* ============================================
+   BATCH 3 PREVIEW SUPPORT BLOCKS
+   ============================================ */
+
+.srd-floating-session-cta {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 300;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0.95rem 1.15rem;
+  border-radius: 12px;
+  border: 2px solid rgba(215, 196, 122, 0.94);
+  background: linear-gradient(180deg, rgba(48, 53, 42, 0.98) 0%, rgba(16, 18, 14, 0.98) 100%);
+  color: #f4edd3;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 12px 34px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -3px 0 rgba(0,0,0,0.35);
+}
+
+.srd-floating-session-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.48), inset 0 1px 0 rgba(255,255,255,0.18), inset 0 -3px 0 rgba(0,0,0,0.4);
+}
+
+.srd-authority-hero {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 4.5rem 1rem 1.5rem;
+  color: #f6f2e7;
+}
+
+.srd-authority-hero--rack {
+  max-width: none;
+  margin: 0;
+  padding: 0.9rem 1rem 1rem;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.01) 3px, transparent 8px),
+    linear-gradient(180deg, #20271d 0%, #121711 100%);
+  border-bottom: 2px solid #000;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+@media (min-width: 640px) {
+  .srd-authority-hero--rack {
+    padding: 1.15rem 2rem 1.25rem;
+  }
+}
+
+.srd-authority-copy {
+  border: 1px solid rgba(215, 196, 122, 0.4);
+  background: linear-gradient(180deg, rgba(24, 27, 22, 0.98) 0%, rgba(8, 10, 8, 0.98) 100%);
+  box-shadow: 0 20px 54px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.08);
+  padding: 1.2rem 1.05rem;
+}
+
+.srd-authority-copy--rack {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+  max-width: 54rem;
+}
+
+.srd-authority-system-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d7c47a;
+}
+
+.srd-authority-system-line--muted {
+  color: rgba(244, 237, 211, 0.58);
+  margin-top: 0.2rem;
+}
+
+.srd-authority-hero h1 {
+  margin: 0.9rem 0 0.45rem;
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  font-size: clamp(1.7rem, 3.6vw, 3rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e8e8e8;
+}
+
+.srd-authority-hero--rack h1 {
+  margin-top: 0;
+}
+
+.srd-authority-subline,
+.srd-authority-tagline {
+  margin: 0;
+  max-width: 54rem;
+}
+
+.srd-authority-subline {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.92rem;
+  color: rgba(246, 242, 231, 0.82);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  text-transform: none;
+  margin-top: 0.3rem;
+}
+
+.srd-authority-signal {
+  margin: 0.25rem 0 0;
+  max-width: 54rem;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.88rem;
+  color: rgba(215, 196, 122, 0.85);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.srd-authority-tagline {
+  margin-top: 0.55rem;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  color: rgba(246, 242, 231, 0.7);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.srd-authority-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.srd-authority-hero--rack .srd-authority-actions {
+  margin-top: 1rem;
+}
+
+.srd-authority-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.85rem;
+  padding: 0.82rem 0.95rem;
+  border: 1px solid rgba(215, 196, 122, 0.28);
+  background: rgba(9, 11, 9, 0.92);
+  color: #f6f2e7;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+}
+
+.srd-authority-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(215, 196, 122, 0.76);
+  background: rgba(17, 20, 16, 0.98);
+}
+
+.srd-authority-btn--primary {
+  border-color: rgba(215, 185, 50, 0.9);
+  color: #0e0d08;
+  background: linear-gradient(180deg, #e8d47e 0%, #c49a28 100%);
+  font-size: 0.85rem;
+  min-height: 3rem;
+  padding: 1rem 1.4rem;
+  box-shadow: 0 0 12px rgba(215, 196, 122, 0.25), 0 12px 34px rgba(0,0,0,0.42), inset 0 1px 0 rgba(255,255,255,0.22), inset 0 -3px 0 rgba(0,0,0,0.35);
+}
+
+.srd-authority-btn--primary:hover {
+  background: linear-gradient(180deg, #f0dc8a 0%, #d4a830 100%);
+  box-shadow: 0 0 20px rgba(215, 196, 122, 0.4), 0 16px 36px rgba(0,0,0,0.48), inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -3px 0 rgba(0,0,0,0.4);
+}
+
+.srd-authority-btn--primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 10px rgba(215, 196, 122, 0.2), 0 4px 12px rgba(0,0,0,0.5), inset 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.srd-authority-btn--secondary {
+  border-color: rgba(215, 196, 122, 0.35);
+  color: #d7c47a;
+  background: rgba(9, 11, 9, 0.92);
+  font-size: 0.74rem;
+}
+
+.srd-authority-btn--secondary:hover {
+  border-color: rgba(215, 196, 122, 0.65);
+  background: rgba(17, 20, 16, 0.98);
+}
+
+.srd-authority-btn--tertiary {
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(246, 242, 231, 0.5);
+  background: transparent;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+.srd-authority-btn--tertiary:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(246, 242, 231, 0.75);
+  background: rgba(255,255,255,0.03);
+}
+
+.srd-rehearsal-selector {
+  margin-top: 1rem;
+  border: 1px solid rgba(215, 196, 122, 0.34);
+  background: linear-gradient(180deg, rgba(15, 18, 14, 0.98) 0%, rgba(7, 8, 7, 0.98) 100%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  padding: 0.85rem;
+}
+
+.srd-rehearsal-selector--hero {
+  max-width: 68rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.srd-authority-hero--rack .srd-rehearsal-selector--hero {
+  max-width: none;
+}
+
+.srd-rehearsal-selector--module {
+  margin-top: 0.35rem;
+}
+
+.srd-rehearsal-selector-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #d7c47a;
+}
+
+.srd-rehearsal-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.srd-rehearsal-selector-card {
+  border: 1px solid rgba(215, 196, 122, 0.22);
+  background: rgba(8, 10, 8, 0.9);
+  padding: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+}
+
+.srd-selector-card-sign {
+  display: block;
+  width: 144px;
+  flex-shrink: 0;
+  height: auto;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+.srd-selector-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+.srd-rehearsal-selector-card h3 {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.96rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f6f2e7;
+}
+
+.srd-rehearsal-selector-card p {
+  margin: 0.45rem 0 0;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 0.82rem;
+  color: rgba(246, 242, 231, 0.76);
+  line-height: 1.55;
+}
+
+.srd-rehearsal-selector-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.65rem;
+  margin-top: 0.9rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(201, 162, 39, 0.72);
+  background: linear-gradient(180deg, #d7c47a 0%, #b8952d 100%);
+  color: #15140d;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.srd-module-copy-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+}
+
+.srd-module-copy-line {
+  display: block;
+  color: rgba(246, 242, 231, 0.86);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.srd-btn-group--single {
+  grid-template-columns: 1fr !important;
+}
+
+.srd-workshop-badge-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+}
+
+.srd-text-block,
+.srd-photo-strip {
+  padding: 0 1rem 1.75rem;
+}
+
+.srd-text-inner {
+  max-width: 68rem;
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(20, 23, 19, 0.98) 0%, rgba(8, 10, 8, 0.98) 100%);
+  border: 1px solid rgba(215, 196, 122, 0.32);
+  box-shadow: 0 20px 46px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06);
+  padding: 1.15rem 1.05rem;
+  color: #f6f2e7;
+}
+
+.srd-text-inner--wide {
+  max-width: 68rem;
+}
+
+.srd-text-kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d7c47a;
+}
+
+.srd-text-block h2,
+.srd-photo-strip h2 {
+  margin: 0.45rem 0 0.9rem;
+  font-size: clamp(1.55rem, 2.4vw, 2.2rem);
+  color: #f6f2e7;
+}
+
+.srd-text-block p {
+  margin: 0 0 1rem;
+  line-height: 1.72;
+  color: rgba(246, 242, 231, 0.86);
+}
+
+.srd-system-stack {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.srd-system-stack p,
+.srd-system-group p {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.srd-system-stack--spec {
+  gap: 0.55rem;
+}
+
+.srd-system-group {
+  display: grid;
+  gap: 0.3rem;
+  margin-top: 0.1rem;
+}
+
+.srd-system-label {
+  color: #d7c47a !important;
+}
+
+.srd-usage-line {
+  color: #d7c47a !important;
+  font-weight: 600;
+}
+
+.srd-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.srd-photo-card {
+  min-height: 12rem;
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(215, 196, 122, 0.18);
+  background: linear-gradient(180deg, rgba(15, 17, 14, 0.98) 0%, rgba(6, 7, 6, 0.98) 100%);
+}
+
+.srd-photo-card-label,
+.srd-photo-card-placeholder {
+  font-family: 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.srd-photo-card-label {
+  color: #f6f2e7;
+  font-size: 0.78rem;
+}
+
+.srd-photo-card-placeholder {
+  color: rgba(246, 242, 231, 0.55);
+  font-size: 0.72rem;
+}
+
+.srd-support-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.55rem;
+  color: rgba(246, 242, 231, 0.9);
+}
+
+.srd-support-list--plain {
+  list-style: none;
+  padding-left: 0;
+}
+
+.srd-support-list--plain li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.srd-support-list li::marker {
+  color: #d7c47a;
+}
+
+.srd-trust-rail--expanded {
+  max-width: 68rem;
+  margin: 0 auto 1.5rem;
+  padding: 1.35rem 1.2rem;
+  display: grid;
+  gap: 1rem;
+  border: 1px solid rgba(201, 162, 39, 0.22);
+  background: linear-gradient(180deg, rgba(17, 20, 17, 0.98) 0%, rgba(7, 8, 7, 0.98) 100%);
+}
+
+.srd-trust-panel {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.srd-trust-address,
+.srd-map-link,
+.srd-trust-line {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.srd-trust-address {
+  color: #f6f2e7;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.srd-map-link {
+  color: #d7c47a;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.srd-trust-line {
+  margin: 0;
+  color: rgba(246, 242, 231, 0.8);
+  line-height: 1.6;
+}
+
+.srd-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+.srd-footer-links a {
+  color: #f6f2e7;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .srd-photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .srd-floating-session-cta {
+    top: 0.75rem;
+    right: 0.75rem;
+    left: auto;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    min-height: 2.95rem;
+    padding: 0.82rem 1rem;
+  }
+
+  .srd-authority-hero {
+    padding-top: 4.2rem;
+  }
+
+  .srd-authority-hero--rack {
+    padding: 0.95rem 1rem 1rem;
+  }
+
+  .srd-authority-actions {
+    flex-direction: column;
+  }
+
+  .srd-authority-btn {
+    width: 100%;
+  }
+
+  .srd-rehearsal-selector-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .srd-rehearsal-selector-link {
+    width: 100%;
+  }
+
+  .srd-photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .srd-trust-rail--expanded {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+/* ==========================================================
+   SESSION ROUTER MODULE
+   ========================================================== */
+
+.srd-session-router {
+  background: linear-gradient(180deg, #1c2318 0%, #141a11 100%);
+  border-bottom: 1px solid #000;
+}
+
+/* Choice buttons row */
+.srd-router-choices {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem 0.5rem;
+  flex-wrap: wrap;
+}
+
+.srd-router-btn {
+  flex: 1 1 auto;
+  min-width: 120px;
+  min-height: 48px;
+  padding: 0.7rem 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c5c0b0;
+  background: linear-gradient(180deg, #2a3428 0%, #1c2318 100%);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 2px 6px rgba(0,0,0,0.4);
+}
+
+.srd-router-btn:hover {
+  color: #f4edd3;
+  border-color: rgba(215, 196, 122, 0.5);
+  background: linear-gradient(180deg, #32403e 0%, #1f2a1e 100%);
+}
+
+.srd-router-btn--active {
+  color: #15140d;
+  background: linear-gradient(180deg, #d7c47a 0%, #b8952d 100%);
+  border-color: #b8952d;
+  box-shadow: 0 0 0 2px rgba(215,196,122,0.3), inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -2px 0 rgba(0,0,0,0.2);
+}
+
+.srd-router-btn:focus-visible {
+  outline: 2px solid #d7c47a;
+  outline-offset: 2px;
+}
+
+/* Reveal panel */
+.srd-router-panel {
+  padding: 0.75rem 1rem 1rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  animation: routerPanelIn 0.15s ease;
+}
+
+@keyframes routerPanelIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.srd-router-panel-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(245,242,231,0.45);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.srd-router-panel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Router cards */
+.srd-router-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(180deg, #22291f 0%, #181d16 100%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 2px 8px rgba(0,0,0,0.35);
+}
+
+.srd-router-card-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.srd-router-card-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #e8e8e8;
+  margin: 0;
+}
+
+.srd-router-card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(245,242,231,0.55);
+  margin: 0 0 0.5rem;
+}
+
+.srd-router-card-cta {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #15140d;
+  background: linear-gradient(180deg, #d7c47a 0%, #b8952d 100%);
+  border: 1px solid #b8952d;
+  border-radius: 3px;
+  transition: filter 0.12s, transform 0.1s;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+}
+
+.srd-router-card-cta:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.srd-router-card-cta:focus-visible {
+  outline: 2px solid #d7c47a;
+  outline-offset: 2px;
+}
+
+.srd-router-card-sign {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 4px;
+  opacity: 0.9;
+}
+
+/* ==========================================================
+   SUPPORT AREA (below chassis)
+   ========================================================== */
+
+.srd-support-area {
+  max-width: 68rem;
+  margin: 2rem auto 0;
+  padding: 0 1rem;
+}
+
+.srd-support-area-inner {
+  background: linear-gradient(180deg, #1e231b 0%, #161a14 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.srd-support-area-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(245,242,231,0.4);
+  text-transform: uppercase;
+  margin: 0 0 0.75rem;
+}
+
+.srd-support-area-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.srd-support-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.srd-support-item-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #c5c0b0;
+}
+
+.srd-support-item-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: rgba(245,242,231,0.45);
+}
+
+.srd-support-item-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #d7c47a;
+  text-decoration: none;
+  border: 1px solid rgba(215,196,122,0.4);
+  border-radius: 3px;
+  padding: 0.35rem 0.8rem;
+  transition: background 0.12s, color 0.12s;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.srd-support-item-link:hover {
+  background: rgba(215,196,122,0.12);
+  color: #f4edd3;
+}
+
+.srd-support-item-link:focus-visible {
+  outline: 2px solid #d7c47a;
+  outline-offset: 2px;
+}
+
+/* Mobile: stack router cards and choices */
+@media (max-width: 639px) {
+  .srd-router-choices {
+    flex-direction: column;
+  }
+
+  .srd-router-btn {
+    width: 100%;
+  }
+
+  .srd-router-panel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .srd-router-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .srd-router-card-sign {
+    width: 80px;
+  }
+
+  .srd-router-card-cta {
+    align-self: stretch;
+    justify-content: center;
+  }
 }

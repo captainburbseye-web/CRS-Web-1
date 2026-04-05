@@ -4,7 +4,7 @@ export const Footer = () => (
     <div class="map-embed-container">
       <div class="map-embed-header">
         <h3 class="map-embed-title">FIND US IN OXFORD</h3>
-        <p class="map-embed-subtitle">Cowley Road Studios / Workshop Cafe · 118 Cowley Road · OX41JE</p>
+        <p class="map-embed-subtitle">Cowley Road Studios · 118 Cowley Road, Oxford OX4 1JE, United Kingdom</p>
       </div>
       <iframe 
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2470.123!2d-1.2384!3d51.7466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDQ0JzQ3LjgiTiAxwrAxNCcxOC4yIlc!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk&q=118+Cowley+Road,+Oxford,+OX4+1JE"
@@ -21,8 +21,8 @@ export const Footer = () => (
 
     {/* MOBILE NAVIGATION (FIXED BOTTOM) */}
     <nav class="mobile-nav mono">
-      <a href="/locations">LOCATIONS</a>
-      <a href="/book">BOOK</a>
+      <a href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE" target="_blank" rel="noopener">MAP</a>
+      <a href="/#recording-services">BOOK</a>
       <a href="/contact">CONTACT</a>
     </nav>
 
@@ -42,8 +42,8 @@ export const Footer = () => (
         
         {/* NAP DATA - EXACT MATCH TO GOOGLE MY BUSINESS */}
         <div class="terminal-status-section nap-section">
-          <div class="terminal-status-label">COWLEY ROAD STUDIOS / WORKSHOP CAFE</div>
-          <div class="terminal-status-line nap-address">118 Cowley Road, Oxford OX41JE</div>
+          <div class="terminal-status-label">COWLEY ROAD STUDIOS</div>
+          <div class="terminal-status-line nap-address">118 Cowley Road, Oxford OX4 1JE, United Kingdom</div>
           <div class="terminal-status-line nap-phone">
             <a href="tel:+441865722027">01865 722027</a>
           </div>
@@ -81,6 +81,13 @@ export const Footer = () => (
           </div>
         </div>
 
+        <div class="terminal-status-section">
+          <div class="terminal-status-label">POLICIES</div>
+          <div class="terminal-status-line"><a href="/terms">Terms</a></div>
+          <div class="terminal-status-line"><a href="/privacy">Privacy</a></div>
+          <div class="terminal-status-line"><a href="/cancellation">Cancellation</a></div>
+        </div>
+
         {/* TRUTH LINE */}
         <div class="terminal-status-section terminal-truth-line">
           <div class="terminal-status-line">Built by people restoring a working studio to Cowley Road, piece by piece.</div>
@@ -99,17 +106,17 @@ export const Footer = () => (
     <script type="application/ld+json">
       {JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "MusicVenue",
-        "name": "Cowley Road Studios / Workshop Cafe",
-        "alternateName": ["CRS Oxford", "Workshop Cafe"],
-        "description": "Professional recording studio, rehearsal space, and creative workspace in East Oxford. Continuing the Soundworks Oxford legacy.",
+        "@type": "MusicStudio",
+        "name": "Cowley Road Studios",
+        "alternateName": ["CRS Oxford", "Soundworks Oxford"],
+        "description": "Recording studio, rehearsal rooms, technical services, and venue activity rooted in Cowley Road, Oxford.",
         "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/512crs_badge_dark%20fixed%20for%20web.png",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "118 Cowley Road",
           "addressLocality": "Oxford",
           "addressRegion": "Oxfordshire",
-          "postalCode": "OX41JE",
+          "postalCode": "OX4 1JE",
           "addressCountry": "GB"
         },
         "geo": {
@@ -123,19 +130,8 @@ export const Footer = () => (
         "sameAs": [
           "https://instagram.com/cowleyroadstudios.ox"
         ],
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "opens": "09:00",
-          "closes": "23:00"
-        },
         "priceRange": "££",
-        "hasMap": "https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX41JE",
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5",
-          "reviewCount": "1"
-        }
+        "hasMap": "https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE"
       })}
     </script>
   </>

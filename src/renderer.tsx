@@ -85,7 +85,7 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
              ============================================ */}
         <link rel="preload" as="image" href="/static/crs-logo.png" />
         <link rel="preload" as="image" href="/static/cricket-logo.png" />
-        <link rel="preload" as="image" href="/static/crs-wooden-sign.png" />
+        <link rel="preload" as="image" href="/static/crs-wooden-sign-upscaled.png" />
         
         {/* ============================================
              CONSOLIDATED CSS — LEAN & FAST

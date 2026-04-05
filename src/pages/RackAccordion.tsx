@@ -102,7 +102,7 @@ export const RackAccordion = () => {
           
           {/* BOOK NOW button (right side) */}
           <a 
-            href="/book"
+            href="/#recording-services"
             class="welcome-button welcome-button-booknow"
             aria-label="Book Now - View all services and book online"
           >
@@ -414,10 +414,10 @@ export const RackAccordion = () => {
         
         {/* Book Now Hotspot Overlay */}
         <a 
-          href="https://crsoxford.com/book"
+          href="/contact?service=venue"
           class="cafe-book-now-hotspot"
           data-label="BOOK NOW"
-          aria-label="Book Now - Coffee, co-working, and local food pop-ups"
+          aria-label="Enquire about Workshop Café venue hire and bookings"
         >
           <span class="sr-only">Book Now</span>
         </a>
@@ -431,7 +431,7 @@ export const RackAccordion = () => {
       <div class="map-embed-container">
         <div class="map-embed-header">
           <h3 class="map-embed-title">FIND US IN OXFORD</h3>
-          <p class="map-embed-subtitle">Cowley Road Studios / Workshop Cafe · 118 Cowley Road · OX4 1JE</p>
+          <p class="map-embed-subtitle">Cowley Road Studios · 118 Cowley Road, Oxford OX4 1JE, United Kingdom</p>
         </div>
         <iframe 
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2470.123!2d-1.2384!3d51.7466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c6a42c8c7c3f%3A0x5c5e5e5e5e5e5e5e!2s118%20Cowley%20Road%2C%20Oxford%20OX4%201JE!5e0!3m2!1sen!2suk!4v1234567890123!5m2!1sen!2suk" 
@@ -472,7 +472,7 @@ export const RackAccordion = () => {
             <div class="terminal-status-line" style="font-weight: 600; margin-bottom: 0.5rem;">
               Independent Recording Studio & Rehearsal Rooms – Oxford
             </div>
-            <div class="terminal-status-line nap-address">118 Cowley Road, Oxford</div>
+            <div class="terminal-status-line nap-address">118 Cowley Road, Oxford OX4 1JE, United Kingdom</div>
             <div class="terminal-status-line" style="margin-top: 0.75rem; opacity: 0.7;">
               Formerly Soundworks Oxford (1999–2024)
             </div>
