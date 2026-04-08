@@ -220,10 +220,15 @@ export const RackPage = () => (
     <main class="rack-page" id="main-content">
       <h1 class="screen-reader-only">CRS Studio Network</h1>
       
-      <div class="rack-intro">
-        <h2>CRS STUDIO NETWORK</h2>
-        <p>Signal routing ·  Booking surface · System status</p>
+      {/* Identity plate — mounted header module */}
+      <div class="rack-header-module">
+        <img
+          src="/assets/crs-sign.png"
+          alt="Cowley Road Studios"
+          class="rack-header-module__sign"
+        />
       </div>
+      <p class="rack-subline">Recording · Rehearsal · AV · Venue — Oxford</p>
 
       {/* PARENT MODULES - Contain sub-racks */}
       <RackModule 

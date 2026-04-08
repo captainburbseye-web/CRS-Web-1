@@ -671,10 +671,10 @@ app.get('/', (c) => {
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Recording Studio & Rehearsal Rooms in Oxford | Cowley Road Studios</title>
-  <meta name="description" content="Cowley Road Studios at 118 Cowley Road, Oxford OX4 1JE, United Kingdom. Grassroots infrastructure for the Oxford music scene. Recording, rehearsal, Workshop Café enquiries, and ODRO Electronics support." />
-  <meta name="keywords" content="recording studio oxford, rehearsal rooms oxford, music studio cowley road, cowley road studios, 118 cowley road oxford, workshop cafe oxford, odro electronics" />
+  <meta name="description" content="Cowley Road Studios at 118 Cowley Road, Oxford OX4 1JE, United Kingdom. Grassroots infrastructure for the Oxford music scene. Recording, rehearsal, Workshop Café enquiries, and ODRO Engineering support." />
+  <meta name="keywords" content="recording studio oxford, rehearsal rooms oxford, music studio cowley road, cowley road studios, 118 cowley road oxford, workshop cafe oxford, odro engineering" />
   <link rel="canonical" href="https://cowleyroadstudios.com/" />
   
   <!-- Favicon -->
@@ -1040,8 +1040,456 @@ app.get('/studio', (c) => {
 </html>`)
 })
 
-// Add redirect for /recording
-app.get('/recording', (c) => c.redirect('/studio'))
+// ============================================================================
+// CRS SERVICE PAGES — Clean minimal routes with accurate copy
+// Palette: nettle green · mustard · off-white · signal red
+// ============================================================================
+
+const SERVICE_CSS = `
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="/static/crs-service-pages.css" rel="stylesheet" />
+`
+
+const SERVICE_TOPBAR = `
+<nav class="sp-topbar" aria-label="Quick actions">
+  <div class="sp-topbar-inner">
+    <a href="/" class="sp-topbar-home">← CRS</a>
+    <div class="sp-topbar-actions">
+      <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" target="_blank" rel="noopener noreferrer" class="sp-action-btn sp-action-btn--primary">Book Rehearsal</a>
+      <a href="https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX" target="_blank" rel="noopener noreferrer" class="sp-action-btn sp-action-btn--primary">Book Recording</a>
+      <a href="https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX"  target="_blank" rel="noopener noreferrer" class="sp-action-btn sp-action-btn--secondary">Hire Control Room</a>
+      <a href="/contact?service=venue" class="sp-action-btn sp-action-btn--secondary">Venue Enquiries</a>
+      <a href="/contact" class="sp-action-btn sp-action-btn--ghost">Contact</a>
+    </div>
+  </div>
+</nav>`
+
+const SERVICE_FOOTER = `
+<footer class="sp-footer">
+  <div class="sp-footer-inner">
+    <span class="sp-footer-brand">Cowley Road Studios · Oxford · 118 Cowley Road OX4 1JE</span>
+    <nav class="sp-footer-links" aria-label="Footer">
+      <a href="/recording">Recording</a>
+      <a href="/rehearsal">Rehearsal</a>
+      <a href="/control-room">Control Room</a>
+      <a href="/repairs">Repairs</a>
+      <a href="/venue">Venue</a>
+      <a href="/workshop-cafe">Café</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+  </div>
+</footer>`
+
+function servicePageHtml({
+  title, description, keywords = '', slug, isCafe = false, content
+}: {
+  title: string; description: string; keywords?: string; slug: string; isCafe?: boolean; content: string
+}) {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${title} | Cowley Road Studios</title>
+  <meta name="description" content="${description}" />
+  ${keywords ? `<meta name="keywords" content="${keywords}" />` : ''}
+  <link rel="canonical" href="https://cowleyroadstudios.com/${slug}" />
+  <link rel="icon" type="image/png" href="/crs-logo.png" />
+  ${SERVICE_CSS}
+</head>
+<body>
+<div class="sp-page${isCafe ? ' sp-page--cafe' : ''}">
+  ${SERVICE_TOPBAR}
+  ${content}
+  ${SERVICE_FOOTER}
+</div>
+</body>
+</html>`
+}
+
+// /recording
+app.get('/recording', (c) => {
+  return c.html(servicePageHtml({
+    title: 'Recording Studio Oxford',
+    description: 'Professional recording studio in Oxford. Hybrid analogue–digital signal path. SSL BiG SiX, valve compression, tape integration. Live room, 3 isolation booths.',
+    keywords: 'recording studio oxford, music recording oxford, ssl big six oxford, professional studio oxford',
+    slug: 'recording',
+    content: `
+<main class="sp-main">
+  <header class="sp-page-header">
+    <span class="sp-eyebrow">Recording Studio</span>
+    <h1 class="sp-title">Professional recording in Oxford</h1>
+    <p class="sp-lead">Hybrid analogue–digital signal path. SSL BiG SiX, valve compression, tape integration. Live room, 3 isolation booths, three-way monitoring. Both locations available to book.</p>
+  </header>
+
+  <div class="sp-content-grid">
+    <div>
+      <dl class="sp-spec-table">
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Console</dt>
+          <dd class="sp-spec-val">SSL BiG SiX + valve compression</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Monitoring</dt>
+          <dd class="sp-spec-val">Adam Audio · Yamaha NS-10 · Genelec + sub</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Mics</dt>
+          <dd class="sp-spec-val">Neumann U87 · AKG C414 · SM7B · SM58</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Rooms</dt>
+          <dd class="sp-spec-val">Live room + 3 isolation booths</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Location</dt>
+          <dd class="sp-spec-val">Cowley Road, Oxford OX4 1JE</dd>
+        </div>
+      </dl>
+    </div>
+
+    <aside class="sp-cta-box">
+      <span class="sp-cta-box-title">Book a session</span>
+      <div class="sp-cta-list">
+        <a href="https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX"
+           target="_blank" rel="noopener noreferrer"
+           class="sp-cta-btn sp-cta-btn--primary">
+          Book — Cowley Road <span class="sp-cta-btn-arrow">→</span>
+        </a>
+        <a href="https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX"
+           target="_blank" rel="noopener noreferrer"
+           class="sp-cta-btn">
+          Book — Cricket Road <span class="sp-cta-btn-arrow">→</span>
+        </a>
+        <a href="/contact?service=recording" class="sp-cta-btn">
+          Enquire <span class="sp-cta-btn-arrow">→</span>
+        </a>
+      </div>
+    </aside>
+  </div>
+</main>`
+  }))
+})
+// /rehearsal
+app.get('/rehearsal', (c) => {
+  return c.html(servicePageHtml({
+    title: 'Rehearsal Rooms Oxford',
+    description: 'Two rehearsal rooms in Oxford. Cowley Road for up to 4-piece bands. Cricket Road for larger groups — Yamaha grand piano, dedicated control room with Adam monitoring.',
+    keywords: 'rehearsal rooms oxford, band rehearsal oxford, rehearsal space oxford, music rehearsal oxford',
+    slug: 'rehearsal',
+    content: `
+<main class="sp-main">
+  <header class="sp-page-header">
+    <span class="sp-eyebrow">Rehearsal Rooms</span>
+    <h1 class="sp-title">Two rooms. Both wired.</h1>
+    <p class="sp-lead">Cowley Road for up to 4-piece bands — linked directly to the recording studio. Cricket Road for larger groups — bigger room, Yamaha grand piano, dedicated control room with Adam monitoring.</p>
+  </header>
+
+  <div class="sp-location-split">
+    <div class="sp-location-card">
+      <span class="sp-location-card-name">Cowley Road</span>
+      <span class="sp-location-card-post">OX4 1JE</span>
+      <ul class="sp-location-specs">
+        <li>Up to 4-piece (expandable via booths)</li>
+        <li>Full backline + PA</li>
+        <li>Drum kit</li>
+        <li>Linked to recording studio</li>
+      </ul>
+      <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
+         target="_blank" rel="noopener noreferrer"
+         class="sp-cta-btn sp-cta-btn--primary" style="display:flex;align-items:center;justify-content:space-between;margin-top:0.25rem">
+        Book Rehearsal <span class="sp-cta-btn-arrow">→</span>
+      </a>
+    </div>
+
+    <div class="sp-location-card">
+      <span class="sp-location-card-name">Cricket Road</span>
+      <span class="sp-location-card-post">OX4 3DJ</span>
+      <ul class="sp-location-specs">
+        <li>Up to 8 people</li>
+        <li>6m × 4m live room</li>
+        <li>Full backline + PA</li>
+        <li>Yamaha CLP grand piano</li>
+        <li>Dedicated control room — Adam Audio monitoring</li>
+      </ul>
+      <a href="https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX"
+         target="_blank" rel="noopener noreferrer"
+         class="sp-cta-btn sp-cta-btn--primary" style="display:flex;align-items:center;justify-content:space-between;margin-top:0.25rem">
+        Book Rehearsal <span class="sp-cta-btn-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="sp-note">
+    Payment in full at booking. Cowley Road rehearsal includes access to live room and booths. Cricket Road is a standalone rehearsal facility with dedicated control room.
+  </div>
+</main>`
+  }))
+})
+
+// /control-room
+app.get('/control-room', (c) => {
+  return c.html(servicePageHtml({
+    title: 'Control Room Hire Oxford',
+    description: 'Serious working control room in Oxford. SSL BiG SiX, TL Audio C1 valve, Revox preamps, Tascam 388, Ghielmetti patchbay. Three-way monitoring — Adam Audio, NS-10, Genelec.',
+    keywords: 'control room hire oxford, ssl big six oxford, mixing studio oxford, recording control room oxford',
+    slug: 'control-room',
+    content: `
+<main class="sp-main">
+  <header class="sp-page-header">
+    <span class="sp-eyebrow">Control Room Hire</span>
+    <h1 class="sp-title">A serious working control room</h1>
+    <p class="sp-lead">Mixing, tracking, writing sessions, attended playback. Hybrid signal chain — analogue warmth, digital precision. Mixes translate across three monitoring paths.</p>
+  </header>
+
+  <div class="sp-content-grid">
+    <div>
+      <dl class="sp-spec-table">
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Desk</dt>
+          <dd class="sp-spec-val">SSL BiG SiX — analogue summing + EQ</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Processing</dt>
+          <dd class="sp-spec-val">TL Audio C1 valve · Revox preamps · Tascam 388</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Patchbay</dt>
+          <dd class="sp-spec-val">Ghielmetti mastering matrix</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Monitoring</dt>
+          <dd class="sp-spec-val">Adam Audio · Yamaha NS-10 · Odro Schwank custom · Genelec + sub</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Cowley Road</dt>
+          <dd class="sp-spec-val">Full recording studio access — live room + booths</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Cricket Road</dt>
+          <dd class="sp-spec-val">Dedicated control room — separate from live room</dd>
+        </div>
+      </dl>
+    </div>
+
+    <aside class="sp-cta-box">
+      <span class="sp-cta-box-title">Hire the control room</span>
+      <div class="sp-cta-list">
+        <a href="https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX"
+           target="_blank" rel="noopener noreferrer"
+           class="sp-cta-btn sp-cta-btn--primary">
+          Hire — Cowley Road <span class="sp-cta-btn-arrow">→</span>
+        </a>
+        <a href="https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX"
+           target="_blank" rel="noopener noreferrer"
+           class="sp-cta-btn">
+          Hire — Cricket Road <span class="sp-cta-btn-arrow">→</span>
+        </a>
+        <a href="/contact" class="sp-cta-btn">
+          Enquire <span class="sp-cta-btn-arrow">→</span>
+        </a>
+      </div>
+    </aside>
+  </div>
+</main>`
+  }))
+})
+
+// /repairs
+app.get('/repairs', (c) => {
+  return c.html(servicePageHtml({
+    title: 'Electronics Repair & AV Support Oxford',
+    description: 'Expert electronics repair and AV support in Oxford via ODRO Engineering. Guitar, bass, keyboard amps, vintage gear restoration, AV installation and event support.',
+    keywords: 'electronics repair oxford, amp repair oxford, av services oxford, odro engineering oxford, guitar amp repair oxford',
+    slug: 'repairs',
+    content: `
+<main class="sp-main">
+  <header class="sp-page-header">
+    <span class="sp-eyebrow">ODRO Engineering</span>
+    <h1 class="sp-title">Electronics repair &amp; AV support</h1>
+    <p class="sp-lead">Expert repair and servicing for musicians and venues across Oxford. We fix the gear that keeps the music scene running.</p>
+  </header>
+
+  <div class="sp-content-grid">
+    <div>
+      <dl class="sp-spec-table">
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Amps</dt>
+          <dd class="sp-spec-val">Guitar, bass and keyboard amp repair</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Vintage</dt>
+          <dd class="sp-spec-val">Restoration and servicing of classic gear</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">AV</dt>
+          <dd class="sp-spec-val">Installation, maintenance, event support</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Based</dt>
+          <dd class="sp-spec-val">Cowley Road, Oxford OX4 1JE</dd>
+        </div>
+      </dl>
+    </div>
+
+    <aside class="sp-cta-box">
+      <span class="sp-cta-box-title">Get in touch</span>
+      <div class="sp-cta-list">
+        <a href="/contact?service=repairs"
+           class="sp-cta-btn sp-cta-btn--primary">
+          Request Repair / Support <span class="sp-cta-btn-arrow">→</span>
+        </a>
+      </div>
+    </aside>
+  </div>
+</main>`
+  }))
+})
+
+// /venue
+app.get('/venue', (c) => {
+  return c.html(servicePageHtml({
+    title: 'Venue Hire Oxford — Workshop Café',
+    description: 'Private hire, events and showcases at Workshop Café, Oxford. PA system, lighting, stage area. Flexible venue for performances, workshops and private hire.',
+    keywords: 'venue hire oxford, workshop cafe oxford, private hire oxford, event space oxford, showcase venue oxford',
+    slug: 'venue',
+    content: `
+<main class="sp-main">
+  <header class="sp-page-header">
+    <span class="sp-eyebrow">Venue Hire</span>
+    <h1 class="sp-title">Private hire, events &amp; showcases</h1>
+    <p class="sp-lead">Flexible venue hire at the Workshop Café. PA system, lighting, stage area. Live performances, showcases, workshops, private hire — enquiry only.</p>
+  </header>
+
+  <div class="sp-content-grid">
+    <div>
+      <dl class="sp-spec-table">
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Space</dt>
+          <dd class="sp-spec-val">Workshop Café — flexible layout, ~40 seated / ~60 standing</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Tech</dt>
+          <dd class="sp-spec-val">PA system · Lighting · Stage area</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Uses</dt>
+          <dd class="sp-spec-val">Showcases · Workshops · Private hire · Launches</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Booking</dt>
+          <dd class="sp-spec-val">Enquiry only — contact us to discuss</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Location</dt>
+          <dd class="sp-spec-val">118 Cowley Road, Oxford OX4 1JE</dd>
+        </div>
+      </dl>
+    </div>
+
+    <aside class="sp-cta-box">
+      <span class="sp-cta-box-title">Make an enquiry</span>
+      <div class="sp-cta-list">
+        <a href="/contact?service=venue"
+           class="sp-cta-btn sp-cta-btn--primary">
+          Venue Enquiry <span class="sp-cta-btn-arrow">→</span>
+        </a>
+        <a href="/workshop-cafe" class="sp-cta-btn">
+          About Workshop Café <span class="sp-cta-btn-arrow">→</span>
+        </a>
+      </div>
+    </aside>
+  </div>
+</main>`
+  }))
+})
+
+// /workshop-cafe — warm café mode
+app.get('/workshop-cafe', (c) => {
+  return c.html(servicePageHtml({
+    title: 'Workshop Café Oxford',
+    description: "Oxford's music community hub. Coffee, conversation, open mics and creative workspace. Part of Cowley Road Studios. Available for private hire.",
+    keywords: 'workshop cafe oxford, coffee oxford, community space oxford, open mic oxford, east oxford cafe',
+    slug: 'workshop-cafe',
+    isCafe: true,
+    content: `
+<main class="sp-main">
+  <div class="sp-cafe-hero">
+    <img src="/static/workshop-cafe-logo.png" alt="Workshop Café" class="sp-cafe-hero-logo" />
+    <div class="sp-cafe-hero-text">
+      <span class="sp-eyebrow">Community Space</span>
+      <h1 class="sp-title">Workshop Café</h1>
+      <p class="sp-cafe-hero-tagline">More than a studio waiting room. Oxford's music community hub — coffee, conversation, open mics and creative workspace between sessions.</p>
+    </div>
+  </div>
+
+  <div class="sp-cafe-cards">
+    <div class="sp-cafe-card">
+      <span class="sp-cafe-card-label">What</span>
+      <p class="sp-cafe-card-text">Café, community space and creative hub</p>
+    </div>
+    <div class="sp-cafe-card">
+      <span class="sp-cafe-card-label">Hire</span>
+      <p class="sp-cafe-card-text">Private hire for gigs and workshops</p>
+    </div>
+    <div class="sp-cafe-card">
+      <span class="sp-cafe-card-label">Events</span>
+      <p class="sp-cafe-card-text">Open mic nights and community events</p>
+    </div>
+    <div class="sp-cafe-card">
+      <span class="sp-cafe-card-label">Find us</span>
+      <p class="sp-cafe-card-text">118 Cowley Road, Oxford OX4 1JE</p>
+    </div>
+  </div>
+
+  <div class="sp-content-grid">
+    <div>
+      <dl class="sp-spec-table">
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Coffee</dt>
+          <dd class="sp-spec-val">Speciality coffee and drinks</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Workspace</dt>
+          <dd class="sp-spec-val">Creative workspace, drop-in welcome</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Events</dt>
+          <dd class="sp-spec-val">Open mics, workshops, community evenings</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Private hire</dt>
+          <dd class="sp-spec-val">~40 seated / ~60 standing — PA + lighting</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Supported by</dt>
+          <dd class="sp-spec-val">Cowley Road Studios technical team</dd>
+        </div>
+      </dl>
+    </div>
+
+    <aside class="sp-cta-box">
+      <span class="sp-cta-box-title">Get in touch</span>
+      <div class="sp-cta-list">
+        <a href="/contact?service=venue"
+           class="sp-cta-btn sp-cta-btn--primary">
+          Enquire About the Café <span class="sp-cta-btn-arrow">→</span>
+        </a>
+        <a href="https://www.instagram.com/cowleyroadstudios/"
+           target="_blank" rel="noopener noreferrer"
+           class="sp-cta-btn">
+          Follow on Instagram <span class="sp-cta-btn-arrow">→</span>
+        </a>
+      </div>
+    </aside>
+  </div>
+</main>`
+  }))
+})
+
 // INFRASTRUCTURE SNAPSHOTT (SINGULAR STRUCTURAL CENTRE OF GRAVITY)
 app.get('/studio/infrastructure', (c) => {
   return c.render(
@@ -1894,19 +2342,70 @@ app.get("/venue", (c) => c.redirect("/contact?service=venue"))
 
 // ABOUT
 app.get('/about', (c) => {
-  return c.render(
-    <>
-      <BuildStatusBanner />
-      <Header />
-      <About />
-      <Footer />
-    </>,
-    {
-      title: 'About Cowley Road Studios | Recording Studio Oxford',
-      description: 'Learn about CRS: purpose-built recording studio and AV infrastructure in Oxford. No-chaos policy, engineer-maintained systems, community-focused.',
-      keywords: 'about crs, cowley road studios oxford, recording studio oxford history, music studio oxford'
-    }
-  )
+  return c.html(servicePageHtml({
+    title: 'About Cowley Road Studios',
+    description: 'Cowley Road Studios — grassroots creative infrastructure in Oxford since 1999 (formerly Soundworks Oxford). Recording, rehearsal, Workshop Café, ODRO Engineering.',
+    keywords: 'about cowley road studios, soundworks oxford, recording studio oxford, oxford music infrastructure',
+    slug: 'about',
+    content: `
+<main class="sp-main">
+  <header class="sp-page-header">
+    <span class="sp-eyebrow">About CRS</span>
+    <h1 class="sp-title">Grassroots creative infrastructure</h1>
+    <p class="sp-lead">Cowley Road Studios has been part of Oxford's independent music scene since 1999, formerly operating as Soundworks Oxford. Engineer-led, community-focused.</p>
+  </header>
+
+  <div class="sp-content-grid">
+    <div>
+      <dl class="sp-spec-table">
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Founded</dt>
+          <dd class="sp-spec-val">1999 — formerly Soundworks Oxford</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Location</dt>
+          <dd class="sp-spec-val">118 Cowley Road, Oxford OX4 1JE</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Also</dt>
+          <dd class="sp-spec-val">Cricket Road, Oxford OX4 3DJ</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Services</dt>
+          <dd class="sp-spec-val">Recording · Rehearsal · Control room · Repairs · Venue hire</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Engineering</dt>
+          <dd class="sp-spec-val">ODRO Engineering — AV support and repair</dd>
+        </div>
+        <div class="sp-spec-row">
+          <dt class="sp-spec-key">Community</dt>
+          <dd class="sp-spec-val">Workshop Café — open mics, events, workspace</dd>
+        </div>
+      </dl>
+    </div>
+
+    <aside class="sp-cta-box">
+      <span class="sp-cta-box-title">Get in touch</span>
+      <div class="sp-cta-list">
+        <a href="/contact" class="sp-cta-btn sp-cta-btn--primary">
+          Contact CRS <span class="sp-cta-btn-arrow">→</span>
+        </a>
+        <a href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE"
+           target="_blank" rel="noopener noreferrer"
+           class="sp-cta-btn">
+          Find us on Maps <span class="sp-cta-btn-arrow">→</span>
+        </a>
+        <a href="https://www.instagram.com/cowleyroadstudios/"
+           target="_blank" rel="noopener noreferrer"
+           class="sp-cta-btn">
+          Instagram <span class="sp-cta-btn-arrow">→</span>
+        </a>
+      </div>
+    </aside>
+  </div>
+</main>`
+  }))
 })
 // WORK
 app.get('/work', (c) => {
