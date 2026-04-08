@@ -1,37 +1,242 @@
 /** @jsxImportSource react */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 
+/* ─── Booking + nav URLs ─────────────────────────────────── */
 const URLS = {
-  HOME: '/',
-  CONTACT: '/contact',
-  WORKSHOP_CAFE: '/workshop-cafe',
-  RECORDING_BOOK: 'https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX',
-  CRICKET_RECORDING_BOOK: 'https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX',
-  REHEARSAL_BOOK: 'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX',
-  CRICKET_REHEARSAL_BOOK: 'https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX',
-  MAP: 'https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE',
-  RECORDING_PAGE: '/recording-studio-oxford',
-  REHEARSAL_PAGE: '/rehearsal-rooms-oxford',
-  MUSIC_PAGE: '/music-studio-cowley-road',
-  ENQUIRE_AV: '/contact?service=av-support',
-  ENQUIRE_ODRO: '/contact?service=repairs',
-  ENQUIRE_WORKSHOP: '/contact?service=venue'
+  HOME:                      '/',
+  CONTACT:                   '/contact',
+  RECORDING_BOOK:            'https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX',
+  CRICKET_RECORDING_BOOK:    'https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX',
+  REHEARSAL_BOOK:            'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX',
+  CRICKET_REHEARSAL_BOOK:    'https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX',
+  CONTROL_ROOM_BOOK:         'https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX',
+  CRICKET_CONTROL_ROOM_BOOK: 'https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX',
+  ENQUIRE_WORKSHOP:          '/contact?service=venue',
+  ENQUIRE_ODRO:              '/contact?service=repairs',
+  MAP:                       'https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE',
+  INSTAGRAM:                 'https://www.instagram.com/cowleyroadstudios/',
 };
 
-const PHOTO_PLACEHOLDERS = [
-  'STUDIO SPACE',
-  'REHEARSAL ROOM',
-  'RECORDING SESSION',
-  'WORKSHOP CAFÉ'
-];
+/* ═══════════════════════════════════════════════════════════════
+   SIGNAL ENGINE — rackState store + rAF tick loop
+   Single source of truth. All visuals driven by state.
+   ═══════════════════════════════════════════════════════════════ */
 
-const ACTIVE_USE_ITEMS = [
-  'Recording sessions',
-  'Band rehearsal',
-  'Technical support',
-  'Workshop activity'
-];
+/* Per-channel signal preset: what levels each module drives */
+const SIGNAL_PRESETS = {
+  idle: {
+    L: { target: 0, floor: 0.04 },
+    R: { target: 0, floor: 0.03 },
+    master: { target: 0, floor: 0.04 },
+  },
+  recording: {
+    L: { target: 0.88, floor: 0.06 },
+    R: { target: 0.82, floor: 0.05 },
+    master: { target: 0.75, floor: 0.06 },
+  },
+  rehearsal: {
+    L: { target: 0.65, floor: 0.05 },
+    R: { target: 0.70, floor: 0.05 },
+    master: { target: 0.60, floor: 0.05 },
+  },
+  controlroom: {
+    L: { target: 0.80, floor: 0.06 },
+    R: { target: 0.78, floor: 0.06 },
+    master: { target: 0.72, floor: 0.06 },
+  },
+  repairs: {
+    L: { target: 0.35, floor: 0.04 },
+    R: { target: 0.32, floor: 0.03 },
+    master: { target: 0.30, floor: 0.04 },
+  },
+  venue: {
+    L: { target: 0.72, floor: 0.05 },
+    R: { target: 0.68, floor: 0.05 },
+    master: { target: 0.65, floor: 0.05 },
+  },
+  cafe: {
+    L: { target: 0.42, floor: 0.04 },
+    R: { target: 0.44, floor: 0.04 },
+    master: { target: 0.38, floor: 0.04 },
+  },
+};
 
+/* Noise jitter — adds micro-randomness to idle floor */
+function jitter(floor) {
+  return floor + (Math.random() - 0.5) * 0.025;
+}
+
+/* Signal engine — external mutable state (not React state, drives RAF) */
+function createSignalEngine() {
+  const channels = {
+    L: { display: 0.04, peak: 0, peakHold: 0, peakTimer: 0 },
+    R: { display: 0.03, peak: 0, peakHold: 0, peakTimer: 0 },
+    master: { display: 0.04, peak: 0, peakHold: 0, peakTimer: 0 },
+  };
+
+  let preset = 'idle';
+  let lastTime = 0;
+  let rafId = null;
+  let listeners = new Set();
+
+  const RISE_RATE = 8.0;   // fast attack
+  const FALL_RATE = 2.8;   // slower decay
+  const PEAK_HOLD = 1800;  // ms before peak falls
+  const PEAK_FALL = 0.8;   // peak fall rate
+
+  function tick(now) {
+    const dt = Math.min((now - lastTime) / 1000, 0.05);
+    lastTime = now;
+
+    const p = SIGNAL_PRESETS[preset] || SIGNAL_PRESETS.idle;
+
+    for (const [key, ch] of Object.entries(channels)) {
+      const pch = p[key] || { target: 0, floor: 0.04 };
+      const noise = jitter(pch.floor);
+      // Target is floor noise when idle, preset target + noise when active
+      const target = preset === 'idle'
+        ? noise
+        : pch.target * (0.88 + Math.random() * 0.12) + noise * 0.3;
+
+      // Asymmetric: fast rise, slower fall
+      const rate = target > ch.display ? RISE_RATE : FALL_RATE;
+      ch.display += (target - ch.display) * rate * dt;
+      ch.display = Math.max(pch.floor * 0.5, Math.min(1.0, ch.display));
+
+      // Peak hold
+      if (ch.display > ch.peak) {
+        ch.peak = ch.display;
+        ch.peakHold = now + PEAK_HOLD;
+      } else if (now > ch.peakHold) {
+        ch.peak = Math.max(ch.display, ch.peak - PEAK_FALL * dt);
+      }
+    }
+
+    listeners.forEach(fn => fn({ ...getSnapshot() }));
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function getSnapshot() {
+    return {
+      L: { display: channels.L.display, peak: channels.L.peak },
+      R: { display: channels.R.display, peak: channels.R.peak },
+      master: { display: channels.master.display, peak: channels.master.peak },
+    };
+  }
+
+  return {
+    start() {
+      if (rafId) return;
+      lastTime = performance.now();
+      rafId = requestAnimationFrame(tick);
+    },
+    stop() {
+      if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+    },
+    setPreset(name) {
+      preset = name || 'idle';
+    },
+    subscribe(fn) {
+      listeners.add(fn);
+      return () => listeners.delete(fn);
+    },
+    getSnapshot,
+  };
+}
+
+/* Singleton engine (survives React renders) */
+let _engine = null;
+function getEngine() {
+  if (!_engine) _engine = createSignalEngine();
+  return _engine;
+}
+
+/* Hook: subscribe to signal data */
+function useSignal() {
+  const engine = getEngine();
+  const [signal, setSignal] = useState(() => engine.getSnapshot());
+
+  useEffect(() => {
+    engine.start();
+    const unsub = engine.subscribe(setSignal);
+    return unsub;
+    // Don't stop engine on unmount — it's a singleton
+  }, []);
+
+  return signal;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SEGMENTED VU METER — proper broadcast-style meter
+   Vertical segments: green (0–60%), amber (60–85%), red (85–100%)
+   ═══════════════════════════════════════════════════════════════ */
+
+const SEGMENT_COUNT = 20;
+const AMBER_START   = 12;  // segment 12 = 60%
+const RED_START     = 17;  // segment 17 = 85%
+
+function SegmentedVuMeter({ label = 'L', level = 0, peak = 0 }) {
+  const peakSeg = Math.floor(peak * SEGMENT_COUNT);
+
+  return (
+    <div className="rack-vu" aria-hidden="true">
+      <div className="rack-vu-body">
+        <div className="rack-vu-segments">
+          {Array.from({ length: SEGMENT_COUNT }, (_, i) => {
+            const segIdx = SEGMENT_COUNT - 1 - i; // top-to-bottom render, brightest=top
+            const isLit  = segIdx < Math.round(level * SEGMENT_COUNT);
+            const isPeak = segIdx === peakSeg && peak > 0.05;
+            const color  = segIdx >= RED_START   ? 'red'
+                         : segIdx >= AMBER_START  ? 'amber'
+                         : 'green';
+            return (
+              <div
+                key={i}
+                className={[
+                  'rack-vu-seg',
+                  `rack-vu-seg--${color}`,
+                  isLit  ? 'rack-vu-seg--lit'  : '',
+                  isPeak ? 'rack-vu-seg--peak'  : '',
+                ].filter(Boolean).join(' ')}
+              />
+            );
+          })}
+        </div>
+        <span className="rack-vu-label">{label}</span>
+      </div>
+    </div>
+  );
+}
+
+/* Paired L+R meters that subscribe to signal engine */
+function VuMeterPair({ activeId }) {
+  const signal = useSignal();
+  return (
+    <div className="rack-vu-pair" aria-hidden="true">
+      <SegmentedVuMeter label="L" level={signal.L.display} peak={signal.L.peak} />
+      <SegmentedVuMeter label="R" level={signal.R.display} peak={signal.R.peak} />
+    </div>
+  );
+}
+
+/* ─── Location logo ──────────────────────────────────────── */
+const LocationLogo = ({ location = 'crs', size = 'md', className = '' }) => {
+  const isCricket = location === 'cricket';
+  return (
+    <div
+      aria-hidden="true"
+      className={['loc-logo', `loc-logo--${size}`, `loc-logo--${location}`, className].filter(Boolean).join(' ')}
+    >
+      <img
+        src={isCricket ? '/static/cricket-logo.png' : '/static/crs-logo.png'}
+        alt={isCricket ? 'Cricket Road' : 'Cowley Road Studios'}
+        className="loc-logo-img"
+      />
+    </div>
+  );
+};
+
+/* ─── Rack hardware: hex bolt + side rails ───────────────── */
 const HexBolt = ({ className = '' }) => (
   <svg viewBox="0 0 100 100" className={`srd-bolt ${className}`} aria-hidden="true">
     <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" fill="#444" stroke="#111" strokeWidth="4" />
@@ -49,552 +254,650 @@ const RackRail = ({ side = 'left' }) => {
   );
 };
 
-const VuMeterDefs = () => (
-  <svg style={{ display: 'none' }} aria-hidden="true">
-    <defs>
-      <g id="vu-scale-graphic">
-        <path d="M 15 45 A 35 35 0 0 1 85 45" fill="none" stroke="#222" strokeWidth="0.5" />
-        <line x1="22" y1="32" x2="24" y2="35" stroke="#222" strokeWidth="1" />
-        <line x1="35" y1="20" x2="36" y2="24" stroke="#222" strokeWidth="1" />
-        <line x1="50" y1="15" x2="50" y2="20" stroke="#222" strokeWidth="1.5" />
-        <line x1="65" y1="20" x2="64" y2="24" stroke="#222" strokeWidth="1" />
-        <line x1="78" y1="32" x2="76" y2="35" stroke="#dc2626" strokeWidth="1.5" />
-        <path d="M 72 26 A 35 35 0 0 1 85 45" fill="none" stroke="#dc2626" strokeWidth="2" />
-      </g>
-    </defs>
-  </svg>
-);
+/* ═══════════════════════════════════════════════════════════════
+   RACK BUTTON — physical hardware switch
+   States: idle | hover | press | active
+   Physical: bevel, inset shadow, LED, translateY(1px) on press
+   ═══════════════════════════════════════════════════════════════ */
+function RackButton({ id, label, isActive, isCafe, onSelect }) {
+  const [pressing, setPressing] = useState(false);
+  const [ledPulse, setLedPulse] = useState(false);
 
-const VuMeter = ({ label = 'L' }) => (
-  <div className={`srd-vu srd-vu--${label.toLowerCase()}`} aria-hidden="true">
-    <div className="srd-vu-body">
-      <div className="srd-vu-face">
-        <div className="srd-vu-glow"></div>
-        <svg viewBox="0 0 100 50" className="srd-vu-scale">
-          <use href="#vu-scale-graphic" />
-        </svg>
-        <div className="srd-vu-needle">
-          <div className="srd-vu-needle-tip"></div>
-        </div>
-        <div className="srd-vu-needle-pivot"></div>
-        <span className="srd-vu-label">{label}</span>
-        <div className="srd-vu-shine"></div>
-      </div>
-    </div>
-  </div>
-);
+  const handlePointerDown = useCallback(() => {
+    setPressing(true);
+  }, []);
 
-const VuMeterPair = () => (
-  <div className="srd-meters">
-    <VuMeter label="L" />
-    <VuMeter label="R" />
-  </div>
-);
+  const handlePointerUp = useCallback(() => {
+    setPressing(false);
+  }, []);
 
-const CrsBadge = ({ className = '' }) => (
-  <div aria-hidden="true" className={`srd-badge srd-badge--crs ${className}`}>
-    <svg viewBox="0 0 24 24" className="srd-badge-svg">
-      <path d="M4 4 L12 2 L20 4 L20 12 L12 22 L4 12 Z" fill="none" stroke="white" strokeWidth="1.5" strokeLinejoin="bevel" />
-      <circle cx="12" cy="12" r="3" fill="white" />
-    </svg>
-  </div>
-);
+  const handleClick = useCallback(() => {
+    // Trigger LED bloom on click
+    setLedPulse(true);
+    setTimeout(() => setLedPulse(false), 380);
+    onSelect(id);
+  }, [id, onSelect]);
 
-const CricketBadge = ({ className = '' }) => (
-  <div aria-hidden="true" className={`srd-badge srd-badge--cricket ${className}`}>
-    <img src="/static/cricket-logo.png" alt="Cricket" className="cricket-badge-img" />
-  </div>
-);
-
-const OdroBadge = ({ className = '' }) => (
-  <div aria-hidden="true" className={`srd-badge srd-badge--odro ${className}`}>
-    <span className="srd-badge-text">OD</span>
-  </div>
-);
-
-const CafeBadge = ({ className = '' }) => (
-  <div aria-hidden="true" className={`srd-badge srd-badge--cafe ${className}`}>
-    <span className="srd-badge-text">WC</span>
-  </div>
-);
-
-const Led = ({ variant = 'crs' }) => (
-  <div aria-hidden="true" className={`srd-led srd-led--${variant}-off`} />
-);
-
-const ServiceButton = ({ variant = 'crs', service, location, href, badge, className = '', onClick }) => {
-  const external = href?.startsWith('http');
-  const Tag = onClick ? 'button' : 'a';
-  const tagProps = onClick
-    ? { type: 'button', onClick }
-    : {
-        href,
-        target: external ? '_blank' : undefined,
-        rel: external ? 'noopener noreferrer' : undefined,
-      };
+  const ledState = isActive ? 'active'
+                 : ledPulse ? 'bloom'
+                 : 'off';
 
   return (
-    <Tag
-      className={`srd-btn srd-btn--${variant} ${className}`.trim()}
-      aria-label={location ? `${service} ${location}` : service}
-      {...tagProps}
+    <button
+      role="tab"
+      aria-selected={isActive}
+      aria-controls={`panel-${id}`}
+      className={[
+        'rack-btn',
+        isActive  ? 'rack-btn--active'  : '',
+        isCafe    ? 'rack-btn--cafe'    : '',
+        pressing  ? 'rack-btn--press'   : '',
+      ].filter(Boolean).join(' ')}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerLeave={handlePointerUp}
+      onClick={handleClick}
     >
-      <div className="srd-btn-content">
-        {badge}
-        <div className="srd-btn-labels">
-          <span className="srd-btn-service">{service}</span>
-          {location ? <span className="srd-btn-location">{location}</span> : null}
-        </div>
-      </div>
-      <Led variant={variant} />
-    </Tag>
+      {/* Inset label */}
+      <span className="rack-btn-label">{label}</span>
+      {/* LED indicator */}
+      <span className={`rack-btn-led rack-btn-led--${ledState}`} aria-hidden="true" />
+    </button>
   );
+}
+
+/* ─── LED dot ─────────────────────────────────────────────── */
+const Led = ({ color = 'green', on = true, pulse = false }) => (
+  <span
+    aria-hidden="true"
+    className={['hp-led', `hp-led--${color}`, on ? 'hp-led--on' : 'hp-led--off', pulse ? 'hp-led--pulse' : ''].filter(Boolean).join(' ')}
+  />
+);
+
+/* ─── Panel data ─────────────────────────────────────────── */
+const PANELS = {
+  recording: {
+    id: 'recording', label: 'Book Recording', theme: 'dark',
+    eyebrow: 'Recording Studio',
+    title: 'Professional recording in Oxford',
+    body: 'Hybrid analogue–digital signal path. SSL BiG SiX, valve compression, tape integration. Live room, 3 isolation booths, three-way monitoring.',
+    specs: [
+      { k: 'Console',    v: 'SSL BiG SiX + valve compression' },
+      { k: 'Monitoring', v: 'Adam Audio · NS-10 · Genelec + sub' },
+      { k: 'Mics',       v: 'U87 · C414 · SM7B · SM58' },
+      { k: 'Rooms',      v: 'Live room + 3 isolation booths' },
+    ],
+    ctas: [
+      { label: 'Book — Cowley Road',  href: URLS.RECORDING_BOOK,         primary: true,  location: 'crs'     },
+      { label: 'Book — Cricket Road', href: URLS.CRICKET_RECORDING_BOOK,  primary: false, location: 'cricket' },
+    ],
+  },
+
+  rehearsal: {
+    id: 'rehearsal', label: 'Book Rehearsal', theme: 'dark',
+    eyebrow: 'Rehearsal Rooms',
+    title: 'Two rooms. Both wired.',
+    body: 'Cowley Road for up to 4-piece bands. Cricket Road for larger groups — bigger room, Yamaha grand piano, dedicated control room.',
+    locations: [
+      {
+        location: 'crs', name: 'Cowley Road', post: 'OX4 1JE',
+        specs: ['Up to 4-piece', 'Full backline + PA'],
+        cta: { label: 'Book Rehearsal', href: URLS.REHEARSAL_BOOK },
+      },
+      {
+        location: 'cricket', name: 'Cricket Road', post: 'OX4 3DJ',
+        specs: ['Up to 8 people', 'Full backline + PA', 'Yamaha CLP grand piano'],
+        cta: { label: 'Book Rehearsal', href: URLS.CRICKET_REHEARSAL_BOOK },
+      },
+    ],
+  },
+
+  controlroom: {
+    id: 'controlroom', label: 'Hire Control Room', theme: 'dark',
+    eyebrow: 'Control Room Hire',
+    title: 'A serious working control room',
+    body: 'Mixing, tracking, writing sessions, attended playback. Hybrid signal chain — analogue warmth, digital precision. Mixes translate across three monitoring paths.',
+    specs: [
+      { k: 'Desk',       v: 'SSL BiG SiX — analogue summing + EQ' },
+      { k: 'Processing', v: 'TL Audio C1 valve · Revox preamps · Tascam 388' },
+      { k: 'Patchbay',   v: 'Ghielmetti mastering matrix' },
+      { k: 'Monitoring', v: 'Adam Audio · NS-10 · Genelec system + sub' },
+    ],
+    ctas: [
+      { label: 'Hire — Cowley Road',  href: URLS.CONTROL_ROOM_BOOK,          primary: true,  location: 'crs'     },
+      { label: 'Hire — Cricket Road', href: URLS.CRICKET_CONTROL_ROOM_BOOK,   primary: false, location: 'cricket' },
+    ],
+  },
+
+  repairs: {
+    id: 'repairs', label: 'Request Repair', theme: 'dark',
+    eyebrow: 'ODRO Engineering',
+    title: 'Electronics repair & AV support',
+    body: 'Expert repair and servicing for musicians and venues across Oxford. We fix the gear that keeps the music scene running.',
+    specs: [
+      { k: 'Amps',    v: 'Guitar, bass and keyboard amp repair' },
+      { k: 'Vintage', v: 'Restoration and servicing of classic gear' },
+      { k: 'AV',      v: 'Installation, maintenance, event support' },
+      { k: 'Based',   v: 'Cowley Road, Oxford' },
+    ],
+    ctas: [
+      { label: 'Request Repair / Support', href: URLS.ENQUIRE_ODRO, primary: true, location: null },
+    ],
+  },
+
+  cafe: {
+    id: 'cafe', label: 'Workshop Café / Venue', theme: 'warm',
+    eyebrow: 'Community Space & Venue Hire',
+    title: 'Workshop Café & Venue',
+    body: "More than a studio waiting room. Oxford's music community hub — coffee, conversation, open mics and creative workspace between sessions. Also available for private hire: showcases, workshops, events.",
+    specs: [
+      { k: 'What',    v: 'Café, community space and creative hub' },
+      { k: 'Hire',    v: 'Private hire for gigs and workshops' },
+      { k: 'Tech',    v: 'PA system · Lighting · Stage' },
+      { k: 'Events',  v: 'Open mic nights and community events' },
+      { k: 'Find us', v: 'Cowley Road, Oxford OX4 1JE' },
+    ],
+    ctas: [
+      { label: 'Café & Venue Enquiry', href: URLS.ENQUIRE_WORKSHOP, primary: true, location: null },
+    ],
+  },
 };
 
+const NAV_ORDER = ['recording', 'rehearsal', 'controlroom', 'repairs', 'cafe'];
 
+/* Page route for each service */
+const PAGE_ROUTES = {
+  recording:   '/recording',
+  rehearsal:   '/rehearsal',
+  controlroom: '/control-room',
+  repairs:     '/repairs',
+  cafe:        '/workshop-cafe',
+};
 
-const TopRail = () => (
-  <div className="srd-top-rail">
-    <div className="srd-home-indicator">HOME</div>
-    <div className="srd-rail-address">CRS / COWLEY ROAD — OXFORD OX4 1JE</div>
-    <div className="srd-rail-meta">CRS INFRASTRUCTURE ACTIVE</div>
+/* ─── Top action bar ──────────────────────────────────────── */
+const ActionBar = () => (
+  <nav className="hp-action-bar" aria-label="Quick booking">
+    <div className="hp-action-bar-inner">
+      <a href={URLS.REHEARSAL_BOOK}    target="_blank" rel="noopener noreferrer" className="hp-action-btn hp-action-btn--primary">Book Rehearsal</a>
+      <a href={URLS.RECORDING_BOOK}    target="_blank" rel="noopener noreferrer" className="hp-action-btn hp-action-btn--primary">Book Recording</a>
+      <a href={URLS.CONTROL_ROOM_BOOK} target="_blank" rel="noopener noreferrer" className="hp-action-btn hp-action-btn--primary">Hire Control Room</a>
+      <a href={URLS.ENQUIRE_WORKSHOP}  className="hp-action-btn hp-action-btn--secondary">Venue Enquiries</a>
+      <a href={URLS.CONTACT}           className="hp-action-btn hp-action-btn--ghost">Contact</a>
+    </div>
+  </nav>
+);
+
+/* ─── Identity rail ───────────────────────────────────────── */
+const IdentityRail = () => (
+  <div className="hp-identity-rail">
+    <a href={URLS.HOME} className="hp-identity-logo-link" aria-label="Cowley Road Studios — home">
+      <LocationLogo location="crs" size="rail" />
+    </a>
+    <div className="hp-identity-address">
+      <span>Cowley Road · OX4 1JE</span>
+      <span className="hp-identity-sep" aria-hidden="true">·</span>
+      <span>Cricket Road · OX4 3DJ</span>
+    </div>
+    <div className="hp-identity-status" aria-hidden="true">
+      <Led color="green" on={true} pulse={true} />
+      <span>CRS ACTIVE</span>
+    </div>
   </div>
 );
 
-const AuthorityHero = () => (
-  <section className="srd-authority-hero srd-authority-hero--rack" aria-labelledby="authority-hero-title">
-    <div className="srd-authority-copy srd-authority-copy--rack">
-      <h1 id="authority-hero-title">RECORDING STUDIO — OXFORD</h1>
-      <p className="srd-authority-subline">Hybrid analogue–digital recording</p>
-      <p className="srd-authority-signal">SSL · Valve Compression · Tape Integration</p>
-      <h2 className="srd-authority-tagline">Grassroots infrastructure for the Oxford music scene.</h2>
-    </div>
-    <div className="srd-authority-actions">
-      <a href="#session-router" className="srd-authority-btn srd-authority-btn--primary">START YOUR SESSION →</a>
-    </div>
-  </section>
+/* ─── Spec table ──────────────────────────────────────────── */
+const SpecTable = ({ specs, warm }) => (
+  <dl className={['hp-specs', warm ? 'hp-specs--warm' : ''].filter(Boolean).join(' ')}>
+    {specs.map(({ k, v }) => (
+      <div key={k} className="hp-spec-row">
+        <dt className="hp-spec-key">{k}</dt>
+        <dd className="hp-spec-val">{v}</dd>
+      </div>
+    ))}
+  </dl>
 );
 
-const MasterFaceplate = () => (
-  <header className="srd-master-faceplate">
-    <div className="srd-faceplate-inner">
-      {/* LEFT: CRS icon (primary identity) + name stack */}
-      <div className="srd-faceplate-left">
-        <div className="srd-logo-plate" aria-label="CRS Logo">
-          <img src="/static/crs-logo.png" alt="CRS" className="crs-logo-img" />
+/* ─── CTA button ──────────────────────────────────────────── */
+const CtaButton = ({ label, href, primary, location, warm }) => (
+  <a
+    href={href}
+    target={href.startsWith('http') ? '_blank' : undefined}
+    rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+    className={[
+      'hp-cta',
+      primary ? (warm ? 'hp-cta--warm-primary' : 'hp-cta--primary') : 'hp-cta--secondary',
+    ].join(' ')}
+  >
+    {location && <LocationLogo location={location} size="btn" />}
+    <span>{label}</span>
+    <span className="hp-cta-arrow" aria-hidden="true">→</span>
+  </a>
+);
+
+/* ─── Workshop Café panel ─────────────────────────────────── */
+const CafePanel = ({ panel, animate }) => (
+  <div className="hp-cafe-panel" role="tabpanel" id="panel-cafe">
+    <div className="hp-cafe-sign-header">
+      <div className="hp-cafe-sign-inner">
+        <span className="hp-cafe-eyebrow">
+          <img src="/static/workshop-cafe-logo.png" alt="" aria-hidden="true" className="hp-cafe-logo-mark" />
+          {panel.eyebrow}
+        </span>
+        <h2 className="hp-cafe-title">{panel.title}</h2>
+        <p className="hp-cafe-subtitle">Oxford's music community hub & event venue</p>
+      </div>
+      <div className="hp-cafe-meters" aria-hidden="true">
+        <VuMeterPair activeId="cafe" />
+      </div>
+    </div>
+    <div className="hp-cafe-body">
+      <p className="hp-cafe-desc">{panel.body}</p>
+      <div className="hp-cafe-grid">
+        <div className="hp-cafe-spec-cards">
+          {panel.specs.map(({ k, v }) => (
+            <div key={k} className="hp-cafe-spec-card">
+              <span className="hp-cafe-spec-key">{k}</span>
+              <span className="hp-cafe-spec-val">{v}</span>
+            </div>
+          ))}
         </div>
-        <div className="srd-faceplate-name-stack">
-          <span className="srd-faceplate-name">COWLEY ROAD STUDIOS</span>
-          <span className="srd-faceplate-tagline-text">Grassroots infrastructure for the Oxford music scene.</span>
+        <div className="hp-cafe-cta-block">
+          <p className="hp-cafe-cta-lead">Get in touch to book a private event, enquire about hiring the venue, or find out what's on.</p>
+          {panel.ctas.map(cta => (
+            <CtaButton key={cta.href} {...cta} warm={true} />
+          ))}
+          <a href="/workshop-cafe" className="hp-cta hp-cta--warm-secondary" style={{ marginTop: '0.5rem' }}>
+            <span>About Workshop Café</span>
+            <span className="hp-cta-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a href={URLS.INSTAGRAM} target="_blank" rel="noopener noreferrer" className="hp-cafe-social-link">
+            <span>Follow on Instagram</span>
+          </a>
         </div>
       </div>
-
-    </div>
-  </header>
-);
-
-
-
-const ModuleEyebrow = ({ lines }) => (
-  <div className="srd-module-copy-stack">
-    {lines.map((line) => (
-      <span key={line} className="srd-module-copy-line">{line}</span>
-    ))}
-  </div>
-);
-
-const RehearsalSelector = ({ id, title = 'BOOK REHEARSAL', className = '' }) => (
-  <div className={`srd-rehearsal-selector ${className}`.trim()} id={id} aria-label={title}>
-    <div className="srd-rehearsal-selector-title">{title}</div>
-    <div className="srd-rehearsal-selector-grid">
-      <article className="srd-rehearsal-selector-card">
-        <div className="srd-selector-card-body">
-          <h3>COWLEY ROAD</h3>
-          <p>Rehearse before recording</p>
-          <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
-        </div>
-        <img src="/static/crs-wooden-sign-upscaled.png" alt="Cowley Road Studios" className="srd-selector-card-sign" />
-      </article>
-      <article className="srd-rehearsal-selector-card srd-rehearsal-selector-card--cricket">
-        <div className="srd-selector-card-body">
-          <h3>CRICKET ROAD</h3>
-          <p>Dedicated rehearsal space</p>
-          <a href={URLS.CRICKET_RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="srd-rehearsal-selector-link">BOOK</a>
-        </div>
-        <img src="/static/cricket-road-sign.png" alt="Cricket Road" className="srd-selector-card-sign" />
-      </article>
     </div>
   </div>
 );
 
-const SESSION_PANELS = {
-  recording: {
-    label: 'WHERE?',
-    options: [
-      {
-        id: 'cowley-rec',
-        name: 'COWLEY ROAD',
-        desc: 'Main studio and control room',
-        cta: 'BOOK RECORDING',
-        href: null, // set from URLS below
-        urlKey: 'RECORDING_BOOK',
-        sign: '/static/crs-wooden-sign-upscaled.png',
-        signAlt: 'Cowley Road Studios',
-      },
-      {
-        id: 'cricket-rec',
-        name: 'CRICKET ROAD',
-        desc: 'Additional recording capability',
-        cta: 'BOOK RECORDING',
-        urlKey: 'CRICKET_RECORDING_BOOK',
-        sign: '/static/cricket-road-sign.png',
-        signAlt: 'Cricket Road',
-      },
-    ],
-  },
-  rehearsal: {
-    label: 'WHERE?',
-    options: [
-      {
-        id: 'cowley-reh',
-        name: 'COWLEY ROAD',
-        desc: 'Rehearse before recording',
-        cta: 'BOOK REHEARSAL',
-        urlKey: 'REHEARSAL_BOOK',
-        sign: '/static/crs-wooden-sign-upscaled.png',
-        signAlt: 'Cowley Road Studios',
-      },
-      {
-        id: 'cricket-reh',
-        name: 'CRICKET ROAD',
-        desc: 'Dedicated rehearsal space',
-        cta: 'BOOK REHEARSAL',
-        urlKey: 'CRICKET_REHEARSAL_BOOK',
-        sign: '/static/cricket-road-sign.png',
-        signAlt: 'Cricket Road',
-      },
-    ],
-  },
-  venue: {
-    label: null,
-    options: [
-      {
-        id: 'venue-wc',
-        name: 'WORKSHOP CAFÉ',
-        desc: 'Venue hire, events and café enquiries',
-        cta: 'VENUE ENQUIRY',
-        urlKey: 'ENQUIRE_WORKSHOP',
-        sign: null,
-      },
-    ],
-  },
-};
+/* ─── Rehearsal panel ─────────────────────────────────────── */
+const RehearsalPanel = ({ panel }) => (
+  <div className="hp-panel-body hp-panel-body--rehearsal" role="tabpanel" id="panel-rehearsal">
+    <div className="hp-panel-header">
+      <span className="hp-panel-eyebrow">{panel.eyebrow}</span>
+      <h2 className="hp-panel-title">{panel.title}</h2>
+      <p className="hp-panel-desc">{panel.body}</p>
+    </div>
+    <div className="hp-rehearsal-split">
+      {panel.locations.map(loc => (
+        <div key={loc.location} className={`hp-rehearsal-card hp-rehearsal-card--${loc.location}`}>
+          <div className="hp-rehearsal-card-head">
+            <LocationLogo location={loc.location} size="card" />
+            <div>
+              <div className="hp-rehearsal-name">{loc.name}</div>
+              <div className="hp-rehearsal-post">{loc.post}</div>
+            </div>
+          </div>
+          <ul className="hp-rehearsal-specs">
+            {loc.specs.map(s => <li key={s}>{s}</li>)}
+          </ul>
+          <CtaButton label={loc.cta.label} href={loc.cta.href} primary={true} location={loc.location} />
+        </div>
+      ))}
+    </div>
+    <div className="hp-panel-ctas" style={{ marginTop: '1rem' }}>
+      <a href="/rehearsal" className="hp-cta hp-cta--page-link">
+        <span>Full details</span>
+        <span className="hp-cta-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+);
 
-const SessionRouter = () => {
-  const [active, setActive] = useState(null);
-  const panel = active ? SESSION_PANELS[active] : null;
+/* ─── Standard dark panel ─────────────────────────────────── */
+const StandardPanel = ({ panel }) => (
+  <div className="hp-panel-body" role="tabpanel" id={`panel-${panel.id}`}>
+    <div className="hp-panel-header">
+      <span className="hp-panel-eyebrow">{panel.eyebrow}</span>
+      <h2 className="hp-panel-title">{panel.title}</h2>
+      <p className="hp-panel-desc">{panel.body}</p>
+    </div>
+    <SpecTable specs={panel.specs} />
+    <div className="hp-panel-ctas">
+      {panel.ctas.map(cta => (
+        <CtaButton key={cta.href} {...cta} warm={false} />
+      ))}
+      {PAGE_ROUTES[panel.id] && (
+        <a href={PAGE_ROUTES[panel.id]} className="hp-cta hp-cta--page-link">
+          <span>Full details</span>
+          <span className="hp-cta-arrow" aria-hidden="true">↗</span>
+        </a>
+      )}
+    </div>
+  </div>
+);
+
+/* ─── Display panel (chrome strip + content) ──────────────── */
+const DisplayPanel = ({ activeId, animate }) => {
+  const panel = PANELS[activeId];
+  if (!panel) return null;
+  const isCafe = panel.theme === 'warm';
 
   return (
-    <section className="srd-module srd-session-router" id="session-router" aria-label="Session router">
-      <div className="srd-module-header">
-        <div className="srd-module-title-group">
-          <h2 className="srd-module-title">WHAT DO YOU NEED?</h2>
-        </div>
-        <VuMeterPair />
-      </div>
-
-      <div className="srd-router-choices" role="group" aria-label="Choose session type">
-        {[['recording', 'RECORDING'], ['rehearsal', 'REHEARSAL'], ['venue', 'VENUE / EVENT']].map(([key, label]) => (
-          <button
-            key={key}
-            className={`srd-router-btn ${active === key ? 'srd-router-btn--active' : ''}`.trim()}
-            onClick={() => setActive(active === key ? null : key)}
-            aria-pressed={active === key}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-
-      {panel && (
-        <div className="srd-router-panel" role="region" aria-label={`${active} options`}>
-          {panel.label && <div className="srd-router-panel-label">{panel.label}</div>}
-          <div className="srd-router-panel-grid">
-            {panel.options.map((opt) => (
-              <article key={opt.id} className="srd-router-card">
-                <div className="srd-router-card-body">
-                  <h3 className="srd-router-card-name">{opt.name}</h3>
-                  <p className="srd-router-card-desc">{opt.desc}</p>
-                  <a
-                    href={URLS[opt.urlKey]}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="srd-router-card-cta"
-                    aria-label={`${opt.cta} at ${opt.name}`}
-                  >
-                    {opt.cta} →
-                  </a>
-                </div>
-                {opt.sign && (
-                  <img src={opt.sign} alt={opt.signAlt} className="srd-router-card-sign" aria-hidden="true" />
-                )}
-              </article>
-            ))}
+    <div
+      key={activeId}
+      className={[
+        'hp-display-panel',
+        `hp-display-panel--${panel.theme}`,
+        animate ? 'hp-display-panel--enter' : '',
+      ].filter(Boolean).join(' ')}
+      aria-live="polite"
+    >
+      {!isCafe && (
+        <div className="hp-display-chrome" aria-hidden="true">
+          <div className="hp-display-chrome-left">
+            <Led color="orange" on={true} />
+            <span className="hp-display-service-id">{panel.id.toUpperCase()}</span>
+          </div>
+          <div className="hp-display-chrome-right">
+            {/* Live signal meters in panel chrome */}
+            <VuMeterPair activeId={activeId} />
           </div>
         </div>
       )}
-    </section>
+      {isCafe ? (
+        <CafePanel panel={panel} animate={animate} />
+      ) : panel.id === 'rehearsal' ? (
+        <RehearsalPanel panel={panel} />
+      ) : (
+        <StandardPanel panel={panel} />
+      )}
+    </div>
   );
 };
 
-const OdroModule = () => (
-  <section className="srd-module srd-module--dark" aria-labelledby="module-odro-electronics">
-    <div className="srd-module-header">
-      <div className="srd-module-title-group">
-        <h2 id="module-odro-electronics" className="srd-module-title">ODRO ELECTRONICS</h2>
-        <ModuleEyebrow lines={['AV, INSTRUMENT SERVICING & VENUE TECH SUPPORT']} />
-      </div>
+/* ═══════════════════════════════════════════════════════════════
+   ANALOGUE VU DIAL — SVG instrument
+   Off-white face, black scale markings, red needle.
+   Driven by signal engine level (0–1).
+   ═══════════════════════════════════════════════════════════════ */
+function AnalogueVuDial({ label = 'L', level = 0, peak = 0 }) {
+  // Map 0–1 signal to needle angle: -45° (–∞) → +45° (0 VU) → +75° (peak)
+  // Full arc: -50deg to +70deg
+  const angle = -50 + level * 120;
+  const peakAngle = -50 + peak * 120;
+
+  // Needle pivot at bottom-centre of dial face
+  const cx = 50, cy = 72;
+  const needleLen = 38;
+  const rad = (deg) => (deg - 90) * (Math.PI / 180);
+  const nx = cx + needleLen * Math.cos(rad(angle));
+  const ny = cy + needleLen * Math.sin(rad(angle));
+  const px = cx + (needleLen - 4) * Math.cos(rad(peakAngle));
+  const py = cy + (needleLen - 4) * Math.sin(rad(peakAngle));
+
+  return (
+    <div className="avu-dial" aria-hidden="true">
+      <svg
+        viewBox="0 0 100 80"
+        className="avu-svg"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Face plate */}
+        <rect x="1" y="1" width="98" height="78" rx="3"
+          fill="#F2EEE0" stroke="#2a2a2a" strokeWidth="1.5" />
+
+        {/* Recessed bevel inner */}
+        <rect x="3" y="3" width="94" height="74" rx="2"
+          fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="0.5" />
+
+        {/* Scale arc — 0 to VU marks */}
+        <path d="M 15 68 A 40 40 0 0 1 85 68"
+          fill="none" stroke="#2a2a2a" strokeWidth="1" />
+
+        {/* Red zone arc — rightmost 25% */}
+        <path d="M 68 42 A 40 40 0 0 1 85 68"
+          fill="none" stroke="#c0392b" strokeWidth="2.5" strokeLinecap="round" />
+
+        {/* Tick marks — 9 major ticks across arc */}
+        {[
+          [-50, false], [-37, false], [-25, false], [-12, false],
+          [0, true], [12, false], [25, false], [45, true], [70, false],
+        ].map(([deg, major], i) => {
+          const r1 = major ? 33 : 36;
+          const r2 = 40;
+          const a = rad(deg + 90);
+          const x1 = cx + r1 * Math.cos(a - Math.PI / 2 + Math.PI);
+          const y1 = cy + r1 * Math.sin(a - Math.PI / 2 + Math.PI);
+          const x2 = cx + r2 * Math.cos(a - Math.PI / 2 + Math.PI);
+          const y2 = cy + r2 * Math.sin(a - Math.PI / 2 + Math.PI);
+          return (
+            <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
+              stroke={deg >= 25 ? '#c0392b' : '#2a2a2a'}
+              strokeWidth={major ? 1.5 : 0.8} />
+          );
+        })}
+
+        {/* Scale labels */}
+        <text x="13" y="62" fontSize="6" fill="#555" textAnchor="middle" fontFamily="monospace">−</text>
+        <text x="50" y="28" fontSize="6" fill="#2a2a2a" textAnchor="middle" fontFamily="monospace">0</text>
+        <text x="82" y="52" fontSize="6" fill="#c0392b" textAnchor="middle" fontFamily="monospace">+</text>
+
+        {/* Peak hold dot */}
+        {peak > 0.08 && (
+          <circle cx={px} cy={py} r="2" fill="#c0392b" opacity="0.7" />
+        )}
+
+        {/* Needle — red, 1.2px, pivots from bottom centre */}
+        <line
+          x1={cx} y1={cy}
+          x2={nx} y2={ny}
+          stroke="#c0392b"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+        />
+
+        {/* Pivot cap */}
+        <circle cx={cx} cy={cy} r="2.5" fill="#1a1a1a" />
+        <circle cx={cx} cy={cy} r="1.2" fill="#444" />
+
+        {/* Glass glint */}
+        <ellipse cx="35" cy="22" rx="18" ry="8"
+          fill="rgba(255,255,255,0.12)" />
+      </svg>
+      <span className="avu-label">{label}</span>
     </div>
-    <div className="srd-micro-label">SUPPORT CHANNEL: ENQUIRY-FIRST</div>
-    <div className="srd-btn-group srd-btn-group--single">
-      <ServiceButton
-        variant="neutral"
-        service="GET SUPPORT →"
-        location="ODRO ELECTRONICS"
-        href={URLS.ENQUIRE_ODRO}
-        badge={<OdroBadge />}
+  );
+}
+
+/* Live-subscribed analogue dial pair */
+function AnalogueDialPair() {
+  const signal = useSignal();
+  return (
+    <div className="hp-idle-meters" aria-hidden="true">
+      <AnalogueVuDial label="L" level={signal.L.display} peak={signal.L.peak} />
+      <AnalogueVuDial label="R" level={signal.R.display} peak={signal.R.peak} />
+    </div>
+  );
+}
+
+/* ─── Idle / hero state ───────────────────────────────────── */
+const IdleState = () => (
+  <div className="hp-idle" aria-label="Cowley Road Studios — select a service">
+    
+    {/* Top faceplate — rack-mounted sign with integrated VU meters */}
+    <div className="hp-idle-faceplate">
+      <img
+        src="/assets/crs-rack-sign.png"
+        alt="Cowley Road Studios"
+        className="hp-idle-sign"
       />
     </div>
-  </section>
+
+    {/* Rack-mounted display module — system node descriptor */}
+    <div className="hp-idle-display">
+      <div className="hp-idle-lcd">
+        <div className="hp-display-line hp-display-line--location">
+          OXFORD
+        </div>
+        <div className="hp-display-line hp-display-line--primary">
+          RECORDING · REHEARSAL · PRODUCTION · VENUE
+        </div>
+        <div className="hp-display-line hp-display-line--secondary">
+          AV / TECHNICAL SERVICES
+        </div>
+      </div>
+    </div>
+
+  </div>
 );
 
-const MixerKnob = ({ size = 'md' }) => (
-  <div className={`wc-knob wc-knob--${size}`} aria-hidden="true">
-    <div className="wc-knob-body">
-      <div className="wc-knob-indicator"></div>
+/* ─── Hardware service controls ───────────────────────────── */
+const ServiceControls = ({ active, onSelect }) => (
+  <div className="hp-controls" aria-label="Service selector" role="tablist">
+    <div className="hp-controls-rail" aria-hidden="true" />
+    <div className="hp-controls-buttons">
+      {NAV_ORDER.map((id) => {
+        const p = PANELS[id];
+        return (
+          <RackButton
+            key={id}
+            id={id}
+            label={p.label}
+            isActive={active === id}
+            isCafe={id === 'cafe'}
+            onSelect={onSelect}
+          />
+        );
+      })}
+    </div>
+    <div className="hp-controls-status" aria-hidden="true">
+      <Led color="green" on={true} pulse={true} />
+      <span>ONLINE</span>
     </div>
   </div>
 );
 
-const MixerFader = ({ level = 70 }) => (
-  <div className="wc-fader" aria-hidden="true">
-    <div className="wc-fader-track">
-      <div className="wc-fader-level" style={{ height: `${level}%` }}></div>
-      <div className="wc-fader-handle" style={{ bottom: `${level - 5}%` }}></div>
-    </div>
-    <div className="wc-fader-leds">
-      {[...Array(8)].map((_, i) => (
-        <div key={i} className={`wc-fader-led ${i < Math.floor(level / 12.5) ? 'wc-fader-led--on' : ''} ${i >= 6 ? 'wc-fader-led--red' : ''}`}></div>
-      ))}
-    </div>
-  </div>
-);
-
-const SpectrumBar = ({ height }) => (
-  <div className="wc-spectrum-bar" style={{ height: `${height}%` }} aria-hidden="true"></div>
-);
-
-const WorkshopCafeModule = () => (
-  <section className="srd-module srd-module--workshop" aria-labelledby="module-workshop-cafe">
-    <div className="wc-corner-screw wc-corner-screw--tl" aria-hidden="true"></div>
-    <div className="wc-corner-screw wc-corner-screw--tr" aria-hidden="true"></div>
-    <div className="wc-corner-screw wc-corner-screw--bl" aria-hidden="true"></div>
-    <div className="wc-corner-screw wc-corner-screw--br" aria-hidden="true"></div>
-
-    <div className="wc-vu-row">
-      <VuMeter label="L" />
-      <VuMeter label="R" />
-    </div>
-
-    <div className="wc-title-panel">
-      <div className="srd-workshop-badge-row">
-        <CafeBadge />
+/* ─── Trust / footer strip ────────────────────────────────── */
+const TrustStrip = () => (
+  <footer className="hp-trust-strip">
+    <div className="hp-trust-inner">
+      <div className="hp-trust-brand">
+        <LocationLogo location="crs" size="footer" />
+        <p className="hp-trust-tag">Grassroots infrastructure for the Oxford music scene.</p>
       </div>
-      <h2 id="module-workshop-cafe" className="wc-title">WORKSHOP CAFÉ</h2>
-      <p className="wc-tagline">COMMUNITY SPACE &amp; CREATIVE WORKSPACE</p>
-      <div className="wc-opening-badge">CAFÉ INFO</div>
-    </div>
-
-    <div className="wc-controls-row">
-      <div className="wc-knobs-section">
-        {[...Array(10)].map((_, i) => (
-          <MixerKnob key={i} size={i < 2 ? 'lg' : 'md'} />
-        ))}
+      <div className="hp-trust-links">
+        <a href={URLS.REHEARSAL_BOOK}    target="_blank" rel="noopener noreferrer">Book Rehearsal</a>
+        <a href={URLS.RECORDING_BOOK}    target="_blank" rel="noopener noreferrer">Book Recording</a>
+        <a href={URLS.CONTROL_ROOM_BOOK} target="_blank" rel="noopener noreferrer">Hire Control Room</a>
+        <a href={URLS.ENQUIRE_WORKSHOP}>Venue Enquiries</a>
+        <a href={URLS.CONTACT}>Contact</a>
+        <a href={URLS.INSTAGRAM} target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
-      <div className="wc-faders-section">
-        <MixerFader level={85} />
-        <MixerFader level={70} />
-        <MixerFader level={95} />
-        <MixerFader level={60} />
-        <MixerFader level={75} />
-        <MixerFader level={50} />
-      </div>
-      <div className="wc-spectrum">
-        {[45, 65, 80, 55, 70, 90, 75, 60, 85, 50, 70, 80, 65, 55, 40].map((h, i) => (
-          <SpectrumBar key={i} height={h} />
-        ))}
+      <div className="hp-trust-locations">
+        <div className="hp-trust-address">
+          <strong>Cowley Road Studios</strong>
+          <span>118 Cowley Road, Oxford OX4 1JE</span>
+          <a href={URLS.MAP} target="_blank" rel="noopener noreferrer">Maps →</a>
+        </div>
+        <div className="hp-trust-address">
+          <strong>Cricket Road Studios</strong>
+          <span>Cricket Road, Oxford OX4 3DJ</span>
+        </div>
       </div>
     </div>
-
-    <div className="wc-cta-row">
-      <a href={URLS.ENQUIRE_WORKSHOP} className="wc-book-btn">VENUE ENQUIRY →</a>
+    <div className="hp-trust-base">
+      <span>© Cowley Road Studios · Oxford</span>
+      <span>ODRO Engineering · Repairs &amp; AV Support</span>
     </div>
-  </section>
-);
-
-const CommunicationsBusModule = () => (
-  <section className="srd-module srd-module--dark" aria-labelledby="module-communications-bus">
-    <div className="srd-module-header">
-      <div className="srd-module-title-group">
-        <h2 id="module-communications-bus" className="srd-module-title">ENQUIRY BUS</h2>
-        <ModuleEyebrow lines={['GENERAL ENQUIRIES, BOOKINGS & SUPPORT']} />
-      </div>
-    </div>
-    <form className="srd-comms-form" action="/contact" method="post">
-      <div className="srd-input-group">
-        <label htmlFor="comms-name" className="srd-input-label">Name</label>
-        <input id="comms-name" type="text" className="srd-input-bay" placeholder="Full Name" required name="name" />
-      </div>
-      <div className="srd-input-group">
-        <label htmlFor="comms-email" className="srd-input-label">Email</label>
-        <input id="comms-email" type="email" className="srd-input-bay" placeholder="your.email@domain.com" required name="email" />
-      </div>
-      <div className="srd-input-group">
-        <label htmlFor="comms-message" className="srd-input-label">Message</label>
-        <textarea id="comms-message" name="message" className="srd-input-bay" placeholder="Tell us what you need and we will route it properly." required></textarea>
-      </div>
-      <button type="submit" className="srd-submit-btn">Transmit</button>
-    </form>
-  </section>
-);
-
-const CrawlableDescription = () => (
-  <section className="srd-text-block" aria-labelledby="crs-description-title">
-    <div className="srd-text-inner">
-      <h2 id="crs-description-title">SYSTEM OVERVIEW</h2>
-      <div className="srd-system-stack">
-        <p>118 Cowley Road, Oxford OX4 1JE</p>
-        <p>Main studio and control room</p>
-        <p>Hybrid analogue–digital signal path</p>
-        <p>Recording → Cowley Road</p>
-        <p>Rehearsal → Cricket Road</p>
-        <p>Workshop Café → Enquiry</p>
-        <p>ODRO electronics → Support</p>
-      </div>
-    </div>
-  </section>
-);
-
-const PhotoPlaceholderStrip = () => (
-  <section className="srd-photo-strip" aria-labelledby="photo-strip-title">
-    <div className="srd-text-inner srd-text-inner--wide">
-      <h2 id="photo-strip-title">PHOTO STRIP</h2>
-      <div className="srd-photo-grid">
-        {PHOTO_PLACEHOLDERS.map((label) => (
-          <article key={label} className="srd-photo-card">
-            <div className="srd-photo-card-label">{label}</div>
-            <div className="srd-photo-card-placeholder">Image coming soon</div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const WhatWeSupportBlock = () => (
-  <section className="srd-text-block srd-text-block--support" aria-labelledby="support-title">
-    <div className="srd-text-inner">
-      <h2 id="support-title">ACTIVE USE</h2>
-      <ul className="srd-support-list srd-support-list--plain">
-        {ACTIVE_USE_ITEMS.map((item) => <li key={item}>{item}</li>)}
-      </ul>
-    </div>
-  </section>
-);
-
-const TrustRail = () => (
-  <footer className="srd-trust-rail srd-trust-rail--expanded">
-    <div className="srd-trust-panel">
-      <div className="srd-trust-address">118 Cowley Road, Oxford OX4 1JE, United Kingdom</div>
-      <a href={URLS.MAP} target="_blank" rel="noopener noreferrer" className="srd-map-link">Open Google Maps</a>
-      <p className="srd-trust-line">Grassroots infrastructure for the Oxford music scene.</p>
-    </div>
-    <nav className="srd-footer-links" aria-label="Support pages">
-      <a href={URLS.RECORDING_PAGE}>Recording Studio Oxford</a>
-      <a href={URLS.REHEARSAL_PAGE}>Rehearsal Rooms Oxford</a>
-      <a href={URLS.MUSIC_PAGE}>Music Studio Cowley Road</a>
-      <a href={URLS.CONTACT}>Contact</a>
-    </nav>
   </footer>
 );
 
-const TechManualFooter = () => (
-  <section className="srd-text-block" aria-labelledby="system-specification-title">
-    <div className="srd-text-inner">
-      <h2 id="system-specification-title">SYSTEM SPECIFICATION</h2>
-      <div className="srd-system-stack srd-system-stack--spec">
-        <p>SSL BiG SiX</p>
-        <p>TL Audio C1</p>
-        <p>Revox tape preamps</p>
-        <p>Tascam 388</p>
-        <p>Ghielmetti patch matrix</p>
-        <div className="srd-system-group">
-          <p>1 × live room</p>
-          <p>3 × isolation booths</p>
-        </div>
-        <div className="srd-system-group">
-          <p className="srd-system-label">Monitoring:</p>
-          <p>Adam Audio</p>
-          <p>Yamaha NS-10M</p>
-        </div>
-        <div className="srd-system-group">
-          <p className="srd-system-label">Microphones:</p>
-          <p>U87 • C414 • SM7B • SM58</p>
-        </div>
-      </div>
+/* ─── Manufacturer's spec plate ──────────────────────────── */
+const SeoText = () => (
+  <div className="hp-spec-plate">
+    <div className="hp-spec-header">Technical Specifications — Cowley Road Studios</div>
+    <div className="hp-spec-body">
+      <p><strong>Recording Studio Oxford</strong> — Cowley Road OX4 1JE &amp; Cricket Road OX4 3DJ</p>
+      <p>Professional recording studio, rehearsal rooms and control room hire in Oxford. SSL BiG SiX, valve compression, hybrid analogue–digital workflow.</p>
+      <p>Rehearsal rooms at Cowley Road (4-piece) and Cricket Road (8 people, Yamaha piano). ODRO Engineering amp repair and AV services. Workshop Café venue hire.</p>
     </div>
-  </section>
+    <div className="hp-spec-footer">
+      <span>EST. 2012</span>
+      <span>OX4 1JE</span>
+      <span>ODRO ENGINEERING</span>
+    </div>
+  </div>
 );
 
-const SupportArea = () => (
-  <section className="srd-support-area" aria-labelledby="support-area-title">
-    <div className="srd-support-area-inner">
-      <h2 id="support-area-title" className="srd-support-area-title">OTHER SUPPORT</h2>
-      <div className="srd-support-area-row">
-        <div className="srd-support-item">
-          <span className="srd-support-item-name">ODRO ELECTRONICS</span>
-          <span className="srd-support-item-desc">Repairs, technical support and venue tech</span>
-          <a href={URLS.ENQUIRE_ODRO} className="srd-support-item-link">GET SUPPORT →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
+/* ═══════════════════════════════════════════════════════════════
+   ROOT — manages active state + drives signal engine
+   ═══════════════════════════════════════════════════════════════ */
 export default function StudioServicesRack() {
+  const [activeId, setActiveId] = useState(null);
+  const [animate,  setAnimate]  = useState(false);
+  const [powered,  setPowered]  = useState(false);
+
+  /* Power-on LED sweep — runs once on mount */
+  useEffect(() => {
+    const t = setTimeout(() => setPowered(true), 120);
+    return () => clearTimeout(t);
+  }, []);
+
+  const handleSelect = useCallback((id) => {
+    const next = activeId === id ? null : id;
+    setActiveId(next);
+
+    /* Drive signal engine to new preset — causal: interaction → meter */
+    getEngine().setPreset(next || 'idle');
+
+    if (next) {
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 500);
+    }
+  }, [activeId]);
+
+  const isCafe = activeId === 'cafe';
+
   return (
-    <main className="srd-page">
-      <VuMeterDefs />
-      <TopRail />
+    <main className={[
+      'hp-page',
+      isCafe    ? 'hp-page--cafe'    : '',
+      powered   ? 'hp-page--powered' : '',
+    ].filter(Boolean).join(' ')}>
 
-      <div className="srd-chassis">
+      {/* RACK CHASSIS — physical 19" hardware frame */}
+      <section className="hp-machine" aria-label="Service display">
+
         <RackRail side="left" />
-        <div className="srd-modules">
-          <MasterFaceplate />
-          <AuthorityHero />
-          <SessionRouter />
-          <WorkshopCafeModule />
-          <CommunicationsBusModule />
-        </div>
-        <RackRail side="right" />
-      </div>
 
-      <SupportArea />
-      <CrawlableDescription />
-      <TechManualFooter />
-      <PhotoPlaceholderStrip />
-      <WhatWeSupportBlock />
-      <TrustRail />
+        <div className="hp-machine-inner">
+          {/* 1U — Identity module (CRS logo + addresses) */}
+          <IdentityRail />
+
+          {/* 1U — Navigation module (booking buttons) */}
+          <ActionBar />
+
+          {/* 3U — SCREEN */}
+          <div className="hp-screen">
+            {activeId ? (
+              <DisplayPanel activeId={activeId} animate={animate} />
+            ) : (
+              <IdleState />
+            )}
+          </div>
+
+          {/* 2U — CONTROLS — physical button panel */}
+          <ServiceControls active={activeId} onSelect={handleSelect} />
+        </div>
+
+        <RackRail side="right" />
+
+      </section>
+
+      {/* 4 — Footer */}
+      <TrustStrip />
+
+      <SeoText />
     </main>
   );
 }

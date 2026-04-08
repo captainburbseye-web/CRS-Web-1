@@ -634,3 +634,62 @@ body::after {
     display: none;
   }
 }
+
+/* ============================================================
+   RACK HEADER MODULE — identity plate
+   ============================================================ */
+.rack-header-module {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px 16px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0E0E0E;
+  border: 1px solid #404040;
+  position: relative;
+}
+
+/* Rack rail edges — left and right mounting strips */
+.rack-header-module::before,
+.rack-header-module::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: #1a1a1a;
+  pointer-events: none;
+}
+.rack-header-module::before { left: 0; }
+.rack-header-module::after  { right: 0; }
+
+.rack-header-module__sign {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Subline — identity descriptor below module */
+.rack-subline {
+  text-align: center;
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.06em;
+  margin: 8px auto 0;
+  max-width: 900px;
+  padding: 0 16px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .rack-header-module {
+    padding: 12px 12px 6px;
+  }
+  .rack-subline {
+    font-size: 0.78rem;
+  }
+}

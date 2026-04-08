@@ -1,0 +1,672 @@
+/* ============================================================
+   CRS SERVICE PAGES — crs-service-pages.css
+   PALETTE: nettle green · mustard · off-white · signal red
+   Warm café mode for /workshop-cafe
+   Cowley Road Studios, Oxford
+   ============================================================ */
+
+/* ── PALETTE ─────────────────────────────────────────────── */
+:root {
+  /* Nettle green — machine identity */
+  --nettle-deep:   #1A231A;
+  --nettle:        #243024;
+  --nettle-mid:    #2F3E2F;
+  --nettle-lift:   #3A4E3A;
+  --nettle-border: rgba(58,78,58,0.70);
+  --nettle-border-hi: rgba(80,108,80,0.85);
+
+  /* Mustard — primary accent */
+  --mustard:       #C2A43A;
+  --mustard-hi:    #D8B94A;
+  --mustard-lo:    rgba(194,164,58,0.18);
+  --mustard-glow:  rgba(216,185,74,0.35);
+
+  /* Text — SOLID VALUES, no low-opacity on dark green */
+  --text-primary:  #F4F1E8;        /* full off-white — headings, labels */
+  --text-body:     #D8D4C8;        /* slightly dimmed — body copy, readable */
+  --text-dim:      #A8A498;        /* muted — postcodes, secondary, footer */
+  --text-mute:     #7A7670;        /* quiet — decorative only, not body copy */
+
+  /* Off-white — kept as variable for backwards compat */
+  --offwhite:      #F4F1E8;
+  --offwhite-dim:  #D8D4C8;        /* SOLID, not rgba — was 0.62 opacity, now solid equiv */
+  --offwhite-mute: #A8A498;        /* SOLID, not rgba — was 0.30 opacity, now solid equiv */
+
+  --red:           #B23A2B;
+
+  /* Café warm tones */
+  --cafe-bg:       #F4F1E8;
+  --cafe-surface:  #E8E0C8;        /* slightly darker than before for card contrast */
+  --cafe-deep:     #D8CBAA;        /* inset / deep surface */
+  --cafe-border:   #B89A50;
+  --cafe-border-hi:#8A7230;        /* darker border for strong contrast */
+  --cafe-text:     #1E2A1E;        /* darker nettle — stronger contrast on cream */
+  --cafe-text-dim: #4A5E3A;        /* solid dark olive — not rgba, readable */
+  --cafe-text-mute:#7A7058;        /* for truly secondary info */
+  --cafe-mustard:  #8A6A10;        /* DARKER mustard for text on cream — better contrast */
+
+  --font-mono: 'JetBrains Mono', 'Space Mono', 'Courier New', monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --r: 2px;
+  --r-md: 4px;
+  --r-lg: 6px;
+}
+
+/* ── RESET ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--nettle-deep);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Global link colour — mustard on dark green is fine */
+a { color: var(--mustard); text-decoration: none; }
+a:hover { color: var(--mustard-hi); text-decoration: none; }
+button { background: none; border: none; font: inherit; cursor: pointer; }
+
+/* ── PAGE WRAPPER ────────────────────────────────────────── */
+.sp-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--nettle-deep);
+  color: var(--text-primary);
+}
+
+/* ── TOP ACTION BAR ──────────────────────────────────────── */
+.sp-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(22,28,22,0.97);
+  border-bottom: 1px solid var(--nettle-border);
+  backdrop-filter: blur(8px);
+}
+
+.sp-topbar-inner {
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 0.4rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+/* ← CRS back link — solid readable white */
+.sp-topbar-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-body);          /* solid, not rgba */
+  padding: 0.3rem 0.78rem;
+  border: 1px solid var(--nettle-border);
+  border-radius: var(--r);
+  transition: color 0.12s, border-color 0.12s;
+}
+.sp-topbar-home:hover {
+  color: var(--text-primary);
+  border-color: var(--nettle-border-hi);
+}
+
+.sp-topbar-actions {
+  display: flex;
+  gap: 0.35rem;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.sp-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.78rem;
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-radius: var(--r);
+  white-space: nowrap;
+  transition: background 0.12s, color 0.12s, border-color 0.12s, box-shadow 0.12s;
+  border: 1px solid transparent;
+}
+
+/* Primary — mustard fill, dark text — always readable */
+.sp-action-btn--primary {
+  background: var(--mustard);
+  color: var(--nettle-deep);
+  border-color: #9A8028;
+}
+.sp-action-btn--primary:hover {
+  background: var(--mustard-hi);
+  color: var(--nettle-deep);
+  box-shadow: 0 0 8px var(--mustard-glow);
+}
+
+/* Secondary — mustard text on transparent — solid mustard readable on dark bg */
+.sp-action-btn--secondary {
+  background: transparent;
+  color: var(--mustard);
+  border-color: rgba(194,164,58,0.50);
+}
+.sp-action-btn--secondary:hover {
+  background: var(--mustard-lo);
+  border-color: var(--mustard);
+  color: var(--mustard-hi);
+}
+
+/* Ghost — solid off-white text, not dim rgba */
+.sp-action-btn--ghost {
+  background: transparent;
+  color: var(--text-body);          /* solid — was rgba 0.62 */
+  border-color: var(--nettle-border);
+}
+.sp-action-btn--ghost:hover {
+  color: var(--text-primary);
+  border-color: var(--nettle-border-hi);
+}
+
+/* ── MAIN CONTENT ────────────────────────────────────────── */
+.sp-main {
+  flex: 1;
+  max-width: 72rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+/* ── PAGE HEADER ─────────────────────────────────────────── */
+.sp-page-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--nettle-border);
+}
+
+/* Eyebrow — mustard on dark green — good contrast */
+.sp-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mustard);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Title — full off-white on dark green — maximum contrast */
+.sp-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-primary);      /* solid #F4F1E8 */
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+/* Lead — solid readable body colour, not rgba */
+.sp-lead {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-body);          /* solid #D8D4C8 — was rgba 0.62 */
+  max-width: 52rem;
+}
+
+/* ── CONTENT GRID ────────────────────────────────────────── */
+.sp-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .sp-content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── SPEC TABLE ──────────────────────────────────────────── */
+.sp-spec-table {
+  display: grid;
+  gap: 0;
+  background: var(--nettle);
+  border: 1px solid var(--nettle-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+
+.sp-spec-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--nettle-border);
+}
+.sp-spec-row:last-child { border-bottom: none; }
+
+/* Spec key — mustard on nettle — good contrast */
+.sp-spec-key {
+  font-family: var(--font-mono);
+  font-size: 0.70rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--mustard);
+  font-weight: 700;
+  padding-top: 0.05rem;
+}
+
+/* Spec value — solid body text, not rgba */
+.sp-spec-val {
+  font-size: 0.88rem;
+  color: var(--text-body);          /* solid #D8D4C8 — was rgba 0.62 */
+  line-height: 1.45;
+}
+
+/* ── SIDEBAR / CTA BOX ───────────────────────────────────── */
+.sp-cta-box {
+  background: var(--nettle);
+  border: 1px solid var(--nettle-border);
+  border-radius: var(--r-md);
+  padding: 1.5rem;
+}
+
+/* CTA box title — mustard label, readable */
+.sp-cta-box-title {
+  font-family: var(--font-mono);
+  font-size: 0.70rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mustard);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.sp-cta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* Default CTA button — solid white text on nettle-mid — clear */
+.sp-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-radius: var(--r);
+  transition: background 0.12s, box-shadow 0.12s, border-color 0.12s;
+  border: 1.5px solid var(--nettle-border-hi);  /* slightly brighter border */
+  background: var(--nettle-mid);
+  color: var(--text-primary);      /* solid full off-white */
+}
+.sp-cta-btn:hover {
+  border-color: var(--mustard);
+  box-shadow: 0 0 10px var(--mustard-glow);
+  color: var(--text-primary);
+  background: var(--nettle-lift);
+}
+
+/* Primary CTA — mustard fill, dark text — maximum contrast */
+.sp-cta-btn--primary {
+  background: var(--mustard);
+  color: var(--nettle-deep);
+  border-color: #9A8028;
+}
+.sp-cta-btn--primary:hover {
+  background: var(--mustard-hi);
+  color: var(--nettle-deep);
+  box-shadow: 0 0 12px var(--mustard-glow);
+}
+
+/* ── LOCATION SPLIT ──────────────────────────────────────── */
+.sp-location-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+  .sp-location-split { grid-template-columns: 1fr; }
+}
+
+.sp-location-card {
+  background: var(--nettle);
+  border: 1.5px solid var(--nettle-border-hi);  /* brighter border — not invisible on green */
+  border-radius: var(--r-md);
+  padding: 1.25rem;
+}
+
+/* Location name — mustard on dark green */
+.sp-location-card-name {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mustard);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+/* Postcode — solid dim colour, NOT 30% opacity rgba */
+.sp-location-card-post {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);           /* solid #A8A498 — was rgba 0.30 (near invisible) */
+  letter-spacing: 0.10em;
+  display: block;
+  margin-bottom: 0.85rem;
+}
+
+.sp-location-specs {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  display: grid;
+  gap: 0.3rem;
+}
+
+/* Spec list items — solid body colour */
+.sp-location-specs li {
+  font-size: 0.82rem;
+  color: var(--text-body);          /* solid — was rgba 0.62 */
+  padding-left: 1rem;
+  position: relative;
+}
+.sp-location-specs li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--mustard);
+}
+
+/* ── NOTE / SECONDARY CONTENT ────────────────────────────── */
+.sp-note {
+  background: var(--nettle-mid);
+  border-left: 3px solid var(--mustard);        /* mustard border — visible on green */
+  padding: 0.85rem 1rem;
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  font-size: 0.86rem;
+  color: var(--text-body);          /* solid readable */
+  line-height: 1.55;
+}
+
+/* ── FOOTER STRIP ─────────────────────────────────────────── */
+.sp-footer {
+  background: var(--nettle-deep);
+  border-top: 1px solid var(--nettle-border);
+  padding: 1.5rem 1.25rem;
+}
+
+.sp-footer-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Footer brand — solid dim colour, not near-invisible rgba */
+.sp-footer-brand {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);           /* solid #A8A498 — was rgba 0.30 */
+}
+
+.sp-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Footer links — solid dim colour, visible */
+.sp-footer-links a {
+  color: var(--text-dim);           /* solid #A8A498 — was rgba 0.30 */
+  transition: color 0.12s;
+}
+.sp-footer-links a:hover { color: var(--mustard); }
+
+
+/* ===========================================================
+   CAFÉ PAGE — warm mode overrides
+   The café inverts the palette: off-white background, nettle text.
+   All colours must be rechecked for contrast on light background.
+   =========================================================== */
+
+/* Café page wrapper — cream background */
+.sp-page--cafe {
+  background: var(--cafe-bg);
+  color: var(--cafe-text);
+}
+
+/* Café topbar — cream/parchment background */
+.sp-page--cafe .sp-topbar {
+  background: rgba(232,224,200,0.98);
+  border-bottom: 1px solid var(--cafe-border-hi);  /* darker border — visible on cream */
+}
+
+/* ← CRS back link on cream — dark text */
+.sp-page--cafe .sp-topbar-home {
+  color: var(--cafe-text);          /* dark nettle on cream — ~12:1 */
+  border-color: var(--cafe-border-hi);
+}
+.sp-page--cafe .sp-topbar-home:hover {
+  color: var(--cafe-text);
+  border-color: var(--cafe-mustard);
+}
+
+/* Primary action btn — unchanged (mustard fill, dark text — fine on any bg) */
+
+/* Secondary action btn on cream topbar — darker mustard text */
+.sp-page--cafe .sp-action-btn--secondary {
+  color: var(--cafe-mustard);       /* darker mustard (#8A6A10) on cream — ~5:1 */
+  border-color: rgba(138,106,16,0.45);
+  background: transparent;
+}
+.sp-page--cafe .sp-action-btn--secondary:hover {
+  background: rgba(138,106,16,0.10);
+  border-color: var(--cafe-mustard);
+  color: var(--cafe-mustard);
+}
+
+/* Ghost btn on cream — use dark text, not rgba green */
+.sp-page--cafe .sp-action-btn--ghost {
+  color: var(--cafe-text-dim);      /* solid dark olive #4A5E3A on cream — ~6:1 */
+  border-color: var(--cafe-border);
+  background: transparent;
+}
+.sp-page--cafe .sp-action-btn--ghost:hover {
+  color: var(--cafe-text);
+  border-color: var(--cafe-border-hi);
+}
+
+/* Page header divider on cream */
+.sp-page--cafe .sp-page-header {
+  border-bottom-color: var(--cafe-border-hi);
+}
+
+/* Eyebrow on cream — darker mustard for contrast */
+.sp-page--cafe .sp-eyebrow {
+  color: var(--cafe-mustard);       /* #8A6A10 on cream — good contrast */
+}
+
+/* Title on cream — full dark nettle */
+.sp-page--cafe .sp-title {
+  color: var(--cafe-text);          /* #1E2A1E on #F4F1E8 — ~13:1 */
+}
+
+/* Lead on cream — dark dim text, readable */
+.sp-page--cafe .sp-lead {
+  color: var(--cafe-text-dim);      /* solid #4A5E3A — ~6:1 on cream */
+}
+
+/* Spec table on cream */
+.sp-page--cafe .sp-spec-table {
+  background: var(--cafe-surface);  /* #E8E0C8 — slightly darker than page bg */
+  border-color: var(--cafe-border-hi);
+}
+
+.sp-page--cafe .sp-spec-row {
+  border-bottom-color: var(--cafe-border);
+}
+
+/* Spec key on cafe surface — darker mustard */
+.sp-page--cafe .sp-spec-key {
+  color: var(--cafe-mustard);       /* darker mustard on parchment */
+}
+
+/* Spec val on cafe surface — dark body text */
+.sp-page--cafe .sp-spec-val {
+  color: var(--cafe-text);          /* full dark nettle — strong contrast */
+}
+
+/* CTA box on cream */
+.sp-page--cafe .sp-cta-box {
+  background: var(--cafe-surface);
+  border-color: var(--cafe-border-hi);
+}
+
+/* CTA box title on cream */
+.sp-page--cafe .sp-cta-box-title {
+  color: var(--cafe-mustard);
+}
+
+/* Default CTA button on cream — dark text on darker surface */
+.sp-page--cafe .sp-cta-btn {
+  background: var(--cafe-deep);     /* #D8CBAA — visible card on parchment */
+  border-color: var(--cafe-border-hi);
+  color: var(--cafe-text);          /* dark nettle text — clear */
+}
+.sp-page--cafe .sp-cta-btn:hover {
+  border-color: var(--cafe-mustard);
+  background: var(--cafe-surface);
+  color: var(--cafe-text);
+  box-shadow: 0 0 8px rgba(138,106,16,0.20);
+}
+
+/* Note on café — keep dark text */
+.sp-page--cafe .sp-note {
+  background: var(--cafe-deep);
+  border-left-color: var(--cafe-mustard);
+  color: var(--cafe-text);
+}
+
+/* Footer on café — surface background, dark text */
+.sp-page--cafe .sp-footer {
+  background: var(--cafe-surface);
+  border-top-color: var(--cafe-border-hi);
+}
+
+.sp-page--cafe .sp-footer-brand {
+  color: var(--cafe-text-mute);     /* #7A7058 on parchment — visible */
+}
+
+.sp-page--cafe .sp-footer-links a {
+  color: var(--cafe-text-dim);      /* solid dark olive — readable */
+}
+.sp-page--cafe .sp-footer-links a:hover { color: var(--cafe-mustard); }
+
+/* ── CAFÉ HERO ───────────────────────────────────────────── */
+.sp-cafe-hero {
+  background: var(--cafe-surface);
+  border: 1.5px solid var(--cafe-border-hi);
+  border-radius: var(--r-lg);
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.sp-cafe-hero-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.sp-cafe-hero-text {
+  flex: 1;
+}
+
+.sp-cafe-hero-tagline {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--cafe-text-dim);      /* dark olive — readable on cream */
+  margin-top: 0.5rem;
+}
+
+/* ── CAFÉ FEATURE CARDS ──────────────────────────────────── */
+.sp-cafe-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.sp-cafe-card {
+  background: var(--cafe-surface);
+  border: 1.5px solid var(--cafe-border-hi);
+  border-radius: var(--r-md);
+  padding: 1rem 1.1rem;
+}
+
+/* Card label — darker mustard on parchment */
+.sp-cafe-card-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cafe-mustard);       /* #8A6A10 — good contrast on #E8E0C8 */
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 700;
+}
+
+/* Card text — full dark nettle on parchment */
+.sp-cafe-card-text {
+  font-size: 0.88rem;
+  color: var(--cafe-text);          /* #1E2A1E — maximum contrast */
+  line-height: 1.45;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .sp-main { padding: 1.5rem 1rem 3rem; }
+  .sp-title { font-size: 1.5rem; }
+  .sp-topbar-inner { gap: 0.25rem; }
+  .sp-cafe-hero { flex-direction: column; }
+  .sp-cafe-hero-logo { width: 60px; height: 60px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
