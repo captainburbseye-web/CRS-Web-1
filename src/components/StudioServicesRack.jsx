@@ -314,6 +314,89 @@ const Led = ({ color = 'green', on = true, pulse = false }) => (
   />
 );
 
+/* ═══════════════════════════════════════════════════════════════
+   LOCATION ROUTING — which services need a location step
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Services offered at both sites require a location pick */
+const MULTI_LOCATION_SERVICES = new Set(['recording', 'rehearsal', 'controlroom']);
+
+/* Location meta */
+const LOCATIONS = {
+  crs: {
+    id: 'crs',
+    name: 'Cowley Road',
+    address: 'Oxford OX4 1JE',
+    hash: 'cowley-road',
+    tagline: 'Recording · Control Room · Rehearsal · Workshop Café · Repairs',
+    desc: 'Primary CRS site — recording, control room, rehearsal, Workshop Café and ODRO Engineering.',
+  },
+  cricket: {
+    id: 'cricket',
+    name: 'Cricket Road',
+    address: 'Oxford OX4 3DJ',
+    hash: 'cricket-road',
+    tagline: 'Rehearsal · Control Room · Recording',
+    desc: 'Dedicated rehearsal facility with a larger live room for full band sessions.',
+  },
+};
+
+/* Per-location panel overrides for multi-site services */
+const PANEL_LOCATION_OVERRIDES = {
+  recording: {
+    crs: {
+      eyebrow: 'Recording Studio — Cowley Road',
+      title: 'Professional recording · Cowley Road',
+      body: 'Hybrid analogue–digital signal path. SSL BiG SiX, valve compression, tape integration. Live room, 3 isolation booths, three-way monitoring.',
+      specs: [
+        { k: 'Console',    v: 'SSL BiG SiX + valve compression' },
+        { k: 'Monitoring', v: 'Adam Audio · NS-10 · Genelec + sub' },
+        { k: 'Mics',       v: 'U87 · C414 · SM7B · SM58' },
+        { k: 'Rooms',      v: 'Live room + 3 isolation booths' },
+      ],
+      ctas: [{ label: 'Book Recording', href: URLS.RECORDING_BOOK, primary: true, location: 'crs' }],
+    },
+    cricket: {
+      eyebrow: 'Recording Studio — Cricket Road',
+      title: 'Professional recording · Cricket Road',
+      body: 'Full recording setup at the Cricket Road site. Larger live room, ideal for full-band tracking sessions.',
+      specs: [
+        { k: 'Console',    v: 'SSL BiG SiX + valve compression' },
+        { k: 'Monitoring', v: 'Adam Audio · NS-10 · Genelec + sub' },
+        { k: 'Mics',       v: 'U87 · C414 · SM7B · SM58' },
+        { k: 'Rooms',      v: 'Larger live room — full band tracking' },
+      ],
+      ctas: [{ label: 'Book Recording', href: URLS.CRICKET_RECORDING_BOOK, primary: true, location: 'cricket' }],
+    },
+  },
+  controlroom: {
+    crs: {
+      eyebrow: 'Control Room Hire — Cowley Road',
+      title: 'Control room · Cowley Road',
+      body: 'Mixing, tracking, writing sessions, attended playback. Hybrid signal chain — analogue warmth, digital precision. Mixes translate across three monitoring paths.',
+      specs: [
+        { k: 'Desk',       v: 'SSL BiG SiX — analogue summing + EQ' },
+        { k: 'Processing', v: 'TL Audio C1 valve · Revox preamps · Tascam 388' },
+        { k: 'Patchbay',   v: 'Ghielmetti mastering matrix' },
+        { k: 'Monitoring', v: 'Adam Audio · NS-10 · Genelec system + sub' },
+      ],
+      ctas: [{ label: 'Hire Control Room', href: URLS.CONTROL_ROOM_BOOK, primary: true, location: 'crs' }],
+    },
+    cricket: {
+      eyebrow: 'Control Room Hire — Cricket Road',
+      title: 'Control room · Cricket Road',
+      body: 'The Cricket Road control room sits directly adjacent to the larger live room — perfect for self-recording and remote session work.',
+      specs: [
+        { k: 'Desk',       v: 'SSL BiG SiX — analogue summing + EQ' },
+        { k: 'Processing', v: 'TL Audio C1 valve · Revox preamps · Tascam 388' },
+        { k: 'Patchbay',   v: 'Ghielmetti mastering matrix' },
+        { k: 'Monitoring', v: 'Adam Audio · NS-10 · Genelec system + sub' },
+      ],
+      ctas: [{ label: 'Hire Control Room', href: URLS.CRICKET_CONTROL_ROOM_BOOK, primary: true, location: 'cricket' }],
+    },
+  },
+};
+
 /* ─── Panel data ─────────────────────────────────────────── */
 const PANELS = {
   recording: {
@@ -413,6 +496,90 @@ const PAGE_ROUTES = {
   repairs:     '/repairs',
   cafe:        '/workshop-cafe',
 };
+
+/* ─── Location selector ─────────────────────────────────── */
+function LocationSelector({ serviceId, onSelect, onBack }) {
+  const [focusedId, setFocusedId] = useState(null);
+  const panel = PANELS[serviceId];
+
+  return (
+    <div
+      className="hp-loc-selector"
+      role="group"
+      aria-label={`Choose a location for ${panel?.eyebrow || serviceId}`}
+    >
+      {/* Chrome strip — same as display panel chrome */}
+      <div className="hp-display-chrome" aria-hidden="true">
+        <div className="hp-display-chrome-left">
+          <Led color="orange" on={true} />
+          <span className="hp-display-service-id">{serviceId.toUpperCase()}</span>
+          <span style={{ color: 'var(--offwhite-mute)', margin: '0 0.3rem' }}>·</span>
+          <span style={{ color: 'var(--offwhite-mute)', letterSpacing: '0.12em' }}>SELECT LOCATION</span>
+        </div>
+        <div className="hp-display-chrome-right">
+          <VuMeterPair activeId={serviceId} />
+        </div>
+      </div>
+
+      {/* Selector body */}
+      <div className="hp-loc-body">
+        <div className="hp-loc-header">
+          <p className="hp-loc-instruction">Choose your location to continue.</p>
+        </div>
+
+        <div className="hp-loc-options" role="radiogroup" aria-label="Location options">
+          {Object.values(LOCATIONS).map((loc) => (
+            <button
+              key={loc.id}
+              role="radio"
+              aria-checked={focusedId === loc.id}
+              className={[
+                'hp-loc-btn',
+                `hp-loc-btn--${loc.id}`,
+                focusedId === loc.id ? 'hp-loc-btn--focused' : '',
+              ].filter(Boolean).join(' ')}
+              onClick={() => {
+                setFocusedId(loc.id);
+                // Small delay so focus state is visible before transition
+                setTimeout(() => onSelect(loc.id), 180);
+              }}
+              aria-label={`${loc.name}, ${loc.address}`}
+            >
+              {/* Location logo badge */}
+              <div className="hp-loc-btn-logo">
+                <LocationLogo location={loc.id} size="card" />
+              </div>
+
+              {/* Location info */}
+              <div className="hp-loc-btn-body">
+                <div className="hp-loc-btn-name">{loc.name}</div>
+                <div className="hp-loc-btn-address">{loc.address}</div>
+                <div className="hp-loc-btn-desc">{loc.desc}</div>
+              </div>
+
+              {/* Hardware selector indicator */}
+              <div className="hp-loc-btn-indicator" aria-hidden="true">
+                <span className="hp-loc-btn-led" />
+                <span className="hp-loc-btn-arrow">→</span>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* Back control */}
+        <div className="hp-loc-back">
+          <button
+            className="hp-loc-back-btn"
+            onClick={onBack}
+            aria-label="Back to service list"
+          >
+            <span aria-hidden="true">←</span> Back
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 /* ─── Top action bar ──────────────────────────────────────── */
 const ActionBar = () => (
@@ -519,6 +686,42 @@ const CafePanel = ({ panel, animate }) => (
   </div>
 );
 
+/* ─── Rehearsal single-location panel ────────────────────── */
+const RehearsalSinglePanel = ({ panel, loc }) => (
+  <div className="hp-panel-body hp-panel-body--rehearsal" role="tabpanel" id="panel-rehearsal">
+    <div className="hp-panel-header">
+      <span className="hp-panel-eyebrow">{panel.eyebrow} — {loc.name}</span>
+      <h2 className="hp-panel-title">{loc.name} Rehearsal Room</h2>
+      <p className="hp-panel-desc">
+        {loc.location === 'crs'
+          ? 'Cowley Road rehearsal room — ideal for small bands and duo sessions up to 4 players.'
+          : 'Cricket Road rehearsal facility — the larger room for full band sessions up to 8 players. Includes Yamaha grand piano.'}
+      </p>
+    </div>
+    <div className="hp-rehearsal-split hp-rehearsal-split--single">
+      <div className={`hp-rehearsal-card hp-rehearsal-card--${loc.location}`}>
+        <div className="hp-rehearsal-card-head">
+          <LocationLogo location={loc.location} size="card" />
+          <div>
+            <div className="hp-rehearsal-name">{loc.name}</div>
+            <div className="hp-rehearsal-post">{loc.post}</div>
+          </div>
+        </div>
+        <ul className="hp-rehearsal-specs">
+          {loc.specs.map(s => <li key={s}>{s}</li>)}
+        </ul>
+        <CtaButton label={loc.cta.label} href={loc.cta.href} primary={true} location={loc.location} />
+      </div>
+    </div>
+    <div className="hp-panel-ctas" style={{ marginTop: '1rem' }}>
+      <a href="/rehearsal" className="hp-cta hp-cta--page-link">
+        <span>Full details</span>
+        <span className="hp-cta-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+);
+
 /* ─── Rehearsal panel ─────────────────────────────────────── */
 const RehearsalPanel = ({ panel }) => (
   <div className="hp-panel-body hp-panel-body--rehearsal" role="tabpanel" id="panel-rehearsal">
@@ -577,14 +780,24 @@ const StandardPanel = ({ panel }) => (
 );
 
 /* ─── Display panel (chrome strip + content) ──────────────── */
-const DisplayPanel = ({ activeId, animate }) => {
-  const panel = PANELS[activeId];
-  if (!panel) return null;
-  const isCafe = panel.theme === 'warm';
+const DisplayPanel = ({ activeId, locationId, animate, onBack }) => {
+  const basePanel = PANELS[activeId];
+  if (!basePanel) return null;
+  const isCafe = basePanel.theme === 'warm';
+
+  // Merge location-specific overrides if a location is selected
+  const overrides = locationId && PANEL_LOCATION_OVERRIDES[activeId]?.[locationId];
+  const panel = overrides ? { ...basePanel, ...overrides } : basePanel;
+
+  // For rehearsal with a location, render a focused single-location card
+  const isRehearsalLocated = activeId === 'rehearsal' && locationId;
+  const rehearsalLoc = isRehearsalLocated
+    ? basePanel.locations?.find(l => l.location === locationId)
+    : null;
 
   return (
     <div
-      key={activeId}
+      key={`${activeId}-${locationId}`}
       className={[
         'hp-display-panel',
         `hp-display-panel--${panel.theme}`,
@@ -597,15 +810,38 @@ const DisplayPanel = ({ activeId, animate }) => {
           <div className="hp-display-chrome-left">
             <Led color="orange" on={true} />
             <span className="hp-display-service-id">{panel.id.toUpperCase()}</span>
+            {locationId && (
+              <>
+                <span style={{ color: 'var(--offwhite-mute)', margin: '0 0.3rem' }}>·</span>
+                <span style={{ color: 'var(--mustard)', letterSpacing: '0.14em' }}>
+                  {LOCATIONS[locationId]?.name.toUpperCase()}
+                </span>
+              </>
+            )}
           </div>
           <div className="hp-display-chrome-right">
-            {/* Live signal meters in panel chrome */}
             <VuMeterPair activeId={activeId} />
           </div>
         </div>
       )}
+
+      {/* Location back nav for multi-site services */}
+      {locationId && !isCafe && (
+        <div className="hp-panel-location-nav">
+          <button className="hp-panel-back-btn" onClick={onBack} aria-label="Change location">
+            <span aria-hidden="true">←</span> Change location
+          </button>
+          <div className="hp-panel-location-badge">
+            <LocationLogo location={locationId} size="btn" />
+            <span>{LOCATIONS[locationId]?.name} · {LOCATIONS[locationId]?.address}</span>
+          </div>
+        </div>
+      )}
+
       {isCafe ? (
         <CafePanel panel={panel} animate={animate} />
+      ) : isRehearsalLocated && rehearsalLoc ? (
+        <RehearsalSinglePanel panel={basePanel} loc={rehearsalLoc} />
       ) : panel.id === 'rehearsal' ? (
         <RehearsalPanel panel={panel} />
       ) : (
@@ -833,9 +1069,11 @@ const SeoText = () => (
    ROOT — manages active state + drives signal engine
    ═══════════════════════════════════════════════════════════════ */
 export default function StudioServicesRack() {
-  const [activeId, setActiveId] = useState(null);
-  const [animate,  setAnimate]  = useState(false);
-  const [powered,  setPowered]  = useState(false);
+  const [activeId,    setActiveId]    = useState(null);
+  const [locationId,  setLocationId]  = useState(null);  // null | 'crs' | 'cricket'
+  const [showLocPick, setShowLocPick] = useState(false);  // location-selector layer visible
+  const [animate,     setAnimate]     = useState(false);
+  const [powered,     setPowered]     = useState(false);
 
   /* Power-on LED sweep — runs once on mount */
   useEffect(() => {
@@ -843,20 +1081,116 @@ export default function StudioServicesRack() {
     return () => clearTimeout(t);
   }, []);
 
+  /* Deep-link: read URL hash on mount to pre-select service + location */
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (!hash) return;
+    // Pattern: #<service>  or  #<service>-cowley-road / #<service>-cricket-road
+    const locMap = { 'cowley-road': 'crs', 'cricket-road': 'cricket' };
+    for (const [locHash, locId] of Object.entries(locMap)) {
+      for (const svcId of NAV_ORDER) {
+        if (hash === `${svcId}-${locHash}`) {
+          setActiveId(svcId);
+          setLocationId(locId);
+          getEngine().setPreset(svcId);
+          return;
+        }
+      }
+    }
+    if (PANELS[hash]) {
+      setActiveId(hash);
+      if (MULTI_LOCATION_SERVICES.has(hash)) setShowLocPick(true);
+      getEngine().setPreset(hash);
+    }
+  }, []);
+
+  /* Update URL hash to support deep linking */
+  const pushHash = useCallback((svcId, locId) => {
+    if (!svcId) { history.replaceState(null, '', window.location.pathname); return; }
+    const locHash = locId === 'crs' ? 'cowley-road' : locId === 'cricket' ? 'cricket-road' : null;
+    const hash = locHash ? `${svcId}-${locHash}` : svcId;
+    history.replaceState(null, '', `#${hash}`);
+  }, []);
+
+  /* Service button press */
   const handleSelect = useCallback((id) => {
     const next = activeId === id ? null : id;
-    setActiveId(next);
 
-    /* Drive signal engine to new preset — causal: interaction → meter */
-    getEngine().setPreset(next || 'idle');
-
-    if (next) {
-      setAnimate(true);
-      setTimeout(() => setAnimate(false), 500);
+    if (!next) {
+      // Deselect — return to idle
+      setActiveId(null);
+      setLocationId(null);
+      setShowLocPick(false);
+      getEngine().setPreset('idle');
+      pushHash(null, null);
+      return;
     }
-  }, [activeId]);
+
+    setActiveId(next);
+    getEngine().setPreset(next);
+
+    if (MULTI_LOCATION_SERVICES.has(next)) {
+      // Multi-site service → show location picker
+      setLocationId(null);
+      setShowLocPick(true);
+      pushHash(next, null);
+    } else {
+      // Single-site → go straight to panel
+      setLocationId(null);
+      setShowLocPick(false);
+      pushHash(next, null);
+    }
+
+    setAnimate(true);
+    setTimeout(() => setAnimate(false), 500);
+  }, [activeId, pushHash]);
+
+  /* Location button press */
+  const handleLocationSelect = useCallback((locId) => {
+    setLocationId(locId);
+    setShowLocPick(false);
+    setAnimate(true);
+    setTimeout(() => setAnimate(false), 500);
+    pushHash(activeId, locId);
+  }, [activeId, pushHash]);
+
+  /* Back from location picker → deselect service */
+  const handleLocBack = useCallback(() => {
+    setActiveId(null);
+    setLocationId(null);
+    setShowLocPick(false);
+    getEngine().setPreset('idle');
+    pushHash(null, null);
+  }, [pushHash]);
+
+  /* Back from service panel → back to location picker */
+  const handlePanelBack = useCallback(() => {
+    setLocationId(null);
+    setShowLocPick(true);
+    pushHash(activeId, null);
+  }, [activeId, pushHash]);
 
   const isCafe = activeId === 'cafe';
+
+  /* What to show in the screen slot */
+  const screenContent = (() => {
+    if (!activeId) return <IdleState />;
+    if (showLocPick) return (
+      <LocationSelector
+        serviceId={activeId}
+        onSelect={handleLocationSelect}
+        onBack={handleLocBack}
+      />
+    );
+    return (
+      <DisplayPanel
+        activeId={activeId}
+        locationId={locationId}
+        animate={animate}
+        onBack={MULTI_LOCATION_SERVICES.has(activeId) ? handlePanelBack : null}
+      />
+    );
+  })();
 
   return (
     <main className={[
@@ -879,11 +1213,7 @@ export default function StudioServicesRack() {
 
           {/* 3U — SCREEN */}
           <div className="hp-screen">
-            {activeId ? (
-              <DisplayPanel activeId={activeId} animate={animate} />
-            ) : (
-              <IdleState />
-            )}
+            {screenContent}
           </div>
 
           {/* 2U — CONTROLS — physical button panel */}

@@ -953,6 +953,268 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 
 /* ============================================================
+   LOCATION SELECTOR — hardware-style intermediate layer
+   Appears between service selection and service detail.
+   Matches rack panel language: dark surface, monospaced labels,
+   mustard/nettle accent system, physical button feel.
+   ============================================================ */
+.hp-loc-selector {
+  display: flex;
+  flex-direction: column;
+  background: var(--nettle);
+  animation: panel-enter 0.28s ease-out both;
+}
+
+/* Instruction header */
+.hp-loc-body {
+  padding: 1.5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hp-loc-header { display: flex; flex-direction: column; gap: 0.25rem; }
+
+.hp-loc-instruction {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--offwhite-mute);
+  margin: 0;
+}
+
+/* Location option buttons — hardware selector pads */
+.hp-loc-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+@media (max-width: 560px) {
+  .hp-loc-options { grid-template-columns: 1fr; }
+}
+
+.hp-loc-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.1rem 1.1rem 1.1rem 1rem;
+  background: var(--nettle-deep);
+  border: 1px solid var(--nettle-lift);
+  border-top: 2px solid var(--nettle-lift);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s, transform 0.08s;
+  position: relative;
+  /* Physical button depth shadow */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.04),
+    0 2px 6px rgba(0,0,0,0.45),
+    0 1px 2px rgba(0,0,0,0.35);
+}
+.hp-loc-btn:hover {
+  background: var(--nettle-mid);
+  border-color: var(--mustard);
+  border-top-color: var(--mustard-hi);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06),
+    0 0 0 1px rgba(194,164,58,0.18),
+    0 4px 14px rgba(0,0,0,0.5),
+    0 0 18px rgba(194,164,58,0.12);
+  transform: translateY(-1px);
+}
+.hp-loc-btn:active,
+.hp-loc-btn--focused {
+  transform: translateY(0);
+  background: var(--nettle-mid);
+  border-color: var(--mustard-hi);
+  box-shadow:
+    inset 0 2px 6px rgba(0,0,0,0.4),
+    0 1px 3px rgba(0,0,0,0.5);
+}
+
+/* CRS site — mustard top accent */
+.hp-loc-btn--crs {
+  border-top-color: var(--mustard);
+}
+.hp-loc-btn--crs:hover,
+.hp-loc-btn--crs.hp-loc-btn--focused {
+  border-top-color: var(--mustard-hi);
+}
+
+/* Cricket Road — nettle-green top accent */
+.hp-loc-btn--cricket {
+  border-top-color: var(--nettle-lift);
+}
+.hp-loc-btn--cricket:hover,
+.hp-loc-btn--cricket.hp-loc-btn--focused {
+  border-top-color: #5A7A5A;
+}
+
+/* Logo badge slot */
+.hp-loc-btn-logo {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* Text block */
+.hp-loc-btn-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  min-width: 0;
+}
+
+.hp-loc-btn-name {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--offwhite);
+  line-height: 1.2;
+}
+
+.hp-loc-btn-address {
+  font-family: var(--font-mono);
+  font-size: 0.60rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--mustard);
+  opacity: 0.80;
+}
+
+.hp-loc-btn-desc {
+  font-size: 0.82rem;
+  color: var(--offwhite-dim);
+  line-height: 1.55;
+  margin-top: 0.3rem;
+}
+
+/* Hardware indicator: LED + arrow */
+.hp-loc-btn-indicator {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.1rem 0;
+  min-height: 2.5rem;
+}
+
+.hp-loc-btn-led {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--nettle-lift);
+  box-shadow: 0 0 4px rgba(0,0,0,0.5);
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.hp-loc-btn:hover .hp-loc-btn-led,
+.hp-loc-btn--focused .hp-loc-btn-led {
+  background: var(--mustard);
+  box-shadow: 0 0 8px var(--mustard-glow), 0 0 3px var(--mustard);
+}
+
+.hp-loc-btn-arrow {
+  font-family: var(--font-mono);
+  font-size: 0.80rem;
+  color: var(--offwhite-mute);
+  transition: color 0.12s, transform 0.12s;
+}
+.hp-loc-btn:hover .hp-loc-btn-arrow,
+.hp-loc-btn--focused .hp-loc-btn-arrow {
+  color: var(--mustard);
+  transform: translateX(3px);
+}
+
+/* Back button — quiet ghost control */
+.hp-loc-back {
+  display: flex;
+  align-items: center;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--nettle-border);
+}
+
+.hp-loc-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: none;
+  color: var(--offwhite-mute);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.3rem 0;
+  transition: color 0.12s;
+}
+.hp-loc-back-btn:hover { color: var(--offwhite); }
+
+/* ── Location nav strip inside service panel ── */
+.hp-panel-location-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 1.25rem;
+  background: var(--nettle-deep);
+  border-bottom: 1px solid var(--nettle-border);
+  flex-wrap: wrap;
+}
+
+.hp-panel-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1px solid var(--nettle-border);
+  color: var(--offwhite-mute);
+  font-family: var(--font-mono);
+  font-size: 0.60rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.28rem 0.65rem;
+  border-radius: var(--r);
+  transition: color 0.12s, border-color 0.12s;
+}
+.hp-panel-back-btn:hover {
+  color: var(--offwhite);
+  border-color: var(--mustard);
+}
+
+.hp-panel-location-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.60rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mustard);
+  opacity: 0.85;
+}
+
+/* Single-location rehearsal layout */
+.hp-rehearsal-split--single {
+  grid-template-columns: 1fr;
+  max-width: 380px;
+}
+
+/* Mobile loc body padding */
+@media (max-width: 640px) {
+  .hp-loc-body { padding: 1.2rem 1rem 1.5rem; }
+  .hp-panel-location-nav { padding: 0.5rem 0.75rem; }
+}
+
+/* ============================================================
    REHEARSAL PANEL — two-location cards
    ============================================================ */
 .hp-panel-body--rehearsal { gap: 1.2rem; }
