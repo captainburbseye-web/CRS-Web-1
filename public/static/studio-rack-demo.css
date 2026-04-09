@@ -183,8 +183,17 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 .hp-identity-sep { opacity: 0.35; }
 
-.hp-identity-status {
+/* Right-side cluster: CRS Active + Contact stacked */
+.hp-identity-right {
   margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.28rem;
+  flex-shrink: 0;
+}
+
+.hp-identity-status {
   display: flex;
   align-items: center;
   gap: 0.38rem;
@@ -193,6 +202,23 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   letter-spacing: 0.10em;
   text-transform: uppercase;
   color: rgba(244,241,232,0.62);
+}
+
+/* Contact link — sits directly below CRS ACTIVE */
+.hp-identity-contact {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(244,241,232,0.42);
+  border-bottom: 1px solid rgba(244,241,232,0.18);
+  padding-bottom: 1px;
+  transition: color 0.12s, border-color 0.12s;
+  white-space: nowrap;
+}
+.hp-identity-contact:hover {
+  color: rgba(244,241,232,0.85);
+  border-color: rgba(194,164,58,0.55);
 }
 
 /* ============================================================
@@ -1518,20 +1544,92 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   background: #2a2a2a;
 }
 
-/* Button grid */
-.hp-controls-buttons {
+/* ── Unified column grid: each col = mini-CTA header + rack button ── */
+.hp-controls-columns {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);  /* 5 buttons evenly spread */
+  grid-template-columns: repeat(5, 1fr);
   gap: 3px;
-  padding: 1.25rem 1.5rem 1.5rem;
+  padding: 0 1.5rem 1.5rem;
   background: transparent;
 }
 
 @media (max-width: 720px) {
-  .hp-controls-buttons { grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .hp-controls-columns { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 0 0.75rem 1.25rem; }
 }
 @media (max-width: 420px) {
-  .hp-controls-buttons { grid-template-columns: repeat(2, 1fr); gap: 2px; }
+  .hp-controls-columns { grid-template-columns: repeat(2, 1fr); gap: 2px; padding: 0 0.5rem 1rem; }
+}
+
+/* One column = header slot + button, stacked */
+.hp-controls-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Header slot — contains the mini CTA */
+.hp-controls-col-header {
+  display: flex;
+  align-items: stretch;
+  padding: 0.6rem 0 0.35rem;
+}
+
+/* Mini CTA button — header mirror of the large rack button below */
+.hp-mini-cta {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.38rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  background: #141414;
+  color: rgba(200,176,64,0.72);     /* mustard-tinted, quiet */
+  border: 1px solid #3a3010;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: color 0.10s, border-color 0.10s, background 0.10s;
+  /* Subtle bottom connector line pointing down to button */
+  position: relative;
+}
+.hp-mini-cta::after {
+  content: '';
+  position: absolute;
+  bottom: -0.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 0.35rem;
+  background: rgba(200,176,64,0.20);
+}
+.hp-mini-cta:hover {
+  color: #FFEBB0;
+  border-color: #C9A227;
+  background: #1a1606;
+}
+/* Active state — mirrors the active rack button (green) */
+.hp-mini-cta.hp-mini-cta--active {
+  color: #5FFF6A;
+  border-color: #2ECC40;
+  background: #041004;
+}
+
+/* Empty placeholder keeps column header height consistent */
+.hp-mini-cta-empty {
+  flex: 1;
+  height: 100%;
+  min-height: 28px;
+}
+
+@media (max-width: 720px) {
+  .hp-controls-col-header { padding: 0.45rem 0 0.28rem; }
+  .hp-mini-cta { font-size: 0.52rem; padding: 0.28rem 0.3rem; letter-spacing: 0.05em; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -1882,11 +1980,13 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    MOBILE POLISH
    ============================================================ */
 @media (max-width: 640px) {
-  .hp-action-bar-inner { gap: 0.28rem; }
-  .hp-action-btn { font-size: 0.62rem; padding: 0.27rem 0.58rem; }
-
   .hp-machine { padding: 0; }
   .hp-machine-inner { padding: 0; }
+
+  /* Identity rail: stack address on small screens */
+  .hp-identity-rail { flex-wrap: wrap; gap: 0.6rem; padding: 0.5rem 0.75rem; }
+  .hp-identity-address { font-size: 0.56rem; }
+  .hp-identity-contact { font-size: 0.54rem; }
 
   /* Screen shrinks to fit content on mobile — no forced min-height */
   .hp-screen { min-height: 0; }
