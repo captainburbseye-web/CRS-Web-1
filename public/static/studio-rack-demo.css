@@ -498,18 +498,23 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    ============================================================ */
 .hp-screen {
   overflow: hidden;
-  min-height: 340px;
+  /* No min-height — shrinks to fit content (sign + display fill the slot) */
   background: var(--nettle);
   position: relative;
   /* 3D module edges */
   background-color: #000000;
-  border-top: 2px solid #3a3a3a;       /* Overhead light catch */
-  border-bottom: 3px solid #000;       /* Heavy bottom shadow */
+  border-top: 2px solid #3a3a3a;
+  border-bottom: 3px solid #000;
   box-shadow:
     inset 0 8px 10px rgba(255,255,255,0.02),
     0 6px 10px rgba(0,0,0,0.4),
     inset 0 0 38px rgba(0,0,0,0.38);
   transition: border-color 0.5s ease, background 0.5s ease;
+}
+
+/* When a service panel is open (powered + active), give the screen room */
+.hp-page--powered .hp-screen:has(.hp-display-panel) {
+  min-height: 340px;
 }
 
 /* Screen shifts toward warm when café is active */
@@ -525,9 +530,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    IDLE STATE — rack-mounted display layout
    ═══════════════════════════════════════════════════════════════ */
 
-/* Module background: rack aperture slot */
+/* Module background: transparent — nothing bleeds behind sign/display */
 .hp-idle {
-  background: #000000;
+  background: transparent;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -543,16 +548,11 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;  /* No padding — sign fills slot completely */
-  margin: 0 -45px;  /* Extend over rails (45px = rail width on mobile) */
-  background: #0a0a0a;  /* Subtle aperture recess */
+  padding: 0;
+  margin: 0 -45px;
+  background: transparent;  /* No background — sign image is self-contained */
   position: relative;
-  z-index: 60;  /* Sits ABOVE rails (rails are z-index 50) */
-  /* Chassis depth shadow */
-  box-shadow: 
-    inset 0 3px 8px rgba(0,0,0,0.9),
-    inset 0 -2px 6px rgba(0,0,0,0.7),
-    inset 0 0 20px rgba(0,0,0,0.6);
+  z-index: 60;
 }
 /* Rail widths by breakpoint:
    ≤640px mobile: rail = 28px  → margin -28px
@@ -1916,8 +1916,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   .hp-identity-address { font-size: 0.56rem; }
   .hp-identity-contact { font-size: 0.54rem; }
 
-  /* Screen shrinks to fit content on mobile — no forced min-height */
-  .hp-screen { min-height: 0; }
+  /* Screen shrinks to fit content — no min-height set */
 
   .hp-panel-body { padding: 1.2rem 1rem 1.5rem; gap: 1.2rem; }
   .hp-specs { grid-template-columns: 1fr; }
