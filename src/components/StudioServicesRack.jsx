@@ -987,17 +987,8 @@ function AnalogueDialPair() {
 /* ─── Idle / hero state ───────────────────────────────────── */
 const IdleState = () => (
   <div className="hp-idle" aria-label="Cowley Road Studios — select a service">
-    
-    {/* Top faceplate — rack-mounted sign with integrated VU meters */}
-    <div className="hp-idle-faceplate">
-      <img
-        src="/assets/crs-rack-sign.png"
-        alt="Cowley Road Studios"
-        className="hp-idle-sign"
-      />
-    </div>
 
-    {/* Rack-mounted display module — system node descriptor */}
+    {/* Display module sits at the top — fills the black gap above the sign */}
     <div className="hp-idle-display">
       <div className="hp-idle-lcd">
         <div className="hp-display-line hp-display-line--location">
@@ -1010,6 +1001,15 @@ const IdleState = () => (
           AV / TECHNICAL SERVICES
         </div>
       </div>
+    </div>
+
+    {/* Sign faceplate — rack-mounted, sits below the display */}
+    <div className="hp-idle-faceplate">
+      <img
+        src="/assets/crs-rack-sign.png"
+        alt="Cowley Road Studios"
+        className="hp-idle-sign"
+      />
     </div>
 
   </div>

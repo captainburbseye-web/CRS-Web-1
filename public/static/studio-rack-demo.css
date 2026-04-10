@@ -585,25 +585,25 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    Compressed height, fitted bezel, smoked glass, scanlines
    ═══════════════════════════════════════════════════════════════ */
 .hp-idle-display {
-  /* Shallow fitted display module — 40% height reduction */
+  /* Shallow fitted display module — top of idle stack */
   padding: 0;
   margin: 0 -45px;  /* Extend over rails like sign module */
   background: 
-    linear-gradient(180deg, #0a0a0a 0%, #121212 50%, #0a0a0a 100%);  /* Smoked glass gradient */
+    linear-gradient(180deg, #0a0a0a 0%, #121212 50%, #0a0a0a 100%);
   position: relative;
-  z-index: 60;  /* Same layer as sign */
-  /* Visible bezel frame — fitted monitor panel */
+  z-index: 60;
+  /* Bezel: heavier top edge (overhead light catch), lighter bottom (connects to sign) */
   border: 4px solid #1a1a1a;
-  border-top-width: 6px;
-  border-bottom-width: 8px;
+  border-top-width: 8px;
+  border-bottom-width: 4px;
   border-radius: 2px;
-  /* Deeply recessed screen + edge vignette */
+  /* Recessed screen — inset shadow heavier at top */
   box-shadow: 
     inset 0 0 40px rgba(0,0,0,0.95),
-    inset 0 8px 20px rgba(0,0,0,0.9),
-    inset 0 -6px 15px rgba(0,0,0,0.85),
-    0 3px 0 rgba(0,0,0,0.9),
-    0 1px 0 rgba(255,255,255,0.04);
+    inset 0 10px 22px rgba(0,0,0,0.9),
+    inset 0 -4px 10px rgba(0,0,0,0.70),
+    0 -2px 0 rgba(255,255,255,0.03),
+    0 3px 0 rgba(0,0,0,0.6);
   overflow: hidden;
 }
 /* Rail widths by breakpoint:
