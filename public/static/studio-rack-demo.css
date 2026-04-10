@@ -488,9 +488,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;           /* Tighter gaps — modules sit flush */
-  background-color: #000;  /* Dark void behind gear */
-  padding: 0;         /* No top/bottom padding — tight rack mounting */
+  gap: 0;              /* Zero gap — modules sit flush, no black lines */
+  background-color: #000;
+  padding: 0;
 }
 
 /* ============================================================
@@ -499,10 +499,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 .hp-screen {
   overflow: hidden;
   /* No min-height — shrinks to fit content (sign + display fill the slot) */
-  background: var(--nettle);
+  background: transparent;  /* transparent when idle so no black bleed */
   position: relative;
-  /* 3D module edges */
-  background-color: #000000;
   border-top: 2px solid #3a3a3a;
   border-bottom: 3px solid #000;
   box-shadow:
@@ -512,9 +510,11 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   transition: border-color 0.5s ease, background 0.5s ease;
 }
 
-/* When a service panel is open (powered + active), give the screen room */
-.hp-page--powered .hp-screen:has(.hp-display-panel) {
+/* When a service panel is open (powered + active), give the screen room + dark bg */
+.hp-page--powered .hp-screen:has(.hp-display-panel),
+.hp-page--powered .hp-screen:has(.hp-loc-selector) {
   min-height: 340px;
+  background-color: #000000;
 }
 
 /* Screen shifts toward warm when café is active */
@@ -575,7 +575,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   max-width: 100%;  /* Full rack width */
   width: 100%;
   height: auto;
-  object-fit: contain;
+  /* object-fit: fill so the cropped PNG fills exactly the slot with no letterboxing */
+  object-fit: fill;
+  vertical-align: top;   /* kill the inline 4px gap browsers add below images */
   /* Subtle mounting shadow — feels bolted in */
   filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.8));
 }
