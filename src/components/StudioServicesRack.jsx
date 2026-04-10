@@ -581,7 +581,42 @@ function LocationSelector({ serviceId, onSelect, onBack }) {
   );
 }
 
-/* ─── (ActionBar removed — CTAs now live above each rack button) ─── */
+/* ─── Quick-bar CTA labels (same order as NAV_ORDER) ────────── */
+const QUICK_LABELS = {
+  recording:   'Book Recording',
+  rehearsal:   'Book Rehearsal',
+  controlroom: 'Hire Control Room',
+  repairs:     'Request Repair',
+  cafe:        'Venue Enquiries',
+};
+
+/* ─── Quick-access bar — top row, same grid as button bank ─── */
+/* Each button is a column-aligned mirror of its large rack button below.
+   Clicking triggers the identical handleSelect(id) flow. */
+const QuickBar = ({ active, onSelect }) => (
+  <nav className="hp-action-bar" aria-label="Quick booking">
+    <div className="hp-action-bar-grid">
+      {NAV_ORDER.map((id) => {
+        const isActive = active === id;
+        return (
+          <button
+            key={id}
+            className={[
+              'hp-action-btn',
+              'hp-action-btn--primary',
+              isActive ? 'hp-action-btn--active' : '',
+            ].filter(Boolean).join(' ')}
+            onClick={() => onSelect(id)}
+            aria-label={`${QUICK_LABELS[id]} — opens service panel`}
+            aria-pressed={isActive}
+          >
+            {QUICK_LABELS[id]}
+          </button>
+        );
+      })}
+    </div>
+  </nav>
+);
 
 /* ─── Identity rail ───────────────────────────────────────── */
 const IdentityRail = () => (
@@ -980,60 +1015,25 @@ const IdleState = () => (
   </div>
 );
 
-/* ─── Per-service mini CTA config (mirrors the large buttons) ─── */
-/* Maps each NAV_ORDER id → the quick-access label shown above the button.
-   These trigger the same handleSelect() flow — no separate logic. */
-const MINI_CTA_LABELS = {
-  recording:   'Book Recording',
-  rehearsal:   'Book Rehearsal',
-  controlroom: 'Hire Control Room',
-  repairs:     null,               // no mini CTA — repairs is enquiry-only
-  cafe:        'Venue Enquiries',
-};
-
 /* ─── Hardware service controls ───────────────────────────── */
 const ServiceControls = ({ active, onSelect }) => (
   <div className="hp-controls" aria-label="Service selector" role="tablist">
     <div className="hp-controls-rail" aria-hidden="true" />
-
-    {/* Unified grid: each column = [mini-cta header] + [rack button] */}
-    <div className="hp-controls-columns">
+    <div className="hp-controls-buttons">
       {NAV_ORDER.map((id) => {
-        const p       = PANELS[id];
-        const miniCta = MINI_CTA_LABELS[id];
-        const isActive = active === id;
+        const p = PANELS[id];
         return (
-          <div key={id} className={['hp-controls-col', isActive ? 'hp-controls-col--active' : ''].filter(Boolean).join(' ')}>
-            {/* Mini CTA — sits directly above the matching rack button */}
-            <div className="hp-controls-col-header">
-              {miniCta ? (
-                <button
-                  className={['hp-mini-cta', isActive ? 'hp-mini-cta--active' : ''].filter(Boolean).join(' ')}
-                  onClick={() => onSelect(id)}
-                  aria-label={`${miniCta} — opens service panel`}
-                  tabIndex={0}
-                >
-                  {miniCta}
-                </button>
-              ) : (
-                /* Repairs: no quick CTA — empty placeholder keeps grid alignment */
-                <div className="hp-mini-cta-empty" aria-hidden="true" />
-              )}
-            </div>
-
-            {/* Large rack button */}
-            <RackButton
-              id={id}
-              label={p.label}
-              isActive={isActive}
-              isCafe={id === 'cafe'}
-              onSelect={onSelect}
-            />
-          </div>
+          <RackButton
+            key={id}
+            id={id}
+            label={p.label}
+            isActive={active === id}
+            isCafe={id === 'cafe'}
+            onSelect={onSelect}
+          />
         );
       })}
     </div>
-
     <div className="hp-controls-status" aria-hidden="true">
       <Led color="green" on={true} pulse={true} />
       <span>ONLINE</span>
@@ -1235,6 +1235,9 @@ export default function StudioServicesRack() {
         <div className="hp-machine-inner">
           {/* 1U — Identity module (CRS logo + addresses + Contact) */}
           <IdentityRail />
+
+          {/* 1U — Quick-access bar: column-aligned mirrors of the rack buttons below */}
+          <QuickBar active={activeId} onSelect={handleSelect} />
 
           {/* 3U — SCREEN */}
           <div className="hp-screen">
