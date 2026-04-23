@@ -581,6 +581,46 @@ function LocationSelector({ serviceId, onSelect, onBack }) {
   );
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   PATCHBAY NAV — top-of-page hardware navigation strip
+   Five lamp+label links. No jargon in visible text.
+   ═══════════════════════════════════════════════════════════════ */
+const PatchBayNav = ({ activeService, onSelect }) => {
+  const links = [
+    { id: 'home',      label: 'Home',          href: URLS.HOME,      external: false },
+    { id: 'recording', label: 'Room Hire',      href: null,           external: false },
+    { id: 'cafe',      label: 'Workshop Café',  href: null,           external: false },
+    { id: 'repairs',   label: 'ODRO Repairs',   href: null,           external: false },
+    { id: 'contact',   label: 'Contact',        href: URLS.CONTACT,   external: false },
+  ];
+  return (
+    <header className="crs-patchbay" role="banner">
+      <nav className="crs-patchbay-nav" aria-label="Site navigation">
+        {links.map(({ id, label, href, external }) => {
+          const isActive = activeService === id;
+          const handleClick = (!href && id !== 'home' && id !== 'contact')
+            ? (e) => { e.preventDefault(); onSelect(id); }
+            : undefined;
+          return (
+            <a
+              key={id}
+              href={href || '#'}
+              onClick={handleClick}
+              className={['crs-patchbay-link', isActive ? 'crs-patchbay-link--active' : ''].filter(Boolean).join(' ')}
+              aria-current={isActive ? 'page' : undefined}
+              target={external ? '_blank' : undefined}
+              rel={external ? 'noopener noreferrer' : undefined}
+            >
+              <span className={['crs-patchbay-lamp', isActive ? 'crs-patchbay-lamp--on' : ''].filter(Boolean).join(' ')} aria-hidden="true" />
+              <span className="crs-patchbay-label">{label}</span>
+            </a>
+          );
+        })}
+      </nav>
+    </header>
+  );
+};
+
 /* ─── Quick-bar CTA labels (same order as NAV_ORDER) ────────── */
 const QUICK_LABELS = {
   recording:   'Book Recording',
@@ -988,12 +1028,10 @@ function AnalogueDialPair() {
 const IdleState = () => (
   <div className="hp-idle" aria-label="Cowley Road Studios — select a service">
 
-    {/* Display module sits at the top — fills the black gap above the sign */}
+    {/* LCD status bar — tight block, no wrapper padding */}
     <div className="hp-idle-display">
       <div className="hp-idle-lcd">
-        <div className="hp-display-line hp-display-line--location">
-          OXFORD
-        </div>
+        <div className="hp-display-line hp-display-line--location">OXFORD</div>
         <div className="hp-display-line hp-display-line--primary">
           RECORDING · REHEARSAL · PRODUCTION · VENUE
         </div>
@@ -1003,14 +1041,12 @@ const IdleState = () => (
       </div>
     </div>
 
-    {/* Sign faceplate — rack-mounted, sits below the display */}
-    <div className="hp-idle-faceplate">
-      <img
-        src="/assets/crs-rack-sign.png"
-        alt="Cowley Road Studios"
-        className="hp-idle-sign"
-      />
-    </div>
+    {/* Sign — direct block, no flex wrapper so no vertical centring gap */}
+    <img
+      src="/assets/crs-rack-sign.png"
+      alt="Cowley Road Studios"
+      className="hp-idle-sign"
+    />
 
   </div>
 );
@@ -1226,6 +1262,9 @@ export default function StudioServicesRack() {
       isCafe    ? 'hp-page--cafe'    : '',
       powered   ? 'hp-page--powered' : '',
     ].filter(Boolean).join(' ')}>
+
+      {/* PATCHBAY — top site navigation */}
+      <PatchBayNav activeService={activeId} onSelect={handleSelect} />
 
       {/* RACK CHASSIS — physical 19" hardware frame */}
       <section className="hp-machine" aria-label="Service display">
