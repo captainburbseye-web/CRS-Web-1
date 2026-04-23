@@ -5,12 +5,19 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 const URLS = {
   HOME:                      '/',
   CONTACT:                   '/contact',
+  // Recording studio bookings
   RECORDING_BOOK:            'https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX',
   CRICKET_RECORDING_BOOK:    'https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX',
+  // Rehearsal bookings
   REHEARSAL_BOOK:            'https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX',
   CRICKET_REHEARSAL_BOOK:    'https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX',
+  // Control room hire (full production studio with engineer)
   CONTROL_ROOM_BOOK:         'https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX',
   CRICKET_CONTROL_ROOM_BOOK: 'https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX',
+  // Room hire — dry hire / plug & play
+  BIG_BOOTH_BOOK:            'https://app.squareup.com/appointments/buyer/widget/se7rvqsvhnnirj/L1MAM4DDPHKXX',
+  SMALL_BOOTH_BOOK:          'https://app.squareup.com/appointments/buyer/widget/6had3muutdo7io/L1MAM4DDPHKXX',
+  // Enquiries
   ENQUIRE_WORKSHOP:          '/contact?service=venue',
   ENQUIRE_ODRO:              '/contact?service=repairs',
   MAP:                       'https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE',
@@ -43,6 +50,11 @@ const SIGNAL_PRESETS = {
     L: { target: 0.80, floor: 0.06 },
     R: { target: 0.78, floor: 0.06 },
     master: { target: 0.72, floor: 0.06 },
+  },
+  roomhire: {
+    L: { target: 0.58, floor: 0.05 },
+    R: { target: 0.55, floor: 0.04 },
+    master: { target: 0.52, floor: 0.05 },
   },
   repairs: {
     L: { target: 0.35, floor: 0.04 },
@@ -320,6 +332,51 @@ const Led = ({ color = 'green', on = true, pulse = false }) => (
 
 /* Services offered at both sites require a location pick */
 const MULTI_LOCATION_SERVICES = new Set(['recording', 'rehearsal', 'controlroom']);
+/* roomhire sub-room state: null | 'controlroom' | 'bigbooth' | 'smallbooth' */
+const ROOM_HIRE_ROOMS = [
+  {
+    id: 'controlroom',
+    label: 'Control Room',
+    tag: 'Full production studio',
+    desc: 'Full production control room with engineer desk, SSL BiG SiX console, and three-way monitoring. Ideal for mixing, mastering and attended production sessions.',
+    specs: [
+      'SSL BiG SiX analogue console',
+      'Adam Audio · NS-10 · Genelec monitoring',
+      'TL Audio C1 valve · Revox preamps',
+      'Ghielmetti mastering patchbay',
+    ],
+    bookLabel: 'Book Control Room',
+    bookUrl: URLS.CONTROL_ROOM_BOOK,
+  },
+  {
+    id: 'bigbooth',
+    label: 'Big Booth',
+    tag: 'Dry hire · Plug & Play',
+    desc: 'Band-sized live room tuned for bands, podcasting and loud sources. Bring your own laptop, plug into the interface, and roll straight into a session.',
+    specs: [
+      'Up to 6 musicians',
+      'Full backline + PA',
+      'Multichannel interface · tie-lines',
+      'Bring your own laptop',
+    ],
+    bookLabel: 'Book Big Booth',
+    bookUrl: URLS.BIG_BOOTH_BOOK,
+  },
+  {
+    id: 'smallbooth',
+    label: 'Small Booth',
+    tag: 'Dry hire · Plug & Play',
+    desc: 'Compact booth for solo vocals, voiceover and writing sessions. Quiet, treated, and ready to go. Bring your own laptop, plug into the interface, and start recording.',
+    specs: [
+      'Solo artist or duo',
+      'Clean signal chain + headphone feed',
+      'Acoustic treatment',
+      'Bring your own laptop',
+    ],
+    bookLabel: 'Book Small Booth',
+    bookUrl: URLS.SMALL_BOOTH_BOOK,
+  },
+];
 
 /* Location meta */
 const LOCATIONS = {
@@ -398,7 +455,27 @@ const PANEL_LOCATION_OVERRIDES = {
 };
 
 /* ─── Panel data ─────────────────────────────────────────── */
+/* ─── Room Hire panel data ───────────────────────────────── */
+const PANELS_ROOMHIRE = {
+  id: 'roomhire',
+  label: 'Room Hire',
+  theme: 'dark',
+  eyebrow: 'Room Hire',
+  title: 'Hire a room at Cowley Road Studios',
+  body: 'Three rooms available — choose what suits your session.',
+};
+
 const PANELS = {
+  /* roomhire is rendered by RoomHirePanel — data lives in ROOM_HIRE_ROOMS */
+  roomhire: {
+    id: 'roomhire', label: 'Room Hire', theme: 'dark',
+    eyebrow: 'Room Hire',
+    title: 'Hire a room at Cowley Road Studios',
+    body: 'Three rooms available — choose what suits your session.',
+    specs: [],
+    ctas: [],
+  },
+
   recording: {
     id: 'recording', label: 'Book Recording', theme: 'dark',
     eyebrow: 'Recording Studio',
@@ -486,10 +563,11 @@ const PANELS = {
   },
 };
 
-const NAV_ORDER = ['recording', 'rehearsal', 'controlroom', 'repairs', 'cafe'];
+const NAV_ORDER = ['roomhire', 'rehearsal', 'recording', 'repairs', 'cafe'];
 
 /* Page route for each service */
 const PAGE_ROUTES = {
+  roomhire:    '/room-hire',
   recording:   '/recording',
   rehearsal:   '/rehearsal',
   controlroom: '/control-room',
@@ -586,20 +664,21 @@ function LocationSelector({ serviceId, onSelect, onBack }) {
    Five lamp+label links. No jargon in visible text.
    ═══════════════════════════════════════════════════════════════ */
 const PatchBayNav = ({ activeService, onSelect }) => {
+  /* serviceId: string id that fires onSelect; href: real URL for direct links */
   const links = [
-    { id: 'home',      label: 'Home',          href: URLS.HOME,      external: false },
-    { id: 'recording', label: 'Room Hire',      href: null,           external: false },
-    { id: 'cafe',      label: 'Workshop Café',  href: null,           external: false },
-    { id: 'repairs',   label: 'ODRO Repairs',   href: null,           external: false },
-    { id: 'contact',   label: 'Contact',        href: URLS.CONTACT,   external: false },
+    { id: 'home',     label: 'Home',          serviceId: null,        href: URLS.HOME    },
+    { id: 'roomhire', label: 'Room Hire',      serviceId: 'roomhire',  href: null         },
+    { id: 'cafe',     label: 'Workshop Café',  serviceId: 'cafe',      href: null         },
+    { id: 'repairs',  label: 'ODRO Repairs',   serviceId: 'repairs',   href: null         },
+    { id: 'contact',  label: 'Contact',        serviceId: null,        href: URLS.CONTACT },
   ];
   return (
     <header className="crs-patchbay" role="banner">
       <nav className="crs-patchbay-nav" aria-label="Site navigation">
-        {links.map(({ id, label, href, external }) => {
-          const isActive = activeService === id;
-          const handleClick = (!href && id !== 'home' && id !== 'contact')
-            ? (e) => { e.preventDefault(); onSelect(id); }
+        {links.map(({ id, label, serviceId, href }) => {
+          const isActive = activeService === id || activeService === serviceId;
+          const handleClick = serviceId
+            ? (e) => { e.preventDefault(); onSelect(serviceId); }
             : undefined;
           return (
             <a
@@ -608,8 +687,6 @@ const PatchBayNav = ({ activeService, onSelect }) => {
               onClick={handleClick}
               className={['crs-patchbay-link', isActive ? 'crs-patchbay-link--active' : ''].filter(Boolean).join(' ')}
               aria-current={isActive ? 'page' : undefined}
-              target={external ? '_blank' : undefined}
-              rel={external ? 'noopener noreferrer' : undefined}
             >
               <span className={['crs-patchbay-lamp', isActive ? 'crs-patchbay-lamp--on' : ''].filter(Boolean).join(' ')} aria-hidden="true" />
               <span className="crs-patchbay-label">{label}</span>
@@ -623,9 +700,9 @@ const PatchBayNav = ({ activeService, onSelect }) => {
 
 /* ─── Quick-bar CTA labels (same order as NAV_ORDER) ────────── */
 const QUICK_LABELS = {
-  recording:   'Book Recording',
+  roomhire:    'Room Hire',
   rehearsal:   'Book Rehearsal',
-  controlroom: 'Hire Control Room',
+  recording:   'Book Recording',
   repairs:     'Request Repair',
   cafe:        'Venue Enquiries',
 };
@@ -750,6 +827,43 @@ const CafePanel = ({ panel, animate }) => (
           </a>
         </div>
       </div>
+
+      {/* ── What's On ─────────────────────────────────────────
+          Upcoming events at the Workshop Café.
+          Replace the placeholder items below with a live feed,
+          Google Calendar embed, or Eventbrite widget when ready.
+      ──────────────────────────────────────────────────────── */}
+      <div className="hp-whats-on">
+        <div className="hp-whats-on-header">
+          <span className="hp-whats-on-label">What's On</span>
+          <Led color="green" on={true} pulse={true} />
+        </div>
+        <ol className="hp-whats-on-list">
+          {/* ── PLACEHOLDER EVENTS — replace with real data / embed ── */}
+          <li className="hp-whats-on-item">
+            <span className="hp-whats-on-date">Fri 9 May</span>
+            <div className="hp-whats-on-body">
+              <span className="hp-whats-on-title">Open Mic Night</span>
+              <span className="hp-whats-on-desc">All welcome — sign up on the door from 7 pm. Hosted by Workshop Café.</span>
+            </div>
+            <a href={URLS.ENQUIRE_WORKSHOP} className="hp-whats-on-link">Info →</a>
+          </li>
+          <li className="hp-whats-on-item">
+            <span className="hp-whats-on-date">Sat 17 May</span>
+            <div className="hp-whats-on-body">
+              <span className="hp-whats-on-title">Listening Session</span>
+              <span className="hp-whats-on-desc">Local artists sharing new work. Free entry, all ages.</span>
+            </div>
+            <a href={URLS.ENQUIRE_WORKSHOP} className="hp-whats-on-link">Info →</a>
+          </li>
+          {/* ── END PLACEHOLDER — add embed or fetch() call here ── */}
+        </ol>
+        <p className="hp-whats-on-more">
+          <a href={URLS.INSTAGRAM} target="_blank" rel="noopener noreferrer">
+            More events on Instagram →
+          </a>
+        </p>
+      </div>
     </div>
   </div>
 );
@@ -818,6 +932,51 @@ const RehearsalPanel = ({ panel }) => (
     <div className="hp-panel-ctas" style={{ marginTop: '1rem' }}>
       <a href="/rehearsal" className="hp-cta hp-cta--page-link">
         <span>Full details</span>
+        <span className="hp-cta-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+);
+
+/* ─── Room Hire panel — three channel cards ──────────────── */
+const RoomHirePanel = ({ panel }) => (
+  <div className="hp-panel-body hp-roomhire-panel" role="tabpanel" id="panel-roomhire">
+    <div className="hp-panel-header">
+      <span className="hp-panel-eyebrow">{panel.eyebrow}</span>
+      <h2 className="hp-panel-title">{panel.title}</h2>
+      <p className="hp-panel-desc">{panel.body}</p>
+    </div>
+
+    <div className="hp-roomhire-channels">
+      {ROOM_HIRE_ROOMS.map((room) => (
+        <div key={room.id} className={`hp-roomhire-channel hp-roomhire-channel--${room.id}`}>
+          <div className="hp-roomhire-channel-head">
+            <div className="hp-roomhire-channel-labels">
+              <span className="hp-roomhire-channel-title">{room.label}</span>
+              <span className="hp-roomhire-channel-tag">{room.tag}</span>
+            </div>
+            <Led color="orange" on={true} />
+          </div>
+          <p className="hp-roomhire-channel-desc">{room.desc}</p>
+          <ul className="hp-roomhire-specs">
+            {room.specs.map(s => <li key={s}>{s}</li>)}
+          </ul>
+          <a
+            href={room.bookUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hp-cta hp-cta--primary hp-roomhire-book-btn"
+          >
+            <span>{room.bookLabel}</span>
+            <span className="hp-cta-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div className="hp-panel-ctas" style={{ marginTop: '1.25rem' }}>
+      <a href="/room-hire" className="hp-cta hp-cta--page-link">
+        <span>Full details & pricing</span>
         <span className="hp-cta-arrow" aria-hidden="true">↗</span>
       </a>
     </div>
@@ -908,6 +1067,8 @@ const DisplayPanel = ({ activeId, locationId, animate, onBack }) => {
 
       {isCafe ? (
         <CafePanel panel={panel} animate={animate} />
+      ) : panel.id === 'roomhire' ? (
+        <RoomHirePanel panel={panel} />
       ) : isRehearsalLocated && rehearsalLoc ? (
         <RehearsalSinglePanel panel={basePanel} loc={rehearsalLoc} />
       ) : panel.id === 'rehearsal' ? (
