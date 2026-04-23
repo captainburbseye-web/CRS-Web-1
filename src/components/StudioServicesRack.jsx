@@ -338,12 +338,12 @@ const ROOM_HIRE_ROOMS = [
     id: 'controlroom',
     label: 'Control Room',
     tag: 'Full production studio',
-    desc: 'Full production control room with engineer desk, SSL BiG SiX console, and three-way monitoring. Ideal for mixing, mastering and attended production sessions.',
+    desc: 'Full production studio with engineer desk, monitoring and outboard. Ready-patched for recording and mixing. Book with or without an in-house engineer.',
     specs: [
-      'SSL BiG SiX analogue console',
-      'Adam Audio · NS-10 · Genelec monitoring',
-      'TL Audio C1 valve · Revox preamps',
-      'Ghielmetti mastering patchbay',
+      'SSL BiG SiX console · analogue warmth',
+      'Three-way monitoring: Adam Audio · NS-10 · Genelec',
+      'Valve compression · outboard processing',
+      'Ready-patched for recording and mixing',
     ],
     bookLabel: 'Book Control Room',
     bookUrl: URLS.CONTROL_ROOM_BOOK,
@@ -352,12 +352,12 @@ const ROOM_HIRE_ROOMS = [
     id: 'bigbooth',
     label: 'Big Booth',
     tag: 'Dry hire · Plug & Play',
-    desc: 'Band-sized live room tuned for bands, podcasting and loud sources. Bring your own laptop, plug into the interface, and roll straight into a session.',
+    desc: 'Band-sized live room — book by the hour as a dry hire space. Plug in your own laptop and start recording straight away. Full backline and PA included.',
     specs: [
       'Up to 6 musicians',
-      'Full backline + PA',
-      'Multichannel interface · tie-lines',
-      'Bring your own laptop',
+      'Full backline + PA included',
+      'Plug in your own laptop',
+      'Treated for live room sound',
     ],
     bookLabel: 'Book Big Booth',
     bookUrl: URLS.BIG_BOOTH_BOOK,
@@ -366,12 +366,12 @@ const ROOM_HIRE_ROOMS = [
     id: 'smallbooth',
     label: 'Small Booth',
     tag: 'Dry hire · Plug & Play',
-    desc: 'Compact booth for solo vocals, voiceover and writing sessions. Quiet, treated, and ready to go. Bring your own laptop, plug into the interface, and start recording.',
+    desc: 'Vocal and writing booth for solo artists and voiceover. Quiet, treated and ready to go. Plug in your own laptop and start recording straight away.',
     specs: [
       'Solo artist or duo',
-      'Clean signal chain + headphone feed',
-      'Acoustic treatment',
-      'Bring your own laptop',
+      'Treated for tight, controlled vocals',
+      'Headphone feed included',
+      'Plug in your own laptop',
     ],
     bookLabel: 'Book Small Booth',
     bookUrl: URLS.SMALL_BOOTH_BOOK,
@@ -1185,8 +1185,363 @@ function AnalogueDialPair() {
   );
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   SKYLINE OSCILLOSCOPE
+   Oxford "Dreaming Spires" phosphor-trace scope.
+   44-point polyline paths per mode. rAF physics loop with:
+     • attack/release ballistics on currentScale
+     • mains-hum breathing (60 Hz noise)
+     • horizontal scanX electron-beam sweep
+     • IntersectionObserver visibility gating
+   Direct DOM mutations for zero-GC per-frame updates.
+   SSR-safe: all window/rAF inside useEffect.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── 44-point paths (read-only — do not modify) ─────────── */
+/*
+   Coordinate space: viewBox="0 0 880 160"
+   Each array is [x0,y0, x1,y1 … x43,y43] (44 points = 88 values)
+   Y=0 is top, Y=160 is bottom. Silhouettes sit in mid-range.
+*/
+const OSC_PATHS = {
+  /* Oxford Dreaming Spires skyline silhouette — left→right */
+  SKYLINE: [
+     0,140,  20,138,  40,136,  55,100,  60,95,  65,100,
+    70,138,  80,135,  90,108,  95,60, 100,55, 105,60,
+   110,108, 115,135, 120,130, 130,90, 135,45, 140,90,
+   145,130, 155,128, 160,105, 165,62, 170,105, 175,128,
+   185,125, 195,95,  200,55,  205,95,  210,125, 220,122,
+   230,80,  240,40,  250,80,  260,122, 270,118, 280,90,
+   290,65,  300,90,  310,118, 340,115, 380,118, 440,120,
+   520,122, 600,125, 680,130, 760,135, 820,138, 880,140,
+  ],
+
+  /* CRS brand mark — angular logo-form waveform */
+  BRAND: [
+     0,80,  20,80,  40,80,  60,40,  80,40,  100,80,
+   120,80, 140,80,  160,40,  180,40,  200,80,  220,80,
+   240,80, 250,120, 260,120, 270,80,  280,80,  300,80,
+   310,40, 320,40,  330,80,  340,80,  360,80,  370,60,
+   380,40, 390,60,  400,80,  420,80,  440,80,  460,40,
+   480,40, 500,80,  520,80,  540,80,  560,80,  580,80,
+   600,80, 640,80,  680,80,  720,80,  760,80,  800,80,
+   840,80, 880,80,
+  ],
+
+  /* Recording — dense analogue signal trace */
+  RECORDING: [
+     0,80,  20,60,  40,100, 55,40,  65,120, 75,30,
+    85,110, 95,50,  105,90, 115,45, 125,105, 135,55,
+   145,95, 155,42,  165,112, 175,38, 185,108, 195,52,
+   205,88, 215,65,  225,95, 235,48,  245,100, 255,58,
+   265,85, 275,70,  285,78, 295,62,  305,90, 315,55,
+   325,98, 335,50,  345,102, 355,45, 365,108, 375,38,
+   385,112, 395,52,  410,88, 430,72, 460,75, 510,78,
+   570,80, 640,80,  720,80, 800,80,  840,80, 880,80,
+  ],
+
+  /* Café — smooth warm sine-ish curve */
+  CAFE: [
+     0,80,  20,72,  40,58,  60,48,  80,45,  100,48,
+   120,58, 140,72,  160,80, 180,88,  200,98, 220,108,
+   240,112, 260,108, 280,98, 300,88,  320,80, 340,72,
+   360,60, 380,52,  400,50, 420,52,  440,60, 460,72,
+   480,80, 500,88,  520,96, 540,104, 560,108, 580,104,
+   600,96, 620,88,  640,80, 660,74,  680,70, 700,72,
+   720,76, 740,80,  760,80, 800,80,  840,80, 880,80,
+  ],
+
+  /* Repairs / ODRO — sawtooth diagnostic signal */
+  REPAIRS: [
+     0,80,  20,80,  21,30,  40,30,  60,30,  61,80,
+    80,80,  81,30, 100,30,  120,30, 121,80, 140,80,
+   141,30, 160,30, 180,30,  181,80, 200,80, 201,30,
+   220,30, 240,30, 241,80,  260,80, 261,30, 280,30,
+   300,30, 301,80, 320,80,  321,30, 340,30, 360,30,
+   361,80, 380,80, 400,80,  420,80, 440,80, 460,80,
+   520,80, 600,80, 680,80,  760,80, 820,80, 880,80,
+  ],
+};
+
+/* Map active service ids to oscilloscope modes */
+const OSC_MODE_MAP = {
+  null:        'SKYLINE',
+  recording:   'RECORDING',
+  rehearsal:   'SKYLINE',
+  controlroom: 'RECORDING',
+  roomhire:    'BRAND',
+  repairs:     'REPAIRS',
+  cafe:        'CAFE',
+};
+
+/* ─── Physics constants (tunable, see brief §3) ─────────────
+   These are the ONLY values that govern feel — paths are above.
+*/
+const OSC_ATTACK  = 4.5;   // scale blend rate when signal rises  (higher = faster snap)
+const OSC_RELEASE = 1.8;   // scale blend rate when signal falls  (lower = slower decay)
+const OSC_SCALE_K = 0.38;  // rawSignal → targetScale: 1 + raw * K  (amplitude of motion)
+const OSC_FLOOR   = 0.06;  // minimum rawSignal (idle breathing)
+const OSC_HUM_AMP = 0.012; // mains hum breathing amplitude
+const OSC_HUM_HZ  = 0.8;   // hum frequency (Hz) — slow breathing cycle
+const OSC_BEAM_PERIOD = 3200; // ms for one full left→right scan sweep
+
+/* Convert flat [x0,y0,x1,y1…] array into SVG polyline points string */
+function ptsToPolyline(pts) {
+  let s = '';
+  for (let i = 0; i < pts.length; i += 2) {
+    s += `${pts[i]},${pts[i + 1]} `;
+  }
+  return s.trim();
+}
+
+/* Morph between two sets of Y values using linear interpolation */
+function morphPts(from, to, t) {
+  const result = new Float32Array(from.length);
+  for (let i = 0; i < from.length; i += 2) {
+    result[i]     = from[i];                                   // X stays fixed
+    result[i + 1] = from[i + 1] + (to[i + 1] - from[i + 1]) * t; // Y lerps
+  }
+  return result;
+}
+
+/* ─── Component ──────────────────────────────────────────── */
+function SkylineOscilloscope({ activeId }) {
+  const svgRef        = useRef(null);
+  const dimPathRef    = useRef(null);
+  const activePathRef = useRef(null);
+  const maskRectRef   = useRef(null);
+  const beamRef       = useRef(null);
+  const rafRef        = useRef(null);
+  const visibleRef    = useRef(false);
+  const stateRef      = useRef({
+    currentScale: 1.0,
+    morphT:       1.0,  // 0→1 morph progress between prev and next path
+    fromPts:      null,
+    toPts:        null,
+    lastMode:     null,
+    lastTime:     0,
+  });
+
+  /* ─ Derive SVG path string from current physics state ─── */
+  function buildPolylineStr(pts, scale) {
+    // Scale Y values around the vertical centre (80 of 160 viewBox)
+    const cy = 80;
+    let s = '';
+    for (let i = 0; i < pts.length; i += 2) {
+      const x = pts[i];
+      const y = cy + (pts[i + 1] - cy) * scale;
+      s += `${x.toFixed(1)},${y.toFixed(1)} `;
+    }
+    return s.trim();
+  }
+
+  /* ─ rAF tick ─────────────────────────────────────────── */
+  function tick(now) {
+    if (!visibleRef.current) {
+      rafRef.current = requestAnimationFrame(tick);
+      return;
+    }
+
+    const st  = stateRef.current;
+    const dt  = Math.min((now - st.lastTime) / 1000, 0.05);
+    st.lastTime = now;
+
+    /* Mode lookup from current activeId (closure via ref) */
+    const mode    = OSC_MODE_MAP[activeRef.current] || 'SKYLINE';
+    const modePts = OSC_PATHS[mode];
+
+    /* Handle mode transition: start morph when mode changes */
+    if (mode !== st.lastMode) {
+      const prevMode = st.lastMode || 'SKYLINE';
+      st.fromPts  = new Float32Array(OSC_PATHS[prevMode] || OSC_PATHS.SKYLINE);
+      st.toPts    = new Float32Array(modePts);
+      st.morphT   = 0;
+      st.lastMode = mode;
+    }
+
+    /* Advance morph (0→1 over ~0.5s) */
+    if (st.morphT < 1) {
+      st.morphT = Math.min(1, st.morphT + dt * 2.2);
+    }
+
+    /* Interpolated path */
+    const pts = st.morphT >= 1
+      ? new Float32Array(modePts)
+      : morphPts(st.fromPts, st.toPts, st.morphT * st.morphT * (3 - 2 * st.morphT)); // smoothstep
+
+    /* Signal level from engine (use master channel) */
+    const snap = getEngine().getSnapshot();
+    const rawSignal = Math.max(OSC_FLOOR, snap.master.display);
+
+    /* Target scale: 1 + signal * K + hum */
+    const hum = Math.sin(now * 0.001 * OSC_HUM_HZ * Math.PI * 2) * OSC_HUM_AMP;
+    const targetScale = 1.0 + rawSignal * OSC_SCALE_K + hum;
+
+    /* Attack/release blend */
+    const blendRate = targetScale > st.currentScale ? OSC_ATTACK : OSC_RELEASE;
+    st.currentScale += (targetScale - st.currentScale) * blendRate * dt;
+    /* Clamp: never collapse below 0.3× or exceed 1.6× */
+    st.currentScale = Math.max(0.3, Math.min(1.6, st.currentScale));
+
+    /* Build polyline string */
+    const polyStr = buildPolylineStr(pts, st.currentScale);
+
+    /* Beam X position — sweeps 0→880 over OSC_BEAM_PERIOD ms */
+    const beamX = ((now % OSC_BEAM_PERIOD) / OSC_BEAM_PERIOD) * 880;
+
+    /* Mask rect: reveal left of beam (beam is the "writing" edge) */
+    // maskRect x=0 → beamX reveals the lit trace; beyond beam is dim
+    const revealFrac = beamX / 880;
+
+    /* DOM mutations (no React re-render) */
+    if (dimPathRef.current)    dimPathRef.current.setAttribute('points', polyStr);
+    if (activePathRef.current) {
+      activePathRef.current.setAttribute('points', polyStr);
+      // Opacity: bright in reveal zone, fades to dim outside
+    }
+    if (maskRectRef.current) {
+      maskRectRef.current.setAttribute('width', beamX.toFixed(1));
+    }
+    if (beamRef.current) {
+      beamRef.current.setAttribute('transform', `translate(${beamX.toFixed(1)},0)`);
+    }
+
+    rafRef.current = requestAnimationFrame(tick);
+  }
+
+  /* activeId as ref so tick closure always sees latest value */
+  const activeRef = useRef(activeId);
+  useEffect(() => { activeRef.current = activeId; }, [activeId]);
+
+  /* Mount: start rAF loop + IntersectionObserver */
+  useEffect(() => {
+    /* SSR guard */
+    if (typeof window === 'undefined') return;
+
+    const el = svgRef.current;
+    if (!el) return;
+
+    /* IntersectionObserver — pause when off screen */
+    const io = new IntersectionObserver(
+      ([entry]) => { visibleRef.current = entry.isIntersecting; },
+      { threshold: 0.1 }
+    );
+    io.observe(el);
+
+    /* Seed state */
+    const st = stateRef.current;
+    st.lastTime = performance.now();
+    st.lastMode = OSC_MODE_MAP[activeRef.current] || 'SKYLINE';
+    st.fromPts  = new Float32Array(OSC_PATHS[st.lastMode]);
+    st.toPts    = new Float32Array(OSC_PATHS[st.lastMode]);
+    st.morphT   = 1;
+
+    /* Start loop */
+    rafRef.current = requestAnimationFrame(tick);
+
+    return () => {
+      io.disconnect();
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []); // runs once
+
+  return (
+    <div className="hp-osc-frame" aria-hidden="true">
+      <svg
+        ref={svgRef}
+        viewBox="0 0 880 160"
+        className="hp-osc-svg"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        role="img"
+      >
+        <defs>
+          {/* Glow filter for phosphor trace */}
+          <filter id="osc-glow" x="-20%" y="-40%" width="140%" height="180%" colorInterpolationFilters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2.8" result="blur1" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.0" result="blur2" />
+            <feMerge>
+              <feMergeNode in="blur1" />
+              <feMergeNode in="blur2" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          {/* Soft beam glow filter */}
+          <filter id="osc-beam-glow" x="-200%" y="-100%" width="500%" height="300%" colorInterpolationFilters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          {/* Clip mask: only lit portion (left of beam) shows full brightness */}
+          <mask id="osc-reveal-mask">
+            <rect
+              ref={maskRectRef}
+              x="0" y="0" width="0" height="160"
+              fill="white"
+            />
+          </mask>
+        </defs>
+
+        {/* CRT grid overlay */}
+        <g className="hp-osc-grid" opacity="0.25">
+          {[160, 320, 480, 640].map(x => (
+            <line key={x} x1={x} y1="0" x2={x} y2="160" stroke="#1a2a1a" strokeWidth="1" />
+          ))}
+          {[40, 80, 120].map(y => (
+            <line key={y} x1="0" y1={y} x2="880" y2={y} stroke="#1a2a1a" strokeWidth="1" />
+          ))}
+        </g>
+
+        {/* Dim (phosphor persistence) trace — always visible, low opacity */}
+        <polyline
+          ref={dimPathRef}
+          points={ptsToPolyline(OSC_PATHS.SKYLINE)}
+          fill="none"
+          stroke="#0d2a0d"
+          strokeWidth="1.5"
+          className="hp-osc-dim"
+        />
+
+        {/* Lit trace — masked to reveal zone, with phosphor glow */}
+        <polyline
+          ref={activePathRef}
+          points={ptsToPolyline(OSC_PATHS.SKYLINE)}
+          fill="none"
+          stroke="#3ddc3d"
+          strokeWidth="2.2"
+          filter="url(#osc-glow)"
+          mask="url(#osc-reveal-mask)"
+          className="hp-osc-active"
+        />
+
+        {/* Electron beam — vertical bright line at scan position */}
+        <g ref={beamRef} filter="url(#osc-beam-glow)" className="hp-osc-beam">
+          <line
+            x1="0" y1="0" x2="0" y2="160"
+            stroke="rgba(100,255,100,0.55)"
+            strokeWidth="1.5"
+          />
+          <ellipse cx="0" cy="80" rx="3" ry="12"
+            fill="rgba(140,255,140,0.22)"
+          />
+        </g>
+      </svg>
+
+      {/* Mode label badge */}
+      <div className="hp-osc-badge">
+        <span className="hp-osc-badge-dot" />
+        <span className="hp-osc-badge-text">SCOPE · OXFORD</span>
+      </div>
+    </div>
+  );
+}
+
 /* ─── Idle / hero state ───────────────────────────────────── */
-const IdleState = () => (
+const IdleState = ({ activeId = null }) => (
   <div className="hp-idle" aria-label="Cowley Road Studios — select a service">
 
     {/* LCD status bar — tight block, no wrapper padding */}
@@ -1208,6 +1563,9 @@ const IdleState = () => (
       alt="Cowley Road Studios"
       className="hp-idle-sign"
     />
+
+    {/* Skyline oscilloscope — phosphor-trace Dreaming Spires scope */}
+    <SkylineOscilloscope activeId={activeId} />
 
   </div>
 );
@@ -1399,7 +1757,7 @@ export default function StudioServicesRack() {
 
   /* What to show in the screen slot */
   const screenContent = (() => {
-    if (!activeId) return <IdleState />;
+    if (!activeId) return <IdleState activeId={null} />;
     if (showLocPick) return (
       <LocationSelector
         serviceId={activeId}

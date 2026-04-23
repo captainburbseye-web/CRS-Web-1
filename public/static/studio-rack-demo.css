@@ -2279,6 +2279,110 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 .hp-cafe-meters .rack-vu-seg--amber.rack-vu-seg--lit { background: #D4A000; }
 
 /* ── Idle sign responsive ───────────────────────────────── */
+
+/* ═══════════════════════════════════════════════════════════════
+   SKYLINE OSCILLOSCOPE — phosphor-trace CRT display
+   Oxford Dreaming Spires silhouette / mode-specific waveforms
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Outer bezel frame — slots below the wooden sign in hp-idle */
+.hp-osc-frame {
+  display: block;
+  position: relative;
+  width: calc(100% + 90px);   /* bust over both rails like the sign */
+  margin: 0 -45px;
+  background: #050e05;        /* dark green-black phosphor screen background */
+  border-top: 3px solid #111;
+  border-bottom: 3px solid #111;
+  border-left: none;
+  border-right: none;
+  overflow: hidden;
+  box-shadow:
+    inset 0 0 40px rgba(0,0,0,0.95),
+    inset 0 12px 24px rgba(0,0,0,0.8),
+    inset 0 -6px 12px rgba(0,0,0,0.7),
+    0 2px 0 rgba(255,255,255,0.02);
+}
+
+/* Responsive rail widths — match sign margins */
+@media (max-width: 639px) {
+  .hp-osc-frame {
+    width: calc(100% + 56px);
+    margin: 0 -28px;
+  }
+}
+@media (min-width: 640px) {
+  .hp-osc-frame {
+    width: calc(100% + 88px);
+    margin: 0 -44px;
+  }
+}
+
+/* SVG fills the frame fully */
+.hp-osc-svg {
+  display: block;
+  width: 100%;
+  height: auto;             /* preserves viewBox aspect ratio (880×160) */
+  min-height: 60px;         /* floor so it's visible on narrow screens */
+}
+
+/* CRT grid lines — very subtle green tint */
+.hp-osc-grid line {
+  stroke: #1a2a1a;
+}
+
+/* Dim persistence trace — the "ghost" behind the beam */
+.hp-osc-dim {
+  opacity: 0.6;
+}
+
+/* Active (lit) trace — bright phosphor green */
+.hp-osc-active {
+  opacity: 1;
+}
+
+/* Electron beam group */
+.hp-osc-beam {
+  will-change: transform;
+}
+
+/* Mode badge — bottom-right corner label */
+.hp-osc-badge {
+  position: absolute;
+  bottom: 4px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+  user-select: none;
+}
+.hp-osc-badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #2ECC40;
+  box-shadow: 0 0 4px #2ECC40;
+  animation: osc-badge-pulse 2.4s ease-in-out infinite;
+}
+.hp-osc-badge-text {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.12em;
+  color: #2a5a2a;
+  text-transform: uppercase;
+}
+
+@keyframes osc-badge-pulse {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1;   }
+}
+
+/* Reduced-motion: freeze the oscilloscope badge */
+@media (prefers-reduced-motion: reduce) {
+  .hp-osc-badge-dot { animation: none; }
+}
+
 /* ============================================================
    PRINT / REDUCED MOTION
    ============================================================ */
