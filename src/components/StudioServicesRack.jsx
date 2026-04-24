@@ -1277,13 +1277,22 @@ const OSC_MODE_MAP = {
 /* ─── Physics constants (tunable, see brief §3) ─────────────
    These are the ONLY values that govern feel — paths are above.
 */
-const OSC_ATTACK  = 4.5;   // scale blend rate when signal rises  (higher = faster snap)
-const OSC_RELEASE = 1.8;   // scale blend rate when signal falls  (lower = slower decay)
-const OSC_SCALE_K = 0.38;  // rawSignal → targetScale: 1 + raw * K  (amplitude of motion)
-const OSC_FLOOR   = 0.06;  // minimum rawSignal (idle breathing)
-const OSC_HUM_AMP = 0.012; // mains hum breathing amplitude
-const OSC_HUM_HZ  = 0.8;   // hum frequency (Hz) — slow breathing cycle
-const OSC_BEAM_PERIOD = 3200; // ms for one full left→right scan sweep
+const OSC_ATTACK  = 3.5;   // scale blend rate when signal rises
+const OSC_RELEASE = 1.2;   // scale blend rate when signal falls  (slow phosphor decay)
+const OSC_SCALE_K = 0.18;  // rawSignal → scale deviation: keeps skyline legible
+const OSC_FLOOR   = 0.04;  // minimum rawSignal (idle breathing floor)
+const OSC_HUM_AMP = 0.018; // mains-hum breathing amplitude — visible slow pulse
+const OSC_HUM_HZ  = 0.45;  // hum freq (Hz) — very slow breath, ~2.2 s cycle
+const OSC_BEAM_PERIOD = 4000; // ms for one full scan sweep — unhurried
+
+/* Pivot Y per mode: skyline breathes from its ground (Y=140); signals from midline (Y=80) */
+const OSC_PIVOT_Y = {
+  SKYLINE:   140,  // ground-anchored — spires breathe upward
+  BRAND:      80,
+  RECORDING:  80,
+  CAFE:       80,
+  REPAIRS:    80,
+};
 
 /* Convert flat [x0,y0,x1,y1…] array into SVG polyline points string */
 function ptsToPolyline(pts) {
@@ -1323,9 +1332,11 @@ function SkylineOscilloscope({ activeId }) {
   });
 
   /* ─ Derive SVG path string from current physics state ─── */
-  function buildPolylineStr(pts, scale) {
-    // Scale Y values around the vertical centre (80 of 160 viewBox)
-    const cy = 80;
+  function buildPolylineStr(pts, scale, pivotY) {
+    // Scale Y values around pivotY:
+    //   SKYLINE → pivotY=140 (ground): spires grow upward from base
+    //   Signal traces → pivotY=80 (midline): trace expands symmetrically
+    const cy = pivotY ?? 80;
     let s = '';
     for (let i = 0; i < pts.length; i += 2) {
       const x = pts[i];
@@ -1380,11 +1391,17 @@ function SkylineOscilloscope({ activeId }) {
     /* Attack/release blend */
     const blendRate = targetScale > st.currentScale ? OSC_ATTACK : OSC_RELEASE;
     st.currentScale += (targetScale - st.currentScale) * blendRate * dt;
-    /* Clamp: never collapse below 0.3× or exceed 1.6× */
-    st.currentScale = Math.max(0.3, Math.min(1.6, st.currentScale));
+    /* Clamp:
+       SKYLINE: narrow range (0.92–1.12) keeps spires legible, just breathing
+       Signal traces: wider range (0.5–1.55) for expressive motion           */
+    const isSkyline = (mode === 'SKYLINE');
+    const scaleMin = isSkyline ? 0.92 : 0.50;
+    const scaleMax = isSkyline ? 1.12 : 1.55;
+    st.currentScale = Math.max(scaleMin, Math.min(scaleMax, st.currentScale));
 
-    /* Build polyline string */
-    const polyStr = buildPolylineStr(pts, st.currentScale);
+    /* Build polyline string — use mode-appropriate pivot */
+    const pivotY = OSC_PIVOT_Y[mode] ?? 80;
+    const polyStr = buildPolylineStr(pts, st.currentScale, pivotY);
 
     /* Beam X position — sweeps 0→880 over OSC_BEAM_PERIOD ms */
     const beamX = ((now % OSC_BEAM_PERIOD) / OSC_BEAM_PERIOD) * 880;
@@ -1456,20 +1473,31 @@ function SkylineOscilloscope({ activeId }) {
         role="img"
       >
         <defs>
-          {/* Glow filter for phosphor trace */}
-          <filter id="osc-glow" x="-20%" y="-40%" width="140%" height="180%" colorInterpolationFilters="sRGB">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="2.8" result="blur1" />
-            <feGaussianBlur in="SourceGraphic" stdDeviation="1.0" result="blur2" />
+          {/* Phosphor glow — tight core blur + wide halo for CRT feel */}
+          <filter id="osc-glow" x="-30%" y="-60%" width="160%" height="220%" colorInterpolationFilters="sRGB">
+            {/* Wide soft halo */}
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="halo" />
+            {/* Tight bright core */}
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="core" />
             <feMerge>
-              <feMergeNode in="blur1" />
-              <feMergeNode in="blur2" />
+              <feMergeNode in="halo" />
+              <feMergeNode in="core" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
 
-          {/* Soft beam glow filter */}
-          <filter id="osc-beam-glow" x="-200%" y="-100%" width="500%" height="300%" colorInterpolationFilters="sRGB">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b" />
+          {/* Dim-trace glow — subtle phosphor persistence bloom */}
+          <filter id="osc-dim-glow" x="-20%" y="-50%" width="140%" height="200%" colorInterpolationFilters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.8" result="b" />
+            <feMerge>
+              <feMergeNode in="b" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+
+          {/* Beam glow — vertical electron-gun line */}
+          <filter id="osc-beam-glow" x="-300%" y="-20%" width="700%" height="140%" colorInterpolationFilters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b" />
             <feMerge>
               <feMergeNode in="b" />
               <feMergeNode in="SourceGraphic" />
@@ -1486,47 +1514,62 @@ function SkylineOscilloscope({ activeId }) {
           </mask>
         </defs>
 
-        {/* CRT grid overlay */}
-        <g className="hp-osc-grid" opacity="0.25">
-          {[160, 320, 480, 640].map(x => (
-            <line key={x} x1={x} y1="0" x2={x} y2="160" stroke="#1a2a1a" strokeWidth="1" />
+        {/* CRT phosphor dot-grid — 4 vertical, 3 horizontal lines */}
+        <g className="hp-osc-grid">
+          {[160, 320, 480, 640, 800].map(x => (
+            <line key={x} x1={x} y1="0" x2={x} y2="160" />
           ))}
           {[40, 80, 120].map(y => (
-            <line key={y} x1="0" y1={y} x2="880" y2={y} stroke="#1a2a1a" strokeWidth="1" />
+            <line key={y} x1="0" y1={y} x2="880" y2={y} />
           ))}
         </g>
 
-        {/* Dim (phosphor persistence) trace — always visible, low opacity */}
+        {/* ── PHOSPHOR PERSISTENCE TRACE ─────────────────────────────
+            Always-visible dim trace. This IS the skyline silhouette.
+            Stroke colour and opacity must be clearly readable on #030b03.
+            filter osc-dim-glow adds a soft phosphor bloom around it.
+        ─────────────────────────────────────────────────────────── */}
         <polyline
           ref={dimPathRef}
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
-          stroke="#0d2a0d"
-          strokeWidth="1.5"
+          stroke="#1f6e1f"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          filter="url(#osc-dim-glow)"
           className="hp-osc-dim"
         />
 
-        {/* Lit trace — masked to reveal zone, with phosphor glow */}
+        {/* ── LIT (ACTIVE) TRACE ─────────────────────────────────────
+            Bright phosphor green, revealed as beam sweeps left→right.
+            Masked to only show left-of-beam region.
+        ─────────────────────────────────────────────────────────── */}
         <polyline
           ref={activePathRef}
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
-          stroke="#3ddc3d"
-          strokeWidth="2.2"
+          stroke="#44ff44"
+          strokeWidth="2.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           filter="url(#osc-glow)"
           mask="url(#osc-reveal-mask)"
           className="hp-osc-active"
         />
 
-        {/* Electron beam — vertical bright line at scan position */}
+        {/* ── ELECTRON BEAM ─────────────────────────────────────────
+            Vertical scan line. Brighter at centre, fades to edges.
+        ─────────────────────────────────────────────────────────── */}
         <g ref={beamRef} filter="url(#osc-beam-glow)" className="hp-osc-beam">
           <line
             x1="0" y1="0" x2="0" y2="160"
-            stroke="rgba(100,255,100,0.55)"
-            strokeWidth="1.5"
+            stroke="rgba(120,255,120,0.65)"
+            strokeWidth="2"
           />
-          <ellipse cx="0" cy="80" rx="3" ry="12"
-            fill="rgba(140,255,140,0.22)"
+          {/* Bright spot at ground level — where beam hits the skyline base */}
+          <ellipse cx="0" cy="130" rx="2" ry="6"
+            fill="rgba(160,255,160,0.35)"
           />
         </g>
       </svg>
