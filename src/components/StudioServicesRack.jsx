@@ -338,7 +338,7 @@ const ROOM_HIRE_ROOMS = [
     id: 'controlroom',
     label: 'Control Room',
     tag: 'Full production studio',
-    desc: 'Full production studio with engineer desk, monitoring and outboard. Ready-patched for recording and mixing. Book with or without an in-house engineer.',
+    desc: 'Professionally tuned for critical listening, mixing and mastering. Centered around our SSL BiG SiX console and premium monitoring, it offers an elite signal path with boutique outboard integration. Specs: SSL SuperAnalogue preamps and G‑Series style bus compression.',
     specs: [
       'SSL BiG SiX console · analogue warmth',
       'Three-way monitoring: Adam Audio · NS-10 · Genelec',
@@ -352,12 +352,12 @@ const ROOM_HIRE_ROOMS = [
     id: 'bigbooth',
     label: 'Big Booth',
     tag: 'Dry hire · Plug & Play',
-    desc: 'Band-sized live room — book by the hour as a dry hire space. Plug in your own laptop and start recording straight away. Full backline and PA included.',
+    desc: 'Spacious treated booth for writing, production and small sessions. Big enough for a meeting, a drum kit, or two musicians doing lessons. Bring your own laptop and interface, plug into the house system, and work on mixes or new material on Adam monitors with sub support.',
     specs: [
       'Up to 6 musicians',
-      'Full backline + PA included',
-      'Plug in your own laptop',
-      'Treated for live room sound',
+      'Adam monitors with sub support',
+      'Dry hire — bring your own laptop + interface',
+      'Treated for production and writing sessions',
     ],
     bookLabel: 'Book Big Booth',
     bookUrl: URLS.BIG_BOOTH_BOOK,
@@ -366,12 +366,12 @@ const ROOM_HIRE_ROOMS = [
     id: 'smallbooth',
     label: 'Small Booth',
     tag: 'Dry hire · Plug & Play',
-    desc: 'Vocal and writing booth for solo artists and voiceover. Quiet, treated and ready to go. Plug in your own laptop and start recording straight away.',
+    desc: 'A quiet sanctuary for deep work and focused sessions. Ideal for solo writing, high‑stakes remote meetings or vocal takes. Equipped with high‑speed Wi‑Fi and power as standard so you can drop in, plug in and get straight to work.',
     specs: [
       'Solo artist or duo',
-      'Treated for tight, controlled vocals',
-      'Headphone feed included',
-      'Plug in your own laptop',
+      'High-speed Wi-Fi + power as standard',
+      'Dry hire — bring your own laptop',
+      'Acoustically treated for vocals and focus work',
     ],
     bookLabel: 'Book Small Booth',
     bookUrl: URLS.SMALL_BOOTH_BOOK,
@@ -1588,34 +1588,117 @@ function SkylineOscilloscope({ activeId }) {
 }
 
 /* ─── Idle / hero state ───────────────────────────────────── */
-const IdleState = ({ activeId = null }) => (
-  <div className="hp-idle" aria-label="Cowley Road Studios — select a service">
+function IdleState({ activeId = null }) {
+  const [hireOpen, setHireOpen] = useState(false);
 
-    {/* LCD status bar — tight block, no wrapper padding */}
-    <div className="hp-idle-display">
-      <div className="hp-idle-lcd">
-        <div className="hp-display-line hp-display-line--location">OXFORD</div>
-        <div className="hp-display-line hp-display-line--primary">
-          RECORDING · REHEARSAL · PRODUCTION · VENUE
-        </div>
-        <div className="hp-display-line hp-display-line--secondary">
-          AV / TECHNICAL SERVICES
+  return (
+    <div className="hp-idle" aria-label="Cowley Road Studios — select a service">
+
+      {/* LCD status bar — tight block, no wrapper padding */}
+      <div className="hp-idle-display">
+        <div className="hp-idle-lcd">
+          <div className="hp-display-line hp-display-line--location">OXFORD</div>
+          <div className="hp-display-line hp-display-line--primary">
+            RECORDING · REHEARSAL · PRODUCTION · VENUE
+          </div>
+          <div className="hp-display-line hp-display-line--secondary">
+            AV / TECHNICAL SERVICES
+          </div>
         </div>
       </div>
+
+      {/* Sign — direct block, no flex wrapper so no vertical centring gap */}
+      <img
+        src="/assets/crs-rack-sign.png"
+        alt="Cowley Road Studios"
+        className="hp-idle-sign"
+      />
+
+      {/* Skyline oscilloscope — phosphor-trace Dreaming Spires scope */}
+      <SkylineOscilloscope activeId={activeId} />
+
+      {/* ── NESTED SWITCHBOARD ────────────────────────────────────
+          Primary view: Recording · Café · Room Hire
+          Room Hire click expands the sub-menu.
+          All state is local — no global store.
+      ───────────────────────────────────────────────────────── */}
+      <div className="hp-idle-switchboard" role="group" aria-label="Book a room">
+        {!hireOpen ? (
+          /* ── PRIMARY VIEW ── */
+          <div className="hp-idle-switchboard-primary">
+            <a
+              href={URLS.BIG_BOOTH_BOOK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hp-idle-sb-btn"
+            >
+              Recording
+            </a>
+            <a
+              href={URLS.SMALL_BOOTH_BOOK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hp-idle-sb-btn"
+            >
+              Café
+            </a>
+            <button
+              type="button"
+              className="hp-idle-sb-btn hp-idle-sb-btn--hire"
+              onClick={() => setHireOpen(true)}
+              aria-expanded="false"
+            >
+              Room Hire
+            </button>
+          </div>
+        ) : (
+          /* ── SUB-MENU: Room Hire options ── */
+          <div className="hp-idle-switchboard-submenu">
+            <a
+              href={URLS.CONTROL_ROOM_BOOK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hp-idle-sb-btn"
+            >
+              Control Room
+            </a>
+            <a
+              href={URLS.BIG_BOOTH_BOOK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hp-idle-sb-btn"
+            >
+              Big Booth
+            </a>
+            <a
+              href={URLS.SMALL_BOOTH_BOOK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hp-idle-sb-btn"
+            >
+              Small Booth
+            </a>
+            <a
+              href="/contact?service=engineering"
+              className="hp-idle-sb-btn"
+            >
+              Service Individuals
+            </a>
+            <button
+              type="button"
+              className="hp-idle-sb-btn hp-idle-sb-btn--back"
+              onClick={() => setHireOpen(false)}
+              aria-expanded="true"
+            >
+              ← Back
+            </button>
+          </div>
+        )}
+      </div>
+
     </div>
-
-    {/* Sign — direct block, no flex wrapper so no vertical centring gap */}
-    <img
-      src="/assets/crs-rack-sign.png"
-      alt="Cowley Road Studios"
-      className="hp-idle-sign"
-    />
-
-    {/* Skyline oscilloscope — phosphor-trace Dreaming Spires scope */}
-    <SkylineOscilloscope activeId={activeId} />
-
-  </div>
-);
+  );
+}
 
 /* ─── Hardware service controls ───────────────────────────── */
 const ServiceControls = ({ active, onSelect }) => (
@@ -1838,13 +1921,7 @@ export default function StudioServicesRack() {
         <RackRail side="left" />
 
         <div className="hp-machine-inner">
-          {/* 1U — Identity module (CRS logo + addresses + Contact) */}
-          <IdentityRail />
-
-          {/* 1U — Quick-access bar: column-aligned mirrors of the rack buttons below */}
-          <QuickBar active={activeId} onSelect={handleSelect} />
-
-          {/* 3U — SCREEN */}
+          {/* 3U — SCREEN — LCD header (OXFORD) is the absolute top of the rack */}
           <div className="hp-screen">
             {screenContent}
           </div>
