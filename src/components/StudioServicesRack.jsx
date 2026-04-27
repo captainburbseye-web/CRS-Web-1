@@ -1204,7 +1204,7 @@ function AnalogueDialPair() {
    Y=0 is top, Y=160 is bottom. Silhouettes sit in mid-range.
 */
 const OSC_PATHS = {
-  /* Oxford Dreaming Spires skyline silhouette — left→right */
+  /* Oxford Dreaming Spires skyline silhouette — left→right  (44 pts) */
   SKYLINE: [
      0,140,  20,138,  40,136,  55,100,  60,95,  65,100,
     70,138,  80,135,  90,108,  95,60, 100,55, 105,60,
@@ -1212,8 +1212,8 @@ const OSC_PATHS = {
    145,130, 155,128, 160,105, 165,62, 170,105, 175,128,
    185,125, 195,95,  200,55,  205,95,  210,125, 220,122,
    230,80,  240,40,  250,80,  260,122, 270,118, 280,90,
-   290,65,  300,90,  310,118, 340,115, 380,118, 440,120,
-   520,122, 600,125, 680,130, 760,135, 820,138, 880,140,
+   290,65,  300,90,  310,118, 340,115, 520,122, 760,135,
+   820,138, 880,140,
   ],
 
   /* CRS brand mark — angular logo-form waveform */
@@ -1228,7 +1228,7 @@ const OSC_PATHS = {
    840,80, 880,80,
   ],
 
-  /* Recording — dense analogue signal trace */
+  /* Recording — dense analogue signal trace  (44 pts) */
   RECORDING: [
      0,80,  20,60,  40,100, 55,40,  65,120, 75,30,
     85,110, 95,50,  105,90, 115,45, 125,105, 135,55,
@@ -1236,11 +1236,11 @@ const OSC_PATHS = {
    205,88, 215,65,  225,95, 235,48,  245,100, 255,58,
    265,85, 275,70,  285,78, 295,62,  305,90, 315,55,
    325,98, 335,50,  345,102, 355,45, 365,108, 375,38,
-   385,112, 395,52,  410,88, 430,72, 460,75, 510,78,
-   570,80, 640,80,  720,80, 800,80,  840,80, 880,80,
+   385,112, 395,52,  410,88, 430,72, 570,80, 800,80,
+   840,80, 880,80,
   ],
 
-  /* Café — smooth warm sine-ish curve */
+  /* Café — smooth warm sine-ish curve  (44 pts) */
   CAFE: [
      0,80,  20,72,  40,58,  60,48,  80,45,  100,48,
    120,58, 140,72,  160,80, 180,88,  200,98, 220,108,
@@ -1248,10 +1248,11 @@ const OSC_PATHS = {
    360,60, 380,52,  400,50, 420,52,  440,60, 460,72,
    480,80, 500,88,  520,96, 540,104, 560,108, 580,104,
    600,96, 620,88,  640,80, 660,74,  680,70, 700,72,
-   720,76, 740,80,  760,80, 800,80,  840,80, 880,80,
+   720,76, 740,80,  760,80, 790,80,  820,80, 850,80,
+   870,80, 880,80,
   ],
 
-  /* Repairs / ODRO — sawtooth diagnostic signal */
+  /* Repairs / ODRO — sawtooth diagnostic signal  (44 pts) */
   REPAIRS: [
      0,80,  20,80,  21,30,  40,30,  60,30,  61,80,
     80,80,  81,30, 100,30,  120,30, 121,80, 140,80,
@@ -1259,7 +1260,8 @@ const OSC_PATHS = {
    220,30, 240,30, 241,80,  260,80, 261,30, 280,30,
    300,30, 301,80, 320,80,  321,30, 340,30, 360,30,
    361,80, 380,80, 400,80,  420,80, 440,80, 460,80,
-   520,80, 600,80, 680,80,  760,80, 820,80, 880,80,
+   490,80, 530,80, 580,80,  640,80, 720,80, 800,80,
+   850,80, 880,80,
   ],
 };
 
@@ -1277,13 +1279,13 @@ const OSC_MODE_MAP = {
 /* ─── Physics constants (tunable, see brief §3) ─────────────
    These are the ONLY values that govern feel — paths are above.
 */
-const OSC_ATTACK  = 3.5;   // scale blend rate when signal rises
-const OSC_RELEASE = 1.2;   // scale blend rate when signal falls  (slow phosphor decay)
-const OSC_SCALE_K = 0.18;  // rawSignal → scale deviation: keeps skyline legible
-const OSC_FLOOR   = 0.04;  // minimum rawSignal (idle breathing floor)
-const OSC_HUM_AMP = 0.018; // mains-hum breathing amplitude — visible slow pulse
-const OSC_HUM_HZ  = 0.45;  // hum freq (Hz) — very slow breath, ~2.2 s cycle
-const OSC_BEAM_PERIOD = 4000; // ms for one full scan sweep — unhurried
+const OSC_ATTACK  = 4.0;   // scale blend rate when signal rises
+const OSC_RELEASE = 1.0;   // scale blend rate when signal falls  (slow phosphor decay)
+const OSC_SCALE_K = 0.15;  // rawSignal → scale deviation: keeps skyline legible
+const OSC_FLOOR   = 0.05;  // minimum rawSignal (idle breathing floor)
+const OSC_HUM_AMP = 0.022; // mains-hum breathing amplitude — visible slow pulse
+const OSC_HUM_HZ  = 0.40;  // hum freq (Hz) — very slow breath, ~2.5 s cycle
+const OSC_BEAM_PERIOD = 3500; // ms for one full scan sweep — unhurried
 
 /* Pivot Y per mode: skyline breathes from its ground (Y=140); signals from midline (Y=80) */
 const OSC_PIVOT_Y = {
@@ -1392,11 +1394,11 @@ function SkylineOscilloscope({ activeId }) {
     const blendRate = targetScale > st.currentScale ? OSC_ATTACK : OSC_RELEASE;
     st.currentScale += (targetScale - st.currentScale) * blendRate * dt;
     /* Clamp:
-       SKYLINE: narrow range (0.92–1.12) keeps spires legible, just breathing
-       Signal traces: wider range (0.5–1.55) for expressive motion           */
+       SKYLINE: very narrow range (0.95–1.07) — spires breathe gently, shape stays legible
+       Signal traces: wider range (0.55–1.50) for expressive motion           */
     const isSkyline = (mode === 'SKYLINE');
-    const scaleMin = isSkyline ? 0.92 : 0.50;
-    const scaleMax = isSkyline ? 1.12 : 1.55;
+    const scaleMin = isSkyline ? 0.95 : 0.55;
+    const scaleMax = isSkyline ? 1.07 : 1.50;
     st.currentScale = Math.max(scaleMin, Math.min(scaleMax, st.currentScale));
 
     /* Build polyline string — use mode-appropriate pivot */
@@ -1486,11 +1488,13 @@ function SkylineOscilloscope({ activeId }) {
             </feMerge>
           </filter>
 
-          {/* Dim-trace glow — subtle phosphor persistence bloom */}
-          <filter id="osc-dim-glow" x="-20%" y="-50%" width="140%" height="200%" colorInterpolationFilters="sRGB">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="1.8" result="b" />
+          {/* Dim-trace glow — phosphor persistence bloom: wide halo + sharp core */}
+          <filter id="osc-dim-glow" x="-25%" y="-60%" width="150%" height="220%" colorInterpolationFilters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="halo" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="core" />
             <feMerge>
-              <feMergeNode in="b" />
+              <feMergeNode in="halo" />
+              <feMergeNode in="core" />
               <feMergeNode in="SourceGraphic" />
             </feMerge>
           </filter>
@@ -1533,8 +1537,8 @@ function SkylineOscilloscope({ activeId }) {
           ref={dimPathRef}
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
-          stroke="#1f6e1f"
-          strokeWidth="2"
+          stroke="#257025"
+          strokeWidth="2.2"
           strokeLinecap="round"
           strokeLinejoin="round"
           filter="url(#osc-dim-glow)"
@@ -1549,8 +1553,8 @@ function SkylineOscilloscope({ activeId }) {
           ref={activePathRef}
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
-          stroke="#44ff44"
-          strokeWidth="2.8"
+          stroke="#50ff50"
+          strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"
           filter="url(#osc-glow)"

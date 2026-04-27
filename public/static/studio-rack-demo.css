@@ -2300,20 +2300,20 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   width: calc(100% + 90px);   /* bust over both rails like the sign */
   margin: 0 -45px;
   /* Dark phosphor tube — slightly warm green-black, not pure black */
-  background: #030b03;
-  border-top: 4px solid #0a0a0a;
-  border-bottom: 4px solid #0a0a0a;
+  background: #020d02;
+  border-top: 3px solid #111;
+  border-bottom: 3px solid #111;
   border-left: none;
   border-right: none;
   overflow: hidden;
   /* Inner vignette: top + bottom shadow to sell the tube curvature */
   box-shadow:
-    inset 0 0 60px rgba(0,0,0,0.98),
-    inset 0 16px 32px rgba(0,0,0,0.85),
-    inset 0 -10px 20px rgba(0,0,0,0.75),
-    inset 4px 0  16px rgba(0,0,0,0.6),
-    inset -4px 0 16px rgba(0,0,0,0.6),
-    0 3px 0 rgba(255,255,255,0.02);
+    inset 0 0 40px rgba(0,0,0,0.92),
+    inset 0 12px 24px rgba(0,0,0,0.80),
+    inset 0 -8px 16px rgba(0,0,0,0.65),
+    inset 3px 0  12px rgba(0,0,0,0.5),
+    inset -3px 0 12px rgba(0,0,0,0.5),
+    0 2px 0 rgba(255,255,255,0.03);
 }
 
 /* Responsive rail widths — match sign margins exactly */
@@ -2340,9 +2340,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 
 /* CRT phosphor dot-grid — faint green tint, not black */
 .hp-osc-grid line {
-  stroke: #0d200d;
+  stroke: #0f260f;
   stroke-width: 0.5;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 /* ── PHOSPHOR PERSISTENCE TRACE ──────────────────────────────
@@ -2352,9 +2352,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    strokeWidth and opacity here are the primary legibility levers.
 ────────────────────────────────────────────────────────────── */
 .hp-osc-dim {
-  stroke: #1a5c1a;       /* mid phosphor green — visible on dark bg */
-  stroke-width: 2px;
-  opacity: 0.85;         /* clearly visible — this IS the skyline */
+  stroke: #257025;       /* bright-mid phosphor green — clearly readable on dark bg */
+  stroke-width: 2.2px;
+  opacity: 0.92;         /* must be clearly visible — this IS the skyline silhouette */
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -2364,8 +2364,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    The SVG filter (osc-glow) is applied inline for the halo.
 ────────────────────────────────────────────────────────────── */
 .hp-osc-active {
-  stroke: #39e839;       /* bright phosphor green */
-  stroke-width: 2.5px;
+  stroke: #50ff50;       /* bright phosphor green — fresh electron-gun trace */
+  stroke-width: 3px;
   stroke-linecap: round;
   stroke-linejoin: round;
   opacity: 1;
@@ -2391,8 +2391,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: #39e839;
-  box-shadow: 0 0 5px #39e839, 0 0 10px rgba(57,232,57,0.4);
+  background: #44e844;
+  box-shadow: 0 0 6px #44e844, 0 0 12px rgba(68,232,68,0.5);
   animation: osc-badge-pulse 2.8s ease-in-out infinite;
   flex-shrink: 0;
 }
@@ -2400,13 +2400,13 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   font-family: 'Roboto Mono', 'Courier New', monospace;
   font-size: 0.48rem;
   letter-spacing: 0.14em;
-  color: #1a5c1a;
+  color: #257025;
   text-transform: uppercase;
 }
 
 @keyframes osc-badge-pulse {
-  0%, 100% { opacity: 0.55; box-shadow: 0 0 4px #39e839; }
-  50%       { opacity: 1;    box-shadow: 0 0 8px #39e839, 0 0 16px rgba(57,232,57,0.5); }
+  0%, 100% { opacity: 0.60; box-shadow: 0 0 5px #44e844; }
+  50%       { opacity: 1;    box-shadow: 0 0 10px #44e844, 0 0 20px rgba(68,232,68,0.6); }
 }
 
 /* Reduced-motion: freeze badge, keep trace visible */
