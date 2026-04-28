@@ -375,12 +375,12 @@ const PANEL_LOCATION_OVERRIDES = {
     crs: {
       eyebrow: 'Control Room Hire — Cowley Road',
       title: 'Control room · Cowley Road',
-      body: 'Mixing, tracking, writing sessions, attended playback. Hybrid signal chain — analogue warmth, digital precision. Mixes translate across three monitoring paths.',
+      body: 'Professionally tuned for critical listening, mixing and mastering. SSL BiG SiX console with SuperAnalogue pre-amps, G-Series Bus Compressor and Ghielmetti patchbay matrix. Mixes translate across three monitoring paths.',
       specs: [
-        { k: 'Desk',       v: 'SSL BiG SiX — analogue summing + EQ' },
-        { k: 'Processing', v: 'TL Audio C1 valve · Revox preamps · Tascam 388' },
-        { k: 'Patchbay',   v: 'Ghielmetti mastering matrix' },
-        { k: 'Monitoring', v: 'Adam Audio · NS-10 · Genelec system + sub' },
+        { k: 'Console',     v: 'SSL BiG SiX — SuperAnalogue preamps + EQ' },
+        { k: 'Compression', v: 'SSL G-Series Bus Compressor' },
+        { k: 'Patchbay',    v: 'Ghielmetti mastering matrix' },
+        { k: 'Monitoring',  v: 'Adam Audio · NS-10 · Genelec system + sub' },
       ],
       ctas: [{ label: 'Hire Control Room', href: URLS.CONTROL_ROOM_BOOK, primary: true, location: 'crs' }],
     },
@@ -441,12 +441,12 @@ const PANELS = {
     id: 'controlroom', label: 'Hire Control Room', theme: 'dark',
     eyebrow: 'Professional Mixing & Mastering',
     title: 'A serious working control room',
-    body: 'A professionally tuned environment for critical listening and production. Centered around our SSL BiG SiX console and premium monitoring, it offers an elite signal path with boutique outboard integration.',
+    body: 'Professionally tuned for critical listening, mixing and mastering. Centred around our SSL BiG SiX console with SuperAnalogue pre-amps and G-Series Bus Compressor. Mixes translate across three monitoring paths.',
     specs: [
-      { k: 'Console',    v: 'SSL BiG SiX — SuperAnalogue preamps + EQ' },
-      { k: 'Compression', v: 'G-Series style bus compression' },
-      { k: 'Patchbay',   v: 'Balanced patch-bay access — Ghielmetti matrix' },
-      { k: 'Monitoring', v: 'Adam Audio · NS-10 · Genelec system + sub' },
+      { k: 'Console',     v: 'SSL BiG SiX — SuperAnalogue preamps + EQ' },
+      { k: 'Compression', v: 'SSL G-Series Bus Compressor' },
+      { k: 'Patchbay',    v: 'Balanced patch-bay access — Ghielmetti matrix' },
+      { k: 'Monitoring',  v: 'Adam Audio · NS-10 · Genelec system + sub' },
     ],
     ctas: [
       { label: 'Hire — Cowley Road',  href: URLS.CONTROL_ROOM_BOOK,          primary: true,  location: 'crs'     },
@@ -472,11 +472,11 @@ const PANELS = {
 
   cafe: {
     id: 'cafe', label: 'Workshop Café / Venue', theme: 'warm',
-    eyebrow: 'Community Space & Venue Hire',
+    eyebrow: 'Dry Hire · Solo Workspace',
     title: 'Workshop Café & Venue',
-    body: "More than a studio waiting room. Oxford's music community hub — coffee, conversation, open mics and creative workspace between sessions. Also available for private hire: showcases, workshops, events.",
+    body: 'A quiet sanctuary for deep work and focused sessions. High-speed Wi-Fi, power, great coffee. Also available for private hire: showcases, workshops and community events.',
     specs: [
-      { k: 'What',    v: 'Café, community space and creative hub' },
+      { k: 'Work',    v: 'Solo workspace · Wi-Fi · Power as standard' },
       { k: 'Hire',    v: 'Private hire for gigs and workshops' },
       { k: 'Tech',    v: 'PA system · Lighting · Stage' },
       { k: 'Events',  v: 'Open mic nights and community events' },
@@ -1389,7 +1389,6 @@ function SkylineOscilloscope({ activeId }) {
 }
 
 /* ─── Idle / hero state ───────────────────────────────────── */
-/* ─── Idle / hero state ───────────────────────────────────── */
 function IdleState({ activeId = null }) {
   const [hireOpen, setHireOpen] = useState(false);
 
@@ -1428,7 +1427,7 @@ function IdleState({ activeId = null }) {
         {!hireOpen ? (
           <div className="hp-idle-switchboard-primary">
             <a
-              href={URLS.RECORDING_BOOK}
+              href={URLS.BIG_BOOTH_BOOK}
               target="_blank"
               rel="noopener noreferrer"
               className="hp-idle-sb-btn"
@@ -1436,7 +1435,9 @@ function IdleState({ activeId = null }) {
               Recording
             </a>
             <a
-              href={URLS.ENQUIRE_WORKSHOP}
+              href={URLS.SMALL_BOOTH_BOOK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="hp-idle-sb-btn"
             >
               Café
