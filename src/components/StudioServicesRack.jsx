@@ -238,6 +238,22 @@ const LocationLogo = ({ location = 'crs', size = 'md', className = '' }) => {
   );
 };
 
+/* ─── Brand plate — manufacturer's anchor, top + bottom of rack ─ */
+/* Wraps the CRS logo in a linked, centred plate. position = 'top' | 'bottom' */
+const BrandPlate = ({ position = 'top' }) => (
+  <div className={`crs-brand-plate crs-brand-plate--${position}`}>
+    <a href={URLS.HOME} className="crs-brand-plate-link" aria-label="Cowley Road Studios — home">
+      <img
+        src="/static/crs-logo.png"
+        alt="Cowley Road Studios"
+        className="crs-brand-plate-img"
+        width="200"
+        height="74"
+      />
+    </a>
+  </div>
+);
+
 /* ─── Rack hardware: hex bolt + side rails ───────────────── */
 const HexBolt = ({ className = '' }) => (
   <svg viewBox="0 0 100 100" className={`srd-bolt ${className}`} aria-hidden="true">
@@ -1711,6 +1727,9 @@ export default function StudioServicesRack() {
       powered   ? 'hp-page--powered' : '',
     ].filter(Boolean).join(' ')}>
 
+      {/* BRAND PLATE — top manufacturer anchor, links home */}
+      <BrandPlate position="top" />
+
       {/* RACK CHASSIS — physical 19" hardware frame */}
       <section className="hp-machine" aria-label="Service display">
 
@@ -1729,6 +1748,9 @@ export default function StudioServicesRack() {
         <RackRail side="right" />
 
       </section>
+
+      {/* BRAND PLATE — bottom signature, closes the circuit */}
+      <BrandPlate position="bottom" />
 
       {/* 4 — Footer */}
       <TrustStrip />

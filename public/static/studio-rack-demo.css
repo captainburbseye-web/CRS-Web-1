@@ -284,6 +284,90 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   .loc-logo--footer { width: 92px;  height: 34px; }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   BRAND PLATE — v3.3
+   Manufacturer's anchor. Dominant CRS logo, top and bottom of
+   the rack. Static (scrolls with page). Links to home.
+   Top plate  = "whose gear is this" — above the chassis.
+   Bottom plate = "signature" — closes the circuit below scope.
+   ═══════════════════════════════════════════════════════════════ */
+.crs-brand-plate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Max-width tracks the rack chassis so they stay aligned */
+  max-width: min(1200px, 90vw);
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Top plate — breathing room BELOW it before the rack chassis */
+.crs-brand-plate--top {
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;   /* 4rem total vertical gap between plate and rack */
+}
+
+/* Bottom plate — breathing room ABOVE it after the rack chassis */
+.crs-brand-plate--bottom {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* The anchor link — block so it contains the image cleanly */
+.crs-brand-plate-link {
+  display: block;
+  line-height: 0;           /* kill phantom inline gap */
+  border-radius: 4px;
+  transition: opacity 0.18s ease, filter 0.18s ease;
+  /* Machined focus ring */
+  outline-offset: 6px;
+}
+.crs-brand-plate-link:hover {
+  opacity: 0.82;
+  filter: brightness(1.15) drop-shadow(0 0 18px rgba(194,164,58,0.35));
+}
+.crs-brand-plate-link:focus-visible {
+  outline: 2px solid var(--mustard);
+}
+
+/* The logo image — large, crisp, object-fit: contain */
+.crs-brand-plate-img {
+  display: block;
+  width: 200px;             /* v3.3 desktop target */
+  height: auto;
+  object-fit: contain;
+  /* Subtle drop-shadow gives the "enamel badge" depth */
+  filter:
+    drop-shadow(0 2px 6px rgba(0,0,0,0.70))
+    drop-shadow(0 0 1px rgba(0,0,0,0.90));
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .crs-brand-plate {
+    max-width: 100%;
+    width: 100%;
+  }
+  .crs-brand-plate--top    { padding-top: 1.5rem; padding-bottom: 1.25rem; }
+  .crs-brand-plate--bottom { padding-top: 1.25rem; padding-bottom: 1.25rem; }
+  .crs-brand-plate-img { width: 140px; }
+}
+
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1088px) {
+  .crs-brand-plate {
+    max-width: min(1200px, calc(100% - 2rem));
+    width: calc(100% - 2rem);
+  }
+  .crs-brand-plate-img { width: 170px; }
+}
+
+/* Large desktop — push to upper target */
+@media (min-width: 1200px) {
+  .crs-brand-plate-img { width: 220px; }
+}
+
 /* ============================================================
    LED INDICATORS
    ============================================================ */
@@ -468,7 +552,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   flex: 1;
   max-width: min(1200px, 90vw);  /* v3.2 — wider rack, fills viewport on large screens */
   width: 90vw;
-  margin: 2.5rem auto;            /* Generous top breathing room */
+  margin: 0 auto 0;              /* v3.3 — BrandPlate handles vertical breathing room */
   padding: 0;
   display: flex;
   flex-direction: row;            /* rails left | content | rails right */
