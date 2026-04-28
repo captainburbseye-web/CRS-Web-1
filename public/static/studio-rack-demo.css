@@ -75,6 +75,27 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   display: flex;
   flex-direction: column;
   background: var(--nettle-deep);
+  /* Blurred SSL console backdrop — behind the dark green, gives depth to page */
+  background-image: url('/static/images/crs-master-console-v12.webp');
+  background-size: cover;
+  background-position: center 30%;
+  background-attachment: fixed;
+}
+.hp-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: inherit;
+  background-image: url('/static/images/crs-master-console-v12.webp');
+  background-size: cover;
+  background-position: center 30%;
+  filter: blur(9px) brightness(0.18) saturate(0.6);
+  z-index: 0;
+  pointer-events: none;
+}
+.hp-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* ============================================================
@@ -390,37 +411,32 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    Sit IN FRONT of gear, cast heavy shadow inward
    ═══════════════════════════════════════════════════════════════ */
 .srd-rail {
-  width: 45px;
+  width: 52px;               /* v3.2 — wider rail for larger chassis presence */
   flex-shrink: 0;
-  /* Dark metallic steel gradient */
   background: linear-gradient(90deg, #111 0%, #2a2a2a 30%, #1a1a1a 70%, #0a0a0a 100%);
   border-left: 1px solid #333;
   border-right: 2px solid #000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1.5rem 6px;
+  padding: 1.8rem 8px;
   align-items: center;
-  /* Pull rails to the very front */
   z-index: 50;
   position: relative;
-  /* Left rail casts shadow to the right (over the gear) */
   box-shadow: 
     inset -4px 0 8px rgba(0,0,0,0.6),
     15px 0 20px -5px rgba(0, 0, 0, 0.9);
 }
 .srd-rail--right {
-  /* Mirrors the lighting for the right rail */
   transform: scaleX(-1);
   border-left: 2px solid #000;
   border-right: 1px solid #333;
-  /* Right rail casts shadow to the left (over the gear) */
   box-shadow: 
     inset -4px 0 8px rgba(0,0,0,0.6),
     -15px 0 20px -5px rgba(0, 0, 0, 0.9);
 }
 @media (min-width: 640px) {
-  .srd-rail { width: 44px; padding: 1.5rem 6px; }
+  .srd-rail { width: 56px; padding: 1.8rem 10px; }
 }
 
 /* Hex bolt icons */
@@ -442,7 +458,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 .srd-bolt:nth-of-type(7n)  { transform: rotate(-15deg); }
 .srd-bolt:nth-of-type(11n) { transform: rotate(33deg); }
 @media (min-width: 640px) {
-  .srd-bolt { width: 22px; height: 22px; }
+  .srd-bolt { width: 24px; height: 24px; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -450,28 +466,33 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    ═══════════════════════════════════════════════════════════════ */
 .hp-machine {
   flex: 1;
-  max-width: 1000px;   /* Forces hardware width */
-  width: 100%;
-  margin: 2rem auto;   /* Centers the rack on screen */
+  max-width: min(1200px, 90vw);  /* v3.2 — wider rack, fills viewport on large screens */
+  width: 90vw;
+  margin: 2.5rem auto;            /* Generous top breathing room */
   padding: 0;
   display: flex;
-  flex-direction: row;   /* rails left | content | rails right */
+  flex-direction: row;            /* rails left | content | rails right */
   gap: 0;
-  background-color: #050505;  /* Deep rack shadow */
-  box-shadow: 0 0 50px 10px rgba(0,0,0,0.8);
+  background-color: #050505;
+  box-shadow:
+    0 0 60px 16px rgba(0,0,0,0.9),
+    0 0 120px 32px rgba(0,0,0,0.6);
   border-radius: 4px;
   position: relative;
 }
-/* Mobile: reduce chassis margins, thinner rails */
+/* Tablet: modest side margin */
 @media (max-width: 1088px) {
   .hp-machine {
-    margin: 1rem 0.5rem;
-    max-width: calc(100% - 1rem);
+    margin: 1.5rem auto;
+    max-width: min(1200px, calc(100% - 2rem));
+    width: calc(100% - 2rem);
   }
 }
 @media (max-width: 640px) {
   .hp-machine {
     margin: 0.5rem 0.25rem;
+    max-width: calc(100% - 0.5rem);
+    width: calc(100% - 0.5rem);
   }
   .srd-rail {
     width: 28px;
@@ -537,6 +558,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   display: flex;
   flex-direction: column;
   gap: 0;
+  /* v3.2 — rack-unit separators between modules */
+  row-gap: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -549,23 +572,20 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   justify-content: center;
   align-items: center;
   padding: 0;
-  margin: 0 -45px;
-  background: transparent;  /* No background — sign image is self-contained */
+  margin: 6px -52px 0;   /* v3.2 — 6px top seam gap; wider rail offset */
+  background: transparent;
   position: relative;
   z-index: 60;
 }
-/* Rail widths by breakpoint:
-   ≤640px mobile: rail = 28px  → margin -28px
-   ≥640px desktop: rail = 44px → margin -44px
-*/
+/* Rail widths by breakpoint: mobile=28px desktop=56px */
 @media (max-width: 639px) {
   .hp-idle-faceplate {
-    margin: 0 -28px;
+    margin: 4px -28px 0;
   }
 }
 @media (min-width: 640px) {
   .hp-idle-faceplate {
-    margin: 0 -44px;
+    margin: 8px -56px 0;
   }
 }
 
@@ -589,17 +609,15 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 .hp-idle-display {
   /* Shallow fitted display module — top of idle stack */
   padding: 0;
-  margin: 0 -45px;  /* Extend over rails like sign module */
+  margin: 0 -52px;   /* v3.2 — extends over wider rails */
   background: 
     linear-gradient(180deg, #0a0a0a 0%, #121212 50%, #0a0a0a 100%);
   position: relative;
   z-index: 60;
-  /* Bezel: heavier top edge (overhead light catch), lighter bottom (connects to sign) */
   border: 4px solid #1a1a1a;
   border-top-width: 8px;
   border-bottom-width: 4px;
   border-radius: 2px;
-  /* Recessed screen — inset shadow heavier at top */
   box-shadow: 
     inset 0 0 40px rgba(0,0,0,0.95),
     inset 0 10px 22px rgba(0,0,0,0.9),
@@ -608,10 +626,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
     0 3px 0 rgba(0,0,0,0.6);
   overflow: hidden;
 }
-/* Rail widths by breakpoint:
-   ≤640px mobile: rail = 28px  → margin -28px
-   ≥640px desktop: rail = 44px → margin -44px
-*/
+/* Rail widths by breakpoint: mobile=28px desktop=56px */
 @media (max-width: 639px) {
   .hp-idle-display {
     margin: 0 -28px;
@@ -619,15 +634,14 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 @media (min-width: 640px) {
   .hp-idle-display {
-    margin: 0 -44px;
+    margin: 0 -56px;
   }
 }
 
 /* Display face — LCD panel with dot-matrix pixel grid */
 .hp-idle-lcd {
-  padding: 0.75rem 1.5rem 0.8rem;
+  padding: 1.1rem 2rem 1.15rem;   /* v3.2 — taller LCD bezel, more breathing room */
   position: relative;
-  /* Deep green-black LCD background */
   background:
     radial-gradient(ellipse at 50% 40%, rgba(0,28,8,0.95) 0%, rgba(0,10,4,1) 100%);
 }
@@ -675,14 +689,14 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
     0 0 40px rgba(200,100,0,0.2);
 }
 
-/* Line 1 — OXFORD location tag */
+/* Line 1 — OXFORD location tag (v3.2: +40% larger) */
 .hp-display-line--location {
-  font-size: 11px;
+  font-size: 15px;            /* was 11px — ~+36% */
   font-weight: 400;
-  letter-spacing: 0.55em;
-  line-height: 1.2;
-  margin-bottom: 0.35rem;
-  color: #c87010;           /* dimmer — secondary label */
+  letter-spacing: 0.50em;
+  line-height: 1.25;
+  margin-bottom: 0.45rem;
+  color: #c87010;
   text-shadow:
     0 0 3px  rgba(220,140,20,0.9),
     0 0 8px  rgba(200,110,10,0.5),
@@ -690,12 +704,12 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   animation: lcd-boot 0.5s ease-out 0.05s both;
 }
 
-/* Line 2 — Core services (brightest, largest) */
+/* Line 2 — Core services (v3.2: +40% larger) */
 .hp-display-line--primary {
-  font-size: 13px;
+  font-size: 18px;            /* was 13px — ~+38% */
   font-weight: 400;
-  letter-spacing: 0.22em;
-  line-height: 1.3;
+  letter-spacing: 0.20em;
+  line-height: 1.35;
   color: #f0b030;
   text-shadow:
     0 0 4px  rgba(255,200,50,1),
@@ -852,9 +866,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 
 .hp-panel-desc {
-  font-size: 0.94rem;
+  font-size: 1.06rem;          /* v3.2 — was 0.94rem, min 1.05rem per spec */
   color: var(--offwhite-dim);
-  line-height: 1.68;
+  line-height: 1.6;
   max-width: 52ch;
 }
 
@@ -1113,9 +1127,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 
 .hp-loc-btn-desc {
-  font-size: 0.82rem;
+  font-size: 1.05rem;          /* v3.2 — was 0.82rem, min 1.05rem per spec */
   color: var(--offwhite-dim);
-  line-height: 1.55;
+  line-height: 1.58;
   margin-top: 0.3rem;
 }
 
@@ -1548,16 +1562,25 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 .hp-controls-buttons {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 3px;
-  padding: 1.25rem 1.5rem 1.5rem;
+  gap: 6px;                  /* v3.2 — wider inter-button gap */
+  padding: 1.5rem 1.8rem 1.75rem;  /* v3.2 — more generous metal padding */
   background: transparent;
 }
 
-@media (max-width: 720px) {
-  .hp-controls-buttons { grid-template-columns: repeat(3, 1fr); gap: 2px; padding: 1rem 0.75rem 1.25rem; }
+/* Tablet — 3 per row, 2-row grid */
+@media (max-width: 900px) {
+  .hp-controls-buttons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    padding: 1.1rem 1rem 1.25rem;
+  }
 }
 @media (max-width: 420px) {
-  .hp-controls-buttons { grid-template-columns: repeat(2, 1fr); gap: 2px; padding: 0.75rem 0.5rem 1rem; }
+  .hp-controls-buttons {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+    padding: 0.75rem 0.5rem 1rem;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -1572,9 +1595,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 1.4rem 1rem 1.45rem;
+  padding: 1.6rem 1.2rem 1.65rem;  /* v3.2 — taller, more imposing button */
   margin: 4px;
-  min-height: 110px;
+  min-height: 130px;               /* v3.2 — was 110px */
 
   /* MUSTARD default state — warm neon standby */
   background:
@@ -1686,7 +1709,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 /* ── Button label — brightens to orange on hover ─────────── */
 .rack-btn-label {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: 1.0rem;           /* v3.2 — was 0.85rem; readable from 1–1.5m */
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -1924,8 +1947,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   .hp-panel-ctas { flex-direction: column; }
   .hp-cta { justify-content: center; }
 
-  .rack-btn { min-height: 50px; padding: 0.48rem 0.3rem 0.52rem; margin: 1px; }
-  .rack-btn-label { font-size: 0.56rem; letter-spacing: 0.06em; }
+  .rack-btn { min-height: 52px; padding: 0.5rem 0.3rem 0.54rem; margin: 1px; }
+  .rack-btn-label { font-size: 0.58rem; letter-spacing: 0.06em; }
 
   .hp-cafe-sign-header {
     padding: 1.1rem 1rem 1rem;
@@ -2042,20 +2065,19 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
      the full shape glows dimly and the beam brightens it as it passes.
    ═══════════════════════════════════════════════════════════════ */
 
-/* Outer bezel frame — slots below the wooden sign in hp-idle */
+/* Outer bezel frame — slots below the sign (v3.2: taller + top seam gap) */
 .hp-osc-frame {
   display: block;
   position: relative;
-  width: calc(100% + 90px);   /* bust over both rails like the sign */
-  margin: 0 -45px;
-  /* Dark phosphor tube — slightly warm green-black, not pure black */
+  width: calc(100% + 104px);  /* v3.2 — matches wider rails (52px × 2) */
+  margin: 8px -52px 0;        /* 8px top seam = visual gap between sign and scope */
   background: #020d02;
   border-top: 3px solid #111;
   border-bottom: 3px solid #111;
   border-left: none;
   border-right: none;
   overflow: hidden;
-  /* Inner vignette: top + bottom shadow to sell the tube curvature */
+  min-height: 200px;          /* v3.2 — CRT presence, not a thin strip */
   box-shadow:
     inset 0 0 40px rgba(0,0,0,0.92),
     inset 0 12px 24px rgba(0,0,0,0.80),
@@ -2065,26 +2087,34 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
     0 2px 0 rgba(255,255,255,0.03);
 }
 
-/* Responsive rail widths — match sign margins exactly */
+/* Responsive — match wider rails exactly */
 @media (max-width: 639px) {
   .hp-osc-frame {
     width: calc(100% + 56px);
-    margin: 0 -28px;
+    margin: 4px -28px 0;
+    min-height: 120px;
   }
 }
 @media (min-width: 640px) {
   .hp-osc-frame {
-    width: calc(100% + 88px);
-    margin: 0 -44px;
+    width: calc(100% + 112px);  /* 56px rail × 2 */
+    margin: 8px -56px 0;
+    min-height: 200px;
+  }
+}
+@media (min-width: 1024px) {
+  .hp-osc-frame {
+    min-height: 240px;          /* Extra height on large desktop */
   }
 }
 
-/* SVG fills the frame — aspect ratio 880:160 = 5.5:1 */
+/* SVG fills the frame — aspect ratio enforced by min-height on container */
 .hp-osc-svg {
   display: block;
   width: 100%;
-  height: auto;
-  min-height: 64px;
+  height: 100%;               /* v3.2 — fill the min-height container */
+  min-height: 200px;          /* fallback for browsers that need explicit height */
+  aspect-ratio: unset;        /* let container min-height dominate */
 }
 
 /* CRT phosphor dot-grid — faint green tint, not black */
@@ -2181,25 +2211,25 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 
 .hp-idle-switchboard {
   display: block;
-  width: calc(100% + 90px);
-  margin: 0 -45px;
+  width: calc(100% + 104px);  /* v3.2 — 52px rail × 2 */
+  margin: 8px -52px 0;        /* 8px top seam gap below oscilloscope */
   background: #0d0d0d;
   border-top: 2px solid #1a1a1a;
   border-bottom: 2px solid #1a1a1a;
-  padding: 8px 16px;
+  padding: 10px 20px;         /* v3.2 — slightly taller switchboard row */
   box-sizing: border-box;
 }
 @media (max-width: 639px) {
   .hp-idle-switchboard {
     width: calc(100% + 56px);
-    margin: 0 -28px;
+    margin: 4px -28px 0;
     padding: 6px 10px;
   }
 }
 @media (min-width: 640px) {
   .hp-idle-switchboard {
-    width: calc(100% + 88px);
-    margin: 0 -44px;
+    width: calc(100% + 112px);  /* 56px rail × 2 */
+    margin: 8px -56px 0;
   }
 }
 
@@ -2215,9 +2245,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 5px 14px;
+  padding: 7px 18px;           /* v3.2 — taller, wider pill buttons */
   font-family: 'Roboto Mono', 'Courier New', monospace;
-  font-size: 0.60rem;
+  font-size: 0.72rem;          /* v3.2 — was 0.60rem */
   font-weight: 600;
   letter-spacing: 0.13em;
   text-transform: uppercase;
