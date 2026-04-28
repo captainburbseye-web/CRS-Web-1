@@ -11,6 +11,8 @@ const URLS = {
   CRICKET_REHEARSAL_BOOK:    'https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX',
   CONTROL_ROOM_BOOK:         'https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX',
   CRICKET_CONTROL_ROOM_BOOK: 'https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX',
+  BIG_BOOTH_BOOK:            'https://app.squareup.com/appointments/buyer/widget/se7rvqsvhnnirj/L1MAM4DDPHKXX',
+  SMALL_BOOTH_BOOK:          'https://app.squareup.com/appointments/buyer/widget/6had3muutdo7io/L1MAM4DDPHKXX',
   ENQUIRE_WORKSHOP:          '/contact?service=venue',
   ENQUIRE_ODRO:              '/contact?service=repairs',
   MAP:                       'https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE',
@@ -437,13 +439,13 @@ const PANELS = {
 
   controlroom: {
     id: 'controlroom', label: 'Hire Control Room', theme: 'dark',
-    eyebrow: 'Control Room Hire',
+    eyebrow: 'Professional Mixing & Mastering',
     title: 'A serious working control room',
-    body: 'Mixing, tracking, writing sessions, attended playback. Hybrid signal chain — analogue warmth, digital precision. Mixes translate across three monitoring paths.',
+    body: 'A professionally tuned environment for critical listening and production. Centered around our SSL BiG SiX console and premium monitoring, it offers an elite signal path with boutique outboard integration.',
     specs: [
-      { k: 'Desk',       v: 'SSL BiG SiX — analogue summing + EQ' },
-      { k: 'Processing', v: 'TL Audio C1 valve · Revox preamps · Tascam 388' },
-      { k: 'Patchbay',   v: 'Ghielmetti mastering matrix' },
+      { k: 'Console',    v: 'SSL BiG SiX — SuperAnalogue preamps + EQ' },
+      { k: 'Compression', v: 'G-Series style bus compression' },
+      { k: 'Patchbay',   v: 'Balanced patch-bay access — Ghielmetti matrix' },
       { k: 'Monitoring', v: 'Adam Audio · NS-10 · Genelec system + sub' },
     ],
     ctas: [
@@ -1388,39 +1390,116 @@ function SkylineOscilloscope({ activeId }) {
 
 /* ─── Idle / hero state ───────────────────────────────────── */
 /* ─── Idle / hero state ───────────────────────────────────── */
-const IdleState = ({ activeId = null }) => (
+function IdleState({ activeId = null }) {
+  const [hireOpen, setHireOpen] = useState(false);
 
-  <div className="hp-idle" aria-label="Cowley Road Studios — select a service">
+  return (
+    <div className="hp-idle" aria-label="Cowley Road Studios — select a service">
 
-    {/* Display module sits at the top — fills the black gap above the sign */}
-    <div className="hp-idle-display">
-      <div className="hp-idle-lcd">
-        <div className="hp-display-line hp-display-line--location">
-          OXFORD
-        </div>
-        <div className="hp-display-line hp-display-line--primary">
-          RECORDING · REHEARSAL · PRODUCTION · VENUE
-        </div>
-        <div className="hp-display-line hp-display-line--secondary">
-          AV / TECHNICAL SERVICES
+      {/* Display module sits at the top — fills the black gap above the sign */}
+      <div className="hp-idle-display">
+        <div className="hp-idle-lcd">
+          <div className="hp-display-line hp-display-line--location">
+            OXFORD
+          </div>
+          <div className="hp-display-line hp-display-line--primary">
+            RECORDING · REHEARSAL · PRODUCTION · VENUE
+          </div>
+          <div className="hp-display-line hp-display-line--secondary">
+            AV / TECHNICAL SERVICES
+          </div>
         </div>
       </div>
+
+      {/* Sign faceplate — rack-mounted, sits below the display */}
+      <div className="hp-idle-faceplate">
+        <img
+          src="/assets/crs-rack-sign.png"
+          alt="Cowley Road Studios"
+          className="hp-idle-sign"
+        />
+      </div>
+
+      {/* Skyline oscilloscope — phosphor-trace Dreaming Spires scope — DO NOT TOUCH */}
+      <SkylineOscilloscope activeId={activeId} />
+
+      {/* ── NESTED ROOM HIRE SWITCHBOARD ─────────────────────────
+          Primary: Recording · Café · Room Hire
+          Room Hire expands sub-menu. Local state only.
+      ──────────────────────────────────────────────────────── */}
+      <div className="hp-idle-switchboard" role="group" aria-label="Book a room">
+        {!hireOpen ? (
+          <div className="hp-idle-switchboard-primary">
+            <a
+              href={URLS.RECORDING_BOOK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hp-idle-sb-btn"
+            >
+              Recording
+            </a>
+            <a
+              href={URLS.ENQUIRE_WORKSHOP}
+              className="hp-idle-sb-btn"
+            >
+              Café
+            </a>
+            <button
+              type="button"
+              className="hp-idle-sb-btn hp-idle-sb-btn--hire"
+              onClick={() => setHireOpen(true)}
+              aria-expanded={false}
+            >
+              Room Hire ›
+            </button>
+          </div>
+        ) : (
+          <div className="hp-idle-switchboard-submenu">
+            <a
+              href={URLS.CONTROL_ROOM_BOOK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hp-idle-sb-btn"
+            >
+              Control Room
+            </a>
+            <a
+              href={URLS.BIG_BOOTH_BOOK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hp-idle-sb-btn"
+            >
+              Big Booth
+            </a>
+            <a
+              href={URLS.SMALL_BOOTH_BOOK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hp-idle-sb-btn"
+            >
+              Small Booth
+            </a>
+            <a
+              href="/contact?service=engineering"
+              className="hp-idle-sb-btn"
+            >
+              Service Individuals
+            </a>
+            <button
+              type="button"
+              className="hp-idle-sb-btn hp-idle-sb-btn--back"
+              onClick={() => setHireOpen(false)}
+              aria-expanded={true}
+            >
+              ← Back
+            </button>
+          </div>
+        )}
+      </div>
+
     </div>
-
-    {/* Sign faceplate — rack-mounted, sits below the display */}
-    <div className="hp-idle-faceplate">
-      <img
-        src="/assets/crs-rack-sign.png"
-        alt="Cowley Road Studios"
-        className="hp-idle-sign"
-      />
-    </div>
-
-    {/* Skyline oscilloscope — phosphor-trace Dreaming Spires scope */}
-    <SkylineOscilloscope activeId={activeId} />
-
-  </div>
-);
+  );
+}
 
 /* ─── Hardware service controls ───────────────────────────── */
 const ServiceControls = ({ active, onSelect }) => (
@@ -1640,13 +1719,7 @@ export default function StudioServicesRack() {
         <RackRail side="left" />
 
         <div className="hp-machine-inner">
-          {/* 1U — Identity module (CRS logo + addresses + Contact) */}
-          <IdentityRail />
-
-          {/* 1U — Quick-access bar: column-aligned mirrors of the rack buttons below */}
-          <QuickBar active={activeId} onSelect={handleSelect} />
-
-          {/* 3U — SCREEN */}
+          {/* 3U — SCREEN — OXFORD LCD is the absolute top of the rack */}
           <div className="hp-screen">
             {screenContent}
           </div>

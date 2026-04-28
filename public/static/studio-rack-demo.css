@@ -2174,3 +2174,96 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   IDLE SWITCHBOARD — nested booking menu
+   Primary: Recording · Café · Room Hire
+   Sub-menu: Control Room · Big Booth · Small Booth · Service · ← Back
+   ═══════════════════════════════════════════════════════════════ */
+
+.hp-idle-switchboard {
+  display: block;
+  width: calc(100% + 90px);
+  margin: 0 -45px;
+  background: #0d0d0d;
+  border-top: 2px solid #1a1a1a;
+  border-bottom: 2px solid #1a1a1a;
+  padding: 8px 16px;
+  box-sizing: border-box;
+}
+@media (max-width: 639px) {
+  .hp-idle-switchboard {
+    width: calc(100% + 56px);
+    margin: 0 -28px;
+    padding: 6px 10px;
+  }
+}
+@media (min-width: 640px) {
+  .hp-idle-switchboard {
+    width: calc(100% + 88px);
+    margin: 0 -44px;
+  }
+}
+
+.hp-idle-switchboard-primary,
+.hp-idle-switchboard-submenu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.hp-idle-sb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 14px;
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size: 0.60rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #39e839;
+  background: #0a140a;
+  border: 1px solid #1f5c1f;
+  border-radius: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 1px 3px rgba(0,0,0,0.5);
+}
+.hp-idle-sb-btn:hover,
+.hp-idle-sb-btn:focus-visible {
+  background: #112211;
+  border-color: #39e839;
+  color: #80ff80;
+  outline: none;
+}
+.hp-idle-sb-btn--hire {
+  color: #f0c040;
+  border-color: #6a5010;
+}
+.hp-idle-sb-btn--hire:hover,
+.hp-idle-sb-btn--hire:focus-visible {
+  background: #1a1200;
+  border-color: #f0c040;
+  color: #ffe080;
+}
+.hp-idle-sb-btn--back {
+  color: #777;
+  border-color: #2a2a2a;
+  margin-left: auto;
+}
+.hp-idle-sb-btn--back:hover,
+.hp-idle-sb-btn--back:focus-visible {
+  background: #111;
+  border-color: #555;
+  color: #aaa;
+}
+
+/* Belt-and-braces: hide unbolted legacy nav if CSS reaches them */
+.hp-identity-rail,
+.hp-action-bar {
+  display: none !important;
+}
