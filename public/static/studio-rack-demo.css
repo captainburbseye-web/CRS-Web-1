@@ -78,81 +78,6 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 
 /* ============================================================
-   PATCHBAY NAV — top-of-page hardware navigation
-   Physical patch-bay aesthetic: lamp + engraved label per link
-   ============================================================ */
-.crs-patchbay {
-  background: #141414;
-  border-bottom: 2px solid #000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.03);
-}
-
-.crs-patchbay-nav {
-  display: flex;
-  align-items: stretch;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 0.5rem;
-}
-
-.crs-patchbay-link {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 1.1rem;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(244,241,232,0.45);
-  border-right: 1px solid #222;
-  text-decoration: none;
-  transition: color 0.15s, background 0.15s;
-  cursor: pointer;
-  flex: 1;
-  justify-content: center;
-}
-.crs-patchbay-link:first-child { border-left: 1px solid #222; }
-.crs-patchbay-link:hover {
-  color: rgba(244,241,232,0.90);
-  background: rgba(255,255,255,0.03);
-}
-.crs-patchbay-link--active {
-  color: var(--mustard);
-  background: rgba(194,164,58,0.06);
-}
-
-/* Lamp dot */
-.crs-patchbay-lamp {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #2a2a2a;
-  border: 1px solid #3a3a3a;
-  flex-shrink: 0;
-  transition: background 0.15s, box-shadow 0.15s;
-}
-.crs-patchbay-lamp--on {
-  background: #2ECC40;
-  border-color: #1ea030;
-  box-shadow: 0 0 5px rgba(46,204,64,0.7);
-}
-.crs-patchbay-link:hover .crs-patchbay-lamp:not(.crs-patchbay-lamp--on) {
-  background: rgba(194,164,58,0.5);
-  border-color: var(--mustard);
-}
-
-@media (max-width: 640px) {
-  .crs-patchbay-link { padding: 0.45rem 0.5rem; font-size: 0.56rem; gap: 0.3rem; }
-  .crs-patchbay-lamp { width: 5px; height: 5px; }
-}
-@media (max-width: 380px) {
-  .crs-patchbay-label { display: none; } /* lamp only on very small screens */
-}
-
-/* ============================================================
    ACTION BAR — sticky top strip
    ============================================================ */
 /* ═══════════════════════════════════════════════════════════════
@@ -605,52 +530,56 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    IDLE STATE — rack-mounted display layout
    ═══════════════════════════════════════════════════════════════ */
 
-/* Idle wrapper — pure block flow, no flex gap, no background */
+/* Module background: transparent — nothing bleeds behind sign/display */
 .hp-idle {
-  display: block;       /* block so children stack with zero gap */
   background: transparent;
   padding: 0;
-  margin: 0;
-  font-size: 0;         /* kill any inline-block whitespace gaps */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════
    SIGN MODULE — physically mounted rack unit (1U–2U)
    Treated as real installed hardware, not content
    ═══════════════════════════════════════════════════════════════ */
-/* hp-idle-faceplate no longer used in JSX — kept for legacy compat only */
 .hp-idle-faceplate {
-  display: block;
+  /* Rack unit spans FULL WIDTH — covers rails and bolts like real hardware */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
   margin: 0 -45px;
-  background: transparent;
+  background: transparent;  /* No background — sign image is self-contained */
+  position: relative;
+  z-index: 60;
 }
-@media (max-width: 639px) { .hp-idle-faceplate { margin: 0 -28px; } }
-@media (min-width: 640px)  { .hp-idle-faceplate { margin: 0 -44px; } }
-
-/* Sign image — direct child of .hp-idle, full-width block, no extra space */
-.hp-idle-sign {
-  display: block;         /* block removes the 4px inline gap under images */
-  width: calc(100% + 90px); /* bust out over both rails (2 × 45px) */
-  max-width: calc(100% + 90px);
-  margin: 0 -45px;        /* align flush with rails */
-  height: auto;
-  object-fit: fill;       /* no letterboxing — PNG is pre-cropped */
-  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.8));
-}
+/* Rail widths by breakpoint:
+   ≤640px mobile: rail = 28px  → margin -28px
+   ≥640px desktop: rail = 44px → margin -44px
+*/
 @media (max-width: 639px) {
-  .hp-idle-sign {
-    width: calc(100% + 56px);
-    max-width: calc(100% + 56px);
+  .hp-idle-faceplate {
     margin: 0 -28px;
   }
 }
 @media (min-width: 640px) {
-  .hp-idle-sign {
-    width: calc(100% + 88px);
-    max-width: calc(100% + 88px);
+  .hp-idle-faceplate {
     margin: 0 -44px;
   }
+}
+
+/* Rack-mounted sign — full width matching other rack modules */
+.hp-idle-sign {
+  display: block;
+  max-width: 100%;  /* Full rack width */
+  width: 100%;
+  height: auto;
+  /* object-fit: fill so the cropped PNG fills exactly the slot with no letterboxing */
+  object-fit: fill;
+  vertical-align: top;   /* kill the inline 4px gap browsers add below images */
+  /* Subtle mounting shadow — feels bolted in */
+  filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.8));
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -658,9 +587,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    Compressed height, fitted bezel, smoked glass, scanlines
    ═══════════════════════════════════════════════════════════════ */
 .hp-idle-display {
-  /* Shallow fitted display module — sits above sign, extends over rails */
+  /* Shallow fitted display module — top of idle stack */
   padding: 0;
-  margin: 0 -45px;  /* default; overridden by breakpoint rules below */
+  margin: 0 -45px;  /* Extend over rails like sign module */
   background: 
     linear-gradient(180deg, #0a0a0a 0%, #121212 50%, #0a0a0a 100%);
   position: relative;
@@ -832,11 +761,11 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 
 @media (max-width: 600px) {
-  /* Zero padding everywhere in idle state — no black space */
+  /* Sign and display must keep zero padding — any re-added padding creates black space */
   .hp-idle-faceplate { padding: 0; }
+  .hp-idle-sign      { max-width: 100%; width: 100%; }
   .hp-idle-display   { padding: 0; }
   .hp-idle-meters    { gap: 1rem; padding: 1rem 1.25rem; }
-  /* hp-idle-sign width/margin already handled by the 639px breakpoint above */
 }
 
 /* ============================================================
@@ -1590,195 +1519,6 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 .hp-cafe-social-link:hover { opacity: 0.90; }
 
 /* ============================================================
-   WHAT'S ON — upcoming events strip inside Café panel
-   ============================================================ */
-.hp-whats-on {
-  border-top: 1px solid var(--cafe-border);
-  margin: 0 -2rem;
-  padding: 1rem 2rem 1.25rem;
-}
-.hp-whats-on-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.85rem;
-}
-.hp-whats-on-label {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--mustard);
-}
-.hp-whats-on-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-.hp-whats-on-item {
-  display: grid;
-  grid-template-columns: 5.5rem 1fr auto;
-  gap: 0.75rem;
-  align-items: start;
-  padding: 0.6rem 0.75rem;
-  background: rgba(47,62,47,0.12);
-  border: 1px solid rgba(47,62,47,0.25);
-  border-radius: var(--r);
-}
-.hp-whats-on-date {
-  font-family: var(--font-mono);
-  font-size: 0.60rem;
-  letter-spacing: 0.08em;
-  color: var(--mustard);
-  text-transform: uppercase;
-  padding-top: 0.1rem;
-  white-space: nowrap;
-}
-.hp-whats-on-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-.hp-whats-on-title {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--cafe-text);
-  line-height: 1.3;
-}
-.hp-whats-on-desc {
-  font-size: 0.72rem;
-  color: rgba(244,241,232,0.55);
-  line-height: 1.4;
-}
-.hp-whats-on-link {
-  font-family: var(--font-mono);
-  font-size: 0.60rem;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: var(--mustard);
-  opacity: 0.75;
-  white-space: nowrap;
-  padding-top: 0.2rem;
-  text-decoration: none;
-  transition: opacity 0.12s;
-}
-.hp-whats-on-link:hover { opacity: 1; }
-.hp-whats-on-more {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin: 0;
-}
-.hp-whats-on-more a {
-  color: rgba(244,241,232,0.45);
-  text-decoration: none;
-  transition: color 0.12s;
-}
-.hp-whats-on-more a:hover { color: var(--mustard); }
-
-@media (max-width: 600px) {
-  .hp-whats-on { margin: 0 -1rem; padding: 0.85rem 1rem 1rem; }
-  .hp-whats-on-item { grid-template-columns: 4.5rem 1fr; }
-  .hp-whats-on-link { display: none; } /* hidden on small screens — click whole card */
-}
-
-/* ============================================================
-   ROOM HIRE PANEL — three channel cards
-   ============================================================ */
-.hp-roomhire-panel .hp-panel-header { margin-bottom: 1rem; }
-
-.hp-roomhire-channels {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-}
-@media (max-width: 700px) {
-  .hp-roomhire-channels { grid-template-columns: 1fr; }
-}
-
-.hp-roomhire-channel {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-  padding: 0.9rem 0.85rem 0.85rem;
-  background: #0e0e0e;
-  border: 1px solid #2a2a2a;
-  border-top: 3px solid var(--mustard);
-  border-radius: var(--r-md);
-}
-/* Big Booth — nettle-green accent */
-.hp-roomhire-channel--bigbooth { border-top-color: var(--nettle-lift); }
-/* Small Booth — signal-muted accent */
-.hp-roomhire-channel--smallbooth { border-top-color: #5a6a5a; }
-
-.hp-roomhire-channel-head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-.hp-roomhire-channel-labels {
-  display: flex;
-  flex-direction: column;
-  gap: 0.18rem;
-}
-.hp-roomhire-channel-title {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: var(--offwhite);
-}
-.hp-roomhire-channel-tag {
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: var(--mustard);
-  opacity: 0.75;
-}
-.hp-roomhire-channel-desc {
-  font-size: 0.78rem;
-  color: rgba(244,241,232,0.65);
-  line-height: 1.5;
-  margin: 0;
-}
-.hp-roomhire-specs {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-.hp-roomhire-specs li {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
-  color: rgba(244,241,232,0.50);
-  text-transform: uppercase;
-  padding-left: 0.75rem;
-  position: relative;
-}
-.hp-roomhire-specs li::before {
-  content: '·';
-  position: absolute;
-  left: 0;
-  color: var(--mustard);
-}
-.hp-roomhire-book-btn {
-  margin-top: auto;
-  width: 100%;
-  justify-content: center;
-}
-
-/* ============================================================
    ████████████████████████████████████████████████████████
    SERVICE CONTROLS — hardware button panel below screen
    ████████████████████████████████████████████████████████
@@ -2279,141 +2019,6 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 .hp-cafe-meters .rack-vu-seg--amber.rack-vu-seg--lit { background: #D4A000; }
 
 /* ── Idle sign responsive ───────────────────────────────── */
-
-/* ═══════════════════════════════════════════════════════════════
-   SKYLINE OSCILLOSCOPE — phosphor-trace CRT display
-   Oxford Dreaming Spires silhouette / mode-specific waveforms
-
-   KEY DESIGN INTENT:
-   • The PHOSPHOR PERSISTENCE TRACE (.hp-osc-dim) is what you always
-     see — it must be bright enough to read the skyline shape clearly.
-   • The ACTIVE (lit) TRACE (.hp-osc-active) is the freshly-written
-     bright line revealed as the electron beam sweeps left→right.
-   • Together they produce the classic "CRT persistence" look where
-     the full shape glows dimly and the beam brightens it as it passes.
-   ═══════════════════════════════════════════════════════════════ */
-
-/* Outer bezel frame — slots below the wooden sign in hp-idle */
-.hp-osc-frame {
-  display: block;
-  position: relative;
-  width: calc(100% + 90px);   /* bust over both rails like the sign */
-  margin: 0 -45px;
-  /* Dark phosphor tube — slightly warm green-black, not pure black */
-  background: #020d02;
-  border-top: 3px solid #111;
-  border-bottom: 3px solid #111;
-  border-left: none;
-  border-right: none;
-  overflow: hidden;
-  /* Inner vignette: top + bottom shadow to sell the tube curvature */
-  box-shadow:
-    inset 0 0 40px rgba(0,0,0,0.92),
-    inset 0 12px 24px rgba(0,0,0,0.80),
-    inset 0 -8px 16px rgba(0,0,0,0.65),
-    inset 3px 0  12px rgba(0,0,0,0.5),
-    inset -3px 0 12px rgba(0,0,0,0.5),
-    0 2px 0 rgba(255,255,255,0.03);
-}
-
-/* Responsive rail widths — match sign margins exactly */
-@media (max-width: 639px) {
-  .hp-osc-frame {
-    width: calc(100% + 56px);
-    margin: 0 -28px;
-  }
-}
-@media (min-width: 640px) {
-  .hp-osc-frame {
-    width: calc(100% + 88px);
-    margin: 0 -44px;
-  }
-}
-
-/* SVG fills the frame — aspect ratio 880:160 = 5.5:1 */
-.hp-osc-svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  min-height: 64px;
-}
-
-/* CRT phosphor dot-grid — faint green tint, not black */
-.hp-osc-grid line {
-  stroke: #0f260f;
-  stroke-width: 0.5;
-  opacity: 0.7;
-}
-
-/* ── PHOSPHOR PERSISTENCE TRACE ──────────────────────────────
-   This is the most important element. It is always visible and
-   carries the full skyline silhouette shape. Must be clearly
-   readable — NOT a hairline ghost, but a glowing dim trace.
-   strokeWidth and opacity here are the primary legibility levers.
-────────────────────────────────────────────────────────────── */
-.hp-osc-dim {
-  stroke: #257025;       /* bright-mid phosphor green — clearly readable on dark bg */
-  stroke-width: 2.2px;
-  opacity: 0.92;         /* must be clearly visible — this IS the skyline silhouette */
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* ── ACTIVE (LIT) TRACE ───────────────────────────────────────
-   Bright line revealed as beam sweeps. Full phosphor green.
-   The SVG filter (osc-glow) is applied inline for the halo.
-────────────────────────────────────────────────────────────── */
-.hp-osc-active {
-  stroke: #50ff50;       /* bright phosphor green — fresh electron-gun trace */
-  stroke-width: 3px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  opacity: 1;
-}
-
-/* Electron beam sweep line */
-.hp-osc-beam {
-  will-change: transform;
-}
-
-/* ── BADGE ────────────────────────────────────────────────── */
-.hp-osc-badge {
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  pointer-events: none;
-  user-select: none;
-}
-.hp-osc-badge-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #44e844;
-  box-shadow: 0 0 6px #44e844, 0 0 12px rgba(68,232,68,0.5);
-  animation: osc-badge-pulse 2.8s ease-in-out infinite;
-  flex-shrink: 0;
-}
-.hp-osc-badge-text {
-  font-family: 'Roboto Mono', 'Courier New', monospace;
-  font-size: 0.48rem;
-  letter-spacing: 0.14em;
-  color: #257025;
-  text-transform: uppercase;
-}
-
-@keyframes osc-badge-pulse {
-  0%, 100% { opacity: 0.60; box-shadow: 0 0 5px #44e844; }
-  50%       { opacity: 1;    box-shadow: 0 0 10px #44e844, 0 0 20px rgba(68,232,68,0.6); }
-}
-
-/* Reduced-motion: freeze badge, keep trace visible */
-@media (prefers-reduced-motion: reduce) {
-  .hp-osc-badge-dot { animation: none; }
-}
-
 /* ============================================================
    PRINT / REDUCED MOTION
    ============================================================ */
@@ -2422,108 +2027,4 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   IDLE STATE SWITCHBOARD — nested booking menu
-   Primary: Recording · Café · Room Hire
-   Sub-menu: Control Room · Big Booth · Small Booth · Service · ← Back
-   ═══════════════════════════════════════════════════════════════ */
-
-.hp-idle-switchboard {
-  display: block;
-  width: calc(100% + 90px);
-  margin: 0 -45px;
-  background: #0d0d0d;
-  border-top: 2px solid #1a1a1a;
-  border-bottom: 2px solid #1a1a1a;
-  padding: 8px 12px;
-  box-sizing: border-box;
-}
-
-@media (max-width: 639px) {
-  .hp-idle-switchboard {
-    width: calc(100% + 56px);
-    margin: 0 -28px;
-    padding: 6px 8px;
-  }
-}
-
-@media (min-width: 640px) {
-  .hp-idle-switchboard {
-    width: calc(100% + 88px);
-    margin: 0 -44px;
-  }
-}
-
-.hp-idle-switchboard-primary,
-.hp-idle-switchboard-submenu {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-}
-
-/* Shared button/link style — CRT rack-button look */
-.hp-idle-sb-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 14px;
-  font-family: 'Roboto Mono', 'Courier New', monospace;
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #39e839;
-  background: #0a140a;
-  border: 1px solid #1f5c1f;
-  border-radius: 2px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
-  /* match rack-btn feel */
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 1px 3px rgba(0,0,0,0.5);
-}
-
-.hp-idle-sb-btn:hover,
-.hp-idle-sb-btn:focus-visible {
-  background: #112211;
-  border-color: #39e839;
-  color: #80ff80;
-  outline: none;
-}
-
-/* Room Hire button — slightly distinguished */
-.hp-idle-sb-btn--hire {
-  color: #f0c040;
-  border-color: #6a5010;
-}
-
-.hp-idle-sb-btn--hire:hover,
-.hp-idle-sb-btn--hire:focus-visible {
-  background: #1a1200;
-  border-color: #f0c040;
-  color: #ffe080;
-}
-
-/* Back button — muted, secondary */
-.hp-idle-sb-btn--back {
-  color: #888;
-  border-color: #333;
-  margin-left: auto;  /* push to right in the sub-menu row */
-}
-
-.hp-idle-sb-btn--back:hover,
-.hp-idle-sb-btn--back:focus-visible {
-  background: #111;
-  border-color: #666;
-  color: #bbb;
-}
-
-/* ── hp-identity-rail and hp-action-bar: hidden (unbolted from rack) */
-.hp-identity-rail,
-.hp-action-bar {
-  display: none !important;
 }
