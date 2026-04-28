@@ -687,7 +687,7 @@ app.get('/', (c) => {
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div id="studio-rack-root">${rackHtml}</div>
@@ -2531,7 +2531,7 @@ app.get('/studio-rack-demo', (c) => {
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div id="studio-rack-root">${rackHtml}</div>

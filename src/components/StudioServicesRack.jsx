@@ -1405,9 +1405,6 @@ function IdleState({ activeId = null }) {
           <div className="hp-display-line hp-display-line--primary">
             RECORDING · REHEARSAL · PRODUCTION · VENUE
           </div>
-          <div className="hp-display-line hp-display-line--secondary">
-            AV / TECHNICAL SERVICES
-          </div>
         </div>
       </div>
 
