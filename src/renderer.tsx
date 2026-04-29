@@ -106,6 +106,11 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* SVG hotspot system (coordinate-locked) */}
         <link href="/static/rack-svg-hotspots.css" rel="stylesheet" />
+
+        {/* PRIMARY DESIGN SYSTEM — unified chassis, typography, CTA, rails, panels
+             Loads LAST so it wins every specificity conflict with consolidated files.
+             All active development lives here. Do not remove. */}
+        <link href="/static/studio-rack-demo.css" rel="stylesheet" />
         
         {/* REMOVED 31 DUPLICATE AND INDIVIDUAL MODULE STYLESHEETS
              All styling is now consolidated into the 4 files above
