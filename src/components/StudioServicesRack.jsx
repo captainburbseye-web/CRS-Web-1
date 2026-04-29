@@ -1109,9 +1109,10 @@ const OSC_MODE_MAP = {
 /* ─── Physics constants (tunable, see brief §3) ─────────────
    These are the ONLY values that govern feel — paths are above.
 */
-const OSC_ATTACK  = 4.0;   // scale blend rate when signal rises
-const OSC_RELEASE = 1.0;   // scale blend rate when signal falls  (slow phosphor decay)
-const OSC_SCALE_K = 0.15;  // rawSignal → scale deviation: keeps skyline legible
+/* Golden Build v1.4 physics — fractional lerp, not rate*dt */
+const OSC_ATTACK  = 0.85;  // lerp fraction toward target when rising  (fast snap)
+const OSC_RELEASE = 0.10;  // lerp fraction toward target when falling (slow phosphor decay)
+const OSC_SCALE_K = 0.70;  // rawSignal → scale deviation (was 0.15 — wider swing for boutique feel)
 const OSC_FLOOR   = 0.05;  // minimum rawSignal (idle breathing floor)
 const OSC_HUM_AMP = 0.022; // mains-hum breathing amplitude — visible slow pulse
 const OSC_HUM_HZ  = 0.40;  // hum freq (Hz) — very slow breath, ~2.5 s cycle
@@ -1212,27 +1213,27 @@ function SkylineOscilloscope({ activeId }) {
       ? new Float32Array(modePts)
       : morphPts(st.fromPts, st.toPts, st.morphT * st.morphT * (3 - 2 * st.morphT)); // smoothstep
 
-    /* Signal level from engine (use master channel) */
-    const snap = getEngine().getSnapshot();
-    const rawSignal = Math.max(OSC_FLOOR, snap.master.display);
+    /* Signal source — autonomous transients (Golden Build v1.4)
+       Decoupled from rack engine: scope lives independently.
+       Rare high spikes (3 % chance) give the "boutique transient" feel;
+       otherwise a quiet floor keeps the silhouette still.            */
+    const rawSignal = Math.random() > 0.97 ? Math.random() : OSC_FLOOR;
 
     /* Target scale: 1 + signal * K + hum */
     const hum = Math.sin(now * 0.001 * OSC_HUM_HZ * Math.PI * 2) * OSC_HUM_AMP;
     const targetScale = 1.0 + rawSignal * OSC_SCALE_K + hum;
 
-    /* Attack/release blend */
-    const blendRate = targetScale > st.currentScale ? OSC_ATTACK : OSC_RELEASE;
-    st.currentScale += (targetScale - st.currentScale) * blendRate * dt;
-    /* Clamp:
-       SKYLINE: ultra-tight (0.98–1.02) — silhouette is nearly static, just a slow breath.
-               The thick dim stroke does the visual work; motion would blur the shape.
-       Signal traces: wider range (0.55–1.50) for expressive motion           */
+    /* Attack / release — direct fractional lerp (frame-rate independent) */
+    const frac = targetScale > st.currentScale ? OSC_ATTACK : OSC_RELEASE;
+    st.currentScale += (targetScale - st.currentScale) * frac;
+
+    /* Scale clamp per mode:
+       SKYLINE: tight 0.98–1.02 — silhouette nearly static, slow breath only.
+                The thick dim stroke carries the shape; motion blurs it.
+       Signal traces: wide 0.55–1.50 for expressive swing.                */
     const isSkyline = (mode === 'SKYLINE');
-    /* SKYLINE: wider range (0.94–1.10) so the gradient colour zones are
-       actually traversed — green base always visible, mustard on hum peaks,
-       red only on signal transients. Silhouette stays legible throughout. */
-    const scaleMin = isSkyline ? 0.94 : 0.55;
-    const scaleMax = isSkyline ? 1.10 : 1.50;
+    const scaleMin = isSkyline ? 0.98 : 0.55;
+    const scaleMax = isSkyline ? 1.02 : 1.50;
     st.currentScale = Math.max(scaleMin, Math.min(scaleMax, st.currentScale));
 
     /* Build polyline string — use mode-appropriate pivot */
