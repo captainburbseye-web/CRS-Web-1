@@ -599,43 +599,6 @@ function LocationSelector({ serviceId, onSelect, onBack }) {
   );
 }
 
-/* ─── Quick-bar CTA labels (same order as NAV_ORDER) ────────── */
-const QUICK_LABELS = {
-  recording:   'Book Recording',
-  rehearsal:   'Book Rehearsal',
-  controlroom: 'Hire Control Room',
-  repairs:     'Request Repair',
-  cafe:        'Venue Enquiries',
-};
-
-/* ─── Quick-access bar — top row, same grid as button bank ─── */
-/* Each button is a column-aligned mirror of its large rack button below.
-   Clicking triggers the identical handleSelect(id) flow. */
-const QuickBar = ({ active, onSelect }) => (
-  <nav className="hp-action-bar" aria-label="Quick booking">
-    <div className="hp-action-bar-grid">
-      {NAV_ORDER.map((id) => {
-        const isActive = active === id;
-        return (
-          <button
-            key={id}
-            className={[
-              'hp-action-btn',
-              'hp-action-btn--primary',
-              isActive ? 'hp-action-btn--active' : '',
-            ].filter(Boolean).join(' ')}
-            onClick={() => onSelect(id)}
-            aria-label={`${QUICK_LABELS[id]} — opens service panel`}
-            aria-pressed={isActive}
-          >
-            {QUICK_LABELS[id]}
-          </button>
-        );
-      })}
-    </div>
-  </nav>
-);
-
 /* ─── Identity rail ───────────────────────────────────────── */
 const IdentityRail = () => (
   <div className="hp-identity-rail">
@@ -759,6 +722,7 @@ const RehearsalSinglePanel = ({ panel, loc }) => (
         <CtaButton label={loc.cta.label} href={loc.cta.href} primary={true} location={loc.location} />
       </div>
     </div>
+    <TechSpecsFAQ panelId="rehearsal" />
     <div className="hp-panel-ctas" style={{ marginTop: '1rem' }}>
       <a href="/rehearsal" className="hp-cta hp-cta--page-link">
         <span>Full details</span>
@@ -793,6 +757,7 @@ const RehearsalPanel = ({ panel }) => (
         </div>
       ))}
     </div>
+    <TechSpecsFAQ panelId="rehearsal" />
     <div className="hp-panel-ctas" style={{ marginTop: '1rem' }}>
       <a href="/rehearsal" className="hp-cta hp-cta--page-link">
         <span>Full details</span>
@@ -803,6 +768,40 @@ const RehearsalPanel = ({ panel }) => (
 );
 
 /* ─── Standard dark panel ─────────────────────────────────── */
+/* ─── Technical Specifications FAQ ───────────────────────── */
+const TECH_FAQ = {
+  recording: [
+    { q: 'Parking', a: 'Street parking on Cowley Road — pay & display (1–2 hr) plus free residential bays on side streets. Nearest car park: Manzil Way (5 min walk).' },
+    { q: 'What\'s provided', a: 'Engineer, mic setup, gain staging, signal chain management, session oversight, and final file delivery. Bring your instruments and performance ready.' },
+    { q: 'Process', a: 'Book online → arrive 15 min early for line check → record → files delivered via WeTransfer within 48 hrs. Multi-track stems available on request.' },
+  ],
+  rehearsal: [
+    { q: 'Parking', a: 'Cowley Road: pay & display on Cowley Road and free bays on adjacent streets. Cricket Road: free street parking directly outside.' },
+    { q: 'Backline included', a: 'Full PA, guitar amp, bass amp, and drum kit at both locations. Cricket Road also includes Yamaha CLP grand piano. Bring leads and sticks.' },
+    { q: 'Process', a: 'Book online → arrive 5 min early → room is set up and ready. Session ends on time to allow changeover. Cancel with 24 hrs notice for a full refund.' },
+  ],
+};
+
+const TechSpecsFAQ = ({ panelId }) => {
+  const items = TECH_FAQ[panelId];
+  if (!items) return null;
+  return (
+    <div className="crs-recessed-panel" style={{ marginTop: '1.25rem' }}>
+      <h3 style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--mustard)', fontWeight: 700, marginBottom: '0.75rem' }}>
+        /// Technical Specifications
+      </h3>
+      <div className="crs-faq">
+        {items.map(({ q, a }) => (
+          <div key={q} className="crs-faq-item">
+            <div className="crs-faq-q">{q}</div>
+            <div className="crs-faq-a">{a}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const StandardPanel = ({ panel }) => (
   <div className="hp-panel-body" role="tabpanel" id={`panel-${panel.id}`}>
     <div className="hp-panel-header">
@@ -811,6 +810,8 @@ const StandardPanel = ({ panel }) => (
       <p className="hp-panel-desc">{panel.body}</p>
     </div>
     <SpecTable specs={panel.specs} />
+    {/* Technical Specs FAQ for recording */}
+    <TechSpecsFAQ panelId={panel.id} />
     <div className="hp-panel-ctas">
       {panel.ctas.map(cta => (
         <CtaButton key={cta.href} {...cta} warm={false} />

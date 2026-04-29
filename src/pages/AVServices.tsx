@@ -14,7 +14,7 @@ export const AVServicesPage = () => (
         href="/" 
         style="color: var(--mustard, #d4a017); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em;"
       >
-        ← BACK TO MAIN RACK
+        ← HOME
       </a>
     </div>
 
