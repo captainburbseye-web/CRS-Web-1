@@ -1021,20 +1021,28 @@ function AnalogueDialPair() {
    Y=0 is top, Y=160 is bottom. Silhouettes sit in mid-range.
 */
 const OSC_PATHS = {
-  /* Oxford Dreaming Spires skyline silhouette — left→right  (44 pts)
-     Landmarks L→R: ground · Tom Tower · Cathedral spire · St Mary's ·
-     Radcliffe Camera (dome) · Sheldonian cupola · All Souls (twin) ·
-     New College tower · open · Magdalen Tower (tallest) · ground
-     viewBox 0 0 880 160 — ground=140, Magdalen peak=18 */
+  /* Oxford Dreaming Spires — oscilloscope vector path  (44 pts)
+     Grid: 20×12 units → SVG 880×160.  Baseline y=113 (grid y=3.5).
+     Clusters L→R, routed along profile edge — no backward X moves.
+
+     Landmark peaks (y=lowest = tallest):
+       Left block     x=18–66   y=93  (h=20px)
+       Left spire     x=138     y=15  Tom Tower / Christ Church
+       Dome 1 crown   x=282     y=47  Radcliffe Camera
+       Central spire  x=422     y=7   St Mary the Virgin — TALLEST
+       Dome 2 crown   x=548     y=57  Sheldonian / All Souls
+       Medium tower   x=616–658 y=65  New College
+       Right spire    x=730     y=13  Magdalen Tower — 2nd tallest
+       Right block    x=796–849 y=93  (h=20px)                       */
   SKYLINE: [
-     0,140,  40,132,  52,100,  58, 52,  64,100,  72,130,
-    82,128,  94, 75, 104, 28, 114, 75, 124,128, 165,128,
-   180, 68, 192, 22, 204, 68, 216,128, 232,133, 252,120,
-   268, 88, 284, 58, 300, 88, 316,120, 328,132, 348,128,
-   362, 82, 376,128, 392,132, 406, 62, 414, 75, 422, 62,
-   432,132, 468, 72, 478, 36, 488, 72, 498,130, 560,135,
-   620,136, 648,130, 662, 60, 672, 18, 682, 60, 698,130,
-   760,136, 880,140,
+     0,113,  18,113,  18, 93,  66, 93,  66,113,  88,113,
+   138, 15, 193, 96, 193,113, 211,113, 220,113, 220, 73,
+   242, 55, 282, 47, 323, 55, 345, 73, 345,113, 361,113,
+   365,113, 365, 91, 422,  7, 479, 91, 479,113, 488,113,
+   497,113, 497, 77, 548, 57, 598, 77, 598,113, 616,113,
+   616, 65, 658, 65, 658,113, 669,113, 678,113, 678, 96,
+   730, 13, 782, 96, 782,113, 796,113, 796, 93, 849, 93,
+   849,113, 880,113,
   ],
 
   /* CRS brand mark — angular logo-form waveform */
@@ -1108,9 +1116,9 @@ const OSC_HUM_AMP = 0.022; // mains-hum breathing amplitude — visible slow pul
 const OSC_HUM_HZ  = 0.40;  // hum freq (Hz) — very slow breath, ~2.5 s cycle
 const OSC_BEAM_PERIOD = 3500; // ms for one full scan sweep — unhurried
 
-/* Pivot Y per mode: skyline breathes from its ground (Y=140); signals from midline (Y=80) */
+/* Pivot Y per mode: skyline breathes from its baseline (Y=113); signals from midline (Y=80) */
 const OSC_PIVOT_Y = {
-  SKYLINE:   140,  // ground-anchored — spires breathe upward
+  SKYLINE:   113,  // ground-anchored at grid baseline — spires breathe upward from y=113
   BRAND:      80,
   RECORDING:  80,
   CAFE:       80,
