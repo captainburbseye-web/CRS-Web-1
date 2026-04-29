@@ -77,7 +77,7 @@ export const AVServicesPage = () => (
             font-weight: 700;
           "
         >
-          /// WHAT WE DO
+          WHAT WE DO
         </h2>
         <ul style="list-style: none; padding: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; line-height: 2; color: rgba(245,245,245,0.9);">
           <li style="margin-bottom: 0.75rem;">→ Live sound for talks, gigs, launches, and community events</li>
@@ -113,7 +113,7 @@ export const AVServicesPage = () => (
             font-weight: 700;
           "
         >
-          /// HOW IT WORKS
+          HOW IT WORKS
         </h2>
         <ol style="padding-left: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; line-height: 2; color: rgba(245,245,245,0.9);">
           <li style="margin-bottom: 0.75rem;">You tell us what's happening</li>
@@ -149,7 +149,7 @@ export const AVServicesPage = () => (
             font-weight: 700;
           "
         >
-          /// CAPABILITY
+          CAPABILITY
         </h2>
         <ul style="list-style: none; padding: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; line-height: 2; color: rgba(245,245,245,0.9);">
           <li style="margin-bottom: 0.75rem;">→ Built for live pressure</li>
@@ -182,7 +182,7 @@ export const AVServicesPage = () => (
             font-weight: 700;
           "
         >
-          /// TECHNICAL OPERATIONS
+          TECHNICAL OPERATIONS
         </h2>
         <p style="margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; line-height: 1.6; color: rgba(245,245,245,0.9);">
           CRS provides ongoing technical management and AV support for external venues.
@@ -220,7 +220,7 @@ export const AVServicesPage = () => (
             font-weight: 700;
           "
         >
-          /// PRICING CONTEXT
+          PRICING
         </h2>
         <p style="margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; line-height: 1.6; color: rgba(245,245,245,0.9);">
           AV services are quoted per project. Typical jobs range from <strong style="color: var(--mustard, #d4a017);">£250–£1,500</strong> depending on scale and equipment requirements.

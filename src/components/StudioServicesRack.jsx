@@ -1539,7 +1539,7 @@ const TrustStrip = () => (
 
 /* ─── Manufacturer's spec plate ──────────────────────────── */
 const SeoText = () => (
-  <div className="hp-spec-plate">
+  <div className="hp-spec-plate crs-recessed-panel" style={{ margin: '0', borderRadius: '0' }}>
     <div className="hp-spec-header">Technical Specifications — Cowley Road Studios</div>
     <div className="hp-spec-body">
       <p><strong>Recording Studio Oxford</strong> — Cowley Road OX4 1JE &amp; Cricket Road OX4 3DJ</p>

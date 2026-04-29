@@ -19,8 +19,8 @@ const SERVICE_OPTIONS = [
 const getStatusMessage = (status?: 'sent' | 'error' | null) => {
   if (status === 'sent') {
     return {
-      title: '[ SIGNAL RECEIVED ]',
-      message: 'Inquiry logged to CRS administrative queue. A technical representative will respond within 24 operational hours.',
+      title: '✓ Message Received',
+      message: 'Your enquiry has been sent. We will get back to you within 24 hours.',
       border: '1px solid rgba(57, 255, 20, 0.45)',
       background: 'rgba(57, 255, 20, 0.08)',
       color: 'var(--crs-green, #39FF14)'
@@ -29,8 +29,8 @@ const getStatusMessage = (status?: 'sent' | 'error' | null) => {
 
   if (status === 'error') {
     return {
-      title: '[ SIGNAL FAULT ]',
-      message: 'The enquiry did not transmit cleanly. Please retry, or contact CRS directly by phone or email.',
+      title: '✕ Submission Failed',
+      message: 'Something went wrong. Please try again, or reach us directly by phone or email.',
       border: '1px solid rgba(255, 111, 97, 0.45)',
       background: 'rgba(255, 111, 97, 0.08)',
       color: '#ff6f61'
@@ -404,7 +404,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
                 transition: all 0.2s ease;
               "
             >
-              ENGAGE CIRCUIT
+              SEND ENQUIRY
             </button>
           </form>
         </div>

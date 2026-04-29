@@ -182,6 +182,27 @@ export const RecordingPage = () => {
 
       </div>
 
+      {/* TECHNICAL SPECIFICATIONS FAQ */}
+      <div class="recording-section" style="padding: 2rem;">
+        <div class="crs-recessed-panel">
+          <h2>/// Technical Specifications</h2>
+          <div class="crs-faq">
+            <div class="crs-faq-item">
+              <div class="crs-faq-q">Parking</div>
+              <div class="crs-faq-a">Street parking on Cowley Road — pay &amp; display (1–2 hr) plus free residential bays on side streets. Nearest car park: Manzil Way (5 min walk). Cricket Road has free street parking directly outside.</div>
+            </div>
+            <div class="crs-faq-item">
+              <div class="crs-faq-q">What's provided</div>
+              <div class="crs-faq-a">Engineer, mic setup, gain staging, signal chain management, session oversight, and final file delivery. Bring your instruments and arrive performance-ready. No backline for recording sessions — bring your own gear or ask us in advance.</div>
+            </div>
+            <div class="crs-faq-item">
+              <div class="crs-faq-q">Process</div>
+              <div class="crs-faq-a">Book online → arrive 15 min early for line check → record → files delivered via WeTransfer within 48 hrs. Multi-track stems available on request. Cancel with 24 hrs notice for a full refund.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* CTA BLOCK */}
       <div class="booking-footer-info">
         <h3>Ready to record?</h3>
