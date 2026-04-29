@@ -51,19 +51,19 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
       {/* Skip to content for accessibility */}
       <a href="#contact-form" class="skip-to-content">Skip to contact form</a>
 
-      {/* BACK TO HOME RACK */}
+      {/* BACK TO HOME */}
       <div style="padding: 1rem 0; text-align: center; background: rgba(0,0,0,0.5); border-bottom: 1px solid rgba(212,160,23,0.2);">
-        <a 
-          href="/" 
+        <a
+          href="/"
           style="color: var(--mustard, #d4a017); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em;"
         >
           ← HOME
         </a>
       </div>
 
-      {/* CONTACT HEADER RACK */}
-      <div 
-        class="rack-module-graphic" 
+      {/* PAGE HEADER */}
+      <div
+        class="rack-module-graphic"
         style="
           background: linear-gradient(180deg, #0A0A0A 0%, #1a1a1a 100%);
           padding: 3rem 2rem;
@@ -71,7 +71,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
           border-bottom: 2px solid rgba(212,160,23,0.3);
         "
       >
-        <h1 
+        <h1
           style="
             font-family: 'Archivo Black', sans-serif;
             font-size: clamp(2rem, 5vw, 3rem);
@@ -81,12 +81,12 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
             letter-spacing: 0.05em;
           "
         >
-          CONTACT CRS
+          CONTACT US
         </h1>
-        <p 
+        <p
           style="
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.875rem;
+            font-size: 0.9375rem;
             color: rgba(245,245,245,0.7);
             max-width: 680px;
             margin: 0 auto;
@@ -97,18 +97,13 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
         </p>
       </div>
 
-      {/* CONTACT DETAILS RACK */}
-      <div 
-        class="rack-module-graphic" 
-        style="
-          background: rgba(0,0,0,0.3);
-          padding: 2rem;
-          margin: 0;
-          border-bottom: 1px solid rgba(212,160,23,0.2);
-        "
+      {/* CONTACT DETAILS — recessed metal panel */}
+      <div
+        class="rack-module-graphic"
+        style="padding: 2rem; margin: 0; border-bottom: 1px solid rgba(212,160,23,0.2);"
       >
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-          <h2 
+        <div class="crs-recessed-panel" style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <h2
             style="
               font-family: 'JetBrains Mono', monospace;
               font-size: 0.75rem;
@@ -119,9 +114,9 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
               font-weight: 700;
             "
           >
-            /// CONTACT DETAILS
+            CONTACT DETAILS
           </h2>
-          <div style="display: grid; gap: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245,245,245,0.85);">
+          <div style="display: grid; gap: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; color: rgba(245,245,245,0.85);">
             <div>
               <span style="color: var(--mustard, #d4a017); font-weight: 700;">EMAIL:</span>{' '}
               <a href="mailto:info@crsoxford.com" style="color: rgba(245,245,245,0.9); text-decoration: none;">info@crsoxford.com</a>
@@ -139,7 +134,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
         </div>
       </div>
 
-      {/* STATUS RACK */}
+      {/* STATUS MESSAGE */}
       {statusMessage && (
         <div
           class="rack-module-graphic"
@@ -169,7 +164,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
               style="
                 margin: 0;
                 font-family: 'JetBrains Mono', monospace;
-                font-size: 0.875rem;
+                font-size: 0.9375rem;
                 color: rgba(245,245,245,0.9);
                 line-height: 1.7;
               "
@@ -180,10 +175,10 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
         </div>
       )}
 
-      {/* ENQUIRY FORM RACK */}
-      <div 
+      {/* ENQUIRY FORM */}
+      <div
         id="contact-form"
-        class="rack-module-graphic" 
+        class="rack-module-graphic"
         style="
           background: rgba(0,0,0,0.5);
           padding: 3rem 2rem;
@@ -191,7 +186,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
         "
       >
         <div style="max-width: 700px; margin: 0 auto;">
-          <h2 
+          <h2
             style="
               font-family: 'JetBrains Mono', monospace;
               font-size: 0.75rem;
@@ -203,19 +198,19 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
               text-align: center;
             "
           >
-            /// ENQUIRY FORM
+            ENQUIRY FORM
           </h2>
-          
-          <form 
-            class="enquiry-form" 
-            action="/api/contact" 
+
+          <form
+            class="enquiry-form"
+            action="/api/contact"
             method="POST"
             style="display: grid; gap: 1.5rem;"
           >
             {/* Enquiry Type */}
             <div class="form-group">
-              <label 
-                for="service" 
+              <label
+                for="service"
                 style="
                   display: block;
                   font-family: 'JetBrains Mono', monospace;
@@ -229,9 +224,9 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
               >
                 Enquiry Type
               </label>
-              <select 
-                id="service" 
-                name="service" 
+              <select
+                id="service"
+                name="service"
                 required
                 style="
                   width: 100%;
@@ -240,7 +235,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
                   border: 1px solid rgba(212,160,23,0.3);
                   color: rgba(245,245,245,0.9);
                   font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.875rem;
+                  font-size: 0.9375rem;
                 "
               >
                 {SERVICE_OPTIONS.map((option) => (
@@ -251,7 +246,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
 
             {/* Name */}
             <div class="form-group">
-              <label 
+              <label
                 for="name"
                 style="
                   display: block;
@@ -266,10 +261,10 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
               >
                 Name *
               </label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
+              <input
+                type="text"
+                id="name"
+                name="name"
                 required
                 style="
                   width: 100%;
@@ -278,14 +273,14 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
                   border: 1px solid rgba(212,160,23,0.3);
                   color: rgba(245,245,245,0.9);
                   font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.875rem;
+                  font-size: 0.9375rem;
                 "
               />
             </div>
 
             {/* Email */}
             <div class="form-group">
-              <label 
+              <label
                 for="email"
                 style="
                   display: block;
@@ -300,10 +295,10 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
               >
                 Email *
               </label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
+              <input
+                type="email"
+                id="email"
+                name="email"
                 required
                 style="
                   width: 100%;
@@ -312,14 +307,14 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
                   border: 1px solid rgba(212,160,23,0.3);
                   color: rgba(245,245,245,0.9);
                   font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.875rem;
+                  font-size: 0.9375rem;
                 "
               />
             </div>
 
             {/* Phone */}
             <div class="form-group">
-              <label 
+              <label
                 for="phone"
                 style="
                   display: block;
@@ -334,9 +329,9 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
               >
                 Phone
               </label>
-              <input 
-                type="tel" 
-                id="phone" 
+              <input
+                type="tel"
+                id="phone"
                 name="phone"
                 style="
                   width: 100%;
@@ -345,14 +340,14 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
                   border: 1px solid rgba(212,160,23,0.3);
                   color: rgba(245,245,245,0.9);
                   font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.875rem;
+                  font-size: 0.9375rem;
                 "
               />
             </div>
 
             {/* Message */}
             <div class="form-group">
-              <label 
+              <label
                 for="message"
                 style="
                   display: block;
@@ -367,10 +362,10 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
               >
                 Message *
               </label>
-              <textarea 
-                id="message" 
-                name="message" 
-                rows="6" 
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
                 required
                 style="
                   width: 100%;
@@ -379,16 +374,16 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
                   border: 1px solid rgba(212,160,23,0.3);
                   color: rgba(245,245,245,0.9);
                   font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.875rem;
+                  font-size: 0.9375rem;
                   line-height: 1.6;
                   resize: vertical;
                 "
               ></textarea>
             </div>
 
-            {/* Submit Button */}
-            <button 
-              type="submit" 
+            {/* Submit */}
+            <button
+              type="submit"
               style="
                 width: 100%;
                 padding: 1rem;
@@ -396,7 +391,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
                 border: none;
                 color: #000;
                 font-family: 'JetBrains Mono', monospace;
-                font-size: 0.875rem;
+                font-size: 0.9375rem;
                 font-weight: 700;
                 text-transform: uppercase;
                 letter-spacing: 0.1em;
@@ -410,19 +405,25 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
         </div>
       </div>
 
-      {/* MAP EMBED RACK */}
-      <div class="map-embed-container">
-        <div class="map-embed-header">
-          <h3 class="map-embed-title">FIND US IN OXFORD</h3>
-          <p class="map-embed-subtitle">Cowley Road Studios · 118 Cowley Road · OX4 1JE</p>
-        </div>
-        {/* Static map placeholder with Open in Google Maps button — no API key needed */}
-        <div style="position: relative; width: 100%; border-radius: 6px; overflow: hidden; background: #0d120d; border: 1px solid rgba(212,160,23,0.25); min-height: 320px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1.25rem;">
-          <div style="text-align: center; font-family: 'JetBrains Mono', monospace; color: rgba(245,245,245,0.7); line-height: 1.6;">
-            <div style="font-size: 2rem; margin-bottom: 0.75rem;">📍</div>
-            <div style="font-size: 1rem; font-weight: 700; color: var(--mustard, #d4a017); margin-bottom: 0.375rem;">Cowley Road Studios</div>
-            <div style="font-size: 0.875rem;">118 Cowley Road, Oxford OX4 1JE</div>
-          </div>
+      {/* MAP — recessed panel with static address + Open in Google Maps */}
+      <div class="rack-module-graphic" style="padding: 2.5rem 2rem; margin: 0; border-top: 1px solid rgba(212,160,23,0.15);">
+        <div class="crs-recessed-panel" style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <h3
+            style="
+              font-family: 'JetBrains Mono', monospace;
+              font-size: 0.75rem;
+              letter-spacing: 0.15em;
+              color: var(--mustard, #d4a017);
+              text-transform: uppercase;
+              margin-bottom: 1.25rem;
+              font-weight: 700;
+            "
+          >
+            FIND US IN OXFORD
+          </h3>
+          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245,245,245,0.7); margin-bottom: 1.5rem; line-height: 1.6;">
+            Cowley Road Studios · 118 Cowley Road · Oxford OX4 1JE
+          </p>
           <a
             href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE"
             target="_blank"
@@ -441,6 +442,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
               letter-spacing: 0.08em;
               border-radius: 3px;
               box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+              text-decoration: none;
             "
           >
             <span aria-hidden="true">↗</span> Open in Google Maps
@@ -454,7 +456,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
           <div class="terminal-status-section">
             <div class="terminal-status-label">COWLEY ROAD STUDIOS</div>
             <div class="terminal-status-line" style="font-weight: 600; margin-bottom: 0.5rem;">
-              Independent Recording Studio & Rehearsal Rooms – Oxford
+              Independent Recording Studio &amp; Rehearsal Rooms – Oxford
             </div>
             <div class="terminal-status-line">118 Cowley Road, Oxford OX4 1JE, United Kingdom</div>
             <div class="terminal-status-line" style="margin-top: 0.75rem;">

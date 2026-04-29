@@ -8,20 +8,20 @@ export const AVServicesPage = () => (
     {/* Skip to content for accessibility */}
     <a href="#av-services-content" class="skip-to-content">Skip to main content</a>
 
-    {/* BACK TO HOME RACK */}
+    {/* BACK TO HOME */}
     <div style="padding: 1rem 0; text-align: center; background: rgba(0,0,0,0.5); border-bottom: 1px solid rgba(212,160,23,0.2);">
-      <a 
-        href="/" 
+      <a
+        href="/"
         style="color: var(--mustard, #d4a017); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em;"
       >
         ← HOME
       </a>
     </div>
 
-    {/* AV SERVICES HEADER RACK */}
-    <div 
+    {/* PAGE HEADER */}
+    <div
       id="av-services-content"
-      class="rack-module-graphic" 
+      class="rack-module-graphic"
       style="
         background: linear-gradient(180deg, #0A0A0A 0%, #1a1a1a 100%);
         padding: 3rem 2rem;
@@ -29,7 +29,7 @@ export const AVServicesPage = () => (
         border-bottom: 2px solid rgba(212,160,23,0.3);
       "
     >
-      <h1 
+      <h1
         style="
           font-family: 'Archivo Black', sans-serif;
           font-size: clamp(2rem, 5vw, 3rem);
@@ -41,10 +41,10 @@ export const AVServicesPage = () => (
       >
         AV SERVICES
       </h1>
-      <p 
+      <p
         style="
           font-family: 'JetBrains Mono', monospace;
-          font-size: 0.875rem;
+          font-size: 0.9375rem;
           color: rgba(245,245,245,0.7);
           max-width: 600px;
           margin: 0 auto;
@@ -55,18 +55,13 @@ export const AVServicesPage = () => (
       </p>
     </div>
 
-    {/* WHAT WE DO RACK */}
-    <div 
-      class="rack-module-graphic" 
-      style="
-        background: rgba(0,0,0,0.3);
-        padding: 3rem 2rem;
-        margin: 0;
-        border-bottom: 1px solid rgba(212,160,23,0.2);
-      "
+    {/* WHAT WE DO — recessed panel */}
+    <div
+      class="rack-module-graphic"
+      style="padding: 3rem 2rem; margin: 0; border-bottom: 1px solid rgba(212,160,23,0.2);"
     >
-      <div style="max-width: 900px; margin: 0 auto;">
-        <h2 
+      <div class="crs-recessed-panel" style="max-width: 900px; margin: 0 auto;">
+        <h2
           style="
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
@@ -91,18 +86,13 @@ export const AVServicesPage = () => (
       </div>
     </div>
 
-    {/* HOW IT WORKS RACK */}
-    <div 
-      class="rack-module-graphic" 
-      style="
-        background: rgba(0,0,0,0.5);
-        padding: 3rem 2rem;
-        margin: 0;
-        border-bottom: 1px solid rgba(212,160,23,0.2);
-      "
+    {/* HOW IT WORKS — recessed panel */}
+    <div
+      class="rack-module-graphic"
+      style="padding: 3rem 2rem; margin: 0; border-bottom: 1px solid rgba(212,160,23,0.2);"
     >
-      <div style="max-width: 900px; margin: 0 auto;">
-        <h2 
+      <div class="crs-recessed-panel" style="max-width: 900px; margin: 0 auto;">
+        <h2
           style="
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
@@ -127,18 +117,13 @@ export const AVServicesPage = () => (
       </div>
     </div>
 
-    {/* CAPABILITY RACK */}
-    <div 
-      class="rack-module-graphic" 
-      style="
-        background: rgba(0,0,0,0.3);
-        padding: 3rem 2rem;
-        margin: 0;
-        border-bottom: 1px solid rgba(212,160,23,0.2);
-      "
+    {/* CAPABILITY — recessed panel */}
+    <div
+      class="rack-module-graphic"
+      style="padding: 3rem 2rem; margin: 0; border-bottom: 1px solid rgba(212,160,23,0.2);"
     >
-      <div style="max-width: 900px; margin: 0 auto;">
-        <h2 
+      <div class="crs-recessed-panel" style="max-width: 900px; margin: 0 auto;">
+        <h2
           style="
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
@@ -160,18 +145,13 @@ export const AVServicesPage = () => (
       </div>
     </div>
 
-    {/* TECHNICAL OPERATIONS RACK */}
-    <div 
-      class="rack-module-graphic" 
-      style="
-        background: rgba(0,0,0,0.5);
-        padding: 3rem 2rem;
-        margin: 0;
-        border-bottom: 1px solid rgba(212,160,23,0.2);
-      "
+    {/* TECHNICAL OPERATIONS — recessed panel */}
+    <div
+      class="rack-module-graphic"
+      style="padding: 3rem 2rem; margin: 0; border-bottom: 1px solid rgba(212,160,23,0.2);"
     >
-      <div style="max-width: 900px; margin: 0 auto;">
-        <h2 
+      <div class="crs-recessed-panel" style="max-width: 900px; margin: 0 auto;">
+        <h2
           style="
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
@@ -187,10 +167,10 @@ export const AVServicesPage = () => (
         <p style="margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; line-height: 1.6; color: rgba(245,245,245,0.9);">
           CRS provides ongoing technical management and AV support for external venues.
         </p>
-        <p style="margin-bottom: 0.5rem; font-size: 0.875rem; color: rgba(245,245,245,0.7);">
+        <p style="margin-bottom: 0.5rem; font-size: 0.9375rem; color: rgba(245,245,245,0.7); font-family: 'JetBrains Mono', monospace;">
           Current supported sites:
         </p>
-        <ul style="list-style: none; padding: 0; font-size: 0.875rem; color: rgba(245,245,245,0.6); font-family: 'JetBrains Mono', monospace;">
+        <ul style="list-style: none; padding: 0; font-size: 0.9375rem; color: rgba(245,245,245,0.6); font-family: 'JetBrains Mono', monospace;">
           <li style="margin-bottom: 0.25rem;">– Bossaphonik</li>
           <li style="margin-bottom: 0.25rem;">– The King's Centre</li>
           <li style="margin-bottom: 0.25rem;">– Cowley Workers' Club</li>
@@ -198,18 +178,13 @@ export const AVServicesPage = () => (
       </div>
     </div>
 
-    {/* PRICING CONTEXT RACK */}
-    <div 
-      class="rack-module-graphic" 
-      style="
-        background: rgba(0,0,0,0.3);
-        padding: 3rem 2rem;
-        margin: 0;
-        border-bottom: 1px solid rgba(212,160,23,0.2);
-      "
+    {/* PRICING — recessed panel */}
+    <div
+      class="rack-module-graphic"
+      style="padding: 3rem 2rem; margin: 0; border-bottom: 1px solid rgba(212,160,23,0.2);"
     >
-      <div style="max-width: 900px; margin: 0 auto;">
-        <h2 
+      <div class="crs-recessed-panel" style="max-width: 900px; margin: 0 auto;">
+        <h2
           style="
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
@@ -231,9 +206,9 @@ export const AVServicesPage = () => (
       </div>
     </div>
 
-    {/* REPAIRS BRIDGE RACK */}
-    <div 
-      class="rack-module-graphic" 
+    {/* REPAIRS BRIDGE */}
+    <div
+      class="rack-module-graphic"
       style="
         background: rgba(0,0,0,0.5);
         padding: 3rem 2rem;
@@ -242,7 +217,7 @@ export const AVServicesPage = () => (
       "
     >
       <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-        <p 
+        <p
           style="
             font-family: 'JetBrains Mono', monospace;
             font-size: 1rem;
@@ -254,8 +229,8 @@ export const AVServicesPage = () => (
         >
           Behind every clean live setup is a deep technical bench.
         </p>
-        <a 
-          href="/av-services/repairs" 
+        <a
+          href="/av-services/repairs"
           style="
             display: inline-block;
             padding: 1rem 2rem;
@@ -270,22 +245,22 @@ export const AVServicesPage = () => (
             transition: all 0.2s ease;
           "
         >
-          REPAIRS & TECHNICAL BENCH
+          REPAIRS &amp; TECHNICAL BENCH
         </a>
       </div>
     </div>
 
-    {/* CONTACT CTA RACK */}
-    <div 
-      class="rack-module-graphic" 
+    {/* CONTACT CTA */}
+    <div
+      class="rack-module-graphic"
       style="
         background: linear-gradient(180deg, #1a1a1a 0%, #0A0A0A 100%);
         padding: 3rem 2rem;
         text-align: center;
       "
     >
-      <a 
-        href="/contact?enquiry=av" 
+      <a
+        href="/contact?enquiry=av"
         style="
           display: inline-block;
           padding: 1.25rem 3rem;
@@ -300,7 +275,7 @@ export const AVServicesPage = () => (
           transition: all 0.2s ease;
         "
       >
-        [ REQUEST AV QUOTE ]
+        REQUEST AV QUOTE
       </a>
     </div>
 
@@ -310,7 +285,7 @@ export const AVServicesPage = () => (
         <div class="terminal-status-section">
           <div class="terminal-status-label">COWLEY ROAD STUDIOS</div>
           <div class="terminal-status-line" style="font-weight: 600; margin-bottom: 0.5rem;">
-            Independent Recording Studio & Rehearsal Rooms – Oxford
+            Independent Recording Studio &amp; Rehearsal Rooms – Oxford
           </div>
           <div class="terminal-status-line">118 Cowley Road, Oxford</div>
           <div class="terminal-status-line" style="margin-top: 0.75rem;">

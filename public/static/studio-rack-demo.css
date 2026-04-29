@@ -2475,36 +2475,46 @@ html, body {
    UNIFIED CHASSIS — rails run full height, documentation bay below
    ═══════════════════════════════════════════════════════════════ */
 
-/* Rails stretch automatically because hp-machine uses align-items:stretch */
+/* Rails stretch automatically because hp-machine uses align-items:stretch.
+   space-between puts first bolt at top, last bolt at bottom of the full
+   chassis height — spans both the screen section AND the documentation bay. */
 .srd-rail {
-  /* bolts distribute evenly along the full height */
-  justify-content: space-evenly;
+  justify-content: space-between;   /* bolts at true top + bottom of chassis */
 }
 
 /* ── DOCUMENTATION UNIT ──────────────────────────────────────
    Recessed metal bay bolted into the same rails as the screen.
    Heavy inset shadow + bevelled top edge = sunken panel feel.
-   SSL BiG SiX backdrop bleeds through the dark base.
+   The .hp-page::before pseudo-element (SSL BiG SiX, position:fixed)
+   bleeds visually through this near-transparent dark layer.
    ─────────────────────────────────────────────────────────── */
 .hp-documentation-unit {
   flex: 1;                          /* fills remaining column height */
-  background: #0a0f0a;              /* near-black dark green — same family as nettle-deep */
+  /* #0d120d at 95% opacity — dark enough to read, thin enough to let the
+     fixed SSL backdrop bleed through on browsers that support it */
+  background: rgba(13, 18, 13, 0.95);
   border-top: 1px solid rgba(255,255,255,0.08);  /* bevelled top edge — metal plate join */
   box-shadow:
-    inset 0 10px 40px rgba(0,0,0,0.90),   /* deep recess — sunken bay */
-    inset 0 2px 8px rgba(0,0,0,0.70);
+    inset 0 10px 30px rgba(0,0,0,0.90),   /* deep recess — sunken bay */
+    inset 0 2px 8px rgba(0,0,0,0.60);
   position: relative;
   overflow: hidden;
+  /* Monospaced throughout — technical manual feel */
+  font-family: var(--font-mono);
 }
-/* Subtle SSL console texture bleeds through */
+/* SSL backdrop bleed — keeps the console visible behind the bay */
 .hp-documentation-unit::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('/static/images/crs-master-console-v12.webp');
-  background-size: cover;
-  background-position: center 60%;
-  filter: blur(12px) brightness(0.07) saturate(0.4);
+  /* The .hp-page background is already fixed, so we only need a very
+     subtle reinforcing overlay here — do NOT re-render the full image
+     (that would double the blur cost and block the fixed layer) */
+  background: linear-gradient(
+    180deg,
+    rgba(13,18,13,0.0) 0%,
+    rgba(13,18,13,0.4) 100%
+  );
   pointer-events: none;
   z-index: 0;
 }
