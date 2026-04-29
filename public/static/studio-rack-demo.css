@@ -495,7 +495,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   margin: 0 auto 0;              /* v3.3 — BrandPlate handles vertical breathing room */
   padding: 0;
   display: flex;
-  flex-direction: row;            /* rails left | content | rails right */
+  flex-direction: row;            /* rails left | centre-column | rails right */
+  align-items: stretch;           /* UNIFIED CHASSIS: rails stretch to full column height */
   gap: 0;
   background-color: #050505;
   box-shadow:
@@ -528,8 +529,16 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    MODULE STACK — physical gaps between rack units
    Wider seams expose the black void behind the gear
    ═══════════════════════════════════════════════════════════════ */
-.hp-machine-inner {
+/* Centre column — wraps both the interactive rack AND the documentation bay */
+.hp-chassis-column {
   flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.hp-machine-inner {
+  flex: 0 0 auto;      /* Don't stretch — only as tall as screen + controls */
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -1807,19 +1816,17 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    MANUFACTURER'S SPEC PLATE — etched industrial safety warnings
    ═══════════════════════════════════════════════════════════════ */
 .hp-spec-plate {
-  background: #0d0d0d;
-  border: 2px solid #1a1a1a;
-  border-radius: 4px;
+  background: transparent;  /* doc-unit provides the background */
+  border: none;
+  border-radius: 0;
   padding: 2rem;
-  margin: 10px auto;
+  margin: 0 auto;
   max-width: 1000px;
-  color: #4a4a4a; /* Dimmed etched text */
+  color: #4a4a4a;
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.75rem;
   text-transform: uppercase;
-  box-shadow: 
-    inset 0 0 20px rgba(0,0,0,0.9), 
-    0 4px 6px rgba(0,0,0,0.6);
+  box-shadow: none;
   position: relative;
 }
 
@@ -1870,9 +1877,10 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    TRUST RAIL — bottom structural rim of the rack
    ═══════════════════════════════════════════════════════════════ */
 .hp-trust-strip {
-  background-color: #050505;
-  border-top: 2px solid #111;
-  margin-top: auto;
+  background-color: transparent;  /* doc-unit provides the background */
+  border-top: none;
+  margin-top: 0;
+  padding-top: 2rem;
 }
 
 .hp-trust-inner {
@@ -2464,12 +2472,81 @@ html, body {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   VERTICAL RAILS — full page height (extend srd-rail)
+   UNIFIED CHASSIS — rails run full height, documentation bay below
    ═══════════════════════════════════════════════════════════════ */
+
+/* Rails stretch automatically because hp-machine uses align-items:stretch */
 .srd-rail {
-  align-self: stretch;   /* fill hp-machine flex height */
+  /* bolts distribute evenly along the full height */
+  justify-content: space-evenly;
 }
-/* hp-machine already uses flex-direction: row; srd-rail gets stretch */
+
+/* ── DOCUMENTATION UNIT ──────────────────────────────────────
+   Recessed metal bay bolted into the same rails as the screen.
+   Heavy inset shadow + bevelled top edge = sunken panel feel.
+   SSL BiG SiX backdrop bleeds through the dark base.
+   ─────────────────────────────────────────────────────────── */
+.hp-documentation-unit {
+  flex: 1;                          /* fills remaining column height */
+  background: #0a0f0a;              /* near-black dark green — same family as nettle-deep */
+  border-top: 1px solid rgba(255,255,255,0.08);  /* bevelled top edge — metal plate join */
+  box-shadow:
+    inset 0 10px 40px rgba(0,0,0,0.90),   /* deep recess — sunken bay */
+    inset 0 2px 8px rgba(0,0,0,0.70);
+  position: relative;
+  overflow: hidden;
+}
+/* Subtle SSL console texture bleeds through */
+.hp-documentation-unit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/static/images/crs-master-console-v12.webp');
+  background-size: cover;
+  background-position: center 60%;
+  filter: blur(12px) brightness(0.07) saturate(0.4);
+  pointer-events: none;
+  z-index: 0;
+}
+.hp-documentation-unit > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── MANUFACTURER'S SEAL — engraved plate at chassis base ─── */
+.hp-chassis-seal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 2.5rem 2rem 3rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.hp-chassis-seal-link {
+  display: block;
+  opacity: 0.55;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+.hp-chassis-seal-link:hover {
+  opacity: 0.85;
+  filter: drop-shadow(0 0 14px rgba(194,164,58,0.30));
+}
+.hp-chassis-seal-img {
+  width: 140px;
+  height: auto;
+  display: block;
+  filter:
+    drop-shadow(0 1px 4px rgba(0,0,0,0.80))
+    brightness(0.7);
+}
+.hp-chassis-seal-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+  text-align: center;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    TECH SPECS FAQ — Parking / Backline / Process accordion rows

@@ -1691,32 +1691,51 @@ export default function StudioServicesRack() {
       {/* BRAND PLATE — top manufacturer anchor, links home */}
       <BrandPlate position="top" />
 
-      {/* RACK CHASSIS — physical 19" hardware frame */}
+      {/* RACK CHASSIS — physical 19" hardware frame
+          Rails wrap EVERYTHING: interactive screen + documentation unit.
+          This is one unified chassis — rails run floor to ceiling.        */}
       <section className="hp-machine" aria-label="Service display">
 
         <RackRail side="left" />
 
-        <div className="hp-machine-inner">
-          {/* 3U — SCREEN — OXFORD LCD is the absolute top of the rack */}
-          <div className="hp-screen">
-            {screenContent}
+        {/* Centre column — screen above, documentation bay below */}
+        <div className="hp-chassis-column">
+
+          <div className="hp-machine-inner">
+            {/* 3U — SCREEN — OXFORD LCD is the absolute top of the rack */}
+            <div className="hp-screen">
+              {screenContent}
+            </div>
+
+            {/* 2U — CONTROLS — physical button panel */}
+            <ServiceControls active={activeId} onSelect={handleSelect} />
           </div>
 
-          {/* 2U — CONTROLS — physical button panel */}
-          <ServiceControls active={activeId} onSelect={handleSelect} />
-        </div>
+          {/* DOCUMENTATION UNIT — recessed bay bolted into the same rails */}
+          <div className="hp-documentation-unit">
+            <TrustStrip />
+            <SeoText />
+
+            {/* MANUFACTURER'S SEAL — engraved plate at chassis base */}
+            <div className="hp-chassis-seal">
+              <a href={URLS.HOME} className="hp-chassis-seal-link" aria-label="Cowley Road Studios — home">
+                <img
+                  src="/static/crs-logo.png"
+                  alt="Cowley Road Studios"
+                  className="hp-chassis-seal-img"
+                  width="160"
+                  height="59"
+                />
+              </a>
+              <p className="hp-chassis-seal-sub">EST. 2012 · OXFORD · ODRO ENGINEERING</p>
+            </div>
+          </div>
+
+        </div>{/* /hp-chassis-column */}
 
         <RackRail side="right" />
 
       </section>
-
-      {/* BRAND PLATE — bottom signature, closes the circuit */}
-      <BrandPlate position="bottom" />
-
-      {/* 4 — Footer */}
-      <TrustStrip />
-
-      <SeoText />
     </main>
   );
 }
