@@ -2208,31 +2208,37 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   opacity: 0.7;
 }
 
-/* ── PHOSPHOR PERSISTENCE TRACE — SILHOUETTE BAND ────────────
-   v3.4: thick dark stroke = building mass below the skyline.
-   The dim trace IS the silhouette — dense, crisp, no glow blur.
-   Inline filter="url(#osc-dim-glow)" is overridden to none here.
+/* ── PHOSPHOR PERSISTENCE TRACE — GRADIENT SILHOUETTE BAND ───
+   v3.5: stroke="url(#skyline-intensity)" set inline (SVG gradient).
+   CSS must NOT override stroke colour — gradient lives in SVG defs.
+   strokeWidth=140 floods downward, clipped by overflow:hidden on frame.
+   strokeOpacity=0.55 inline keeps the silhouette readable but not harsh.
+   No filter — crisp edges let the colour zones read clearly.
    stroke-linejoin: miter keeps spire peaks sharp, not rounded.
 ────────────────────────────────────────────────────────────── */
 .hp-osc-dim {
-  stroke: #0d2e0d;          /* very dark phosphor green — building mass, not a line */
+  /* stroke colour is the SVG gradient — do NOT set stroke here */
   stroke-width: 140px;      /* fills from trace down to frame base — solid silhouette */
-  opacity: 1;
   stroke-linecap: butt;     /* flat ends — no rounded overhang past endpoints */
   stroke-linejoin: miter;   /* sharp spire peaks, not rounded */
-  filter: none !important;  /* override inline filter — no glow on the silhouette base */
+  filter: none !important;  /* no glow on the silhouette base — gradient does the work */
+  will-change: transform;   /* voltage jitter via transform each frame */
 }
 
-/* ── ACTIVE (LIT) TRACE — BRIGHT CREST ───────────────────────
-   Thin bright line sitting on top of the silhouette mass.
-   Revealed left-of-beam by the mask. Acts as the "lit top edge".
+/* ── ACTIVE (LIT) TRACE — BRIGHT GRADIENT CREST ──────────────
+   Thin line riding the top of the silhouette mass.
+   Uses skyline-intensity-active gradient — vivid zone colours.
+   Voltage jitter applied via JS transform each frame (+/-0.8px).
+   filter: osc-glow inline — phosphor bloom on the crest only.
+   Revealed left-of-beam by mask.
 ────────────────────────────────────────────────────────────── */
 .hp-osc-active {
-  stroke: #59ff3a;          /* vivid phosphor green — electron-gun crest */
-  stroke-width: 2.5px;      /* thin — rides on top of the thick dim band */
+  /* stroke colour is the SVG gradient — do NOT set stroke here */
+  stroke-width: 2.5px;      /* thin crest line riding the silhouette top */
   stroke-linecap: butt;
   stroke-linejoin: miter;
   opacity: 1;
+  will-change: transform;   /* voltage jitter applied via JS */
 }
 
 /* Electron beam sweep line */

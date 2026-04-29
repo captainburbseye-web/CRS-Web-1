@@ -1215,8 +1215,11 @@ function SkylineOscilloscope({ activeId }) {
                The thick dim stroke does the visual work; motion would blur the shape.
        Signal traces: wider range (0.55–1.50) for expressive motion           */
     const isSkyline = (mode === 'SKYLINE');
-    const scaleMin = isSkyline ? 0.98 : 0.55;
-    const scaleMax = isSkyline ? 1.02 : 1.50;
+    /* SKYLINE: wider range (0.94–1.10) so the gradient colour zones are
+       actually traversed — green base always visible, mustard on hum peaks,
+       red only on signal transients. Silhouette stays legible throughout. */
+    const scaleMin = isSkyline ? 0.94 : 0.55;
+    const scaleMax = isSkyline ? 1.10 : 1.50;
     st.currentScale = Math.max(scaleMin, Math.min(scaleMax, st.currentScale));
 
     /* Build polyline string — use mode-appropriate pivot */
@@ -1230,11 +1233,17 @@ function SkylineOscilloscope({ activeId }) {
     // maskRect x=0 → beamX reveals the lit trace; beyond beam is dim
     const revealFrac = beamX / 880;
 
+    /* Voltage jitter — sub-pixel CRT beam wobble applied to active crest only.
+       Generates a random ±1 px translateY each frame so the bright line
+       shimmers like a real phosphor trace under mains load. The dim
+       silhouette stays locked — only the lit crest vibrates. */
+    const voltageJitter = (Math.random() - 0.5) * 1.6;
+
     /* DOM mutations (no React re-render) */
     if (dimPathRef.current)    dimPathRef.current.setAttribute('points', polyStr);
     if (activePathRef.current) {
       activePathRef.current.setAttribute('points', polyStr);
-      // Opacity: bright in reveal zone, fades to dim outside
+      activePathRef.current.style.transform = `translateY(${voltageJitter.toFixed(2)}px)`;
     }
     if (maskRectRef.current) {
       maskRectRef.current.setAttribute('width', beamX.toFixed(1));
@@ -1293,23 +1302,40 @@ function SkylineOscilloscope({ activeId }) {
         role="img"
       >
         <defs>
-          {/* Phosphor glow — tight core blur + wide halo for CRT feel */}
-          <filter id="osc-glow" x="-30%" y="-60%" width="160%" height="220%" colorInterpolationFilters="sRGB">
-            {/* Wide soft halo */}
-            <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="halo" />
-            {/* Tight bright core */}
-            <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="core" />
-            <feMerge>
-              <feMergeNode in="halo" />
-              <feMergeNode in="core" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
+          {/* ── SIGNAL-INTENSITY GRADIENT — green→mustard→red, bottom→top ─
+              Y coordinates in viewBox space (0=top, 160=bottom).
+              gradientUnits="userSpaceOnUse" so the gradient is anchored
+              to the SVG canvas regardless of path shape.
+              Both dim and active traces share this gradient so colour
+              zones always align: safe green at base, amber in mid-range,
+              danger red at the very tips of the tallest spires.
+          ─────────────────────────────────────────────────────────── */}
+          <linearGradient id="skyline-intensity" x1="0" y1="160" x2="0" y2="0" gradientUnits="userSpaceOnUse">
+            {/* bottom — deep safe green */}
+            <stop offset="0%"   stopColor="#1a5c20" />
+            {/* lower-mid — phosphor mid-green */}
+            <stop offset="40%"  stopColor="#2a8c30" />
+            {/* mid — mustard / amber — normal signal zone */}
+            <stop offset="68%"  stopColor="#c49a18" />
+            {/* upper — hot amber */}
+            <stop offset="85%"  stopColor="#d4600a" />
+            {/* top — danger red — only tallest spire tips on peaks */}
+            <stop offset="100%" stopColor="#cc2a1a" />
+          </linearGradient>
 
-          {/* Dim-trace glow — phosphor persistence bloom: wide halo + sharp core */}
-          <filter id="osc-dim-glow" x="-25%" y="-60%" width="150%" height="220%" colorInterpolationFilters="sRGB">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="halo" />
-            <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="core" />
+          {/* Identical gradient for the active crest — same zones, brighter opacity */}
+          <linearGradient id="skyline-intensity-active" x1="0" y1="160" x2="0" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stopColor="#2aef40" />
+            <stop offset="42%"  stopColor="#59ff3a" />
+            <stop offset="68%"  stopColor="#f0c020" />
+            <stop offset="85%"  stopColor="#ff6a18" />
+            <stop offset="100%" stopColor="#ff3322" />
+          </linearGradient>
+
+          {/* Active-crest glow filter — dual blur for CRT phosphor halo */}
+          <filter id="osc-glow" x="-30%" y="-60%" width="160%" height="220%" colorInterpolationFilters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="halo" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="core" />
             <feMerge>
               <feMergeNode in="halo" />
               <feMergeNode in="core" />
@@ -1346,52 +1372,56 @@ function SkylineOscilloscope({ activeId }) {
           ))}
         </g>
 
-        {/* ── PHOSPHOR PERSISTENCE TRACE ─────────────────────────────
-            Always-visible dim trace. This IS the skyline silhouette.
-            Stroke colour and opacity must be clearly readable on #030b03.
-            filter osc-dim-glow adds a soft phosphor bloom around it.
+        {/* ── PHOSPHOR PERSISTENCE TRACE — gradient silhouette mass ───
+            strokeWidth=140 floods downward from the path to the frame
+            base, clipped by overflow:hidden on .hp-osc-frame.
+            Gradient gives green base → mustard mid → red tips.
+            No filter — silhouette edges stay crisp.
         ─────────────────────────────────────────────────────────── */}
-        {/* dim trace: CSS overrides stroke/width/filter — thick dark silhouette band */}
         <polyline
           ref={dimPathRef}
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
-          stroke="#0d2e0d"
+          stroke="url(#skyline-intensity)"
           strokeWidth="140"
           strokeLinecap="butt"
           strokeLinejoin="miter"
+          strokeOpacity="0.55"
           className="hp-osc-dim"
         />
 
-        {/* ── LIT (ACTIVE) TRACE ─────────────────────────────────────
-            Bright phosphor green, revealed as beam sweeps left→right.
-            Masked to only show left-of-beam region.
+        {/* ── LIT (ACTIVE) TRACE — bright gradient crest ─────────────
+            Thin bright line riding the top of the silhouette mass.
+            Uses the vivid gradient variant so the crest colour matches
+            the zone it's drawing through.
+            Revealed left-of-beam. Voltage jitter applied via transform.
         ─────────────────────────────────────────────────────────── */}
         <polyline
           ref={activePathRef}
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
-          stroke="#50ff50"
-          strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          stroke="url(#skyline-intensity-active)"
+          strokeWidth="2.5"
+          strokeLinecap="butt"
+          strokeLinejoin="miter"
           filter="url(#osc-glow)"
           mask="url(#osc-reveal-mask)"
           className="hp-osc-active"
         />
 
         {/* ── ELECTRON BEAM ─────────────────────────────────────────
-            Vertical scan line. Brighter at centre, fades to edges.
+            Vertical scan line. Beam colour follows the gradient zone
+            it's currently painting — approximated as the beam-tip
+            bright green (safe zone most of the time).
         ─────────────────────────────────────────────────────────── */}
         <g ref={beamRef} filter="url(#osc-beam-glow)" className="hp-osc-beam">
           <line
             x1="0" y1="0" x2="0" y2="160"
-            stroke="rgba(120,255,120,0.65)"
-            strokeWidth="2"
+            stroke="rgba(140,255,140,0.70)"
+            strokeWidth="1.5"
           />
-          {/* Bright spot at ground level — where beam hits the skyline base */}
-          <ellipse cx="0" cy="130" rx="2" ry="6"
-            fill="rgba(160,255,160,0.35)"
+          <ellipse cx="0" cy="130" rx="2" ry="5"
+            fill="rgba(180,255,180,0.30)"
           />
         </g>
       </svg>
