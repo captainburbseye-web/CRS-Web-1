@@ -1444,8 +1444,6 @@ function SkylineOscilloscope({ activeId }) {
 
 /* ─── Idle / hero state ───────────────────────────────────── */
 function IdleState({ activeId = null }) {
-  const [hireOpen, setHireOpen] = useState(false);
-
   return (
     <div className="hp-idle" aria-label="Cowley Road Studios — select a service">
 
@@ -1472,82 +1470,6 @@ function IdleState({ activeId = null }) {
 
       {/* Skyline oscilloscope — phosphor-trace Dreaming Spires scope — DO NOT TOUCH */}
       <SkylineOscilloscope activeId={activeId} />
-
-      {/* ── NESTED ROOM HIRE SWITCHBOARD ─────────────────────────
-          Primary: Recording · Café · Room Hire
-          Room Hire expands sub-menu. Local state only.
-      ──────────────────────────────────────────────────────── */}
-      <div className="hp-idle-switchboard" role="group" aria-label="Book a room">
-        {!hireOpen ? (
-          <div className="hp-idle-switchboard-primary">
-            <a
-              href={URLS.BIG_BOOTH_BOOK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hp-idle-sb-btn"
-            >
-              Recording
-            </a>
-            <a
-              href={URLS.SMALL_BOOTH_BOOK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hp-idle-sb-btn"
-            >
-              Café
-            </a>
-            <button
-              type="button"
-              className="hp-idle-sb-btn hp-idle-sb-btn--hire"
-              onClick={() => setHireOpen(true)}
-              aria-expanded={false}
-            >
-              Room Hire ›
-            </button>
-          </div>
-        ) : (
-          <div className="hp-idle-switchboard-submenu">
-            <a
-              href={URLS.CONTROL_ROOM_BOOK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hp-idle-sb-btn"
-            >
-              Control Room
-            </a>
-            <a
-              href={URLS.BIG_BOOTH_BOOK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hp-idle-sb-btn"
-            >
-              Big Booth
-            </a>
-            <a
-              href={URLS.SMALL_BOOTH_BOOK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hp-idle-sb-btn"
-            >
-              Small Booth
-            </a>
-            <a
-              href="/contact?service=engineering"
-              className="hp-idle-sb-btn"
-            >
-              Service Individuals
-            </a>
-            <button
-              type="button"
-              className="hp-idle-sb-btn hp-idle-sb-btn--back"
-              onClick={() => setHireOpen(false)}
-              aria-expanded={true}
-            >
-              ← Back
-            </button>
-          </div>
-        )}
-      </div>
 
     </div>
   );
