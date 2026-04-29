@@ -2208,29 +2208,30 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   opacity: 0.7;
 }
 
-/* ── PHOSPHOR PERSISTENCE TRACE ──────────────────────────────
-   This is the most important element. It is always visible and
-   carries the full skyline silhouette shape. Must be clearly
-   readable — NOT a hairline ghost, but a glowing dim trace.
-   strokeWidth and opacity here are the primary legibility levers.
+/* ── PHOSPHOR PERSISTENCE TRACE — SILHOUETTE BAND ────────────
+   v3.4: thick dark stroke = building mass below the skyline.
+   The dim trace IS the silhouette — dense, crisp, no glow blur.
+   Inline filter="url(#osc-dim-glow)" is overridden to none here.
+   stroke-linejoin: miter keeps spire peaks sharp, not rounded.
 ────────────────────────────────────────────────────────────── */
 .hp-osc-dim {
-  stroke: #257025;       /* bright-mid phosphor green — clearly readable on dark bg */
-  stroke-width: 2.2px;
-  opacity: 0.92;         /* must be clearly visible — this IS the skyline silhouette */
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke: #0d2e0d;          /* very dark phosphor green — building mass, not a line */
+  stroke-width: 140px;      /* fills from trace down to frame base — solid silhouette */
+  opacity: 1;
+  stroke-linecap: butt;     /* flat ends — no rounded overhang past endpoints */
+  stroke-linejoin: miter;   /* sharp spire peaks, not rounded */
+  filter: none !important;  /* override inline filter — no glow on the silhouette base */
 }
 
-/* ── ACTIVE (LIT) TRACE ───────────────────────────────────────
-   Bright line revealed as beam sweeps. Full phosphor green.
-   The SVG filter (osc-glow) is applied inline for the halo.
+/* ── ACTIVE (LIT) TRACE — BRIGHT CREST ───────────────────────
+   Thin bright line sitting on top of the silhouette mass.
+   Revealed left-of-beam by the mask. Acts as the "lit top edge".
 ────────────────────────────────────────────────────────────── */
 .hp-osc-active {
-  stroke: #50ff50;       /* bright phosphor green — fresh electron-gun trace */
-  stroke-width: 3px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke: #59ff3a;          /* vivid phosphor green — electron-gun crest */
+  stroke-width: 2.5px;      /* thin — rides on top of the thick dim band */
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
   opacity: 1;
 }
 

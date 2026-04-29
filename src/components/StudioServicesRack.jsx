@@ -1211,11 +1211,12 @@ function SkylineOscilloscope({ activeId }) {
     const blendRate = targetScale > st.currentScale ? OSC_ATTACK : OSC_RELEASE;
     st.currentScale += (targetScale - st.currentScale) * blendRate * dt;
     /* Clamp:
-       SKYLINE: very narrow range (0.95–1.07) — spires breathe gently, shape stays legible
+       SKYLINE: ultra-tight (0.98–1.02) — silhouette is nearly static, just a slow breath.
+               The thick dim stroke does the visual work; motion would blur the shape.
        Signal traces: wider range (0.55–1.50) for expressive motion           */
     const isSkyline = (mode === 'SKYLINE');
-    const scaleMin = isSkyline ? 0.95 : 0.55;
-    const scaleMax = isSkyline ? 1.07 : 1.50;
+    const scaleMin = isSkyline ? 0.98 : 0.55;
+    const scaleMax = isSkyline ? 1.02 : 1.50;
     st.currentScale = Math.max(scaleMin, Math.min(scaleMax, st.currentScale));
 
     /* Build polyline string — use mode-appropriate pivot */
@@ -1350,15 +1351,15 @@ function SkylineOscilloscope({ activeId }) {
             Stroke colour and opacity must be clearly readable on #030b03.
             filter osc-dim-glow adds a soft phosphor bloom around it.
         ─────────────────────────────────────────────────────────── */}
+        {/* dim trace: CSS overrides stroke/width/filter — thick dark silhouette band */}
         <polyline
           ref={dimPathRef}
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
-          stroke="#257025"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          filter="url(#osc-dim-glow)"
+          stroke="#0d2e0d"
+          strokeWidth="140"
+          strokeLinecap="butt"
+          strokeLinejoin="miter"
           className="hp-osc-dim"
         />
 
