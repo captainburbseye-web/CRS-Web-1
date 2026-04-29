@@ -1021,16 +1021,20 @@ function AnalogueDialPair() {
    Y=0 is top, Y=160 is bottom. Silhouettes sit in mid-range.
 */
 const OSC_PATHS = {
-  /* Oxford Dreaming Spires skyline silhouette — left→right  (44 pts) */
+  /* Oxford Dreaming Spires skyline silhouette — left→right  (44 pts)
+     Landmarks L→R: ground · Tom Tower · Cathedral spire · St Mary's ·
+     Radcliffe Camera (dome) · Sheldonian cupola · All Souls (twin) ·
+     New College tower · open · Magdalen Tower (tallest) · ground
+     viewBox 0 0 880 160 — ground=140, Magdalen peak=18 */
   SKYLINE: [
-     0,140,  20,138,  40,136,  55,100,  60,95,  65,100,
-    70,138,  80,135,  90,108,  95,60, 100,55, 105,60,
-   110,108, 115,135, 120,130, 130,90, 135,45, 140,90,
-   145,130, 155,128, 160,105, 165,62, 170,105, 175,128,
-   185,125, 195,95,  200,55,  205,95,  210,125, 220,122,
-   230,80,  240,40,  250,80,  260,122, 270,118, 280,90,
-   290,65,  300,90,  310,118, 340,115, 520,122, 760,135,
-   820,138, 880,140,
+     0,140,  40,132,  52,100,  58, 52,  64,100,  72,130,
+    82,128,  94, 75, 104, 28, 114, 75, 124,128, 165,128,
+   180, 68, 192, 22, 204, 68, 216,128, 232,133, 252,120,
+   268, 88, 284, 58, 300, 88, 316,120, 328,132, 348,128,
+   362, 82, 376,128, 392,132, 406, 62, 414, 75, 422, 62,
+   432,132, 468, 72, 478, 36, 488, 72, 498,130, 560,135,
+   620,136, 648,130, 662, 60, 672, 18, 682, 60, 698,130,
+   760,136, 880,140,
   ],
 
   /* CRS brand mark — angular logo-form waveform */
