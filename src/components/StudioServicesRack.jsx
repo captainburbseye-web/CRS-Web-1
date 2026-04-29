@@ -1396,11 +1396,6 @@ function SkylineOscilloscope({ activeId }) {
         </g>
       </svg>
 
-      {/* Mode label badge */}
-      <div className="hp-osc-badge">
-        <span className="hp-osc-badge-dot" />
-        <span className="hp-osc-badge-text">SCOPE · OXFORD</span>
-      </div>
     </div>
   );
 }

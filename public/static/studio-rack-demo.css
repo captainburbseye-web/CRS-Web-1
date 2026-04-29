@@ -2240,43 +2240,6 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   will-change: transform;
 }
 
-/* ── BADGE ────────────────────────────────────────────────── */
-.hp-osc-badge {
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  pointer-events: none;
-  user-select: none;
-}
-.hp-osc-badge-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #44e844;
-  box-shadow: 0 0 6px #44e844, 0 0 12px rgba(68,232,68,0.5);
-  animation: osc-badge-pulse 2.8s ease-in-out infinite;
-  flex-shrink: 0;
-}
-.hp-osc-badge-text {
-  font-family: 'Roboto Mono', 'Courier New', monospace;
-  font-size: 0.48rem;
-  letter-spacing: 0.14em;
-  color: #257025;
-  text-transform: uppercase;
-}
-
-@keyframes osc-badge-pulse {
-  0%, 100% { opacity: 0.60; box-shadow: 0 0 5px #44e844; }
-  50%       { opacity: 1;    box-shadow: 0 0 10px #44e844, 0 0 20px rgba(68,232,68,0.6); }
-}
-
-/* Reduced-motion: freeze badge, keep trace visible */
-@media (prefers-reduced-motion: reduce) {
-  .hp-osc-badge-dot { animation: none; }
-}
 
 /* ============================================================
    PRINT / REDUCED MOTION
