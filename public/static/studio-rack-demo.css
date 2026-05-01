@@ -61,9 +61,12 @@ html, body {
   background: var(--nettle-deep);
   color: var(--offwhite);
   font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 18px;           /* v5.1 — desktop base: 18px */
+  line-height: 1.6;          /* v5.1 — prevents text-wall fatigue */
   -webkit-font-smoothing: antialiased;
+}
+@media (max-width: 767px) {
+  html, body { font-size: 16px; }
 }
 
 a { color: inherit; text-decoration: none; }
@@ -2299,12 +2302,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   CRS TYPOGRAPHY UPGRADE — 18px desktop / 16px mobile / lh 1.6
+   CRS TYPOGRAPHY — body copy selectors (base already set at line 60)
    ═══════════════════════════════════════════════════════════════ */
-html, body {
-  font-size: 18px;
-  line-height: 1.6;
-}
 .hp-panel-body,
 .hp-spec-val,
 .hp-spec-body p,
@@ -2313,9 +2312,6 @@ html, body {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--offwhite-dim);  /* #D8D4C8 — solid, ≥4.5:1 on dark green */
-}
-@media (max-width: 767px) {
-  html, body { font-size: 16px; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -2376,26 +2372,46 @@ html, body {
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;       /* v5.1 — lifted to ~13px (base 16px × 0.8125) */
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   border-radius: 2px;
-  padding: 0.5rem 0.9rem;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  padding: 0.55rem 1rem;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   cursor: pointer;
 }
-/* Primary — filled mustard, black text */
+/* Desktop: go full 20px-tier for header CTA labels */
+@media (min-width: 769px) {
+  .crs-cta {
+    font-size: 0.8rem;         /* ~14px at 18px base — punchy, scannable */
+    padding: 0.55rem 1.1rem;
+  }
+}
+/* Primary — BOOK REHEARSAL: filled mustard + ambient glow (max visual weight) */
 .crs-cta--primary {
   background: var(--mustard);
   color: #000;
   border: 1px solid var(--mustard);
+  box-shadow:
+    0 0 10px 2px rgba(212,160,23,0.40),   /* ambient halo */
+    0 0 22px 4px rgba(212,160,23,0.18);   /* wide soft bloom */
+  animation: cta-primary-pulse 2.8s ease-in-out infinite;
+}
+@keyframes cta-primary-pulse {
+  0%, 100% { box-shadow: 0 0 10px 2px rgba(212,160,23,0.40), 0 0 22px 4px rgba(212,160,23,0.18); }
+  50%       { box-shadow: 0 0 16px 4px rgba(212,160,23,0.65), 0 0 36px 8px rgba(212,160,23,0.28); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .crs-cta--primary { animation: none; }
 }
 .crs-cta--primary:hover {
   background: var(--mustard-hi);
   border-color: var(--mustard-hi);
+  box-shadow: 0 0 22px 6px rgba(212,160,23,0.70), 0 0 44px 12px rgba(212,160,23,0.32);
+  animation: none; /* freeze pulse on hover — intentional snap */
 }
 /* Secondary — outlined mustard */
 .crs-cta--secondary {

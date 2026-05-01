@@ -1017,9 +1017,9 @@ function AnalogueDialPair() {
 
 /* ─── 44-point paths (read-only — do not modify) ─────────── */
 /*
-   Coordinate space: viewBox="0 0 880 160"
-   Each array is [x0,y0, x1,y1 … x43,y43] (44 points = 88 values)
-   Y=0 is top, Y=160 is bottom. Silhouettes sit in mid-range.
+   Coordinate space: viewBox="0 0 1000 100"
+   Each array is [x0,y0, x1,y1, …] pairs.
+   Y=0 is top, Y=100 is bottom. SKYLINE ground y=90; signal traces mid y=80.
 */
 const OSC_PATHS = {
   /* Oxford Dreaming Spires — oscilloscope vector path  (44 pts)
@@ -1323,7 +1323,7 @@ function SkylineOscilloscope({ activeId }) {
     <div className="hp-osc-frame" aria-hidden="true">
       <svg
         ref={svgRef}
-        viewBox="0 0 880 160"
+        viewBox="0 0 1000 100"
         className="hp-osc-svg"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
@@ -1331,14 +1331,14 @@ function SkylineOscilloscope({ activeId }) {
       >
         <defs>
           {/* ── SIGNAL-INTENSITY GRADIENT — green→mustard→red, bottom→top ─
-              Y coordinates in viewBox space (0=top, 160=bottom).
+              Y coordinates in viewBox space (0=top, 100=bottom).
               gradientUnits="userSpaceOnUse" so the gradient is anchored
               to the SVG canvas regardless of path shape.
               Both dim and active traces share this gradient so colour
               zones always align: safe green at base, amber in mid-range,
               danger red at the very tips of the tallest spires.
           ─────────────────────────────────────────────────────────── */}
-          <linearGradient id="skyline-intensity" x1="0" y1="160" x2="0" y2="0" gradientUnits="userSpaceOnUse">
+          <linearGradient id="skyline-intensity" x1="0" y1="100" x2="0" y2="0" gradientUnits="userSpaceOnUse">
             {/* bottom — deep safe green */}
             <stop offset="0%"   stopColor="#1a5c20" />
             {/* lower-mid — phosphor mid-green */}
@@ -1352,7 +1352,7 @@ function SkylineOscilloscope({ activeId }) {
           </linearGradient>
 
           {/* Identical gradient for the active crest — same zones, brighter opacity */}
-          <linearGradient id="skyline-intensity-active" x1="0" y1="160" x2="0" y2="0" gradientUnits="userSpaceOnUse">
+          <linearGradient id="skyline-intensity-active" x1="0" y1="100" x2="0" y2="0" gradientUnits="userSpaceOnUse">
             <stop offset="0%"   stopColor="#2aef40" />
             <stop offset="42%"  stopColor="#59ff3a" />
             <stop offset="68%"  stopColor="#f0c020" />
@@ -1384,7 +1384,7 @@ function SkylineOscilloscope({ activeId }) {
           <mask id="osc-reveal-mask">
             <rect
               ref={maskRectRef}
-              x="0" y="0" width="0" height="160"
+              x="0" y="0" width="0" height="100"
               fill="white"
             />
           </mask>
@@ -1392,11 +1392,11 @@ function SkylineOscilloscope({ activeId }) {
 
         {/* CRT phosphor dot-grid — 4 vertical, 3 horizontal lines */}
         <g className="hp-osc-grid">
-          {[160, 320, 480, 640, 800].map(x => (
-            <line key={x} x1={x} y1="0" x2={x} y2="160" />
+          {[200, 400, 600, 800].map(x => (
+            <line key={x} x1={x} y1="0" x2={x} y2="100" />
           ))}
-          {[40, 80, 120].map(y => (
-            <line key={y} x1="0" y1={y} x2="880" y2={y} />
+          {[25, 50, 75].map(y => (
+            <line key={y} x1="0" y1={y} x2="1000" y2={y} />
           ))}
         </g>
 
@@ -1411,7 +1411,7 @@ function SkylineOscilloscope({ activeId }) {
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
           stroke="url(#skyline-intensity)"
-          strokeWidth="140"
+          strokeWidth="90"
           strokeLinecap="butt"
           strokeLinejoin="miter"
           strokeOpacity="0.55"
@@ -1444,11 +1444,11 @@ function SkylineOscilloscope({ activeId }) {
         ─────────────────────────────────────────────────────────── */}
         <g ref={beamRef} filter="url(#osc-beam-glow)" className="hp-osc-beam">
           <line
-            x1="0" y1="0" x2="0" y2="160"
+            x1="0" y1="0" x2="0" y2="100"
             stroke="rgba(140,255,140,0.70)"
             strokeWidth="1.5"
           />
-          <ellipse cx="0" cy="130" rx="2" ry="5"
+          <ellipse cx="0" cy="85" rx="2" ry="4"
             fill="rgba(180,255,180,0.30)"
           />
         </g>
