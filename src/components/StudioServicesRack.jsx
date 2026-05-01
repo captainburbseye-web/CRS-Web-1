@@ -1035,15 +1035,29 @@ const OSC_PATHS = {
        Medium tower   x=616–658 y=65  New College
        Right spire    x=730     y=13  Magdalen Tower — 2nd tallest
        Right block    x=796–849 y=93  (h=20px)                       */
+  /* ═══ CANONICAL DREAMING SPIRES — DO NOT EDIT COORDINATES ═══
+     Hand-crafted Oxford skyline: low-left dome, two spires, mid
+     crenellated cluster, central dome/drum, VERY TALL right spire,
+     busy right cluster.  viewBox="0 0 1000 100", ground at y=90.
+     All animation (scale, hum, beam, morph) works around this fixed
+     geometry.  Source: user-supplied 2026-05-01, frozen canonical.
+     ═══════════════════════════════════════════════════════════════ */
   SKYLINE: [
-     0,113,  18,113,  18, 93,  66, 93,  66,113,  88,113,
-   138, 15, 193, 96, 193,113, 211,113, 220,113, 220, 73,
-   242, 55, 282, 47, 323, 55, 345, 73, 345,113, 361,113,
-   365,113, 365, 91, 422,  7, 479, 91, 479,113, 488,113,
-   497,113, 497, 77, 548, 57, 598, 77, 598,113, 616,113,
-   616, 65, 658, 65, 658,113, 669,113, 678,113, 678, 96,
-   730, 13, 782, 96, 782,113, 796,113, 796, 93, 849, 93,
-   849,113, 880,113,
+       0,  90,   40,  90,   50,  82,   60,  76,   70,  72,   80,  70,
+      90,  72,  100,  76,  110,  82,  120,  90,  140,  90,  150,  70,
+     160,  50,  170,  32,  180,  22,  190,  32,  200,  50,  210,  70,
+     220,  90,  240,  90,  250,  78,  260,  70,  270,  66,  280,  64,
+     290,  66,  300,  70,  310,  78,  320,  90,  340,  90,  350,  80,
+     360,  70,  370,  64,  380,  60,  390,  58,  400,  60,  410,  64,
+     420,  70,  430,  80,  440,  90,  460,  90,  470,  78,  480,  66,
+     490,  54,  500,  44,  510,  36,  520,  32,  530,  36,  540,  44,
+     550,  54,  560,  66,  570,  78,  580,  90,  600,  90,  610,  72,
+     620,  54,  630,  36,  640,  22,  650,  12,  660,   8,  670,  12,
+     680,  22,  690,  36,  700,  54,  710,  72,  720,  90,  740,  90,
+     750,  80,  760,  70,  770,  64,  780,  60,  790,  62,  800,  66,
+     810,  72,  820,  80,  830,  90,  850,  90,  860,  84,  870,  80,
+     880,  78,  890,  80,  900,  84,  910,  90,  930,  90,  950,  90,
+     970,  90, 1000,  90,
   ],
 
   /* CRS brand mark — angular logo-form waveform */
@@ -1120,7 +1134,7 @@ const OSC_BEAM_PERIOD = 3500; // ms for one full scan sweep — unhurried
 
 /* Pivot Y per mode: skyline breathes from its baseline (Y=113); signals from midline (Y=80) */
 const OSC_PIVOT_Y = {
-  SKYLINE:   113,  // ground-anchored at grid baseline — spires breathe upward from y=113
+  SKYLINE:    90,  // ground-anchored at y=90 — canonical Dreaming Spires ground line
   BRAND:      80,
   RECORDING:  80,
   CAFE:       80,
