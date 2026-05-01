@@ -682,7 +682,7 @@ app.get('/', (c) => {
   <link rel="apple-touch-icon" href="/crs-logo.png" />
   
   <!-- Hardware Physics CSS -->
-  <link href="/static/studio-rack-demo.css?v=0.5.0" rel="stylesheet" />
+  <link href="/static/studio-rack-demo.css?v=5.10" rel="stylesheet" />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -2151,7 +2151,7 @@ app.get('/av-services', (c) => {
     <link href="/static/crs-header.css" rel="stylesheet">
     <link href="/static/crs-mobile.css" rel="stylesheet">
     <link href="/static/rack-accordion.css" rel="stylesheet">
-    <link href="/static/studio-rack-demo.css" rel="stylesheet">
+    <link href="/static/studio-rack-demo.css?v=5.10" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body class="hp-page subpage">
@@ -2449,7 +2449,7 @@ app.get('/contact', (c) => {
     <link href="/static/crs-header.css" rel="stylesheet">
     <link href="/static/crs-mobile.css" rel="stylesheet">
     <link href="/static/rack-accordion.css" rel="stylesheet">
-    <link href="/static/studio-rack-demo.css" rel="stylesheet">
+    <link href="/static/studio-rack-demo.css?v=5.10" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body class="hp-page subpage">
@@ -2530,7 +2530,7 @@ app.get('/studio-rack-demo', (c) => {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   
   <!-- Hardware Physics CSS -->
-  <link href="/static/studio-rack-demo.css?v=0.5.0" rel="stylesheet" />
+  <link href="/static/studio-rack-demo.css?v=5.10" rel="stylesheet" />
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
