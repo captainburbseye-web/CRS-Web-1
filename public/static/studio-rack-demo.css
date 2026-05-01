@@ -2106,10 +2106,13 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   position: relative;
   width: calc(100% + 104px);  /* v3.2 — matches wider rails (52px × 2) */
   margin: 8px -52px 0;        /* 8px top seam = visual gap between sign and scope */
-  /* Dark chamber — phosphor screen in a lightless CRT housing.
-     Radial brighten at top-centre simulates the phosphor coating glow;
-     stays near-black so the building silhouette reads with max contrast. */
-  background: radial-gradient(ellipse 70% 40% at 50% 0%, #061a08 0%, #020803 55%, #000000 100%);
+  /* Dark chamber — flat vertical gradient, deep green top fading to black.
+     Linear progression keeps the silhouette readable without bubble artefacts. */
+  background: linear-gradient(to bottom,
+      #182518 0%,
+      #0b190b 40%,
+      #020803 80%,
+      #000000 100%);
   border-top: 3px solid #111;
   border-bottom: 3px solid #111;
   border-left: none;

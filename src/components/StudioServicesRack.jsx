@@ -1324,6 +1324,7 @@ function SkylineOscilloscope({ activeId }) {
       <svg
         ref={svgRef}
         viewBox="0 0 1000 100"
+        preserveAspectRatio="none"
         className="hp-osc-svg"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
@@ -1364,6 +1365,18 @@ function SkylineOscilloscope({ activeId }) {
             <stop offset="50%"  stopColor="#59ff3a" />
             <stop offset="85%"  stopColor="#7fff60" />
             <stop offset="100%" stopColor="#a0ffaa" />
+          </linearGradient>
+
+          {/* ── BEAM GRADIENT — red (danger) → amber (mid) → green (safe) ──
+              Horizontal L→R gradient applied to the active crest trace.
+              Maps spectral urgency to screen position: the very tall right
+              spires light up amber/red while the left roofline stays green.
+          ─────────────────────────────────────────────────────────── */}
+          <linearGradient id="osc-beam-gradient" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stopColor="#1aff40" />
+            <stop offset="45%"  stopColor="#59ff3a" />
+            <stop offset="72%"  stopColor="#ffd43a" />
+            <stop offset="100%" stopColor="#ff4b2a" />
           </linearGradient>
 
           {/* Active-crest glow filter — dual blur for CRT phosphor halo */}
@@ -1432,7 +1445,7 @@ function SkylineOscilloscope({ activeId }) {
           ref={activePathRef}
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
-          stroke="url(#skyline-intensity-active)"
+          stroke="url(#osc-beam-gradient)"
           strokeWidth="3"
           strokeLinecap="butt"
           strokeLinejoin="miter"
