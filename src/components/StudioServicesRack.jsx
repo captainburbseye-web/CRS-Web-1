@@ -502,9 +502,29 @@ const PANELS = {
       { label: 'Café & Venue Enquiry', href: URLS.ENQUIRE_WORKSHOP, primary: true, location: null },
     ],
   },
+
+  spacehire: {
+    id: 'spacehire', label: 'Space Hire', theme: 'dark',
+    eyebrow: 'Room Booking — Cowley Road',
+    title: 'Choose your space',
+    body: 'Four distinct environments. Book direct — no middleman.',
+    specs: [],
+    ctas: [],
+  },
+
+  contactus: {
+    id: 'contactus', label: 'Contact Us', theme: 'dark',
+    eyebrow: 'COMMS BAY',
+    title: 'Get in touch',
+    body: 'Venue hire, AV support, repairs, and general enquiries.',
+    specs: [],
+    ctas: [
+      { label: 'Open Comms Bay →', href: URLS.CONTACT, primary: true, location: null },
+    ],
+  },
 };
 
-const NAV_ORDER = ['recording', 'rehearsal', 'controlroom', 'repairs', 'cafe'];
+const NAV_ORDER = ['recording', 'spacehire', 'cafe', 'contactus'];
 
 /* Page route for each service */
 const PAGE_ROUTES = {
@@ -826,6 +846,117 @@ const StandardPanel = ({ panel }) => (
   </div>
 );
 
+/* ─── Space Hire sub-menu panel ───────────────────────────── */
+const SPACE_HIRE_ROOMS = [
+  {
+    id:    'controlroom',
+    label: 'CONTROL ROOM',
+    sub:   'Pro Mixing & Mastering',
+    href:  URLS.CONTROL_ROOM_BOOK,
+    icon:  '⊕',
+  },
+  {
+    id:    'bigbooth',
+    label: 'PODCAST / BIG BOOTH',
+    sub:   'Group Production & Rehearsal',
+    href:  URLS.BIG_BOOTH_BOOK,
+    icon:  '◈',
+  },
+  {
+    id:    'smallbooth',
+    label: 'MEETING / SMALL BOOTH',
+    sub:   'Solo Workspace & Remote Calls',
+    href:  URLS.SMALL_BOOTH_BOOK,
+    icon:  '◇',
+  },
+  {
+    id:    'venue',
+    label: 'VENUE / EVENTS',
+    sub:   'Workshop Café enquiries',
+    href:  URLS.ENQUIRE_WORKSHOP,
+    icon:  '◉',
+    internal: true,
+  },
+];
+
+const SpaceHirePanel = ({ onBack }) => (
+  <div className="hp-panel-body" role="tabpanel" id="panel-spacehire">
+    <div className="hp-panel-header">
+      <span className="hp-panel-eyebrow">ROOM BOOKING — COWLEY ROAD</span>
+      <h2 className="hp-panel-title">Choose your space</h2>
+      <p className="hp-panel-desc">Four distinct environments. Book direct — no middleman.</p>
+    </div>
+    <div className="hp-spacehire-grid">
+      {SPACE_HIRE_ROOMS.map(room => (
+        <a
+          key={room.id}
+          href={room.href}
+          target={room.internal ? undefined : '_blank'}
+          rel={room.internal ? undefined : 'noopener noreferrer'}
+          className="hp-spacehire-card"
+        >
+          <span className="hp-spacehire-icon" aria-hidden="true">{room.icon}</span>
+          <span className="hp-spacehire-label">{room.label}</span>
+          <span className="hp-spacehire-sub">{room.sub}</span>
+          <span className="hp-spacehire-arrow" aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+    <div className="hp-panel-ctas" style={{ marginTop: '1rem' }}>
+      <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="hp-cta hp-cta--primary">
+        <span>Book Recording Studio</span>
+        <span className="hp-cta-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+);
+
+/* ─── Contact-Us redirect panel ───────────────────────────── */
+const ContactUsPanel = () => (
+  <div className="hp-panel-body" role="tabpanel" id="panel-contactus">
+    <div className="hp-panel-header">
+      <span className="hp-panel-eyebrow">COMMS BAY — CHANNEL OPEN</span>
+      <h2 className="hp-panel-title">Get in touch</h2>
+      <p className="hp-panel-desc">
+        Venue hire, AV support, repairs and general enquiries.<br />
+        Response time: &lt;24 h · Mon–Sat
+      </p>
+    </div>
+    <div className="hp-spacehire-grid">
+      <a href="mailto:info@crsoxford.com" className="hp-spacehire-card">
+        <span className="hp-spacehire-icon" aria-hidden="true">✉</span>
+        <span className="hp-spacehire-label">EMAIL</span>
+        <span className="hp-spacehire-sub">info@crsoxford.com</span>
+        <span className="hp-spacehire-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="tel:+441865722027" className="hp-spacehire-card">
+        <span className="hp-spacehire-icon" aria-hidden="true">☏</span>
+        <span className="hp-spacehire-label">PHONE</span>
+        <span className="hp-spacehire-sub">+44 (0)1865 722027</span>
+        <span className="hp-spacehire-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href={URLS.INSTAGRAM} target="_blank" rel="noopener noreferrer" className="hp-spacehire-card">
+        <span className="hp-spacehire-icon" aria-hidden="true">◎</span>
+        <span className="hp-spacehire-label">INSTAGRAM</span>
+        <span className="hp-spacehire-sub">@cowleyroadstudios.ox</span>
+        <span className="hp-spacehire-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href={URLS.MAP} target="_blank" rel="noopener noreferrer" className="hp-spacehire-card">
+        <span className="hp-spacehire-icon" aria-hidden="true">⌖</span>
+        <span className="hp-spacehire-label">LOCATION</span>
+        <span className="hp-spacehire-sub">118 Cowley Road · OX4 1JE</span>
+        <span className="hp-spacehire-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+    <div className="hp-panel-ctas" style={{ marginTop: '1rem' }}>
+      <a href={URLS.CONTACT} className="hp-cta hp-cta--primary">
+        <span>Open Comms Bay</span>
+        <span className="hp-cta-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+);
+
 /* ─── Display panel (chrome strip + content) ──────────────── */
 const DisplayPanel = ({ activeId, locationId, animate, onBack }) => {
   const basePanel = PANELS[activeId];
@@ -887,6 +1018,10 @@ const DisplayPanel = ({ activeId, locationId, animate, onBack }) => {
 
       {isCafe ? (
         <CafePanel panel={panel} animate={animate} />
+      ) : panel.id === 'spacehire' ? (
+        <SpaceHirePanel onBack={() => {}} />
+      ) : panel.id === 'contactus' ? (
+        <ContactUsPanel />
       ) : isRehearsalLocated && rehearsalLoc ? (
         <RehearsalSinglePanel panel={basePanel} loc={rehearsalLoc} />
       ) : panel.id === 'rehearsal' ? (
@@ -1118,6 +1253,8 @@ const OSC_MODE_MAP = {
   roomhire:    'BRAND',
   repairs:     'REPAIRS',
   cafe:        'CAFE',
+  spacehire:   'SKYLINE',
+  contactus:   'SKYLINE',
 };
 
 /* ─── Physics constants (tunable, see brief §3) ─────────────

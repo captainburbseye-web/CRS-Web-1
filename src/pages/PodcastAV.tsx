@@ -1,206 +1,190 @@
 /**
- * Podcast Studio & AV Services Page
- * Unified page for podcast recording and AV/live sound services
+ * AV Services & Podcast Studio — SIGNAL MODULE v8.0
+ * Expansion module of the CRS Stronghold chassis.
+ * Uses subpage-chassis wrapper: rails + SSL backdrop + recessed panels.
  */
 
-export const PodcastAVPage = () => {
-  return (
-    <>
-      {/* HEADER: Master Rack Unit Only */}
-      <div class="rack-header-container">
-        <a href="/" aria-label="Home">
-          <img 
-            src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png" 
-            alt="Cowley Road Studios Master Rack" 
-            class="rack-header-img"
+/* Bolt SVG — machined hex bolt for rails */
+const Bolt = () => (
+  <svg viewBox="0 0 100 100" class="subpage-bolt" aria-hidden="true">
+    <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" fill="#444" stroke="#111" stroke-width="4" />
+    <circle cx="50" cy="50" r="25" fill="#222" />
+    <circle cx="50" cy="50" r="15" fill="#111" />
+  </svg>
+);
+
+const BOLTS = Array(14).fill(null);
+
+export const PodcastAVPage = () => (
+  <div class="subpage-chassis">
+
+    {/* LEFT RAIL */}
+    <div class="subpage-rail" aria-hidden="true">
+      {BOLTS.map((_, i) => <Bolt key={i} />)}
+    </div>
+
+    {/* CENTRE COLUMN */}
+    <div class="subpage-column">
+
+      {/* ── HEADER ANCHOR ── */}
+      <div class="subpage-header-anchor">
+        <a href="/" aria-label="Cowley Road Studios — home">
+          <img
+            src="/static/crs-logo.png"
+            alt="Cowley Road Studios"
+            class="subpage-header-logo"
+            width="180" height="67"
           />
         </a>
+        <a href="/" class="subpage-header-back">← MAIN TERMINAL</a>
       </div>
-      
-      {/* HERO */}
-      <div class="studio-intro">
-        <h1>Podcast Studio Hire in Oxford</h1>
-        <p>Professional Audio. Clean Delivery.</p>
-        <p style="margin-top: 0.75rem; font-size: 0.95rem;">
-          Dedicated podcast and spoken-word recording space at Cowley Road Studios and Cricket Road.
+
+      {/* ── LCD STATUS ── */}
+      <div class="subpage-lcd">
+        SIGNAL MODULE: AV SERVICES &nbsp;·&nbsp; OXFORD HQ: OPERATIONAL &nbsp;·&nbsp; ENGINEER-LED · FIELD-TESTED
+      </div>
+
+      {/* ── MODULE: HEADER ── */}
+      <div class="subpage-module">
+        <div class="subpage-module-label">AV SERVICES — SIGNAL MODULE</div>
+        <div class="subpage-recessed">
+          <h1 style="
+            font-family:var(--font-mono);
+            font-size:clamp(1.1rem, 3vw, 1.6rem);
+            font-weight:700;
+            color:var(--mustard);
+            text-transform:uppercase;
+            letter-spacing:0.08em;
+            margin:0 0 0.75rem;
+          ">PODCAST STUDIO &amp; AV SERVICES</h1>
+          <p style="font-family:var(--font-mono); font-size:0.9375rem; color:var(--offwhite-dim); line-height:1.6; margin:0; max-width:580px;">
+            Live sound, installations, hybrid events, podcast recording, and technical support. Engineer-led. Field-tested. Zero compromises.
+          </p>
+        </div>
+      </div>
+
+      {/* ── MODULE: PODCAST STUDIO ── */}
+      <div class="subpage-module">
+        <div class="subpage-module-label">PODCAST &amp; SPOKEN WORD STUDIO</div>
+        <div class="subpage-recessed">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; font-family:var(--font-mono); font-size:0.875rem; color:var(--offwhite-dim);">
+            <div>
+              <p style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mustard); font-weight:700; margin:0 0 0.75rem;">PERFECT FOR</p>
+              <ul style="list-style:none; padding:0; margin:0; line-height:2;">
+                <li>→ Podcasts &amp; interviews</li>
+                <li>→ Voiceover &amp; spoken word</li>
+                <li>→ Video podcast capture</li>
+                <li>→ Remote session recording</li>
+              </ul>
+            </div>
+            <div>
+              <p style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mustard); font-weight:700; margin:0 0 0.75rem;">RATE — CRICKET ROAD</p>
+              <p style="font-size:1.5rem; font-weight:700; color:var(--offwhite); margin:0 0 0.25rem;">£30<span style="font-size:0.9rem; font-weight:400; color:var(--offwhite-mute);"> / hr</span></p>
+              <p style="font-size:0.75rem; color:var(--offwhite-mute); margin:0 0 1rem;">With engineer · Minimum 2 hrs</p>
+              <a
+                href="https://app.squareup.com/appointments/buyer/widget/se7rvqsvhnnirj/L1MAM4DDPHKXX"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="subpage-cta"
+                style="font-size:0.75rem; padding:0.6rem 1.25rem;"
+              >BOOK PODCAST SESSION →</a>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem; padding-top:1.25rem; border-top:1px solid rgba(255,255,255,0.05);">
+            <p style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mustard); font-weight:700; margin:0 0 0.75rem; font-family:var(--font-mono);">WE HANDLE</p>
+            <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); gap:0.5rem; font-family:var(--font-mono); font-size:0.8rem; color:var(--offwhite-dim);">
+              <span>· Microphone setup</span>
+              <span>· Level balancing</span>
+              <span>· Clean signal chain</span>
+              <span>· Multi-track recording</span>
+              <span>· Basic editing</span>
+              <span>· Export &amp; delivery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── MODULE: AV SERVICES ── */}
+      <div class="subpage-module">
+        <div class="subpage-module-label">LIVE SOUND &amp; AV DEPLOYMENT</div>
+        <div class="subpage-recessed">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem;">
+            <div>
+              <p style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mustard); font-weight:700; font-family:var(--font-mono); margin:0 0 0.75rem;">WHAT WE DO</p>
+              <ul style="list-style:none; padding:0; margin:0; font-family:var(--font-mono); font-size:0.875rem; color:var(--offwhite-dim); line-height:2;">
+                <li>→ Live sound for talks, gigs, launches</li>
+                <li>→ Temporary &amp; permanent AV installs</li>
+                <li>→ Hybrid &amp; streamed events</li>
+                <li>→ On-site engineers &amp; tech support</li>
+              </ul>
+            </div>
+            <div>
+              <p style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mustard); font-weight:700; font-family:var(--font-mono); margin:0 0 0.75rem;">CAPABILITY</p>
+              <ul style="list-style:none; padding:0; margin:0; font-family:var(--font-mono); font-size:0.875rem; color:var(--offwhite-dim); line-height:2;">
+                <li>→ Built for live pressure</li>
+                <li>→ Engineered signal paths</li>
+                <li>→ Calm under failure conditions</li>
+                <li>→ Human-led, not automated</li>
+              </ul>
+            </div>
+          </div>
+          <div style="padding-top:1.25rem; border-top:1px solid rgba(255,255,255,0.05); font-family:var(--font-mono);">
+            <p style="font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--mustard); font-weight:700; margin:0 0 0.5rem;">PRICING</p>
+            <p style="font-size:0.9375rem; color:var(--offwhite-dim); margin:0 0 0.5rem; line-height:1.6;">
+              AV services quoted per project. Typical jobs: <strong style="color:var(--offwhite);">£250–£1,500</strong> depending on scale.
+            </p>
+            <p style="font-size:0.8rem; color:var(--offwhite-mute); margin:0;">You focus on the room. We handle the signal.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* ── MODULE: TECHNICAL OPERATIONS ── */}
+      <div class="subpage-module">
+        <div class="subpage-module-label">TECHNICAL OPERATIONS — SUPPORTED SITES</div>
+        <div class="subpage-recessed">
+          <p style="font-family:var(--font-mono); font-size:0.9375rem; color:var(--offwhite-dim); line-height:1.6; margin:0 0 1rem;">
+            CRS provides ongoing technical management and AV support for external venues across Oxford.
+          </p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); gap:0.5rem;">
+            {['Bossaphonik', "The King's Centre", "Cowley Workers' Club"].map(v => (
+              <div key={v} style="font-family:var(--font-mono); font-size:0.8rem; color:var(--offwhite-mute); padding:0.5rem 0.75rem; background:rgba(0,0,0,0.4); border-left:2px solid rgba(212,160,23,0.3);">
+                {v}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── MODULE: CTA ── */}
+      <div class="subpage-module" style="text-align:center;">
+        <div class="subpage-module-label">REQUEST A QUOTE</div>
+        <a href="/contact?service=av" class="subpage-cta" style="font-size:1rem; padding:1rem 2.5rem;">
+          REQUEST AV QUOTE →
+        </a>
+        <p style="font-family:var(--font-mono); font-size:0.72rem; color:var(--offwhite-mute); margin-top:1rem; letter-spacing:0.1em; text-transform:uppercase;">
+          Behind every clean live setup is a deep technical bench.
         </p>
       </div>
 
-      {/* MAIN CONTENT */}
-      <div class="podcast-av-content">
-        
-        {/* SECTION 1 — PODCAST STUDIO */}
-        <div class="service-section">
-          <h2>Podcast & Spoken Word Recording</h2>
-          
-          <div class="perfect-for">
-            <p style="margin-bottom: 1rem; font-weight: 600;">Perfect for:</p>
-            <ul>
-              <li>Podcasts</li>
-              <li>Interviews</li>
-              <li>Voiceover</li>
-              <li>Spoken word</li>
-              <li>Video podcast capture</li>
-            </ul>
-          </div>
-
-          <div class="pricing-block">
-            <h3>Pricing (Cricket Road)</h3>
-            <div class="price-large">
-              <span class="price-value">£30</span>
-              <span class="price-unit">per hour</span>
-            </div>
-            <p class="price-note">(with engineer)</p>
-            <p class="price-note">Minimum 2 hours</p>
-          </div>
-
-          <div class="we-handle">
-            <p style="font-weight: 600; margin-bottom: 1rem;">We handle:</p>
-            <ul>
-              <li>Microphone setup</li>
-              <li>Gain staging</li>
-              <li>Clean signal</li>
-              <li>Basic editing guidance</li>
-            </ul>
-            <p style="margin-top: 1.5rem; font-style: italic; color: var(--hardware-green);">
-              You focus on content.
-            </p>
-          </div>
-
-          <div class="cta-inline">
-            <a href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" class="book-button" target="_blank" rel="noopener noreferrer">
-              <span class="button-led">●</span>
-              BOOK PODCAST SESSION
-            </a>
-          </div>
-        </div>
-
-        {/* SECTION 2 — WHAT MAKES IT DIFFERENT */}
-        <div class="service-section infrastructure-section">
-          <h2>Real Audio Infrastructure</h2>
-          <p style="margin-bottom: 2rem; font-size: 1.1rem; color: rgba(255,255,255,0.9);">
-            This isn't a desk in a spare room.
-          </p>
-          
-          <ul class="infrastructure-list">
-            <li>Treated acoustic environment</li>
-            <li>Broadcast-quality microphones</li>
-            <li>Clean monitoring</li>
-            <li>Stable recording chain</li>
-            <li>Proper gain structure</li>
-          </ul>
-          
-          <p style="margin-top: 2rem; font-style: italic;">
-            Professional results without studio ego.
-          </p>
-        </div>
-
-        {/* SECTION 3 — AV SERVICES */}
-        <div class="service-section av-section">
-          <h2>AV Installation & Live Sound</h2>
-          
-          <p style="margin-bottom: 1.5rem;">We design and install sound systems for:</p>
-          
-          <ul class="venue-types">
-            <li>Bars</li>
-            <li>Venues</li>
-            <li>Events</li>
-            <li>Community spaces</li>
-            <li>Private installs</li>
-          </ul>
-
-          <div style="margin-top: 2rem;">
-            <p style="font-weight: 600; margin-bottom: 1rem;">Services include:</p>
-            <ul class="av-services-list">
-              <li>PA setup</li>
-              <li>Speaker placement</li>
-              <li>Cable management</li>
-              <li>Signal routing</li>
-              <li>Troubleshooting & repair</li>
-            </ul>
-          </div>
-
-          <p style="margin-top: 2rem; font-size: 1.05rem; color: rgba(255,255,255,0.85);">
-            From small installs to full venue systems.
-          </p>
-
-          <div class="pricing-context" style="margin-top: 2rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-left: 3px solid var(--hardware-green);">
-            <p style="font-weight: 600; margin-bottom: 0.75rem;">Pricing</p>
-            <p>
-              AV services are quoted per project. Typical jobs range from <strong>£250–£1,500</strong> depending on scale and equipment requirements.
-            </p>
-          </div>
-
-          <div class="technical-ops" style="margin-top: 2rem; font-size: 0.9rem; color: rgba(255,255,255,0.7);">
-            <p style="margin-bottom: 0.5rem; font-weight: 600; color: rgba(255,255,255,0.85);">Current supported sites:</p>
-            <ul style="list-style: none; padding-left: 1rem;">
-              <li>– Bossaphonik</li>
-              <li>– The King's Centre</li>
-              <li>– Cowley Workers' Club</li>
-            </ul>
-          </div>
-        </div>
-
-        {/* SECTION 4 — REPAIRS */}
-        <div class="service-section repairs-section">
-          <h2>Equipment Repairs & Diagnostics</h2>
-          
-          <div class="pricing-block">
-            <p style="margin-bottom: 1rem;">Flat diagnostic fee:</p>
-            <div class="price-large">
-              <span class="price-value">£60</span>
-            </div>
-          </div>
-
-          <div style="margin-top: 2rem;">
-            <p style="font-weight: 600; margin-bottom: 1rem;">We work on:</p>
-            <ul>
-              <li>Amplifiers</li>
-              <li>Mixers</li>
-              <li>Speakers</li>
-              <li>Studio gear</li>
-              <li>Cabling issues</li>
-            </ul>
-          </div>
-
-          <p style="margin-top: 2rem; font-size: 1.2rem; font-weight: 600; color: var(--hardware-green);">
-            Don't bin it. Fix it.
-          </p>
-        </div>
-
+      {/* ── SEAL ── */}
+      <div class="subpage-seal">
+        <a href="/" aria-label="Cowley Road Studios — home">
+          <img
+            src="/static/crs-logo.png"
+            alt="Cowley Road Studios"
+            class="subpage-seal-img"
+            width="120" height="45"
+          />
+        </a>
+        <p class="subpage-seal-sub">EST. 2012 · OXFORD · ODRO ENGINEERING</p>
       </div>
 
-      {/* CTA BLOCK */}
-      <div class="booking-footer-info">
-        <h3>Need to record or fix something?</h3>
-        
-        <div style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin: 2rem 0;">
-          <a href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" class="book-button-large" target="_blank" rel="noopener noreferrer">
-            <span class="button-led">●</span>
-            BOOK PODCAST SESSION
-          </a>
-          
-          <span style="font-size: 0.9rem; color: rgba(255,255,255,0.5);">or</span>
-          
-          <a href="/contact" class="book-button-secondary">
-            CONTACT CRS
-          </a>
-        </div>
+    </div>{/* /subpage-column */}
 
-        <div style="margin-top: 2rem;">
-          <p>Email: <a href="mailto:info@crsoxford.com">info@crsoxford.com</a></p>
-          <p>Phone: <a href="tel:+441865722027">+44 (0)1865 722027</a></p>
-        </div>
-      </div>
+    {/* RIGHT RAIL */}
+    <div class="subpage-rail subpage-rail--right" aria-hidden="true">
+      {BOLTS.map((_, i) => <Bolt key={i} />)}
+    </div>
 
-      {/* FOOTER */}
-      <div class="rack-footer-container">
-        <img 
-          src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20BOTTOM.png" 
-          alt="Cowley Road Studios Footer Rack" 
-          class="rack-footer-img"
-        />
-      </div>
-    </>
-  );
-};
+  </div>
+);

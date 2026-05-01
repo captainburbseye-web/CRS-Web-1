@@ -2151,8 +2151,10 @@ app.get('/av-services', (c) => {
     <link href="/static/crs-header.css" rel="stylesheet">
     <link href="/static/crs-mobile.css" rel="stylesheet">
     <link href="/static/rack-accordion.css" rel="stylesheet">
+    <link href="/static/studio-rack-demo.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="hp-page subpage">
     ${<PodcastAVPage />}
 </body>
 </html>`)
@@ -2447,8 +2449,10 @@ app.get('/contact', (c) => {
     <link href="/static/crs-header.css" rel="stylesheet">
     <link href="/static/crs-mobile.css" rel="stylesheet">
     <link href="/static/rack-accordion.css" rel="stylesheet">
+    <link href="/static/studio-rack-demo.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="hp-page subpage">
     ${<ContactPage initialService={service} status={status} />}
 </body>
 </html>`)

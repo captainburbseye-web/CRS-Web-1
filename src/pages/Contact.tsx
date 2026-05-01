@@ -1,6 +1,7 @@
 /**
- * Contact Page - Rack-Based Structure
- * No templates, no headers/footers - pure rack aesthetic
+ * Contact Page — COMMS BAY MODULE v8.0
+ * Expansion module of the CRS Stronghold chassis.
+ * Uses subpage-chassis wrapper: rails + SSL backdrop + recessed panels.
  */
 
 interface ContactPageProps {
@@ -10,476 +11,237 @@ interface ContactPageProps {
 
 const SERVICE_OPTIONS = [
   { value: 'recording', label: 'Recording / Studio Session' },
-  { value: 'av', label: 'Venue Tech / AV Support' },
-  { value: 'repairs', label: 'Repairs / Diagnostics' },
-  { value: 'venue', label: 'Venue Hire / Workshop Café' },
-  { value: 'general', label: 'General Enquiry' },
+  { value: 'av',        label: 'Venue Tech / AV Support' },
+  { value: 'repairs',   label: 'Repairs / Diagnostics' },
+  { value: 'venue',     label: 'Venue Hire / Workshop Café' },
+  { value: 'general',   label: 'General Enquiry' },
 ] as const;
 
-const getStatusMessage = (status?: 'sent' | 'error' | null) => {
-  if (status === 'sent') {
-    return {
-      title: '✓ Message Received',
-      message: 'Your enquiry has been sent. We will get back to you within 24 hours.',
-      border: '1px solid rgba(57, 255, 20, 0.45)',
-      background: 'rgba(57, 255, 20, 0.08)',
-      color: 'var(--crs-green, #39FF14)'
-    };
-  }
+/* Bolt SVG — machined hex bolt for rails */
+const Bolt = () => (
+  <svg viewBox="0 0 100 100" class="subpage-bolt" aria-hidden="true">
+    <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" fill="#444" stroke="#111" stroke-width="4" />
+    <circle cx="50" cy="50" r="25" fill="#222" />
+    <circle cx="50" cy="50" r="15" fill="#111" />
+  </svg>
+);
 
-  if (status === 'error') {
-    return {
-      title: '✕ Submission Failed',
-      message: 'Something went wrong. Please try again, or reach us directly by phone or email.',
-      border: '1px solid rgba(255, 111, 97, 0.45)',
-      background: 'rgba(255, 111, 97, 0.08)',
-      color: '#ff6f61'
-    };
-  }
-
-  return null;
-};
+const BOLTS = Array(14).fill(null);
 
 export const ContactPage = ({ initialService = 'general', status = null }: ContactPageProps) => {
-  const statusMessage = getStatusMessage(status);
-  const selectedService = SERVICE_OPTIONS.some((option) => option.value === initialService)
-    ? initialService
-    : 'general';
+  const selectedService = SERVICE_OPTIONS.some(o => o.value === initialService)
+    ? initialService : 'general';
+
+  const sent  = status === 'sent';
+  const error = status === 'error';
 
   return (
-    <div class="master-rack-chassis">
-      {/* Skip to content for accessibility */}
-      <a href="#contact-form" class="skip-to-content">Skip to contact form</a>
+    <div class="subpage-chassis">
 
-      {/* BACK TO HOME */}
-      <div style="padding: 1rem 0; text-align: center; background: rgba(0,0,0,0.5); border-bottom: 1px solid rgba(212,160,23,0.2);">
-        <a
-          href="/"
-          style="color: var(--mustard, #d4a017); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em;"
-        >
-          ← HOME
-        </a>
+      {/* LEFT RAIL */}
+      <div class="subpage-rail" aria-hidden="true">
+        {BOLTS.map((_, i) => <Bolt key={i} />)}
       </div>
 
-      {/* PAGE HEADER */}
-      <div
-        class="rack-module-graphic"
-        style="
-          background: linear-gradient(180deg, #0A0A0A 0%, #1a1a1a 100%);
-          padding: 3rem 2rem;
-          text-align: center;
-          border-bottom: 2px solid rgba(212,160,23,0.3);
-        "
-      >
-        <h1
-          style="
-            font-family: 'Archivo Black', sans-serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--mustard, #d4a017);
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            letter-spacing: 0.05em;
-          "
-        >
-          CONTACT US
-        </h1>
-        <p
-          style="
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9375rem;
-            color: rgba(245,245,245,0.7);
-            max-width: 680px;
-            margin: 0 auto;
-            line-height: 1.6;
-          "
-        >
-          Use this form for venue hire, repairs, AV support, and general enquiries. To book a rehearsal or recording session directly, use the booking buttons on our home page.
-        </p>
-      </div>
+      {/* CENTRE COLUMN */}
+      <div class="subpage-column">
 
-      {/* CONTACT DETAILS — recessed metal panel */}
-      <div
-        class="rack-module-graphic"
-        style="padding: 2rem; margin: 0; border-bottom: 1px solid rgba(212,160,23,0.2);"
-      >
-        <div class="crs-recessed-panel" style="max-width: 800px; margin: 0 auto; text-align: center;">
-          <h2
-            style="
-              font-family: 'JetBrains Mono', monospace;
-              font-size: 0.75rem;
-              letter-spacing: 0.15em;
-              color: var(--mustard, #d4a017);
-              text-transform: uppercase;
-              margin-bottom: 1.5rem;
-              font-weight: 700;
-            "
-          >
-            CONTACT DETAILS
-          </h2>
-          <div style="display: grid; gap: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; color: rgba(245,245,245,0.85);">
-            <div>
-              <span style="color: var(--mustard, #d4a017); font-weight: 700;">EMAIL:</span>{' '}
-              <a href="mailto:info@crsoxford.com" style="color: rgba(245,245,245,0.9); text-decoration: none;">info@crsoxford.com</a>
-            </div>
-            <div>
-              <span style="color: var(--mustard, #d4a017); font-weight: 700;">PHONE:</span>{' '}
-              <a href="tel:+441865722027" style="color: rgba(245,245,245,0.9); text-decoration: none;">+44 (0)1865 722027</a>
-            </div>
-            <div>
-              <span style="color: var(--mustard, #d4a017); font-weight: 700;">ADDRESS:</span>{' '}
-              <span>118 Cowley Road, Oxford OX4 1JE, United Kingdom</span>
-            </div>
-            <p style="margin-top: 0.5rem; font-size: 0.75rem; color: rgba(245,245,245,0.6); font-style: italic;">By appointment only</p>
-          </div>
+        {/* ── HEADER ANCHOR — CRS logo + back link ── */}
+        <div class="subpage-header-anchor">
+          <a href="/" aria-label="Cowley Road Studios — home">
+            <img
+              src="/static/crs-logo.png"
+              alt="Cowley Road Studios"
+              class="subpage-header-logo"
+              width="180" height="67"
+            />
+          </a>
+          <a href="/" class="subpage-header-back" aria-label="Return to main terminal">
+            ← MAIN TERMINAL
+          </a>
         </div>
-      </div>
 
-      {/* STATUS MESSAGE */}
-      {statusMessage && (
-        <div
-          class="rack-module-graphic"
-          style={`
-            background: ${statusMessage.background};
-            border-top: ${statusMessage.border};
-            border-bottom: ${statusMessage.border};
-            padding: 1.5rem 2rem;
-            margin: 0;
-          `}
-        >
-          <div style="max-width: 760px; margin: 0 auto; text-align: center;">
-            <div
-              style={`
-                font-family: 'JetBrains Mono', monospace;
-                font-size: 0.75rem;
-                font-weight: 700;
-                letter-spacing: 0.12em;
-                text-transform: uppercase;
-                color: ${statusMessage.color};
-                margin-bottom: 0.75rem;
-              `}
-            >
-              {statusMessage.title}
-            </div>
-            <p
-              style="
-                margin: 0;
-                font-family: 'JetBrains Mono', monospace;
-                font-size: 0.9375rem;
-                color: rgba(245,245,245,0.9);
-                line-height: 1.7;
-              "
-            >
-              {statusMessage.message}
+        {/* ── LCD STATUS TICKER ── */}
+        <div class="subpage-lcd" aria-label="System status">
+          CHANNEL: OPEN &nbsp;·&nbsp; ENQUIRY MODE: ACTIVE &nbsp;·&nbsp; OXFORD HQ: OPERATIONAL &nbsp;·&nbsp; RESPONSE TIME: &lt;24H
+        </div>
+
+        {/* ── MODULE: COMMS BAY HEADER ── */}
+        <div class="subpage-module">
+          <div class="subpage-module-label">COMMS BAY — CONTACT MODULE</div>
+          <div class="subpage-recessed">
+            <h1 style="
+              font-family: var(--font-mono);
+              font-size: clamp(1.1rem, 3vw, 1.6rem);
+              font-weight: 700;
+              color: var(--mustard);
+              text-transform: uppercase;
+              letter-spacing: 0.08em;
+              margin: 0 0 0.75rem;
+            ">CONTACT US</h1>
+            <p style="
+              font-family: var(--font-mono);
+              font-size: 0.9375rem;
+              color: var(--offwhite-dim);
+              line-height: 1.6;
+              margin: 0;
+              max-width: 600px;
+            ">
+              Use this channel for venue hire, repairs, AV support, and general enquiries.
+              To book a rehearsal or recording session directly, use the booking links on our home page.
             </p>
           </div>
         </div>
-      )}
 
-      {/* ENQUIRY FORM */}
-      <div
-        id="contact-form"
-        class="rack-module-graphic"
-        style="
-          background: rgba(0,0,0,0.5);
-          padding: 3rem 2rem;
-          margin: 0;
-        "
-      >
-        <div style="max-width: 700px; margin: 0 auto;">
-          <h2
-            style="
-              font-family: 'JetBrains Mono', monospace;
-              font-size: 0.75rem;
-              letter-spacing: 0.15em;
-              color: var(--mustard, #d4a017);
-              text-transform: uppercase;
-              margin-bottom: 2rem;
-              font-weight: 700;
-              text-align: center;
-            "
-          >
-            ENQUIRY FORM
-          </h2>
-
-          <form
-            class="enquiry-form"
-            action="/api/contact"
-            method="POST"
-            style="display: grid; gap: 1.5rem;"
-          >
-            {/* Enquiry Type */}
-            <div class="form-group">
-              <label
-                for="service"
-                style="
-                  display: block;
-                  font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.75rem;
-                  color: var(--mustard, #d4a017);
-                  text-transform: uppercase;
-                  letter-spacing: 0.1em;
-                  margin-bottom: 0.5rem;
-                  font-weight: 700;
-                "
-              >
-                Enquiry Type
-              </label>
-              <select
-                id="service"
-                name="service"
-                required
-                style="
-                  width: 100%;
-                  padding: 0.75rem;
-                  background: rgba(0,0,0,0.5);
-                  border: 1px solid rgba(212,160,23,0.3);
-                  color: rgba(245,245,245,0.9);
-                  font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.9375rem;
-                "
-              >
-                {SERVICE_OPTIONS.map((option) => (
-                  <option value={option.value} selected={option.value === selectedService}>{option.label}</option>
-                ))}
-              </select>
+        {/* ── MODULE: DIRECT LINES ── */}
+        <div class="subpage-module">
+          <div class="subpage-module-label">DIRECT LINES</div>
+          <div class="subpage-recessed">
+            <div style="display:grid; gap:1rem; font-family:var(--font-mono); font-size:0.9375rem;">
+              <div>
+                <span style="color:var(--mustard); font-weight:700; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; display:block; margin-bottom:0.2rem;">EMAIL</span>
+                <a href="mailto:info@crsoxford.com" style="color:var(--offwhite); text-decoration:none;">info@crsoxford.com</a>
+              </div>
+              <div>
+                <span style="color:var(--mustard); font-weight:700; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; display:block; margin-bottom:0.2rem;">PHONE</span>
+                <a href="tel:+441865722027" style="color:var(--offwhite); text-decoration:none;">+44 (0)1865 722027</a>
+              </div>
+              <div>
+                <span style="color:var(--mustard); font-weight:700; font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; display:block; margin-bottom:0.2rem;">ADDRESS</span>
+                <span style="color:var(--offwhite-dim);">118 Cowley Road, Oxford OX4 1JE</span>
+              </div>
+              <p style="font-size:0.75rem; color:var(--offwhite-mute); margin:0;">By appointment only</p>
             </div>
-
-            {/* Name */}
-            <div class="form-group">
-              <label
-                for="name"
-                style="
-                  display: block;
-                  font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.75rem;
-                  color: var(--mustard, #d4a017);
-                  text-transform: uppercase;
-                  letter-spacing: 0.1em;
-                  margin-bottom: 0.5rem;
-                  font-weight: 700;
-                "
-              >
-                Name *
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                style="
-                  width: 100%;
-                  padding: 0.75rem;
-                  background: rgba(0,0,0,0.5);
-                  border: 1px solid rgba(212,160,23,0.3);
-                  color: rgba(245,245,245,0.9);
-                  font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.9375rem;
-                "
-              />
-            </div>
-
-            {/* Email */}
-            <div class="form-group">
-              <label
-                for="email"
-                style="
-                  display: block;
-                  font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.75rem;
-                  color: var(--mustard, #d4a017);
-                  text-transform: uppercase;
-                  letter-spacing: 0.1em;
-                  margin-bottom: 0.5rem;
-                  font-weight: 700;
-                "
-              >
-                Email *
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                style="
-                  width: 100%;
-                  padding: 0.75rem;
-                  background: rgba(0,0,0,0.5);
-                  border: 1px solid rgba(212,160,23,0.3);
-                  color: rgba(245,245,245,0.9);
-                  font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.9375rem;
-                "
-              />
-            </div>
-
-            {/* Phone */}
-            <div class="form-group">
-              <label
-                for="phone"
-                style="
-                  display: block;
-                  font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.75rem;
-                  color: var(--mustard, #d4a017);
-                  text-transform: uppercase;
-                  letter-spacing: 0.1em;
-                  margin-bottom: 0.5rem;
-                  font-weight: 700;
-                "
-              >
-                Phone
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                style="
-                  width: 100%;
-                  padding: 0.75rem;
-                  background: rgba(0,0,0,0.5);
-                  border: 1px solid rgba(212,160,23,0.3);
-                  color: rgba(245,245,245,0.9);
-                  font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.9375rem;
-                "
-              />
-            </div>
-
-            {/* Message */}
-            <div class="form-group">
-              <label
-                for="message"
-                style="
-                  display: block;
-                  font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.75rem;
-                  color: var(--mustard, #d4a017);
-                  text-transform: uppercase;
-                  letter-spacing: 0.1em;
-                  margin-bottom: 0.5rem;
-                  font-weight: 700;
-                "
-              >
-                Message *
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows="6"
-                required
-                style="
-                  width: 100%;
-                  padding: 0.75rem;
-                  background: rgba(0,0,0,0.5);
-                  border: 1px solid rgba(212,160,23,0.3);
-                  color: rgba(245,245,245,0.9);
-                  font-family: 'JetBrains Mono', monospace;
-                  font-size: 0.9375rem;
-                  line-height: 1.6;
-                  resize: vertical;
-                "
-              ></textarea>
-            </div>
-
-            {/* Submit */}
-            <button
-              type="submit"
-              style="
-                width: 100%;
-                padding: 1rem;
-                background: var(--mustard, #d4a017);
-                border: none;
-                color: #000;
-                font-family: 'JetBrains Mono', monospace;
-                font-size: 0.9375rem;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                cursor: pointer;
-                transition: all 0.2s ease;
-              "
-            >
-              SEND ENQUIRY
-            </button>
-          </form>
+          </div>
         </div>
-      </div>
 
-      {/* MAP — recessed panel with static address + Open in Google Maps */}
-      <div class="rack-module-graphic" style="padding: 2.5rem 2rem; margin: 0; border-top: 1px solid rgba(212,160,23,0.15);">
-        <div class="crs-recessed-panel" style="max-width: 800px; margin: 0 auto; text-align: center;">
-          <h3
-            style="
-              font-family: 'JetBrains Mono', monospace;
-              font-size: 0.75rem;
-              letter-spacing: 0.15em;
-              color: var(--mustard, #d4a017);
-              text-transform: uppercase;
-              margin-bottom: 1.25rem;
-              font-weight: 700;
-            "
-          >
-            FIND US IN OXFORD
-          </h3>
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245,245,245,0.7); margin-bottom: 1.5rem; line-height: 1.6;">
-            Cowley Road Studios · 118 Cowley Road · Oxford OX4 1JE
-          </p>
-          <a
-            href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE"
-            target="_blank"
-            rel="noopener noreferrer"
-            style="
-              display: inline-flex;
-              align-items: center;
-              gap: 0.5rem;
-              padding: 0.75rem 1.5rem;
-              background: var(--mustard, #d4a017);
-              color: #000;
-              font-family: 'JetBrains Mono', monospace;
-              font-size: 0.875rem;
-              font-weight: 700;
-              text-transform: uppercase;
-              letter-spacing: 0.08em;
-              border-radius: 3px;
-              box-shadow: 0 2px 12px rgba(0,0,0,0.5);
-              text-decoration: none;
-            "
-          >
-            <span aria-hidden="true">↗</span> Open in Google Maps
+        {/* ── MODULE: ENQUIRY FORM ── */}
+        <div id="contact-form" class="subpage-module">
+          <div class="subpage-module-label">ENQUIRY FORM</div>
+
+          {/* Status: sent */}
+          {sent && (
+            <div class="subpage-recessed" style="border-color:rgba(57,255,20,0.2); margin-bottom:1.5rem;">
+              <p style="font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:#39FF14; margin:0 0 0.5rem; font-weight:700;">✓ MESSAGE RECEIVED</p>
+              <p style="font-family:var(--font-mono); font-size:0.9rem; color:var(--offwhite-dim); margin:0; line-height:1.6;">Your enquiry has been sent. We will respond within 24 hours.</p>
+            </div>
+          )}
+
+          {/* Status: error */}
+          {error && (
+            <div class="subpage-recessed" style="border-color:rgba(255,111,97,0.2); margin-bottom:1.5rem;">
+              <p style="font-family:var(--font-mono); font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; color:#ff6f61; margin:0 0 0.5rem; font-weight:700;">✕ TRANSMISSION FAILED</p>
+              <p style="font-family:var(--font-mono); font-size:0.9rem; color:var(--offwhite-dim); margin:0; line-height:1.6;">Something went wrong. Please try again or contact us directly by phone or email.</p>
+            </div>
+          )}
+
+          <div class="subpage-recessed">
+            <form action="/api/contact" method="POST" style="display:grid; gap:1.25rem;">
+
+              <div class="subpage-form-group">
+                <label for="service" class="subpage-label">Enquiry Type</label>
+                <select id="service" name="service" required class="subpage-select">
+                  {SERVICE_OPTIONS.map(o => (
+                    <option value={o.value} selected={o.value === selectedService}>{o.label}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div class="subpage-form-group">
+                <label for="name" class="subpage-label">Name *</label>
+                <input type="text" id="name" name="name" required class="subpage-input" />
+              </div>
+
+              <div class="subpage-form-group">
+                <label for="email" class="subpage-label">Email *</label>
+                <input type="email" id="email" name="email" required class="subpage-input" />
+              </div>
+
+              <div class="subpage-form-group">
+                <label for="phone" class="subpage-label">Phone</label>
+                <input type="tel" id="phone" name="phone" class="subpage-input" />
+              </div>
+
+              <div class="subpage-form-group">
+                <label for="message" class="subpage-label">Message *</label>
+                <textarea id="message" name="message" rows="6" required class="subpage-textarea"></textarea>
+              </div>
+
+              <button type="submit" class="subpage-cta subpage-cta--full">
+                SEND ENQUIRY →
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* ── MODULE: LOCATION PLATE — static map ── */}
+        <div class="subpage-module">
+          <div class="subpage-module-label">LOCATION PLATE — OX4 1JE</div>
+          <div class="subpage-recessed">
+            <p style="font-family:var(--font-mono); font-size:0.875rem; color:var(--offwhite-mute); margin:0 0 1.25rem; letter-spacing:0.05em;">
+              Cowley Road Studios · 118 Cowley Road · Oxford OX4 1JE
+            </p>
+
+            {/* Static map plate */}
+            <div class="subpage-map-plate" style="margin-bottom:1.25rem;">
+              <img
+                src={`https://maps.googleapis.com/maps/api/staticmap?center=118+Cowley+Road,Oxford,OX4+1JE&zoom=15&size=800x300&scale=2&maptype=roadmap&style=element:geometry%7Ccolor:0x1a1a2e&style=element:labels.text.stroke%7Ccolor:0x000000&style=element:labels.text.fill%7Ccolor:0xd4a017&markers=color:0xd4a017%7C51.747,-1.234&key=`}
+                alt="Map showing 118 Cowley Road, Oxford"
+                class="subpage-map-img"
+                width="800" height="300"
+                loading="lazy"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+              />
+              {/* Fallback if no API key */}
+              <div style="display:none; align-items:center; justify-content:center; height:200px; background:#0a0f0a; font-family:var(--font-mono); font-size:0.75rem; color:var(--offwhite-mute); text-align:center; padding:1rem;">
+                118 COWLEY ROAD · OXFORD · OX4 1JE
+              </div>
+              <div class="subpage-map-overlay">
+                <a
+                  href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="subpage-cta"
+                >
+                  ↗ OPEN IN GOOGLE MAPS
+                </a>
+              </div>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; font-family:var(--font-mono); font-size:0.8rem; color:var(--offwhite-dim);">
+              <div>
+                <span style="color:var(--mustard); font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; display:block; margin-bottom:0.3rem;">COWLEY ROAD</span>
+                118 Cowley Road<br />Oxford OX4 1JE<br />
+                <a href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE" target="_blank" rel="noopener noreferrer" style="color:var(--mustard); text-decoration:none;">Maps →</a>
+              </div>
+              <div>
+                <span style="color:var(--mustard); font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; display:block; margin-bottom:0.3rem;">CRICKET ROAD</span>
+                Cricket Road Studios<br />Oxford OX4 3DJ
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── SEAL — manufacturer's plate ── */}
+        <div class="subpage-seal">
+          <a href="/" aria-label="Cowley Road Studios — home">
+            <img
+              src="/static/crs-logo.png"
+              alt="Cowley Road Studios"
+              class="subpage-seal-img"
+              width="120" height="45"
+            />
           </a>
+          <p class="subpage-seal-sub">EST. 2012 · OXFORD · ODRO ENGINEERING</p>
         </div>
+
+      </div>{/* /subpage-column */}
+
+      {/* RIGHT RAIL */}
+      <div class="subpage-rail subpage-rail--right" aria-hidden="true">
+        {BOLTS.map((_, i) => <Bolt key={i} />)}
       </div>
 
-      {/* FOOTER */}
-      <footer class="site-footer">
-        <div class="terminal-status-footer">
-          <div class="terminal-status-section">
-            <div class="terminal-status-label">COWLEY ROAD STUDIOS</div>
-            <div class="terminal-status-line" style="font-weight: 600; margin-bottom: 0.5rem;">
-              Independent Recording Studio &amp; Rehearsal Rooms – Oxford
-            </div>
-            <div class="terminal-status-line">118 Cowley Road, Oxford OX4 1JE, United Kingdom</div>
-            <div class="terminal-status-line" style="margin-top: 0.75rem;">
-              <a href="tel:+441865722027">+44 (0)1865 722027</a>
-            </div>
-            <div class="terminal-status-line">
-              <a href="mailto:info@crsoxford.com">info@crsoxford.com</a>
-            </div>
-          </div>
-
-          <div class="terminal-status-section">
-            <div class="terminal-status-label">CONNECT</div>
-            <div class="terminal-status-line">
-              <a href="https://instagram.com/cowleyroadstudios.ox" target="_blank" rel="noopener">Instagram</a>
-            </div>
-            <div class="terminal-status-line">
-              <a href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE" target="_blank" rel="noopener">
-                Google Maps
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
