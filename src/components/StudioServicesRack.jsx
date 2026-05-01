@@ -1489,6 +1489,9 @@ function IdleState({ activeId = null }) {
           <div className="hp-display-line hp-display-line--primary">
             RECORDING · REHEARSAL · PRODUCTION · VENUE
           </div>
+          <div className="hp-display-line hp-display-line--tagline">
+            GRASSROOTS CREATIVE INFRASTRUCTURE SINCE 2012
+          </div>
         </div>
       </div>
 
