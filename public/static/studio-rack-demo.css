@@ -3183,3 +3183,69 @@ body.subpage::before {
   color: rgba(212,160,23,0.55) !important;
   font-weight: 400 !important;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   v5.9 — RAIL ALIGNMENT, LOGO DOCK, GLOBAL TYPOGRAPHY
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Logo docks flush to chassis top — remove floating gap */
+.crs-brand-plate--top {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+@media (max-width: 640px) {
+  .crs-brand-plate--top { padding-top: 0.35rem; padding-bottom: 0.35rem; }
+}
+
+/* Logo 220 px at all breakpoints ≥ 641 px */
+@media (min-width: 641px) {
+  .crs-brand-plate-img { width: 220px; }
+}
+
+/* hp-page: rails start exactly at logo / BrandPlate level.
+   Remove any top margin on the rack chassis so it sits flush
+   beneath the brand plate with no vertical gap. */
+.hp-machine {
+  margin-top: 0;
+}
+@media (max-width: 1088px) {
+  .hp-machine { margin-top: 0; }
+}
+@media (max-width: 640px) {
+  .hp-machine { margin-top: 0; }
+}
+
+/* ── Global panel typography — #d1d1d1 on dark green ─────── */
+/* Body copy inside all panels and chassis units */
+.hp-panel-body,
+.hp-chassis-column,
+.hp-trust-strip,
+.seo-text,
+.hp-idle {
+  color: #d1d1d1;
+}
+
+/* Labels: 20 px minimum on desktop */
+.hp-spacehire-label,
+.hp-panel-eyebrow,
+.hp-controls-buttons .rack-btn,
+.rack-btn {
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);  /* ≥ ~18 px on desktop */
+}
+
+/* Subpage body text */
+.subpage-module p,
+.subpage-module li,
+.hp-panel-desc {
+  font-size: 1rem;   /* 18 px from base */
+  color: #d1d1d1;
+  line-height: 1.65;
+}
+
+/* TrustStrip — keep its internal link colour readable */
+.hp-trust-strip a,
+.hp-trust-brand,
+.hp-trust-tag {
+  color: #d1d1d1;
+}
+

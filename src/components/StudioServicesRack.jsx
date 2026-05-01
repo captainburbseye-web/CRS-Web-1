@@ -138,6 +138,14 @@ function createSignalEngine() {
     setPreset(name) {
       preset = name || 'idle';
     },
+    /* Boot surge: pin channels to a high level for `ms` ms, then release */
+    forceBoot(surgeLevel, ms) {
+      for (const ch of Object.values(channels)) {
+        ch.display = surgeLevel;
+        ch.peak    = surgeLevel;
+        ch.peakHold = performance.now() + ms;
+      }
+    },
     subscribe(fn) {
       listeners.add(fn);
       return () => listeners.delete(fn);
@@ -152,6 +160,10 @@ function getEngine() {
   if (!_engine) _engine = createSignalEngine();
   return _engine;
 }
+
+/* Module-level OSC boot target — written by main component, read by OSC tick.
+   { scale: 1.8, until: <timestamp ms> } | null                              */
+let _oscBootTarget = null;
 
 /* Hook: subscribe to signal data */
 function useSignal() {
@@ -1322,6 +1334,8 @@ function SkylineOscilloscope({ activeId }) {
     toPts:        null,
     lastMode:     null,
     lastTime:     0,
+    bootScaleTarget: 1.0,  // power-on surge target (1.0 = normal, 1.8 = surge)
+    bootScaleUntil:  0,    // timestamp (ms) until which surge target is in effect
   });
 
   /* ─ Derive SVG path string from current physics state ─── */
@@ -1379,21 +1393,27 @@ function SkylineOscilloscope({ activeId }) {
        otherwise a quiet floor keeps the silhouette still.            */
     const rawSignal = Math.random() > 0.97 ? Math.random() : OSC_FLOOR;
 
-    /* Target scale: 1 + signal * K + hum */
+    /* Target scale: 1 + signal * K + hum.
+       Power-on boot surge: if bootScaleTarget > 1 and still within window,
+       override the normal target so spires leap upward on first load. */
     const hum = Math.sin(now * 0.001 * OSC_HUM_HZ * Math.PI * 2) * OSC_HUM_AMP;
-    const targetScale = 1.0 + rawSignal * OSC_SCALE_K + hum;
+    const normalTarget = 1.0 + rawSignal * OSC_SCALE_K + hum;
+    const booting = now < st.bootScaleUntil;
+    const targetScale = booting
+      ? Math.max(normalTarget, st.bootScaleTarget)
+      : normalTarget;
 
     /* Attack / release — direct fractional lerp (frame-rate independent) */
     const frac = targetScale > st.currentScale ? OSC_ATTACK : OSC_RELEASE;
     st.currentScale += (targetScale - st.currentScale) * frac;
 
     /* Scale clamp per mode:
-       SKYLINE: tight 0.98–1.02 — silhouette nearly static, slow breath only.
+       SKYLINE: tight 0.98–1.04 during normal ops; up to 1.80 during boot surge.
                 The thick dim stroke carries the shape; motion blurs it.
        Signal traces: wide 0.55–1.50 for expressive swing.                */
     const isSkyline = (mode === 'SKYLINE');
     const scaleMin = isSkyline ? 0.98 : 0.55;
-    const scaleMax = isSkyline ? 1.02 : 1.50;
+    const scaleMax = booting ? 1.80 : (isSkyline ? 1.04 : 1.50);
     st.currentScale = Math.max(scaleMin, Math.min(scaleMax, st.currentScale));
 
     /* Build polyline string — use mode-appropriate pivot */
@@ -1452,6 +1472,13 @@ function SkylineOscilloscope({ activeId }) {
     st.fromPts  = new Float32Array(OSC_PATHS[st.lastMode]);
     st.toPts    = new Float32Array(OSC_PATHS[st.lastMode]);
     st.morphT   = 1;
+
+    /* Wire in boot surge if main component triggered it */
+    if (_oscBootTarget) {
+      st.bootScaleTarget = _oscBootTarget.scale;
+      st.bootScaleUntil  = _oscBootTarget.until;
+      _oscBootTarget = null; // consumed
+    }
 
     /* Start loop */
     rafRef.current = requestAnimationFrame(tick);
@@ -1746,10 +1773,36 @@ export default function StudioServicesRack() {
   const [animate,     setAnimate]     = useState(false);
   const [powered,     setPowered]     = useState(false);
 
-  /* Power-on LED sweep — runs once on mount */
+  /* Power-on boot sequence — 1.6 s total, runs once per session via sessionStorage
+     Phase 1 (0 → 800 ms):  surge — VU needles to 0.95, OSS targetScale = 1.8
+     Phase 2 (800 → 1600 ms): settle — release to idle jitter, OSS clamp returns
+     sessionStorage key prevents repeat on back-navigation within same tab        */
   useEffect(() => {
-    const t = setTimeout(() => setPowered(true), 120);
-    return () => clearTimeout(t);
+    const ALREADY_BOOTED = 'crs_booted';
+    const firstBoot = !sessionStorage.getItem(ALREADY_BOOTED);
+    sessionStorage.setItem(ALREADY_BOOTED, '1');
+
+    if (firstBoot) {
+      /* Surge VU meters immediately */
+      getEngine().forceBoot(0.95, 800);
+
+      /* Surge OSS — inject boot target into stateRef of oscilloscope.
+         We set a module-level flag the OSC tick reads. */
+      _oscBootTarget = { scale: 1.8, until: performance.now() + 800 };
+
+      const settle = setTimeout(() => {
+        /* Nothing to explicitly do: engine releases naturally to idle preset;
+           OSC boot window expires by timestamp. */
+      }, 800);
+
+      /* LED comes on at 120 ms as before */
+      const led = setTimeout(() => setPowered(true), 120);
+      return () => { clearTimeout(settle); clearTimeout(led); };
+    } else {
+      /* Returning visit — just flick the LED, no fanfare */
+      const t = setTimeout(() => setPowered(true), 120);
+      return () => clearTimeout(t);
+    }
   }, []);
 
   /* Deep-link: read URL hash on mount to pre-select service + location */
