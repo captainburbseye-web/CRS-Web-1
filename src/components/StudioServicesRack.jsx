@@ -1505,11 +1505,10 @@ function SkylineOscilloscope({ activeId }) {
               Maps spectral urgency to screen position: the very tall right
               spires light up amber/red while the left roofline stays green.
           ─────────────────────────────────────────────────────────── */}
-          {/* Vertical gradient: red at top (peak voltage) → amber → green at base */}
-          <linearGradient id="osc-beam-gradient" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+          {/* Vertical gradient: red tip → amber → green base */}
+          <linearGradient id="osc-beam-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%"   stopColor="#ff4b2a" />
-            <stop offset="30%"  stopColor="#ff7a1a" />
-            <stop offset="58%"  stopColor="#ffd43a" />
+            <stop offset="40%"  stopColor="#ffd43a" />
             <stop offset="100%" stopColor="#1aff40" />
           </linearGradient>
 
@@ -1545,10 +1544,25 @@ function SkylineOscilloscope({ activeId }) {
           ))}
         </g>
 
-        {/* ── ACTIVE TRACE — full-screen, no silhouette, no mask ─────
-            Stroke fills the full OSS screen. Vertical gradient gives
-            red at peaks, amber mid-range, green at base — like the
-            reference screenshot. No dim layer, no reveal mask.
+        {/* ── SILHOUETTE MASS — solid near-black building band ──────
+            ~115px thick stroke floods from roofline down to frame base.
+            No glow — reads as solid architectural mass, not a lava lamp.
+        ─────────────────────────────────────────────────────────── */}
+        <polyline
+          ref={dimPathRef}
+          points={ptsToPolyline(OSC_PATHS.SKYLINE)}
+          fill="none"
+          stroke="#021204"
+          strokeWidth="115"
+          strokeLinecap="butt"
+          strokeLinejoin="miter"
+          strokeOpacity="1"
+          className="hp-osc-dim"
+        />
+
+        {/* ── ACTIVE CREST — red→amber→green gradient beam, 3px ────────
+            Rides the roofline. Vertical gradient maps voltage to colour.
+            Drop-shadow glow — no filter SVG element needed on this pass.
         ─────────────────────────────────────────────────────────── */}
         <polyline
           ref={activePathRef}
@@ -1556,8 +1570,8 @@ function SkylineOscilloscope({ activeId }) {
           fill="none"
           stroke="url(#osc-beam-gradient)"
           strokeWidth="3"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+          strokeLinecap="butt"
+          strokeLinejoin="miter"
           filter="url(#osc-glow)"
           className="hp-osc-active"
         />
