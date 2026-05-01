@@ -1499,6 +1499,7 @@ function SkylineOscilloscope({ activeId }) {
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
         role="img"
+        overflow="hidden"
       >
         <defs>
           {/* ── SIGNAL-INTENSITY GRADIENT — green→mustard→red, bottom→top ─
@@ -1549,10 +1550,10 @@ function SkylineOscilloscope({ activeId }) {
             <stop offset="100%" stopColor="#1aff40" />
           </linearGradient>
 
-          {/* Active-crest glow filter — dual blur for CRT phosphor halo */}
-          <filter id="osc-glow" x="-30%" y="-60%" width="160%" height="220%" colorInterpolationFilters="sRGB">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="halo" />
-            <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="core" />
+          {/* Active-crest glow filter — dual blur, clipped to SVG canvas */}
+          <filter id="osc-glow" x="-5%" y="-30%" width="110%" height="160%" colorInterpolationFilters="sRGB">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="halo" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="1.0" result="core" />
             <feMerge>
               <feMergeNode in="halo" />
               <feMergeNode in="core" />
@@ -1560,8 +1561,8 @@ function SkylineOscilloscope({ activeId }) {
             </feMerge>
           </filter>
 
-          {/* Beam glow — vertical electron-gun line */}
-          <filter id="osc-beam-glow" x="-300%" y="-20%" width="700%" height="140%" colorInterpolationFilters="sRGB">
+          {/* Beam glow — vertical electron-gun line, tight region */}
+          <filter id="osc-beam-glow" x="-100%" y="-10%" width="300%" height="120%" colorInterpolationFilters="sRGB">
             <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="b" />
             <feMerge>
               <feMergeNode in="b" />
@@ -1663,18 +1664,18 @@ function IdleState({ activeId = null }) {
         />
       </div>
 
-      {/* Hero Module — recessed rack unit between sign and OSS */}
-      <div className="hp-hero-module">
-        <div className="hp-hero-module-bolts" aria-hidden="true">
-          <span className="hp-hero-bolt" /><span className="hp-hero-bolt" />
-        </div>
-        <div className="hp-hero-module-body">
-          <h1 className="hp-hero-h1">RECORDING STUDIO — OXFORD</h1>
-          <p className="hp-hero-sub">Hybrid analogue–digital recording</p>
-          <p className="hp-hero-signal">SSL · Valve compression · Tape integration</p>
-        </div>
-        <div className="hp-hero-module-bolts" aria-hidden="true">
-          <span className="hp-hero-bolt" /><span className="hp-hero-bolt" />
+      {/* Hero LCD strip — second amber display, full-width flush to rails */}
+      <div className="hp-idle-display hp-hero-lcd-wrap">
+        <div className="hp-idle-lcd hp-hero-lcd">
+          <h1 className="hp-display-line hp-display-line--hero-h1">
+            RECORDING STUDIO — OXFORD
+          </h1>
+          <p className="hp-display-line hp-display-line--hero-sub">
+            Hybrid analogue–digital recording
+          </p>
+          <p className="hp-display-line hp-display-line--hero-signal">
+            SSL · VALVE COMPRESSION · TAPE INTEGRATION
+          </p>
         </div>
       </div>
 
