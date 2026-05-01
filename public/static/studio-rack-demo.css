@@ -3062,3 +3062,124 @@ body.subpage::before {
   transition: opacity 0.15s;
 }
 .hp-spacehire-card:hover .hp-spacehire-arrow { opacity: 1; }
+
+/* ═══════════════════════════════════════════════════════════════
+   BRAND PLATE — anchored header, docked to rail cap (v5.8)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Override: remove floating gap — dock plate to chassis top */
+.crs-brand-plate--top {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: min(1200px, 90vw);
+  width: 90vw;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Hardware metadata block — right side of brand plate */
+.crs-brand-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+}
+.crs-brand-meta-row {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: rgba(212,160,23,0.55);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+@media (max-width: 639px) {
+  .crs-brand-meta { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO MODULE — recessed rack unit between sign and OSS (v5.8)
+   ═══════════════════════════════════════════════════════════════ */
+.hp-hero-module {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 -52px;
+  padding: 0.9rem 1.5rem;
+  background: #0d120d;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  border-bottom: 1px solid rgba(0,0,0,0.8);
+  box-shadow:
+    inset 0 8px 24px rgba(0,0,0,0.85),
+    inset 0 -2px 6px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+}
+@media (max-width: 639px) {
+  .hp-hero-module { margin: 0 -28px; padding: 0.75rem 1rem; }
+}
+@media (min-width: 640px) {
+  .hp-hero-module { margin: 0 -56px; }
+}
+
+.hp-hero-module-bolts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.hp-hero-bolt {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #555, #1a1a1a);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.hp-hero-module-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.hp-hero-h1 {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--offwhite);
+  margin: 0;
+  line-height: 1.1;
+}
+
+.hp-hero-sub {
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  font-weight: 400;
+  color: var(--offwhite-dim);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.hp-hero-signal {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: rgba(212,160,23,0.7);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+/* Grassroots line — sans, sentence case, human not system */
+.hp-display-line--tagline {
+  font-family: Inter, system-ui, -apple-system, sans-serif !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  color: rgba(212,160,23,0.55) !important;
+  font-weight: 400 !important;
+}

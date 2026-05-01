@@ -242,6 +242,8 @@ const LocationLogo = ({ location = 'crs', size = 'md', className = '' }) => {
 /* Wraps the CRS logo in a linked, centred plate. position = 'top' | 'bottom' */
 const BrandPlate = ({ position = 'top' }) => (
   <div className={`crs-brand-plate crs-brand-plate--${position}`}>
+
+    {/* Logo — left anchor, physically connected to rail cap */}
     <a href={URLS.HOME} className="crs-brand-plate-link" aria-label="Cowley Road Studios — home">
       <img
         src="/static/crs-logo.png"
@@ -251,6 +253,14 @@ const BrandPlate = ({ position = 'top' }) => (
         height="74"
       />
     </a>
+
+    {/* Right — hardware metadata block */}
+    <div className="crs-brand-meta" aria-hidden="true">
+      <span className="crs-brand-meta-row">ID: CRS-CONSOLE-01</span>
+      <span className="crs-brand-meta-row">LOC: 51.7483° N, 1.2335° W</span>
+      <span className="crs-brand-meta-row">STATUS: NOMINAL</span>
+    </div>
+
   </div>
 );
 
@@ -1612,7 +1622,7 @@ function IdleState({ activeId = null }) {
             RECORDING · REHEARSAL · PRODUCTION · VENUE
           </div>
           <div className="hp-display-line hp-display-line--tagline">
-            GRASSROOTS CREATIVE INFRASTRUCTURE · OXFORD
+            Grassroots infrastructure for the Oxford music scene.
           </div>
         </div>
       </div>
@@ -1624,6 +1634,21 @@ function IdleState({ activeId = null }) {
           alt="Cowley Road Studios"
           className="hp-idle-sign"
         />
+      </div>
+
+      {/* Hero Module — recessed rack unit between sign and OSS */}
+      <div className="hp-hero-module">
+        <div className="hp-hero-module-bolts" aria-hidden="true">
+          <span className="hp-hero-bolt" /><span className="hp-hero-bolt" />
+        </div>
+        <div className="hp-hero-module-body">
+          <h1 className="hp-hero-h1">RECORDING STUDIO — OXFORD</h1>
+          <p className="hp-hero-sub">Hybrid analogue–digital recording</p>
+          <p className="hp-hero-signal">SSL · Valve compression · Tape integration</p>
+        </div>
+        <div className="hp-hero-module-bolts" aria-hidden="true">
+          <span className="hp-hero-bolt" /><span className="hp-hero-bolt" />
+        </div>
       </div>
 
       {/* Skyline oscilloscope — phosphor-trace Dreaming Spires scope — DO NOT TOUCH */}
