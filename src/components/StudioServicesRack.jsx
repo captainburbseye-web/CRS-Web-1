@@ -1338,26 +1338,32 @@ function SkylineOscilloscope({ activeId }) {
               zones always align: safe green at base, amber in mid-range,
               danger red at the very tips of the tallest spires.
           ─────────────────────────────────────────────────────────── */}
+          {/* ── SILHOUETTE GRADIENT — near-black base, hair of green at peak ──
+              The dim layer is a dark solid mass (buildings), NOT a lava lamp.
+              Only the very topmost 15 % picks up any colour; the rest is
+              near-black so the roofline reads as architectural mass.
+          ─────────────────────────────────────────────────────────── */}
           <linearGradient id="skyline-intensity" x1="0" y1="100" x2="0" y2="0" gradientUnits="userSpaceOnUse">
-            {/* bottom — deep safe green */}
-            <stop offset="0%"   stopColor="#1a5c20" />
-            {/* lower-mid — phosphor mid-green */}
-            <stop offset="40%"  stopColor="#2a8c30" />
-            {/* mid — mustard / amber — normal signal zone */}
-            <stop offset="68%"  stopColor="#c49a18" />
-            {/* upper — hot amber */}
-            <stop offset="85%"  stopColor="#d4600a" />
-            {/* top — danger red — only tallest spire tips on peaks */}
-            <stop offset="100%" stopColor="#cc2a1a" />
+            {/* base — essentially black */}
+            <stop offset="0%"   stopColor="#010801" />
+            {/* lower body — very dark green, barely visible */}
+            <stop offset="60%"  stopColor="#021204" />
+            {/* upper body — a hint of deep green on the upper walls */}
+            <stop offset="85%"  stopColor="#041a06" />
+            {/* roofline crest — just enough green to separate sky from building */}
+            <stop offset="100%" stopColor="#0a3010" />
           </linearGradient>
 
-          {/* Identical gradient for the active crest — same zones, brighter opacity */}
+          {/* ── ACTIVE CREST GRADIENT — pure phosphor green only ──────────
+              The lit crest is always phosphor green — no orange, no red.
+              Single-hue gradient keeps the trace reading as a CRT beam,
+              not a heat-map.
+          ─────────────────────────────────────────────────────────── */}
           <linearGradient id="skyline-intensity-active" x1="0" y1="100" x2="0" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%"   stopColor="#2aef40" />
-            <stop offset="42%"  stopColor="#59ff3a" />
-            <stop offset="68%"  stopColor="#f0c020" />
-            <stop offset="85%"  stopColor="#ff6a18" />
-            <stop offset="100%" stopColor="#ff3322" />
+            <stop offset="0%"   stopColor="#1aef40" />
+            <stop offset="50%"  stopColor="#59ff3a" />
+            <stop offset="85%"  stopColor="#7fff60" />
+            <stop offset="100%" stopColor="#a0ffaa" />
           </linearGradient>
 
           {/* Active-crest glow filter — dual blur for CRT phosphor halo */}
@@ -1400,36 +1406,34 @@ function SkylineOscilloscope({ activeId }) {
           ))}
         </g>
 
-        {/* ── PHOSPHOR PERSISTENCE TRACE — gradient silhouette mass ───
-            strokeWidth=140 floods downward from the path to the frame
-            base, clipped by overflow:hidden on .hp-osc-frame.
-            Gradient gives green base → mustard mid → red tips.
-            No filter — silhouette edges stay crisp.
+        {/* ── SILHOUETTE MASS — architectural building band ───────────
+            Near-black stroke, width 120 → floods from roofline down to
+            frame base. This IS the buildings. Crisp miter joins keep
+            spire peaks sharp. Full opacity — solid mass, not ghost.
         ─────────────────────────────────────────────────────────── */}
         <polyline
           ref={dimPathRef}
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
           stroke="url(#skyline-intensity)"
-          strokeWidth="90"
+          strokeWidth="120"
           strokeLinecap="butt"
           strokeLinejoin="miter"
-          strokeOpacity="0.55"
+          strokeOpacity="1"
           className="hp-osc-dim"
         />
 
-        {/* ── LIT (ACTIVE) TRACE — bright gradient crest ─────────────
-            Thin bright line riding the top of the silhouette mass.
-            Uses the vivid gradient variant so the crest colour matches
-            the zone it's drawing through.
-            Revealed left-of-beam. Voltage jitter applied via transform.
+        {/* ── PHOSPHOR CREST — thin glowing line riding the roofline ──
+            Pure phosphor green, 3 px, full glow filter.
+            This is the oscilloscope trace. The beam reveals it left→right.
+            Voltage jitter (translateY ±0.8px) keeps it shimmering.
         ─────────────────────────────────────────────────────────── */}
         <polyline
           ref={activePathRef}
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
           stroke="url(#skyline-intensity-active)"
-          strokeWidth="2.5"
+          strokeWidth="3"
           strokeLinecap="butt"
           strokeLinejoin="miter"
           filter="url(#osc-glow)"

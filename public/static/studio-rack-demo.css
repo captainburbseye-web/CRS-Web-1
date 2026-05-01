@@ -2106,7 +2106,10 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   position: relative;
   width: calc(100% + 104px);  /* v3.2 — matches wider rails (52px × 2) */
   margin: 8px -52px 0;        /* 8px top seam = visual gap between sign and scope */
-  background: #020d02;
+  /* Dark chamber — phosphor screen in a lightless CRT housing.
+     Radial brighten at top-centre simulates the phosphor coating glow;
+     stays near-black so the building silhouette reads with max contrast. */
+  background: radial-gradient(ellipse 70% 40% at 50% 0%, #061a08 0%, #020803 55%, #000000 100%);
   border-top: 3px solid #111;
   border-bottom: 3px solid #111;
   border-left: none;
@@ -2159,37 +2162,33 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   opacity: 0.7;
 }
 
-/* ── PHOSPHOR PERSISTENCE TRACE — GRADIENT SILHOUETTE BAND ───
-   v3.5: stroke="url(#skyline-intensity)" set inline (SVG gradient).
-   CSS must NOT override stroke colour — gradient lives in SVG defs.
-   strokeWidth=140 floods downward, clipped by overflow:hidden on frame.
-   strokeOpacity=0.55 inline keeps the silhouette readable but not harsh.
-   No filter — crisp edges let the colour zones read clearly.
-   stroke-linejoin: miter keeps spire peaks sharp, not rounded.
+/* ── SILHOUETTE MASS — architectural building band ────────────
+   Near-black gradient stroke, width 120 in SVG units (~120/100 of
+   viewBox height = floods well past the baseline).
+   CSS stroke-width is the fallback; inline strokeWidth="120" wins.
+   No filter — crisp miter joins keep spire peaks razor-sharp.
+   This is the dark building mass; the phosphor crest rides on top.
 ────────────────────────────────────────────────────────────── */
 .hp-osc-dim {
-  /* stroke colour is the SVG gradient — do NOT set stroke here */
-  stroke-width: 140px;      /* fills from trace down to frame base — solid silhouette */
-  stroke-linecap: butt;     /* flat ends — no rounded overhang past endpoints */
+  /* stroke colour + width set inline — dark near-black gradient */
+  stroke-linecap: butt;     /* flat ends */
   stroke-linejoin: miter;   /* sharp spire peaks, not rounded */
-  filter: none !important;  /* no glow on the silhouette base — gradient does the work */
-  will-change: transform;   /* voltage jitter via transform each frame */
+  filter: none !important;  /* no glow — solid mass, crisp edges */
+  will-change: transform;
 }
 
-/* ── ACTIVE (LIT) TRACE — BRIGHT GRADIENT CREST ──────────────
-   Thin line riding the top of the silhouette mass.
-   Uses skyline-intensity-active gradient — vivid zone colours.
-   Voltage jitter applied via JS transform each frame (+/-0.8px).
-   filter: osc-glow inline — phosphor bloom on the crest only.
-   Revealed left-of-beam by mask.
+/* ── PHOSPHOR CREST — thin glowing line on the roofline ───────
+   Pure phosphor-green gradient (no orange, no red).
+   3 px wide — sits exactly on the roofline of the dark mass below.
+   glow filter applied inline; beam mask reveals left→right.
+   Voltage jitter (+/-0.8 px translateY) from JS keeps it shimmering.
 ────────────────────────────────────────────────────────────── */
 .hp-osc-active {
-  /* stroke colour is the SVG gradient — do NOT set stroke here */
-  stroke-width: 2.5px;      /* thin crest line riding the silhouette top */
+  /* stroke colour + width set inline — pure phosphor green */
   stroke-linecap: butt;
   stroke-linejoin: miter;
   opacity: 1;
-  will-change: transform;   /* voltage jitter applied via JS */
+  will-change: transform;
 }
 
 /* Electron beam sweep line */
