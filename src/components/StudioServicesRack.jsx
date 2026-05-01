@@ -1302,7 +1302,6 @@ function SkylineOscilloscope({ activeId }) {
   const svgRef        = useRef(null);
   const dimPathRef    = useRef(null);
   const activePathRef = useRef(null);
-  const maskRectRef   = useRef(null);
   const beamRef       = useRef(null);
   const rafRef        = useRef(null);
   const visibleRef    = useRef(false);
@@ -1410,9 +1409,6 @@ function SkylineOscilloscope({ activeId }) {
       activePathRef.current.setAttribute('points', polyStr);
       activePathRef.current.style.transform = `translateY(${voltageJitter.toFixed(2)}px)`;
     }
-    if (maskRectRef.current) {
-      maskRectRef.current.setAttribute('width', beamX.toFixed(1));
-    }
     if (beamRef.current) {
       beamRef.current.setAttribute('transform', `translate(${beamX.toFixed(1)},0)`);
     }
@@ -1509,11 +1505,12 @@ function SkylineOscilloscope({ activeId }) {
               Maps spectral urgency to screen position: the very tall right
               spires light up amber/red while the left roofline stays green.
           ─────────────────────────────────────────────────────────── */}
-          <linearGradient id="osc-beam-gradient" x1="0" y1="0" x2="1000" y2="0" gradientUnits="userSpaceOnUse">
-            <stop offset="0%"   stopColor="#1aff40" />
-            <stop offset="45%"  stopColor="#59ff3a" />
-            <stop offset="72%"  stopColor="#ffd43a" />
-            <stop offset="100%" stopColor="#ff4b2a" />
+          {/* Vertical gradient: red at top (peak voltage) → amber → green at base */}
+          <linearGradient id="osc-beam-gradient" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
+            <stop offset="0%"   stopColor="#ff4b2a" />
+            <stop offset="30%"  stopColor="#ff7a1a" />
+            <stop offset="58%"  stopColor="#ffd43a" />
+            <stop offset="100%" stopColor="#1aff40" />
           </linearGradient>
 
           {/* Active-crest glow filter — dual blur for CRT phosphor halo */}
@@ -1536,14 +1533,6 @@ function SkylineOscilloscope({ activeId }) {
             </feMerge>
           </filter>
 
-          {/* Clip mask: only lit portion (left of beam) shows full brightness */}
-          <mask id="osc-reveal-mask">
-            <rect
-              ref={maskRectRef}
-              x="0" y="0" width="0" height="100"
-              fill="white"
-            />
-          </mask>
         </defs>
 
         {/* CRT phosphor dot-grid — 4 vertical, 3 horizontal lines */}
@@ -1556,27 +1545,10 @@ function SkylineOscilloscope({ activeId }) {
           ))}
         </g>
 
-        {/* ── SILHOUETTE MASS — architectural building band ───────────
-            Near-black stroke, width 120 → floods from roofline down to
-            frame base. This IS the buildings. Crisp miter joins keep
-            spire peaks sharp. Full opacity — solid mass, not ghost.
-        ─────────────────────────────────────────────────────────── */}
-        <polyline
-          ref={dimPathRef}
-          points={ptsToPolyline(OSC_PATHS.SKYLINE)}
-          fill="none"
-          stroke="url(#skyline-intensity)"
-          strokeWidth="120"
-          strokeLinecap="butt"
-          strokeLinejoin="miter"
-          strokeOpacity="1"
-          className="hp-osc-dim"
-        />
-
-        {/* ── PHOSPHOR CREST — thin glowing line riding the roofline ──
-            Pure phosphor green, 3 px, full glow filter.
-            This is the oscilloscope trace. The beam reveals it left→right.
-            Voltage jitter (translateY ±0.8px) keeps it shimmering.
+        {/* ── ACTIVE TRACE — full-screen, no silhouette, no mask ─────
+            Stroke fills the full OSS screen. Vertical gradient gives
+            red at peaks, amber mid-range, green at base — like the
+            reference screenshot. No dim layer, no reveal mask.
         ─────────────────────────────────────────────────────────── */}
         <polyline
           ref={activePathRef}
@@ -1584,10 +1556,9 @@ function SkylineOscilloscope({ activeId }) {
           fill="none"
           stroke="url(#osc-beam-gradient)"
           strokeWidth="3"
-          strokeLinecap="butt"
-          strokeLinejoin="miter"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           filter="url(#osc-glow)"
-          mask="url(#osc-reveal-mask)"
           className="hp-osc-active"
         />
 
@@ -1627,7 +1598,7 @@ function IdleState({ activeId = null }) {
             RECORDING · REHEARSAL · PRODUCTION · VENUE
           </div>
           <div className="hp-display-line hp-display-line--tagline">
-            GRASSROOTS CREATIVE INFRASTRUCTURE SINCE 2012
+            GRASSROOTS CREATIVE INFRASTRUCTURE · OXFORD
           </div>
         </div>
       </div>
@@ -1719,7 +1690,7 @@ const SeoText = () => (
       <p>Rehearsal rooms at Cowley Road (4-piece) and Cricket Road (8 people, Yamaha piano). ODRO Engineering amp repair and AV services. Workshop Café venue hire.</p>
     </div>
     <div className="hp-spec-footer">
-      <span>EST. 2012</span>
+      <span>OXFORD</span>
       <span>OX4 1JE</span>
       <span>ODRO ENGINEERING</span>
     </div>
@@ -1899,7 +1870,7 @@ export default function StudioServicesRack() {
                   height="59"
                 />
               </a>
-              <p className="hp-chassis-seal-sub">EST. 2012 · OXFORD · ODRO ENGINEERING</p>
+              <p className="hp-chassis-seal-sub">OXFORD · ODRO ENGINEERING</p>
             </div>
           </div>
 
