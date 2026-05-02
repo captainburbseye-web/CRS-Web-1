@@ -81,19 +81,20 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   position: relative;
 }
 
-/* ── BACKGROUND — Workshop Café neon shopfront, full-width, fixed ─
-   Revealed in the ~18vh gap above the rack. Reads as a view through
-   the studio window onto Cowley Road. Parallax-ready (fixed).        */
+/* ── BACKGROUND — Workshop Café neon shopfront, matte-painting scale ─
+   v5.14: background-size:90% so the shopfront sign is whole and legible
+   in the 18vh window above the chassis top-plate. center 5% positions
+   the sign in the upper third of the viewport gap.                    */
 .hp-page::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image: url('/static/images/bg-cafe-neon.jpg');
-  background-size: cover;
-  background-position: top center;
+  background-size: 90%;          /* v5.14 — matte-painting scale; shopfront legible */
+  background-position: center 5%; /* v5.14 — sign centred in the gap window */
   background-repeat: no-repeat;
   filter: grayscale(100%) blur(1px) brightness(0.6);
-  opacity: 0.15;
+  opacity: 0.12;                 /* v5.14 — ghostly reflection, not competing */
   z-index: 0;
   pointer-events: none;
 }
@@ -247,19 +248,10 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   margin-right: auto;
 }
 
-/* Top plate — breathing room above; gap is the 18vh vista of the neon café backdrop.
-   Layout: logo left, hardware metadata right (space-between).
-   The 18vh top padding IS the rack drop — hp-machine has no top margin. */
+/* Top plate — no longer a floating header; kept for bottom-plate only.
+   The gap now comes from .hp-machine margin-top:18vh (v5.14). */
 .crs-brand-plate--top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;  /* logo ← | → metadata */
-  max-width: min(1200px, 90vw);
-  width: 90vw;
-  margin: 0 auto;
-  padding-top: 18vh;               /* RACK DROP — reveals café backdrop above logo */
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: none; /* Logo moved inside chassis as .hp-top-plate (v5.14) */
 }
 
 /* Bottom plate — breathing room ABOVE it after the rack chassis */
@@ -303,24 +295,97 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
     max-width: 100%;
     width: 100%;
   }
-  .crs-brand-plate--top    { padding-top: 10vh; padding-bottom: 0.75rem; }
   .crs-brand-plate--bottom { padding-top: 1.25rem; padding-bottom: 1.25rem; }
-  .crs-brand-plate-img { width: 140px; }
 }
 
 /* Tablet */
 @media (min-width: 641px) and (max-width: 1088px) {
-  .crs-brand-plate,
-  .crs-brand-plate--top {
+  .crs-brand-plate {
     max-width: min(1200px, calc(100% - 2rem));
     width: calc(100% - 2rem);
   }
-  .crs-brand-plate-img { width: 170px; }
 }
 
-/* Large desktop — push to upper target */
+/* ═══════════════════════════════════════════════════════════════
+   TOP PLATE — 1U rack unit: CRS logo bolted into chassis cap (v5.14)
+   Rails start here. Logo is NOT a floating header — it IS the top
+   of the physical hardware frame.
+   ═══════════════════════════════════════════════════════════════ */
+.hp-top-plate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.6rem;
+  background: linear-gradient(180deg, #1a1a1a 0%, #111 100%);
+  border-top: 2px solid #3a3a3a;         /* overhead light catch — same as controls */
+  border-bottom: 2px solid #0a0a0a;      /* seam between logo plate and LCD below */
+  box-shadow:
+    inset 0 4px 8px rgba(255,255,255,0.025),  /* bevelled top highlight */
+    inset 0 -2px 6px rgba(0,0,0,0.7),          /* base shadow */
+    0 4px 12px rgba(0,0,0,0.5);               /* cast shadow onto LCD below */
+  flex-shrink: 0;
+}
+
+/* Logo link */
+.hp-top-plate-link {
+  display: block;
+  line-height: 0;
+  flex-shrink: 0;
+  transition: opacity 0.15s, filter 0.15s;
+  outline-offset: 6px;
+}
+.hp-top-plate-link:hover {
+  opacity: 0.82;
+  filter: brightness(1.15) drop-shadow(0 0 14px rgba(194,164,58,0.3));
+}
+.hp-top-plate-link:focus-visible {
+  outline: 2px solid var(--mustard);
+}
+
+/* Logo image */
+.hp-top-plate-img {
+  display: block;
+  width: 180px;   /* desktop — sits comfortably in the 1U plate height */
+  height: auto;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 1px 4px rgba(0,0,0,0.80))
+    drop-shadow(0 0 1px rgba(0,0,0,0.90));
+}
+
+/* Hardware metadata — right side */
+.hp-top-plate-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.18rem;
+}
+.hp-top-plate-meta-row {
+  font-family: var(--font-mono);
+  font-size: 0.60rem;
+  letter-spacing: 0.12em;
+  color: rgba(212,160,23,0.50);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Mobile: tighter, smaller logo, hide metadata */
+@media (max-width: 599px) {
+  .hp-top-plate {
+    padding: 0.65rem 0.75rem;
+  }
+  .hp-top-plate-img { width: 120px; }
+  .hp-top-plate-meta { display: none; }
+}
+
+/* Tablet */
+@media (min-width: 600px) and (max-width: 1088px) {
+  .hp-top-plate-img { width: 155px; }
+}
+
+/* Large desktop */
 @media (min-width: 1200px) {
-  .crs-brand-plate-img { width: 220px; }
+  .hp-top-plate-img { width: 200px; }
 }
 
 /* ============================================================
@@ -507,11 +572,11 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   flex: 1;
   max-width: min(1200px, 90vw);  /* v3.2 — wider rack, fills viewport on large screens */
   width: 90vw;
-  margin: 0 auto 0;              /* v5.13 — gap comes from .crs-brand-plate--top padding-top:18vh above */
+  margin: 18vh auto 0;           /* v5.14 — unified chassis drops 18vh to reveal café backdrop */
   padding: 0;
   display: flex;
   flex-direction: row;            /* rails left | centre-column | rails right */
-  align-items: stretch;           /* UNIFIED CHASSIS: rails stretch to full column height */
+  align-items: stretch;           /* UNIFIED CHASSIS: rails stretch top-plate → footer */
   gap: 0;
   background-color: #050505;
   box-shadow:
@@ -523,14 +588,14 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 /* Tablet: keep side margin */
 @media (max-width: 1088px) {
   .hp-machine {
-    margin: 0 auto 0;
+    margin: 18vh auto 0;
     max-width: min(1200px, calc(100% - 2rem));
     width: calc(100% - 2rem);
   }
 }
 @media (max-width: 599px) {
   .hp-machine {
-    margin: 0 0.25rem 0;          /* v5.13 — flush, gap from brand-plate padding-top:10vh */
+    margin: 8vh 0.25rem 0;        /* v5.14 — 8vh on mobile keeps BOOK buttons in first fold */
     max-width: calc(100% - 0.5rem);
     width: calc(100% - 0.5rem);
   }
@@ -3194,8 +3259,8 @@ body.subpage::before {
    ═══════════════════════════════════════════════════════════════ */
 
 
-/* v5.13 — margin-top removed from .hp-machine; gap is provided by
-   .crs-brand-plate--top { padding-top: 18vh / 10vh } above the chassis. */
+/* v5.14 — margin-top: 18vh on .hp-machine is the single source of the
+   café-backdrop gap. Logo is now .hp-top-plate inside the chassis. */
 
 /* ── Global panel typography — #d1d1d1 on dark green ─────── */
 /* Body copy inside all panels and chassis units */

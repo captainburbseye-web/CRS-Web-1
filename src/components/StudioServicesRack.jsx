@@ -1924,18 +1924,33 @@ export default function StudioServicesRack() {
       powered   ? 'hp-page--powered' : '',
     ].filter(Boolean).join(' ')}>
 
-      {/* BRAND PLATE — top manufacturer anchor, links home */}
-      <BrandPlate position="top" />
-
       {/* RACK CHASSIS — physical 19" hardware frame
-          Rails wrap EVERYTHING: interactive screen + documentation unit.
-          This is one unified chassis — rails run floor to ceiling.        */}
+          Rails run from the Logo Top Plate all the way to the footer.
+          This is one unified chassis — no orphaned elements above.         */}
       <section className="hp-machine" aria-label="Service display">
 
         <RackRail side="left" />
 
-        {/* Centre column — screen above, documentation bay below */}
+        {/* Centre column — logo plate → screen → controls → documentation */}
         <div className="hp-chassis-column">
+
+          {/* 1U — TOP PLATE — CRS logo bolted into chassis top rail cap */}
+          <div className="hp-top-plate">
+            <a href={URLS.HOME} className="hp-top-plate-link" aria-label="Cowley Road Studios — home">
+              <img
+                src="/static/crs-logo.png"
+                alt="Cowley Road Studios"
+                className="hp-top-plate-img"
+                width="200"
+                height="74"
+              />
+            </a>
+            <div className="hp-top-plate-meta" aria-hidden="true">
+              <span className="hp-top-plate-meta-row">ID: CRS-CONSOLE-01</span>
+              <span className="hp-top-plate-meta-row">LOC: 51.7483° N, 1.2335° W</span>
+              <span className="hp-top-plate-meta-row">STATUS: NOMINAL</span>
+            </div>
+          </div>
 
           <div className="hp-machine-inner">
             {/* 3U — SCREEN — OXFORD LCD is the absolute top of the rack */}
