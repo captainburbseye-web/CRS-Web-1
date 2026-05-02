@@ -2668,11 +2668,58 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   stroke-linejoin: miter;
   opacity: 1;
   will-change: transform;
+  /* ── BOOT-UP DRAW (v5.31) ─────────────────────────────────────
+     stroke-dasharray covers the full ~2500 SVG-unit path length.
+     Offset starts at 2500 (fully hidden) and animates to 0 (fully
+     revealed) — the beam physically traces left→right on load.
+     JS voltage-jitter (translateY) lives on this element; CSS
+     animation lives on the parent <g> wrapper — zero conflict.
+  ──────────────────────────────────────────────────────────── */
+  stroke-dasharray: 2500;
+  stroke-dashoffset: 2500;
+  animation: draw-skyline 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 /* Electron beam sweep line */
 .hp-osc-beam {
   will-change: transform;
+}
+
+/* ── AMPLITUDE WRAPPER — owns the Y-axis beat (v5.31) ─────────
+   transform-origin: center 90% pins the pivot to the skyline
+   baseline (Y=90 in the 0-100 viewBox) so spires always grow
+   upward — never float away from the ground.
+   will-change promotes to its own compositor layer so the CSS
+   animation never battles the JS translateY on the child polyline.
+────────────────────────────────────────────────────────────── */
+.hp-osc-amplitude-wrapper {
+  transform-origin: center 90%;
+  will-change: transform;
+}
+
+/* ── KEYFRAME: BOOT-UP DRAW ────────────────────────────────── */
+@keyframes draw-skyline {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── KEYFRAME: AUDIO TRANSIENT (THE BEAT) ──────────────────── */
+@keyframes osc-strike {
+  0%   { transform: scaleY(1);    filter: brightness(1); }
+  20%  { transform: scaleY(1.6);  filter: brightness(1.8) drop-shadow(0 0 8px #1aff40); }
+  40%  { transform: scaleY(0.7);  filter: brightness(1); }
+  60%  { transform: scaleY(1.15); }
+  80%  { transform: scaleY(0.95); }
+  100% { transform: scaleY(1);    filter: brightness(1); }
+}
+
+/* ── HOVER TRIGGERS — :has() listens on the rack inner panel ──
+   Any .rack-btn hover OR any <a> hover inside .hp-machine-inner
+   fires a 0.35 s transient strike on the amplitude wrapper.
+   No JavaScript required — pure CSS reactivity.
+────────────────────────────────────────────────────────────── */
+.hp-machine-inner:has(.rack-btn:hover) .hp-osc-amplitude-wrapper,
+.hp-machine-inner:has(a:hover)         .hp-osc-amplitude-wrapper {
+  animation: osc-strike 0.35s ease-out forwards;
 }
 
 

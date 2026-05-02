@@ -1588,19 +1588,24 @@ function SkylineOscilloscope({ activeId }) {
 
         {/* ── ACTIVE CREST — red→amber→green gradient beam, 3px ────────
             Rides the roofline. Vertical gradient maps voltage to colour.
-            Drop-shadow glow — no filter SVG element needed on this pass.
+            Wrapped in hp-osc-amplitude-wrapper (v5.31):
+              • The <g> owns the CSS osc-strike Y-axis beat animation
+              • The <polyline> owns the draw-skyline boot trace + JS jitter
+            Separating them prevents CSS transform conflicts.
         ─────────────────────────────────────────────────────────── */}
-        <polyline
-          ref={activePathRef}
-          points={ptsToPolyline(OSC_PATHS.SKYLINE)}
-          fill="none"
-          stroke="url(#osc-beam-gradient)"
-          strokeWidth="3"
-          strokeLinecap="butt"
-          strokeLinejoin="miter"
-          filter="url(#osc-glow)"
-          className="hp-osc-active"
-        />
+        <g className="hp-osc-amplitude-wrapper">
+          <polyline
+            ref={activePathRef}
+            points={ptsToPolyline(OSC_PATHS.SKYLINE)}
+            fill="none"
+            stroke="url(#osc-beam-gradient)"
+            strokeWidth="3"
+            strokeLinecap="butt"
+            strokeLinejoin="miter"
+            filter="url(#osc-glow)"
+            className="hp-osc-active"
+          />
+        </g>
 
         {/* ── ELECTRON BEAM ─────────────────────────────────────────
             Vertical scan line. Beam colour follows the gradient zone
