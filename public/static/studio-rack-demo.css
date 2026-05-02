@@ -681,27 +681,31 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    One element. Dark metal. Sign fills wall-to-wall. No float.
    ═══════════════════════════════════════════════════════════════ */
 .hp-idle-faceplate {
-  display: block;                  /* normal flow — no float, no ghost */
+  display: block;
   width: 100%;
   background: #060c06;
-  border-top: 2px solid #2a2a2a;  /* top rack seam */
-  border-bottom: 2px solid #000;  /* bottom rack seam */
+  border-top: 2px solid #2a2a2a;
+  border-bottom: 2px solid #000;
   box-shadow:
     inset 0 2px 6px rgba(0,0,0,0.8),
     inset 0 -2px 4px rgba(0,0,0,0.6);
-  overflow: hidden;                /* nothing bleeds out */
-  /* no margin, no position, no z-index nonsense */
+  overflow: hidden;
 }
 
-/* Sign image — fills the plate, centered, no gaps at edges */
+/* picture must be block — inline default shrinks it to content width */
+.hp-idle-faceplate picture {
+  display: block;
+  width: 100%;
+  line-height: 0;   /* kill descender gap below img */
+}
+
+/* Sign image — wall-to-wall, no padding gaps */
 .hp-idle-sign {
   display: block;
   width: 100%;
   max-width: 100%;
   height: auto;
-  object-fit: contain;
-  /* Small top/bottom pad so it breathes inside the metal frame */
-  padding: 0.6rem 4%;
+  object-fit: fill;   /* stretch to fill — no letterbox gaps */
   filter: drop-shadow(0 2px 12px rgba(0,0,0,0.95));
 }
 
