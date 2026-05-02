@@ -1642,19 +1642,17 @@ function IdleState({ activeId = null }) {
         </div>
       </div>
 
-      {/* Unit 3 — Branding Plate: full-width, bolted to Infinite Rails at bolt-2/bolt-4 */}
-      <div className="hp-unit-branding">
-        <div className="hp-idle-faceplate">
-          <picture>
-            <source srcSet="/assets/crs-rack-sign.webp" type="image/webp" />
-            <img
-              src="/assets/crs-rack-sign.png"
-              alt="Cowley Road Studios"
-              className="hp-idle-sign"
-              fetchpriority="high"
-            />
-          </picture>
-        </div>
+      {/* Unit 3 — Branding Plate: bolted rack unit, sign fills wall-to-wall */}
+      <div className="hp-idle-faceplate">
+        <picture>
+          <source srcSet="/assets/crs-rack-sign.webp" type="image/webp" />
+          <img
+            src="/assets/crs-rack-sign.png"
+            alt="Cowley Road Studios"
+            className="hp-idle-sign"
+            fetchpriority="high"
+          />
+        </picture>
       </div>
 
       {/* Hero LCD strip — second amber display, full-width flush to rails */}
