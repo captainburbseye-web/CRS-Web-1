@@ -176,7 +176,7 @@ export const PodcastAVPage = () => (
             width="120" height="45"
           />
         </a>
-        <p class="subpage-seal-sub">EST. 2012 · OXFORD · ODRO ENGINEERING</p>
+        <p class="subpage-seal-sub">OXFORD · ODRO ENGINEERING</p>
       </div>
 
     </div>{/* /subpage-column */}

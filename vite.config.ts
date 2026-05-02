@@ -13,10 +13,26 @@ export default defineConfig(({ mode }) => {
         outDir: 'dist/static',
         emptyOutDir: false,
         manifest: true,
+        // v5.18: enable terser for better dead-code elimination
+        minify: 'terser',
+        terserOptions: {
+          compress: {
+            drop_console: true,   // strip console.log in prod
+            drop_debugger: true,
+            passes: 2,            // two-pass for smaller output
+          },
+          mangle: { toplevel: true },
+        },
         rollupOptions: {
           input: {
             'rack-entry': resolve(__dirname, 'src/client/rack-entry.tsx')
-          }
+          },
+          output: {
+            // Split React runtime into its own chunk so it caches independently
+            manualChunks: {
+              'react-vendor': ['react', 'react-dom'],
+            },
+          },
         }
       }
     }

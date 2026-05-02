@@ -73,17 +73,33 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link rel="dns-prefetch" href="https://square.link" />
         <link rel="preconnect" href="https://square.link" />
         
-        {/* Google Fonts - Hardware Typography */}
+        {/* Google Fonts — non-blocking load via media=print trick (v5.18)
+             1. media="print" makes browser fetch without blocking render
+             2. onload switches to media="all" so it applies once ready
+             3. <noscript> fallback for JS-disabled browsers
+             font-display=swap is baked into the Google Fonts URL */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700&family=Archivo+Black&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700&family=Archivo+Black&display=swap"
+          rel="stylesheet"
+          media="print"
+          onload="this.media='all'"
+        />
+        <noscript>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700&family=Archivo+Black&display=swap"
+            rel="stylesheet"
+          />
+        </noscript>
         
         {/* ============================================
              CRITICAL RACK IMAGES — PRELOAD FOR INSTANT LOAD
              Above-the-fold: Welcome rack + Header (WebP optimized)
              Order matches page layout (Welcome first, Header second)
              ============================================ */}
-        <link rel="preload" as="image" href="/static/crs-logo.png" />
+        {/* LCP image — highest fetch priority so browser grabs it in preload scan */}
+        <link rel="preload" as="image" href="/static/crs-logo.png" fetchpriority="high" />
         <link rel="preload" as="image" href="/static/cricket-logo.png" />
         <link rel="preload" as="image" href="/static/crs-wooden-sign-upscaled.png" />
         
@@ -151,8 +167,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
           </svg>
         </button>
         
-        {/* Rack Image Loader - HIGH PRIORITY - Load ASAP for lazy loading */}
-        <script src="/static/rack-image-loader.js"></script>
+        {/* Rack Image Loader — deferred; was synchronous (v5.18 fix) */}
+        <script src="/static/rack-image-loader.js" defer></script>
         
         {/* Performance Monitor - Critical CSS tracking (Phase 3B) */}
         <script src="/static/performance-monitor.js" defer></script>

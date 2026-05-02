@@ -297,7 +297,7 @@ signage.get('/', (c) => {
     <!-- SLIDE 2: Recording Services (CRS) -->
     <div class="slide slide-crs" data-duration="10000">
       <div class="slide-content">
-        <img src="/static/crs-rack-badge.png" alt="CRS" class="brand-logo" />
+        <picture><source srcset="/static/crs-rack-badge.webp" type="image/webp" /><img src="/static/crs-rack-badge.png" alt="CRS" class="brand-logo" /></picture>
         <h1 class="slide-title">RECORDING STUDIO</h1>
         <p class="slide-subtitle">Cowley Road · Full Production Facility</p>
         <p class="slide-body">

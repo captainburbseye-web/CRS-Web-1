@@ -662,6 +662,11 @@ app.get('/', (c) => {
   const manifestEntry = CLIENT_MANIFEST['src/client/rack-entry.tsx']
   const jsAsset = `/static/${manifestEntry.file}`
   const cssAsset = manifestEntry.css ? `/static/${manifestEntry.css[0]}` : null
+  // v5.18: vendor chunk split — resolve it from manifest imports
+  const vendorEntry = manifestEntry.imports?.[0]
+  const vendorAsset = vendorEntry
+    ? `/static/${(CLIENT_MANIFEST as Record<string, {file: string}>)[vendorEntry]?.file ?? ''}`
+    : null
   
   // Server-render the React component
   const rackHtml = renderToString(createElement(StudioServicesRack))
@@ -672,7 +677,7 @@ app.get('/', (c) => {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Recording Studio & Rehearsal Rooms in Oxford | Cowley Road Studios</title>
+  <title>Recording Studio &amp; Rehearsal Rooms in Oxford | Cowley Road Studios</title>
   <meta name="description" content="Cowley Road Studios at 118 Cowley Road, Oxford OX4 1JE, United Kingdom. Grassroots infrastructure for the Oxford music scene. Recording, rehearsal, Workshop Café enquiries, and ODRO Engineering support." />
   <meta name="keywords" content="recording studio oxford, rehearsal rooms oxford, music studio cowley road, cowley road studios, 118 cowley road oxford, workshop cafe oxford, odro engineering" />
   <link rel="canonical" href="https://cowleyroadstudios.com/" />
@@ -680,20 +685,29 @@ app.get('/', (c) => {
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/crs-logo.png" />
   <link rel="apple-touch-icon" href="/crs-logo.png" />
-  
+
+  <!-- LCP image preload — fetchpriority high so it starts in preload scan -->
+  <link rel="preload" as="image" href="/static/crs-logo.png" fetchpriority="high" />
+
   <!-- Hardware Physics CSS -->
-  <link href="/static/studio-rack-demo.css?v=5.10" rel="stylesheet" />
+  <link href="/static/studio-rack-demo.css" rel="stylesheet" />
+  ${cssAsset ? `<link rel="preload" as="style" href="${cssAsset}" onload="this.rel='stylesheet'" />` : ''}
   
-  <!-- Fonts -->
+  <!-- Fonts — non-blocking (media=print trick, v5.18) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" /></noscript>
+
+  <!-- Vendor chunk preload — browser fetches it in parallel with main entry -->
+  ${vendorAsset ? `<link rel="modulepreload" href="${vendorAsset}" />` : ''}
 </head>
 <body>
   <div id="studio-rack-root">${rackHtml}</div>
   
-  <!-- React Island Entry -->
-  <script type="module" src="${jsAsset}" defer></script>
+  <!-- React Island: vendor first so it's cached independently -->
+  ${vendorAsset ? `<script type="module" src="${vendorAsset}"></script>` : ''}
+  <script type="module" src="${jsAsset}"></script>
   
   <!-- ODRO Modal Trigger -->
   <script>
@@ -2511,7 +2525,11 @@ app.get('/studio-rack-demo', (c) => {
   const manifestEntry = CLIENT_MANIFEST['src/client/rack-entry.tsx']
   const jsAsset = `/static/${manifestEntry.file}`
   const cssAsset = manifestEntry.css ? `/static/${manifestEntry.css[0]}` : null
-  
+  const vendorEntry2 = manifestEntry.imports?.[0]
+  const vendorAsset2 = vendorEntry2
+    ? `/static/${(CLIENT_MANIFEST as Record<string, {file: string}>)[vendorEntry2]?.file ?? ''}`
+    : null
+
   // Server-render the React component
   const rackHtml = renderToString(createElement(StudioServicesRack))
   
@@ -2528,20 +2546,27 @@ app.get('/studio-rack-demo', (c) => {
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- LCP preload -->
+  <link rel="preload" as="image" href="/static/crs-logo.png" fetchpriority="high" />
   
   <!-- Hardware Physics CSS -->
-  <link href="/static/studio-rack-demo.css?v=5.10" rel="stylesheet" />
+  <link href="/static/studio-rack-demo.css" rel="stylesheet" />
   
-  <!-- Fonts -->
+  <!-- Fonts — non-blocking (v5.18) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" /></noscript>
+
+  ${vendorAsset2 ? `<link rel="modulepreload" href="${vendorAsset2}" />` : ''}
 </head>
 <body>
   <div id="studio-rack-root">${rackHtml}</div>
   
-  <!-- React Island Entry -->
-  <script type="module" src="${jsAsset}" defer></script>
+  <!-- React Island: vendor first -->
+  ${vendorAsset2 ? `<script type="module" src="${vendorAsset2}"></script>` : ''}
+  <script type="module" src="${jsAsset}"></script>
   
   <!-- ODRO Modal Trigger -->
   <script>

@@ -698,7 +698,10 @@ const CafePanel = ({ panel, animate }) => (
     <div className="hp-cafe-sign-header">
       <div className="hp-cafe-sign-inner">
         <span className="hp-cafe-eyebrow">
-          <img src="/static/workshop-cafe-logo.png" alt="" aria-hidden="true" className="hp-cafe-logo-mark" />
+          <picture>
+            <source srcSet="/static/workshop-cafe-logo.webp" type="image/webp" />
+            <img src="/static/workshop-cafe-logo.png" alt="" aria-hidden="true" className="hp-cafe-logo-mark" />
+          </picture>
           {panel.eyebrow}
         </span>
         <h2 className="hp-cafe-title">{panel.title}</h2>
@@ -1669,11 +1672,15 @@ function IdleState({ activeId = null }) {
 
       {/* Sign faceplate — rack-mounted, sits below the display */}
       <div className="hp-idle-faceplate">
-        <img
-          src="/assets/crs-rack-sign.png"
-          alt="Cowley Road Studios"
-          className="hp-idle-sign"
-        />
+        <picture>
+          <source srcSet="/assets/crs-rack-sign.webp" type="image/webp" />
+          <img
+            src="/assets/crs-rack-sign.png"
+            alt="Cowley Road Studios"
+            className="hp-idle-sign"
+            fetchpriority="high"
+          />
+        </picture>
       </div>
 
       {/* Hero LCD strip — second amber display, full-width flush to rails */}
