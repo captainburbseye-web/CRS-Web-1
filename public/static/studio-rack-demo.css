@@ -247,10 +247,19 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   margin-right: auto;
 }
 
-/* Top plate — breathing room BELOW it before the rack chassis */
+/* Top plate — breathing room above; gap is the 18vh vista of the neon café backdrop.
+   Layout: logo left, hardware metadata right (space-between).
+   The 18vh top padding IS the rack drop — hp-machine has no top margin. */
 .crs-brand-plate--top {
-  padding-top: 18vh;     /* RACK DROP — reveals café backdrop above the console */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* logo ← | → metadata */
+  max-width: min(1200px, 90vw);
+  width: 90vw;
+  margin: 0 auto;
+  padding-top: 18vh;               /* RACK DROP — reveals café backdrop above logo */
   padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 /* Bottom plate — breathing room ABOVE it after the rack chassis */
@@ -301,7 +310,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 
 /* Tablet */
 @media (min-width: 641px) and (max-width: 1088px) {
-  .crs-brand-plate {
+  .crs-brand-plate,
+  .crs-brand-plate--top {
     max-width: min(1200px, calc(100% - 2rem));
     width: calc(100% - 2rem);
   }
@@ -497,7 +507,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   flex: 1;
   max-width: min(1200px, 90vw);  /* v3.2 — wider rack, fills viewport on large screens */
   width: 90vw;
-  margin: 18vh auto 0;           /* v5.12 — 18vh gap reveals neon café background above rack */
+  margin: 0 auto 0;              /* v5.13 — gap comes from .crs-brand-plate--top padding-top:18vh above */
   padding: 0;
   display: flex;
   flex-direction: row;            /* rails left | centre-column | rails right */
@@ -510,17 +520,17 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   border-radius: 4px;
   position: relative;
 }
-/* Tablet: keep side margin, preserve vertical gap */
+/* Tablet: keep side margin */
 @media (max-width: 1088px) {
   .hp-machine {
-    margin: 18vh auto 0;
+    margin: 0 auto 0;
     max-width: min(1200px, calc(100% - 2rem));
     width: calc(100% - 2rem);
   }
 }
 @media (max-width: 599px) {
   .hp-machine {
-    margin: 10vh 0.25rem 0;       /* v5.12 — tighter gap on small screens */
+    margin: 0 0.25rem 0;          /* v5.13 — flush, gap from brand-plate padding-top:10vh */
     max-width: calc(100% - 0.5rem);
     width: calc(100% - 0.5rem);
   }
@@ -3072,18 +3082,8 @@ body.subpage::before {
 
 /* ═══════════════════════════════════════════════════════════════
    BRAND PLATE — anchored header, docked to rail cap (v5.8)
+   Layout merged into root .crs-brand-plate--top rule above.
    ═══════════════════════════════════════════════════════════════ */
-
-/* Brand plate — layout properties only (padding set at root rule) */
-.crs-brand-plate--top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: min(1200px, 90vw);
-  width: 90vw;
-  margin: 0 auto;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
 
 /* Hardware metadata block — right side of brand plate */
 .crs-brand-meta {
@@ -3193,25 +3193,9 @@ body.subpage::before {
    v5.9 — RAIL ALIGNMENT, LOGO DOCK, GLOBAL TYPOGRAPHY
    ═══════════════════════════════════════════════════════════════ */
 
-/* v5.9 logo size — 220px at desktop */
 
-/* Logo 220 px at all breakpoints ≥ 641 px */
-@media (min-width: 641px) {
-  .crs-brand-plate-img { width: 220px; }
-}
-
-/* hp-page: v5.12 — rack sits 18vh below top of page to reveal
-   the neon café background through the gap.
-   At <600 px the gap shrinks to 10vh to keep BOOK buttons in first fold. */
-.hp-machine {
-  margin-top: 18vh;
-}
-@media (max-width: 1088px) {
-  .hp-machine { margin-top: 18vh; }
-}
-@media (max-width: 599px) {
-  .hp-machine { margin-top: 10vh; }
-}
+/* v5.13 — margin-top removed from .hp-machine; gap is provided by
+   .crs-brand-plate--top { padding-top: 18vh / 10vh } above the chassis. */
 
 /* ── Global panel typography — #d1d1d1 on dark green ─────── */
 /* Body copy inside all panels and chassis units */
