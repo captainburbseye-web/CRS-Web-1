@@ -81,46 +81,19 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   position: relative;
 }
 
-/* ── LEFT PANEL — soundsystem (top) + cowley road sign (bottom) ─
-   Fixed, anchored hard-left, visible outside/behind the rack chassis.
-   Covers ~38 % viewport width so only the flanking portion shows.    */
+/* ── BACKGROUND — Workshop Café neon shopfront, full-width, fixed ─
+   Revealed in the ~18vh gap above the rack. Reads as a view through
+   the studio window onto Cowley Road. Parallax-ready (fixed).        */
 .hp-page::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 38vw;
-  height: 100%;
-  /* Two images stacked vertically — soundsystem top half, sign bottom */
-  background-image:
-    url('/static/images/bg-soundsystem.jpg'),
-    url('/static/images/bg-cowley-sign.jpg');
-  background-size: cover, cover;
-  background-position: right center, right 70%;
-  background-repeat: no-repeat, no-repeat;
-  filter: grayscale(75%) brightness(0.55);
-  opacity: 0.18;
-  z-index: 0;
-  pointer-events: none;
-}
-
-/* ── RIGHT PANEL — workshop café (top) + cricket sign (bottom) ──
-   Fixed, anchored hard-right.                                       */
-.hp-page::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 38vw;
-  height: 100%;
-  background-image:
-    url('/static/images/bg-workshop-cafe.jpg'),
-    url('/static/images/bg-cricket-sign.jpg');
-  background-size: cover, cover;
-  background-position: left center, left 70%;
-  background-repeat: no-repeat, no-repeat;
-  filter: grayscale(75%) brightness(0.55);
-  opacity: 0.18;
+  inset: 0;
+  background-image: url('/static/images/bg-cafe-neon.jpg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%) blur(1px) brightness(0.6);
+  opacity: 0.15;
   z-index: 0;
   pointer-events: none;
 }
@@ -128,15 +101,6 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 .hp-page > * {
   position: relative;
   z-index: 1;
-}
-
-/* ── On narrow screens collapse side panels — rack fills full width ─ */
-@media (max-width: 767px) {
-  .hp-page::before,
-  .hp-page::after {
-    width: 28vw;
-    opacity: 0.12;
-  }
 }
 
 /* ── ACTION BAR — REMOVED (QuickBar deleted) ─────────────── */
@@ -285,8 +249,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 
 /* Top plate — breathing room BELOW it before the rack chassis */
 .crs-brand-plate--top {
-  padding-top: 2.5rem;
-  padding-bottom: 2rem;   /* 4rem total vertical gap between plate and rack */
+  padding-top: 18vh;     /* RACK DROP — reveals café backdrop above the console */
+  padding-bottom: 1rem;
 }
 
 /* Bottom plate — breathing room ABOVE it after the rack chassis */
@@ -330,7 +294,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
     max-width: 100%;
     width: 100%;
   }
-  .crs-brand-plate--top    { padding-top: 1.5rem; padding-bottom: 1.25rem; }
+  .crs-brand-plate--top    { padding-top: 10vh; padding-bottom: 0.75rem; }
   .crs-brand-plate--bottom { padding-top: 1.25rem; padding-bottom: 1.25rem; }
   .crs-brand-plate-img { width: 140px; }
 }
@@ -533,7 +497,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   flex: 1;
   max-width: min(1200px, 90vw);  /* v3.2 — wider rack, fills viewport on large screens */
   width: 90vw;
-  margin: 0 auto 0;              /* v3.3 — BrandPlate handles vertical breathing room */
+  margin: 0 auto 0;              /* rack-drop applied via .crs-brand-plate--top padding */
   padding: 0;
   display: flex;
   flex-direction: row;            /* rails left | centre-column | rails right */
@@ -549,14 +513,14 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 /* Tablet: modest side margin */
 @media (max-width: 1088px) {
   .hp-machine {
-    margin: 1.5rem auto;
+    margin: 0 auto;
     max-width: min(1200px, calc(100% - 2rem));
     width: calc(100% - 2rem);
   }
 }
 @media (max-width: 640px) {
   .hp-machine {
-    margin: 0.5rem 0.25rem;
+    margin: 0 0.25rem;
     max-width: calc(100% - 0.5rem);
     width: calc(100% - 0.5rem);
   }
@@ -2700,36 +2664,13 @@ body.subpage {
 body.subpage::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 38vw;
-  height: 100%;
-  background-image:
-    url('/static/images/bg-soundsystem.jpg'),
-    url('/static/images/bg-cowley-sign.jpg');
-  background-size: cover, cover;
-  background-position: right center, right 70%;
-  background-repeat: no-repeat, no-repeat;
-  filter: grayscale(75%) brightness(0.50);
-  opacity: 0.15;
-  z-index: 0;
-  pointer-events: none;
-}
-body.subpage::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 38vw;
-  height: 100%;
-  background-image:
-    url('/static/images/bg-workshop-cafe.jpg'),
-    url('/static/images/bg-cricket-sign.jpg');
-  background-size: cover, cover;
-  background-position: left center, left 70%;
-  background-repeat: no-repeat, no-repeat;
-  filter: grayscale(75%) brightness(0.50);
-  opacity: 0.15;
+  inset: 0;
+  background-image: url('/static/images/bg-cafe-neon.jpg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  filter: grayscale(100%) blur(1px) brightness(0.6);
+  opacity: 0.12;
   z-index: 0;
   pointer-events: none;
 }
@@ -3130,10 +3071,8 @@ body.subpage::after {
    BRAND PLATE — anchored header, docked to rail cap (v5.8)
    ═══════════════════════════════════════════════════════════════ */
 
-/* Override: remove floating gap — dock plate to chassis top */
+/* Brand plate — layout properties only (padding set at root rule) */
 .crs-brand-plate--top {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -3251,14 +3190,7 @@ body.subpage::after {
    v5.9 — RAIL ALIGNMENT, LOGO DOCK, GLOBAL TYPOGRAPHY
    ═══════════════════════════════════════════════════════════════ */
 
-/* Logo docks flush to chassis top — remove floating gap */
-.crs-brand-plate--top {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-@media (max-width: 640px) {
-  .crs-brand-plate--top { padding-top: 0.35rem; padding-bottom: 0.35rem; }
-}
+/* v5.9 logo size — 220px at desktop */
 
 /* Logo 220 px at all breakpoints ≥ 641 px */
 @media (min-width: 641px) {
