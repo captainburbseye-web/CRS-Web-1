@@ -497,7 +497,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   flex: 1;
   max-width: min(1200px, 90vw);  /* v3.2 — wider rack, fills viewport on large screens */
   width: 90vw;
-  margin: 0 auto 0;              /* rack-drop applied via .crs-brand-plate--top padding */
+  margin: 18vh auto 0;           /* v5.12 — 18vh gap reveals neon café background above rack */
   padding: 0;
   display: flex;
   flex-direction: row;            /* rails left | centre-column | rails right */
@@ -510,17 +510,17 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   border-radius: 4px;
   position: relative;
 }
-/* Tablet: modest side margin */
+/* Tablet: keep side margin, preserve vertical gap */
 @media (max-width: 1088px) {
   .hp-machine {
-    margin: 0 auto;
+    margin: 18vh auto 0;
     max-width: min(1200px, calc(100% - 2rem));
     width: calc(100% - 2rem);
   }
 }
-@media (max-width: 640px) {
+@media (max-width: 599px) {
   .hp-machine {
-    margin: 0 0.25rem;
+    margin: 10vh 0.25rem 0;       /* v5.12 — tighter gap on small screens */
     max-width: calc(100% - 0.5rem);
     width: calc(100% - 0.5rem);
   }
@@ -947,11 +947,11 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   text-transform: uppercase;
   color: var(--offwhite-mute);
   flex-shrink: 0;
-  min-width: 74px;
+  min-width: 88px;  /* F-pattern: brand names always flush-left, never wrapping */
 }
 
 .hp-spec-val {
-  font-size: 0.86rem;
+  font-size: 1rem;  /* 18 px — body-copy size for gear list readability */
   color: var(--offwhite);
   line-height: 1.4;
 }
@@ -968,6 +968,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   align-items: center;
   gap: 0.45rem;
   padding: 0.62rem 1.2rem;
+  min-height: 48px;            /* WCAG 2.5.8 — 48 × 48 px minimum touch target */
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 700;
@@ -1092,6 +1093,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   align-items: flex-start;
   gap: 0.85rem;
   padding: 1.1rem 1.1rem 1.1rem 1rem;
+  min-height: 48px;            /* WCAG 2.5.8 — 48 × 48 px minimum touch target */
   background: var(--nettle-deep);
   border: 1px solid var(--nettle-lift);
   border-top: 2px solid var(--nettle-lift);
@@ -2860,6 +2862,7 @@ body.subpage::before {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.875rem 2rem;
+  min-height: 48px;            /* WCAG 2.5.8 — 48 × 48 px minimum touch target */
   background: var(--mustard);
   color: #000;
   font-family: var(--font-mono);
@@ -3197,17 +3200,17 @@ body.subpage::before {
   .crs-brand-plate-img { width: 220px; }
 }
 
-/* hp-page: rails start exactly at logo / BrandPlate level.
-   Remove any top margin on the rack chassis so it sits flush
-   beneath the brand plate with no vertical gap. */
+/* hp-page: v5.12 — rack sits 18vh below top of page to reveal
+   the neon café background through the gap.
+   At <600 px the gap shrinks to 10vh to keep BOOK buttons in first fold. */
 .hp-machine {
-  margin-top: 0;
+  margin-top: 18vh;
 }
 @media (max-width: 1088px) {
-  .hp-machine { margin-top: 0; }
+  .hp-machine { margin-top: 18vh; }
 }
-@media (max-width: 640px) {
-  .hp-machine { margin-top: 0; }
+@media (max-width: 599px) {
+  .hp-machine { margin-top: 10vh; }
 }
 
 /* ── Global panel typography — #d1d1d1 on dark green ─────── */
@@ -3330,4 +3333,185 @@ body.subpage::before {
 .hp-hero-h1,
 .hp-hero-sub,
 .hp-hero-signal { display: none !important; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   AUDIT v6.0 — Tier-1 Usability & Conversion Hardening
+   Implements: skeleton screens · touch targets · F-pattern nav ·
+               contrast lockdown · 48 px CTAs · desktop-first nav
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── SKELETON SHIMMER — perceived speed while OSS/panels load ── */
+@keyframes skeleton-sweep {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+/* OSC frame shows a phosphor-green shimmer until hp-page--powered */
+:not(.hp-page--powered) .hp-osc-frame {
+  background: linear-gradient(
+    90deg,
+    #0b190b 0%,
+    #0b190b 35%,
+    #112611 50%,
+    #0b190b 65%,
+    #0b190b 100%
+  );
+  background-size: 800px 100%;
+  animation: skeleton-sweep 1.6s ease-in-out infinite;
+}
+
+/* Spec rows shimmer before the panel animates in — wave stagger */
+.hp-display-panel--enter .hp-spec-row {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(58,78,58,0.22) 40%,
+    rgba(58,78,58,0.38) 50%,
+    rgba(58,78,58,0.22) 60%,
+    transparent 100%
+  );
+  background-size: 600px 100%;
+  animation: skeleton-sweep 1.1s ease-in-out 1;
+  border-radius: 2px;
+}
+/* 80 ms stagger per row — gives a left-to-right wave feel */
+.hp-display-panel--enter .hp-spec-row:nth-child(1) { animation-delay: 0.00s; }
+.hp-display-panel--enter .hp-spec-row:nth-child(2) { animation-delay: 0.08s; }
+.hp-display-panel--enter .hp-spec-row:nth-child(3) { animation-delay: 0.16s; }
+.hp-display-panel--enter .hp-spec-row:nth-child(4) { animation-delay: 0.24s; }
+.hp-display-panel--enter .hp-spec-row:nth-child(5) { animation-delay: 0.32s; }
+.hp-display-panel--enter .hp-spec-row:nth-child(6) { animation-delay: 0.40s; }
+
+/* ── DESKTOP NAV — always-visible button strip ─────────────────
+   The rack controls ARE the navigation. Ensure they read as a
+   coherent nav bar on all screen sizes: equal weight, scannable.
+   No hamburger. No hidden menus. Physical buttons only.
+─────────────────────────────────────────────────────────────── */
+.hp-controls-buttons {
+  /* Ensure equal-width columns — nav bars need visual balance */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+}
+
+/* Desktop: lock to 4 equal columns (matches NAV_ORDER length) */
+@media (min-width: 640px) {
+  .hp-controls-buttons {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Rack button label — scannable size for studio environment */
+.rack-btn-label {
+  font-size: clamp(0.78rem, 1.4vw, 1.05rem);  /* ≥14px → ~19px at 1440px */
+  letter-spacing: 0.07em;
+}
+
+/* ── GEAR LIST — F-PATTERN ALIGNMENT ──────────────────────────
+   Musicians scan left for brand names (SSL, Neumann, Adam Audio).
+   Key column must be flush-left, bold, and never wrap.
+   Value column reads naturally on the next visual stop.
+─────────────────────────────────────────────────────────────── */
+.hp-specs {
+  /* Single column on mobile, 2-col on desktop — F scan reads top-to-bottom */
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .hp-specs {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+.hp-spec-row {
+  /* Baseline align: key sits at cap-height of value text */
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+/* Boost contrast on spec value text — brand names are primary scan targets */
+.hp-spec-val {
+  color: var(--offwhite);   /* full white — not dimmed */
+  font-weight: 500;
+}
+
+/* ── CTA TOUCH TARGETS — 48×48 px minimum (WCAG 2.5.8) ────────
+   Already applied via min-height above; add explicit min-width
+   for buttons that might be narrower than 48px on mobile.
+─────────────────────────────────────────────────────────────── */
+.hp-cta {
+  min-width: 48px;
+}
+
+/* Inline "Book Recording" primary CTA inside panels — boost prominence */
+.hp-cta--primary {
+  font-size: 0.82rem;
+  padding: 0.75rem 1.5rem;
+  letter-spacing: 0.08em;
+}
+
+/* ── RACK BUTTON — WCAG focus ring hardening ───────────────────
+   The existing outline fires on focus-visible only;
+   add a more visible ring for keyboard users in studio environments.
+─────────────────────────────────────────────────────────────── */
+.rack-btn:focus-visible {
+  outline: 3px solid var(--mustard);
+  outline-offset: 2px;
+  z-index: 3;
+}
+
+/* ── CONTRAST INSURANCE — secondary / muted text ───────────────
+   offwhite-mute #a8a498 on nettle #243024 = 5.53:1 (PASS).
+   Bump just the eyebrow and spec-key which are small text
+   to ensure 4.5:1 at small sizes per WCAG 1.4.3.
+─────────────────────────────────────────────────────────────── */
+.hp-panel-eyebrow {
+  color: var(--mustard);  /* 5.69:1 on nettle — replaces near-invisible mute */
+  opacity: 1;             /* was 0.75 — remove opacity loss on small text */
+}
+
+/* ── SEMANTIC NAV LABEL — screen reader clarity ────────────────
+   The role="tablist" aria-label is set in JSX.
+   Ensure the status strip reads as status, not nav.
+─────────────────────────────────────────────────────────────── */
+.hp-controls-status {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+}
+
+/* ── LOCATION BUTTON TOUCH TARGET — min-width ──────────────────
+   On mobile the two-column grid can produce narrow buttons;
+   guarantee the 48px horizontal minimum.
+─────────────────────────────────────────────────────────────── */
+.hp-loc-btn {
+  min-width: 48px;
+}
+
+/* ── SUBPAGE FORM — 3-field layout ────────────────────────────
+   Rule of Three: Name → Service → Project Notes.
+   Applied via selector — any hidden 4th+ field is display:none.
+─────────────────────────────────────────────────────────────── */
+.contact-form--rule-of-three .subpage-form-group--hide {
+  display: none;
+}
+
+/* ── DOCUMENTATION UNIT — recessed panel text contrast ─────────
+   All body copy inside the doc bay must hit 4.5:1.
+   Overrides any residual rgba colour that fails at opacity.
+─────────────────────────────────────────────────────────────── */
+.hp-documentation-unit .hp-trust-tag,
+.hp-documentation-unit .hp-trust-address,
+.hp-documentation-unit .hp-trust-links a,
+.hp-documentation-unit .hp-spec-body p {
+  color: #d1d1d1;  /* 9.03:1 on nettle — well above 4.5:1 */
+}
+
+/* ── REDUCED MOTION — respect user preference ──────────────────
+   Skeleton animations stop; transitions collapse to instant.
+─────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  :not(.hp-page--powered) .hp-osc-frame,
+  .hp-display-panel--enter .hp-spec-row {
+    animation: none;
+    background: #0b190b;
+  }
+}
 

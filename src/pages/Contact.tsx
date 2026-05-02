@@ -136,10 +136,26 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
           )}
 
           <div class="subpage-recessed">
+            {/* Rule of Three — exactly three fields: Name · Service · Project Notes */}
             <form action="/api/contact" method="POST" style="display:grid; gap:1.25rem;">
 
+              {/* Field 1 — Name */}
               <div class="subpage-form-group">
-                <label for="service" class="subpage-label">Enquiry Type</label>
+                <label for="name" class="subpage-label">Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  autocomplete="name"
+                  class="subpage-input"
+                  placeholder="Your name or band / company"
+                />
+              </div>
+
+              {/* Field 2 — Service */}
+              <div class="subpage-form-group">
+                <label for="service" class="subpage-label">Service *</label>
                 <select id="service" name="service" required class="subpage-select">
                   {SERVICE_OPTIONS.map(o => (
                     <option value={o.value} selected={o.value === selectedService}>{o.label}</option>
@@ -147,24 +163,17 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
                 </select>
               </div>
 
+              {/* Field 3 — Project Notes (replaces separate date + message fields) */}
               <div class="subpage-form-group">
-                <label for="name" class="subpage-label">Name *</label>
-                <input type="text" id="name" name="name" required class="subpage-input" />
-              </div>
-
-              <div class="subpage-form-group">
-                <label for="email" class="subpage-label">Email *</label>
-                <input type="email" id="email" name="email" required class="subpage-input" />
-              </div>
-
-              <div class="subpage-form-group">
-                <label for="phone" class="subpage-label">Phone</label>
-                <input type="tel" id="phone" name="phone" class="subpage-input" />
-              </div>
-
-              <div class="subpage-form-group">
-                <label for="message" class="subpage-label">Message *</label>
-                <textarea id="message" name="message" rows="6" required class="subpage-textarea"></textarea>
+                <label for="notes" class="subpage-label">Date / Project Notes *</label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  rows="6"
+                  required
+                  class="subpage-textarea"
+                  placeholder="Preferred dates, project details, any questions…"
+                ></textarea>
               </div>
 
               <button type="submit" class="subpage-cta subpage-cta--full">
@@ -232,7 +241,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
               width="120" height="45"
             />
           </a>
-          <p class="subpage-seal-sub">EST. 2012 · OXFORD · ODRO ENGINEERING</p>
+          <p class="subpage-seal-sub">OXFORD · ODRO ENGINEERING</p>
         </div>
 
       </div>{/* /subpage-column */}
