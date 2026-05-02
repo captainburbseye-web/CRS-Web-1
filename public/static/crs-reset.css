@@ -2181,199 +2181,30 @@ a[href*="/contact"] {
 }
 
 /* ========================================
-   REASON RACK UI SYSTEM
-   Propellerhead-style vertical rack interface
+   REASON RACK UI SYSTEM — DECOMMISSIONED v5.28
+   Ghost body rails and fake rack ears removed.
+   The v5 chassis uses .hp-machine + .srd-rail for real rails.
+   body::before / body::after were covering sign edges (z-index:10).
    ======================================== */
 
-/* RACK RAILS - Vertical mounting strips on viewport sides */
+/* Kill ghost body rails — no content rendered */
 body::before,
 body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 32px;
-  background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
-  z-index: 10;
-  pointer-events: none;
-  
-  /* Mounting hole pattern */
-  background-image: 
-    repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 48px,
-      rgba(0, 0, 0, 0.5) 48px,
-      rgba(0, 0, 0, 0.5) 50px
-    ),
-    repeating-radial-gradient(
-      circle at center,
-      rgba(0, 0, 0, 0.8) 0,
-      rgba(0, 0, 0, 0.8) 3px,
-      transparent 3px,
-      transparent 50px
-    );
-  background-position: 0 25px;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+  content: none !important;
+  display: none !important;
 }
 
-body::before {
-  left: 0;
-  border-right: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-body::after {
-  right: 0;
-  border-left: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-/* RACK MODULE SECTIONS - Convert sections to rack panels */
-.crs-section,
-.section-dark,
-.cafe-heartbeat {
-  position: relative;
-  max-width: var(--crs-chassis-width); /* Unified chassis width */
-  width: calc(100% - 112px); /* Account for rail spacing (56px each side) */
-  margin: 24px auto; /* Center with vertical spacing */
-  padding: 2.5rem 3.5rem;
-  background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
-  border: 2px solid #1a1a1a;
-  border-radius: 3px;
-  
-  /* Dramatic rack panel depth */
-  box-shadow: 
-    inset 0 2px 0 rgba(255, 255, 255, 0.08),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.9),
-    inset 2px 0 0 rgba(255, 255, 255, 0.02),
-    inset -2px 0 0 rgba(0, 0, 0, 0.5),
-    0 8px 16px rgba(0, 0, 0, 0.6),
-    0 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-/* RACK EARS - Chunkier mounting brackets */
+/* Kill legacy pseudo-element rack ears — superseded by .srd-rail */
 .crs-section::before,
 .crs-section::after,
 .section-dark::before,
 .section-dark::after,
 .cafe-heartbeat::before,
-.cafe-heartbeat::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px; /* Increased from 24px */
-  height: 90%;
-  background: linear-gradient(to right, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
-  border: 2px solid #333;
-  border-radius: 3px;
-  box-shadow: 
-    inset 0 2px 1px rgba(255, 255, 255, 0.15),
-    inset 0 -2px 1px rgba(0, 0, 0, 0.8),
-    3px 0 6px rgba(0, 0, 0, 0.5);
-}
-
-.crs-section::before,
-.section-dark::before,
-.cafe-heartbeat::before {
-  left: -32px; /* Adjusted for wider ears */
-}
-
-.crs-section::after,
-.section-dark::after,
-.cafe-heartbeat::after {
-  right: -32px;
-}
-
-/* MOUNTING SCREWS - Larger, more visible */
-.crs-section::before,
-.section-dark::before,
-.cafe-heartbeat::before {
-  background-image: 
-    radial-gradient(circle at 16px 16px, #444 0, #444 5px, #222 5px, #222 6px, transparent 6px),
-    radial-gradient(circle at 16px calc(100% - 16px), #444 0, #444 5px, #222 5px, #222 6px, transparent 6px);
-  background-repeat: no-repeat;
-}
-
-.crs-section::after,
-.section-dark::after,
-.cafe-heartbeat::after {
-  background-image: 
-    radial-gradient(circle at 16px 16px, #444 0, #444 5px, #222 5px, #222 6px, transparent 6px),
-    radial-gradient(circle at 16px calc(100% - 16px), #444 0, #444 5px, #222 5px, #222 6px, transparent 6px);
-  background-repeat: no-repeat;
-}
-
-/* HERO RACK MODULE - Darker logo panel */
-.crs-hero {
-  position: relative;
-  max-width: var(--crs-chassis-width); /* Unified chassis width */
-  width: calc(100% - 112px); /* Account for rail spacing */
-  margin: 24px auto; /* Center with vertical spacing */
-  padding: 1.5rem 3.5rem;
-  background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
-  border: 2px solid #1a1a1a;
-  border-radius: 3px;
-  box-shadow: 
-    inset 0 2px 0 rgba(255, 255, 255, 0.08),
-    inset 0 -2px 0 rgba(0, 0, 0, 0.9),
-    0 8px 16px rgba(0, 0, 0, 0.6);
-}
-
-/* Hero rack ears - Chunkier to match */
+.cafe-heartbeat::after,
 .crs-hero::before,
 .crs-hero::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px; /* Increased */
-  height: 90%;
-  background: linear-gradient(to right, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
-  border: 2px solid #333;
-  border-radius: 3px;
-  box-shadow: 
-    inset 0 2px 1px rgba(255, 255, 255, 0.15),
-    inset 0 -2px 1px rgba(0, 0, 0, 0.8),
-    3px 0 6px rgba(0, 0, 0, 0.5);
-  
-  /* Larger screw holes */
-  background-image: 
-    radial-gradient(circle at 16px 20px, #444 0, #444 5px, #222 5px, #222 6px, transparent 6px),
-    radial-gradient(circle at 16px calc(100% - 20px), #444 0, #444 5px, #222 5px, #222 6px, transparent 6px);
-  background-repeat: no-repeat;
-}
-
-.crs-hero::before { left: -32px; } /* Adjusted */
-.crs-hero::after { right: -32px; }
-
-/* MOBILE RESPONSIVE - Hide rack rails on small screens */
-@media (max-width: 768px) {
-  body::before,
-  body::after {
-    display: none;
-  }
-  
-  .crs-section,
-  .section-dark,
-  .cafe-heartbeat,
-  .crs-hero {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-  
-  /* Hide rack ears on mobile */
-  .crs-section::before,
-  .crs-section::after,
-  .section-dark::before,
-  .section-dark::after,
-  .cafe-heartbeat::before,
-  .cafe-heartbeat::after,
-  .crs-hero::before,
-  .crs-hero::after {
-    display: none;
-  }
+  content: none !important;
+  display: none !important;
 }
 
 /* ========================================
@@ -2533,30 +2364,8 @@ body {
   font-size: 16px;
 }
 
-/* ==== RACK RAILS (CONTEXT) ==== */
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 24px;
-  background: linear-gradient(90deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
-  z-index: 100;
-  pointer-events: none;
-  
-  /* Mounting holes (subtle) */
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 48px,
-    rgba(0, 0, 0, 0.3) 48px,
-    rgba(0, 0, 0, 0.3) 50px
-  );
-}
-
-body::before { left: 0; }
-body::after { right: 0; }
+/* ==== RACK RAILS (CONTEXT) — DECOMMISSIONED v5.28 ==== */
+/* Second ghost rail block removed — body::before/after killed above */
 
 /* ==== CONTAINER ==== */
 .rack-container {
@@ -2759,10 +2568,7 @@ body.wsc-mode .module-content {
 
 /* ==== RESPONSIVE ==== */
 @media (max-width: 768px) {
-  body::before,
-  body::after {
-    display: none;
-  }
+  /* body::before/after already killed above */
   
   .rack-container {
     padding: 20px 16px;
