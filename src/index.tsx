@@ -2958,9 +2958,9 @@ app.get('/digital-pulse', (c) => {
 })
 
 // SIGNAGE V2 — YODECK / KIOSK DISPLAY
-// Self-contained: zero website CSS/JS. Route: /signage/v2
+// Self-contained: zero website CSS/JS. Route: /signage-v2
 // Text scaled ×1.333 vs source. Safe to tune in Yodeck at any viewport.
-app.get('/signage/v2', (c) => {
+app.get('/signage-v2', (c) => {
   return c.html(`<!doctype html>
 <html lang="en-GB">
 <head>
