@@ -715,10 +715,11 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 /* Sign image — contained at natural aspect ratio, inset from edges */
 .hp-idle-sign {
   display: block;
-  max-width: 78%;    /* v5.17 — sign fills ~78% of the cavity width; inset on both sides */
+  max-width: 78%;    /* v5.19 — centred in flex faceplate */
   width: 78%;
   height: auto;
-  object-fit: contain;   /* preserve aspect ratio — no squashing */
+  object-fit: contain;
+  margin: 0 auto;          /* v5.19 FIX 2: dead-centre between rails */
   vertical-align: top;
   filter: drop-shadow(0px 3px 8px rgba(0,0,0,0.90));
 }
@@ -911,7 +912,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 @media (max-width: 600px) {
   /* v5.17 — faceplate keeps inset padding; sign stays contained */
   .hp-idle-faceplate { padding: 0.4rem 4%; }
-  .hp-idle-sign      { max-width: 88%; width: 88%; }
+  .hp-idle-sign      { max-width: 88%; width: 88%; margin: 0 auto; }
   .hp-idle-display   { padding: 0; }
   .hp-idle-meters    { gap: 1rem; padding: 1rem 1.25rem; }
 }
@@ -1696,28 +1697,28 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   background: #2a2a2a;
 }
 
-/* Button grid — same columns/gap/padding as .hp-action-bar-grid for vertical alignment */
+/* Button grid — v5.19: 5-button switchboard */
 .hp-controls-buttons {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 6px;                  /* v3.2 — wider inter-button gap */
-  padding: 1.5rem 1.8rem 1.75rem;  /* v3.2 — more generous metal padding */
+  gap: 5px;                         /* v5.19 — slightly tighter to fit 5 cleanly */
+  padding: 1.25rem 1.4rem 1.5rem;   /* v5.19 — trimmed padding for 5-button row */
   background: transparent;
 }
 
-/* Tablet — 3 per row, 2-row grid */
+/* Tablet — 3+2 layout */
 @media (max-width: 900px) {
   .hp-controls-buttons {
     grid-template-columns: repeat(3, 1fr);
     gap: 4px;
-    padding: 1.1rem 1rem 1.25rem;
+    padding: 1rem 0.8rem 1.1rem;
   }
 }
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .hp-controls-buttons {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2+2+1 on narrow screens */
     gap: 3px;
-    padding: 0.75rem 0.5rem 1rem;
+    padding: 0.75rem 0.4rem 0.9rem;
   }
 }
 
@@ -1732,10 +1733,10 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 1.6rem 1.2rem 1.65rem;  /* v3.2 — taller, more imposing button */
-  margin: 4px;
-  min-height: 130px;               /* v3.2 — was 110px */
+  gap: 8px;
+  padding: 1.3rem 0.7rem 1.35rem;  /* v5.19 — compressed for 5-button row */
+  margin: 3px;
+  min-height: 110px;               /* v5.19 — was 130px; tighter for 5-col */
 
   /* MUSTARD default state — warm neon standby */
   background:

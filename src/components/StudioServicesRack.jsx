@@ -358,8 +358,11 @@ const Led = ({ color = 'green', on = true, pulse = false }) => (
    LOCATION ROUTING — which services need a location step
    ═══════════════════════════════════════════════════════════════ */
 
-/* Services offered at both sites require a location pick */
+/* Services offered at both sites require a location pick (CRS vs Cricket) */
 const MULTI_LOCATION_SERVICES = new Set(['recording', 'rehearsal', 'controlroom']);
+
+/* Services that show a booth/space sub-menu (no location step) */
+const BOOTH_SERVICES = new Set(['boothhire']);
 
 /* Location meta */
 const LOCATIONS = {
@@ -508,8 +511,17 @@ const PANELS = {
     ],
   },
 
+  boothhire: {
+    id: 'boothhire', label: 'BOOTH HIRE', theme: 'dark',
+    eyebrow: 'Booth Hire · Cowley Road',
+    title: 'Booth Hire',
+    body: 'Two dedicated production booths. Book direct.',
+    specs: [],
+    ctas: [],
+  },
+
   cafe: {
-    id: 'cafe', label: 'Workshop Café / Venue', theme: 'warm',
+    id: 'cafe', label: 'CAFÉ & VENUE', theme: 'warm',
     eyebrow: 'Dry Hire · Solo Workspace',
     title: 'Workshop Café & Venue',
     body: 'A quiet sanctuary for deep work and focused sessions. High-speed Wi-Fi, power, great coffee. Also available for private hire: showcases, workshops and community events.',
@@ -524,29 +536,10 @@ const PANELS = {
       { label: 'Café & Venue Enquiry', href: URLS.ENQUIRE_WORKSHOP, primary: true, location: null },
     ],
   },
-
-  spacehire: {
-    id: 'spacehire', label: 'Space Hire', theme: 'dark',
-    eyebrow: 'Room Booking — Cowley Road',
-    title: 'Choose your space',
-    body: 'Four distinct environments. Book direct — no middleman.',
-    specs: [],
-    ctas: [],
-  },
-
-  contactus: {
-    id: 'contactus', label: 'Contact Us', theme: 'dark',
-    eyebrow: 'COMMS BAY',
-    title: 'Get in touch',
-    body: 'Venue hire, AV support, repairs, and general enquiries.',
-    specs: [],
-    ctas: [
-      { label: 'Open Comms Bay →', href: URLS.CONTACT, primary: true, location: null },
-    ],
-  },
 };
 
-const NAV_ORDER = ['recording', 'spacehire', 'cafe', 'contactus'];
+/* v5.19 — five top-level service buttons: service-first, location second */
+const NAV_ORDER = ['recording', 'rehearsal', 'controlroom', 'boothhire', 'cafe'];
 
 /* Page route for each service */
 const PAGE_ROUTES = {
@@ -871,53 +864,38 @@ const StandardPanel = ({ panel }) => (
   </div>
 );
 
-/* ─── Space Hire sub-menu panel ───────────────────────────── */
-const SPACE_HIRE_ROOMS = [
-  {
-    id:    'controlroom',
-    label: 'CONTROL ROOM',
-    sub:   'Pro Mixing & Mastering',
-    href:  URLS.CONTROL_ROOM_BOOK,
-    icon:  '⊕',
-  },
+/* ─── Booth Hire sub-menu panel (Big Booth + Small Booth only) ─ */
+const BOOTH_HIRE_ROOMS = [
   {
     id:    'bigbooth',
-    label: 'PODCAST / BIG BOOTH',
-    sub:   'Group Production & Rehearsal',
+    label: 'BIG BOOTH',
+    sub:   'Group Production',
     href:  URLS.BIG_BOOTH_BOOK,
     icon:  '◈',
   },
   {
     id:    'smallbooth',
-    label: 'MEETING / SMALL BOOTH',
-    sub:   'Solo Workspace & Remote Calls',
+    label: 'SMALL BOOTH',
+    sub:   'Solo Workspace / Remote Calls',
     href:  URLS.SMALL_BOOTH_BOOK,
     icon:  '◇',
   },
-  {
-    id:    'venue',
-    label: 'VENUE / EVENTS',
-    sub:   'Workshop Café enquiries',
-    href:  URLS.ENQUIRE_WORKSHOP,
-    icon:  '◉',
-    internal: true,
-  },
 ];
 
-const SpaceHirePanel = ({ onBack }) => (
-  <div className="hp-panel-body" role="tabpanel" id="panel-spacehire">
+const BoothHirePanel = ({ onBack }) => (
+  <div className="hp-panel-body" role="tabpanel" id="panel-boothhire">
     <div className="hp-panel-header">
-      <span className="hp-panel-eyebrow">ROOM BOOKING — COWLEY ROAD</span>
-      <h2 className="hp-panel-title">Choose your space</h2>
-      <p className="hp-panel-desc">Four distinct environments. Book direct — no middleman.</p>
+      <span className="hp-panel-eyebrow">BOOTH HIRE — COWLEY ROAD</span>
+      <h2 className="hp-panel-title">Booth Hire</h2>
+      <p className="hp-panel-desc">Two dedicated production booths. Book direct — no middleman.</p>
     </div>
     <div className="hp-spacehire-grid">
-      {SPACE_HIRE_ROOMS.map(room => (
+      {BOOTH_HIRE_ROOMS.map(room => (
         <a
           key={room.id}
           href={room.href}
-          target={room.internal ? undefined : '_blank'}
-          rel={room.internal ? undefined : 'noopener noreferrer'}
+          target="_blank"
+          rel="noopener noreferrer"
           className="hp-spacehire-card"
         >
           <span className="hp-spacehire-icon" aria-hidden="true">{room.icon}</span>
@@ -926,12 +904,6 @@ const SpaceHirePanel = ({ onBack }) => (
           <span className="hp-spacehire-arrow" aria-hidden="true">→</span>
         </a>
       ))}
-    </div>
-    <div className="hp-panel-ctas" style={{ marginTop: '1rem' }}>
-      <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer" className="hp-cta hp-cta--primary">
-        <span>Book Recording Studio</span>
-        <span className="hp-cta-arrow" aria-hidden="true">→</span>
-      </a>
     </div>
   </div>
 );
@@ -1043,8 +1015,8 @@ const DisplayPanel = ({ activeId, locationId, animate, onBack }) => {
 
       {isCafe ? (
         <CafePanel panel={panel} animate={animate} />
-      ) : panel.id === 'spacehire' ? (
-        <SpaceHirePanel onBack={() => {}} />
+      ) : panel.id === 'boothhire' ? (
+        <BoothHirePanel onBack={() => {}} />
       ) : panel.id === 'contactus' ? (
         <ContactUsPanel />
       ) : isRehearsalLocated && rehearsalLoc ? (
@@ -1718,7 +1690,7 @@ const ServiceControls = ({ active, onSelect }) => (
             id={id}
             label={p.label}
             isActive={active === id}
-            isCafe={id === 'cafe'}
+            isCafe={id === 'cafe' || id === 'boothhire'}
             onSelect={onSelect}
           />
         );
@@ -1873,13 +1845,17 @@ export default function StudioServicesRack() {
     setActiveId(next);
     getEngine().setPreset(next);
 
-    if (MULTI_LOCATION_SERVICES.has(next)) {
-      // Multi-site service → show location picker
+    if (next === 'cafe') {
+      // Café & Venue — direct navigation, no sub-menu (v5.19)
+      window.location.href = URLS.ENQUIRE_WORKSHOP;
+      return;
+    } else if (MULTI_LOCATION_SERVICES.has(next)) {
+      // Multi-site service → show location picker (CRS vs Cricket)
       setLocationId(null);
       setShowLocPick(true);
       pushHash(next, null);
     } else {
-      // Single-site → go straight to panel
+      // Single-site / booth sub-menu → go straight to panel
       setLocationId(null);
       setShowLocPick(false);
       pushHash(next, null);
@@ -1914,7 +1890,8 @@ export default function StudioServicesRack() {
     pushHash(activeId, null);
   }, [activeId, pushHash]);
 
-  const isCafe = activeId === 'cafe';
+  // cafe button navigates away directly so activeId is never 'cafe' at render time
+  const isCafe = false;
 
   /* What to show in the screen slot */
   const screenContent = (() => {
