@@ -92,8 +92,12 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   position: fixed;
   inset: 0;
   background-image: url('/static/images/bg-cafe-neon.jpg');
-  background-size: cover;            /* fill — no letterbox gaps */
-  background-position: center 5vh;  /* sign (peaks at 30–60% of img) lands in 18vh gap */
+  /* Image is 869×214px — very wide, shallow strip.
+     100% width keeps it full-bleed; auto height preserves aspect ratio.
+     The sign sits 30–60% down the image, so at 100vw width the strip
+     is ~25vh tall. background-position top centres it in the 18vh gap. */
+  background-size: 100% auto;
+  background-position: center top;
   background-repeat: no-repeat;
   background-attachment: fixed;
   filter: grayscale(100%) blur(2px) brightness(0.55);
@@ -706,9 +710,11 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 .hp-idle-sign {
   display: block;
   width: 100%;
-  max-width: 100%;
+  max-width: none;    /* kill any global img max-width reset */
   height: auto;
-  object-fit: fill;   /* stretch to fill — no letterbox gaps */
+  object-fit: fill;
+  padding: 0;
+  margin: 0;
   filter: drop-shadow(0 2px 12px rgba(0,0,0,0.95));
 }
 
@@ -898,9 +904,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 
 @media (max-width: 600px) {
-  /* v5.17 — faceplate keeps inset padding; sign stays contained */
   .hp-idle-faceplate { border-top-width: 1px; }
-  .hp-idle-sign      { padding: 0.4rem 3%; }
+  .hp-idle-sign      { padding: 0; }  /* no side gaps on mobile — wall to wall */
   .hp-idle-display   { padding: 0; }
   .hp-idle-meters    { gap: 1rem; padding: 1rem 1.25rem; }
 }
@@ -1694,8 +1699,15 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   background: transparent;
 }
 
-/* Tablet — 3+2 layout */
-@media (max-width: 900px) {
+/* Tablet — hold 5 columns down to 520px, then drop to 3 */
+@media (max-width: 900px) and (min-width: 521px) {
+  .hp-controls-buttons {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+    padding: 0.9rem 0.6rem 1rem;
+  }
+}
+@media (max-width: 520px) {
   .hp-controls-buttons {
     grid-template-columns: repeat(3, 1fr);
     gap: 4px;
