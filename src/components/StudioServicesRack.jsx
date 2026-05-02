@@ -453,10 +453,9 @@ const PANELS = {
       { k: 'Mics',       v: 'U87 · C414 · SM7B · SM58' },
       { k: 'Rooms',      v: 'Live room + 3 isolation booths' },
     ],
-    ctas: [
-      { label: 'Book — Cowley Road',  href: URLS.RECORDING_BOOK,         primary: true,  location: 'crs'     },
-      { label: 'Book — Cricket Road', href: URLS.CRICKET_RECORDING_BOOK,  primary: false, location: 'cricket' },
-    ],
+    // No CTAs here — user must select location first.
+    // Booking links live in PANEL_LOCATION_OVERRIDES.recording.{crs,cricket}.
+    ctas: [],
   },
 
   rehearsal: {
@@ -489,10 +488,9 @@ const PANELS = {
       { k: 'Patchbay',    v: 'Balanced patch-bay access — Ghielmetti matrix' },
       { k: 'Monitoring',  v: 'Adam Audio · NS-10 · Genelec system + sub' },
     ],
-    ctas: [
-      { label: 'Hire — Cowley Road',  href: URLS.CONTROL_ROOM_BOOK,          primary: true,  location: 'crs'     },
-      { label: 'Hire — Cricket Road', href: URLS.CRICKET_CONTROL_ROOM_BOOK,   primary: false, location: 'cricket' },
-    ],
+    // No CTAs here — user must select location first (Cowley Road or Cricket Road).
+    // Booking links are in PANEL_LOCATION_OVERRIDES.controlroom.{crs,cricket}.
+    ctas: [],
   },
 
   repairs: {
