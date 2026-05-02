@@ -2957,6 +2957,303 @@ app.get('/digital-pulse', (c) => {
   )
 })
 
+// SIGNAGE V2 — YODECK / KIOSK DISPLAY
+// Self-contained: zero website CSS/JS. Route: /signage/v2
+// Text scaled ×1.333 vs source. Safe to tune in Yodeck at any viewport.
+app.get('/signage/v2', (c) => {
+  return c.html(`<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRS Signage V2</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/signage/signage-v2.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup" aria-label="Cowley Road Studios brand mark">
+        <div class="brand-mark">
+          <span>CR</span>
+          <span>S</span>
+        </div>
+        <div class="brand-copy">
+          <span class="brand-name">Cowley Road Studios</span>
+          <span class="brand-sub">Oxford creative infrastructure</span>
+        </div>
+      </div>
+      <div class="system-strip">
+        <span class="signal-dot" aria-hidden="true"></span>
+        <span id="system-status">Channel live · reel online</span>
+      </div>
+      <div class="reel-chip">
+        <span>Reel</span>
+        <strong id="reel-name">CRS Core</strong>
+      </div>
+    </header>
+
+    <main class="stage" id="stage" aria-live="polite"></main>
+
+    <aside class="side-panel">
+      <div class="side-card side-card--meta">
+        <span class="side-label">Current focus</span>
+        <div id="focus-title" class="side-title"></div>
+        <div id="focus-copy" class="side-copy"></div>
+      </div>
+      <div class="side-card side-card--queue">
+        <div class="queue-head">
+          <span class="side-label">Slide queue</span>
+          <span id="slide-counter" class="side-meta"></span>
+        </div>
+        <div id="slide-queue" class="slide-queue"></div>
+      </div>
+    </aside>
+
+    <nav class="controls" aria-label="Slide controls">
+      <button class="control-btn" id="prev-btn" type="button" aria-label="Previous slide">←</button>
+      <div id="dots" class="dots" aria-label="Slide navigation"></div>
+      <button class="control-btn" id="next-btn" type="button" aria-label="Next slide">→</button>
+    </nav>
+
+    <footer class="ticker-wrap" aria-label="Service ticker">
+      <div class="ticker-track" id="ticker-track"></div>
+    </footer>
+  </div>
+
+  <script>
+  (function () {
+    /* ── CONTENT ─────────────────────────────────────────────── */
+    const tickerItems = [
+      'Recording Studio Oxford',
+      'Rehearsal Rooms',
+      'Control Room Hire',
+      'Cowley Road OX4 1JE',
+      'Cricket Road OX4 3DJ',
+      'ODRO Engineering Repairs',
+      'AV Support',
+      'Workshop Café Bookings Open Now',
+      'Regular Opening Very Soon',
+      'cowleyroadstudios.com'
+    ];
+
+    const slides = [
+      {
+        id: 'hero',
+        kicker: 'Oxford creative infrastructure',
+        title: 'Cowley Road Studios',
+        subtitle: 'Recording studio · rehearsal rooms · creative production',
+        status: 'Live now',
+        meta: ['Cowley Road OX4 1JE', 'Cricket Road OX4 3DJ'],
+        body: 'The stronghold on Cowley Road: professional recording, wired rehearsal, technical support, and a public-facing creative ecosystem under one banner.',
+        bullets: ['Bookable now', 'Two Oxford locations', 'Built for artists, bands and makers'],
+        accent: 'gold',
+        footer: 'Grounded in the live CRS offer, not just the future promise.'
+      },
+      {
+        id: 'recording',
+        kicker: 'Studio reel',
+        title: 'Professional Recording',
+        subtitle: 'Analogue character · digital precision',
+        status: 'Sessions active',
+        meta: ['SSL BiG SiX', 'Valve compression', 'Hybrid workflow'],
+        body: 'A proper Oxford recording setup with control room weight and enough edge to feel like a real record is being made, not just a laptop politely humming in a corner.',
+        bullets: ['Tracking', 'Production', 'Control room hire'],
+        accent: 'olive',
+        footer: 'Lead with capability. Let the atmosphere ride shotgun.'
+      },
+      {
+        id: 'rehearsal',
+        kicker: 'Band infrastructure',
+        title: 'Rehearsal Rooms',
+        subtitle: 'Two rooms · both wired · both useful',
+        status: 'Book now',
+        meta: ['Cowley Road: up to 4-piece', 'Cricket Road: larger groups', 'Backline + PA'],
+        body: 'Cowley Road links directly into the recording setup. Cricket Road gives bigger groups breathing space, piano access, and a dedicated control room environment.',
+        bullets: ['Drum kit', 'Yamaha piano', 'Adam monitoring'],
+        accent: 'slate',
+        footer: 'Public signage should sell the practical magic.'
+      },
+      {
+        id: 'services',
+        kicker: 'Technical backbone',
+        title: 'ODRO Engineering',
+        subtitle: 'Repairs · AV support · technical services',
+        status: 'Enquiries open',
+        meta: ['Amp repair', 'Venue support', 'Installations'],
+        body: 'CRS is more than rooms. It is infrastructure: repair, live support, and the kind of practical know-how that keeps creative spaces actually functioning.',
+        bullets: ['General enquiries', 'Venue hire support', 'Production assistance'],
+        accent: 'amber',
+        footer: 'Hard graft, good signal, no chaos.'
+      },
+      {
+        id: 'cafe',
+        kicker: 'Public-facing venue',
+        title: 'Workshop Café',
+        subtitle: 'Community space · café · small venue',
+        status: 'Bookings open now',
+        meta: ['Regular opening very soon', 'Private hire', 'Cowley Road ecosystem'],
+        body: 'The café now steps forward as a live branch of the system: available for bookings now, with regular opening rhythm imminent. Less prophecy. More pulse.',
+        bullets: ['Coffee', 'Meetings', 'Events and hires'],
+        accent: 'gold',
+        footer: 'Keep the poetry. Add a door people can actually walk through.'
+      },
+      {
+        id: 'legacy',
+        kicker: 'Since 1999',
+        title: 'Soundworks to CRS',
+        subtitle: 'Same commitment · expanded infrastructure',
+        status: 'Legacy carried forward',
+        meta: ['Oxford music scene', 'Community-rooted', 'New name, wider scope'],
+        body: 'This is not a costume change. It is the Soundworks lineage carrying on with more rooms, more capability, and a broader public presence.',
+        bullets: ['Grassroots credibility', 'Professional standard', 'Future-proof direction'],
+        accent: 'olive',
+        footer: 'Heritage earns trust faster than adjectives.'
+      },
+      {
+        id: 'cta',
+        kicker: 'Call to action',
+        title: 'Book Online',
+        subtitle: 'Recording · rehearsal · venue hire',
+        status: 'Scan to enter',
+        meta: ['cowleyroadstudios.com', 'QR live', 'Oxford HQ operational'],
+        body: 'Use the website for bookings and contact routes. Keep the public path simple: see it, scan it, book it.',
+        bullets: ['Recording sessions', 'Rehearsals', 'Workshop Café enquiries'],
+        accent: 'amber',
+        footer: 'A handsome screen should still know how to convert.'
+      }
+    ];
+
+    /* ── DOM REFS ─────────────────────────────────────────────── */
+    const stage       = document.getElementById('stage');
+    const dots        = document.getElementById('dots');
+    const prevBtn     = document.getElementById('prev-btn');
+    const nextBtn     = document.getElementById('next-btn');
+    const slideQueue  = document.getElementById('slide-queue');
+    const slideCounter= document.getElementById('slide-counter');
+    const focusTitle  = document.getElementById('focus-title');
+    const focusCopy   = document.getElementById('focus-copy');
+    const reelName    = document.getElementById('reel-name');
+    const systemStatus= document.getElementById('system-status');
+    const tickerTrack = document.getElementById('ticker-track');
+
+    const ROTATE_MS = 9000;
+    let activeIndex = 0;
+    let autoAdvance;
+
+    function metaItems(items) {
+      return items.map(i => '<span class="meta-chip">' + i + '</span>').join('');
+    }
+    function bulletItems(items) {
+      return items.map(i => '<li class="bullet-item"><span class="bullet-mark"></span><span>' + i + '</span></li>').join('');
+    }
+
+    function slideTemplate(slide) {
+      const isCTA = slide.id === 'cta';
+      const side = isCTA
+        ? '<div class="qr-card"><img src="/static/signage/qr-cowleyroadstudios.svg" alt="QR code to cowleyroadstudios.com" class="qr-image" /><div class="qr-copy"><span class="qr-overline">Scan here</span><strong>cowleyroadstudios.com</strong><span>Recording · rehearsal · venue hire · Workshop Café</span></div></div>'
+        : '<div class="quote-card"><span class="quote-label">Signal line</span><p>' + slide.footer + '</p></div>';
+      return (
+        '<article class="slide slide--' + slide.accent + (isCTA ? ' slide--cta' : '') + '">' +
+          '<div class="slide-backdrop"></div>' +
+          '<div class="slide-grid">' +
+            '<section class="slide-main">' +
+              '<div class="eyebrow-row">' +
+                '<span class="eyebrow">' + slide.kicker + '</span>' +
+                '<span class="status-pill">' + slide.status + '</span>' +
+              '</div>' +
+              '<h1 class="slide-title">' + slide.title + '</h1>' +
+              '<p class="slide-subtitle">' + slide.subtitle + '</p>' +
+              '<div class="meta-row">' + metaItems(slide.meta) + '</div>' +
+              '<p class="slide-body">' + slide.body + '</p>' +
+              '<ul class="bullet-list">' + bulletItems(slide.bullets) + '</ul>' +
+            '</section>' +
+            '<section class="slide-side' + (isCTA ? ' slide-side--qr' : '') + '">' + side + '</section>' +
+          '</div>' +
+        '</article>'
+      );
+    }
+
+    function renderSlide(index) {
+      const slide = slides[index];
+      stage.innerHTML = slideTemplate(slide);
+      focusTitle.textContent = slide.title;
+      focusCopy.textContent  = slide.subtitle + ' — ' + slide.status;
+      slideCounter.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+      reelName.textContent   = slide.id === 'cafe' ? 'Workshop Signal' : 'CRS Core';
+      systemStatus.textContent = slide.status + ' · reel online';
+      Array.from(dots.children).forEach(function (dot, i) {
+        dot.classList.toggle('is-active', i === index);
+        dot.setAttribute('aria-current', i === index ? 'true' : 'false');
+      });
+      Array.from(slideQueue.children).forEach(function (item, i) {
+        item.classList.toggle('is-active', i === index);
+      });
+    }
+
+    function buildDots() {
+      dots.innerHTML = slides.map(function (slide, i) {
+        return '<button class="dot ' + (i === 0 ? 'is-active' : '') + '" type="button" aria-label="Go to ' + slide.title + '" data-index="' + i + '"></button>';
+      }).join('');
+    }
+
+    function buildQueue() {
+      slideQueue.innerHTML = slides.map(function (slide, i) {
+        return '<button class="queue-item ' + (i === 0 ? 'is-active' : '') + '" type="button" data-index="' + i + '"><span class="queue-index">' + String(i + 1).padStart(2, '0') + '</span><span class="queue-title">' + slide.title + '</span></button>';
+      }).join('');
+    }
+
+    function buildTicker() {
+      const items = tickerItems.concat(tickerItems);
+      const markup = items.map(function (item) { return '<span class="ticker-item">' + item + '</span>'; }).join('');
+      tickerTrack.innerHTML = '<div class="ticker-marquee">' + markup + '</div>';
+    }
+
+    function goToSlide(index) {
+      activeIndex = (index + slides.length) % slides.length;
+      renderSlide(activeIndex);
+      resetAutoAdvance();
+    }
+    function nextSlide() { goToSlide(activeIndex + 1); }
+    function prevSlide() { goToSlide(activeIndex - 1); }
+    function resetAutoAdvance() {
+      clearInterval(autoAdvance);
+      autoAdvance = setInterval(nextSlide, ROTATE_MS);
+    }
+
+    function wireEvents() {
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+      dots.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-index]');
+        if (btn) goToSlide(Number(btn.dataset.index));
+      });
+      slideQueue.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-index]');
+        if (btn) goToSlide(Number(btn.dataset.index));
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft')  prevSlide();
+        if (e.key === ' ') { e.preventDefault(); resetAutoAdvance(); }
+      });
+    }
+
+    buildDots();
+    buildQueue();
+    buildTicker();
+    renderSlide(0);
+    wireEvents();
+    resetAutoAdvance();
+  })();
+  </script>
+</body>
+</html>`)
+})
+
 // SIGNAGE TERMINAL — DIGITAL BROADCAST MODE (55" Street Display)
 // Managed by routes/signage.tsx (already registered at line 359)
 
