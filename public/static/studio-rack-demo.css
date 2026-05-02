@@ -2253,11 +2253,18 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   aspect-ratio: unset;        /* let container min-height dominate */
 }
 
-/* CRT phosphor dot-grid — faint green tint, not black */
-.hp-osc-grid line {
-  stroke: #0f260f;
-  stroke-width: 0.5;
-  opacity: 0.7;
+/* ── GRATICULE — 10H × 8V precision grid (v5.16)
+   Main axes (x=500, y=50):  rgba(0,40,10,0.30)
+   Secondary lines:           rgba(0,30,10,0.15)
+   No glow, no blur, 1px max. Always behind the active beam.
+──────────────────────────────────────────────────────────── */
+.hp-osc-grid-minor {
+  stroke: rgba(0,30,10,0.15);
+  stroke-width: 0.6;
+}
+.hp-osc-grid-axis {
+  stroke: rgba(0,40,10,0.30);
+  stroke-width: 0.8;
 }
 
 /* ── SILHOUETTE MASS — architectural building band ────────────
@@ -2268,11 +2275,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    This is the dark building mass; the phosphor crest rides on top.
 ────────────────────────────────────────────────────────────── */
 .hp-osc-dim {
-  /* stroke colour + width set inline — dark near-black gradient */
-  stroke-linecap: butt;     /* flat ends */
-  stroke-linejoin: miter;   /* sharp spire peaks, not rounded */
-  filter: none !important;  /* no glow — solid mass, crisp edges */
-  will-change: transform;
+  /* v5.16 — skyline decommissioned; hard CSS safety net */
+  display: none !important;
 }
 
 /* ── PHOSPHOR CREST — thin glowing line on the roofline ───────

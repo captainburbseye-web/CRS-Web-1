@@ -1572,30 +1572,42 @@ function SkylineOscilloscope({ activeId }) {
 
         </defs>
 
-        {/* CRT phosphor dot-grid — 4 vertical, 3 horizontal lines */}
+        {/* ── GRATICULE — 10 H × 8 V divisions, centre axes brighter
+            Main axes:      rgba(0,40,10,0.30)
+            Secondary grid: rgba(0,30,10,0.15)
+            No glow, no blur, 1px max at rendered size.
+            Z-order: above CRT background, behind active beam.     */}
         <g className="hp-osc-grid">
-          {[200, 400, 600, 800].map(x => (
-            <line key={x} x1={x} y1="0" x2={x} y2="100" />
+          {/* vertical: 9 interior lines at x = 100,200,…,900 */}
+          {[100,200,300,400,500,600,700,800,900].map(x => (
+            <line
+              key={`v${x}`}
+              x1={x} y1="0" x2={x} y2="100"
+              className={x === 500 ? 'hp-osc-grid-axis' : 'hp-osc-grid-minor'}
+            />
           ))}
-          {[25, 50, 75].map(y => (
-            <line key={y} x1="0" y1={y} x2="1000" y2={y} />
+          {/* horizontal: 7 interior lines at y = 12.5,25,37.5,50,62.5,75,87.5 */}
+          {[12.5,25,37.5,50,62.5,75,87.5].map(y => (
+            <line
+              key={`h${y}`}
+              x1="0" y1={y} x2="1000" y2={y}
+              className={y === 50 ? 'hp-osc-grid-axis' : 'hp-osc-grid-minor'}
+            />
           ))}
         </g>
 
-        {/* ── SILHOUETTE MASS — solid near-black building band ──────
-            ~115px thick stroke floods from roofline down to frame base.
-            No glow — reads as solid architectural mass, not a lava lamp.
+        {/* ── SILHOUETTE MASS — DECOMMISSIONED (v5.16)
+            Dark skyline lump removed; CRT field is now a clean void.
+            dimPathRef kept live so the rAF tick never hits a null ref.
         ─────────────────────────────────────────────────────────── */}
         <polyline
           ref={dimPathRef}
           points={ptsToPolyline(OSC_PATHS.SKYLINE)}
           fill="none"
-          stroke="#021204"
-          strokeWidth="115"
-          strokeLinecap="butt"
-          strokeLinejoin="miter"
-          strokeOpacity="1"
+          stroke="none"
+          strokeWidth="0"
           className="hp-osc-dim"
+          style={{ display: 'none' }}
         />
 
         {/* ── ACTIVE CREST — red→amber→green gradient beam, 3px ────────
