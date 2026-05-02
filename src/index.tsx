@@ -30,6 +30,7 @@ import { RehearsalSpaces } from './pages/RehearsalSpaces'
 import { RecordingPage } from './pages/Recording'
 import { PodcastAVPage } from './pages/PodcastAV'
 import { ContactPage } from './pages/Contact'
+import { WorkshopCafeContactPage } from './pages/WorkshopCafeContact'
 import { DigitalPulsePage } from './pages/DigitalPulse'
 import { CLIENT_MANIFEST } from './client-manifest'
 import { createElement } from 'react'
@@ -217,6 +218,94 @@ app.post('/api/contact', async (c) => {
       success: false,
       error: 'Internal server error. Please try again later.'
     }, 500)
+  }
+})
+
+// Workshop Café contact form — routes to workshopcafe@crsoxford.com
+app.post('/api/contact-wsc', async (c) => {
+  const contentType = c.req.header('content-type') || ''
+  const isFormSubmission = contentType.includes('application/x-www-form-urlencoded') || contentType.includes('multipart/form-data')
+
+  try {
+    const rawBody = isFormSubmission
+      ? Object.fromEntries((await c.req.formData()).entries())
+      : await c.req.json()
+
+    const body = Object.fromEntries(
+      Object.entries(rawBody).map(([key, value]) => [key, typeof value === 'string' ? value.trim() : value])
+    ) as Record<string, string>
+
+    console.log('[WSC] Contact form submission:', body)
+
+    const clientIP = c.req.header('cf-connecting-ip') || 'Unknown'
+    const resendApiKey = c.env?.RESEND_API_KEY
+
+    if (!resendApiKey || resendApiKey === 're_placeholder_add_real_key_after_signup') {
+      console.error('[WSC Resend] API key not configured')
+      if (isFormSubmission) return c.redirect('/workshop-cafe/contact?status=error', 303)
+      return c.json({ success: false, error: 'Email service not configured.' }, 500)
+    }
+
+    const serviceLabels: Record<string, string> = {
+      'private-hire': 'Private Hire / Exclusive Booking',
+      'event':        'Event / Pop-Up / Showcase',
+      'workshop':     'Workshop or Class',
+      'community':    'Community Project',
+      'general':      'General Enquiry',
+    }
+    const serviceType  = body.service || 'general'
+    const serviceLabel = serviceLabels[serviceType] || 'General Enquiry'
+
+    const emailData = {
+      from: 'Workshop Café Enquiries <noreply@crsoxford.com>',
+      to:   ['workshopcafe@crsoxford.com'],
+      subject: `[WSC ${serviceType.toUpperCase()}] Hire enquiry from ${body.name || 'unknown'}`,
+      html: `
+        <div style="font-family:'JetBrains Mono',monospace;max-width:600px;margin:0 auto;padding:20px;background:#0d1508;color:#f0e0b0;border:2px solid #c8a84b;">
+          <h2 style="color:#c8a84b;margin-top:0;">NEW WORKSHOP CAFÉ HIRE ENQUIRY</h2>
+          <div style="border-left:3px solid #c8a84b;padding-left:15px;margin:20px 0;">
+            <p><strong style="color:#c8a84b;">Type:</strong> ${serviceLabel}</p>
+            <p><strong style="color:#c8a84b;">From:</strong> ${body.name || 'Not provided'}</p>
+            <p><strong style="color:#c8a84b;">Email:</strong> ${body.email || 'Not provided'}</p>
+          </div>
+          <div style="background:#060e04;padding:15px;margin:20px 0;border:1px solid #3a4e28;">
+            <p><strong style="color:#c8a84b;">Details / Dates:</strong></p>
+            <p style="white-space:pre-wrap;color:#a89060;">${body.notes || 'No details provided'}</p>
+          </div>
+          <div style="font-size:0.85em;color:#6a5c3a;margin-top:20px;padding-top:15px;border-top:1px solid #3a4e28;">
+            <p><strong>Submitted:</strong> ${new Date().toISOString()}</p>
+            <p><strong>IP:</strong> ${clientIP}</p>
+            <p><strong>Source:</strong> /workshop-cafe/contact</p>
+          </div>
+        </div>
+      `,
+      reply_to: body.email || undefined
+    }
+
+    const mailResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${resendApiKey}`
+      },
+      body: JSON.stringify(emailData)
+    })
+
+    if (!mailResponse.ok) {
+      const errorText = await mailResponse.text()
+      console.error('[WSC Resend] Failed:', errorText)
+      if (isFormSubmission) return c.redirect(`/workshop-cafe/contact?status=error&service=${encodeURIComponent(serviceType)}`, 303)
+      return c.json({ success: false, error: 'Failed to send email.' }, 500)
+    }
+
+    console.log('[WSC Resend] Sent successfully')
+    if (isFormSubmission) return c.redirect(`/workshop-cafe/contact?status=sent&service=${encodeURIComponent(serviceType)}`, 303)
+    return c.json({ success: true, message: '[ WSC SIGNAL RECEIVED ] Enquiry forwarded to Workshop Café team.' }, 200)
+
+  } catch (error) {
+    console.error('[WSC] Contact form error:', error)
+    if (isFormSubmission) return c.redirect('/workshop-cafe/contact?status=error', 303)
+    return c.json({ success: false, error: 'Internal server error.' }, 500)
   }
 })
 
@@ -2190,6 +2279,39 @@ app.get('/workshop-cafe', (c) => {
       keywords: 'cafe oxford, workshop cafe oxford, venue hire oxford, community space oxford, east oxford cafe'
     }
   )
+})
+
+// WORKSHOP CAFÉ — CONTACT / HIRE ENQUIRY PAGE
+app.get('/workshop-cafe/contact', (c) => {
+  const service     = String(c.req.query('service') || 'private-hire').toLowerCase()
+  const statusParam = String(c.req.query('status') || '').toLowerCase()
+  const status      = statusParam === 'sent' || statusParam === 'error' ? statusParam : null
+
+  return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hire Enquiry | The Workshop Café Oxford</title>
+    <meta name="description" content="Enquire about private hire, events, workshops, and community use at The Workshop Café, 118 Cowley Road, Oxford. Part of Cowley Road Studios.">
+    <meta name="keywords" content="workshop cafe hire oxford, venue hire east oxford, private event space oxford, workshop cafe contact">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <link href="/static/crs-reset.css" rel="stylesheet">
+    <link href="/static/crs-typography.css" rel="stylesheet">
+    <link href="/static/crs-header.css" rel="stylesheet">
+    <link href="/static/crs-mobile.css" rel="stylesheet">
+    <link href="/static/rack-accordion.css" rel="stylesheet">
+    <link href="/static/studio-rack-demo.css?v=5.33" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="hp-page subpage wsc-page">
+    ${<WorkshopCafeContactPage initialService={service} status={status} />}
+</body>
+</html>`)
 })
 
 // ============================================================================
