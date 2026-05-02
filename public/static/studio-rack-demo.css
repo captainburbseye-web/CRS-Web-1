@@ -100,8 +100,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   background-position: center top;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  filter: grayscale(100%) blur(2px) brightness(0.55);
-  opacity: 0.15;
+  filter: grayscale(100%) blur(2px) brightness(0.65);
+  opacity: 0.22;
   z-index: 0;
   pointer-events: none;
 }
@@ -1690,35 +1690,29 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   background: #2a2a2a;
 }
 
-/* Button grid — v5.19: 5-button switchboard */
+/* Button grid — v5.27: 5-button switchboard, no wrapping */
 .hp-controls-buttons {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 5px;                         /* v5.19 — slightly tighter to fit 5 cleanly */
-  padding: 1.25rem 1.4rem 1.5rem;   /* v5.19 — trimmed padding for 5-button row */
+  gap: 4px;
+  padding: 1rem 0.75rem 1.1rem;
   background: transparent;
 }
 
-/* Tablet — hold 5 columns down to 520px, then drop to 3 */
-@media (max-width: 900px) and (min-width: 521px) {
+/* Tablet — 5 columns all the way to 480px */
+@media (max-width: 900px) {
   .hp-controls-buttons {
     grid-template-columns: repeat(5, 1fr);
     gap: 3px;
-    padding: 0.9rem 0.6rem 1rem;
+    padding: 0.75rem 0.4rem 0.9rem;
   }
 }
-@media (max-width: 520px) {
-  .hp-controls-buttons {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-    padding: 1rem 0.8rem 1.1rem;
-  }
-}
+/* Phone portrait — 3+2 */
 @media (max-width: 480px) {
   .hp-controls-buttons {
-    grid-template-columns: repeat(2, 1fr); /* 2+2+1 on narrow screens */
+    grid-template-columns: repeat(3, 1fr);
     gap: 3px;
-    padding: 0.75rem 0.4rem 0.9rem;
+    padding: 0.6rem 0.3rem 0.75rem;
   }
 }
 
@@ -1733,10 +1727,11 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 1.3rem 0.7rem 1.35rem;  /* v5.19 — compressed for 5-button row */
-  margin: 3px;
-  min-height: 110px;               /* v5.19 — was 130px; tighter for 5-col */
+  gap: 6px;
+  padding: 1.1rem 0.3rem 1.15rem;  /* v5.27 — minimal side pad, label controls width */
+  margin: 2px;
+  min-width: 0;                    /* v5.27 — allow grid to compress below content size */
+  min-height: 100px;
 
   /* MUSTARD default state — warm neon standby */
   background:
@@ -1848,12 +1843,14 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 /* ── Button label — brightens to orange on hover ─────────── */
 .rack-btn-label {
   font-family: var(--font-mono);
-  font-size: 1.0rem;           /* v3.2 — was 0.85rem; readable from 1–1.5m */
+  font-size: 0.72rem;          /* v5.27 — fits 5 labels including CAFÉ & VENUE */
   font-weight: 700;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   text-align: center;
   line-height: 1.2;
+  overflow-wrap: break-word;
+  word-break: break-word;      /* last resort: break long label rather than wrap button */
   transition: color 0.08s ease;
 }
 .rack-btn:hover:not(.rack-btn--active) .rack-btn-label {
