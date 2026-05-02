@@ -681,13 +681,15 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    Treated as real installed hardware, not content
    ═══════════════════════════════════════════════════════════════ */
 .hp-idle-faceplate {
-  /* Rack unit spans FULL WIDTH — covers rails and bolts like real hardware */
+  /* v5.17 — recessed shallow panel; sign is inset, not rail-to-rail */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0;
-  margin: 6px -52px 0;   /* v3.2 — 6px top seam gap; wider rail offset */
-  background: transparent;
+  padding: 0.55rem 5%;   /* breathing room: top/bottom + left/right inset */
+  margin: 6px -52px 0;   /* spans to rail edges so the dark bed fills the slot */
+  background: #080e08;   /* dark recessed chamber — sign reads as mounted inside */
+  border-top: 1px solid #1a1a1a;
+  border-bottom: 1px solid #111;
   position: relative;
   z-index: 60;
 }
@@ -695,25 +697,30 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 @media (max-width: 639px) {
   .hp-idle-faceplate {
     margin: 4px -28px 0;
+    padding: 0.4rem 4%;
   }
 }
 @media (min-width: 640px) {
   .hp-idle-faceplate {
     margin: 8px -56px 0;
+    padding: 0.6rem 5%;
+  }
+}
+@media (min-width: 1024px) {
+  .hp-idle-faceplate {
+    padding: 0.7rem 6%;
   }
 }
 
-/* Rack-mounted sign — full width matching other rack modules */
+/* Sign image — contained at natural aspect ratio, inset from edges */
 .hp-idle-sign {
   display: block;
-  max-width: 100%;  /* Full rack width */
-  width: 100%;
+  max-width: 78%;    /* v5.17 — sign fills ~78% of the cavity width; inset on both sides */
+  width: 78%;
   height: auto;
-  /* object-fit: fill so the cropped PNG fills exactly the slot with no letterboxing */
-  object-fit: fill;
-  vertical-align: top;   /* kill the inline 4px gap browsers add below images */
-  /* Subtle mounting shadow — feels bolted in */
-  filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.8));
+  object-fit: contain;   /* preserve aspect ratio — no squashing */
+  vertical-align: top;
+  filter: drop-shadow(0px 3px 8px rgba(0,0,0,0.90));
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -902,9 +909,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 
 @media (max-width: 600px) {
-  /* Sign and display must keep zero padding — any re-added padding creates black space */
-  .hp-idle-faceplate { padding: 0; }
-  .hp-idle-sign      { max-width: 100%; width: 100%; }
+  /* v5.17 — faceplate keeps inset padding; sign stays contained */
+  .hp-idle-faceplate { padding: 0.4rem 4%; }
+  .hp-idle-sign      { max-width: 88%; width: 88%; }
   .hp-idle-display   { padding: 0; }
   .hp-idle-meters    { gap: 1rem; padding: 1rem 1.25rem; }
 }
