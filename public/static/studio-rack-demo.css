@@ -81,6 +81,14 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   position: relative;
 }
 
+/* ── v5.29 OVERRIDES — background window + rack margin ─── */
+.hp-page::before {
+  background-image: url('/static/images/bg-cafe-neon.jpg') !important;
+  background-position: center 10% !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
 /* ── BACKGROUND — Workshop Café neon shopfront
    Image is 869×214px (very wide, shallow strip).
    Neon sign brightness peaks at 30–60% down the image.
@@ -579,7 +587,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   flex: 1;
   max-width: min(1200px, 90vw);  /* v3.2 — wider rack, fills viewport on large screens */
   width: 90vw;
-  margin: 18vh auto 0;           /* v5.14 — unified chassis drops 18vh to reveal café backdrop */
+  margin: 18vh auto 0 !important; /* v5.29 — locked 18vh to reveal café window */
   padding: 0;
   display: flex;
   flex-direction: row;            /* rails left | centre-column | rails right */
@@ -688,8 +696,10 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    One element. Dark metal. Sign fills wall-to-wall. No float.
    ═══════════════════════════════════════════════════════════════ */
 .hp-idle-faceplate {
-  display: block;
-  width: 100%;
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
   background: #060c06;
   border-top: 2px solid #2a2a2a;
   border-bottom: 2px solid #000;
@@ -701,20 +711,20 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 
 /* picture must be block — inline default shrinks it to content width */
 .hp-idle-faceplate picture {
-  display: block;
-  width: 100%;
-  line-height: 0;   /* kill descender gap below img */
+  display: block !important;
+  width: 100% !important;
+  line-height: 0;
 }
 
 /* Sign image — wall-to-wall, no padding gaps */
 .hp-idle-sign {
-  display: block;
-  width: 100%;
-  max-width: none;    /* kill any global img max-width reset */
-  height: auto;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
   object-fit: fill;
-  padding: 0;
-  margin: 0;
+  padding: 0 !important;
+  margin: 0 !important;
   filter: drop-shadow(0 2px 12px rgba(0,0,0,0.95));
 }
 
@@ -904,8 +914,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 
 @media (max-width: 600px) {
-  .hp-idle-faceplate { border-top-width: 1px; }
-  .hp-idle-sign      { padding: 0; }  /* no side gaps on mobile — wall to wall */
+  .hp-idle-faceplate { border-top-width: 1px; margin: 0 !important; padding: 0 !important; }
+  .hp-idle-sign      { padding: 0 !important; margin: 0 !important; width: 100% !important; }
   .hp-idle-display   { padding: 0; }
   .hp-idle-meters    { gap: 1rem; padding: 1rem 1.25rem; }
 }
@@ -1690,28 +1700,27 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   background: #2a2a2a;
 }
 
-/* Button grid — v5.27: 5-button switchboard, no wrapping */
+/* Button grid — v5.29: flex nowrap, 5 buttons always single row */
 .hp-controls-buttons {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 4px;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 6px !important;
+  width: 100% !important;
   padding: 1rem 0.75rem 1.1rem;
   background: transparent;
 }
 
-/* Tablet — 5 columns all the way to 480px */
+/* Tablet — keep flex nowrap */
 @media (max-width: 900px) {
   .hp-controls-buttons {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 3px;
+    gap: 4px !important;
     padding: 0.75rem 0.4rem 0.9rem;
   }
 }
-/* Phone portrait — 3+2 */
+/* Phone portrait — tighten but stay single row */
 @media (max-width: 480px) {
   .hp-controls-buttons {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3px;
+    gap: 2px !important;
     padding: 0.6rem 0.3rem 0.75rem;
   }
 }
@@ -1728,9 +1737,11 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding: 1.1rem 0.3rem 1.15rem;  /* v5.27 — minimal side pad, label controls width */
+  padding: 1.1rem 0.3rem 1.15rem;
+  padding-inline: 4px !important;  /* v5.29 — flex: even narrower horizontal pad */
   margin: 2px;
-  min-width: 0;                    /* v5.27 — allow grid to compress below content size */
+  min-width: 0 !important;         /* v5.29 — must be 0 inside flex to prevent wrap */
+  flex: 1 1 0 !important;          /* v5.29 — equal-width flex items */
   min-height: 100px;
 
   /* MUSTARD default state — warm neon standby */
