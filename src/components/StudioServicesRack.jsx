@@ -536,8 +536,8 @@ const PANELS = {
   },
 };
 
-/* v5.19 — five top-level service buttons: service-first, location second */
-const NAV_ORDER = ['recording', 'rehearsal', 'controlroom', 'boothhire', 'cafe'];
+/* v5.30 — four top-level service buttons; café is now a dedicated rack unit below */
+const NAV_ORDER = ['recording', 'rehearsal', 'controlroom', 'boothhire'];
 
 /* Page route for each service */
 const PAGE_ROUTES = {
@@ -1678,6 +1678,111 @@ function IdleState({ activeId = null }) {
   );
 }
 
+/* ─── Workshop Café Hire Unit — v5.30
+   A dedicated 2U rack module bolted below the switchboard.
+   Collapsed: green metal fascia with VU meters, label strip, power LED.
+   Expanded:  dropdown drawer slides open revealing menu links.
+   ─────────────────────────────────────────────────────────── */
+function CafeHireUnit() {
+  const [open, setOpen] = useState(false);
+  const [pressing, setPressing] = useState(false);
+
+  return (
+    <div className={`chу chу--${open ? 'open' : 'closed'}`} aria-label="Workshop Café & Venue">
+
+      {/* ── Fascia — always visible ───────────────────────── */}
+      <button
+        className={`chу-fascia${pressing ? ' chу-fascia--press' : ''}`}
+        aria-expanded={open}
+        aria-controls="cafe-hire-drawer"
+        onPointerDown={() => setPressing(true)}
+        onPointerUp={() => setPressing(false)}
+        onPointerLeave={() => setPressing(false)}
+        onClick={() => setOpen(o => !o)}
+      >
+        {/* Left section — VU meters */}
+        <div className="chу-vu-pair" aria-hidden="true">
+          <div className="chу-vu">
+            <div className="chу-vu-needle" />
+            <span className="chу-vu-label">VU</span>
+          </div>
+          <div className="chу-vu">
+            <div className="chу-vu-needle" />
+            <span className="chу-vu-label">VU</span>
+          </div>
+        </div>
+
+        {/* Centre — label strip */}
+        <div className="chу-label-strip">
+          <span className="chу-label-title">THE WORKSHOP CAFÉ</span>
+          <span className="chу-label-sub">COFFEE · REPAIRS · MUSICAL CURIOS · WORK SPACES</span>
+        </div>
+
+        {/* Right section — knobs + open indicator */}
+        <div className="chу-hardware" aria-hidden="true">
+          <span className="chу-knob" />
+          <span className="chу-knob" />
+          <span className="chу-knob" />
+          <span className={`chу-open-led${open ? ' chу-open-led--on' : ''}`} />
+        </div>
+
+        {/* Rack bolt corners */}
+        <span className="chу-bolt chу-bolt--tl" aria-hidden="true" />
+        <span className="chу-bolt chу-bolt--tr" aria-hidden="true" />
+        <span className="chу-bolt chу-bolt--bl" aria-hidden="true" />
+        <span className="chу-bolt chу-bolt--br" aria-hidden="true" />
+      </button>
+
+      {/* ── Drawer — slides open below fascia ─────────────── */}
+      <div
+        id="cafe-hire-drawer"
+        className="chу-drawer"
+        aria-hidden={!open}
+      >
+        <div className="chу-drawer-inner">
+
+          {/* Logo + tagline */}
+          <div className="chу-drawer-header">
+            <picture>
+              <source srcSet="/static/workshop-cafe-logo.webp" type="image/webp" />
+              <img src="/static/workshop-cafe-logo.png" alt="Workshop Café" className="chу-drawer-logo" />
+            </picture>
+            <div className="chу-drawer-tagline">
+              <p>Oxford's music community hub &amp; event venue</p>
+              <p className="chу-drawer-address">118 Cowley Road · Oxford OX4 1JE</p>
+            </div>
+          </div>
+
+          {/* Menu links */}
+          <nav className="chу-menu" aria-label="Workshop Café links">
+            <a href={URLS.ENQUIRE_WORKSHOP} className="chу-menu-item chу-menu-item--primary">
+              <span className="chу-menu-led" aria-hidden="true" />
+              <span className="chу-menu-label">Venue Hire Enquiry</span>
+              <span className="chу-menu-arrow">↗</span>
+            </a>
+            <a href="/workshop-cafe" className="chу-menu-item">
+              <span className="chу-menu-led" aria-hidden="true" />
+              <span className="chу-menu-label">About Workshop Café</span>
+              <span className="chу-menu-arrow">→</span>
+            </a>
+            <a href={URLS.INSTAGRAM} target="_blank" rel="noopener noreferrer" className="chу-menu-item">
+              <span className="chу-menu-led" aria-hidden="true" />
+              <span className="chу-menu-label">Follow on Instagram</span>
+              <span className="chу-menu-arrow">↗</span>
+            </a>
+            <a href={URLS.CONTACT} className="chу-menu-item">
+              <span className="chу-menu-led" aria-hidden="true" />
+              <span className="chу-menu-label">General Enquiry</span>
+              <span className="chу-menu-arrow">→</span>
+            </a>
+          </nav>
+
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ─── Hardware service controls ───────────────────────────── */
 const ServiceControls = ({ active, onSelect }) => (
   <div className="hp-controls" aria-label="Service selector" role="tablist">
@@ -1846,11 +1951,7 @@ export default function StudioServicesRack() {
     setActiveId(next);
     getEngine().setPreset(next);
 
-    if (next === 'cafe') {
-      // Café & Venue — direct navigation, no sub-menu (v5.19)
-      window.location.href = URLS.ENQUIRE_WORKSHOP;
-      return;
-    } else if (MULTI_LOCATION_SERVICES.has(next)) {
+    if (MULTI_LOCATION_SERVICES.has(next)) {
       // Multi-site service → show location picker (CRS vs Cricket)
       setLocationId(null);
       setShowLocPick(true);
@@ -1958,6 +2059,9 @@ export default function StudioServicesRack() {
             {/* 2U — CONTROLS — physical button panel */}
             <ServiceControls active={activeId} onSelect={handleSelect} />
           </div>
+
+          {/* CAFÉ HIRE UNIT — dedicated rack module, sits between switchboard and docs */}
+          <CafeHireUnit />
 
           {/* DOCUMENTATION UNIT — recessed bay bolted into the same rails */}
           <div className="hp-documentation-unit">
