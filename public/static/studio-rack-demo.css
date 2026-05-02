@@ -81,20 +81,23 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   position: relative;
 }
 
-/* ── BACKGROUND — Workshop Café neon shopfront, matte-painting scale ─
-   v5.14: background-size:90% so the shopfront sign is whole and legible
-   in the 18vh window above the chassis top-plate. center 5% positions
-   the sign in the upper third of the viewport gap.                    */
+/* ── BACKGROUND — Workshop Café neon shopfront
+   Image is 869×214px (very wide, shallow strip).
+   Neon sign brightness peaks at 30–60% down the image.
+   With cover + position center 5vh, the sign lands in the
+   18vh gap above the chassis top-plate.
+   v5.25: cover fills the window, position pulls sign into gap. */
 .hp-page::before {
   content: '';
   position: fixed;
   inset: 0;
   background-image: url('/static/images/bg-cafe-neon.jpg');
-  background-size: 90%;          /* v5.14 — matte-painting scale; shopfront legible */
-  background-position: center 5%; /* v5.14 — sign centred in the gap window */
+  background-size: cover;            /* fill — no letterbox gaps */
+  background-position: center 5vh;  /* sign (peaks at 30–60% of img) lands in 18vh gap */
   background-repeat: no-repeat;
-  filter: grayscale(100%) blur(1px) brightness(0.6);
-  opacity: 0.12;                 /* v5.14 — ghostly reflection, not competing */
+  background-attachment: fixed;
+  filter: grayscale(100%) blur(2px) brightness(0.55);
+  opacity: 0.15;
   z-index: 0;
   pointer-events: none;
 }
