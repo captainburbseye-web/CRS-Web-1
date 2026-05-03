@@ -1859,6 +1859,7 @@ export default function StudioServicesRack() {
   const [showLocPick, setShowLocPick] = useState(false);  // location-selector layer visible
   const [animate,     setAnimate]     = useState(false);
   const [powered,     setPowered]     = useState(false);
+  const [logoPress,   setLogoPress]   = useState(false);
 
   /* Power-on boot sequence — 1.6 s total, runs once per session via sessionStorage
      Phase 1 (0 → 800 ms):  surge — VU needles to 0.95, OSS targetScale = 1.8
@@ -2023,7 +2024,32 @@ export default function StudioServicesRack() {
 
           {/* 1U — TOP PLATE — CRS logo bolted into chassis top rail cap */}
           <div className="hp-top-plate">
-            <a href={URLS.HOME} className="hp-top-plate-link" aria-label="Cowley Road Studios — home">
+            {/* Reactive home: pressing resets rack to idle, with physical press feedback */}
+            <button
+              className={[
+                'hp-top-plate-link',
+                'hp-top-plate-link--btn',
+                activeId      ? 'hp-top-plate-link--active' : '',
+                logoPress     ? 'hp-top-plate-link--pressing' : '',
+              ].filter(Boolean).join(' ')}
+              aria-label="Cowley Road Studios — return to home"
+              aria-pressed={!!activeId}
+              onPointerDown={() => setLogoPress(true)}
+              onPointerUp={()   => setLogoPress(false)}
+              onPointerLeave={() => setLogoPress(false)}
+              onClick={() => {
+                if (!activeId) {
+                  // already idle — follow link
+                  window.location.href = URLS.HOME;
+                  return;
+                }
+                setActiveId(null);
+                setLocationId(null);
+                setShowLocPick(false);
+                getEngine().setPreset('idle');
+                history.replaceState(null, '', window.location.pathname);
+              }}
+            >
               <img
                 src="/static/crs-logo.png"
                 alt="Cowley Road Studios"
@@ -2031,7 +2057,7 @@ export default function StudioServicesRack() {
                 width="200"
                 height="74"
               />
-            </a>
+            </button>
             <div className="hp-top-plate-meta" aria-hidden="true">
               <span className="hp-top-plate-meta-row">ID: CRS-CONSOLE-01</span>
               <span className="hp-top-plate-meta-row">LOC: 51.7483° N, 1.2335° W</span>
@@ -2045,14 +2071,14 @@ export default function StudioServicesRack() {
           </div>
 
           <div className="hp-machine-inner">
-            {/* 3U — SCREEN — OXFORD LCD is the absolute top of the rack */}
+            {/* 3U — SCREEN — Oxford LCD / Dreaming Spires oscilloscope */}
             <div className="hp-screen">
               {screenContent}
             </div>
-
-            {/* 2U — CONTROLS — physical button panel */}
-            <ServiceControls active={activeId} onSelect={handleSelect} />
           </div>
+
+          {/* 2U — CONTROLS — button panel sits directly below the screen */}
+          <ServiceControls active={activeId} onSelect={handleSelect} />
 
           {/* CAFÉ HIRE UNIT — dedicated rack module, sits between switchboard and docs */}
           <CafeHireUnit />

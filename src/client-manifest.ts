@@ -6,7 +6,7 @@ export const CLIENT_MANIFEST = {
     "name": "react-vendor"
   },
   "src/client/rack-entry.tsx": {
-    "file": "assets/rack-entry-Cgs9b8jQ.js",
+    "file": "assets/rack-entry-owX2D68M.js",
     "name": "rack-entry",
     "src": "src/client/rack-entry.tsx",
     "isEntry": true,
@@ -14,7 +14,7 @@ export const CLIENT_MANIFEST = {
       "_react-vendor-DekTAH87.js"
     ],
     "css": [
-      "assets/rack-entry-Bi93rM2H.css"
+      "assets/rack-entry-C6bVDE_w.css"
     ]
   }
 } as const

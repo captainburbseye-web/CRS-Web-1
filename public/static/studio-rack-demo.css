@@ -369,13 +369,18 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   flex-shrink: 0;
 }
 
-/* Logo link */
+/* Logo link / reactive button */
 .hp-top-plate-link {
   display: block;
   line-height: 0;
   flex-shrink: 0;
-  transition: opacity 0.15s, filter 0.15s;
+  transition: opacity 0.15s, filter 0.15s, transform 0.08s;
   outline-offset: 6px;
+  /* reset <button> chrome when used as button */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 .hp-top-plate-link:hover {
   opacity: 0.82;
@@ -383,6 +388,27 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 }
 .hp-top-plate-link:focus-visible {
   outline: 2px solid var(--mustard);
+}
+/* When a service is active — logo glows Nettle Green as a "home" indicator */
+.hp-top-plate-link--active .hp-top-plate-img {
+  filter:
+    drop-shadow(0 0 8px rgba(52,179,74,0.55))
+    drop-shadow(0 1px 4px rgba(0,0,0,0.80));
+}
+.hp-top-plate-link--active:hover .hp-top-plate-img {
+  filter:
+    drop-shadow(0 0 14px rgba(52,179,74,0.85))
+    brightness(1.12)
+    drop-shadow(0 1px 3px rgba(0,0,0,0.70));
+}
+/* Physical press: logo sinks 1 px like a rack button */
+.hp-top-plate-link--pressing .hp-top-plate-img,
+.hp-top-plate-link:active     .hp-top-plate-img {
+  transform: translateY(1px);
+  filter:
+    drop-shadow(0 0 4px rgba(52,179,74,0.35))
+    brightness(0.88)
+    drop-shadow(0 1px 2px rgba(0,0,0,0.90));
 }
 
 /* Logo image */
