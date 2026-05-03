@@ -401,13 +401,13 @@ const PANEL_LOCATION_OVERRIDES = {
     },
     cricket: {
       eyebrow: 'Recording Studio — Cricket Road',
-      title: 'Professional recording · Cricket Road',
-      body: 'Full recording setup at the Cricket Road site. Larger live room, ideal for full-band tracking sessions.',
+      title: 'Live tracking · Cricket Road',
+      body: 'Larger live room suited to full-band tracking and live capture sessions. Engineer-assisted. Enquire for current signal chain and availability.',
       specs: [
-        { k: 'Console',    v: 'SSL BiG SiX + valve compression' },
-        { k: 'Monitoring', v: 'Adam Audio · NS-10 · Genelec + sub' },
-        { k: 'Mics',       v: 'U87 · C414 · SM7B · SM58' },
-        { k: 'Rooms',      v: 'Larger live room — full band tracking' },
+        { k: 'Room',       v: 'Large live room — 6m × 4m' },
+        { k: 'Backline',   v: 'Drum kit · bass amp · guitar amps' },
+        { k: 'Mics',       v: 'SM58 · kick mic · available on request' },
+        { k: 'Use',        v: 'Live tracking · demo capture · sessions' },
       ],
       ctas: [{ label: 'Book Recording', href: URLS.CRICKET_RECORDING_BOOK, primary: true, location: 'cricket' }],
     },
@@ -428,12 +428,11 @@ const PANEL_LOCATION_OVERRIDES = {
     cricket: {
       eyebrow: 'Control Room Hire — Cricket Road',
       title: 'Control room · Cricket Road',
-      body: 'The Cricket Road control room sits directly adjacent to the larger live room — perfect for self-recording and remote session work.',
+      body: 'The Cricket Road control room sits adjacent to the live room — suited to self-recording, overdubs and remote session work. Enquire for current spec and availability.',
       specs: [
-        { k: 'Desk',       v: 'SSL BiG SiX — analogue summing + EQ' },
-        { k: 'Processing', v: 'TL Audio C1 valve · Revox preamps · Tascam 388' },
-        { k: 'Patchbay',   v: 'Ghielmetti mastering matrix' },
-        { k: 'Monitoring', v: 'Adam Audio · NS-10 · Genelec system + sub' },
+        { k: 'Position',   v: 'Direct adjacency to live room' },
+        { k: 'Use',        v: 'Self-recording · overdubs · remote sessions' },
+        { k: 'Access',     v: 'Engineer-assisted or self-op — enquire' },
       ],
       ctas: [{ label: 'Hire Control Room', href: URLS.CRICKET_CONTROL_ROOM_BOOK, primary: true, location: 'cricket' }],
     },
@@ -462,7 +461,7 @@ const PANELS = {
     id: 'rehearsal', label: 'Book Rehearsal', theme: 'dark',
     eyebrow: 'Rehearsal Rooms',
     title: 'Two rooms. Both wired.',
-    body: 'Cowley Road for up to 4-piece bands. Cricket Road for larger groups — bigger room, Yamaha grand piano, dedicated control room.',
+    body: 'Cowley Road for up to 4-piece bands. Cricket Road for larger groups — bigger room, Yamaha CLP electric piano, dedicated control room adjacency.',
     locations: [
       {
         location: 'crs', name: 'Cowley Road', post: 'OX4 1JE',

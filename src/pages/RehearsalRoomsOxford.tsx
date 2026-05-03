@@ -14,7 +14,7 @@ export const RehearsalRoomsOxford = () => {
       {/* PAGE HEADER */}
       <div class="contact-header">
         <h1>Rehearsal Rooms in Oxford | Cowley Road Studios</h1>
-        <p class="contact-intro">Operational rehearsal rooms with backline, PA, and calibrated monitoring at two Oxford locations.</p>
+        <p class="contact-intro">Operational rehearsal rooms with backline and PA at two Oxford locations.</p>
       </div>
 
       {/* MAIN CONTENT */}
@@ -26,7 +26,7 @@ export const RehearsalRoomsOxford = () => {
           Cowley Road Studios operates rehearsal rooms at Cowley Road (HQ) and Cricket Road (Node). Both locations run 8am to 10pm, seven days a week. Engineer not included – independent access for experienced bands.
         </p>
         <p style="margin-bottom: 2rem; line-height: 1.7; color: #E0E0E0;">
-          Full backline at both sites: drum kit, bass amp, guitar amps, PA system, vocal monitoring. Rooms are calibrated for rehearsal use, not performance recording. Duration-based pricing – select slot length at booking. Lock time. Confirm. Access granted.
+          Full backline at both sites: drum kit, bass amp, guitar amps, PA system. Rooms are set up for rehearsal use, not performance recording. Duration-based pricing – select slot length at booking. Lock time. Confirm. Access granted.
         </p>
 
         {/* Pricing & Locations */}
@@ -38,7 +38,7 @@ export const RehearsalRoomsOxford = () => {
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>3 hours:</strong> £60</p>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>4 hours:</strong> £65</p>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>Max:</strong> 4 members</p>
-          <p style="margin-bottom: 1rem; color: rgba(255,255,255,0.85);"><strong>Includes:</strong> Full backline, PA, monitoring</p>
+          <p style="margin-bottom: 1rem; color: rgba(255,255,255,0.85);"><strong>Includes:</strong> Full backline, PA</p>
           <a href="https://book.squareup.com/appointments/7n0e94bokii6s3/location/L1MAM4DDPHKXX/services" target="_blank" rel="noopener" class="cta-service">BOOK COWLEY ROAD</a>
         </div>
 
@@ -48,7 +48,7 @@ export const RehearsalRoomsOxford = () => {
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>3 hours:</strong> £55</p>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>4 hours:</strong> £60</p>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>Room:</strong> 6m × 4m live room</p>
-          <p style="margin-bottom: 1rem; color: rgba(255,255,255,0.85);"><strong>Includes:</strong> Yamaha CLP piano, drum kit, vocal mics, PA</p>
+          <p style="margin-bottom: 1rem; color: rgba(255,255,255,0.85);"><strong>Includes:</strong> Yamaha CLP electric piano, drum kit, SM58 vocal mics, PA</p>
           <a href="https://book.squareup.com/appointments/ea1ume9ju9zwqk/location/L1MAM4DDPHKXX/services" target="_blank" rel="noopener" class="cta-service">BOOK CRICKET ROAD</a>
         </div>
 
@@ -57,7 +57,7 @@ export const RehearsalRoomsOxford = () => {
         <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
           <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative; color: #E0E0E0;">
             <span style="position: absolute; left: 0; color: #B5A642;">→</span>
-            Calibrated monitoring for accurate mix balance during rehearsal
+            Rooms set up for rehearsal use — functional signal chain, not recording spec
           </li>
           <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative; color: #E0E0E0;">
             <span style="position: absolute; left: 0; color: #B5A642;">→</span>
