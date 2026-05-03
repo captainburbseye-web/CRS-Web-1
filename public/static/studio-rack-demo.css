@@ -2773,13 +2773,12 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
      the full shape glows dimly and the beam brightens it as it passes.
    ═══════════════════════════════════════════════════════════════ */
 
-/* Outer bezel frame — skyline divider above the sign (v5.37: compressed to tight strip) */
+/* Outer bezel frame — skyline above the sign (v5.38: original size restored) */
 .hp-osc-frame {
-  display: flex !important;
-  align-items: center !important;
+  display: block;
   position: relative;
   width: calc(100% + 104px);  /* matches wider rails (52px × 2) */
-  margin: 8px -52px 8px !important; /* 8px above + 8px below before sign */
+  margin: 8px -52px 0;        /* 8px top seam = visual gap above; flush to sign below */
   background: linear-gradient(to bottom,
       #182518 0%,
       #0b190b 40%,
@@ -2789,9 +2788,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   border-bottom: 3px solid #111;
   border-left: none;
   border-right: none;
-  overflow: hidden !important;
-  height: 65px !important;    /* v5.37 — skyline strip, not a CRT slab */
-  min-height: 65px !important;
+  overflow: hidden;
+  min-height: 200px;          /* original CRT presence */
   box-shadow:
     inset 0 0 40px rgba(0,0,0,0.92),
     inset 0 12px 24px rgba(0,0,0,0.80),
@@ -2805,32 +2803,29 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 @media (max-width: 639px) {
   .hp-osc-frame {
     width: calc(100% + 56px);
-    margin: 4px -28px 4px !important;
-    height: 48px !important;
-    min-height: 48px !important;
+    margin: 4px -28px 0;
+    min-height: 120px;
   }
 }
 @media (min-width: 640px) {
   .hp-osc-frame {
     width: calc(100% + 112px);  /* 56px rail × 2 */
-    margin: 8px -56px 8px !important;
-    height: 65px !important;
-    min-height: 65px !important;
+    margin: 8px -56px 0;
+    min-height: 200px;
   }
 }
 @media (min-width: 1024px) {
   .hp-osc-frame {
-    height: 65px !important;    /* stays tight on large desktop too */
-    min-height: 65px !important;
+    min-height: 240px;          /* full CRT slab on large desktop */
   }
 }
 
-/* SVG fills the compressed frame */
+/* SVG fills the frame — aspect ratio enforced by min-height on container */
 .hp-osc-svg {
   display: block;
-  width: 100% !important;
-  height: 100% !important;
-  min-height: unset;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;          /* fallback for browsers that need explicit height */
   aspect-ratio: unset;
 }
 
