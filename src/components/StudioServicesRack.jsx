@@ -18,6 +18,7 @@ const URLS = {
   ENQUIRE_ODRO:              '/contact?service=repairs',
   MAP:                       'https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE',
   INSTAGRAM:                 'https://www.instagram.com/cowleyroadstudios/',
+  CROWDFUNDER:               'https://www.crowdfunder.co.uk/p/cowley-road-studios',
 };
 
 /* ═══════════════════════════════════════════════════════════════
@@ -2060,6 +2061,26 @@ export default function StudioServicesRack() {
           <div className="hp-documentation-unit">
             <TrustStrip />
             <SeoText />
+
+            {/* SUPPORT THE SCENE — community funding strip */}
+            <div className="hp-support-strip">
+              <div className="hp-support-strip-inner">
+                <div className="hp-support-strip-left">
+                  <span className="hp-support-strip-eyebrow">SUPPORT THE SCENE</span>
+                  <p className="hp-support-strip-copy">Booking revenue funds the build. Every contribution keeps the rooms open, the gear running, and the rates accessible for Oxford musicians.</p>
+                </div>
+                <a
+                  href={URLS.CROWDFUNDER}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hp-support-strip-btn"
+                  aria-label="Back Cowley Road Studios on Crowdfunder"
+                >
+                  <span>Back us</span>
+                  <span className="hp-support-strip-arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
 
             {/* MANUFACTURER'S SEAL — engraved plate at chassis base */}
             <div className="hp-chassis-seal">
