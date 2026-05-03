@@ -1,5 +1,6 @@
 /** @jsxImportSource react */
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Dg3VuMeters } from './Dg3VuMeters';
 
 /* ─── Booking + nav URLs ─────────────────────────────────── */
 const URLS = {
@@ -2034,6 +2035,11 @@ export default function StudioServicesRack() {
               <span className="hp-top-plate-meta-row">ID: CRS-CONSOLE-01</span>
               <span className="hp-top-plate-meta-row">LOC: 51.7483° N, 1.2335° W</span>
               <span className="hp-top-plate-meta-row">STATUS: NOMINAL</span>
+            </div>
+            {/* DG3 VU meters — secondary hardware chrome, top-plate right slot */}
+            <div className="hp-top-plate-vu" aria-hidden="true">
+              <span className="hp-top-plate-vu-label">SIG</span>
+              <Dg3VuMeters />
             </div>
           </div>
 

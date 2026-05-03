@@ -276,3 +276,48 @@ section.crs-section {
 .loc-page {
   background: #141412 !important;
 }
+
+/* ── NETTLE GREEN PRIMARY BUTTONS ─────────────────────────────────────────
+   Override fire-orange .crs-button to brand Nettle Green.
+   Loads last — highest specificity without !important where possible.
+   ──────────────────────────────────────────────────────────────────────── */
+.crs-button,
+a.crs-button,
+button.crs-button {
+  background: #34B34A !important;
+  color: #0a1a0f !important;
+  border-color: #2a8a38 !important;
+  box-shadow: 0 1px 6px rgba(52,179,74,0.22), inset 0 1px 0 rgba(255,255,255,0.08) !important;
+}
+
+.crs-button:hover,
+a.crs-button:hover,
+button.crs-button:hover {
+  background: #3fd455 !important;
+  border-color: #34B34A !important;
+  box-shadow: 0 3px 12px rgba(52,179,74,0.40), 0 0 18px rgba(52,179,74,0.18) !important;
+  transform: translateY(-1px) !important;
+}
+
+.crs-button:active,
+a.crs-button:active,
+button.crs-button:active {
+  background: #2a8a38 !important;
+  transform: translateY(1px) !important;
+}
+
+/* Secondary / ghost variant — keep mustard outline */
+.crs-button.secondary,
+.crs-button--secondary {
+  background: transparent !important;
+  color: var(--mustard, #C2A43A) !important;
+  border-color: rgba(194,164,58,0.45) !important;
+  box-shadow: none !important;
+}
+
+.crs-button.secondary:hover,
+.crs-button--secondary:hover {
+  background: rgba(194,164,58,0.12) !important;
+  border-color: var(--mustard, #C2A43A) !important;
+  transform: none !important;
+}

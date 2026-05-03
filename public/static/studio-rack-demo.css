@@ -4965,3 +4965,91 @@ a.wsc-direct-value:hover { color: var(--wsc-gold-lt); }
   background: linear-gradient(90deg, transparent, rgba(58,78,58,0.35), transparent);
   margin: 2rem 0;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   DG3 VU METERS — secondary rack chrome (top-plate hardware strip)
+   Spec per brief: segmented LED, green/amber/red thresholds,
+   peak-hold dot, aria-hidden decorative element.
+   ═══════════════════════════════════════════════════════════════ */
+
+.dg3-vu-meter {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  padding: 4px 6px;
+  background: #050705;
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.06);
+  /* Sits in top-plate chrome — never grows to push layout */
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.dg3-vu-channel {
+  display: flex;
+  flex-direction: column-reverse; /* segment 0 = bottom */
+  gap: 2px;
+  background: #040404;
+  padding: 2px;
+  border-radius: 1px;
+}
+
+/* Base segment — unlit */
+.dg3-vu-segment {
+  width: 7px;
+  height: 5px;
+  background: radial-gradient(circle at 30% 20%, #111, #020302 65%);
+  opacity: 0.32;
+  transition: opacity 80ms, background-color 80ms;
+  border-radius: 1px;
+}
+
+/* Colour band CSS variables */
+.dg3-vu-segment--green { --vu-lit: #46cc40; }
+.dg3-vu-segment--amber { --vu-lit: #ffb440; }
+.dg3-vu-segment--red   { --vu-lit: #ff4a40; }
+
+/* Lit state — written by RAF loop via classList */
+.dg3-vu-segment.is-active {
+  background-color: var(--vu-lit);
+  background-image: none;
+  opacity: 1;
+  box-shadow: 0 0 3px var(--vu-lit);
+}
+
+/* Mobile — slightly smaller segments, still row layout */
+@media (max-width: 767px) {
+  .dg3-vu-meter  { flex-direction: row; gap: 3px; padding: 3px 4px; }
+  .dg3-vu-channel { gap: 1px; }
+  .dg3-vu-segment { width: 5px; height: 4px; }
+}
+
+/* Desktop — same row layout, full size */
+@media (min-width: 768px) {
+  .dg3-vu-meter { flex-direction: row; }
+}
+
+/* Placement in the top-plate right slot */
+.hp-top-plate-vu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  /* Label above the meters */
+}
+.hp-top-plate-vu-label {
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.25);
+  text-transform: uppercase;
+  line-height: 1;
+  align-self: flex-end;
+  padding-bottom: 3px;
+}
+
+/* ─── Reduced-motion: hide animation chrome entirely ───────── */
+@media (prefers-reduced-motion: reduce) {
+  .dg3-vu-segment {
+    transition: none;
+  }
+}
