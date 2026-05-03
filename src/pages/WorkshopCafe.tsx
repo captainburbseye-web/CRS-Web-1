@@ -1,300 +1,468 @@
-import { Header } from '../components/Header'
-import { Footer } from '../components/Footer'
+/**
+ * Workshop Café Page — VENUE MODULE v2.0
+ * Assimilated into the CRS Terminal chassis.
+ * Same subpage-chassis / rails / recessed-panel structure as Contact.tsx.
+ * No cream. No Header/Footer. No wsc-mode. Pure dark metal.
+ * Route: /workshop-cafe
+ */
+
+/* WSC bolt — hex bolt with olive-green tint (distinguishes from CRS grey bolts) */
+const WscBolt = () => (
+  <svg viewBox="0 0 100 100" class="subpage-bolt wsc-bolt" aria-hidden="true">
+    <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" fill="#1a2710" stroke="#0a1006" stroke-width="4" />
+    <circle cx="50" cy="50" r="25" fill="#0d1508" />
+    <circle cx="50" cy="50" r="15" fill="#0a1006" />
+  </svg>
+);
+
+const BOLTS = Array(14).fill(null);
+
+/* Amber telemetry label — reused across modules */
+const Label = ({ text }: { text: string }) => (
+  <div class="subpage-module-label">{text}</div>
+);
 
 export const WorkshopCafePage = () => (
-  <>
-    {/* Apply WSC mode class to body */}
-    <script dangerouslySetInnerHTML={{__html: `document.body.classList.add('wsc-mode');`}} />
-    
-    <Header />
+  <div class="subpage-chassis wsc-chassis">
 
-    {/* VENUE WELCOME RACK */}
-    <section class="rack-unit led-orange">
-      <div class="rack-screw"></div>
-      <div class="rack-screw"></div>
-      <div class="rack-screw"></div>
-      <div class="rack-screw"></div>
-      
-      <h2 class="rack-unit-title">Workshop Café — Venue</h2>
-      
-      {/* STATUS LINE - NON-NEGOTIABLE */}
-      <div style="background: rgba(255, 140, 0, 0.1); border: 2px solid #FF8C00; padding: 1rem; margin-bottom: 1.5rem;">
-        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.938rem; font-weight: 700; color: #FF8C00; margin-bottom: 0.5rem;">
-          Workshop Café is not currently open for daily café service.
-        </p>
-        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.85);">
-          The space is available by enquiry for private or community use during the build phase.
-        </p>
+    {/* LEFT RAIL */}
+    <div class="subpage-rail wsc-rail" aria-hidden="true">
+      {BOLTS.map((_, i) => <WscBolt key={i} />)}
+    </div>
+
+    {/* CENTRE COLUMN */}
+    <div class="subpage-column wsc-column">
+
+      {/* ── HEADER ANCHOR ── */}
+      <div class="subpage-header-anchor">
+        <a href="/" aria-label="Cowley Road Studios — home">
+          <img
+            src="/static/workshop-cafe-logo.png"
+            alt="Workshop Café"
+            class="subpage-header-logo"
+            width="160" height="60"
+          />
+        </a>
+        <a href="/" class="subpage-header-back" aria-label="Return to main terminal">
+          ← MAIN TERMINAL
+        </a>
       </div>
-      
-      <p style="margin-bottom: 1.5rem;">
-        Bookable public-facing venue within CRS for small events and private hire.
-      </p>
-      
-      {/* FOOD POP-UP INFO */}
-      <div style="background: rgba(212, 175, 55, 0.1); border: 2px solid rgba(212, 175, 55, 0.5); padding: 1rem; margin-bottom: 1.5rem;">
-        <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9); line-height: 1.6;">
-          <strong style="color: #D4AF37;">Coffee & Collaboration.</strong> No kitchen on-site, but we host regular food pop-ups featuring various members of our creative network and our legendary Cowley Road neighbours.
-        </p>
+
+      {/* ── LCD STATUS TICKER ── */}
+      <div class="subpage-lcd" aria-label="Venue status">
+        WORKSHOP CAFÉ · 118 COWLEY ROAD OX4 1JE &nbsp;·&nbsp; VENUE HIRE: OPEN &nbsp;·&nbsp; REGULAR SERVICE: COMING SOON &nbsp;·&nbsp; ENQUIRIES: ACTIVE
       </div>
-      
-      <div class="wsc-capacity-spec">
-        <div class="wsc-capacity-item">
-          Capacity: <strong>25 seated</strong>
+
+      {/* ── MODULE 01 — VENUE STATUS ── */}
+      <div class="subpage-module">
+        <Label text="MODULE_01 // VENUE STATUS" />
+        <div class="subpage-recessed">
+
+          {/* Status alert — orange rail */}
+          <div style="
+            background: rgba(255,140,0,0.06);
+            border: 1px solid rgba(255,140,0,0.35);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+          ">
+            <p style="
+              font-family: var(--font-mono);
+              font-size: 0.78rem;
+              font-weight: 700;
+              letter-spacing: 0.14em;
+              text-transform: uppercase;
+              color: #FF8C00;
+              margin: 0 0 0.4rem;
+            ">[ STATUS: BUILD PHASE ]</p>
+            <p style="
+              font-family: var(--font-mono);
+              font-size: 0.875rem;
+              color: var(--offwhite-dim);
+              line-height: 1.6;
+              margin: 0;
+            ">
+              Workshop Café is not currently open for daily café service.
+              The space is available by enquiry for private or community use during the build phase.
+            </p>
+          </div>
+
+          {/* Capacity spec */}
+          <div style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            margin-bottom: 1.25rem;
+          ">
+            <div>
+              <span style="color:var(--mustard); font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; display:block; margin-bottom:0.25rem;">SEATED</span>
+              <span style="color:var(--offwhite); font-weight:700; font-size:1.1rem;">25</span>
+            </div>
+            <div>
+              <span style="color:var(--mustard); font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; display:block; margin-bottom:0.25rem;">STANDING</span>
+              <span style="color:var(--offwhite); font-weight:700; font-size:1.1rem;">60</span>
+            </div>
+          </div>
+
+          {/* Food pop-up note */}
+          <div style="
+            background: rgba(212,175,55,0.06);
+            border-left: 3px solid rgba(212,175,55,0.4);
+            padding: 1rem 1.25rem;
+          ">
+            <p style="
+              font-family: var(--font-mono);
+              font-size: 0.875rem;
+              color: var(--offwhite-dim);
+              line-height: 1.6;
+              margin: 0;
+            ">
+              <strong style="color:var(--mustard);">Coffee & Collaboration.</strong>
+              {' '}No kitchen on-site, but we host regular food pop-ups from our creative network and legendary Cowley Road neighbours.
+            </p>
+          </div>
         </div>
-        <div class="wsc-capacity-item">
-          <strong>up to 60 standing</strong>
+      </div>
+
+      {/* ── MODULE 02 — INFRASTRUCTURE ALLOCATION ── */}
+      <div class="subpage-module">
+        <Label text="MODULE_02 // INFRASTRUCTURE ALLOCATION" />
+        <div class="subpage-recessed">
+          <div style="display:grid; gap:0.75rem;">
+
+            {[
+              { id: '01', color: 'var(--crs-green)', label: 'OPEN WORKSPACE',
+                body: 'Drop-in desk space with high-speed connectivity. No booking required.' },
+              { id: '02', color: 'var(--mustard)', label: 'COMMUNITY EVENTS',
+                body: 'Talks, screenings, workshops, open mics. Subsidized rates for grassroots / non-profit.' },
+              { id: '03', color: 'var(--crs-green)', label: 'PRIVATE HIRE',
+                body: 'Small-scale meetings, rehearsals, or private sessions. PA system & projection available.' },
+              { id: '04', color: 'var(--mustard)', label: 'LISTENING SESSIONS',
+                body: 'Film screenings, DJ sets, live performance. Full PA + lighting rig on request.' },
+            ].map(m => (
+              <div style={`
+                background: rgba(0,0,0,0.3);
+                border-left: 3px solid ${m.color};
+                padding: 1rem 1.25rem;
+              `}>
+                <p style={`
+                  font-family: var(--font-mono);
+                  font-size: 0.7rem;
+                  color: ${m.color};
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  letter-spacing: 0.12em;
+                  margin: 0 0 0.4rem;
+                `}>MODULE_{m.id} // {m.label}</p>
+                <p style="
+                  font-family: var(--font-mono);
+                  font-size: 0.875rem;
+                  color: var(--offwhite-dim);
+                  line-height: 1.6;
+                  margin: 0;
+                ">{m.body}</p>
+              </div>
+            ))}
+
+          </div>
         </div>
       </div>
-      
-      <div class="wsc-use-case-grid">
-        <div class="wsc-use-case-label">listening sessions</div>
-        <div class="wsc-use-case-label">film screenings</div>
-        <div class="wsc-use-case-label">workshops & classes</div>
-        <div class="wsc-use-case-label">talks & discussions</div>
-        <div class="wsc-use-case-label">private bookings</div>
-      </div>
-      
-      <a href="/contact?service=venue" class="cta-button">BOOK WORKSHOP CAFÉ</a>
-    </section>
 
-    {/* CAFÉ SIGNAGE HERO - Above the fold */}
-    <section class="crs-section cafe-heartbeat" style="padding: 0; max-width: 1400px; margin: 0 auto;">
-      <img 
-        src="https://pub-991d8d2677374c528678829280f50c98.r2.dev/crs-images%20website/Workshop_Cafe_CTA_Primary.png" 
-        alt="Workshop Café — 118 Cowley Road"
-        style="width: 100%; height: auto; display: block;"
-        loading="eager"
-      />
-    </section>
+      {/* ── MODULE 03 — RESOURCE ALLOCATION RATES ── */}
+      <div class="subpage-module">
+        <Label text="MODULE_03 // RESOURCE ALLOCATION RATES" />
+        <div class="subpage-recessed">
+          <div style="display:grid; gap:0.75rem; margin-bottom:1.25rem;">
 
-    {/* EVENT LOG - Live feed */}
-    <section class="crs-section section-dark">
-      <div class="section-header">
-        <h2 class="section-title heading">[ EVENT_LOG ]</h2>
-        <p class="section-intro" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem;">118 COWLEY ROAD — PUBLIC SCHEDULE</p>
-      </div>
-
-      <div id="workshop-cafe-events" style="margin-top: 2rem;">
-        <p style="font-size: 0.875rem; font-style: italic; color: rgba(245, 245, 245, 0.7);">Loading events...</p>
-      </div>
-      
-      <script dangerouslySetInnerHTML={{__html: `
-        fetch('/events.json')
-          .then(res => res.json())
-          .then(data => {
-            const container = document.getElementById('workshop-cafe-events');
-            if (!container) return;
-            
-            if (!data.events || data.events.length === 0) {
-              container.innerHTML = '<div style="background: rgba(0,0,0,0.3); border: 1px solid rgba(127, 255, 0, 0.2); padding: 1.5rem; text-align: center;"><p style="font-family: \\'JetBrains Mono\\', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">[ STATUS: NO_ACTIVE_ENTRIES ]</p><p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">No events scheduled this week — <a href="/contact?service=venue" style="color: var(--mustard); text-decoration: none; font-weight: 700;">inquire for space allocation</a></p></div>';
-              return;
-            }
-            
-            const eventsToShow = data.events.slice(0, 5);
-            
-            container.innerHTML = eventsToShow.map(event => {
-              const date = new Date(event.start);
-              const dateStr = date.toLocaleDateString('en-GB', { 
-                weekday: 'short', 
-                day: 'numeric', 
-                month: 'short'
-              });
-              const timeStr = event.start.includes('T') ? date.toLocaleTimeString('en-GB', {
-                hour: '2-digit',
-                minute: '2-digit'
-              }) : '';
-              
-              return \`
-                <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.25rem; margin-bottom: 1.25rem;">
-                  <h4 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; margin-bottom: 0.5rem; letter-spacing: 0.03em;">\${event.title}</h4>
-                  <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.6); margin-bottom: 0.5rem;">\${dateStr}\${timeStr ? ' · ' + timeStr : ''}</p>
-                  <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">\${event.description.substring(0, 120)}\${event.description.length > 120 ? '...' : ''}</p>
+            {[
+              { label: 'FULL VENUE HIRE',   price: '£25/hr · £90/4hrs · £200/day',
+                note: 'Capacity: 40–60 people · PA system & projection included' },
+              { label: 'MEETING TABLE',     price: '£25 / half-day',
+                note: 'Workspace with high-speed connectivity' },
+              { label: 'COMMUNITY EVENT',   price: '£30 (subsidized)',
+                note: 'For grassroots / non-profit cultural activity' },
+            ].map(r => (
+              <div style="
+                background: rgba(0,0,0,0.3);
+                border-left: 3px solid rgba(212,175,55,0.5);
+                padding: 1.25rem;
+              ">
+                <div style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: baseline;
+                  flex-wrap: wrap;
+                  gap: 0.75rem;
+                  margin-bottom: 0.5rem;
+                ">
+                  <span style="
+                    font-family: var(--font-mono);
+                    font-size: 0.7rem;
+                    font-weight: 700;
+                    letter-spacing: 0.12em;
+                    text-transform: uppercase;
+                    color: var(--mustard);
+                  ">{r.label}</span>
+                  <span style="
+                    font-family: var(--font-mono);
+                    font-size: 0.95rem;
+                    font-weight: 700;
+                    color: var(--offwhite);
+                  ">{r.price}</span>
                 </div>
-              \`;
-            }).join('');
-          })
-          .catch(err => {
-            const container = document.getElementById('workshop-cafe-events');
-            if (container) {
-              container.innerHTML = '<p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7);">Unable to load events.</p>';
-            }
-          });
-      `}} />
-    </section>
+                <p style="
+                  font-family: var(--font-mono);
+                  font-size: 0.8rem;
+                  color: var(--offwhite-dim);
+                  margin: 0;
+                ">{r.note}</p>
+              </div>
+            ))}
 
-    {/* RESOURCE ALLOCATION RATES */}
-    <section class="crs-section cafe-heartbeat">
-      <div class="section-header">
-        <h2 class="section-title cafe-title">RESOURCE ALLOCATION RATES</h2>
-        <p class="section-intro cafe-intro">
-          118 Cowley Road — Multi-use infrastructure
-        </p>
-      </div>
-
-      <div style="max-width: 900px; margin: 0 auto;">
-        {/* Rate Card Grid */}
-        <div style="display: grid; gap: 1.5rem; margin-bottom: 2rem;">
-          
-          {/* Full Venue Hire */}
-          <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
-              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">FULL VENUE HIRE</h3>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£25/hr | £90/4hrs | £200/day</span>
-            </div>
-            <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
-              Capacity: 40–60 people · Includes PA system & projection
-            </p>
           </div>
 
-          {/* Meeting Table */}
-          <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
-              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">MEETING TABLE</h3>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£25 per half-day</span>
-            </div>
-            <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
-              Workspace with high-speed connectivity
-            </p>
-          </div>
-
-          {/* Community Event */}
-          <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.75rem;">
-              <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin: 0;">COMMUNITY EVENT</h3>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 1.125rem; font-weight: 700; color: rgba(245, 245, 245, 0.9);">£30 (subsidized)</span>
-            </div>
-            <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.8); margin: 0;">
-              For grassroots/non-profit cultural activity
-            </p>
+          {/* Access policy */}
+          <div style="
+            background: rgba(212,175,55,0.05);
+            border: 1px solid rgba(212,175,55,0.2);
+            padding: 1.25rem;
+            text-align: center;
+          ">
+            <p style="
+              font-family: var(--font-mono);
+              font-size: 0.65rem;
+              color: var(--mustard);
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 0.14em;
+              margin: 0 0 0.5rem;
+            ">[ ACCESS POLICY ]</p>
+            <p style="
+              font-family: var(--font-mono);
+              font-size: 0.85rem;
+              color: var(--offwhite-dim);
+              line-height: 1.6;
+              margin: 0;
+            ">Priority allocation granted to local grassroots initiatives. All commercial hire directly funds the CRS Creative Infrastructure.</p>
           </div>
         </div>
+      </div>
 
-        {/* Access Policy */}
-        <div style="background: rgba(216, 162, 0, 0.1); border: 1px solid var(--mustard); padding: 1.5rem; text-align: center;">
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
-            [ ACCESS POLICY ]
+      {/* ── MODULE 04 — EVENT LOG ── */}
+      <div class="subpage-module">
+        <Label text="MODULE_04 // EVENT_LOG — PUBLIC SCHEDULE" />
+        <div class="subpage-recessed">
+          <div id="workshop-cafe-events">
+            <p style="
+              font-family: var(--font-mono);
+              font-size: 0.8rem;
+              color: var(--offwhite-mute);
+              font-style: italic;
+            ">Loading schedule...</p>
+          </div>
+        </div>
+      </div>
+
+      {/* ── MODULE 05 — REFRESHMENT PROTOCOL ── */}
+      <div class="subpage-module">
+        <Label text="MODULE_05 // REFRESHMENT PROTOCOL" />
+        <div class="subpage-recessed">
+
+          {/* Coffee */}
+          <p style="
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--mustard);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin: 0 0 0.75rem;
+          ">COFFEE ALLOCATION</p>
+
+          <div style="display:grid; gap:0;">
+            {[
+              ['ESPRESSO // SINGLE',  '£2.50'],
+              ['ESPRESSO // DOUBLE',  '£3.00'],
+              ['FLAT_WHITE',          '£3.50'],
+              ['CAPPUCCINO',          '£3.50'],
+              ['LATTE',               '£3.50'],
+              ['AMERICANO',           '£3.00'],
+            ].map(([name, price]) => (
+              <div style="
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                padding: 0.6rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+              ">
+                <span style="font-family:var(--font-mono); font-size:0.875rem; color:var(--offwhite-dim);">{name}</span>
+                <span style="font-family:var(--font-mono); font-size:0.875rem; font-weight:700; color:var(--mustard);">{price}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Tea */}
+          <p style="
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--mustard);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin: 1.5rem 0 0.75rem;
+          ">TEA ALLOCATION</p>
+
+          <div style="display:grid; gap:0; margin-bottom:1.25rem;">
+            {[
+              ['ENGLISH_BREAKFAST', '£2.50'],
+              ['EARL_GREY',         '£2.50'],
+              ['GREEN_TEA',         '£2.50'],
+              ['PEPPERMINT',        '£2.50'],
+            ].map(([name, price]) => (
+              <div style="
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                padding: 0.6rem 0;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+              ">
+                <span style="font-family:var(--font-mono); font-size:0.875rem; color:var(--offwhite-dim);">{name}</span>
+                <span style="font-family:var(--font-mono); font-size:0.875rem; font-weight:700; color:var(--mustard);">{price}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Milk note */}
+          <div style="
+            background: rgba(57,255,20,0.04);
+            border: 1px solid rgba(57,255,20,0.15);
+            padding: 1rem;
+            text-align: center;
+          ">
+            <p style="
+              font-family: var(--font-mono);
+              font-size: 0.65rem;
+              color: var(--crs-green);
+              font-weight: 700;
+              letter-spacing: 0.14em;
+              text-transform: uppercase;
+              margin: 0 0 0.4rem;
+            ">[ MILK_OPTIONS ]</p>
+            <p style="
+              font-family: var(--font-mono);
+              font-size: 0.85rem;
+              color: var(--offwhite-dim);
+              margin: 0;
+            ">Oat · Soy · Dairy — No additional charge</p>
+          </div>
+
+        </div>
+      </div>
+
+      {/* ── MODULE 06 — BOOKING CTA ── */}
+      <div class="subpage-module">
+        <Label text="MODULE_06 // INITIATE BOOKING SEQUENCE" />
+        <div class="subpage-recessed" style="text-align:center;">
+          <p style="
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--offwhite-dim);
+            line-height: 1.7;
+            margin: 0 0 1.5rem;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+          ">
+            Workshop Café operates as the public-facing space of CRS.
+            For venue hire, private events, community use, or technical support — initiate contact below.
           </p>
-          <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9); margin: 0;">
-            Priority allocation granted to local grassroots initiatives. All commercial hire directly funds the CRS Creative Infrastructure.
-          </p>
-        </div>
-
-        {/* Booking CTA */}
-        <div style="margin-top: 2rem; text-align: center;">
-          <a href="/contact?service=venue" class="crs-button mono">BOOK SPACE</a>
-        </div>
-      </div>
-    </section>
-
-    {/* INFRASTRUCTURE ALLOCATION - Modular Use Cases */}
-    <section class="crs-section cafe-heartbeat">
-      <div class="section-header">
-        <h2 class="section-title cafe-title">[ INFRASTRUCTURE_ALLOCATION ]</h2>
-        <p class="section-intro cafe-intro" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em;">Modular Space Protocol</p>
-      </div>
-
-      <div style="max-width: 700px; margin: 0 auto;">
-        <div style="display: grid; gap: 1rem; margin-bottom: 2rem;">
-          <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green); padding: 1.25rem;">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MODULE_01 // OPEN WORKSPACE</p>
-            <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">Drop-in desk space with high-speed connectivity. No booking required.</p>
-          </div>
-          <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.25rem;">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--mustard); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MODULE_02 // COMMUNITY EVENTS</p>
-            <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">Talks, screenings, workshops, open mics. Subsidized rates for grassroots/non-profit.</p>
-          </div>
-          <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--crs-green); padding: 1.25rem;">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">MODULE_03 // PRIVATE HIRE</p>
-            <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85);">Small-scale meetings, rehearsals, or private sessions. PA system & projection available.</p>
-          </div>
+          <a href="/contact?service=venue" class="subpage-cta" style="
+            display: inline-block;
+            margin-bottom: 0.75rem;
+          ">
+            ENQUIRE ABOUT VENUE HIRE →
+          </a>
+          <br />
+          <a href="/" class="subpage-header-back" style="font-size:0.8rem;">
+            ← VIEW CRS STUDIO SERVICES
+          </a>
         </div>
       </div>
-    </section>
 
-    {/* REFRESHMENT PROTOCOL - Coffee/Tea Menu */}
-    <section class="crs-section section-dark">
-      <div class="section-header">
-        <h2 class="section-title heading">[ REFRESHMENT_PROTOCOL ]</h2>
-        <p class="section-intro" style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem;">Specialty Coffee — Oxford Roasted</p>
-      </div>
-
-      <div style="max-width: 800px; margin: 0 auto;">
-        {/* Coffee Specs */}
-        <div style="margin-bottom: 3rem;">
-          <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 1.5rem;">COFFEE ALLOCATION</h3>
-          <div style="display: grid; gap: 1rem;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">ESPRESSO // SINGLE</span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
+      {/* ── LOCATION PLATE ── */}
+      <div class="subpage-module">
+        <Label text="LOCATION PLATE — OX4 1JE" />
+        <div class="subpage-recessed">
+          <div style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--offwhite-dim);
+          ">
+            <div>
+              <span style="color:var(--mustard); font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; display:block; margin-bottom:0.3rem;">WORKSHOP CAFÉ</span>
+              118 Cowley Road<br />Oxford OX4 1JE<br />
+              <a href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE" target="_blank" rel="noopener noreferrer" style="color:var(--mustard); text-decoration:none;">Maps →</a>
             </div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">ESPRESSO // DOUBLE</span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.00</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">FLAT_WHITE</span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.50</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">CAPPUCCINO</span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.50</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">LATTE</span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.50</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">AMERICANO</span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£3.00</span>
+            <div>
+              <span style="color:var(--mustard); font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase; display:block; margin-bottom:0.3rem;">CRICKET ROAD STUDIO</span>
+              Cricket Road Studios<br />Oxford OX4 3DJ
             </div>
           </div>
         </div>
-
-        {/* Tea Specs */}
-        <div style="margin-bottom: 3rem;">
-          <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 0.875rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 1.5rem;">TEA ALLOCATION</h3>
-          <div style="display: grid; gap: 1rem;">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">ENGLISH_BREAKFAST</span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">EARL_GREY</span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">GREEN_TEA</span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: baseline; padding: 0.75rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.9);">PEPPERMINT</span>
-              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; font-weight: 700; color: var(--mustard);">£2.50</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Protocol Note */}
-        <div style="background: rgba(127, 255, 0, 0.05); border: 1px solid rgba(127, 255, 0, 0.2); padding: 1.5rem; text-align: center;">
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--crs-green); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">[ MILK_OPTIONS ]</p>
-          <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9); margin: 0;">Oat · Soy · Dairy — No additional charge</p>
-        </div>
       </div>
-    </section>
 
-    {/* CRS ROUTING PANEL - Authority handoff */}
-    <section class="crs-section section-dark">
-      <div style="max-width: 700px; margin: 0 auto; text-align: center; padding: 2rem 1rem;">
-        <p style="font-size: 1rem; line-height: 1.7; color: rgba(245, 245, 245, 0.9); margin-bottom: 1.5rem;">
-          Workshop Café operates as the public-facing space of CRS.
-        </p>
-        <p style="font-size: 0.9375rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 2rem;">
-          For venue hire, technical support, or bookings:
-        </p>
-        <a href="/#recording-services" class="crs-button mono">VIEW CRS SERVICES</a>
+      {/* ── SEAL ── */}
+      <div class="subpage-seal">
+        <a href="/" aria-label="Cowley Road Studios — home">
+          <img
+            src="/static/crs-logo.png"
+            alt="Cowley Road Studios"
+            class="subpage-seal-img"
+            width="120" height="45"
+          />
+        </a>
+        <p class="subpage-seal-sub">118 COWLEY ROAD · OXFORD · PART OF CRS</p>
       </div>
-    </section>
 
-    <Footer />
-  </>
-)
+    </div>{/* /subpage-column */}
+
+    {/* RIGHT RAIL */}
+    <div class="subpage-rail subpage-rail--right wsc-rail" aria-hidden="true">
+      {BOLTS.map((_, i) => <WscBolt key={i} />)}
+    </div>
+
+    {/* Event log script — inlined, no framework dependency */}
+    <script dangerouslySetInnerHTML={{__html: `
+      fetch('/events.json')
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById('workshop-cafe-events');
+          if (!container) return;
+          if (!data.events || data.events.length === 0) {
+            container.innerHTML = '<div style="background:rgba(0,0,0,0.3);border-left:3px solid rgba(57,255,20,0.3);padding:1rem 1.25rem;"><p style=\\"font-family:var(--font-mono);font-size:0.7rem;color:var(--crs-green);font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin:0 0 0.4rem;\\">[ STATUS: NO_ACTIVE_ENTRIES ]</p><p style=\\"font-family:var(--font-mono);font-size:0.85rem;color:var(--offwhite-dim);margin:0;\\">No events scheduled this week. <a href=\\"/contact?service=venue\\" style=\\"color:var(--mustard);text-decoration:none;\\">Enquire about the space →</a></p></div>';
+            return;
+          }
+          const eventsToShow = data.events.slice(0, 5);
+          container.innerHTML = eventsToShow.map(event => {
+            const date = new Date(event.start);
+            const dateStr = date.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+            const timeStr = event.start.includes('T') ? date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : '';
+            return \`<div style="background:rgba(0,0,0,0.3);border-left:3px solid rgba(212,175,55,0.4);padding:1rem 1.25rem;margin-bottom:0.75rem;">
+              <p style="font-family:var(--font-mono);font-size:0.7rem;color:var(--mustard);font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin:0 0 0.3rem;">\${event.title}</p>
+              <p style="font-family:var(--font-mono);font-size:0.75rem;color:var(--offwhite-mute);margin:0 0 0.4rem;">\${dateStr}\${timeStr ? ' · ' + timeStr : ''}</p>
+              <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--offwhite-dim);line-height:1.6;margin:0;">\${event.description.substring(0, 120)}\${event.description.length > 120 ? '...' : ''}</p>
+            </div>\`;
+          }).join('');
+        })
+        .catch(() => {
+          const container = document.getElementById('workshop-cafe-events');
+          if (container) container.innerHTML = '<p style=\\"font-family:var(--font-mono);font-size:0.8rem;color:var(--offwhite-mute);\\">Unable to load schedule.</p>';
+        });
+    `}} />
+
+  </div>
+);
