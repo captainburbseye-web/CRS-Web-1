@@ -4656,3 +4656,312 @@ a.wsc-direct-value:hover { color: var(--wsc-gold-lt); }
   .wsc-capacity-cell { flex: 1 1 30%; }
 }
 
+
+/* ══════════════════════════════════════════════════════════════
+   LOCATION PAGES — /crs-cowley-road  /crs-cricket-road
+   CRS brand: nettle green + mustard + charcoal chassis
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Page shell ─────────────────────────────────────────────── */
+.loc-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 5rem;
+}
+
+/* ── Hero strip ─────────────────────────────────────────────── */
+.loc-hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem 2rem 1.75rem;
+  background: #0e140e;
+  border: 1px solid rgba(58,78,58,0.55);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+}
+.loc-hero-left { flex: 1; min-width: 0; }
+.loc-hero-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6a8a5a;
+  margin: 0 0 0.5rem;
+}
+.loc-hero-name {
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #f4f1e8;
+  margin: 0 0 0.35rem;
+  line-height: 1.15;
+}
+.loc-hero-address {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(212,204,184,0.65);
+  letter-spacing: 0.03em;
+  margin: 0;
+  line-height: 1.6;
+}
+.loc-hero-logo {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  opacity: 0.92;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.7));
+}
+
+/* ── Two-column layout ──────────────────────────────────────── */
+.loc-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+@media (max-width: 600px) {
+  .loc-cols { grid-template-columns: 1fr; }
+  .loc-hero { flex-direction: column-reverse; gap: 1rem; }
+  .loc-hero-logo { width: 56px; height: 56px; align-self: flex-end; }
+}
+
+/* ── Panel card ─────────────────────────────────────────────── */
+.loc-panel {
+  background: #0d0d0d;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  padding: 1.375rem 1.5rem 1.5rem;
+}
+.loc-panel--accent {
+  border-color: rgba(58,78,58,0.55);
+  background: #0e140e;
+}
+.loc-panel--full {
+  grid-column: 1 / -1;
+}
+.loc-panel-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6a8a5a;
+  margin: 0 0 0.875rem;
+}
+.loc-panel-label--mustard {
+  color: #b89328;
+}
+.loc-panel-heading {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #f4f1e8;
+  margin: 0 0 0.75rem;
+  letter-spacing: 0;
+}
+
+/* ── Service list ───────────────────────────────────────────── */
+.loc-services {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.loc-services li {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.055);
+  font-size: 0.875rem;
+  color: #d4cbb8;
+  line-height: 1.4;
+}
+.loc-services li:last-child { border-bottom: none; }
+.loc-services li::before {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4e6e3e;
+  flex-shrink: 0;
+}
+
+/* ── Spec table ─────────────────────────────────────────────── */
+.loc-specs {
+  width: 100%;
+  border-collapse: collapse;
+}
+.loc-specs tr { border-bottom: 1px solid rgba(255,255,255,0.055); }
+.loc-specs tr:last-child { border-bottom: none; }
+.loc-specs td {
+  padding: 0.45rem 0;
+  font-size: 0.8125rem;
+  vertical-align: top;
+  line-height: 1.5;
+}
+.loc-specs td:first-child {
+  width: 42%;
+  font-weight: 500;
+  color: rgba(212,204,184,0.6);
+  letter-spacing: 0.03em;
+  padding-right: 1rem;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+.loc-specs td:last-child {
+  color: #d4cbb8;
+}
+
+/* ── Transport block ────────────────────────────────────────── */
+.loc-transport {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 600px) {
+  .loc-transport { grid-template-columns: 1fr 1fr; }
+}
+.loc-transport-item {}
+.loc-transport-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+.loc-transport-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6a8a5a;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+.loc-transport-detail {
+  font-size: 0.8125rem;
+  color: #d4cbb8;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ── Map embed placeholder ──────────────────────────────────── */
+.loc-map-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 3px;
+  text-decoration: none;
+  color: var(--mustard, #C2A43A);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s, background 0.2s;
+  margin-top: 0.875rem;
+}
+.loc-map-link:hover {
+  border-color: rgba(194,164,58,0.35);
+  background: #0e0e0a;
+}
+.loc-map-link svg {
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+
+/* ── Photo strip ────────────────────────────────────────────── */
+.loc-photo-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.875rem;
+}
+.loc-photo-strip img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 3px;
+  filter: brightness(0.88);
+}
+
+/* ── CTA bar ────────────────────────────────────────────────── */
+.loc-cta-bar {
+  display: flex;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+  margin-top: 0.875rem;
+}
+.loc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.6875rem 1.375rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+}
+.loc-cta--primary {
+  background: #243024;
+  color: #c8d8a8;
+  border: 1px solid rgba(58,78,58,0.7);
+}
+.loc-cta--primary:hover {
+  background: #2f3e2f;
+  color: #dce8bc;
+  box-shadow: 0 0 12px rgba(58,118,38,0.2);
+}
+.loc-cta--secondary {
+  background: transparent;
+  color: rgba(212,204,184,0.75);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+.loc-cta--secondary:hover {
+  border-color: rgba(194,164,58,0.35);
+  color: #C2A43A;
+}
+
+/* ── Status pill ────────────────────────────────────────────── */
+.loc-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.625rem;
+  border-radius: 2px;
+  margin-bottom: 0.875rem;
+}
+.loc-status--operational {
+  background: rgba(46,90,30,0.25);
+  color: #7ab85a;
+  border: 1px solid rgba(46,90,30,0.5);
+}
+.loc-status--led {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4ec93e;
+  box-shadow: 0 0 5px #4ec93e;
+  animation: led-blink 2.5s ease-in-out infinite;
+}
+@keyframes led-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Divider ────────────────────────────────────────────────── */
+.loc-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(58,78,58,0.35), transparent);
+  margin: 2rem 0;
+}

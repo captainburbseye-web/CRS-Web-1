@@ -49,7 +49,7 @@ export function DigitalPulsePage() {
           textAlign: 'center'
         }}>
           <p style={{
-            fontFamily: ''Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif',
+            fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
             fontSize: '18px',
             lineHeight: '1.8',
             color: '#f5f5f5',
@@ -60,7 +60,7 @@ export function DigitalPulsePage() {
           </p>
           
           <p style={{
-            fontFamily: ''Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif',
+            fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
             fontSize: '24px',
             fontWeight: 'bold',
             color: '#FFBF00',
@@ -90,7 +90,7 @@ export function DigitalPulsePage() {
             textAlign: 'center'
           }}>
             <h3 style={{
-              fontFamily: ''Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif',
+              fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
               fontSize: '18px',
               fontWeight: 'bold',
               color: '#00ffff',
@@ -101,7 +101,7 @@ export function DigitalPulsePage() {
               Tech & Infrastructure
             </h3>
             <p style={{
-              fontFamily: ''Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif',
+              fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
               fontSize: '16px',
               color: '#f5f5f5',
               lineHeight: '1.6'
@@ -118,7 +118,7 @@ export function DigitalPulsePage() {
             textAlign: 'center'
           }}>
             <h3 style={{
-              fontFamily: ''Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif',
+              fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
               fontSize: '18px',
               fontWeight: 'bold',
               color: '#ff00ff',
@@ -129,7 +129,7 @@ export function DigitalPulsePage() {
               Creative Access
             </h3>
             <p style={{
-              fontFamily: ''Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif',
+              fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
               fontSize: '16px',
               color: '#f5f5f5',
               lineHeight: '1.6'
@@ -146,7 +146,7 @@ export function DigitalPulsePage() {
             textAlign: 'center'
           }}>
             <h3 style={{
-              fontFamily: ''Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif',
+              fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
               fontSize: '18px',
               fontWeight: 'bold',
               color: '#FFBF00',
@@ -157,7 +157,7 @@ export function DigitalPulsePage() {
               Future-Proofing
             </h3>
             <p style={{
-              fontFamily: ''Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif',
+              fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
               fontSize: '16px',
               color: '#f5f5f5',
               lineHeight: '1.6'
@@ -182,7 +182,7 @@ export function DigitalPulsePage() {
               background: 'transparent',
               border: '3px solid #00ffff',
               color: '#00ffff',
-              fontFamily: ''Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif',
+              fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
               fontSize: '18px',
               fontWeight: 'bold',
               textDecoration: 'none',
@@ -209,7 +209,7 @@ export function DigitalPulsePage() {
           {/* SECONDARY LINKS */}
           <div style={{
             marginTop: '30px',
-            fontFamily: ''Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif',
+            fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
             fontSize: '14px',
             color: '#999'
           }}>

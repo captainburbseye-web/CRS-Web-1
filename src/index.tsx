@@ -650,49 +650,182 @@ app.get('/crs-cowley-road', (c) => {
     <>
       <BuildStatusBanner />
       <Header />
-      <section class="crs-section section-dark">
-        <div class="section-header">
-          <h1 class="section-title heading">CRS — COWLEY ROAD</h1>
+      <div class="loc-page">
+
+        {/* ── HERO ─────────────────────────────────────────────── */}
+        <div class="loc-hero">
+          <div class="loc-hero-left">
+            <p class="loc-hero-eyebrow">Cowley Road Studios · Oxford HQ</p>
+            <h1 class="loc-hero-name">118 Cowley Road</h1>
+            <p class="loc-hero-address">Oxford · OX4 1JE · United Kingdom</p>
+            <div class="loc-status loc-status--operational" style="margin-top: 0.75rem;">
+              <span class="loc-status--led"></span>
+              Operational
+            </div>
+          </div>
+          <img src="/static/crs-logo.png" alt="Cowley Road Studios" class="loc-hero-logo" width="80" height="80" />
         </div>
 
-        <div class="content-block" style="max-width: 700px; margin: 0 auto;">
-          {/* ADDRESS */}
-          <div style="margin-bottom: 2rem;">
-            <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
-              118 Cowley Road<br />
-              Oxford<br />
-              OX4 1JE
-            </p>
-          </div>
+        {/* ── WHAT'S HERE + BOOKING ─────────────────────────────── */}
+        <div class="loc-cols">
 
-          {/* WHAT OPERATES HERE */}
-          <div style="margin-bottom: 2rem;">
-            <p style="font-weight: 600; margin-bottom: 1rem; font-size: 0.9375rem;">What operates here:</p>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Recording studio</li>
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Production rooms</li>
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Workshop Café</li>
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Equipment repair</li>
+          <div class="loc-panel loc-panel--accent">
+            <p class="loc-panel-label">Services at this location</p>
+            <ul class="loc-services">
+              <li>Recording studio — hybrid analogue/digital</li>
+              <li>Control room hire</li>
+              <li>Rehearsal rooms</li>
+              <li>Workshop Café &amp; venue hire</li>
+              <li>ODRO Engineering — repairs &amp; AV support</li>
             </ul>
           </div>
 
-          {/* BOOKING CTA */}
-          <div class="hero-cta">
-            <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX" target="_blank" rel="noopener noreferrer" class="crs-button mono">Book rehearsal — Cowley Road</a>
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.65); margin-top: 0.75rem; text-align: center;">£45 / 2 hours · Rehearsal use only</p>
+          <div class="loc-panel">
+            <p class="loc-panel-label">Book direct</p>
+            <div class="loc-cta-bar" style="flex-direction: column; margin-top: 0;">
+              <a href="https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX"
+                 target="_blank" rel="noopener noreferrer" class="loc-cta loc-cta--primary">
+                Book recording
+              </a>
+              <a href="https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX"
+                 target="_blank" rel="noopener noreferrer" class="loc-cta loc-cta--primary">
+                Book rehearsal
+              </a>
+              <a href="https://app.squareup.com/appointments/buyer/widget/chctncmi4mg3qr/L1MAM4DDPHKXX"
+                 target="_blank" rel="noopener noreferrer" class="loc-cta loc-cta--primary">
+                Hire control room
+              </a>
+              <a href="/contact?service=venue" class="loc-cta loc-cta--secondary">
+                Café &amp; venue enquiry
+              </a>
+            </div>
           </div>
 
-          {/* ACCESS / HOURS */}
-          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(245, 245, 245, 0.1);">
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
-              <strong>Access:</strong> By booking only<br />
-              <strong>Contact:</strong> <a href="/contact" style="color: var(--mustard);">All enquiries via contact form</a>
-            </p>
+        </div>
+
+        {/* ── STUDIO SPECS ──────────────────────────────────────── */}
+        <div class="loc-cols">
+
+          <div class="loc-panel">
+            <p class="loc-panel-label">Recording — tech specs</p>
+            <table class="loc-specs">
+              <tbody>
+                <tr><td>Console</td><td>SSL BiG SiX — SuperAnalogue preamps + EQ</td></tr>
+                <tr><td>Compression</td><td>SSL G‑Series Bus Compressor · valve compression</td></tr>
+                <tr><td>Tape</td><td>Tape integration path available</td></tr>
+                <tr><td>Monitoring</td><td>Adam Audio · Yamaha NS‑10 · Genelec + sub</td></tr>
+                <tr><td>Patchbay</td><td>Ghielmetti mastering matrix</td></tr>
+                <tr><td>Mics</td><td>Neumann U87 · AKG C414 · SM7B · SM58</td></tr>
+                <tr><td>Rooms</td><td>Live room + 3 isolation booths</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="loc-panel">
+            <p class="loc-panel-label">Rehearsal — tech specs</p>
+            <table class="loc-specs">
+              <tbody>
+                <tr><td>Capacity</td><td>Up to 4-piece band</td></tr>
+                <tr><td>Backline</td><td>Full backline available</td></tr>
+                <tr><td>PA</td><td>Full PA system</td></tr>
+                <tr><td>Monitoring</td><td>Foldback monitors</td></tr>
+              </tbody>
+            </table>
+            <div class="loc-divider" style="margin: 1rem 0;"></div>
+            <p class="loc-panel-label loc-panel-label--mustard">Workshop Café</p>
+            <table class="loc-specs">
+              <tbody>
+                <tr><td>Capacity</td><td>Flexible — café + event space</td></tr>
+                <tr><td>Hire</td><td>Private events, screenings, workshops</td></tr>
+                <tr><td>Enquire</td><td><a href="/contact?service=venue" style="color: var(--mustard, #C2A43A);">Contact form →</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        {/* ── PHOTOS ───────────────────────────────────────────── */}
+        <div class="loc-panel" style="margin-bottom: 1.5rem;">
+          <p class="loc-panel-label">Location photos</p>
+          <div class="loc-photo-strip">
+            <img src="/static/machined-assets/cowley-pods-rack.webp"
+                 alt="Cowley Road control room" loading="lazy" />
+            <img src="/static/machined-assets/cowley-rehearsal-optimized.webp"
+                 alt="Cowley Road rehearsal room" loading="lazy" />
           </div>
         </div>
-      </section>
+
+        {/* ── ACCESS + TRANSPORT ────────────────────────────────── */}
+        <div class="loc-cols">
+
+          <div class="loc-panel">
+            <p class="loc-panel-label">Getting here</p>
+            <div class="loc-transport">
+              <div class="loc-transport-item">
+                <span class="loc-transport-icon">🚌</span>
+                <span class="loc-transport-label">Bus</span>
+                <p class="loc-transport-detail">Routes 1 &amp; 5 stop directly on Cowley Road. Frequent service from Oxford city centre.</p>
+              </div>
+              <div class="loc-transport-item">
+                <span class="loc-transport-icon">🚲</span>
+                <span class="loc-transport-label">Cycle</span>
+                <p class="loc-transport-detail">Covered cycle parking on Cowley Road. Easy access from Oxford city centre.</p>
+              </div>
+              <div class="loc-transport-item">
+                <span class="loc-transport-icon">🚗</span>
+                <span class="loc-transport-label">Car</span>
+                <p class="loc-transport-detail">Street parking on side roads (Princes St, James St). Check signs for restrictions.</p>
+              </div>
+            </div>
+            <a href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE"
+               target="_blank" rel="noopener noreferrer" class="loc-map-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              Open in Google Maps — 118 Cowley Road, OX4 1JE
+            </a>
+          </div>
+
+          <div class="loc-panel">
+            <p class="loc-panel-label">Access &amp; contact</p>
+            <table class="loc-specs">
+              <tbody>
+                <tr><td>Access</td><td>By booking only. Door code provided on confirmation.</td></tr>
+                <tr><td>Hours</td><td>Bookable slots — see calendar when booking</td></tr>
+                <tr><td>Email</td><td><a href="mailto:info@crsoxford.com" style="color: var(--mustard, #C2A43A);">info@crsoxford.com</a></td></tr>
+                <tr><td>Enquiries</td><td><a href="/contact" style="color: var(--mustard, #C2A43A);">Contact form →</a></td></tr>
+              </tbody>
+            </table>
+            <div class="loc-divider" style="margin: 1rem 0;"></div>
+            <p class="loc-panel-label">ODRO Engineering</p>
+            <p style="font-size: 0.8125rem; color: #d4cbb8; line-height: 1.5; margin: 0 0 0.75rem;">
+              Amp repair, AV support, and electronics servicing on site.
+            </p>
+            <a href="/contact?service=repairs" class="loc-cta loc-cta--secondary" style="font-size: 0.75rem; padding: 0.5rem 1rem;">
+              Request repair / support
+            </a>
+          </div>
+
+        </div>
+
+        {/* ── OTHER LOCATION ────────────────────────────────────── */}
+        <div class="loc-panel" style="display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+          <div>
+            <p class="loc-panel-label" style="margin-bottom: 0.25rem;">Also available</p>
+            <p style="font-size: 0.9375rem; font-weight: 600; color: #f4f1e8; margin: 0 0 0.25rem;">CRS — Cricket Road</p>
+            <p style="font-size: 0.8125rem; color: rgba(212,204,184,0.65); margin: 0;">Dedicated rehearsal facility · larger live room · Yamaha CLP grand piano</p>
+          </div>
+          <a href="/crs-cricket-road" class="loc-cta loc-cta--secondary">
+            View Cricket Road →
+          </a>
+        </div>
+
+      </div>
       <Footer />
-    </>
+    </>,
+    {
+      title: 'Cowley Road Studios — 118 Cowley Road, Oxford OX4 1JE',
+      description: 'CRS headquarters at 118 Cowley Road, Oxford. Recording studio, control room hire, rehearsal rooms, Workshop Café, ODRO Engineering. Book online.',
+      keywords: 'recording studio cowley road oxford, rehearsal rooms oxford, control room hire oxford, workshop cafe oxford, 118 cowley road, OX4 1JE'
+    }
   )
 })
 
@@ -702,45 +835,182 @@ app.get('/crs-cricket-road', (c) => {
     <>
       <BuildStatusBanner />
       <Header />
-      <section class="crs-section section-dark">
-        <div class="section-header">
-          <h1 class="section-title heading">CRS — CRICKET ROAD</h1>
+      <div class="loc-page">
+
+        {/* ── HERO ─────────────────────────────────────────────── */}
+        <div class="loc-hero">
+          <div class="loc-hero-left">
+            <p class="loc-hero-eyebrow">Cowley Road Studios · Cricket Road facility</p>
+            <h1 class="loc-hero-name">Cricket Road</h1>
+            <p class="loc-hero-address">Oxford · OX4 3DJ · United Kingdom</p>
+            <div class="loc-status loc-status--operational" style="margin-top: 0.75rem;">
+              <span class="loc-status--led"></span>
+              Operational — bookable now
+            </div>
+          </div>
+          <img src="/static/cricket-logo.png" alt="Cricket Road — CRS" class="loc-hero-logo" width="80" height="80" />
         </div>
 
-        <div class="content-block" style="max-width: 700px; margin: 0 auto;">
-          {/* ADDRESS */}
-          <div style="margin-bottom: 2rem;">
-            <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
-              Cricket Road<br />
-              Oxford
+        {/* ── WHAT'S HERE + BOOKING ─────────────────────────────── */}
+        <div class="loc-cols">
+
+          <div class="loc-panel loc-panel--accent">
+            <p class="loc-panel-label">Services at this location</p>
+            <ul class="loc-services">
+              <li>Rehearsal rooms — up to 8 people</li>
+              <li>Large live room — 6 m × 4 m</li>
+              <li>Live capture &amp; demo recording</li>
+              <li>Writing sessions &amp; run-throughs</li>
+            </ul>
+            <div class="loc-divider" style="margin: 1rem 0;"></div>
+            <p style="font-size: 0.8rem; color: rgba(212,204,184,0.55); line-height: 1.5; margin: 0;">
+              Dedicated rehearsal and live capture facility. No café or recording studio at this address — see <a href="/crs-cowley-road" style="color: var(--mustard, #C2A43A);">Cowley Road</a> for full studio services.
             </p>
           </div>
 
-          {/* WHAT OPERATES HERE */}
-          <div style="margin-bottom: 2rem;">
-            <p style="font-weight: 600; margin-bottom: 1rem; font-size: 0.9375rem;">What operates here:</p>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Rehearsal space</li>
-              <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(245, 245, 245, 0.1);">– Live room</li>
+          <div class="loc-panel">
+            <p class="loc-panel-label">Book direct</p>
+            <div class="loc-cta-bar" style="flex-direction: column; margin-top: 0;">
+              <a href="https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX"
+                 target="_blank" rel="noopener noreferrer" class="loc-cta loc-cta--primary">
+                Book rehearsal
+              </a>
+              <a href="https://app.squareup.com/appointments/buyer/widget/7xlrre511nc5lj/L1MAM4DDPHKXX"
+                 target="_blank" rel="noopener noreferrer" class="loc-cta loc-cta--primary">
+                Book recording / capture
+              </a>
+              <a href="https://app.squareup.com/appointments/buyer/widget/42x52tys6ettug/L1MAM4DDPHKXX"
+                 target="_blank" rel="noopener noreferrer" class="loc-cta loc-cta--secondary">
+                Hire control position
+              </a>
+              <a href="/contact" class="loc-cta loc-cta--secondary">
+                Enquire
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        {/* ── ROOM SPECS ────────────────────────────────────────── */}
+        <div class="loc-cols">
+
+          <div class="loc-panel">
+            <p class="loc-panel-label">Live room specs</p>
+            <table class="loc-specs">
+              <tbody>
+                <tr><td>Room size</td><td>6 m × 4 m live room</td></tr>
+                <tr><td>Capacity</td><td>Up to 8 people</td></tr>
+                <tr><td>Drum kit</td><td>Full drum kit · kick mic installed</td></tr>
+                <tr><td>Piano</td><td>Yamaha CLP electric grand, routed through PA</td></tr>
+                <tr><td>Guitar amps</td><td>2 × guitar amplifiers (general backline)</td></tr>
+                <tr><td>Bass amp</td><td>Trace Elliot Series 6 combo</td></tr>
+                <tr><td>Vocals</td><td>2 × Shure SM58</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="loc-panel">
+            <p class="loc-panel-label">PA &amp; desk</p>
+            <table class="loc-specs">
+              <tbody>
+                <tr><td>PA</td><td>Full PA system — vocal &amp; instrument routing</td></tr>
+                <tr><td>Desk</td><td>Live room desk with reverb and compression</td></tr>
+                <tr><td>Monitoring</td><td>Foldback monitors</td></tr>
+                <tr><td>Control</td><td>Self-op — direct adjacency to live room</td></tr>
+                <tr><td>Capture</td><td>Basic live capture / demo available — enquire</td></tr>
+              </tbody>
+            </table>
+            <div class="loc-divider" style="margin: 1rem 0;"></div>
+            <p class="loc-panel-label">Use cases</p>
+            <ul class="loc-services" style="margin-top: 0;">
+              <li>Band rehearsals</li>
+              <li>Live run-throughs before gigs</li>
+              <li>Writing and development sessions</li>
+              <li>Basic live capture and demo recording</li>
             </ul>
           </div>
 
-          {/* BOOKING CTA */}
-          <div class="hero-cta">
-            <a href="/book" class="crs-button mono">BOOK CRS — CRICKET ROAD</a>
-          </div>
+        </div>
 
-          {/* ACCESS / HOURS */}
-          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(245, 245, 245, 0.1);">
-            <p style="font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
-              <strong>Access:</strong> By booking only<br />
-              <strong>Contact:</strong> <a href="/contact" style="color: var(--mustard);">All enquiries via contact form</a>
-            </p>
+        {/* ── PHOTOS ───────────────────────────────────────────── */}
+        <div class="loc-panel" style="margin-bottom: 1.5rem;">
+          <p class="loc-panel-label">Location photos</p>
+          <div class="loc-photo-strip">
+            <img src="/static/machined-assets/cricket-rehearsal-optimized.webp"
+                 alt="Cricket Road rehearsal room" loading="lazy" />
+            <img src="/static/machined-assets/cricket-rehearsal-magenta-optimized.webp"
+                 alt="Cricket Road live room" loading="lazy" />
           </div>
         </div>
-      </section>
+
+        {/* ── ACCESS + TRANSPORT ────────────────────────────────── */}
+        <div class="loc-cols">
+
+          <div class="loc-panel">
+            <p class="loc-panel-label">Getting here</p>
+            <div class="loc-transport">
+              <div class="loc-transport-item">
+                <span class="loc-transport-icon">🚌</span>
+                <span class="loc-transport-label">Bus</span>
+                <p class="loc-transport-detail">Routes serving Cowley / Iffley Road corridors. Short walk from Rose Hill stops.</p>
+              </div>
+              <div class="loc-transport-item">
+                <span class="loc-transport-icon">🚲</span>
+                <span class="loc-transport-label">Cycle</span>
+                <p class="loc-transport-detail">Quiet residential roads, easy cycling access from East Oxford.</p>
+              </div>
+              <div class="loc-transport-item">
+                <span class="loc-transport-icon">🚗</span>
+                <span class="loc-transport-label">Car</span>
+                <p class="loc-transport-detail">Residential street parking available on Cricket Road and nearby streets.</p>
+              </div>
+            </div>
+            <a href="https://www.google.com/maps/search/Cricket+Road+Oxford+OX4+3DJ"
+               target="_blank" rel="noopener noreferrer" class="loc-map-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              Open in Google Maps — Cricket Road, Oxford OX4 3DJ
+            </a>
+          </div>
+
+          <div class="loc-panel">
+            <p class="loc-panel-label">Access &amp; contact</p>
+            <table class="loc-specs">
+              <tbody>
+                <tr><td>Access</td><td>By booking only. Details sent on confirmation.</td></tr>
+                <tr><td>Hours</td><td>Bookable slots — see calendar when booking</td></tr>
+                <tr><td>Email</td><td><a href="mailto:info@crsoxford.com" style="color: var(--mustard, #C2A43A);">info@crsoxford.com</a></td></tr>
+                <tr><td>Enquiries</td><td><a href="/contact" style="color: var(--mustard, #C2A43A);">Contact form →</a></td></tr>
+              </tbody>
+            </table>
+            <div class="loc-divider" style="margin: 1rem 0;"></div>
+            <p class="loc-panel-label">Parking note</p>
+            <p style="font-size: 0.8rem; color: rgba(212,204,184,0.65); line-height: 1.5; margin: 0;">
+              Residential parking on Cricket Road and side streets. No permit required in most areas — check signs on arrival.
+            </p>
+          </div>
+
+        </div>
+
+        {/* ── OTHER LOCATION ────────────────────────────────────── */}
+        <div class="loc-panel" style="display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;">
+          <div>
+            <p class="loc-panel-label" style="margin-bottom: 0.25rem;">Also available</p>
+            <p style="font-size: 0.9375rem; font-weight: 600; color: #f4f1e8; margin: 0 0 0.25rem;">CRS — Cowley Road HQ</p>
+            <p style="font-size: 0.8125rem; color: rgba(212,204,184,0.65); margin: 0;">Full recording studio · SSL BiG SiX · Workshop Café · ODRO Engineering</p>
+          </div>
+          <a href="/crs-cowley-road" class="loc-cta loc-cta--secondary">
+            View Cowley Road →
+          </a>
+        </div>
+
+      </div>
       <Footer />
-    </>
+    </>,
+    {
+      title: 'CRS Cricket Road — Rehearsal Rooms Oxford OX4 3DJ',
+      description: 'CRS Cricket Road: dedicated rehearsal facility in Oxford. Large 6m × 4m live room, full backline, PA, drum kit, Yamaha CLP piano. Book online.',
+      keywords: 'rehearsal rooms oxford, cricket road studio oxford, band rehearsal oxford, live room oxford, OX4 3DJ, rehearsal space east oxford'
+    }
   )
 })
 
