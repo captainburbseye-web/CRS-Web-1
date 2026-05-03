@@ -837,9 +837,18 @@ const TechSpecsFAQ = ({ panelId }) => {
   );
 };
 
-const StandardPanel = ({ panel }) => (
+const StandardPanel = ({ panel, locationId = null }) => (
   <div className="hp-panel-body" role="tabpanel" id={`panel-${panel.id}`}>
-    <div className="hp-panel-header">
+    <div className={`hp-panel-header${locationId === 'cricket' ? ' hp-panel-header--cricket' : ''}`}>
+      {locationId === 'cricket' && (
+        <div className="hp-panel-cricket-logo" aria-hidden="true">
+          <img
+            src="/static/cricket-logo.png"
+            alt="Cricket Road"
+            className="hp-panel-cricket-logo-img"
+          />
+        </div>
+      )}
       <span className="hp-panel-eyebrow">{panel.eyebrow}</span>
       <h2 className="hp-panel-title">{panel.title}</h2>
       <p className="hp-panel-desc">{panel.body}</p>
@@ -1021,7 +1030,7 @@ const DisplayPanel = ({ activeId, locationId, animate, onBack }) => {
       ) : panel.id === 'rehearsal' ? (
         <RehearsalPanel panel={panel} />
       ) : (
-        <StandardPanel panel={panel} />
+        <StandardPanel panel={panel} locationId={locationId} />
       )}
     </div>
   );

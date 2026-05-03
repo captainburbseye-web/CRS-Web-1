@@ -239,6 +239,40 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   .loc-logo--footer { width: 92px;  height: 34px; }
 }
 
+/* ─── Cricket Road panel logo — prominent header badge ───────
+   Yellow diamond road-sign logo, top-right of panel header.
+   Large enough to register as branding, not just an icon.
+   ─────────────────────────────────────────────────────────── */
+.hp-panel-header--cricket {
+  position: relative;
+}
+
+.hp-panel-cricket-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 88px;
+  height: 88px;
+  opacity: 0.92;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
+}
+
+.hp-panel-cricket-logo-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (max-width: 640px) {
+  .hp-panel-cricket-logo {
+    width: 56px;
+    height: 56px;
+  }
+}
+
 /* ═══════════════════════════════════════════════════════════════
    BRAND PLATE — v3.3
    Manufacturer's anchor. Dominant CRS logo, top and bottom of
