@@ -98,12 +98,12 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
      100% width keeps it full-bleed; auto height preserves aspect ratio.
      The sign sits 30–60% down the image, so at 100vw width the strip
      is ~25vh tall. background-position top centres it in the 18vh gap. */
-  background-size: 50% auto;         /* v5.41 — half width, natural aspect ratio */
-  background-position: center -88px;  /* 2U up */
+  background-size: 869px 214px;      /* v5.42 — native pixel size, no stretch */
+  background-position: center top;   /* pinned to top of viewport, centred */
   background-repeat: no-repeat;
   background-attachment: fixed;
-  filter: grayscale(100%) blur(2px) brightness(0.65);
-  opacity: 0.35;                      /* v5.41 — lifted from 0.22 so it reads */
+  filter: grayscale(100%) blur(1px) brightness(0.75);
+  opacity: 0.45;
   z-index: 0;
   pointer-events: none;
 }
