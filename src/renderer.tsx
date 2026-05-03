@@ -132,6 +132,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
              Removes every remaining JetBrains Mono / Space Mono / Courier / Georgia
              reference via !important rules on all element selectors. */}
         <link href="/static/crs-inter-override.css" rel="stylesheet" />
+
+        {/* CRS CHAT BOT — booking assistant widget */}
+        <link href="/static/crs-chat-bot.css" rel="stylesheet" />
         
         {/* REMOVED 31 DUPLICATE AND INDIVIDUAL MODULE STYLESHEETS
              All styling is now consolidated into the 4 files above
@@ -209,6 +212,9 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         
         {/* Interactive Rack Switches - Hardware-style toggles with state persistence */}
         <script src="/static/rack-switches.js" defer></script>
+
+        {/* CRS Chat Bot — booking/rates/directions assistant. Loads last, zero blocking */}
+        <script src="/static/crs-chat-bot.js" defer></script>
       </body>
     </html>
   )

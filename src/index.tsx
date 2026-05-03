@@ -777,11 +777,31 @@ app.get('/crs-cowley-road', (c) => {
                 <p class="loc-transport-detail">Street parking on side roads (Princes St, James St). Check signs for restrictions.</p>
               </div>
             </div>
+            {/* Embedded map */}
+            <div style="margin-top: 1rem; border-radius: 3px; overflow: hidden; border: 1px solid rgba(58,78,58,0.35);">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2470.4!2d-1.2335!3d51.7483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c6a9b8b8b8b9%3A0x0!2s118+Cowley+Road%2C+Oxford+OX4+1JE!5e0!3m2!1sen!2suk!4v1"
+                width="100%"
+                height="200"
+                style="border: none; display: block; filter: grayscale(0.6) invert(0.85) hue-rotate(180deg) brightness(0.85);"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="118 Cowley Road, Oxford OX4 1JE"
+                aria-label="Map showing 118 Cowley Road, Oxford"
+              ></iframe>
+            </div>
             <a href="https://www.google.com/maps/place/118+Cowley+Road,+Oxford+OX4+1JE"
                target="_blank" rel="noopener noreferrer" class="loc-map-link">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
               Open in Google Maps — 118 Cowley Road, OX4 1JE
             </a>
+            {/* Step-by-step from city centre */}
+            <div style="margin-top: 1rem; padding: 0.875rem 1rem; background: #0e0e0c; border: 1px solid rgba(255,255,255,0.06); border-radius: 3px; font-size: 0.78rem; color: rgba(212,204,184,0.75); line-height: 1.6;">
+              <p style="font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6a8a5a; margin: 0 0 0.5rem;">Step-by-step from Oxford city centre</p>
+              <p style="margin: 0 0 0.3rem;">🚶 <strong style="color: #f4f1e8;">On foot</strong> — 20 min walk east along Cowley Road from Magdalen Bridge. Pass the Plain roundabout, continue straight. No. 118 is on your left, past a row of shops.</p>
+              <p style="margin: 0 0 0.3rem;">🚌 <strong style="color: #f4f1e8;">Bus 1 or 5</strong> — Board at St Aldate's / Carfax (city centre). Ride 8 stops (~12 min). Alight at <em>Westbourne Library</em> or <em>Howard St</em>. No. 118 is 2 min walk.</p>
+              <p style="margin: 0;">🚲 <strong style="color: #f4f1e8;">Cycle</strong> — Cowley Road is a signed cycle route from Magdalen Bridge. Covered bike parking outside the building.</p>
+            </div>
           </div>
 
           <div class="loc-panel">
@@ -965,11 +985,32 @@ app.get('/crs-cricket-road', (c) => {
                 <p class="loc-transport-detail">Residential street parking available on Cricket Road and nearby streets.</p>
               </div>
             </div>
+            {/* Embedded map */}
+            <div style="margin-top: 1rem; border-radius: 3px; overflow: hidden; border: 1px solid rgba(58,78,58,0.35);">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2471.2!2d-1.2284!3d51.7398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876c6c0c0c0c0c1%3A0x0!2sCricket+Road%2C+Oxford+OX4+3DJ!5e0!3m2!1sen!2suk!4v1"
+                width="100%"
+                height="200"
+                style="border: none; display: block; filter: grayscale(0.6) invert(0.85) hue-rotate(180deg) brightness(0.85);"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Cricket Road, Oxford OX4 3DJ"
+                aria-label="Map showing Cricket Road, Oxford"
+              ></iframe>
+            </div>
             <a href="https://www.google.com/maps/search/Cricket+Road+Oxford+OX4+3DJ"
                target="_blank" rel="noopener noreferrer" class="loc-map-link">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
               Open in Google Maps — Cricket Road, Oxford OX4 3DJ
             </a>
+            {/* Step-by-step from city centre */}
+            <div style="margin-top: 1rem; padding: 0.875rem 1rem; background: #0e0e0c; border: 1px solid rgba(255,255,255,0.06); border-radius: 3px; font-size: 0.78rem; color: rgba(212,204,184,0.75); line-height: 1.6;">
+              <p style="font-size: 0.65rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #6a8a5a; margin: 0 0 0.5rem;">Step-by-step from Oxford city centre</p>
+              <p style="margin: 0 0 0.3rem;">🚶 <strong style="color: #f4f1e8;">On foot</strong> — ~30 min. Walk east along Cowley Road past the Plain roundabout, then south on Iffley Road. Turn left onto Cricket Road (signed). Or via Howard St → Cricket Road shortcut.</p>
+              <p style="margin: 0 0 0.3rem;">🚌 <strong style="color: #f4f1e8;">Bus (Iffley Road corridor)</strong> — Board at St Aldate's. Take bus toward Rose Hill / Iffley. Alight at <em>Iffley Road / Cricket Road junction</em>. Walk 2 min onto Cricket Road.</p>
+              <p style="margin: 0 0 0.3rem;">🚌 <strong style="color: #f4f1e8;">From Cowley Road (Bus 1/5)</strong> — Alight at Howard St stop, walk south ~10 min through residential streets to Cricket Road.</p>
+              <p style="margin: 0;">🚲 <strong style="color: #f4f1e8;">Cycle</strong> — 15 min from city centre. Cowley Road → Howard St → Cricket Road. Quiet residential streets, no significant hills.</p>
+            </div>
           </div>
 
           <div class="loc-panel">

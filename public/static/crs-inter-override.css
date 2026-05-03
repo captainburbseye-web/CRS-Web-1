@@ -192,3 +192,87 @@ svg text {
   --font-rack:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   --font-chassis: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   DARK CANVAS OVERRIDE — 40yy 49/400 ≈ #1c1a18
+   Wipes every light/cream background that slips through.
+   Loaded last — wins all specificity battles.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --site-bg:         #141412 !important; /* 40yy 49/400 warm charcoal */
+  --site-bg-lift:    #1c1a18 !important; /* one step up — cards/panels */
+  --site-bg-mid:     #0e0e0c !important; /* one step down — deep sections */
+}
+
+/* Body + html — the canvas */
+html, body {
+  background: #141412 !important;
+  color: #f4f1e8 !important;
+}
+
+/* All crs-section variants go dark */
+.crs-section,
+.crs-section section,
+section.crs-section {
+  background: #141412 !important;
+}
+
+/* section-dark and section-light both go to charcoal — no more cream */
+.section-dark {
+  background: #0e0e0c !important;
+}
+.section-light,
+.section-light-crs {
+  background: #1c1a18 !important;
+  color: #f4f1e8 !important;
+}
+
+/* Service page wrappers */
+.sp-page,
+.crs-page,
+.page-wrapper,
+.page-shell,
+.site-wrapper,
+[class*="sp-page"],
+[class*="page-shell"] {
+  background: #141412 !important;
+}
+
+/* Rack spec sheet — was white on-screen */
+.rack-spec-sheet {
+  background: #1c1a18 !important;
+  color: #f4f1e8 !important;
+  border-color: rgba(194,164,58,0.2) !important;
+}
+.rack-spec-sheet pre,
+.rack-spec-sheet code {
+  background: #0e0e0c !important;
+  color: #d4cbb8 !important;
+}
+
+/* Any stray white/near-white card backgrounds */
+.content-block,
+.content-card,
+.info-card,
+.service-card,
+.spec-block {
+  background: #1c1a18 !important;
+}
+
+/* Section-light text overrides — was dark text on cream */
+.section-light .content-text,
+.section-light .content-heading,
+.section-light p,
+.section-light h1,
+.section-light h2,
+.section-light h3,
+.section-light h4,
+.section-light li {
+  color: #f4f1e8 !important;
+}
+
+/* location pages inherit dark — already nettle-tinted but explicit */
+.loc-page {
+  background: #141412 !important;
+}
