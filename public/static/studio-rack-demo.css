@@ -81,13 +81,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   position: relative;
 }
 
-/* ── v5.29 OVERRIDES — background window + rack margin ─── */
-.hp-page::before {
-  background-image: url('/static/images/bg-cafe-neon.jpg') !important;
-  background-position: center calc(10% - 88px) !important;
-  background-size: cover !important;
-  background-attachment: fixed !important;
-}
+/* ── v5.29 OVERRIDES — removed; second block below is authoritative */
 
 /* ── BACKGROUND — Workshop Café neon shopfront
    Image is 869×214px (very wide, shallow strip).
@@ -104,12 +98,12 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
      100% width keeps it full-bleed; auto height preserves aspect ratio.
      The sign sits 30–60% down the image, so at 100vw width the strip
      is ~25vh tall. background-position top centres it in the 18vh gap. */
-  background-size: 100% auto;
-  background-position: center -88px;  /* 2U up: 2 × 44px = 88px */    
+  background-size: 50% auto;         /* v5.41 — half width, natural aspect ratio */
+  background-position: center -88px;  /* 2U up */
   background-repeat: no-repeat;
   background-attachment: fixed;
   filter: grayscale(100%) blur(2px) brightness(0.65);
-  opacity: 0.22;
+  opacity: 0.35;                      /* v5.41 — lifted from 0.22 so it reads */
   z-index: 0;
   pointer-events: none;
 }
