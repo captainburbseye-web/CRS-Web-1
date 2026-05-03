@@ -84,7 +84,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 /* ── v5.29 OVERRIDES — background window + rack margin ─── */
 .hp-page::before {
   background-image: url('/static/images/bg-cafe-neon.jpg') !important;
-  background-position: center 10% !important;
+  background-position: center calc(10% - 88px) !important;
   background-size: cover !important;
   background-attachment: fixed !important;
 }
@@ -105,7 +105,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
      The sign sits 30–60% down the image, so at 100vw width the strip
      is ~25vh tall. background-position top centres it in the 18vh gap. */
   background-size: 100% auto;
-  background-position: center top;
+  background-position: center -88px;  /* 2U up: 2 × 44px = 88px */    
   background-repeat: no-repeat;
   background-attachment: fixed;
   filter: grayscale(100%) blur(2px) brightness(0.65);
