@@ -2773,14 +2773,13 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
      the full shape glows dimly and the beam brightens it as it passes.
    ═══════════════════════════════════════════════════════════════ */
 
-/* Outer bezel frame — slots below the sign (v3.2: taller + top seam gap) */
+/* Outer bezel frame — skyline divider above the sign (v5.37: compressed to tight strip) */
 .hp-osc-frame {
-  display: block;
+  display: flex !important;
+  align-items: center !important;
   position: relative;
-  width: calc(100% + 104px);  /* v3.2 — matches wider rails (52px × 2) */
-  margin: 8px -52px 0;        /* 8px top seam = visual gap between sign and scope */
-  /* Dark chamber — flat vertical gradient, deep green top fading to black.
-     Linear progression keeps the silhouette readable without bubble artefacts. */
+  width: calc(100% + 104px);  /* matches wider rails (52px × 2) */
+  margin: 8px -52px 8px !important; /* 8px above + 8px below before sign */
   background: linear-gradient(to bottom,
       #182518 0%,
       #0b190b 40%,
@@ -2790,8 +2789,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   border-bottom: 3px solid #111;
   border-left: none;
   border-right: none;
-  overflow: hidden;
-  min-height: 200px;          /* v3.2 — CRT presence, not a thin strip */
+  overflow: hidden !important;
+  height: 65px !important;    /* v5.37 — skyline strip, not a CRT slab */
+  min-height: 65px !important;
   box-shadow:
     inset 0 0 40px rgba(0,0,0,0.92),
     inset 0 12px 24px rgba(0,0,0,0.80),
@@ -2805,30 +2805,33 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 @media (max-width: 639px) {
   .hp-osc-frame {
     width: calc(100% + 56px);
-    margin: 4px -28px 0;
-    min-height: 120px;
+    margin: 4px -28px 4px !important;
+    height: 48px !important;
+    min-height: 48px !important;
   }
 }
 @media (min-width: 640px) {
   .hp-osc-frame {
     width: calc(100% + 112px);  /* 56px rail × 2 */
-    margin: 8px -56px 0;
-    min-height: 200px;
+    margin: 8px -56px 8px !important;
+    height: 65px !important;
+    min-height: 65px !important;
   }
 }
 @media (min-width: 1024px) {
   .hp-osc-frame {
-    min-height: 240px;          /* Extra height on large desktop */
+    height: 65px !important;    /* stays tight on large desktop too */
+    min-height: 65px !important;
   }
 }
 
-/* SVG fills the frame — aspect ratio enforced by min-height on container */
+/* SVG fills the compressed frame */
 .hp-osc-svg {
   display: block;
-  width: 100%;
-  height: 100%;               /* v3.2 — fill the min-height container */
-  min-height: 200px;          /* fallback for browsers that need explicit height */
-  aspect-ratio: unset;        /* let container min-height dominate */
+  width: 100% !important;
+  height: 100% !important;
+  min-height: unset;
+  aspect-ratio: unset;
 }
 
 /* ── GRATICULE — 10H × 8V precision grid (v5.16)

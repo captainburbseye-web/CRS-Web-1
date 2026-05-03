@@ -1648,6 +1648,9 @@ function IdleState({ activeId = null }) {
         </div>
       </div>
 
+      {/* Skyline oscilloscope — Oxford skyline sits ABOVE the sign, in the sky where it belongs */}
+      <SkylineOscilloscope activeId={activeId} />
+
       {/* Unit 3 — Branding Plate: bolted rack unit, sign fills wall-to-wall */}
       <div className="hp-idle-faceplate">
         <picture>
@@ -1675,9 +1678,6 @@ function IdleState({ activeId = null }) {
           </p>
         </div>
       </div>
-
-      {/* Skyline oscilloscope — phosphor-trace Dreaming Spires scope — DO NOT TOUCH */}
-      <SkylineOscilloscope activeId={activeId} />
 
     </div>
   );
