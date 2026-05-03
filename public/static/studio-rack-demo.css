@@ -1982,6 +1982,68 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
 .chу-fascia:hover   { filter: brightness(1.07); }
 .chу-fascia--press  { filter: brightness(0.88); transform: translateY(1px); }
 
+/* ── IMAGE FASCIA (v5.43) — high-res render replaces CSS fascia ── */
+.chу-fascia-img-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+}
+.chу-fascia-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+  /* Slight press shadow on sides to seat it in the rack */
+  box-shadow:
+    inset 3px 0 8px rgba(0,0,0,0.6),
+    inset -3px 0 8px rgba(0,0,0,0.6),
+    0 4px 16px rgba(0,0,0,0.8);
+}
+/* Invisible full-face click button — sits over entire image */
+.chу-fascia-click {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 3;
+  /* Subtle press feedback */
+  transition: background 0.1s ease;
+}
+.chу-fascia-click:active {
+  background: rgba(0,0,0,0.12);
+}
+/* Green power LED — overlaid precisely on the render's LED position
+   Image is 1024px wide. LED is ~94% from left, ~78% from top. */
+.chу-power-led-overlay {
+  position: absolute;
+  right: 3.2%;
+  top: 64%;
+  width: 1.6%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #1a3a0a, #0a1a04);
+  border: 1px solid #1a2a0a;
+  box-shadow: none;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  z-index: 4;
+  pointer-events: none;
+}
+.chу-power-led-overlay.chу-power-led--on {
+  background: radial-gradient(circle at 35% 30%,
+    #afffaa 0%, #4fe030 40%, #1aaa08 100%);
+  border-color: #3ac010;
+  box-shadow:
+    0 0  6px #7fff40,
+    0 0 14px rgba(80,255,30,0.8),
+    0 0 28px rgba(40,200,10,0.4);
+}
+
 /* ── GOLD INSET BORDER FRAME ────────────────────────────────── */
 .chу-border-frame {
   position: absolute;

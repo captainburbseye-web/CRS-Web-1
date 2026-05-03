@@ -1695,117 +1695,36 @@ function CafeHireUnit() {
   return (
     <div className={`chу chу--${open ? 'open' : 'closed'}`} aria-label="Workshop Café & Venue">
 
-      {/* ── FASCIA — always visible, clicks to open drawer ─── */}
-      <button
-        className={`chу-fascia${pressing ? ' chу-fascia--press' : ''}`}
-        aria-expanded={open}
-        aria-controls="cafe-hire-drawer"
-        onPointerDown={() => setPressing(true)}
-        onPointerUp={() => setPressing(false)}
-        onPointerLeave={() => setPressing(false)}
-        onClick={() => setOpen(o => !o)}
-      >
-        {/* Gold border inset frame */}
-        <span className="chу-border-frame" aria-hidden="true" />
+      {/* ── FASCIA — high-res rack image + invisible click overlay ─── */}
+      <div className="chу-fascia-img-wrap">
 
-        {/* ── LEFT — gear logo badge ─────────────────────── */}
-        <div className="chу-logo-zone" aria-hidden="true">
-          {/* Outer gear ring (CSS only — polygon via clip-path) */}
-          <div className="chу-gear">
-            {/* Inner neon halo */}
-            <div className="chу-gear-halo" />
-            {/* Coffee cup SVG icon */}
-            <svg className="chу-cup-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              {/* Steam wisps */}
-              <path d="M13 7 Q14 4 13 2" stroke="#c8a84b" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.7"/>
-              <path d="M20 6 Q21 3 20 1" stroke="#c8a84b" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.7"/>
-              <path d="M27 7 Q28 4 27 2" stroke="#c8a84b" strokeWidth="1.2" strokeLinecap="round" fill="none" opacity="0.7"/>
-              {/* Cup body */}
-              <path d="M9 11 L11 32 Q11 34 13 34 L27 34 Q29 34 29 32 L31 11 Z"
-                    stroke="#c8a84b" strokeWidth="1.5" fill="rgba(200,168,75,0.08)" strokeLinejoin="round"/>
-              {/* Waveform inside cup */}
-              <polyline points="13,23 16,18 18,26 21,16 23,24 26,20 28,23"
-                        stroke="#c8a84b" strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round" opacity="0.9"/>
-              {/* Handle */}
-              <path d="M31 15 Q37 15 37 22 Q37 29 31 29"
-                    stroke="#c8a84b" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-              {/* Saucer */}
-              <ellipse cx="20" cy="35" rx="13" ry="2.5" stroke="#c8a84b" strokeWidth="1.2" fill="rgba(200,168,75,0.06)"/>
-            </svg>
-          </div>
-          {/* WORKSHOP CAFÉ arc text below gear */}
-          <div className="chу-logo-wordmark">
-            <span className="chу-logo-word1">WORKSHOP</span>
-            <span className="chу-logo-word2">CAFÉ</span>
-          </div>
-        </div>
+        {/* The render — fills full width, rail to rail */}
+        <img
+          src="/static/workshop-cafe-rack.png"
+          alt="Workshop Café rack unit"
+          className="chу-fascia-img"
+          draggable="false"
+        />
 
-        {/* ── CENTRE — text block ────────────────────────── */}
-        <div className="chу-text-zone">
-          <p className="chу-eyebrow">THE BILLET BUILDING · HOME TO</p>
-          <h3 className="chу-title">THE WORKSHOP CAFÉ</h3>
-          <p className="chу-tagline">COFFEE&nbsp;◆&nbsp;REPAIRS&nbsp;◆&nbsp;MUSICAL CURIOS&nbsp;◆&nbsp;TECH SOLUTIONS</p>
-        </div>
+        {/* Power LED — sits over the green LED in the render (bottom-right) */}
+        <span
+          className={`chу-power-led-overlay${open ? ' chу-power-led--on' : ''}`}
+          aria-hidden="true"
+        />
 
-        {/* ── RIGHT — knobs / VU meters / jack row / LED ─── */}
-        <div className="chу-controls-zone" aria-hidden="true">
+        {/* Invisible full-fascia click target — opens the drawer */}
+        <button
+          className="chу-fascia-click"
+          aria-expanded={open}
+          aria-controls="cafe-hire-drawer"
+          aria-label="Workshop Café — open menu"
+          onPointerDown={() => setPressing(true)}
+          onPointerUp={() => setPressing(false)}
+          onPointerLeave={() => setPressing(false)}
+          onClick={() => setOpen(o => !o)}
+        />
 
-          {/* Row 1 — three chrome knobs */}
-          <div className="chу-knob-row">
-            <div className="chу-knob-unit">
-              <span className="chу-knob" style={{['--rot']: '-30deg'}} />
-              <span className="chу-knob-label">LOW</span>
-            </div>
-            <div className="chу-knob-unit">
-              <span className="chу-knob" style={{['--rot']: '10deg'}} />
-              <span className="chу-knob-label">MID</span>
-            </div>
-            <div className="chу-knob-unit">
-              <span className="chу-knob" style={{['--rot']: '20deg'}} />
-              <span className="chу-knob-label">GAIN</span>
-            </div>
-          </div>
-
-          {/* Row 2 — three amber VU meters */}
-          <div className="chу-vu-row">
-            <div className="chу-vu">
-              <div className="chу-vu-face">
-                <div className="chу-vu-scale" />
-                <div className="chу-vu-needle" />
-              </div>
-            </div>
-            <div className="chу-vu">
-              <div className="chу-vu-face">
-                <div className="chу-vu-scale" />
-                <div className="chу-vu-needle chу-vu-needle--b" />
-              </div>
-            </div>
-            <div className="chу-vu">
-              <div className="chу-vu-face">
-                <div className="chу-vu-scale" />
-                <div className="chу-vu-needle chу-vu-needle--c" />
-              </div>
-            </div>
-          </div>
-
-          {/* Row 3 — jack sockets + power LED */}
-          <div className="chу-jack-row">
-            <span className="chу-jack"><span className="chу-jack-symbol">⌀</span></span>
-            <span className="chу-jack"><span className="chу-jack-symbol">⌀</span></span>
-            <span className="chу-jack"><span className="chу-jack-symbol">△</span></span>
-            <span className="chу-jack"><span className="chу-jack-symbol">▬</span></span>
-            <span className="chу-jack"><span className="chу-jack-symbol">⌀</span></span>
-            <span className={`chу-power-led${open ? ' chу-power-led--on' : ''}`} />
-          </div>
-
-        </div>
-
-        {/* Corner bolts */}
-        <span className="chу-bolt chу-bolt--tl" aria-hidden="true" />
-        <span className="chу-bolt chу-bolt--tr" aria-hidden="true" />
-        <span className="chу-bolt chу-bolt--bl" aria-hidden="true" />
-        <span className="chу-bolt chу-bolt--br" aria-hidden="true" />
-      </button>
+      </div>
 
       {/* ── DRAWER — slides open below fascia ─────────────── */}
       <div
