@@ -697,8 +697,9 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
    ═══════════════════════════════════════════════════════════════ */
 .hp-idle-faceplate {
   display: block !important;
-  width: 100% !important;
-  margin: 0 !important;
+  /* Bleed over rails exactly like .hp-idle-display — same -52px trick */
+  width: calc(100% + 104px) !important;
+  margin: 0 -52px !important;
   padding: 0 !important;
   background: #060c06;
   border-top: 2px solid #2a2a2a;
@@ -707,6 +708,8 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
     inset 0 2px 6px rgba(0,0,0,0.8),
     inset 0 -2px 4px rgba(0,0,0,0.6);
   overflow: hidden;
+  position: relative;
+  z-index: 55; /* above rails (z-index: 50) so sign ears sit on top */
 }
 
 /* picture must be block — inline default shrinks it to content width */
