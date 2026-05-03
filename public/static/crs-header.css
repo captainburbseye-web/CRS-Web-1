@@ -101,7 +101,7 @@ header.rack-header {
 
 .rack-header-nav a {
   /* Match BOOK SESSION button styling */
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.875rem; /* Match book button size */
   font-weight: 700; /* Match book button weight */
   letter-spacing: 0.1em; /* Match book button spacing */
@@ -159,7 +159,7 @@ header.rack-header {
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 600;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   letter-spacing: 0.05em;
   border: 2px solid #FF4500;
   background: transparent;
@@ -657,7 +657,7 @@ header {
 }
 
 .nav-item {
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   text-transform: uppercase !important;
   color: #d1d1d1 !important;
   background: none !important;
@@ -685,7 +685,7 @@ header {
   margin-right: 20px !important;
   background: #C9A227 !important; /* Signal Yellow */
   color: #0E0E0E !important;
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   text-transform: uppercase !important;
   font-weight: 700 !important;
   font-size: 0.875rem !important;
@@ -1078,7 +1078,7 @@ footer .nav-button {
   border: 1px solid #2A2A2A;
 
   /* TYPOGRAPHY (ISOLATED DOMAIN) */
-  font-family: "JetBrains Mono", monospace !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   font-size: 0.875rem !important; /* 14px - IMMUTABLE */
   font-weight: 500 !important;
   line-height: 1 !important;
@@ -1508,7 +1508,7 @@ body {
 .hero-section .hero-title {
   margin: 20px 0 0 0;
   text-align: center;
-  font-family: var(--font-chassis, 'JetBrains Mono', monospace);
+  font-family: var(--font-chassis, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
 }
 
 
@@ -1707,7 +1707,7 @@ a[class*="button"] {
   color: #FF8C00 !important;
   
   /* Typography - Art Deco monospace */
-  font-family: 'JetBrains Mono', 'Courier New', monospace !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   font-size: 0.875rem !important;
   font-weight: 800 !important;
   text-transform: uppercase !important;
@@ -1838,7 +1838,7 @@ a[class*="button"]:active {
 /* Override any conflicting mono class */
 .mono.crs-button,
 a.crs-button.mono {
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
 }
 
 /* Ensure button text doesn't wrap */
@@ -1982,7 +1982,7 @@ main {
 }
 
 .nav-links a {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.8);
@@ -2003,7 +2003,7 @@ main {
 }
 
 .book-now-button {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   color: #1a1a1a;

@@ -308,7 +308,7 @@ This is how CRS typography works.
   color: var(--text-gold) !important;
   text-transform: uppercase !important;
   letter-spacing: 0.05em !important;
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   cursor: pointer !important;
   transition: all 0.2s ease !important;
 }
@@ -427,7 +427,7 @@ This is how CRS typography works.
 }
 
 .rack-unit-title {
-  font-family: 'Archivo Black', sans-serif !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   font-size: var(--heading-size-desktop) !important;
   font-weight: 900 !important;
   text-transform: uppercase !important;
@@ -602,12 +602,12 @@ body {
 }
 
 .mono {
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   font-size: var(--mono-size) !important; /* 16px - increased for readability */
 }
 
 .heading {
-  font-family: 'Archivo Black', sans-serif !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   font-weight: 900 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.05em !important;

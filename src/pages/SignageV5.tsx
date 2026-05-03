@@ -219,7 +219,7 @@ export const SignageV5 = () => {
                 <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CRS Logo">
                   <title>Cowley Road Studios Logo</title>
                   <circle cx="50" cy="50" r="45" stroke="#C2A85A" stroke-width="2" fill="rgba(14,14,14,0.8)"/>
-                  <text x="50" y="58" font-family="JetBrains Mono, monospace" font-size="28" font-weight="bold" fill="#C2A85A" text-anchor="middle">CRS</text>
+                  <text x="50" y="58" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="bold" fill="#C2A85A" text-anchor="middle">CRS</text>
                 </svg>
               </div>
 

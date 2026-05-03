@@ -14,7 +14,7 @@ export const StudioPage = () => (
       {/* BUILD PHASE NOTICE */}
       <div class="content-block">
         <div style="background: rgba(255, 140, 0, 0.1); border: 2px solid #FF8C00; padding: 1rem; margin-bottom: 1.5rem;">
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: #FF8C00; font-weight: 700;">
+          <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.875rem; color: #FF8C00; font-weight: 700;">
             Recording and production services are available by enquiry while the Cowley Road build is completed.
           </p>
         </div>
@@ -24,7 +24,7 @@ export const StudioPage = () => (
       <div class="content-block" style="background: rgba(127, 255, 0, 0.05); border: 3px solid #39FF14; padding: 2rem; margin-bottom: 2rem;">
         <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
           <span class="led green" style="width: 14px; height: 14px;"></span>
-          <h3 style="font-family: 'Archivo Black', sans-serif; font-size: 1.25rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">
+          <h3 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1.25rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin: 0;">
             BUILD RATE BOOKING · COMMISSION YOUR SESSION
           </h3>
         </div>
@@ -62,7 +62,7 @@ export const StudioPage = () => (
           
           {/* Package 1: 5-Hour Production */}
           <div style="background: rgba(0, 0, 0, 0.3); border: 2px solid #39FF14; padding: 1.5rem; display: flex; flex-direction: column;">
-            <h4 style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
+            <h4 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
               BUILD RATE: 5-HOUR PRODUCTION
             </h4>
             <div style="font-family: 'Inter', sans-serif; font-size: 0.938rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin-bottom: 1.5rem; flex-grow: 1;">
@@ -79,7 +79,7 @@ export const StudioPage = () => (
           
           {/* Package 2: Rehearsal Block */}
           <div style="background: rgba(0, 0, 0, 0.3); border: 2px solid #39FF14; padding: 1.5rem; display: flex; flex-direction: column;">
-            <h4 style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
+            <h4 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
               REHEARSAL BLOCK (10 HOURS)
             </h4>
             <div style="font-family: 'Inter', sans-serif; font-size: 0.938rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin-bottom: 1.5rem; flex-grow: 1;">
@@ -96,7 +96,7 @@ export const StudioPage = () => (
           
           {/* Package 3: System Clearance */}
           <div style="background: rgba(0, 0, 0, 0.3); border: 2px solid #39FF14; padding: 1.5rem; display: flex; flex-direction: column;">
-            <h4 style="font-family: 'Oswald', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
+            <h4 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1rem; color: #39FF14; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem;">
               SYSTEM CLEARANCE (INDUCTION)
             </h4>
             <div style="font-family: 'Inter', sans-serif; font-size: 0.938rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin-bottom: 1.5rem; flex-grow: 1;">
@@ -115,7 +115,7 @@ export const StudioPage = () => (
         
         <div style="background: rgba(0, 0, 0, 0.3); border-left: 3px solid #39FF14; padding: 1.25rem;">
           <p style="font-family: 'Inter', sans-serif; font-size: 0.938rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin: 0;">
-            <strong style="font-family: 'JetBrains Mono', monospace; color: #39FF14;">NOTE:</strong> These are advance commissioning allocations. Funds construction. Redeemable once operational.
+            <strong style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #39FF14;">NOTE:</strong> These are advance commissioning allocations. Funds construction. Redeemable once operational.
           </p>
         </div>
       </div>
@@ -179,7 +179,7 @@ export const StudioPage = () => (
         <h3 class="content-heading mono">LOCATION ROUTING</h3>
         <div class="content-text">
           <div style="background: rgba(232, 155, 60, 0.1); border: 2px solid rgba(232, 155, 60, 0.3); padding: 1.5rem; margin-bottom: 1.5rem;">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--crs-gold); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
+            <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.875rem; color: var(--crs-gold); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
               🟠 118 COWLEY ROAD — HQ & TECHNICAL BRAIN
             </p>
             <ul style="list-style: none; padding: 0; font-size: 0.9375rem;">
@@ -191,7 +191,7 @@ export const StudioPage = () => (
           </div>
           
           <div style="background: rgba(127, 255, 0, 0.05); border: 2px solid rgba(127, 255, 0, 0.2); padding: 1.5rem;">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: var(--crs-green); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
+            <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.875rem; color: var(--crs-green); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.1em;">
               🟢 CRICKET ROAD — REHEARSAL NODE
             </p>
             <ul style="list-style: none; padding: 0; font-size: 0.9375rem;">

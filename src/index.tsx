@@ -155,7 +155,7 @@ app.post('/api/contact', async (c) => {
       to: ['info@crsoxford.com'],
       subject: `[CRS ${serviceType.toUpperCase()}] ${subject}`,
       html: `
-        <div style="font-family: 'JetBrains Mono', monospace; max-width: 600px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #00ff00; border: 2px solid #333;">
+        <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #1a1a1a; color: #00ff00; border: 2px solid #333;">
           <h2 style="color: #ff6b35; margin-top: 0;">NEW CONTACT FORM SUBMISSION</h2>
           <div style="border-left: 3px solid #ff6b35; padding-left: 15px; margin: 20px 0;">
             <p><strong>Service Type:</strong> ${serviceLabel}</p>
@@ -261,7 +261,7 @@ app.post('/api/contact-wsc', async (c) => {
       to:   ['workshopcafe@crsoxford.com'],
       subject: `[WSC ${serviceType.toUpperCase()}] Hire enquiry from ${body.name || 'unknown'}`,
       html: `
-        <div style="font-family:'JetBrains Mono',monospace;max-width:600px;margin:0 auto;padding:20px;background:#0d1508;color:#f0e0b0;border:2px solid #c8a84b;">
+        <div style="font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;max-width:600px;margin:0 auto;padding:20px;background:#0d1508;color:#f0e0b0;border:2px solid #c8a84b;">
           <h2 style="color:#c8a84b;margin-top:0;">NEW WORKSHOP CAFÉ HIRE ENQUIRY</h2>
           <div style="border-left:3px solid #c8a84b;padding-left:15px;margin:20px 0;">
             <p><strong style="color:#c8a84b;">Type:</strong> ${serviceLabel}</p>
@@ -502,7 +502,7 @@ app.get('/book-legacy', (c) => {
         <title>Legacy Booking | Cowley Road Studios</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         
         {/* Core CSS files */}
         <link href="/static/crs-reset.css" rel="stylesheet" />
@@ -658,7 +658,7 @@ app.get('/crs-cowley-road', (c) => {
         <div class="content-block" style="max-width: 700px; margin: 0 auto;">
           {/* ADDRESS */}
           <div style="margin-bottom: 2rem;">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
+            <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
               118 Cowley Road<br />
               Oxford<br />
               OX4 1JE
@@ -710,7 +710,7 @@ app.get('/crs-cricket-road', (c) => {
         <div class="content-block" style="max-width: 700px; margin: 0 auto;">
           {/* ADDRESS */}
           <div style="margin-bottom: 2rem;">
-            <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
+            <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.875rem; color: rgba(245, 245, 245, 0.7); line-height: 1.6;">
               Cricket Road<br />
               Oxford
             </p>
@@ -785,8 +785,8 @@ app.get('/', (c) => {
   <!-- Fonts — non-blocking (media=print trick, v5.18) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" /></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
 
   <!-- Vendor chunk preload — browser fetches it in parallel with main entry -->
   ${vendorAsset ? `<link rel="modulepreload" href="${vendorAsset}" />` : ''}
@@ -864,7 +864,7 @@ const SUPPORT_PAGE_STYLE = `
   .footer-links,
   .back-link,
   .cta-link {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
@@ -874,7 +874,7 @@ const SUPPORT_PAGE_STYLE = `
   }
   h1 {
     margin: 0.5rem 0 0.75rem;
-    font-family: 'JetBrains Mono', 'Space Mono', monospace;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -903,7 +903,7 @@ const SUPPORT_PAGE_STYLE = `
   }
   .support-body .support-label {
     color: #d7c47a;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
@@ -961,7 +961,7 @@ const renderSupportPage = ({ title, description, h1, body, slug, ctaLabel, ctaHr
   <link rel="canonical" href="https://cowleyroadstudios.com/${slug}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>${SUPPORT_PAGE_STYLE}</style>
 </head>
 <body>
@@ -1070,7 +1070,7 @@ app.get('/rack-accordion-legacy', (c) => {
         <title>Legacy Accordion | Cowley Road Studios</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         
         {/* Core CSS files */}
         <link href="/static/crs-reset.css" rel="stylesheet" />
@@ -1129,7 +1129,7 @@ app.get('/studio', (c) => {
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link href="/static/crs-reset.css" rel="stylesheet">
     <link href="/static/crs-typography.css" rel="stylesheet">
@@ -1151,7 +1151,7 @@ app.get('/studio', (c) => {
 const SERVICE_CSS = `
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="/static/crs-service-pages.css" rel="stylesheet" />
 `
 
@@ -1620,7 +1620,7 @@ app.get('/studio/infrastructure', (c) => {
           <h3 class="mono" style="font-size: 0.75rem; letter-spacing: 0.2em; color: var(--mustard); margin-bottom: 1.5rem; font-weight: 800; border-bottom: 1px solid rgba(232, 155, 60, 0.3); padding-bottom: 0.75rem;">
             /// INFRASTRUCTURE OVERVIEW
           </h3>
-          <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; line-height: 2; letter-spacing: 0.02em;">
+          <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.8125rem; line-height: 2; letter-spacing: 0.02em;">
             <p style="margin-bottom: 0.75rem;"><span style="color: var(--mustard); font-weight: 700;">STUDIO SYSTEMS:</span> <span style="opacity: 0.85;">CONTROL / LIVE ROOMS / NETWORKED AUDIO</span></p>
             <p style="margin-bottom: 0.75rem;"><span style="color: var(--mustard); font-weight: 700;">PUBLIC INTERFACE:</span> <span style="opacity: 0.85;">CAFÉ / VENUE / FRONT-OF-HOUSE</span></p>
             <p style="margin-bottom: 0.75rem;"><span style="color: var(--mustard); font-weight: 700;">TECHNICAL OPS:</span> <span style="opacity: 0.85;">AV DEPLOYMENT / REPAIR / DIAGNOSTICS</span></p>
@@ -2247,7 +2247,7 @@ app.get('/av-services', (c) => {
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link href="/static/crs-reset.css" rel="stylesheet">
     <link href="/static/crs-typography.css" rel="stylesheet">
@@ -2255,7 +2255,7 @@ app.get('/av-services', (c) => {
     <link href="/static/crs-mobile.css" rel="stylesheet">
     <link href="/static/rack-accordion.css" rel="stylesheet">
     <link href="/static/studio-rack-demo.css?v=5.10" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="hp-page subpage">
     ${<PodcastAVPage />}
@@ -2298,7 +2298,7 @@ app.get('/workshop-cafe/contact', (c) => {
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link href="/static/crs-reset.css" rel="stylesheet">
     <link href="/static/crs-typography.css" rel="stylesheet">
@@ -2306,7 +2306,7 @@ app.get('/workshop-cafe/contact', (c) => {
     <link href="/static/crs-mobile.css" rel="stylesheet">
     <link href="/static/rack-accordion.css" rel="stylesheet">
     <link href="/static/studio-rack-demo.css?v=5.33" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="hp-page subpage wsc-page">
     ${<WorkshopCafeContactPage initialService={service} status={status} />}
@@ -2368,7 +2368,7 @@ app.get('/cafe', (c) => {
       {/* CAFÉ HERO - Full-width Nettle Green */}
       <section class="crs-section cafe-heartbeat" style="min-height: 50vh; display: flex; flex-direction: column; justify-content: center;">
         <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-          <h1 class="section-title" style="font-family: 'Courier New', 'Courier', monospace; font-size: clamp(2rem, 4vw, 3rem); color: var(--mustard); margin-bottom: 1rem; font-weight: 400; letter-spacing: 0.02em;">
+          <h1 class="section-title" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--mustard); margin-bottom: 1rem; font-weight: 400; letter-spacing: 0.02em;">
             WORKSHOP CAFÉ
           </h1>
           <p class="section-intro" style="font-size: 1.125rem; line-height: 1.6; max-width: 600px; margin: 0 auto;">
@@ -2419,12 +2419,12 @@ app.get('/cafe', (c) => {
                 }) : '';
                 
                 const bookingButton = event.bookingLink ? 
-                  \`<a href="\${event.bookingLink}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--mustard); color: #000; text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">→ BOOK</a>\` : '';
+                  \`<a href="\${event.bookingLink}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--mustard); color: #000; text-decoration: none; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;">→ BOOK</a>\` : '';
                 
                 return \`
                   <div style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--mustard); padding: 1.5rem; margin-bottom: 1.5rem;">
-                    <h4 style="font-family: 'Archivo Black', sans-serif; font-size: 1rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; margin-bottom: 0.5rem;">\${event.title}</h4>
-                    <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.75rem;">\${dateStr}\${timeStr ? ' · ' + timeStr : ''}</p>
+                    <h4 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 1rem; font-weight: 900; color: var(--mustard); text-transform: uppercase; margin-bottom: 0.5rem;">\${event.title}</h4>
+                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.75rem; color: rgba(245, 245, 245, 0.7); margin-bottom: 0.75rem;">\${dateStr}\${timeStr ? ' · ' + timeStr : ''}</p>
                     <p style="font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.9);">\${event.description}</p>
                     \${bookingButton}
                   </div>
@@ -2578,7 +2578,7 @@ app.get('/contact', (c) => {
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link href="/static/crs-reset.css" rel="stylesheet">
     <link href="/static/crs-typography.css" rel="stylesheet">
@@ -2586,7 +2586,7 @@ app.get('/contact', (c) => {
     <link href="/static/crs-mobile.css" rel="stylesheet">
     <link href="/static/rack-accordion.css" rel="stylesheet">
     <link href="/static/studio-rack-demo.css?v=5.10" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="hp-page subpage">
     ${<ContactPage initialService={service} status={status} />}
@@ -2678,8 +2678,8 @@ app.get('/studio-rack-demo', (c) => {
   <!-- Fonts — non-blocking (v5.18) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" /></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
 
   ${vendorAsset2 ? `<link rel="modulepreload" href="${vendorAsset2}" />` : ''}
 </head>
@@ -2734,7 +2734,7 @@ app.get('/rack-accordion', (c) => {
         <meta name="keywords" content="recording studio oxford, rehearsal space oxford, cowley road studios, soundworks oxford, music production oxford" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         
         {/* Core CSS files from homepage */}
         <link href="/static/crs-reset.css" rel="stylesheet" />
@@ -2790,7 +2790,7 @@ app.get('/photos', (c) => {
         <title>CRS Location Photos</title>
         <style>{`
           body {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #0a0a0a;
             color: #fff;
             padding: 2rem;
@@ -2915,7 +2915,7 @@ app.get('/rack-modular', (c) => {
         {/* Minimal fonts for console UI */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         
         {/* ONLY Console CSS - Final Art Direction Pass */}
         <link href="/static/rack-console-final.css" rel="stylesheet" />
@@ -2928,7 +2928,7 @@ app.get('/rack-modular', (c) => {
             box-sizing: border-box;
           }
           body {
-            font-family: 'JetBrains Mono', 'Space Mono', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #0a0a0a;
             color: #fff;
             overflow-x: hidden;
@@ -2970,7 +2970,7 @@ app.get('/signage-v2', (c) => {
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/static/signage/signage-v2.css" />
 </head>
 <body>
@@ -3270,7 +3270,7 @@ app.get('/signage-loop', (c) => {
         <title>CRS Signage Loop | Broadcast Mode</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="/static/crs-ghost-chassis.css" rel="stylesheet" />
         <style>{`
@@ -3301,7 +3301,7 @@ app.get('/rehearsal', (c) => {
         <meta name="keywords" content="rehearsal space oxford, band rehearsal oxford, music rehearsal oxford, practice room oxford" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         
         {/* Core CSS files */}
         <link href="/static/crs-reset.css" rel="stylesheet" />

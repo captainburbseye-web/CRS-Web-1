@@ -91,7 +91,7 @@ export const SignageSignalEnhanced = () => {
                 {/* CRS Wordmark Watermark */}
                 <div class="crs-wordmark-watermark" aria-hidden="true">
                   <svg viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <text x="10" y="50" font-family="JetBrains Mono, monospace" font-size="36" font-weight="bold" fill="white" fill-opacity="0.03">COWLEY ROAD STUDIOS</text>
+                    <text x="10" y="50" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="36" font-weight="bold" fill="white" fill-opacity="0.03">COWLEY ROAD STUDIOS</text>
                   </svg>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export const SignageSignalEnhanced = () => {
                 <div class="crs-branding-badge">
                   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="50" r="45" stroke={slide.color} stroke-width="3" fill="rgba(0,0,0,0.7)"/>
-                    <text x="50" y="60" font-family="JetBrains Mono, monospace" font-size="32" font-weight="bold" fill={slide.color} text-anchor="middle">CRS</text>
+                    <text x="50" y="60" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="32" font-weight="bold" fill={slide.color} text-anchor="middle">CRS</text>
                   </svg>
                 </div>
                 

@@ -45,7 +45,7 @@
   --text-active: #ffffff;
   --text-inactive: rgba(255, 255, 255, 0.35);
   --text-label: rgba(255, 255, 255, 0.7);
-  --font-tech: 'SF Mono', 'Monaco', 'Courier New', monospace;
+  --font-tech: 'SF Mono', 'Monaco', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   
   /* Depth & Shadow */
   --shadow-panel-inset: 

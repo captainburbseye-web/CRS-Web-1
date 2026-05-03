@@ -15,7 +15,7 @@ export const HomePage = () => (
       </div>
       
       <div class="rack-unit-content">
-        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin-bottom: 1rem;">
+        <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.875rem; line-height: 1.6; color: rgba(245, 245, 245, 0.85); margin-bottom: 1rem;">
           <p style="margin-bottom: 0.5rem;">
             <strong style="color: #FF8C00;">AVAILABLE NOW:</strong>
           </p>
@@ -64,7 +64,7 @@ export const HomePage = () => (
       </div>
       
       <div class="rack-unit-content">
-        <p style="margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.85); font-size: 0.875rem; font-family: 'JetBrains Mono', monospace;">
+        <p style="margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.85); font-size: 0.875rem; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
           118 Cowley Road, Oxford OX4 1JE
         </p>
         <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">
@@ -87,7 +87,7 @@ export const HomePage = () => (
       </div>
       
       <div class="rack-unit-content">
-        <p style="margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.85); font-size: 0.875rem; font-family: 'JetBrains Mono', monospace;">
+        <p style="margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.85); font-size: 0.875rem; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
           92 Cricket Road, Oxford OX4 3DJ
         </p>
         
@@ -119,7 +119,7 @@ export const HomePage = () => (
       </div>
       
       <div class="rack-unit-content">
-        <p style="margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.85); font-size: 0.875rem; font-family: 'JetBrains Mono', monospace;">
+        <p style="margin-bottom: 0.5rem; color: rgba(245, 245, 245, 0.85); font-size: 0.875rem; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
           92 Cricket Road, Oxford OX4 3DJ
         </p>
         <p style="margin-bottom: 1.5rem; color: rgba(245, 245, 245, 0.85);">

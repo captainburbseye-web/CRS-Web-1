@@ -26,11 +26,11 @@ body {
 
 /* TYPOGRAPHY */
 .mono {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 .heading {
-  font-family: 'Archivo Black', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1.1;
@@ -136,7 +136,7 @@ body {
 }
 
 .header-brand {
-  font-family: 'Archivo Black', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1.25rem;
   font-weight: 900;
   color: rgba(245, 245, 245, 0.95);
@@ -210,7 +210,7 @@ body {
   border: 2px solid rgba(255, 140, 0, 0.4);
   border-radius: 4px;
   color: #FF8C00;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.875rem;
   font-weight: 800;
   cursor: pointer;
@@ -269,7 +269,7 @@ body {
   padding: 0.75rem 1.25rem;
   color: #FF8C00;
   text-decoration: none;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -309,7 +309,7 @@ body {
 
 /* OPERATIONAL STATEMENT - Single Sentence Authority */
 .operational-statement {
-  font-family: 'Archivo Black', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1.25rem;
   font-weight: 900;
   line-height: 1.4;
@@ -331,7 +331,7 @@ body {
 }
 
 .footer-location-item {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.688rem;
   font-weight: 400;
   color: rgba(245, 245, 245, 0.5);
@@ -340,7 +340,7 @@ body {
 }
 
 .footer-contact {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.688rem;
   font-weight: 400;
   color: rgba(245, 245, 245, 0.5);
@@ -649,7 +649,7 @@ body {
 }
 
 .cafe-service-title {
-  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.875rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -770,7 +770,7 @@ body {
 }
 
 .hero-tagline {
-  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 900;
   font-size: 1.875rem;
   color: rgba(245, 245, 245, 0.9);
@@ -888,7 +888,7 @@ body {
 }
 
 .section-title {
-  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 900;
   font-size: 1.25rem;
   color: var(--mustard);
@@ -904,7 +904,7 @@ body {
 }
 
 .section-title-brewforce {
-  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 900;
   font-size: 3rem;
   color: var(--fire-orange);
@@ -1018,7 +1018,7 @@ body {
 }
 
 .card-status {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.875rem;
   color: var(--fire-orange);
   text-transform: uppercase;
@@ -1081,7 +1081,7 @@ body {
 }
 
 .service-headline {
-  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 900;
   font-size: 1.875rem;
   color: var(--fire-orange);
@@ -1125,7 +1125,7 @@ body {
   display: inline-block;
   background: var(--fire-orange);
   color: var(--signal-white);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 800;
   font-size: 0.9375rem;
   text-transform: uppercase;
@@ -1161,7 +1161,7 @@ body {
   display: inline-block;
   background: #DC0000;
   color: #FFFFFF;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -1637,7 +1637,7 @@ body {
   align-items: center;
   justify-content: center;
   flex: 1;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1836,7 +1836,7 @@ body {
   display: flex;
   gap: 0.75rem; /* Reduced from 1.5rem */
   align-items: center;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.65rem; /* Reduced from 0.75rem */
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -2071,14 +2071,14 @@ a[href*="/contact"] {
 .section-title::before {
   content: '// ';
   color: rgba(255, 215, 0, 0.3);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.8em;
   font-weight: 400;
 }
 
 /* Section intro text feels like system metadata */
 .section-intro {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.875rem;
   opacity: 0.85;
   border-left: 4px solid rgba(255, 215, 0, 0.3);
@@ -2127,7 +2127,7 @@ a[href*="/contact"] {
 }
 
 .footer-col-title {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   letter-spacing: 0.15em;
   border-bottom: 1px solid rgba(255, 215, 0, 0.2);
   padding-bottom: 0.25rem;
@@ -2245,7 +2245,7 @@ body::after {
 /* BOOK NOW button in center - Fallout pre-war neon style */
 .book-now-trigger {
   color: #FF8C00 !important; /* Dark orange (warm neon) */
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -2414,7 +2414,7 @@ body {
 }
 
 .module-title {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.875rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -2464,7 +2464,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -2495,7 +2495,7 @@ body {
   background: var(--fire-orange);
   color: var(--void-black);
   text-decoration: none;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   text-transform: uppercase;

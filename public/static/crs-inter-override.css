@@ -1,0 +1,194 @@
+/**
+ * CRS INTER TYPOGRAPHY OVERRIDE — v1.0
+ * =============================================
+ * Nuclear last-resort sheet: ensures Inter is
+ * the sole typeface across every element.
+ * Load LAST in the stylesheet chain.
+ *
+ * Rules:
+ *   Main headings   — Inter 600/700, ≤0.01 em tracking
+ *   Section heads   — Inter 600, balanced size
+ *   Rack labels     — Inter 500, uppercase, 0.06–0.1 em tracking
+ *   Buttons         — Inter 600, uppercase, 0.06 em tracking
+ *   Body copy       — Inter 400, line-height 1.55
+ *   Spec sheets     — Inter 400/500, tidy spacing
+ * =============================================
+ */
+
+/* === GLOBAL RESET — wipe every bad font stack === */
+*, *::before, *::after,
+html, body,
+nav, header, footer, main, section, article, aside,
+div, span, p, a, li, ul, ol,
+h1, h2, h3, h4, h5, h6,
+button, input, select, textarea, label,
+table, thead, tbody, tr, th, td,
+form, fieldset, legend,
+code, pre, kbd, samp,
+figure, figcaption, blockquote, cite,
+[class*="rack-"], [class*="module-"], [class*="channel-"],
+[class*="spec-"], [class*="panel-"], [class*="btn"],
+[class*="label"], [class*="badge"], [class*="tag"],
+[class*="ticker"], [class*="slide"], [class*="status"],
+[class*="nav-"], [class*="menu-"], [class*="footer-"],
+[class*="booking"], [class*="card"], [class*="grid"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* === BODY — base typographic rhythm === */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* === HEADINGS — clear hierarchy, not shouty === */
+h1 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+}
+
+h2 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.005em !important;
+}
+
+h3, h4 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0em !important;
+}
+
+h5, h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+/* === BODY COPY === */
+p, li, td, th, blockquote, figcaption {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+}
+
+/* === RACK / HARDWARE LABELS ===
+   Inter 500 + uppercase + wider tracking → silk-screened / engraved look
+   No typewriter aesthetic */
+.module-title,
+.rack-label,
+.rack-channel-label,
+.channel-label,
+.rack-eyebrow,
+.spec-label,
+.spec-key,
+.panel-label,
+.hardware-label,
+.rack-unit-label,
+.signal-label,
+.unit-label,
+.led-label,
+[class*="rack-label"],
+[class*="channel-num"],
+[class*="unit-num"],
+[class*="-eyebrow"],
+[class*="-badge"],
+[class*="status-pill"],
+[class*="status-label"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.07em !important;
+}
+
+/* === BUTTONS — premium, legible === */
+button,
+[role="button"],
+.btn,
+.cta-btn,
+.book-btn,
+.booking-btn,
+.action-btn,
+.sp-action-btn,
+[class*="-btn"],
+[class*="btn-"],
+[class*="book-"],
+[class*="-cta"],
+a[class*="btn"],
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+}
+
+/* === NAVIGATION === */
+nav, nav a, nav li, nav span,
+.nav, .navbar, .topbar,
+[class*="nav-"], [class*="-nav"],
+.menu, .menu-item {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 500 !important;
+}
+
+/* === SPEC SHEETS — tidy, not monospace === */
+.spec-sheet,
+.spec-grid,
+.spec-list,
+.spec-row,
+.spec-value,
+.spec-item,
+[class*="spec-"],
+[class*="-spec"],
+.gear-list,
+.equipment-list,
+[class*="gear-"],
+[class*="equipment-"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* === FOOTER === */
+footer,
+footer *,
+.footer,
+.footer *,
+[class*="footer"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* === FORMS / BOOKING UI === */
+input, select, textarea, label,
+.form-field, .form-label, .form-input,
+[class*="form-"], [class*="-field"],
+[class*="booking-"], [class*="-booking"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* === TICKER / SCROLLING TEXT === */
+.ticker, .ticker-track, .ticker-item,
+[class*="ticker"] {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* === SVG text fallback (can't use !important in SVG attrs but CSS can target) === */
+svg text {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* === CSS VARIABLE OVERRIDE — catches any var(--font-mono) leakage === */
+:root {
+  --font-mono:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  --font-tech:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  --font-rack:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  --font-chassis: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}

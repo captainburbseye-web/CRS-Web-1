@@ -66,7 +66,7 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
              Size: 2.6KB minified
              ============================================ */}
         <style dangerouslySetInnerHTML={{__html: `
-          *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif}body{margin:0;line-height:inherit;background:#0a0a0a;color:#f4f4f4;font-family:'Inter',sans-serif}h1,h2,h3{font-weight:700;line-height:1.2}h1{font-size:2.5rem}h2{font-size:1.75rem}.rack-container{max-width:1400px;margin:0 auto;padding:2rem 1rem}.rack-module{background:#0d0d0d;border:2px solid #2a2a2a;border-radius:8px;margin:1.5rem 0;padding:1.5rem;position:relative;transition:border-color 0.4s ease-out,box-shadow 0.4s ease-out}.module-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;border-bottom:1px solid #333;padding-bottom:0.75rem}.module-title{font-family:'JetBrains Mono','Space Mono',monospace;font-size:1.125rem;color:#d4af37;text-transform:uppercase;letter-spacing:0.05em}.led{width:8px;height:8px;border-radius:50%;background:#39FF14;box-shadow:0 0 8px #39FF14}:root{--neon-orange:#FF8833;--neon-green:#39FF14;--glow-md:12px;--glow-transition:0.4s ease-out}.rack-module[data-channel="1"],.rack-module[data-channel="2"]{border-color:rgba(255,136,51,0.3)}.rack-module[data-channel="1"]:hover,.rack-module[data-channel="2"]:hover{border-color:#FF8833;box-shadow:0 0 12px rgba(255,136,51,0.3)}.rack-header{background:#0a0a0a;border-bottom:2px solid #1a1a1a;padding:1rem 2rem;position:sticky;top:0;z-index:100}.rack-header-nav{display:flex;gap:1.5rem;align-items:center}.rack-header-nav a{color:#f4f4f4;text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:0.875rem;transition:color 0.2s}.rack-header-nav a:hover{color:#00ffff}.module-video{width:100%;height:auto;border-radius:4px;display:block}.rack-window-container{position:relative;overflow:hidden;border-radius:8px;background:#1a1a1a}.skeleton{background:linear-gradient(90deg,#1a1a1a 25%,#2a2a2a 50%,#1a1a1a 75%);background-size:200% 100%;animation:skeleton-loading 1.5s ease-in-out infinite}@keyframes skeleton-loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
+          *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif}body{margin:0;line-height:inherit;background:#0a0a0a;color:#f4f4f4;font-family:'Inter',sans-serif}h1,h2,h3{font-weight:700;line-height:1.2}h1{font-size:2.5rem}h2{font-size:1.75rem}.rack-container{max-width:1400px;margin:0 auto;padding:2rem 1rem}.rack-module{background:#0d0d0d;border:2px solid #2a2a2a;border-radius:8px;margin:1.5rem 0;padding:1.5rem;position:relative;transition:border-color 0.4s ease-out,box-shadow 0.4s ease-out}.module-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;border-bottom:1px solid #333;padding-bottom:0.75rem}.module-title{font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;font-size:1.125rem;color:#d4af37;text-transform:uppercase;letter-spacing:0.05em}.led{width:8px;height:8px;border-radius:50%;background:#39FF14;box-shadow:0 0 8px #39FF14}:root{--neon-orange:#FF8833;--neon-green:#39FF14;--glow-md:12px;--glow-transition:0.4s ease-out}.rack-module[data-channel="1"],.rack-module[data-channel="2"]{border-color:rgba(255,136,51,0.3)}.rack-module[data-channel="1"]:hover,.rack-module[data-channel="2"]:hover{border-color:#FF8833;box-shadow:0 0 12px rgba(255,136,51,0.3)}.rack-header{background:#0a0a0a;border-bottom:2px solid #1a1a1a;padding:1rem 2rem;position:sticky;top:0;z-index:100}.rack-header-nav{display:flex;gap:1.5rem;align-items:center}.rack-header-nav a{color:#f4f4f4;text-decoration:none;font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;font-size:0.875rem;transition:color 0.2s}.rack-header-nav a:hover{color:#00ffff}.module-video{width:100%;height:auto;border-radius:4px;display:block}.rack-window-container{position:relative;overflow:hidden;border-radius:8px;background:#1a1a1a}.skeleton{background:linear-gradient(90deg,#1a1a1a 25%,#2a2a2a 50%,#1a1a1a 75%);background-size:200% 100%;animation:skeleton-loading 1.5s ease-in-out infinite}@keyframes skeleton-loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
         `}} />
         
         {/* Performance: DNS Prefetch & Preconnect for Square Booking */}
@@ -81,14 +81,14 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700&family=Archivo+Black&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
           media="print"
           onload="this.media='all'"
         />
         <noscript>
           <link
-            href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;600;700&family=Archivo+Black&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
             rel="stylesheet"
           />
         </noscript>
@@ -127,6 +127,11 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
              Loads LAST so it wins every specificity conflict with consolidated files.
              All active development lives here. Do not remove. */}
         <link href="/static/studio-rack-demo.css" rel="stylesheet" />
+
+        {/* INTER TYPOGRAPHY OVERRIDE — must be LAST
+             Removes every remaining JetBrains Mono / Space Mono / Courier / Georgia
+             reference via !important rules on all element selectors. */}
+        <link href="/static/crs-inter-override.css" rel="stylesheet" />
         
         {/* REMOVED 31 DUPLICATE AND INDIVIDUAL MODULE STYLESHEETS
              All styling is now consolidated into the 4 files above

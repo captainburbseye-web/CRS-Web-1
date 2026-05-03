@@ -16,7 +16,7 @@
 }
 
 .map-embed-title {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1.5rem;
   color: #e3b04b;
   letter-spacing: 0.1em;
@@ -25,7 +25,7 @@
 }
 
 .map-embed-subtitle {
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1rem;
   color: #999;
   letter-spacing: 0.05em;

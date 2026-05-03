@@ -51,7 +51,7 @@ body {
   color: var(--text-cream);
   margin: 0;
   padding: 0;
-  font-family: 'Space Mono', 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* ==== ENHANCED RACK UNIT WITH BRONZE EARS ==== */
@@ -166,7 +166,7 @@ body {
 
 /* ==== SECTION HEADER WITH GOLD TEXT ==== */
 .rack-unit-title {
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-gold);
@@ -239,7 +239,7 @@ body {
   box-shadow: 
     0 4px 8px rgba(0, 0, 0, 0.4),
     inset 0 1px 2px rgba(255, 255, 255, 0.2);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   text-transform: uppercase;
   font-size: 0.875rem;
   letter-spacing: 0.1em;
@@ -296,7 +296,7 @@ body {
   color: #222;
   font-weight: 700;
   padding: 8px 20px;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 0.1em;
@@ -674,7 +674,7 @@ footer {
    Module label
    ------------------------------ */
 .rack-unit-title {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -942,7 +942,7 @@ footer {
 
 /* Device Title (engraved label) */
 .rack-unit-title {
-  font-family: 'Archivo Black', sans-serif !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   font-size: 1.125rem !important;
   font-weight: 800 !important;
   color: rgba(232, 155, 60, 0.95) !important;
@@ -1040,7 +1040,7 @@ footer {
   min-height: 42px !important;
   padding: 11px 22px !important;
   border-radius: 4px !important;
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   font-weight: 700 !important;
   font-size: 0.813rem !important;
   text-transform: uppercase !important;
@@ -1202,7 +1202,7 @@ main,
 }
 
 .status-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--crs-green, #7fff00);
@@ -1277,7 +1277,7 @@ section > .hardware-image:first-child {
 }
 
 .panel-title {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.875rem;
   font-weight: 800;
   color: var(--crs-green, #7fff00);
@@ -1299,7 +1299,7 @@ section > .hardware-image:first-child {
 }
 
 .rule-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.8125rem;
   font-weight: 700;
   color: rgba(245, 245, 245, 0.7);
@@ -1316,7 +1316,7 @@ section > .hardware-image:first-child {
 }
 
 .rule-value {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.75rem;
   font-weight: 800;
   color: var(--crs-green, #7fff00);
@@ -1378,7 +1378,7 @@ section > .hardware-image:first-child {
 .rack-console {
   background-color: var(--rack-bg);
   color: var(--rack-text);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
   padding: 2rem 1rem;
 }
@@ -1517,7 +1517,7 @@ section > .hardware-image:first-child {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 900;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   letter-spacing: 0.05em;
   cursor: pointer;
   text-decoration: none;
@@ -1765,7 +1765,7 @@ body::after {
 }
 
 .rack-module .technical-label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1.05rem;
   color: #E3B04B;
   text-transform: uppercase;
@@ -1796,7 +1796,7 @@ body::after {
   background: var(--black-panel);
   color: var(--mustard-mus);
   border: 2px solid var(--mustard-mus);
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   padding: 10px 16px;
@@ -1980,7 +1980,7 @@ body::after {
 .nav-button,
 .header-services a {
   /* Typography — Console Terminal */
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
   font-size: 0.70rem !important;
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
@@ -2238,7 +2238,7 @@ body::after {
 /* Sub-Rack Module Title */
 .rack-module.sub-rack .module-title {
   font-size: 0.938rem; /* REDUCED from 1rem */
-  font-family: 'Oswald', sans-serif; /* UNIFIED with headers */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; /* UNIFIED with headers */
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -2247,7 +2247,7 @@ body::after {
 
 /* Sub-Rack Description */
 .sub-rack-description {
-  font-family: 'JetBrains Mono', monospace; /* UNIFIED data font */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; /* UNIFIED data font */
   font-size: 0.813rem; /* REDUCED from 0.95rem */
   line-height: 1.5; /* TIGHTENED from 1.6 */
   color: rgba(245, 245, 245, 0.7);

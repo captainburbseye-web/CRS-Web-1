@@ -33,7 +33,7 @@ export const VenueHireOxford = () => {
         <h2 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1.5rem;">Capacity & Pricing</h2>
         
         <div style="background: rgba(0,0,0,0.3); border-left: 3px solid #B5A642; padding: 1.5rem; margin-bottom: 2rem;">
-          <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">VENUE SPECIFICATIONS</h3>
+          <h3 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">VENUE SPECIFICATIONS</h3>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>Capacity:</strong> 25 seated / 60 standing</p>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>1 hour:</strong> £25</p>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>4 hours:</strong> £90</p>

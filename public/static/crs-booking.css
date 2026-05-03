@@ -16,7 +16,7 @@
 }
 
 .booking-title {
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--sage-green, #B5A642);
@@ -26,7 +26,7 @@
 }
 
 .booking-description {
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1.1rem;
   color: rgba(224, 224, 224, 0.9);
   line-height: 1.6;
@@ -50,7 +50,7 @@
   border: 2px solid var(--sage-green, #404040);
   border-radius: 6px;
   color: var(--sage-green, #B5A642);
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
@@ -105,7 +105,7 @@
 }
 
 .booking-card-title {
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--sage-green, #B5A642);
@@ -115,7 +115,7 @@
 
 .booking-card-location {
   display: inline-block;
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.9rem;
   color: var(--mustard, #e3b04b);
   background: rgba(227, 176, 75, 0.1);
@@ -126,7 +126,7 @@
 
 /* Price */
 .booking-card-price {
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--mustard, #e3b04b);
@@ -142,7 +142,7 @@
 }
 
 .booking-card-features li {
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1rem;
   color: rgba(224, 224, 224, 0.9);
   padding: 0.5rem 0;
@@ -163,7 +163,7 @@
   border: none;
   border-radius: 6px;
   color: #0a0a0a;
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1.1rem;
   font-weight: 700;
   text-align: center;
@@ -198,7 +198,7 @@
   border: 2px solid rgba(136, 170, 136, 0.3);
   border-radius: 6px;
   color: var(--sage-green, #B5A642);
-  font-family: 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 1rem;
   text-decoration: none;
   letter-spacing: 0.05em;

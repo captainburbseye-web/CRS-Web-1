@@ -33,7 +33,7 @@ export const AVServicesOxford = () => {
         <h2 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1.5rem;">Service Coverage</h2>
         
         <div style="background: rgba(0,0,0,0.3); border-left: 3px solid #B5A642; padding: 1.5rem; margin-bottom: 1.5rem;">
-          <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">SYSTEM INSTALLATIONS</h3>
+          <h3 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">SYSTEM INSTALLATIONS</h3>
           <ul style="list-style: none; padding: 0; margin: 0;">
             <li style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.85);">→ Permanent venue infrastructure (PA systems, monitoring, connectivity)</li>
             <li style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.85);">→ Signal routing and patch bay installation</li>
@@ -43,7 +43,7 @@ export const AVServicesOxford = () => {
         </div>
 
         <div style="background: rgba(0,0,0,0.3); border-left: 3px solid #404040; padding: 1.5rem; margin-bottom: 1.5rem;">
-          <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">EQUIPMENT REPAIR</h3>
+          <h3 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">EQUIPMENT REPAIR</h3>
           <ul style="list-style: none; padding: 0; margin: 0;">
             <li style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.85);">→ Mixers, interfaces, amplifiers, speakers</li>
             <li style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.85);">→ Power supply diagnostics</li>
@@ -53,7 +53,7 @@ export const AVServicesOxford = () => {
         </div>
 
         <div style="background: rgba(0,0,0,0.3); border-left: 3px solid #404040; padding: 1.5rem; margin-bottom: 2rem;">
-          <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">ON-SITE SUPPORT</h3>
+          <h3 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">ON-SITE SUPPORT</h3>
           <ul style="list-style: none; padding: 0; margin: 0;">
             <li style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.85);">→ Live event technical support</li>
             <li style="margin-bottom: 0.5rem; color: rgba(255,255,255,0.85);">→ Venue commissioning and training</li>

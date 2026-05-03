@@ -45,7 +45,7 @@
   --cafe-text-mute:#7A7058;        /* for truly secondary info */
   --cafe-mustard:  #8A6A10;        /* DARKER mustard for text on cream — better contrast */
 
-  --font-mono: 'JetBrains Mono', 'Space Mono', 'Courier New', monospace;
+  --font-mono: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --r: 2px;
   --r-md: 4px;

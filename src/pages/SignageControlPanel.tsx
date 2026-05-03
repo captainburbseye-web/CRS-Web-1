@@ -7,7 +7,7 @@ export function SignageControlPanel() {
         <title>CRS Signage Control Panel</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
         <style>{`
           * {
             margin: 0;
@@ -26,7 +26,7 @@ export function SignageControlPanel() {
           }
 
           body {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: var(--bg-dark);
             color: #E5E5E5;
             padding: 20px;
@@ -90,7 +90,7 @@ export function SignageControlPanel() {
             border: 1px solid var(--green);
             border-radius: 6px;
             color: #E5E5E5;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -205,7 +205,7 @@ export function SignageControlPanel() {
             border: 1px solid var(--border-color);
             border-radius: 6px;
             color: #E5E5E5;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 0.9rem;
             cursor: pointer;
             margin-top: 8px;

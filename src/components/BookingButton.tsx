@@ -20,7 +20,7 @@ const BookingButton: React.FC<BookingButtonProps> = ({ label, bookingUrl = '/con
         textTransform: 'uppercase',
         textDecoration: 'none',
         display: 'inline-block',
-        fontFamily: 'monospace'
+        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
       }}
     >
       {buttonLabel}

@@ -12,7 +12,7 @@ export const AVRepairsPage = () => (
     <div style="padding: 1rem 0; text-align: center; background: rgba(0,0,0,0.5); border-bottom: 1px solid rgba(212,160,23,0.2);">
       <a 
         href="/av-services" 
-        style="color: var(--mustard, #d4a017); font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em;"
+        style="color: var(--mustard, #d4a017); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.875rem; text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em;"
       >
         ← BACK TO AV SERVICES
       </a>
@@ -31,7 +31,7 @@ export const AVRepairsPage = () => (
     >
       <h1 
         style="
-          font-family: 'Archivo Black', sans-serif;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           font-size: clamp(2rem, 5vw, 3rem);
           color: var(--mustard, #d4a017);
           text-transform: uppercase;
@@ -43,7 +43,7 @@ export const AVRepairsPage = () => (
       </h1>
       <p 
         style="
-          font-family: 'JetBrains Mono', monospace;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           font-size: 0.875rem;
           color: rgba(245,245,245,0.7);
           max-width: 600px;
@@ -67,7 +67,7 @@ export const AVRepairsPage = () => (
       >
         <span 
           style="
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 0.875rem;
             color: rgba(245,245,245,0.9);
           "
@@ -100,7 +100,7 @@ export const AVRepairsPage = () => (
       <div style="max-width: 900px; margin: 0 auto;">
         <h2 
           style="
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 0.75rem;
             letter-spacing: 0.15em;
             color: var(--mustard, #d4a017);
@@ -111,10 +111,10 @@ export const AVRepairsPage = () => (
         >
           /// OVERVIEW
         </h2>
-        <p style="margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; line-height: 1.6; color: rgba(245,245,245,0.9);">
+        <p style="margin-bottom: 1rem; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9375rem; line-height: 1.6; color: rgba(245,245,245,0.9);">
           Repairs and system fixes are handled in-house by our technical bench.
         </p>
-        <p style="font-size: 0.9375rem; line-height: 1.6; color: rgba(245,245,245,0.85); font-style: italic; font-family: 'JetBrains Mono', monospace;">
+        <p style="font-size: 0.9375rem; line-height: 1.6; color: rgba(245,245,245,0.85); font-style: italic; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
           Led by <strong style="color: var(--mustard, #d4a017);">ODRO</strong>, our in-house engineer responsible for repairs and deep technical problem-solving.
         </p>
       </div>
@@ -133,7 +133,7 @@ export const AVRepairsPage = () => (
       <div style="max-width: 900px; margin: 0 auto;">
         <h2 
           style="
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 0.75rem;
             letter-spacing: 0.15em;
             color: var(--mustard, #d4a017);
@@ -144,13 +144,13 @@ export const AVRepairsPage = () => (
         >
           /// WHAT WE REPAIR
         </h2>
-        <ul style="list-style: none; padding: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; line-height: 2; color: rgba(245,245,245,0.9);">
+        <ul style="list-style: none; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9375rem; line-height: 2; color: rgba(245,245,245,0.9);">
           <li style="margin-bottom: 0.75rem;">→ Mixers and interfaces</li>
           <li style="margin-bottom: 0.75rem;">→ Amplifiers and speakers</li>
           <li style="margin-bottom: 0.75rem;">→ Cabling and connectors</li>
           <li style="margin-bottom: 0.75rem;">→ Power and signal faults</li>
         </ul>
-        <p style="margin-top: 1.5rem; font-size: 0.9375rem; line-height: 1.6; color: rgba(245,245,245,0.85); font-family: 'JetBrains Mono', monospace;">
+        <p style="margin-top: 1.5rem; font-size: 0.9375rem; line-height: 1.6; color: rgba(245,245,245,0.85); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
           If it's part of a signal chain, we'll assess it honestly.
         </p>
       </div>
@@ -169,7 +169,7 @@ export const AVRepairsPage = () => (
       <div style="max-width: 900px; margin: 0 auto;">
         <h2 
           style="
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             font-size: 0.75rem;
             letter-spacing: 0.15em;
             color: var(--mustard, #d4a017);
@@ -180,13 +180,13 @@ export const AVRepairsPage = () => (
         >
           /// THE PROCESS
         </h2>
-        <ol style="padding-left: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.9375rem; line-height: 2; color: rgba(245,245,245,0.9);">
+        <ol style="padding-left: 1.5rem; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9375rem; line-height: 2; color: rgba(245,245,245,0.9);">
           <li style="margin-bottom: 0.75rem;">Diagnose</li>
           <li style="margin-bottom: 0.75rem;">Repair</li>
           <li style="margin-bottom: 0.75rem;">Test</li>
           <li style="margin-bottom: 0.75rem;">Return</li>
         </ol>
-        <p style="margin-top: 1.5rem; font-size: 0.9375rem; line-height: 1.6; color: rgba(245,245,245,0.85); font-family: 'JetBrains Mono', monospace;">
+        <p style="margin-top: 1.5rem; font-size: 0.9375rem; line-height: 1.6; color: rgba(245,245,245,0.85); font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
           No cosmetic fixes. No guesswork.
         </p>
         <div 
@@ -197,7 +197,7 @@ export const AVRepairsPage = () => (
             border-left: 3px solid var(--mustard, #d4a017);
           "
         >
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; color: rgba(245,245,245,0.9);">
+          <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.875rem; color: rgba(245,245,245,0.9);">
             <strong style="color: var(--mustard, #d4a017);">REPAIR DIAGNOSTICS:</strong> £60 flat rate (credited toward repair if you proceed)
           </p>
         </div>
@@ -220,7 +220,7 @@ export const AVRepairsPage = () => (
           padding: 1.25rem 3rem;
           background: var(--mustard, #d4a017);
           color: #000;
-          font-family: 'JetBrains Mono', monospace;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
           font-size: 1rem;
           font-weight: 700;
           text-transform: uppercase;

@@ -33,7 +33,7 @@ export const RecordingStudioOxford = () => {
         <h2 style="font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1.5rem;">Studio Locations & Pricing</h2>
         
         <div style="background: rgba(0,0,0,0.3); border-left: 3px solid #B5A642; padding: 1.5rem; margin-bottom: 1.5rem;">
-          <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">COWLEY ROAD FACILITY</h3>
+          <h3 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">COWLEY ROAD FACILITY</h3>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>Rate:</strong> £35 per hour</p>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>Minimum:</strong> 2 hours</p>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>Includes:</strong> In-house engineer, live room, vocal booth, studio management</p>
@@ -42,7 +42,7 @@ export const RecordingStudioOxford = () => {
         </div>
 
         <div style="background: rgba(0,0,0,0.3); border-left: 3px solid #404040; padding: 1.5rem; margin-bottom: 2rem;">
-          <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">CRICKET ROAD NODE</h3>
+          <h3 style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; color: #B5A642; margin-bottom: 1rem;">CRICKET ROAD NODE</h3>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>Rate:</strong> £30 per hour</p>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>Minimum:</strong> 2 hours</p>
           <p style="margin-bottom: 0.75rem; color: rgba(255,255,255,0.85);"><strong>Includes:</strong> In-house engineer, treated space, independent operation</p>

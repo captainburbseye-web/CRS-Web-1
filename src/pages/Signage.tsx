@@ -166,7 +166,7 @@ export const SignagePage = () => {
                   <h2 class="kinetic-title oxford-flicker warm" style="font-size: 3rem; line-height: 0.9; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em;">
                     WORKSHOP<br/>CAFÉ
                   </h2>
-                  <p class="module-address warm" style="font-family: 'Space Mono', monospace; font-size: 0.75rem; margin-top: 0.75rem; display: flex; align-items: center; gap: 0.5rem; color: rgba(251, 191, 36, 0.6);">
+                  <p class="module-address warm" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 0.75rem; margin-top: 0.75rem; display: flex; align-items: center; gap: 0.5rem; color: rgba(251, 191, 36, 0.6);">
                     <span>☕</span> 118 COWLEY ROAD · OXFORD
                   </p>
                 </div>

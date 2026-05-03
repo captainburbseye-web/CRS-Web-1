@@ -14,7 +14,7 @@ signage.get('/', (c) => {
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,7 +22,7 @@ signage.get('/', (c) => {
     html, body {
       background: #0a0a0a;
       color: #fff;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       overflow: hidden;
       width: 100vw;
       height: 100vh;

@@ -52,7 +52,7 @@ export const DESIGN_TOKENS = {
   textSubdued: '#B8B8B8',
   
   // Typography
-  fontFamily: '"JetBrains Mono", monospace',
+  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   
   // Timing
   fadeDuration: 2000,    // 2s fade

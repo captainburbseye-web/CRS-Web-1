@@ -49,7 +49,7 @@ export const BookingConfirmed = () => (
         <p style="margin-bottom: 1rem; color: rgba(245, 245, 245, 0.85);">
           If you have any questions ahead of your session, you can contact us here:
         </p>
-        <div style="font-family: 'JetBrains Mono', monospace; color: rgba(245, 245, 245, 0.9);">
+        <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: rgba(245, 245, 245, 0.9);">
           <p style="margin-bottom: 0.5rem;">
             ✉️ <a href="mailto:info@crsoxford.com" style="color: #D4A574; text-decoration: none; border-bottom: 1px solid #D4A574;">info@crsoxford.com</a>
           </p>
@@ -62,7 +62,7 @@ export const BookingConfirmed = () => (
       {/* FINDING US SECTION */}
       <div style="margin-bottom: 3rem;">
         <h2 class="content-heading mono" style="margin-bottom: 1.5rem; color: #D4A574;">Finding Us</h2>
-        <div style="font-family: 'JetBrains Mono', monospace; color: rgba(245, 245, 245, 0.85); line-height: 1.8;">
+        <div style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: rgba(245, 245, 245, 0.85); line-height: 1.8;">
           <p style="margin-bottom: 0.5rem; font-weight: 600;">Cowley Road Studios</p>
           <p style="margin-bottom: 0.5rem;">118 Cowley Road</p>
           <p style="margin-bottom: 1.5rem;">Oxford, OX4 1JE</p>

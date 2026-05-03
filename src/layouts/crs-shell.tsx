@@ -31,7 +31,7 @@ html, body {
   padding: 0;
   background: #0e0e0e;
   color: #e0e0e0;
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -148,7 +148,7 @@ a {
 }
 
 .rack-label {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 13px;
   letter-spacing: 0.12em;
   color: #e0e0e0;
@@ -175,7 +175,7 @@ a {
 }
 
 .rack-spec li {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 13px;
   color: #bdbdbd;
   margin-bottom: 6px;

@@ -149,7 +149,7 @@
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-family: 'JetBrains Mono', 'Space Mono', monospace;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 0.875rem;
   color: var(--crs-text-dim, #888);
 }

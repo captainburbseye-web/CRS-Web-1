@@ -45,7 +45,7 @@ button {
     color: #FF9F1C !important;
     
     /* 3. Text Styling */
-    font-family: 'Courier New', Courier, monospace !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 1px !important;

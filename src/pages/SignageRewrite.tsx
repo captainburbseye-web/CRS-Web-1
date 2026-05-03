@@ -138,7 +138,7 @@ export const SignageRewrite = () => {
                 <div class="crs-badge-persistent">
                   <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="50" cy="50" r="45" stroke={frame.color} stroke-width="2" fill="rgba(14,14,14,0.8)"></circle>
-                    <text x="50" y="58" font-family="JetBrains Mono, monospace" font-size="28" font-weight="bold" fill={frame.color} text-anchor="middle">CRS</text>
+                    <text x="50" y="58" font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="28" font-weight="bold" fill={frame.color} text-anchor="middle">CRS</text>
                   </svg>
                 </div>
                 

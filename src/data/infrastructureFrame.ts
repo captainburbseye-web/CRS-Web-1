@@ -94,7 +94,7 @@ export const SIGNAGE_MODES = {
  * Typography Specs (Infrastructure Frame)
  */
 export const INFRASTRUCTURE_TYPOGRAPHY = {
-  fontFamily: "'JetBrains Mono', monospace",
+  fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
   primarySize: '2.5rem',      // "Oxford's music scene" / "We build the rooms"
   secondarySize: '1rem',      // "OX4 / Creative Infrastructure"
   fontWeight: 300,            // Light
