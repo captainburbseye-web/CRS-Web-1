@@ -537,8 +537,8 @@ const PANELS = {
   },
 };
 
-/* v5.30 — four top-level service buttons; café is now a dedicated rack unit below */
-const NAV_ORDER = ['recording', 'rehearsal', 'controlroom', 'boothhire'];
+/* v5.31 — five top-level service buttons; café is the dedicated rack unit below */
+const NAV_ORDER = ['recording', 'rehearsal', 'controlroom', 'boothhire', 'repairs'];
 
 /* Page route for each service */
 const PAGE_ROUTES = {
