@@ -5162,3 +5162,204 @@ a.wsc-direct-value:hover { color: var(--wsc-gold-lt); }
     justify-content: center;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   STICKY TOP NAV — crs-sticky-nav
+   Monospace, minimal. 4 anchors + BOOK CTA.
+   Sits above everything, z-index 200.
+   ═══════════════════════════════════════════════════════════════ */
+.crs-sticky-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: rgba(10, 10, 10, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  height: 44px;
+}
+.crs-sticky-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+/* Brand mark — left anchor */
+.crs-sticky-nav-brand {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(212,160,23,0.9);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.crs-sticky-nav-brand:hover { color: #e3c43a; }
+
+/* Link group — right side */
+.crs-sticky-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+/* Each nav item */
+.crs-sticky-nav-item {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  padding: 0 0.75rem;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+.crs-sticky-nav-item:hover { color: rgba(255,255,255,0.85); }
+.crs-sticky-nav-item.is-active { color: #3d5a1e; color: #46cc40; }
+
+/* BOOK CTA — Nettle Green accent */
+.crs-sticky-nav-item--cta {
+  color: #46cc40;
+  border: 1px solid rgba(70,204,64,0.35);
+  border-radius: 2px;
+  padding: 0 0.85rem;
+  margin-left: 0.5rem;
+  height: 28px;
+}
+.crs-sticky-nav-item--cta:hover {
+  color: #5ddf57;
+  border-color: rgba(70,204,64,0.7);
+  background: rgba(70,204,64,0.06);
+}
+
+/* Push the hp-machine down so the nav doesn't overlap the top of the rack */
+.hp-page {
+  padding-top: 44px;
+}
+
+/* Mobile: collapse link labels to save space */
+@media (max-width: 480px) {
+  .crs-sticky-nav-item { padding: 0 0.45rem; font-size: 0.55rem; letter-spacing: 0.1em; }
+  .crs-sticky-nav-inner { padding: 0 0.6rem; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   THREE PILLARS — Studio / Café / Hub
+   Sits below the Café unit, above the documentation bay.
+   Three equal-width cards, colour-tagged per pillar.
+   ═══════════════════════════════════════════════════════════════ */
+.crs-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 2px solid #1a1a1a;
+}
+@media (max-width: 640px) {
+  .crs-pillars { grid-template-columns: 1fr; }
+}
+
+/* Base card */
+.crs-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.4rem 1.25rem 1.2rem;
+  text-decoration: none;
+  border-right: 1px solid #1a1a1a;
+  background: #0c0c0c;
+  transition: background 0.18s;
+  position: relative;
+}
+.crs-pillar:last-child { border-right: none; }
+@media (max-width: 640px) {
+  .crs-pillar { border-right: none; border-bottom: 1px solid #1a1a1a; }
+  .crs-pillar:last-child { border-bottom: none; }
+}
+.crs-pillar:hover { background: #111; }
+
+/* Colour accent strip at top */
+.crs-pillar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+}
+.crs-pillar--studio::before { background: #3d5a1e; }
+.crs-pillar--cafe::before   { background: #b7922d; }
+.crs-pillar--hub::before    { background: #4a5568; }
+
+/* Tag label */
+.crs-pillar-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.crs-pillar--studio .crs-pillar-tag { color: #46cc40; }
+.crs-pillar--cafe   .crs-pillar-tag { color: #e3c43a; }
+.crs-pillar--hub    .crs-pillar-tag { color: #8fa3b1; }
+
+/* Title */
+.crs-pillar-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f0ede8;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Body copy */
+.crs-pillar-body {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+/* Arrow — bottom-right */
+.crs-pillar-arrow {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.2);
+  align-self: flex-end;
+  transition: color 0.15s, transform 0.15s;
+}
+.crs-pillar:hover .crs-pillar-arrow {
+  color: rgba(255,255,255,0.6);
+  transform: translateX(3px);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SPEC-LINKS — inline link row inside SeoText / system doc block
+   ═══════════════════════════════════════════════════════════════ */
+.hp-spec-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  padding: 0.75rem 0 0.25rem;
+}
+.hp-spec-links a {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: rgba(212,160,23,0.7);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.15s;
+}
+.hp-spec-links a:hover { color: #e3c43a; }

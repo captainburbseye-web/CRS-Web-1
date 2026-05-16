@@ -1833,14 +1833,70 @@ const TrustStrip = () => (
   </footer>
 );
 
+/* ─── Sticky top nav ─────────────────────────────────────────────────────── */
+const StickyNav = ({ activeId, onSelect }) => (
+  <nav className="crs-sticky-nav" aria-label="Main navigation">
+    <div className="crs-sticky-nav-inner">
+      <a href="/" className="crs-sticky-nav-brand" aria-label="CRS home">
+        CRS
+      </a>
+      <div className="crs-sticky-nav-links">
+        <button
+          className={['crs-sticky-nav-item', activeId === 'recording' ? 'is-active' : ''].filter(Boolean).join(' ')}
+          onClick={() => onSelect('recording')}
+        >RECORDING</button>
+        <button
+          className={['crs-sticky-nav-item', activeId === 'rehearsal' ? 'is-active' : ''].filter(Boolean).join(' ')}
+          onClick={() => onSelect('rehearsal')}
+        >REHEARSAL</button>
+        <a href="/workshop-cafe" className="crs-sticky-nav-item">CAFÉ</a>
+        <button
+          className={['crs-sticky-nav-item', activeId === 'boothhire' ? 'is-active' : ''].filter(Boolean).join(' ')}
+          onClick={() => onSelect('boothhire')}
+        >HIRE</button>
+        <a href="/contact" className="crs-sticky-nav-item crs-sticky-nav-item--cta">BOOK</a>
+      </div>
+    </div>
+  </nav>
+);
+
+/* ─── Three-pillar cards (Studio / Café / Hub) ─────────────────────────── */
+const PillarCards = () => (
+  <div className="crs-pillars" aria-label="What we are">
+    <a href="/recording" className="crs-pillar crs-pillar--studio">
+      <span className="crs-pillar-tag">STUDIO</span>
+      <h3 className="crs-pillar-title">Recording &amp; Rehearsal</h3>
+      <p className="crs-pillar-body">SSL BiG SiX. Valve compression. Two sites. One serious signal path.</p>
+      <span className="crs-pillar-arrow" aria-hidden="true">→</span>
+    </a>
+    <a href="/workshop-cafe" className="crs-pillar crs-pillar--cafe">
+      <span className="crs-pillar-tag">CAFÉ</span>
+      <h3 className="crs-pillar-title">Workshop Café &amp; Venue</h3>
+      <p className="crs-pillar-body">Deep-work space by day. Private hire for gigs, workshops and community events.</p>
+      <span className="crs-pillar-arrow" aria-hidden="true">→</span>
+    </a>
+    <a href="/contact?service=repairs" className="crs-pillar crs-pillar--hub">
+      <span className="crs-pillar-tag">HUB</span>
+      <h3 className="crs-pillar-title">ODRO Engineering</h3>
+      <p className="crs-pillar-body">Amp repair, AV installs and technical support. The infrastructure keeping Oxford's scene running.</p>
+      <span className="crs-pillar-arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+);
+
 /* ─── Manufacturer's spec plate ──────────────────────────── */
 const SeoText = () => (
   <div className="hp-spec-plate crs-recessed-panel" style={{ margin: '0', borderRadius: '0' }}>
-    <div className="hp-spec-header">Technical Specifications — Cowley Road Studios</div>
+    <div className="hp-spec-header">SYSTEM DOCUMENTATION — Cowley Road Studios</div>
     <div className="hp-spec-body">
-      <p><strong>Recording Studio Oxford</strong> — Cowley Road OX4 1JE &amp; Cricket Road OX4 3DJ</p>
-      <p>Professional recording studio, rehearsal rooms and control room hire in Oxford. SSL BiG SiX, valve compression, hybrid analogue–digital workflow.</p>
-      <p>Rehearsal rooms at Cowley Road (4-piece) and Cricket Road (8 people, Yamaha piano). ODRO Engineering amp repair and AV services. Workshop Café venue hire.</p>
+      <p>Cowley Road Studios is an independent creative studio network in Oxford, operating across two sites with recording, rehearsal, room hire and technical services, alongside the Workshop Café and ODRO Engineering support.</p>
+      <p>Used by artists, bands and creatives across Oxford. <strong>Recording Studio Oxford</strong> — Cowley Road OX4 1JE &amp; Cricket Road OX4 3DJ. SSL BiG SiX, valve compression, hybrid analogue–digital workflow.</p>
+    </div>
+    <div className="hp-spec-links">
+      <a href={URLS.RECORDING_BOOK} target="_blank" rel="noopener noreferrer">Book Recording</a>
+      <a href={URLS.REHEARSAL_BOOK} target="_blank" rel="noopener noreferrer">Book Rehearsal</a>
+      <a href={URLS.CONTROL_ROOM_BOOK} target="_blank" rel="noopener noreferrer">Room Hire</a>
+      <a href={URLS.CONTACT}>Contact</a>
     </div>
     <div className="hp-spec-footer">
       <span>OXFORD</span>
@@ -2006,6 +2062,8 @@ export default function StudioServicesRack() {
   })();
 
   return (
+    <>
+    <StickyNav activeId={activeId} onSelect={handleSelect} />
     <main className={[
       'hp-page',
       isCafe    ? 'hp-page--cafe'    : '',
@@ -2083,6 +2141,9 @@ export default function StudioServicesRack() {
           {/* CAFÉ HIRE UNIT — dedicated rack module, sits between switchboard and docs */}
           <CafeHireUnit />
 
+          {/* THREE PILLARS — Studio / Café / Hub route cards */}
+          <PillarCards />
+
           {/* DOCUMENTATION UNIT — recessed bay bolted into the same rails */}
           <div className="hp-documentation-unit">
             <TrustStrip />
@@ -2129,5 +2190,6 @@ export default function StudioServicesRack() {
 
       </section>
     </main>
+    </>
   );
 }
