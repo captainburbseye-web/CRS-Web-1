@@ -270,9 +270,9 @@ const BrandPlate = ({ position = 'top' }) => (
 
     {/* Right — hardware metadata block */}
     <div className="crs-brand-meta" aria-hidden="true">
-      <span className="crs-brand-meta-row">ID: CRS-CONSOLE-01</span>
-      <span className="crs-brand-meta-row">LOC: 51.7483° N, 1.2335° W</span>
-      <span className="crs-brand-meta-row">STATUS: NOMINAL</span>
+      <span className="crs-brand-meta-row">118 Cowley Road, Oxford</span>
+      <span className="crs-brand-meta-row">Recording · Rehearsal · Repairs</span>
+      <span className="crs-brand-meta-row">Open for bookings</span>
     </div>
 
   </div>
@@ -566,7 +566,7 @@ function LocationSelector({ serviceId, onSelect, onBack }) {
           <Led color="orange" on={true} />
           <span className="hp-display-service-id">{serviceId.toUpperCase()}</span>
           <span style={{ color: 'var(--offwhite-mute)', margin: '0 0.3rem' }}>·</span>
-          <span style={{ color: 'var(--offwhite-mute)', letterSpacing: '0.12em' }}>SELECT LOCATION</span>
+          <span style={{ color: 'var(--offwhite-mute)', letterSpacing: '0.12em' }}>Choose a location</span>
         </div>
         <div className="hp-display-chrome-right">
           <VuMeterPair activeId={serviceId} />
@@ -648,7 +648,7 @@ const IdentityRail = () => (
     <div className="hp-identity-right">
       <div className="hp-identity-status">
         <Led color="green" on={true} pulse={true} />
-        <span>CRS ACTIVE</span>
+        <span>Open for bookings</span>
       </div>
       <a href={URLS.CONTACT} className="hp-identity-contact">Contact</a>
     </div>
@@ -920,7 +920,7 @@ const BoothHirePanel = ({ onBack }) => (
 const ContactUsPanel = () => (
   <div className="hp-panel-body" role="tabpanel" id="panel-contactus">
     <div className="hp-panel-header">
-      <span className="hp-panel-eyebrow">COMMS BAY — CHANNEL OPEN</span>
+      <span className="hp-panel-eyebrow">Contact</span>
       <h2 className="hp-panel-title">Get in touch</h2>
       <p className="hp-panel-desc">
         Venue hire, AV support, repairs and general enquiries.<br />
@@ -1650,7 +1650,7 @@ function IdleState({ activeId = null }) {
             OXFORD
           </div>
           <div className="hp-display-line hp-display-line--primary">
-            RECORDING · REHEARSAL · PRODUCTION · VENUE
+            Recording · Rehearsal · Room hire · Venue
           </div>
           <div className="hp-display-line hp-display-line--tagline">
             Grassroots infrastructure for the Oxford music scene.
@@ -1681,10 +1681,10 @@ function IdleState({ activeId = null }) {
             RECORDING STUDIO — OXFORD
           </h1>
           <p className="hp-display-line hp-display-line--hero-sub">
-            Hybrid analogue–digital recording
+            Analogue and digital recording.
           </p>
           <p className="hp-display-line hp-display-line--hero-signal">
-            SSL · VALVE COMPRESSION · TAPE INTEGRATION
+            SSL BiG SiX · Valve compression · Tape
           </p>
         </div>
       </div>
@@ -1793,7 +1793,7 @@ const ServiceControls = ({ active, onSelect }) => (
     </div>
     <div className="hp-controls-status" aria-hidden="true">
       <Led color="green" on={true} pulse={true} />
-      <span>ONLINE</span>
+      <span>Open</span>
     </div>
   </div>
 );
@@ -2117,9 +2117,9 @@ export default function StudioServicesRack() {
               />
             </button>
             <div className="hp-top-plate-meta" aria-hidden="true">
-              <span className="hp-top-plate-meta-row">ID: CRS-CONSOLE-01</span>
-              <span className="hp-top-plate-meta-row">LOC: 51.7483° N, 1.2335° W</span>
-              <span className="hp-top-plate-meta-row">STATUS: NOMINAL</span>
+              <span className="hp-top-plate-meta-row">118 Cowley Road, Oxford</span>
+              <span className="hp-top-plate-meta-row">Recording · Rehearsal · Repairs</span>
+              <span className="hp-top-plate-meta-row">Open for bookings</span>
             </div>
             {/* DG3 VU meters — secondary hardware chrome, top-plate right slot */}
             <div className="hp-top-plate-vu" aria-hidden="true">
