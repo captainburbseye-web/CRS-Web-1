@@ -32,6 +32,7 @@ import { PodcastAVPage } from './pages/PodcastAV'
 import { ContactPage } from './pages/Contact'
 import { WorkshopCafeContactPage } from './pages/WorkshopCafeContact'
 import { DigitalPulsePage } from './pages/DigitalPulse'
+import { SignageDisplay } from './pages/SignageDisplay'
 import { CLIENT_MANIFEST } from './client-manifest'
 import { createElement } from 'react'
 import { renderToString } from 'react-dom/server'
@@ -2661,6 +2662,51 @@ app.get('/soundworks', (c) => {
       keywords: 'soundworks oxford, cowley road studios, recording studio oxford, soundworks oxford history, oxford recording studio'
     }
   )
+})
+
+// ============================================================================
+// SIGNAGE DISPLAY PAGE
+// ============================================================================
+app.get('/live-display', (c) => {
+  const sgdEntry   = CLIENT_MANIFEST['src/client/sgd-entry.tsx']
+  const sgdJs      = sgdEntry ? `/static/${sgdEntry.file}` : null
+  const sgdCss     = sgdEntry?.css?.[0] ? `/static/${sgdEntry.css[0]}` : null
+  const vendorEntry = CLIENT_MANIFEST['src/client/rack-entry.tsx']?.imports?.[0]
+  const vendorJs   = vendorEntry
+    ? `/static/${(CLIENT_MANIFEST as Record<string, {file: string}>)[vendorEntry]?.file ?? ''}`
+    : null
+
+  const headerHtml = renderToString(createElement(BuildStatusBanner as any))
+                   + renderToString(createElement(Header as any))
+  const footerHtml = renderToString(createElement(Footer as any))
+
+  return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Live Analogue Display — Cowley Road Studios</title>
+  <meta name="description" content="The CRS live signage display. Rack-mounted LED ticker for Workshop Café and Cowley Road Studios, with Oxford Dreaming Spires waveform motif." />
+  <link rel="canonical" href="https://cowleyroadstudios.com/live-display" />
+  <link rel="icon" type="image/png" href="/crs-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="/static/crs-consolidated-base.css" rel="stylesheet" />
+  <link href="/static/crs-consolidated-rack.css" rel="stylesheet" />
+  <link href="/static/crs-consolidated-components.css" rel="stylesheet" />
+  <link href="/static/studio-rack-demo.css" rel="stylesheet" />
+  <link href="/static/crs-inter-override.css" rel="stylesheet" />
+  ${sgdCss ? `<link href="${sgdCss}" rel="stylesheet" />` : ''}
+</head>
+<body>
+  ${headerHtml}
+  <div id="sgd-root" style="min-height:60vh"></div>
+  ${footerHtml}
+  ${vendorJs ? `<script type="module" src="${vendorJs}"></script>` : ''}
+  ${sgdJs   ? `<script type="module" src="${sgdJs}"></script>` : ''}
+</body>
+</html>`)
 })
 
 // ============================================================================

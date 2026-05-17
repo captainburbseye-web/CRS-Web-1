@@ -25,7 +25,8 @@ export default defineConfig(({ mode }) => {
         },
         rollupOptions: {
           input: {
-            'rack-entry': resolve(__dirname, 'src/client/rack-entry.tsx')
+            'rack-entry': resolve(__dirname, 'src/client/rack-entry.tsx'),
+            'sgd-entry':  resolve(__dirname, 'src/client/sgd-entry.tsx'),
           },
           output: {
             // Split React runtime into its own chunk so it caches independently
