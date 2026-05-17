@@ -2,144 +2,171 @@ import React from 'react';
 
 export const Soundworks = () => {
   return (
-    <section className="crs-section section-dark">
-      <div className="section-header">
-        <h1 className="section-title heading">Soundworks Oxford → Cowley Road Studios</h1>
-        <p className="section-intro">1999–2024 · Twenty-five years of service</p>
+    <div className="loc-page">
+
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <div className="loc-hero">
+        <div className="loc-hero-left">
+          <p className="loc-hero-eyebrow">Cowley Road Studios · History</p>
+          <h1 className="loc-hero-name">Soundworks Oxford</h1>
+          <p className="loc-hero-address">1999 – 2024 · Twenty-five years</p>
+          <div className="loc-status loc-status--operational" style={{ marginTop: '0.75rem' }}>
+            <span className="loc-status--led"></span>
+            Now trading as Cowley Road Studios
+          </div>
+        </div>
+        <img
+          src="/static/crs-logo.png"
+          alt="Cowley Road Studios"
+          className="loc-hero-logo"
+          width={80}
+          height={80}
+        />
       </div>
 
-      {/* TRANSITION NOTICE */}
-      <div className="content-block">
-        <div className="content-text" style={{ textAlign: 'center', padding: '2rem', background: 'rgba(232, 155, 60, 0.1)', border: '1px solid rgba(232, 155, 60, 0.3)' }}>
-          <p style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>
+      {/* ── TRANSITION NOTICE ─────────────────────────────────── */}
+      <div className="loc-cols">
+        <div className="loc-panel loc-panel--accent loc-panel--full">
+          <p className="loc-panel-label">Operational continuity</p>
+          <p style={{ fontSize: '1rem', fontWeight: 600, color: '#f4f1e8', margin: '0 0 0.5rem' }}>
             Soundworks Oxford is now Cowley Road Studios
           </p>
-          <p style={{ marginBottom: 0 }}>
-            Same commitment. Expanded infrastructure. New name.
+          <p style={{ fontSize: '0.875rem', color: '#d4cbb8', lineHeight: 1.6, margin: 0 }}>
+            Same commitment. Expanded infrastructure. New name. Cowley Road Studios continues the
+            Soundworks Oxford legacy — professional recording, rehearsal, and AV infrastructure
+            for Oxford's creative community, operating since 1999.
           </p>
         </div>
       </div>
 
-      {/* CONTINUITY STATEMENT */}
-      <div className="content-block">
-        <h3 className="content-heading heading">Operational Continuity</h3>
-        <div className="content-text">
-          <p>
-            Cowley Road Studios continues the Soundworks Oxford legacy, providing professional recording, rehearsal, and AV infrastructure to Oxford's creative community since 1999.
+      <div className="loc-divider" />
+
+      {/* ── TIMELINE ──────────────────────────────────────────── */}
+      <div className="loc-cols">
+        <div className="loc-panel loc-panel--full">
+          <p className="loc-panel-label">Timeline</p>
+          <table className="loc-specs" style={{ width: '100%' }}>
+            <tbody>
+              <tr>
+                <td>1999</td>
+                <td>Soundworks Oxford founded by David Norland. Single recording room, engineer-led operation.</td>
+              </tr>
+              <tr>
+                <td>1999 – 2024</td>
+                <td>Twenty-five years serving Oxford's artists, bands, community groups, and professional productions.</td>
+              </tr>
+              <tr>
+                <td>2024</td>
+                <td>Rebrand to Cowley Road Studios. Expansion to multi-location operation — Cowley Road HQ + Cricket Road rehearsal facility.</td>
+              </tr>
+              <tr>
+                <td>2026</td>
+                <td>Major build phase. New recording rooms, Workshop Café launch, expanded AV services.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="loc-divider" />
+
+      {/* ── DAVID NORLAND ─────────────────────────────────────── */}
+      <div className="loc-cols">
+        <div className="loc-panel loc-panel--full" style={{ borderLeft: '2px solid rgba(212,160,23,0.6)' }}>
+          <p className="loc-panel-label loc-panel-label--mustard">In memory — David Norland (1974 – 2014)</p>
+          <p style={{ fontSize: '0.875rem', color: '#d4cbb8', lineHeight: 1.7, margin: '0 0 0.75rem' }}>
+            Soundworks Oxford was founded in 1999 by David Norland — a sound engineer, musician, and
+            community advocate who dedicated his life to making professional recording infrastructure
+            accessible to Oxford's grassroots music scene.
           </p>
-          <p style={{ marginTop: '1rem' }}>
-            The rebrand reflects our expanded scope: multi-room recording facilities, dedicated rehearsal spaces, live AV services, and Workshop Café — a public-facing venue for community programming.
+          <p style={{ fontSize: '0.875rem', color: '#d4cbb8', lineHeight: 1.7, margin: '0 0 0.75rem' }}>
+            David produced Supergrass's first single <em>Caught By The Fuzz</em> under his Backbeat
+            Records label in 1994, helped establish OX4 FM community radio, and worked tirelessly
+            to support local artists and community groups until his death in 2014.
+          </p>
+          <p style={{ fontSize: '0.875rem', color: '#d4cbb8', lineHeight: 1.7, margin: 0 }}>
+            Cowley Road Studios continues his mission: professional-grade creative infrastructure,
+            available to all, operated without chaos.
           </p>
         </div>
       </div>
 
-      {/* TIMELINE */}
-      <div className="content-block">
-        <h3 className="content-heading heading">Timeline</h3>
-        <div className="content-text">
-          <p><strong>1999</strong><br/>
-            Soundworks Oxford founded by David Norland. Single recording room, engineer-led operation.
-          </p>
-          <p style={{ marginTop: '1rem' }}><strong>1999–2024</strong><br/>
-            Two decades serving Oxford's artists, bands, community groups, and professional productions.
-          </p>
-          <p style={{ marginTop: '1rem' }}><strong>2024</strong><br/>
-            Rebrand to Cowley Road Studios. Expansion to multi-location operation (Cowley Road HQ + Cricket Road rehearsal facility).
-          </p>
-          <p style={{ marginTop: '1rem' }}><strong>2026</strong><br/>
-            Major build phase. New recording rooms, Workshop Café launch, expanded AV services.
-          </p>
-        </div>
-      </div>
+      <div className="loc-divider" />
 
-      {/* WHAT CHANGED */}
-      <div className="content-block">
-        <h3 className="content-heading heading">What Changed</h3>
-        <div className="content-text">
-          <p><strong>Name</strong><br/>
-            Soundworks Oxford → Cowley Road Studios
-          </p>
-          <p style={{ marginTop: '1rem' }}><strong>Scope</strong><br/>
-            Single recording room → Multi-room facility + rehearsal spaces + venue + café
-          </p>
-          <p style={{ marginTop: '1rem' }}><strong>Locations</strong><br/>
-            One site → Two locations (Cowley Road + Cricket Road)
-          </p>
+      {/* ── WHAT CHANGED / WHAT STAYED ────────────────────────── */}
+      <div className="loc-cols">
+        <div className="loc-panel">
+          <p className="loc-panel-label">What changed</p>
+          <table className="loc-specs" style={{ width: '100%' }}>
+            <tbody>
+              <tr>
+                <td>Name</td>
+                <td>Soundworks Oxford → Cowley Road Studios</td>
+              </tr>
+              <tr>
+                <td>Scope</td>
+                <td>Single recording room → multi-room facility, rehearsal spaces, venue, café</td>
+              </tr>
+              <tr>
+                <td>Locations</td>
+                <td>One site → two locations (Cowley Road + Cricket Road)</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </div>
 
-      {/* DAVID NORLAND MEMORIAL */}
-      <div className="content-block">
-        <div className="content-text" style={{ padding: '2rem', background: 'rgba(0, 0, 0, 0.4)', borderLeft: '3px solid var(--text-gold)' }}>
-          <p style={{ fontStyle: 'italic', marginBottom: '1rem' }}>
-            In memory of David Norland (1974–2014)
-          </p>
-          <p>
-            Soundworks Oxford was founded in 1999 by David Norland, a sound engineer, musician, and community advocate who dedicated his life to making professional recording infrastructure accessible to Oxford's grassroots music scene.
-          </p>
-          <p style={{ marginTop: '1rem' }}>
-            David produced Supergrass's first single <em>Caught By The Fuzz</em> under his Backbeat Records label in 1994, helped establish OX4 FM community radio, and worked tirelessly to support local artists and community groups until his death in 2014.
-          </p>
-          <p style={{ marginTop: '1rem' }}>
-            Cowley Road Studios continues his mission: professional-grade creative infrastructure, available to all, operated without chaos.
-          </p>
-        </div>
-      </div>
-
-      {/* WHAT STAYED THE SAME */}
-      <div className="content-block">
-        <h3 className="content-heading heading">What Stayed the Same</h3>
-        <div className="content-text">
-          <ul style={{ listStyle: 'disc', marginLeft: '1.5rem', lineHeight: 1.8 }}>
+        <div className="loc-panel">
+          <p className="loc-panel-label">What stayed the same</p>
+          <ul className="loc-services">
             <li>Engineer-led operation</li>
             <li>No-chaos policy</li>
             <li>Equipment maintenance standards</li>
             <li>Community access commitment</li>
-            <li>Subsidized rates for grassroots projects</li>
+            <li>Subsidised rates for grassroots projects</li>
             <li>Oxford-based, locally operated</li>
           </ul>
         </div>
       </div>
 
-      {/* EXPLORE SERVICES */}
-      <div className="content-block">
-        <h3 className="content-heading heading">Explore Our Services</h3>
-        <div className="content-text">
-          <p><strong><a href="/studio" style={{ color: 'var(--text-gold)', textDecoration: 'underline' }}>Recording Studio</a></strong><br/>
-            Purpose-built recording and production rooms at Cowley Road HQ (build phase in progress).
+      <div className="loc-divider" />
+
+      {/* ── SERVICES ──────────────────────────────────────────── */}
+      <div className="loc-cols">
+        <div className="loc-panel loc-panel--full">
+          <p className="loc-panel-label">Services available now</p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem', marginTop: '0.25rem' }}>
+            <a href="/" style={{ textDecoration: 'none' }} className="loc-cta loc-cta--secondary">
+              Recording Studio →
+            </a>
+            <a href="/crs-cricket-road" style={{ textDecoration: 'none' }} className="loc-cta loc-cta--secondary">
+              Rehearsal — Cricket Road →
+            </a>
+            <a href="/" style={{ textDecoration: 'none' }} className="loc-cta loc-cta--secondary">
+              Workshop Café & Venue →
+            </a>
+            <a href="/contact" style={{ textDecoration: 'none' }} className="loc-cta loc-cta--secondary">
+              AV &amp; Repairs →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="loc-divider" />
+
+      {/* ── FOOTER STRIP ──────────────────────────────────────── */}
+      <div className="loc-cols">
+        <div className="loc-panel loc-panel--full" style={{ textAlign: 'center' }}>
+          <p style={{ fontFamily: 'var(--font-mono, monospace)', fontSize: '0.7rem', letterSpacing: '0.15em', color: 'rgba(212,160,23,0.7)', textTransform: 'uppercase', margin: '0 0 0.5rem' }}>
+            Soundworks Oxford (1999 – 2024) · Now Cowley Road Studios
           </p>
-          <p style={{ marginTop: '1rem' }}><strong><a href="/cricket-road" style={{ color: 'var(--text-gold)', textDecoration: 'underline' }}>Rehearsal Space — Cricket Road</a></strong><br/>
-            Fully operational rehearsal facility. 6m × 4m live room, backline, PA, drum kit. Bookable now.
-          </p>
-          <p style={{ marginTop: '1rem' }}><strong><a href="/av-services" style={{ color: 'var(--text-gold)', textDecoration: 'underline' }}>AV Services</a></strong><br/>
-            Live sound, installations, technical support for venues and events.
-          </p>
-          <p style={{ marginTop: '1rem' }}><strong><a href="/workshop-cafe" style={{ color: 'var(--text-gold)', textDecoration: 'underline' }}>Workshop Café</a></strong><br/>
-            Community space, café, and small venue. Available for private hire.
+          <p style={{ fontSize: '0.8125rem', color: 'rgba(212,200,160,0.5)', margin: 0 }}>
+            <a href="mailto:info@crsoxford.com" style={{ color: 'rgba(212,160,23,0.6)', textDecoration: 'none' }}>info@crsoxford.com</a>
+            {' · '}
+            <a href="/contact" style={{ color: 'rgba(212,160,23,0.6)', textDecoration: 'none' }}>Contact</a>
           </p>
         </div>
       </div>
 
-      {/* CONTACT */}
-      <div className="content-block">
-        <div className="content-text" style={{ textAlign: 'center', marginTop: '2rem', padding: '2rem', background: 'rgba(232, 155, 60, 0.1)', border: '1px solid rgba(232, 155, 60, 0.3)' }}>
-          <p style={{ fontSize: '1.125rem', fontWeight: 600, marginBottom: '1rem' }}>
-            Questions about the transition?
-          </p>
-          <p style={{ marginBottom: '1.5rem' }}>
-            Contact us at <a href="mailto:info@crsoxford.com" style={{ color: 'var(--text-gold)', textDecoration: 'underline' }}>info@crsoxford.com</a>
-          </p>
-          <a href="/contact" style={{ display: 'inline-block', padding: '0.75rem 2rem', background: 'var(--text-gold)', color: '#000', fontWeight: 700, textDecoration: 'none', borderRadius: '4px' }}>
-            GET IN TOUCH
-          </a>
-        </div>
-      </div>
-
-      <div style={{ textAlign: 'center', marginTop: '3rem', padding: '2rem 0', borderTop: '1px solid rgba(232, 155, 60, 0.2)' }}>
-        <p className="mono" style={{ color: 'var(--text-gold)', fontWeight: 700 }}>
-          SOUNDWORKS OXFORD (1999–2024) · NOW COWLEY ROAD STUDIOS
-        </p>
-      </div>
-    </section>
+    </div>
   );
 };

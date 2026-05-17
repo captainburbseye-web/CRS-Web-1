@@ -1640,109 +1640,6 @@ function SkylineOscilloscope({ activeId }) {
 
 /* ─── Idle / hero state ───────────────────────────────────── */
 
-/* ═══════════════════════════════════════════════════════════════
-   4U RACK VIDEO DISPLAY — CRS / Workshop Café nameplate unit
-   Styled after the physical Workshop Café green rack faceplate.
-   Layout (top→bottom):
-     • Top chrome strip: two analogue VU meter dials (SVG)
-     • Centre amber LCD panel: COWLEY ROAD STUDIOS + service list
-     • Bottom chrome strip: 8 rotary knobs + green BOOK LED button
-   Purely visual — no interactive state, no signal subscription.
-   ═══════════════════════════════════════════════════════════════ */
-
-/* Tiny analogue VU dial — SVG, matches Workshop Café reference */
-function RvdVuDial({ label = 'VU' }) {
-  const cx = 50, cy = 62, needleLen = 36;
-  // Static display needle at ~40% (−5 VU position)
-  const angle = -50 + 0.4 * 100; // maps 0–1 → −50° to +50°
-  const rad = (deg) => (deg * Math.PI) / 180;
-  const nx = cx + needleLen * Math.cos(rad(angle - 90));
-  const ny = cy + needleLen * Math.sin(rad(angle - 90));
-  return (
-    <div className="rvd-dial" aria-hidden="true">
-      <svg viewBox="0 0 100 80" className="rvd-dial-svg" xmlns="http://www.w3.org/2000/svg">
-        {/* Face plate — cream */}
-        <rect x="1" y="1" width="98" height="78" rx="3" fill="#F2EEE0" stroke="#2a2a2a" strokeWidth="1.5" />
-        {/* Scale arc */}
-        <path d="M 15 68 A 40 40 0 0 1 85 68" fill="none" stroke="#2a2a2a" strokeWidth="1" />
-        {/* Red zone */}
-        <path d="M 68 42 A 40 40 0 0 1 85 68" fill="none" stroke="#c0392b" strokeWidth="2.5" strokeLinecap="round" />
-        {/* Tick marks */}
-        {[[-50,true],[-37,false],[-25,false],[-12,false],[0,true],[12,false],[25,false],[45,true],[70,false]].map(([deg, major], i) => {
-          const r1 = major ? 33 : 36, r2 = 40;
-          const a = rad(deg + 90);
-          const x1 = cx + r1 * Math.cos(a - Math.PI/2 + Math.PI);
-          const y1 = cy + r1 * Math.sin(a - Math.PI/2 + Math.PI);
-          const x2 = cx + r2 * Math.cos(a - Math.PI/2 + Math.PI);
-          const y2 = cy + r2 * Math.sin(a - Math.PI/2 + Math.PI);
-          return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={deg >= 25 ? '#c0392b' : '#2a2a2a'} strokeWidth={major ? 1.5 : 0.8} />;
-        })}
-        {/* Scale labels */}
-        <text x="13" y="62" fontSize="6" fill="#555" textAnchor="middle" fontFamily="monospace">−</text>
-        <text x="50" y="28" fontSize="6" fill="#2a2a2a" textAnchor="middle" fontFamily="monospace">0</text>
-        <text x="82" y="52" fontSize="6" fill="#c0392b" textAnchor="middle" fontFamily="monospace">+</text>
-        {/* Needle */}
-        <line x1={cx} y1={cy} x2={nx} y2={ny} stroke="#c0392b" strokeWidth="1.2" strokeLinecap="round" />
-        {/* Pivot */}
-        <circle cx={cx} cy={cy} r="2.5" fill="#1a1a1a" />
-        <circle cx={cx} cy={cy} r="1.2" fill="#444" />
-        {/* Glass glint */}
-        <ellipse cx="35" cy="22" rx="18" ry="8" fill="rgba(255,255,255,0.12)" />
-      </svg>
-      <span className="rvd-dial-label">{label}</span>
-    </div>
-  );
-}
-
-/* Single decorative rotary knob */
-function RvdKnob() {
-  return (
-    <div className="rvd-knob" aria-hidden="true">
-      <div className="rvd-knob-body">
-        <div className="rvd-knob-marker" />
-      </div>
-    </div>
-  );
-}
-
-const RackVideoDisplay = ({ onBook }) => (
-  <div className="rvd-module" aria-label="Cowley Road Studios — recording, rehearsal, venue">
-
-    {/* ── TOP CHROME — two VU dials flanking model plate ── */}
-    <div className="rvd-top-chrome">
-      <RvdVuDial label="VU" />
-      <RvdVuDial label="VU" />
-    </div>
-
-    {/* ── CENTRE — amber LCD nameplate, street-sign aesthetic ── */}
-    <div className="rvd-lcd-panel">
-      <div className="rvd-lcd-inner">
-        <div className="rvd-lcd-name">COWLEY ROAD STUDIOS</div>
-        <div className="rvd-lcd-services">
-          COFFEE&nbsp;◆&nbsp;RECORDING&nbsp;◆&nbsp;REHEARSAL&nbsp;◆&nbsp;REPAIRS&nbsp;◆&nbsp;WORK SPACES
-        </div>
-      </div>
-    </div>
-
-    {/* ── BOTTOM CHROME — knobs row + BOOK button ── */}
-    <div className="rvd-bottom-chrome">
-      <div className="rvd-knobs-row">
-        {Array.from({ length: 8 }).map((_, i) => <RvdKnob key={i} />)}
-      </div>
-      <a
-        href="https://app.squareup.com/appointments/buyer/widget/iagm3dttqs9q0h/L1MAM4DDPHKXX"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="rvd-book-btn"
-        aria-label="Book a session"
-      >
-        [ BOOK A SESSION ]
-      </a>
-    </div>
-
-  </div>
-);
-
 function IdleState({ activeId = null }) {
   return (
     <div className="hp-idle" aria-label="Cowley Road Studios — select a service">
@@ -1965,28 +1862,7 @@ const StickyNav = ({ activeId, onSelect }) => (
 );
 
 /* ─── Three-pillar cards (Studio / Café / Hub) ─────────────────────────── */
-const PillarCards = () => (
-  <div className="crs-pillars" aria-label="What we are">
-    <a href="/recording" className="crs-pillar crs-pillar--studio">
-      <span className="crs-pillar-tag">STUDIO</span>
-      <h3 className="crs-pillar-title">Recording &amp; Rehearsal</h3>
-      <p className="crs-pillar-body">SSL BiG SiX. Valve compression. Two sites. One serious signal path.</p>
-      <span className="crs-pillar-arrow" aria-hidden="true">→</span>
-    </a>
-    <a href="/workshop-cafe" className="crs-pillar crs-pillar--cafe">
-      <span className="crs-pillar-tag">CAFÉ</span>
-      <h3 className="crs-pillar-title">Workshop Café &amp; Venue</h3>
-      <p className="crs-pillar-body">Deep-work space by day. Private hire for gigs, workshops and community events.</p>
-      <span className="crs-pillar-arrow" aria-hidden="true">→</span>
-    </a>
-    <a href="/contact?service=repairs" className="crs-pillar crs-pillar--hub">
-      <span className="crs-pillar-tag">HUB</span>
-      <h3 className="crs-pillar-title">ODRO Engineering</h3>
-      <p className="crs-pillar-body">Amp repair, AV installs and technical support. The infrastructure keeping Oxford's scene running.</p>
-      <span className="crs-pillar-arrow" aria-hidden="true">→</span>
-    </a>
-  </div>
-);
+
 
 /* ─── Manufacturer's spec plate ──────────────────────────── */
 const SeoText = () => (
@@ -2020,6 +1896,8 @@ export default function StudioServicesRack() {
   const [animate,     setAnimate]     = useState(false);
   const [powered,     setPowered]     = useState(false);
   const [logoPress,   setLogoPress]   = useState(false);
+
+  const screenRef = useRef(null); // scroll target — hp-screen
 
   /* Power-on boot sequence — 1.6 s total, runs once per session via sessionStorage
      Phase 1 (0 → 800 ms):  surge — VU needles to 0.95, OSS targetScale = 1.8
@@ -2100,6 +1978,11 @@ export default function StudioServicesRack() {
 
     setActiveId(next);
     getEngine().setPreset(next);
+
+    // Scroll the screen into view after React has rendered the new panel
+    setTimeout(() => {
+      screenRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 60);
 
     if (MULTI_LOCATION_SERVICES.has(next)) {
       // Multi-site service → show location picker (CRS vs Cricket)
@@ -2234,13 +2117,10 @@ export default function StudioServicesRack() {
 
           <div className="hp-machine-inner">
             {/* 3U — SCREEN — Oxford LCD / Dreaming Spires oscilloscope */}
-            <div className="hp-screen">
+            <div className="hp-screen" ref={screenRef}>
               {screenContent}
             </div>
           </div>
-
-          {/* 4U — VIDEO DISPLAY — CRS/Café nameplate rack module */}
-          <RackVideoDisplay />
 
           {/* 2U — CONTROLS — button panel sits directly below the screen */}
           <ServiceControls active={activeId} onSelect={handleSelect} />
@@ -2249,32 +2129,12 @@ export default function StudioServicesRack() {
           <CafeHireUnit />
 
           {/* THREE PILLARS — Studio / Café / Hub route cards */}
-          <PillarCards />
+
 
           {/* DOCUMENTATION UNIT — recessed bay bolted into the same rails */}
           <div className="hp-documentation-unit">
             <TrustStrip />
             <SeoText />
-
-            {/* SUPPORT THE SCENE — community funding strip */}
-            <div className="hp-support-strip">
-              <div className="hp-support-strip-inner">
-                <div className="hp-support-strip-left">
-                  <span className="hp-support-strip-eyebrow">SUPPORT THE SCENE</span>
-                  <p className="hp-support-strip-copy">Booking revenue funds the build. Every contribution keeps the rooms open, the gear running, and the rates accessible for Oxford musicians.</p>
-                </div>
-                <a
-                  href={URLS.CROWDFUNDER}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hp-support-strip-btn"
-                  aria-label="Back Cowley Road Studios on Crowdfunder"
-                >
-                  <span>Back us</span>
-                  <span className="hp-support-strip-arrow" aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </div>
 
             {/* MANUFACTURER'S SEAL — engraved plate at chassis base */}
             <div className="hp-chassis-seal">
@@ -2287,7 +2147,7 @@ export default function StudioServicesRack() {
                   height="59"
                 />
               </a>
-              <p className="hp-chassis-seal-sub">OXFORD · ODRO ENGINEERING</p>
+              <p className="hp-chassis-seal-sub">OXFORD · DEEPEND DEVELOPMENT</p>
             </div>
           </div>
 
