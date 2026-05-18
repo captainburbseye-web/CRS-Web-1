@@ -99,9 +99,8 @@ export const renderer = jsxRenderer(({ children, title, description, keywords, o
              Order matches page layout (Welcome first, Header second)
              ============================================ */}
         {/* LCP image — highest fetch priority so browser grabs it in preload scan */}
-        <link rel="preload" as="image" href="/static/crs-logo.png" fetchpriority="high" />
-        <link rel="preload" as="image" href="/static/cricket-logo.png" />
-        <link rel="preload" as="image" href="/static/crs-wooden-sign-upscaled.png" />
+        <link rel="preload" as="image" href="/static/crs-logo.webp" fetchpriority="high" type="image/webp" />
+        <link rel="preload" as="image" href="/static/cricket-logo.webp" type="image/webp" />
         
         {/* ============================================
              CONSOLIDATED CSS — LEAN & FAST

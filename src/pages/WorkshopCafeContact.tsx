@@ -284,7 +284,7 @@ export const WorkshopCafeContactPage = ({ initialService = 'private-hire', statu
           </a>
           <p class="subpage-seal-sub wsc-seal-sub">118 COWLEY ROAD · OXFORD · OX4 1JE</p>
           <a href="/" class="wsc-seal-crs-link" aria-label="Cowley Road Studios">
-            <img src="/static/crs-logo.png" alt="Cowley Road Studios" class="wsc-seal-crs-logo" width="90" height="34" />
+            <img src="/static/crs-logo.webp" alt="Cowley Road Studios" class="wsc-seal-crs-logo" width="90" height="34" />
           </a>
         </div>
 

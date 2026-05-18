@@ -16,7 +16,7 @@ export const CricketRoad = () => {
           </div>
         </div>
         <img
-          src="/static/cricket-logo.png"
+          src="/static/cricket-logo.webp"
           alt="Cricket Road — CRS"
           className="loc-hero-logo"
           width={80}

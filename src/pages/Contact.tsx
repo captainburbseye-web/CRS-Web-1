@@ -50,7 +50,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
         <div class="subpage-header-anchor">
           <a href="/" aria-label="Cowley Road Studios — home">
             <img
-              src="/static/crs-logo.png"
+              src="/static/crs-logo.webp"
               alt="Cowley Road Studios"
               class="subpage-header-logo"
               width="180" height="67"
@@ -235,7 +235,7 @@ export const ContactPage = ({ initialService = 'general', status = null }: Conta
         <div class="subpage-seal">
           <a href="/" aria-label="Cowley Road Studios — home">
             <img
-              src="/static/crs-logo.png"
+              src="/static/crs-logo.webp"
               alt="Cowley Road Studios"
               class="subpage-seal-img"
               width="120" height="45"

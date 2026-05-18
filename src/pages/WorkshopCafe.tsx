@@ -419,7 +419,7 @@ export const WorkshopCafePage = () => (
       <div class="subpage-seal">
         <a href="/" aria-label="Cowley Road Studios — home">
           <img
-            src="/static/crs-logo.png"
+            src="/static/crs-logo.webp"
             alt="Cowley Road Studios"
             class="subpage-seal-img"
             width="120" height="45"

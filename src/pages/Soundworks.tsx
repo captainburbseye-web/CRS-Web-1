@@ -16,7 +16,7 @@ export const Soundworks = () => {
           </div>
         </div>
         <img
-          src="/static/crs-logo.png"
+          src="/static/crs-logo.webp"
           alt="Cowley Road Studios"
           className="loc-hero-logo"
           width={80}

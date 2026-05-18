@@ -13,7 +13,7 @@ export const CLIENT_MANIFEST = {
     "name": "react-vendor"
   },
   "src/client/rack-entry.tsx": {
-    "file": "assets/rack-entry-BKh54SAW.js",
+    "file": "assets/rack-entry-C19r_Vdx.js",
     "name": "rack-entry",
     "src": "src/client/rack-entry.tsx",
     "isEntry": true,

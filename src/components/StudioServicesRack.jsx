@@ -244,7 +244,7 @@ const LocationLogo = ({ location = 'crs', size = 'md', className = '' }) => {
       className={['loc-logo', `loc-logo--${size}`, `loc-logo--${location}`, className].filter(Boolean).join(' ')}
     >
       <img
-        src={isCricket ? '/static/cricket-logo.png' : '/static/crs-logo.png'}
+        src={isCricket ? '/static/cricket-logo.webp' : '/static/crs-logo.webp'}
         alt={isCricket ? 'Cricket Road' : 'Cowley Road Studios'}
         className="loc-logo-img"
       />
@@ -260,7 +260,7 @@ const BrandPlate = ({ position = 'top' }) => (
     {/* Logo — left anchor, physically connected to rail cap */}
     <a href={URLS.HOME} className="crs-brand-plate-link" aria-label="Cowley Road Studios — home">
       <img
-        src="/static/crs-logo.png"
+        src="/static/crs-logo.webp"
         alt="Cowley Road Studios"
         className="crs-brand-plate-img"
         width="200"
@@ -845,7 +845,7 @@ const StandardPanel = ({ panel, locationId = null }) => (
       {locationId === 'cricket' && (
         <div className="hp-panel-cricket-logo" aria-hidden="true">
           <img
-            src="/static/cricket-logo.png"
+            src="/static/cricket-logo.webp"
             alt="Cricket Road"
             className="hp-panel-cricket-logo-img"
           />
@@ -2096,7 +2096,7 @@ export default function StudioServicesRack() {
               }}
             >
               <img
-                src="/static/crs-logo.png"
+                src="/static/crs-logo.webp"
                 alt="Cowley Road Studios"
                 className="hp-top-plate-img"
                 width="200"
@@ -2140,7 +2140,7 @@ export default function StudioServicesRack() {
             <div className="hp-chassis-seal">
               <a href={URLS.HOME} className="hp-chassis-seal-link" aria-label="Cowley Road Studios — home">
                 <img
-                  src="/static/crs-logo.png"
+                  src="/static/crs-logo.webp"
                   alt="Cowley Road Studios"
                   className="hp-chassis-seal-img"
                   width="160"

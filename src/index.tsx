@@ -664,7 +664,7 @@ app.get('/crs-cowley-road', (c) => {
               Operational
             </div>
           </div>
-          <img src="/static/crs-logo.png" alt="Cowley Road Studios" class="loc-hero-logo" width="80" height="80" />
+          <img src="/static/crs-logo.webp" alt="Cowley Road Studios" class="loc-hero-logo" width="80" height="80" />
         </div>
 
         {/* ── WHAT'S HERE + BOOKING ─────────────────────────────── */}
@@ -869,7 +869,7 @@ app.get('/crs-cricket-road', (c) => {
               Operational — bookable now
             </div>
           </div>
-          <img src="/static/cricket-logo.png" alt="Cricket Road — CRS" class="loc-hero-logo" width="80" height="80" />
+          <img src="/static/cricket-logo.webp" alt="Cricket Road — CRS" class="loc-hero-logo" width="80" height="80" />
         </div>
 
         {/* ── WHAT'S HERE + BOOKING ─────────────────────────────── */}
@@ -1088,7 +1088,7 @@ app.get('/', (c) => {
   <link rel="apple-touch-icon" href="/crs-logo.png" />
 
   <!-- LCP image preload — fetchpriority high so it starts in preload scan -->
-  <link rel="preload" as="image" href="/static/crs-logo.png" fetchpriority="high" />
+  <link rel="preload" as="image" href="/static/crs-logo.webp" fetchpriority="high" type="image/webp" />
 
   <!-- Hardware Physics CSS -->
   <link href="/static/studio-rack-demo.css" rel="stylesheet" />
@@ -3039,7 +3039,7 @@ app.get('/studio-rack-demo', (c) => {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <!-- LCP preload -->
-  <link rel="preload" as="image" href="/static/crs-logo.png" fetchpriority="high" />
+  <link rel="preload" as="image" href="/static/crs-logo.webp" fetchpriority="high" type="image/webp" />
   
   <!-- Hardware Physics CSS -->
   <link href="/static/studio-rack-demo.css" rel="stylesheet" />
