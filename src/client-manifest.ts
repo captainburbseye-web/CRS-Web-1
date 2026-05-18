@@ -13,7 +13,7 @@ export const CLIENT_MANIFEST = {
     "name": "react-vendor"
   },
   "src/client/rack-entry.tsx": {
-    "file": "assets/rack-entry-CNN57qzv.js",
+    "file": "assets/rack-entry-BKh54SAW.js",
     "name": "rack-entry",
     "src": "src/client/rack-entry.tsx",
     "isEntry": true,
@@ -22,11 +22,11 @@ export const CLIENT_MANIFEST = {
       "_react-vendor-DekTAH87.js"
     ],
     "css": [
-      "assets/rack-entry-DAEeYRXU.css"
+      "assets/rack-entry-C7Be4Nvo.css"
     ]
   },
   "src/client/sgd-entry.tsx": {
-    "file": "assets/sgd-entry-BhexA0eY.js",
+    "file": "assets/sgd-entry-CqDXEZni.js",
     "name": "sgd-entry",
     "src": "src/client/sgd-entry.tsx",
     "isEntry": true,
