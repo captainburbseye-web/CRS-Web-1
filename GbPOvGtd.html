@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cowley Road Studios — Digital Signage Rebuild Plan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --crs-dark: #111412;
+        --crs-charcoal: #1a1f1c;
+        --crs-green: #232b26;
+        --crs-gold: #d4af37;
+        --crs-muted-gold: #b3922e;
+        --crs-text-main: #e5e7eb;
+        --crs-text-dim: #9ca3af;
+      }
+
+      body {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 32px 80px;
+        position: relative;
+        box-sizing: border-box;
+        background-color: var(--crs-dark);
+        color: var(--crs-text-main);
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      th {
+        font-family: 'Space Grotesk', sans-serif;
+        color: var(--crs-gold);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        border-bottom: 2px solid var(--crs-green);
+        padding-bottom: 1rem;
+        margin-top: 0;
+        color: var(--crs-gold);
+      }
+
+      h2 {
+        font-size: 1.6rem;
+        border-bottom: 1px solid var(--crs-green);
+        padding-bottom: 0.5rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+        color: #fff;
+      }
+
+      .banner {
+        background-color: var(--crs-muted-gold);
+        color: var(--crs-dark);
+        padding: 12px 20px;
+        font-weight: 600;
+        margin-bottom: 24px;
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      .banner a {
+        color: var(--crs-dark);
+        text-decoration: underline;
+      }
+
+      .core-recommendation {
+        background-color: var(--crs-charcoal);
+        border-left: 6px solid var(--crs-gold);
+        padding: 24px;
+        margin: 32px 0;
+      }
+
+      .core-recommendation h3 {
+        margin-top: 0;
+        color: var(--crs-gold);
+      }
+
+      .hero-spotlight {
+        background-color: var(--crs-green);
+        border: 1px solid var(--crs-gold);
+        padding: 32px;
+        text-align: center;
+        margin: 32px 0;
+      }
+
+      .hero-spotlight h3 {
+        margin-top: 0;
+        color: var(--crs-text-dim);
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        letter-spacing: 0.1em;
+      }
+      .hero-spotlight .hero-text {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--crs-gold);
+        line-height: 1.2;
+        margin: 16px 0;
+      }
+      .hero-spotlight .sub-text {
+        color: var(--crs-text-main);
+        font-size: 1.1rem;
+      }
+
+      .section-card {
+        background-color: var(--crs-charcoal);
+        padding: 32px;
+        margin-bottom: 32px;
+        border: 1px solid var(--crs-green);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 24px;
+        font-size: 0.95rem;
+      }
+
+      th,
+      td {
+        border: 1px solid var(--crs-green);
+        padding: 12px 16px;
+        text-align: left;
+      }
+
+      th {
+        background-color: var(--crs-green);
+        color: var(--crs-gold);
+        font-weight: 700;
+      }
+
+      td {
+        color: var(--crs-text-main);
+      }
+
+      .slide-block {
+        background-color: var(--crs-green);
+        padding: 24px;
+        margin-bottom: 16px;
+        border-left: 4px solid var(--crs-muted-gold);
+      }
+
+      .slide-block h4 {
+        margin: 0 0 8px 0;
+        color: var(--crs-gold);
+        font-size: 1.2rem;
+      }
+
+      .slide-block p {
+        margin: 0;
+        color: var(--crs-text-main);
+        font-weight: 500;
+      }
+
+      .badge {
+        display: inline-block;
+        background-color: var(--crs-gold);
+        color: var(--crs-dark);
+        padding: 4px 8px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 8px;
+      }
+
+      pre {
+        background-color: #0b0e0c;
+        padding: 20px;
+        border: 1px solid var(--crs-green);
+        overflow: visible;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-size: 0.85rem;
+        color: #a7b6ad;
+      }
+
+      ul,
+      ol {
+        padding-left: 24px;
+        margin-bottom: 24px;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+
+      code {
+        background-color: var(--crs-green);
+        color: var(--crs-gold);
+        padding: 2px 6px;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      GOAL: Beat the current signage (<a href="https://crs-signage.pages.dev/signage">crs-signage</a>) and precisely
+      align with the live ecosystem at <a href="https://cowleyroadstudios.com/">cowleyroadstudios.com</a>.
+    </div>
+
+    <h1>Cowley Road Studios<br />Digital Signage Rebuild Plan</h1>
+
+    <div class="core-recommendation">
+      <h3>Core Recommendation</h3>
+      <p style="font-size: 1.15rem; font-weight: 600; margin: 0">
+        Lead with CRS as a live operating studio business. Treat Workshop Café as an active branch of the ecosystem, not
+        the whole headline.
+      </p>
+    </div>
+
+    <div class="hero-spotlight">
+      <h3>Proposed Hero Slide</h3>
+      <div class="hero-text">COWLEY ROAD STUDIOS</div>
+      <div class="sub-text">Recording Studio · Rehearsal Rooms · Oxford</div>
+      <div class="sub-text" style="color: var(--crs-text-dim); margin-top: 8px">
+        Cowley Road OX4 1JE · Cricket Road OX4 3DJ
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>1. Strategic Rationale</h2>
+      <p>
+        The current digital signage acts primarily as a teaser for a future state—specifically, a fixed 2026 opening
+        date for the Workshop Café. Meanwhile, the live website demonstrates a robust, currently operating studio
+        ecosystem across two Oxford locations.
+      </p>
+      <p>
+        To align with business reality, the public screen must transition from "future promise" to "live
+        infrastructure." Crucially,
+        <strong>the Workshop Café is now open for bookings and will be opening regular hours very soon.</strong>
+        Therefore, it must be presented as an active, available venue rather than a distant project. The new signage
+        strategy emphasizes immediate capabilities: professional recording, rehearsals, AV support, and venue hire.
+      </p>
+    </div>
+
+    <div class="section-card">
+      <h2>2. What Wins Over the Current Signage</h2>
+      <ul>
+        <li>
+          <strong>Faster Comprehension:</strong> Delivers a 2-second read from across the room using bolder, tighter
+          copy.
+        </li>
+        <li>
+          <strong>Live Capability Over Future Promise:</strong> Immediately surfaces what artists and clients can book
+          today.
+        </li>
+        <li>
+          <strong>Clarified Footprint:</strong> Establishes the dual-location reality (Cowley Road and Cricket Road).
+        </li>
+        <li>
+          <strong>Ecosystem Expansion:</strong> Properly introduces ODRO Engineering alongside the studio offering.
+        </li>
+        <li>
+          <strong>Active Venue Positioning:</strong> Highlights the Workshop Café as a live booking opportunity rather
+          than an unlaunched concept.
+        </li>
+        <li>
+          <strong>Actionable CTA:</strong> Drives foot traffic to actual web bookings rather than leaving passersby at a
+          dead end.
+        </li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <h2>3. Slide-by-Slide Signage Plan</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Slide</th>
+            <th>Purpose</th>
+            <th>Exact On-Screen Copy</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Master Identity</td>
+            <td>
+              Cowley Road Studios<br />Recording Studio · Rehearsal Rooms · Oxford<br />Cowley Road OX4 1JE · Cricket
+              Road OX4 3DJ
+            </td>
+            <td>Anchor slide. Establishes the dual-site operating business instantly.</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Recording</td>
+            <td>Professional Recording<br />SSL BiG SiX · Valve Compression<br />Hybrid Analogue–Digital Workflow</td>
+            <td>Authority builder. Speaks directly to serious musicians/producers.</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Rehearsal</td>
+            <td>Rehearsal Rooms<br />Two Rooms · Both Wired<br />Cowley Road · Cricket Road</td>
+            <td>Clear, logistical, and highly bookable.</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Facilities</td>
+            <td>Built for Bands & Makers<br />Full Backline · PA · Drum Kit<br />Piano · Control Room Monitoring</td>
+            <td>Signals infrastructure quality, not just "vibes."</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>ODRO Support</td>
+            <td>ODRO Engineering<br />Amp Repair · AV Support<br />Technical Services</td>
+            <td>Cross-sells technical infrastructure without diluting the studio brand.</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Workshop Café</td>
+            <td>Workshop Café<br />Bookings Open Now<br />Opening Regular Hours Soon</td>
+            <td>Crucial update. Shifts from "Opening 2026" to immediate booking viability.</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Legacy</td>
+            <td>Since 1999<br />From Soundworks Oxford<br />To Cowley Road Studios</td>
+            <td>Subtle mythic energy. Transfers two decades of trust to the new brand.</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Action / CTA</td>
+            <td>Book Online<br />Recording · Rehearsal · Venue Hire<br />cowleyroadstudios.com</td>
+            <td>The closer. Pair with a clean QR code.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-card">
+      <h2>4. Exact Rewritten Copy Set</h2>
+
+      <div class="slide-block">
+        <span class="badge">Slide 1</span>
+        <h4>COWLEY ROAD STUDIOS</h4>
+        <p>
+          Recording Studio · Rehearsal Rooms · Oxford<br /><span style="color: var(--crs-text-dim)"
+            >Cowley Road OX4 1JE · Cricket Road OX4 3DJ</span
+          >
+        </p>
+      </div>
+
+      <div class="slide-block">
+        <span class="badge">Slide 2</span>
+        <h4>PROFESSIONAL RECORDING</h4>
+        <p>
+          SSL BiG SiX · Valve Compression<br /><span style="color: var(--crs-text-dim)"
+            >Hybrid Analogue–Digital Workflow</span
+          >
+        </p>
+      </div>
+
+      <div class="slide-block">
+        <span class="badge">Slide 3</span>
+        <h4>REHEARSAL ROOMS</h4>
+        <p>Two Rooms · Both Wired<br /><span style="color: var(--crs-text-dim)">Cowley Road · Cricket Road</span></p>
+      </div>
+
+      <div class="slide-block">
+        <span class="badge">Slide 4</span>
+        <h4>BUILT FOR BANDS & MAKERS</h4>
+        <p>
+          Full Backline · PA · Drum Kit<br /><span style="color: var(--crs-text-dim)"
+            >Piano · Control Room Monitoring</span
+          >
+        </p>
+      </div>
+
+      <div class="slide-block">
+        <span class="badge">Slide 5</span>
+        <h4>ODRO ENGINEERING</h4>
+        <p>Amp Repair · AV Support<br /><span style="color: var(--crs-text-dim)">Technical Services</span></p>
+      </div>
+
+      <div class="slide-block">
+        <span class="badge">Slide 6</span>
+        <h4>WORKSHOP CAFÉ</h4>
+        <p>Bookings Open Now<br /><span style="color: var(--crs-text-dim)">Opening Regular Hours Soon</span></p>
+      </div>
+
+      <div class="slide-block">
+        <span class="badge">Slide 7</span>
+        <h4>SINCE 1999</h4>
+        <p>From Soundworks Oxford<br /><span style="color: var(--crs-text-dim)">To Cowley Road Studios</span></p>
+      </div>
+
+      <div class="slide-block">
+        <span class="badge">Slide 8</span>
+        <h4>BOOK ONLINE</h4>
+        <p>Recording · Rehearsal · Venue Hire<br /><span style="color: var(--crs-gold)">cowleyroadstudios.com</span></p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>5. Bottom Ticker Options</h2>
+      <p>Use the ticker for persistent short-form signals that loop continuously underneath the main reel.</p>
+
+      <div style="margin-bottom: 16px">
+        <span class="badge">Recommended</span>
+        <p
+          style="
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--crs-gold);
+            padding: 12px;
+            background: #0b0e0c;
+            border: 1px solid var(--crs-green);
+          "
+        >
+          RECORDING STUDIO · REHEARSAL ROOMS · CONTROL ROOM HIRE · AMP REPAIR · AV SUPPORT · WORKSHOP CAFÉ VENUE HIRE
+        </p>
+      </div>
+
+      <div style="margin-bottom: 16px">
+        <span class="badge">Warmer</span>
+        <p
+          style="
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--crs-gold);
+            padding: 12px;
+            background: #0b0e0c;
+            border: 1px solid var(--crs-green);
+          "
+        >
+          RECORDING · REHEARSAL · REPAIRS · AV · VENUE HIRE · OXFORD CREATIVE INFRASTRUCTURE
+        </p>
+      </div>
+
+      <div>
+        <span class="badge">Minimal</span>
+        <p
+          style="
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--crs-gold);
+            padding: 12px;
+            background: #0b0e0c;
+            border: 1px solid var(--crs-green);
+          "
+        >
+          COWLEY ROAD STUDIOS · OPEN NOW · COWLEYROADSTUDIOS.COM
+        </p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>6. Content Architecture for Separate Repo</h2>
+      <p>
+        Keep the signage app entirely data-driven. A clean <code>content.json</code> or TypeScript constant file
+        prevents JSX spaghetti.
+      </p>
+      <pre>
+{
+  "siteMeta": {
+    "title": "CRS Digital Signage",
+    "version": "2.0.0"
+  },
+  "theme": {
+    "background": "crs-dark",
+    "accent": "crs-gold"
+  },
+  "tickerItems": [
+    "RECORDING STUDIO",
+    "REHEARSAL ROOMS",
+    "CONTROL ROOM HIRE",
+    "AMP REPAIR",
+    "AV SUPPORT",
+    "WORKSHOP CAFÉ VENUE HIRE"
+  ],
+  "reels": {
+    "default": {
+      "intervalMs": 8000,
+      "slides": ["hero", "recording", "rehearsal", "facilities", "odro", "cafe", "legacy", "cta"]
+    }
+  },
+  "slides": {
+    "cafe": {
+      "id": "cafe",
+      "headline": "WORKSHOP CAFÉ",
+      "sublines": ["Bookings Open Now", "Opening Regular Hours Soon"],
+      "layout": "standard"
+    },
+    "cta": {
+      "id": "cta",
+      "headline": "BOOK ONLINE",
+      "sublines": ["Recording · Rehearsal · Venue Hire", "cowleyroadstudios.com"],
+      "layout": "qr-split",
+      "qrLink": "https://cowleyroadstudios.com"
+    }
+  }
+}</pre
+      >
+    </div>
+
+    <div class="section-card">
+      <h2>7. Component & Folder Structure</h2>
+      <p>Recommended structure for a lightweight React/Next.js/Vite signage repo:</p>
+      <pre>
+src/
+├── assets/
+│   ├── crs-logo-mark.svg
+│   └── fonts/
+├── components/
+│   ├── ScreenLayout.tsx     # Master wrapper, handles safe areas
+│   ├── SlideViewer.tsx      # Carousel/transition manager
+│   ├── SlideStandard.tsx    # Text-focused slide layout
+│   ├── SlideQR.tsx          # Dedicated layout for CTA slide
+│   ├── BottomTicker.tsx     # Marquee component
+│   └── StatusIndicators.tsx # Subtle branding marks
+├── content/
+│   └── signageData.ts       # Single source of truth (from JSON schema)
+├── hooks/
+│   └── useSignageTimer.ts   # Slide rotation logic
+└── App.tsx</pre
+      >
+    </div>
+
+    <div class="section-card">
+      <h2>8. Tone & Design Direction</h2>
+      <ul>
+        <li>
+          <strong>Typography:</strong> Massive, highly legible sans-serif for headlines (e.g., Space Grotesk or Monument
+          Extended) paired with a clean geometric sans for sub-lines. Avoid thin weights.
+        </li>
+        <li>
+          <strong>Hierarchy:</strong> The headline must dominate. Sub-lines provide context but should not compete. Keep
+          negative space purposeful, not vacant.
+        </li>
+        <li>
+          <strong>Legibility:</strong> Maximize contrast. Use muted gold (`#D4AF37`) or stark off-white against deep
+          charcoal (`#111412`). Avoid dark green text on dark charcoal backgrounds.
+        </li>
+        <li>
+          <strong>Motion:</strong> Keep it utilitarian. Hard cuts or rapid fade transitions between slides. A smooth,
+          relentless horizontal scroll for the ticker. No bouncy UI animations.
+        </li>
+        <li>
+          <strong>Decorations:</strong> Strip out tiny UI dots or "equalizer" bars unless they convey actual operating
+          status. The screen should feel like a serious broadcast monitor.
+        </li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <h2>9. Rollout Priorities</h2>
+      <ol>
+        <li>
+          <strong>MVP Data Structure:</strong> Establish the independent content repository (the JSON/TS file) separate
+          from the display layer.
+        </li>
+        <li>
+          <strong>Layout Framework:</strong> Build the static `ScreenLayout` ensuring the ticker and main slide area fit
+          perfectly within the physical screen's resolution without scaling issues.
+        </li>
+        <li>
+          <strong>Content Population:</strong> Inject the new 8-slide array and bottom ticker. Verify legibility at 3-5
+          meters.
+        </li>
+        <li>
+          <strong>CTA Implementation:</strong> Generate and style the QR code slide to ensure it scans reliably under
+          screen glare.
+        </li>
+        <li>
+          <strong>Polish & Deploy:</strong> Apply the final CRS color palette, ensure typography scales properly, and
+          deploy to the dedicated Pages/Vercel URL.
+        </li>
+      </ol>
+    </div>
+  </body>
+</html>

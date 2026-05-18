@@ -2665,31 +2665,60 @@ app.get('/soundworks', (c) => {
 })
 
 // ============================================================================
-// SIGNAGE DISPLAY PAGE
+// SIGNAGE DISPLAY PAGE  —  pure kiosk, no site chrome
 // ============================================================================
 app.get('/live-display', (c) => {
-  const sgdEntry   = CLIENT_MANIFEST['src/client/sgd-entry.tsx']
-  const sgdJs      = sgdEntry ? `/static/${sgdEntry.file}` : null
+  const sgdEntry    = CLIENT_MANIFEST['src/client/sgd-entry.tsx']
+  const sgdJs       = sgdEntry ? `/static/${sgdEntry.file}` : null
+  // vendor chunk — jsx-runtime is the shared chunk imported by sgd-entry
   const vendorEntry = CLIENT_MANIFEST['src/client/rack-entry.tsx']?.imports?.[0]
-  const vendorJs   = vendorEntry
+  const vendorJs    = vendorEntry
     ? `/static/${(CLIENT_MANIFEST as Record<string, {file: string}>)[vendorEntry]?.file ?? ''}`
     : null
 
-  return c.render(
-    <>
-      <BuildStatusBanner />
-      <Header />
-      <div id="sgd-root" style="min-height:60vh"></div>
-      <Footer />
-      {vendorJs && <script type="module" src={vendorJs}></script>}
-      {sgdJs    && <script type="module" src={sgdJs}></script>}
-    </>,
-    {
-      title: 'Live Analogue Display — Cowley Road Studios',
-      description: 'The CRS live signage display. Rack-mounted LED ticker for Workshop Café and Cowley Road Studios, with Oxford Dreaming Spires waveform motif.',
-      canonicalUrl: 'https://cowleyroadstudios.com/live-display',
+  return c.html(`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Live Display — Cowley Road Studios</title>
+  <meta name="description" content="CRS live analogue signage display. Rack-mounted LED ticker, Oxford Dreaming Spires waveform. Workshop Café and Cowley Road Studios variants." />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href="https://cowleyroadstudios.com/live-display" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+  <!-- Fonts: JetBrains Mono for ticker + status bar -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Preload both sign images so transition is instant -->
+  <link rel="preload" as="image" href="/static/signage/cowley-road-studios-rack-sign.png" />
+  <link rel="preload" as="image" href="/static/signage/workshop-cafe-rack-sign.png" />
+
+  <!-- Critical reset: fullscreen, no scroll, black bg -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%; height: 100%;
+      overflow: hidden;
+      background: #040804;
     }
-  )
+    #sgd-root {
+      width: 100%; height: 100%;
+      min-height: 100vh;
+    }
+  </style>
+
+  <!-- Design system CSS (sgd-* rules, custom properties) -->
+  <link href="/static/studio-rack-demo.css" rel="stylesheet" />
+</head>
+<body>
+  <div id="sgd-root"></div>
+  ${vendorJs ? `<script type="module" src="${vendorJs}"></script>` : ''}
+  ${sgdJs    ? `<script type="module" src="${sgdJs}"></script>`    : ''}
+</body>
+</html>`)
 })
 
 // ============================================================================

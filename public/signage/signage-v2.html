@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRS Signage V2</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+/* ═══════════════════════════════════════════════════════════════
+   CRS SIGNAGE V2 — styles (text ×1.333 scaled for screen display)
+   Standalone — zero dependency on any website CSS.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg: #07110d;
+  --bg-2: #0c1712;
+  --panel: rgba(13, 21, 17, 0.82);
+  --panel-strong: rgba(20, 28, 23, 0.92);
+  --line: rgba(207, 178, 107, 0.22);
+  --line-strong: rgba(207, 178, 107, 0.45);
+  --text: #f0ead9;
+  --muted: #b7b29f;
+  --gold: #c7a65a;
+  --gold-soft: #e0ca96;
+  --olive: #70836a;
+  --amber: #d19b48;
+  --slate: #91a6a2;
+  --danger: #ff7558;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  color: var(--text);
+  font-family: 'JetBrains Mono', monospace;
+  background:
+    radial-gradient(circle at top left, rgba(120, 148, 112, 0.14), transparent 28%),
+    radial-gradient(circle at 85% 18%, rgba(199, 166, 90, 0.18), transparent 24%),
+    linear-gradient(145deg, #050806 0%, #08110d 35%, #0a1511 100%);
+}
+
+button { font: inherit; }
+
+.app-shell {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) 22rem;
+  grid-template-rows: auto 1fr auto auto;
+  gap: 1.25rem;
+  width: 100vw;
+  height: 100vh;
+  padding: 1.25rem 1.25rem 1rem;
+}
+
+.topbar,
+.controls,
+.ticker-wrap,
+.side-card,
+.slide {
+  backdrop-filter: blur(18px);
+}
+
+/* ── TOPBAR ─────────────────────────────────────────────────── */
+.topbar {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 1.2rem;
+  background: linear-gradient(180deg, rgba(14, 21, 18, 0.86), rgba(11, 17, 14, 0.75));
+  box-shadow: var(--shadow);
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand-mark {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 3.2rem;
+  height: 3.2rem;
+  gap: 0.18rem;
+}
+
+.brand-mark span {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-strong);
+  background: rgba(199, 166, 90, 0.16);
+  color: var(--gold-soft);
+  font-family: 'Oswald', sans-serif;
+  /* orig 1rem → ×1.333 */
+  font-size: 1.333rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brand-mark span:last-child {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.16rem;
+}
+
+.brand-name {
+  font-family: 'Oswald', sans-serif;
+  /* orig 1.25rem → ×1.333 */
+  font-size: 1.666rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+/* Shared small-label styles — orig 0.78rem → ×1.333 = 1.04rem */
+.brand-sub,
+.system-strip,
+.reel-chip,
+.side-label,
+.side-meta,
+.eyebrow,
+.qr-overline,
+.quote-label,
+.queue-index {
+  color: var(--muted);
+  font-size: 1.04rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.system-strip,
+.reel-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  justify-self: center;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.reel-chip { justify-self: end; }
+
+.signal-dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 0 0 rgba(199, 166, 90, 0.5);
+  animation: pulse 2s infinite;
+}
+
+/* ── STAGE & SLIDE ──────────────────────────────────────────── */
+.stage {
+  position: relative;
+  min-width: 0;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 1.8rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(14, 22, 18, 0.92), rgba(9, 15, 12, 0.9));
+  box-shadow: var(--shadow);
+}
+
+.slide-backdrop {
+  position: absolute;
+  inset: 0;
+  opacity: 0.9;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(208, 163, 71, 0.16), transparent 26%),
+    radial-gradient(circle at 85% 25%, rgba(118, 140, 111, 0.14), transparent 22%),
+    linear-gradient(130deg, rgba(255,255,255,0.02), transparent 55%);
+}
+
+.slide--gold   .slide-backdrop { background: radial-gradient(circle at 18% 18%, rgba(208, 163, 71, 0.22), transparent 28%), radial-gradient(circle at 88% 18%, rgba(208, 163, 71, 0.12), transparent 24%), linear-gradient(130deg, rgba(255,255,255,0.02), transparent 55%); }
+.slide--olive  .slide-backdrop { background: radial-gradient(circle at 20% 20%, rgba(112, 131, 106, 0.24), transparent 30%), radial-gradient(circle at 88% 18%, rgba(199, 166, 90, 0.1), transparent 18%), linear-gradient(130deg, rgba(255,255,255,0.02), transparent 55%); }
+.slide--amber  .slide-backdrop { background: radial-gradient(circle at 22% 18%, rgba(209, 155, 72, 0.2), transparent 26%), radial-gradient(circle at 85% 22%, rgba(120, 148, 112, 0.11), transparent 20%), linear-gradient(130deg, rgba(255,255,255,0.02), transparent 55%); }
+.slide--slate  .slide-backdrop { background: radial-gradient(circle at 18% 18%, rgba(145, 166, 162, 0.18), transparent 26%), radial-gradient(circle at 85% 22%, rgba(199, 166, 90, 0.11), transparent 20%), linear-gradient(130deg, rgba(255,255,255,0.02), transparent 55%); }
+
+.slide-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.8fr);
+  gap: 1.2rem;
+  height: 100%;
+  padding: 2rem;
+}
+
+.slide-main,
+.slide-side {
+  display: flex;
+  flex-direction: column;
+}
+
+.eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Status pill — orig 0.78rem → 1.04rem */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: rgba(199, 166, 90, 0.14);
+  color: var(--gold-soft);
+  font-size: 1.04rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.status-pill::before {
+  content: '';
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 999px;
+  background: var(--gold);
+}
+
+/* Big display title — orig clamp(3.6rem, 7.3vw, 7rem) → ×1.333 */
+.slide-title {
+  max-width: 12ch;
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(4.8rem, 9.73vw, 9.33rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Subtitle — orig clamp(1.2rem, 2.1vw, 2rem) → ×1.333 */
+.slide-subtitle {
+  max-width: 32rem;
+  margin: 1rem 0 0;
+  color: var(--gold-soft);
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.666rem);
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.35rem;
+}
+
+/* Meta chip — orig 0.82rem → 1.093rem */
+.meta-chip {
+  padding: 0.65rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-size: 1.093rem;
+  letter-spacing: 0.03em;
+}
+
+/* Body copy — orig clamp(1rem, 1.5vw, 1.18rem) → ×1.333 */
+.slide-body {
+  max-width: 42rem;
+  margin: 1.35rem 0 0;
+  color: var(--text);
+  font-size: clamp(1.333rem, 2vw, 1.573rem);
+  line-height: 1.65;
+}
+
+.bullet-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: auto 0 0;
+  padding: 1.8rem 0 0;
+  list-style: none;
+}
+
+/* Bullet item — orig 0.92rem → 1.227rem */
+.bullet-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.035);
+  min-height: 4.1rem;
+  font-size: 1.227rem;
+  line-height: 1.45;
+}
+
+.bullet-mark {
+  width: 0.7rem;
+  height: 0.7rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+}
+
+/* ── SLIDE SIDE / QUOTE / QR ────────────────────────────────── */
+.slide-side { justify-content: flex-end; }
+
+.quote-card,
+.qr-card {
+  padding: 1.35rem;
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+}
+
+/* Quote — orig clamp(1.3rem, 1.9vw, 1.8rem) → ×1.333 */
+.quote-card p {
+  margin: 0.8rem 0 0;
+  color: var(--text);
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.733rem, 2.533vw, 2.4rem);
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.slide--cta .slide-title { max-width: 9ch; }
+.slide-side--qr { justify-content: center; }
+
+.qr-card {
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.qr-image {
+  width: min(15rem, 100%);
+  aspect-ratio: 1;
+  padding: 0.9rem;
+  border-radius: 1rem;
+  background: #f4eedb;
+}
+
+.qr-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* QR domain — orig 1.6rem → 2.133rem */
+.qr-copy strong {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.133rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* QR subtitle — orig 0.92rem → 1.227rem */
+.qr-copy span:last-child {
+  color: var(--muted);
+  font-size: 1.227rem;
+  line-height: 1.55;
+}
+
+/* ── SIDE PANEL ─────────────────────────────────────────────── */
+.side-panel {
+  display: grid;
+  gap: 1rem;
+  min-height: 0;
+}
+
+.side-card {
+  border: 1px solid var(--line);
+  border-radius: 1.45rem;
+  background: linear-gradient(180deg, rgba(15, 22, 18, 0.9), rgba(11, 16, 13, 0.8));
+  box-shadow: var(--shadow);
+}
+
+.side-card--meta { padding: 1.2rem; }
+
+/* Side title — orig 2rem → 2.666rem */
+.side-title {
+  margin-top: 0.55rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.666rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Side copy — orig 0.96rem → 1.28rem */
+.side-copy {
+  margin-top: 0.75rem;
+  color: var(--text);
+  font-size: 1.28rem;
+  line-height: 1.55;
+}
+
+.side-card--queue {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 0;
+}
+
+.queue-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem 0;
+}
+
+.slide-queue {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1rem;
+  overflow: auto;
+}
+
+.queue-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.8rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.queue-item:hover,
+.queue-item.is-active {
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+  background: rgba(199, 166, 90, 0.09);
+}
+
+/* Queue title — orig 1.02rem → 1.36rem */
+.queue-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.36rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── CONTROLS ───────────────────────────────────────────────── */
+.controls {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.control-btn {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(14, 22, 18, 0.88);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.control-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.dot.is-active {
+  background: var(--gold);
+  transform: scale(1.15);
+}
+
+/* ── TICKER ─────────────────────────────────────────────────── */
+.ticker-wrap {
+  grid-column: 1 / -1;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1.15rem;
+  background: linear-gradient(180deg, rgba(14, 21, 18, 0.92), rgba(10, 16, 13, 0.84));
+  box-shadow: var(--shadow);
+}
+
+.ticker-track {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-marquee {
+  display: inline-flex;
+  align-items: center;
+  min-width: max-content;
+  padding: 0.95rem 0;
+  animation: ticker 34s linear infinite;
+}
+
+/* Ticker item — orig 1.05rem → 1.4rem */
+.ticker-item {
+  position: relative;
+  padding: 0 2.4rem;
+  color: var(--gold-soft);
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ticker-item::after {
+  content: '·';
+  position: absolute;
+  right: 0;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(199, 166, 90, 0.45); }
+  70%  { box-shadow: 0 0 0 10px rgba(199, 166, 90, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(199, 166, 90, 0); }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — mobile/tablet scaling
+   Text further adjusted so 1.333× doesn't overflow on small screens
+   ═══════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1200px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+    overflow: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+  .stage { min-height: 72vh; }
+  .side-panel { grid-template-columns: 1fr 1fr; }
+
+  /* Pull back the very largest sizes slightly for tablet */
+  .slide-title    { font-size: clamp(3.6rem, 8vw, 7.5rem); }
+  .slide-subtitle { font-size: clamp(1.4rem, 2.5vw, 2.2rem); }
+  .slide-body     { font-size: clamp(1.2rem, 1.8vw, 1.5rem); }
+}
+
+@media (max-width: 900px) {
+  body { overflow: auto; }
+
+  .topbar {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+  .system-strip,
+  .reel-chip { justify-self: start; }
+
+  .slide-grid          { grid-template-columns: 1fr; }
+  .bullet-list         { grid-template-columns: 1fr; }
+  .side-panel          { grid-template-columns: 1fr; }
+
+  /* Mobile — clamp back toward readable but still larger than original */
+  .slide-title    { font-size: clamp(2.8rem, 11vw, 5rem); }
+  .slide-subtitle { font-size: clamp(1.2rem, 3.5vw, 1.8rem); }
+  .slide-body     { font-size: clamp(1.1rem, 2.2vw, 1.4rem); }
+  .bullet-item    { font-size: 1.1rem; }
+  .quote-card p   { font-size: clamp(1.3rem, 3vw, 2rem); }
+  .side-title     { font-size: 2rem; }
+  .side-copy      { font-size: 1.1rem; }
+  .queue-title    { font-size: 1.1rem; }
+  .ticker-item    { font-size: 1.1rem; }
+
+  .brand-name     { font-size: 1.4rem; }
+  .brand-mark span { font-size: 1.1rem; }
+}
+
+@media (max-width: 480px) {
+  .app-shell { padding: 0.75rem 0.75rem 0.75rem; }
+
+  .slide-title    { font-size: clamp(2.4rem, 10vw, 3.5rem); }
+  .slide-subtitle { font-size: clamp(1rem, 3vw, 1.4rem); }
+  .slide-body     { font-size: 1.05rem; }
+  .bullet-item    { font-size: 1rem; }
+  .side-title     { font-size: 1.6rem; }
+  .meta-chip      { font-size: 0.95rem; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup" aria-label="Cowley Road Studios brand mark">
+        <div class="brand-mark"><span>CR</span><span>S</span></div>
+        <div class="brand-copy">
+          <span class="brand-name">Cowley Road Studios</span>
+          <span class="brand-sub">Oxford creative infrastructure</span>
+        </div>
+      </div>
+      <div class="system-strip">
+        <span class="signal-dot" aria-hidden="true"></span>
+        <span id="system-status">Channel live &middot; reel online</span>
+      </div>
+      <div class="reel-chip">
+        <span>Reel</span>
+        <strong id="reel-name">CRS Core</strong>
+      </div>
+    </header>
+    <main class="stage" id="stage" aria-live="polite"></main>
+    <aside class="side-panel">
+      <div class="side-card side-card--meta">
+        <span class="side-label">Current focus</span>
+        <div id="focus-title" class="side-title"></div>
+        <div id="focus-copy" class="side-copy"></div>
+      </div>
+      <div class="side-card side-card--queue">
+        <div class="queue-head">
+          <span class="side-label">Slide queue</span>
+          <span id="slide-counter" class="side-meta"></span>
+        </div>
+        <div id="slide-queue" class="slide-queue"></div>
+      </div>
+    </aside>
+    <nav class="controls" aria-label="Slide controls">
+      <button class="control-btn" id="prev-btn" type="button" aria-label="Previous slide">&#8592;</button>
+      <div id="dots" class="dots" aria-label="Slide navigation"></div>
+      <button class="control-btn" id="next-btn" type="button" aria-label="Next slide">&#8594;</button>
+    </nav>
+    <footer class="ticker-wrap" aria-label="Service ticker">
+      <div class="ticker-track" id="ticker-track"></div>
+    </footer>
+  </div>
+  <script>
+  (function(){
+    var QR_SVG = '<svg xmlns="http://www.w3.org/2000/svg" width="232" height="232" class="segno"><g transform="scale(8)"><path fill="#f4eedb" d="M0 0h29v29h-29z"/><path class="qrline" stroke="#0b0f0d" d="M2 2.5h7m1 0h1m1 0h1m1 0h3m3 0h7m-25 1h1m5 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m5 0h1m-25 1h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h4m1 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m4 0h1m1 0h2m3 0h1m1 0h3m1 0h1m-25 1h1m1 0h3m1 0h1m1 0h3m2 0h1m4 0h1m1 0h3m1 0h1m-25 1h1m5 0h1m1 0h1m3 0h2m2 0h1m1 0h1m5 0h1m-25 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-17 1h1m2 0h2m1 0h3m-17 1h3m2 0h2m1 0h3m1 0h1m3 0h5m2 0h2m-25 1h2m1 0h3m2 0h2m1 0h2m1 0h3m1 0h2m1 0h1m1 0h2m-23 1h3m1 0h1m1 0h1m2 0h1m1 0h1m1 0h2m4 0h2m1 0h1m-24 1h1m2 0h1m2 0h1m1 0h1m1 0h1m3 0h1m1 0h2m2 0h1m-22 1h1m4 0h3m1 0h1m1 0h2m2 0h1m2 0h2m4 0h1m-20 1h1m2 0h1m2 0h2m1 0h6m3 0h2m-25 1h4m1 0h4m1 0h4m1 0h1m2 0h1m2 0h2m1 0h1m-21 1h1m3 0h5m1 0h1m2 0h5m-22 1h2m1 0h4m1 0h1m3 0h1m3 0h5m2 0h1m-16 1h1m1 0h2m3 0h2m3 0h1m3 0h1m-25 1h7m3 0h2m1 0h1m2 0h1m1 0h1m1 0h1m3 0h1m-25 1h1m5 0h1m1 0h2m1 0h1m3 0h2m3 0h1m3 0h1m-25 1h1m1 0h3m1 0h1m4 0h1m3 0h6m-21 1h1m1 0h3m1 0h1m2 0h5m1 0h1m1 0h1m2 0h1m1 0h2m-24 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h2m1 0h2m1 0h3m1 0h2m-25 1h1m5 0h1m1 0h1m1 0h3m1 0h1m1 0h5m-21 1h7m1 0h1m1 0h1m1 0h1m3 0h3m2 0h1m2 0h1"/></g></svg>';
+
+    var tickerItems = [
+      "Recording Studio Oxford","Rehearsal Rooms","Control Room Hire",
+      "Cowley Road OX4 1JE","Cricket Road OX4 3DJ","ODRO Engineering Repairs",
+      "AV Support","Workshop Cafe Bookings Open Now","Regular Opening Very Soon",
+      "cowleyroadstudios.com"
+    ];
+
+    var slides = [
+      {id:"hero",kicker:"Oxford creative infrastructure",title:"Cowley Road Studios",subtitle:"Recording studio · rehearsal rooms · creative production",status:"Live now",meta:["Cowley Road OX4 1JE","Cricket Road OX4 3DJ"],body:"The stronghold on Cowley Road: professional recording, wired rehearsal, technical support, and a public-facing creative ecosystem under one banner.",bullets:["Bookable now","Two Oxford locations","Built for artists, bands and makers"],accent:"gold",footer:"Grounded in the live CRS offer, not just the future promise."},
+      {id:"recording",kicker:"Studio reel",title:"Professional Recording",subtitle:"Analogue character · digital precision",status:"Sessions active",meta:["SSL BiG SiX","Valve compression","Hybrid workflow"],body:"A proper Oxford recording setup with control room weight and enough edge to feel like a real record is being made, not just a laptop politely humming in a corner.",bullets:["Tracking","Production","Control room hire"],accent:"olive",footer:"Lead with capability. Let the atmosphere ride shotgun."},
+      {id:"rehearsal",kicker:"Band infrastructure",title:"Rehearsal Rooms",subtitle:"Two rooms · both wired · both useful",status:"Book now",meta:["Cowley Road: up to 4-piece","Cricket Road: larger groups","Backline + PA"],body:"Cowley Road links directly into the recording setup. Cricket Road gives bigger groups breathing space, piano access, and a dedicated control room environment.",bullets:["Drum kit","Yamaha piano","Adam monitoring"],accent:"slate",footer:"Public signage should sell the practical magic."},
+      {id:"services",kicker:"Technical backbone",title:"ODRO Engineering",subtitle:"Repairs · AV support · technical services",status:"Enquiries open",meta:["Amp repair","Venue support","Installations"],body:"CRS is more than rooms. It is infrastructure: repair, live support, and the kind of practical know-how that keeps creative spaces actually functioning.",bullets:["General enquiries","Venue hire support","Production assistance"],accent:"amber",footer:"Hard graft, good signal, no chaos."},
+      {id:"cafe",kicker:"Public-facing venue",title:"Workshop Cafe",subtitle:"Community space · cafe · small venue",status:"Bookings open now",meta:["Regular opening very soon","Private hire","Cowley Road ecosystem"],body:"The cafe now steps forward as a live branch of the system: available for bookings now, with regular opening rhythm imminent. Less prophecy. More pulse.",bullets:["Coffee","Meetings","Events and hires"],accent:"gold",footer:"Keep the poetry. Add a door people can actually walk through."},
+      {id:"legacy",kicker:"Since 1999",title:"Soundworks to CRS",subtitle:"Same commitment · expanded infrastructure",status:"Legacy carried forward",meta:["Oxford music scene","Community-rooted","New name, wider scope"],body:"This is not a costume change. It is the Soundworks lineage carrying on with more rooms, more capability, and a broader public presence.",bullets:["Grassroots credibility","Professional standard","Future-proof direction"],accent:"olive",footer:"Heritage earns trust faster than adjectives."},
+      {id:"cta",kicker:"Call to action",title:"Book Online",subtitle:"Recording · rehearsal · venue hire",status:"Scan to enter",meta:["cowleyroadstudios.com","QR live","Oxford HQ operational"],body:"Use the website for bookings and contact routes. Keep the public path simple: see it, scan it, book it.",bullets:["Recording sessions","Rehearsals","Workshop Cafe enquiries"],accent:"amber",footer:"A handsome screen should still know how to convert."}
+    ];
+
+    var stage=document.getElementById("stage"),dots=document.getElementById("dots"),
+        prevBtn=document.getElementById("prev-btn"),nextBtn=document.getElementById("next-btn"),
+        slideQueue=document.getElementById("slide-queue"),slideCounter=document.getElementById("slide-counter"),
+        focusTitle=document.getElementById("focus-title"),focusCopy=document.getElementById("focus-copy"),
+        reelName=document.getElementById("reel-name"),systemStatus=document.getElementById("system-status"),
+        tickerTrack=document.getElementById("ticker-track");
+
+    var ROTATE_MS=9000, activeIndex=0, autoAdv;
+
+    function mi(items){return items.map(function(i){return'<span class="meta-chip">'+i+'</span>';}).join("");}
+    function bi(items){return items.map(function(i){return'<li class="bullet-item"><span class="bullet-mark"></span><span>'+i+'</span></li>';}).join("");}
+
+    function tmpl(s){
+      var isCTA=s.id==="cta";
+      var side=isCTA
+        ? '<div class="qr-card">'+QR_SVG+'<div class="qr-copy"><span class="qr-overline">Scan here</span><strong>cowleyroadstudios.com</strong><span>Recording · rehearsal · venue hire · Workshop Cafe</span></div></div>'
+        : '<div class="quote-card"><span class="quote-label">Signal line</span><p>'+s.footer+'</p></div>';
+      return '<article class="slide slide--'+s.accent+(isCTA?' slide--cta':'')+'"><div class="slide-backdrop"></div><div class="slide-grid"><section class="slide-main"><div class="eyebrow-row"><span class="eyebrow">'+s.kicker+'</span><span class="status-pill">'+s.status+'</span></div><h1 class="slide-title">'+s.title+'</h1><p class="slide-subtitle">'+s.subtitle+'</p><div class="meta-row">'+mi(s.meta)+'</div><p class="slide-body">'+s.body+'</p><ul class="bullet-list">'+bi(s.bullets)+'</ul></section><section class="slide-side'+( isCTA?' slide-side--qr':'')+'">'+side+'</section></div></article>';
+    }
+
+    function render(idx){
+      var s=slides[idx];
+      stage.innerHTML=tmpl(s);
+      focusTitle.textContent=s.title;
+      focusCopy.textContent=s.subtitle+" — "+s.status;
+      slideCounter.textContent=String(idx+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0");
+      reelName.textContent=s.id==="cafe"?"Workshop Signal":"CRS Core";
+      systemStatus.textContent=s.status+" · reel online";
+      Array.from(dots.children).forEach(function(d,i){d.classList.toggle("is-active",i===idx);d.setAttribute("aria-current",i===idx?"true":"false");});
+      Array.from(slideQueue.children).forEach(function(it,i){it.classList.toggle("is-active",i===idx);});
+    }
+
+    function buildDots(){dots.innerHTML=slides.map(function(s,i){return'<button class="dot'+( i===0?' is-active':'')+'" type="button" aria-label="Go to '+s.title+'" data-index="'+i+'"></button>';}).join("");}
+    function buildQueue(){slideQueue.innerHTML=slides.map(function(s,i){return'<button class="queue-item'+( i===0?' is-active':'')+'" type="button" data-index="'+i+'"><span class="queue-index">'+String(i+1).padStart(2,"0")+'</span><span class="queue-title">'+s.title+'</span></button>';}).join("");}
+    function buildTicker(){var items=tickerItems.concat(tickerItems);tickerTrack.innerHTML='<div class="ticker-marquee">'+items.map(function(t){return'<span class="ticker-item">'+t+'</span>';}).join("")+'</div>';}
+
+    function go(idx){activeIndex=(idx+slides.length)%slides.length;render(activeIndex);reset();}
+    function next(){go(activeIndex+1);}
+    function prev(){go(activeIndex-1);}
+    function reset(){clearInterval(autoAdv);autoAdv=setInterval(next,ROTATE_MS);}
+
+    nextBtn.addEventListener("click",next);
+    prevBtn.addEventListener("click",prev);
+    dots.addEventListener("click",function(e){var b=e.target.closest("[data-index]");if(b)go(Number(b.dataset.index));});
+    slideQueue.addEventListener("click",function(e){var b=e.target.closest("[data-index]");if(b)go(Number(b.dataset.index));});
+    document.addEventListener("keydown",function(e){if(e.key==="ArrowRight")next();if(e.key==="ArrowLeft")prev();if(e.key===" "){e.preventDefault();reset();}});
+
+    buildDots();buildQueue();buildTicker();render(0);reset();
+  })();
+  </script>
+</body>
+</html>
