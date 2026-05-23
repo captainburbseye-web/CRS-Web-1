@@ -53,7 +53,7 @@ export const WorkshopCafeContactPage = ({ initialService = 'private-hire', statu
             <picture>
               <source srcset="/static/workshop-cafe-logo.webp" type="image/webp" />
               <img
-                src="/static/workshop-cafe-logo.png"
+                src="/static/workshop-cafe-logo.webp"
                 alt="The Workshop Café"
                 class="wsc-header-logo"
                 width="160" height="60"
@@ -275,7 +275,7 @@ export const WorkshopCafeContactPage = ({ initialService = 'private-hire', statu
             <picture>
               <source srcset="/static/workshop-cafe-logo.webp" type="image/webp" />
               <img
-                src="/static/workshop-cafe-logo.png"
+                src="/static/workshop-cafe-logo.webp"
                 alt="The Workshop Café"
                 class="subpage-seal-img wsc-seal-img"
                 width="120" height="45"

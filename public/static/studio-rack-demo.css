@@ -93,7 +93,7 @@ button { background: none; border: none; font: inherit; cursor: pointer; }
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url('/static/images/bg-cafe-neon.jpg');
+  background-image: url('/static/images/bg-cafe-neon.webp');
   /* Image is 869×214px — very wide, shallow strip.
      100% width keeps it full-bleed; auto height preserves aspect ratio.
      The sign sits 30–60% down the image, so at 100vw width the strip
@@ -3486,7 +3486,7 @@ body.subpage::before {
   content: '';
   position: fixed;
   inset: 0;
-  background-image: url('/static/images/bg-cafe-neon.jpg');
+  background-image: url('/static/images/bg-cafe-neon.webp');
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;

@@ -269,7 +269,7 @@ signage.get('/', (c) => {
     <!-- HEADER BAR (Persistent) -->
     <div class="header-bar">
       <div class="header-left">
-        <img src="/static/crs-badge-square.png" alt="CRS" class="header-logo" />
+        <img src="/static/crs-badge-square.webp" alt="CRS" class="header-logo" />
         <span class="header-address">118 Cowley Road · Oxford · OX4 1JE</span>
       </div>
       <div class="header-right">
@@ -297,7 +297,7 @@ signage.get('/', (c) => {
     <!-- SLIDE 2: Recording Services (CRS) -->
     <div class="slide slide-crs" data-duration="10000">
       <div class="slide-content">
-        <picture><source srcset="/static/crs-rack-badge.webp" type="image/webp" /><img src="/static/crs-rack-badge.png" alt="CRS" class="brand-logo" /></picture>
+        <picture><source srcset="/static/crs-rack-badge.webp" type="image/webp" /><img src="/static/crs-rack-badge.webp" alt="CRS" class="brand-logo" /></picture>
         <h1 class="slide-title">RECORDING STUDIO</h1>
         <p class="slide-subtitle">Cowley Road · Full Production Facility</p>
         <p class="slide-body">
@@ -311,7 +311,7 @@ signage.get('/', (c) => {
     <!-- SLIDE 3: Rehearsal (Cricket Road) -->
     <div class="slide slide-cricket" data-duration="10000">
       <div class="slide-content">
-        <img src="/static/cricket-road-sign.png" alt="Cricket Road" class="brand-logo" />
+        <img src="/static/cricket-road-sign.webp" alt="Cricket Road" class="brand-logo" />
         <h1 class="slide-title">REHEARSAL ROOMS</h1>
         <p class="slide-subtitle">Cricket Road · OX4 3DJ</p>
         <p class="slide-body">
@@ -325,7 +325,7 @@ signage.get('/', (c) => {
     <!-- SLIDE 4: Workshop Café -->
     <div class="slide slide-workshop" data-duration="10000">
       <div class="slide-content">
-        <img src="/static/workshop-cafe-logo.png" alt="Workshop Café" class="brand-logo large" />
+        <img src="/static/workshop-cafe-logo.webp" alt="Workshop Café" class="brand-logo large" />
         <h1 class="slide-title">THE WORKSHOP CAFÉ</h1>
         <p class="slide-subtitle">118 Cowley Road · Front Space</p>
         <div class="features-list">
@@ -341,7 +341,7 @@ signage.get('/', (c) => {
     <!-- SLIDE 5: Repair Service -->
     <div class="slide slide-repair" data-duration="10000">
       <div class="slide-content">
-        <img src="/static/crs-badge-square.png" alt="CRS" class="brand-logo" />
+        <img src="/static/crs-badge-square.webp" alt="CRS" class="brand-logo" />
         <h1 class="slide-title">REPAIR SERVICE</h1>
         <p class="slide-subtitle">Instruments & AV Equipment</p>
         <p class="slide-body">

@@ -51,7 +51,7 @@ export const RackAccordion = () => {
             type="image/webp"
           />
           <img 
-            src="/static/rack-images/welcome-rack-updated.jpg"
+            src="/static/rack-images/welcome-rack-updated.webp"
             alt="CRS Welcome Rack - Main navigation and booking with wood frame" 
             class="rack-module-img"
             width="1024"
@@ -120,7 +120,7 @@ export const RackAccordion = () => {
             type="image/webp"
           />
           <img 
-            src="/static/rack-images/recording-services-new.jpg"
+            src="/static/rack-images/recording-services-new.webp"
             alt="Recording Services - Cowley Road (Green) & Cricket Road (Purple) Studios" 
             class="rack-module-img"
             width="1024"
@@ -185,7 +185,7 @@ export const RackAccordion = () => {
             type="image/webp"
           />
           <img 
-            src="/static/rack-images/rehearsal-services-updated.jpg"
+            src="/static/rack-images/rehearsal-services-updated.webp"
             alt="Rehearsal Services - Cowley Road (Green) & Cricket Road (Purple) with wood frame" 
             class="rack-module-img"
             width="1024"
@@ -294,7 +294,7 @@ export const RackAccordion = () => {
             type="image/webp"
           />
           <img 
-            src="/static/rack-images/odro-repair-panel.jpg"
+            src="/static/rack-images/odro-repair-panel.webp"
             alt="ODRO - AV & Instrument Repair" 
             class="rack-module-img"
             width="1920"

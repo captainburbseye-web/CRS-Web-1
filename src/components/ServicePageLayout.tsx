@@ -57,7 +57,7 @@ export const ServicePageShell = ({ title, description, keywords, isCafe = false,
   <meta name="description" content="${description}" />
   ${keywords ? `<meta name="keywords" content="${keywords}" />` : ''}
   <link rel="canonical" href="https://cowleyroadstudios.com" />
-  <link rel="icon" type="image/png" href="/crs-logo.png" />
+  <link rel="icon" type="image/png" href="/crs-logo.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />

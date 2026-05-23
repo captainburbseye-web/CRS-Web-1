@@ -37,7 +37,7 @@ export const WorkshopCafePage = () => (
       <div class="subpage-header-anchor">
         <a href="/" aria-label="Cowley Road Studios — home">
           <img
-            src="/static/workshop-cafe-logo.png"
+            src="/static/workshop-cafe-logo.webp"
             alt="Workshop Café"
             class="subpage-header-logo"
             width="160" height="60"

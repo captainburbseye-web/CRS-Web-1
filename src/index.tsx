@@ -1084,8 +1084,8 @@ app.get('/', (c) => {
   <link rel="canonical" href="https://cowleyroadstudios.com/" />
   
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/crs-logo.png" />
-  <link rel="apple-touch-icon" href="/crs-logo.png" />
+  <link rel="icon" type="image/png" href="/crs-logo.webp" />
+  <link rel="apple-touch-icon" href="/crs-logo.webp" />
 
   <!-- LCP image preload — fetchpriority high so it starts in preload scan -->
   <link rel="preload" as="image" href="/static/crs-logo.webp" fetchpriority="high" type="image/webp" />
@@ -1512,7 +1512,7 @@ function servicePageHtml({
   <meta name="description" content="${description}" />
   ${keywords ? `<meta name="keywords" content="${keywords}" />` : ''}
   <link rel="canonical" href="https://cowleyroadstudios.com/${slug}" />
-  <link rel="icon" type="image/png" href="/crs-logo.png" />
+  <link rel="icon" type="image/png" href="/crs-logo.webp" />
   ${SERVICE_CSS}
 </head>
 <body>
@@ -1833,7 +1833,7 @@ app.get('/workshop-cafe', (c) => {
     content: `
 <main class="sp-main">
   <div class="sp-cafe-hero">
-    <img src="/static/workshop-cafe-logo.png" alt="Workshop Café" class="sp-cafe-hero-logo" />
+    <img src="/static/workshop-cafe-logo.webp" alt="Workshop Café" class="sp-cafe-hero-logo" />
     <div class="sp-cafe-hero-text">
       <span class="sp-eyebrow">Community Space</span>
       <h1 class="sp-title">Workshop Café</h1>
@@ -2693,8 +2693,8 @@ app.get('/live-display', (c) => {
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Preload both sign images so transition is instant -->
-  <link rel="preload" as="image" href="/static/signage/cowley-road-studios-rack-sign.png" />
-  <link rel="preload" as="image" href="/static/signage/workshop-cafe-rack-sign.png" />
+  <link rel="preload" as="image" href="/static/signage/cowley-road-studios-rack-sign.webp" />
+  <link rel="preload" as="image" href="/static/signage/workshop-cafe-rack-sign.webp" />
 
   <!-- Critical reset: fullscreen, no scroll, black bg -->
   <style>
