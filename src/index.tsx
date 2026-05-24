@@ -1,28 +1,17 @@
 import { Hono } from 'hono'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { renderer } from './renderer'
-import { rackDemo } from './routes/rack-demo'
 import { signage } from './routes/signage'
 import { ContactSection } from './components/ContactSection'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
-import { BuildStatusBanner } from './components/BuildStatusBanner'
 import { HomePage } from './pages/Home'
 import { StudioPage } from './pages/Studio'
-import { AVServicesPage } from './pages/AVServices'
-import { AVRepairsPage } from './pages/AVRepairs'
 import { WorkshopCafePage } from './pages/WorkshopCafe'
 import { CricketRoad } from './pages/CricketRoad'
 import { Soundworks } from './pages/Soundworks'
 import { About } from './pages/About'
-import { Work } from './pages/Work'
-import { SignagePage } from './pages/Signage'
-import { SignageLoop } from './pages/SignageLoop'
 import { BookingConfirmed } from './pages/BookingConfirmed'
-import { RackPage } from './pages/Rack'
-import { RackTestPage } from './pages/RackTest'
-import { RackModular } from './pages/RackModular'
-import { RackModularEnhanced } from './pages/RackModularEnhanced'
 import { RackAccordion } from './pages/RackAccordion'
 import { Book } from './pages/Book'
 import { BookAccordion } from './pages/BookAccordion'
@@ -31,8 +20,6 @@ import { RecordingPage } from './pages/Recording'
 import { PodcastAVPage } from './pages/PodcastAV'
 import { ContactPage } from './pages/Contact'
 import { WorkshopCafeContactPage } from './pages/WorkshopCafeContact'
-import { DigitalPulsePage } from './pages/DigitalPulse'
-import { SignageDisplay } from './pages/SignageDisplay'
 import { CLIENT_MANIFEST } from './client-manifest'
 import { createElement } from 'react'
 import { renderToString } from 'react-dom/server'
@@ -310,46 +297,12 @@ app.post('/api/contact-wsc', async (c) => {
   }
 })
 
-app.post('/api/book/studio', async (c) => {
-  try {
-    const body = await c.req.json()
-    console.log('[API] Studio booking submission:', body)
-    
-    // TODO: Implement booking system integration
-    // For now, log and return success
-    
-    return c.json({ 
-      success: true, 
-      message: 'Booking request received. We will contact you to confirm availability.' 
-    }, 200)
-  } catch (error) {
-    console.error('[API] Studio booking error:', error)
-    return c.json({ 
-      success: false, 
-      message: '[ ALLOCATION FAILED ] Gateway timeout. Data not persisted. Please verify network connection and re-submit.' 
-    }, 500)
-  }
+app.post('/api/book/studio', (c) => {
+  return c.json({ success: false, message: 'Please book via Square at cowleyroadstudios.com' }, 501)
 })
 
-app.post('/api/book/venue', async (c) => {
-  try {
-    const body = await c.req.json()
-    console.log('[API] Venue booking submission:', body)
-    
-    // TODO: Implement booking system integration
-    // For now, log and return success
-    
-    return c.json({ 
-      success: true, 
-      message: '[ VENUE LOGGED ] Workshop Café hire request received. Administrative review in progress. Status: Pending.' 
-    }, 200)
-  } catch (error) {
-    console.error('[API] Venue booking error:', error)
-    return c.json({ 
-      success: false, 
-      message: '[ SUBMISSION VOID ] API endpoint unresponsive. Please retry or contact the facility manager directly.' 
-    }, 500)
-  }
+app.post('/api/book/venue', (c) => {
+  return c.json({ success: false, message: 'Please enquire via /contact?service=venue' }, 501)
 })
 
 // System Monitor Status Endpoint (Declarative - No Time Logic)
@@ -438,50 +391,11 @@ app.get('/pulse.json', (c) => {
 })
 
 // Events Feed Endpoint (Google Calendar proxy)
-app.get('/events.json', async (c) => {
-  try {
-    // TODO: Replace with your actual Google Calendar ID
-    const CALENDAR_ID = 'YOUR_CALENDAR_ID@group.calendar.google.com'
-    const API_KEY = 'YOUR_GOOGLE_API_KEY' // Store in env vars for production
-    
-    const now = new Date().toISOString()
-    const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?key=${API_KEY}&timeMin=${now}&maxResults=10&singleEvents=true&orderBy=startTime`
-    
-    const response = await fetch(url)
-    const data = await response.json()
-    
-    if (!data.items) {
-      return c.json({ events: [] })
-    }
-    
-    // Transform to simplified format
-    const events = data.items.map((item: any) => ({
-      id: item.id,
-      title: item.summary || 'Untitled Event',
-      start: item.start.dateTime || item.start.date,
-      end: item.end?.dateTime || item.end?.date,
-      description: item.description || '',
-      location: item.location || '',
-      // Extract booking link from description if present
-      bookingLink: extractBookingLink(item.description || '')
-    }))
-    
-    return c.json({ events })
-  } catch (error) {
-    // Return empty on error (don't break the site)
-    return c.json({ events: [] })
-  }
+app.get('/events.json', (c) => {
+  // Static events — update this manually or wire to Google Calendar via env vars
+  return c.json({ events: [] })
 })
 
-// Helper to extract booking links from event descriptions
-function extractBookingLink(description: string): string | null {
-  const urlRegex = /(https?:\/\/[^\s]+)/g
-  const matches = description.match(urlRegex)
-  return matches ? matches[0] : null
-}
-
-// RACK DEMO ROUTE (inline CSS, zero dependencies)
-app.route('/rack-demo', rackDemo)
 app.route('/signage', signage)
 
 app.use(renderer)
@@ -494,38 +408,10 @@ app.get('/av', (c) => c.redirect('/av-services'))
 app.get('/book', (c) => c.redirect('/#recording-services', 301))
 
 // LEGACY BOOKING PAGE (Archive)
-app.get('/book-legacy', (c) => {
-  return c.html(
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Legacy Booking | Cowley Road Studios</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        
-        {/* Core CSS files */}
-        <link href="/static/crs-reset.css" rel="stylesheet" />
-        <link href="/static/crs-typography.css" rel="stylesheet" />
-        <link href="/static/crs-header.css" rel="stylesheet" />
-        <link href="/static/crs-mobile.css" rel="stylesheet" />
-        
-        {/* Accordion-specific CSS */}
-        <link href="/static/rack-accordion.css" rel="stylesheet" />
-      </head>
-      <body>
-        <BookAccordion />
-      </body>
-    </html>
-  )
-})
 
-// OLD BOOKING GATEWAY (kept for reference, can be removed later)
 app.get('/book-old', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
@@ -624,7 +510,6 @@ app.get('/book/venue', (c) => {
 app.get('/locations', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="section-header">
@@ -649,7 +534,6 @@ app.get('/locations', (c) => {
 app.get('/crs-cowley-road', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
       <div class="loc-page">
 
@@ -854,7 +738,6 @@ app.get('/crs-cowley-road', (c) => {
 app.get('/crs-cricket-road', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
       <div class="loc-page">
 
@@ -1373,87 +1256,8 @@ app.get('/cricket-road-rehearsal', (c) => c.redirect('/rehearsal-rooms-oxford', 
 app.get('/home', (c) => c.redirect('/'))
 
 // LEGACY ACCORDION (Kept for archive access)
-app.get('/rack-accordion-legacy', (c) => {
-  return c.html(
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Legacy Accordion | Cowley Road Studios</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        
-        {/* Core CSS files */}
-        <link href="/static/crs-reset.css" rel="stylesheet" />
-        <link href="/static/crs-typography.css" rel="stylesheet" />
-        <link href="/static/crs-header.css" rel="stylesheet" />
-        <link href="/static/crs-footer.css" rel="stylesheet" />
-        <link href="/static/crs-map-embed.css" rel="stylesheet" />
-        <link href="/static/crs-mobile.css" rel="stylesheet" />
-        
-        {/* Accordion-specific CSS */}
-        <link href="/static/rack-accordion.css" rel="stylesheet" />
-      </head>
-      <body>
-        <RackAccordion />
-        
-        {/* Structured data for SEO */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "Cowley Road Studios",
-            "description": "Independent recording studio and rehearsal facility in Oxford. Formerly Soundworks Oxford (1999–2024). Engineer-led recording, professional rehearsal rooms, repair services, and creative workspace hire.",
-            "image": "https://pub-991d8d2677374c528678829280f50c98.r2.dev/transparentMaster%20Rack%20Header.png",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "118 Cowley Road",
-              "addressLocality": "Oxford",
-              "postalCode": "OX4 1JE",
-              "addressCountry": "GB"
-            },
-            "telephone": "+441865722027",
-            "email": "info@crsoxford.com",
-            "url": "https://cowleyroadstudios.com",
-            "priceRange": "££",
-            "areaServed": "Oxford",
-            "sameAs": [
-              "https://instagram.com/cowleyroadstudios.ox"
-            ]
-          })}
-        </script>
-      </body>
-    </html>
-  )
-})
 
-// RECORDING / STUDIO
-app.get('/studio', (c) => {
-  return c.html(`<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recording Studio Oxford | Engineer-Led Sessions | Cowley Road Studios</title>
-    <meta name="description" content="Professional recording studio in Oxford. Engineer-led sessions from £30/hr at Cricket Road, £35/hr at Cowley Road. Independent studio infrastructure since 1999.">
-    <meta name="keywords" content="recording studio oxford, music recording oxford, engineer led recording oxford, professional studio oxford, cowley road recording">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link href="/static/crs-reset.css" rel="stylesheet">
-    <link href="/static/crs-typography.css" rel="stylesheet">
-    <link href="/static/crs-header.css" rel="stylesheet">
-    <link href="/static/crs-mobile.css" rel="stylesheet">
-    <link href="/static/rack-accordion.css" rel="stylesheet">
-</head>
-<body>
-    ${<RecordingPage />}
-</body>
-</html>`)
-})
+app.get('/studio', (c) => c.redirect('/recording', 301))
 
 // ============================================================================
 // CRS SERVICE PAGES — Clean minimal routes with accurate copy
@@ -1909,7 +1713,6 @@ app.get('/workshop-cafe', (c) => {
 app.get('/studio/infrastructure', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
 
       <section class="crs-section section-dark" style="padding-top: 2rem; padding-bottom: 4rem;">
@@ -2030,7 +1833,6 @@ app.get('/studio/infrastructure', (c) => {
 app.get('/book/studio', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -2086,7 +1888,6 @@ app.get('/book/studio', (c) => {
 app.get('/book/rehearsal', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -2119,328 +1920,15 @@ app.get('/book/rehearsal', (c) => {
 })
 
 // 2a. Book Rehearsal - Cowley Road
-app.get('/book/rehearsal/cowley-road', (c) => {
-  return c.render(
-    <>
-      <BuildStatusBanner />
-      <Header />
-      <section class="crs-section section-dark">
-        <div class="booking-form-container">
-          <p style="margin-bottom: 1rem;">
-            <a href="/book/rehearsal" style="color: var(--mustard); text-decoration: none;">← Back to location selection</a>
-          </p>
-          
-          <h2 class="section-title heading">CRS Rehearsal · Cowley Road</h2>
-          
-          <form class="booking-form" method="post" action="/api/book/rehearsal/cowley-road">
-            <div class="form-group">
-              <label for="name" class="form-label mono">Name *</label>
-              <input type="text" id="name" name="name" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label mono">Email *</label>
-              <input type="email" id="email" name="email" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="band_name" class="form-label mono">Band / project name</label>
-              <input type="text" id="band_name" name="band_name" class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="dates" class="form-label mono">Preferred dates & times *</label>
-              <textarea id="dates" name="dates" required class="form-textarea" rows="3"></textarea>
-            </div>
-            
-            <div class="form-group">
-              <label for="duration" class="form-label mono">Rehearsal length *</label>
-              <input type="text" id="duration" name="duration" required class="form-input" placeholder="e.g., 2 hours" />
-            </div>
-            
-            <div class="form-group">
-              <label for="needs" class="form-label mono">Any specific needs? (optional)</label>
-              <textarea id="needs" name="needs" class="form-textarea" rows="4"></textarea>
-            </div>
-            
-            <button type="submit" class="crs-button mono">SUBMIT BOOKING REQUEST</button>
-          </form>
-        </div>
-      </section>
-      <Footer />
-    </>
-  )
-})
-
-// 2b. Book Rehearsal - Cricket Road
-app.get('/book/rehearsal/cricket-road', (c) => {
-  return c.render(
-    <>
-      <BuildStatusBanner />
-      <Header />
-      <section class="crs-section section-dark">
-        <div class="booking-form-container">
-          <p style="margin-bottom: 1rem;">
-            <a href="/book/rehearsal" style="color: var(--mustard); text-decoration: none;">← Back to location selection</a>
-          </p>
-          
-          <h2 class="section-title heading">CRS Rehearsal · Cricket Road</h2>
-          <p class="section-intro" style="margin-bottom: 2rem; font-style: italic;">
-            Partner Studio · Cricket Road, Oxford
-          </p>
-          
-          <form class="booking-form" method="post" action="/api/book/rehearsal/cricket-road">
-            <div class="form-group">
-              <label for="name" class="form-label mono">Name *</label>
-              <input type="text" id="name" name="name" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label mono">Email *</label>
-              <input type="email" id="email" name="email" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="band_name" class="form-label mono">Band / project name</label>
-              <input type="text" id="band_name" name="band_name" class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="dates" class="form-label mono">Preferred dates & times *</label>
-              <textarea id="dates" name="dates" required class="form-textarea" rows="3"></textarea>
-            </div>
-            
-            <div class="form-group">
-              <label for="duration" class="form-label mono">Rehearsal length *</label>
-              <input type="text" id="duration" name="duration" required class="form-input" placeholder="e.g., 2 hours" />
-            </div>
-            
-            <div class="form-group">
-              <label for="needs" class="form-label mono">Any specific needs? (optional)</label>
-              <textarea id="needs" name="needs" class="form-textarea" rows="4"></textarea>
-            </div>
-            
-            <button type="submit" class="crs-button mono">SUBMIT BOOKING REQUEST</button>
-          </form>
-        </div>
-      </section>
-      <Footer />
-    </>
-  )
-})
-
-// 3. Book Music Lessons
-app.get('/book/lessons', (c) => {
-  return c.render(
-    <>
-      <BuildStatusBanner />
-      <Header />
-      <section class="crs-section section-dark">
-        <div class="booking-form-container">
-          <h2 class="section-title heading">CRS Music Lessons</h2>
-          
-          <form class="booking-form" method="post" action="/api/book/lessons">
-            <div class="form-group">
-              <label for="name" class="form-label mono">Name *</label>
-              <input type="text" id="name" name="name" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label mono">Email *</label>
-              <input type="email" id="email" name="email" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="instrument" class="form-label mono">Instrument *</label>
-              <input type="text" id="instrument" name="instrument" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="experience" class="form-label mono">Experience level *</label>
-              <select id="experience" name="experience" required class="form-input">
-                <option value="">Select level</option>
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="availability" class="form-label mono">General availability *</label>
-              <textarea id="availability" name="availability" required class="form-textarea" rows="3" placeholder="e.g., Weekday evenings, Saturday mornings"></textarea>
-            </div>
-            
-            <div class="form-group">
-              <label for="goals" class="form-label mono">Goals or notes (optional)</label>
-              <textarea id="goals" name="goals" class="form-textarea" rows="4"></textarea>
-            </div>
-            
-            <button type="submit" class="crs-button mono">SUBMIT ENQUIRY</button>
-          </form>
-        </div>
-      </section>
-      <Footer />
-    </>
-  )
-})
-
-// 4. Book Mixdown Slot
-app.get('/book/mixdown', (c) => {
-  return c.render(
-    <>
-      <BuildStatusBanner />
-      <Header />
-      <section class="crs-section section-dark">
-        <div class="booking-form-container">
-          <h2 class="section-title heading">CRS Mixdown Service</h2>
-          
-          <form class="booking-form" method="post" action="/api/book/mixdown">
-            <div class="form-group">
-              <label for="name" class="form-label mono">Name *</label>
-              <input type="text" id="name" name="name" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label mono">Email *</label>
-              <input type="email" id="email" name="email" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="track_count" class="form-label mono">Number of tracks *</label>
-              <input type="number" id="track_count" name="track_count" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="reference" class="form-label mono">Reference notes *</label>
-              <textarea id="reference" name="reference" required class="form-textarea" rows="4" placeholder="What are you looking for in the mix?"></textarea>
-            </div>
-            
-            <div class="form-group">
-              <label for="file_link" class="form-label mono">Upload files or link</label>
-              <input type="url" id="file_link" name="file_link" class="form-input" placeholder="e.g., Google Drive, Dropbox link" />
-            </div>
-            
-            <p class="form-helper-text">We'll review and confirm timing before starting work.</p>
-            
-            <button type="submit" class="crs-button mono">SUBMIT REQUEST</button>
-          </form>
-        </div>
-      </section>
-      <Footer />
-    </>
-  )
-})
-
-// 5. Book Tape Services
-app.get('/book/tape', (c) => {
-  return c.render(
-    <>
-      <BuildStatusBanner />
-      <Header />
-      <section class="crs-section section-dark">
-        <div class="booking-form-container">
-          <h2 class="section-title heading">CRS Tape Services</h2>
-          
-          <form class="booking-form" method="post" action="/api/book/tape">
-            <div class="form-group">
-              <label for="name" class="form-label mono">Name *</label>
-              <input type="text" id="name" name="name" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label mono">Email *</label>
-              <input type="email" id="email" name="email" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="tape_format" class="form-label mono">Tape format *</label>
-              <input type="text" id="tape_format" name="tape_format" required class="form-input" placeholder="e.g., 1/4 inch reel-to-reel, cassette" />
-            </div>
-            
-            <div class="form-group">
-              <label for="reel_count" class="form-label mono">Number of reels *</label>
-              <input type="number" id="reel_count" name="reel_count" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="service" class="form-label mono">Service required *</label>
-              <select id="service" name="service" required class="form-input">
-                <option value="">Select service</option>
-                <option value="transfer">Transfer</option>
-                <option value="clean">Clean</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            
-            <div class="form-group">
-              <label for="notes" class="form-label mono">Notes</label>
-              <textarea id="notes" name="notes" class="form-textarea" rows="4"></textarea>
-            </div>
-            
-            <button type="submit" class="crs-button mono">SUBMIT REQUEST</button>
-          </form>
-        </div>
-      </section>
-      <Footer />
-    </>
-  )
-})
-
-// 6. Book Equipment Hire
-app.get('/book/hire', (c) => {
-  return c.render(
-    <>
-      <BuildStatusBanner />
-      <Header />
-      <section class="crs-section section-dark">
-        <div class="booking-form-container">
-          <h2 class="section-title heading">CRS Equipment Hire</h2>
-          
-          <form class="booking-form" method="post" action="/api/book/hire">
-            <div class="form-group">
-              <label for="name" class="form-label mono">Name *</label>
-              <input type="text" id="name" name="name" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label mono">Email *</label>
-              <input type="email" id="email" name="email" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="equipment" class="form-label mono">Equipment needed *</label>
-              <textarea id="equipment" name="equipment" required class="form-textarea" rows="3"></textarea>
-            </div>
-            
-            <div class="form-group">
-              <label for="dates" class="form-label mono">Dates required *</label>
-              <input type="text" id="dates" name="dates" required class="form-input" placeholder="e.g., 15-17 March" />
-            </div>
-            
-            <div class="form-group">
-              <label for="event" class="form-label mono">Event / use *</label>
-              <input type="text" id="event" name="event" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="location" class="form-label mono">Location *</label>
-              <input type="text" id="location" name="location" required class="form-input" />
-            </div>
-            
-            <button type="submit" class="crs-button mono">SUBMIT ENQUIRY</button>
-          </form>
-        </div>
-      </section>
-      <Footer />
-    </>
-  )
-})
-
-// REPAIRS STATUS PAGE (Gated - OFF by default)
+app.get('/book/rehearsal/cowley-road', (c) => c.redirect('https://app.squareup.com/appointments/buyer/widget/7n0e94bokii6s3/L1MAM4DDPHKXX', 302))
+app.get('/book/rehearsal/cricket-road', (c) => c.redirect('https://app.squareup.com/appointments/buyer/widget/ea1ume9ju9zwqk/L1MAM4DDPHKXX', 302))
+app.get('/book/lessons', (c) => c.redirect('/contact?service=recording', 302))
+app.get('/book/mixdown', (c) => c.redirect('/contact?service=recording', 302))
+app.get('/book/tape', (c) => c.redirect('/contact?service=recording', 302))
+app.get('/book/hire', (c) => c.redirect('/contact?service=general', 302))
 app.get('/repairs/status', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
       <section class="crs-section section-dark">
         <div class="booking-form-container">
@@ -2492,88 +1980,8 @@ app.get('/repairs/status', (c) => {
 })
 
 // 7. Book Repairs
-app.get('/book/repairs', (c) => {
-  return c.render(
-    <>
-      <BuildStatusBanner />
-      <Header />
-      <section class="crs-section section-dark">
-        <div class="booking-form-container">
-          <h2 class="section-title heading">Book Repairs</h2>
-          
-          <form class="booking-form" method="post" action="/api/book/repairs">
-            <div class="form-group">
-              <label for="name" class="form-label mono">Name *</label>
-              <input type="text" id="name" name="name" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="email" class="form-label mono">Email *</label>
-              <input type="email" id="email" name="email" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="equipment_type" class="form-label mono">Equipment type *</label>
-              <input type="text" id="equipment_type" name="equipment_type" required class="form-input" />
-            </div>
-            
-            <div class="form-group">
-              <label for="issue" class="form-label mono">Describe the issue *</label>
-              <textarea id="issue" name="issue" required class="form-textarea" rows="5"></textarea>
-            </div>
-            
-            <div class="form-group">
-              <label for="photo_link" class="form-label mono">Upload photos (optional)</label>
-              <input type="url" id="photo_link" name="photo_link" class="form-input" placeholder="Link to photos" />
-            </div>
-            
-            <div class="form-group">
-              <label for="urgent" class="form-label mono">Is this time-critical? (optional)</label>
-              <select id="urgent" name="urgent" class="form-input">
-                <option value="no">No</option>
-                <option value="yes">Yes</option>
-              </select>
-            </div>
-            
-            <p class="form-helper-text">Diagnosis first. Quote follows.</p>
-            
-            <button type="submit" class="crs-button mono">SUBMIT REPAIR REQUEST</button>
-          </form>
-        </div>
-      </section>
-      <Footer />
-    </>
-  )
-})
-
-// PODCAST & AV SERVICES
-app.get('/av-services', (c) => {
-  return c.html(`<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Podcast Studio & AV Services Oxford | Cowley Road Studios</title>
-    <meta name="description" content="Professional podcast studio hire and AV services in Oxford. £30/hr engineer-led recording, live sound installation, equipment repairs. Cricket Road & Cowley Road.">
-    <meta name="keywords" content="podcast studio oxford, podcast recording oxford, av services oxford, live sound oxford, sound engineer oxford, equipment repair oxford">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link href="/static/crs-reset.css" rel="stylesheet">
-    <link href="/static/crs-typography.css" rel="stylesheet">
-    <link href="/static/crs-header.css" rel="stylesheet">
-    <link href="/static/crs-mobile.css" rel="stylesheet">
-    <link href="/static/rack-accordion.css" rel="stylesheet">
-    <link href="/static/studio-rack-demo.css?v=5.10" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body class="hp-page subpage">
-    ${<PodcastAVPage />}
-</body>
-</html>`)
-})
+app.get('/book/repairs', (c) => c.redirect('/contact?service=repairs', 302))
+app.get('/av-services', (c) => c.redirect('/repairs', 301))
 
 // Add redirect for podcast
 app.get('/podcast', (c) => c.redirect('/av-services'))
@@ -2582,23 +1990,13 @@ app.get('/podcast', (c) => c.redirect('/av-services'))
 app.get('/av-services/repairs', (c) => c.redirect('/av-services'))
 
 // WORKSHOP CAFÉ (VENUE)
-app.get('/workshop-cafe', (c) => {
-  return c.render(
-      <WorkshopCafePage />,
-    {
-      title: 'Workshop Café Oxford | Community Space & Venue Hire',
-      description: 'Café, workspace, and small venue in East Oxford. Available for private hire and public programming. Part of Cowley Road Studios.',
-      keywords: 'cafe oxford, workshop cafe oxford, venue hire oxford, community space oxford, east oxford cafe'
-    }
-  )
-})
 
-// WORKSHOP CAFÉ — CONTACT / HIRE ENQUIRY PAGE
 app.get('/workshop-cafe/contact', (c) => {
   const service     = String(c.req.query('service') || 'private-hire').toLowerCase()
   const statusParam = String(c.req.query('status') || '').toLowerCase()
   const status      = statusParam === 'sent' || statusParam === 'error' ? statusParam : null
 
+  const wscHtml = renderToString(createElement(WorkshopCafeContactPage, { initialService: service, status }))
   return c.html(`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2606,22 +2004,18 @@ app.get('/workshop-cafe/contact', (c) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hire Enquiry | The Workshop Café Oxford</title>
     <meta name="description" content="Enquire about private hire, events, workshops, and community use at The Workshop Café, 118 Cowley Road, Oxford. Part of Cowley Road Studios.">
-    <meta name="keywords" content="workshop cafe hire oxford, venue hire east oxford, private event space oxford, workshop cafe contact">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <link href="/static/crs-reset.css" rel="stylesheet">
     <link href="/static/crs-typography.css" rel="stylesheet">
     <link href="/static/crs-header.css" rel="stylesheet">
     <link href="/static/crs-mobile.css" rel="stylesheet">
     <link href="/static/rack-accordion.css" rel="stylesheet">
-    <link href="/static/studio-rack-demo.css?v=5.33" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="/static/studio-rack-demo.css" rel="stylesheet">
 </head>
 <body class="hp-page subpage wsc-page">
-    ${<WorkshopCafeContactPage initialService={service} status={status} />}
+    \${wscHtml}
 </body>
 </html>`)
 })
@@ -2632,7 +2026,6 @@ app.get('/workshop-cafe/contact', (c) => {
 app.get('/cricket-road', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
       <CricketRoad />
       <Footer />
@@ -2651,7 +2044,6 @@ app.get('/cricket-road', (c) => {
 app.get('/soundworks', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
       <Soundworks />
       <Footer />
@@ -2731,7 +2123,6 @@ app.get('/live-display', (c) => {
 app.get('/cafe', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
 
       {/* CAFÉ HERO - Full-width Nettle Green */}
@@ -2844,8 +2235,6 @@ app.get('/cafe', (c) => {
     }
   )
 })
-// VENUE REDIRECT (removed - not ready for public launch)
-app.get("/venue", (c) => c.redirect("/contact?service=venue"))
 
 // ABOUT
 app.get('/about', (c) => {
@@ -2918,7 +2307,6 @@ app.get('/about', (c) => {
 app.get('/work', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
       <Work />
       <Footer />
@@ -2936,6 +2324,7 @@ app.get('/contact', (c) => {
   const statusParam = String(c.req.query('status') || '').toLowerCase()
   const status = statusParam === 'sent' || statusParam === 'error' ? statusParam : null
 
+  const contactHtml = renderToString(createElement(ContactPage, { initialService: service, status }))
   return c.html(`<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2943,22 +2332,18 @@ app.get('/contact', (c) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Cowley Road Studios | Recording Studio Oxford</title>
     <meta name="description" content="Get in touch about studio sessions, rehearsal space, AV services, venue hire, or repairs. Two Oxford locations. Direct booking routes. Email: info@crsoxford.com">
-    <meta name="keywords" content="contact crs, cowley road studios contact, recording studio oxford contact, book studio oxford">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
     <link href="/static/crs-reset.css" rel="stylesheet">
     <link href="/static/crs-typography.css" rel="stylesheet">
     <link href="/static/crs-header.css" rel="stylesheet">
     <link href="/static/crs-mobile.css" rel="stylesheet">
     <link href="/static/rack-accordion.css" rel="stylesheet">
-    <link href="/static/studio-rack-demo.css?v=5.10" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="/static/studio-rack-demo.css" rel="stylesheet">
 </head>
 <body class="hp-page subpage">
-    ${<ContactPage initialService={service} status={status} />}
+    \${contactHtml}
 </body>
 </html>`)
 })
@@ -2968,7 +2353,6 @@ app.get('/contact', (c) => {
 app.get('/booking-confirmed', (c) => {
   return c.render(
     <>
-      <BuildStatusBanner />
       <Header />
       <BookingConfirmed />
       <Footer />
@@ -3000,98 +2384,6 @@ app.get('/rack', (c) => {
 
 // RACK TEST — STRUCTURAL ASSEMBLY SANDBOX
 // Isolated test route for 19-inch rack interface development
-app.get('/rack-test', (c) => {
-  return c.render(
-    <RackTestPage />,
-    {
-      title: 'CRS Rack Test | Structural Assembly',
-      description: 'Test environment for 19-inch equipment rack interface',
-      keywords: 'rack test, studio equipment, structural assembly'
-    }
-  )
-})
-
-// STUDIO RACK DEMO — REACT ISLAND
-app.get('/studio-rack-demo', (c) => {
-  const manifestEntry = CLIENT_MANIFEST['src/client/rack-entry.tsx']
-  const jsAsset = `/static/${manifestEntry.file}`
-  const cssAsset = manifestEntry.css ? `/static/${manifestEntry.css[0]}` : null
-  const vendorEntry2 = manifestEntry.imports?.[0]
-  const vendorAsset2 = vendorEntry2
-    ? `/static/${(CLIENT_MANIFEST as Record<string, {file: string}>)[vendorEntry2]?.file ?? ''}`
-    : null
-
-  // Server-render the React component
-  const rackHtml = renderToString(createElement(StudioServicesRack))
-  
-  return c.html(
-    `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Studio Services | Cowley Road Studios</title>
-  <meta name="description" content="Book recording, rehearsal, and control room sessions" />
-  <meta name="keywords" content="studio booking, recording sessions, rehearsal rooms" />
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-  <!-- LCP preload -->
-  <link rel="preload" as="image" href="/static/crs-logo.webp" fetchpriority="high" type="image/webp" />
-  
-  <!-- Hardware Physics CSS -->
-  <link href="/static/studio-rack-demo.css" rel="stylesheet" />
-  
-  <!-- Fonts — non-blocking (v5.18) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
-
-  ${vendorAsset2 ? `<link rel="modulepreload" href="${vendorAsset2}" />` : ''}
-</head>
-<body>
-  <div id="studio-rack-root">${rackHtml}</div>
-  
-  <!-- React Island: vendor first -->
-  ${vendorAsset2 ? `<script type="module" src="${vendorAsset2}"></script>` : ''}
-  <script type="module" src="${jsAsset}"></script>
-  
-  <!-- ODRO Modal Trigger -->
-  <script>
-    window.addEventListener('OPEN_ODRO_MODAL', function() {
-      var modal = document.getElementById('odro-terms-modal');
-      if (modal) modal.classList.remove('hidden');
-    });
-  </script>
-</body>
-</html>`
-  )
-})
-
-// RACK VARIANTS — HARDWARE REALISM WITH VISUAL HIERARCHY
-// Enhanced modular rack with command/rack/passive variants
-// Mission: Bring the rack to life (tactile, styled, variant-aware)
-app.get('/rack-variants', (c) => {
-  return c.render(
-    <>
-      <link href="/static/rack-variants-hardware.css" rel="stylesheet" />
-      <RackModularEnhanced />
-      <script src="/static/rack-dropdown.js" defer></script>
-    </>,
-    {
-      title: 'CRS Rack Variants | Hardware Realism',
-      description: 'Modular rack interface with visual variants - command, rack, and passive. Hardware-inspired design with tactile interactions.',
-      keywords: 'rack modules, hardware ui, studio equipment, variant system'
-    }
-  )
-})
-
-// RACK ACCORDION — Hardware Rack with Expandable Modules
-// Click any module to expand it, others stay collapsed
-// Pure hardware aesthetic with LED indicators
 app.get('/rack-accordion', (c) => {
   return c.html(
     <html lang="en">
@@ -3629,36 +2921,7 @@ app.get('/signage-v2', (c) => {
 // SIGNAGE LOOP — BROADCAST ENGINE (Yodeck Kiosk Mode)
 // Auto-cycling slideshow of all Elite Signage Components
 // 10-second intervals with fade transitions and burn-in protection
-app.get('/signage-loop', (c) => {
-  return c.html(
-    <html>
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="noindex, nofollow" />
-        <title>CRS Signage Loop | Broadcast Mode</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link href="/static/crs-ghost-chassis.css" rel="stylesheet" />
-        <style>{`
-          body { 
-            margin: 0; 
-            padding: 0; 
-            overflow: hidden; 
-            background: #000;
-          }
-        `}</style>
-      </head>
-      <body>
-        <SignageLoop />
-      </body>
-    </html>
-  )
-})
 
-// REHEARSAL SPACES PAGE
 app.get('/rehearsal', (c) => {
   return c.html(
     <html lang="en">
@@ -3693,25 +2956,9 @@ app.get('/rehearsal', (c) => {
 // ===================================================================
 
 // Old service pages → Homepage accordion
-app.get('/studio-old', (c) => c.redirect('/'))
-app.get('/workshop-cafe-old', (c) => c.redirect('/'))
-app.get('/cricket-road-old', (c) => c.redirect('/'))
-app.get('/crs-cowley-road-old', (c) => c.redirect('/'))
-app.get('/crs-cricket-road-old', (c) => c.redirect('/'))
-app.get('/locations-old', (c) => c.redirect('/'))
 // '/rehearsal' now shows dedicated RehearsalSpaces page
 
 // Old booking pages → New /book accordion
-app.get('/book/studio-old', (c) => c.redirect('/book'))
-app.get('/book/rehearsal-old', (c) => c.redirect('/book'))
-app.get('/book/rehearsal/cowley-road-old', (c) => c.redirect('/book'))
-app.get('/book/rehearsal/cricket-road-old', (c) => c.redirect('/book'))
-app.get('/book/lessons-old', (c) => c.redirect('/book'))
-app.get('/book/mixdown-old', (c) => c.redirect('/book'))
-app.get('/book/tape-old', (c) => c.redirect('/book'))
-app.get('/book/hire-old', (c) => c.redirect('/book'))
-app.get('/book/repairs-old', (c) => c.redirect('/book'))
-app.get('/book-old', (c) => c.redirect('/book'))
 
 app.get('/terms', (c) => c.redirect('/policies/terms.html', 302))
 app.get('/privacy', (c) => c.redirect('/policies/privacy.html', 302))
