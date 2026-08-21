@@ -2060,12 +2060,18 @@ app.get('/soundworks', (c) => {
 // SIGNAGE DISPLAY PAGE  —  pure kiosk, no site chrome
 // ============================================================================
 app.get('/live-display', (c) => {
-  const sgdEntry    = CLIENT_MANIFEST['src/client/sgd-entry.tsx']
-  const sgdJs       = sgdEntry ? `/static/${sgdEntry.file}` : null
-  // vendor chunk — jsx-runtime is the shared chunk imported by sgd-entry
-  const vendorEntry = CLIENT_MANIFEST['src/client/rack-entry.tsx']?.imports?.[0]
-  const vendorJs    = vendorEntry
-    ? `/static/${(CLIENT_MANIFEST as Record<string, {file: string}>)[vendorEntry]?.file ?? ''}`
+  const manifest   = CLIENT_MANIFEST as Record<string, { file: string; imports?: string[] }>
+  const sgdEntry   = manifest['src/client/sgd-entry.tsx']
+  const sgdJs      = sgdEntry ? `/static/${sgdEntry.file}` : null
+
+  // Resolve ALL shared chunks that sgd-entry depends on, in dependency order:
+  //   sgd-entry → _jsx-runtime → _react-vendor
+  // We must load react-vendor first, then jsx-runtime, then the entry.
+  const reactVendorJs = manifest['_react-vendor-DekTAH87.js']
+    ? `/static/${manifest['_react-vendor-DekTAH87.js'].file}`
+    : null
+  const jsxRuntimeJs  = manifest['_jsx-runtime-y5uXgpz6.js']
+    ? `/static/${manifest['_jsx-runtime-y5uXgpz6.js'].file}`
     : null
 
   return c.html(`<!DOCTYPE html>
@@ -2074,41 +2080,30 @@ app.get('/live-display', (c) => {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Live Display — Cowley Road Studios</title>
-  <meta name="description" content="CRS live analogue signage display. Rack-mounted LED ticker, Oxford Dreaming Spires waveform. Workshop Café and Cowley Road Studios variants." />
   <meta name="robots" content="noindex" />
   <link rel="canonical" href="https://cowleyroadstudios.com/live-display" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-  <!-- Fonts: JetBrains Mono for ticker + status bar -->
+  <!-- Fonts: JetBrains Mono (mono stack) + Inter Black (plate title only) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@900&display=swap" rel="stylesheet" />
 
-  <!-- Preload both sign images so transition is instant -->
-  <link rel="preload" as="image" href="/static/signage/cowley-road-studios-rack-sign.webp" />
-  <link rel="preload" as="image" href="/static/signage/workshop-cafe-rack-sign.webp" />
-
-  <!-- Critical reset: fullscreen, no scroll, black bg -->
+  <!-- Critical reset: fullscreen kiosk, no scroll, dark bg -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body {
-      width: 100%; height: 100%;
-      overflow: hidden;
-      background: #040804;
-    }
-    #sgd-root {
-      width: 100%; height: 100%;
-      min-height: 100vh;
-    }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #040804; }
+    #sgd-root   { width: 100%; height: 100%; min-height: 100vh; }
   </style>
 
-  <!-- Design system CSS (sgd-* rules, custom properties) -->
+  <!-- Design system CSS (sgd-* custom properties + component rules) -->
   <link href="/static/studio-rack-demo.css" rel="stylesheet" />
 </head>
 <body>
   <div id="sgd-root"></div>
-  ${vendorJs ? `<script type="module" src="${vendorJs}"></script>` : ''}
-  ${sgdJs    ? `<script type="module" src="${sgdJs}"></script>`    : ''}
+  ${reactVendorJs ? `<script type="module" src="${reactVendorJs}"></script>` : ''}
+  ${jsxRuntimeJs  ? `<script type="module" src="${jsxRuntimeJs}"></script>`  : ''}
+  ${sgdJs         ? `<script type="module" src="${sgdJs}"></script>`         : ''}
 </body>
 </html>`)
 })
